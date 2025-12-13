@@ -7,7 +7,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Model\EmptySpace|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi2\Tests\Expected\Model\EmptySpace : \Psr\Http\Message\ResponseInterface)
      */
     public function getEmptyTest(string $fetch = self::FETCH_OBJECT)
     {
@@ -18,7 +18,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi2\Tests\Expected\Exception\GetTestBadRequestException
      * @throws \Jane\Component\OpenApi2\Tests\Expected\Exception\GetTestNotFoundException
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Model\Schema|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi2\Tests\Expected\Model\Schema : \Psr\Http\Message\ResponseInterface)
      */
     public function getTest(string $fetch = self::FETCH_OBJECT)
     {
@@ -30,7 +30,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi2\Tests\Expected\Exception\GetTestByIdBadRequestException
      * @throws \Jane\Component\OpenApi2\Tests\Expected\Exception\GetTestByIdNotFoundException
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Model\TestIdGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi2\Tests\Expected\Model\TestIdGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function getTestById(int $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -39,7 +39,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Model\Schema[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi2\Tests\Expected\Model\Schema[] : \Psr\Http\Message\ResponseInterface)
      */
     public function getTestList(string $fetch = self::FETCH_OBJECT)
     {
@@ -48,7 +48,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Model\TestComplexListGetResponsedefault|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi2\Tests\Expected\Model\TestComplexListGetResponsedefault : \Psr\Http\Message\ResponseInterface)
      */
     public function getTestComplexList(string $fetch = self::FETCH_OBJECT)
     {

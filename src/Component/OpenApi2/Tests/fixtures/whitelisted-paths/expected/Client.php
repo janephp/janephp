@@ -7,7 +7,7 @@ class Client extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Jane\OpenApi2\Tests\Expected\Model\Company|\Jane\OpenApi2\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\OpenApi2\Tests\Expected\Model\Company|\Jane\OpenApi2\Tests\Expected\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function retrieveCompany(string $fetch = self::FETCH_OBJECT)
     {
@@ -18,7 +18,7 @@ class Client extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\Client
      * @param \Jane\OpenApi2\Tests\Expected\Model\CompanyPatchBody $payload json payload
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Jane\OpenApi2\Tests\Expected\Model\Company|\Jane\OpenApi2\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\OpenApi2\Tests\Expected\Model\Company|\Jane\OpenApi2\Tests\Expected\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function updateCompany(\Jane\OpenApi2\Tests\Expected\Model\CompanyPatchBody $payload, string $fetch = self::FETCH_OBJECT)
     {
@@ -37,7 +37,7 @@ class Client extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Jane\OpenApi2\Tests\Expected\Model\Projects|\Jane\OpenApi2\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\OpenApi2\Tests\Expected\Model\Projects|\Jane\OpenApi2\Tests\Expected\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function listProjects(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -48,7 +48,7 @@ class Client extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\Client
      * @param \Jane\OpenApi2\Tests\Expected\Model\ProjectsPostBody $payload json payload
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Jane\OpenApi2\Tests\Expected\Model\Project|\Jane\OpenApi2\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\OpenApi2\Tests\Expected\Model\Project|\Jane\OpenApi2\Tests\Expected\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function createProject(\Jane\OpenApi2\Tests\Expected\Model\ProjectsPostBody $payload, string $fetch = self::FETCH_OBJECT)
     {

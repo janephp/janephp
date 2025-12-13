@@ -7,7 +7,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function getFoo(string $fetch = self::FETCH_OBJECT)
     {
@@ -16,7 +16,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function getBar(string $fetch = self::FETCH_OBJECT)
     {
@@ -25,7 +25,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function getBaz(string $fetch = self::FETCH_OBJECT)
     {

@@ -14,7 +14,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function testGetWithPathParameters(array $testBody, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -30,7 +30,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function testPostWithPathParameters(array $testBody, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -47,7 +47,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function testQueryParameters(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -64,7 +64,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function testHeaderParameters(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -81,7 +81,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function testFormParameters(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -93,7 +93,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function testFormFileParameters(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -103,7 +103,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      * @param string|resource|\Psr\Http\Message\StreamInterface $testBinary
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function testBinaryBody($testBinary, string $fetch = self::FETCH_OBJECT)
     {
@@ -115,7 +115,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      * @param float $testFloat
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function testPathParameters(string $testString, int $testInteger, float $testFloat, string $fetch = self::FETCH_OBJECT)
     {
@@ -125,7 +125,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      * @param int $testInteger
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function getByTestInteger(int $testInteger, string $fetch = self::FETCH_OBJECT)
     {

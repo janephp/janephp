@@ -17,7 +17,7 @@ class Client extends \Jane\OpenApi2\Tests\Expected\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function testGetWithPathParameters(string $testPath, array $testBody, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {

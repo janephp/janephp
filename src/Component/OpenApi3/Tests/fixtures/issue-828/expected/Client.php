@@ -8,7 +8,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param array[] $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function testSimple(array $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -18,7 +18,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\Bar[] $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function testSimpleClassArray(?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {

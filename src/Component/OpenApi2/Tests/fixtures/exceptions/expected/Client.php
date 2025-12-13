@@ -11,7 +11,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi2\Tests\Expected\Exception\TestNoTagInternalServerErrorException
      * @throws \Jane\Component\OpenApi2\Tests\Expected\Exception\TestNoTagCustom600Exception
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function testNoTag(string $fetch = self::FETCH_OBJECT)
     {

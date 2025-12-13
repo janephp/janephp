@@ -20,7 +20,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\OneClicksListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\OneClicksListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseOneClicksAll|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseOneClicksAll|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function oneClicksList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -38,7 +38,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\OneClicksInstallKubernetesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\OneClicksInstallKubernetesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseOneClicksCreate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseOneClicksCreate|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function oneClicksInstallKubernetes(\Jane\Generated\DigitalOcean\Model\OneClicksCreate $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -50,7 +50,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AccountGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AccountGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAccount|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAccount|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function accountGet(string $fetch = self::FETCH_OBJECT)
     {
@@ -67,7 +67,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSshKeysAll|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseSshKeysAll|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function sshKeysList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -81,7 +81,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSshKeysNew|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseSshKeysNew|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function sshKeysCreate(\Jane\Generated\DigitalOcean\Model\SshKeys $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -97,7 +97,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function sshKeysDelete($sshKeyIdentifier, string $fetch = self::FETCH_OBJECT)
     {
@@ -113,7 +113,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSshKeysExisting|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseSshKeysExisting|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function sshKeysGet($sshKeyIdentifier, string $fetch = self::FETCH_OBJECT)
     {
@@ -129,7 +129,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysUpdateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSshKeysExisting|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseSshKeysExisting|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function sshKeysUpdate($sshKeyIdentifier, \Jane\Generated\DigitalOcean\Model\V2AccountKeysSshKeyIdentifierPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -146,7 +146,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ActionsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ActionsListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseActions|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseActions|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -161,7 +161,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ActionsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ActionsGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAction|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAction|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsGet(int $actionId, string $fetch = self::FETCH_OBJECT)
     {
@@ -173,7 +173,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetAppTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetAppInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsGetApp|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsGetApp|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function addonsGetApp(string $fetch = self::FETCH_OBJECT)
     {
@@ -190,7 +190,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetAppMetadataTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetAppMetadataInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsGetAppMetadata|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsGetAppMetadata|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function addonsGetAppMetadata(string $appSlug, string $fetch = self::FETCH_OBJECT)
     {
@@ -202,7 +202,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsList|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsList|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function addonsList(string $fetch = self::FETCH_OBJECT)
     {
@@ -219,7 +219,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsCreate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsCreate|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function addonsCreate(\Jane\Generated\DigitalOcean\Model\V2AddOnsSaasPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -237,7 +237,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function addonsDelete(string $resourceUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -254,7 +254,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsGet|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsGet|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function addonsGet(string $resourceUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -272,7 +272,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsPatchTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsPatchInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsUpdate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsUpdate|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function addonsPatch(string $resourceUuid, \Jane\Generated\DigitalOcean\Model\V2AddOnsSaasResourceUuidPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -290,7 +290,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsPatchPlanTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AddonsPatchPlanInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsUpdate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAddonsUpdate|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function addonsPatchPlan(string $resourceUuid, \Jane\Generated\DigitalOcean\Model\V2AddOnsSaasResourceUuidPlanPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -308,7 +308,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppsResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -326,7 +326,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsCreate(\Jane\Generated\DigitalOcean\Model\AppsCreateAppRequest $requestBody, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -341,7 +341,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsDeleteAppResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppsDeleteAppResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsDelete(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -359,7 +359,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsGet(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -375,7 +375,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsUpdateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsUpdate(string $id, \Jane\Generated\DigitalOcean\Model\AppsUpdateAppRequest $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -391,7 +391,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsRestartTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsRestartInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsRestart(string $appId, ?\Jane\Generated\DigitalOcean\Model\AppsRestartRequest $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -417,7 +417,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentTooManyRequestsException
     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentInternalServerErrorException
     *
-    * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
     */
     public function appsGetLogsActiveDeployment(string $appId, string $componentName, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -436,7 +436,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetExecActiveDeploymentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetExecActiveDeploymentInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetExecResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppsGetExecResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsGetExecActiveDeployment(string $appId, string $componentName, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -451,7 +451,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetInstancesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetInstancesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppInstances|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppInstances|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsGetInstances(string $appId, string $fetch = self::FETCH_OBJECT)
     {
@@ -479,7 +479,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     * @throws \Jane\Generated\DigitalOcean\Exception\AppsListDeploymentsTooManyRequestsException
     * @throws \Jane\Generated\DigitalOcean\Exception\AppsListDeploymentsInternalServerErrorException
     *
-    * @return null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentsResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentsResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
     */
     public function appsListDeployments(string $appId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -495,7 +495,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCreateDeploymentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCreateDeploymentInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsCreateDeployment(string $appId, \Jane\Generated\DigitalOcean\Model\AppsCreateDeploymentRequest $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -511,7 +511,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetDeploymentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetDeploymentInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsGetDeployment(string $appId, string $deploymentId, string $fetch = self::FETCH_OBJECT)
     {
@@ -527,7 +527,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCancelDeploymentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCancelDeploymentInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsCancelDeployment(string $appId, string $deploymentId, string $fetch = self::FETCH_OBJECT)
     {
@@ -554,7 +554,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsTooManyRequestsException
     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsInternalServerErrorException
     *
-    * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
     */
     public function appsGetLogs(string $appId, string $deploymentId, string $componentName, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -580,7 +580,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsAggregateTooManyRequestsException
     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsAggregateInternalServerErrorException
     *
-    * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
     */
     public function appsGetLogsAggregate(string $appId, string $deploymentId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -600,7 +600,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetExecTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetExecInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetExecResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppsGetExecResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsGetExec(string $appId, string $deploymentId, string $componentName, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -625,7 +625,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentAggregateTooManyRequestsException
     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentAggregateInternalServerErrorException
     *
-    * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
     */
     public function appsGetLogsActiveDeploymentAggregate(string $appId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -646,7 +646,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListJobInvocationsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListJobInvocationsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppJobInvocations|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppJobInvocations|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsListJobInvocations(string $appId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -665,7 +665,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetJobInvocationTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetJobInvocationInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppJobInvocation|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppJobInvocation|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsGetJobInvocation(string $appId, string $jobInvocationId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -689,7 +689,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetJobInvocationLogsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetJobInvocationLogsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppsGetLogsResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsGetJobInvocationLogs(string $appId, string $jobName, string $jobInvocationId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -701,7 +701,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListInstanceSizesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListInstanceSizesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsListInstanceSizesResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppsListInstanceSizesResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsListInstanceSizes(string $fetch = self::FETCH_OBJECT)
     {
@@ -716,7 +716,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetInstanceSizeTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetInstanceSizeInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsGetInstanceSizeResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppsGetInstanceSizeResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsGetInstanceSize(string $slug, string $fetch = self::FETCH_OBJECT)
     {
@@ -728,7 +728,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListRegionsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListRegionsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsListRegionsResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppsListRegionsResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsListRegions(string $fetch = self::FETCH_OBJECT)
     {
@@ -742,7 +742,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsValidateAppSpecTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsValidateAppSpecInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppProposeResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppProposeResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsValidateAppSpec(\Jane\Generated\DigitalOcean\Model\AppPropose $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -757,7 +757,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListAlertsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListAlertsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsListAlertsResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppsListAlertsResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsListAlerts(string $appId, string $fetch = self::FETCH_OBJECT)
     {
@@ -774,7 +774,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsAssignAlertDestinationsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsAssignAlertDestinationsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsAlertResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppsAlertResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsAssignAlertDestinations(string $appId, string $alertId, \Jane\Generated\DigitalOcean\Model\AppsAssignAppAlertDestinationsRequest $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -797,7 +797,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCreateRollbackTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCreateRollbackInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsCreateRollback(string $appId, \Jane\Generated\DigitalOcean\Model\AppsRollbackAppRequest $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -817,7 +817,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsValidateRollbackTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsValidateRollbackInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAppsValidateRollback|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAppsValidateRollback|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsValidateRollback(string $appId, \Jane\Generated\DigitalOcean\Model\AppsRollbackAppRequest $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -833,7 +833,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCommitRollbackTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCommitRollbackInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsCommitRollback(string $appId, string $fetch = self::FETCH_OBJECT)
     {
@@ -850,7 +850,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsRevertRollbackTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsRevertRollbackInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppsDeploymentResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsRevertRollback(string $appId, string $fetch = self::FETCH_OBJECT)
     {
@@ -868,7 +868,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetMetricsBandwidthDailyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetMetricsBandwidthDailyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppMetricsBandwidthUsage|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppMetricsBandwidthUsage|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsGetMetricsBandwidthDaily(string $appId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -883,7 +883,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListMetricsBandwidthDailyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListMetricsBandwidthDailyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppMetricsBandwidthUsage|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppMetricsBandwidthUsage|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsListMetricsBandwidthDaily(\Jane\Generated\DigitalOcean\Model\AppMetricsBandwidthUsageRequest $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -898,7 +898,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetHealthTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetHealthInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AppHealthResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AppHealthResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function appsGetHealth(string $appId, string $fetch = self::FETCH_OBJECT)
     {
@@ -915,7 +915,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnListEndpointsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnListEndpointsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllCdnEndpoints|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllCdnEndpoints|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function cdnListEndpoints(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -936,7 +936,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnCreateEndpointTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnCreateEndpointInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingEndpoint|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingEndpoint|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function cdnCreateEndpoint(\Jane\Generated\DigitalOcean\Model\CdnEndpoint $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -956,7 +956,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnDeleteEndpointTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnDeleteEndpointInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function cdnDeleteEndpoint(string $cdnId, string $fetch = self::FETCH_OBJECT)
     {
@@ -971,7 +971,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnGetEndpointTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnGetEndpointInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingEndpoint|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingEndpoint|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function cdnGetEndpoint(string $cdnId, string $fetch = self::FETCH_OBJECT)
     {
@@ -990,7 +990,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnUpdateEndpointsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnUpdateEndpointsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingEndpoint|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingEndpoint|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function cdnUpdateEndpoints(string $cdnId, \Jane\Generated\DigitalOcean\Model\UpdateEndpoint $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1015,7 +1015,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnPurgeCacheTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnPurgeCacheInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function cdnPurgeCache(string $cdnId, \Jane\Generated\DigitalOcean\Model\PurgeCache $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1033,7 +1033,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllCertificates|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllCertificates|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function certificatesList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1056,7 +1056,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseNewCertificate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseNewCertificate|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function certificatesCreate($requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1073,7 +1073,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function certificatesDelete(string $certificateId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1088,7 +1088,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingCertificate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingCertificate|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function certificatesGet(string $certificateId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1101,7 +1101,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\BalanceGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\BalanceGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Balance|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Balance|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function balanceGet(string $fetch = self::FETCH_OBJECT)
     {
@@ -1114,7 +1114,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\BillingHistoryListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\BillingHistoryListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseBillingHistory|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseBillingHistory|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function billingHistoryList(string $fetch = self::FETCH_OBJECT)
     {
@@ -1131,7 +1131,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseInvoices|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseInvoices|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function invoicesList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1150,7 +1150,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetByUUIDTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetByUUIDInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseInvoice|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseInvoice|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function invoicesGetByUUID(string $invoiceUuid, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1166,7 +1166,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetCsvByUUIDTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetCsvByUUIDInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function invoicesGetCsvByUUID(string $invoiceUuid, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -1182,7 +1182,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetPdfByUUIDTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetPdfByUUIDInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function invoicesGetPdfByUUID(string $invoiceUuid, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -1197,7 +1197,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetSummaryByUUIDTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetSummaryByUUIDInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\InvoiceSummary|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\InvoiceSummary|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function invoicesGetSummaryByUUID(string $invoiceUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -1210,7 +1210,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListOptionsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListOptionsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Options|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Options|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesListOptions(string $fetch = self::FETCH_OBJECT)
     {
@@ -1233,7 +1233,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListClustersTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListClustersInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseClusters|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseClusters|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesListClusters(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1255,7 +1255,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateClusterTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateClusterInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseCluster|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseCluster|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesCreateCluster(\Jane\Generated\DigitalOcean\Model\V2DatabasesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1271,7 +1271,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDestroyClusterTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDestroyClusterInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesDestroyCluster(string $databaseClusterUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -1292,7 +1292,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetClusterTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetClusterInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseCluster|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseCluster|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesGetCluster(string $databaseClusterUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -1311,7 +1311,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetConfigTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetConfigInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseConfig|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseConfig|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesGetConfig(string $databaseClusterUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -1329,7 +1329,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesPatchConfigTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesPatchConfigInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesPatchConfig(string $databaseClusterUuid, \Jane\Generated\DigitalOcean\Model\DatabaseConfig $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1349,7 +1349,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetCaTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetCaInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseCa|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseCa|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesGetCa(string $databaseClusterUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -1364,7 +1364,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetMigrationStatusTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetMigrationStatusInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\OnlineMigration|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\OnlineMigration|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesGetMigrationStatus(string $databaseClusterUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -1381,7 +1381,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateOnlineMigrationTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateOnlineMigrationInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\OnlineMigration|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\OnlineMigration|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesUpdateOnlineMigration(string $databaseClusterUuid, \Jane\Generated\DigitalOcean\Model\SourceDatabase $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1400,7 +1400,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteOnlineMigrationTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteOnlineMigrationInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesDeleteOnlineMigration(string $databaseClusterUuid, string $migrationId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1424,7 +1424,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateRegionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateRegionInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesUpdateRegion(string $databaseClusterUuid, \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidMigratePutBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1441,7 +1441,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateClusterSizeTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateClusterSizeInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesUpdateClusterSize(string $databaseClusterUuid, \Jane\Generated\DigitalOcean\Model\DatabaseClusterResize $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1457,7 +1457,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListFirewallRulesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListFirewallRulesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseFirewallRules|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseFirewallRules|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesListFirewallRules(string $databaseClusterUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -1474,7 +1474,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateFirewallRulesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateFirewallRulesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesUpdateFirewallRules(string $databaseClusterUuid, \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidFirewallPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1491,7 +1491,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateMaintenanceWindowTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateMaintenanceWindowInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesUpdateMaintenanceWindow(string $databaseClusterUuid, \Jane\Generated\DigitalOcean\Model\DatabaseMaintenanceWindow $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1507,7 +1507,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesInstallUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesInstallUpdateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesInstallUpdate(string $databaseClusterUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -1524,7 +1524,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListBackupsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListBackupsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseBackups|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseBackups|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesListBackups(string $databaseClusterUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -1543,7 +1543,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListReplicasTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListReplicasInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseReplicas|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseReplicas|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesListReplicas(string $databaseClusterUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -1563,7 +1563,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateReplicaTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateReplicaInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseReplica|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseReplica|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesCreateReplica(string $databaseClusterUuid, ?\Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidReplicasPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1582,7 +1582,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListEventsLogsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListEventsLogsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseEventsLogs|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseEventsLogs|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesListEventsLogs(string $databaseClusterUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -1602,7 +1602,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDestroyReplicaTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDestroyReplicaInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesDestroyReplica(string $databaseClusterUuid, string $replicaName, string $fetch = self::FETCH_OBJECT)
     {
@@ -1622,7 +1622,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetReplicaTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetReplicaInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseReplica|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseReplica|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesGetReplica(string $databaseClusterUuid, string $replicaName, string $fetch = self::FETCH_OBJECT)
     {
@@ -1642,7 +1642,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesPromoteReplicaTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesPromoteReplicaInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesPromoteReplica(string $databaseClusterUuid, string $replicaName, string $fetch = self::FETCH_OBJECT)
     {
@@ -1669,7 +1669,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListUsersTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListUsersInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseUsers|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseUsers|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesListUsers(string $databaseClusterUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -1702,7 +1702,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesAddUserTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesAddUserInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseUser|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseUser|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesAddUser(string $databaseClusterUuid, \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidUsersPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1725,7 +1725,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteUserTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteUserInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesDeleteUser(string $databaseClusterUuid, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -1756,7 +1756,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetUserTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetUserInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseUser|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseUser|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesGetUser(string $databaseClusterUuid, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -1782,7 +1782,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateUserTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateUserInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseUser|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseUser|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesUpdateUser(string $databaseClusterUuid, string $username, \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidUsersUsernamePutBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1808,7 +1808,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesResetAuthTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesResetAuthInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseUser|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseUser|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesResetAuth(string $databaseClusterUuid, string $username, \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidUsersUsernameResetAuthPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1830,7 +1830,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabases|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDatabases|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesList(string $databaseClusterUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -1853,7 +1853,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesAddTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesAddInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabase|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDatabase|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesAdd(string $databaseClusterUuid, \Jane\Generated\DigitalOcean\Model\Database $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1876,7 +1876,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesDelete(string $databaseClusterUuid, string $databaseName, string $fetch = self::FETCH_OBJECT)
     {
@@ -1899,7 +1899,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabase|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDatabase|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesGet(string $databaseClusterUuid, string $databaseName, string $fetch = self::FETCH_OBJECT)
     {
@@ -1915,7 +1915,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListConnectionPoolsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListConnectionPoolsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ConnectionPools|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ConnectionPools|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesListConnectionPools(string $databaseClusterUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -1941,7 +1941,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesAddConnectionPoolTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesAddConnectionPoolInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseConnectionPool|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseConnectionPool|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesAddConnectionPool(string $databaseClusterUuid, \Jane\Generated\DigitalOcean\Model\ConnectionPool $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -1962,7 +1962,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteConnectionPoolTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteConnectionPoolInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesDeleteConnectionPool(string $databaseClusterUuid, string $poolName, string $fetch = self::FETCH_OBJECT)
     {
@@ -1979,7 +1979,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetConnectionPoolTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetConnectionPoolInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseConnectionPool|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseConnectionPool|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesGetConnectionPool(string $databaseClusterUuid, string $poolName, string $fetch = self::FETCH_OBJECT)
     {
@@ -1996,7 +1996,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateConnectionPoolTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateConnectionPoolInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesUpdateConnectionPool(string $databaseClusterUuid, string $poolName, \Jane\Generated\DigitalOcean\Model\ConnectionPoolUpdate $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -2012,7 +2012,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetEvictionPolicyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetEvictionPolicyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseEvictionPolicyResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseEvictionPolicyResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesGetEvictionPolicy(string $databaseClusterUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -2028,7 +2028,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateEvictionPolicyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateEvictionPolicyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesUpdateEvictionPolicy(string $databaseClusterUuid, \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidEvictionPolicyPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -2044,7 +2044,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetSqlModeTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetSqlModeInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\SqlMode|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\SqlMode|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesGetSqlMode(string $databaseClusterUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -2061,7 +2061,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateSqlModeTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateSqlModeInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesUpdateSqlMode(string $databaseClusterUuid, \Jane\Generated\DigitalOcean\Model\SqlMode $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -2078,7 +2078,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateMajorVersionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateMajorVersionInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesUpdateMajorVersion(string $databaseClusterUuid, \Jane\Generated\DigitalOcean\Model\Version2 $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -2094,7 +2094,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetAutoscaleTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetAutoscaleInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAutoscale|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAutoscale|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesGetAutoscale(string $databaseClusterUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -2112,7 +2112,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateAutoscaleTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateAutoscaleInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesUpdateAutoscale(string $databaseClusterUuid, \Jane\Generated\DigitalOcean\Model\DatabaseAutoscaleParams $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -2131,7 +2131,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListKafkaTopicsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListKafkaTopicsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaTopics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaTopics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesListKafkaTopics(string $databaseClusterUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -2151,7 +2151,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateKafkaTopicTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateKafkaTopicInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaTopic|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaTopic|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesCreateKafkaTopic(string $databaseClusterUuid, ?\Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidTopicsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2172,7 +2172,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteKafkaTopicTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteKafkaTopicInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesDeleteKafkaTopic(string $databaseClusterUuid, string $topicName, string $fetch = self::FETCH_OBJECT)
     {
@@ -2192,7 +2192,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaTopicTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaTopicInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaTopic|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaTopic|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesGetKafkaTopic(string $databaseClusterUuid, string $topicName, string $fetch = self::FETCH_OBJECT)
     {
@@ -2213,7 +2213,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateKafkaTopicTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateKafkaTopicInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaTopic|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaTopic|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesUpdateKafkaTopic(string $databaseClusterUuid, string $topicName, ?\Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidTopicsTopicNamePutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2230,7 +2230,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListLogsinkTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListLogsinkInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseLogsinks|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseLogsinks|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesListLogsink(string $databaseClusterUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -2248,7 +2248,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateLogsinkTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateLogsinkInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseLogsink|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseLogsink|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesCreateLogsink(string $databaseClusterUuid, \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidLogsinkPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -2266,7 +2266,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteLogsinkTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteLogsinkInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesDeleteLogsink(string $databaseClusterUuid, string $logsinkId, string $fetch = self::FETCH_OBJECT)
     {
@@ -2284,7 +2284,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetLogsinkTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetLogsinkInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\LogsinkSchema|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\LogsinkSchema|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesGetLogsink(string $databaseClusterUuid, string $logsinkId, string $fetch = self::FETCH_OBJECT)
     {
@@ -2303,7 +2303,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateLogsinkTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateLogsinkInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesUpdateLogsink(string $databaseClusterUuid, string $logsinkId, \Jane\Generated\DigitalOcean\Model\LogsinkUpdate $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -2320,7 +2320,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListKafkaSchemasTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListKafkaSchemasInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaSchemas|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaSchemas|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesListKafkaSchemas(string $databaseClusterUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -2338,7 +2338,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateKafkaSchemaTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesCreateKafkaSchemaInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaSchema|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaSchema|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesCreateKafkaSchema(string $databaseClusterUuid, \Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidSchemaRegistryPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -2356,7 +2356,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteKafkaSchemaTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteKafkaSchemaInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesDeleteKafkaSchema(string $databaseClusterUuid, string $subjectName, string $fetch = self::FETCH_OBJECT)
     {
@@ -2374,7 +2374,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaSchemaVersion|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaSchemaVersion : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesGetKafkaSchema(string $databaseClusterUuid, string $subjectName, string $fetch = self::FETCH_OBJECT)
     {
@@ -2393,7 +2393,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaVersionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaVersionInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaSchemaVersion|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseKafkaSchemaVersion : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesGetKafkaSchemaVersion(string $databaseClusterUuid, string $subjectName, string $version, string $fetch = self::FETCH_OBJECT)
     {
@@ -2412,7 +2412,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaConfigTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaConfigInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseSchemaRegistryConfig|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseSchemaRegistryConfig|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesGetKafkaSchemaConfig(string $databaseClusterUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -2432,7 +2432,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateKafkaSchemaConfigTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateKafkaSchemaConfigInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseSchemaRegistryConfig|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseSchemaRegistryConfig|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesUpdateKafkaSchemaConfig(string $databaseClusterUuid, ?\Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidSchemaRegistryConfigPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2452,7 +2452,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaSubjectConfigTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetKafkaSchemaSubjectConfigInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseSchemaRegistrySubjectConfig|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseSchemaRegistrySubjectConfig|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesGetKafkaSchemaSubjectConfig(string $databaseClusterUuid, string $subjectName, string $fetch = self::FETCH_OBJECT)
     {
@@ -2473,7 +2473,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateKafkaSchemaSubjectConfigTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateKafkaSchemaSubjectConfigInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseSchemaRegistrySubjectConfig|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseSchemaRegistrySubjectConfig|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesUpdateKafkaSchemaSubjectConfig(string $databaseClusterUuid, string $subjectName, ?\Jane\Generated\DigitalOcean\Model\V2DatabasesDatabaseClusterUuidSchemaRegistryConfigSubjectNamePutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2486,7 +2486,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetClusterMetricsCredentialsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesGetClusterMetricsCredentialsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseMetricsAuth|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDatabaseMetricsAuth|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesGetClusterMetricsCredentials(string $fetch = self::FETCH_OBJECT)
     {
@@ -2500,7 +2500,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateClusterMetricsCredentialsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesUpdateClusterMetricsCredentialsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesUpdateClusterMetricsCredentials(?\Jane\Generated\DigitalOcean\Model\V2DatabasesMetricsCredentialsPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2519,7 +2519,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListOpeasearchIndexesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListOpeasearchIndexesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseOpensearchIndexes|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseOpensearchIndexes|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesListOpeasearchIndexes(string $databaseClusterUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -2540,7 +2540,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteOpensearchIndexTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesDeleteOpensearchIndexInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function databasesDeleteOpensearchIndex(string $databaseClusterUuid, string $indexName, string $fetch = self::FETCH_OBJECT)
     {
@@ -2557,7 +2557,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllDomainsResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllDomainsResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function domainsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2575,7 +2575,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseCreateDomainResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseCreateDomainResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function domainsCreate(?\Jane\Generated\DigitalOcean\Model\Domain $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2591,7 +2591,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function domainsDelete(string $domainName, string $fetch = self::FETCH_OBJECT)
     {
@@ -2606,7 +2606,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingDomain|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingDomain|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function domainsGet(string $domainName, string $fetch = self::FETCH_OBJECT)
     {
@@ -2630,7 +2630,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsListRecordsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsListRecordsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllDomainRecordsResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllDomainRecordsResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function domainsListRecords(string $domainName, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2654,7 +2654,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsCreateRecordTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsCreateRecordInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseCreatedDomainRecord|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseCreatedDomainRecord|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function domainsCreateRecord(string $domainName, $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2675,7 +2675,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsDeleteRecordTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsDeleteRecordInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function domainsDeleteRecord(string $domainName, int $domainRecordId, string $fetch = self::FETCH_OBJECT)
     {
@@ -2691,7 +2691,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsGetRecordTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsGetRecordInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDomainRecord|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDomainRecord|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function domainsGetRecord(string $domainName, int $domainRecordId, string $fetch = self::FETCH_OBJECT)
     {
@@ -2714,7 +2714,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsPatchRecordTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsPatchRecordInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDomainRecord|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDomainRecord|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function domainsPatchRecord(string $domainName, int $domainRecordId, ?\Jane\Generated\DigitalOcean\Model\DomainRecord $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2737,7 +2737,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsUpdateRecordTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsUpdateRecordInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDomainRecord|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDomainRecord|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function domainsUpdateRecord(string $domainName, int $domainRecordId, ?\Jane\Generated\DigitalOcean\Model\DomainRecord $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2762,7 +2762,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyByTagTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyByTagInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function dropletsDestroyByTag(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2799,7 +2799,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllDroplets|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllDroplets|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function dropletsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2838,7 +2838,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function dropletsCreate($requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2857,7 +2857,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function dropletsDestroy(int $dropletId, string $fetch = self::FETCH_OBJECT)
     {
@@ -2874,7 +2874,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingDroplet|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingDroplet|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function dropletsGet(int $dropletId, string $fetch = self::FETCH_OBJECT)
     {
@@ -2899,7 +2899,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListBackupsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListBackupsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllDropletBackups|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllDropletBackups|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function dropletsListBackups(int $dropletId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2916,7 +2916,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetBackupPolicyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetBackupPolicyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDropletBackupPolicy|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDropletBackupPolicy|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function dropletsGetBackupPolicy(int $dropletId, string $fetch = self::FETCH_OBJECT)
     {
@@ -2936,7 +2936,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListBackupPoliciesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListBackupPoliciesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllDropletBackupPolicies|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllDropletBackupPolicies|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function dropletsListBackupPolicies(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2949,7 +2949,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListSupportedBackupPoliciesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListSupportedBackupPoliciesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDropletsSupportedBackupPolicies|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDropletsSupportedBackupPolicies|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function dropletsListSupportedBackupPolicies(string $fetch = self::FETCH_OBJECT)
     {
@@ -2974,7 +2974,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListSnapshotsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListSnapshotsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllDropletSnapshots|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllDropletSnapshots|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function dropletsListSnapshots(int $dropletId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2999,7 +2999,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllDropletActions|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllDropletActions|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function dropletActionsList(int $dropletId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3037,7 +3037,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsPostTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsPostInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDropletAction|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDropletAction|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function dropletActionsPost(int $dropletId, $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3068,7 +3068,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsPostByTagTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsPostByTagInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDropletActionsResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDropletActionsResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function dropletActionsPostByTag($requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3089,7 +3089,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAction|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAction|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function dropletActionsGet(int $dropletId, int $actionId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3114,7 +3114,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListKernelsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListKernelsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllKernels|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllKernels|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function dropletsListKernels(int $dropletId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3139,7 +3139,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListFirewallsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListFirewallsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllFirewalls|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllFirewalls|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function dropletsListFirewalls(int $dropletId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3162,7 +3162,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListNeighborsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListNeighborsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseNeighborDroplets|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseNeighborDroplets|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function dropletsListNeighbors(int $dropletId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3187,7 +3187,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListAssociatedResourcesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListAssociatedResourcesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAssociatedResourcesList|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAssociatedResourcesList|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function dropletsListAssociatedResources(int $dropletId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3214,7 +3214,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyWithAssociatedResourcesSelectiveTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyWithAssociatedResourcesSelectiveInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function dropletsDestroyWithAssociatedResourcesSelective(int $dropletId, ?\Jane\Generated\DigitalOcean\Model\SelectiveDestroyAssociatedResource $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3242,7 +3242,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyWithAssociatedResourcesDangerousTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyWithAssociatedResourcesDangerousInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function dropletsDestroyWithAssociatedResourcesDangerous(int $dropletId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3260,7 +3260,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetDestroyAssociatedResourcesStatusTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsGetDestroyAssociatedResourcesStatusInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AssociatedResourceStatus|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AssociatedResourceStatus|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function dropletsGetDestroyAssociatedResourcesStatus(int $dropletId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3284,7 +3284,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyRetryWithAssociatedResourcesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyRetryWithAssociatedResourcesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function dropletsDestroyRetryWithAssociatedResources(int $dropletId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3305,7 +3305,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllAutoscalePools|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllAutoscalePools|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function autoscalepoolsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3322,7 +3322,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAutoscalePoolCreate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAutoscalePoolCreate|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function autoscalepoolsCreate(?\Jane\Generated\DigitalOcean\Model\AutoscalePoolCreate $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3340,7 +3340,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function autoscalepoolsDelete(string $autoscalePoolId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3357,7 +3357,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingAutoscalePool|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingAutoscalePool|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function autoscalepoolsGet(string $autoscalePoolId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3376,7 +3376,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsUpdateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAutoscalePoolCreate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAutoscalePoolCreate|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function autoscalepoolsUpdate(string $autoscalePoolId, ?\Jane\Generated\DigitalOcean\Model\AutoscalePoolCreate $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3396,7 +3396,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsDeleteDangerousTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsDeleteDangerousInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function autoscalepoolsDeleteDangerous(string $autoscalePoolId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3419,7 +3419,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsListMembersTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsListMembersInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllMembers|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllMembers|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function autoscalepoolsListMembers(string $autoscalePoolId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3442,7 +3442,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsListHistoryTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsListHistoryInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseHistoryEvents|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseHistoryEvents|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function autoscalepoolsListHistory(string $autoscalePoolId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3459,7 +3459,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseListFirewallsResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseListFirewallsResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function firewallsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3476,7 +3476,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseCreateFirewallResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseCreateFirewallResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function firewallsCreate(?\Jane\Generated\DigitalOcean\Model\V2FirewallsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3496,7 +3496,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function firewallsDelete(string $firewallId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3511,7 +3511,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseGetFirewallResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseGetFirewallResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function firewallsGet(string $firewallId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3534,7 +3534,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsUpdateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponsePutFirewallResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponsePutFirewallResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function firewallsUpdate(string $firewallId, ?\Jane\Generated\DigitalOcean\Model\V2FirewallsFirewallIdPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3558,7 +3558,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteDropletsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteDropletsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function firewallsDeleteDroplets(string $firewallId, ?\Jane\Generated\DigitalOcean\Model\V2FirewallsFirewallIdDropletsDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3582,7 +3582,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsAssignDropletsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsAssignDropletsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function firewallsAssignDroplets(string $firewallId, ?\Jane\Generated\DigitalOcean\Model\V2FirewallsFirewallIdDropletsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3606,7 +3606,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteTagsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteTagsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function firewallsDeleteTags(string $firewallId, ?\Jane\Generated\DigitalOcean\Model\V2FirewallsFirewallIdTagsDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3630,7 +3630,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsAddTagsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsAddTagsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function firewallsAddTags(string $firewallId, ?\Jane\Generated\DigitalOcean\Model\V2FirewallsFirewallIdTagsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3655,7 +3655,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteRulesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsDeleteRulesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function firewallsDeleteRules(string $firewallId, ?\Jane\Generated\DigitalOcean\Model\V2FirewallsFirewallIdRulesDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3680,7 +3680,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsAddRulesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsAddRulesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function firewallsAddRules(string $firewallId, ?\Jane\Generated\DigitalOcean\Model\V2FirewallsFirewallIdRulesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3697,7 +3697,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseFloatingIpList|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseFloatingIpList|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function floatingIPsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3715,7 +3715,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseFloatingIpCreated|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseFloatingIpCreated|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function floatingIPsCreate($requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -3735,7 +3735,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function floatingIPsDelete(string $floatingIp, string $fetch = self::FETCH_OBJECT)
     {
@@ -3750,7 +3750,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseFloatingIp|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseFloatingIp|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function floatingIPsGet(string $floatingIp, string $fetch = self::FETCH_OBJECT)
     {
@@ -3765,7 +3765,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsActionListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsActionListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseFloatingIpActions|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseFloatingIpActions|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function floatingIPsActionList(string $floatingIp, string $fetch = self::FETCH_OBJECT)
     {
@@ -3789,7 +3789,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsActionPostTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsActionPostInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseFloatingIpAction|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseFloatingIpAction|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function floatingIPsActionPost(string $floatingIp, $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3805,7 +3805,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsActionGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsActionGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseFloatingIpAction|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseFloatingIpAction|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function floatingIPsActionGet(string $floatingIp, int $actionId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3817,7 +3817,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsListNamespacesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsListNamespacesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseListNamespaces|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseListNamespaces|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function functionsListNamespaces(string $fetch = self::FETCH_OBJECT)
     {
@@ -3833,7 +3833,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsCreateNamespaceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsCreateNamespaceInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseNamespaceCreated|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseNamespaceCreated|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function functionsCreateNamespace(\Jane\Generated\DigitalOcean\Model\CreateNamespace $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -3850,7 +3850,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsDeleteNamespaceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsDeleteNamespaceInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function functionsDeleteNamespace(string $namespaceId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3866,7 +3866,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsGetNamespaceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsGetNamespaceInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseNamespaceCreated|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseNamespaceCreated|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function functionsGetNamespace(string $namespaceId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3881,7 +3881,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsListTriggersTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsListTriggersInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseListTriggers|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseListTriggers|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function functionsListTriggers(string $namespaceId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3899,7 +3899,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsCreateTriggerTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsCreateTriggerInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseTriggerResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseTriggerResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function functionsCreateTrigger(string $namespaceId, \Jane\Generated\DigitalOcean\Model\CreateTrigger $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -3917,7 +3917,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsDeleteTriggerTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsDeleteTriggerInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function functionsDeleteTrigger(string $namespaceId, string $triggerName, string $fetch = self::FETCH_OBJECT)
     {
@@ -3933,7 +3933,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsGetTriggerTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsGetTriggerInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseTriggerResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseTriggerResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function functionsGetTrigger(string $namespaceId, string $triggerName, string $fetch = self::FETCH_OBJECT)
     {
@@ -3951,7 +3951,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsUpdateTriggerTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\FunctionsUpdateTriggerInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseTriggerResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseTriggerResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function functionsUpdateTrigger(string $namespaceId, string $triggerName, \Jane\Generated\DigitalOcean\Model\UpdateTrigger $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -3995,7 +3995,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllImages|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllImages|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function imagesList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4015,7 +4015,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesCreateCustomTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesCreateCustomInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseNewCustomImage|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseNewCustomImage|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function imagesCreateCustom(\Jane\Generated\DigitalOcean\Model\ImageNewCustom $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -4031,7 +4031,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function imagesDelete(int $imageId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4054,7 +4054,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     * @throws \Jane\Generated\DigitalOcean\Exception\ImagesGetTooManyRequestsException
     * @throws \Jane\Generated\DigitalOcean\Exception\ImagesGetInternalServerErrorException
     *
-    * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingImage|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingImage|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
     */
     public function imagesGet($imageId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4073,7 +4073,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesUpdateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseUpdatedImage|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseUpdatedImage|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function imagesUpdate(int $imageId, \Jane\Generated\DigitalOcean\Model\ImageUpdate $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -4088,7 +4088,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ImageActionsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImageActionsListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseGetImageActionsResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseGetImageActionsResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function imageActionsList(int $imageId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4117,7 +4117,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ImageActionsPostTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImageActionsPostInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Action|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Action|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function imageActionsPost(int $imageId, $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4133,7 +4133,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ImageActionsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImageActionsGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Action|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Action|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function imageActionsGet(int $imageId, int $actionId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4152,7 +4152,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListClustersTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListClustersInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllClusters|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllClusters|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesListClusters(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4175,7 +4175,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesCreateClusterTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesCreateClusterInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseClusterCreate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseClusterCreate|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesCreateCluster(\Jane\Generated\DigitalOcean\Model\Cluster $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -4195,7 +4195,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDeleteClusterTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDeleteClusterInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesDeleteCluster(string $clusterId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4212,7 +4212,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetClusterTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetClusterInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingCluster|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingCluster|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesGetCluster(string $clusterId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4231,7 +4231,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesUpdateClusterTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesUpdateClusterInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseUpdatedCluster|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseUpdatedCluster|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesUpdateCluster(string $clusterId, \Jane\Generated\DigitalOcean\Model\ClusterUpdate $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -4246,7 +4246,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListAssociatedResourcesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListAssociatedResourcesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\AssociatedKubernetesResources|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\AssociatedKubernetesResources|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesListAssociatedResources(string $clusterId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4272,7 +4272,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDestroyAssociatedResourcesSelectiveTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDestroyAssociatedResourcesSelectiveInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesDestroyAssociatedResourcesSelective(string $clusterId, \Jane\Generated\DigitalOcean\Model\DestroyAssociatedKubernetesResources $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -4290,7 +4290,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDestroyAssociatedResourcesDangerousTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDestroyAssociatedResourcesDangerousInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesDestroyAssociatedResourcesDangerous(string $clusterId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4332,7 +4332,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetKubeconfigTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetKubeconfigInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesGetKubeconfig(string $clusterId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -4366,7 +4366,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetCredentialsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetCredentialsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Credentials|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Credentials|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesGetCredentials(string $clusterId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4384,7 +4384,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetAvailableUpgradesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetAvailableUpgradesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAvailableUpgrades|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAvailableUpgrades|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesGetAvailableUpgrades(string $clusterId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4406,7 +4406,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesUpgradeClusterTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesUpgradeClusterInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesUpgradeCluster(string $clusterId, \Jane\Generated\DigitalOcean\Model\V2KubernetesClustersClusterIdUpgradePostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -4423,7 +4423,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListNodePoolsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListNodePoolsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllNodePools|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllNodePools|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesListNodePools(string $clusterId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4442,7 +4442,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesAddNodePoolTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesAddNodePoolInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseNodePoolCreate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseNodePoolCreate|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesAddNodePool(string $clusterId, \Jane\Generated\DigitalOcean\Model\KubernetesNodePool $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -4463,7 +4463,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDeleteNodePoolTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDeleteNodePoolInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesDeleteNodePool(string $clusterId, string $nodePoolId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4481,7 +4481,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetNodePoolTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetNodePoolInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingNodePool|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingNodePool|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesGetNodePool(string $clusterId, string $nodePoolId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4502,7 +4502,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesUpdateNodePoolTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesUpdateNodePoolInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseNodePoolUpdate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseNodePoolUpdate|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesUpdateNodePool(string $clusterId, string $nodePoolId, \Jane\Generated\DigitalOcean\Model\KubernetesNodePoolUpdate $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -4533,7 +4533,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDeleteNodeTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDeleteNodeInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesDeleteNode(string $clusterId, string $nodePoolId, string $nodeId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4553,7 +4553,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRecycleNodePoolTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRecycleNodePoolInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesRecycleNodePool(string $clusterId, string $nodePoolId, \Jane\Generated\DigitalOcean\Model\V2KubernetesClustersClusterIdNodePoolsNodePoolIdRecyclePostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -4570,7 +4570,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetClusterUserTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetClusterUserInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\User|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\User|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesGetClusterUser(string $clusterId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4583,7 +4583,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListOptionsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListOptionsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\KubernetesOptions|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\KubernetesOptions|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesListOptions(string $fetch = self::FETCH_OBJECT)
     {
@@ -4608,7 +4608,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetClusterLintResultsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetClusterLintResultsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ClusterlintResults|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ClusterlintResults|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesGetClusterLintResults(string $clusterId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4635,7 +4635,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRunClusterLintTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRunClusterLintInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseClusterlintRun|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseClusterlintRun|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesRunClusterLint(string $clusterId, ?\Jane\Generated\DigitalOcean\Model\ClusterlintRequest $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4649,7 +4649,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRemoveRegistryTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRemoveRegistryInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesRemoveRegistry(?\Jane\Generated\DigitalOcean\Model\ClusterRegistry $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4663,7 +4663,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesAddRegistryTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesAddRegistryInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesAddRegistry(?\Jane\Generated\DigitalOcean\Model\ClusterRegistry $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4677,7 +4677,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRemoveRegistriesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesRemoveRegistriesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesRemoveRegistries(?\Jane\Generated\DigitalOcean\Model\ClusterRegistries $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4691,7 +4691,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesAddRegistriesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesAddRegistriesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesAddRegistries(?\Jane\Generated\DigitalOcean\Model\ClusterRegistries $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4711,7 +4711,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetStatusMessagesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetStatusMessagesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseStatusMessages|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseStatusMessages|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function kubernetesGetStatusMessages(string $clusterId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4730,7 +4730,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllLoadBalancers|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllLoadBalancers|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function loadBalancersList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4755,7 +4755,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseLoadBalancerCreate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseLoadBalancerCreate|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function loadBalancersCreate($requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -4776,7 +4776,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function loadBalancersDelete(string $lbId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4793,7 +4793,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingLoadBalancer|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingLoadBalancer|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function loadBalancersGet(string $lbId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4815,7 +4815,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersUpdateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseUpdatedLoadBalancer|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseUpdatedLoadBalancer|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function loadBalancersUpdate(string $lbId, $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -4835,7 +4835,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersDeleteCacheTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersDeleteCacheInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function loadBalancersDeleteCache(string $lbId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4858,7 +4858,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersRemoveDropletsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersRemoveDropletsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function loadBalancersRemoveDroplets(string $lbId, \Jane\Generated\DigitalOcean\Model\V2LoadBalancersLbIdDropletsDeleteBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -4884,7 +4884,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersAddDropletsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersAddDropletsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function loadBalancersAddDroplets(string $lbId, \Jane\Generated\DigitalOcean\Model\V2LoadBalancersLbIdDropletsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -4908,7 +4908,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersRemoveForwardingRulesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersRemoveForwardingRulesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function loadBalancersRemoveForwardingRules(string $lbId, \Jane\Generated\DigitalOcean\Model\V2LoadBalancersLbIdForwardingRulesDeleteBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -4932,7 +4932,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersAddForwardingRulesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersAddForwardingRulesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function loadBalancersAddForwardingRules(string $lbId, \Jane\Generated\DigitalOcean\Model\V2LoadBalancersLbIdForwardingRulesPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -4949,7 +4949,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringListAlertPolicyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringListAlertPolicyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseListAlertPolicyResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseListAlertPolicyResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringListAlertPolicy(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4963,7 +4963,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringCreateAlertPolicyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringCreateAlertPolicyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAlertPolicyResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAlertPolicyResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringCreateAlertPolicy(\Jane\Generated\DigitalOcean\Model\AlertPolicyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -4978,7 +4978,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringDeleteAlertPolicyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringDeleteAlertPolicyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringDeleteAlertPolicy(string $alertUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -4993,7 +4993,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAlertPolicyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAlertPolicyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAlertPolicyResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAlertPolicyResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetAlertPolicy(string $alertUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -5009,7 +5009,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringUpdateAlertPolicyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringUpdateAlertPolicyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAlertPolicyResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAlertPolicyResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringUpdateAlertPolicy(string $alertUuid, \Jane\Generated\DigitalOcean\Model\AlertPolicyRequest $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -5030,7 +5030,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletBandwidthMetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletBandwidthMetricsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetDropletBandwidthMetrics(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5048,7 +5048,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletCpuMetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletCpuMetricsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetDropletCpuMetrics(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5066,7 +5066,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletFilesystemFreeMetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletFilesystemFreeMetricsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetDropletFilesystemFreeMetrics(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5084,7 +5084,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletFilesystemSizeMetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletFilesystemSizeMetricsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetDropletFilesystemSizeMetrics(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5102,7 +5102,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletLoad1MetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletLoad1MetricsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetDropletLoad1Metrics(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5120,7 +5120,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletLoad5MetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletLoad5MetricsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetDropletLoad5Metrics(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5138,7 +5138,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletLoad15MetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletLoad15MetricsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetDropletLoad15Metrics(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5156,7 +5156,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryCachedMetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryCachedMetricsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetDropletMemoryCachedMetrics(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5174,7 +5174,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryFreeMetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryFreeMetricsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetDropletMemoryFreeMetrics(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5192,7 +5192,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryTotalMetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryTotalMetricsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetDropletMemoryTotalMetrics(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5210,7 +5210,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryAvailableMetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryAvailableMetricsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetDropletMemoryAvailableMetrics(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5229,7 +5229,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAppMemoryPercentageMetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAppMemoryPercentageMetricsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetAppMemoryPercentageMetrics(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5248,7 +5248,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAppCPUPercentageMetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAppCPUPercentageMetricsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetAppCPUPercentageMetrics(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5267,7 +5267,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAppRestartCountMetricsYmlTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAppRestartCountMetricsYmlInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetAppRestartCountMetricsYml(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5285,7 +5285,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendConnectionsCurrentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendConnectionsCurrentInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbFrontendConnectionsCurrent(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5303,7 +5303,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendConnectionsLimitTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendConnectionsLimitInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbFrontendConnectionsLimit(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5321,7 +5321,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendCpuUtilizationTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendCpuUtilizationInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbFrontendCpuUtilization(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5339,7 +5339,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendFirewallDroppedBytesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendFirewallDroppedBytesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbFrontendFirewallDroppedBytes(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5357,7 +5357,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendFirewallDroppedPacketsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendFirewallDroppedPacketsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbFrontendFirewallDroppedPackets(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5375,7 +5375,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendHttpResponsesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendHttpResponsesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbFrontendHttpResponses(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5393,7 +5393,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendHttpRequestsPerSecondTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendHttpRequestsPerSecondInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbFrontendHttpRequestsPerSecond(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5411,7 +5411,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNetworkThroughputHttpTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNetworkThroughputHttpInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbFrontendNetworkThroughputHttp(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5429,7 +5429,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNetworkThroughputUdpTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNetworkThroughputUdpInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbFrontendNetworkThroughputUdp(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5447,7 +5447,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNetworkThroughputTcpTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNetworkThroughputTcpInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbFrontendNetworkThroughputTcp(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5465,7 +5465,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNlbTcpNetworkThroughputTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNlbTcpNetworkThroughputInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbFrontendNlbTcpNetworkThroughput(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5483,7 +5483,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNlbUdpNetworkThroughputTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNlbUdpNetworkThroughputInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbFrontendNlbUdpNetworkThroughput(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5501,7 +5501,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendTlsConnectionsCurrentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendTlsConnectionsCurrentInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbFrontendTlsConnectionsCurrent(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5519,7 +5519,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendTlsConnectionsLimitTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendTlsConnectionsLimitInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbFrontendTlsConnectionsLimit(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5537,7 +5537,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendTlsConnectionsExceedingRateLimitTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendTlsConnectionsExceedingRateLimitInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbFrontendTlsConnectionsExceedingRateLimit(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5555,7 +5555,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpSessionDurationAvgTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpSessionDurationAvgInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbDropletsHttpSessionDurationAvg(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5573,7 +5573,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpSessionDuration50pTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpSessionDuration50pInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbDropletsHttpSessionDuration50p(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5591,7 +5591,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpSessionDuration95pTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpSessionDuration95pInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbDropletsHttpSessionDuration95p(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5609,7 +5609,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTimeAvgTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTimeAvgInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbDropletsHttpResponseTimeAvg(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5627,7 +5627,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTime50pTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTime50pInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbDropletsHttpResponseTime50p(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5645,7 +5645,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTime95pTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTime95pInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbDropletsHttpResponseTime95p(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5663,7 +5663,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTime99pTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTime99pInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbDropletsHttpResponseTime99p(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5681,7 +5681,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsQueueSizeTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsQueueSizeInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbDropletsQueueSize(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5699,7 +5699,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponsesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponsesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbDropletsHttpResponses(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5717,7 +5717,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsConnectionsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsConnectionsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbDropletsConnections(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5735,7 +5735,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHealthChecksTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHealthChecksInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbDropletsHealthChecks(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5753,7 +5753,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsDowntimeTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsDowntimeInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetLbDropletsDowntime(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5771,7 +5771,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleCurrentInstancesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleCurrentInstancesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetDropletAutoscaleCurrentInstances(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5789,7 +5789,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleTargetInstancesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleTargetInstancesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetDropletAutoscaleTargetInstances(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5807,7 +5807,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleCurrentCpuUtilizationYmlTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleCurrentCpuUtilizationYmlInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetDropletAutoscaleCurrentCpuUtilizationYml(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5825,7 +5825,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleTargetCpuUtilizationTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleTargetCpuUtilizationInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetDropletAutoscaleTargetCpuUtilization(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5843,7 +5843,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleCurrentMemoryUtilizationTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleCurrentMemoryUtilizationInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetDropletAutoscaleCurrentMemoryUtilization(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5861,7 +5861,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleTargetMemoryUtilizationTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleTargetMemoryUtilizationInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Metrics|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetDropletAutoscaleTargetMemoryUtilization(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5874,7 +5874,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringListDestinationsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringListDestinationsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseMonitoringListDestinations|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseMonitoringListDestinations|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringListDestinations(string $fetch = self::FETCH_OBJECT)
     {
@@ -5889,7 +5889,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringCreateDestinationTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringCreateDestinationInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDestination|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDestination|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringCreateDestination(\Jane\Generated\DigitalOcean\Model\DestinationRequest $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -5904,7 +5904,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringDeleteDestinationTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringDeleteDestinationInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringDeleteDestination(string $destinationUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -5919,7 +5919,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDestinationTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDestinationInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDestination|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDestination|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetDestination(string $destinationUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -5935,7 +5935,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringUpdateDestinationTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringUpdateDestinationInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringUpdateDestination(string $destinationUuid, \Jane\Generated\DigitalOcean\Model\DestinationRequest $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -5952,7 +5952,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringListSinksTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringListSinksInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseListSinks|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseListSinks|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringListSinks(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5969,7 +5969,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringCreateSinkTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringCreateSinkInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringCreateSink(\Jane\Generated\DigitalOcean\Model\V2MonitoringSinksPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -5984,7 +5984,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringDeleteSinkTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringDeleteSinkInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringDeleteSink(string $sinkUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -5999,7 +5999,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetSinkTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetSinkInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSinks|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseSinks|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringGetSink(string $sinkUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -6019,7 +6019,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\NfsListResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\NfsListResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function nfsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6035,7 +6035,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\NfsCreateResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\NfsCreateResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function nfsCreate(\Jane\Generated\DigitalOcean\Model\NfsRequest $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -6056,7 +6056,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function nfsDelete(string $nfsId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6077,7 +6077,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\NfsGetResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\NfsGetResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function nfsGet(string $nfsId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6103,7 +6103,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsCreateActionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsCreateActionInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\NfsActionsResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\NfsActionsResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function nfsCreateAction(string $nfsId, $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -6126,7 +6126,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsListSnapshotTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsListSnapshotInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\NfsSnapshotListResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\NfsSnapshotListResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function nfsListSnapshot(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6147,7 +6147,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsDeleteSnapshotTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsDeleteSnapshotInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function nfsDeleteSnapshot(string $nfsSnapshotId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6168,7 +6168,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsGetSnapshotTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsGetSnapshotInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\NfsSnapshotGetResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\NfsSnapshotGetResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function nfsGetSnapshot(string $nfsSnapshotId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6186,7 +6186,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllPartnerAttachments|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllPartnerAttachments|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function partnerAttachmentsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6205,7 +6205,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachment|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachment|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function partnerAttachmentsCreate(?\Jane\Generated\DigitalOcean\Model\PartnerAttachmentWritable $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -6222,7 +6222,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachmentDeleting|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachmentDeleting|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function partnerAttachmentsDelete(string $paId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6239,7 +6239,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachment|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachment|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function partnerAttachmentsGet(string $paId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6258,7 +6258,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsPatchTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsPatchInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachment|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachment|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function partnerAttachmentsPatch(string $paId, $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -6275,7 +6275,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsGetBgpAuthKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsGetBgpAuthKeyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachmentBgpAuthKey|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachmentBgpAuthKey|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function partnerAttachmentsGetBgpAuthKey(string $paId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6296,7 +6296,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsListRemoteRoutesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsListRemoteRoutesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllPartnerAttachmentRemoteRoutes|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllPartnerAttachmentRemoteRoutes|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function partnerAttachmentsListRemoteRoutes(string $paId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6313,7 +6313,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsGetServiceKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsGetServiceKeyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachmentServiceKey|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseSinglePartnerAttachmentServiceKey|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function partnerAttachmentsGetServiceKey(string $paId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6329,7 +6329,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsCreateServiceKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsCreateServiceKeyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseEmptyJsonObject|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseEmptyJsonObject|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function partnerAttachmentsCreateServiceKey(string $paId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6346,7 +6346,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseProjectsList|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseProjectsList|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6360,7 +6360,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsCreate(\Jane\Generated\DigitalOcean\Model\V2ProjectsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -6373,7 +6373,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsGetDefaultTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsGetDefaultInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDefaultProject|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDefaultProject|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsGetDefault(string $fetch = self::FETCH_OBJECT)
     {
@@ -6388,7 +6388,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsPatchDefaultTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsPatchDefaultInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsPatchDefault(\Jane\Generated\DigitalOcean\Model\Project $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -6403,7 +6403,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsUpdateDefaultTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsUpdateDefaultInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsUpdateDefault($requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -6425,7 +6425,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsDelete(string $projectId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6440,7 +6440,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsGet(string $projectId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6456,7 +6456,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsPatchTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsPatchInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsPatch(string $projectId, \Jane\Generated\DigitalOcean\Model\Project $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -6472,7 +6472,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsUpdateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingProject|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsUpdate(string $projectId, $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -6494,7 +6494,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsListResourcesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsListResourcesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseResourcesList|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseResourcesList|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsListResources(string $projectId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6513,7 +6513,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsAssignResourcesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsAssignResourcesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAssignedResourcesList|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAssignedResourcesList|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsAssignResources(string $projectId, \Jane\Generated\DigitalOcean\Model\ProjectAssignment $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -6526,7 +6526,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsListResourcesDefaultTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsListResourcesDefaultInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseResourcesList|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseResourcesList|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsListResourcesDefault(string $fetch = self::FETCH_OBJECT)
     {
@@ -6544,7 +6544,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsAssignResourcesDefaultTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsAssignResourcesDefaultInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAssignedResourcesList|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAssignedResourcesList|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsAssignResourcesDefault(\Jane\Generated\DigitalOcean\Model\ProjectAssignment $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -6562,7 +6562,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegionsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegionsListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllRegions|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllRegions|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function regionsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6574,7 +6574,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllRegistriesInfo|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllRegistriesInfo|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registriesList(string $fetch = self::FETCH_OBJECT)
     {
@@ -6594,7 +6594,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseMultiregistryInfo|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseMultiregistryInfo|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registriesCreate(\Jane\Generated\DigitalOcean\Model\MultiregistryCreate $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -6609,7 +6609,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registriesDelete(string $registryName, string $fetch = self::FETCH_OBJECT)
     {
@@ -6624,7 +6624,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseMultiregistryInfo|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseMultiregistryInfo|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registriesGet(string $registryName, string $fetch = self::FETCH_OBJECT)
     {
@@ -6660,7 +6660,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetDockerCredentialsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetDockerCredentialsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\DockerCredentials|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\DockerCredentials|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registriesGetDockerCredentials(string $registryName, string $fetch = self::FETCH_OBJECT)
     {
@@ -6672,7 +6672,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetSubscriptionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetSubscriptionInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSubscriptionResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseSubscriptionResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registriesGetSubscription(string $fetch = self::FETCH_OBJECT)
     {
@@ -6686,7 +6686,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesUpdateSubscriptionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesUpdateSubscriptionInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSubscriptionResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseSubscriptionResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registriesUpdateSubscription(?\Jane\Generated\DigitalOcean\Model\V2RegistriesSubscriptionPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -6698,7 +6698,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetOptionsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetOptionsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseRegistryOptionsResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseRegistryOptionsResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registriesGetOptions(string $fetch = self::FETCH_OBJECT)
     {
@@ -6713,7 +6713,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetGarbageCollectionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesGetGarbageCollectionInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registriesGetGarbageCollection(string $registryName, string $fetch = self::FETCH_OBJECT)
     {
@@ -6749,7 +6749,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesRunGarbageCollectionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesRunGarbageCollectionInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registriesRunGarbageCollection(string $registryName, string $fetch = self::FETCH_OBJECT)
     {
@@ -6768,7 +6768,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListGarbageCollectionsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListGarbageCollectionsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollections|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollections|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registriesListGarbageCollections(string $registryName, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6785,7 +6785,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesUpdateGarbageCollectionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesUpdateGarbageCollectionInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registriesUpdateGarbageCollection(string $registryName, string $garbageCollectionUuid, \Jane\Generated\DigitalOcean\Model\UpdateRegistry $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -6806,7 +6806,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListRepositoriesV2TooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListRepositoriesV2InternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllRepositoriesV2|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllRepositoriesV2|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registriesListRepositoriesV2(string $registryName, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6827,7 +6827,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteRepositoryTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteRepositoryInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registriesDeleteRepository(string $registryName, string $repositoryName, string $fetch = self::FETCH_OBJECT)
     {
@@ -6856,7 +6856,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListRepositoryTagsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListRepositoryTagsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseRepositoryTags|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseRepositoryTags|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registriesListRepositoryTags(string $registryName, string $repositoryName, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6883,7 +6883,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteRepositoryTagTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteRepositoryTagInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registriesDeleteRepositoryTag(string $registryName, string $repositoryName, string $repositoryTag, string $fetch = self::FETCH_OBJECT)
     {
@@ -6912,7 +6912,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListRepositoryManifestsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListRepositoryManifestsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseRepositoryManifests|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseRepositoryManifests|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registriesListRepositoryManifests(string $registryName, string $repositoryName, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6941,7 +6941,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteRepositoryManifestTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesDeleteRepositoryManifestInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registriesDeleteRepositoryManifest(string $registryName, string $repositoryName, string $manifestDigest, string $fetch = self::FETCH_OBJECT)
     {
@@ -6964,7 +6964,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesValidateNameTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesValidateNameInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registriesValidateName(\Jane\Generated\DigitalOcean\Model\ValidateRegistry $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -6978,7 +6978,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registryDelete(string $fetch = self::FETCH_OBJECT)
     {
@@ -6991,7 +6991,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseRegistryInfo|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseRegistryInfo|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registryGet(string $fetch = self::FETCH_OBJECT)
     {
@@ -7010,7 +7010,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseRegistryInfo|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseRegistryInfo|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registryCreate(\Jane\Generated\DigitalOcean\Model\RegistryCreate $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -7022,7 +7022,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetSubscriptionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetSubscriptionInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSubscriptionResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseSubscriptionResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registryGetSubscription(string $fetch = self::FETCH_OBJECT)
     {
@@ -7037,7 +7037,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryUpdateSubscriptionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryUpdateSubscriptionInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSubscriptionResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseSubscriptionResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registryUpdateSubscription(?\Jane\Generated\DigitalOcean\Model\V2RegistrySubscriptionPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -7075,7 +7075,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetDockerCredentialsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetDockerCredentialsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\DockerCredentials|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\DockerCredentials|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registryGetDockerCredentials(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7096,7 +7096,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryValidateNameTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryValidateNameInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registryValidateName(\Jane\Generated\DigitalOcean\Model\ValidateRegistry $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -7119,7 +7119,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoriesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoriesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllRepositories|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllRepositories|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registryListRepositories(string $registryName, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7140,7 +7140,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoriesV2TooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoriesV2InternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllRepositoriesV2|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllRepositoriesV2|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registryListRepositoriesV2(string $registryName, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7167,7 +7167,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoryTagsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoryTagsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseRepositoryTags|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseRepositoryTags|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registryListRepositoryTags(string $registryName, string $repositoryName, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7194,7 +7194,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryDeleteRepositoryTagTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryDeleteRepositoryTagInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registryDeleteRepositoryTag(string $registryName, string $repositoryName, string $repositoryTag, string $fetch = self::FETCH_OBJECT)
     {
@@ -7221,7 +7221,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoryManifestsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoryManifestsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseRepositoryManifests|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseRepositoryManifests|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registryListRepositoryManifests(string $registryName, string $repositoryName, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7248,7 +7248,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryDeleteRepositoryManifestTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryDeleteRepositoryManifestInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registryDeleteRepositoryManifest(string $registryName, string $repositoryName, string $manifestDigest, string $fetch = self::FETCH_OBJECT)
     {
@@ -7263,7 +7263,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetGarbageCollectionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetGarbageCollectionInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registryGetGarbageCollection(string $registryName, string $fetch = self::FETCH_OBJECT)
     {
@@ -7300,7 +7300,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryRunGarbageCollectionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryRunGarbageCollectionInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registryRunGarbageCollection(string $registryName, ?\Jane\Generated\DigitalOcean\Model\RegistryRunGc $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -7319,7 +7319,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListGarbageCollectionsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListGarbageCollectionsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollections|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollections|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registryListGarbageCollections(string $registryName, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7336,7 +7336,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryUpdateGarbageCollectionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryUpdateGarbageCollectionInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseGarbageCollection|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registryUpdateGarbageCollection(string $registryName, string $garbageCollectionUuid, \Jane\Generated\DigitalOcean\Model\UpdateRegistry $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -7348,7 +7348,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetOptionsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetOptionsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseRegistryOptionsResponse|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseRegistryOptionsResponse|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function registryGetOptions(string $fetch = self::FETCH_OBJECT)
     {
@@ -7361,7 +7361,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListNeighborsIdsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListNeighborsIdsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\NeighborIds|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\NeighborIds|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function dropletsListNeighborsIds(string $fetch = self::FETCH_OBJECT)
     {
@@ -7378,7 +7378,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpList|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpList|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function reservedIPsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7396,7 +7396,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpCreated|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpCreated|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function reservedIPsCreate($requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -7416,7 +7416,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function reservedIPsDelete(string $reservedIp, string $fetch = self::FETCH_OBJECT)
     {
@@ -7431,7 +7431,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIp|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIp|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function reservedIPsGet(string $reservedIp, string $fetch = self::FETCH_OBJECT)
     {
@@ -7446,7 +7446,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsActionsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsActionsListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpActions|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpActions|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function reservedIPsActionsList(string $reservedIp, string $fetch = self::FETCH_OBJECT)
     {
@@ -7470,7 +7470,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsActionsPostTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsActionsPostInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpAction|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpAction|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function reservedIPsActionsPost(string $reservedIp, $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -7486,7 +7486,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsActionsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsActionsGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpAction|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpAction|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function reservedIPsActionsGet(string $reservedIp, int $actionId, string $fetch = self::FETCH_OBJECT)
     {
@@ -7503,7 +7503,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6ListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6ListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpv6List|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpv6List|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function reservedIPv6List(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7519,7 +7519,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6CreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6CreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpv6Create|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpv6Create|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function reservedIPv6Create(\Jane\Generated\DigitalOcean\Model\ReservedIpv6Create $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -7540,7 +7540,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6DeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6DeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function reservedIPv6Delete(string $reservedIpv6, string $fetch = self::FETCH_OBJECT)
     {
@@ -7555,7 +7555,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6GetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6GetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpv6|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpv6|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function reservedIPv6Get(string $reservedIpv6, string $fetch = self::FETCH_OBJECT)
     {
@@ -7579,7 +7579,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6ActionsPostTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6ActionsPostInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpv6Action|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseReservedIpv6Action|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function reservedIPv6ActionsPost(string $reservedIpv6, $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -7598,7 +7598,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseByoipPrefixList|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseByoipPrefixList|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function byoipPrefixesList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7617,7 +7617,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseByoipPrefixCreate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseByoipPrefixCreate|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function byoipPrefixesCreate(\Jane\Generated\DigitalOcean\Model\ByoipPrefixCreate $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -7638,7 +7638,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function byoipPrefixesDelete(string $byoipPrefixUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -7657,7 +7657,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseByoipPrefixGet|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseByoipPrefixGet|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function byoipPrefixesGet(string $byoipPrefixUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -7678,7 +7678,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesPatchTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesPatchInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseByoipPrefixUpdate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseByoipPrefixUpdate|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function byoipPrefixesPatch(string $byoipPrefixUuid, \Jane\Generated\DigitalOcean\Model\ByoipPrefixUpdate $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -7700,7 +7700,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesListResourcesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesListResourcesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseByoipPrefixListResources|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseByoipPrefixListResources|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function byoipPrefixesListResources(string $byoipPrefixUuid, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7718,7 +7718,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SizesListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SizesListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllSizes|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllSizes|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function sizesList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7756,7 +7756,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SnapshotsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SnapshotsListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSnapshots|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseSnapshots|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function snapshotsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7778,7 +7778,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SnapshotsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SnapshotsDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function snapshotsDelete($snapshotId, string $fetch = self::FETCH_OBJECT)
     {
@@ -7799,7 +7799,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SnapshotsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SnapshotsGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseSnapshotsExisting|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseSnapshotsExisting|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function snapshotsGet($snapshotId, string $fetch = self::FETCH_OBJECT)
     {
@@ -7822,7 +7822,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKeyList|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseKeyList|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function spacesKeyList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7840,7 +7840,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKeyCreate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseKeyCreate|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function spacesKeyCreate(\Jane\Generated\DigitalOcean\Model\Key $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -7858,7 +7858,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function spacesKeyDelete(string $accessKey, string $fetch = self::FETCH_OBJECT)
     {
@@ -7876,7 +7876,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKeyGet|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseKeyGet|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function spacesKeyGet(string $accessKey, string $fetch = self::FETCH_OBJECT)
     {
@@ -7895,7 +7895,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyPatchTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyPatchInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKeyUpdate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseKeyUpdate|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function spacesKeyPatch(string $accessKey, \Jane\Generated\DigitalOcean\Model\Key $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -7914,7 +7914,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyUpdateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseKeyUpdate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseKeyUpdate|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function spacesKeyUpdate(string $accessKey, \Jane\Generated\DigitalOcean\Model\Key $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -7935,7 +7935,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseTagsAll|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseTagsAll|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function tagsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7950,7 +7950,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseTagsNew|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseTagsNew|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function tagsCreate(\Jane\Generated\DigitalOcean\Model\Tags $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -7965,7 +7965,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function tagsDelete(string $tagId, string $fetch = self::FETCH_OBJECT)
     {
@@ -7985,7 +7985,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseTagsExisting|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseTagsExisting|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function tagsGet(string $tagId, string $fetch = self::FETCH_OBJECT)
     {
@@ -8012,7 +8012,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsUnassignResourcesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsUnassignResourcesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function tagsUnassignResources(string $tagId, \Jane\Generated\DigitalOcean\Model\TagsResource $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -8039,7 +8039,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsAssignResourcesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsAssignResourcesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function tagsAssignResources(string $tagId, \Jane\Generated\DigitalOcean\Model\TagsResource $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -8060,7 +8060,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesDeleteByNameTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesDeleteByNameInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function volumesDeleteByName(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8090,7 +8090,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVolumes|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseVolumes|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function volumesList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8106,7 +8106,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVolume|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseVolume|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function volumesCreate($requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -8153,7 +8153,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsPostTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsPostInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVolumeAction|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseVolumeAction|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function volumeActionsPost($requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8173,7 +8173,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsDeleteByIdTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsDeleteByIdInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function volumeSnapshotsDeleteById(string $snapshotId, string $fetch = self::FETCH_OBJECT)
     {
@@ -8190,7 +8190,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsGetByIdTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsGetByIdInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVolumeSnapshot|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseVolumeSnapshot|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function volumeSnapshotsGetById(string $snapshotId, string $fetch = self::FETCH_OBJECT)
     {
@@ -8208,7 +8208,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function volumesDelete(string $volumeId, string $fetch = self::FETCH_OBJECT)
     {
@@ -8225,7 +8225,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVolume|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseVolume|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function volumesGet(string $volumeId, string $fetch = self::FETCH_OBJECT)
     {
@@ -8246,7 +8246,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVolumeActions|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseVolumeActions|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function volumeActionsList(string $volumeId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8302,7 +8302,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsPostByIdTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsPostByIdInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVolumeAction|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseVolumeAction|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function volumeActionsPostById(string $volumeId, $requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8324,7 +8324,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVolumeAction|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseVolumeAction|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function volumeActionsGet(string $volumeId, int $actionId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8345,7 +8345,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVolumeSnapshots|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseVolumeSnapshots|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function volumeSnapshotsList(string $volumeId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8362,7 +8362,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVolumeSnapshot|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseVolumeSnapshot|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function volumeSnapshotsCreate(string $volumeId, \Jane\Generated\DigitalOcean\Model\V2VolumesVolumeIdSnapshotsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -8380,7 +8380,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllVpcs|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllVpcs|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function vpcsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8400,7 +8400,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingVpc|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingVpc|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function vpcsCreate(\Jane\Generated\DigitalOcean\Model\V2VpcsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -8422,7 +8422,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function vpcsDelete(string $vpcId, string $fetch = self::FETCH_OBJECT)
     {
@@ -8437,7 +8437,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingVpc|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingVpc|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function vpcsGet(string $vpcId, string $fetch = self::FETCH_OBJECT)
     {
@@ -8455,7 +8455,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsPatchTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsPatchInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingVpc|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingVpc|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function vpcsPatch(string $vpcId, \Jane\Generated\DigitalOcean\Model\V2VpcsVpcIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -8472,7 +8472,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsUpdateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingVpc|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingVpc|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function vpcsUpdate(string $vpcId, \Jane\Generated\DigitalOcean\Model\V2VpcsVpcIdPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -8501,7 +8501,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListMembersTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListMembersInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVpcMembers|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseVpcMembers|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function vpcsListMembers(string $vpcId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8522,7 +8522,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListPeeringsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListPeeringsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVpcPeerings|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseVpcPeerings|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function vpcsListPeerings(string $vpcId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8540,7 +8540,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsCreatePeeringsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsCreatePeeringsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVpcPeering|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseVpcPeering|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function vpcsCreatePeerings(string $vpcId, \Jane\Generated\DigitalOcean\Model\V2VpcsVpcIdPeeringsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -8560,7 +8560,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsPatchPeeringsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsPatchPeeringsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVpcPeering|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseVpcPeering|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function vpcsPatchPeerings(string $vpcId, string $vpcPeeringId, \Jane\Generated\DigitalOcean\Model\V2VpcsVpcIdPeeringsVpcPeeringIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -8579,7 +8579,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllVpcPeerings|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllVpcPeerings|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function vpcPeeringsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8597,7 +8597,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseProvisioningVpcPeering|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseProvisioningVpcPeering|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function vpcPeeringsCreate(\Jane\Generated\DigitalOcean\Model\V2VpcPeeringsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -8613,7 +8613,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseDeletingVpcPeering|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseDeletingVpcPeering|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function vpcPeeringsDelete(string $vpcPeeringId, string $fetch = self::FETCH_OBJECT)
     {
@@ -8629,7 +8629,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseActiveVpcPeering|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseActiveVpcPeering|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function vpcPeeringsGet(string $vpcPeeringId, string $fetch = self::FETCH_OBJECT)
     {
@@ -8646,7 +8646,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsPatchTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsPatchInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseActiveVpcPeering|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseActiveVpcPeering|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function vpcPeeringsPatch(string $vpcPeeringId, \Jane\Generated\DigitalOcean\Model\V2VpcPeeringsVpcPeeringIdPatchBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -8670,7 +8670,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysListTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysListInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVpcNatGateways|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseVpcNatGateways|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function vpcnatgatewaysList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8687,7 +8687,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysCreateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysCreateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVpcNatGatewayCreate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseVpcNatGatewayCreate|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function vpcnatgatewaysCreate(?\Jane\Generated\DigitalOcean\Model\VpcNatGatewayCreate $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8705,7 +8705,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysDeleteTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysDeleteInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function vpcnatgatewaysDelete(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -8722,7 +8722,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysGetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysGetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVpcNatGateway|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseVpcNatGateway|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function vpcnatgatewaysGet(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -8741,7 +8741,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysUpdateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysUpdateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseVpcNatGatewayUpdate|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseVpcNatGatewayUpdate|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function vpcnatgatewaysUpdate(string $id, ?\Jane\Generated\DigitalOcean\Model\VpcNatGatewayUpdate $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8759,7 +8759,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeListChecksTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeListChecksInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllChecks|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllChecks|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function uptimeListChecks(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8775,7 +8775,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeCreateCheckTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeCreateCheckInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingCheck|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingCheck|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function uptimeCreateCheck(\Jane\Generated\DigitalOcean\Model\V2UptimeChecksPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -8795,7 +8795,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeDeleteCheckTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeDeleteCheckInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function uptimeDeleteCheck(string $checkId, string $fetch = self::FETCH_OBJECT)
     {
@@ -8810,7 +8810,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeGetCheckTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeGetCheckInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingCheck|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingCheck|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function uptimeGetCheck(string $checkId, string $fetch = self::FETCH_OBJECT)
     {
@@ -8827,7 +8827,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeUpdateCheckTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeUpdateCheckInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingCheck|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingCheck|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function uptimeUpdateCheck(string $checkId, \Jane\Generated\DigitalOcean\Model\V2UptimeChecksCheckIdPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -8842,7 +8842,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeGetCheckStateTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeGetCheckStateInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingCheckState|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingCheckState|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function uptimeGetCheckState(string $checkId, string $fetch = self::FETCH_OBJECT)
     {
@@ -8861,7 +8861,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeListAlertsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeListAlertsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseAllAlerts|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseAllAlerts|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function uptimeListAlerts(string $checkId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8879,7 +8879,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeCreateAlertTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeCreateAlertInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingAlert|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingAlert|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function uptimeCreateAlert(string $checkId, \Jane\Generated\DigitalOcean\Model\V2UptimeChecksCheckIdAlertsPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -8897,7 +8897,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeDeleteAlertTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeDeleteAlertInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function uptimeDeleteAlert(string $checkId, string $alertId, string $fetch = self::FETCH_OBJECT)
     {
@@ -8913,7 +8913,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeGetAlertTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeGetAlertInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingAlert|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingAlert|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function uptimeGetAlert(string $checkId, string $alertId, string $fetch = self::FETCH_OBJECT)
     {
@@ -8931,7 +8931,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeUpdateAlertTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeUpdateAlertInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ResponseExistingAlert|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseExistingAlert|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function uptimeUpdateAlert(string $checkId, string $alertId, \Jane\Generated\DigitalOcean\Model\V2UptimeChecksCheckIdAlertsAlertIdPutBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
@@ -8950,7 +8950,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListAgentsOutputPublic|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiListAgentsOutputPublic|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiListAgents(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8965,7 +8965,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateAgentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateAgentInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateAgentOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiCreateAgentOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiCreateAgent(?\Jane\Generated\DigitalOcean\Model\ApiCreateAgentInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8984,7 +8984,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentApiKeysTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentApiKeysInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListAgentAPIKeysOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiListAgentAPIKeysOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiListAgentApiKeys(string $agentUuid, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9000,7 +9000,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateAgentApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateAgentApiKeyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateAgentAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiCreateAgentAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiCreateAgentApiKey(string $agentUuid, ?\Jane\Generated\DigitalOcean\Model\ApiCreateAgentAPIKeyInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9016,7 +9016,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteAgentApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteAgentApiKeyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiDeleteAgentAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiDeleteAgentAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiDeleteAgentApiKey(string $agentUuid, string $apiKeyUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -9033,7 +9033,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentApiKeyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUpdateAgentAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiUpdateAgentAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiUpdateAgentApiKey(string $agentUuid, string $apiKeyUuid, ?\Jane\Generated\DigitalOcean\Model\ApiUpdateAgentAPIKeyInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9049,7 +9049,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiRegenerateAgentApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiRegenerateAgentApiKeyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiRegenerateAgentAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiRegenerateAgentAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiRegenerateAgentApiKey(string $agentUuid, string $apiKeyUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -9065,7 +9065,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiAttachAgentFunctionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiAttachAgentFunctionInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiLinkAgentFunctionOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiLinkAgentFunctionOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiAttachAgentFunction(string $agentUuid, ?\Jane\Generated\DigitalOcean\Model\ApiLinkAgentFunctionInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9081,7 +9081,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDetachAgentFunctionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDetachAgentFunctionInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUnlinkAgentFunctionOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiUnlinkAgentFunctionOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiDetachAgentFunction(string $agentUuid, string $functionUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -9098,7 +9098,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentFunctionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentFunctionInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUpdateAgentFunctionOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiUpdateAgentFunctionOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiUpdateAgentFunction(string $agentUuid, string $functionUuid, ?\Jane\Generated\DigitalOcean\Model\ApiUpdateAgentFunctionInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9113,7 +9113,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiAttachKnowledgeBasesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiAttachKnowledgeBasesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiLinkKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiLinkKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiAttachKnowledgeBases(string $agentUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -9129,7 +9129,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDetachKnowledgeBaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDetachKnowledgeBaseInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUnlinkKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiUnlinkKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiDetachKnowledgeBase(string $agentUuid, string $knowledgeBaseUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -9145,7 +9145,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiAttachKnowledgeBaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiAttachKnowledgeBaseInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiLinkKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiLinkKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiAttachKnowledgeBase(string $agentUuid, string $knowledgeBaseUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -9161,7 +9161,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDetachAgentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDetachAgentInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUnlinkAgentOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiUnlinkAgentOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiDetachAgent(string $parentAgentUuid, string $childAgentUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -9178,7 +9178,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiAttachAgentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiAttachAgentInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiLinkAgentOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiLinkAgentOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiAttachAgent(string $parentAgentUuid, string $childAgentUuid, ?\Jane\Generated\DigitalOcean\Model\ApiLinkAgentInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9195,7 +9195,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAttachedAgentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAttachedAgentInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUpdateLinkedAgentOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiUpdateLinkedAgentOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiUpdateAttachedAgent(string $parentAgentUuid, string $childAgentUuid, ?\Jane\Generated\DigitalOcean\Model\ApiUpdateLinkedAgentInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9210,7 +9210,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteAgentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteAgentInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiDeleteAgentOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiDeleteAgentOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiDeleteAgent(string $uuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -9225,7 +9225,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetAgentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetAgentInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetAgentOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiGetAgentOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiGetAgent(string $uuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -9241,7 +9241,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUpdateAgentOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiUpdateAgentOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiUpdateAgent(string $uuid, ?\Jane\Generated\DigitalOcean\Model\ApiUpdateAgentInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9256,7 +9256,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetAgentChildrenTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetAgentChildrenInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetChildrenOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiGetChildrenOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiGetAgentChildren(string $uuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -9272,7 +9272,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentDeploymentVisibilityTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentDeploymentVisibilityInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUpdateAgentDeploymentVisbilityOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiUpdateAgentDeploymentVisbilityOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiUpdateAgentDeploymentVisibility(string $uuid, ?\Jane\Generated\DigitalOcean\Model\ApiUpdateAgentDeploymentVisibilityInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9291,7 +9291,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetAgentUsageTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetAgentUsageInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetAgentUsageOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiGetAgentUsageOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiGetAgentUsage(string $uuid, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9310,7 +9310,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentVersionsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentVersionsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListAgentVersionsOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiListAgentVersionsOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiListAgentVersions(string $uuid, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9326,7 +9326,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiRollbackToAgentVersionTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiRollbackToAgentVersionInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiRollbackToAgentVersionOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiRollbackToAgentVersionOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiRollbackToAgentVersion(string $uuid, ?\Jane\Generated\DigitalOcean\Model\ApiRollbackToAgentVersionInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9344,7 +9344,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAnthropicApiKeysTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAnthropicApiKeysInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListAnthropicAPIKeysOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiListAnthropicAPIKeysOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiListAnthropicApiKeys(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9359,7 +9359,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateAnthropicApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateAnthropicApiKeyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateAnthropicAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiCreateAnthropicAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiCreateAnthropicApiKey(?\Jane\Generated\DigitalOcean\Model\ApiCreateAnthropicAPIKeyInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9374,7 +9374,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteAnthropicApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteAnthropicApiKeyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiDeleteAnthropicAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiDeleteAnthropicAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiDeleteAnthropicApiKey(string $apiKeyUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -9389,7 +9389,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetAnthropicApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetAnthropicApiKeyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetAnthropicAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiGetAnthropicAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiGetAnthropicApiKey(string $apiKeyUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -9405,7 +9405,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAnthropicApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAnthropicApiKeyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUpdateAnthropicAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiUpdateAnthropicAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiUpdateAnthropicApiKey(string $apiKeyUuid, ?\Jane\Generated\DigitalOcean\Model\ApiUpdateAnthropicAPIKeyInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9424,7 +9424,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsByAnthropicKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsByAnthropicKeyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListAgentsByAnthropicKeyOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiListAgentsByAnthropicKeyOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiListAgentsByAnthropicKey(string $uuid, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9439,7 +9439,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateEvaluationDatasetTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateEvaluationDatasetInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateEvaluationDatasetOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiCreateEvaluationDatasetOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiCreateEvaluationDataset(?\Jane\Generated\DigitalOcean\Model\ApiCreateEvaluationDatasetInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9454,7 +9454,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateEvaluationDatasetFileUploadPresignedUrlsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateEvaluationDatasetFileUploadPresignedUrlsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateDataSourceFileUploadPresignedUrlsOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiCreateDataSourceFileUploadPresignedUrlsOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiCreateEvaluationDatasetFileUploadPresignedUrls(?\Jane\Generated\DigitalOcean\Model\ApiCreateDataSourceFileUploadPresignedUrlsInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9467,7 +9467,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListEvaluationMetricsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListEvaluationMetricsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListEvaluationMetricsOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiListEvaluationMetricsOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiListEvaluationMetrics(string $fetch = self::FETCH_OBJECT)
     {
@@ -9482,7 +9482,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiRunEvaluationTestCaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiRunEvaluationTestCaseInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiRunEvaluationTestCaseOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiRunEvaluationTestCaseOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiRunEvaluationTestCase(?\Jane\Generated\DigitalOcean\Model\ApiRunEvaluationTestCaseInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9497,7 +9497,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationRunTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationRunInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetEvaluationRunOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiGetEvaluationRunOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiGetEvaluationRun(string $evaluationRunUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -9516,7 +9516,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationRunResultsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationRunResultsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetEvaluationRunResultsOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiGetEvaluationRunResultsOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiGetEvaluationRunResults(string $evaluationRunUuid, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9532,7 +9532,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationRunPromptResultsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationRunPromptResultsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetEvaluationRunPromptResultsOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiGetEvaluationRunPromptResultsOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiGetEvaluationRunPromptResults(string $evaluationRunUuid, int $promptId, string $fetch = self::FETCH_OBJECT)
     {
@@ -9545,7 +9545,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListEvaluationTestCasesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListEvaluationTestCasesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListEvaluationTestCasesOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiListEvaluationTestCasesOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiListEvaluationTestCases(string $fetch = self::FETCH_OBJECT)
     {
@@ -9560,7 +9560,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateEvaluationTestCaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateEvaluationTestCaseInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateEvaluationTestCaseOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiCreateEvaluationTestCaseOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiCreateEvaluationTestCase(?\Jane\Generated\DigitalOcean\Model\ApiCreateEvaluationTestCaseInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9578,7 +9578,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListEvaluationRunsByTestCaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListEvaluationRunsByTestCaseInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListEvaluationRunsByTestCaseOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiListEvaluationRunsByTestCaseOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiListEvaluationRunsByTestCase(string $evaluationTestCaseUuid, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9596,7 +9596,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationTestCaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationTestCaseInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetEvaluationTestCaseOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiGetEvaluationTestCaseOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiGetEvaluationTestCase(string $testCaseUuid, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9612,7 +9612,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateEvaluationTestCaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateEvaluationTestCaseInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUpdateEvaluationTestCaseOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiUpdateEvaluationTestCaseOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiUpdateEvaluationTestCase(string $testCaseUuid, ?\Jane\Generated\DigitalOcean\Model\ApiUpdateEvaluationTestCaseInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9630,7 +9630,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListIndexingJobsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListIndexingJobsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListKnowledgeBaseIndexingJobsOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiListKnowledgeBaseIndexingJobsOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiListIndexingJobs(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9645,7 +9645,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateIndexingJobTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateIndexingJobInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiStartKnowledgeBaseIndexingJobOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiStartKnowledgeBaseIndexingJobOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiCreateIndexingJob(?\Jane\Generated\DigitalOcean\Model\ApiStartKnowledgeBaseIndexingJobInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9660,7 +9660,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListIndexingJobDataSourcesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListIndexingJobDataSourcesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListIndexingJobDataSourcesOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiListIndexingJobDataSourcesOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiListIndexingJobDataSources(string $indexingJobUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -9675,7 +9675,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetIndexingJobDetailsSignedUrlTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetIndexingJobDetailsSignedUrlInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetIndexingJobDetailsSignedURLOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiGetIndexingJobDetailsSignedURLOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiGetIndexingJobDetailsSignedUrl(string $indexingJobUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -9690,7 +9690,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetIndexingJobTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetIndexingJobInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetKnowledgeBaseIndexingJobOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiGetKnowledgeBaseIndexingJobOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiGetIndexingJob(string $uuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -9706,7 +9706,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCancelIndexingJobTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCancelIndexingJobInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCancelKnowledgeBaseIndexingJobOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiCancelKnowledgeBaseIndexingJobOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiCancelIndexingJob(string $uuid, ?\Jane\Generated\DigitalOcean\Model\ApiCancelKnowledgeBaseIndexingJobInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9724,7 +9724,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListKnowledgeBasesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListKnowledgeBasesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListKnowledgeBasesOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiListKnowledgeBasesOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiListKnowledgeBases(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9739,7 +9739,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateKnowledgeBaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateKnowledgeBaseInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiCreateKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiCreateKnowledgeBase(?\Jane\Generated\DigitalOcean\Model\ApiCreateKnowledgeBaseInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9754,7 +9754,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateDataSourceFileUploadPresignedUrlsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateDataSourceFileUploadPresignedUrlsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateDataSourceFileUploadPresignedUrlsOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiCreateDataSourceFileUploadPresignedUrlsOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiCreateDataSourceFileUploadPresignedUrls(?\Jane\Generated\DigitalOcean\Model\ApiCreateDataSourceFileUploadPresignedUrlsInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9773,7 +9773,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListKnowledgeBaseDataSourcesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListKnowledgeBaseDataSourcesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListKnowledgeBaseDataSourcesOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiListKnowledgeBaseDataSourcesOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiListKnowledgeBaseDataSources(string $knowledgeBaseUuid, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9789,7 +9789,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateKnowledgeBaseDataSourceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateKnowledgeBaseDataSourceInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateKnowledgeBaseDataSourceOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiCreateKnowledgeBaseDataSourceOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiCreateKnowledgeBaseDataSource(string $knowledgeBaseUuid, ?\Jane\Generated\DigitalOcean\Model\ApiCreateKnowledgeBaseDataSourceInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9805,7 +9805,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteKnowledgeBaseDataSourceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteKnowledgeBaseDataSourceInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiDeleteKnowledgeBaseDataSourceOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiDeleteKnowledgeBaseDataSourceOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiDeleteKnowledgeBaseDataSource(string $knowledgeBaseUuid, string $dataSourceUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -9820,7 +9820,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListIndexingJobsByKnowledgeBaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListIndexingJobsByKnowledgeBaseInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListKnowledgeBaseIndexingJobsOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiListKnowledgeBaseIndexingJobsOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiListIndexingJobsByKnowledgeBase(string $knowledgeBaseUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -9835,7 +9835,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteKnowledgeBaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteKnowledgeBaseInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiDeleteKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiDeleteKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiDeleteKnowledgeBase(string $uuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -9850,7 +9850,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetKnowledgeBaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetKnowledgeBaseInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiGetKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiGetKnowledgeBase(string $uuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -9866,7 +9866,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateKnowledgeBaseTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateKnowledgeBaseInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUpdateKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiUpdateKnowledgeBaseOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiUpdateKnowledgeBase(string $uuid, ?\Jane\Generated\DigitalOcean\Model\ApiUpdateKnowledgeBaseInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9895,7 +9895,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListModelsTooManyRequestsException
     * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListModelsInternalServerErrorException
     *
-    * @return null|\Jane\Generated\DigitalOcean\Model\ApiListModelsOutputPublic|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiListModelsOutputPublic|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
     */
     public function genaiListModels(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9913,7 +9913,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListModelApiKeysTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListModelApiKeysInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListModelAPIKeysOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiListModelAPIKeysOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiListModelApiKeys(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9928,7 +9928,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateModelApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateModelApiKeyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateModelAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiCreateModelAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiCreateModelApiKey(?\Jane\Generated\DigitalOcean\Model\ApiCreateModelAPIKeyInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9943,7 +9943,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteModelApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteModelApiKeyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiDeleteModelAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiDeleteModelAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiDeleteModelApiKey(string $apiKeyUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -9959,7 +9959,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateModelApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateModelApiKeyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUpdateModelAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiUpdateModelAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiUpdateModelApiKey(string $apiKeyUuid, ?\Jane\Generated\DigitalOcean\Model\ApiUpdateModelAPIKeyInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9974,7 +9974,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiRegenerateModelApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiRegenerateModelApiKeyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiRegenerateModelAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiRegenerateModelAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiRegenerateModelApiKey(string $apiKeyUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -9989,7 +9989,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateOauth2DropboxTokensTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateOauth2DropboxTokensInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiDropboxOauth2GetTokensOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiDropboxOauth2GetTokensOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiCreateOauth2DropboxTokens(?\Jane\Generated\DigitalOcean\Model\ApiDropboxOauth2GetTokensInput $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -10007,7 +10007,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetOauth2UrlTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetOauth2UrlInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGenerateOauth2URLOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiGenerateOauth2URLOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiGetOauth2Url(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10025,7 +10025,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListOpenaiApiKeysTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListOpenaiApiKeysInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListOpenAIAPIKeysOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiListOpenAIAPIKeysOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiListOpenaiApiKeys(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10040,7 +10040,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateOpenaiApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateOpenaiApiKeyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateOpenAIAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiCreateOpenAIAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiCreateOpenaiApiKey(?\Jane\Generated\DigitalOcean\Model\ApiCreateOpenAIAPIKeyInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -10055,7 +10055,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteOpenaiApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteOpenaiApiKeyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiDeleteOpenAIAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiDeleteOpenAIAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiDeleteOpenaiApiKey(string $apiKeyUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -10070,7 +10070,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetOpenaiApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetOpenaiApiKeyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetOpenAIAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiGetOpenAIAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiGetOpenaiApiKey(string $apiKeyUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -10086,7 +10086,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateOpenaiApiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateOpenaiApiKeyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUpdateOpenAIAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiUpdateOpenAIAPIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiUpdateOpenaiApiKey(string $apiKeyUuid, ?\Jane\Generated\DigitalOcean\Model\ApiUpdateOpenAIAPIKeyInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -10105,7 +10105,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsByOpenaiKeyTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsByOpenaiKeyInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListAgentsByOpenAIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiListAgentsByOpenAIKeyOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiListAgentsByOpenaiKey(string $uuid, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10123,7 +10123,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListDatacenterRegionsTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListDatacenterRegionsInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListRegionsOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiListRegionsOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiListDatacenterRegions(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10138,7 +10138,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateScheduledIndexingTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateScheduledIndexingInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateScheduledIndexingOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiCreateScheduledIndexingOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiCreateScheduledIndexing(?\Jane\Generated\DigitalOcean\Model\ApiCreateScheduledIndexingInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -10153,7 +10153,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetScheduledIndexingTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetScheduledIndexingInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetScheduledIndexingOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiGetScheduledIndexingOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiGetScheduledIndexing(string $knowledgeBaseUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -10168,7 +10168,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteScheduledIndexingTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteScheduledIndexingInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiDeleteScheduledIndexingOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiDeleteScheduledIndexingOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiDeleteScheduledIndexing(string $uuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -10181,7 +10181,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListWorkspacesTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListWorkspacesInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListWorkspacesOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiListWorkspacesOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiListWorkspaces(string $fetch = self::FETCH_OBJECT)
     {
@@ -10196,7 +10196,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateWorkspaceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiCreateWorkspaceInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiCreateWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiCreateWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiCreateWorkspace(?\Jane\Generated\DigitalOcean\Model\ApiCreateWorkspaceInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -10211,7 +10211,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteWorkspaceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiDeleteWorkspaceInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiDeleteWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiDeleteWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiDeleteWorkspace(string $workspaceUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -10226,7 +10226,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetWorkspaceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetWorkspaceInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiGetWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiGetWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiGetWorkspace(string $workspaceUuid, string $fetch = self::FETCH_OBJECT)
     {
@@ -10242,7 +10242,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateWorkspaceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateWorkspaceInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiUpdateWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiUpdateWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiUpdateWorkspace(string $workspaceUuid, ?\Jane\Generated\DigitalOcean\Model\ApiUpdateWorkspaceInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -10262,7 +10262,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsByWorkspaceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsByWorkspaceInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListAgentsByWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiListAgentsByWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiListAgentsByWorkspace(string $workspaceUuid, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10278,7 +10278,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentsWorkspaceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiUpdateAgentsWorkspaceInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiMoveAgentsToWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiMoveAgentsToWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiUpdateAgentsWorkspace(string $workspaceUuid, ?\Jane\Generated\DigitalOcean\Model\ApiMoveAgentsToWorkspaceInputPublic $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -10293,7 +10293,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListEvaluationTestCasesByWorkspaceTooManyRequestsException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListEvaluationTestCasesByWorkspaceInternalServerErrorException
      *
-     * @return null|\Jane\Generated\DigitalOcean\Model\ApiListEvaluationTestCasesByWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ApiListEvaluationTestCasesByWorkspaceOutput|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function genaiListEvaluationTestCasesByWorkspace(string $workspaceUuid, string $fetch = self::FETCH_OBJECT)
     {

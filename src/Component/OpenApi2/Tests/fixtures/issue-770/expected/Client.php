@@ -14,7 +14,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteUsersByUserIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteUsersByUserIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserAuditId|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserAuditId : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteUsersByUserId(string $userId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -30,7 +30,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUsersByUserIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUsersByUserIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserGetScgUser|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserGetScgUser : \Psr\Http\Message\ResponseInterface)
      */
     public function findUsersByUserId(string $userId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -48,7 +48,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateUsersByUserIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateUsersByUserIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserAuditId|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserAuditId : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateUsersByUserId(string $userId, \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserModifyScgUser $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -64,7 +64,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteUsersForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteUsersInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteUsers(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -81,7 +81,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUsersInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUsersUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserAuditId|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserAuditId : \Psr\Http\Message\ResponseInterface)
      */
     public function addUsers(\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserCreateScgUser $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -98,7 +98,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUsersByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUsersByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserList : \Psr\Http\Message\ResponseInterface)
      */
     public function findUsersByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserQueryCriteria $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -114,7 +114,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteUrlFilteringUrlFilteringPolicyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteUrlFilteringUrlFilteringPolicyInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteUrlFilteringUrlFilteringPolicy(\Jane\Component\OpenApi3\Tests\Expected\Model\UrlFilteringDeleteBulk $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -132,7 +132,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUrlFilteringUrlFilteringPolicyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUrlFilteringUrlFilteringPolicyInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\UrlFilteringUrlFilteringPolicyList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\UrlFilteringUrlFilteringPolicyList : \Psr\Http\Message\ResponseInterface)
      */
     public function findUrlFilteringUrlFilteringPolicy(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -149,7 +149,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUrlFilteringUrlFilteringPolicyInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUrlFilteringUrlFilteringPolicyUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addUrlFilteringUrlFilteringPolicy(\Jane\Component\OpenApi3\Tests\Expected\Model\UrlFilteringCreateUrlFilteringPolicy $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -165,7 +165,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteUrlFilteringUrlFilteringPolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteUrlFilteringUrlFilteringPolicyByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteUrlFilteringUrlFilteringPolicyById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -181,7 +181,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUrlFilteringUrlFilteringPolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUrlFilteringUrlFilteringPolicyByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\UrlFilteringUrlFilteringPolicy|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\UrlFilteringUrlFilteringPolicy : \Psr\Http\Message\ResponseInterface)
      */
     public function findUrlFilteringUrlFilteringPolicyById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -199,7 +199,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateUrlFilteringUrlFilteringPolicyByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateUrlFilteringUrlFilteringPolicyByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateUrlFilteringUrlFilteringPolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\UrlFilteringModifyUrlFilteringPolicy $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -217,7 +217,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateUrlFilteringUrlFilteringPolicyByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateUrlFilteringUrlFilteringPolicyByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateUrlFilteringUrlFilteringPolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\UrlFilteringModifyUrlFilteringPolicy $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -232,7 +232,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUrlFilteringBlockCategoriesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUrlFilteringBlockCategoriesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\UrlFilteringUrlFilteringBlockCategoriesList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\UrlFilteringUrlFilteringBlockCategoriesList : \Psr\Http\Message\ResponseInterface)
      */
     public function findUrlFilteringBlockCategories(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -249,7 +249,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUrlFilteringByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUrlFilteringByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\UrlFilteringUrlFilteringPolicyList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\UrlFilteringUrlFilteringPolicyList : \Psr\Http\Message\ResponseInterface)
      */
     public function findUrlFilteringByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -265,7 +265,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsApPacketCaptureByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsApPacketCaptureByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApPacketCaptureApPacketCaptureRes|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApPacketCaptureApPacketCaptureRes : \Psr\Http\Message\ResponseInterface)
      */
     public function findApsApPacketCaptureByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -282,7 +282,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsApPacketCaptureDownloadByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsApPacketCaptureDownloadByApMacUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addApsApPacketCaptureDownloadByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -300,7 +300,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsApPacketCaptureStartFileCaptureByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsApPacketCaptureStartFileCaptureByApMacUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApPacketCaptureApPacketCaptureRes|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApPacketCaptureApPacketCaptureRes : \Psr\Http\Message\ResponseInterface)
      */
     public function addApsApPacketCaptureStartFileCaptureByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Model\ApPacketCaptureApPacketCaptureReq $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -318,7 +318,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsApPacketCaptureStartStreamingByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsApPacketCaptureStartStreamingByApMacUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApPacketCaptureApPacketCaptureRes|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApPacketCaptureApPacketCaptureRes : \Psr\Http\Message\ResponseInterface)
      */
     public function addApsApPacketCaptureStartStreamingByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Model\ApPacketCaptureApPacketCaptureReq $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -335,7 +335,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsApPacketCaptureStopByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsApPacketCaptureStopByApMacUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addApsApPacketCaptureStopByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -352,7 +352,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApplicationPolicyV2ByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApplicationPolicyV2ByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcApplicationPolicyProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcApplicationPolicyProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findApplicationPolicyV2ByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -369,7 +369,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRoguesInfoListByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRoguesInfoListByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\RogueInfoRogueInfoList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\RogueInfoRogueInfoList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRoguesInfoListByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -386,7 +386,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindHistoricalclientByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindHistoricalclientByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ClientHistoricalClientList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ClientHistoricalClientList : \Psr\Http\Message\ResponseInterface)
      */
     public function findHistoricalclientByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -403,7 +403,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAaaServerAuthByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAaaServerAuthByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AaaServerQueryAaaServerQueryList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AaaServerQueryAaaServerQueryList : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesAaaServerAuthByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -420,7 +420,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAaaServerAcctByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAaaServerAcctByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AaaServerQueryAaaServerQueryList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AaaServerQueryAaaServerQueryList : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesAaaServerAcctByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -437,7 +437,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesBonjourPolicyByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesBonjourPolicyByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesBonjourPolicyByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -454,7 +454,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesDscpProfileByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesDscpProfileByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesDscpProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -471,7 +471,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesWechatProfileByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesWechatProfileByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesWechatProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -488,7 +488,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUserDefinedByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUserDefinedByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcUserDefinedProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcUserDefinedProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findUserDefinedByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -505,7 +505,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesDhcpProfileByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesDhcpProfileByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDhcpProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDhcpProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesDhcpProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -522,7 +522,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpskByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpskByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpskDpskQueryList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpskDpskQueryList : \Psr\Http\Message\ResponseInterface)
      */
     public function findDpskByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -539,7 +539,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesTrafficClassProfileByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesTrafficClassProfileByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileTrafficClassProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileTrafficClassProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesTrafficClassProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -556,7 +556,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesWlanSchedulerByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesWlanSchedulerByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesWlanSchedulerByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -573,7 +573,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesWebAuthenticationByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesWebAuthenticationByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesWebAuthenticationByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -590,7 +590,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesGuestAccessByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesGuestAccessByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesGuestAccessByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -607,7 +607,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindWiredclientByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindWiredclientByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\WiredClientQueryClientQueryList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\WiredClientQueryClientQueryList : \Psr\Http\Message\ResponseInterface)
      */
     public function findWiredclientByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -624,7 +624,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesL2AccessControlByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesL2AccessControlByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesL2AccessControlByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -641,7 +641,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApplicationPolicyByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApplicationPolicyByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcApplicationPolicyProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcApplicationPolicyProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findApplicationPolicyByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -658,7 +658,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesVlanPoolingByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesVlanPoolingByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesVlanPoolingByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -675,7 +675,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesVenueProfileByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesVenueProfileByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesVenueProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -692,7 +692,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesEthernetPortProfileByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesEthernetPortProfileByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesEthernetPortProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -709,7 +709,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindIndoorMapByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindIndoorMapByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMapSummaryList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMapSummaryList : \Psr\Http\Message\ResponseInterface)
      */
     public function findIndoorMapByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -726,7 +726,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesDevicePolicyByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesDevicePolicyByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesDevicePolicyByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -743,7 +743,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesClientIsolationWhitelistByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesClientIsolationWhitelistByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileClientIsolationWhitelistArray|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileClientIsolationWhitelistArray : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesClientIsolationWhitelistByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -760,7 +760,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesBonjourFencingPolicyByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesBonjourFencingPolicyByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBonjourFencingPolicyList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBonjourFencingPolicyList : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesBonjourFencingPolicyByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -777,7 +777,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindWlanByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindWlanByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\WlanQueryWlanQueryList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\WlanQueryWlanQueryList : \Psr\Http\Message\ResponseInterface)
      */
     public function findWlanByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -794,7 +794,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesHotspot20ProfileByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesHotspot20ProfileByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesHotspot20ProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -811,7 +811,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryApQueryList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryApQueryList : \Psr\Http\Message\ResponseInterface)
      */
     public function findApByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteria $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -828,7 +828,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesHotspotByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesHotspotByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesHotspotByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -845,7 +845,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApWlanByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApWlanByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\WlanQueryApWlanBssidQueryList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\WlanQueryApWlanBssidQueryList : \Psr\Http\Message\ResponseInterface)
      */
     public function findApWlanByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -862,7 +862,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRadiusProxyStatsByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRadiusProxyStatsByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\RacStatsRadiusProxyList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\RacStatsRadiusProxyList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRadiusProxyStatsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -879,7 +879,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindClientByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindClientByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ClientQueryClientQueryList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ClientQueryClientQueryList : \Psr\Http\Message\ResponseInterface)
      */
     public function findClientByQueryCriteria(mixed $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -894,7 +894,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRogueMarkKnownForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRogueMarkKnownInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApModifyRogueType|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApModifyRogueType : \Psr\Http\Message\ResponseInterface)
      */
     public function findRogueMarkKnown(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -911,7 +911,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRogueMarkKnownInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRogueMarkKnownUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRogueMarkKnown(\Jane\Component\OpenApi3\Tests\Expected\Model\ApModifyRogueType $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -928,7 +928,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRogueUnMarkInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRogueUnMarkUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRogueUnMark(\Jane\Component\OpenApi3\Tests\Expected\Model\ApModifyRogueType $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -945,7 +945,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRogueMarkMaliciousInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRogueMarkMaliciousUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRogueMarkMalicious(\Jane\Component\OpenApi3\Tests\Expected\Model\ApModifyRogueType $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -962,7 +962,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRogueMarkIgnoreInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRogueMarkIgnoreUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRogueMarkIgnore(\Jane\Component\OpenApi3\Tests\Expected\Model\ApModifyRogueType $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -979,7 +979,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRogueMarkRogueInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRogueMarkRogueUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRogueMarkRogue(\Jane\Component\OpenApi3\Tests\Expected\Model\ApModifyRogueType $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -994,7 +994,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindGlobalSettingsStatsFtpForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindGlobalSettingsStatsFtpInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemFtpGlobalSetting|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemFtpGlobalSetting : \Psr\Http\Message\ResponseInterface)
      */
     public function findGlobalSettingsStatsFtp(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1011,7 +1011,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateGlobalSettingsStatsFtpInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateGlobalSettingsStatsFtpUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateGlobalSettingsStatsFtp(\Jane\Component\OpenApi3\Tests\Expected\Model\SystemFtpGlobalSetting $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1028,7 +1028,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddGlobalSettingsSystemTimeValidateInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddGlobalSettingsSystemTimeValidateUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemNtpServerValidationMessage|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemNtpServerValidationMessage : \Psr\Http\Message\ResponseInterface)
      */
     public function addGlobalSettingsSystemTimeValidate(\Jane\Component\OpenApi3\Tests\Expected\Model\SystemNtpServerValidation $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1043,7 +1043,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindGlobalSettingsFriendlyNameLangForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindGlobalSettingsFriendlyNameLangInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemFriendlyNameLangList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemFriendlyNameLangList : \Psr\Http\Message\ResponseInterface)
      */
     public function findGlobalSettingsFriendlyNameLang(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1058,7 +1058,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindGlobalSettingsPortalLangForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindGlobalSettingsPortalLangInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemPortalLangList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemPortalLangList : \Psr\Http\Message\ResponseInterface)
      */
     public function findGlobalSettingsPortalLang(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1075,7 +1075,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlansAccountingServiceOrProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlansAccountingServiceOrProfileByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesWlansAccountingServiceOrProfileById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1092,7 +1092,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlansL2ACLByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlansL2ACLByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesWlansL2ACLById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1109,7 +1109,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlansDevicePolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlansDevicePolicyByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesWlansDevicePolicyById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1126,7 +1126,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlansDiffServProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlansDiffServProfileByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesWlansDiffServProfileById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1143,7 +1143,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlansQosMapsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlansQosMapsByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesWlansQosMapsById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1161,7 +1161,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansQosMapsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansQosMapsByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesWlansQosMapsById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1178,7 +1178,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlansDnsServerProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlansDnsServerProfileByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesWlansDnsServerProfileById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1196,7 +1196,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesWlangroupsByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesWlangroupsByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\WlangroupWlanGroupList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\WlangroupWlanGroupList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesWlangroupsByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1214,7 +1214,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlangroupsByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlangroupsByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesWlangroupsByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\WlangroupCreateWlanGroup $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1232,7 +1232,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlangroupsMembersByMemberIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlangroupsMembersByMemberIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesWlangroupsMembersByMemberId(string $zoneId, string $id, string $memberId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1252,7 +1252,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesWlangroupsMembersByMemberIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesWlangroupsMembersByMemberIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesWlangroupsMembersByMemberId(string $zoneId, string $id, string $memberId, \Jane\Component\OpenApi3\Tests\Expected\Model\WlangroupModifyWlanGroupMember $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1272,7 +1272,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesWlangroupsMembersByMemberIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesWlangroupsMembersByMemberIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesWlangroupsMembersByMemberId(string $zoneId, string $id, string $memberId, \Jane\Component\OpenApi3\Tests\Expected\Model\WlangroupModifyWlanGroupMember $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1290,7 +1290,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesWlansByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesWlansByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\WlanWlanList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\WlanWlanList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesWlansByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1308,7 +1308,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesWlansByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\WlanCreateStandardOpenWlan $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1326,7 +1326,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansStandard8021XByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansStandard8021XByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesWlansStandard8021XByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\WlanCreateStandard80211Wlan $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1344,7 +1344,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansStandardmacByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansStandardmacByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesWlansStandardmacByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\WlanCreateStandard80211Wlan $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1362,7 +1362,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansWisprByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansWisprByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesWlansWisprByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\WlanCreateHotspotWlan $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1380,7 +1380,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansWispr8021XByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansWispr8021XByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesWlansWispr8021XByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\WlanCreateHotspotWlan $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1398,7 +1398,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansWechatByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansWechatByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesWlansWechatByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\WlanCreateWechatWlan $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1416,7 +1416,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansGuestByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansGuestByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesWlansGuestByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\WlanCreateGuestAccessWlan $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1434,7 +1434,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansWebauthByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansWebauthByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesWlansWebauthByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\WlanCreateWebAuthWlan $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1452,7 +1452,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansHotspot20ByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansHotspot20ByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesWlansHotspot20ByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\WlanCreateHotspot20Wlan $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1470,7 +1470,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansHotspot20openByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansHotspot20openByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesWlansHotspot20openByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\WlanCreateHotspot20OpenWlan $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1488,7 +1488,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansHotspot20osenByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansHotspot20osenByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesWlansHotspot20osenByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\WlanCreateHotspot20OpenWlan $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1505,7 +1505,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlansFlexiVpnProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlansFlexiVpnProfileByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesWlansFlexiVpnProfileById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1523,7 +1523,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansStandard8021XmacByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansStandard8021XmacByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesWlansStandard8021XmacByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\WlanCreateStandard80211Wlan $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1541,7 +1541,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansWisprmacByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansWisprmacByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesWlansWisprmacByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\WlanCreateHotspotWlan $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1558,7 +1558,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlansByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlansByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesWlansById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1575,7 +1575,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesWlansByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesWlansByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\WlanWlanConfiguration|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\WlanWlanConfiguration : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesWlansById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1594,7 +1594,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesWlansByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesWlansByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesWlansById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\WlanModifyWlan $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1613,7 +1613,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesWlansByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesWlansByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesWlansById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\WlanModifyWlan $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1630,7 +1630,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlangroupsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlangroupsByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesWlangroupsById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1647,7 +1647,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesWlangroupsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesWlangroupsByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\WlangroupWlanGroup|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\WlangroupWlanGroup : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesWlangroupsById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1666,7 +1666,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesWlangroupsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesWlangroupsByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesWlangroupsById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\WlangroupModifyWlanGroup $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1684,7 +1684,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlangroupsMembersVlanOverrideByMemberIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlangroupsMembersVlanOverrideByMemberIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesWlangroupsMembersVlanOverrideByMemberId(string $zoneId, string $id, string $memberId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1702,7 +1702,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlangroupsMembersNasIdByMemberIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlangroupsMembersNasIdByMemberIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesWlangroupsMembersNasIdByMemberId(string $zoneId, string $id, string $memberId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1721,7 +1721,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlangroupsMembersByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlangroupsMembersByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesWlangroupsMembersById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\WlangroupWlanMember $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1737,7 +1737,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteFtpsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteFtpsInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteFtps(\Jane\Component\OpenApi3\Tests\Expected\Model\SystemDeleteBulkFtp $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1754,7 +1754,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddFtpsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddFtpsUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addFtps(\Jane\Component\OpenApi3\Tests\Expected\Model\SystemFtp $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1770,7 +1770,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindFtpsTestByFtpIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindFtpsTestByFtpIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemFtpTestResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemFtpTestResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function findFtpsTestByFtpId(string $ftpId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1786,7 +1786,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteFtpsByFtpIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteFtpsByFtpIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteFtpsByFtpId(string $ftpId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1802,7 +1802,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindFtpsByFtpIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindFtpsByFtpIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemFtp|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemFtp : \Psr\Http\Message\ResponseInterface)
      */
     public function findFtpsByFtpId(string $ftpId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1820,7 +1820,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateFtpsByFtpIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateFtpsByFtpIdUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateFtpsByFtpId(string $ftpId, \Jane\Component\OpenApi3\Tests\Expected\Model\SystemFtp $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1837,7 +1837,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindFtpsByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindFtpsByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemFtpList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemFtpList : \Psr\Http\Message\ResponseInterface)
      */
     public function findFtpsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1853,7 +1853,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindFtpsTestForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindFtpsTestInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemFtpTestResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemFtpTestResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function findFtpsTest(\Jane\Component\OpenApi3\Tests\Expected\Model\SystemFtp $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1870,7 +1870,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesTrafficClassProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesTrafficClassProfileByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesTrafficClassProfileById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1887,7 +1887,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesTrafficClassProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesTrafficClassProfileByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonTrafficClassProfileRef|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonTrafficClassProfileRef : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesTrafficClassProfileById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1906,7 +1906,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesTrafficClassProfileByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesTrafficClassProfileByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesTrafficClassProfileById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateTrafficClassProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1923,7 +1923,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesTrafficClassProfileByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesTrafficClassProfileByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesTrafficClassProfileByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1939,7 +1939,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesTrafficClassProfileByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesTrafficClassProfileByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileTrafficClassProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileTrafficClassProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesTrafficClassProfileByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1957,7 +1957,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesTrafficClassProfileByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesTrafficClassProfileByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesTrafficClassProfileByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateTrafficClassProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1975,7 +1975,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddBlockClientByZoneIdByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddBlockClientByZoneIdByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addBlockClientByZoneIdByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBlockClient $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1991,7 +1991,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteBlockClientByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteBlockClientByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteBlockClientById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2007,7 +2007,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindBlockClientByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindBlockClientByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBlockClient|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBlockClient : \Psr\Http\Message\ResponseInterface)
      */
     public function findBlockClientById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2025,7 +2025,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateBlockClientByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateBlockClientByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateBlockClientById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyBlockClient $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2043,7 +2043,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateBlockClientByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateBlockClientByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateBlockClientById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyBlockClient $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2059,7 +2059,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteBlockClientForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteBlockClientInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteBlockClient(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2076,7 +2076,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddBlockClientInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddBlockClientUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult[] : \Psr\Http\Message\ResponseInterface)
      */
     public function addBlockClient(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBulkBlockClient $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2094,7 +2094,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddBlockClientByApMacByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddBlockClientByApMacByApMacUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addBlockClientByApMacByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBlockClient $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2110,7 +2110,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindBlockClientByZoneByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindBlockClientByZoneByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBlockClientList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBlockClientList : \Psr\Http\Message\ResponseInterface)
      */
     public function findBlockClientByZoneByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2127,7 +2127,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindBlockClientByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindBlockClientByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBlockClientList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBlockClientList : \Psr\Http\Message\ResponseInterface)
      */
     public function findBlockClientByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2142,7 +2142,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUserGroupsRolesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUserGroupsRolesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserGroupRoleLabelValueList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserGroupRoleLabelValueList : \Psr\Http\Message\ResponseInterface)
      */
     public function findUserGroupsRoles(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2159,7 +2159,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUserGroupsRolesPermissionsByRoleForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUserGroupsRolesPermissionsByRoleInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserGroupPermissionList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserGroupPermissionList : \Psr\Http\Message\ResponseInterface)
      */
     public function findUserGroupsRolesPermissionsByRole(string $role, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2174,7 +2174,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUserGroupsCurrentUserPermissionCategoriesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUserGroupsCurrentUserPermissionCategoriesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserGroupPermissionList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserGroupPermissionList : \Psr\Http\Message\ResponseInterface)
      */
     public function findUserGroupsCurrentUserPermissionCategories(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2190,7 +2190,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteUserGroupsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteUserGroupsInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteUserGroups(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2207,7 +2207,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUserGroupsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUserGroupsUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserGroupAuditId|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserGroupAuditId : \Psr\Http\Message\ResponseInterface)
      */
     public function addUserGroups(\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserGroup $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2223,7 +2223,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteUserGroupsByUserGroupIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteUserGroupsByUserGroupIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserGroupAuditId|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserGroupAuditId : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteUserGroupsByUserGroupId(string $userGroupId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2240,7 +2240,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUserGroupsByUserGroupIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUserGroupsByUserGroupIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserGroup|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserGroup : \Psr\Http\Message\ResponseInterface)
      */
     public function findUserGroupsByUserGroupId(string $userGroupId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2258,7 +2258,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateUserGroupsByUserGroupIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateUserGroupsByUserGroupIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserGroupAuditId|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserGroupAuditId : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateUserGroupsByUserGroupId(string $userGroupId, \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserPatchScgUserGroup $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2275,7 +2275,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUserGroupsByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUserGroupsByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserGroupList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserGroupList : \Psr\Http\Message\ResponseInterface)
      */
     public function findUserGroupsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserQueryCriteria $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2291,7 +2291,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApSyslogServerProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApSyslogServerProfilesInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApSyslogServerProfiles(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2309,7 +2309,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApSyslogServerProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApSyslogServerProfilesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApSyslogServerProfileApSyslogServerProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApSyslogServerProfileApSyslogServerProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findApSyslogServerProfiles(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2326,7 +2326,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApSyslogServerProfilesInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApSyslogServerProfilesUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addApSyslogServerProfiles(\Jane\Component\OpenApi3\Tests\Expected\Model\ApSyslogServerProfileCreateApSyslogServerProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2342,7 +2342,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApSyslogServerProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApSyslogServerProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApSyslogServerProfilesById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2358,7 +2358,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApSyslogServerProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApSyslogServerProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApSyslogServerProfileApSyslogServerProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApSyslogServerProfileApSyslogServerProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findApSyslogServerProfilesById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2376,7 +2376,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateApSyslogServerProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateApSyslogServerProfilesByIdUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateApSyslogServerProfilesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ApSyslogServerProfileUpdateApSyslogServerProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2393,7 +2393,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceCommonAuthenticationServiceList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceCommonAuthenticationServiceList : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesAuthByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2409,7 +2409,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAuthByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAuthByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteServicesAuthById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2425,7 +2425,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAuthForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAuthInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteServicesAuth(\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceDeleteBulkAuthenticationService $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2441,7 +2441,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthLocalDbByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthLocalDbByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceCommonAuthenticationService|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceCommonAuthenticationService : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesAuthLocalDbById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2459,7 +2459,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateServicesAuthLocalDbByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateServicesAuthLocalDbByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateServicesAuthLocalDbById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceModifyLocalDbAuthentication $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2476,7 +2476,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthRadiusByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthRadiusByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceRadiusAuthenticationServiceList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceRadiusAuthenticationServiceList : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesAuthRadiusByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2491,7 +2491,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthRadiusForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthRadiusInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceRadiusAuthenticationServiceList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceRadiusAuthenticationServiceList : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesAuthRadius(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2508,7 +2508,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddServicesAuthRadiusInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddServicesAuthRadiusUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addServicesAuthRadius(\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceCreateRadiusAuthentication $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2524,7 +2524,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAuthRadiusByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAuthRadiusByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteServicesAuthRadiusById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2540,7 +2540,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthRadiusByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthRadiusByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceRadiusAuthenticationService|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceRadiusAuthenticationService : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesAuthRadiusById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2558,7 +2558,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateServicesAuthRadiusByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateServicesAuthRadiusByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateServicesAuthRadiusById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceModifyRadiusAuthentication $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2576,7 +2576,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateServicesAuthRadiusByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateServicesAuthRadiusByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateServicesAuthRadiusById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceModifyEntireRadiusAuthentication $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2592,7 +2592,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAuthRadiusSecondaryByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAuthRadiusSecondaryByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteServicesAuthRadiusSecondaryById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2608,7 +2608,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAuthRadiusStandbyPrimaryByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAuthRadiusStandbyPrimaryByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteServicesAuthRadiusStandbyPrimaryById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2625,7 +2625,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthAdByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthAdByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceActiveDirectoryServiceList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceActiveDirectoryServiceList : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesAuthAdByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2640,7 +2640,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthAdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthAdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceActiveDirectoryServiceList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceActiveDirectoryServiceList : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesAuthAd(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2657,7 +2657,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddServicesAuthAdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddServicesAuthAdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addServicesAuthAd(\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceCreateActiveDirectoryAuthentication $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2673,7 +2673,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAuthAdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAuthAdByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteServicesAuthAdById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2689,7 +2689,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthAdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthAdByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceActiveDirectoryService|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceActiveDirectoryService : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesAuthAdById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2707,7 +2707,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateServicesAuthAdByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateServicesAuthAdByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateServicesAuthAdById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceModifyActiveDirectoryAuthentication $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2723,7 +2723,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAcctRadiusStandbyPrimaryByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAcctRadiusStandbyPrimaryByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteServicesAcctRadiusStandbyPrimaryById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2738,7 +2738,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthLdapForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthLdapInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceLDAPServiceList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceLDAPServiceList : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesAuthLdap(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2755,7 +2755,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddServicesAuthLdapInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddServicesAuthLdapUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addServicesAuthLdap(\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceCreateLDAPAuthentication $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2771,7 +2771,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAuthLdapByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAuthLdapByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteServicesAuthLdapById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2787,7 +2787,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthLdapByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthLdapByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceLDAPService|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceLDAPService : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesAuthLdapById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2805,7 +2805,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateServicesAuthLdapByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateServicesAuthLdapByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateServicesAuthLdapById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceModifyLDAPAuthentication $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2821,7 +2821,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAcctByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAcctByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteServicesAcctById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2839,7 +2839,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddServicesAcctTestByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddServicesAcctTestByIdUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addServicesAcctTestById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceTestingConfig $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2854,7 +2854,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAcctRadiusForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAcctRadiusInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceRadiusAccountingServiceList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceRadiusAccountingServiceList : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesAcctRadius(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2871,7 +2871,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddServicesAcctRadiusInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddServicesAcctRadiusUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addServicesAcctRadius(\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceCreateRadiusAccounting $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2887,7 +2887,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAcctRadiusByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAcctRadiusByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteServicesAcctRadiusById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2903,7 +2903,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAcctRadiusByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAcctRadiusByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceRadiusAccountingService|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceRadiusAccountingService : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesAcctRadiusById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2921,7 +2921,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateServicesAcctRadiusByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateServicesAcctRadiusByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateServicesAcctRadiusById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceModifyRadiusAccounting $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2939,7 +2939,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateServicesAcctRadiusByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateServicesAcctRadiusByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateServicesAcctRadiusById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceModifyEntireRadiusAccounting $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2956,7 +2956,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthLdapByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthLdapByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceLDAPServiceList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceLDAPServiceList : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesAuthLdapByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2973,7 +2973,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAcctByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAcctByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceCommonAccountingServiceList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceCommonAccountingServiceList : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesAcctByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2989,7 +2989,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAcctForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAcctInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteServicesAcct(\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceDeleteBulkAccountingService $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3006,7 +3006,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAcctRadiusByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAcctRadiusByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceRadiusAccountingServiceList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceRadiusAccountingServiceList : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesAcctRadiusByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3022,7 +3022,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAcctRadiusSecondaryByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServicesAcctRadiusSecondaryByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteServicesAcctRadiusSecondaryById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3040,7 +3040,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddServicesAuthTestByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddServicesAuthTestByIdUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addServicesAuthTestById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceTestingConfig $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3056,7 +3056,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthGuestByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesAuthGuestByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceCommonAuthenticationService|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceCommonAuthenticationService : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesAuthGuestById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3073,7 +3073,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesBondPortProfilesByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesBondPortProfilesByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\BondPortBondPortProfileQuery|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\BondPortBondPortProfileQuery : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesBondPortProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3089,7 +3089,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesBondPortProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesBondPortProfilesInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesBondPortProfiles(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3105,7 +3105,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesProfileBondPortByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesProfileBondPortByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\BondPortBondPortProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\BondPortBondPortProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesProfileBondPortByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3123,7 +3123,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesProfileBondPortByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesProfileBondPortByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesProfileBondPortByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\BondPortCreateBondPortProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3140,7 +3140,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesProfileBondPortByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesProfileBondPortByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesProfileBondPortById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3157,7 +3157,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesProfileBondPortByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesProfileBondPortByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\BondPortBondPortProfileWithEditInfo|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\BondPortBondPortProfileWithEditInfo : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesProfileBondPortById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3176,7 +3176,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesProfileBondPortByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesProfileBondPortByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesProfileBondPortById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\BondPortModifyBondPortProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3192,7 +3192,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio24gByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio24gByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio24gByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3208,7 +3208,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio5gByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3224,7 +3224,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gLowerByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gLowerByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio5gLowerByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3240,7 +3240,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gUpperByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gUpperByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio5gUpperByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3256,7 +3256,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio6gByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio6gByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio6gByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3272,7 +3272,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio24gTxPowerByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio24gTxPowerByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio24gTxPowerByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3288,7 +3288,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gTxPowerByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gTxPowerByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio5gTxPowerByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3304,7 +3304,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gLowerTxPowerByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gLowerTxPowerByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio5gLowerTxPowerByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3320,7 +3320,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gUpperTxPowerByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gUpperTxPowerByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio5gUpperTxPowerByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3336,7 +3336,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio6gTxPowerByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio6gTxPowerByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio6gTxPowerByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3352,7 +3352,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio24gChannelWidthByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio24gChannelWidthByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio24gChannelWidthByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3368,7 +3368,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio24gChannelByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio24gChannelByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio24gChannelByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3384,7 +3384,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio24gChannelRangeByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio24gChannelRangeByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio24gChannelRangeByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3400,7 +3400,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gChannelWidthByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gChannelWidthByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio5gChannelWidthByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3416,7 +3416,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gLowerChannelWidthByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gLowerChannelWidthByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio5gLowerChannelWidthByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3432,7 +3432,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gUpperChannelWidthByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gUpperChannelWidthByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio5gUpperChannelWidthByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3448,7 +3448,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio6gChannelWidthByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio6gChannelWidthByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio6gChannelWidthByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3464,7 +3464,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gChannelByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gChannelByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio5gChannelByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3480,7 +3480,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gLowerChannelByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gLowerChannelByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio5gLowerChannelByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3496,7 +3496,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gUpperChannelByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gUpperChannelByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio5gUpperChannelByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3512,7 +3512,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio6gChannelByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio6gChannelByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio6gChannelByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3528,7 +3528,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gChannelRangeByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gChannelRangeByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio5gChannelRangeByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3544,7 +3544,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gLowerChannelRangeByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gLowerChannelRangeByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio5gLowerChannelRangeByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3560,7 +3560,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gUpperChannelRangeByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gUpperChannelRangeByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio5gUpperChannelRangeByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3576,7 +3576,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio6gChannelRangeByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio6gChannelRangeByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio6gChannelRangeByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3592,7 +3592,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio24gWlanGroupIdByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio24gWlanGroupIdByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio24gWlanGroupIdByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3608,7 +3608,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gWlanGroupIdByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gWlanGroupIdByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio5gWlanGroupIdByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3624,7 +3624,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gLowerWlanGroupIdByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gLowerWlanGroupIdByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio5gLowerWlanGroupIdByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3640,7 +3640,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gUpperWlanGroupIdByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gUpperWlanGroupIdByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio5gUpperWlanGroupIdByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3656,7 +3656,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio6gWlanGroupIdByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio6gWlanGroupIdByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio6gWlanGroupIdByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3672,7 +3672,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio6gBssMinRateByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio6gBssMinRateByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio6gBssMinRateByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3688,7 +3688,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio6gMgmtTxRateByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio6gMgmtTxRateByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio6gMgmtTxRateByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3704,7 +3704,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio6gMulticastUplinkRateLimitByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio6gMulticastUplinkRateLimitByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio6gMulticastUplinkRateLimitByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3720,7 +3720,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio6gMulticastDownlinkRateLimitByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio6gMulticastDownlinkRateLimitByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio6gMulticastDownlinkRateLimitByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3736,7 +3736,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio24gProtectionModeByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio24gProtectionModeByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio24gProtectionModeByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3752,7 +3752,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio24gAutoChannelSelectionByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio24gAutoChannelSelectionByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio24gAutoChannelSelectionByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3768,7 +3768,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gAutoChannelSelectionByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gAutoChannelSelectionByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio5gAutoChannelSelectionByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3784,7 +3784,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gLowerAutoChannelSelectionByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gLowerAutoChannelSelectionByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio5gLowerAutoChannelSelectionByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3800,7 +3800,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gUpperAutoChannelSelectionByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio5gUpperAutoChannelSelectionByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio5gUpperAutoChannelSelectionByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3816,7 +3816,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio6gAutoChannelSelectionByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRadioConfigRadio6gAutoChannelSelectionByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRadioConfigRadio6gAutoChannelSelectionByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3832,7 +3832,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsLoginByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsLoginByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsLoginByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3848,7 +3848,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsSyslogByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsSyslogByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsSyslogByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3864,7 +3864,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsChannelEvaluationIntervalByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsChannelEvaluationIntervalByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsChannelEvaluationIntervalByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3880,7 +3880,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsApMgmtVlanByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsApMgmtVlanByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsApMgmtVlanByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3896,7 +3896,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsAltitudeByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsAltitudeByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsAltitudeByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3912,7 +3912,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsLocationByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsLocationByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsLocationByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3928,7 +3928,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsLocationAdditionalInfoByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsLocationAdditionalInfoByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsLocationAdditionalInfoByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3944,7 +3944,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsSmartMonitorByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsSmartMonitorByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsSmartMonitorByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3960,7 +3960,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsBonjourGatewayByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsBonjourGatewayByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsBonjourGatewayByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3976,7 +3976,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsClientAdmissionControl24ByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsClientAdmissionControl24ByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsClientAdmissionControl24ByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3992,7 +3992,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsClientAdmissionControl50ByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsClientAdmissionControl50ByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsClientAdmissionControl50ByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4008,7 +4008,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsVenueProfileByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsVenueProfileByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsVenueProfileByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4024,7 +4024,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsMeshOptionsByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsMeshOptionsByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsMeshOptionsByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4040,7 +4040,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRecoverySsidByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRecoverySsidByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRecoverySsidByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4056,7 +4056,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsDirectedMulticastFromWiredClientEnabledByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsDirectedMulticastFromWiredClientEnabledByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsDirectedMulticastFromWiredClientEnabledByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4072,7 +4072,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsDirectedMulticastFromWirelessClientEnabledByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsDirectedMulticastFromWirelessClientEnabledByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsDirectedMulticastFromWirelessClientEnabledByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4088,7 +4088,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsDirectedMulticastFromNetworkEnabledByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsDirectedMulticastFromNetworkEnabledByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsDirectedMulticastFromNetworkEnabledByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4104,7 +4104,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRogueApReportThresholdByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRogueApReportThresholdByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRogueApReportThresholdByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4120,7 +4120,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRogueApAggressivenessModeByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRogueApAggressivenessModeByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRogueApAggressivenessModeByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4136,7 +4136,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRogueApJammingThresholdByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRogueApJammingThresholdByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRogueApJammingThresholdByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4152,7 +4152,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsLteBandLockChannelsByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsLteBandLockChannelsByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsLteBandLockChannelsByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4168,7 +4168,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRksGreForwardBroadcastByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsRksGreForwardBroadcastByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsRksGreForwardBroadcastByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4184,7 +4184,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsOperationalSummaryByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsOperationalSummaryByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApApOperationalSummary|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApApOperationalSummary : \Psr\Http\Message\ResponseInterface)
      */
     public function findApsOperationalSummaryByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4200,7 +4200,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsPictureByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsPictureByApMacInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsPictureByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4216,7 +4216,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsPictureByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsPictureByApMacInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findApsPictureByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4236,7 +4236,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsPictureByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsPictureByApMacUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addApsPictureByApMac(string $apMac, array $queryParameters = [], array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4256,7 +4256,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsLinemanForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsLinemanInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApApLinemanSummary|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApApLinemanSummary : \Psr\Http\Message\ResponseInterface)
      */
     public function findApsLineman(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4273,7 +4273,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsSwitchoverClusterInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsSwitchoverClusterUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addApsSwitchoverCluster(\Jane\Component\OpenApi3\Tests\Expected\Model\ApSwitchoverAP $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4289,7 +4289,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsGpsCoordinatesByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsGpsCoordinatesByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsGpsCoordinatesByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4305,7 +4305,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsSpecificByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsSpecificByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsSpecificByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4323,7 +4323,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateApsSpecificByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateApsSpecificByApMacUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateApsSpecificByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelApModel $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4339,7 +4339,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsSupportLogByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsSupportLogByApMacInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findApsSupportLogByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4356,7 +4356,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsOperationalBlinkLedByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsOperationalBlinkLedByApMacUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addApsOperationalBlinkLedByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4373,7 +4373,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApsByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApsByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4389,7 +4389,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApApConfiguration|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApApConfiguration : \Psr\Http\Message\ResponseInterface)
      */
     public function findApsByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4407,7 +4407,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateApsByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateApsByApMacUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateApsByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Model\ApModifyAP $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4425,7 +4425,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateApsByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateApsByApMacUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateApsByApMac(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Model\ApModifyAP $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4441,7 +4441,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsBonjourFencingStatisticByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsBonjourFencingStatisticByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBonjourFencingStatistic|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBonjourFencingStatistic : \Psr\Http\Message\ResponseInterface)
      */
     public function findApsBonjourFencingStatisticByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4457,7 +4457,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsOperationalClientTotalCountByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsOperationalClientTotalCountByApMacInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findApsOperationalClientTotalCountByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4475,7 +4475,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsOperationalNeighborByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsOperationalNeighborByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApNeighborAPList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApNeighborAPList : \Psr\Http\Message\ResponseInterface)
      */
     public function findApsOperationalNeighborByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4492,7 +4492,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsTotalCountForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsTotalCountInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findApsTotalCount(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4509,7 +4509,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateApsRebootByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateApsRebootByApMacUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateApsRebootByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4528,7 +4528,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApsInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApApListEntry|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApApListEntry : \Psr\Http\Message\ResponseInterface)
      */
     public function findAps(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4545,7 +4545,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addAps(\Jane\Component\OpenApi3\Tests\Expected\Model\ApCreateAP $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4562,7 +4562,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsMoveInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsMoveUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApMultipleMoveApMultipleMoveResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApMultipleMoveApMultipleMoveResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function addApsMove(\Jane\Component\OpenApi3\Tests\Expected\Model\ApMultipleMoveApMultipleMoveRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4579,7 +4579,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpNatProfilesDpNatPoolsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpNatProfilesDpNatPoolsByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteDpNatProfilesDpNatPoolsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileBulkDelete $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4595,7 +4595,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpNatProfilesDpNatPoolsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpNatProfilesDpNatPoolsByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfilePoolBOList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfilePoolBOList : \Psr\Http\Message\ResponseInterface)
      */
     public function findDpNatProfilesDpNatPoolsById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4613,7 +4613,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpNatProfilesDpNatPoolsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpNatProfilesDpNatPoolsByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfilePoolBO|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfilePoolBO : \Psr\Http\Message\ResponseInterface)
      */
     public function addDpNatProfilesDpNatPoolsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfilePoolBO $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4629,7 +4629,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpNatProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpNatProfilesInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteDpNatProfiles(\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileBulkDelete $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4644,7 +4644,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpNatProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpNatProfilesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfileBasicBOList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfileBasicBOList : \Psr\Http\Message\ResponseInterface)
      */
     public function findDpNatProfiles(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4661,7 +4661,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpNatProfilesInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpNatProfilesUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfileBasicBO|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfileBasicBO : \Psr\Http\Message\ResponseInterface)
      */
     public function addDpNatProfiles(\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfileBasicBO $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4677,7 +4677,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpNatProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpNatProfilesByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteDpNatProfilesById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4693,7 +4693,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpNatProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpNatProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfileBasicBO|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfileBasicBO : \Psr\Http\Message\ResponseInterface)
      */
     public function findDpNatProfilesById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4711,7 +4711,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpNatProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpNatProfilesByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfileBasicBO|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfileBasicBO : \Psr\Http\Message\ResponseInterface)
      */
     public function updateDpNatProfilesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfileBasicBO $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4728,7 +4728,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpNatProfilesDpNatPoolsByPoolIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpNatProfilesDpNatPoolsByPoolIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteDpNatProfilesDpNatPoolsByPoolId(string $id, string $poolId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4745,7 +4745,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpNatProfilesDpNatPoolsByPoolIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpNatProfilesDpNatPoolsByPoolIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfilePoolBO|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfilePoolBO : \Psr\Http\Message\ResponseInterface)
      */
     public function findDpNatProfilesDpNatPoolsByPoolId(string $id, string $poolId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4764,7 +4764,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpNatProfilesDpNatPoolsByPoolIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpNatProfilesDpNatPoolsByPoolIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfilePoolBO|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfilePoolBO : \Psr\Http\Message\ResponseInterface)
      */
     public function updateDpNatProfilesDpNatPoolsByPoolId(string $id, string $poolId, \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpNatProfilePoolBO $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4779,7 +4779,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindPlanesMulticastForwardingSettingForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindPlanesMulticastForwardingSettingInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\MulticastForwardingSetting|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\MulticastForwardingSetting : \Psr\Http\Message\ResponseInterface)
      */
     public function findPlanesMulticastForwardingSetting(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4796,7 +4796,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdatePlanesMulticastForwardingSettingInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdatePlanesMulticastForwardingSettingUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdatePlanesMulticastForwardingSetting(\Jane\Component\OpenApi3\Tests\Expected\Model\MulticastForwardingSetting $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4812,7 +4812,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesEventEmailSettingsByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesEventEmailSettingsByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\EventManagementEventEmailSetting|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\EventManagementEventEmailSetting : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesEventEmailSettingsByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4830,7 +4830,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesEventEmailSettingsByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesEventEmailSettingsByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesEventEmailSettingsByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\EventManagementEventEmailSetting $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4846,7 +4846,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesEventNotificationSettingsByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesEventNotificationSettingsByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\EventManagementEventDataResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\EventManagementEventDataResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesEventNotificationSettingsByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4864,7 +4864,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesEventNotificationSettingsByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesEventNotificationSettingsByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesEventNotificationSettingsByZoneId(string $zoneId, array $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4881,7 +4881,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddGdprReportInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddGdprReportUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addGdprReport(\Jane\Component\OpenApi3\Tests\Expected\Model\GdprReport $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4898,7 +4898,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSmsGatewayByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSmsGatewayByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemSmsList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemSmsList : \Psr\Http\Message\ResponseInterface)
      */
     public function findSmsGatewayByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4914,7 +4914,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSmsGatewayForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSmsGatewayInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemSms|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemSms : \Psr\Http\Message\ResponseInterface)
      */
     public function findSmsGateway(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4931,7 +4931,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSmsGatewayInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSmsGatewayUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateSmsGateway(\Jane\Component\OpenApi3\Tests\Expected\Model\SystemSms $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4947,7 +4947,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesHs20OperatorsCertificateByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesHs20OperatorsCertificateByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesHs20OperatorsCertificateById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4963,7 +4963,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesHs20IdentityprovidersAccountingsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesHs20IdentityprovidersAccountingsByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesHs20IdentityprovidersAccountingsById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4979,7 +4979,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesHs20IdentityprovidersOsuByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesHs20IdentityprovidersOsuByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesHs20IdentityprovidersOsuById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4995,7 +4995,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesHs20OperatorsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesHs20OperatorsInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesHs20Operators(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5012,7 +5012,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesHs20OperatorsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesHs20OperatorsInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20OperatorList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20OperatorList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesHs20Operators(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5029,7 +5029,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesHs20OperatorsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesHs20OperatorsUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addProfilesHs20Operators(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20Operator $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5046,7 +5046,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesHs20OperatorsByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesHs20OperatorsByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20OperatorList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20OperatorList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesHs20OperatorsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5062,7 +5062,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesHs20OperatorsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesHs20OperatorsByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesHs20OperatorsById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5078,7 +5078,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesHs20OperatorsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesHs20OperatorsByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20Operator|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20Operator : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesHs20OperatorsById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5096,7 +5096,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesHs20OperatorsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesHs20OperatorsByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateProfilesHs20OperatorsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyHS20Operator $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5114,7 +5114,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateProfilesHs20OperatorsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateProfilesHs20OperatorsByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateProfilesHs20OperatorsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20Operator $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5130,7 +5130,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesHs20IdentityprovidersForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesHs20IdentityprovidersInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesHs20Identityproviders(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5147,7 +5147,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesHs20IdentityprovidersForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesHs20IdentityprovidersInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20ProviderList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20ProviderList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesHs20Identityproviders(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5164,7 +5164,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesHs20IdentityprovidersInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesHs20IdentityprovidersUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addProfilesHs20Identityproviders(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20Provider $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5181,7 +5181,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesHs20IdentityprovidersByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesHs20IdentityprovidersByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20ProviderList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20ProviderList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesHs20IdentityprovidersByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5197,7 +5197,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesHs20IdentityprovidersByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesHs20IdentityprovidersByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesHs20IdentityprovidersById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5213,7 +5213,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesHs20IdentityprovidersByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesHs20IdentityprovidersByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20Provider|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20Provider : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesHs20IdentityprovidersById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5231,7 +5231,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesHs20IdentityprovidersByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesHs20IdentityprovidersByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateProfilesHs20IdentityprovidersById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileHs20Provider $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5248,7 +5248,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesTunnelIpsecByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesTunnelIpsecByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileIpsecProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileIpsecProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesTunnelIpsecByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5264,7 +5264,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesTunnelIpsecForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesTunnelIpsecInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesTunnelIpsec(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5281,7 +5281,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesTunnelIpsecForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesTunnelIpsecInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesTunnelIpsec(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5298,7 +5298,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesTunnelIpsecInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesTunnelIpsecUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addProfilesTunnelIpsec(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateIpsecProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5314,7 +5314,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesTunnelIpsecByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesTunnelIpsecByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesTunnelIpsecById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5330,7 +5330,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesTunnelIpsecByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesTunnelIpsecByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileIpsecProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileIpsecProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesTunnelIpsecById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5348,7 +5348,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesTunnelIpsecByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesTunnelIpsecByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateProfilesTunnelIpsecById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyIpsecProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5364,7 +5364,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesUtpForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesUtpInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesUtp(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDeleteBulkUserTrafficProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5381,7 +5381,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesUtpForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesUtpInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesUtp(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5398,7 +5398,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesUtpInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesUtpUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addProfilesUtp(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateUserTrafficProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5414,7 +5414,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesUtpByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesUtpByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesUtpById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5430,7 +5430,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesUtpByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesUtpByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileUserTrafficProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileUserTrafficProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesUtpById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5448,7 +5448,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesUtpByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesUtpByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateProfilesUtpById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyUserTrafficProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5466,7 +5466,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesUtpCloneByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesUtpCloneByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileClone|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileClone : \Psr\Http\Message\ResponseInterface)
      */
     public function addProfilesUtpCloneById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileClone $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5483,7 +5483,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesVdpForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesVdpInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesVdp(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5499,7 +5499,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesVdpByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesVdpByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesVdpById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5515,7 +5515,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesVdpByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesVdpByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileVdpProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileVdpProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesVdpById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5532,7 +5532,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateProfilesVdpApproveByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateProfilesVdpApproveByIdUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateProfilesVdpApproveById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5548,7 +5548,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesDnsserverForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesDnsserverInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesDnsserver(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5565,7 +5565,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesDnsserverForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesDnsserverInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDnsServerProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDnsServerProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesDnsserver(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5582,7 +5582,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesDnsserverInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesDnsserverUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addProfilesDnsserver(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateDnsServerProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5598,7 +5598,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesDnsserverByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesDnsserverByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesDnsserverById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5614,7 +5614,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesDnsserverByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesDnsserverByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDnsServerProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDnsServerProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesDnsserverById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5632,7 +5632,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesDnsserverByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesDnsserverByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateProfilesDnsserverById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyDnsServerProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5650,7 +5650,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesDnsserverCloneByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesDnsserverCloneByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileClone|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileClone : \Psr\Http\Message\ResponseInterface)
      */
     public function addProfilesDnsserverCloneById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileClone $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5667,7 +5667,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesUtpByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesUtpByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileUserTrafficProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileUserTrafficProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesUtpByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5683,7 +5683,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesUtpUplinkRateLimitingByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesUtpUplinkRateLimitingByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesUtpUplinkRateLimitingById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5699,7 +5699,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesUtpDownlinkRateLimitingByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesUtpDownlinkRateLimitingByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesUtpDownlinkRateLimitingById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5716,7 +5716,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesDnsserverByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesDnsserverByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDnsServerProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDnsServerProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesDnsserverByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5733,7 +5733,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesAuthByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesAuthByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileAuthenticationProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileAuthenticationProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesAuthByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5749,7 +5749,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesAuthForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesAuthInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesAuth(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDeleteBulkAuthenticationProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5764,7 +5764,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesAuthForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesAuthInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileAuthenticationProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileAuthenticationProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesAuth(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5781,7 +5781,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesAuthInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesAuthUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addProfilesAuth(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateAuthenticationProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5797,7 +5797,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesAuthByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesAuthByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesAuthById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5813,7 +5813,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesAuthByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesAuthByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileAuthenticationProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileAuthenticationProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesAuthById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5831,7 +5831,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesAuthByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesAuthByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateProfilesAuthById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyAuthenticationProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5849,7 +5849,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesAuthCloneByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesAuthCloneByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileClone|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileClone : \Psr\Http\Message\ResponseInterface)
      */
     public function addProfilesAuthCloneById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileClone $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5866,7 +5866,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesAcctByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesAcctByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileAccountingProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileAccountingProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesAcctByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileQueryCriteriaWithProfileId $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5882,7 +5882,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesAcctForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesAcctInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesAcct(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDeleteBulkAccountingProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5897,7 +5897,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesAcctForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesAcctInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileAccountingProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileAccountingProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesAcct(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5914,7 +5914,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesAcctInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesAcctUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addProfilesAcct(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateAccountingProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5929,7 +5929,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesTunnelL3RoamingForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesTunnelL3RoamingInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileGetL3RoamingConfig|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileGetL3RoamingConfig : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesTunnelL3Roaming(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5946,7 +5946,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesTunnelL3RoamingInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesTunnelL3RoamingUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateProfilesTunnelL3Roaming(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileUpdateL3RoamingConfig $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5962,7 +5962,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesBridgeForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesBridgeInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesBridge(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5977,7 +5977,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesBridgeForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesBridgeInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesBridge(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5994,7 +5994,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesBridgeInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesBridgeUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addProfilesBridge(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateBridgeProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6011,7 +6011,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesBridgeByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesBridgeByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBridgeProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBridgeProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesBridgeByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6027,7 +6027,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesBridgeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesBridgeByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesBridgeById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6043,7 +6043,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesBridgeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesBridgeByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBridgeProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBridgeProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesBridgeById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6061,7 +6061,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesBridgeByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesBridgeByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateProfilesBridgeById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyBridgeProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6078,7 +6078,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesLbsByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesLbsByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileLbsProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileLbsProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesLbsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileQueryCriteriaWithProfileId $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6094,7 +6094,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesLbsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesLbsInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesLbs(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6111,7 +6111,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesLbsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesLbsUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addProfilesLbs(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileLbsProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6127,7 +6127,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesLbsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesLbsByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesLbsById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6143,7 +6143,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesLbsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesLbsByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileLbsProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileLbsProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesLbsById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6161,7 +6161,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesLbsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesLbsByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateProfilesLbsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileLbsProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6177,7 +6177,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesDpGroupByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesDpGroupByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesDpGroupById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6193,7 +6193,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesDpGroupByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesDpGroupByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileReturnDPGroup|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileReturnDPGroup : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesDpGroupById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6211,7 +6211,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesDpGroupByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesDpGroupByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateProfilesDpGroupById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyDPGroup $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6227,7 +6227,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesDpGroupForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesDpGroupInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDpGroupList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDpGroupList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesDpGroup(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6244,7 +6244,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesDpGroupInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesDpGroupUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addProfilesDpGroup(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateDPGroup $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6260,7 +6260,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesAcctByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesAcctByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesAcctById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6276,7 +6276,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesAcctByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesAcctByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileAccountingProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileAccountingProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesAcctById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6294,7 +6294,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesAcctByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesAcctByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateProfilesAcctById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyAccountingProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6312,7 +6312,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesAcctCloneByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesAcctCloneByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileClone|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileClone : \Psr\Http\Message\ResponseInterface)
      */
     public function addProfilesAcctCloneById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileClone $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6328,7 +6328,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesL2ogreForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesL2ogreInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesL2ogre(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6343,7 +6343,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesL2ogreForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesL2ogreInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesL2ogre(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6360,7 +6360,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesL2ogreInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesL2ogreUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addProfilesL2ogre(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateL2oGREProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6377,7 +6377,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesL2ogreByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesL2ogreByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileL2oGREProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileL2oGREProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesL2ogreByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6393,7 +6393,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesL2ogreByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesL2ogreByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesL2ogreById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6409,7 +6409,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesL2ogreByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesL2ogreByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileL2oGREProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileL2oGREProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesL2ogreById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6427,7 +6427,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesL2ogreByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesL2ogreByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateProfilesL2ogreById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyL2oGREProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6443,7 +6443,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesTunnelRuckusgreForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesTunnelRuckusgreInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesTunnelRuckusgre(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6458,7 +6458,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesTunnelRuckusgreForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesTunnelRuckusgreInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesTunnelRuckusgre(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6475,7 +6475,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesTunnelRuckusgreInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesTunnelRuckusgreUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addProfilesTunnelRuckusgre(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateRuckusGREProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6491,7 +6491,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesTunnelRuckusgreByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesTunnelRuckusgreByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesTunnelRuckusgreById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6507,7 +6507,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesTunnelRuckusgreByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesTunnelRuckusgreByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileRuckusGREProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileRuckusGREProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesTunnelRuckusgreById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6525,7 +6525,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesTunnelRuckusgreByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesTunnelRuckusgreByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateProfilesTunnelRuckusgreById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyRuckusGREProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6542,7 +6542,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesTunnelRuckusgreByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesTunnelRuckusgreByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileRuckusGREProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileRuckusGREProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesTunnelRuckusgreByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6558,7 +6558,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesTunnelSoftgreForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesTunnelSoftgreInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesTunnelSoftgre(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6573,7 +6573,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesTunnelSoftgreForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesTunnelSoftgreInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesTunnelSoftgre(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6590,7 +6590,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesTunnelSoftgreInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddProfilesTunnelSoftgreUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addProfilesTunnelSoftgre(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateSoftGREProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6606,7 +6606,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesTunnelSoftgreByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteProfilesTunnelSoftgreByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteProfilesTunnelSoftgreById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6622,7 +6622,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesTunnelSoftgreByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesTunnelSoftgreByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileSoftGREProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileSoftGREProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesTunnelSoftgreById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6640,7 +6640,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesTunnelSoftgreByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesTunnelSoftgreByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateProfilesTunnelSoftgreById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifySoftGREProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6657,7 +6657,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesTunnelSoftgreByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesTunnelSoftgreByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileSoftGREProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileSoftGREProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesTunnelSoftgreByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6674,7 +6674,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesAuthAuthServiceListByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesAuthAuthServiceListByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBaseServiceInfoList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBaseServiceInfoList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesAuthAuthServiceListByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6690,7 +6690,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesAuthAuthorizationListForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindProfilesAuthAuthorizationListInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBaseServiceInfoList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBaseServiceInfoList : \Psr\Http\Message\ResponseInterface)
      */
     public function findProfilesAuthAuthorizationList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6707,7 +6707,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesVendorSpecificAttributeProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesVendorSpecificAttributeProfilesByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\VendorSpecificAttributeProfileEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\VendorSpecificAttributeProfileEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesVendorSpecificAttributeProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\VendorSpecificAttributeProfileDeleteBulk $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6723,7 +6723,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesVendorSpecificAttributeProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesVendorSpecificAttributeProfilesByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\VendorSpecificAttributeProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\VendorSpecificAttributeProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesVendorSpecificAttributeProfilesByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6741,7 +6741,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesVendorSpecificAttributeProfilesByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\VendorSpecificAttributeProfileCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\VendorSpecificAttributeProfileCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesVendorSpecificAttributeProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\VendorSpecificAttributeProfilePersist $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6758,7 +6758,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesVendorSpecificAttributeProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesVendorSpecificAttributeProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\VendorSpecificAttributeProfileEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\VendorSpecificAttributeProfileEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesVendorSpecificAttributeProfilesById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6775,7 +6775,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesVendorSpecificAttributeProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesVendorSpecificAttributeProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\VendorSpecificAttributeProfileGet|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\VendorSpecificAttributeProfileGet : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesVendorSpecificAttributeProfilesById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6794,7 +6794,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesVendorSpecificAttributeProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesVendorSpecificAttributeProfilesByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\VendorSpecificAttributeProfileEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\VendorSpecificAttributeProfileEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesVendorSpecificAttributeProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\VendorSpecificAttributeProfilePersist $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6811,7 +6811,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesVendorSpecificAttributeProfilesByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesVendorSpecificAttributeProfilesByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\VendorSpecificAttributeProfileQueryCriteriaResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\VendorSpecificAttributeProfileQueryCriteriaResult : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesVendorSpecificAttributeProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6828,7 +6828,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddNorthboundDataStreamingProfileInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddNorthboundDataStreamingProfileUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addNorthboundDataStreamingProfile(\Jane\Component\OpenApi3\Tests\Expected\Model\NorthboundDataStreamingCreateNorthboundDataStreamingProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6843,7 +6843,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindNorthboundDataStreamingEventCodesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindNorthboundDataStreamingEventCodesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\NorthboundDataStreamingNorthboundDataStreamingEventCodes|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\NorthboundDataStreamingNorthboundDataStreamingEventCodes : \Psr\Http\Message\ResponseInterface)
      */
     public function findNorthboundDataStreamingEventCodes(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6860,7 +6860,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateNorthboundDataStreamingEventCodesInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateNorthboundDataStreamingEventCodesUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateNorthboundDataStreamingEventCodes(\Jane\Component\OpenApi3\Tests\Expected\Model\NorthboundDataStreamingModifyNorthboundDataStreamingEventCodes $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6877,7 +6877,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateNorthboundDataStreamingSettingsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateNorthboundDataStreamingSettingsUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateNorthboundDataStreamingSettings(\Jane\Component\OpenApi3\Tests\Expected\Model\NorthboundDataStreamingNorthboundDataStreamingSettings $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6893,7 +6893,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteNorthboundDataStreamingProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteNorthboundDataStreamingProfileByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteNorthboundDataStreamingProfileById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6909,7 +6909,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindNorthboundDataStreamingProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindNorthboundDataStreamingProfileByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\NorthboundDataStreamingNorthboundDataStreamingProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\NorthboundDataStreamingNorthboundDataStreamingProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findNorthboundDataStreamingProfileById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6927,7 +6927,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateNorthboundDataStreamingProfileByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateNorthboundDataStreamingProfileByIdUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateNorthboundDataStreamingProfileById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\NorthboundDataStreamingModifyNorthboundDataStreamingProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6942,7 +6942,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindNorthboundDataStreamingProfileListForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindNorthboundDataStreamingProfileListInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\NorthboundDataStreamingNorthboundDataStreamingProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\NorthboundDataStreamingNorthboundDataStreamingProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findNorthboundDataStreamingProfileList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6958,7 +6958,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteWifiCallingWifiCallingPolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteWifiCallingWifiCallingPolicyByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteWifiCallingWifiCallingPolicyById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6974,7 +6974,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindWifiCallingWifiCallingPolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindWifiCallingWifiCallingPolicyByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\WifiCallingWifiCallingPolicy|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\WifiCallingWifiCallingPolicy : \Psr\Http\Message\ResponseInterface)
      */
     public function findWifiCallingWifiCallingPolicyById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6992,7 +6992,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateWifiCallingWifiCallingPolicyByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateWifiCallingWifiCallingPolicyByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateWifiCallingWifiCallingPolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\WifiCallingModifyWifiCallingPolicy $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7010,7 +7010,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateWifiCallingWifiCallingPolicyByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateWifiCallingWifiCallingPolicyByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateWifiCallingWifiCallingPolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\WifiCallingModifyWifiCallingPolicy $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7026,7 +7026,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteWifiCallingWifiCallingPolicyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteWifiCallingWifiCallingPolicyInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteWifiCallingWifiCallingPolicy(\Jane\Component\OpenApi3\Tests\Expected\Model\WifiCallingDeleteBulk $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7044,7 +7044,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindWifiCallingWifiCallingPolicyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindWifiCallingWifiCallingPolicyInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\WifiCallingWifiCallingPolicyList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\WifiCallingWifiCallingPolicyList : \Psr\Http\Message\ResponseInterface)
      */
     public function findWifiCallingWifiCallingPolicy(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7061,7 +7061,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddWifiCallingWifiCallingPolicyInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddWifiCallingWifiCallingPolicyUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addWifiCallingWifiCallingPolicy(\Jane\Component\OpenApi3\Tests\Expected\Model\WifiCallingCreateWifiCallingPolicy $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7078,7 +7078,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindWifiCallingByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindWifiCallingByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\WifiCallingWifiCallingPolicyList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\WifiCallingWifiCallingPolicyList : \Psr\Http\Message\ResponseInterface)
      */
     public function findWifiCallingByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7094,7 +7094,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDhcpDataDhcpPoolsByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDhcpDataDhcpPoolsByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DhcppoolsDhcpPools|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DhcppoolsDhcpPools : \Psr\Http\Message\ResponseInterface)
      */
     public function findDhcpDataDhcpPoolsByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7111,7 +7111,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDhcpDataDhcpPoolsByPoolIndexForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDhcpDataDhcpPoolsByPoolIndexInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DhcppoolsDhcpPoolInfo|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DhcppoolsDhcpPoolInfo : \Psr\Http\Message\ResponseInterface)
      */
     public function findDhcpDataDhcpPoolsByPoolIndex(string $apMac, string $poolIndex, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7127,7 +7127,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDhcpDataDhcpMsgStatsByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDhcpDataDhcpMsgStatsByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DhcpMsgStatsDhcpMsgStats|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DhcpMsgStatsDhcpMsgStats : \Psr\Http\Message\ResponseInterface)
      */
     public function findDhcpDataDhcpMsgStatsByApMac(string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7142,7 +7142,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindLinemanWorkflowForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindLinemanWorkflowInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findLinemanWorkflow(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7161,7 +7161,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateLinemanWorkflowInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateLinemanWorkflowUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateLinemanWorkflow(array $queryParameters = [], array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7178,7 +7178,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio24gById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7195,7 +7195,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7212,7 +7212,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gLowerById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7229,7 +7229,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gUpperById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7246,7 +7246,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio6gById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7263,7 +7263,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gTxPowerByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gTxPowerByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio24gTxPowerById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7280,7 +7280,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gTxPowerByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gTxPowerByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gTxPowerById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7297,7 +7297,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerTxPowerByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerTxPowerByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gLowerTxPowerById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7314,7 +7314,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperTxPowerByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperTxPowerByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gUpperTxPowerById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7331,7 +7331,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gTxPowerByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gTxPowerByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio6gTxPowerById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7348,7 +7348,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gChannelWidthByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gChannelWidthByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio24gChannelWidthById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7365,7 +7365,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gChannelByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gChannelByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio24gChannelById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7382,7 +7382,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gChannelRangeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gChannelRangeByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio24gChannelRangeById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7399,7 +7399,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelWidthByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelWidthByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gChannelWidthById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7416,7 +7416,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelIndoorByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelIndoorByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gChannelIndoorById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7433,7 +7433,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gChannelById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7450,7 +7450,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelRangeIndoorByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelRangeIndoorByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gChannelRangeIndoorById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7467,7 +7467,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelRangeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gChannelRangeByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gChannelRangeById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7484,7 +7484,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelWidthByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelWidthByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gLowerChannelWidthById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7501,7 +7501,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelIndoorByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelIndoorByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gLowerChannelIndoorById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7518,7 +7518,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gLowerChannelById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7535,7 +7535,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelRangeIndoorByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelRangeIndoorByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gLowerChannelRangeIndoorById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7552,7 +7552,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelRangeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerChannelRangeByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gLowerChannelRangeById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7569,7 +7569,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelWidthByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelWidthByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gUpperChannelWidthById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7586,7 +7586,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelIndoorByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelIndoorByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gUpperChannelIndoorById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7603,7 +7603,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gUpperChannelById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7620,7 +7620,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelRangeIndoorByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelRangeIndoorByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gUpperChannelRangeIndoorById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7637,7 +7637,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelRangeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperChannelRangeByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gUpperChannelRangeById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7654,7 +7654,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gChannelWidthByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gChannelWidthByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio6gChannelWidthById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7671,7 +7671,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gChannelByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gChannelByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio6gChannelById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7688,7 +7688,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gChannelRangeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gChannelRangeByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio6gChannelRangeById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7705,7 +7705,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gWlanGroupIdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gWlanGroupIdByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio24gWlanGroupIdById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7722,7 +7722,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gWlanGroupIdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gWlanGroupIdByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gWlanGroupIdById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7739,7 +7739,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerWlanGroupIdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerWlanGroupIdByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gLowerWlanGroupIdById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7756,7 +7756,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperWlanGroupIdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperWlanGroupIdByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gUpperWlanGroupIdById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7773,7 +7773,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gWlanGroupIdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gWlanGroupIdByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio6gWlanGroupIdById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7790,7 +7790,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gBssMinRateByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gBssMinRateByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio6gBssMinRateById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7807,7 +7807,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gMgmtTxRateByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gMgmtTxRateByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio6gMgmtTxRateById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7824,7 +7824,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gMulticastUplinkRateLimitByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gMulticastUplinkRateLimitByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio6gMulticastUplinkRateLimitById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7841,7 +7841,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gMulticastDownlinkRateLimitByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gMulticastDownlinkRateLimitByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio6gMulticastDownlinkRateLimitById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7858,7 +7858,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gProtectionModeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gProtectionModeByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio24gProtectionModeById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7875,7 +7875,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gAutoChannelSelectionByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio24gAutoChannelSelectionByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio24gAutoChannelSelectionById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7892,7 +7892,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gAutoChannelSelectionByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gAutoChannelSelectionByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gAutoChannelSelectionById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7909,7 +7909,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerAutoChannelSelectionByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gLowerAutoChannelSelectionByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gLowerAutoChannelSelectionById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7926,7 +7926,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperAutoChannelSelectionByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio5gUpperAutoChannelSelectionByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio5gUpperAutoChannelSelectionById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7943,7 +7943,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gAutoChannelSelectionByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRadioConfigRadio6gAutoChannelSelectionByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRadioConfigRadio6gAutoChannelSelectionById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7960,7 +7960,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRecoverySsidByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRecoverySsidByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRecoverySsidById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7977,7 +7977,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsDirectedMulticastFromWiredClientEnabledByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsDirectedMulticastFromWiredClientEnabledByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsDirectedMulticastFromWiredClientEnabledById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7994,7 +7994,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsDirectedMulticastFromWirelessClientEnabledByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsDirectedMulticastFromWirelessClientEnabledByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsDirectedMulticastFromWirelessClientEnabledById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8011,7 +8011,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsDirectedMulticastFromNetworkEnabledByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsDirectedMulticastFromNetworkEnabledByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsDirectedMulticastFromNetworkEnabledById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8028,7 +8028,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRogueApReportThresholdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRogueApReportThresholdByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRogueApReportThresholdById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8045,7 +8045,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRogueApAggressivenessModeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRogueApAggressivenessModeByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRogueApAggressivenessModeById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8062,7 +8062,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRogueApJammingThresholdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRogueApJammingThresholdByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRogueApJammingThresholdById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8079,7 +8079,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsLteBandLockChannelsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsLteBandLockChannelsByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsLteBandLockChannelsById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8096,7 +8096,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRksGreForwardBroadcastByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsRksGreForwardBroadcastByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsRksGreForwardBroadcastById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8113,7 +8113,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsAwsVenueByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsAwsVenueByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsAwsVenueById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8131,7 +8131,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsApmodelByModelForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsApmodelByModelInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsApmodelByModel(string $zoneId, string $id, string $model, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8149,7 +8149,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesApgroupsApmodelByModelForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesApgroupsApmodelByModelInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneApmodelApModel|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneApmodelApModel : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesApgroupsApmodelByModel(string $zoneId, string $id, string $model, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8169,7 +8169,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesApgroupsApmodelByModelInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesApgroupsApmodelByModelUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesApgroupsApmodelByModel(string $zoneId, string $id, string $model, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneApmodelApModel $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8186,7 +8186,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8203,7 +8203,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesApgroupsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesApgroupsByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApgroupApGroupConfiguration|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApgroupApGroupConfiguration : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesApgroupsById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8222,7 +8222,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesApgroupsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesApgroupsByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesApgroupsById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ApgroupModifyAPGroup $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8241,7 +8241,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesApgroupsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesApgroupsByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesApgroupsById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ApgroupModifyAPGroup $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8258,7 +8258,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsLocationByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsLocationByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsLocationById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8275,7 +8275,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsLocationAdditionalInfoByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsLocationAdditionalInfoByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsLocationAdditionalInfoById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8292,7 +8292,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsLocationBasedServiceByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsLocationBasedServiceByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsLocationBasedServiceById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8309,7 +8309,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsClientAdmissionControl24ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsClientAdmissionControl24ByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsClientAdmissionControl24ById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8326,7 +8326,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsClientAdmissionControl50ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsClientAdmissionControl50ByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsClientAdmissionControl50ById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8343,7 +8343,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsVenueProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsVenueProfileByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsVenueProfileById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8360,7 +8360,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsChannelEvaluationIntervalByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsChannelEvaluationIntervalByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsChannelEvaluationIntervalById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8377,7 +8377,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsApMgmtVlanByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsApMgmtVlanByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsApMgmtVlanById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8394,7 +8394,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsAltitudeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsAltitudeByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsAltitudeById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8412,7 +8412,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsMembersByApMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsMembersByApMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsMembersByApMac(string $zoneId, string $id, string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8431,7 +8431,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesApgroupsMembersByApMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesApgroupsMembersByApMacUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesApgroupsMembersByApMac(string $zoneId, string $id, string $apMac, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8448,7 +8448,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsProtectionMode24ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesApgroupsProtectionMode24ByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesApgroupsProtectionMode24ById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8467,7 +8467,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesApgroupsMembersByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesApgroupsMembersByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesApgroupsMembersById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ApgroupAddMembers $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8485,7 +8485,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesApgroupsByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesApgroupsByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApgroupApGroupList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApgroupApGroupList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesApgroupsByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8503,7 +8503,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesApgroupsByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesApgroupsByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesApgroupsByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\ApgroupCreateAPGroup $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8519,7 +8519,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesApgroupsDefaultByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesApgroupsDefaultByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApgroupApGroupConfiguration|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApgroupApGroupConfiguration : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesApgroupsDefaultByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8535,7 +8535,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteIdentityUserroleForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteIdentityUserroleInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteIdentityUserrole(\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityDeleteBulk $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8550,7 +8550,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindIdentityUserroleForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindIdentityUserroleInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityIdentityList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityIdentityList : \Psr\Http\Message\ResponseInterface)
      */
     public function findIdentityUserrole(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8567,7 +8567,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddIdentityUserroleInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddIdentityUserroleUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addIdentityUserrole(\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityCreateIdentityUserRole $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8583,7 +8583,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteIdentityUserroleByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteIdentityUserroleByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteIdentityUserroleById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8599,7 +8599,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindIdentityUserroleByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindIdentityUserroleByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityIdentityUserRole|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityIdentityUserRole : \Psr\Http\Message\ResponseInterface)
      */
     public function findIdentityUserroleById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8617,7 +8617,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateIdentityUserroleByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateIdentityUserroleByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateIdentityUserroleById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityModifyIdentityUserRole $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8633,7 +8633,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteIdentityUsersForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteIdentityUsersInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteIdentityUsers(\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityDeleteBulk $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8662,7 +8662,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindIdentityUsersForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindIdentityUsersInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityUserList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityUserList : \Psr\Http\Message\ResponseInterface)
      */
     public function findIdentityUsers(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8679,7 +8679,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddIdentityUsersInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddIdentityUsersUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addIdentityUsers(\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityCreateUser $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8695,7 +8695,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteIdentityUsersByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteIdentityUsersByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteIdentityUsersById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8711,7 +8711,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindIdentityUsersByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindIdentityUsersByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityUserConfiguration|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityUserConfiguration : \Psr\Http\Message\ResponseInterface)
      */
     public function findIdentityUsersById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8729,7 +8729,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateIdentityUsersByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateIdentityUsersByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateIdentityUsersById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityModifyUser $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8746,7 +8746,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddIdentityGuestpassUploadCommonInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddIdentityGuestpassUploadCommonUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addIdentityGuestpassUploadCommon(\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityImportIdentityGuestPass $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8762,7 +8762,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteIdentityGuestpassForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteIdentityGuestpassInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteIdentityGuestpass(\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityDeleteBulk $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8786,7 +8786,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindIdentityGuestpassForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindIdentityGuestpassInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityIdentityGuestPassList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityIdentityGuestPassList : \Psr\Http\Message\ResponseInterface)
      */
     public function findIdentityGuestpass(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8802,7 +8802,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteIdentityGuestpassByUserIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteIdentityGuestpassByUserIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteIdentityGuestpassByUserId(string $userId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8820,7 +8820,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateIdentityGuestpassByUserIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateIdentityGuestpassByUserIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateIdentityGuestpassByUserId(string $userId, \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityModifyGuestPass $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8837,7 +8837,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddIdentityPackageListInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddIdentityPackageListUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentitySubscriptionPackageList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentitySubscriptionPackageList : \Psr\Http\Message\ResponseInterface)
      */
     public function addIdentityPackageList(\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteria $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8854,7 +8854,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddIdentityGuestpassListInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddIdentityGuestpassListUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityIdentityGuestPassList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityIdentityGuestPassList : \Psr\Http\Message\ResponseInterface)
      */
     public function addIdentityGuestpassList(\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteria $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8870,7 +8870,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteIdentityPackagesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteIdentityPackagesInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteIdentityPackages(\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityDeleteBulk $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8885,7 +8885,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindIdentityPackagesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindIdentityPackagesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentitySubscriptionPackageList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentitySubscriptionPackageList : \Psr\Http\Message\ResponseInterface)
      */
     public function findIdentityPackages(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8902,7 +8902,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddIdentityPackagesInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddIdentityPackagesUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addIdentityPackages(\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityCreateSubscriptionPackage $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8918,7 +8918,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteIdentityPackagesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteIdentityPackagesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteIdentityPackagesById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8934,7 +8934,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindIdentityPackagesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindIdentityPackagesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentitySubscriptionPackage|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentitySubscriptionPackage : \Psr\Http\Message\ResponseInterface)
      */
     public function findIdentityPackagesById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8952,7 +8952,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateIdentityPackagesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateIdentityPackagesByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateIdentityPackagesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityModifySubscriptionPackage $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8971,7 +8971,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddIdentityGuestpassUploadInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddIdentityGuestpassUploadUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addIdentityGuestpassUpload(array $queryParameters = [], array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8986,7 +8986,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindIdentityUsersAaaserverForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindIdentityUsersAaaserverInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityAaaServerList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityAaaServerList : \Psr\Http\Message\ResponseInterface)
      */
     public function findIdentityUsersAaaserver(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9003,7 +9003,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddIdentityGuestpassGenerateInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddIdentityGuestpassGenerateUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addIdentityGuestpassGenerate(\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityCreateIdentityGuestPass $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9018,7 +9018,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindIdentityUsersPackagesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindIdentityUsersPackagesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityPackageList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityPackageList : \Psr\Http\Message\ResponseInterface)
      */
     public function findIdentityUsersPackages(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9033,7 +9033,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindIdentityUsersCountriesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindIdentityUsersCountriesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityCountryList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityCountryList : \Psr\Http\Message\ResponseInterface)
      */
     public function findIdentityUsersCountries(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9050,7 +9050,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddIdentityUserRoleListInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddIdentityUserRoleListUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityIdentityList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityIdentityList : \Psr\Http\Message\ResponseInterface)
      */
     public function addIdentityUserRoleList(\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteria $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9067,7 +9067,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddIdentityUserListInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddIdentityUserListUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityUserList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityUserList : \Psr\Http\Message\ResponseInterface)
      */
     public function addIdentityUserList(\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteria $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9084,7 +9084,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddClientsBulkDisconnectInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddClientsBulkDisconnectUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addClientsBulkDisconnect(\Jane\Component\OpenApi3\Tests\Expected\Model\ClientDisconnectClientList $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9102,7 +9102,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddClientsByWlanNameByWlannameInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddClientsByWlanNameByWlannameUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ClientQueryClientQueryList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ClientQueryClientQueryList : \Psr\Http\Message\ResponseInterface)
      */
     public function addClientsByWlanNameByWlanname(string $wlanname, mixed $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9119,7 +9119,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddClientsBulkDeauthInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddClientsBulkDeauthUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addClientsBulkDeauth(\Jane\Component\OpenApi3\Tests\Expected\Model\ClientDeAuthClientList $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9136,7 +9136,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddClientsDeauthInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddClientsDeauthUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addClientsDeauth(\Jane\Component\OpenApi3\Tests\Expected\Model\ClientDeAuthClient $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9153,7 +9153,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddClientsDisconnectInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddClientsDisconnectUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addClientsDisconnect(\Jane\Component\OpenApi3\Tests\Expected\Model\ClientDisconnectClient $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9170,7 +9170,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindL3AccessControlPoliciesByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindL3AccessControlPoliciesByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileL3AccessControlPolicyArray|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileL3AccessControlPolicyArray : \Psr\Http\Message\ResponseInterface)
      */
     public function findL3AccessControlPoliciesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9186,7 +9186,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteL3AccessControlPoliciesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteL3AccessControlPoliciesByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteL3AccessControlPoliciesById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9202,7 +9202,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindL3AccessControlPoliciesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindL3AccessControlPoliciesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileL3AccessControlPolicy|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileL3AccessControlPolicy : \Psr\Http\Message\ResponseInterface)
      */
     public function findL3AccessControlPoliciesById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9220,7 +9220,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateL3AccessControlPoliciesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateL3AccessControlPoliciesByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateL3AccessControlPoliciesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyL3AccessControlPolicy $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9236,7 +9236,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteL3AccessControlPoliciesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteL3AccessControlPoliciesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteL3AccessControlPolicies(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9254,7 +9254,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindL3AccessControlPoliciesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindL3AccessControlPoliciesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileIdList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileIdList : \Psr\Http\Message\ResponseInterface)
      */
     public function findL3AccessControlPolicies(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9271,7 +9271,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddL3AccessControlPoliciesInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddL3AccessControlPoliciesUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addL3AccessControlPolicies(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateL3AccessControlPolicy $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9287,7 +9287,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteVlanpoolingsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteVlanpoolingsInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteVlanpoolings(\Jane\Component\OpenApi3\Tests\Expected\Model\VlanpoolingDeleteBulkVlanPooling $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9304,7 +9304,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddVlanpoolingsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddVlanpoolingsUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addVlanpoolings(\Jane\Component\OpenApi3\Tests\Expected\Model\VlanpoolingCreateVlanPooling $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9320,7 +9320,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteVlanpoolingsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteVlanpoolingsByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteVlanpoolingsById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9336,7 +9336,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindVlanpoolingsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindVlanpoolingsByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\VlanpoolingVlanPooling|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\VlanpoolingVlanPooling : \Psr\Http\Message\ResponseInterface)
      */
     public function findVlanpoolingsById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9354,7 +9354,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateVlanpoolingsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateVlanpoolingsByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateVlanpoolingsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\VlanpoolingModifyVlanPooling $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9371,7 +9371,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindVlanpoolingsByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindVlanpoolingsByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\VlanpoolingVlanPoolingList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\VlanpoolingVlanPoolingList : \Psr\Http\Message\ResponseInterface)
      */
     public function findVlanpoolingsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9386,7 +9386,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServiceTicketForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteServiceTicketInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteServiceTicket(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9400,7 +9400,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddServiceTicketInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddServiceTicketUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceTicketLoginResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceTicketLoginResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function addServiceTicket(\Jane\Component\OpenApi3\Tests\Expected\Model\ServiceTicketLoginRequest $body, string $fetch = self::FETCH_OBJECT)
     {
@@ -9417,7 +9417,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteDpDhcpProfilesDpDhcpProfilePoolsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileBulkDelete $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9433,7 +9433,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpDhcpProfilesDpDhcpProfilePoolsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpDhcpProfilesDpDhcpProfilePoolsByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfilePoolBOList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfilePoolBOList : \Psr\Http\Message\ResponseInterface)
      */
     public function findDpDhcpProfilesDpDhcpProfilePoolsById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9451,7 +9451,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpDhcpProfilesDpDhcpProfilePoolsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpDhcpProfilesDpDhcpProfilePoolsByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfilePoolBO|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfilePoolBO : \Psr\Http\Message\ResponseInterface)
      */
     public function addDpDhcpProfilesDpDhcpProfilePoolsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfilePoolBO $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9467,7 +9467,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpDhcpProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpDhcpProfilesInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteDpDhcpProfiles(\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileBulkDelete $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9482,7 +9482,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpDhcpProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpDhcpProfilesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileBasicBOList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileBasicBOList : \Psr\Http\Message\ResponseInterface)
      */
     public function findDpDhcpProfiles(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9499,7 +9499,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpDhcpProfilesInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpDhcpProfilesUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileBasicBO|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileBasicBO : \Psr\Http\Message\ResponseInterface)
      */
     public function addDpDhcpProfiles(\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileBasicBO $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9515,7 +9515,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpDhcpProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpDhcpProfilesByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteDpDhcpProfilesById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9531,7 +9531,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpDhcpProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpDhcpProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileBasicBO|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileBasicBO : \Psr\Http\Message\ResponseInterface)
      */
     public function findDpDhcpProfilesById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9549,7 +9549,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpDhcpProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpDhcpProfilesByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileBasicBO|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileBasicBO : \Psr\Http\Message\ResponseInterface)
      */
     public function updateDpDhcpProfilesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileBasicBO $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9566,7 +9566,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpDhcpProfilesDpDhcpProfilePoolsByPoolIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteDpDhcpProfilesDpDhcpProfilePoolsByPoolId(string $id, string $poolId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9583,7 +9583,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpDhcpProfilesDpDhcpProfilePoolsByPoolIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpDhcpProfilesDpDhcpProfilePoolsByPoolIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfilePoolBO|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfilePoolBO : \Psr\Http\Message\ResponseInterface)
      */
     public function findDpDhcpProfilesDpDhcpProfilePoolsByPoolId(string $id, string $poolId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9602,7 +9602,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpDhcpProfilesDpDhcpProfilePoolsByPoolIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpDhcpProfilesDpDhcpProfilePoolsByPoolIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfilePoolBO|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfilePoolBO : \Psr\Http\Message\ResponseInterface)
      */
     public function updateDpDhcpProfilesDpDhcpProfilePoolsByPoolId(string $id, string $poolId, \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfilePoolBO $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9619,7 +9619,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpDhcpProfilesDpDhcpProfileHostsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpDhcpProfilesDpDhcpProfileHostsByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteDpDhcpProfilesDpDhcpProfileHostsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileBulkDelete $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9635,7 +9635,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpDhcpProfilesDpDhcpProfileHostsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpDhcpProfilesDpDhcpProfileHostsByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileHostBOList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileHostBOList : \Psr\Http\Message\ResponseInterface)
      */
     public function findDpDhcpProfilesDpDhcpProfileHostsById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9653,7 +9653,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpDhcpProfilesDpDhcpProfileHostsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpDhcpProfilesDpDhcpProfileHostsByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileHostBO|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileHostBO : \Psr\Http\Message\ResponseInterface)
      */
     public function addDpDhcpProfilesDpDhcpProfileHostsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileHostBO $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9670,7 +9670,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpDhcpProfilesDpDhcpProfileHostsByHostIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpDhcpProfilesDpDhcpProfileHostsByHostIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteDpDhcpProfilesDpDhcpProfileHostsByHostId(string $id, string $hostId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9687,7 +9687,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpDhcpProfilesDpDhcpProfileHostsByHostIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpDhcpProfilesDpDhcpProfileHostsByHostIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileHostBO|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileHostBO : \Psr\Http\Message\ResponseInterface)
      */
     public function findDpDhcpProfilesDpDhcpProfileHostsByHostId(string $id, string $hostId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9706,7 +9706,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpDhcpProfilesDpDhcpProfileHostsByHostIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpDhcpProfilesDpDhcpProfileHostsByHostIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileHostBO|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileHostBO : \Psr\Http\Message\ResponseInterface)
      */
     public function updateDpDhcpProfilesDpDhcpProfileHostsByHostId(string $id, string $hostId, \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileHostBO $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9723,7 +9723,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpDhcpProfilesDpDhcpProfileOptionSpacesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpDhcpProfilesDpDhcpProfileOptionSpacesByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteDpDhcpProfilesDpDhcpProfileOptionSpacesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileBulkDelete $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9739,7 +9739,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpDhcpProfilesDpDhcpProfileOptionSpacesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpDhcpProfilesDpDhcpProfileOptionSpacesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileOptionSpaceApplyToBOList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileOptionSpaceApplyToBOList : \Psr\Http\Message\ResponseInterface)
      */
     public function findDpDhcpProfilesDpDhcpProfileOptionSpacesById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9757,7 +9757,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpDhcpProfilesDpDhcpProfileOptionSpacesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpDhcpProfilesDpDhcpProfileOptionSpacesByIdUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addDpDhcpProfilesDpDhcpProfileOptionSpacesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileOptionSpaceBO $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9774,7 +9774,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId(string $id, string $spaceId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9791,7 +9791,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileOptionSpaceApplyToBO|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileOptionSpaceApplyToBO : \Psr\Http\Message\ResponseInterface)
      */
     public function findDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId(string $id, string $spaceId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9810,7 +9810,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceIdUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId(string $id, string $spaceId, \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpDhcpProfileOptionSpaceBO $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9826,7 +9826,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDevicePolicyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDevicePolicyInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteDevicePolicy(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9844,7 +9844,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDevicePolicyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDevicePolicyInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DomainDevicePolicyProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DomainDevicePolicyProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findDevicePolicy(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9861,7 +9861,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDevicePolicyInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDevicePolicyUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addDevicePolicy(\Jane\Component\OpenApi3\Tests\Expected\Model\DomainDevicePolicyCreateDomainDevicePolicy $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9878,7 +9878,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDevicePolicyByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDevicePolicyByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DomainDevicePolicyDomainDevicePolicyProfileByQueryCriteria|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DomainDevicePolicyDomainDevicePolicyProfileByQueryCriteria : \Psr\Http\Message\ResponseInterface)
      */
     public function findDevicePolicyByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9894,7 +9894,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDevicePolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDevicePolicyByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteDevicePolicyById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9910,7 +9910,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDevicePolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDevicePolicyByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DomainDevicePolicyDomainDevicePolicyProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DomainDevicePolicyDomainDevicePolicyProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findDevicePolicyById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9928,7 +9928,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDevicePolicyByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDevicePolicyByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateDevicePolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\DomainDevicePolicyModifyDomainDevicePolicy $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9943,7 +9943,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindClusterStateForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindClusterStateInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladeClusterState|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladeClusterState : \Psr\Http\Message\ResponseInterface)
      */
     public function findClusterState(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9959,7 +9959,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesRealTimeLocationServiceByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesRealTimeLocationServiceByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileRtlsProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileRtlsProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesRealTimeLocationServiceByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9977,7 +9977,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesRealTimeLocationServiceByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesRealTimeLocationServiceByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesRealTimeLocationServiceByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateRtlsProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9994,7 +9994,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRealTimeLocationServiceByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRealTimeLocationServiceByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesRealTimeLocationServiceById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10011,7 +10011,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesRealTimeLocationServiceByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesRealTimeLocationServiceByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateRtlsProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateRtlsProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesRealTimeLocationServiceById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10030,7 +10030,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesRealTimeLocationServiceByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesRealTimeLocationServiceByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesRealTimeLocationServiceById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileUpdateRtlsProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10047,7 +10047,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesGeofenceProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesGeofenceProfilesByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesGeofenceProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10063,7 +10063,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesGeofenceProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesGeofenceProfilesByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\GeofenceProfileGetGeofenceProfileProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\GeofenceProfileGetGeofenceProfileProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesGeofenceProfilesByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10081,7 +10081,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesGeofenceProfilesByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesGeofenceProfilesByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesGeofenceProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\GeofenceProfileGeofenceProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10098,7 +10098,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesGeofenceProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesGeofenceProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesGeofenceProfilesById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10115,7 +10115,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesGeofenceProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesGeofenceProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\GeofenceProfileGetGeofenceProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\GeofenceProfileGetGeofenceProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesGeofenceProfilesById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10134,7 +10134,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesGeofenceProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesGeofenceProfilesByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesGeofenceProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\GeofenceProfileGeofenceProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10150,7 +10150,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDomainsEventNotificationSettingsByDomainIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDomainsEventNotificationSettingsByDomainIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\EventManagementEventDataResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\EventManagementEventDataResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function findDomainsEventNotificationSettingsByDomainId(string $domainId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10168,7 +10168,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDomainsEventNotificationSettingsByDomainIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDomainsEventNotificationSettingsByDomainIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateDomainsEventNotificationSettingsByDomainId(string $domainId, array $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10184,7 +10184,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDomainsEventEmailSettingsByDomainIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDomainsEventEmailSettingsByDomainIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\EventManagementEventEmailSetting|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\EventManagementEventEmailSetting : \Psr\Http\Message\ResponseInterface)
      */
     public function findDomainsEventEmailSettingsByDomainId(string $domainId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10202,7 +10202,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDomainsEventEmailSettingsByDomainIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDomainsEventEmailSettingsByDomainIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateDomainsEventEmailSettingsByDomainId(string $domainId, \Jane\Component\OpenApi3\Tests\Expected\Model\EventManagementEventEmailSetting $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10219,7 +10219,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateAlertAlarmAckInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateAlertAlarmAckUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateAlertAlarmAck(\Jane\Component\OpenApi3\Tests\Expected\Model\AlertAckBulkAlarms $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10236,7 +10236,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateAlertAlarmClearInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateAlertAlarmClearUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateAlertAlarmClear(\Jane\Component\OpenApi3\Tests\Expected\Model\AlertClearBulkAlarms $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10253,7 +10253,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAlertEventSummaryInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAlertEventSummaryUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AlertSummaryEventSummary|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AlertSummaryEventSummary : \Psr\Http\Message\ResponseInterface)
      */
     public function addAlertEventSummary(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10270,7 +10270,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAlertAlarmSummaryInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAlertAlarmSummaryUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AlertSummaryAlarmSummary|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AlertSummaryAlarmSummary : \Psr\Http\Message\ResponseInterface)
      */
     public function addAlertAlarmSummary(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10287,7 +10287,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAlertAlarmListInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAlertAlarmListUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AlarmListAlarmQueryResultList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AlarmListAlarmQueryResultList : \Psr\Http\Message\ResponseInterface)
      */
     public function addAlertAlarmList(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10304,7 +10304,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAlertEventListInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAlertEventListUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\EventListEventQueryResultList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\EventListEventQueryResultList : \Psr\Http\Message\ResponseInterface)
      */
     public function addAlertEventList(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10321,7 +10321,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateAlertAlarmAckByAlarmIDInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateAlertAlarmAckByAlarmIDUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateAlertAlarmAckByAlarmID(string $alarmID, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10338,7 +10338,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateAlertAlarmClearByAlarmIDInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateAlertAlarmClearByAlarmIDUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateAlertAlarmClearByAlarmID(string $alarmID, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10354,7 +10354,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApSnmpAgentProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApSnmpAgentProfilesInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApSnmpAgentProfiles(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10372,7 +10372,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApSnmpAgentProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApSnmpAgentProfilesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApSnmpAgentProfileApSnmpAgentProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApSnmpAgentProfileApSnmpAgentProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findApSnmpAgentProfiles(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10389,7 +10389,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApSnmpAgentProfilesInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApSnmpAgentProfilesUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addApSnmpAgentProfiles(\Jane\Component\OpenApi3\Tests\Expected\Model\ApSnmpAgentProfileCreateApSnmpAgentProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10405,7 +10405,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApSnmpAgentProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApSnmpAgentProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApSnmpAgentProfilesById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10421,7 +10421,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApSnmpAgentProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApSnmpAgentProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApSnmpAgentProfileApSnmpAgentProfileSummary|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApSnmpAgentProfileApSnmpAgentProfileSummary : \Psr\Http\Message\ResponseInterface)
      */
     public function findApSnmpAgentProfilesById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10439,7 +10439,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateApSnmpAgentProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateApSnmpAgentProfilesByIdUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateApSnmpAgentProfilesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ApSnmpAgentProfileUpdateApSnmpAgentProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10456,7 +10456,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesDhcpSiteDhcpProfileByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesDhcpSiteDhcpProfileByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesDhcpSiteDhcpProfileByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10472,7 +10472,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDhcpSiteDhcpProfileByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDhcpSiteDhcpProfileByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDhcpProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDhcpProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesDhcpSiteDhcpProfileByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10490,7 +10490,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesDhcpSiteDhcpProfileByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesDhcpSiteDhcpProfileByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesDhcpSiteDhcpProfileByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateDhcpProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10507,7 +10507,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesDhcpSiteDhcpProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesDhcpSiteDhcpProfileByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesDhcpSiteDhcpProfileById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10524,7 +10524,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDhcpSiteDhcpProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDhcpSiteDhcpProfileByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonDhcpProfileRef|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonDhcpProfileRef : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesDhcpSiteDhcpProfileById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10543,7 +10543,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesDhcpSiteDhcpProfileByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesDhcpSiteDhcpProfileByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesDhcpSiteDhcpProfileById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateDhcpProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10559,7 +10559,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteL2AccessControlsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteL2AccessControlsByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteL2AccessControlsById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10575,7 +10575,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindL2AccessControlsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindL2AccessControlsByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\L2AccessControlL2AccessControl|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\L2AccessControlL2AccessControl : \Psr\Http\Message\ResponseInterface)
      */
     public function findL2AccessControlsById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10593,7 +10593,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateL2AccessControlsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateL2AccessControlsByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateL2AccessControlsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\L2AccessControlModifyL2AccessControl $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10610,7 +10610,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindL2AccessControlsByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindL2AccessControlsByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\L2AccessControlL2AccessControlList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\L2AccessControlL2AccessControlList : \Psr\Http\Message\ResponseInterface)
      */
     public function findL2AccessControlsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10626,7 +10626,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteL2AccessControlsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteL2AccessControlsInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteL2AccessControls(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10644,7 +10644,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindL2AccessControlsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindL2AccessControlsInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\L2AccessControlL2AccessControlList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\L2AccessControlL2AccessControlList : \Psr\Http\Message\ResponseInterface)
      */
     public function findL2AccessControls(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10661,7 +10661,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddL2AccessControlsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddL2AccessControlsUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addL2AccessControls(\Jane\Component\OpenApi3\Tests\Expected\Model\L2AccessControlCreateL2AccessControl $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10678,7 +10678,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAccountSecurityByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAccountSecurityByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResultIdName|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResultIdName : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteAccountSecurityById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\AccountSecurityProfileDelete $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10695,7 +10695,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAccountSecurityByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAccountSecurityByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AccountSecurityProfileGetByIdResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AccountSecurityProfileGetByIdResult : \Psr\Http\Message\ResponseInterface)
      */
     public function findAccountSecurityById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\AccountSecurityProfileGetById $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10713,7 +10713,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateAccountSecurityByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateAccountSecurityByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResultIdName|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResultIdName : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateAccountSecurityById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\AccountSecurityProfileUpdate $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10731,7 +10731,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateAccountSecurityByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateAccountSecurityByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResultIdName|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResultIdName : \Psr\Http\Message\ResponseInterface)
      */
     public function updateAccountSecurityById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\AccountSecurityProfileUpdate $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10747,7 +10747,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAccountSecurityForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAccountSecurityInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteAccountSecurity(\Jane\Component\OpenApi3\Tests\Expected\Model\AccountSecurityProfileDeleteList $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10762,7 +10762,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAccountSecurityForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAccountSecurityInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AccountSecurityProfileProfileListResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AccountSecurityProfileProfileListResult : \Psr\Http\Message\ResponseInterface)
      */
     public function findAccountSecurity(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10779,7 +10779,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAccountSecurityInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAccountSecurityUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResultIdName|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResultIdName : \Psr\Http\Message\ResponseInterface)
      */
     public function addAccountSecurity(\Jane\Component\OpenApi3\Tests\Expected\Model\AccountSecurityProfileCreate $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10795,7 +10795,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpProfileSettingsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpProfileSettingsInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteDpProfileSettings(\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileBulkDelete $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10810,7 +10810,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpProfileSettingsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpProfileSettingsInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpProfileSettingBOList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpProfileSettingBOList : \Psr\Http\Message\ResponseInterface)
      */
     public function findDpProfileSettings(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10827,7 +10827,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpProfileSettingsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpProfileSettingsUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addDpProfileSettings(\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpProfileSettingBO $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10843,7 +10843,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpProfileSettingsByDpKeyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDpProfileSettingsByDpKeyInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteDpProfileSettingsByDpKey(string $dpKey, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10859,7 +10859,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpProfileSettingsByDpKeyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDpProfileSettingsByDpKeyInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpProfileSettingBO|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpProfileSettingBO : \Psr\Http\Message\ResponseInterface)
      */
     public function findDpProfileSettingsByDpKey(string $dpKey, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10877,7 +10877,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpProfileSettingsByDpKeyInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateDpProfileSettingsByDpKeyUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateDpProfileSettingsByDpKey(string $dpKey, \Jane\Component\OpenApi3\Tests\Expected\Model\DpProfileDpProfileSettingBO $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10893,7 +10893,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteWhitelabelsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteWhitelabelsByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteWhitelabelsById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10909,7 +10909,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindWhitelabelsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindWhitelabelsByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\WhiteLabelCustomizationWhiteLabelCustomization|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\WhiteLabelCustomizationWhiteLabelCustomization : \Psr\Http\Message\ResponseInterface)
      */
     public function findWhitelabelsById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10927,7 +10927,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateWhitelabelsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateWhitelabelsByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateWhitelabelsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\WhiteLabelCustomizationUpdateWhiteLabelCustomization $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10942,7 +10942,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindWhitelabelsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindWhitelabelsInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\WhiteLabelCustomizationWhiteLabelCustomizationList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\WhiteLabelCustomizationWhiteLabelCustomizationList : \Psr\Http\Message\ResponseInterface)
      */
     public function findWhitelabels(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10959,7 +10959,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddWhitelabelsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddWhitelabelsUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addWhitelabels(\Jane\Component\OpenApi3\Tests\Expected\Model\WhiteLabelCustomizationCreateWhiteLabelCustomization $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10976,7 +10976,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesAaaRadiusByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesAaaRadiusByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesAaaRadiusById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10993,7 +10993,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAaaRadiusByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAaaRadiusByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AaaAuthenticationServer|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AaaAuthenticationServer : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesAaaRadiusById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11012,7 +11012,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesAaaRadiusByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesAaaRadiusByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesAaaRadiusById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\AaaModifyAuthenticationServer $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11031,7 +11031,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesAaaRadiusByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesAaaRadiusByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesAaaRadiusById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\AaaModifyAuthenticationServer $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11048,7 +11048,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAaaRadiusByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAaaRadiusByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AaaAuthenticationServerList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AaaAuthenticationServerList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesAaaRadiusByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11067,7 +11067,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesAaaRadiusByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesAaaRadiusByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesAaaRadiusByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\AaaCreateAuthenticationServer $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11084,7 +11084,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesAaaRadiusSecondaryByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesAaaRadiusSecondaryByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesAaaRadiusSecondaryById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11101,7 +11101,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesAaaRadiusStandbyPrimaryByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesAaaRadiusStandbyPrimaryByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesAaaRadiusStandbyPrimaryById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11117,7 +11117,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAaaAdByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAaaAdByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AaaActiveDirectoryList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AaaActiveDirectoryList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesAaaAdByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11135,7 +11135,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesAaaAdByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesAaaAdByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesAaaAdByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\AaaCreateActiveDirectoryServer $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11152,7 +11152,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesAaaAdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesAaaAdByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesAaaAdById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11169,7 +11169,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAaaAdByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAaaAdByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AaaActiveDirectory|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AaaActiveDirectory : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesAaaAdById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11188,7 +11188,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesAaaAdByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesAaaAdByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesAaaAdById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\AaaModifyActiveDirectoryServer $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11207,7 +11207,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesAaaAdByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesAaaAdByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesAaaAdById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\AaaModifyActiveDirectoryServer $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11223,7 +11223,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAaaLdapByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAaaLdapByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AaaLDAPServerList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AaaLDAPServerList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesAaaLdapByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11241,7 +11241,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesAaaLdapByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesAaaLdapByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesAaaLdapByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\AaaCreateLDAPServer $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11258,7 +11258,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesAaaLdapByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesAaaLdapByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesAaaLdapById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11275,7 +11275,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAaaLdapByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAaaLdapByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AaaLDAPServer|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AaaLDAPServer : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesAaaLdapById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11294,7 +11294,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesAaaLdapByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesAaaLdapByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesAaaLdapById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\AaaModifyLDAPServer $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11313,7 +11313,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesAaaLdapByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesAaaLdapByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesAaaLdapById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\AaaModifyLDAPServer $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11330,7 +11330,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesAaaByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesAaaByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesAaaByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11347,7 +11347,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAaaHttp2ByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAaaHttp2ByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AaaHttp2ServerList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AaaHttp2ServerList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesAaaHttp2ByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11366,7 +11366,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesAaaHttp2ByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesAaaHttp2ByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesAaaHttp2ByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\AaaCreateHttp2Server $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11383,7 +11383,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesAaaHttp2ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesAaaHttp2ByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesAaaHttp2ById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11400,7 +11400,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAaaHttp2ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAaaHttp2ByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AaaHttp2Server|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AaaHttp2Server : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesAaaHttp2ById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11419,7 +11419,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesAaaHttp2ByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesAaaHttp2ByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesAaaHttp2ById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\AaaModifyHttp2Server $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11436,7 +11436,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesAaaByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesAaaByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesAaaById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11452,7 +11452,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteZoneSwitchGroupLinksByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteZoneSwitchGroupLinksByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteZoneSwitchGroupLinksById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11468,7 +11468,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindZoneSwitchGroupLinksByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindZoneSwitchGroupLinksByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneSwitchGroupBindingBindingRecord|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneSwitchGroupBindingBindingRecord : \Psr\Http\Message\ResponseInterface)
      */
     public function findZoneSwitchGroupLinksById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11486,7 +11486,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateZoneSwitchGroupLinksByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateZoneSwitchGroupLinksByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateZoneSwitchGroupLinksById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneSwitchGroupBindingCreateRecord $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11506,7 +11506,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindZoneSwitchGroupLinksForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindZoneSwitchGroupLinksInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneSwitchGroupBindingDataList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneSwitchGroupBindingDataList : \Psr\Http\Message\ResponseInterface)
      */
     public function findZoneSwitchGroupLinks(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11523,7 +11523,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddZoneSwitchGroupLinksInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddZoneSwitchGroupLinksUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addZoneSwitchGroupLinks(\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneSwitchGroupBindingCreateRecord $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11539,7 +11539,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteControlPlanesUserDefinedInterfaceByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteControlPlanesUserDefinedInterfaceByBladeUUIDInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteControlPlanesUserDefinedInterfaceByBladeUUID(string $bladeUUID, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11555,7 +11555,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindControlPlanesUserDefinedInterfaceByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindControlPlanesUserDefinedInterfaceByBladeUUIDInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemUserDefinedInterfaceList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemUserDefinedInterfaceList : \Psr\Http\Message\ResponseInterface)
      */
     public function findControlPlanesUserDefinedInterfaceByBladeUUID(string $bladeUUID, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11573,7 +11573,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateControlPlanesUserDefinedInterfaceByBladeUUIDInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateControlPlanesUserDefinedInterfaceByBladeUUIDUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateControlPlanesUserDefinedInterfaceByBladeUUID(string $bladeUUID, \Jane\Component\OpenApi3\Tests\Expected\Model\SystemModifyCPUserDefinedInterface $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11589,7 +11589,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindControlPlanesByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindControlPlanesByBladeUUIDInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemControlPlaneConfiguration|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemControlPlaneConfiguration : \Psr\Http\Message\ResponseInterface)
      */
     public function findControlPlanesByBladeUUID(string $bladeUUID, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11607,7 +11607,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateControlPlanesByBladeUUIDInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateControlPlanesByBladeUUIDUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateControlPlanesByBladeUUID(string $bladeUUID, \Jane\Component\OpenApi3\Tests\Expected\Model\SystemModifyControlPlane $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11623,7 +11623,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteControlPlanesStaticRoutesByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteControlPlanesStaticRoutesByBladeUUIDInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteControlPlanesStaticRoutesByBladeUUID(string $bladeUUID, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11639,7 +11639,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindControlPlanesStaticRoutesByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindControlPlanesStaticRoutesByBladeUUIDInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemStaticRouteList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemStaticRouteList : \Psr\Http\Message\ResponseInterface)
      */
     public function findControlPlanesStaticRoutesByBladeUUID(string $bladeUUID, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11657,7 +11657,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateControlPlanesStaticRoutesByBladeUUIDInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateControlPlanesStaticRoutesByBladeUUIDUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateControlPlanesStaticRoutesByBladeUUID(string $bladeUUID, \Jane\Component\OpenApi3\Tests\Expected\Model\SystemModifyCPStaticRoute $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11673,7 +11673,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindControlPlanesInterfacesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindControlPlanesInterfacesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemControlPlaneInterfaceList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemControlPlaneInterfaceList : \Psr\Http\Message\ResponseInterface)
      */
     public function findControlPlanesInterfaces(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11690,7 +11690,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateControlPlanesIpSupportInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateControlPlanesIpSupportUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateControlPlanesIpSupport(\Jane\Component\OpenApi3\Tests\Expected\Model\SystemModifyIpSupportType $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11705,7 +11705,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindControlPlanesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindControlPlanesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemControlPlaneList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemControlPlaneList : \Psr\Http\Message\ResponseInterface)
      */
     public function findControlPlanes(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11722,7 +11722,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddWiredClientsDeauthInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddWiredClientsDeauthUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addWiredClientsDeauth(\Jane\Component\OpenApi3\Tests\Expected\Model\ClientDeAuthClient $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11739,7 +11739,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddWiredClientsBulkDeauthInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddWiredClientsBulkDeauthUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addWiredClientsBulkDeauth(\Jane\Component\OpenApi3\Tests\Expected\Model\ClientDeAuthClientList $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11755,7 +11755,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesVlanNameProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesVlanNameProfilesInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesVlanNameProfiles(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11771,7 +11771,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesVlanNameProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesVlanNameProfilesByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\VlanNameProfileVlanNameProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\VlanNameProfileVlanNameProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesVlanNameProfilesByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11789,7 +11789,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesVlanNameProfilesByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesVlanNameProfilesByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesVlanNameProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\VlanNameProfileVlanNameProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11806,7 +11806,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesVlanNameProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesVlanNameProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesVlanNameProfilesById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11823,7 +11823,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesVlanNameProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesVlanNameProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\VlanNameProfileVlanNameProfileWithEditInfo|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\VlanNameProfileVlanNameProfileWithEditInfo : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesVlanNameProfilesById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11842,7 +11842,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesVlanNameProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesVlanNameProfilesByIdUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesVlanNameProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\VlanNameProfileVlanNameProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11858,7 +11858,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteZoneScheduleUpgradeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteZoneScheduleUpgradeByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteZoneScheduleUpgradeById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11874,7 +11874,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindZoneScheduleUpgradeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindZoneScheduleUpgradeByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneScheduleUpgradeTaskConfig|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneScheduleUpgradeTaskConfig : \Psr\Http\Message\ResponseInterface)
      */
     public function findZoneScheduleUpgradeById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11892,7 +11892,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateZoneScheduleUpgradeByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateZoneScheduleUpgradeByIdUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateZoneScheduleUpgradeById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneScheduleUpgradeCreateTaskConfig $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11908,7 +11908,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteZoneScheduleUpgradeForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteZoneScheduleUpgradeInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteZoneScheduleUpgrade(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11923,7 +11923,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindZoneScheduleUpgradeForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindZoneScheduleUpgradeInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneScheduleUpgradeTaskList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneScheduleUpgradeTaskList : \Psr\Http\Message\ResponseInterface)
      */
     public function findZoneScheduleUpgrade(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11940,7 +11940,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddZoneScheduleUpgradeInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddZoneScheduleUpgradeUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addZoneScheduleUpgrade(\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneScheduleUpgradeCreateTaskConfig $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11955,7 +11955,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindZoneScheduleUpgradeHistoryForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindZoneScheduleUpgradeHistoryInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneScheduleUpgradeHistoryList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneScheduleUpgradeHistoryList : \Psr\Http\Message\ResponseInterface)
      */
     public function findZoneScheduleUpgradeHistory(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11970,7 +11970,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemDevicesSummaryForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemDevicesSummaryInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DeviceCapacityDevicesSummary|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DeviceCapacityDevicesSummary : \Psr\Http\Message\ResponseInterface)
      */
     public function findSystemDevicesSummary(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -11986,7 +11986,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApRulesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteApRulesByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteApRulesById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12002,7 +12002,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApRulesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApRulesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AprulesApRuleConfiguration|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AprulesApRuleConfiguration : \Psr\Http\Message\ResponseInterface)
      */
     public function findApRulesById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12020,7 +12020,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateApRulesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateApRulesByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateApRulesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\AprulesModifyApRule $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12035,7 +12035,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApRulesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApRulesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AprulesApRuleList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AprulesApRuleList : \Psr\Http\Message\ResponseInterface)
      */
     public function findApRules(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12052,7 +12052,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApRulesInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApRulesUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addApRules(\Jane\Component\OpenApi3\Tests\Expected\Model\AprulesCreateApRule $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12068,7 +12068,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApRulesPriorityUpByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApRulesPriorityUpByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findApRulesPriorityUpById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12084,7 +12084,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApRulesPriorityDownByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApRulesPriorityDownByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findApRulesPriorityDownById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12099,7 +12099,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindPlanesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindPlanesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemDataPlaneList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemDataPlaneList : \Psr\Http\Message\ResponseInterface)
      */
     public function findPlanes(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12115,7 +12115,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindPlanesByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindPlanesByBladeUUIDInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemDataPlaneConfiguration|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemDataPlaneConfiguration : \Psr\Http\Message\ResponseInterface)
      */
     public function findPlanesByBladeUUID(string $bladeUUID, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12133,7 +12133,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdatePlanesByBladeUUIDInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdatePlanesByBladeUUIDUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdatePlanesByBladeUUID(string $bladeUUID, \Jane\Component\OpenApi3\Tests\Expected\Model\SystemModifyDataPlane $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12149,7 +12149,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeletePlanesStaticRouteByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeletePlanesStaticRouteByBladeUUIDInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deletePlanesStaticRouteByBladeUUID(string $bladeUUID, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12167,7 +12167,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdatePlaneStatesByBladeUUIDInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdatePlaneStatesByBladeUUIDUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdatePlaneStatesByBladeUUID(string $bladeUUID, \Jane\Component\OpenApi3\Tests\Expected\Model\SystemModifyDataPlaneState $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12185,7 +12185,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindPlanesDpTunnelSettingForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindPlanesDpTunnelSettingInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemGetDataPlaneMeshTunnelSetting|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemGetDataPlaneMeshTunnelSetting : \Psr\Http\Message\ResponseInterface)
      */
     public function findPlanesDpTunnelSetting(array $queryParameters = [], array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12202,7 +12202,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdatePlanesDpTunnelSettingInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdatePlanesDpTunnelSettingUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updatePlanesDpTunnelSetting(\Jane\Component\OpenApi3\Tests\Expected\Model\SystemUpdateDpMeshTunnelSetting $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12219,7 +12219,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpsSwitchoverClusterInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDpsSwitchoverClusterUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addDpsSwitchoverCluster(\Jane\Component\OpenApi3\Tests\Expected\Model\DpSwitchoverDp $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12236,7 +12236,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesFlexiVpnProfileByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindServicesFlexiVpnProfileByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFlexiVpnProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFlexiVpnProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findServicesFlexiVpnProfileByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12253,7 +12253,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesPortalDetectionProfilesByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesPortalDetectionProfilesByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalDetectionProfilePortalDetectionProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalDetectionProfilePortalDetectionProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesPortalDetectionProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12270,7 +12270,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesPortalDetectionProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesPortalDetectionProfilesByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesPortalDetectionProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12286,7 +12286,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesPortalDetectionProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesPortalDetectionProfilesByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalDetectionProfilePortalDetectionProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalDetectionProfilePortalDetectionProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesPortalDetectionProfilesByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12304,7 +12304,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesPortalDetectionProfilesByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesPortalDetectionProfilesByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesPortalDetectionProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalDetectionProfileCreatePortalDetectionProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12321,7 +12321,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesPortalDetectionProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesPortalDetectionProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesPortalDetectionProfilesById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12338,7 +12338,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesPortalDetectionProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesPortalDetectionProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalDetectionProfilePortalDetectionProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalDetectionProfilePortalDetectionProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesPortalDetectionProfilesById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12357,7 +12357,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesPortalDetectionProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesPortalDetectionProfilesByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesPortalDetectionProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalDetectionProfileCreatePortalDetectionProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12376,7 +12376,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesPortalDetectionProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesPortalDetectionProfilesByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesPortalDetectionProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalDetectionProfileCreatePortalDetectionProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12392,7 +12392,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesSocialMediaLoginProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesSocialMediaLoginProfilesByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SocialMediaLoginProfileSocialMediaLoginProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SocialMediaLoginProfileSocialMediaLoginProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesSocialMediaLoginProfilesByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12410,7 +12410,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesSocialMediaLoginProfilesByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesSocialMediaLoginProfilesByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesSocialMediaLoginProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\SocialMediaLoginProfileSocialMediaLoginProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12427,7 +12427,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesSocialMediaLoginProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesSocialMediaLoginProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesSocialMediaLoginProfilesById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12444,7 +12444,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesSocialMediaLoginProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesSocialMediaLoginProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SocialMediaLoginProfileSocialMediaLoginProfileWithEditInfo|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SocialMediaLoginProfileSocialMediaLoginProfileWithEditInfo : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesSocialMediaLoginProfilesById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12463,7 +12463,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesSocialMediaLoginProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesSocialMediaLoginProfilesByIdUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesSocialMediaLoginProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\SocialMediaLoginProfileSocialMediaLoginProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12479,7 +12479,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesSocialMediaLoginProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesSocialMediaLoginProfilesInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesSocialMediaLoginProfiles(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12495,7 +12495,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsSyncProvisionApsToCloudServiceInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApsSyncProvisionApsToCloudServiceUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApCloudOnBoardingSyncResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApCloudOnBoardingSyncResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addApsSyncProvisionApsToCloudService(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12513,7 +12513,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesDhcpSiteDhcpSiteConfigDoAssignIpByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesDhcpSiteDhcpSiteConfigDoAssignIpByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonDhcpSiteConfigListRef|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonDhcpSiteConfigListRef : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesDhcpSiteDhcpSiteConfigDoAssignIpByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\CommonDoAssignIp $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12529,7 +12529,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDhcpSiteDhcpSiteConfigByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDhcpSiteDhcpSiteConfigByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonDhcpSiteConfigListRef|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonDhcpSiteConfigListRef : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesDhcpSiteDhcpSiteConfigByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12546,7 +12546,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesServicesDhcpSiteConfigByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesServicesDhcpSiteConfigByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneDhcpSiteConfigList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneDhcpSiteConfigList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesServicesDhcpSiteConfigByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteria $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12562,7 +12562,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesBonjourFencingPolicyByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesBonjourFencingPolicyByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBonjourFencingPolicyList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBonjourFencingPolicyList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesBonjourFencingPolicyByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12580,7 +12580,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesBonjourFencingPolicyByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesBonjourFencingPolicyByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesBonjourFencingPolicyByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateBonjourFencingPolicy $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12597,7 +12597,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesIpv6InternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesIpv6UnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesIpv6(\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneCreateZone $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12614,7 +12614,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesDualInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesDualUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesDual(\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneCreateZone $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12630,7 +12630,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesSoftGreTunnelProfliesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesSoftGreTunnelProfliesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesSoftGreTunnelProfliesById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12646,7 +12646,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesIpsecProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesIpsecProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesIpsecProfilesById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12663,7 +12663,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesApmodelByModelForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesApmodelByModelInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneApmodelApModel|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneApmodelApModel : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesApmodelByModel(string $zoneId, string $model, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12682,7 +12682,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesApmodelByModelInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesApmodelByModelUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesApmodelByModel(string $zoneId, string $model, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneApmodelApModel $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12699,7 +12699,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesApmodelCommonAttributeByModelForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesApmodelCommonAttributeByModelInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelCommonAttribute|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelCommonAttribute : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesApmodelCommonAttributeByModel(string $zoneId, string $model, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12715,7 +12715,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12731,7 +12731,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneZoneConfiguration|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneZoneConfiguration : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12749,7 +12749,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneModifyZone $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12767,7 +12767,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneModifyZone $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12783,7 +12783,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesMeshByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesMeshByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesMeshById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12799,7 +12799,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesMeshByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesMeshByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneMeshConfiguration|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneMeshConfiguration : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesMeshById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12815,7 +12815,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesSyslogByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesSyslogByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesSyslogById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12831,7 +12831,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesSmartMonitorByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesSmartMonitorByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesSmartMonitorById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12847,7 +12847,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesClientAdmissionControl24ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesClientAdmissionControl24ByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesClientAdmissionControl24ById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12863,7 +12863,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesClientAdmissionControl50ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesClientAdmissionControl50ByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesClientAdmissionControl50ById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12879,7 +12879,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesLoadBalancingClientLoadBalancing24ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesLoadBalancingClientLoadBalancing24ByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesLoadBalancingClientLoadBalancing24ById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12895,7 +12895,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesLoadBalancingClientLoadBalancing50ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesLoadBalancingClientLoadBalancing50ByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesLoadBalancingClientLoadBalancing50ById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12911,7 +12911,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesLoadBalancingBandBalancingByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesLoadBalancingBandBalancingByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesLoadBalancingBandBalancingById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12927,7 +12927,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesVenueProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesVenueProfileByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesVenueProfileById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12943,7 +12943,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRogueByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRogueByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesRogueById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12959,7 +12959,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesLocationBasedServiceByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesLocationBasedServiceByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesLocationBasedServiceById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12975,7 +12975,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesAltitudeByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesAltitudeByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesAltitudeById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -12991,7 +12991,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesSnmpAgentByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesSnmpAgentByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesSnmpAgentById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13007,7 +13007,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRecoverySsidByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRecoverySsidByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesRecoverySsidById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13023,7 +13023,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRadioConfigRadio24gBackgroundScanningByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRadioConfigRadio24gBackgroundScanningByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesRadioConfigRadio24gBackgroundScanningById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13039,7 +13039,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRadioConfigRadio5gBackgroundScanningByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRadioConfigRadio5gBackgroundScanningByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesRadioConfigRadio5gBackgroundScanningById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13055,7 +13055,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRadioConfigRadio5gLowerBackgroundScanningByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRadioConfigRadio5gLowerBackgroundScanningByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesRadioConfigRadio5gLowerBackgroundScanningById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13071,7 +13071,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRadioConfigRadio5gUpperBackgroundScanningByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRadioConfigRadio5gUpperBackgroundScanningByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesRadioConfigRadio5gUpperBackgroundScanningById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13087,7 +13087,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRadioConfigRadio6gBackgroundScanningByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRadioConfigRadio6gBackgroundScanningByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesRadioConfigRadio6gBackgroundScanningById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13103,7 +13103,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesLoadBalancingByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesLoadBalancingByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesLoadBalancingById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13121,7 +13121,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesWlanSchedulersByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesWlanSchedulersByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\WlanschedulerWlanScheduleList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\WlanschedulerWlanScheduleList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesWlanSchedulersByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13139,7 +13139,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlanSchedulersByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlanSchedulersByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesWlanSchedulersByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\WlanschedulerCreateWlanScheduler $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13156,7 +13156,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlanSchedulersByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesWlanSchedulersByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesWlanSchedulersById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13173,7 +13173,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesWlanSchedulersByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesWlanSchedulersByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\WlanschedulerWlanSchedule|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\WlanschedulerWlanSchedule : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesWlanSchedulersById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13192,7 +13192,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesWlanSchedulersByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesWlanSchedulersByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesWlanSchedulersById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\WlanschedulerModifyWlanScheduler $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13208,7 +13208,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesPortalsWebauthByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesPortalsWebauthByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalServiceList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalServiceList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesPortalsWebauthByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13226,7 +13226,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesPortalsWebauthByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesPortalsWebauthByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesPortalsWebauthByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceCreateWebAuthentication $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13243,7 +13243,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesPortalsWebauthByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesPortalsWebauthByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesPortalsWebauthById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13260,7 +13260,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesPortalsWebauthByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesPortalsWebauthByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceWebAuthentication|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceWebAuthentication : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesPortalsWebauthById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13279,7 +13279,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesPortalsWebauthByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesPortalsWebauthByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesPortalsWebauthById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceModifyWebAuthentication $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13295,7 +13295,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesPortalsHotspotByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesPortalsHotspotByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalServiceList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalServiceList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesPortalsHotspotByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13313,7 +13313,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesPortalsHotspotInternalByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesPortalsHotspotInternalByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesPortalsHotspotInternalByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceCreateHotspotInternal $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13331,7 +13331,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesPortalsHotspotExternalByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesPortalsHotspotExternalByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesPortalsHotspotExternalByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceCreateHotspotExternal $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13350,7 +13350,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesPortalsHotspotInternalByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesPortalsHotspotInternalByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesPortalsHotspotInternalById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceCreateHotspotInternal $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13369,7 +13369,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesPortalsHotspotExternalByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesPortalsHotspotExternalByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesPortalsHotspotExternalById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceCreateHotspotExternal $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13386,7 +13386,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesPortalsWebauthRedirectByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesPortalsWebauthRedirectByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesPortalsWebauthRedirectById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13404,7 +13404,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesPortalsHotspotSmartClientOnlyByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesPortalsHotspotSmartClientOnlyByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesPortalsHotspotSmartClientOnlyByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceCreateHotspotSmartClientOnly $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13423,7 +13423,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesPortalsHotspotSmartClientOnlyByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesPortalsHotspotSmartClientOnlyByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesPortalsHotspotSmartClientOnlyById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceCreateHotspotSmartClientOnly $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13440,7 +13440,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesPortalsGuestRedirectByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesPortalsGuestRedirectByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesPortalsGuestRedirectById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13457,7 +13457,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesPortalsGuestSmsGatewayByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesPortalsGuestSmsGatewayByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesPortalsGuestSmsGatewayById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13473,7 +13473,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesHs20sByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesHs20sByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalServiceList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalServiceList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesHs20sByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13491,7 +13491,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesHs20sByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesHs20sByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesHs20sByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceCreateHotspot20WlanProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13508,7 +13508,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesHs20sByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesHs20sByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesHs20sById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13525,7 +13525,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesHs20sByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesHs20sByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceHotspot20WlanProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceHotspot20WlanProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesHs20sById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13544,7 +13544,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesHs20sByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesHs20sByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesHs20sById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceModifyHotspot20WlanProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13560,7 +13560,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesHs20VenuesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesHs20VenuesByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalServiceList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalServiceList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesHs20VenuesByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13578,7 +13578,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesHs20VenuesByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesHs20VenuesByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesHs20VenuesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceCreateHotspot20VenueProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13595,7 +13595,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesHs20VenuesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesHs20VenuesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesHs20VenuesById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13612,7 +13612,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesHs20VenuesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesHs20VenuesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceHotspot20VeuneProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceHotspot20VeuneProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesHs20VenuesById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13631,7 +13631,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesHs20VenuesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesHs20VenuesByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesHs20VenuesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceModifyHotspot20VenueProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13648,7 +13648,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesProfileEthernetPortByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesProfileEthernetPortByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesProfileEthernetPortById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13665,7 +13665,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesProfileEthernetPortByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesProfileEthernetPortByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\EthernetPortEthernetPortProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\EthernetPortEthernetPortProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesProfileEthernetPortById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13684,7 +13684,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesProfileEthernetPortByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesProfileEthernetPortByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesProfileEthernetPortById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\EthernetPortModifyEthernetPortProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13703,7 +13703,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesProfileEthernetPortByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesProfileEthernetPortByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesProfileEthernetPortById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\EthernetPortModifyEthernetPortProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13720,7 +13720,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesBonjourFencingPolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesBonjourFencingPolicyByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBonjourFencingPolicy|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBonjourFencingPolicy : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesBonjourFencingPolicyById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13739,7 +13739,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesBonjourFencingPolicyByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesBonjourFencingPolicyByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesBonjourFencingPolicyById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyBonjourFencingPolicy $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13755,7 +13755,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesBonjourFencingPolicyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesBonjourFencingPolicyInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesBonjourFencingPolicy(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13771,7 +13771,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesBonjourGatewayPoliciesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesBonjourGatewayPoliciesByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneBonjourGatewayPolicyList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneBonjourGatewayPolicyList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesBonjourGatewayPoliciesByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13789,7 +13789,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesBonjourGatewayPoliciesByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesBonjourGatewayPoliciesByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesBonjourGatewayPoliciesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneCreateBonjourGatewayPolicy $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13806,7 +13806,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesBonjourGatewayPoliciesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesBonjourGatewayPoliciesByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesBonjourGatewayPoliciesById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13823,7 +13823,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesBonjourGatewayPoliciesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesBonjourGatewayPoliciesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneBonjourGatewayPolicyConfiguration|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneBonjourGatewayPolicyConfiguration : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesBonjourGatewayPoliciesById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13842,7 +13842,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesBonjourGatewayPoliciesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesBonjourGatewayPoliciesByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesBonjourGatewayPoliciesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneModifyBonjourGatewayPolicy $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13859,7 +13859,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesClientIsolationWhitelistByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesClientIsolationWhitelistByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileClientIsolationWhitelist|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileClientIsolationWhitelist : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesClientIsolationWhitelistById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13878,7 +13878,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesClientIsolationWhitelistByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesClientIsolationWhitelistByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesClientIsolationWhitelistById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyClientIsolationWhitelist $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13894,7 +13894,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesPortalsGuestByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesPortalsGuestByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalServiceList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalServiceList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesPortalsGuestByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13912,7 +13912,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesPortalsGuestByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesPortalsGuestByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesPortalsGuestByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceCreateGuestAccess $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13929,7 +13929,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesPortalsGuestByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesPortalsGuestByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesPortalsGuestById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13946,7 +13946,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesPortalsGuestByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesPortalsGuestByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceGuestAccess|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceGuestAccess : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesPortalsGuestById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13965,7 +13965,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesPortalsGuestByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesPortalsGuestByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesPortalsGuestById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceModifyGuestAccess $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -13983,7 +13983,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesL2ACLByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesL2ACLByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalServiceList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalServiceList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesL2ACLByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14001,7 +14001,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesL2ACLByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesL2ACLByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesL2ACLByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceCreateL2ACL $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14018,7 +14018,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesL2ACLByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesL2ACLByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesL2ACLById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14035,7 +14035,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesL2ACLByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesL2ACLByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceL2ACL|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceL2ACL : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesL2ACLById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14054,7 +14054,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesL2ACLByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesL2ACLByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesL2ACLById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceModifyL2ACL $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14071,7 +14071,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesPortalsWechatByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesPortalsWechatByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesPortalsWechatById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14088,7 +14088,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesPortalsWechatByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesPortalsWechatByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceWechatConfiguration|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceWechatConfiguration : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesPortalsWechatById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14107,7 +14107,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesPortalsWechatByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesPortalsWechatByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesPortalsWechatById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceModifyWechat $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14125,7 +14125,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesPortalsWechatByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesPortalsWechatByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalServiceList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalservicePortalServiceList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesPortalsWechatByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14143,7 +14143,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesPortalsWechatByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesPortalsWechatByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesPortalsWechatByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceCreateWechat $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14159,7 +14159,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesApFirmwareByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesApFirmwareByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneApFirmwareList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneApFirmwareList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesApFirmwareByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14177,7 +14177,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesApFirmwareByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesApFirmwareByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesApFirmwareByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneModfiyApFirmware $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14195,7 +14195,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDevicePolicyByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDevicePolicyByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DevicePolicyPorfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DevicePolicyPorfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesDevicePolicyByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14213,7 +14213,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesDevicePolicyByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesDevicePolicyByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesDevicePolicyByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\DevicePolicyCreateDevicePolicy $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14229,7 +14229,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDiffservByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDiffservByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneDiffServList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneDiffServList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesDiffservByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14247,7 +14247,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesDiffservByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesDiffservByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesDiffservByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneCreateDiffServProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14264,7 +14264,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesDiffservByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesDiffservByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesDiffservById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14281,7 +14281,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDiffservByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDiffservByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneDiffServConfiguration|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneDiffServConfiguration : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesDiffservById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14300,7 +14300,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesDiffservByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesDiffservByIdUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesDiffservById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneModifyDiffServProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14316,7 +14316,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesClientIsolationWhitelistByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesClientIsolationWhitelistByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileClientIsolationWhitelistArray|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileClientIsolationWhitelistArray : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesClientIsolationWhitelistByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14334,7 +14334,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesClientIsolationWhitelistByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesClientIsolationWhitelistByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesClientIsolationWhitelistByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateClientIsolationWhitelist $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14350,7 +14350,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesClientIsolationWhitelistForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesClientIsolationWhitelistInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesClientIsolationWhitelist(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14366,7 +14366,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAvailableTunnelProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAvailableTunnelProfilesByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneAvailableTunnelProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneAvailableTunnelProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesAvailableTunnelProfilesByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14382,7 +14382,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAvailableIpsecProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesAvailableIpsecProfilesByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneAvailableTunnelProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneAvailableTunnelProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesAvailableIpsecProfilesByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14400,7 +14400,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesProfileEthernetPortByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesProfileEthernetPortByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\EthernetPortProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\EthernetPortProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesProfileEthernetPortByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14418,7 +14418,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesProfileEthernetPortByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesProfileEthernetPortByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesProfileEthernetPortByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\EthernetPortCreateEthernetPortProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14434,7 +14434,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesBonjourFencingPolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesBonjourFencingPolicyByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesBonjourFencingPolicyById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14450,7 +14450,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesClientIsolationWhitelistByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesClientIsolationWhitelistByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesClientIsolationWhitelistById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14467,7 +14467,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesDevicePolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesDevicePolicyByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesDevicePolicyById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14484,7 +14484,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDevicePolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDevicePolicyByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DevicePolicyDevicePolicyPorfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DevicePolicyDevicePolicyPorfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesDevicePolicyById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14503,7 +14503,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesDevicePolicyByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesDevicePolicyByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesDevicePolicyById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\DevicePolicyModifyDevicePolicy $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14520,7 +14520,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesPortalsHotspotByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesPortalsHotspotByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesPortalsHotspotById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14537,7 +14537,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesPortalsHotspotByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesPortalsHotspotByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceHotspot|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceHotspot : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesPortalsHotspotById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14556,7 +14556,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesPortalsHotspotByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesPortalsHotspotByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesPortalsHotspotById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceModifyHotspot $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14574,7 +14574,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesBonjourGatewayEnableByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesBonjourGatewayEnableByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesBonjourGatewayEnableByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneModifyBonjourGatewayEnable $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14592,7 +14592,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneZoneList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneZoneList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszones(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14609,7 +14609,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszones(\Jane\Component\OpenApi3\Tests\Expected\Model\ZoneCreateZone $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14624,7 +14624,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindClusterGeoRedundancyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindClusterGeoRedundancyInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ClusterRedundancyClusterRedundancySettings|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ClusterRedundancyClusterRedundancySettings : \Psr\Http\Message\ResponseInterface)
      */
     public function findClusterGeoRedundancy(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14641,7 +14641,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateClusterGeoRedundancyInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateClusterGeoRedundancyUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateClusterGeoRedundancy(\Jane\Component\OpenApi3\Tests\Expected\Model\ClusterRedundancyUpdateClusterRedundancy $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14658,7 +14658,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindMapsByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindMapsByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMapList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMapList : \Psr\Http\Message\ResponseInterface)
      */
     public function findMapsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14676,7 +14676,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateMapsApsByIndoorMapIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateMapsApsByIndoorMapIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndooMapAuditId|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndooMapAuditId : \Psr\Http\Message\ResponseInterface)
      */
     public function updateMapsApsByIndoorMapId(string $indoorMapId, array $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14693,7 +14693,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindMapsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindMapsInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMapList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMapList : \Psr\Http\Message\ResponseInterface)
      */
     public function findMaps(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14710,7 +14710,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddMapsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddMapsUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndooMapAuditId|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndooMapAuditId : \Psr\Http\Message\ResponseInterface)
      */
     public function addMaps(\Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMap $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14726,7 +14726,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteMapsByIndoorMapIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteMapsByIndoorMapIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndooMapAuditId|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndooMapAuditId : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteMapsByIndoorMapId(string $indoorMapId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14742,7 +14742,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindMapsByIndoorMapIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindMapsByIndoorMapIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMap|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMap : \Psr\Http\Message\ResponseInterface)
      */
     public function findMapsByIndoorMapId(string $indoorMapId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14760,7 +14760,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateMapsByIndoorMapIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateMapsByIndoorMapIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndooMapAuditId|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndooMapAuditId : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateMapsByIndoorMapId(string $indoorMapId, \Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMap $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14775,7 +14775,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSessionManagementForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSessionManagementInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SessionManagementRuckusSessions|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SessionManagementRuckusSessions : \Psr\Http\Message\ResponseInterface)
      */
     public function findSessionManagement(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14792,7 +14792,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindPrecedenceByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindPrecedenceByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfilePrecedenceList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfilePrecedenceList : \Psr\Http\Message\ResponseInterface)
      */
     public function findPrecedenceByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14808,7 +14808,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeletePrecedenceForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeletePrecedenceInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deletePrecedence(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDeleteBulkPrecedenceProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14825,7 +14825,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindPrecedenceForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindPrecedenceInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfilePrecedenceList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfilePrecedenceList : \Psr\Http\Message\ResponseInterface)
      */
     public function findPrecedence(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14842,7 +14842,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddPrecedenceInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddPrecedenceUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addPrecedence(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreatePrecedenceProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14858,7 +14858,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeletePrecedenceByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeletePrecedenceByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deletePrecedenceById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14874,7 +14874,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindPrecedenceByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindPrecedenceByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreatePrecedenceProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreatePrecedenceProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findPrecedenceById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14892,7 +14892,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdatePrecedenceByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdatePrecedenceByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdatePrecedenceById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileUpdatePrecedenceProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14909,7 +14909,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindMeshTopologyByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindMeshTopologyByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\MeshNodeInfoMeshNodeInfoList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\MeshNodeInfoMeshNodeInfoList : \Psr\Http\Message\ResponseInterface)
      */
     public function findMeshTopologyByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14924,7 +14924,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindMeshZeroTouchForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindMeshZeroTouchInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\MeshNodeInfoMeshNodeInfoList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\MeshNodeInfoMeshNodeInfoList : \Psr\Http\Message\ResponseInterface)
      */
     public function findMeshZeroTouch(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14941,7 +14941,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateMeshZeroTouchInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateMeshZeroTouchUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateMeshZeroTouch(\Jane\Component\OpenApi3\Tests\Expected\Model\MeshNodeInfoUpdateAPZeroTouch $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14959,7 +14959,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindMeshTopologyByApMacByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindMeshTopologyByApMacByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\MeshNodeInfoMeshNodeInfo[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\MeshNodeInfoMeshNodeInfo[] : \Psr\Http\Message\ResponseInterface)
      */
     public function findMeshTopologyByApMacByQueryCriteria(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14977,7 +14977,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindMeshNeighborByApMacByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindMeshNeighborByApMacByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\MeshNeighborInfoMeshNeighborInfoList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\MeshNeighborInfoMeshNeighborInfoList : \Psr\Http\Message\ResponseInterface)
      */
     public function findMeshNeighborByApMacByQueryCriteria(string $apMac, \Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -14993,7 +14993,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesSplitTunnelProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesSplitTunnelProfilesByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SplitTunnelSplitTunnelProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SplitTunnelSplitTunnelProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesSplitTunnelProfilesByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15011,7 +15011,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesSplitTunnelProfilesByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesSplitTunnelProfilesByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesSplitTunnelProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\SplitTunnelCreateSplitTunnelProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15028,7 +15028,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesSplitTunnelProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesSplitTunnelProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesSplitTunnelProfilesById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15045,7 +15045,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesSplitTunnelProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesSplitTunnelProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SplitTunnelSplitTunnelProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SplitTunnelSplitTunnelProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesSplitTunnelProfilesById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15064,7 +15064,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesSplitTunnelProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesSplitTunnelProfilesByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesSplitTunnelProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\SplitTunnelModifySplitTunnelProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15083,7 +15083,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesSplitTunnelProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesSplitTunnelProfilesByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesSplitTunnelProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\SplitTunnelCreateSplitTunnelProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15100,7 +15100,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesSplitTunnelProfilesByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesSplitTunnelProfilesByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SplitTunnelSplitTunnelProfileQuery|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SplitTunnelSplitTunnelProfileQuery : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesSplitTunnelProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15116,7 +15116,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesSplitTunnelProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesSplitTunnelProfilesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesSplitTunnelProfiles(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15133,7 +15133,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRogueApPoliciesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRogueApPoliciesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesRogueApPoliciesById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15150,7 +15150,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesRogueApPoliciesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesRogueApPoliciesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileRogueApPolicy|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileRogueApPolicy : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesRogueApPoliciesById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15169,7 +15169,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesRogueApPoliciesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesRogueApPoliciesByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesRogueApPoliciesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileUpdateRogueApPolicy $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15186,7 +15186,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRogueApPoliciesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRogueApPoliciesByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesRogueApPoliciesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15202,7 +15202,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesRogueApPoliciesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesRogueApPoliciesByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileRogueApPolicyList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileRogueApPolicyList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesRogueApPoliciesByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15220,7 +15220,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesRogueApPoliciesByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesRogueApPoliciesByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesRogueApPoliciesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateRogueApPolicy $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15237,7 +15237,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRogueclientsByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRogueclientsByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\RogueclientRogueInfoList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\RogueclientRogueInfoList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRogueclientsByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15255,7 +15255,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesRestrictedApAccessProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesRestrictedApAccessProfilesByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileIdList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileIdList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesRestrictedApAccessProfilesByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15273,7 +15273,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesRestrictedApAccessProfilesByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesRestrictedApAccessProfilesByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesRestrictedApAccessProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateRestrictedApAccessProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15290,7 +15290,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesRestrictedApAccessProfilesByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesRestrictedApAccessProfilesByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileRestrictedApAccessProfileArray|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileRestrictedApAccessProfileArray : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesRestrictedApAccessProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15306,7 +15306,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRestrictedApAccessProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRestrictedApAccessProfilesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesRestrictedApAccessProfiles(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15323,7 +15323,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRestrictedApAccessProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesRestrictedApAccessProfilesByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesRestrictedApAccessProfilesById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15340,7 +15340,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesRestrictedApAccessProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesRestrictedApAccessProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileRestrictedApAccessProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileRestrictedApAccessProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesRestrictedApAccessProfilesById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15359,7 +15359,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesRestrictedApAccessProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesRestrictedApAccessProfilesByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesRestrictedApAccessProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyRestrictedApAccessProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15376,7 +15376,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddNetworkSegmentationInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddNetworkSegmentationUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addNetworkSegmentation(\Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileCreateMduSegmentationProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15392,7 +15392,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteNetworkSegmentationByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteNetworkSegmentationByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteNetworkSegmentationById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15408,7 +15408,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindNetworkSegmentationByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindNetworkSegmentationByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileMduSegmentationProfileSummary|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileMduSegmentationProfileSummary : \Psr\Http\Message\ResponseInterface)
      */
     public function findNetworkSegmentationById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15426,7 +15426,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateNetworkSegmentationByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateNetworkSegmentationByIdUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateNetworkSegmentationById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileUpdateMduSegmentationProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15443,7 +15443,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindNetworkSegmentationByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindNetworkSegmentationByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileMduSegmentationProfileQuery|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileMduSegmentationProfileQuery : \Psr\Http\Message\ResponseInterface)
      */
     public function findNetworkSegmentationByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15459,7 +15459,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteNetworkSegmentationEthernetPortProfileForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteNetworkSegmentationEthernetPortProfileInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteNetworkSegmentationEthernetPortProfile(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15474,7 +15474,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindNetworkSegmentationEthernetPortProfileForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindNetworkSegmentationEthernetPortProfileInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileProfileContentList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileProfileContentList : \Psr\Http\Message\ResponseInterface)
      */
     public function findNetworkSegmentationEthernetPortProfile(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15491,7 +15491,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddNetworkSegmentationEthernetPortProfileInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddNetworkSegmentationEthernetPortProfileUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addNetworkSegmentationEthernetPortProfile(\Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileEthernetPortProfileConfig $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15507,7 +15507,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteNetworkSegmentationEthernetPortProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteNetworkSegmentationEthernetPortProfileByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteNetworkSegmentationEthernetPortProfileById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15523,7 +15523,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindNetworkSegmentationEthernetPortProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindNetworkSegmentationEthernetPortProfileByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileEthernetPortProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileEthernetPortProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findNetworkSegmentationEthernetPortProfileById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15541,7 +15541,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateNetworkSegmentationEthernetPortProfileByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateNetworkSegmentationEthernetPortProfileByIdUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateNetworkSegmentationEthernetPortProfileById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileEthernetPortProfileConfig $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15557,7 +15557,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAdminaaaForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAdminaaaInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationRetrieveAdminAAAServerList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationRetrieveAdminAAAServerList : \Psr\Http\Message\ResponseInterface)
      */
     public function findAdminaaa(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15574,7 +15574,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAdminaaaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAdminaaaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addAdminaaa(\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationCreateAdminAAAServer $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15590,7 +15590,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAdminaaaByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAdminaaaByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteAdminaaaById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15606,7 +15606,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAdminaaaByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAdminaaaByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationRetrieveAdminAAAServer|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationRetrieveAdminAAAServer : \Psr\Http\Message\ResponseInterface)
      */
     public function findAdminaaaById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15624,7 +15624,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateAdminaaaByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateAdminaaaByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateAdminaaaById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationModifyAdminAAAServer $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15639,7 +15639,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindConfigurationSettingsAutoExportBackupForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindConfigurationSettingsAutoExportBackupInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationAutoExportBackup|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationAutoExportBackup : \Psr\Http\Message\ResponseInterface)
      */
     public function findConfigurationSettingsAutoExportBackup(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15656,7 +15656,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateConfigurationSettingsAutoExportBackupInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateConfigurationSettingsAutoExportBackupUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateConfigurationSettingsAutoExportBackup(\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationModifyAutoExportBackup $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15671,7 +15671,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindConfigurationSettingsScheduleBackupForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindConfigurationSettingsScheduleBackupInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationScheduleBackup|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationScheduleBackup : \Psr\Http\Message\ResponseInterface)
      */
     public function findConfigurationSettingsScheduleBackup(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15688,7 +15688,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateConfigurationSettingsScheduleBackupInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateConfigurationSettingsScheduleBackupUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateConfigurationSettingsScheduleBackup(\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationModifyScheduleBackup $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15705,7 +15705,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddClusterRestoreByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddClusterRestoreByIdUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addClusterRestoreById(string $id:.+, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15723,7 +15723,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApplicationsByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApplicationsByBladeUUIDInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationApplicationLogAndStatusList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationApplicationLogAndStatusList : \Psr\Http\Message\ResponseInterface)
      */
     public function findApplicationsByBladeUUID(string $bladeUUID, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15740,7 +15740,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateApplicationsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateApplicationsUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateApplications(\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationModifyLogLevel $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15758,7 +15758,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApplicationsDownloadByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApplicationsDownloadByBladeUUIDInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findApplicationsDownloadByBladeUUID(string $bladeUUID, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15774,7 +15774,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApplicationsDownloadsnapByBladeUUIDForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApplicationsDownloadsnapByBladeUUIDInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findApplicationsDownloadsnapByBladeUUID(string $bladeUUID, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15793,7 +15793,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUpgradeUploadInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUpgradeUploadUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationUpgradeStatus|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationUpgradeStatus : \Psr\Http\Message\ResponseInterface)
      */
     public function addUpgradeUpload(array $queryParameters = [], array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15812,7 +15812,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApPatchFileInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApPatchFileUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addApPatchFile(array $queryParameters = [], array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15827,7 +15827,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApPatchForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApPatchInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationApPatchInfo|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationApPatchInfo : \Psr\Http\Message\ResponseInterface)
      */
     public function findApPatch(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15843,7 +15843,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApPatchInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddApPatchUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationApPatchStatus|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationApPatchStatus : \Psr\Http\Message\ResponseInterface)
      */
     public function addApPatch(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15858,7 +15858,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApPatchStatusForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApPatchStatusInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationApPatchStatus|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationApPatchStatus : \Psr\Http\Message\ResponseInterface)
      */
     public function findApPatchStatus(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15876,7 +15876,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApPatchHistoryForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindApPatchHistoryInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationApPatchHistoryList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationApPatchHistoryList : \Psr\Http\Message\ResponseInterface)
      */
     public function findApPatchHistory(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15892,7 +15892,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRestartInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRestartUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addRestart(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15908,7 +15908,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddShutdownInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddShutdownUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addShutdown(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15923,7 +15923,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindLicenseServerForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindLicenseServerInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationLicenseServer|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationLicenseServer : \Psr\Http\Message\ResponseInterface)
      */
     public function findLicenseServer(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15940,7 +15940,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateLicenseServerInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateLicenseServerUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateLicenseServer(\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationModfiyLicenseServer $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15956,7 +15956,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateLicensesSyncInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateLicensesSyncUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateLicensesSync(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15971,7 +15971,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUpgradePatchForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUpgradePatchInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationUpgradePatchInfo|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationUpgradePatchInfo : \Psr\Http\Message\ResponseInterface)
      */
     public function findUpgradePatch(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -15987,7 +15987,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddClusterBackupInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddClusterBackupUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addClusterBackup(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16003,7 +16003,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteClusterByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteClusterByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteClusterById(string $id:.+, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16021,7 +16021,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindClusterForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindClusterInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationClusterBackupList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationClusterBackupList : \Psr\Http\Message\ResponseInterface)
      */
     public function findCluster(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16040,7 +16040,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddConfigurationUploadInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddConfigurationUploadUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addConfigurationUpload(array $queryParameters = [], array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16056,7 +16056,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddConfigurationBackupInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddConfigurationBackupUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addConfigurationBackup(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16071,7 +16071,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindLicensesSummaryForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindLicensesSummaryInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationLicensesSummaryList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationLicensesSummaryList : \Psr\Http\Message\ResponseInterface)
      */
     public function findLicensesSummary(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16086,7 +16086,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindLicensesSyncLogsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindLicensesSyncLogsInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationLicensesSyncLogsList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationLicensesSyncLogsList : \Psr\Http\Message\ResponseInterface)
      */
     public function findLicensesSyncLogs(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16103,7 +16103,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindConfigurationForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindConfigurationInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationConfigurationBackupList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationConfigurationBackupList : \Psr\Http\Message\ResponseInterface)
      */
     public function findConfiguration(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16120,7 +16120,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindConfigurationDownloadForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindConfigurationDownloadInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findConfigurationDownload(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16135,7 +16135,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUpgradeStatusForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUpgradeStatusInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationUpgradeStatus|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationUpgradeStatus : \Psr\Http\Message\ResponseInterface)
      */
     public function findUpgradeStatus(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16153,7 +16153,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUpgradeHistoryForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindUpgradeHistoryInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationUpgradeHistoryList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationUpgradeHistoryList : \Psr\Http\Message\ResponseInterface)
      */
     public function findUpgradeHistory(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16169,7 +16169,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteConfigurationByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteConfigurationByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteConfigurationById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16187,7 +16187,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddConfigurationRestoreByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddConfigurationRestoreByIdUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addConfigurationRestoreById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationRestoreConfigurationBackup $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16202,7 +16202,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindLicensesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindLicensesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationLicensesList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationLicensesList : \Psr\Http\Message\ResponseInterface)
      */
     public function findLicenses(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16218,7 +16218,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUpgradeInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddUpgradeUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationUpgradeStatus|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationUpgradeStatus : \Psr\Http\Message\ResponseInterface)
      */
     public function addUpgrade(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16234,7 +16234,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAvcUserDefinedByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAvcUserDefinedByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteAvcUserDefinedById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16250,7 +16250,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcUserDefinedByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcUserDefinedByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcUserDefinedProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcUserDefinedProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findAvcUserDefinedById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16268,7 +16268,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateAvcUserDefinedByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateAvcUserDefinedByIdUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateAvcUserDefinedById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\AvcModifyUserDefinedProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16284,7 +16284,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAvcUserDefinedForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAvcUserDefinedInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteAvcUserDefined(\Jane\Component\OpenApi3\Tests\Expected\Model\AvcDeleteBulk $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16301,7 +16301,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAvcUserDefinedInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAvcUserDefinedUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addAvcUserDefined(\Jane\Component\OpenApi3\Tests\Expected\Model\AvcCreateUserDefinedProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16317,7 +16317,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAvcApplicationPolicyForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAvcApplicationPolicyInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteAvcApplicationPolicy(\Jane\Component\OpenApi3\Tests\Expected\Model\AvcDeleteBulk $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16334,7 +16334,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAvcApplicationPolicyInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAvcApplicationPolicyUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addAvcApplicationPolicy(\Jane\Component\OpenApi3\Tests\Expected\Model\AvcCreateApplicationPolicyProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16350,7 +16350,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAvcApplicationPolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAvcApplicationPolicyByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteAvcApplicationPolicyById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16366,7 +16366,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcApplicationPolicyByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcApplicationPolicyByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcApplicationPolicyProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcApplicationPolicyProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findAvcApplicationPolicyById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16384,7 +16384,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateAvcApplicationPolicyByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateAvcApplicationPolicyByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateAvcApplicationPolicyById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\AvcModifyApplicationPolicyProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16400,7 +16400,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAvcApplicationPolicyV2ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAvcApplicationPolicyV2ByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteAvcApplicationPolicyV2ById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16416,7 +16416,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcApplicationPolicyV2ByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcApplicationPolicyV2ByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcApplicationPolicyProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcApplicationPolicyProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findAvcApplicationPolicyV2ById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16434,7 +16434,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateAvcApplicationPolicyV2ByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateAvcApplicationPolicyV2ByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateAvcApplicationPolicyV2ById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\AvcModifyApplicationPolicyProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16450,7 +16450,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAvcApplicationPolicyV2ForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteAvcApplicationPolicyV2InternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteAvcApplicationPolicyV2(\Jane\Component\OpenApi3\Tests\Expected\Model\AvcDeleteBulk $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16467,7 +16467,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAvcApplicationPolicyV2InternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAvcApplicationPolicyV2UnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addAvcApplicationPolicyV2(\Jane\Component\OpenApi3\Tests\Expected\Model\AvcCreateApplicationPolicyProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16482,7 +16482,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageV2ForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageV2InternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcSignaturePackage|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcSignaturePackage : \Psr\Http\Message\ResponseInterface)
      */
     public function findAvcSignaturePackageV2(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16499,7 +16499,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateAvcSignaturePackageV2InternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateAvcSignaturePackageV2UnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateAvcSignaturePackageV2(\Jane\Component\OpenApi3\Tests\Expected\Model\AvcPatchSignaturePackage $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16515,7 +16515,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAvcSignaturePackageV2CheckLatestInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAvcSignaturePackageV2CheckLatestUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcLatestInstallableSignaturePackage|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcLatestInstallableSignaturePackage : \Psr\Http\Message\ResponseInterface)
      */
     public function addAvcSignaturePackageV2CheckLatest(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16530,7 +16530,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcSignaturePackage|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcSignaturePackage : \Psr\Http\Message\ResponseInterface)
      */
     public function findAvcSignaturePackage(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16545,7 +16545,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageApplicationsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageApplicationsInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcApplicationList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcApplicationList : \Psr\Http\Message\ResponseInterface)
      */
     public function findAvcSignaturePackageApplications(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16564,7 +16564,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAvcSignaturePackageV2UploadInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAvcSignaturePackageV2UploadUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcSignaturePackage|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcSignaturePackage : \Psr\Http\Message\ResponseInterface)
      */
     public function addAvcSignaturePackageV2Upload(array $queryParameters = [], array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16580,7 +16580,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageV2CategoriesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageV2CategoriesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcAppCategoryList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcAppCategoryList : \Psr\Http\Message\ResponseInterface)
      */
     public function findAvcSignaturePackageV2Categories(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16596,7 +16596,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageV2ApplicationsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageV2ApplicationsInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcApplicationList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcApplicationList : \Psr\Http\Message\ResponseInterface)
      */
     public function findAvcSignaturePackageV2Applications(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16612,7 +16612,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageCategoryByCategoryNameForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageCategoryByCategoryNameInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcAppCategory|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcAppCategory : \Psr\Http\Message\ResponseInterface)
      */
     public function findAvcSignaturePackageCategoryByCategoryName(string $categoryName, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16628,7 +16628,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageApplicationByApplicationNameForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageApplicationByApplicationNameInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcApplication|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcApplication : \Psr\Http\Message\ResponseInterface)
      */
     public function findAvcSignaturePackageApplicationByApplicationName(string $applicationName, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16644,7 +16644,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAvcSignaturePackageV2DownloadAndInstallLastCheckedInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAvcSignaturePackageV2DownloadAndInstallLastCheckedUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcDownloadLatestInstallableSignaturePackage|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcDownloadLatestInstallableSignaturePackage : \Psr\Http\Message\ResponseInterface)
      */
     public function addAvcSignaturePackageV2DownloadAndInstallLastChecked(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16663,7 +16663,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAvcSignaturePackageUploadInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddAvcSignaturePackageUploadUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcSignaturePackage|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcSignaturePackage : \Psr\Http\Message\ResponseInterface)
      */
     public function addAvcSignaturePackageUpload(array $queryParameters = [], array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16678,7 +16678,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageV2DownloadAndInstallLastCheckedProgressForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageV2DownloadAndInstallLastCheckedProgressInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcDownloadLatestInstallableSignaturePackage|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcDownloadLatestInstallableSignaturePackage : \Psr\Http\Message\ResponseInterface)
      */
     public function findAvcSignaturePackageV2DownloadAndInstallLastCheckedProgress(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16693,7 +16693,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageCategoriesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindAvcSignaturePackageCategoriesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcAppCategoryList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AvcAppCategoryList : \Psr\Http\Message\ResponseInterface)
      */
     public function findAvcSignaturePackageCategories(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16708,7 +16708,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSciSciEventCodeForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSciSciEventCodeInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SciSciEventCode|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SciSciEventCode : \Psr\Http\Message\ResponseInterface)
      */
     public function findSciSciEventCode(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16725,7 +16725,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSciSciEventCodeInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSciSciEventCodeUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addSciSciEventCode(\Jane\Component\OpenApi3\Tests\Expected\Model\SciModifyEventCode $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16741,7 +16741,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteSciSciProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteSciSciProfileByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteSciSciProfileById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16757,7 +16757,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSciSciProfileByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSciSciProfileByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SciSciProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SciSciProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findSciSciProfileById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16775,7 +16775,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSciSciProfileByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSciSciProfileByIdUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateSciSciProfileById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\SciModifySciProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16791,7 +16791,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteSciSciProfileForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteSciSciProfileInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteSciSciProfile(\Jane\Component\OpenApi3\Tests\Expected\Model\SciDeleteSciProfileList $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16806,7 +16806,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSciSciProfileForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSciSciProfileInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SciSciProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SciSciProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findSciSciProfile(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16823,7 +16823,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSciSciProfileInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSciSciProfileUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addSciSciProfile(\Jane\Component\OpenApi3\Tests\Expected\Model\SciCreateSciProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16840,7 +16840,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSciSciEnabledInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSciSciEnabledUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateSciSciEnabled(\Jane\Component\OpenApi3\Tests\Expected\Model\SciModifySciEnabled $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16860,7 +16860,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDomainsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDomainsInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DomainDomainList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DomainDomainList : \Psr\Http\Message\ResponseInterface)
      */
     public function findDomains(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16878,7 +16878,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDomainsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddDomainsUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addDomains(\Jane\Component\OpenApi3\Tests\Expected\Model\DomainCreateDomain $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16894,7 +16894,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDomainsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteDomainsByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteDomainsById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16911,7 +16911,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDomainsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDomainsByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DomainDomainConfiguration|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DomainDomainConfiguration : \Psr\Http\Message\ResponseInterface)
      */
     public function findDomainsById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16929,7 +16929,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateDomainsByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateDomainsByIdUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateDomainsById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\DomainModifyDomain $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16950,7 +16950,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDomainsSubdomainByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDomainsSubdomainByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DomainDomainList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DomainDomainList : \Psr\Http\Message\ResponseInterface)
      */
     public function findDomainsSubdomainById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16966,7 +16966,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDomainsByNameByDomainNameForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindDomainsByNameByDomainNameInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DomainDomainList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DomainDomainList : \Psr\Http\Message\ResponseInterface)
      */
     public function findDomainsByNameByDomainName(string $domainName, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -16983,7 +16983,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesWlansDpskByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesWlansDpskByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpskGetDpskInfoList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpskGetDpskInfoList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesWlansDpskById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17002,7 +17002,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansDpskByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansDpskByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpskDeleteDpskResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpskDeleteDpskResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesWlansDpskById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\DpskDeleteDPSKs $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17018,7 +17018,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDownloadDpskCsvSampleForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDownloadDpskCsvSampleInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesDownloadDpskCsvSample(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17034,7 +17034,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDpskEnabledWlansByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDpskEnabledWlansByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpskGetDpskEnabledWlans|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpskGetDpskEnabledWlans : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesDpskEnabledWlansByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17050,7 +17050,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDeleteExpiredDpskByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDeleteExpiredDpskByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpskDeleteExpiredDpskConfig|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpskDeleteExpiredDpskConfig : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesDeleteExpiredDpskByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17068,7 +17068,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesDeleteExpiredDpskByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesDeleteExpiredDpskByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesDeleteExpiredDpskByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\DpskModifyDeleteExpiredDpsk $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17089,7 +17089,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansDpskUploadByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansDpskUploadByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpskGetDpskResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpskGetDpskResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesWlansDpskUploadById(string $zoneId, string $id, array $queryParameters = [], array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17108,7 +17108,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansDpskBatchGenUnboundByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesWlansDpskBatchGenUnboundByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpskGetDpskResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpskGetDpskResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesWlansDpskBatchGenUnboundById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\DpskBatchGenUnbound $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17126,7 +17126,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesWlansDpskByDpskIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesWlansDpskByDpskIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpskGetDpskInfoList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpskGetDpskInfoList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesWlansDpskByDpskId(string $zoneId, string $id, string $dpskId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17146,7 +17146,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesWlansDpskByDpskIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateRkszonesWlansDpskByDpskIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateRkszonesWlansDpskByDpskId(string $zoneId, string $id, string $dpskId, \Jane\Component\OpenApi3\Tests\Expected\Model\DpskUpdateDpsk $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17162,7 +17162,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDpskByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDpskByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpskGetDpskInfoList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DpskGetDpskInfoList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesDpskByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17178,7 +17178,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteFirewallProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteFirewallProfilesByIdInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteFirewallProfilesById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17194,7 +17194,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindFirewallProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindFirewallProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function findFirewallProfilesById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17212,7 +17212,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateFirewallProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateFirewallProfilesByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateFirewallProfilesById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyFirewallProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17229,7 +17229,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindFirewallProfilesByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindFirewallProfilesByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfileArray|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfileArray : \Psr\Http\Message\ResponseInterface)
      */
     public function findFirewallProfilesByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfileQueryCriteria $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17245,7 +17245,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteFirewallProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteFirewallProfilesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteFirewallProfiles(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17263,7 +17263,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindFirewallProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindFirewallProfilesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileIdList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileProfileIdList : \Psr\Http\Message\ResponseInterface)
      */
     public function findFirewallProfiles(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17280,7 +17280,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddFirewallProfilesInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddFirewallProfilesUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addFirewallProfiles(\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateFirewallProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17296,7 +17296,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindFirewallProfilesEthernetPortProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindFirewallProfilesEthernetPortProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\EthernetPortProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\EthernetPortProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findFirewallProfilesEthernetPortProfilesById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17312,7 +17312,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindFirewallProfilesWlansByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindFirewallProfilesWlansByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\WlanQueryWlanQueryList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\WlanQueryWlanQueryList : \Psr\Http\Message\ResponseInterface)
      */
     public function findFirewallProfilesWlansById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17328,7 +17328,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDnsSpoofingProfilesByZoneIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDnsSpoofingProfilesByZoneIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DnsSpoofingProfileGetDnsSpoofingProfileList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DnsSpoofingProfileGetDnsSpoofingProfileList : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesDnsSpoofingProfilesByZoneId(string $zoneId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17346,7 +17346,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesDnsSpoofingProfilesByZoneIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddRkszonesDnsSpoofingProfilesByZoneIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addRkszonesDnsSpoofingProfilesByZoneId(string $zoneId, \Jane\Component\OpenApi3\Tests\Expected\Model\DnsSpoofingProfileDnsSpoofingProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17362,7 +17362,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesDnsSpoofingProfilesForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesDnsSpoofingProfilesInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesDnsSpoofingProfiles(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonBulkDeleteRequest $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17379,7 +17379,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesDnsSpoofingProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteRkszonesDnsSpoofingProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteRkszonesDnsSpoofingProfilesById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17396,7 +17396,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDnsSpoofingProfilesByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindRkszonesDnsSpoofingProfilesByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\DnsSpoofingProfileDnsSpoofingProfileDetail|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\DnsSpoofingProfileDnsSpoofingProfileDetail : \Psr\Http\Message\ResponseInterface)
      */
     public function findRkszonesDnsSpoofingProfilesById(string $zoneId, string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17415,7 +17415,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesDnsSpoofingProfilesByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateRkszonesDnsSpoofingProfilesByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateRkszonesDnsSpoofingProfilesById(string $zoneId, string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\DnsSpoofingProfileDnsSpoofingProfile $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17433,7 +17433,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindToolTraceRouteForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindToolTraceRouteInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findToolTraceRoute(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17450,7 +17450,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddToolSpeedflexInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddToolSpeedflexUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ToolTestResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ToolTestResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addToolSpeedflex(\Jane\Component\OpenApi3\Tests\Expected\Model\ToolSpeedFlex $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17466,7 +17466,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindToolSpeedflexByWcidForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindToolSpeedflexByWcidInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ToolTestResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ToolTestResult : \Psr\Http\Message\ResponseInterface)
      */
     public function findToolSpeedflexByWcid(string $wcid, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17483,7 +17483,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindToolPingForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindToolPingInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findToolPing(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17499,7 +17499,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindZdImportGetZDAPsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindZdImportGetZDAPsInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationZdAPList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationZdAPList : \Psr\Http\Message\ResponseInterface)
      */
     public function findZdImportGetZDAPs(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17515,7 +17515,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindZdImportStatusForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindZdImportStatusInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationZdImportStatus|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationZdImportStatus : \Psr\Http\Message\ResponseInterface)
      */
     public function findZdImportStatus(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17532,7 +17532,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddZdImportConnectZDInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddZdImportConnectZDUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addZdImportConnectZD(\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationConnectZD $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17549,7 +17549,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddZdImportMigrateInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddZdImportMigrateUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addZdImportMigrate(\Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationZdImport $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17566,7 +17566,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSwapApsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSwapApsUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addSwapAps(\Jane\Component\OpenApi3\Tests\Expected\Model\ApSwapApConfigure $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17583,7 +17583,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateCertstoreSettingServiceCertificatesInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateCertstoreSettingServiceCertificatesUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateCertstoreSettingServiceCertificates(array $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17598,7 +17598,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemApMacOUIsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemApMacOUIsInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemApMacOUIList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemApMacOUIList : \Psr\Http\Message\ResponseInterface)
      */
     public function findSystemApMacOUIs(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17615,7 +17615,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemApMacOUIsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemApMacOUIsUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addSystemApMacOUIs(\Jane\Component\OpenApi3\Tests\Expected\Model\SystemCreateApMacOUI $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17632,7 +17632,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindCertstoreCsrForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindCertstoreCsrInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateCsrList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateCsrList : \Psr\Http\Message\ResponseInterface)
      */
     public function findCertstoreCsr(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17649,7 +17649,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddCertstoreCsrInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddCertstoreCsrUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addCertstoreCsr(\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateCreateCSR $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17665,7 +17665,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteCertstoreCsrByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteCertstoreCsrByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteCertstoreCsrById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17681,7 +17681,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindCertstoreCsrByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindCertstoreCsrByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateCertificatesSigningRequest|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateCertificatesSigningRequest : \Psr\Http\Message\ResponseInterface)
      */
     public function findCertstoreCsrById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17698,7 +17698,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSystemSyslogPrimaryServerInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSystemSyslogPrimaryServerUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateSystemSyslogPrimaryServer(\Jane\Component\OpenApi3\Tests\Expected\Model\SyslogPrimaryServer $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17715,7 +17715,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSystemSyslogSecondaryServerInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSystemSyslogSecondaryServerUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateSystemSyslogSecondaryServer(\Jane\Component\OpenApi3\Tests\Expected\Model\SyslogSecondaryServer $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17731,7 +17731,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteCertstoreTrustedCAChainCertForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteCertstoreTrustedCAChainCertInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteCertstoreTrustedCAChainCert(\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateDeleteBulk $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17748,7 +17748,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindCertstoreTrustedCAChainCertForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindCertstoreTrustedCAChainCertInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateTrustedCAChainCertList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateTrustedCAChainCertList : \Psr\Http\Message\ResponseInterface)
      */
     public function findCertstoreTrustedCAChainCert(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17765,7 +17765,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddCertstoreTrustedCAChainCertInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddCertstoreTrustedCAChainCertUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addCertstoreTrustedCAChainCert(\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateCreateTrustedCAChain $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17781,7 +17781,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteCertstoreTrustedCAChainCertByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteCertstoreTrustedCAChainCertByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteCertstoreTrustedCAChainCertById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17797,7 +17797,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindCertstoreTrustedCAChainCertByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindCertstoreTrustedCAChainCertByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateTrustedCAChain|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateTrustedCAChain : \Psr\Http\Message\ResponseInterface)
      */
     public function findCertstoreTrustedCAChainCertById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17815,7 +17815,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateCertstoreTrustedCAChainCertByIdInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateCertstoreTrustedCAChainCertByIdUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateCertstoreTrustedCAChainCertById(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\CertificateModifyTrustedCAChain $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17831,7 +17831,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemApRoutineStatusIntervalSpeedupInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemApRoutineStatusIntervalSpeedupUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addSystemApRoutineStatusIntervalSpeedup(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17847,7 +17847,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemApRoutineStatusIntervalSlowdownInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemApRoutineStatusIntervalSlowdownUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addSystemApRoutineStatusIntervalSlowdown(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17862,7 +17862,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemSystemTimeForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemSystemTimeInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemSystemTimeSetting|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemSystemTimeSetting : \Psr\Http\Message\ResponseInterface)
      */
     public function findSystemSystemTime(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17879,7 +17879,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSystemSystemTimeInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSystemSystemTimeUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateSystemSystemTime(\Jane\Component\OpenApi3\Tests\Expected\Model\SystemModifySystemTimeSetting $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17896,7 +17896,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemSyslogForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemSyslogInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SyslogSyslogServerSetting|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SyslogSyslogServerSetting : \Psr\Http\Message\ResponseInterface)
      */
     public function findSystemSyslog(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17913,7 +17913,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSystemSyslogInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSystemSyslogUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateSystemSyslog(\Jane\Component\OpenApi3\Tests\Expected\Model\SyslogModifySyslogSettings $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17930,7 +17930,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSystemSyslogPriorityInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSystemSyslogPriorityUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateSystemSyslogPriority(\Jane\Component\OpenApi3\Tests\Expected\Model\SyslogPriority $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17946,7 +17946,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemApBalanceInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemApBalanceUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addSystemApBalance(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17963,7 +17963,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindCertstoreCertificateForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindCertstoreCertificateInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateCertificateList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateCertificateList : \Psr\Http\Message\ResponseInterface)
      */
     public function findCertstoreCertificate(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17980,7 +17980,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddCertstoreCertificateInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddCertstoreCertificateUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addCertstoreCertificate(\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateCreateCert $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17996,7 +17996,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteCertstoreCertificateByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteCertstoreCertificateByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteCertstoreCertificateById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18012,7 +18012,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindCertstoreCertificateByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindCertstoreCertificateByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateCertificate|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateCertificate : \Psr\Http\Message\ResponseInterface)
      */
     public function findCertstoreCertificateById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18027,7 +18027,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindCertstoreSettingForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindCertstoreSettingInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateCertSetting|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateCertSetting : \Psr\Http\Message\ResponseInterface)
      */
     public function findCertstoreSetting(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18044,7 +18044,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateCertstoreSettingInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateCertstoreSettingUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateCertstoreSetting(\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateCertSetting $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18060,7 +18060,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteCertstoreClientCertByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteCertstoreClientCertByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteCertstoreClientCertById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18076,7 +18076,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindCertstoreClientCertByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindCertstoreClientCertByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateClientCert|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateClientCert : \Psr\Http\Message\ResponseInterface)
      */
     public function findCertstoreClientCertById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18091,7 +18091,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemSnmpAgentForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemSnmpAgentInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemSnmpAgentConfiguration|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemSnmpAgentConfiguration : \Psr\Http\Message\ResponseInterface)
      */
     public function findSystemSnmpAgent(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18108,7 +18108,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemSnmpAgentInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemSnmpAgentUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function updateSystemSnmpAgent(\Jane\Component\OpenApi3\Tests\Expected\Model\SystemModifySnmpAgent $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18124,7 +18124,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteSystemNbiForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteSystemNbiInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteSystemNbi(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18140,7 +18140,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemNbiForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemNbiInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemNorthboundInterface|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemNorthboundInterface : \Psr\Http\Message\ResponseInterface)
      */
     public function findSystemNbi(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18158,7 +18158,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSystemNbiInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSystemNbiUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateSystemNbi(\Jane\Component\OpenApi3\Tests\Expected\Model\SystemNorthboundInterface $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18173,7 +18173,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteSystemCaleaMacListForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteSystemCaleaMacListInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteSystemCaleaMacList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18188,7 +18188,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemCaleaMacListForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemCaleaMacListInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CaleaCaleaMacListRsp|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CaleaCaleaMacListRsp : \Psr\Http\Message\ResponseInterface)
      */
     public function findSystemCaleaMacList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18207,7 +18207,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemCaleaMacListInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemCaleaMacListUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addSystemCaleaMacList(array $queryParameters = [], array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18223,7 +18223,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteSystemCaleaMacForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteSystemCaleaMacInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteSystemCaleaMac(\Jane\Component\OpenApi3\Tests\Expected\Model\CaleaCaleaMacListRq $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18240,7 +18240,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemCaleaMacInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemCaleaMacUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addSystemCaleaMac(\Jane\Component\OpenApi3\Tests\Expected\Model\CaleaCaleaMacListRq $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18255,7 +18255,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemCaleaCommonSettingForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemCaleaCommonSettingInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CaleaCaleaCommonSettingRsp|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CaleaCaleaCommonSettingRsp : \Psr\Http\Message\ResponseInterface)
      */
     public function findSystemCaleaCommonSetting(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18272,7 +18272,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemCaleaCommonSettingInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemCaleaCommonSettingUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addSystemCaleaCommonSetting(\Jane\Component\OpenApi3\Tests\Expected\Model\CaleaCaleaCommonSettingRq $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18287,7 +18287,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemGatewayAdvancedForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemGatewayAdvancedInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemGatewayAdvanced|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemGatewayAdvanced : \Psr\Http\Message\ResponseInterface)
      */
     public function findSystemGatewayAdvanced(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18304,7 +18304,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSystemGatewayAdvancedInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSystemGatewayAdvancedUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateSystemGatewayAdvanced(\Jane\Component\OpenApi3\Tests\Expected\Model\SystemModifyGatewayAdvanced $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18319,7 +18319,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindControllerForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindControllerInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemControllerList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemControllerList : \Psr\Http\Message\ResponseInterface)
      */
     public function findController(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18336,7 +18336,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemInventoryForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemInventoryInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemInventoryList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemInventoryList : \Psr\Http\Message\ResponseInterface)
      */
     public function findSystemInventory(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18351,7 +18351,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemSecuritySettingForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemSecuritySettingInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemSecuritySetting|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemSecuritySetting : \Psr\Http\Message\ResponseInterface)
      */
     public function findSystemSecuritySetting(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18368,7 +18368,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemSecuritySettingInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemSecuritySettingUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateSystemSecuritySetting(\Jane\Component\OpenApi3\Tests\Expected\Model\SystemSecuritySetting $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18383,7 +18383,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemCloudOptionsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemCloudOptionsInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemCloudOptions|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemCloudOptions : \Psr\Http\Message\ResponseInterface)
      */
     public function findSystemCloudOptions(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18400,7 +18400,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemCloudOptionsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemCloudOptionsUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateSystemCloudOptions(\Jane\Component\OpenApi3\Tests\Expected\Model\SystemCloudOptions $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18417,7 +18417,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemByQueryCriteriaInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemByQueryCriteriaUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemSystemSettings|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemSystemSettings : \Psr\Http\Message\ResponseInterface)
      */
     public function findSystemByQueryCriteria(\Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaSuperSet $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18432,7 +18432,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemSystemSettings|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemSystemSettings : \Psr\Http\Message\ResponseInterface)
      */
     public function findSystem(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18449,7 +18449,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSystemInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateSystemUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateSystem(\Jane\Component\OpenApi3\Tests\Expected\Model\SystemSystemSettings $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18465,7 +18465,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteSystemApMacOUIsByOUIForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\DeleteSystemApMacOUIsByOUIInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteSystemApMacOUIsByOUI(string $oUI, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18483,7 +18483,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemApMacOUIsByOUIInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemApMacOUIsByOUIUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateSystemApMacOUIsByOUI(string $oUI, \Jane\Component\OpenApi3\Tests\Expected\Model\SystemUpdateApMacOUI $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18499,7 +18499,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemApmodelsByFirmwareVersionForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemApmodelsByFirmwareVersionInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findSystemApmodelsByFirmwareVersion(string $firmwareVersion:.+, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18517,7 +18517,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindControllerStatisticsByIdForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindControllerStatisticsByIdInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemStatisticListItem[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemStatisticListItem[] : \Psr\Http\Message\ResponseInterface)
      */
     public function findControllerStatisticsById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18534,7 +18534,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindCertstoreClientCertForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindCertstoreClientCertInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateClientCertList|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateClientCertList : \Psr\Http\Message\ResponseInterface)
      */
     public function findCertstoreClientCert(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18551,7 +18551,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddCertstoreClientCertInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddCertstoreClientCertUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonCreateResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addCertstoreClientCert(\Jane\Component\OpenApi3\Tests\Expected\Model\CertificateCreateClientCert $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18568,7 +18568,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemAaaTestInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemAaaTestUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\AaaTestAAAServerSingleResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\AaaTestAAAServerSingleResult : \Psr\Http\Message\ResponseInterface)
      */
     public function addSystemAaaTest(\Jane\Component\OpenApi3\Tests\Expected\Model\AaaTestAuthenticationServer $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18583,7 +18583,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemApRoutineConfigIntervalForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemApRoutineConfigIntervalInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApRoutineConfigIntervalApRoutineConfigIntervalRsp|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApRoutineConfigIntervalApRoutineConfigIntervalRsp : \Psr\Http\Message\ResponseInterface)
      */
     public function findSystemApRoutineConfigInterval(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18600,7 +18600,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemApRoutineConfigIntervalInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\AddSystemApRoutineConfigIntervalUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function addSystemApRoutineConfigInterval(\Jane\Component\OpenApi3\Tests\Expected\Model\ApRoutineConfigIntervalApRoutineConfigIntervalReq $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18615,7 +18615,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemApmodelsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemApmodelsInternalServerErrorException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function findSystemApmodels(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18630,7 +18630,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindLwapp2scgForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindLwapp2scgInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemLwapp2scgConfiguration|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemLwapp2scgConfiguration : \Psr\Http\Message\ResponseInterface)
      */
     public function findLwapp2scg(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18647,7 +18647,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateLwapp2scgInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateLwapp2scgUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateLwapp2scg(\Jane\Component\OpenApi3\Tests\Expected\Model\SystemModifyLwapp2scg $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18664,7 +18664,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateLwapp2scgApListInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateLwapp2scgApListUnprocessableEntityException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult : \Psr\Http\Message\ResponseInterface)
      */
     public function partialUpdateLwapp2scgApList(\Jane\Component\OpenApi3\Tests\Expected\Model\SystemModifyLwapp2scg $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18679,7 +18679,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemApRoutineStatusIntervalForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemApRoutineStatusIntervalInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApRoutineStatusIntervalApRoutineStatusIntervalRsp|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\ApRoutineStatusIntervalApRoutineStatusIntervalRsp : \Psr\Http\Message\ResponseInterface)
      */
     public function findSystemApRoutineStatusInterval(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18694,7 +18694,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemCommonAccessCardSettingsForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemCommonAccessCardSettingsInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemCommonAccessCardSettings|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemCommonAccessCardSettings : \Psr\Http\Message\ResponseInterface)
      */
     public function findSystemCommonAccessCardSettings(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18711,7 +18711,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemCommonAccessCardSettingsInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemCommonAccessCardSettingsUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateSystemCommonAccessCardSettings(\Jane\Component\OpenApi3\Tests\Expected\Model\SystemCommonAccessCardSettings $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18726,7 +18726,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemIpsecForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindSystemIpsecInternalServerErrorException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemIPsecGetResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\SystemIPsecGetResult : \Psr\Http\Message\ResponseInterface)
      */
     public function findSystemIpsec(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -18743,7 +18743,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemIpsecInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UpdateSystemIpsecUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateSystemIpsec(\Jane\Component\OpenApi3\Tests\Expected\Model\SystemIPsecUpdate $body, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
