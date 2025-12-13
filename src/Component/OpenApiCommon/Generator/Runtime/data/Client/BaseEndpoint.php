@@ -35,13 +35,16 @@ abstract class BaseEndpoint implements Endpoint
         }, $optionsResolved);
 
         $allowReserved = $this->getQueryAllowReserved();
+        $queryParameters = [];
         foreach ($optionsResolved as $key => $value) {
-            if (!in_array($key, $allowReserved, true)) {
-                $optionsResolved[$key] = urlencode($value);
+            if (in_array($key, $allowReserved, true)) {
+                $queryParameters[] = rawurlencode($key) . '=' . $value;
+            } else {
+                $queryParameters[] = rawurlencode($key) . '=' . rawurlencode($value);
             }
         }
 
-        return http_build_query($optionsResolved, '', '&', \PHP_QUERY_RFC3986);
+        return implode('&', $queryParameters);
     }
 
     public function getHeaders(array $baseHeaders = []): array
