@@ -8,6 +8,7 @@ class TestSimple extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\
      * @param array $queryParameters {
      *     @var string $foo
      *     @var string $bar
+     *     @var string $baz
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -30,16 +31,17 @@ class TestSimple extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['foo', 'bar']);
+        $optionsResolver->setDefined(['foo', 'bar', 'baz']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('foo', ['string']);
         $optionsResolver->addAllowedTypes('bar', ['string']);
+        $optionsResolver->addAllowedTypes('baz', ['string']);
         return $optionsResolver;
     }
     protected function getQueryAllowReserved(): array
     {
-        return ['bar'];
+        return ['bar', 'baz'];
     }
     /**
      * {@inheritdoc}

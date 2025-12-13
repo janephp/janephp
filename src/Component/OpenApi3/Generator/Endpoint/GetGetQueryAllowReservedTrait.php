@@ -2,7 +2,9 @@
 
 namespace Jane\Component\OpenApi3\Generator\Endpoint;
 
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi3\Generator\EndpointGenerator;
+use Jane\Component\OpenApi3\Guesser\GuessClass;
 use Jane\Component\OpenApi3\JsonSchema\Model\Parameter;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use PhpParser\Modifiers;
@@ -13,10 +15,14 @@ use PhpParser\Node\Stmt;
 
 trait GetGetQueryAllowReservedTrait
 {
-    public function getQueryAllowReservedMethod(OperationGuess $operation, string $methodName): ?Stmt\ClassMethod
+    public function getQueryAllowReservedMethod(OperationGuess $operation, string $methodName, GuessClass $guessClass): ?Stmt\ClassMethod
     {
         $queryAllowReservedParameters = [];
         foreach ($operation->getParameters() as $parameter) {
+            if ($parameter instanceof Reference) {
+                $parameter = $guessClass->resolveParameter($parameter);
+            }
+
             if ($parameter instanceof Parameter && EndpointGenerator::IN_QUERY === $parameter->getIn() && true === $parameter->getAllowReserved()) {
                 $queryAllowReservedParameters[] = $parameter->getName();
             }

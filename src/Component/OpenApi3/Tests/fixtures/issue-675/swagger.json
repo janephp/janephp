@@ -20,9 +20,24 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "$ref": "#/components/parameters/Baz"
                     }
                 ],
                 "responses": {}
+            }
+        }
+    },
+    "components": {
+        "parameters": {
+            "Baz": {
+                "name": "baz",
+                "in": "query",
+                "allowReserved": true,
+                "schema": {
+                    "type": "string"
+                }
             }
         }
     },
