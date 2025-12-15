@@ -16,7 +16,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\MinimalRepository[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListForOrg(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -37,7 +37,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposCreateInOrgForbiddenException
      * @throws \Github\Exception\ReposCreateInOrgUnprocessableEntityException
      *
-     * @return null|\Github\Model\Repository|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Repository : \Psr\Http\Message\ResponseInterface)
      */
     public function reposCreateInOrg(string $org, ?\Github\Model\OrgsOrgReposPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -58,7 +58,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposRemoveTeamAccessRestrictionsUnprocessableEntityException
      *
-     * @return null|\Github\Model\Team[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Team[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposRemoveTeamAccessRestrictions(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -74,7 +74,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetTeamsWithAccessToProtectedBranchNotFoundException
      *
-     * @return null|\Github\Model\Team[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Team[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetTeamsWithAccessToProtectedBranch(string $owner, string $repo, string $branch, string $fetch = self::FETCH_OBJECT)
     {
@@ -95,7 +95,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposAddTeamAccessRestrictionsUnprocessableEntityException
      *
-     * @return null|\Github\Model\Team[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Team[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposAddTeamAccessRestrictions(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -116,7 +116,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposSetTeamAccessRestrictionsUnprocessableEntityException
      *
-     * @return null|\Github\Model\Team[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Team[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposSetTeamAccessRestrictions(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -133,7 +133,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposListBranchesForHeadCommitUnsupportedMediaTypeException
      * @throws \Github\Exception\ReposListBranchesForHeadCommitUnprocessableEntityException
      *
-     * @return null|\Github\Model\BranchShort[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\BranchShort[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListBranchesForHeadCommit(string $owner, string $repo, string $commitSha, string $fetch = self::FETCH_OBJECT)
     {
@@ -146,7 +146,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetTopPathsForbiddenException
      *
-     * @return null|\Github\Model\ContentTraffic[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ContentTraffic[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetTopPaths(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -168,7 +168,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposDeleteDeploymentNotFoundException
      * @throws \Github\Exception\ReposDeleteDeploymentUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposDeleteDeployment(string $owner, string $repo, int $deploymentId, string $fetch = self::FETCH_OBJECT)
     {
@@ -181,7 +181,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetDeploymentNotFoundException
      *
-     * @return null|\Github\Model\Deployment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Deployment : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetDeployment(string $owner, string $repo, int $deploymentId, string $fetch = self::FETCH_OBJECT)
     {
@@ -193,7 +193,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $assetId asset_id parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposDeleteReleaseAsset(string $owner, string $repo, int $assetId, string $fetch = self::FETCH_OBJECT)
     {
@@ -208,7 +208,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposGetReleaseAssetNotFoundException
      * @throws \Github\Exception\ReposGetReleaseAssetUnsupportedMediaTypeException
      *
-     * @return null|\Github\Model\ReleaseAsset|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ReleaseAsset : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetReleaseAsset(string $owner, string $repo, int $assetId, string $fetch = self::FETCH_OBJECT)
     {
@@ -222,7 +222,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ReposOwnerRepoReleasesAssetsAssetIdPatchBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ReleaseAsset|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ReleaseAsset : \Psr\Http\Message\ResponseInterface)
      */
     public function reposUpdateReleaseAsset(string $owner, string $repo, int $assetId, ?\Github\Model\ReposOwnerRepoReleasesAssetsAssetIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -238,7 +238,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposRemoveStatusCheckContextsNotFoundException
      * @throws \Github\Exception\ReposRemoveStatusCheckContextsUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposRemoveStatusCheckContexts(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -252,7 +252,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetAllStatusCheckContextsNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetAllStatusCheckContexts(string $owner, string $repo, string $branch, string $fetch = self::FETCH_OBJECT)
     {
@@ -269,7 +269,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposAddStatusCheckContextsForbiddenException
      * @throws \Github\Exception\ReposAddStatusCheckContextsNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposAddStatusCheckContexts(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -285,7 +285,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposSetStatusCheckContextsUnprocessableEntityException
      * @throws \Github\Exception\ReposSetStatusCheckContextsNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposSetStatusCheckContexts(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -309,7 +309,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposDeleteFileConflictException
      * @throws \Github\Exception\ReposDeleteFileServiceUnavailableException
      *
-     * @return null|\Github\Model\FileCommit|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\FileCommit : \Psr\Http\Message\ResponseInterface)
      */
     public function reposDeleteFile(string $owner, string $repo, string $path, ?\Github\Model\ReposOwnerRepoContentsPathDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -359,7 +359,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposGetContentNotFoundException
      * @throws \Github\Exception\ReposGetContentForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetContent(string $owner, string $repo, string $path, array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -376,7 +376,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposCreateOrUpdateFileContentsUnprocessableEntityException
      * @throws \Github\Exception\ReposCreateOrUpdateFileContentsConflictException
      *
-     * @return null|\Github\Model\FileCommit|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\FileCommit : \Psr\Http\Message\ResponseInterface)
      */
     public function reposCreateOrUpdateFileContents(string $owner, string $repo, string $path, ?\Github\Model\ReposOwnerRepoContentsPathPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -389,7 +389,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposGetAllTopicsUnsupportedMediaTypeException
      * @throws \Github\Exception\ReposGetAllTopicsNotFoundException
      *
-     * @return null|\Github\Model\Topic|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Topic : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetAllTopics(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -404,7 +404,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposReplaceAllTopicsNotFoundException
      * @throws \Github\Exception\ReposReplaceAllTopicsUnprocessableEntityException
      *
-     * @return null|\Github\Model\Topic|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Topic : \Psr\Http\Message\ResponseInterface)
      */
     public function reposReplaceAllTopics(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoTopicsPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -416,7 +416,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposDisableVulnerabilityAlerts(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -429,7 +429,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCheckVulnerabilityAlertsNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposCheckVulnerabilityAlerts(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -441,7 +441,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposEnableVulnerabilityAlerts(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -461,7 +461,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Deployment[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Deployment[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListDeployments(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -520,7 +520,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposCreateDeploymentConflictException
      * @throws \Github\Exception\ReposCreateDeploymentUnprocessableEntityException
      *
-     * @return null|\Github\Model\Deployment|\Github\Model\ReposOwnerRepoDeploymentsPostResponse202|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Deployment|\Github\Model\ReposOwnerRepoDeploymentsPostResponse202 : \Psr\Http\Message\ResponseInterface)
      */
     public function reposCreateDeployment(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoDeploymentsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -532,7 +532,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\CommunityProfile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CommunityProfile : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetCommunityProfileMetrics(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -546,7 +546,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposDeletePagesSiteUnsupportedMediaTypeException
      * @throws \Github\Exception\ReposDeletePagesSiteNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposDeletePagesSite(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -558,7 +558,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetPagesNotFoundException
      *
-     * @return null|\Github\Model\Page|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Page : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetPages(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -573,7 +573,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposCreatePagesSiteUnsupportedMediaTypeException
      * @throws \Github\Exception\ReposCreatePagesSiteConflictException
      *
-     * @return null|\Github\Model\Page|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Page : \Psr\Http\Message\ResponseInterface)
      */
     public function reposCreatePagesSite(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPagesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -588,7 +588,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposUpdateInformationAboutPagesSiteUnprocessableEntityException
      * @throws \Github\Exception\ReposUpdateInformationAboutPagesSiteBadRequestException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposUpdateInformationAboutPagesSite(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPagesPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -602,7 +602,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposDeletePullRequestReviewProtectionNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposDeletePullRequestReviewProtection(string $owner, string $repo, string $branch, string $fetch = self::FETCH_OBJECT)
     {
@@ -615,7 +615,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $branch branch+ parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ProtectedBranchPullRequestReview|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ProtectedBranchPullRequestReview : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetPullRequestReviewProtection(string $owner, string $repo, string $branch, string $fetch = self::FETCH_OBJECT)
     {
@@ -634,7 +634,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposUpdatePullRequestReviewProtectionUnprocessableEntityException
      *
-     * @return null|\Github\Model\ProtectedBranchPullRequestReview|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ProtectedBranchPullRequestReview : \Psr\Http\Message\ResponseInterface)
      */
     public function reposUpdatePullRequestReviewProtection(string $owner, string $repo, string $branch, ?\Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -647,7 +647,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetTopReferrersForbiddenException
      *
-     * @return null|\Github\Model\ReferrerTraffic[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ReferrerTraffic[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetTopReferrers(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -666,7 +666,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Status[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Status[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListCommitStatusesForRef(string $owner, string $repo, string $ref, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -714,7 +714,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposCompareCommitsInternalServerErrorException
      * @throws \Github\Exception\ReposCompareCommitsNotFoundException
      *
-     * @return null|\Github\Model\CommitComparison|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CommitComparison : \Psr\Http\Message\ResponseInterface)
      */
     public function reposCompareCommits(string $owner, string $repo, string $base, string $head, string $fetch = self::FETCH_OBJECT)
     {
@@ -732,7 +732,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListPullRequestsAssociatedWithCommitUnsupportedMediaTypeException
      *
-     * @return null|\Github\Model\PullRequestSimple[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PullRequestSimple[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListPullRequestsAssociatedWithCommit(string $owner, string $repo, string $commitSha, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -748,7 +748,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposDeleteAdminBranchProtectionNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposDeleteAdminBranchProtection(string $owner, string $repo, string $branch, string $fetch = self::FETCH_OBJECT)
     {
@@ -761,7 +761,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $branch branch+ parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ProtectedBranchAdminEnforced|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ProtectedBranchAdminEnforced : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetAdminBranchProtection(string $owner, string $repo, string $branch, string $fetch = self::FETCH_OBJECT)
     {
@@ -776,7 +776,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $branch branch+ parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ProtectedBranchAdminEnforced|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ProtectedBranchAdminEnforced : \Psr\Http\Message\ResponseInterface)
      */
     public function reposSetAdminBranchProtection(string $owner, string $repo, string $branch, string $fetch = self::FETCH_OBJECT)
     {
@@ -792,7 +792,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposGetDeploymentStatusNotFoundException
      * @throws \Github\Exception\ReposGetDeploymentStatusUnsupportedMediaTypeException
      *
-     * @return null|\Github\Model\DeploymentStatus|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\DeploymentStatus : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetDeploymentStatus(string $owner, string $repo, int $deploymentId, int $statusId, string $fetch = self::FETCH_OBJECT)
     {
@@ -804,7 +804,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposDisableAutomatedSecurityFixes(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -816,7 +816,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposEnableAutomatedSecurityFixes(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -832,7 +832,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposDeleteCommitSignatureProtectionNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposDeleteCommitSignatureProtection(string $owner, string $repo, string $branch, string $fetch = self::FETCH_OBJECT)
     {
@@ -850,7 +850,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetCommitSignatureProtectionNotFoundException
      *
-     * @return null|\Github\Model\ProtectedBranchAdminEnforced|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ProtectedBranchAdminEnforced : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetCommitSignatureProtection(string $owner, string $repo, string $branch, string $fetch = self::FETCH_OBJECT)
     {
@@ -866,7 +866,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCreateCommitSignatureProtectionNotFoundException
      *
-     * @return null|\Github\Model\ProtectedBranchAdminEnforced|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ProtectedBranchAdminEnforced : \Psr\Http\Message\ResponseInterface)
      */
     public function reposCreateCommitSignatureProtection(string $owner, string $repo, string $branch, string $fetch = self::FETCH_OBJECT)
     {
@@ -887,7 +887,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposRemoveUserAccessRestrictionsUnprocessableEntityException
      *
-     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposRemoveUserAccessRestrictions(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -903,7 +903,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetUsersWithAccessToProtectedBranchNotFoundException
      *
-     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetUsersWithAccessToProtectedBranch(string $owner, string $repo, string $branch, string $fetch = self::FETCH_OBJECT)
     {
@@ -924,7 +924,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposAddUserAccessRestrictionsUnprocessableEntityException
      *
-     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposAddUserAccessRestrictions(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -945,7 +945,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposSetUserAccessRestrictionsUnprocessableEntityException
      *
-     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposSetUserAccessRestrictions(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -963,7 +963,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListPublicUnprocessableEntityException
      *
-     * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\MinimalRepository[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListPublic(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -980,7 +980,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListBranchesNotFoundException
      *
-     * @return null|\Github\Model\ShortBranch[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ShortBranch[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListBranches(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -997,7 +997,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposListInvitationsForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\ReposListInvitationsForAuthenticatedUserUnauthorizedException
      *
-     * @return null|\Github\Model\RepositoryInvitation[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\RepositoryInvitation[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListInvitationsForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1011,7 +1011,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposGetBranchUnsupportedMediaTypeException
      * @throws \Github\Exception\ReposGetBranchNotFoundException
      *
-     * @return null|\Github\Model\BranchWithProtection|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\BranchWithProtection : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetBranch(string $owner, string $repo, string $branch, string $fetch = self::FETCH_OBJECT)
     {
@@ -1026,7 +1026,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\DeployKey[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\DeployKey[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListDeployKeys(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1040,7 +1040,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCreateDeployKeyUnprocessableEntityException
      *
-     * @return null|\Github\Model\DeployKey|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\DeployKey : \Psr\Http\Message\ResponseInterface)
      */
     public function reposCreateDeployKey(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoKeysPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1052,7 +1052,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $buildId build_id parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\PageBuild|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PageBuild : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetPagesBuild(string $owner, string $repo, int $buildId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1068,7 +1068,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetClonesForbiddenException
      *
-     * @return null|\Github\Model\CloneTraffic|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CloneTraffic : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetClones(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1081,7 +1081,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposDeleteWebhookNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposDeleteWebhook(string $owner, string $repo, int $hookId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1094,7 +1094,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetWebhookNotFoundException
      *
-     * @return null|\Github\Model\Hook|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Hook : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetWebhook(string $owner, string $repo, int $hookId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1109,7 +1109,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposUpdateWebhookUnprocessableEntityException
      * @throws \Github\Exception\ReposUpdateWebhookNotFoundException
      *
-     * @return null|\Github\Model\Hook|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Hook : \Psr\Http\Message\ResponseInterface)
      */
     public function reposUpdateWebhook(string $owner, string $repo, int $hookId, ?\Github\Model\ReposOwnerRepoHooksHookIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1128,7 +1128,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListReleasesNotFoundException
      *
-     * @return null|\Github\Model\Release[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Release[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListReleases(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1144,7 +1144,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCreateReleaseUnprocessableEntityException
      *
-     * @return null|\Github\Model\Release|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Release : \Psr\Http\Message\ResponseInterface)
      */
     public function reposCreateRelease(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoReleasesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1164,7 +1164,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ReposTemplateOwnerTemplateRepoGeneratePostBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Repository|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Repository : \Psr\Http\Message\ResponseInterface)
      */
     public function reposCreateUsingTemplate(string $templateOwner, string $templateRepo, ?\Github\Model\ReposTemplateOwnerTemplateRepoGeneratePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1182,7 +1182,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\MinimalRepository[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1195,7 +1195,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $branch branch+ parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposRemoveStatusCheckProtection(string $owner, string $repo, string $branch, string $fetch = self::FETCH_OBJECT)
     {
@@ -1209,7 +1209,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetStatusChecksProtectionNotFoundException
      *
-     * @return null|\Github\Model\StatusCheckPolicy|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\StatusCheckPolicy : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetStatusChecksProtection(string $owner, string $repo, string $branch, string $fetch = self::FETCH_OBJECT)
     {
@@ -1227,7 +1227,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposUpdateStatusCheckProtectionNotFoundException
      * @throws \Github\Exception\ReposUpdateStatusCheckProtectionUnprocessableEntityException
      *
-     * @return null|\Github\Model\StatusCheckPolicy|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\StatusCheckPolicy : \Psr\Http\Message\ResponseInterface)
      */
     public function reposUpdateStatusCheckProtection(string $owner, string $repo, string $branch, ?\Github\Model\ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1244,7 +1244,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposDeleteForbiddenException
      * @throws \Github\Exception\ReposDeleteNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposDelete(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -1260,7 +1260,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposGetForbiddenException
      * @throws \Github\Exception\ReposGetNotFoundException
      *
-     * @return null|\Github\Model\FullRepository|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\FullRepository : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGet(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -1276,7 +1276,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposUpdateUnprocessableEntityException
      * @throws \Github\Exception\ReposUpdateNotFoundException
      *
-     * @return null|\Github\Model\FullRepository|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\FullRepository : \Psr\Http\Message\ResponseInterface)
      */
     public function reposUpdate(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1291,7 +1291,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $branch branch+ parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposDeleteAccessRestrictions(string $owner, string $repo, string $branch, string $fetch = self::FETCH_OBJECT)
     {
@@ -1309,7 +1309,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetAccessRestrictionsNotFoundException
      *
-     * @return null|\Github\Model\BranchRestrictionPolicy|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\BranchRestrictionPolicy : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetAccessRestrictions(string $owner, string $repo, string $branch, string $fetch = self::FETCH_OBJECT)
     {
@@ -1322,7 +1322,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $keyId key_id parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposDeleteDeployKey(string $owner, string $repo, int $keyId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1335,7 +1335,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetDeployKeyNotFoundException
      *
-     * @return null|\Github\Model\DeployKey|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\DeployKey : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetDeployKey(string $owner, string $repo, int $keyId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1348,7 +1348,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $releaseId release_id parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposDeleteRelease(string $owner, string $repo, int $releaseId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1362,7 +1362,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetReleaseNotFoundException
      *
-     * @return null|\Github\Model\Release|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Release : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetRelease(string $owner, string $repo, int $releaseId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1376,7 +1376,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ReposOwnerRepoReleasesReleaseIdPatchBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Release|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Release : \Psr\Http\Message\ResponseInterface)
      */
     public function reposUpdateRelease(string $owner, string $repo, int $releaseId, ?\Github\Model\ReposOwnerRepoReleasesReleaseIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1390,7 +1390,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposDeleteBranchProtectionForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposDeleteBranchProtection(string $owner, string $repo, string $branch, string $fetch = self::FETCH_OBJECT)
     {
@@ -1404,7 +1404,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetBranchProtectionNotFoundException
      *
-     * @return null|\Github\Model\BranchProtection|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\BranchProtection : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetBranchProtection(string $owner, string $repo, string $branch, string $fetch = self::FETCH_OBJECT)
     {
@@ -1428,7 +1428,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposUpdateBranchProtectionUnprocessableEntityException
      * @throws \Github\Exception\ReposUpdateBranchProtectionNotFoundException
      *
-     * @return null|\Github\Model\ProtectedBranch|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ProtectedBranch : \Psr\Http\Message\ResponseInterface)
      */
     public function reposUpdateBranchProtection(string $owner, string $repo, string $branch, ?\Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1444,7 +1444,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\RepositoryInvitation[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\RepositoryInvitation[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListInvitations(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1457,7 +1457,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposDeclineInvitationNotFoundException
      * @throws \Github\Exception\ReposDeclineInvitationForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposDeclineInvitation(int $invitationId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1470,7 +1470,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposAcceptInvitationConflictException
      * @throws \Github\Exception\ReposAcceptInvitationNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposAcceptInvitation(int $invitationId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1484,7 +1484,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposPingWebhookNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposPingWebhook(string $owner, string $repo, int $hookId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1499,7 +1499,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Tag[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Tag[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListTags(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1514,7 +1514,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Team[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Team[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListTeams(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1526,7 +1526,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\CommitActivity[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CommitActivity[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetCommitActivityStats(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -1538,7 +1538,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListLanguages(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -1558,7 +1558,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCreateDispatchEventUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposCreateDispatchEvent(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoDispatchesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1576,7 +1576,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetPunchCardStats(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -1589,7 +1589,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ReposOwnerRepoTransferPostBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Repository|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Repository : \Psr\Http\Message\ResponseInterface)
      */
     public function reposTransfer(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoTransferPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1622,7 +1622,7 @@ class Client extends \Github\Runtime\Client\Client
     * @throws \Github\Exception\ReposListForAuthenticatedUserForbiddenException
     * @throws \Github\Exception\ReposListForAuthenticatedUserUnauthorizedException
     *
-    * @return null|\Github\Model\Repository[]|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? null|\Github\Model\Repository[] : \Psr\Http\Message\ResponseInterface)
     */
     public function reposListForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1646,7 +1646,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposCreateForAuthenticatedUserUnprocessableEntityException
      * @throws \Github\Exception\ReposCreateForAuthenticatedUserBadRequestException
      *
-     * @return null|\Github\Model\Repository|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Repository : \Psr\Http\Message\ResponseInterface)
      */
     public function reposCreateForAuthenticatedUser(?\Github\Model\UserReposPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -1661,7 +1661,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\PageBuild[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PageBuild[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListPagesBuilds(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1675,7 +1675,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\PageBuildStatus|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PageBuildStatus : \Psr\Http\Message\ResponseInterface)
      */
     public function reposRequestPagesBuild(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -1687,7 +1687,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $username
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposRemoveCollaborator(string $owner, string $repo, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -1703,7 +1703,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCheckCollaboratorNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposCheckCollaborator(string $owner, string $repo, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -1729,7 +1729,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposAddCollaboratorUnprocessableEntityException
      * @throws \Github\Exception\ReposAddCollaboratorForbiddenException
      *
-     * @return null|\Github\Model\RepositoryInvitation|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\RepositoryInvitation : \Psr\Http\Message\ResponseInterface)
      */
     public function reposAddCollaborator(string $owner, string $repo, string $username, ?\Github\Model\ReposOwnerRepoCollaboratorsUsernamePutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1747,7 +1747,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListForksBadRequestException
      *
-     * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\MinimalRepository[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListForks(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -1767,7 +1767,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposCreateForkForbiddenException
      * @throws \Github\Exception\ReposCreateForkNotFoundException
      *
-     * @return null|\Github\Model\Repository|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Repository : \Psr\Http\Message\ResponseInterface)
      */
     public function reposCreateFork(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoForksPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -1783,7 +1783,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetViewsForbiddenException
      *
-     * @return null|\Github\Model\ViewTraffic|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ViewTraffic : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetViews(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1799,7 +1799,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ReleaseAsset[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ReleaseAsset[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListReleaseAssets(string $owner, string $repo, int $releaseId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1834,7 +1834,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ReleaseAsset|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ReleaseAsset : \Psr\Http\Message\ResponseInterface)
      */
     public function reposUploadReleaseAsset(string $owner, string $repo, int $releaseId, ?string $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1847,7 +1847,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposDeleteCommitCommentNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposDeleteCommitComment(string $owner, string $repo, int $commentId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1860,7 +1860,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetCommitCommentNotFoundException
      *
-     * @return null|\Github\Model\CommitComment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CommitComment : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetCommitComment(string $owner, string $repo, int $commentId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1874,7 +1874,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposUpdateCommitCommentNotFoundException
      *
-     * @return null|\Github\Model\CommitComment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CommitComment : \Psr\Http\Message\ResponseInterface)
      */
     public function reposUpdateCommitComment(string $owner, string $repo, int $commentId, ?\Github\Model\ReposOwnerRepoCommentsCommentIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1890,7 +1890,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposTestPushWebhookNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposTestPushWebhook(string $owner, string $repo, int $hookId, string $fetch = self::FETCH_OBJECT)
     {
@@ -1906,7 +1906,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListWebhooksNotFoundException
      *
-     * @return null|\Github\Model\Hook[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Hook[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListWebhooks(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1923,7 +1923,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposCreateWebhookUnprocessableEntityException
      * @throws \Github\Exception\ReposCreateWebhookForbiddenException
      *
-     * @return null|\Github\Model\Hook|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Hook : \Psr\Http\Message\ResponseInterface)
      */
     public function reposCreateWebhook(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoHooksPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1934,7 +1934,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\PageBuild|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PageBuild : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetLatestPagesBuild(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -1951,7 +1951,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\CommitComment[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CommitComment[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListCommentsForCommit(string $owner, string $repo, string $commitSha, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1969,7 +1969,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposCreateCommitCommentForbiddenException
      * @throws \Github\Exception\ReposCreateCommitCommentUnprocessableEntityException
      *
-     * @return null|\Github\Model\CommitComment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CommitComment : \Psr\Http\Message\ResponseInterface)
      */
     public function reposCreateCommitComment(string $owner, string $repo, string $commitSha, ?\Github\Model\ReposOwnerRepoCommitsCommitShaCommentsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1984,7 +1984,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetParticipationStatsNotFoundException
      *
-     * @return null|\Github\Model\ParticipationStats|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ParticipationStats : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetParticipationStats(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -2030,7 +2030,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposListCommitsNotFoundException
      * @throws \Github\Exception\ReposListCommitsConflictException
      *
-     * @return null|\Github\Model\SimpleCommit[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SimpleCommit[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListCommits(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -2051,7 +2051,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposRemoveAppAccessRestrictionsUnprocessableEntityException
      *
-     * @return null|\Github\Model\Integration[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Integration[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposRemoveAppAccessRestrictions(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2067,7 +2067,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetAppsWithAccessToProtectedBranchNotFoundException
      *
-     * @return null|\Github\Model\Integration[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Integration[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetAppsWithAccessToProtectedBranch(string $owner, string $repo, string $branch, string $fetch = self::FETCH_OBJECT)
     {
@@ -2088,7 +2088,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposAddAppAccessRestrictionsUnprocessableEntityException
      *
-     * @return null|\Github\Model\Integration[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Integration[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposAddAppAccessRestrictions(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2109,7 +2109,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposSetAppAccessRestrictionsUnprocessableEntityException
      *
-     * @return null|\Github\Model\Integration[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Integration[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposSetAppAccessRestrictions(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2123,7 +2123,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetReleaseByTagNotFoundException
      *
-     * @return null|\Github\Model\Release|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Release : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetReleaseByTag(string $owner, string $repo, string $tag, string $fetch = self::FETCH_OBJECT)
     {
@@ -2139,7 +2139,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $ref ref parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposDownloadZipballArchive(string $owner, string $repo, string $ref, string $fetch = self::FETCH_OBJECT)
     {
@@ -2151,7 +2151,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $invitationId invitation_id parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposDeleteInvitation(string $owner, string $repo, int $invitationId, string $fetch = self::FETCH_OBJECT)
     {
@@ -2164,7 +2164,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ReposOwnerRepoInvitationsInvitationIdPatchBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\RepositoryInvitation|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\RepositoryInvitation : \Psr\Http\Message\ResponseInterface)
      */
     public function reposUpdateInvitation(string $owner, string $repo, int $invitationId, ?\Github\Model\ReposOwnerRepoInvitationsInvitationIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2186,7 +2186,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetCombinedStatusForRefNotFoundException
      *
-     * @return null|\Github\Model\CombinedCommitStatus|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CombinedCommitStatus : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetCombinedStatusForRef(string $owner, string $repo, string $ref, string $fetch = self::FETCH_OBJECT)
     {
@@ -2202,7 +2202,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ReposOwnerRepoStatusesShaPostBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Status|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Status : \Psr\Http\Message\ResponseInterface)
      */
     public function reposCreateCommitStatus(string $owner, string $repo, string $sha, ?\Github\Model\ReposOwnerRepoStatusesShaPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2220,7 +2220,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListDeploymentStatusesNotFoundException
      *
-     * @return null|\Github\Model\DeploymentStatus[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\DeploymentStatus[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListDeploymentStatuses(string $owner, string $repo, int $deploymentId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2237,7 +2237,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposCreateDeploymentStatusUnprocessableEntityException
      *
-     * @return null|\Github\Model\DeploymentStatus|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\DeploymentStatus : \Psr\Http\Message\ResponseInterface)
      */
     public function reposCreateDeploymentStatus(string $owner, string $repo, int $deploymentId, ?\Github\Model\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2253,7 +2253,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $ref ref parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposDownloadTarballArchive(string $owner, string $repo, string $ref, string $fetch = self::FETCH_OBJECT)
     {
@@ -2271,7 +2271,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ContributorActivity[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ContributorActivity[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetContributorsStats(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -2290,7 +2290,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposGetReadmeNotFoundException
      * @throws \Github\Exception\ReposGetReadmeUnprocessableEntityException
      *
-     * @return null|\Github\Model\ContentFile|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ContentFile : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetReadme(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2308,7 +2308,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\CommitComment[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CommitComment[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListCommitCommentsForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2350,7 +2350,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposGetCommitNotFoundException
      * @throws \Github\Exception\ReposGetCommitInternalServerErrorException
      *
-     * @return null|\Github\Model\Commit|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Commit : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetCommit(string $owner, string $repo, string $ref, string $fetch = self::FETCH_OBJECT)
     {
@@ -2364,7 +2364,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Release|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Release : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetLatestRelease(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -2376,7 +2376,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetCodeFrequencyStats(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -2397,7 +2397,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposListContributorsForbiddenException
      * @throws \Github\Exception\ReposListContributorsNotFoundException
      *
-     * @return null|\Github\Model\Contributor[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Contributor[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reposListContributors(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2421,7 +2421,7 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposListCollaboratorsNotFoundException
     *
-    * @return null|\Github\Model\Collaborator[]|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? null|\Github\Model\Collaborator[] : \Psr\Http\Message\ResponseInterface)
     */
     public function reposListCollaborators(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2437,7 +2437,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposMergeForbiddenException
      * @throws \Github\Exception\ReposMergeUnprocessableEntityException
      *
-     * @return null|\Github\Model\Commit|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Commit : \Psr\Http\Message\ResponseInterface)
      */
     public function reposMerge(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoMergesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2451,7 +2451,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetCollaboratorPermissionLevelNotFoundException
      *
-     * @return null|\Github\Model\RepositoryCollaboratorPermission|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\RepositoryCollaboratorPermission : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetCollaboratorPermissionLevel(string $owner, string $repo, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -2465,7 +2465,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ScimDeleteUserFromOrgNotFoundException
      * @throws \Github\Exception\ScimDeleteUserFromOrgForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function scimDeleteUserFromOrg(string $org, string $scimUserId, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -2479,7 +2479,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ScimGetProvisioningInformationForUserNotFoundException
      * @throws \Github\Exception\ScimGetProvisioningInformationForUserForbiddenException
      *
-     * @return null|\Github\Model\ScimUser|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ScimUser : \Psr\Http\Message\ResponseInterface)
      */
     public function scimGetProvisioningInformationForUser(string $org, string $scimUserId, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -2512,7 +2512,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ScimUpdateAttributeForUserBadRequestException
      * @throws \Github\Exception\ScimUpdateAttributeForUserTooManyRequestsException
      *
-     * @return null|\Github\Model\ScimUser|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ScimUser : \Psr\Http\Message\ResponseInterface)
      */
     public function scimUpdateAttributeForUser(string $org, string $scimUserId, ?\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -2532,7 +2532,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ScimSetInformationForProvisionedUserNotFoundException
      * @throws \Github\Exception\ScimSetInformationForProvisionedUserForbiddenException
      *
-     * @return null|\Github\Model\ScimUser|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ScimUser : \Psr\Http\Message\ResponseInterface)
      */
     public function scimSetInformationForProvisionedUser(string $org, string $scimUserId, ?\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -2574,7 +2574,7 @@ class Client extends \Github\Runtime\Client\Client
     * @throws \Github\Exception\ScimListProvisionedIdentitiesForbiddenException
     * @throws \Github\Exception\ScimListProvisionedIdentitiesBadRequestException
     *
-    * @return null|\Github\Model\ScimUserList|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? null|\Github\Model\ScimUserList : \Psr\Http\Message\ResponseInterface)
     */
     public function scimListProvisionedIdentities(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -2592,7 +2592,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ScimProvisionAndInviteUserConflictException
      * @throws \Github\Exception\ScimProvisionAndInviteUserBadRequestException
      *
-     * @return null|\Github\Model\ScimUser|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ScimUser : \Psr\Http\Message\ResponseInterface)
      */
     public function scimProvisionAndInviteUser(string $org, ?\Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -2607,7 +2607,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Migration[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Migration[] : \Psr\Http\Message\ResponseInterface)
      */
     public function migrationsListForOrg(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2621,7 +2621,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\MigrationsStartForOrgNotFoundException
      * @throws \Github\Exception\MigrationsStartForOrgUnprocessableEntityException
      *
-     * @return null|\Github\Model\Migration|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Migration : \Psr\Http\Message\ResponseInterface)
      */
     public function migrationsStartForOrg(string $org, ?\Github\Model\OrgsOrgMigrationsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2645,7 +2645,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\MigrationsGetStatusForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\MigrationsGetStatusForAuthenticatedUserUnauthorizedException
      *
-     * @return null|\Github\Model\Migration|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Migration : \Psr\Http\Message\ResponseInterface)
      */
     public function migrationsGetStatusForAuthenticatedUser(int $migrationId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2657,7 +2657,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\PorterLargeFile[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PorterLargeFile[] : \Psr\Http\Message\ResponseInterface)
      */
     public function migrationsGetLargeFiles(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -2671,7 +2671,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsUnlockRepoForOrgNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function migrationsUnlockRepoForOrg(string $org, int $migrationId, string $repoName, string $fetch = self::FETCH_OBJECT)
     {
@@ -2686,7 +2686,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\MigrationsUnlockRepoForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\MigrationsUnlockRepoForAuthenticatedUserUnauthorizedException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function migrationsUnlockRepoForAuthenticatedUser(int $migrationId, string $repoName, string $fetch = self::FETCH_OBJECT)
     {
@@ -2698,7 +2698,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function migrationsCancelImport(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -2744,7 +2744,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsGetImportStatusNotFoundException
      *
-     * @return null|\Github\Model\Import|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Import : \Psr\Http\Message\ResponseInterface)
      */
     public function migrationsGetImportStatus(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -2758,7 +2758,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ReposOwnerRepoImportPatchBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Import|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Import : \Psr\Http\Message\ResponseInterface)
      */
     public function migrationsUpdateImport(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoImportPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2773,7 +2773,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\MigrationsStartImportUnprocessableEntityException
      * @throws \Github\Exception\MigrationsStartImportNotFoundException
      *
-     * @return null|\Github\Model\Import|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Import : \Psr\Http\Message\ResponseInterface)
      */
     public function migrationsStartImport(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoImportPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2789,7 +2789,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsListReposForUserNotFoundException
      *
-     * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\MinimalRepository[] : \Psr\Http\Message\ResponseInterface)
      */
     public function migrationsListReposForUser(int $migrationId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2806,7 +2806,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsListReposForOrgNotFoundException
      *
-     * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\MinimalRepository[] : \Psr\Http\Message\ResponseInterface)
      */
     public function migrationsListReposForOrg(string $org, int $migrationId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2822,7 +2822,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\MigrationsListForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\MigrationsListForAuthenticatedUserUnauthorizedException
      *
-     * @return null|\Github\Model\Migration[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Migration[] : \Psr\Http\Message\ResponseInterface)
      */
     public function migrationsListForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2836,7 +2836,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\MigrationsStartForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\MigrationsStartForAuthenticatedUserUnauthorizedException
      *
-     * @return null|\Github\Model\Migration|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Migration : \Psr\Http\Message\ResponseInterface)
      */
     public function migrationsStartForAuthenticatedUser(?\Github\Model\UserMigrationsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2849,7 +2849,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsDeleteArchiveForOrgNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function migrationsDeleteArchiveForOrg(string $org, int $migrationId, string $fetch = self::FETCH_OBJECT)
     {
@@ -2862,7 +2862,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsDownloadArchiveForOrgNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function migrationsDownloadArchiveForOrg(string $org, int $migrationId, string $fetch = self::FETCH_OBJECT)
     {
@@ -2882,7 +2882,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsGetStatusForOrgNotFoundException
      *
-     * @return null|\Github\Model\Migration|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Migration : \Psr\Http\Message\ResponseInterface)
      */
     public function migrationsGetStatusForOrg(string $org, int $migrationId, string $fetch = self::FETCH_OBJECT)
     {
@@ -2896,7 +2896,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\MigrationsDeleteArchiveForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\MigrationsDeleteArchiveForAuthenticatedUserUnauthorizedException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function migrationsDeleteArchiveForAuthenticatedUser(int $migrationId, string $fetch = self::FETCH_OBJECT)
     {
@@ -2929,7 +2929,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\MigrationsGetArchiveForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\MigrationsGetArchiveForAuthenticatedUserUnauthorizedException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function migrationsGetArchiveForAuthenticatedUser(int $migrationId, string $fetch = self::FETCH_OBJECT)
     {
@@ -2945,7 +2945,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\MigrationsMapCommitAuthorUnprocessableEntityException
      * @throws \Github\Exception\MigrationsMapCommitAuthorNotFoundException
      *
-     * @return null|\Github\Model\PorterAuthor|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PorterAuthor : \Psr\Http\Message\ResponseInterface)
      */
     public function migrationsMapCommitAuthor(string $owner, string $repo, int $authorId, ?\Github\Model\ReposOwnerRepoImportAuthorsAuthorIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2963,7 +2963,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsGetCommitAuthorsNotFoundException
      *
-     * @return null|\Github\Model\PorterAuthor[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PorterAuthor[] : \Psr\Http\Message\ResponseInterface)
      */
     public function migrationsGetCommitAuthors(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2977,7 +2977,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsSetLfsPreferenceUnprocessableEntityException
      *
-     * @return null|\Github\Model\Import|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Import : \Psr\Http\Message\ResponseInterface)
      */
     public function migrationsSetLfsPreference(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoImportLfsPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -2989,7 +2989,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function interactionsRemoveRestrictionsForRepo(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -3001,7 +3001,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\InteractionLimit|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\InteractionLimit : \Psr\Http\Message\ResponseInterface)
      */
     public function interactionsGetRestrictionsForRepo(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -3014,7 +3014,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ReposOwnerRepoInteractionLimitsPutBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\InteractionLimit|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\InteractionLimit : \Psr\Http\Message\ResponseInterface)
      */
     public function interactionsSetRestrictionsForRepo(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoInteractionLimitsPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3025,7 +3025,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function interactionsRemoveRestrictionsForOrg(string $org, string $fetch = self::FETCH_OBJECT)
     {
@@ -3036,7 +3036,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\InteractionLimit|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\InteractionLimit : \Psr\Http\Message\ResponseInterface)
      */
     public function interactionsGetRestrictionsForOrg(string $org, string $fetch = self::FETCH_OBJECT)
     {
@@ -3049,7 +3049,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\InteractionsSetRestrictionsForOrgUnprocessableEntityException
      *
-     * @return null|\Github\Model\InteractionLimit|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\InteractionLimit : \Psr\Http\Message\ResponseInterface)
      */
     public function interactionsSetRestrictionsForOrg(string $org, ?\Github\Model\OrgsOrgInteractionLimitsPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3063,7 +3063,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\LicenseContent|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\LicenseContent : \Psr\Http\Message\ResponseInterface)
      */
     public function licensesGetForRepo(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -3075,7 +3075,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\LicensesGetForbiddenException
      * @throws \Github\Exception\LicensesGetNotFoundException
      *
-     * @return null|\Github\Model\License|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\License : \Psr\Http\Message\ResponseInterface)
      */
     public function licensesGet(string $license, string $fetch = self::FETCH_OBJECT)
     {
@@ -3088,7 +3088,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\LicenseSimple[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\LicenseSimple[] : \Psr\Http\Message\ResponseInterface)
      */
     public function licensesGetAllCommonlyUsed(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3100,7 +3100,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function activityDeleteRepoSubscription(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -3113,7 +3113,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ActivityGetRepoSubscriptionNotFoundException
      * @throws \Github\Exception\ActivityGetRepoSubscriptionForbiddenException
      *
-     * @return null|\Github\Model\RepositorySubscription|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\RepositorySubscription : \Psr\Http\Message\ResponseInterface)
      */
     public function activityGetRepoSubscription(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -3126,7 +3126,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ReposOwnerRepoSubscriptionPutBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\RepositorySubscription|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\RepositorySubscription : \Psr\Http\Message\ResponseInterface)
      */
     public function activitySetRepoSubscription(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoSubscriptionPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3143,7 +3143,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ActivityListPublicEventsForRepoNetworkNotFoundException
      * @throws \Github\Exception\ActivityListPublicEventsForRepoNetworkForbiddenException
      *
-     * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Event[] : \Psr\Http\Message\ResponseInterface)
      */
     public function activityListPublicEventsForRepoNetwork(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3158,7 +3158,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Event[] : \Psr\Http\Message\ResponseInterface)
      */
     public function activityListRepoEvents(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3174,7 +3174,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ActivityListPublicEventsForbiddenException
      * @throws \Github\Exception\ActivityListPublicEventsServiceUnavailableException
      *
-     * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Event[] : \Psr\Http\Message\ResponseInterface)
      */
     public function activityListPublicEvents(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3188,7 +3188,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ActivityUnstarRepoForAuthenticatedUserUnauthorizedException
      * @throws \Github\Exception\ActivityUnstarRepoForAuthenticatedUserForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function activityUnstarRepoForAuthenticatedUser(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -3202,7 +3202,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ActivityCheckRepoIsStarredByAuthenticatedUserUnauthorizedException
      * @throws \Github\Exception\ActivityCheckRepoIsStarredByAuthenticatedUserForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function activityCheckRepoIsStarredByAuthenticatedUser(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -3217,7 +3217,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ActivityStarRepoForAuthenticatedUserNotFoundException
      * @throws \Github\Exception\ActivityStarRepoForAuthenticatedUserUnauthorizedException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function activityStarRepoForAuthenticatedUser(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -3231,7 +3231,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Event[] : \Psr\Http\Message\ResponseInterface)
      */
     public function activityListPublicEventsForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3251,7 +3251,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Thread[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Thread[] : \Psr\Http\Message\ResponseInterface)
      */
     public function activityListRepoNotificationsForAuthenticatedUser(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3264,7 +3264,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ReposOwnerRepoNotificationsPutBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function activityMarkRepoNotificationsAsRead(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoNotificationsPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3280,7 +3280,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
      */
     public function activityListWatchersForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3296,7 +3296,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Event[] : \Psr\Http\Message\ResponseInterface)
      */
     public function activityListOrgEventsForAuthenticatedUser(string $username, string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3310,7 +3310,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Event[] : \Psr\Http\Message\ResponseInterface)
      */
     public function activityListPublicOrgEvents(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3319,7 +3319,7 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Feed|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Feed : \Psr\Http\Message\ResponseInterface)
      */
     public function activityGetFeeds(string $fetch = self::FETCH_OBJECT)
     {
@@ -3334,7 +3334,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Event[] : \Psr\Http\Message\ResponseInterface)
      */
     public function activityListReceivedEventsForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3354,7 +3354,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Repository[]|\Github\Model\StarredRepository[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Repository[]|\Github\Model\StarredRepository[] : \Psr\Http\Message\ResponseInterface)
      */
     public function activityListReposStarredByUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -3369,7 +3369,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\MinimalRepository[] : \Psr\Http\Message\ResponseInterface)
      */
     public function activityListReposWatchedByUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3381,7 +3381,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ActivityGetThreadForbiddenException
      * @throws \Github\Exception\ActivityGetThreadUnauthorizedException
      *
-     * @return null|\Github\Model\Thread|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Thread : \Psr\Http\Message\ResponseInterface)
      */
     public function activityGetThread(int $threadId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3392,7 +3392,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActivityMarkThreadAsReadForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function activityMarkThreadAsRead(int $threadId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3405,7 +3405,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ActivityDeleteThreadSubscriptionForbiddenException
      * @throws \Github\Exception\ActivityDeleteThreadSubscriptionUnauthorizedException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function activityDeleteThreadSubscription(int $threadId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3420,7 +3420,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ActivityGetThreadSubscriptionForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\ActivityGetThreadSubscriptionForAuthenticatedUserUnauthorizedException
      *
-     * @return null|\Github\Model\ThreadSubscription|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ThreadSubscription : \Psr\Http\Message\ResponseInterface)
      */
     public function activityGetThreadSubscriptionForAuthenticatedUser(int $threadId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3438,7 +3438,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ActivitySetThreadSubscriptionForbiddenException
      * @throws \Github\Exception\ActivitySetThreadSubscriptionUnauthorizedException
      *
-     * @return null|\Github\Model\ThreadSubscription|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ThreadSubscription : \Psr\Http\Message\ResponseInterface)
      */
     public function activitySetThreadSubscription(int $threadId, ?\Github\Model\NotificationsThreadsThreadIdSubscriptionPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3453,7 +3453,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Event[] : \Psr\Http\Message\ResponseInterface)
      */
     public function activityListEventsForAuthenticatedUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3474,7 +3474,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ActivityListNotificationsForAuthenticatedUserUnauthorizedException
      * @throws \Github\Exception\ActivityListNotificationsForAuthenticatedUserUnprocessableEntityException
      *
-     * @return null|\Github\Model\Thread[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Thread[] : \Psr\Http\Message\ResponseInterface)
      */
     public function activityListNotificationsForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3487,7 +3487,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ActivityMarkNotificationsAsReadForbiddenException
      * @throws \Github\Exception\ActivityMarkNotificationsAsReadUnauthorizedException
      *
-     * @return null|\Github\Model\NotificationsPutResponse202|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\NotificationsPutResponse202 : \Psr\Http\Message\ResponseInterface)
      */
     public function activityMarkNotificationsAsRead(?\Github\Model\NotificationsPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3503,7 +3503,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ActivityListWatchedReposForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\ActivityListWatchedReposForAuthenticatedUserUnauthorizedException
      *
-     * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\MinimalRepository[] : \Psr\Http\Message\ResponseInterface)
      */
     public function activityListWatchedReposForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3524,7 +3524,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ActivityListReposStarredByAuthenticatedUserForbiddenException
      * @throws \Github\Exception\ActivityListReposStarredByAuthenticatedUserUnauthorizedException
      *
-     * @return null|\Github\Model\Repository[]|\Github\Model\StarredRepository[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Repository[]|\Github\Model\StarredRepository[] : \Psr\Http\Message\ResponseInterface)
      */
     public function activityListReposStarredByAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -3544,7 +3544,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActivityListStargazersForRepoUnprocessableEntityException
      *
-     * @return null|\Github\Model\SimpleUser[]|\Github\Model\Stargazer[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[]|\Github\Model\Stargazer[] : \Psr\Http\Message\ResponseInterface)
      */
     public function activityListStargazersForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -3558,7 +3558,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Event[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Event[] : \Psr\Http\Message\ResponseInterface)
      */
     public function activityListReceivedPublicEventsForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3575,7 +3575,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\CheckAnnotation[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CheckAnnotation[] : \Psr\Http\Message\ResponseInterface)
      */
     public function checksListAnnotations(string $owner, string $repo, int $checkRunId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3596,7 +3596,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ReposOwnerRepoCommitsRefCheckSuitesGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ReposOwnerRepoCommitsRefCheckSuitesGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function checksListSuitesForRef(string $owner, string $repo, string $ref, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3618,7 +3618,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ReposOwnerRepoCommitsRefCheckRunsGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ReposOwnerRepoCommitsRefCheckRunsGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function checksListForRef(string $owner, string $repo, string $ref, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3640,7 +3640,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function checksListForSuite(string $owner, string $repo, int $checkSuiteId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3655,7 +3655,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $checkRunId check_run_id parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\CheckRun|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CheckRun : \Psr\Http\Message\ResponseInterface)
      */
     public function checksGet(string $owner, string $repo, int $checkRunId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3671,7 +3671,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ReposOwnerRepoCheckRunsCheckRunIdPatchBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\CheckRun|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CheckRun : \Psr\Http\Message\ResponseInterface)
      */
     public function checksUpdate(string $owner, string $repo, int $checkRunId, ?\Github\Model\ReposOwnerRepoCheckRunsCheckRunIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3686,7 +3686,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ReposOwnerRepoCheckSuitesPostBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\CheckSuite|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CheckSuite : \Psr\Http\Message\ResponseInterface)
      */
     public function checksCreateSuite(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoCheckSuitesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3701,7 +3701,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $checkSuiteId check_suite_id parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function checksRerequestSuite(string $owner, string $repo, int $checkSuiteId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3714,7 +3714,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ReposOwnerRepoCheckSuitesPreferencesPatchBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\CheckSuitePreference|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CheckSuitePreference : \Psr\Http\Message\ResponseInterface)
      */
     public function checksSetSuitesPreferences(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoCheckSuitesPreferencesPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3729,7 +3729,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ReposOwnerRepoCheckRunsPostBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\CheckRun|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CheckRun : \Psr\Http\Message\ResponseInterface)
      */
     public function checksCreate(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoCheckRunsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3744,7 +3744,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $checkSuiteId check_suite_id parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\CheckSuite|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CheckSuite : \Psr\Http\Message\ResponseInterface)
      */
     public function checksGetSuite(string $owner, string $repo, int $checkSuiteId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3754,7 +3754,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\MarkdownPostBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function markdownRender(?\Github\Model\MarkdownPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3765,7 +3765,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|string $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function markdownRenderRaw(?string $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3782,7 +3782,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsListForOrgUnprocessableEntityException
      *
-     * @return null|\Github\Model\Project[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Project[] : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsListForOrg(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3799,7 +3799,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ProjectsCreateForOrgGoneException
      * @throws \Github\Exception\ProjectsCreateForOrgUnprocessableEntityException
      *
-     * @return null|\Github\Model\Project|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Project : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsCreateForOrg(string $org, ?\Github\Model\OrgsOrgProjectsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3813,7 +3813,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ProjectsMoveColumnUnprocessableEntityException
      * @throws \Github\Exception\ProjectsMoveColumnUnauthorizedException
      *
-     * @return null|\Github\Model\ProjectsColumnsColumnIdMovesPostResponse201|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ProjectsColumnsColumnIdMovesPostResponse201 : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsMoveColumn(int $columnId, ?\Github\Model\ProjectsColumnsColumnIdMovesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3826,7 +3826,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ProjectsDeleteCardUnauthorizedException
      * @throws \Github\Exception\ProjectsDeleteCardNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsDeleteCard(int $cardId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3839,7 +3839,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ProjectsGetCardUnauthorizedException
      * @throws \Github\Exception\ProjectsGetCardNotFoundException
      *
-     * @return null|\Github\Model\ProjectCard|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ProjectCard : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsGetCard(int $cardId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3854,7 +3854,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ProjectsUpdateCardNotFoundException
      * @throws \Github\Exception\ProjectsUpdateCardUnprocessableEntityException
      *
-     * @return null|\Github\Model\ProjectCard|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ProjectCard : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsUpdateCard(int $cardId, ?\Github\Model\ProjectsColumnsCardsCardIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3866,7 +3866,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ProjectsDeleteColumnForbiddenException
      * @throws \Github\Exception\ProjectsDeleteColumnUnauthorizedException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsDeleteColumn(int $columnId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3879,7 +3879,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ProjectsGetColumnNotFoundException
      * @throws \Github\Exception\ProjectsGetColumnUnauthorizedException
      *
-     * @return null|\Github\Model\ProjectColumn|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ProjectColumn : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsGetColumn(int $columnId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3892,7 +3892,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ProjectsUpdateColumnForbiddenException
      * @throws \Github\Exception\ProjectsUpdateColumnUnauthorizedException
      *
-     * @return null|\Github\Model\ProjectColumn|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ProjectColumn : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsUpdateColumn(int $columnId, ?\Github\Model\ProjectsColumnsColumnIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3909,7 +3909,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ProjectsListForUserUnsupportedMediaTypeException
      * @throws \Github\Exception\ProjectsListForUserUnprocessableEntityException
      *
-     * @return null|\Github\Model\Project[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Project[] : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsListForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3924,7 +3924,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ProjectsDeleteGoneException
      * @throws \Github\Exception\ProjectsDeleteNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsDelete(int $projectId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3937,7 +3937,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ProjectsGetForbiddenException
      * @throws \Github\Exception\ProjectsGetUnauthorizedException
      *
-     * @return null|\Github\Model\Project|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Project : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsGet(int $projectId, string $fetch = self::FETCH_OBJECT)
     {
@@ -3954,7 +3954,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ProjectsUpdateGoneException
      * @throws \Github\Exception\ProjectsUpdateUnprocessableEntityException
      *
-     * @return null|\Github\Model\Project|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Project : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsUpdate(int $projectId, ?\Github\Model\ProjectsProjectIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -3970,7 +3970,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ProjectsListColumnsForbiddenException
      * @throws \Github\Exception\ProjectsListColumnsUnauthorizedException
      *
-     * @return null|\Github\Model\ProjectColumn[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ProjectColumn[] : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsListColumns(int $projectId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3984,7 +3984,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ProjectsCreateColumnUnprocessableEntityException
      * @throws \Github\Exception\ProjectsCreateColumnUnauthorizedException
      *
-     * @return null|\Github\Model\ProjectColumn|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ProjectColumn : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsCreateColumn(int $projectId, ?\Github\Model\ProjectsProjectIdColumnsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4001,7 +4001,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ProjectsListCardsForbiddenException
      * @throws \Github\Exception\ProjectsListCardsUnauthorizedException
      *
-     * @return null|\Github\Model\ProjectCard[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ProjectCard[] : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsListCards(int $columnId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4019,7 +4019,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ProjectsCreateCardUnprocessableEntityException
      * @throws \Github\Exception\ProjectsCreateCardServiceUnavailableException
      *
-     * @return null|\Github\Model\ProjectCard|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ProjectCard : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsCreateCard(int $columnId, $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4033,7 +4033,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ProjectsCreateForAuthenticatedUserUnsupportedMediaTypeException
      * @throws \Github\Exception\ProjectsCreateForAuthenticatedUserUnprocessableEntityException
      *
-     * @return null|\Github\Model\Project|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Project : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsCreateForAuthenticatedUser(?\Github\Model\UserProjectsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4050,7 +4050,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ProjectsRemoveCollaboratorUnprocessableEntityException
      * @throws \Github\Exception\ProjectsRemoveCollaboratorUnauthorizedException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsRemoveCollaborator(int $projectId, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -4068,7 +4068,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ProjectsAddCollaboratorForbiddenException
      * @throws \Github\Exception\ProjectsAddCollaboratorUnauthorizedException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsAddCollaborator(int $projectId, string $username, ?\Github\Model\ProjectsProjectIdCollaboratorsUsernamePutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4085,7 +4085,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ProjectsGetPermissionForUserForbiddenException
      * @throws \Github\Exception\ProjectsGetPermissionForUserUnauthorizedException
      *
-     * @return null|\Github\Model\RepositoryCollaboratorPermission|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\RepositoryCollaboratorPermission : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsGetPermissionForUser(int $projectId, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -4107,7 +4107,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ProjectsListForRepoGoneException
      * @throws \Github\Exception\ProjectsListForRepoUnprocessableEntityException
      *
-     * @return null|\Github\Model\Project[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Project[] : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsListForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4125,7 +4125,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ProjectsCreateForRepoGoneException
      * @throws \Github\Exception\ProjectsCreateForRepoUnprocessableEntityException
      *
-     * @return null|\Github\Model\Project|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Project : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsCreateForRepo(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoProjectsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4140,7 +4140,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ProjectsMoveCardServiceUnavailableException
      * @throws \Github\Exception\ProjectsMoveCardUnprocessableEntityException
      *
-     * @return null|\Github\Model\ProjectsColumnsCardsCardIdMovesPostResponse201|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ProjectsColumnsCardsCardIdMovesPostResponse201 : \Psr\Http\Message\ResponseInterface)
      */
     public function projectsMoveCard(int $cardId, ?\Github\Model\ProjectsColumnsCardsCardIdMovesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4165,7 +4165,7 @@ class Client extends \Github\Runtime\Client\Client
     * @throws \Github\Exception\ProjectsListCollaboratorsForbiddenException
     * @throws \Github\Exception\ProjectsListCollaboratorsUnauthorizedException
     *
-    * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
     */
     public function projectsListCollaborators(int $projectId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4185,7 +4185,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Reaction[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Reaction[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsListForTeamDiscussionCommentLegacy(int $teamId, int $discussionNumber, int $commentNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4201,7 +4201,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Reaction|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Reaction : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsCreateForTeamDiscussionCommentLegacy(int $teamId, int $discussionNumber, int $commentNumber, ?\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4220,7 +4220,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Reaction[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Reaction[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsListForTeamDiscussionLegacy(int $teamId, int $discussionNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4235,7 +4235,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Reaction|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Reaction : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsCreateForTeamDiscussionLegacy(int $teamId, int $discussionNumber, ?\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4255,7 +4255,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReactionsListForIssueCommentNotFoundException
      * @throws \Github\Exception\ReactionsListForIssueCommentUnsupportedMediaTypeException
      *
-     * @return null|\Github\Model\Reaction[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Reaction[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsListForIssueComment(string $owner, string $repo, int $commentId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4271,7 +4271,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReactionsCreateForIssueCommentUnsupportedMediaTypeException
      * @throws \Github\Exception\ReactionsCreateForIssueCommentUnprocessableEntityException
      *
-     * @return null|\Github\Model\Reaction|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Reaction : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsCreateForIssueComment(string $owner, string $repo, int $commentId, ?\Github\Model\ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4287,7 +4287,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $reactionId
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsDeleteForTeamDiscussion(string $org, string $teamSlug, int $discussionNumber, int $reactionId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4308,7 +4308,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReactionsListForIssueGoneException
      * @throws \Github\Exception\ReactionsListForIssueUnsupportedMediaTypeException
      *
-     * @return null|\Github\Model\Reaction[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Reaction[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsListForIssue(string $owner, string $repo, int $issueNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4324,7 +4324,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReactionsCreateForIssueUnsupportedMediaTypeException
      * @throws \Github\Exception\ReactionsCreateForIssueUnprocessableEntityException
      *
-     * @return null|\Github\Model\Reaction|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Reaction : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsCreateForIssue(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberReactionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4344,7 +4344,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReactionsListForPullRequestReviewCommentNotFoundException
      * @throws \Github\Exception\ReactionsListForPullRequestReviewCommentUnsupportedMediaTypeException
      *
-     * @return null|\Github\Model\Reaction[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Reaction[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsListForPullRequestReviewComment(string $owner, string $repo, int $commentId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4360,7 +4360,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReactionsCreateForPullRequestReviewCommentUnsupportedMediaTypeException
      * @throws \Github\Exception\ReactionsCreateForPullRequestReviewCommentUnprocessableEntityException
      *
-     * @return null|\Github\Model\Reaction|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Reaction : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsCreateForPullRequestReviewComment(string $owner, string $repo, int $commentId, ?\Github\Model\ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4376,7 +4376,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $reactionId
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsDeleteForCommitComment(string $owner, string $repo, int $commentId, int $reactionId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4393,7 +4393,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReactionsDeleteLegacyGoneException
      * @throws \Github\Exception\ReactionsDeleteLegacyUnsupportedMediaTypeException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsDeleteLegacy(int $reactionId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4409,7 +4409,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $reactionId
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsDeleteForIssueComment(string $owner, string $repo, int $commentId, int $reactionId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4425,7 +4425,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $reactionId
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsDeleteForIssue(string $owner, string $repo, int $issueNumber, int $reactionId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4442,7 +4442,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $reactionId
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsDeleteForTeamDiscussionComment(string $org, string $teamSlug, int $discussionNumber, int $commentNumber, int $reactionId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4463,7 +4463,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Reaction[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Reaction[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsListForTeamDiscussionCommentInOrg(string $org, string $teamSlug, int $discussionNumber, int $commentNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4480,7 +4480,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Reaction|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Reaction : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsCreateForTeamDiscussionCommentInOrg(string $org, string $teamSlug, int $discussionNumber, int $commentNumber, ?\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4500,7 +4500,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Reaction[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Reaction[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsListForTeamDiscussionInOrg(string $org, string $teamSlug, int $discussionNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4516,7 +4516,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Reaction|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Reaction : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsCreateForTeamDiscussionInOrg(string $org, string $teamSlug, int $discussionNumber, ?\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4532,7 +4532,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $reactionId
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsDeleteForPullRequestComment(string $owner, string $repo, int $commentId, int $reactionId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4552,7 +4552,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReactionsListForCommitCommentNotFoundException
      * @throws \Github\Exception\ReactionsListForCommitCommentUnsupportedMediaTypeException
      *
-     * @return null|\Github\Model\Reaction[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Reaction[] : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsListForCommitComment(string $owner, string $repo, int $commentId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4568,7 +4568,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReactionsCreateForCommitCommentUnsupportedMediaTypeException
      * @throws \Github\Exception\ReactionsCreateForCommitCommentUnprocessableEntityException
      *
-     * @return null|\Github\Model\Reaction|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Reaction : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsCreateForCommitComment(string $owner, string $repo, int $commentId, ?\Github\Model\ReposOwnerRepoCommentsCommentIdReactionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4577,7 +4577,7 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function metaGetZen(string $fetch = self::FETCH_OBJECT)
     {
@@ -4586,7 +4586,7 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ApiOverview|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ApiOverview : \Psr\Http\Message\ResponseInterface)
      */
     public function metaGet(string $fetch = self::FETCH_OBJECT)
     {
@@ -4599,7 +4599,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function metaGetOctocat(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4608,7 +4608,7 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\GetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function metaRoot(string $fetch = self::FETCH_OBJECT)
     {
@@ -4621,7 +4621,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\CredentialAuthorization[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CredentialAuthorization[] : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsListSamlSsoAuthorizations(string $org, string $fetch = self::FETCH_OBJECT)
     {
@@ -4638,7 +4638,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsListInvitationTeamsNotFoundException
      *
-     * @return null|\Github\Model\Team[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Team[] : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsListInvitationTeams(string $org, int $invitationId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4655,7 +4655,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\OrgsListMembershipsForAuthenticatedUserUnauthorizedException
      * @throws \Github\Exception\OrgsListMembershipsForAuthenticatedUserUnprocessableEntityException
      *
-     * @return null|\Github\Model\OrgMembership[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\OrgMembership[] : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsListMembershipsForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4668,7 +4668,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsRemoveOutsideCollaboratorUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsRemoveOutsideCollaborator(string $org, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -4682,7 +4682,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\OrgsConvertMemberToOutsideCollaboratorForbiddenException
      * @throws \Github\Exception\OrgsConvertMemberToOutsideCollaboratorNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsConvertMemberToOutsideCollaborator(string $org, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -4694,7 +4694,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\OrgsGetMembershipForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\OrgsGetMembershipForAuthenticatedUserNotFoundException
      *
-     * @return null|\Github\Model\OrgMembership|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\OrgMembership : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsGetMembershipForAuthenticatedUser(string $org, string $fetch = self::FETCH_OBJECT)
     {
@@ -4708,7 +4708,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\OrgsUpdateMembershipForAuthenticatedUserNotFoundException
      * @throws \Github\Exception\OrgsUpdateMembershipForAuthenticatedUserUnprocessableEntityException
      *
-     * @return null|\Github\Model\OrgMembership|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\OrgMembership : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsUpdateMembershipForAuthenticatedUser(string $org, ?\Github\Model\UserMembershipsOrgsOrgPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4724,7 +4724,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\OrgsRemoveMembershipForUserForbiddenException
      * @throws \Github\Exception\OrgsRemoveMembershipForUserNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsRemoveMembershipForUser(string $org, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -4738,7 +4738,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\OrgsGetMembershipForUserNotFoundException
      * @throws \Github\Exception\OrgsGetMembershipForUserForbiddenException
      *
-     * @return null|\Github\Model\OrgMembership|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\OrgMembership : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsGetMembershipForUser(string $org, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -4761,7 +4761,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\OrgsSetMembershipForUserUnprocessableEntityException
      * @throws \Github\Exception\OrgsSetMembershipForUserForbiddenException
      *
-     * @return null|\Github\Model\OrgMembership|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\OrgMembership : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsSetMembershipForUser(string $org, string $username, ?\Github\Model\OrgsOrgMembershipsUsernamePutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4773,7 +4773,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsDeleteWebhookNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsDeleteWebhook(string $org, int $hookId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4785,7 +4785,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsGetWebhookNotFoundException
      *
-     * @return null|\Github\Model\OrgHook|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\OrgHook : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsGetWebhook(string $org, int $hookId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4799,7 +4799,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\OrgsUpdateWebhookUnprocessableEntityException
      * @throws \Github\Exception\OrgsUpdateWebhookNotFoundException
      *
-     * @return null|\Github\Model\OrgHook|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\OrgHook : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsUpdateWebhook(string $org, int $hookId, ?\Github\Model\OrgsOrgHooksHookIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4816,7 +4816,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\OrganizationSimple[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\OrganizationSimple[] : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsListForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4830,7 +4830,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsGetNotFoundException
      *
-     * @return null|\Github\Model\OrganizationFull|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\OrganizationFull : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsGet(string $org, string $fetch = self::FETCH_OBJECT)
     {
@@ -4847,7 +4847,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\OrgsUpdateConflictException
      * @throws \Github\Exception\OrgsUpdateUnsupportedMediaTypeException
      *
-     * @return null|\Github\Model\OrganizationFull|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\OrganizationFull : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsUpdate(string $org, ?\Github\Model\OrgsOrgPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -4860,7 +4860,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsPingWebhookNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsPingWebhook(string $org, int $hookId, string $fetch = self::FETCH_OBJECT)
     {
@@ -4873,7 +4873,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsRemoveMemberForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsRemoveMember(string $org, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -4886,7 +4886,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsCheckMembershipForUserNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsCheckMembershipForUser(string $org, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -4901,7 +4901,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\OrgsOrgInstallationsGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\OrgsOrgInstallationsGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsListAppInstallations(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4912,7 +4912,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $username
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsRemovePublicMembershipForAuthenticatedUser(string $org, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -4924,7 +4924,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsCheckPublicMembershipForUserNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsCheckPublicMembershipForUser(string $org, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -4939,7 +4939,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsSetPublicMembershipForAuthenticatedUserForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsSetPublicMembershipForAuthenticatedUser(string $org, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -4958,7 +4958,7 @@ class Client extends \Github\Runtime\Client\Client
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
-    * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
     */
     public function orgsListOutsideCollaborators(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4974,7 +4974,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsListPendingInvitationsNotFoundException
      *
-     * @return null|\Github\Model\OrganizationInvitation[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\OrganizationInvitation[] : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsListPendingInvitations(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -4990,7 +4990,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\OrgsCreateInvitationUnprocessableEntityException
      * @throws \Github\Exception\OrgsCreateInvitationNotFoundException
      *
-     * @return null|\Github\Model\OrganizationInvitation|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\OrganizationInvitation : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsCreateInvitation(string $org, ?\Github\Model\OrgsOrgInvitationsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -5006,7 +5006,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\OrganizationSimple[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\OrganizationSimple[] : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5021,7 +5021,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsListWebhooksNotFoundException
      *
-     * @return null|\Github\Model\OrgHook[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\OrgHook[] : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsListWebhooks(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5035,7 +5035,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\OrgsCreateWebhookUnprocessableEntityException
      * @throws \Github\Exception\OrgsCreateWebhookNotFoundException
      *
-     * @return null|\Github\Model\OrgHook|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\OrgHook : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsCreateWebhook(string $org, ?\Github\Model\OrgsOrgHooksPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -5047,7 +5047,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsListBlockedUsersUnsupportedMediaTypeException
      *
-     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsListBlockedUsers(string $org, string $fetch = self::FETCH_OBJECT)
     {
@@ -5058,7 +5058,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $username
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsUnblockUser(string $org, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -5070,7 +5070,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsCheckBlockedUserNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsCheckBlockedUser(string $org, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -5082,7 +5082,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsBlockUserUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsBlockUser(string $org, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -5106,7 +5106,7 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\OrgsListMembersUnprocessableEntityException
     *
-    * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
     */
     public function orgsListMembers(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5126,7 +5126,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\OrgsListForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\OrgsListForAuthenticatedUserUnauthorizedException
      *
-     * @return null|\Github\Model\OrganizationSimple[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\OrganizationSimple[] : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsListForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5141,7 +5141,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsRemoveSamlSsoAuthorizationNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsRemoveSamlSsoAuthorization(string $org, int $credentialId, string $fetch = self::FETCH_OBJECT)
     {
@@ -5156,7 +5156,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
      */
     public function orgsListPublicMembers(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5193,7 +5193,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\SearchCodeUnprocessableEntityException
      * @throws \Github\Exception\SearchCodeForbiddenException
      *
-     * @return null|\Github\Model\SearchCodeGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SearchCodeGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function searchCode(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5220,7 +5220,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\SearchLabelsForbiddenException
      * @throws \Github\Exception\SearchLabelsUnprocessableEntityException
      *
-     * @return null|\Github\Model\SearchLabelsGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SearchLabelsGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function searchLabels(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5247,7 +5247,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\SearchUsersServiceUnavailableException
      * @throws \Github\Exception\SearchUsersUnprocessableEntityException
      *
-     * @return null|\Github\Model\SearchUsersGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SearchUsersGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function searchUsers(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5272,7 +5272,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\SearchCommitsUnsupportedMediaTypeException
      *
-     * @return null|\Github\Model\SearchCommitsGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SearchCommitsGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function searchCommits(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5301,7 +5301,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\SearchIssuesAndPullRequestsUnprocessableEntityException
      * @throws \Github\Exception\SearchIssuesAndPullRequestsForbiddenException
      *
-     * @return null|\Github\Model\SearchIssuesGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SearchIssuesGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function searchIssuesAndPullRequests(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5332,7 +5332,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\SearchReposServiceUnavailableException
      * @throws \Github\Exception\SearchReposUnprocessableEntityException
      *
-     * @return null|\Github\Model\SearchRepositoriesGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SearchRepositoriesGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function searchRepos(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5354,7 +5354,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\SearchTopicsUnsupportedMediaTypeException
      *
-     * @return null|\Github\Model\SearchTopicsGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SearchTopicsGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function searchTopics(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5373,7 +5373,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\OauthAuthorizationsListGrantsUnauthorizedException
      * @throws \Github\Exception\OauthAuthorizationsListGrantsNotFoundException
      *
-     * @return null|\Github\Model\ApplicationGrant[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ApplicationGrant[] : \Psr\Http\Message\ResponseInterface)
      */
     public function oauthAuthorizationsListGrants(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5388,7 +5388,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\OauthAuthorizationsDeleteGrantForbiddenException
      * @throws \Github\Exception\OauthAuthorizationsDeleteGrantUnauthorizedException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function oauthAuthorizationsDeleteGrant(int $grantId, string $fetch = self::FETCH_OBJECT)
     {
@@ -5401,7 +5401,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\OauthAuthorizationsGetGrantForbiddenException
      * @throws \Github\Exception\OauthAuthorizationsGetGrantUnauthorizedException
      *
-     * @return null|\Github\Model\ApplicationGrant|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ApplicationGrant : \Psr\Http\Message\ResponseInterface)
      */
     public function oauthAuthorizationsGetGrant(int $grantId, string $fetch = self::FETCH_OBJECT)
     {
@@ -5418,7 +5418,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\OauthAuthorizationsListAuthorizationsUnauthorizedException
      * @throws \Github\Exception\OauthAuthorizationsListAuthorizationsNotFoundException
      *
-     * @return null|\Github\Model\Authorization[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Authorization[] : \Psr\Http\Message\ResponseInterface)
      */
     public function oauthAuthorizationsListAuthorizations(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5443,7 +5443,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\OauthAuthorizationsCreateAuthorizationForbiddenException
      * @throws \Github\Exception\OauthAuthorizationsCreateAuthorizationUnauthorizedException
      *
-     * @return null|\Github\Model\Authorization|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Authorization : \Psr\Http\Message\ResponseInterface)
      */
     public function oauthAuthorizationsCreateAuthorization(?\Github\Model\AuthorizationsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -5463,7 +5463,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OauthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintUnprocessableEntityException
      *
-     * @return null|\Github\Model\Authorization|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Authorization : \Psr\Http\Message\ResponseInterface)
      */
     public function oauthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(string $clientId, string $fingerprint, ?\Github\Model\AuthorizationsClientsClientIdFingerprintPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -5476,7 +5476,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\OauthAuthorizationsDeleteAuthorizationForbiddenException
      * @throws \Github\Exception\OauthAuthorizationsDeleteAuthorizationUnauthorizedException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function oauthAuthorizationsDeleteAuthorization(int $authorizationId, string $fetch = self::FETCH_OBJECT)
     {
@@ -5489,7 +5489,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\OauthAuthorizationsGetAuthorizationForbiddenException
      * @throws \Github\Exception\OauthAuthorizationsGetAuthorizationUnauthorizedException
      *
-     * @return null|\Github\Model\Authorization|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Authorization : \Psr\Http\Message\ResponseInterface)
      */
     public function oauthAuthorizationsGetAuthorization(int $authorizationId, string $fetch = self::FETCH_OBJECT)
     {
@@ -5506,7 +5506,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OauthAuthorizationsUpdateAuthorizationUnprocessableEntityException
      *
-     * @return null|\Github\Model\Authorization|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Authorization : \Psr\Http\Message\ResponseInterface)
      */
     public function oauthAuthorizationsUpdateAuthorization(int $authorizationId, ?\Github\Model\AuthorizationsAuthorizationIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -5529,7 +5529,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\OauthAuthorizationsGetOrCreateAuthorizationForAppForbiddenException
      * @throws \Github\Exception\OauthAuthorizationsGetOrCreateAuthorizationForAppUnauthorizedException
      *
-     * @return null|\Github\Model\Authorization|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Authorization : \Psr\Http\Message\ResponseInterface)
      */
     public function oauthAuthorizationsGetOrCreateAuthorizationForApp(string $clientId, ?\Github\Model\AuthorizationsClientsClientIdPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -5541,7 +5541,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\CodeOfConduct|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CodeOfConduct : \Psr\Http\Message\ResponseInterface)
      */
     public function codesOfConductGetForRepo(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -5553,7 +5553,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\CodesOfConductGetConductCodeNotFoundException
      * @throws \Github\Exception\CodesOfConductGetConductCodeUnsupportedMediaTypeException
      *
-     * @return null|\Github\Model\CodeOfConduct|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CodeOfConduct : \Psr\Http\Message\ResponseInterface)
      */
     public function codesOfConductGetConductCode(string $key, string $fetch = self::FETCH_OBJECT)
     {
@@ -5563,7 +5563,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\CodesOfConductGetAllCodesOfConductUnsupportedMediaTypeException
      *
-     * @return null|\Github\Model\CodeOfConduct[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CodeOfConduct[] : \Psr\Http\Message\ResponseInterface)
      */
     public function codesOfConductGetAllCodesOfConduct(string $fetch = self::FETCH_OBJECT)
     {
@@ -5579,7 +5579,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersListFollowersForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\UsersListFollowersForAuthenticatedUserUnauthorizedException
      *
-     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
      */
     public function usersListFollowersForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5595,7 +5595,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersListFollowedByAuthenticatedForbiddenException
      * @throws \Github\Exception\UsersListFollowedByAuthenticatedUnauthorizedException
      *
-     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
      */
     public function usersListFollowedByAuthenticated(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5612,7 +5612,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersListGpgKeysForAuthenticatedForbiddenException
      * @throws \Github\Exception\UsersListGpgKeysForAuthenticatedUnauthorizedException
      *
-     * @return null|\Github\Model\GpgKey[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GpgKey[] : \Psr\Http\Message\ResponseInterface)
      */
     public function usersListGpgKeysForAuthenticated(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5627,7 +5627,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersCreateGpgKeyForAuthenticatedForbiddenException
      * @throws \Github\Exception\UsersCreateGpgKeyForAuthenticatedUnauthorizedException
      *
-     * @return null|\Github\Model\GpgKey|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GpgKey : \Psr\Http\Message\ResponseInterface)
      */
     public function usersCreateGpgKeyForAuthenticated(?\Github\Model\UserGpgKeysPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -5641,7 +5641,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersDeletePublicSshKeyForAuthenticatedForbiddenException
      * @throws \Github\Exception\UsersDeletePublicSshKeyForAuthenticatedUnauthorizedException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersDeletePublicSshKeyForAuthenticated(int $keyId, string $fetch = self::FETCH_OBJECT)
     {
@@ -5655,7 +5655,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersGetPublicSshKeyForAuthenticatedForbiddenException
      * @throws \Github\Exception\UsersGetPublicSshKeyForAuthenticatedUnauthorizedException
      *
-     * @return null|\Github\Model\Key|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Key : \Psr\Http\Message\ResponseInterface)
      */
     public function usersGetPublicSshKeyForAuthenticated(int $keyId, string $fetch = self::FETCH_OBJECT)
     {
@@ -5670,7 +5670,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersDeleteGpgKeyForAuthenticatedForbiddenException
      * @throws \Github\Exception\UsersDeleteGpgKeyForAuthenticatedUnauthorizedException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersDeleteGpgKeyForAuthenticated(int $gpgKeyId, string $fetch = self::FETCH_OBJECT)
     {
@@ -5684,7 +5684,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersGetGpgKeyForAuthenticatedForbiddenException
      * @throws \Github\Exception\UsersGetGpgKeyForAuthenticatedUnauthorizedException
      *
-     * @return null|\Github\Model\GpgKey|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GpgKey : \Psr\Http\Message\ResponseInterface)
      */
     public function usersGetGpgKeyForAuthenticated(int $gpgKeyId, string $fetch = self::FETCH_OBJECT)
     {
@@ -5699,7 +5699,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersDeleteEmailForAuthenticatedUnauthorizedException
      * @throws \Github\Exception\UsersDeleteEmailForAuthenticatedUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersDeleteEmailForAuthenticated($requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -5716,7 +5716,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersListEmailsForAuthenticatedForbiddenException
      * @throws \Github\Exception\UsersListEmailsForAuthenticatedUnauthorizedException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersListEmailsForAuthenticated(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5731,7 +5731,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersAddEmailForAuthenticatedForbiddenException
      * @throws \Github\Exception\UsersAddEmailForAuthenticatedUnauthorizedException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersAddEmailForAuthenticated($requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -5745,7 +5745,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersUnfollowForbiddenException
      * @throws \Github\Exception\UsersUnfollowUnauthorizedException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersUnfollow(string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -5758,7 +5758,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersCheckPersonIsFollowedByAuthenticatedForbiddenException
      * @throws \Github\Exception\UsersCheckPersonIsFollowedByAuthenticatedUnauthorizedException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersCheckPersonIsFollowedByAuthenticated(string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -5774,7 +5774,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersFollowForbiddenException
      * @throws \Github\Exception\UsersFollowUnauthorizedException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersFollow(string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -5787,7 +5787,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersUnblockUnauthorizedException
      * @throws \Github\Exception\UsersUnblockNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersUnblock(string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -5803,7 +5803,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersCheckBlockedForbiddenException
      * @throws \Github\Exception\UsersCheckBlockedUnauthorizedException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersCheckBlocked(string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -5817,7 +5817,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersBlockUnauthorizedException
      * @throws \Github\Exception\UsersBlockUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersBlock(string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -5834,7 +5834,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersListPublicEmailsForAuthenticatedForbiddenException
      * @throws \Github\Exception\UsersListPublicEmailsForAuthenticatedUnauthorizedException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersListPublicEmailsForAuthenticated(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5849,7 +5849,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
      */
     public function usersListFollowingForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5862,7 +5862,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersListBlockedByAuthenticatedUnauthorizedException
      * @throws \Github\Exception\UsersListBlockedByAuthenticatedUnsupportedMediaTypeException
      *
-     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
      */
     public function usersListBlockedByAuthenticated(string $fetch = self::FETCH_OBJECT)
     {
@@ -5880,7 +5880,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersGetByUsernameNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersGetByUsername(string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -5895,7 +5895,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\GpgKey[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GpgKey[] : \Psr\Http\Message\ResponseInterface)
      */
     public function usersListGpgKeysForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5907,7 +5907,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersCheckFollowingForUserNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersCheckFollowingForUser(string $username, string $targetUser, string $fetch = self::FETCH_OBJECT)
     {
@@ -5924,7 +5924,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersListPublicSshKeysForAuthenticatedForbiddenException
      * @throws \Github\Exception\UsersListPublicSshKeysForAuthenticatedUnauthorizedException
      *
-     * @return null|\Github\Model\Key[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Key[] : \Psr\Http\Message\ResponseInterface)
      */
     public function usersListPublicSshKeysForAuthenticated(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5939,7 +5939,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersCreatePublicSshKeyForAuthenticatedForbiddenException
      * @throws \Github\Exception\UsersCreatePublicSshKeyForAuthenticatedUnauthorizedException
      *
-     * @return null|\Github\Model\Key|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Key : \Psr\Http\Message\ResponseInterface)
      */
     public function usersCreatePublicSshKeyForAuthenticated(?\Github\Model\UserKeysPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -5950,7 +5950,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersGetAuthenticatedForbiddenException
      * @throws \Github\Exception\UsersGetAuthenticatedUnauthorizedException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersGetAuthenticated(string $fetch = self::FETCH_OBJECT)
     {
@@ -5965,7 +5965,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersUpdateAuthenticatedUnauthorizedException
      * @throws \Github\Exception\UsersUpdateAuthenticatedUnprocessableEntityException
      *
-     * @return null|\Github\Model\PrivateUser|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PrivateUser : \Psr\Http\Message\ResponseInterface)
      */
     public function usersUpdateAuthenticated(?\Github\Model\UserPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -5981,7 +5981,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
      */
     public function usersList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6005,7 +6005,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersGetContextForUserNotFoundException
      * @throws \Github\Exception\UsersGetContextForUserUnprocessableEntityException
      *
-     * @return null|\Github\Model\Hovercard|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Hovercard : \Psr\Http\Message\ResponseInterface)
      */
     public function usersGetContextForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6020,7 +6020,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersSetPrimaryEmailVisibilityForAuthenticatedUnauthorizedException
      * @throws \Github\Exception\UsersSetPrimaryEmailVisibilityForAuthenticatedUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersSetPrimaryEmailVisibilityForAuthenticated(?\Github\Model\UserEmailVisibilityPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -6035,7 +6035,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\KeySimple[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\KeySimple[] : \Psr\Http\Message\ResponseInterface)
      */
     public function usersListPublicKeysForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6050,7 +6050,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
      */
     public function usersListFollowersForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6066,7 +6066,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ReposOwnerRepoActionsWorkflowsGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ReposOwnerRepoActionsWorkflowsGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsListRepoWorkflows(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6084,7 +6084,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsCreateWorkflowDispatch(string $owner, string $repo, int $workflowId, ?\Github\Model\ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -6098,7 +6098,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $runnerId runner_id parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsDeleteSelfHostedRunnerFromOrg(string $org, int $runnerId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6112,7 +6112,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $runnerId runner_id parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Runner|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Runner : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsGetSelfHostedRunnerForOrg(string $org, int $runnerId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6129,7 +6129,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\OrgsOrgActionsRunnersGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\OrgsOrgActionsRunnersGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsListSelfHostedRunnersForOrg(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6141,7 +6141,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\RunnerApplication[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\RunnerApplication[] : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsListRunnerApplicationsForRepo(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -6157,7 +6157,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ReposOwnerRepoActionsArtifactsGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ReposOwnerRepoActionsArtifactsGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsListArtifactsForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6173,7 +6173,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ReposOwnerRepoActionsSecretsGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ReposOwnerRepoActionsSecretsGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsListRepoSecrets(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6185,7 +6185,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $secretName secret_name parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsDeleteOrgSecret(string $org, string $secretName, string $fetch = self::FETCH_OBJECT)
     {
@@ -6197,7 +6197,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $secretName secret_name parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\OrganizationActionsSecret|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\OrganizationActionsSecret : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsGetOrgSecret(string $org, string $secretName, string $fetch = self::FETCH_OBJECT)
     {
@@ -6284,7 +6284,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\OrgsOrgActionsSecretsSecretNamePutBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsCreateOrUpdateOrgSecret(string $org, string $secretName, ?\Github\Model\OrgsOrgActionsSecretsSecretNamePutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -6299,7 +6299,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\OrgsOrgActionsSecretsGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\OrgsOrgActionsSecretsGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsListOrgSecrets(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6316,7 +6316,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $workflowId
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\WorkflowUsage|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\WorkflowUsage : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsGetWorkflowUsage(string $owner, string $repo, int $workflowId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6329,7 +6329,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $artifactId artifact_id parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsDeleteArtifact(string $owner, string $repo, int $artifactId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6342,7 +6342,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $artifactId artifact_id parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Artifact|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Artifact : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsGetArtifact(string $owner, string $repo, int $artifactId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6355,7 +6355,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $secretName secret_name parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsDeleteRepoSecret(string $owner, string $repo, string $secretName, string $fetch = self::FETCH_OBJECT)
     {
@@ -6368,7 +6368,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $secretName secret_name parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ActionsSecret|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ActionsSecret : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsGetRepoSecret(string $owner, string $repo, string $secretName, string $fetch = self::FETCH_OBJECT)
     {
@@ -6456,7 +6456,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ReposOwnerRepoActionsSecretsSecretNamePutBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsCreateOrUpdateRepoSecret(string $owner, string $repo, string $secretName, ?\Github\Model\ReposOwnerRepoActionsSecretsSecretNamePutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -6479,7 +6479,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\AuthenticationToken|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\AuthenticationToken : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsCreateRegistrationTokenForOrg(string $org, string $fetch = self::FETCH_OBJECT)
     {
@@ -6496,7 +6496,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $archiveFormat archive_format parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsDownloadArtifact(string $owner, string $repo, int $artifactId, string $archiveFormat, string $fetch = self::FETCH_OBJECT)
     {
@@ -6509,7 +6509,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $runnerId runner_id parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsDeleteSelfHostedRunnerFromRepo(string $owner, string $repo, int $runnerId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6522,7 +6522,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $runnerId runner_id parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Runner|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Runner : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsGetSelfHostedRunnerForRepo(string $owner, string $repo, int $runnerId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6538,7 +6538,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $jobId job_id parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsDownloadJobLogsForWorkflowRun(string $owner, string $repo, int $jobId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6559,7 +6559,7 @@ class Client extends \Github\Runtime\Client\Client
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
-    * @return null|\Github\Model\ReposOwnerRepoActionsRunsRunIdJobsGetResponse200|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? null|\Github\Model\ReposOwnerRepoActionsRunsRunIdJobsGetResponse200 : \Psr\Http\Message\ResponseInterface)
     */
     public function actionsListJobsForWorkflowRun(string $owner, string $repo, int $runId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6575,7 +6575,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ReposOwnerRepoActionsRunnersGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ReposOwnerRepoActionsRunnersGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsListSelfHostedRunnersForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6588,7 +6588,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $workflowId
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Workflow|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Workflow : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsGetWorkflow(string $owner, string $repo, int $workflowId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6602,7 +6602,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActionsRemoveSelectedRepoFromOrgSecretConflictException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsRemoveSelectedRepoFromOrgSecret(string $org, string $secretName, int $repositoryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6616,7 +6616,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActionsAddSelectedRepoToOrgSecretConflictException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsAddSelectedRepoToOrgSecret(string $org, string $secretName, int $repositoryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6629,7 +6629,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\RunnerApplication[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\RunnerApplication[] : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsListRunnerApplicationsForOrg(string $org, string $fetch = self::FETCH_OBJECT)
     {
@@ -6642,7 +6642,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $jobId job_id parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Job|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Job : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsGetJobForWorkflowRun(string $owner, string $repo, int $jobId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6655,7 +6655,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $runId
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsCancelWorkflowRun(string $owner, string $repo, int $runId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6668,7 +6668,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $runId
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsDeleteWorkflowRunLogs(string $owner, string $repo, int $runId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6684,7 +6684,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $runId
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsDownloadWorkflowRunLogs(string $owner, string $repo, int $runId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6697,7 +6697,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $runId
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsReRunWorkflow(string $owner, string $repo, int $runId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6712,7 +6712,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $runId
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsDeleteWorkflowRun(string $owner, string $repo, int $runId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6725,7 +6725,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $runId
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\WorkflowRun|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\WorkflowRun : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsGetWorkflowRun(string $owner, string $repo, int $runId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6750,7 +6750,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\AuthenticationToken|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\AuthenticationToken : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsCreateRemoveTokenForOrg(string $org, string $fetch = self::FETCH_OBJECT)
     {
@@ -6767,7 +6767,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $runId
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\WorkflowRunUsage|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\WorkflowRunUsage : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsGetWorkflowRunUsage(string $owner, string $repo, int $runId, string $fetch = self::FETCH_OBJECT)
     {
@@ -6779,7 +6779,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $secretName secret_name parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsListSelectedReposForOrgSecret(string $org, string $secretName, string $fetch = self::FETCH_OBJECT)
     {
@@ -6792,7 +6792,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesPutBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsSetSelectedReposForOrgSecret(string $org, string $secretName, ?\Github\Model\OrgsOrgActionsSecretsSecretNameRepositoriesPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -6803,7 +6803,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ActionsPublicKey|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ActionsPublicKey : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsGetOrgPublicKey(string $org, string $fetch = self::FETCH_OBJECT)
     {
@@ -6815,7 +6815,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ActionsPublicKey|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ActionsPublicKey : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsGetRepoPublicKey(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -6832,7 +6832,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsListWorkflowRunArtifacts(string $owner, string $repo, int $runId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6853,7 +6853,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\AuthenticationToken|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\AuthenticationToken : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsCreateRegistrationTokenForRepo(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -6874,7 +6874,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\AuthenticationToken|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\AuthenticationToken : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsCreateRemoveTokenForRepo(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -6897,7 +6897,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsListWorkflowRuns(string $owner, string $repo, int $workflowId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6919,7 +6919,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ReposOwnerRepoActionsRunsGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ReposOwnerRepoActionsRunsGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function actionsListWorkflowRunsForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6940,7 +6940,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsRemoveMemberLegacyNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsRemoveMemberLegacy(int $teamId, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -6957,7 +6957,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsGetMemberLegacyNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsGetMemberLegacy(int $teamId, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -6982,7 +6982,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\TeamsAddMemberLegacyUnprocessableEntityException
      * @throws \Github\Exception\TeamsAddMemberLegacyForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsAddMemberLegacy(int $teamId, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -6998,7 +6998,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsRemoveRepoInOrg(string $org, string $teamSlug, string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -7019,7 +7019,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsCheckPermissionsForRepoInOrgNotFoundException
      *
-     * @return null|\Github\Model\TeamRepository|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamRepository : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsCheckPermissionsForRepoInOrg(string $org, string $teamSlug, string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -7038,7 +7038,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsAddOrUpdateRepoPermissionsInOrg(string $org, string $teamSlug, string $owner, string $repo, ?\Github\Model\OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -7061,7 +7061,7 @@ class Client extends \Github\Runtime\Client\Client
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
-    * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
     */
     public function teamsListMembersInOrg(string $org, string $teamSlug, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7076,7 +7076,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $commentNumber
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsDeleteDiscussionCommentLegacy(int $teamId, int $discussionNumber, int $commentNumber, string $fetch = self::FETCH_OBJECT)
     {
@@ -7091,7 +7091,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $commentNumber
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\TeamDiscussionComment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamDiscussionComment : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsGetDiscussionCommentLegacy(int $teamId, int $discussionNumber, int $commentNumber, string $fetch = self::FETCH_OBJECT)
     {
@@ -7107,7 +7107,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\TeamDiscussionComment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamDiscussionComment : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsUpdateDiscussionCommentLegacy(int $teamId, int $discussionNumber, int $commentNumber, ?\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -7122,7 +7122,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsRemoveRepoLegacy(int $teamId, string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -7140,7 +7140,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsCheckPermissionsForRepoLegacyNotFoundException
      *
-     * @return null|\Github\Model\TeamRepository|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamRepository : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsCheckPermissionsForRepoLegacy(int $teamId, string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -7160,7 +7160,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\TeamsAddOrUpdateRepoPermissionsLegacyForbiddenException
      * @throws \Github\Exception\TeamsAddOrUpdateRepoPermissionsLegacyUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsAddOrUpdateRepoPermissionsLegacy(int $teamId, string $owner, string $repo, ?\Github\Model\TeamsTeamIdReposOwnerRepoPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -7179,7 +7179,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsRemoveMembershipForUserLegacyForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsRemoveMembershipForUserLegacy(int $teamId, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -7198,7 +7198,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsGetMembershipForUserLegacyNotFoundException
      *
-     * @return null|\Github\Model\TeamMembership|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamMembership : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsGetMembershipForUserLegacy(int $teamId, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -7224,7 +7224,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntityException
      * @throws \Github\Exception\TeamsAddOrUpdateMembershipForUserLegacyNotFoundException
      *
-     * @return null|\Github\Model\TeamMembership|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamMembership : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsAddOrUpdateMembershipForUserLegacy(int $teamId, string $username, ?\Github\Model\TeamsTeamIdMembershipsUsernamePutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -7244,7 +7244,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\TeamDiscussionComment[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamDiscussionComment[] : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsListDiscussionCommentsInOrg(string $org, string $teamSlug, int $discussionNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7262,7 +7262,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\TeamDiscussionComment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamDiscussionComment : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsCreateDiscussionCommentInOrg(string $org, string $teamSlug, int $discussionNumber, ?\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -7276,7 +7276,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $discussionNumber
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsDeleteDiscussionLegacy(int $teamId, int $discussionNumber, string $fetch = self::FETCH_OBJECT)
     {
@@ -7290,7 +7290,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $discussionNumber
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\TeamDiscussion|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamDiscussion : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsGetDiscussionLegacy(int $teamId, int $discussionNumber, string $fetch = self::FETCH_OBJECT)
     {
@@ -7305,7 +7305,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberPatchBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\TeamDiscussion|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamDiscussion : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsUpdateDiscussionLegacy(int $teamId, int $discussionNumber, ?\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -7322,7 +7322,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\TeamsDeleteLegacyNotFoundException
      * @throws \Github\Exception\TeamsDeleteLegacyUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsDeleteLegacy(int $teamId, string $fetch = self::FETCH_OBJECT)
     {
@@ -7334,7 +7334,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsGetLegacyNotFoundException
      *
-     * @return null|\Github\Model\TeamFull|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamFull : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsGetLegacy(int $teamId, string $fetch = self::FETCH_OBJECT)
     {
@@ -7353,7 +7353,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\TeamsUpdateLegacyUnprocessableEntityException
      * @throws \Github\Exception\TeamsUpdateLegacyForbiddenException
      *
-     * @return null|\Github\Model\TeamFull|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamFull : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsUpdateLegacy(int $teamId, ?\Github\Model\TeamsTeamIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -7372,7 +7372,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\TeamDiscussion[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamDiscussion[] : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsListDiscussionsInOrg(string $org, string $teamSlug, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7389,7 +7389,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsPostBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\TeamDiscussion|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamDiscussion : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsCreateDiscussionInOrg(string $org, string $teamSlug, ?\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -7406,7 +7406,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\TeamsListIdpGroupsForLegacyForbiddenException
      * @throws \Github\Exception\TeamsListIdpGroupsForLegacyNotFoundException
      *
-     * @return null|\Github\Model\GroupMapping|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GroupMapping : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsListIdpGroupsForLegacy(int $teamId, string $fetch = self::FETCH_OBJECT)
     {
@@ -7424,7 +7424,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\TeamsCreateOrUpdateIdpGroupConnectionsLegacyUnprocessableEntityException
      * @throws \Github\Exception\TeamsCreateOrUpdateIdpGroupConnectionsLegacyForbiddenException
      *
-     * @return null|\Github\Model\GroupMapping|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GroupMapping : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsCreateOrUpdateIdpGroupConnectionsLegacy(int $teamId, ?\Github\Model\TeamsTeamIdTeamSyncGroupMappingsPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -7439,7 +7439,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $discussionNumber
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsDeleteDiscussionInOrg(string $org, string $teamSlug, int $discussionNumber, string $fetch = self::FETCH_OBJECT)
     {
@@ -7454,7 +7454,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $discussionNumber
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\TeamDiscussion|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamDiscussion : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsGetDiscussionInOrg(string $org, string $teamSlug, int $discussionNumber, string $fetch = self::FETCH_OBJECT)
     {
@@ -7470,7 +7470,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\TeamDiscussion|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamDiscussion : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsUpdateDiscussionInOrg(string $org, string $teamSlug, int $discussionNumber, ?\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -7487,7 +7487,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\OrganizationInvitation[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\OrganizationInvitation[] : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsListPendingInvitationsLegacy(int $teamId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7506,7 +7506,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\TeamDiscussionComment[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamDiscussionComment[] : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsListDiscussionCommentsLegacy(int $teamId, int $discussionNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7523,7 +7523,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\TeamDiscussionComment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamDiscussionComment : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsCreateDiscussionCommentLegacy(int $teamId, int $discussionNumber, ?\Github\Model\TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -7541,7 +7541,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\TeamProject[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamProject[] : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsListProjectsInOrg(string $org, string $teamSlug, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7557,7 +7557,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsListReposLegacyNotFoundException
      *
-     * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\MinimalRepository[] : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsListReposLegacy(int $teamId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7572,7 +7572,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $projectId
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsRemoveProjectInOrg(string $org, string $teamSlug, int $projectId, string $fetch = self::FETCH_OBJECT)
     {
@@ -7588,7 +7588,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsCheckPermissionsForProjectInOrgNotFoundException
      *
-     * @return null|\Github\Model\TeamProject|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamProject : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsCheckPermissionsForProjectInOrg(string $org, string $teamSlug, int $projectId, string $fetch = self::FETCH_OBJECT)
     {
@@ -7605,7 +7605,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsAddOrUpdateProjectPermissionsInOrgForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsAddOrUpdateProjectPermissionsInOrg(string $org, string $teamSlug, int $projectId, ?\Github\Model\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -7621,7 +7621,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $commentNumber
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsDeleteDiscussionCommentInOrg(string $org, string $teamSlug, int $discussionNumber, int $commentNumber, string $fetch = self::FETCH_OBJECT)
     {
@@ -7637,7 +7637,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $commentNumber
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\TeamDiscussionComment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamDiscussionComment : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsGetDiscussionCommentInOrg(string $org, string $teamSlug, int $discussionNumber, int $commentNumber, string $fetch = self::FETCH_OBJECT)
     {
@@ -7654,7 +7654,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\TeamDiscussionComment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamDiscussionComment : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsUpdateDiscussionCommentInOrg(string $org, string $teamSlug, int $discussionNumber, int $commentNumber, ?\Github\Model\OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -7672,7 +7672,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\TeamsListChildLegacyForbiddenException
      * @throws \Github\Exception\TeamsListChildLegacyUnprocessableEntityException
      *
-     * @return null|\Github\Model\Team[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Team[] : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsListChildLegacy(int $teamId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7690,7 +7690,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\MinimalRepository[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\MinimalRepository[] : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsListReposInOrg(string $org, string $teamSlug, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7709,7 +7709,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\GroupMapping|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GroupMapping : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsListIdpGroupsForOrg(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7726,7 +7726,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\TeamsRemoveProjectLegacyUnsupportedMediaTypeException
      * @throws \Github\Exception\TeamsRemoveProjectLegacyUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsRemoveProjectLegacy(int $teamId, int $projectId, string $fetch = self::FETCH_OBJECT)
     {
@@ -7742,7 +7742,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\TeamsCheckPermissionsForProjectLegacyNotFoundException
      * @throws \Github\Exception\TeamsCheckPermissionsForProjectLegacyUnsupportedMediaTypeException
      *
-     * @return null|\Github\Model\TeamProject|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamProject : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsCheckPermissionsForProjectLegacy(int $teamId, int $projectId, string $fetch = self::FETCH_OBJECT)
     {
@@ -7761,7 +7761,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\TeamsAddOrUpdateProjectPermissionsLegacyUnsupportedMediaTypeException
      * @throws \Github\Exception\TeamsAddOrUpdateProjectPermissionsLegacyUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsAddOrUpdateProjectPermissionsLegacy(int $teamId, int $projectId, ?\Github\Model\TeamsTeamIdProjectsProjectIdPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -7781,7 +7781,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsRemoveMembershipForUserInOrgForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsRemoveMembershipForUserInOrg(string $org, string $teamSlug, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -7801,7 +7801,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsGetMembershipForUserInOrgNotFoundException
      *
-     * @return null|\Github\Model\TeamMembership|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamMembership : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsGetMembershipForUserInOrg(string $org, string $teamSlug, string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -7827,7 +7827,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\TeamsAddOrUpdateMembershipForUserInOrgForbiddenException
      * @throws \Github\Exception\TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntityException
      *
-     * @return null|\Github\Model\TeamMembership|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamMembership : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsAddOrUpdateMembershipForUserInOrg(string $org, string $teamSlug, string $username, ?\Github\Model\OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -7846,7 +7846,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\TeamsListProjectsLegacyNotFoundException
      * @throws \Github\Exception\TeamsListProjectsLegacyUnsupportedMediaTypeException
      *
-     * @return null|\Github\Model\TeamProject[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamProject[] : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsListProjectsLegacy(int $teamId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7864,7 +7864,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\OrganizationInvitation[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\OrganizationInvitation[] : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsListPendingInvitationsInOrg(string $org, string $teamSlug, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7880,7 +7880,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $teamSlug team_slug parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsDeleteInOrg(string $org, string $teamSlug, string $fetch = self::FETCH_OBJECT)
     {
@@ -7895,7 +7895,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsGetByNameNotFoundException
      *
-     * @return null|\Github\Model\TeamFull|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamFull : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsGetByName(string $org, string $teamSlug, string $fetch = self::FETCH_OBJECT)
     {
@@ -7910,7 +7910,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\OrgsOrgTeamsTeamSlugPatchBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\TeamFull|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamFull : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsUpdateInOrg(string $org, string $teamSlug, ?\Github\Model\OrgsOrgTeamsTeamSlugPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -7926,7 +7926,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsListForbiddenException
      *
-     * @return null|\Github\Model\Team[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Team[] : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsList(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7942,7 +7942,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\TeamsCreateUnprocessableEntityException
      * @throws \Github\Exception\TeamsCreateForbiddenException
      *
-     * @return null|\Github\Model\TeamFull|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamFull : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsCreate(string $org, ?\Github\Model\OrgsOrgTeamsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -7960,7 +7960,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Team[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Team[] : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsListChildInOrg(string $org, string $teamSlug, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7978,7 +7978,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\TeamDiscussion[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamDiscussion[] : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsListDiscussionsLegacy(int $teamId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -7994,7 +7994,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\TeamsTeamIdDiscussionsPostBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\TeamDiscussion|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamDiscussion : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsCreateDiscussionLegacy(int $teamId, ?\Github\Model\TeamsTeamIdDiscussionsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8010,7 +8010,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $teamSlug team_slug parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\GroupMapping|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GroupMapping : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsListIdpGroupsInOrg(string $org, string $teamSlug, string $fetch = self::FETCH_OBJECT)
     {
@@ -8027,7 +8027,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\GroupMapping|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GroupMapping : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsCreateOrUpdateIdpGroupConnectionsInOrg(string $org, string $teamSlug, ?\Github\Model\OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8050,7 +8050,7 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\TeamsListMembersLegacyNotFoundException
     *
-    * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
     */
     public function teamsListMembersLegacy(int $teamId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8066,7 +8066,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\TeamsListForAuthenticatedUserNotFoundException
      * @throws \Github\Exception\TeamsListForAuthenticatedUserForbiddenException
      *
-     * @return null|\Github\Model\TeamFull[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\TeamFull[] : \Psr\Http\Message\ResponseInterface)
      */
     public function teamsListForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8080,7 +8080,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsDeleteReviewCommentNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsDeleteReviewComment(string $owner, string $repo, int $commentId, string $fetch = self::FETCH_OBJECT)
     {
@@ -8114,7 +8114,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsGetReviewCommentNotFoundException
      *
-     * @return null|\Github\Model\PullRequestReviewComment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PullRequestReviewComment : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsGetReviewComment(string $owner, string $repo, int $commentId, string $fetch = self::FETCH_OBJECT)
     {
@@ -8146,7 +8146,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ReposOwnerRepoPullsCommentsCommentIdPatchBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\PullRequestReviewComment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PullRequestReviewComment : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsUpdateReviewComment(string $owner, string $repo, int $commentId, ?\Github\Model\ReposOwnerRepoPullsCommentsCommentIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8186,7 +8186,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\PullRequestReviewComment[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PullRequestReviewComment[] : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsListReviewComments(string $owner, string $repo, int $pullNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8226,7 +8226,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\PullsCreateReviewCommentUnprocessableEntityException
      * @throws \Github\Exception\PullsCreateReviewCommentForbiddenException
      *
-     * @return null|\Github\Model\PullRequestReviewComment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PullRequestReviewComment : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsCreateReviewComment(string $owner, string $repo, int $pullNumber, ?\Github\Model\ReposOwnerRepoPullsPullNumberCommentsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8265,7 +8265,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\PullRequestReviewComment[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PullRequestReviewComment[] : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsListReviewCommentsForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8280,7 +8280,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\PullsDeletePendingReviewUnprocessableEntityException
      * @throws \Github\Exception\PullsDeletePendingReviewNotFoundException
      *
-     * @return null|\Github\Model\PullRequestReview|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PullRequestReview : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsDeletePendingReview(string $owner, string $repo, int $pullNumber, int $reviewId, string $fetch = self::FETCH_OBJECT)
     {
@@ -8294,7 +8294,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsGetReviewNotFoundException
      *
-     * @return null|\Github\Model\PullRequestReview|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PullRequestReview : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsGetReview(string $owner, string $repo, int $pullNumber, int $reviewId, string $fetch = self::FETCH_OBJECT)
     {
@@ -8310,7 +8310,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsUpdateReviewUnprocessableEntityException
      *
-     * @return null|\Github\Model\PullRequestReview|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PullRequestReview : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsUpdateReview(string $owner, string $repo, int $pullNumber, int $reviewId, ?\Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8327,7 +8327,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\PullsDismissReviewNotFoundException
      * @throws \Github\Exception\PullsDismissReviewUnprocessableEntityException
      *
-     * @return null|\Github\Model\PullRequestReview|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PullRequestReview : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsDismissReview(string $owner, string $repo, int $pullNumber, int $reviewId, ?\Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8341,7 +8341,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsRemoveRequestedReviewersUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsRemoveRequestedReviewers(string $owner, string $repo, int $pullNumber, ?\Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8357,7 +8357,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\PullRequestReviewRequest|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PullRequestReviewRequest : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsListRequestedReviewers(string $owner, string $repo, int $pullNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8373,7 +8373,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\PullsRequestReviewersUnprocessableEntityException
      * @throws \Github\Exception\PullsRequestReviewersForbiddenException
      *
-     * @return null|\Github\Model\PullRequestSimple|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PullRequestSimple : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsRequestReviewers(string $owner, string $repo, int $pullNumber, ?\Github\Model\ReposOwnerRepoPullsPullNumberRequestedReviewersPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8402,7 +8402,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\PullsGetInternalServerErrorException
      * @throws \Github\Exception\PullsGetNotFoundException
      *
-     * @return null|\Github\Model\PullRequest|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PullRequest : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsGet(string $owner, string $repo, int $pullNumber, string $fetch = self::FETCH_OBJECT)
     {
@@ -8420,7 +8420,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\PullsUpdateUnprocessableEntityException
      * @throws \Github\Exception\PullsUpdateForbiddenException
      *
-     * @return null|\Github\Model\PullRequest|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PullRequest : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsUpdate(string $owner, string $repo, int $pullNumber, ?\Github\Model\ReposOwnerRepoPullsPullNumberPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8437,7 +8437,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\PullRequestReview[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PullRequestReview[] : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsListReviews(string $owner, string $repo, int $pullNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8459,7 +8459,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\PullsCreateReviewUnprocessableEntityException
      * @throws \Github\Exception\PullsCreateReviewForbiddenException
      *
-     * @return null|\Github\Model\PullRequestReview|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PullRequestReview : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsCreateReview(string $owner, string $repo, int $pullNumber, ?\Github\Model\ReposOwnerRepoPullsPullNumberReviewsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8472,7 +8472,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsCheckIfMergedNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsCheckIfMerged(string $owner, string $repo, int $pullNumber, string $fetch = self::FETCH_OBJECT)
     {
@@ -8491,7 +8491,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\PullsMergeForbiddenException
      * @throws \Github\Exception\PullsMergeNotFoundException
      *
-     * @return null|\Github\Model\PullRequestMergeResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PullRequestMergeResult : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsMerge(string $owner, string $repo, int $pullNumber, ?\Github\Model\ReposOwnerRepoPullsPullNumberMergePutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8508,7 +8508,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\PullsUpdateBranchForbiddenException
      * @throws \Github\Exception\PullsUpdateBranchUnsupportedMediaTypeException
      *
-     * @return null|\Github\Model\ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202 : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsUpdateBranch(string $owner, string $repo, int $pullNumber, ?\Github\Model\ReposOwnerRepoPullsPullNumberUpdateBranchPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8527,7 +8527,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\PullsListFilesUnprocessableEntityException
      * @throws \Github\Exception\PullsListFilesInternalServerErrorException
      *
-     * @return null|\Github\Model\DiffEntry[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\DiffEntry[] : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsListFiles(string $owner, string $repo, int $pullNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8549,7 +8549,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsListUnprocessableEntityException
      *
-     * @return null|\Github\Model\PullRequestSimple[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PullRequestSimple[] : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsList(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8570,7 +8570,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\PullsCreateForbiddenException
      * @throws \Github\Exception\PullsCreateUnprocessableEntityException
      *
-     * @return null|\Github\Model\PullRequest|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PullRequest : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsCreate(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPullsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8588,7 +8588,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsCreateReplyForReviewCommentNotFoundException
      *
-     * @return null|\Github\Model\PullRequestReviewComment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PullRequestReviewComment : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsCreateReplyForReviewComment(string $owner, string $repo, int $pullNumber, int $commentId, ?\Github\Model\ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8605,7 +8605,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\SimpleCommit[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SimpleCommit[] : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsListCommits(string $owner, string $repo, int $pullNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8622,7 +8622,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\PullsSubmitReviewUnprocessableEntityException
      * @throws \Github\Exception\PullsSubmitReviewForbiddenException
      *
-     * @return null|\Github\Model\PullRequestReview|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PullRequestReview : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsSubmitReview(string $owner, string $repo, int $pullNumber, int $reviewId, ?\Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8641,7 +8641,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsListCommentsForReviewNotFoundException
      *
-     * @return null|\Github\Model\ReviewComment[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ReviewComment[] : \Psr\Http\Message\ResponseInterface)
      */
     public function pullsListCommentsForReview(string $owner, string $repo, int $pullNumber, int $reviewId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8650,7 +8650,7 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function emojisGet(string $fetch = self::FETCH_OBJECT)
     {
@@ -8668,7 +8668,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\CodeScanningListAlertsForRepoNotFoundException
      * @throws \Github\Exception\CodeScanningListAlertsForRepoServiceUnavailableException
      *
-     * @return null|\Github\Model\CodeScanningAlert[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CodeScanningAlert[] : \Psr\Http\Message\ResponseInterface)
      */
     public function codeScanningListAlertsForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8685,7 +8685,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\CodeScanningGetAlertNotFoundException
      * @throws \Github\Exception\CodeScanningGetAlertServiceUnavailableException
      *
-     * @return null|\Github\Model\CodeScanningAlert|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CodeScanningAlert : \Psr\Http\Message\ResponseInterface)
      */
     public function codeScanningGetAlert(string $owner, string $repo, int $alertId, string $fetch = self::FETCH_OBJECT)
     {
@@ -8718,7 +8718,7 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\IssuesListForOrgNotFoundException
     *
-    * @return null|\Github\Model\Issue[]|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? null|\Github\Model\Issue[] : \Psr\Http\Message\ResponseInterface)
     */
     public function issuesListForOrg(string $org, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8733,7 +8733,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\IssuesUnlockForbiddenException
      * @throws \Github\Exception\IssuesUnlockNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesUnlock(string $owner, string $repo, int $issueNumber, string $fetch = self::FETCH_OBJECT)
     {
@@ -8753,7 +8753,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\IssuesLockNotFoundException
      * @throws \Github\Exception\IssuesLockUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesLock(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberLockPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8766,7 +8766,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesDeleteMilestoneNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesDeleteMilestone(string $owner, string $repo, int $milestoneNumber, string $fetch = self::FETCH_OBJECT)
     {
@@ -8779,7 +8779,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesGetMilestoneNotFoundException
      *
-     * @return null|\Github\Model\Milestone|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Milestone : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesGetMilestone(string $owner, string $repo, int $milestoneNumber, string $fetch = self::FETCH_OBJECT)
     {
@@ -8792,7 +8792,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ReposOwnerRepoMilestonesMilestoneNumberPatchBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Milestone|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Milestone : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesUpdateMilestone(string $owner, string $repo, int $milestoneNumber, ?\Github\Model\ReposOwnerRepoMilestonesMilestoneNumberPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8808,7 +8808,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\IssuesRemoveLabelNotFoundException
      * @throws \Github\Exception\IssuesRemoveLabelGoneException
      *
-     * @return null|\Github\Model\Label[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Label[] : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesRemoveLabel(string $owner, string $repo, int $issueNumber, string $name, string $fetch = self::FETCH_OBJECT)
     {
@@ -8827,7 +8827,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListMilestonesNotFoundException
      *
-     * @return null|\Github\Model\Milestone[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Milestone[] : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesListMilestones(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8841,7 +8841,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\IssuesCreateMilestoneNotFoundException
      * @throws \Github\Exception\IssuesCreateMilestoneUnprocessableEntityException
      *
-     * @return null|\Github\Model\Milestone|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Milestone : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesCreateMilestone(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoMilestonesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8853,7 +8853,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $commentId comment_id parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesDeleteComment(string $owner, string $repo, int $commentId, string $fetch = self::FETCH_OBJECT)
     {
@@ -8866,7 +8866,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesGetCommentNotFoundException
      *
-     * @return null|\Github\Model\IssueComment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\IssueComment : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesGetComment(string $owner, string $repo, int $commentId, string $fetch = self::FETCH_OBJECT)
     {
@@ -8880,7 +8880,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesUpdateCommentUnprocessableEntityException
      *
-     * @return null|\Github\Model\IssueComment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\IssueComment : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesUpdateComment(string $owner, string $repo, int $commentId, ?\Github\Model\ReposOwnerRepoIssuesCommentsCommentIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8905,7 +8905,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\IssuesGetNotFoundException
      * @throws \Github\Exception\IssuesGetGoneException
      *
-     * @return null|\Github\Model\Issue|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Issue : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesGet(string $owner, string $repo, int $issueNumber, string $fetch = self::FETCH_OBJECT)
     {
@@ -8924,7 +8924,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\IssuesUpdateNotFoundException
      * @throws \Github\Exception\IssuesUpdateGoneException
      *
-     * @return null|\Github\Model\Issue|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Issue : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesUpdate(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8936,7 +8936,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $name name parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesDeleteLabel(string $owner, string $repo, string $name, string $fetch = self::FETCH_OBJECT)
     {
@@ -8949,7 +8949,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesGetLabelNotFoundException
      *
-     * @return null|\Github\Model\Label|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Label : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesGetLabel(string $owner, string $repo, string $name, string $fetch = self::FETCH_OBJECT)
     {
@@ -8962,7 +8962,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ReposOwnerRepoLabelsNamePatchBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Label|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Label : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesUpdateLabel(string $owner, string $repo, string $name, ?\Github\Model\ReposOwnerRepoLabelsNamePatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -8978,7 +8978,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListLabelsForRepoNotFoundException
      *
-     * @return null|\Github\Model\Label[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Label[] : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesListLabelsForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -8992,7 +8992,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\IssuesCreateLabelUnprocessableEntityException
      * @throws \Github\Exception\IssuesCreateLabelNotFoundException
      *
-     * @return null|\Github\Model\Label|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Label : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesCreateLabel(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoLabelsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9011,7 +9011,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\IssuesListEventsForTimelineGoneException
      * @throws \Github\Exception\IssuesListEventsForTimelineUnsupportedMediaTypeException
      *
-     * @return null|\Github\Model\IssueEventForIssue[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\IssueEventForIssue[] : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesListEventsForTimeline(string $owner, string $repo, int $issueNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9028,7 +9028,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListAssigneesNotFoundException
      *
-     * @return null|\Github\Model\SimpleUser[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesListAssignees(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9069,7 +9069,7 @@ class Client extends \Github\Runtime\Client\Client
     * @throws \Github\Exception\IssuesListUnprocessableEntityException
     * @throws \Github\Exception\IssuesListNotFoundException
     *
-    * @return null|\Github\Model\Issue[]|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? null|\Github\Model\Issue[] : \Psr\Http\Message\ResponseInterface)
     */
     public function issuesList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9082,7 +9082,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesRemoveAllLabelsGoneException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesRemoveAllLabels(string $owner, string $repo, int $issueNumber, string $fetch = self::FETCH_OBJECT)
     {
@@ -9099,7 +9099,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListLabelsOnIssueGoneException
      *
-     * @return null|\Github\Model\Label[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Label[] : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesListLabelsOnIssue(string $owner, string $repo, int $issueNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9114,7 +9114,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\IssuesAddLabelsGoneException
      * @throws \Github\Exception\IssuesAddLabelsUnprocessableEntityException
      *
-     * @return null|\Github\Model\Label[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Label[] : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesAddLabels(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9130,7 +9130,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\IssuesSetLabelsGoneException
      * @throws \Github\Exception\IssuesSetLabelsUnprocessableEntityException
      *
-     * @return null|\Github\Model\Label[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Label[] : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesSetLabels(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPutBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9147,7 +9147,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListEventsGoneException
      *
-     * @return null|\Github\Model\IssueEventForIssue[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\IssueEventForIssue[] : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesListEvents(string $owner, string $repo, int $issueNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9179,7 +9179,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\IssuesListForRepoUnprocessableEntityException
      * @throws \Github\Exception\IssuesListForRepoNotFoundException
      *
-     * @return null|\Github\Model\IssueSimple[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\IssueSimple[] : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesListForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9199,7 +9199,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\IssuesCreateNotFoundException
      * @throws \Github\Exception\IssuesCreateGoneException
      *
-     * @return null|\Github\Model\Issue|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Issue : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesCreate(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoIssuesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9219,7 +9219,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\IssuesListCommentsNotFoundException
      * @throws \Github\Exception\IssuesListCommentsGoneException
      *
-     * @return null|\Github\Model\IssueComment[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\IssueComment[] : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesListComments(string $owner, string $repo, int $issueNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9237,7 +9237,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\IssuesCreateCommentUnprocessableEntityException
      * @throws \Github\Exception\IssuesCreateCommentNotFoundException
      *
-     * @return null|\Github\Model\IssueComment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\IssueComment : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesCreateComment(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberCommentsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9251,7 +9251,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\IssueSimple|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\IssueSimple : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesRemoveAssignees(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9265,7 +9265,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\IssueSimple|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\IssueSimple : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesAddAssignees(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9281,7 +9281,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListEventsForRepoUnprocessableEntityException
      *
-     * @return null|\Github\Model\IssueEvent[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\IssueEvent[] : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesListEventsForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9299,7 +9299,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesCheckUserCanBeAssignedNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesCheckUserCanBeAssigned(string $owner, string $repo, string $assignee, string $fetch = self::FETCH_OBJECT)
     {
@@ -9331,7 +9331,7 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\IssuesListForAuthenticatedUserNotFoundException
     *
-    * @return null|\Github\Model\Issue[]|\Psr\Http\Message\ResponseInterface
+    * @return ($fetch is 'object' ? null|\Github\Model\Issue[] : \Psr\Http\Message\ResponseInterface)
     */
     public function issuesListForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9347,7 +9347,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Label[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Label[] : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesListLabelsForMilestone(string $owner, string $repo, int $milestoneNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9362,7 +9362,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\IssuesGetEventGoneException
      * @throws \Github\Exception\IssuesGetEventForbiddenException
      *
-     * @return null|\Github\Model\IssueEvent|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\IssueEvent : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesGetEvent(string $owner, string $repo, int $eventId, string $fetch = self::FETCH_OBJECT)
     {
@@ -9383,7 +9383,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\IssuesListCommentsForRepoUnprocessableEntityException
      * @throws \Github\Exception\IssuesListCommentsForRepoNotFoundException
      *
-     * @return null|\Github\Model\IssueComment[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\IssueComment[] : \Psr\Http\Message\ResponseInterface)
      */
     public function issuesListCommentsForRepo(string $owner, string $repo, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9396,7 +9396,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsDeleteTokenUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function appsDeleteToken(string $clientId, ?\Github\Model\ApplicationsClientIdTokenDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9409,7 +9409,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsResetTokenUnprocessableEntityException
      *
-     * @return null|\Github\Model\Authorization|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Authorization : \Psr\Http\Message\ResponseInterface)
      */
     public function appsResetToken(string $clientId, ?\Github\Model\ApplicationsClientIdTokenPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9423,7 +9423,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\AppsCheckTokenUnprocessableEntityException
      * @throws \Github\Exception\AppsCheckTokenNotFoundException
      *
-     * @return null|\Github\Model\Authorization|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Authorization : \Psr\Http\Message\ResponseInterface)
      */
     public function appsCheckToken(string $clientId, ?\Github\Model\ApplicationsClientIdTokenPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9436,7 +9436,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $username
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Installation|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Installation : \Psr\Http\Message\ResponseInterface)
      */
     public function appsGetUserInstallation(string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -9458,7 +9458,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\AppsListAccountsForPlanUnprocessableEntityException
      * @throws \Github\Exception\AppsListAccountsForPlanUnauthorizedException
      *
-     * @return null|\Github\Model\MarketplacePurchase[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\MarketplacePurchase[] : \Psr\Http\Message\ResponseInterface)
      */
     public function appsListAccountsForPlan(int $planId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9479,7 +9479,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\AppsCreateContentAttachmentUnsupportedMediaTypeException
      * @throws \Github\Exception\AppsCreateContentAttachmentForbiddenException
      *
-     * @return null|\Github\Model\ContentReferenceAttachment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ContentReferenceAttachment : \Psr\Http\Message\ResponseInterface)
      */
     public function appsCreateContentAttachment(int $contentReferenceId, ?\Github\Model\ContentReferencesContentReferenceIdAttachmentsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9494,7 +9494,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\AppsGetSubscriptionPlanForAccountStubbedNotFoundException
      * @throws \Github\Exception\AppsGetSubscriptionPlanForAccountStubbedUnauthorizedException
      *
-     * @return null|\Github\Model\MarketplacePurchase|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\MarketplacePurchase : \Psr\Http\Message\ResponseInterface)
      */
     public function appsGetSubscriptionPlanForAccountStubbed(int $accountId, string $fetch = self::FETCH_OBJECT)
     {
@@ -9509,7 +9509,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsGetRepoInstallationNotFoundException
      *
-     * @return null|\Github\Model\Installation|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Installation : \Psr\Http\Message\ResponseInterface)
      */
     public function appsGetRepoInstallation(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -9529,7 +9529,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsListAccountsForPlanStubbedUnauthorizedException
      *
-     * @return null|\Github\Model\MarketplacePurchase[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\MarketplacePurchase[] : \Psr\Http\Message\ResponseInterface)
      */
     public function appsListAccountsForPlanStubbed(int $planId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9552,7 +9552,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\AppsListInstallationsForAuthenticatedUserUnauthorizedException
      * @throws \Github\Exception\AppsListInstallationsForAuthenticatedUserUnsupportedMediaTypeException
      *
-     * @return null|\Github\Model\UserInstallationsGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\UserInstallationsGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function appsListInstallationsForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9570,7 +9570,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsUnsuspendInstallationNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function appsUnsuspendInstallation(int $installationId, string $fetch = self::FETCH_OBJECT)
     {
@@ -9588,7 +9588,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsSuspendInstallationNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function appsSuspendInstallation(int $installationId, string $fetch = self::FETCH_OBJECT)
     {
@@ -9606,7 +9606,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\AppsListReposAccessibleToInstallationForbiddenException
      * @throws \Github\Exception\AppsListReposAccessibleToInstallationUnauthorizedException
      *
-     * @return null|\Github\Model\InstallationRepositoriesGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\InstallationRepositoriesGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function appsListReposAccessibleToInstallation(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9629,7 +9629,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\AppsListInstallationReposForAuthenticatedUserNotFoundException
      * @throws \Github\Exception\AppsListInstallationReposForAuthenticatedUserForbiddenException
      *
-     * @return null|\Github\Model\UserInstallationsInstallationIdRepositoriesGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\UserInstallationsInstallationIdRepositoriesGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function appsListInstallationReposForAuthenticatedUser(int $installationId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9645,7 +9645,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $accessToken
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function appsRevokeGrantForApplication(string $clientId, string $accessToken, string $fetch = self::FETCH_OBJECT)
     {
@@ -9660,7 +9660,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\AppsGetSubscriptionPlanForAccountNotFoundException
      * @throws \Github\Exception\AppsGetSubscriptionPlanForAccountUnauthorizedException
      *
-     * @return null|\Github\Model\MarketplacePurchase|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\MarketplacePurchase : \Psr\Http\Message\ResponseInterface)
      */
     public function appsGetSubscriptionPlanForAccount(int $accountId, string $fetch = self::FETCH_OBJECT)
     {
@@ -9679,7 +9679,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\AppsCreateInstallationAccessTokenNotFoundException
      * @throws \Github\Exception\AppsCreateInstallationAccessTokenUnprocessableEntityException
      *
-     * @return null|\Github\Model\InstallationToken|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\InstallationToken : \Psr\Http\Message\ResponseInterface)
      */
     public function appsCreateInstallationAccessToken(int $installationId, ?\Github\Model\AppInstallationsInstallationIdAccessTokensPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9688,7 +9688,7 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function appsRevokeInstallationAccessToken(string $fetch = self::FETCH_OBJECT)
     {
@@ -9705,7 +9705,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsListPlansStubbedUnauthorizedException
      *
-     * @return null|\Github\Model\MarketplaceListingPlan[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\MarketplaceListingPlan[] : \Psr\Http\Message\ResponseInterface)
      */
     public function appsListPlansStubbed(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9719,7 +9719,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $accessToken
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function appsRevokeAuthorizationForApplication(string $clientId, string $accessToken, string $fetch = self::FETCH_OBJECT)
     {
@@ -9734,7 +9734,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsCheckAuthorizationNotFoundException
      *
-     * @return null|\Github\Model\ApplicationsClientIdTokensAccessTokenGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ApplicationsClientIdTokensAccessTokenGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function appsCheckAuthorization(string $clientId, string $accessToken, string $fetch = self::FETCH_OBJECT)
     {
@@ -9748,7 +9748,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $accessToken
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Authorization|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Authorization : \Psr\Http\Message\ResponseInterface)
      */
     public function appsResetAuthorization(string $clientId, string $accessToken, string $fetch = self::FETCH_OBJECT)
     {
@@ -9766,7 +9766,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Installation[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Installation[] : \Psr\Http\Message\ResponseInterface)
      */
     public function appsListInstallations(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9779,7 +9779,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\AppsCreateFromManifestNotFoundException
      * @throws \Github\Exception\AppsCreateFromManifestUnprocessableEntityException
      *
-     * @return null|\Github\Model\AppManifestsCodeConversionsPostResponse201|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\AppManifestsCodeConversionsPostResponse201 : \Psr\Http\Message\ResponseInterface)
      */
     public function appsCreateFromManifest(string $code, string $fetch = self::FETCH_OBJECT)
     {
@@ -9793,7 +9793,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsDeleteAuthorizationUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function appsDeleteAuthorization(string $clientId, ?\Github\Model\ApplicationsClientIdGrantDeleteBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -9806,7 +9806,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Installation|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Installation : \Psr\Http\Message\ResponseInterface)
      */
     public function appsGetOrgInstallation(string $org, string $fetch = self::FETCH_OBJECT)
     {
@@ -9815,7 +9815,7 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\Integration|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Integration : \Psr\Http\Message\ResponseInterface)
      */
     public function appsGetAuthenticated(string $fetch = self::FETCH_OBJECT)
     {
@@ -9829,7 +9829,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsDeleteInstallationNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function appsDeleteInstallation(int $installationId, string $fetch = self::FETCH_OBJECT)
     {
@@ -9844,7 +9844,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\AppsGetInstallationNotFoundException
      * @throws \Github\Exception\AppsGetInstallationUnsupportedMediaTypeException
      *
-     * @return null|\Github\Model\Installation|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Installation : \Psr\Http\Message\ResponseInterface)
      */
     public function appsGetInstallation(int $installationId, string $fetch = self::FETCH_OBJECT)
     {
@@ -9860,7 +9860,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\AppsListSubscriptionsForAuthenticatedUserUnauthorizedException
      * @throws \Github\Exception\AppsListSubscriptionsForAuthenticatedUserNotFoundException
      *
-     * @return null|\Github\Model\UserMarketplacePurchase[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\UserMarketplacePurchase[] : \Psr\Http\Message\ResponseInterface)
      */
     public function appsListSubscriptionsForAuthenticatedUser(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9876,7 +9876,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\AppsRemoveRepoFromInstallationForbiddenException
      * @throws \Github\Exception\AppsRemoveRepoFromInstallationNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function appsRemoveRepoFromInstallation(int $installationId, int $repositoryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -9892,7 +9892,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\AppsAddRepoToInstallationForbiddenException
      * @throws \Github\Exception\AppsAddRepoToInstallationNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function appsAddRepoToInstallation(int $installationId, int $repositoryId, string $fetch = self::FETCH_OBJECT)
     {
@@ -9908,7 +9908,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\AppsGetBySlugNotFoundException
      * @throws \Github\Exception\AppsGetBySlugUnsupportedMediaTypeException
      *
-     * @return null|\Github\Model\Integration|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Integration : \Psr\Http\Message\ResponseInterface)
      */
     public function appsGetBySlug(string $appSlug, string $fetch = self::FETCH_OBJECT)
     {
@@ -9923,7 +9923,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsListSubscriptionsForAuthenticatedUserStubbedUnauthorizedException
      *
-     * @return null|\Github\Model\UserMarketplacePurchase[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\UserMarketplacePurchase[] : \Psr\Http\Message\ResponseInterface)
      */
     public function appsListSubscriptionsForAuthenticatedUserStubbed(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9941,7 +9941,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\AppsListPlansNotFoundException
      * @throws \Github\Exception\AppsListPlansUnauthorizedException
      *
-     * @return null|\Github\Model\MarketplaceListingPlan[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\MarketplaceListingPlan[] : \Psr\Http\Message\ResponseInterface)
      */
     public function appsListPlans(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -9953,7 +9953,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\GistsUnstarNotFoundException
      * @throws \Github\Exception\GistsUnstarForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function gistsUnstar(string $gistId, string $fetch = self::FETCH_OBJECT)
     {
@@ -9965,7 +9965,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\GistsCheckIsStarredNotFoundException
      * @throws \Github\Exception\GistsCheckIsStarredForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function gistsCheckIsStarred(string $gistId, string $fetch = self::FETCH_OBJECT)
     {
@@ -9978,7 +9978,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\GistsStarNotFoundException
      * @throws \Github\Exception\GistsStarForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function gistsStar(string $gistId, string $fetch = self::FETCH_OBJECT)
     {
@@ -9995,7 +9995,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\GistsListStarredUnauthorizedException
      * @throws \Github\Exception\GistsListStarredForbiddenException
      *
-     * @return null|\Github\Model\BaseGist[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\BaseGist[] : \Psr\Http\Message\ResponseInterface)
      */
     public function gistsListStarred(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10008,7 +10008,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\GistsDeleteCommentNotFoundException
      * @throws \Github\Exception\GistsDeleteCommentForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function gistsDeleteComment(string $gistId, int $commentId, string $fetch = self::FETCH_OBJECT)
     {
@@ -10021,7 +10021,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\GistsGetCommentNotFoundException
      * @throws \Github\Exception\GistsGetCommentForbiddenException
      *
-     * @return null|\Github\Model\GistComment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GistComment : \Psr\Http\Message\ResponseInterface)
      */
     public function gistsGetComment(string $gistId, int $commentId, string $fetch = self::FETCH_OBJECT)
     {
@@ -10034,7 +10034,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsUpdateCommentNotFoundException
      *
-     * @return null|\Github\Model\GistComment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GistComment : \Psr\Http\Message\ResponseInterface)
      */
     public function gistsUpdateComment(string $gistId, int $commentId, ?\Github\Model\GistsGistIdCommentsCommentIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -10053,7 +10053,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\GistsListPublicUnprocessableEntityException
      * @throws \Github\Exception\GistsListPublicForbiddenException
      *
-     * @return null|\Github\Model\BaseGist[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\BaseGist[] : \Psr\Http\Message\ResponseInterface)
      */
     public function gistsListPublic(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10070,7 +10070,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsListForUserUnprocessableEntityException
      *
-     * @return null|\Github\Model\BaseGist[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\BaseGist[] : \Psr\Http\Message\ResponseInterface)
      */
     public function gistsListForUser(string $username, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10082,7 +10082,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\GistsDeleteNotFoundException
      * @throws \Github\Exception\GistsDeleteForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function gistsDelete(string $gistId, string $fetch = self::FETCH_OBJECT)
     {
@@ -10094,7 +10094,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\GistsGetForbiddenException
      * @throws \Github\Exception\GistsGetNotFoundException
      *
-     * @return null|\Github\Model\GistFull|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GistFull : \Psr\Http\Message\ResponseInterface)
      */
     public function gistsGet(string $gistId, string $fetch = self::FETCH_OBJECT)
     {
@@ -10108,7 +10108,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\GistsUpdateUnprocessableEntityException
      * @throws \Github\Exception\GistsUpdateNotFoundException
      *
-     * @return null|\Github\Model\GistFull|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GistFull : \Psr\Http\Message\ResponseInterface)
      */
     public function gistsUpdate(string $gistId, ?\Github\Model\GistsGistIdPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -10124,7 +10124,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\GistsListForksNotFoundException
      * @throws \Github\Exception\GistsListForksForbiddenException
      *
-     * @return null|\Github\Model\GistFull[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GistFull[] : \Psr\Http\Message\ResponseInterface)
      */
     public function gistsListForks(string $gistId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10138,7 +10138,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\GistsForkUnprocessableEntityException
      * @throws \Github\Exception\GistsForkForbiddenException
      *
-     * @return null|\Github\Model\BaseGist|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\BaseGist : \Psr\Http\Message\ResponseInterface)
      */
     public function gistsFork(string $gistId, string $fetch = self::FETCH_OBJECT)
     {
@@ -10154,7 +10154,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsListForbiddenException
      *
-     * @return null|\Github\Model\BaseGist[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\BaseGist[] : \Psr\Http\Message\ResponseInterface)
      */
     public function gistsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10170,7 +10170,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\GistsCreateNotFoundException
      * @throws \Github\Exception\GistsCreateForbiddenException
      *
-     * @return null|\Github\Model\GistFull|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GistFull : \Psr\Http\Message\ResponseInterface)
      */
     public function gistsCreate(?\Github\Model\GistsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -10186,7 +10186,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\GistsListCommitsNotFoundException
      * @throws \Github\Exception\GistsListCommitsForbiddenException
      *
-     * @return null|\Github\Model\GistCommit[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GistCommit[] : \Psr\Http\Message\ResponseInterface)
      */
     public function gistsListCommits(string $gistId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10202,7 +10202,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\GistsListCommentsNotFoundException
      * @throws \Github\Exception\GistsListCommentsForbiddenException
      *
-     * @return null|\Github\Model\GistComment[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GistComment[] : \Psr\Http\Message\ResponseInterface)
      */
     public function gistsListComments(string $gistId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10215,7 +10215,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\GistsCreateCommentNotFoundException
      * @throws \Github\Exception\GistsCreateCommentForbiddenException
      *
-     * @return null|\Github\Model\GistComment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GistComment : \Psr\Http\Message\ResponseInterface)
      */
     public function gistsCreateComment(string $gistId, ?\Github\Model\GistsGistIdCommentsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -10229,7 +10229,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\GistsGetRevisionNotFoundException
      * @throws \Github\Exception\GistsGetRevisionForbiddenException
      *
-     * @return null|\Github\Model\GistFull|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GistFull : \Psr\Http\Message\ResponseInterface)
      */
     public function gistsGetRevision(string $gistId, string $sha, string $fetch = self::FETCH_OBJECT)
     {
@@ -10246,7 +10246,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $username
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\CombinedBillingUsage|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CombinedBillingUsage : \Psr\Http\Message\ResponseInterface)
      */
     public function billingGetSharedStorageBillingUser(string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -10263,7 +10263,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\PackagesBillingUsage|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PackagesBillingUsage : \Psr\Http\Message\ResponseInterface)
      */
     public function billingGetGithubPackagesBillingOrg(string $org, string $fetch = self::FETCH_OBJECT)
     {
@@ -10280,7 +10280,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $enterpriseId Unique identifier of the GitHub Enterprise Cloud instance.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ActionsBillingUsage|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ActionsBillingUsage : \Psr\Http\Message\ResponseInterface)
      */
     public function billingGetGithubActionsBillingGhe(string $enterpriseId, string $fetch = self::FETCH_OBJECT)
     {
@@ -10297,7 +10297,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\CombinedBillingUsage|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CombinedBillingUsage : \Psr\Http\Message\ResponseInterface)
      */
     public function billingGetSharedStorageBillingOrg(string $org, string $fetch = self::FETCH_OBJECT)
     {
@@ -10314,7 +10314,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $enterpriseId Unique identifier of the GitHub Enterprise Cloud instance.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\CombinedBillingUsage|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\CombinedBillingUsage : \Psr\Http\Message\ResponseInterface)
      */
     public function billingGetSharedStorageBillingGhe(string $enterpriseId, string $fetch = self::FETCH_OBJECT)
     {
@@ -10331,7 +10331,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ActionsBillingUsage|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ActionsBillingUsage : \Psr\Http\Message\ResponseInterface)
      */
     public function billingGetGithubActionsBillingOrg(string $org, string $fetch = self::FETCH_OBJECT)
     {
@@ -10348,7 +10348,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $enterpriseId Unique identifier of the GitHub Enterprise Cloud instance.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\PackagesBillingUsage|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PackagesBillingUsage : \Psr\Http\Message\ResponseInterface)
      */
     public function billingGetGithubPackagesBillingGhe(string $enterpriseId, string $fetch = self::FETCH_OBJECT)
     {
@@ -10365,7 +10365,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $username
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\PackagesBillingUsage|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\PackagesBillingUsage : \Psr\Http\Message\ResponseInterface)
      */
     public function billingGetGithubPackagesBillingUser(string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -10382,7 +10382,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $username
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\ActionsBillingUsage|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ActionsBillingUsage : \Psr\Http\Message\ResponseInterface)
      */
     public function billingGetGithubActionsBillingUser(string $username, string $fetch = self::FETCH_OBJECT)
     {
@@ -10392,7 +10392,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\RateLimitGetNotFoundException
      *
-     * @return null|\Github\Model\RateLimitOverview|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\RateLimitOverview : \Psr\Http\Message\ResponseInterface)
      */
     public function rateLimitGet(string $fetch = self::FETCH_OBJECT)
     {
@@ -10412,7 +10412,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\GitGetTreeUnprocessableEntityException
      * @throws \Github\Exception\GitGetTreeNotFoundException
      *
-     * @return null|\Github\Model\GitTree|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GitTree : \Psr\Http\Message\ResponseInterface)
      */
     public function gitGetTree(string $owner, string $repo, string $treeSha, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10435,7 +10435,7 @@ class Client extends \Github\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\GitRef[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GitRef[] : \Psr\Http\Message\ResponseInterface)
      */
     public function gitListMatchingRefs(string $owner, string $repo, string $ref, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -10448,7 +10448,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GitDeleteRefUnprocessableEntityException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function gitDeleteRef(string $owner, string $repo, string $ref, string $fetch = self::FETCH_OBJECT)
     {
@@ -10462,7 +10462,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GitUpdateRefUnprocessableEntityException
      *
-     * @return null|\Github\Model\GitRef|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GitRef : \Psr\Http\Message\ResponseInterface)
      */
     public function gitUpdateRef(string $owner, string $repo, string $ref, ?\Github\Model\ReposOwnerRepoGitRefsRefPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -10503,7 +10503,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\GitCreateCommitUnprocessableEntityException
      * @throws \Github\Exception\GitCreateCommitNotFoundException
      *
-     * @return null|\Github\Model\GitCommit|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GitCommit : \Psr\Http\Message\ResponseInterface)
      */
     public function gitCreateCommit(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoGitCommitsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -10537,7 +10537,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GitGetTagNotFoundException
      *
-     * @return null|\Github\Model\GitTag|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GitTag : \Psr\Http\Message\ResponseInterface)
      */
     public function gitGetTag(string $owner, string $repo, string $tagSha, string $fetch = self::FETCH_OBJECT)
     {
@@ -10555,7 +10555,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\GitCreateTreeNotFoundException
      * @throws \Github\Exception\GitCreateTreeForbiddenException
      *
-     * @return null|\Github\Model\GitTree|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GitTree : \Psr\Http\Message\ResponseInterface)
      */
     public function gitCreateTree(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoGitTreesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -10569,7 +10569,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GitCreateRefUnprocessableEntityException
      *
-     * @return null|\Github\Model\GitRef|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GitRef : \Psr\Http\Message\ResponseInterface)
      */
     public function gitCreateRef(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoGitRefsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -10605,7 +10605,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GitCreateTagUnprocessableEntityException
      *
-     * @return null|\Github\Model\GitTag|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GitTag : \Psr\Http\Message\ResponseInterface)
      */
     public function gitCreateTag(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoGitTagsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -10621,7 +10621,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GitGetRefNotFoundException
      *
-     * @return null|\Github\Model\GitRef|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GitRef : \Psr\Http\Message\ResponseInterface)
      */
     public function gitGetRef(string $owner, string $repo, string $ref, string $fetch = self::FETCH_OBJECT)
     {
@@ -10637,7 +10637,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\GitCreateBlobForbiddenException
      * @throws \Github\Exception\GitCreateBlobUnprocessableEntityException
      *
-     * @return null|\Github\Model\ShortBlob|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\ShortBlob : \Psr\Http\Message\ResponseInterface)
      */
     public function gitCreateBlob(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoGitBlobsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -10655,7 +10655,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\GitGetBlobUnprocessableEntityException
      * @throws \Github\Exception\GitGetBlobForbiddenException
      *
-     * @return null|\Github\Model\Blob|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\Blob : \Psr\Http\Message\ResponseInterface)
      */
     public function gitGetBlob(string $owner, string $repo, string $fileSha, string $fetch = self::FETCH_OBJECT)
     {
@@ -10691,7 +10691,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GitGetCommitNotFoundException
      *
-     * @return null|\Github\Model\GitCommit|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GitCommit : \Psr\Http\Message\ResponseInterface)
      */
     public function gitGetCommit(string $owner, string $repo, string $commitSha, string $fetch = self::FETCH_OBJECT)
     {
@@ -10703,7 +10703,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $name name parameter
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Github\Model\GitignoreTemplate|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Github\Model\GitignoreTemplate : \Psr\Http\Message\ResponseInterface)
      */
     public function gitignoreGetTemplate(string $name, string $fetch = self::FETCH_OBJECT)
     {
@@ -10712,7 +10712,7 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function gitignoreGetAllTemplates(string $fetch = self::FETCH_OBJECT)
     {

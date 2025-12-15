@@ -22,11 +22,13 @@ class OperationGenerator
 
     protected function getReturnDoc(array $returnTypes, array $throwTypes): string
     {
+        $objectTypes = implode('|', $returnTypes);
+
         return implode('', array_map(function ($value) {
             return ' * @throws ' . $value . "\n";
         }, $throwTypes))
             . " *\n"
-            . ' * @return ' . implode('|', $returnTypes)
+            . ' * @return ($fetch is \'object\' ? ' . $objectTypes . ' : \\' . ResponseInterface::class . ')'
         ;
     }
 
@@ -52,7 +54,7 @@ class OperationGenerator
         array_splice($methodDocSplit, $methodDocPosition, 0, [
             ' * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)',
         ]);
-        $methodDocSplit[] = $this->getReturnDoc(array_merge($returnTypes, ['\\' . ResponseInterface::class]), $throwTypes);
+        $methodDocSplit[] = $this->getReturnDoc($returnTypes, $throwTypes);
         $methodDocSplit[] = ' */';
         $documentation = implode("\n", $methodDocSplit);
         $paramsPosition = $lastMethodParam === 'accept' ? \count($methodParams) - 1 : \count($methodParams);

@@ -8,7 +8,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\GetUserNotFoundException
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Account|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\Account : \Psr\Http\Message\ResponseInterface)
      */
     public function getUser(string $fetch = self::FETCH_OBJECT)
     {

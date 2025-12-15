@@ -11,7 +11,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\GenerateAuthenticationTokenUnauthorizedException
      * @throws \CreditSafe\API\Exception\GenerateAuthenticationTokenNotFoundException
      *
-     * @return null|\CreditSafe\API\Model\AuthenticationSuccessResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\AuthenticationSuccessResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function generateAuthenticationToken(?\CreditSafe\API\Model\AuthenticationRequest $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -52,7 +52,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\CompanySearchUnauthorizedException
      * @throws \CreditSafe\API\Exception\CompanySearchForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function companySearch(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -75,7 +75,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\CompanyCreditReportUnauthorizedException
      * @throws \CreditSafe\API\Exception\CompanyCreditReportForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function companyCreditReport(string $id, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -95,7 +95,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\CompanySearchCriteriaForbiddenException
      * @throws \CreditSafe\API\Exception\CompanySearchCriteriaNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function companySearchCriteria(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -114,7 +114,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \CreditSafe\API\Exception\CompanyReportJSONSchemaUnauthorizedException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function companyReportJSONSchema(string $countryCode, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -129,7 +129,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\CountriesInSubscriptionBadRequestException
      * @throws \CreditSafe\API\Exception\CountriesInSubscriptionUnauthorizedException
      *
-     * @return null|\CreditSafe\API\Model\AccessCountriesResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\AccessCountriesResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function countriesInSubscription(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -161,7 +161,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\PeopleDirectorSearchUnauthorizedException
      * @throws \CreditSafe\API\Exception\PeopleDirectorSearchForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function peopleDirectorSearch(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -181,7 +181,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\DirectorReportUnauthorizedException
      * @throws \CreditSafe\API\Exception\DirectorReportNotFoundException
      *
-     * @return null|\CreditSafe\API\Model\GbPeopleReportReponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\GbPeopleReportReponse : \Psr\Http\Message\ResponseInterface)
      */
     public function directorReport(string $personId, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -200,7 +200,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\PeopleDirectorSearchCriteriaUnauthorizedException
      * @throws \CreditSafe\API\Exception\PeopleDirectorSearchCriteriaForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function peopleDirectorSearchCriteria(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -220,7 +220,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\CompanyImageDocumentsUnauthorizedException
      * @throws \CreditSafe\API\Exception\CompanyImageDocumentsNotFoundException
      *
-     * @return null|\CreditSafe\API\Model\ListCompanyImages|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\ListCompanyImages : \Psr\Http\Message\ResponseInterface)
      */
     public function companyImageDocuments(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -238,7 +238,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ImageDocumentCategoryTypesUnauthorizedException
      * @throws \CreditSafe\API\Exception\ImageDocumentCategoryTypesNotFoundException
      *
-     * @return null|\CreditSafe\API\Model\GbImageTypesResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\GbImageTypesResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function imageDocumentCategoryTypes(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -255,7 +255,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\CompanyImageForbiddenException
      * @throws \CreditSafe\API\Exception\CompanyImageNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function companyImage(string $imageId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -288,7 +288,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsForbiddenException
      * @throws \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsNotFoundException
      *
-     * @return null|\CreditSafe\API\Model\ListFreshInvestigationResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\ListFreshInvestigationResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function listSubmittedFreshInvestigations(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -306,7 +306,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\RequestFreshInvestigationForbiddenException
      * @throws \CreditSafe\API\Exception\RequestFreshInvestigationNotFoundException
      *
-     * @return null|\CreditSafe\API\Model\SubmittedFreshInvestigationRepsonse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\SubmittedFreshInvestigationRepsonse : \Psr\Http\Message\ResponseInterface)
      */
     public function requestFreshInvestigation(?\CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -323,7 +323,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\DeletePendingFreshInvesitgationUnauthorizedException
      * @throws \CreditSafe\API\Exception\DeletePendingFreshInvesitgationForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deletePendingFreshInvesitgation(string $orderId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -343,7 +343,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\FreshInvestigationReportUnauthorizedException
      * @throws \CreditSafe\API\Exception\FreshInvestigationReportForbiddenException
      *
-     * @return null|\CreditSafe\API\Model\CompletedFreshInvestigation|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\CompletedFreshInvestigation : \Psr\Http\Message\ResponseInterface)
      */
     public function freshInvestigationReport(string $orderId, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -361,7 +361,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\EditPendingFreshInvestigationForbiddenException
      * @throws \CreditSafe\API\Exception\EditPendingFreshInvestigationNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function editPendingFreshInvestigation(string $orderId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -385,7 +385,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\BankMatchUnauthorizedException
      * @throws \CreditSafe\API\Exception\BankMatchForbiddenException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function bankMatch(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -398,7 +398,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\CreditSafe\API\Model\UserDetails|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\UserDetails : \Psr\Http\Message\ResponseInterface)
      */
     public function monitoringUserDetails(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -422,7 +422,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\CompanyEventsForbiddenException
      * @throws \CreditSafe\API\Exception\CompanyEventsNotFoundException
      *
-     * @return null|\CreditSafe\API\Model\CompanyEventsResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\CompanyEventsResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function companyEvents(string $id, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -439,7 +439,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\AllEventRulesForbiddenException
      * @throws \CreditSafe\API\Exception\AllEventRulesNotFoundException
      *
-     * @return null|\CreditSafe\API\Model\EventRulesResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\EventRulesResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function allEventRules(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -456,7 +456,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\FilteredEventRulesForbiddenException
      * @throws \CreditSafe\API\Exception\FilteredEventRulesNotFoundException
      *
-     * @return null|\CreditSafe\API\Model\EventRulesResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\EventRulesResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function filteredEventRules(string $countryCode, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -482,7 +482,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\NotificationEventsForbiddenException
      * @throws \CreditSafe\API\Exception\NotificationEventsNotFoundException
      *
-     * @return null|\CreditSafe\API\Model\NotificationEventsResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\NotificationEventsResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function notificationEvents(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -504,7 +504,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ListAllPortfoliosForbiddenException
      * @throws \CreditSafe\API\Exception\ListAllPortfoliosNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function listAllPortfolios(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -522,7 +522,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\CreateMonitoringPortfolioForbiddenException
      * @throws \CreditSafe\API\Exception\CreateMonitoringPortfolioNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function createMonitoringPortfolio(\CreditSafe\API\Model\MonitoringPortfoliosPostBody $requestBody, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -540,7 +540,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfolioByPortfolioIdForbiddenException
      * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfolioByPortfolioIdNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteMonitoringPortfolioByPortfolioId(string $portfolioId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -558,7 +558,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\RetrievePortfolioByIdForbiddenException
      * @throws \CreditSafe\API\Exception\RetrievePortfolioByIdNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function retrievePortfolioById(string $portfolioId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -576,7 +576,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\UpdatePortfolioDetailsForbiddenException
      * @throws \CreditSafe\API\Exception\UpdatePortfolioDetailsNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updatePortfolioDetails(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBody $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -594,7 +594,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ListCountriesOfMonitoredCompaniesForbiddenException
      * @throws \CreditSafe\API\Exception\ListCountriesOfMonitoredCompaniesNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function listCountriesOfMonitoredCompanies(string $portfolioId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -612,7 +612,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ListPortfolioEventRulesForbiddenException
      * @throws \CreditSafe\API\Exception\ListPortfolioEventRulesNotFoundException
      *
-     * @return null|\CreditSafe\API\Model\EventRulesResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\EventRulesResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function listPortfolioEventRules(string $portfolioId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -631,7 +631,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\GetFilteredPortfolioEventRulesForbiddenException
      * @throws \CreditSafe\API\Exception\GetFilteredPortfolioEventRulesNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function getFilteredPortfolioEventRules(string $portfolioId, string $countryCode, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -651,7 +651,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCodeForbiddenException
      * @throws \CreditSafe\API\Exception\PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCodeNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function putMonitoringPortfoliosByPortfolioIdEventRuleByCountryCode(string $portfolioId, string $countryCode, ?array $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -669,7 +669,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesForbiddenException
      * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function resetPortfolioEventRulesToDefaultValues(string $portfolioId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -688,7 +688,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdImportForbiddenException
      * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdImportNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function postMonitoringPortfoliosByPortfolioIdImport(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdImportPostBody $requestBody, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -707,7 +707,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\SyncPortfolioCompaniesToCSVRecordsForbiddenException
      * @throws \CreditSafe\API\Exception\SyncPortfolioCompaniesToCSVRecordsNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function syncPortfolioCompaniesToCSVRecords(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSyncPostBody $requestBody, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -725,7 +725,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\PortoflioRiskSummaryForbiddenException
      * @throws \CreditSafe\API\Exception\PortoflioRiskSummaryNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function portoflioRiskSummary(string $portfolioId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -750,7 +750,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ListNotificationEventsInAPortfolioFilteredForbiddenException
      * @throws \CreditSafe\API\Exception\ListNotificationEventsInAPortfolioFilteredNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function listNotificationEventsInAPortfolioFiltered(string $portfolioId, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -770,7 +770,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\UpdateIsProcessedFlagOnAnNotificationEventForbiddenException
      * @throws \CreditSafe\API\Exception\UpdateIsProcessedFlagOnAnNotificationEventNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateIsProcessedFlagOnAnNotificationEvent(string $portfolioId, string $notificationEventId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchBody $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -795,7 +795,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioForbiddenException
      * @throws \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function listFilteredCompaniesInAPortfolio(string $portfolioId, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -814,7 +814,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdCompanyForbiddenException
      * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdCompanyNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function postMonitoringPortfoliosByPortfolioIdCompany(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesPostBody $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -836,7 +836,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\CopyCompaniesFromOneToAnotherPortfolioSForbiddenException
      * @throws \CreditSafe\API\Exception\CopyCompaniesFromOneToAnotherPortfolioSNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function copyCompaniesFromOneToAnotherPortfolioS(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody $requestBody, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -858,7 +858,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSForbiddenException
      * @throws \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function moveCompaniesFromOneToAnotherPortfolioS(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesRemovePostBody $requestBody = null, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -880,7 +880,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ClearCompaniesFromAPortfolioForbiddenException
      * @throws \CreditSafe\API\Exception\ClearCompaniesFromAPortfolioNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function clearCompaniesFromAPortfolio(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody $requestBody = null, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -899,7 +899,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfoliosByPortfolioIdCompanyByIdForbiddenException
      * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfoliosByPortfolioIdCompanyByIdNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function deleteMonitoringPortfoliosByPortfolioIdCompanyById(string $portfolioId, string $id, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -918,7 +918,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\GetAMonitoredCompanyFromAPortfolioForbiddenException
      * @throws \CreditSafe\API\Exception\GetAMonitoredCompanyFromAPortfolioNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function getAMonitoredCompanyFromAPortfolio(string $portfolioId, string $id, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -938,7 +938,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\UpdateCompanyDetailsInAPortfolioForbiddenException
      * @throws \CreditSafe\API\Exception\UpdateCompanyDetailsInAPortfolioNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function updateCompanyDetailsInAPortfolio(string $portfolioId, string $id, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -965,7 +965,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ListCompanySpecificNotificationEventsForbiddenException
      * @throws \CreditSafe\API\Exception\ListCompanySpecificNotificationEventsNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function listCompanySpecificNotificationEvents(string $portfolioId, string $id, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -983,7 +983,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\PortfolioUserPermissionsForbiddenException
      * @throws \CreditSafe\API\Exception\PortfolioUserPermissionsNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function portfolioUserPermissions(string $portfolioId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1002,7 +1002,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\SharePortfolioIdForbiddenException
      * @throws \CreditSafe\API\Exception\SharePortfolioIdNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function sharePortfolioId(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1024,7 +1024,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ListDecisionTreesUnauthorizedException
      * @throws \CreditSafe\API\Exception\ListDecisionTreesNotFoundException
      *
-     * @return null|\CreditSafe\API\Model\GuidSuccessResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\GuidSuccessResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function listDecisionTrees(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1048,7 +1048,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\RunDecisionTreeForbiddenException
      * @throws \CreditSafe\API\Exception\RunDecisionTreeNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function runDecisionTree(string $provenirId, ?\stdClass $requestBody = null, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1065,7 +1065,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaForbiddenException
      * @throws \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function companyComplianceSearchCriteria(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1081,7 +1081,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ListOfCompanyPreDefinedSearchesUnauthorizedException
      * @throws \CreditSafe\API\Exception\ListOfCompanyPreDefinedSearchesForbiddenException
      *
-     * @return null|\CreditSafe\API\Model\CompliancePreDefinedSearches|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\CompliancePreDefinedSearches : \Psr\Http\Message\ResponseInterface)
      */
     public function listOfCompanyPreDefinedSearches(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1108,7 +1108,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\CompanyComplianceSearchUnauthorizedException
      * @throws \CreditSafe\API\Exception\CompanyComplianceSearchForbiddenException
      *
-     * @return null|\CreditSafe\API\Model\ComplianceSearchResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\ComplianceSearchResult : \Psr\Http\Message\ResponseInterface)
      */
     public function companyComplianceSearch(string $predefinedSearch, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1125,7 +1125,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\IndividualsComplianceSearchCriteriaForbiddenException
      * @throws \CreditSafe\API\Exception\IndividualsComplianceSearchCriteriaNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function individualsComplianceSearchCriteria(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1141,7 +1141,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ListOfIndividualsPreDefinedSearchesUnauthorizedException
      * @throws \CreditSafe\API\Exception\ListOfIndividualsPreDefinedSearchesForbiddenException
      *
-     * @return null|\CreditSafe\API\Model\CompliancePreDefinedSearches|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\CompliancePreDefinedSearches : \Psr\Http\Message\ResponseInterface)
      */
     public function listOfIndividualsPreDefinedSearches(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1168,7 +1168,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\IndividualPersonComplianceSearchUnauthorizedException
      * @throws \CreditSafe\API\Exception\IndividualPersonComplianceSearchForbiddenException
      *
-     * @return null|\CreditSafe\API\Model\ComplianceSearchResult|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\ComplianceSearchResult : \Psr\Http\Message\ResponseInterface)
      */
     public function individualPersonComplianceSearch(string $predefinedSearch, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1189,7 +1189,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\CustomReportParametersForbiddenException
      * @throws \CreditSafe\API\Exception\CustomReportParametersNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function customReportParameters(string $country, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
