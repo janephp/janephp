@@ -78,7 +78,7 @@ class EndpointGenerator implements EndpointGeneratorInterface
         $extraHeadersMethod = $this->getExtraHeadersMethod($operation, $this->guessClass);
         $queryResolverMethod = $this->getOptionsResolverMethod($operation, self::IN_QUERY, 'getQueryOptionsResolver', $this->guessClass, $this->nonBodyParameterGenerator, $operationCustomQueryResolver, $genericCustomQueryResolver);
         $headerResolverMethod = $this->getOptionsResolverMethod($operation, self::IN_HEADER, 'getHeadersOptionsResolver', $this->guessClass, $this->nonBodyParameterGenerator);
-        $queryAllowReservedMethod = $this->getQueryAllowReservedMethod($operation, 'getQueryAllowReserved');
+        $queryAllowReservedMethod = $this->getQueryAllowReservedMethod($operation, 'getQueryAllowReserved', $this->guessClass);
 
         if ($extraHeadersMethod) {
             $class->stmts[] = $extraHeadersMethod;
