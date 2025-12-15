@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [7.10.2] - 2025-12-15
+### Changed
+- [OpenApi] [GH#891](https://github.com/janephp/janephp/pull/891) Better generated Client operation method return types
+
+### Fixed
+- [OpenApi] [GH#890](https://github.com/janephp/janephp/pull/890) No double encoding for query parameters
+- [OpenApi] [GH#892](https://github.com/janephp/janephp/pull/892) Ensure allowReserved works in referenced parameters
+
 ## [7.10.1] - 2025-12-08
 ### Fixed
 - [Jane] [GH#886](https://github.com/janephp/janephp/pull/886) Fix version constraint for Symfony 8
@@ -811,7 +819,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.10.1...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.10.2...HEAD
+[7.10.2]: https://github.com/janephp/janephp/compare/v7.10.1...v7.10.2
 [7.10.1]: https://github.com/janephp/janephp/compare/v7.10.0...v7.10.1
 [7.10.0]: https://github.com/janephp/janephp/compare/v7.9.0...v7.10.0
 [7.9.0]: https://github.com/janephp/janephp/compare/v7.8.1...v7.9.0
