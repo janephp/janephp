@@ -1,0 +1,92 @@
+site_name: 🌱 Jane
+site_url: https://jane.jolicode.com/
+repo_url: https://github.com/janephp/janephp
+copyright: 'Jane is licensed under <a href="https://github.com/janephp/janephp/blob/main/LICENSE">MIT license</a>'
+
+edit_uri: edit/main/docs/
+docs_dir: docs
+exclude_docs: |
+  doc/_nav.md
+theme:
+  name: material
+  logo: assets/favicon.png
+  favicon: assets/favicon.png
+  icon:
+    repo: fontawesome/brands/github
+  language: en
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      scheme: default
+      primary: white
+      accent: amber
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+  features:
+    - content.action.edit
+    - content.code.copy
+    - content.tabs.link
+    - navigation.footer
+    - navigation.indexes
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tabs
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - toc.integrate
+  custom_dir: docs/overrides
+
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/janephp/janephp
+    - icon: fontawesome/brands/x-twitter
+      link: https://twitter.com/jolicode
+  generator: false
+  version:
+    provider: mike
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - github-callouts
+  - footnotes
+  - pymdownx.details
+  - pymdownx.highlight:
+      use_pygments: false
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+  - literate-nav:
+      nav_file: _nav.md
+
+extra_javascript:
+  - assets/javascripts/highlight.min.js
+extra_css:
+  - assets/stylesheets/highlight-github.min.css
+  - assets/stylesheets/jolicode.css

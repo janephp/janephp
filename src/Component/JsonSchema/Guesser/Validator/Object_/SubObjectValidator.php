@@ -48,7 +48,7 @@ class SubObjectValidator implements ValidatorInterface
             if ($property instanceof Reference) {
                 $reference = (string) $property->getMergedUri();
                 /** @var JsonSchema|null $propertyObj */
-                $propertyObj = $this->resolve($property, \get_class($object)); // @phpstan-ignore varTag.nativeType
+                $propertyObj = $this->resolve($property, \get_class($object));
                 $classGuess = $this->registry->getClass((string) $property->getMergedUri());
                 if (null !== $classGuess) {
                     $className = $classGuess->getName();
