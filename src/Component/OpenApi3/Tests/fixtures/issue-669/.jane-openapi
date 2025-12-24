@@ -2,7 +2,8 @@
 
 // digitalocean.php
 return [
-    'openapi-file' => 'https://api-engineering.nyc3.cdn.digitaloceanspaces.com/spec-ci/DigitalOcean-public.v2.yaml',
+    # 'openapi-file' => 'https://api-engineering.nyc3.cdn.digitaloceanspaces.com/spec-ci/DigitalOcean-public.v2.yaml', // changes way too often, let's download it once and commit it to the repo
+    'openapi-file' => __DIR__ . '/DigitalOcean-public.v2.yaml',
     'namespace' => 'Jane\Generated\DigitalOcean',
     'directory' => __DIR__ . '/generated',
 ];

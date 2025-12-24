@@ -49,6 +49,14 @@ class ApiKBDataSourceNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setBucketRegion($data['bucket_region']);
             unset($data['bucket_region']);
         }
+        if (\array_key_exists('chunking_algorithm', $data)) {
+            $object->setChunkingAlgorithm($data['chunking_algorithm']);
+            unset($data['chunking_algorithm']);
+        }
+        if (\array_key_exists('chunking_options', $data)) {
+            $object->setChunkingOptions($this->denormalizer->denormalize($data['chunking_options'], \Jane\Generated\DigitalOcean\Model\ApiChunkingOptions::class, 'json', $context));
+            unset($data['chunking_options']);
+        }
         if (\array_key_exists('dropbox_data_source', $data)) {
             $object->setDropboxDataSource($this->denormalizer->denormalize($data['dropbox_data_source'], \Jane\Generated\DigitalOcean\Model\ApiDropboxDataSource::class, 'json', $context));
             unset($data['dropbox_data_source']);
@@ -91,6 +99,12 @@ class ApiKBDataSourceNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if ($data->isInitialized('bucketRegion') && null !== $data->getBucketRegion()) {
             $dataArray['bucket_region'] = $data->getBucketRegion();
+        }
+        if ($data->isInitialized('chunkingAlgorithm') && null !== $data->getChunkingAlgorithm()) {
+            $dataArray['chunking_algorithm'] = $data->getChunkingAlgorithm();
+        }
+        if ($data->isInitialized('chunkingOptions') && null !== $data->getChunkingOptions()) {
+            $dataArray['chunking_options'] = $this->normalizer->normalize($data->getChunkingOptions(), 'json', $context);
         }
         if ($data->isInitialized('dropboxDataSource') && null !== $data->getDropboxDataSource()) {
             $dataArray['dropbox_data_source'] = $this->normalizer->normalize($data->getDropboxDataSource(), 'json', $context);

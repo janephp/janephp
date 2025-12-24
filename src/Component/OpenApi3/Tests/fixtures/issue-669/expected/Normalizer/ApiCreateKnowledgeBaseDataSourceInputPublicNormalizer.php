@@ -41,6 +41,14 @@ class ApiCreateKnowledgeBaseDataSourceInputPublicNormalizer implements Denormali
             $object->setAwsDataSource($this->denormalizer->denormalize($data['aws_data_source'], \Jane\Generated\DigitalOcean\Model\ApiAWSDataSource::class, 'json', $context));
             unset($data['aws_data_source']);
         }
+        if (\array_key_exists('chunking_algorithm', $data)) {
+            $object->setChunkingAlgorithm($data['chunking_algorithm']);
+            unset($data['chunking_algorithm']);
+        }
+        if (\array_key_exists('chunking_options', $data)) {
+            $object->setChunkingOptions($this->denormalizer->denormalize($data['chunking_options'], \Jane\Generated\DigitalOcean\Model\ApiChunkingOptions::class, 'json', $context));
+            unset($data['chunking_options']);
+        }
         if (\array_key_exists('knowledge_base_uuid', $data)) {
             $object->setKnowledgeBaseUuid($data['knowledge_base_uuid']);
             unset($data['knowledge_base_uuid']);
@@ -65,6 +73,12 @@ class ApiCreateKnowledgeBaseDataSourceInputPublicNormalizer implements Denormali
         $dataArray = [];
         if ($data->isInitialized('awsDataSource') && null !== $data->getAwsDataSource()) {
             $dataArray['aws_data_source'] = $this->normalizer->normalize($data->getAwsDataSource(), 'json', $context);
+        }
+        if ($data->isInitialized('chunkingAlgorithm') && null !== $data->getChunkingAlgorithm()) {
+            $dataArray['chunking_algorithm'] = $data->getChunkingAlgorithm();
+        }
+        if ($data->isInitialized('chunkingOptions') && null !== $data->getChunkingOptions()) {
+            $dataArray['chunking_options'] = $this->normalizer->normalize($data->getChunkingOptions(), 'json', $context);
         }
         if ($data->isInitialized('knowledgeBaseUuid') && null !== $data->getKnowledgeBaseUuid()) {
             $dataArray['knowledge_base_uuid'] = $data->getKnowledgeBaseUuid();

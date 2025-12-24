@@ -1204,6 +1204,28 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
         return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\InvoicesGetSummaryByUUID($invoiceUuid), $fetch);
     }
     /**
+     *
+     * This endpoint returns day-over-day changes in billing resource usage based on nightly invoice items, including total amount, region, SKU, and description for a specified date range. It is important to note that the daily resource usage may not reflect month-end billing totals when totaled for a given month as nightly invoice item estimates do not necessarily encompass all invoicing factors for the entire month.
+     * @param string $accountUrn URN of the customer account, can be a team (do:team:uuid) or an organization (do:teamgroup:uuid)
+     * @param string $startDate Start date for billing insights in YYYY-MM-DD format
+     * @param string $endDate End date for billing insights in YYYY-MM-DD format. Must be within 31 days of start_date
+     * @param array $queryParameters {
+     *     @var int $per_page Number of items returned per page
+     *     @var int $page Which 'page' of paginated results to return.
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Jane\Generated\DigitalOcean\Exception\BillingInsightsListUnauthorizedException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BillingInsightsListNotFoundException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BillingInsightsListTooManyRequestsException
+     * @throws \Jane\Generated\DigitalOcean\Exception\BillingInsightsListInternalServerErrorException
+     *
+     * @return ($fetch is 'object' ? null|\Jane\Generated\DigitalOcean\Model\ResponseBillingInsights|\Jane\Generated\DigitalOcean\Model\Error : \Psr\Http\Message\ResponseInterface)
+     */
+    public function billingInsightsList(string $accountUrn, string $startDate, string $endDate, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Jane\Generated\DigitalOcean\Endpoint\BillingInsightsList($accountUrn, $startDate, $endDate, $queryParameters), $fetch);
+    }
+    /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListOptionsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListOptionsNotFoundException

@@ -13,6 +13,10 @@ class ApiCreateEvaluationDatasetInputPublic extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
+     * @var string
+     */
+    protected $datasetType = 'EVALUATION_DATASET_TYPE_UNKNOWN';
+    /**
      * File to upload as data source for knowledge base.
      *
      * @var ApiFileUploadDataSource
@@ -24,6 +28,24 @@ class ApiCreateEvaluationDatasetInputPublic extends \ArrayObject
      * @var string
      */
     protected $name;
+    /**
+     * @return string
+     */
+    public function getDatasetType(): string
+    {
+        return $this->datasetType;
+    }
+    /**
+     * @param string $datasetType
+     *
+     * @return self
+     */
+    public function setDatasetType(string $datasetType): self
+    {
+        $this->initialized['datasetType'] = true;
+        $this->datasetType = $datasetType;
+        return $this;
+    }
     /**
      * File to upload as data source for knowledge base.
      *

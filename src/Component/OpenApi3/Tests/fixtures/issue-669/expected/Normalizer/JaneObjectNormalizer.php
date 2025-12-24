@@ -338,6 +338,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Generated\DigitalOcean\Model\InvoiceSummaryCreditsAndAdjustments::class => \Jane\Generated\DigitalOcean\Normalizer\InvoiceSummaryCreditsAndAdjustmentsNormalizer::class,
         
+        \Jane\Generated\DigitalOcean\Model\BillingDataPoint::class => \Jane\Generated\DigitalOcean\Normalizer\BillingDataPointNormalizer::class,
+        
         \Jane\Generated\DigitalOcean\Model\DatabaseRegionOptions::class => \Jane\Generated\DigitalOcean\Normalizer\DatabaseRegionOptionsNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\DatabaseVersionOptions::class => \Jane\Generated\DigitalOcean\Normalizer\DatabaseVersionOptionsNormalizer::class,
@@ -1296,6 +1298,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Generated\DigitalOcean\Model\ApiPromptChunk::class => \Jane\Generated\DigitalOcean\Normalizer\ApiPromptChunkNormalizer::class,
         
+        \Jane\Generated\DigitalOcean\Model\ApiEvaluationTraceSpan::class => \Jane\Generated\DigitalOcean\Normalizer\ApiEvaluationTraceSpanNormalizer::class,
+        
         \Jane\Generated\DigitalOcean\Model\ApiPrompt::class => \Jane\Generated\DigitalOcean\Normalizer\ApiPromptNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\ApiGetEvaluationRunResultsOutput::class => \Jane\Generated\DigitalOcean\Normalizer\ApiGetEvaluationRunResultsOutputNormalizer::class,
@@ -1337,6 +1341,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         \Jane\Generated\DigitalOcean\Model\ApiListKnowledgeBasesOutput::class => \Jane\Generated\DigitalOcean\Normalizer\ApiListKnowledgeBasesOutputNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\ApiAWSDataSource::class => \Jane\Generated\DigitalOcean\Normalizer\ApiAWSDataSourceNormalizer::class,
+        
+        \Jane\Generated\DigitalOcean\Model\ApiChunkingOptions::class => \Jane\Generated\DigitalOcean\Normalizer\ApiChunkingOptionsNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\ApiDropboxDataSource::class => \Jane\Generated\DigitalOcean\Normalizer\ApiDropboxDataSourceNormalizer::class,
         
@@ -1501,6 +1507,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         \Jane\Generated\DigitalOcean\Model\ResponseInvoices::class => \Jane\Generated\DigitalOcean\Normalizer\ResponseInvoicesNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\ResponseInvoice::class => \Jane\Generated\DigitalOcean\Normalizer\ResponseInvoiceNormalizer::class,
+        
+        \Jane\Generated\DigitalOcean\Model\ResponseBillingInsights::class => \Jane\Generated\DigitalOcean\Normalizer\ResponseBillingInsightsNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\ResponseDatabaseClusters::class => \Jane\Generated\DigitalOcean\Normalizer\ResponseDatabaseClustersNormalizer::class,
         
@@ -2142,6 +2150,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Generated\DigitalOcean\Model\InvoiceSummaryOverages::class => false,
             \Jane\Generated\DigitalOcean\Model\InvoiceSummaryTaxes::class => false,
             \Jane\Generated\DigitalOcean\Model\InvoiceSummaryCreditsAndAdjustments::class => false,
+            \Jane\Generated\DigitalOcean\Model\BillingDataPoint::class => false,
             \Jane\Generated\DigitalOcean\Model\DatabaseRegionOptions::class => false,
             \Jane\Generated\DigitalOcean\Model\DatabaseVersionOptions::class => false,
             \Jane\Generated\DigitalOcean\Model\DatabaseLayoutOption::class => false,
@@ -2621,6 +2630,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Generated\DigitalOcean\Model\ApiEvaluationRun::class => false,
             \Jane\Generated\DigitalOcean\Model\ApiGetEvaluationRunOutput::class => false,
             \Jane\Generated\DigitalOcean\Model\ApiPromptChunk::class => false,
+            \Jane\Generated\DigitalOcean\Model\ApiEvaluationTraceSpan::class => false,
             \Jane\Generated\DigitalOcean\Model\ApiPrompt::class => false,
             \Jane\Generated\DigitalOcean\Model\ApiGetEvaluationRunResultsOutput::class => false,
             \Jane\Generated\DigitalOcean\Model\ApiGetEvaluationRunPromptResultsOutput::class => false,
@@ -2642,6 +2652,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Generated\DigitalOcean\Model\ApiCancelKnowledgeBaseIndexingJobOutput::class => false,
             \Jane\Generated\DigitalOcean\Model\ApiListKnowledgeBasesOutput::class => false,
             \Jane\Generated\DigitalOcean\Model\ApiAWSDataSource::class => false,
+            \Jane\Generated\DigitalOcean\Model\ApiChunkingOptions::class => false,
             \Jane\Generated\DigitalOcean\Model\ApiDropboxDataSource::class => false,
             \Jane\Generated\DigitalOcean\Model\ApiGoogleDriveDataSource::class => false,
             \Jane\Generated\DigitalOcean\Model\ApiSpacesDataSource::class => false,
@@ -2724,6 +2735,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Generated\DigitalOcean\Model\ResponseBillingHistory::class => false,
             \Jane\Generated\DigitalOcean\Model\ResponseInvoices::class => false,
             \Jane\Generated\DigitalOcean\Model\ResponseInvoice::class => false,
+            \Jane\Generated\DigitalOcean\Model\ResponseBillingInsights::class => false,
             \Jane\Generated\DigitalOcean\Model\ResponseDatabaseClusters::class => false,
             \Jane\Generated\DigitalOcean\Model\ResponseDatabaseCluster::class => false,
             \Jane\Generated\DigitalOcean\Model\ResponseDatabaseConfig::class => false,

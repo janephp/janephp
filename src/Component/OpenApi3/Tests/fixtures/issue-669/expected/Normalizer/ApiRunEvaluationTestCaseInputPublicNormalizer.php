@@ -37,12 +37,20 @@ class ApiRunEvaluationTestCaseInputPublicNormalizer implements DenormalizerInter
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('agent_uuids', $data)) {
+        if (\array_key_exists('agent_deployment_names', $data)) {
             $values = [];
-            foreach ($data['agent_uuids'] as $value) {
+            foreach ($data['agent_deployment_names'] as $value) {
                 $values[] = $value;
             }
-            $object->setAgentUuids($values);
+            $object->setAgentDeploymentNames($values);
+            unset($data['agent_deployment_names']);
+        }
+        if (\array_key_exists('agent_uuids', $data)) {
+            $values_1 = [];
+            foreach ($data['agent_uuids'] as $value_1) {
+                $values_1[] = $value_1;
+            }
+            $object->setAgentUuids($values_1);
             unset($data['agent_uuids']);
         }
         if (\array_key_exists('run_name', $data)) {
@@ -53,9 +61,9 @@ class ApiRunEvaluationTestCaseInputPublicNormalizer implements DenormalizerInter
             $object->setTestCaseUuid($data['test_case_uuid']);
             unset($data['test_case_uuid']);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value_2;
             }
         }
         return $object;
@@ -63,12 +71,19 @@ class ApiRunEvaluationTestCaseInputPublicNormalizer implements DenormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('agentUuids') && null !== $data->getAgentUuids()) {
+        if ($data->isInitialized('agentDeploymentNames') && null !== $data->getAgentDeploymentNames()) {
             $values = [];
-            foreach ($data->getAgentUuids() as $value) {
+            foreach ($data->getAgentDeploymentNames() as $value) {
                 $values[] = $value;
             }
-            $dataArray['agent_uuids'] = $values;
+            $dataArray['agent_deployment_names'] = $values;
+        }
+        if ($data->isInitialized('agentUuids') && null !== $data->getAgentUuids()) {
+            $values_1 = [];
+            foreach ($data->getAgentUuids() as $value_1) {
+                $values_1[] = $value_1;
+            }
+            $dataArray['agent_uuids'] = $values_1;
         }
         if ($data->isInitialized('runName') && null !== $data->getRunName()) {
             $dataArray['run_name'] = $data->getRunName();
@@ -76,9 +91,9 @@ class ApiRunEvaluationTestCaseInputPublicNormalizer implements DenormalizerInter
         if ($data->isInitialized('testCaseUuid') && null !== $data->getTestCaseUuid()) {
             $dataArray['test_case_uuid'] = $data->getTestCaseUuid();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+                $dataArray[$key] = $value_2;
             }
         }
         return $dataArray;
