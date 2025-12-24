@@ -43,6 +43,24 @@ class ApiModel extends \ArrayObject
      */
     protected $isFoundational;
     /**
+     * Default chunking size limit to show in UI
+     *
+     * @var int
+     */
+    protected $kbDefaultChunkSize;
+    /**
+     * Maximum chunk size limit of model
+     *
+     * @var int
+     */
+    protected $kbMaxChunkSize;
+    /**
+     * Minimum chunking size token limits if model supports KNOWLEDGEBASE usecase
+     *
+     * @var int
+     */
+    protected $kbMinChunkSize;
+    /**
      * Additional meta data
      *
      * @var array<string, mixed>
@@ -208,6 +226,72 @@ class ApiModel extends \ArrayObject
     {
         $this->initialized['isFoundational'] = true;
         $this->isFoundational = $isFoundational;
+        return $this;
+    }
+    /**
+     * Default chunking size limit to show in UI
+     *
+     * @return int
+     */
+    public function getKbDefaultChunkSize(): int
+    {
+        return $this->kbDefaultChunkSize;
+    }
+    /**
+     * Default chunking size limit to show in UI
+     *
+     * @param int $kbDefaultChunkSize
+     *
+     * @return self
+     */
+    public function setKbDefaultChunkSize(int $kbDefaultChunkSize): self
+    {
+        $this->initialized['kbDefaultChunkSize'] = true;
+        $this->kbDefaultChunkSize = $kbDefaultChunkSize;
+        return $this;
+    }
+    /**
+     * Maximum chunk size limit of model
+     *
+     * @return int
+     */
+    public function getKbMaxChunkSize(): int
+    {
+        return $this->kbMaxChunkSize;
+    }
+    /**
+     * Maximum chunk size limit of model
+     *
+     * @param int $kbMaxChunkSize
+     *
+     * @return self
+     */
+    public function setKbMaxChunkSize(int $kbMaxChunkSize): self
+    {
+        $this->initialized['kbMaxChunkSize'] = true;
+        $this->kbMaxChunkSize = $kbMaxChunkSize;
+        return $this;
+    }
+    /**
+     * Minimum chunking size token limits if model supports KNOWLEDGEBASE usecase
+     *
+     * @return int
+     */
+    public function getKbMinChunkSize(): int
+    {
+        return $this->kbMinChunkSize;
+    }
+    /**
+     * Minimum chunking size token limits if model supports KNOWLEDGEBASE usecase
+     *
+     * @param int $kbMinChunkSize
+     *
+     * @return self
+     */
+    public function setKbMinChunkSize(int $kbMinChunkSize): self
+    {
+        $this->initialized['kbMinChunkSize'] = true;
+        $this->kbMinChunkSize = $kbMinChunkSize;
         return $this;
     }
     /**

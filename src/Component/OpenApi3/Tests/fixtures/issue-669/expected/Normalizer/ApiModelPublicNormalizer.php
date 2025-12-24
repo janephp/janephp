@@ -59,6 +59,18 @@ class ApiModelPublicNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setIsFoundational($data['is_foundational']);
             unset($data['is_foundational']);
         }
+        if (\array_key_exists('kb_default_chunk_size', $data)) {
+            $object->setKbDefaultChunkSize($data['kb_default_chunk_size']);
+            unset($data['kb_default_chunk_size']);
+        }
+        if (\array_key_exists('kb_max_chunk_size', $data)) {
+            $object->setKbMaxChunkSize($data['kb_max_chunk_size']);
+            unset($data['kb_max_chunk_size']);
+        }
+        if (\array_key_exists('kb_min_chunk_size', $data)) {
+            $object->setKbMinChunkSize($data['kb_min_chunk_size']);
+            unset($data['kb_min_chunk_size']);
+        }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
             unset($data['name']);
@@ -108,6 +120,15 @@ class ApiModelPublicNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if ($data->isInitialized('isFoundational') && null !== $data->getIsFoundational()) {
             $dataArray['is_foundational'] = $data->getIsFoundational();
+        }
+        if ($data->isInitialized('kbDefaultChunkSize') && null !== $data->getKbDefaultChunkSize()) {
+            $dataArray['kb_default_chunk_size'] = $data->getKbDefaultChunkSize();
+        }
+        if ($data->isInitialized('kbMaxChunkSize') && null !== $data->getKbMaxChunkSize()) {
+            $dataArray['kb_max_chunk_size'] = $data->getKbMaxChunkSize();
+        }
+        if ($data->isInitialized('kbMinChunkSize') && null !== $data->getKbMinChunkSize()) {
+            $dataArray['kb_min_chunk_size'] = $data->getKbMinChunkSize();
         }
         if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();

@@ -19,6 +19,22 @@ class ApiCreateKnowledgeBaseDataSourceInputPublic extends \ArrayObject
      */
     protected $awsDataSource;
     /**
+     * The chunking algorithm to use for processing data sources.
+     * 
+     * **Note: This feature requires enabling the knowledgebase enhancements feature preview flag.**
+     *
+     * @var string
+     */
+    protected $chunkingAlgorithm = 'CHUNKING_ALGORITHM_SECTION_BASED';
+    /**
+     * Configuration options for the chunking algorithm.
+     * 
+     * **Note: This feature requires enabling the knowledgebase enhancements feature preview flag.**
+     *
+     * @var ApiChunkingOptions
+     */
+    protected $chunkingOptions;
+    /**
      * Knowledge base id
      *
      * @var string
@@ -56,6 +72,56 @@ class ApiCreateKnowledgeBaseDataSourceInputPublic extends \ArrayObject
     {
         $this->initialized['awsDataSource'] = true;
         $this->awsDataSource = $awsDataSource;
+        return $this;
+    }
+    /**
+     * The chunking algorithm to use for processing data sources.
+     * 
+     * **Note: This feature requires enabling the knowledgebase enhancements feature preview flag.**
+     *
+     * @return string
+     */
+    public function getChunkingAlgorithm(): string
+    {
+        return $this->chunkingAlgorithm;
+    }
+    /**
+     * The chunking algorithm to use for processing data sources.
+     **Note: This feature requires enabling the knowledgebase enhancements feature preview flag.**
+     *
+     * @param string $chunkingAlgorithm
+     *
+     * @return self
+     */
+    public function setChunkingAlgorithm(string $chunkingAlgorithm): self
+    {
+        $this->initialized['chunkingAlgorithm'] = true;
+        $this->chunkingAlgorithm = $chunkingAlgorithm;
+        return $this;
+    }
+    /**
+     * Configuration options for the chunking algorithm.
+     * 
+     * **Note: This feature requires enabling the knowledgebase enhancements feature preview flag.**
+     *
+     * @return ApiChunkingOptions
+     */
+    public function getChunkingOptions(): ApiChunkingOptions
+    {
+        return $this->chunkingOptions;
+    }
+    /**
+     * Configuration options for the chunking algorithm.
+     **Note: This feature requires enabling the knowledgebase enhancements feature preview flag.**
+     *
+     * @param ApiChunkingOptions $chunkingOptions
+     *
+     * @return self
+     */
+    public function setChunkingOptions(ApiChunkingOptions $chunkingOptions): self
+    {
+        $this->initialized['chunkingOptions'] = true;
+        $this->chunkingOptions = $chunkingOptions;
         return $this;
     }
     /**

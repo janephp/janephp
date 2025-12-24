@@ -13,6 +13,12 @@ class ApiPrompt extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
+     * The evaluated trace spans.
+     *
+     * @var list<ApiEvaluationTraceSpan>
+     */
+    protected $evaluationTraceSpans;
+    /**
      * The ground truth for the prompt.
      *
      * @var string
@@ -56,6 +62,34 @@ class ApiPrompt extends \ArrayObject
      * @var list<ApiEvaluationMetricResult>
      */
     protected $promptLevelMetricResults;
+    /**
+     * The trace id for the prompt.
+     *
+     * @var string
+     */
+    protected $traceId;
+    /**
+     * The evaluated trace spans.
+     *
+     * @return list<ApiEvaluationTraceSpan>
+     */
+    public function getEvaluationTraceSpans(): array
+    {
+        return $this->evaluationTraceSpans;
+    }
+    /**
+     * The evaluated trace spans.
+     *
+     * @param list<ApiEvaluationTraceSpan> $evaluationTraceSpans
+     *
+     * @return self
+     */
+    public function setEvaluationTraceSpans(array $evaluationTraceSpans): self
+    {
+        $this->initialized['evaluationTraceSpans'] = true;
+        $this->evaluationTraceSpans = $evaluationTraceSpans;
+        return $this;
+    }
     /**
      * The ground truth for the prompt.
      *
@@ -222,6 +256,28 @@ class ApiPrompt extends \ArrayObject
     {
         $this->initialized['promptLevelMetricResults'] = true;
         $this->promptLevelMetricResults = $promptLevelMetricResults;
+        return $this;
+    }
+    /**
+     * The trace id for the prompt.
+     *
+     * @return string
+     */
+    public function getTraceId(): string
+    {
+        return $this->traceId;
+    }
+    /**
+     * The trace id for the prompt.
+     *
+     * @param string $traceId
+     *
+     * @return self
+     */
+    public function setTraceId(string $traceId): self
+    {
+        $this->initialized['traceId'] = true;
+        $this->traceId = $traceId;
         return $this;
     }
 }

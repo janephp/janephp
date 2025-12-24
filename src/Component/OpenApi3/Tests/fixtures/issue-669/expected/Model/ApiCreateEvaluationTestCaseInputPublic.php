@@ -13,6 +13,10 @@ class ApiCreateEvaluationTestCaseInputPublic extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
+     * @var string
+     */
+    protected $agentWorkspaceName;
+    /**
      * Dataset against which the test‑case is executed.
      *
      * @var string
@@ -46,6 +50,24 @@ class ApiCreateEvaluationTestCaseInputPublic extends \ArrayObject
      * @var string
      */
     protected $workspaceUuid;
+    /**
+     * @return string
+     */
+    public function getAgentWorkspaceName(): string
+    {
+        return $this->agentWorkspaceName;
+    }
+    /**
+     * @param string $agentWorkspaceName
+     *
+     * @return self
+     */
+    public function setAgentWorkspaceName(string $agentWorkspaceName): self
+    {
+        $this->initialized['agentWorkspaceName'] = true;
+        $this->agentWorkspaceName = $agentWorkspaceName;
+        return $this;
+    }
     /**
      * Dataset against which the test‑case is executed.
      *

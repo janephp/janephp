@@ -13,7 +13,13 @@ class ApiRunEvaluationTestCaseInputPublic extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * Agent UUIDs to run the test case against.
+     * Agent deployment names to run the test case against (ADK agent workspaces).
+     *
+     * @var list<string>
+     */
+    protected $agentDeploymentNames;
+    /**
+     * Agent UUIDs to run the test case against (legacy agents).
      *
      * @var list<string>
      */
@@ -31,7 +37,29 @@ class ApiRunEvaluationTestCaseInputPublic extends \ArrayObject
      */
     protected $testCaseUuid;
     /**
-     * Agent UUIDs to run the test case against.
+     * Agent deployment names to run the test case against (ADK agent workspaces).
+     *
+     * @return list<string>
+     */
+    public function getAgentDeploymentNames(): array
+    {
+        return $this->agentDeploymentNames;
+    }
+    /**
+     * Agent deployment names to run the test case against (ADK agent workspaces).
+     *
+     * @param list<string> $agentDeploymentNames
+     *
+     * @return self
+     */
+    public function setAgentDeploymentNames(array $agentDeploymentNames): self
+    {
+        $this->initialized['agentDeploymentNames'] = true;
+        $this->agentDeploymentNames = $agentDeploymentNames;
+        return $this;
+    }
+    /**
+     * Agent UUIDs to run the test case against (legacy agents).
      *
      * @return list<string>
      */
@@ -40,7 +68,7 @@ class ApiRunEvaluationTestCaseInputPublic extends \ArrayObject
         return $this->agentUuids;
     }
     /**
-     * Agent UUIDs to run the test case against.
+     * Agent UUIDs to run the test case against (legacy agents).
      *
      * @param list<string> $agentUuids
      *

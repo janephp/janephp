@@ -37,6 +37,10 @@ class ApiCreateEvaluationTestCaseInputPublicNormalizer implements DenormalizerIn
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
+        if (\array_key_exists('agent_workspace_name', $data)) {
+            $object->setAgentWorkspaceName($data['agent_workspace_name']);
+            unset($data['agent_workspace_name']);
+        }
         if (\array_key_exists('dataset_uuid', $data)) {
             $object->setDatasetUuid($data['dataset_uuid']);
             unset($data['dataset_uuid']);
@@ -75,6 +79,9 @@ class ApiCreateEvaluationTestCaseInputPublicNormalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
+        if ($data->isInitialized('agentWorkspaceName') && null !== $data->getAgentWorkspaceName()) {
+            $dataArray['agent_workspace_name'] = $data->getAgentWorkspaceName();
+        }
         if ($data->isInitialized('datasetUuid') && null !== $data->getDatasetUuid()) {
             $dataArray['dataset_uuid'] = $data->getDatasetUuid();
         }

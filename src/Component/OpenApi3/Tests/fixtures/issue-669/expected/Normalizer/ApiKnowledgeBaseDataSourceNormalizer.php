@@ -45,6 +45,14 @@ class ApiKnowledgeBaseDataSourceNormalizer implements DenormalizerInterface, Nor
             $object->setBucketName($data['bucket_name']);
             unset($data['bucket_name']);
         }
+        if (\array_key_exists('chunking_algorithm', $data)) {
+            $object->setChunkingAlgorithm($data['chunking_algorithm']);
+            unset($data['chunking_algorithm']);
+        }
+        if (\array_key_exists('chunking_options', $data)) {
+            $object->setChunkingOptions($this->denormalizer->denormalize($data['chunking_options'], \Jane\Generated\DigitalOcean\Model\ApiChunkingOptions::class, 'json', $context));
+            unset($data['chunking_options']);
+        }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
             unset($data['created_at']);
@@ -104,6 +112,12 @@ class ApiKnowledgeBaseDataSourceNormalizer implements DenormalizerInterface, Nor
         }
         if ($data->isInitialized('bucketName') && null !== $data->getBucketName()) {
             $dataArray['bucket_name'] = $data->getBucketName();
+        }
+        if ($data->isInitialized('chunkingAlgorithm') && null !== $data->getChunkingAlgorithm()) {
+            $dataArray['chunking_algorithm'] = $data->getChunkingAlgorithm();
+        }
+        if ($data->isInitialized('chunkingOptions') && null !== $data->getChunkingOptions()) {
+            $dataArray['chunking_options'] = $this->normalizer->normalize($data->getChunkingOptions(), 'json', $context);
         }
         if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
             $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');

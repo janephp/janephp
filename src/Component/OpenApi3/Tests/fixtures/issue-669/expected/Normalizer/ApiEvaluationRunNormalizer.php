@@ -47,6 +47,10 @@ class ApiEvaluationRunNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setAgentDeleted($data['agent_deleted']);
             unset($data['agent_deleted']);
         }
+        if (\array_key_exists('agent_deployment_name', $data)) {
+            $object->setAgentDeploymentName($data['agent_deployment_name']);
+            unset($data['agent_deployment_name']);
+        }
         if (\array_key_exists('agent_name', $data)) {
             $object->setAgentName($data['agent_name']);
             unset($data['agent_name']);
@@ -147,6 +151,9 @@ class ApiEvaluationRunNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray = [];
         if ($data->isInitialized('agentDeleted') && null !== $data->getAgentDeleted()) {
             $dataArray['agent_deleted'] = $data->getAgentDeleted();
+        }
+        if ($data->isInitialized('agentDeploymentName') && null !== $data->getAgentDeploymentName()) {
+            $dataArray['agent_deployment_name'] = $data->getAgentDeploymentName();
         }
         if ($data->isInitialized('agentName') && null !== $data->getAgentName()) {
             $dataArray['agent_name'] = $data->getAgentName();

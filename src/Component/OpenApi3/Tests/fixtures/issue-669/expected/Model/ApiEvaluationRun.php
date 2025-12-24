@@ -19,6 +19,12 @@ class ApiEvaluationRun extends \ArrayObject
      */
     protected $agentDeleted;
     /**
+     * The agent deployment name
+     *
+     * @var string
+     */
+    protected $agentDeploymentName;
+    /**
      * Agent name
      *
      * @var string
@@ -156,6 +162,28 @@ class ApiEvaluationRun extends \ArrayObject
     {
         $this->initialized['agentDeleted'] = true;
         $this->agentDeleted = $agentDeleted;
+        return $this;
+    }
+    /**
+     * The agent deployment name
+     *
+     * @return string
+     */
+    public function getAgentDeploymentName(): string
+    {
+        return $this->agentDeploymentName;
+    }
+    /**
+     * The agent deployment name
+     *
+     * @param string $agentDeploymentName
+     *
+     * @return self
+     */
+    public function setAgentDeploymentName(string $agentDeploymentName): self
+    {
+        $this->initialized['agentDeploymentName'] = true;
+        $this->agentDeploymentName = $agentDeploymentName;
         return $this;
     }
     /**
