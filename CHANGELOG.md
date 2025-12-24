@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [7.10.3] - 2025-12-24
+### Fixed
+- [OpenApi] [GH#895](https://github.com/janephp/janephp/pull/895) Cast parameter to string to avoid TypeError in BaseEndpoint class
+- [OpenApi3] [GH#897](https://github.com/janephp/janephp/pull/897) Download OpenApi3 "issue-669" schema to avoid frequent changes
+
 ## [7.10.2] - 2025-12-15
 ### Changed
 - [OpenApi] [GH#891](https://github.com/janephp/janephp/pull/891) Better generated Client operation method return types
@@ -819,7 +824,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.10.2...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.10.3...HEAD
+[7.10.3]: https://github.com/janephp/janephp/compare/v7.10.2...v7.10.3
 [7.10.2]: https://github.com/janephp/janephp/compare/v7.10.1...v7.10.2
 [7.10.1]: https://github.com/janephp/janephp/compare/v7.10.0...v7.10.1
 [7.10.0]: https://github.com/janephp/janephp/compare/v7.9.0...v7.10.0
