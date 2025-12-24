@@ -40,7 +40,7 @@ abstract class BaseEndpoint implements Endpoint
             if (in_array($key, $allowReserved, true)) {
                 $queryParameters[] = rawurlencode($key) . '=' . $value;
             } else {
-                $queryParameters[] = rawurlencode($key) . '=' . rawurlencode($value);
+                $queryParameters[] = rawurlencode($key) . '=' . rawurlencode((string) $value);
             }
         }
 
