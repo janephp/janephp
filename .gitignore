@@ -19,3 +19,5 @@ cache/*
 
 !tools/*/composer.lock
 tools/*/vendor
+
+.castor*
