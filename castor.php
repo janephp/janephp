@@ -97,8 +97,8 @@ function doc_build_github_pages(): void
     $tags = run('git tag --list', context: context()->withQuiet())->getOutput();
     $tags = array_filter(array_map('trim', explode("\n", $tags)));
 
-    $minVersion = '8.2.2';
-    $latestVersion = $minVersion;
+    $minVersion = 'v7.11.0';
+    $latestVersion = null;
     $buildTags = [];
 
     foreach ($tags as $tag) {
@@ -119,20 +119,24 @@ function doc_build_github_pages(): void
             continue;
         }
 
-        if (version_compare($tag, $latestVersion, '>')) {
+        if (null === $latestVersion || version_compare($tag, $latestVersion, '>')) {
             $latestVersion = $tag;
         }
 
         $buildTags[$majorMinor] = $tag;
     }
 
-    foreach ($buildTags as $tag) {
-        run('git checkout tags/' . $tag);
+    if (null === $latestVersion) {
+        run('poetry run mike deploy --push --remote gh-pages dev latest');
+    } else {
+        foreach ($buildTags as $tag) {
+            run('git checkout tags/' . $tag);
 
-        if ($tag === $latestVersion) {
-            run('poetry run mike deploy --push --remote gh-pages ' . $tag . ' latest');
-        } else {
-            run('poetry run mike deploy --push --remote gh-pages --update-aliases ' . $tag);
+            if ($tag === $latestVersion) {
+                run('poetry run mike deploy --push --remote gh-pages ' . $tag . ' latest');
+            } else {
+                run('poetry run mike deploy --push --remote gh-pages --update-aliases ' . $tag);
+            }
         }
     }
 

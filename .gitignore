@@ -21,3 +21,5 @@ cache/*
 tools/*/vendor
 
 .castor*
+site/
+.build/
