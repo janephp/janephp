@@ -195,6 +195,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
             'boolean' => ['bool'],
             'integer' => ['int'],
             'array' => ['array'],
+            'object' => ['array'],
             'file' => ['string', 'resource', '\\' . StreamInterface::class],
         ];
 
