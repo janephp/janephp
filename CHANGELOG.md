@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- [OpenApi] [GH#907](https://github.com/janephp/janephp/pull/907) Add support for object type in query parameters
 - [Jane] [GH#894](https://github.com/janephp/janephp/pull/894) New documentation with MkDocs & Mike (available at: https://jane.jolicode.com/)
 
 ### Changed
