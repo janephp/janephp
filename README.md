@@ -16,7 +16,7 @@
 
 ## Documentation
 
-[Documentation is available at http://jane.readthedocs.io/en/latest/](http://jane.readthedocs.io/en/latest/)
+[Documentation is available at https://jane.jolicode.com/](https://jane.jolicode.com/)
 
 ## Changes
 
