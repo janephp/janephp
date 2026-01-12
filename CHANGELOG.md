@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- [Jane] [GH#894](https://github.com/janephp/janephp/pull/894) New documentation with MkDocs & Mike (available at: https://jane.jolicode.com/)
+
+### Changed
+- [Jane] [GH#894](https://github.com/janephp/janephp/pull/894) Improved tooling to use [castor](https://castor.jolicode.com/)
 
 ## [7.10.3] - 2025-12-24
 ### Fixed
