@@ -99,7 +99,7 @@ abstract class BaseEndpoint implements Endpoint
     {
         $params = [];
         foreach ($value as $subKey => $subValue) {
-            $arrayKey = $queryParamName . '[' . rawurlencode($subKey) . ']';
+            $arrayKey = $queryParamName . '[' . rawurlencode((string) $subKey) . ']';
             $params[] = $this->encodeValue($arrayKey, $subValue, $allowReserved);
         }
         return implode('&', $params);
