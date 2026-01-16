@@ -3,6 +3,7 @@
 namespace Gounlaf\JanephpBug\Runtime\Client;
 
 use Http\Message\MultipartStream\MultipartStreamBuilder;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -30,11 +31,8 @@ abstract class BaseEndpoint implements Endpoint
         $allowReserved = $this->getQueryAllowReserved();
         $queryParameters = [];
         foreach ($optionsResolved as $key => $value) {
-            if (in_array($key, $allowReserved, true)) {
-                $queryParameters[] = rawurlencode($key) . '=' . $value;
-            } else {
-                $queryParameters[] = rawurlencode($key) . '=' . rawurlencode((string) $value);
-            }
+            $allowReservedKey = in_array($key, $allowReserved, true);
+            $queryParameters[] = $this->encodeValue($key, $value, $allowReservedKey);
         }
         return implode('&', $queryParameters);
     }
@@ -76,5 +74,34 @@ abstract class BaseEndpoint implements Endpoint
     protected function getSerializedBody(SerializerInterface $serializer): array
     {
         return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+    }
+    private function encodeValue(string $key, mixed $value, bool $allowReserved): string
+    {
+        return match (true) {
+            is_int($value) => $this->encodeIntValue($key, $value, $allowReserved),
+            is_bool($value) => $this->encodeIntValue($key, (int) $value, $allowReserved),
+            is_string($value) => $this->encodeStringValue($key, $value, $allowReserved),
+            is_array($value) => $this->encodeArrayValue($key, $value, $allowReserved),
+            default => throw new InvalidArgumentException(sprintf('Query value for key %s must be either int|string|array|bool, %s given', $key, gettype($value))),
+        };
+    }
+    private function encodeIntValue(string $queryParamName, int $value, bool $allowReserved): string
+    {
+        $queryParamName = rawurlencode($queryParamName);
+        return sprintf('%s=%s', $queryParamName, $allowReserved ? $value : rawurlencode((string) $value));
+    }
+    private function encodeStringValue(string $queryParamName, string $value, bool $allowReserved): string
+    {
+        $queryParamName = rawurlencode($queryParamName);
+        return sprintf('%s=%s', $queryParamName, $allowReserved ? $value : rawurlencode($value));
+    }
+    private function encodeArrayValue(string $queryParamName, array $value, bool $allowReserved): string
+    {
+        $params = [];
+        foreach ($value as $subKey => $subValue) {
+            $arrayKey = $queryParamName . '[' . rawurlencode((string) $subKey) . ']';
+            $params[] = $this->encodeValue($arrayKey, $subValue, $allowReserved);
+        }
+        return implode('&', $params);
     }
 }
