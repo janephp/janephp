@@ -5,11 +5,11 @@ namespace PicturePark\API\Endpoint;
 class OutputFormatGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-     * Gets multiple output format details by the output format IDs. Can fetch maximum of 100 output formats at once.
-     * @param array $queryParameters {
-     *     @var array $ids Output format IDs to get information about. If this is omitted, all output formats in the system will be returned.
-     * }
-     */
+    * Gets multiple output format details by the output format IDs. Can fetch maximum of 100 output formats at once.
+    * @param array{
+    *    "ids"?: array, //Output format IDs to get information about. If this is omitted, all output formats in the system will be returned.
+    } $queryParameters
+    */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

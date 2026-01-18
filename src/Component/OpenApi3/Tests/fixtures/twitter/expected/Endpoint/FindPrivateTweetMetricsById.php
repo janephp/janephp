@@ -6,12 +6,12 @@ class FindPrivateTweetMetricsById extends \Jane\Component\OpenApi3\Tests\Expecte
 {
     protected $accept;
     /**
-     * Returns various metrics about a Tweet, including metrics for an embedded Video if one exists
-     * @param array $queryParameters {
-     *     @var array $ids A comma separated list of Tweet IDs. Up to 50 are allowed in a single request.
-     * }
-     * @param array $accept Accept content header application/json|application/problem+json
-     */
+    * Returns various metrics about a Tweet, including metrics for an embedded Video if one exists
+    * @param array{
+    *    "ids": array, //A comma separated list of Tweet IDs. Up to 50 are allowed in a single request.
+    } $queryParameters
+    * @param array $accept Accept content header application/json|application/problem+json
+    */
     public function __construct(array $queryParameters = [], array $accept = [])
     {
         $this->queryParameters = $queryParameters;

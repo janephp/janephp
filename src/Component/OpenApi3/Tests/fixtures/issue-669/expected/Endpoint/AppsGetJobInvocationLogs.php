@@ -8,18 +8,18 @@ class AppsGetJobInvocationLogs extends \Jane\Generated\DigitalOcean\Runtime\Clie
     protected $job_name;
     protected $job_invocation_id;
     /**
-     * Retrieve the logs of a past, in-progress, or active deployment. If a component name is specified, the logs will be limited to only that component. If deployment is omitted the active deployment will be selected (if available). The response will include links to either real-time logs of an in-progress or active deployment or archived logs of a past deployment.
-     * @param string $appId The app ID
-     * @param string $jobName The job name to list job invocations for.
-     * @param string $jobInvocationId The ID of the job invocation to retrieve.
-     * @param array $queryParameters {
-     *     @var string $deployment_id The deployment ID
-     *     @var bool $follow Whether the logs should follow live updates.
-     *     @var string $type The type of logs to retrieve
-     *     @var string $pod_connection_timeout An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
-     *     @var string $tail_lines The number of lines from the end of the logs to retrieve.
-     * }
-     */
+    * Retrieve the logs of a past, in-progress, or active deployment. If a component name is specified, the logs will be limited to only that component. If deployment is omitted the active deployment will be selected (if available). The response will include links to either real-time logs of an in-progress or active deployment or archived logs of a past deployment.
+    * @param string $appId The app ID
+    * @param string $jobName The job name to list job invocations for.
+    * @param string $jobInvocationId The ID of the job invocation to retrieve.
+    * @param array{
+    *    "deployment_id"?: string, //The deployment ID
+    *    "follow"?: bool, //Whether the logs should follow live updates.
+    *    "type": string, //The type of logs to retrieve
+    *    "pod_connection_timeout"?: string, //An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
+    *    "tail_lines"?: string, //The number of lines from the end of the logs to retrieve.
+    } $queryParameters
+    */
     public function __construct(string $appId, string $jobName, string $jobInvocationId, array $queryParameters = [])
     {
         $this->app_id = $appId;

@@ -9,19 +9,19 @@ class ShareDownloadSingleContent extends \PicturePark\API\Runtime\Client\BaseEnd
     protected $outputFormatId;
     protected $accept;
     /**
-     * Download single content in a specific output format (or automatically determined format if none is specified). To resize images on download specify target width &amp; height. To download only a portion of the file, specify the range parameter.
-     * @param string $token Share token
-     * @param string $contentId The content id
-     * @param string $outputFormatId The output format id
-     * @param array $queryParameters {
-     *     @var int $width Optional width in pixels to resize image
-     *     @var int $height Optional height in pixels to resize image
-     * }
-     * @param array $headerParameters {
-     *     @var string $range The range of bytes to download (http range header): bytes={from}-{to} (e.g. bytes=0-100000)
-     * }
-     * @param array $accept Accept content header application/json|application/octet-stream
-     */
+    * Download single content in a specific output format (or automatically determined format if none is specified). To resize images on download specify target width &amp; height. To download only a portion of the file, specify the range parameter.
+    * @param string $token Share token
+    * @param string $contentId The content id
+    * @param string $outputFormatId The output format id
+    * @param array{
+    *    "width"?: int, //Optional width in pixels to resize image
+    *    "height"?: int, //Optional height in pixels to resize image
+    } $queryParameters
+    * @param array{
+    *    "range"?: string, //The range of bytes to download (http range header): bytes={from}-{to} (e.g. bytes=0-100000)
+    } $headerParameters
+    * @param array $accept Accept content header application/json|application/octet-stream
+    */
     public function __construct(string $token, string $contentId, string $outputFormatId, array $queryParameters = [], array $headerParameters = [], array $accept = [])
     {
         $this->token = $token;

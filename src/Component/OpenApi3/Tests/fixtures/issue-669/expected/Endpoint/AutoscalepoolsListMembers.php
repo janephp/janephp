@@ -6,17 +6,17 @@ class AutoscalepoolsListMembers extends \Jane\Generated\DigitalOcean\Runtime\Cli
 {
     protected $autoscale_pool_id;
     /**
-     * To list the Droplets in an autoscale pool, send a GET request to `/v2/droplets/autoscale/$AUTOSCALE_POOL_ID/members`.
-     *
-     * The response body will be a JSON object with a key of `droplets`. This will be
-     * set to an array containing information about each of the Droplets in the autoscale pool.
-     *
-     * @param string $autoscalePoolId A unique identifier for an autoscale pool.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
-     */
+    * To list the Droplets in an autoscale pool, send a GET request to `/v2/droplets/autoscale/$AUTOSCALE_POOL_ID/members`.
+    *
+    * The response body will be a JSON object with a key of `droplets`. This will be
+    * set to an array containing information about each of the Droplets in the autoscale pool.
+    *
+    * @param string $autoscalePoolId A unique identifier for an autoscale pool.
+    * @param array{
+    *    "per_page"?: int, //Number of items returned per page
+    *    "page"?: int, //Which 'page' of paginated results to return.
+    } $queryParameters
+    */
     public function __construct(string $autoscalePoolId, array $queryParameters = [])
     {
         $this->autoscale_pool_id = $autoscalePoolId;

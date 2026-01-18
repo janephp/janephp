@@ -5,15 +5,15 @@ namespace Jane\Generated\DigitalOcean\Endpoint;
 class VolumesDeleteByName extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint implements \Jane\Generated\DigitalOcean\Runtime\Client\Endpoint
 {
     /**
-     * Block storage volumes may also be deleted by name by sending a DELETE request with the volume's **name** and the **region slug** for the region it is located in as query parameters to `/v2/volumes?name=$VOLUME_NAME&region=nyc1`.
-     * No response body will be sent back, but the response code will indicate success. Specifically, the response code will be a 204, which means that the action was successful with no returned body data.
-     *
-     *
-     * @param array $queryParameters {
-     *     @var string $name The block storage volume's name.
-     *     @var string $region The slug identifier for the region where the resource is available.
-     * }
-     */
+    * Block storage volumes may also be deleted by name by sending a DELETE request with the volume's **name** and the **region slug** for the region it is located in as query parameters to `/v2/volumes?name=$VOLUME_NAME&region=nyc1`.
+    * No response body will be sent back, but the response code will indicate success. Specifically, the response code will be a 204, which means that the action was successful with no returned body data.
+    *
+    *
+    * @param array{
+    *    "name"?: string, //The block storage volume's name.
+    *    "region"?: string, //The slug identifier for the region where the resource is available.
+    } $queryParameters
+    */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

@@ -5,41 +5,41 @@ namespace Jane\Generated\DigitalOcean\Endpoint;
 class VolumeActionsPost extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint implements \Jane\Generated\DigitalOcean\Runtime\Client\Endpoint
 {
     /**
-     * To initiate an action on a block storage volume by Name, send a POST request to
-     * `~/v2/volumes/actions`. The body should contain the appropriate
-     * attributes for the respective action.
-     *
-     * ## Attach a Block Storage Volume to a Droplet
-     *
-     * | Attribute   | Details                                                             |
-     * | ----------- | ------------------------------------------------------------------- |
-     * | type        | This must be `attach`                                               |
-     * | volume_name | The name of the block storage volume                                |
-     * | droplet_id  | Set to the Droplet's ID                                             |
-     * | region      | Set to the slug representing the region where the volume is located |
-     *
-     * Each volume may only be attached to a single Droplet. However, up to fifteen
-     * volumes may be attached to a Droplet at a time. Pre-formatted volumes will be
-     * automatically mounted to Ubuntu, Debian, Fedora, Fedora Atomic, and CentOS
-     * Droplets created on or after April 26, 2018 when attached. On older Droplets,
-     * [additional configuration](https://docs.digitalocean.com/products/volumes/how-to/mount/)
-     * is required.
-     *
-     * ## Remove a Block Storage Volume from a Droplet
-     *
-     * | Attribute   | Details                                                             |
-     * | ----------- | ------------------------------------------------------------------- |
-     * | type        | This must be `detach`                                               |
-     * | volume_name | The name of the block storage volume                                |
-     * | droplet_id  | Set to the Droplet's ID                                             |
-     * | region      | Set to the slug representing the region where the volume is located |
-     *
-     * @param mixed $requestBody
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
-     */
+    * To initiate an action on a block storage volume by Name, send a POST request to
+    * `~/v2/volumes/actions`. The body should contain the appropriate
+    * attributes for the respective action.
+    *
+    * ## Attach a Block Storage Volume to a Droplet
+    *
+    * | Attribute   | Details                                                             |
+    * | ----------- | ------------------------------------------------------------------- |
+    * | type        | This must be `attach`                                               |
+    * | volume_name | The name of the block storage volume                                |
+    * | droplet_id  | Set to the Droplet's ID                                             |
+    * | region      | Set to the slug representing the region where the volume is located |
+    *
+    * Each volume may only be attached to a single Droplet. However, up to fifteen
+    * volumes may be attached to a Droplet at a time. Pre-formatted volumes will be
+    * automatically mounted to Ubuntu, Debian, Fedora, Fedora Atomic, and CentOS
+    * Droplets created on or after April 26, 2018 when attached. On older Droplets,
+    * [additional configuration](https://docs.digitalocean.com/products/volumes/how-to/mount/)
+    * is required.
+    *
+    * ## Remove a Block Storage Volume from a Droplet
+    *
+    * | Attribute   | Details                                                             |
+    * | ----------- | ------------------------------------------------------------------- |
+    * | type        | This must be `detach`                                               |
+    * | volume_name | The name of the block storage volume                                |
+    * | droplet_id  | Set to the Droplet's ID                                             |
+    * | region      | Set to the slug representing the region where the volume is located |
+    *
+    * @param mixed $requestBody
+    * @param array{
+    *    "per_page"?: int, //Number of items returned per page
+    *    "page"?: int, //Which 'page' of paginated results to return.
+    } $queryParameters
+    */
     public function __construct($requestBody, array $queryParameters = [])
     {
         $this->body = $requestBody;

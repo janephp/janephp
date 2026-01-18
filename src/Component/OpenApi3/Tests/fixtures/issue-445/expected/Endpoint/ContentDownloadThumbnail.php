@@ -8,15 +8,15 @@ class ContentDownloadThumbnail extends \PicturePark\API\Runtime\Client\BaseEndpo
     protected $size;
     protected $accept;
     /**
-     * Provides a lightweight endpoint to download content thumbnails.
-     * @param string $id The content ID.
-     * @param string $size Thumbnail size. Either small, medium or large.
-     * @param array $queryParameters {
-     *     @var int $width Optional width in pixels to resize image.
-     *     @var int $height Optional height in pixels to resize image.
-     * }
-     * @param array $accept Accept content header application/json|application/octet-stream
-     */
+    * Provides a lightweight endpoint to download content thumbnails.
+    * @param string $id The content ID.
+    * @param string $size Thumbnail size. Either small, medium or large.
+    * @param array{
+    *    "width"?: int, //Optional width in pixels to resize image.
+    *    "height"?: int, //Optional height in pixels to resize image.
+    } $queryParameters
+    * @param array $accept Accept content header application/json|application/octet-stream
+    */
     public function __construct(string $id, string $size, array $queryParameters = [], array $accept = [])
     {
         $this->id = $id;

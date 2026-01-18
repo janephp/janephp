@@ -6,22 +6,22 @@ class DropletsDestroyWithAssociatedResourcesDangerous extends \Jane\Generated\Di
 {
     protected $droplet_id;
     /**
-     * To destroy a Droplet along with all of its associated resources, send a DELETE
-     * request to the `/v2/droplets/$DROPLET_ID/destroy_with_associated_resources/dangerous`
-     * endpoint. The headers of this request must include an `X-Dangerous` key set to
-     * `true`. To preview which resources will be destroyed, first query the
-     * Droplet's associated resources. This operation _can not_ be reverse and should
-     * be used with caution.
-     *
-     * A successful response will include a 202 response code and no content. Use the
-     * status endpoint to check on the success or failure of the destruction of the
-     * individual resources.
-     *
-     * @param int $dropletId A unique identifier for a Droplet instance.
-     * @param array $headerParameters {
-     *     @var bool $X-Dangerous Acknowledge this action will destroy the Droplet and all associated resources and _can not_ be reversed.
-     * }
-     */
+    * To destroy a Droplet along with all of its associated resources, send a DELETE
+    * request to the `/v2/droplets/$DROPLET_ID/destroy_with_associated_resources/dangerous`
+    * endpoint. The headers of this request must include an `X-Dangerous` key set to
+    * `true`. To preview which resources will be destroyed, first query the
+    * Droplet's associated resources. This operation _can not_ be reverse and should
+    * be used with caution.
+    *
+    * A successful response will include a 202 response code and no content. Use the
+    * status endpoint to check on the success or failure of the destruction of the
+    * individual resources.
+    *
+    * @param int $dropletId A unique identifier for a Droplet instance.
+    * @param array{
+    *    "X-Dangerous": bool, //Acknowledge this action will destroy the Droplet and all associated resources and _can not_ be reversed.
+    } $headerParameters
+    */
     public function __construct(int $dropletId, array $headerParameters = [])
     {
         $this->droplet_id = $dropletId;

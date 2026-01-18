@@ -5,11 +5,11 @@ namespace PicturePark\API\Endpoint;
 class ContentPermissionSetGetPermissionsMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-     * Returns permissions for multiple content permission sets for the current user.
-     * @param array $queryParameters {
-     *     @var array $ids Ids
-     * }
-     */
+    * Returns permissions for multiple content permission sets for the current user.
+    * @param array{
+    *    "ids"?: array, //Ids
+    } $queryParameters
+    */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

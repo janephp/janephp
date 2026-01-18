@@ -6,15 +6,15 @@ class VpcsListPeerings extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseE
 {
     protected $vpc_id;
     /**
-     * To list all of a VPC's peerings, send a GET request to
-     * `/v2/vpcs/$VPC_ID/peerings`.
-     *
-     * @param string $vpcId A unique identifier for a VPC.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
-     */
+    * To list all of a VPC's peerings, send a GET request to
+    * `/v2/vpcs/$VPC_ID/peerings`.
+    *
+    * @param string $vpcId A unique identifier for a VPC.
+    * @param array{
+    *    "per_page"?: int, //Number of items returned per page
+    *    "page"?: int, //Which 'page' of paginated results to return.
+    } $queryParameters
+    */
     public function __construct(string $vpcId, array $queryParameters = [])
     {
         $this->vpc_id = $vpcId;

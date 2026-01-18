@@ -5,13 +5,13 @@ namespace Jane\Generated\DigitalOcean\Endpoint;
 class MonitoringGetDropletLoad15Metrics extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint implements \Jane\Generated\DigitalOcean\Runtime\Client\Endpoint
 {
     /**
-     * To retrieve 15 minute load average metrics for a given droplet, send a GET request to `/v2/monitoring/metrics/droplet/load_15`.
-     * @param array $queryParameters {
-     *     @var string $host_id The droplet ID.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
-     */
+    * To retrieve 15 minute load average metrics for a given droplet, send a GET request to `/v2/monitoring/metrics/droplet/load_15`.
+    * @param array{
+    *    "host_id": string, //The droplet ID.
+    *    "start": string, //UNIX timestamp to start metric window.
+    *    "end": string, //UNIX timestamp to end metric window.
+    } $queryParameters
+    */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

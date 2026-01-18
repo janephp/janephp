@@ -19,7 +19,7 @@ class Balance extends \ArrayObject
      */
     protected $monthToDateBalance;
     /**
-     * Current balance of the customer's most recent billing activity.  Does not reflect `month_to_date_usage`.
+     * Current balance of the customer's most recent billing activity. Does not reflect `month_to_date_usage`.
      *
      * @var string
      */
@@ -59,7 +59,7 @@ class Balance extends \ArrayObject
         return $this;
     }
     /**
-     * Current balance of the customer's most recent billing activity.  Does not reflect `month_to_date_usage`.
+     * Current balance of the customer's most recent billing activity. Does not reflect `month_to_date_usage`.
      *
      * @return string
      */
@@ -68,7 +68,7 @@ class Balance extends \ArrayObject
         return $this->accountBalance;
     }
     /**
-     * Current balance of the customer's most recent billing activity.  Does not reflect `month_to_date_usage`.
+     * Current balance of the customer's most recent billing activity. Does not reflect `month_to_date_usage`.
      *
      * @param string $accountBalance
      *

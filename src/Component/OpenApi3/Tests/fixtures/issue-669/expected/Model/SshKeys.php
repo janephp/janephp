@@ -13,13 +13,13 @@ class SshKeys extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * A unique identification number for this key. Can be used to embed a  specific SSH key into a Droplet.
+     * A unique identification number for this key. Can be used to embed a specific SSH key into a Droplet.
      *
      * @var int
      */
     protected $id;
     /**
-     * A unique identifier that differentiates this key from other keys using  a format that SSH recognizes. The fingerprint is created when the key is added to your account.
+     * A unique identifier that differentiates this key from other keys using a format that SSH recognizes. The fingerprint is created when the key is added to your account.
      *
      * @var string
      */
@@ -37,7 +37,7 @@ class SshKeys extends \ArrayObject
      */
     protected $name;
     /**
-     * A unique identification number for this key. Can be used to embed a  specific SSH key into a Droplet.
+     * A unique identification number for this key. Can be used to embed a specific SSH key into a Droplet.
      *
      * @return int
      */
@@ -46,7 +46,7 @@ class SshKeys extends \ArrayObject
         return $this->id;
     }
     /**
-     * A unique identification number for this key. Can be used to embed a  specific SSH key into a Droplet.
+     * A unique identification number for this key. Can be used to embed a specific SSH key into a Droplet.
      *
      * @param int $id
      *
@@ -59,7 +59,7 @@ class SshKeys extends \ArrayObject
         return $this;
     }
     /**
-     * A unique identifier that differentiates this key from other keys using  a format that SSH recognizes. The fingerprint is created when the key is added to your account.
+     * A unique identifier that differentiates this key from other keys using a format that SSH recognizes. The fingerprint is created when the key is added to your account.
      *
      * @return string
      */
@@ -68,7 +68,7 @@ class SshKeys extends \ArrayObject
         return $this->fingerprint;
     }
     /**
-     * A unique identifier that differentiates this key from other keys using  a format that SSH recognizes. The fingerprint is created when the key is added to your account.
+     * A unique identifier that differentiates this key from other keys using a format that SSH recognizes. The fingerprint is created when the key is added to your account.
      *
      * @param string $fingerprint
      *

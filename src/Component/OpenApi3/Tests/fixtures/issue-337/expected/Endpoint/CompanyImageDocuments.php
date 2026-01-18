@@ -5,16 +5,16 @@ namespace CreditSafe\API\Endpoint;
 class CompanyImageDocuments extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     /**
-     * Returns the available Images for a given Company connectId.
-     * @param array $queryParameters {
-     *     @var string $Id The company's connectId.
-     *     @var string $olderThan Returns Images older than this date. Use with newerThan parameter.
-     *     @var string $newerThan Returns Images newer than this date. Use with olderThan parameter.
-     * }
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
-     */
+    * Returns the available Images for a given Company connectId.
+    * @param array{
+    *    "Id"?: string, //The company's connectId.
+    *    "olderThan"?: string, //Returns Images older than this date. Use with newerThan parameter.
+    *    "newerThan"?: string, //Returns Images newer than this date. Use with olderThan parameter.
+    } $queryParameters
+    * @param array{
+    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+    } $headerParameters
+    */
     public function __construct(array $queryParameters = [], array $headerParameters = [])
     {
         $this->queryParameters = $queryParameters;

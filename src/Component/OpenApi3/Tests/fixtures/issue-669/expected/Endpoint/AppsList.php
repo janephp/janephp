@@ -5,13 +5,13 @@ namespace Jane\Generated\DigitalOcean\Endpoint;
 class AppsList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint implements \Jane\Generated\DigitalOcean\Runtime\Client\Endpoint
 {
     /**
-     * List all apps on your account. Information about the current active deployment as well as any in progress ones will also be included for each app.
-     * @param array $queryParameters {
-     *     @var int $page Which 'page' of paginated results to return.
-     *     @var int $per_page Number of items returned per page
-     *     @var bool $with_projects Whether the project_id of listed apps should be fetched and included.
-     * }
-     */
+    * List all apps on your account. Information about the current active deployment as well as any in progress ones will also be included for each app.
+    * @param array{
+    *    "page"?: int, //Which 'page' of paginated results to return.
+    *    "per_page"?: int, //Number of items returned per page
+    *    "with_projects"?: bool, //Whether the project_id of listed apps should be fetched and included.
+    } $queryParameters
+    */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

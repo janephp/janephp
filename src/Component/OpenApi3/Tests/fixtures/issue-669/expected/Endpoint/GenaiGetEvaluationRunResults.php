@@ -6,13 +6,13 @@ class GenaiGetEvaluationRunResults extends \Jane\Generated\DigitalOcean\Runtime\
 {
     protected $evaluation_run_uuid;
     /**
-     * To retrieve results of an evaluation run, send a GET request to `/v2/gen-ai/evaluation_runs/{evaluation_run_uuid}/results`.
-     * @param string $evaluationRunUuid Evaluation run UUID.
-     * @param array $queryParameters {
-     *     @var int $page Page number.
-     *     @var int $per_page Items per page.
-     * }
-     */
+    * To retrieve results of an evaluation run, send a GET request to `/v2/gen-ai/evaluation_runs/{evaluation_run_uuid}/results`.
+    * @param string $evaluationRunUuid Evaluation run UUID.
+    * @param array{
+    *    "page"?: int, //Page number.
+    *    "per_page"?: int, //Items per page.
+    } $queryParameters
+    */
     public function __construct(string $evaluationRunUuid, array $queryParameters = [])
     {
         $this->evaluation_run_uuid = $evaluationRunUuid;

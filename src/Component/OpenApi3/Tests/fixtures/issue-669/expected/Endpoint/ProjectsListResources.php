@@ -6,16 +6,16 @@ class ProjectsListResources extends \Jane\Generated\DigitalOcean\Runtime\Client\
 {
     protected $project_id;
     /**
-     * To list all your resources in a project, send a GET request to `/v2/projects/$PROJECT_ID/resources`.
-     *
-     * This endpoint will only return resources that you are authorized to see. For example, to see Droplets in a project, include the `droplet:read` scope.
-     *
-     * @param string $projectId A unique identifier for a project.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
-     */
+    * To list all your resources in a project, send a GET request to `/v2/projects/$PROJECT_ID/resources`.
+    *
+    * This endpoint will only return resources that you are authorized to see. For example, to see Droplets in a project, include the `droplet:read` scope.
+    *
+    * @param string $projectId A unique identifier for a project.
+    * @param array{
+    *    "per_page"?: int, //Number of items returned per page
+    *    "page"?: int, //Which 'page' of paginated results to return.
+    } $queryParameters
+    */
     public function __construct(string $projectId, array $queryParameters = [])
     {
         $this->project_id = $projectId;

@@ -8,14 +8,14 @@ class AppsGetExec extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoi
     protected $deployment_id;
     protected $component_name;
     /**
-     * Returns a websocket URL that allows sending/receiving console input and output to a component of the specified deployment if one exists. Optionally, the instance_name parameter can be provided to retrieve the exec URL for a specific instance. Note that instances are ephemeral; therefore, we recommended to avoid making persistent changes or such scripting around them.
-     * @param string $appId The app ID
-     * @param string $deploymentId The deployment ID
-     * @param string $componentName An optional component name. If set, logs will be limited to this component only.
-     * @param array $queryParameters {
-     *     @var string $instance_name The name of the actively running ephemeral compute instance
-     * }
-     */
+    * Returns a websocket URL that allows sending/receiving console input and output to a component of the specified deployment if one exists. Optionally, the instance_name parameter can be provided to retrieve the exec URL for a specific instance. Note that instances are ephemeral; therefore, we recommended to avoid making persistent changes or such scripting around them.
+    * @param string $appId The app ID
+    * @param string $deploymentId The deployment ID
+    * @param string $componentName An optional component name. If set, logs will be limited to this component only.
+    * @param array{
+    *    "instance_name"?: string, //The name of the actively running ephemeral compute instance
+    } $queryParameters
+    */
     public function __construct(string $appId, string $deploymentId, string $componentName, array $queryParameters = [])
     {
         $this->app_id = $appId;

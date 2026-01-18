@@ -5,11 +5,11 @@ namespace PicturePark\API\Endpoint;
 class SchemaPermissionSetGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-     * Gets multiple schema permission set details by the schema permission set IDs.
-     * @param array $queryParameters {
-     *     @var array $ids Ids
-     * }
-     */
+    * Gets multiple schema permission set details by the schema permission set IDs.
+    * @param array{
+    *    "ids"?: array, //Ids
+    } $queryParameters
+    */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

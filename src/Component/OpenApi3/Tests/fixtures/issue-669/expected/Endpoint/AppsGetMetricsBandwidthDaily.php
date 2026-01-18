@@ -6,12 +6,12 @@ class AppsGetMetricsBandwidthDaily extends \Jane\Generated\DigitalOcean\Runtime\
 {
     protected $app_id;
     /**
-     * Retrieve daily bandwidth usage metrics for a single app.
-     * @param string $appId The app ID
-     * @param array $queryParameters {
-     *     @var string $date Optional day to query. Only the date component of the timestamp will be considered. Default: yesterday.
-     * }
-     */
+    * Retrieve daily bandwidth usage metrics for a single app.
+    * @param string $appId The app ID
+    * @param array{
+    *    "date"?: string, //Optional day to query. Only the date component of the timestamp will be considered. Default: yesterday.
+    } $queryParameters
+    */
     public function __construct(string $appId, array $queryParameters = [])
     {
         $this->app_id = $appId;

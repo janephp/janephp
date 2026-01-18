@@ -5,11 +5,11 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
 class Foo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
-     * caca
-     * @param array $queryParameters {
-     *     @var string $bar
-     * }
-     */
+    * caca
+    * @param array{
+    *    "bar": string,
+    } $queryParameters
+    */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

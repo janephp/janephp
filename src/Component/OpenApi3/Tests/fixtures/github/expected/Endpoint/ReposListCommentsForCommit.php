@@ -8,15 +8,15 @@ class ReposListCommentsForCommit extends \Github\Runtime\Client\BaseEndpoint imp
     protected $repo;
     protected $commit_sha;
     /**
-     * Use the `:commit_sha` to specify the commit that will have its comments listed.
-     * @param string $owner
-     * @param string $repo
-     * @param string $commitSha commit_sha+ parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
-     */
+    * Use the `:commit_sha` to specify the commit that will have its comments listed.
+    * @param string $owner
+    * @param string $repo
+    * @param string $commitSha commit_sha+ parameter
+    * @param array{
+    *    "per_page"?: int, //Results per page (max 100)
+    *    "page"?: int, //Page number of the results to fetch.
+    } $queryParameters
+    */
     public function __construct(string $owner, string $repo, string $commitSha, array $queryParameters = [])
     {
         $this->owner = $owner;

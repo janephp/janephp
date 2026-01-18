@@ -19,7 +19,7 @@ class VolumeActionPostAttach extends \ArrayObject
      */
     protected $type;
     /**
-     * The slug identifier for the region where the resource will initially be  available.
+     * The slug identifier for the region where the resource will initially be available.
      *
      * @var string
      */
@@ -59,7 +59,7 @@ class VolumeActionPostAttach extends \ArrayObject
         return $this;
     }
     /**
-     * The slug identifier for the region where the resource will initially be  available.
+     * The slug identifier for the region where the resource will initially be available.
      *
      * @return string
      */
@@ -68,7 +68,7 @@ class VolumeActionPostAttach extends \ArrayObject
         return $this->region;
     }
     /**
-     * The slug identifier for the region where the resource will initially be  available.
+     * The slug identifier for the region where the resource will initially be available.
      *
      * @param string $region
      *

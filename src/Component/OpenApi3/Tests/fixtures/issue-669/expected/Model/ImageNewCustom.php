@@ -37,7 +37,7 @@ class ImageNewCustom extends \ArrayObject
      */
     protected $url;
     /**
-     * The slug identifier for the region where the resource will initially be  available.
+     * The slug identifier for the region where the resource will initially be available.
      *
      * @var string
      */
@@ -137,7 +137,7 @@ class ImageNewCustom extends \ArrayObject
         return $this;
     }
     /**
-     * The slug identifier for the region where the resource will initially be  available.
+     * The slug identifier for the region where the resource will initially be available.
      *
      * @return string
      */
@@ -146,7 +146,7 @@ class ImageNewCustom extends \ArrayObject
         return $this->region;
     }
     /**
-     * The slug identifier for the region where the resource will initially be  available.
+     * The slug identifier for the region where the resource will initially be available.
      *
      * @param string $region
      *

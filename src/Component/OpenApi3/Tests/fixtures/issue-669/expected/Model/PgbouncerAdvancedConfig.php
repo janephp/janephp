@@ -164,7 +164,7 @@ class PgbouncerAdvancedConfig extends \ArrayObject
         return $this->serverIdleTimeout;
     }
     /**
-     * Drops server connections if they have been idle more than this many seconds.  If 0, timeout is disabled. 
+     * Drops server connections if they have been idle more than this many seconds.  If 0, timeout is disabled.
      *
      * @param int $serverIdleTimeout
      *

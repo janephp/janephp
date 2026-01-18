@@ -6,13 +6,13 @@ class BusinessProcessWaitForStates extends \PicturePark\API\Runtime\Client\BaseE
 {
     protected $id;
     /**
-     * Wait for the business process to hit one of the given states.
-     * @param string $id The business process id.
-     * @param array $queryParameters {
-     *     @var array $states Business process states to wait for.
-     *     @var string $timeout The timeout to wait for completion.
-     * }
-     */
+    * Wait for the business process to hit one of the given states.
+    * @param string $id The business process id.
+    * @param array{
+    *    "states"?: array, //Business process states to wait for.
+    *    "timeout"?: string, //The timeout to wait for completion.
+    } $queryParameters
+    */
     public function __construct(string $id, array $queryParameters = [])
     {
         $this->id = $id;

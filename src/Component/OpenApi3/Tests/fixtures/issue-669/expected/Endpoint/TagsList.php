@@ -5,16 +5,16 @@ namespace Jane\Generated\DigitalOcean\Endpoint;
 class TagsList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint implements \Jane\Generated\DigitalOcean\Runtime\Client\Endpoint
 {
     /**
-     * To list all of your tags, you can send a GET request to `/v2/tags`.
-     *
-     * This endpoint will only return tagged resources that you are authorized to see
-     * (e.g. Droplets will only be returned if you have `droplet:read`).
-     *
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
-     */
+    * To list all of your tags, you can send a GET request to `/v2/tags`.
+    *
+    * This endpoint will only return tagged resources that you are authorized to see
+    * (e.g. Droplets will only be returned if you have `droplet:read`).
+    *
+    * @param array{
+    *    "per_page"?: int, //Number of items returned per page
+    *    "page"?: int, //Which 'page' of paginated results to return.
+    } $queryParameters
+    */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

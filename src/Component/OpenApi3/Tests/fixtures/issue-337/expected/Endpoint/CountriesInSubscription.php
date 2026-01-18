@@ -5,11 +5,11 @@ namespace CreditSafe\API\Endpoint;
 class CountriesInSubscription extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     /**
-     * Returns the available countries in your subscription by operation - Company Report, Director Report, Offline Reports and Monitoring.
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
-     */
+    * Returns the available countries in your subscription by operation - Company Report, Director Report, Offline Reports and Monitoring.
+    * @param array{
+    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+    } $headerParameters
+    */
     public function __construct(array $headerParameters = [])
     {
         $this->headerParameters = $headerParameters;

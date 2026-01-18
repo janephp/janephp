@@ -5,11 +5,11 @@ namespace Github\Endpoint;
 class LicensesGetAllCommonlyUsed extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
-     * @param array $queryParameters {
-     *     @var bool $featured
-     *     @var int $per_page Results per page (max 100)
-     * }
-     */
+    * @param array{
+    *    "featured"?: bool,
+    *    "per_page"?: int, //Results per page (max 100)
+    } $queryParameters
+    */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

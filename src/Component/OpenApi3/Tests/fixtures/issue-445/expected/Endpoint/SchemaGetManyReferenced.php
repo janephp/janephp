@@ -5,10 +5,10 @@ namespace PicturePark\API\Endpoint;
 class SchemaGetManyReferenced extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-     * @param array $queryParameters {
-     *     @var array $ids The schema IDs.
-     * }
-     */
+    * @param array{
+    *    "ids"?: array, //The schema IDs.
+    } $queryParameters
+    */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

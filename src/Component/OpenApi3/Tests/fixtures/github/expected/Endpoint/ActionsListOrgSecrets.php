@@ -6,13 +6,13 @@ class ActionsListOrgSecrets extends \Github\Runtime\Client\BaseEndpoint implemen
 {
     protected $org;
     /**
-     * Lists all secrets available in an organization without revealing their encrypted values. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint.
-     * @param string $org
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
-     */
+    * Lists all secrets available in an organization without revealing their encrypted values. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint.
+    * @param string $org
+    * @param array{
+    *    "per_page"?: int, //Results per page (max 100)
+    *    "page"?: int, //Page number of the results to fetch.
+    } $queryParameters
+    */
     public function __construct(string $org, array $queryParameters = [])
     {
         $this->org = $org;

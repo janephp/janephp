@@ -6,13 +6,13 @@ class GenaiListAgentsByAnthropicKey extends \Jane\Generated\DigitalOcean\Runtime
 {
     protected $uuid;
     /**
-     * List Agents by Anthropic Key.
-     * @param string $uuid Unique ID of Anthropic key
-     * @param array $queryParameters {
-     *     @var int $page Page number.
-     *     @var int $per_page Items per page.
-     * }
-     */
+    * List Agents by Anthropic Key.
+    * @param string $uuid Unique ID of Anthropic key
+    * @param array{
+    *    "page"?: int, //Page number.
+    *    "per_page"?: int, //Items per page.
+    } $queryParameters
+    */
     public function __construct(string $uuid, array $queryParameters = [])
     {
         $this->uuid = $uuid;

@@ -6,17 +6,17 @@ class AutoscalepoolsListHistory extends \Jane\Generated\DigitalOcean\Runtime\Cli
 {
     protected $autoscale_pool_id;
     /**
-     * To list all of the scaling history events of an autoscale pool, send a GET request to `/v2/droplets/autoscale/$AUTOSCALE_POOL_ID/history`.
-     *
-     * The response body will be a JSON object with a key of `history`. This will be
-     * set to an array containing objects each representing a history event.
-     *
-     * @param string $autoscalePoolId A unique identifier for an autoscale pool.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
-     */
+    * To list all of the scaling history events of an autoscale pool, send a GET request to `/v2/droplets/autoscale/$AUTOSCALE_POOL_ID/history`.
+    *
+    * The response body will be a JSON object with a key of `history`. This will be
+    * set to an array containing objects each representing a history event.
+    *
+    * @param string $autoscalePoolId A unique identifier for an autoscale pool.
+    * @param array{
+    *    "per_page"?: int, //Number of items returned per page
+    *    "page"?: int, //Which 'page' of paginated results to return.
+    } $queryParameters
+    */
     public function __construct(string $autoscalePoolId, array $queryParameters = [])
     {
         $this->autoscale_pool_id = $autoscalePoolId;

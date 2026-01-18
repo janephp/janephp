@@ -6,15 +6,15 @@ class NfsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint im
 {
     protected $nfs_id;
     /**
-     * To get an NFS share, send a GET request to `/v2/nfs/{nfs_id}?region=${region}`.
-     *
-     * A successful request will return the NFS share.
-     *
-     * @param string $nfsId The unique ID of the NFS share
-     * @param array $queryParameters {
-     *     @var string $region The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
-     * }
-     */
+    * To get an NFS share, send a GET request to `/v2/nfs/{nfs_id}?region=${region}`.
+    *
+    * A successful request will return the NFS share.
+    *
+    * @param string $nfsId The unique ID of the NFS share
+    * @param array{
+    *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
+    } $queryParameters
+    */
     public function __construct(string $nfsId, array $queryParameters = [])
     {
         $this->nfs_id = $nfsId;

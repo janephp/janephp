@@ -6,13 +6,13 @@ class PostMonitoringPortfoliosByPortfolioIdImport extends \CreditSafe\API\Runtim
 {
     protected $portfolioId;
     /**
-     * Import companies into a portfolio using .csv, .xls or .xlsx file. Additionally provide an email address to get notified when the import process is done.
-     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdImportPostBody $requestBody
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
-     */
+    * Import companies into a portfolio using .csv, .xls or .xlsx file. Additionally provide an email address to get notified when the import process is done.
+    * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+    * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdImportPostBody $requestBody
+    * @param array{
+    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+    } $headerParameters
+    */
     public function __construct(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdImportPostBody $requestBody, array $headerParameters = [])
     {
         $this->portfolioId = $portfolioId;

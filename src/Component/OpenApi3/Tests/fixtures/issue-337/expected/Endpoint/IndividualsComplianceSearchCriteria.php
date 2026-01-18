@@ -5,11 +5,11 @@ namespace CreditSafe\API\Endpoint;
 class IndividualsComplianceSearchCriteria extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     /**
-     * Returns the search parameters available to use when making a compliance search request against any Individual/Person `predefined Search`.
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
-     */
+    * Returns the search parameters available to use when making a compliance search request against any Individual/Person `predefined Search`.
+    * @param array{
+    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+    } $headerParameters
+    */
     public function __construct(array $headerParameters = [])
     {
         $this->headerParameters = $headerParameters;

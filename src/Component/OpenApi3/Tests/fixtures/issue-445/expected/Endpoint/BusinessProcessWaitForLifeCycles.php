@@ -6,13 +6,13 @@ class BusinessProcessWaitForLifeCycles extends \PicturePark\API\Runtime\Client\B
 {
     protected $id;
     /**
-     * Wait for the business process to hit one of the given life cycles.
-     * @param string $id The business process id.
-     * @param array $queryParameters {
-     *     @var array $lifeCycles Business process life cycles to wait for.
-     *     @var string $timeout The timeout to wait for completion.
-     * }
-     */
+    * Wait for the business process to hit one of the given life cycles.
+    * @param string $id The business process id.
+    * @param array{
+    *    "lifeCycles"?: array, //Business process life cycles to wait for.
+    *    "timeout"?: string, //The timeout to wait for completion.
+    } $queryParameters
+    */
     public function __construct(string $id, array $queryParameters = [])
     {
         $this->id = $id;

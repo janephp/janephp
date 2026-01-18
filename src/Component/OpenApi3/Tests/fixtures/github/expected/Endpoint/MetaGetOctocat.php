@@ -5,11 +5,11 @@ namespace Github\Endpoint;
 class MetaGetOctocat extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
-     * Get the octocat as ASCII art
-     * @param array $queryParameters {
-     *     @var string $s The words to show in Octocat's speech bubble
-     * }
-     */
+    * Get the octocat as ASCII art
+    * @param array{
+    *    "s"?: string, //The words to show in Octocat's speech bubble
+    } $queryParameters
+    */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
