@@ -158,7 +158,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
 
         return rtrim(
             \sprintf(
-                '*    "%s"%s: %s%s',
+                ' *    "%s"%s: %s%s',
                 $parameter->getName(),
                 $parameter->getRequired() ? '' : '?',
                 $type,

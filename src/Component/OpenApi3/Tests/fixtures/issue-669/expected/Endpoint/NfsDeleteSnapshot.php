@@ -6,15 +6,15 @@ class NfsDeleteSnapshot extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
 {
     protected $nfs_snapshot_id;
     /**
-    * To delete an NFS snapshot, send a DELETE request to `/v2/nfs/snapshots/{nfs_snapshot_id}?region=${region}`.
-    *
-    * A successful request will return a `204 No Content` status code.
-    *
-    * @param string $nfsSnapshotId The unique ID of the NFS snapshot
-    * @param array{
-    *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
-    } $queryParameters
-    */
+     * To delete an NFS snapshot, send a DELETE request to `/v2/nfs/snapshots/{nfs_snapshot_id}?region=${region}`.
+     *
+     * A successful request will return a `204 No Content` status code.
+     *
+     * @param string $nfsSnapshotId The unique ID of the NFS snapshot
+     * @param array{
+     *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
+     * } $queryParameters
+     */
     public function __construct(string $nfsSnapshotId, array $queryParameters = [])
     {
         $this->nfs_snapshot_id = $nfsSnapshotId;

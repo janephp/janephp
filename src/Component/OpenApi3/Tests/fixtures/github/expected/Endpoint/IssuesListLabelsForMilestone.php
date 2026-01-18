@@ -8,14 +8,14 @@ class IssuesListLabelsForMilestone extends \Github\Runtime\Client\BaseEndpoint i
     protected $repo;
     protected $milestone_number;
     /**
-    * @param string $owner
-    * @param string $repo
-    * @param int $milestoneNumber milestone_number parameter
-    * @param array{
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * @param string $owner
+     * @param string $repo
+     * @param int $milestoneNumber milestone_number parameter
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $owner, string $repo, int $milestoneNumber, array $queryParameters = [])
     {
         $this->owner = $owner;

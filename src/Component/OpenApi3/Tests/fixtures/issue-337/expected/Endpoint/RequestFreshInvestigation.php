@@ -5,12 +5,12 @@ namespace CreditSafe\API\Endpoint;
 class RequestFreshInvestigation extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     /**
-    * Places an order for a Fresh Investigation (Offline Report). Providing as much detail as possible about the Company, our team will use official sources and registries to quickly answer questions about a company’s stability and financial health. Fresh Investigations take 5.5 days on average to complete.
-    * @param null|\CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    */
+     * Places an order for a Fresh Investigation (Offline Report). Providing as much detail as possible about the Company, our team will use official sources and registries to quickly answer questions about a company’s stability and financial health. Fresh Investigations take 5.5 days on average to complete.
+     * @param null|\CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     */
     public function __construct(?\CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody = null, array $headerParameters = [])
     {
         $this->body = $requestBody;

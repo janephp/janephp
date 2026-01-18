@@ -5,17 +5,17 @@ namespace CreditSafe\API\Endpoint;
 class ListDecisionTrees extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     /**
-    * List available decision trees available.
-    * @param array{
-    *    "type"?: string, //Filter the list of available decision trees by the provided tree type.
-    *    "sortBy"?: string, //Sort results by this column. Null values of sort column are listed after non-nulls.
-    *    "sortDir"?: string,
-    *    "callRef"?: string, //Call Reference
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    */
+     * List available decision trees available.
+     * @param array{
+     *    "type"?: string, //Filter the list of available decision trees by the provided tree type.
+     *    "sortBy"?: string, //Sort results by this column. Null values of sort column are listed after non-nulls.
+     *    "sortDir"?: string,
+     *    "callRef"?: string, //Call Reference
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     */
     public function __construct(array $queryParameters = [], array $headerParameters = [])
     {
         $this->queryParameters = $queryParameters;

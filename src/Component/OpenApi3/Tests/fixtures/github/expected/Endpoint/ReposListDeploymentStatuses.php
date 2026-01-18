@@ -8,15 +8,15 @@ class ReposListDeploymentStatuses extends \Github\Runtime\Client\BaseEndpoint im
     protected $repo;
     protected $deployment_id;
     /**
-    * Users with pull access can view deployment statuses for a deployment:
-    * @param string $owner
-    * @param string $repo
-    * @param int $deploymentId deployment_id parameter
-    * @param array{
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * Users with pull access can view deployment statuses for a deployment:
+     * @param string $owner
+     * @param string $repo
+     * @param int $deploymentId deployment_id parameter
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $owner, string $repo, int $deploymentId, array $queryParameters = [])
     {
         $this->owner = $owner;

@@ -6,19 +6,19 @@ class DropletsListSnapshots extends \Jane\Generated\DigitalOcean\Runtime\Client\
 {
     protected $droplet_id;
     /**
-    * To retrieve the snapshots that have been created from a Droplet, send a GET
-    * request to `/v2/droplets/$DROPLET_ID/snapshots`.
-    *
-    * You will get back a JSON object that has a `snapshots` key. This will be set
-    * to an array of snapshot objects, each of which contain the standard Droplet
-    * snapshot attributes.
-    *
-    * @param int $dropletId A unique identifier for a Droplet instance.
-    * @param array{
-    *    "per_page"?: int, //Number of items returned per page
-    *    "page"?: int, //Which 'page' of paginated results to return.
-    } $queryParameters
-    */
+     * To retrieve the snapshots that have been created from a Droplet, send a GET
+     * request to `/v2/droplets/$DROPLET_ID/snapshots`.
+     *
+     * You will get back a JSON object that has a `snapshots` key. This will be set
+     * to an array of snapshot objects, each of which contain the standard Droplet
+     * snapshot attributes.
+     *
+     * @param int $dropletId A unique identifier for a Droplet instance.
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
+     */
     public function __construct(int $dropletId, array $queryParameters = [])
     {
         $this->droplet_id = $dropletId;

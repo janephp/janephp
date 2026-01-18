@@ -23,7 +23,7 @@ class ReposListForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint 
     *    "page"?: int, //Page number of the results to fetch.
     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
     *    "before"?: string, //Only show notifications updated before the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-    } $queryParameters
+    * } $queryParameters
     */
     public function __construct(array $queryParameters = [])
     {

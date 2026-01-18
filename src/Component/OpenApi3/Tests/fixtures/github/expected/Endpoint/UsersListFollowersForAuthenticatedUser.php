@@ -5,12 +5,12 @@ namespace Github\Endpoint;
 class UsersListFollowersForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
-    * Lists the people following the authenticated user.
-    * @param array{
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * Lists the people following the authenticated user.
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

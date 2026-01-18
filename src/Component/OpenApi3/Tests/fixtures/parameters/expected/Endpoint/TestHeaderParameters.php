@@ -5,15 +5,15 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
 class TestHeaderParameters extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
-    * @param array{
-    *    "testString"?: string,
-    *    "testInteger"?: int,
-    *    "testFloat"?: float,
-    *    "testArray"?: array,
-    *    "testRequired": string,
-    *    "testDefault"?: string,
-    } $headerParameters
-    */
+     * @param array{
+     *    "testString"?: string,
+     *    "testInteger"?: int,
+     *    "testFloat"?: float,
+     *    "testArray"?: array,
+     *    "testRequired": string,
+     *    "testDefault"?: string,
+     * } $headerParameters
+     */
     public function __construct(array $headerParameters = [])
     {
         $this->headerParameters = $headerParameters;

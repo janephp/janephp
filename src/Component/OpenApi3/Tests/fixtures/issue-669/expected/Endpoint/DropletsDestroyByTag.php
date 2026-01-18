@@ -5,19 +5,19 @@ namespace Jane\Generated\DigitalOcean\Endpoint;
 class DropletsDestroyByTag extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint implements \Jane\Generated\DigitalOcean\Runtime\Client\Endpoint
 {
     /**
-    * To delete **all** Droplets assigned to a specific tag, include the `tag_name`
-    * query parameter set to the name of the tag in your DELETE request. For
-    * example, `/v2/droplets?tag_name=$TAG_NAME`.
-    *
-    * This endpoint requires `tag:read` scope.
-    *
-    * A successful request will receive a 204 status code with no body in response.
-    * This indicates that the request was processed successfully.
-    *
-    * @param array{
-    *    "tag_name": string, //Specifies Droplets to be deleted by tag.
-    } $queryParameters
-    */
+     * To delete **all** Droplets assigned to a specific tag, include the `tag_name`
+     * query parameter set to the name of the tag in your DELETE request. For
+     * example, `/v2/droplets?tag_name=$TAG_NAME`.
+     *
+     * This endpoint requires `tag:read` scope.
+     *
+     * A successful request will receive a 204 status code with no body in response.
+     * This indicates that the request was processed successfully.
+     *
+     * @param array{
+     *    "tag_name": string, //Specifies Droplets to be deleted by tag.
+     * } $queryParameters
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

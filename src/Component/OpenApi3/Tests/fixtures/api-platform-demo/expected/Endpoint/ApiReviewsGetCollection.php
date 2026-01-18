@@ -6,17 +6,17 @@ class ApiReviewsGetCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpo
 {
     protected $accept;
     /**
-    * Retrieves the collection of Review resources.
-    * @param array{
-    *    "page"?: int, //The collection page number
-    *    "itemsPerPage"?: int, //The number of items per page
-    *    "order[id]"?: string,
-    *    "order[publicationDate]"?: string,
-    *    "book"?: string,
-    *    "book[]"?: array,
-    } $queryParameters
-    * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
-    */
+     * Retrieves the collection of Review resources.
+     * @param array{
+     *    "page"?: int, //The collection page number
+     *    "itemsPerPage"?: int, //The number of items per page
+     *    "order[id]"?: string,
+     *    "order[publicationDate]"?: string,
+     *    "book"?: string,
+     *    "book[]"?: array,
+     * } $queryParameters
+     * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
+     */
     public function __construct(array $queryParameters = [], array $accept = [])
     {
         $this->queryParameters = $queryParameters;

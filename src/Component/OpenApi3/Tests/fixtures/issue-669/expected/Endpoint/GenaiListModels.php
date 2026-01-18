@@ -19,7 +19,7 @@ class GenaiListModels extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
     *    "public_only"?: bool, //Only include models that are publicly available.
     *    "page"?: int, //Page number.
     *    "per_page"?: int, //Items per page.
-    } $queryParameters
+    * } $queryParameters
     */
     public function __construct(array $queryParameters = [])
     {

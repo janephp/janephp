@@ -5,12 +5,12 @@ namespace Jane\Generated\DigitalOcean\Endpoint;
 class InvoicesList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint implements \Jane\Generated\DigitalOcean\Runtime\Client\Endpoint
 {
     /**
-    * To retrieve a list of all invoices, send a GET request to `/v2/customers/my/invoices`.
-    * @param array{
-    *    "per_page"?: int, //Number of items returned per page
-    *    "page"?: int, //Which 'page' of paginated results to return.
-    } $queryParameters
-    */
+     * To retrieve a list of all invoices, send a GET request to `/v2/customers/my/invoices`.
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

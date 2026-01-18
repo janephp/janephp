@@ -8,14 +8,14 @@ class ReposListReleaseAssets extends \Github\Runtime\Client\BaseEndpoint impleme
     protected $repo;
     protected $release_id;
     /**
-    * @param string $owner
-    * @param string $repo
-    * @param int $releaseId release_id parameter
-    * @param array{
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * @param string $owner
+     * @param string $repo
+     * @param int $releaseId release_id parameter
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $owner, string $repo, int $releaseId, array $queryParameters = [])
     {
         $this->owner = $owner;

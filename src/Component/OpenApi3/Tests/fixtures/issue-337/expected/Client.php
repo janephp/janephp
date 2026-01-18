@@ -18,1236 +18,1179 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\GenerateAuthenticationToken($requestBody), $fetch);
     }
     /**
-    * Endpoint to search for Companies based on the provided Search Criteria. To get the most relevant results, it is recommended to use a unique identifier such as `regNo` where available. If a unique identifier is not available, use a combination of the companies registered `postCode` and `name` for the next best hit rate.
-    * @param array{
-    *    "countries": string, //A Comma-separated list of country codes to search for Companies in. The list takes ISO/Alpha 2 format country codes. For example US,GB represents searching for Companies in the United States and Great Britain.
-    *    "language"?: string, //Search Language -  Typically only used for Countries where more than one  Company Names exist in different languages. Such as Companies with a Japanese Kanji and English names.
-    *    "id"?: string, //connectId - The primary Company identifier that is used to uniquely identify all companies across Creditsafes Universe and Partner Network. This is returned on all Company Search Results. Use this field to use in other operations such as Ordering Company Credit Report by Id, and Adding Company to Monitoing Portfolio. </br></br> [Searching by connectID is a slightly redundant operation (can be used as a fast-lookup to Search Result fields) as the purpose of Search is to obtain this identifier].
-    *    "safeNo"?: string, //Safe Number - Creditsafe's identifier on all Companies owned in the Creditsafe Universe. This is returned on all Company Search Results
-    *    "regNo"?: string, //Local Company Identifier - The Company identifier typically associated with a Government Filing Agency. i.e. French SIREN/SIRET, United Kingdom Companies House CRN.
-    *    "vatNo"?: string, //Company VAT Number
-    *    "name"?: string, //Company Name
-    *    "tradeName"?: string, //Trade Name of the Company, typically used in Countries where Name is not uniquely registered.
-    *    "acronym"?: string, //A (non-unique) identifier to look for Companies by their more commonly known acronym rather than their lesser known full name. Acronym is predominantly available on French Companies.
-    *    "exact"?: bool, //Provide as true to find Companies matching a Name exactly.
-    *    "address"?: string,
-    *    "street"?: string, //Address part identifier - Street of the Company
-    *    "houseNo"?: string, //Address part identifier - House/Building Number of the Company
-    *    "city"?: string, //Address part identifier - City of the Company
-    *    "postCode"?: string, //Address part identifier - Postcode/Zip Code of the Company. Can be provided partially to extend to a region with a * as a wildcard. I.e. CF* can represnt all postcodes starting with CF.
-    *    "province"?: string, //Address part identifier - Province/State of the Company
-    *    "phone"?: string, //Phone Number of the Company
-    *    "officeType"?: string, //Indicates whether the Company is a Head Office or a Branch
-    *    "status"?: string, //Indicates whether the Company is Active/Trading
-    *    "type"?: string, //Indicates whether the Company is Limited or NonLimited. Countries without a concept of Limited/NonLimited Companies will not be affected by this parameter
-    *    "page"?: int, //Page number
-    *    "pageSize"?: int, //Number of Companies per page
-    *    "callRef"?: string, //Call Reference
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\CompanySearchBadRequestException
-    * @throws \CreditSafe\API\Exception\CompanySearchUnauthorizedException
-    * @throws \CreditSafe\API\Exception\CompanySearchForbiddenException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Endpoint to search for Companies based on the provided Search Criteria. To get the most relevant results, it is recommended to use a unique identifier such as `regNo` where available. If a unique identifier is not available, use a combination of the companies registered `postCode` and `name` for the next best hit rate.
+     * @param array{
+     *    "countries": string, //A Comma-separated list of country codes to search for Companies in. The list takes ISO/Alpha 2 format country codes. For example US,GB represents searching for Companies in the United States and Great Britain.
+     *    "language"?: string, //Search Language -  Typically only used for Countries where more than one  Company Names exist in different languages. Such as Companies with a Japanese Kanji and English names.
+     *    "id"?: string, //connectId - The primary Company identifier that is used to uniquely identify all companies across Creditsafes Universe and Partner Network. This is returned on all Company Search Results. Use this field to use in other operations such as Ordering Company Credit Report by Id, and Adding Company to Monitoing Portfolio. </br></br> [Searching by connectID is a slightly redundant operation (can be used as a fast-lookup to Search Result fields) as the purpose of Search is to obtain this identifier].
+     *    "safeNo"?: string, //Safe Number - Creditsafe's identifier on all Companies owned in the Creditsafe Universe. This is returned on all Company Search Results
+     *    "regNo"?: string, //Local Company Identifier - The Company identifier typically associated with a Government Filing Agency. i.e. French SIREN/SIRET, United Kingdom Companies House CRN.
+     *    "vatNo"?: string, //Company VAT Number
+     *    "name"?: string, //Company Name
+     *    "tradeName"?: string, //Trade Name of the Company, typically used in Countries where Name is not uniquely registered.
+     *    "acronym"?: string, //A (non-unique) identifier to look for Companies by their more commonly known acronym rather than their lesser known full name. Acronym is predominantly available on French Companies.
+     *    "exact"?: bool, //Provide as true to find Companies matching a Name exactly.
+     *    "address"?: string,
+     *    "street"?: string, //Address part identifier - Street of the Company
+     *    "houseNo"?: string, //Address part identifier - House/Building Number of the Company
+     *    "city"?: string, //Address part identifier - City of the Company
+     *    "postCode"?: string, //Address part identifier - Postcode/Zip Code of the Company. Can be provided partially to extend to a region with a * as a wildcard. I.e. CF* can represnt all postcodes starting with CF.
+     *    "province"?: string, //Address part identifier - Province/State of the Company
+     *    "phone"?: string, //Phone Number of the Company
+     *    "officeType"?: string, //Indicates whether the Company is a Head Office or a Branch
+     *    "status"?: string, //Indicates whether the Company is Active/Trading
+     *    "type"?: string, //Indicates whether the Company is Limited or NonLimited. Countries without a concept of Limited/NonLimited Companies will not be affected by this parameter
+     *    "page"?: int, //Page number
+     *    "pageSize"?: int, //Number of Companies per page
+     *    "callRef"?: string, //Call Reference
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\CompanySearchBadRequestException
+     * @throws \CreditSafe\API\Exception\CompanySearchUnauthorizedException
+     * @throws \CreditSafe\API\Exception\CompanySearchForbiddenException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function companySearch(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CompanySearch($queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Orders a Company's Credit Report by connectId. Set the content-type of the request to `application\pdf` to receive a PDF of the report instead of JSON.
-    * @param string $id The connectId (optionally Safe Number where available) of the Company required to order their Credit Report. Obtained from `/companies` search results.
-    * @param array{
-    *    "language"?: string, //Report Language - The JSON structure of the Report is language invariant, but field content will return as the given language, where available.
-    *    "template"?: string, //Optional parameter to request a Templated Company Report. A Template adds/reduces sections of the Credit Report depending on your subscription. Do not include this parameter if you have not been given a template to use.
-    *    "customData"?: string, //A Key-Value pair (as a string format key::value) that is required for certain Report requests. I.e. German Report Reason Code. Use /reportcustomdata/{country} endpoint to see the necessary structure/values.
-    *    "callRef"?: string, //Call Reference
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\CompanyCreditReportBadRequestException
-    * @throws \CreditSafe\API\Exception\CompanyCreditReportUnauthorizedException
-    * @throws \CreditSafe\API\Exception\CompanyCreditReportForbiddenException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Orders a Company's Credit Report by connectId. Set the content-type of the request to `application\pdf` to receive a PDF of the report instead of JSON.
+     * @param string $id The connectId (optionally Safe Number where available) of the Company required to order their Credit Report. Obtained from `/companies` search results.
+     * @param array{
+     *    "language"?: string, //Report Language - The JSON structure of the Report is language invariant, but field content will return as the given language, where available.
+     *    "template"?: string, //Optional parameter to request a Templated Company Report. A Template adds/reduces sections of the Credit Report depending on your subscription. Do not include this parameter if you have not been given a template to use.
+     *    "customData"?: string, //A Key-Value pair (as a string format key::value) that is required for certain Report requests. I.e. German Report Reason Code. Use /reportcustomdata/{country} endpoint to see the necessary structure/values.
+     *    "callRef"?: string, //Call Reference
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\CompanyCreditReportBadRequestException
+     * @throws \CreditSafe\API\Exception\CompanyCreditReportUnauthorizedException
+     * @throws \CreditSafe\API\Exception\CompanyCreditReportForbiddenException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function companyCreditReport(string $id, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CompanyCreditReport($id, $queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Returns the set of available Company Search parameters/fields for a provided list of countries.
-    * @param array{
-    *    "countries"?: string, //A comma separated list of ISO/Alpha 2 format country codes, or singular country Code. e.g. US,GB will return the common searchable Company fields in the United States and Great Britain.
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\CompanySearchCriteriaBadRequestException
-    * @throws \CreditSafe\API\Exception\CompanySearchCriteriaUnauthorizedException
-    * @throws \CreditSafe\API\Exception\CompanySearchCriteriaForbiddenException
-    * @throws \CreditSafe\API\Exception\CompanySearchCriteriaNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Returns the set of available Company Search parameters/fields for a provided list of countries.
+     * @param array{
+     *    "countries"?: string, //A comma separated list of ISO/Alpha 2 format country codes, or singular country Code. e.g. US,GB will return the common searchable Company fields in the United States and Great Britain.
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\CompanySearchCriteriaBadRequestException
+     * @throws \CreditSafe\API\Exception\CompanySearchCriteriaUnauthorizedException
+     * @throws \CreditSafe\API\Exception\CompanySearchCriteriaForbiddenException
+     * @throws \CreditSafe\API\Exception\CompanySearchCriteriaNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function companySearchCriteria(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CompanySearchCriteria($queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Returns the JSON schema of the companies/{connectId} endpoint for implementation in strong-typed languages.
-    * @param string $countryCode ISO2 / Alpha 2 Country Code
-    * @param array{
-    *    "section"?: string, //Use CompanyReportResponse for the Company Credit Report JSON schema, DirectorReportResponse for the Director Report JSON schema.
-    *    "template"?: string, //For Templated Company Report JSON Schemas
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\CompanyReportJSONSchemaUnauthorizedException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Returns the JSON schema of the companies/{connectId} endpoint for implementation in strong-typed languages.
+     * @param string $countryCode ISO2 / Alpha 2 Country Code
+     * @param array{
+     *    "section"?: string, //Use CompanyReportResponse for the Company Credit Report JSON schema, DirectorReportResponse for the Director Report JSON schema.
+     *    "template"?: string, //For Templated Company Report JSON Schemas
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\CompanyReportJSONSchemaUnauthorizedException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function companyReportJSONSchema(string $countryCode, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CompanyReportJSONSchema($countryCode, $queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Returns the available countries in your subscription by operation - Company Report, Director Report, Offline Reports and Monitoring.
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\CountriesInSubscriptionBadRequestException
-    * @throws \CreditSafe\API\Exception\CountriesInSubscriptionUnauthorizedException
-    *
-    * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\AccessCountriesResponse : \Psr\Http\Message\ResponseInterface)
-    */
+     * Returns the available countries in your subscription by operation - Company Report, Director Report, Offline Reports and Monitoring.
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\CountriesInSubscriptionBadRequestException
+     * @throws \CreditSafe\API\Exception\CountriesInSubscriptionUnauthorizedException
+     *
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\AccessCountriesResponse : \Psr\Http\Message\ResponseInterface)
+     */
     public function countriesInSubscription(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CountriesInSubscription($headerParameters), $fetch);
     }
     /**
-    * Endpoint to find Directors based on search criteria to order a Creditsafe Director Report.
-    * @param array{
-    *    "countries": string, //A comma-separated list of countries to search for People with registered directorships against. The list takes ISO/Alpha 2 format country codes. For example US,GB represents searching for People/Directorships in the United States and Great Britain.
-    *    "id"?: string, //connectId - The primary Company identifier that is used to uniquely identify all companies across Creditsafe's Universe and Partner Network.
-    *    "regNo"?: string, //Local Company Identifier - The Company identifier typically associated with a Government Filing Agency. i.e. French SIREN/SIRET, United Kingdom Companies House CRN
-    *    "safeNumber"?: string, //Safe Number - Creditsafe's identifier on all Companies owned in the Creditsafe Universe. This is returned on all Company Search Results
-    *    "peopleId"?: string, //Person/Director Identifier - used to order a Director Report.
-    *    "firstName"?: string, //Person's First Name.
-    *    "lastName"?: string, //Person's Last Name
-    *    "companyName"?: string, //Company Name of the Director's Company (Only use this for Directorship Searches, unavailable in Director Search)
-    *    "companyNumber"?: string, //Local Registration Idenitifier of the Director's Company (Only use this for Directorship Searches, unavailable in Director Search).
-    *    "localDirectorNumber"?: string, //Local Identifier of the Director, the PNR in GB.
-    *    "dateOfBirth"?: string, //Person DOB - provide YYYY-MM-DD or YYYY-MM format.
-    *    "page"?: int, //Page number
-    *    "pageSize"?: int, //Number of directors per page
-    *    "callRef"?: string, //Call Reference
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\PeopleDirectorSearchBadRequestException
-    * @throws \CreditSafe\API\Exception\PeopleDirectorSearchUnauthorizedException
-    * @throws \CreditSafe\API\Exception\PeopleDirectorSearchForbiddenException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Endpoint to find Directors based on search criteria to order a Creditsafe Director Report.
+     * @param array{
+     *    "countries": string, //A comma-separated list of countries to search for People with registered directorships against. The list takes ISO/Alpha 2 format country codes. For example US,GB represents searching for People/Directorships in the United States and Great Britain.
+     *    "id"?: string, //connectId - The primary Company identifier that is used to uniquely identify all companies across Creditsafe's Universe and Partner Network.
+     *    "regNo"?: string, //Local Company Identifier - The Company identifier typically associated with a Government Filing Agency. i.e. French SIREN/SIRET, United Kingdom Companies House CRN
+     *    "safeNumber"?: string, //Safe Number - Creditsafe's identifier on all Companies owned in the Creditsafe Universe. This is returned on all Company Search Results
+     *    "peopleId"?: string, //Person/Director Identifier - used to order a Director Report.
+     *    "firstName"?: string, //Person's First Name.
+     *    "lastName"?: string, //Person's Last Name
+     *    "companyName"?: string, //Company Name of the Director's Company (Only use this for Directorship Searches, unavailable in Director Search)
+     *    "companyNumber"?: string, //Local Registration Idenitifier of the Director's Company (Only use this for Directorship Searches, unavailable in Director Search).
+     *    "localDirectorNumber"?: string, //Local Identifier of the Director, the PNR in GB.
+     *    "dateOfBirth"?: string, //Person DOB - provide YYYY-MM-DD or YYYY-MM format.
+     *    "page"?: int, //Page number
+     *    "pageSize"?: int, //Number of directors per page
+     *    "callRef"?: string, //Call Reference
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\PeopleDirectorSearchBadRequestException
+     * @throws \CreditSafe\API\Exception\PeopleDirectorSearchUnauthorizedException
+     * @throws \CreditSafe\API\Exception\PeopleDirectorSearchForbiddenException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function peopleDirectorSearch(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\PeopleDirectorSearch($queryParameters, $headerParameters), $fetch);
     }
     /**
-    * @param string $personId Identifier of the Person/Director required to order their Director Report. Obtained from `/people` search results.
-    * @param array{
-    *    "language"?: string, //Report Language - The JSON structure of the Report is language invariant, but field content will return as the given language, where available.
-    *    "callRef"?: string, //Call Reference
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\DirectorReportBadRequestException
-    * @throws \CreditSafe\API\Exception\DirectorReportUnauthorizedException
-    * @throws \CreditSafe\API\Exception\DirectorReportNotFoundException
-    *
-    * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\GbPeopleReportReponse : \Psr\Http\Message\ResponseInterface)
-    */
+     * @param string $personId Identifier of the Person/Director required to order their Director Report. Obtained from `/people` search results.
+     * @param array{
+     *    "language"?: string, //Report Language - The JSON structure of the Report is language invariant, but field content will return as the given language, where available.
+     *    "callRef"?: string, //Call Reference
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\DirectorReportBadRequestException
+     * @throws \CreditSafe\API\Exception\DirectorReportUnauthorizedException
+     * @throws \CreditSafe\API\Exception\DirectorReportNotFoundException
+     *
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\GbPeopleReportReponse : \Psr\Http\Message\ResponseInterface)
+     */
     public function directorReport(string $personId, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\DirectorReport($personId, $queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Returns the set of available People Search parameters/fields for a provided list of countries.
-    * @param array{
-    *    "countries"?: string, //A comma separated list of ISO/Alpha 2 format country codes, or singular country Code. e.g. US,GB will return the common searchable People/Director fields in the United States and Great Britain.
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\PeopleDirectorSearchCriteriaBadRequestException
-    * @throws \CreditSafe\API\Exception\PeopleDirectorSearchCriteriaUnauthorizedException
-    * @throws \CreditSafe\API\Exception\PeopleDirectorSearchCriteriaForbiddenException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Returns the set of available People Search parameters/fields for a provided list of countries.
+     * @param array{
+     *    "countries"?: string, //A comma separated list of ISO/Alpha 2 format country codes, or singular country Code. e.g. US,GB will return the common searchable People/Director fields in the United States and Great Britain.
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\PeopleDirectorSearchCriteriaBadRequestException
+     * @throws \CreditSafe\API\Exception\PeopleDirectorSearchCriteriaUnauthorizedException
+     * @throws \CreditSafe\API\Exception\PeopleDirectorSearchCriteriaForbiddenException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function peopleDirectorSearchCriteria(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\PeopleDirectorSearchCriteria($queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Returns the available Images for a given Company connectId.
-    * @param array{
-    *    "Id"?: string, //The company's connectId.
-    *    "olderThan"?: string, //Returns Images older than this date. Use with newerThan parameter.
-    *    "newerThan"?: string, //Returns Images newer than this date. Use with olderThan parameter.
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\CompanyImageDocumentsUnauthorizedException
-    * @throws \CreditSafe\API\Exception\CompanyImageDocumentsNotFoundException
-    *
-    * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\ListCompanyImages : \Psr\Http\Message\ResponseInterface)
-    */
+     * Returns the available Images for a given Company connectId.
+     * @param array{
+     *    "Id"?: string, //The company's connectId.
+     *    "olderThan"?: string, //Returns Images older than this date. Use with newerThan parameter.
+     *    "newerThan"?: string, //Returns Images newer than this date. Use with olderThan parameter.
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\CompanyImageDocumentsUnauthorizedException
+     * @throws \CreditSafe\API\Exception\CompanyImageDocumentsNotFoundException
+     *
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\ListCompanyImages : \Psr\Http\Message\ResponseInterface)
+     */
     public function companyImageDocuments(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CompanyImageDocuments($queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Returns the type of Image that can be returned by for additional meta data.
-    * @param array{
-    *    "countries"?: string, //Filter Images by country.
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\ImageDocumentCategoryTypesUnauthorizedException
-    * @throws \CreditSafe\API\Exception\ImageDocumentCategoryTypesNotFoundException
-    *
-    * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\GbImageTypesResponse : \Psr\Http\Message\ResponseInterface)
-    */
+     * Returns the type of Image that can be returned by for additional meta data.
+     * @param array{
+     *    "countries"?: string, //Filter Images by country.
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\ImageDocumentCategoryTypesUnauthorizedException
+     * @throws \CreditSafe\API\Exception\ImageDocumentCategoryTypesNotFoundException
+     *
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\GbImageTypesResponse : \Psr\Http\Message\ResponseInterface)
+     */
     public function imageDocumentCategoryTypes(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ImageDocumentCategoryTypes($queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Endpoint to order an Image Document by Image ID.
-    * @param string $imageId Image ID retrieved from `images/companies`
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\CompanyImageBadRequestException
-    * @throws \CreditSafe\API\Exception\CompanyImageForbiddenException
-    * @throws \CreditSafe\API\Exception\CompanyImageNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Endpoint to order an Image Document by Image ID.
+     * @param string $imageId Image ID retrieved from `images/companies`
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\CompanyImageBadRequestException
+     * @throws \CreditSafe\API\Exception\CompanyImageForbiddenException
+     * @throws \CreditSafe\API\Exception\CompanyImageNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function companyImage(string $imageId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CompanyImage($imageId, $headerParameters), $fetch);
     }
     /**
-    * Returns a list of your submitted Fresh Investigation Orders.
-    * @param array{
-    *    "page"?: int, //Starting page number (indexed from 0)
-    *    "pageSize"?: int, //Number of items to return per Page (max 1000)
-    *    "transactionId"?: string, //Fresh Investigation Identifier used internally and with our data partners.
-    *    "reportCreatedAfter"?: string, //Returns Fresh Investigations processed after this date
-    *    "reportCreatedBefore"?: string, //Returns ordered Fresh Investigations that were processed before this date
-    *    "createdBefore"?: string, //Returns Fresh Investigations created before this date
-    *    "createdSince"?: string, //Returns ordered Fresh Investigations created after this date
-    *    "lookUpOrderBy"?: string, //Use to search for your Fresh Investigations by either the returned Company Details in the `GET` `freshInvestigations/{orderId}` endpoint or your supplied Search Criteria in the `POST` `/freshInvestigations` endpoint
-    *    "companyDetailsCountry"?: string, //Looks for your returned Fresh Investigations where the returned Company Country is named this. Use with lookUpOrderBy=CompanyDetails
-    *    "companyDetailsName"?: string, //Looks for your returned Fresh Investigations where the returned Company Name is named this. Use with lookUpOrderBy=CompanyDetails
-    *    "searchCriteriaCountry"?: string, //Looks for your returned Fresh Investigations where your submitted Search Criteria Company Country is this. Use with lookUpOrderBy=searchCriteria
-    *    "searchCriteriaName"?: string, //Looks for your Fresh Investigations where your submitted Search Criteria Company Name is this. Use with lookUpOrderBy=searchCriteria
-    *    "sortBy"?: string, //Sorts  returned Fresh Investigations by this field
-    *    "sortDir"?: string, //Sorts returned Fresh Investigations by this direction
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsBadRequestException
-    * @throws \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsUnauthorizedException
-    * @throws \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsForbiddenException
-    * @throws \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsNotFoundException
-    *
-    * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\ListFreshInvestigationResponse : \Psr\Http\Message\ResponseInterface)
-    */
+     * Returns a list of your submitted Fresh Investigation Orders.
+     * @param array{
+     *    "page"?: int, //Starting page number (indexed from 0)
+     *    "pageSize"?: int, //Number of items to return per Page (max 1000)
+     *    "transactionId"?: string, //Fresh Investigation Identifier used internally and with our data partners.
+     *    "reportCreatedAfter"?: string, //Returns Fresh Investigations processed after this date
+     *    "reportCreatedBefore"?: string, //Returns ordered Fresh Investigations that were processed before this date
+     *    "createdBefore"?: string, //Returns Fresh Investigations created before this date
+     *    "createdSince"?: string, //Returns ordered Fresh Investigations created after this date
+     *    "lookUpOrderBy"?: string, //Use to search for your Fresh Investigations by either the returned Company Details in the `GET` `freshInvestigations/{orderId}` endpoint or your supplied Search Criteria in the `POST` `/freshInvestigations` endpoint
+     *    "companyDetailsCountry"?: string, //Looks for your returned Fresh Investigations where the returned Company Country is named this. Use with lookUpOrderBy=CompanyDetails
+     *    "companyDetailsName"?: string, //Looks for your returned Fresh Investigations where the returned Company Name is named this. Use with lookUpOrderBy=CompanyDetails
+     *    "searchCriteriaCountry"?: string, //Looks for your returned Fresh Investigations where your submitted Search Criteria Company Country is this. Use with lookUpOrderBy=searchCriteria
+     *    "searchCriteriaName"?: string, //Looks for your Fresh Investigations where your submitted Search Criteria Company Name is this. Use with lookUpOrderBy=searchCriteria
+     *    "sortBy"?: string, //Sorts  returned Fresh Investigations by this field
+     *    "sortDir"?: string, //Sorts returned Fresh Investigations by this direction
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsBadRequestException
+     * @throws \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsUnauthorizedException
+     * @throws \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsForbiddenException
+     * @throws \CreditSafe\API\Exception\ListSubmittedFreshInvestigationsNotFoundException
+     *
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\ListFreshInvestigationResponse : \Psr\Http\Message\ResponseInterface)
+     */
     public function listSubmittedFreshInvestigations(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ListSubmittedFreshInvestigations($queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Places an order for a Fresh Investigation (Offline Report). Providing as much detail as possible about the Company, our team will use official sources and registries to quickly answer questions about a company’s stability and financial health. Fresh Investigations take 5.5 days on average to complete.
-    * @param null|\CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\RequestFreshInvestigationBadRequestException
-    * @throws \CreditSafe\API\Exception\RequestFreshInvestigationUnauthorizedException
-    * @throws \CreditSafe\API\Exception\RequestFreshInvestigationForbiddenException
-    * @throws \CreditSafe\API\Exception\RequestFreshInvestigationNotFoundException
-    *
-    * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\SubmittedFreshInvestigationRepsonse : \Psr\Http\Message\ResponseInterface)
-    */
+     * Places an order for a Fresh Investigation (Offline Report). Providing as much detail as possible about the Company, our team will use official sources and registries to quickly answer questions about a company’s stability and financial health. Fresh Investigations take 5.5 days on average to complete.
+     * @param null|\CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\RequestFreshInvestigationBadRequestException
+     * @throws \CreditSafe\API\Exception\RequestFreshInvestigationUnauthorizedException
+     * @throws \CreditSafe\API\Exception\RequestFreshInvestigationForbiddenException
+     * @throws \CreditSafe\API\Exception\RequestFreshInvestigationNotFoundException
+     *
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\SubmittedFreshInvestigationRepsonse : \Psr\Http\Message\ResponseInterface)
+     */
     public function requestFreshInvestigation(?\CreditSafe\API\Model\CreateFreshInvestigationRequest $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\RequestFreshInvestigation($requestBody, $headerParameters), $fetch);
     }
     /**
-    * Currently depreciated as the order may already be in progress with our investigation team. To delete an ongoing Fresh Investigation, please get in touch with us at Group.Help@creditsafe.com quoting the `Transaction Id` against the order in `/freshinvestigations/{orderId}`
-    * @param string $orderId
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\DeletePendingFreshInvesitgationBadRequestException
-    * @throws \CreditSafe\API\Exception\DeletePendingFreshInvesitgationUnauthorizedException
-    * @throws \CreditSafe\API\Exception\DeletePendingFreshInvesitgationForbiddenException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Currently depreciated as the order may already be in progress with our investigation team. To delete an ongoing Fresh Investigation, please get in touch with us at Group.Help@creditsafe.com quoting the `Transaction Id` against the order in `/freshinvestigations/{orderId}`
+     * @param string $orderId
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\DeletePendingFreshInvesitgationBadRequestException
+     * @throws \CreditSafe\API\Exception\DeletePendingFreshInvesitgationUnauthorizedException
+     * @throws \CreditSafe\API\Exception\DeletePendingFreshInvesitgationForbiddenException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function deletePendingFreshInvesitgation(string $orderId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\DeletePendingFreshInvesitgation($orderId, $headerParameters), $fetch);
     }
     /**
-    * Returns a specific Fresh Investigation order.
-    * @param string $orderId
-    * @param array{
-    *    "sections"?: string, //Specify a value to return a single section, or multiple-comma separated sections of the completed Fresh Investigation. Leave null to return the full report. Available sections; - companyIdentification - creditScore - contactInformation - directors - otherInformation - groupStructure - extendedGroupStructure - financialStatements - negativeInformation - additionalInformation - directorships - localFinancialStatements - paymentData - companySummary - alternateSummary
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\FreshInvestigationReportBadRequestException
-    * @throws \CreditSafe\API\Exception\FreshInvestigationReportUnauthorizedException
-    * @throws \CreditSafe\API\Exception\FreshInvestigationReportForbiddenException
-    *
-    * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\CompletedFreshInvestigation : \Psr\Http\Message\ResponseInterface)
-    */
+     * Returns a specific Fresh Investigation order.
+     * @param string $orderId
+     * @param array{
+     *    "sections"?: string, //Specify a value to return a single section, or multiple-comma separated sections of the completed Fresh Investigation. Leave null to return the full report. Available sections; - companyIdentification - creditScore - contactInformation - directors - otherInformation - groupStructure - extendedGroupStructure - financialStatements - negativeInformation - additionalInformation - directorships - localFinancialStatements - paymentData - companySummary - alternateSummary
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\FreshInvestigationReportBadRequestException
+     * @throws \CreditSafe\API\Exception\FreshInvestigationReportUnauthorizedException
+     * @throws \CreditSafe\API\Exception\FreshInvestigationReportForbiddenException
+     *
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\CompletedFreshInvestigation : \Psr\Http\Message\ResponseInterface)
+     */
     public function freshInvestigationReport(string $orderId, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\FreshInvestigationReport($orderId, $queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Currently depreciated as the order may already be in progress with our investigation team. To edit an ongoing Fresh Investigation, please get in touch with us at Group.Help@creditsafe.com quoting the `Transaction Id` against the order in `/freshinvestigations/{orderId}`
-    * @param string $orderId
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\EditPendingFreshInvestigationBadRequestException
-    * @throws \CreditSafe\API\Exception\EditPendingFreshInvestigationUnauthorizedException
-    * @throws \CreditSafe\API\Exception\EditPendingFreshInvestigationForbiddenException
-    * @throws \CreditSafe\API\Exception\EditPendingFreshInvestigationNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Currently depreciated as the order may already be in progress with our investigation team. To edit an ongoing Fresh Investigation, please get in touch with us at Group.Help@creditsafe.com quoting the `Transaction Id` against the order in `/freshinvestigations/{orderId}`
+     * @param string $orderId
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\EditPendingFreshInvestigationBadRequestException
+     * @throws \CreditSafe\API\Exception\EditPendingFreshInvestigationUnauthorizedException
+     * @throws \CreditSafe\API\Exception\EditPendingFreshInvestigationForbiddenException
+     * @throws \CreditSafe\API\Exception\EditPendingFreshInvestigationNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function editPendingFreshInvestigation(string $orderId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\EditPendingFreshInvestigation($orderId, $headerParameters), $fetch);
     }
     /**
-    * The Bank Verification tool allows customers to instantly verify that small and medium sized companies you are working with are providing correct bank details, to reduce fraud and avoid delays in your on boarding process. The bank data for these companies is provided to Creditsafe by various financial providers, including major banks. When you provides us with a company number and their bank details, we are able to perform instant checks to verify that those bank details are associated with that company and return - </br> • Match – We have bank information on the company, and the data provided by the customer matches this company’s records </br> • No Match – We have bank information on the company, but the data provided does not match any of the company’s records </br> • Data Unavailable – We do not have bank information on the company.
-    * @param array{
-    *    "checkType": string, //Validation uses an algorithm to determine if a SCAN or IBAN exists, but does not let you know if that SCAN or IBAN actually belongs to the company who has provided it. Verification takes this a step further and checks the Creditsafe database for a match on the SCAN/IBAN, and tells you if the bank details actually belong to the company, so you can be assured that you are sending your money to the correct entity.
-    *    "companyId": string, //The connectId or safeNumber of the company to check against.
-    *    "sortCode"?: string, //Sort Code to check - Must be passed in with Account Number to form a SCAN Result
-    *    "accountNumber"?: string, //Account Number to check - Must be passed in with Sort Code to form a SCAN Result
-    *    "iban"?: string, //IBAN to check
-    *    "vatNumber"?: string, //VAT Number to check
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\BankMatchBadRequestException
-    * @throws \CreditSafe\API\Exception\BankMatchUnauthorizedException
-    * @throws \CreditSafe\API\Exception\BankMatchForbiddenException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * The Bank Verification tool allows customers to instantly verify that small and medium sized companies you are working with are providing correct bank details, to reduce fraud and avoid delays in your on boarding process. The bank data for these companies is provided to Creditsafe by various financial providers, including major banks. When you provides us with a company number and their bank details, we are able to perform instant checks to verify that those bank details are associated with that company and return - </br> • Match – We have bank information on the company, and the data provided by the customer matches this company’s records </br> • No Match – We have bank information on the company, but the data provided does not match any of the company’s records </br> • Data Unavailable – We do not have bank information on the company.
+     * @param array{
+     *    "checkType": string, //Validation uses an algorithm to determine if a SCAN or IBAN exists, but does not let you know if that SCAN or IBAN actually belongs to the company who has provided it. Verification takes this a step further and checks the Creditsafe database for a match on the SCAN/IBAN, and tells you if the bank details actually belong to the company, so you can be assured that you are sending your money to the correct entity.
+     *    "companyId": string, //The connectId or safeNumber of the company to check against.
+     *    "sortCode"?: string, //Sort Code to check - Must be passed in with Account Number to form a SCAN Result
+     *    "accountNumber"?: string, //Account Number to check - Must be passed in with Sort Code to form a SCAN Result
+     *    "iban"?: string, //IBAN to check
+     *    "vatNumber"?: string, //VAT Number to check
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\BankMatchBadRequestException
+     * @throws \CreditSafe\API\Exception\BankMatchUnauthorizedException
+     * @throws \CreditSafe\API\Exception\BankMatchForbiddenException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function bankMatch(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\BankMatch($queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Endpoint to return all user details relating to the Global Monitoring product.
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    *
-    * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\UserDetails : \Psr\Http\Message\ResponseInterface)
-    */
+     * Endpoint to return all user details relating to the Global Monitoring product.
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\UserDetails : \Psr\Http\Message\ResponseInterface)
+     */
     public function monitoringUserDetails(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\MonitoringUserDetails($headerParameters), $fetch);
     }
     /**
-    * Endpoint to return a collection of `events` for the given company, optionally filtered on the supplied search criteria. Event information will only be returned if the company exists in at least one of your `portfolios`.
-    * @param string $id The connectId of the company that you wish to retrieve events for.
-    * @param array{
-    *    "startDate"?: string, //The start date on which results are filtered.
-    *    "endDate"?: string, //The end date on which results are filtered.
-    *    "page"?: int, //Starting page number (indexed from 0)
-    *    "pageSize"?: int, //Number of items to return per Page (max 1000)
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\CompanyEventsBadRequestException
-    * @throws \CreditSafe\API\Exception\CompanyEventsUnauthorizedException
-    * @throws \CreditSafe\API\Exception\CompanyEventsForbiddenException
-    * @throws \CreditSafe\API\Exception\CompanyEventsNotFoundException
-    *
-    * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\CompanyEventsResponse : \Psr\Http\Message\ResponseInterface)
-    */
+     * Endpoint to return a collection of `events` for the given company, optionally filtered on the supplied search criteria. Event information will only be returned if the company exists in at least one of your `portfolios`.
+     * @param string $id The connectId of the company that you wish to retrieve events for.
+     * @param array{
+     *    "startDate"?: string, //The start date on which results are filtered.
+     *    "endDate"?: string, //The end date on which results are filtered.
+     *    "page"?: int, //Starting page number (indexed from 0)
+     *    "pageSize"?: int, //Number of items to return per Page (max 1000)
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\CompanyEventsBadRequestException
+     * @throws \CreditSafe\API\Exception\CompanyEventsUnauthorizedException
+     * @throws \CreditSafe\API\Exception\CompanyEventsForbiddenException
+     * @throws \CreditSafe\API\Exception\CompanyEventsNotFoundException
+     *
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\CompanyEventsResponse : \Psr\Http\Message\ResponseInterface)
+     */
     public function companyEvents(string $id, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CompanyEvents($id, $queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Get all available notification event rules. Notification event rules allow you to control which events you wish to monitor for the `companies` contained within a given `portfolio`.
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\AllEventRulesBadRequestException
-    * @throws \CreditSafe\API\Exception\AllEventRulesUnauthorizedException
-    * @throws \CreditSafe\API\Exception\AllEventRulesForbiddenException
-    * @throws \CreditSafe\API\Exception\AllEventRulesNotFoundException
-    *
-    * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\EventRulesResponse : \Psr\Http\Message\ResponseInterface)
-    */
+     * Get all available notification event rules. Notification event rules allow you to control which events you wish to monitor for the `companies` contained within a given `portfolio`.
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\AllEventRulesBadRequestException
+     * @throws \CreditSafe\API\Exception\AllEventRulesUnauthorizedException
+     * @throws \CreditSafe\API\Exception\AllEventRulesForbiddenException
+     * @throws \CreditSafe\API\Exception\AllEventRulesNotFoundException
+     *
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\EventRulesResponse : \Psr\Http\Message\ResponseInterface)
+     */
     public function allEventRules(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\AllEventRules($headerParameters), $fetch);
     }
     /**
-    * Get all available notification event rules for the given `countryCode`. Notification event rules allow you to control which events you wish to monitor for the `companies` contained within a given `portfolio`.
-    * @param string $countryCode ISO/Alpha 2 format country code for which notification event rules will be retured.
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\FilteredEventRulesBadRequestException
-    * @throws \CreditSafe\API\Exception\FilteredEventRulesForbiddenException
-    * @throws \CreditSafe\API\Exception\FilteredEventRulesNotFoundException
-    *
-    * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\EventRulesResponse : \Psr\Http\Message\ResponseInterface)
-    */
+     * Get all available notification event rules for the given `countryCode`. Notification event rules allow you to control which events you wish to monitor for the `companies` contained within a given `portfolio`.
+     * @param string $countryCode ISO/Alpha 2 format country code for which notification event rules will be retured.
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\FilteredEventRulesBadRequestException
+     * @throws \CreditSafe\API\Exception\FilteredEventRulesForbiddenException
+     * @throws \CreditSafe\API\Exception\FilteredEventRulesNotFoundException
+     *
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\EventRulesResponse : \Psr\Http\Message\ResponseInterface)
+     */
     public function filteredEventRules(string $countryCode, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\FilteredEventRules($countryCode, $headerParameters), $fetch);
     }
     /**
-    * Get all notification events generated for companies monitored in your portfolios, based on the notification rules enabled. The notification events returned will be filtered based upon the supplied search criteria.
-    * @param array{
-    *    "searchQuery"?: string, //Return notificationEvents that match the given value
-    *    "sortBy"?: string, //Sort results by this column. Null values of sort column are listed after non-nulls.
-    *    "sortDir"?: string, //The direction that you wish to sort results by.
-    *    "startDate"?: string, //The start date on which results are filtered.
-    *    "endDate"?: string, //The end date on which results are filtered.
-    *    "page"?: int, //Starting page number (indexed from 0)
-    *    "pageSize"?: int, //Number of items to return per Page (max 1000)
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\NotificationEventsBadRequestException
-    * @throws \CreditSafe\API\Exception\NotificationEventsUnauthorizedException
-    * @throws \CreditSafe\API\Exception\NotificationEventsForbiddenException
-    * @throws \CreditSafe\API\Exception\NotificationEventsNotFoundException
-    *
-    * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\NotificationEventsResponse : \Psr\Http\Message\ResponseInterface)
-    */
+     * Get all notification events generated for companies monitored in your portfolios, based on the notification rules enabled. The notification events returned will be filtered based upon the supplied search criteria.
+     * @param array{
+     *    "searchQuery"?: string, //Return notificationEvents that match the given value
+     *    "sortBy"?: string, //Sort results by this column. Null values of sort column are listed after non-nulls.
+     *    "sortDir"?: string, //The direction that you wish to sort results by.
+     *    "startDate"?: string, //The start date on which results are filtered.
+     *    "endDate"?: string, //The end date on which results are filtered.
+     *    "page"?: int, //Starting page number (indexed from 0)
+     *    "pageSize"?: int, //Number of items to return per Page (max 1000)
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\NotificationEventsBadRequestException
+     * @throws \CreditSafe\API\Exception\NotificationEventsUnauthorizedException
+     * @throws \CreditSafe\API\Exception\NotificationEventsForbiddenException
+     * @throws \CreditSafe\API\Exception\NotificationEventsNotFoundException
+     *
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\NotificationEventsResponse : \Psr\Http\Message\ResponseInterface)
+     */
     public function notificationEvents(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\NotificationEvents($queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Endpoint to get all Portfolios based on the supplied Search Criteria.
-    * @param array{
-    *    "searchQuery"?: string, //Return portfolios that match the given value
-    *    "page"?: int, //Starting page number (indexed from 0).
-    *    "pageSize"?: int, //Number of items to return per Page (max 1000).
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\ListAllPortfoliosBadRequestException
-    * @throws \CreditSafe\API\Exception\ListAllPortfoliosUnauthorizedException
-    * @throws \CreditSafe\API\Exception\ListAllPortfoliosForbiddenException
-    * @throws \CreditSafe\API\Exception\ListAllPortfoliosNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Endpoint to get all Portfolios based on the supplied Search Criteria.
+     * @param array{
+     *    "searchQuery"?: string, //Return portfolios that match the given value
+     *    "page"?: int, //Starting page number (indexed from 0).
+     *    "pageSize"?: int, //Number of items to return per Page (max 1000).
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\ListAllPortfoliosBadRequestException
+     * @throws \CreditSafe\API\Exception\ListAllPortfoliosUnauthorizedException
+     * @throws \CreditSafe\API\Exception\ListAllPortfoliosForbiddenException
+     * @throws \CreditSafe\API\Exception\ListAllPortfoliosNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function listAllPortfolios(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ListAllPortfolios($queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Endpoint to create a new Portfolio based on the supplied criteria. A portfolio can contain any number of `companies` that you wish to monitor changes to.
-    * @param \CreditSafe\API\Model\MonitoringPortfoliosPostBody $requestBody
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\CreateMonitoringPortfolioBadRequestException
-    * @throws \CreditSafe\API\Exception\CreateMonitoringPortfolioUnauthorizedException
-    * @throws \CreditSafe\API\Exception\CreateMonitoringPortfolioForbiddenException
-    * @throws \CreditSafe\API\Exception\CreateMonitoringPortfolioNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Endpoint to create a new Portfolio based on the supplied criteria. A portfolio can contain any number of `companies` that you wish to monitor changes to.
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPostBody $requestBody
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\CreateMonitoringPortfolioBadRequestException
+     * @throws \CreditSafe\API\Exception\CreateMonitoringPortfolioUnauthorizedException
+     * @throws \CreditSafe\API\Exception\CreateMonitoringPortfolioForbiddenException
+     * @throws \CreditSafe\API\Exception\CreateMonitoringPortfolioNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function createMonitoringPortfolio(\CreditSafe\API\Model\MonitoringPortfoliosPostBody $requestBody, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CreateMonitoringPortfolio($requestBody, $headerParameters), $fetch);
     }
     /**
-    * Delete the portfolio with portfolioId
-    * @param string $portfolioId The unique identifier of the portfolio that you wish to delete, obtained from `/portfolios`.
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfolioByPortfolioIdBadRequestException
-    * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfolioByPortfolioIdUnauthorizedException
-    * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfolioByPortfolioIdForbiddenException
-    * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfolioByPortfolioIdNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Delete the portfolio with portfolioId
+     * @param string $portfolioId The unique identifier of the portfolio that you wish to delete, obtained from `/portfolios`.
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfolioByPortfolioIdBadRequestException
+     * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfolioByPortfolioIdUnauthorizedException
+     * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfolioByPortfolioIdForbiddenException
+     * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfolioByPortfolioIdNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function deleteMonitoringPortfolioByPortfolioId(string $portfolioId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\DeleteMonitoringPortfolioByPortfolioId($portfolioId, $headerParameters), $fetch);
     }
     /**
-    * Get the portfolio with portfolioId
-    * @param string $portfolioId The unique identifier for the portfolio that you wish to retrieve, obtained from `/portfolios`.
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\RetrievePortfolioByIdBadRequestException
-    * @throws \CreditSafe\API\Exception\RetrievePortfolioByIdUnauthorizedException
-    * @throws \CreditSafe\API\Exception\RetrievePortfolioByIdForbiddenException
-    * @throws \CreditSafe\API\Exception\RetrievePortfolioByIdNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Get the portfolio with portfolioId
+     * @param string $portfolioId The unique identifier for the portfolio that you wish to retrieve, obtained from `/portfolios`.
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\RetrievePortfolioByIdBadRequestException
+     * @throws \CreditSafe\API\Exception\RetrievePortfolioByIdUnauthorizedException
+     * @throws \CreditSafe\API\Exception\RetrievePortfolioByIdForbiddenException
+     * @throws \CreditSafe\API\Exception\RetrievePortfolioByIdNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function retrievePortfolioById(string $portfolioId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\RetrievePortfolioById($portfolioId, $headerParameters), $fetch);
     }
     /**
-    * Update Portfolio details such as Name, email reciepients, language and subject line.
-    * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-    * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBody $requestBody
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\UpdatePortfolioDetailsBadRequestException
-    * @throws \CreditSafe\API\Exception\UpdatePortfolioDetailsForbiddenException
-    * @throws \CreditSafe\API\Exception\UpdatePortfolioDetailsNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Update Portfolio details such as Name, email reciepients, language and subject line.
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBody $requestBody
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\UpdatePortfolioDetailsBadRequestException
+     * @throws \CreditSafe\API\Exception\UpdatePortfolioDetailsForbiddenException
+     * @throws \CreditSafe\API\Exception\UpdatePortfolioDetailsNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function updatePortfolioDetails(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdPatchBody $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\UpdatePortfolioDetails($portfolioId, $requestBody, $headerParameters), $fetch);
     }
     /**
-    * Get a list of distinct countries of companies monitored within a portfolio.
-    * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\ListCountriesOfMonitoredCompaniesBadRequestException
-    * @throws \CreditSafe\API\Exception\ListCountriesOfMonitoredCompaniesUnauthorizedException
-    * @throws \CreditSafe\API\Exception\ListCountriesOfMonitoredCompaniesForbiddenException
-    * @throws \CreditSafe\API\Exception\ListCountriesOfMonitoredCompaniesNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Get a list of distinct countries of companies monitored within a portfolio.
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\ListCountriesOfMonitoredCompaniesBadRequestException
+     * @throws \CreditSafe\API\Exception\ListCountriesOfMonitoredCompaniesUnauthorizedException
+     * @throws \CreditSafe\API\Exception\ListCountriesOfMonitoredCompaniesForbiddenException
+     * @throws \CreditSafe\API\Exception\ListCountriesOfMonitoredCompaniesNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function listCountriesOfMonitoredCompanies(string $portfolioId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ListCountriesOfMonitoredCompanies($portfolioId, $headerParameters), $fetch);
     }
     /**
-    * Get all notification `eventRules` for the given `portfolioId`. Notification event rules allow you to control which events you wish to monitor for the `companies` contained within the given `portfolio`.
-    * @param string $portfolioId The unique identifier for the portfolio that you wish to retrieve notification event rules for, obtained from `/portfolios`.
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\ListPortfolioEventRulesBadRequestException
-    * @throws \CreditSafe\API\Exception\ListPortfolioEventRulesUnauthorizedException
-    * @throws \CreditSafe\API\Exception\ListPortfolioEventRulesForbiddenException
-    * @throws \CreditSafe\API\Exception\ListPortfolioEventRulesNotFoundException
-    *
-    * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\EventRulesResponse : \Psr\Http\Message\ResponseInterface)
-    */
+     * Get all notification `eventRules` for the given `portfolioId`. Notification event rules allow you to control which events you wish to monitor for the `companies` contained within the given `portfolio`.
+     * @param string $portfolioId The unique identifier for the portfolio that you wish to retrieve notification event rules for, obtained from `/portfolios`.
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\ListPortfolioEventRulesBadRequestException
+     * @throws \CreditSafe\API\Exception\ListPortfolioEventRulesUnauthorizedException
+     * @throws \CreditSafe\API\Exception\ListPortfolioEventRulesForbiddenException
+     * @throws \CreditSafe\API\Exception\ListPortfolioEventRulesNotFoundException
+     *
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\EventRulesResponse : \Psr\Http\Message\ResponseInterface)
+     */
     public function listPortfolioEventRules(string $portfolioId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ListPortfolioEventRules($portfolioId, $headerParameters), $fetch);
     }
     /**
-    * Get all eventRules, optionally filtered by country code
-    * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-    * @param string $countryCode Country code to show events for.
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\GetFilteredPortfolioEventRulesBadRequestException
-    * @throws \CreditSafe\API\Exception\GetFilteredPortfolioEventRulesUnauthorizedException
-    * @throws \CreditSafe\API\Exception\GetFilteredPortfolioEventRulesForbiddenException
-    * @throws \CreditSafe\API\Exception\GetFilteredPortfolioEventRulesNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Get all eventRules, optionally filtered by country code
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param string $countryCode Country code to show events for.
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\GetFilteredPortfolioEventRulesBadRequestException
+     * @throws \CreditSafe\API\Exception\GetFilteredPortfolioEventRulesUnauthorizedException
+     * @throws \CreditSafe\API\Exception\GetFilteredPortfolioEventRulesForbiddenException
+     * @throws \CreditSafe\API\Exception\GetFilteredPortfolioEventRulesNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function getFilteredPortfolioEventRules(string $portfolioId, string $countryCode, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\GetFilteredPortfolioEventRules($portfolioId, $countryCode, $headerParameters), $fetch);
     }
     /**
-    * Update eventRules for a portfolio
-    * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-    * @param string $countryCode Country code to show events for
-    * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItem[] $requestBody
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCodeBadRequestException
-    * @throws \CreditSafe\API\Exception\PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCodeUnauthorizedException
-    * @throws \CreditSafe\API\Exception\PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCodeForbiddenException
-    * @throws \CreditSafe\API\Exception\PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCodeNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Update eventRules for a portfolio
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param string $countryCode Country code to show events for
+     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItem[] $requestBody
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCodeBadRequestException
+     * @throws \CreditSafe\API\Exception\PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCodeUnauthorizedException
+     * @throws \CreditSafe\API\Exception\PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCodeForbiddenException
+     * @throws \CreditSafe\API\Exception\PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCodeNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function putMonitoringPortfoliosByPortfolioIdEventRuleByCountryCode(string $portfolioId, string $countryCode, ?array $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\PutMonitoringPortfoliosByPortfolioIdEventRuleByCountryCode($portfolioId, $countryCode, $requestBody, $headerParameters), $fetch);
     }
     /**
-    * Update a portofolios event rules to default state. In Connect, default state means all rules are turned off.
-    * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesBadRequestException
-    * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesUnauthorizedException
-    * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesForbiddenException
-    * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Update a portofolios event rules to default state. In Connect, default state means all rules are turned off.
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesBadRequestException
+     * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesUnauthorizedException
+     * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesForbiddenException
+     * @throws \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function resetPortfolioEventRulesToDefaultValues(string $portfolioId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ResetPortfolioEventRulesToDefaultValues($portfolioId, $headerParameters), $fetch);
     }
     /**
-    * Import companies into a portfolio using .csv, .xls or .xlsx file. Additionally provide an email address to get notified when the import process is done.
-    * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-    * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdImportPostBody $requestBody
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdImportBadRequestException
-    * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdImportUnauthorizedException
-    * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdImportForbiddenException
-    * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdImportNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Import companies into a portfolio using .csv, .xls or .xlsx file. Additionally provide an email address to get notified when the import process is done.
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdImportPostBody $requestBody
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdImportBadRequestException
+     * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdImportUnauthorizedException
+     * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdImportForbiddenException
+     * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdImportNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function postMonitoringPortfoliosByPortfolioIdImport(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdImportPostBody $requestBody, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\PostMonitoringPortfoliosByPortfolioIdImport($portfolioId, $requestBody, $headerParameters), $fetch);
     }
     /**
-    * Delete companies from portfolio and update new companies from CSV file
-    * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-    * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSyncPostBody $requestBody
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\SyncPortfolioCompaniesToCSVRecordsBadRequestException
-    * @throws \CreditSafe\API\Exception\SyncPortfolioCompaniesToCSVRecordsUnauthorizedException
-    * @throws \CreditSafe\API\Exception\SyncPortfolioCompaniesToCSVRecordsForbiddenException
-    * @throws \CreditSafe\API\Exception\SyncPortfolioCompaniesToCSVRecordsNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Delete companies from portfolio and update new companies from CSV file
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSyncPostBody $requestBody
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\SyncPortfolioCompaniesToCSVRecordsBadRequestException
+     * @throws \CreditSafe\API\Exception\SyncPortfolioCompaniesToCSVRecordsUnauthorizedException
+     * @throws \CreditSafe\API\Exception\SyncPortfolioCompaniesToCSVRecordsForbiddenException
+     * @throws \CreditSafe\API\Exception\SyncPortfolioCompaniesToCSVRecordsNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function syncPortfolioCompaniesToCSVRecords(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSyncPostBody $requestBody, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\SyncPortfolioCompaniesToCSVRecords($portfolioId, $requestBody, $headerParameters), $fetch);
     }
     /**
-    * Get current portfolio risk summary information
-    * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\PortoflioRiskSummaryBadRequestException
-    * @throws \CreditSafe\API\Exception\PortoflioRiskSummaryUnauthorizedException
-    * @throws \CreditSafe\API\Exception\PortoflioRiskSummaryForbiddenException
-    * @throws \CreditSafe\API\Exception\PortoflioRiskSummaryNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Get current portfolio risk summary information
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\PortoflioRiskSummaryBadRequestException
+     * @throws \CreditSafe\API\Exception\PortoflioRiskSummaryUnauthorizedException
+     * @throws \CreditSafe\API\Exception\PortoflioRiskSummaryForbiddenException
+     * @throws \CreditSafe\API\Exception\PortoflioRiskSummaryNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function portoflioRiskSummary(string $portfolioId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\PortoflioRiskSummary($portfolioId, $headerParameters), $fetch);
     }
     /**
-    * Get all notificationEvents based on the portfolio id, optionally filter with query parameters
-    * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-    * @param array{
-    *    "searchQuery"?: string, //Return notificationEvents that match the given value
-    *    "sortDir"?: string,
-    *    "pageSize"?: int, //Number of items to return per Page (max 1000)
-    *    "page"?: int, //Starting page number (indexed from 0)
-    *    "sortBy": string, //Sort results by this column. Null values of sort column are listed after non-nulls.
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\ListNotificationEventsInAPortfolioFilteredBadRequestException
-    * @throws \CreditSafe\API\Exception\ListNotificationEventsInAPortfolioFilteredUnauthorizedException
-    * @throws \CreditSafe\API\Exception\ListNotificationEventsInAPortfolioFilteredForbiddenException
-    * @throws \CreditSafe\API\Exception\ListNotificationEventsInAPortfolioFilteredNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Get all notificationEvents based on the portfolio id, optionally filter with query parameters
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param array{
+     *    "searchQuery"?: string, //Return notificationEvents that match the given value
+     *    "sortDir"?: string,
+     *    "pageSize"?: int, //Number of items to return per Page (max 1000)
+     *    "page"?: int, //Starting page number (indexed from 0)
+     *    "sortBy": string, //Sort results by this column. Null values of sort column are listed after non-nulls.
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\ListNotificationEventsInAPortfolioFilteredBadRequestException
+     * @throws \CreditSafe\API\Exception\ListNotificationEventsInAPortfolioFilteredUnauthorizedException
+     * @throws \CreditSafe\API\Exception\ListNotificationEventsInAPortfolioFilteredForbiddenException
+     * @throws \CreditSafe\API\Exception\ListNotificationEventsInAPortfolioFilteredNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function listNotificationEventsInAPortfolioFiltered(string $portfolioId, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ListNotificationEventsInAPortfolioFiltered($portfolioId, $queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Set a `true` or `false` flag on isProcessed for a given event
-    * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-    * @param string $notificationEventId A unique notification event ID.
-    * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchBody $requestBody
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\UpdateIsProcessedFlagOnAnNotificationEventBadRequestException
-    * @throws \CreditSafe\API\Exception\UpdateIsProcessedFlagOnAnNotificationEventUnauthorizedException
-    * @throws \CreditSafe\API\Exception\UpdateIsProcessedFlagOnAnNotificationEventForbiddenException
-    * @throws \CreditSafe\API\Exception\UpdateIsProcessedFlagOnAnNotificationEventNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Set a `true` or `false` flag on isProcessed for a given event
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param string $notificationEventId A unique notification event ID.
+     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchBody $requestBody
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\UpdateIsProcessedFlagOnAnNotificationEventBadRequestException
+     * @throws \CreditSafe\API\Exception\UpdateIsProcessedFlagOnAnNotificationEventUnauthorizedException
+     * @throws \CreditSafe\API\Exception\UpdateIsProcessedFlagOnAnNotificationEventForbiddenException
+     * @throws \CreditSafe\API\Exception\UpdateIsProcessedFlagOnAnNotificationEventNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function updateIsProcessedFlagOnAnNotificationEvent(string $portfolioId, string $notificationEventId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchBody $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\UpdateIsProcessedFlagOnAnNotificationEvent($portfolioId, $notificationEventId, $requestBody, $headerParameters), $fetch);
     }
     /**
-    * Get all companies from a specific portfolio based on the portfolio id, optionally filter with query parameters
-    * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-    * @param array{
-    *    "searchQuery"?: string, //Return companies that match the given value
-    *    "pageSize"?: int, //Number of items to return per Page (max 1000)
-    *    "page"?: int, //Starting page number (indexed from 0)
-    *    "countryCode"?: string, //Return <<resourcePathName>> that match the given countryCode
-    *    "events"?: bool, //If set to true, all events will be returned for each company
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioBadRequestException
-    * @throws \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioUnauthorizedException
-    * @throws \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioForbiddenException
-    * @throws \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Get all companies from a specific portfolio based on the portfolio id, optionally filter with query parameters
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param array{
+     *    "searchQuery"?: string, //Return companies that match the given value
+     *    "pageSize"?: int, //Number of items to return per Page (max 1000)
+     *    "page"?: int, //Starting page number (indexed from 0)
+     *    "countryCode"?: string, //Return <<resourcePathName>> that match the given countryCode
+     *    "events"?: bool, //If set to true, all events will be returned for each company
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioBadRequestException
+     * @throws \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioUnauthorizedException
+     * @throws \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioForbiddenException
+     * @throws \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function listFilteredCompaniesInAPortfolio(string $portfolioId, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ListFilteredCompaniesInAPortfolio($portfolioId, $queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Add new company to portfolio
-    * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-    * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesPostBody $requestBody
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdCompanyBadRequestException
-    * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdCompanyUnauthorizedException
-    * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdCompanyForbiddenException
-    * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdCompanyNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Add new company to portfolio
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesPostBody $requestBody
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdCompanyBadRequestException
+     * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdCompanyUnauthorizedException
+     * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdCompanyForbiddenException
+     * @throws \CreditSafe\API\Exception\PostMonitoringPortfoliosByPortfolioIdCompanyNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function postMonitoringPortfoliosByPortfolioIdCompany(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesPostBody $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\PostMonitoringPortfoliosByPortfolioIdCompany($portfolioId, $requestBody, $headerParameters), $fetch);
     }
     /**
-    * Copy companies from one portfolio to single (or) multiple portfolios.
-    * @param string $portfolioId The unique identifier of the portfolio you want to copy companies from, obtained from `/portfolios`.
-    * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody $requestBody
-    * @param array{
-    *    "copyAll"?: bool, //When CopyAll queryparameter is False, portfolios and companies list needs to be passed. When CopyAll queryparameter is True, only portfolios need to be passed and companies List must be empty. All companies are copied from current portfolio are considered here.
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\CopyCompaniesFromOneToAnotherPortfolioSBadRequestException
-    * @throws \CreditSafe\API\Exception\CopyCompaniesFromOneToAnotherPortfolioSUnauthorizedException
-    * @throws \CreditSafe\API\Exception\CopyCompaniesFromOneToAnotherPortfolioSForbiddenException
-    * @throws \CreditSafe\API\Exception\CopyCompaniesFromOneToAnotherPortfolioSNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Copy companies from one portfolio to single (or) multiple portfolios.
+     * @param string $portfolioId The unique identifier of the portfolio you want to copy companies from, obtained from `/portfolios`.
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody $requestBody
+     * @param array{
+     *    "copyAll"?: bool, //When CopyAll queryparameter is False, portfolios and companies list needs to be passed. When CopyAll queryparameter is True, only portfolios need to be passed and companies List must be empty. All companies are copied from current portfolio are considered here.
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\CopyCompaniesFromOneToAnotherPortfolioSBadRequestException
+     * @throws \CreditSafe\API\Exception\CopyCompaniesFromOneToAnotherPortfolioSUnauthorizedException
+     * @throws \CreditSafe\API\Exception\CopyCompaniesFromOneToAnotherPortfolioSForbiddenException
+     * @throws \CreditSafe\API\Exception\CopyCompaniesFromOneToAnotherPortfolioSNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function copyCompaniesFromOneToAnotherPortfolioS(string $portfolioId, \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody $requestBody, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CopyCompaniesFromOneToAnotherPortfolioS($portfolioId, $requestBody, $queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Move companies from one portfolio to single (or) multiple portfolios.
-    * @param string $portfolioId The unique identifier of the portfolio you want to move companies from, obtained from `/portfolios`.
-    * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesRemovePostBody $requestBody
-    * @param array{
-    *    "removeAll"?: bool, //When RemoveAll queryparameter is False, portfolios and companies List needs to be passed. When RemoveAll queryparameter is True, only portfolios need to be passed and companies List must be empty. All companies are moved and deleted from current portfolio
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSBadRequestException
-    * @throws \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSUnauthorizedException
-    * @throws \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSForbiddenException
-    * @throws \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Move companies from one portfolio to single (or) multiple portfolios.
+     * @param string $portfolioId The unique identifier of the portfolio you want to move companies from, obtained from `/portfolios`.
+     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesRemovePostBody $requestBody
+     * @param array{
+     *    "removeAll"?: bool, //When RemoveAll queryparameter is False, portfolios and companies List needs to be passed. When RemoveAll queryparameter is True, only portfolios need to be passed and companies List must be empty. All companies are moved and deleted from current portfolio
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSBadRequestException
+     * @throws \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSUnauthorizedException
+     * @throws \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSForbiddenException
+     * @throws \CreditSafe\API\Exception\MoveCompaniesFromOneToAnotherPortfolioSNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function moveCompaniesFromOneToAnotherPortfolioS(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesRemovePostBody $requestBody = null, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\MoveCompaniesFromOneToAnotherPortfolioS($portfolioId, $requestBody, $queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Delete companies from current portfolio
-    * @param string $portfolioId The unique identifier of the portfolio you want to delete companies from, obtained from `/portfolios`.
-    * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody $requestBody
-    * @param array{
-    *    "clearAll"?: bool, //When ClearAll queryparameter is False,Companies List needs to be passed. When ClearAll queryparameter is True, Companies List must be empty. All companies will be deleted
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\ClearCompaniesFromAPortfolioBadRequestException
-    * @throws \CreditSafe\API\Exception\ClearCompaniesFromAPortfolioUnauthorizedException
-    * @throws \CreditSafe\API\Exception\ClearCompaniesFromAPortfolioForbiddenException
-    * @throws \CreditSafe\API\Exception\ClearCompaniesFromAPortfolioNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Delete companies from current portfolio
+     * @param string $portfolioId The unique identifier of the portfolio you want to delete companies from, obtained from `/portfolios`.
+     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody $requestBody
+     * @param array{
+     *    "clearAll"?: bool, //When ClearAll queryparameter is False,Companies List needs to be passed. When ClearAll queryparameter is True, Companies List must be empty. All companies will be deleted
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\ClearCompaniesFromAPortfolioBadRequestException
+     * @throws \CreditSafe\API\Exception\ClearCompaniesFromAPortfolioUnauthorizedException
+     * @throws \CreditSafe\API\Exception\ClearCompaniesFromAPortfolioForbiddenException
+     * @throws \CreditSafe\API\Exception\ClearCompaniesFromAPortfolioNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function clearCompaniesFromAPortfolio(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesClearPatchBody $requestBody = null, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ClearCompaniesFromAPortfolio($portfolioId, $requestBody, $queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Delete a Company
-    * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-    * @param string $id A company Safe Number or Connect ID.
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfoliosByPortfolioIdCompanyByIdBadRequestException
-    * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfoliosByPortfolioIdCompanyByIdUnauthorizedException
-    * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfoliosByPortfolioIdCompanyByIdForbiddenException
-    * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfoliosByPortfolioIdCompanyByIdNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Delete a Company
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param string $id A company Safe Number or Connect ID.
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfoliosByPortfolioIdCompanyByIdBadRequestException
+     * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfoliosByPortfolioIdCompanyByIdUnauthorizedException
+     * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfoliosByPortfolioIdCompanyByIdForbiddenException
+     * @throws \CreditSafe\API\Exception\DeleteMonitoringPortfoliosByPortfolioIdCompanyByIdNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function deleteMonitoringPortfoliosByPortfolioIdCompanyById(string $portfolioId, string $id, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\DeleteMonitoringPortfoliosByPortfolioIdCompanyById($portfolioId, $id, $headerParameters), $fetch);
     }
     /**
-    * Get a company from a portofolio using a company id
-    * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-    * @param string $id A company Safe Number or Connect ID.
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\GetAMonitoredCompanyFromAPortfolioBadRequestException
-    * @throws \CreditSafe\API\Exception\GetAMonitoredCompanyFromAPortfolioUnauthorizedException
-    * @throws \CreditSafe\API\Exception\GetAMonitoredCompanyFromAPortfolioForbiddenException
-    * @throws \CreditSafe\API\Exception\GetAMonitoredCompanyFromAPortfolioNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Get a company from a portofolio using a company id
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param string $id A company Safe Number or Connect ID.
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\GetAMonitoredCompanyFromAPortfolioBadRequestException
+     * @throws \CreditSafe\API\Exception\GetAMonitoredCompanyFromAPortfolioUnauthorizedException
+     * @throws \CreditSafe\API\Exception\GetAMonitoredCompanyFromAPortfolioForbiddenException
+     * @throws \CreditSafe\API\Exception\GetAMonitoredCompanyFromAPortfolioNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function getAMonitoredCompanyFromAPortfolio(string $portfolioId, string $id, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\GetAMonitoredCompanyFromAPortfolio($portfolioId, $id, $headerParameters), $fetch);
     }
     /**
-    * Updates the company details in a specified portfolio
-    * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-    * @param string $id A company Safe Number or Connect ID.
-    * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody $requestBody
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\UpdateCompanyDetailsInAPortfolioBadRequestException
-    * @throws \CreditSafe\API\Exception\UpdateCompanyDetailsInAPortfolioUnauthorizedException
-    * @throws \CreditSafe\API\Exception\UpdateCompanyDetailsInAPortfolioForbiddenException
-    * @throws \CreditSafe\API\Exception\UpdateCompanyDetailsInAPortfolioNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Updates the company details in a specified portfolio
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param string $id A company Safe Number or Connect ID.
+     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody $requestBody
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\UpdateCompanyDetailsInAPortfolioBadRequestException
+     * @throws \CreditSafe\API\Exception\UpdateCompanyDetailsInAPortfolioUnauthorizedException
+     * @throws \CreditSafe\API\Exception\UpdateCompanyDetailsInAPortfolioForbiddenException
+     * @throws \CreditSafe\API\Exception\UpdateCompanyDetailsInAPortfolioNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function updateCompanyDetailsInAPortfolio(string $portfolioId, string $id, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\UpdateCompanyDetailsInAPortfolio($portfolioId, $id, $requestBody, $headerParameters), $fetch);
     }
     /**
-    * List of notification events based on the company id,optionally filtered with query parameters
-    * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-    * @param string $id A company Safe Number or Connect ID.
-    * @param array{
-    *    "searchQuery"?: string, //Return notificationEvents that match the given value
-    *    "sortDir"?: string,
-    *    "pageSize"?: int, //Number of items to return per Page (max 1000)
-    *    "page"?: int, //Starting page number (indexed from 0)
-    *    "isProcessed"?: bool, //A flag that can be set to `true` boolean value to mark it as an event that has beebn actioned.
-    *    "sortBy"?: string, //Sort results by this column. Null values of sort column are listed after non-nulls.
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\ListCompanySpecificNotificationEventsBadRequestException
-    * @throws \CreditSafe\API\Exception\ListCompanySpecificNotificationEventsUnauthorizedException
-    * @throws \CreditSafe\API\Exception\ListCompanySpecificNotificationEventsForbiddenException
-    * @throws \CreditSafe\API\Exception\ListCompanySpecificNotificationEventsNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * List of notification events based on the company id,optionally filtered with query parameters
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param string $id A company Safe Number or Connect ID.
+     * @param array{
+     *    "searchQuery"?: string, //Return notificationEvents that match the given value
+     *    "sortDir"?: string,
+     *    "pageSize"?: int, //Number of items to return per Page (max 1000)
+     *    "page"?: int, //Starting page number (indexed from 0)
+     *    "isProcessed"?: bool, //A flag that can be set to `true` boolean value to mark it as an event that has beebn actioned.
+     *    "sortBy"?: string, //Sort results by this column. Null values of sort column are listed after non-nulls.
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\ListCompanySpecificNotificationEventsBadRequestException
+     * @throws \CreditSafe\API\Exception\ListCompanySpecificNotificationEventsUnauthorizedException
+     * @throws \CreditSafe\API\Exception\ListCompanySpecificNotificationEventsForbiddenException
+     * @throws \CreditSafe\API\Exception\ListCompanySpecificNotificationEventsNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function listCompanySpecificNotificationEvents(string $portfolioId, string $id, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ListCompanySpecificNotificationEvents($portfolioId, $id, $queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Retrieve user permissions within the customer for a portfolio
-    * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\PortfolioUserPermissionsBadRequestException
-    * @throws \CreditSafe\API\Exception\PortfolioUserPermissionsUnauthorizedException
-    * @throws \CreditSafe\API\Exception\PortfolioUserPermissionsForbiddenException
-    * @throws \CreditSafe\API\Exception\PortfolioUserPermissionsNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Retrieve user permissions within the customer for a portfolio
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\PortfolioUserPermissionsBadRequestException
+     * @throws \CreditSafe\API\Exception\PortfolioUserPermissionsUnauthorizedException
+     * @throws \CreditSafe\API\Exception\PortfolioUserPermissionsForbiddenException
+     * @throws \CreditSafe\API\Exception\PortfolioUserPermissionsNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function portfolioUserPermissions(string $portfolioId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\PortfolioUserPermissions($portfolioId, $headerParameters), $fetch);
     }
     /**
-    * Update/Create user permissions within the customer for portfolio
-    * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-    * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody $requestBody
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\SharePortfolioIdBadRequestException
-    * @throws \CreditSafe\API\Exception\SharePortfolioIdUnauthorizedException
-    * @throws \CreditSafe\API\Exception\SharePortfolioIdForbiddenException
-    * @throws \CreditSafe\API\Exception\SharePortfolioIdNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Update/Create user permissions within the customer for portfolio
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody $requestBody
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\SharePortfolioIdBadRequestException
+     * @throws \CreditSafe\API\Exception\SharePortfolioIdUnauthorizedException
+     * @throws \CreditSafe\API\Exception\SharePortfolioIdForbiddenException
+     * @throws \CreditSafe\API\Exception\SharePortfolioIdNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function sharePortfolioId(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody $requestBody = null, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\SharePortfolioId($portfolioId, $requestBody, $headerParameters), $fetch);
     }
     /**
-    * List available decision trees available.
-    * @param array{
-    *    "type"?: string, //Filter the list of available decision trees by the provided tree type.
-    *    "sortBy"?: string, //Sort results by this column. Null values of sort column are listed after non-nulls.
-    *    "sortDir"?: string,
-    *    "callRef"?: string, //Call Reference
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\ListDecisionTreesBadRequestException
-    * @throws \CreditSafe\API\Exception\ListDecisionTreesUnauthorizedException
-    * @throws \CreditSafe\API\Exception\ListDecisionTreesNotFoundException
-    *
-    * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\GuidSuccessResponse : \Psr\Http\Message\ResponseInterface)
-    */
+     * List available decision trees available.
+     * @param array{
+     *    "type"?: string, //Filter the list of available decision trees by the provided tree type.
+     *    "sortBy"?: string, //Sort results by this column. Null values of sort column are listed after non-nulls.
+     *    "sortDir"?: string,
+     *    "callRef"?: string, //Call Reference
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\ListDecisionTreesBadRequestException
+     * @throws \CreditSafe\API\Exception\ListDecisionTreesUnauthorizedException
+     * @throws \CreditSafe\API\Exception\ListDecisionTreesNotFoundException
+     *
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\GuidSuccessResponse : \Psr\Http\Message\ResponseInterface)
+     */
     public function listDecisionTrees(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ListDecisionTrees($queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Calls a Decision Tree with the provided parameters to return a Decision.
-    * @param string $provenirId Decision Tree GUID
-    * @param null|\stdClass $requestBody
-    * @param array{
-    *    "companyId": string, //the connectId of the company to be evaluated in the  deicison tree.
-    *    "originationId"?: string, //the origin id of the company we want a decision on. Only up to 100 characters are allowed, the rest will be truncated.
-    *    "callRef"?: string, //Call Reference
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\RunDecisionTreeBadRequestException
-    * @throws \CreditSafe\API\Exception\RunDecisionTreeUnauthorizedException
-    * @throws \CreditSafe\API\Exception\RunDecisionTreeForbiddenException
-    * @throws \CreditSafe\API\Exception\RunDecisionTreeNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Calls a Decision Tree with the provided parameters to return a Decision.
+     * @param string $provenirId Decision Tree GUID
+     * @param null|\stdClass $requestBody
+     * @param array{
+     *    "companyId": string, //the connectId of the company to be evaluated in the  deicison tree.
+     *    "originationId"?: string, //the origin id of the company we want a decision on. Only up to 100 characters are allowed, the rest will be truncated.
+     *    "callRef"?: string, //Call Reference
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\RunDecisionTreeBadRequestException
+     * @throws \CreditSafe\API\Exception\RunDecisionTreeUnauthorizedException
+     * @throws \CreditSafe\API\Exception\RunDecisionTreeForbiddenException
+     * @throws \CreditSafe\API\Exception\RunDecisionTreeNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function runDecisionTree(string $provenirId, ?\stdClass $requestBody = null, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\RunDecisionTree($provenirId, $requestBody, $queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Returns the search parameters available to use when making a compliance search request against any Company `predefined Search`.
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaBadRequestException
-    * @throws \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaUnauthorizedException
-    * @throws \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaForbiddenException
-    * @throws \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Returns the search parameters available to use when making a compliance search request against any Company `predefined Search`.
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaBadRequestException
+     * @throws \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaUnauthorizedException
+     * @throws \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaForbiddenException
+     * @throws \CreditSafe\API\Exception\CompanyComplianceSearchCriteriaNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function companyComplianceSearchCriteria(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CompanyComplianceSearchCriteria($headerParameters), $fetch);
     }
     /**
-    * This endpoint returns the list of all available company `predefined Search` types. A `predefined Search` is defined by the compliance watchlist to be be screened, the confidence in matches returned by your search and the entity type (company or person). They are set at 5% increments between 75-100% match confidence. For example - Searching against the `predefined Search` `c-Sanct-95` will look to match your search criteria against the Company Sanctions watchlist and return anything with 95% match confidence.
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\ListOfCompanyPreDefinedSearchesBadRequestException
-    * @throws \CreditSafe\API\Exception\ListOfCompanyPreDefinedSearchesUnauthorizedException
-    * @throws \CreditSafe\API\Exception\ListOfCompanyPreDefinedSearchesForbiddenException
-    *
-    * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\CompliancePreDefinedSearches : \Psr\Http\Message\ResponseInterface)
-    */
+     * This endpoint returns the list of all available company `predefined Search` types. A `predefined Search` is defined by the compliance watchlist to be be screened, the confidence in matches returned by your search and the entity type (company or person). They are set at 5% increments between 75-100% match confidence. For example - Searching against the `predefined Search` `c-Sanct-95` will look to match your search criteria against the Company Sanctions watchlist and return anything with 95% match confidence.
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\ListOfCompanyPreDefinedSearchesBadRequestException
+     * @throws \CreditSafe\API\Exception\ListOfCompanyPreDefinedSearchesUnauthorizedException
+     * @throws \CreditSafe\API\Exception\ListOfCompanyPreDefinedSearchesForbiddenException
+     *
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\CompliancePreDefinedSearches : \Psr\Http\Message\ResponseInterface)
+     */
     public function listOfCompanyPreDefinedSearches(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ListOfCompanyPreDefinedSearches($headerParameters), $fetch);
     }
     /**
-    * Searches the provided `Predefined search` list with your search criteria. Results returned here indicate potential matches (depending on the predefined Search used).
-    * @param string $predefinedSearch the predefined search that the search will be made against. See the `/predefinedSearches` endpoint
-    * @param array{
-    *    "countries"?: string, //A Comma-separated list of country codes to search for Companies in. The list takes ISO/Alpha 2 format country codes. For example US,GB represents searching for Companies in the United States and Great Britain.
-    *    "name": string, //Entity Name
-    *    "street"?: string, //Address part identifier - Street of the entity.
-    *    "houseNo"?: string, //Address part identifier - House/Building Number of the entity.
-    *    "city"?: string, //Address part identifier - City of the entity.
-    *    "postCode"?: string, //Address part identifier - Postcode/Zip Code of the entity.
-    *    "province"?: string, //Address part identifier - Province/State of the entity.
-    *    "phoneNo"?: string, //Phone Number of the entity.
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\CompanyComplianceSearchBadRequestException
-    * @throws \CreditSafe\API\Exception\CompanyComplianceSearchUnauthorizedException
-    * @throws \CreditSafe\API\Exception\CompanyComplianceSearchForbiddenException
-    *
-    * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\ComplianceSearchResult : \Psr\Http\Message\ResponseInterface)
-    */
+     * Searches the provided `Predefined search` list with your search criteria. Results returned here indicate potential matches (depending on the predefined Search used).
+     * @param string $predefinedSearch the predefined search that the search will be made against. See the `/predefinedSearches` endpoint
+     * @param array{
+     *    "countries"?: string, //A Comma-separated list of country codes to search for Companies in. The list takes ISO/Alpha 2 format country codes. For example US,GB represents searching for Companies in the United States and Great Britain.
+     *    "name": string, //Entity Name
+     *    "street"?: string, //Address part identifier - Street of the entity.
+     *    "houseNo"?: string, //Address part identifier - House/Building Number of the entity.
+     *    "city"?: string, //Address part identifier - City of the entity.
+     *    "postCode"?: string, //Address part identifier - Postcode/Zip Code of the entity.
+     *    "province"?: string, //Address part identifier - Province/State of the entity.
+     *    "phoneNo"?: string, //Phone Number of the entity.
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\CompanyComplianceSearchBadRequestException
+     * @throws \CreditSafe\API\Exception\CompanyComplianceSearchUnauthorizedException
+     * @throws \CreditSafe\API\Exception\CompanyComplianceSearchForbiddenException
+     *
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\ComplianceSearchResult : \Psr\Http\Message\ResponseInterface)
+     */
     public function companyComplianceSearch(string $predefinedSearch, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CompanyComplianceSearch($predefinedSearch, $queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Returns the search parameters available to use when making a compliance search request against any Individual/Person `predefined Search`.
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\IndividualsComplianceSearchCriteriaBadRequestException
-    * @throws \CreditSafe\API\Exception\IndividualsComplianceSearchCriteriaUnauthorizedException
-    * @throws \CreditSafe\API\Exception\IndividualsComplianceSearchCriteriaForbiddenException
-    * @throws \CreditSafe\API\Exception\IndividualsComplianceSearchCriteriaNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Returns the search parameters available to use when making a compliance search request against any Individual/Person `predefined Search`.
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\IndividualsComplianceSearchCriteriaBadRequestException
+     * @throws \CreditSafe\API\Exception\IndividualsComplianceSearchCriteriaUnauthorizedException
+     * @throws \CreditSafe\API\Exception\IndividualsComplianceSearchCriteriaForbiddenException
+     * @throws \CreditSafe\API\Exception\IndividualsComplianceSearchCriteriaNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function individualsComplianceSearchCriteria(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\IndividualsComplianceSearchCriteria($headerParameters), $fetch);
     }
     /**
-    * This endpoint returns the list of all available company `predefined Search` types. A `predefined Search` is defined by the compliance watchlist to be be screened, the confidence in matches returned by your search and the entity type (company or person). They are set at 5% increments between 75-100% match confidence. For example - Searching against the `predefined Search` `p-Sanct-95` will look to match your search criteria against the Individuals/Person Sanctions watchlist and return anything with 95% match confidence.
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\ListOfIndividualsPreDefinedSearchesBadRequestException
-    * @throws \CreditSafe\API\Exception\ListOfIndividualsPreDefinedSearchesUnauthorizedException
-    * @throws \CreditSafe\API\Exception\ListOfIndividualsPreDefinedSearchesForbiddenException
-    *
-    * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\CompliancePreDefinedSearches : \Psr\Http\Message\ResponseInterface)
-    */
+     * This endpoint returns the list of all available company `predefined Search` types. A `predefined Search` is defined by the compliance watchlist to be be screened, the confidence in matches returned by your search and the entity type (company or person). They are set at 5% increments between 75-100% match confidence. For example - Searching against the `predefined Search` `p-Sanct-95` will look to match your search criteria against the Individuals/Person Sanctions watchlist and return anything with 95% match confidence.
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\ListOfIndividualsPreDefinedSearchesBadRequestException
+     * @throws \CreditSafe\API\Exception\ListOfIndividualsPreDefinedSearchesUnauthorizedException
+     * @throws \CreditSafe\API\Exception\ListOfIndividualsPreDefinedSearchesForbiddenException
+     *
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\CompliancePreDefinedSearches : \Psr\Http\Message\ResponseInterface)
+     */
     public function listOfIndividualsPreDefinedSearches(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\ListOfIndividualsPreDefinedSearches($headerParameters), $fetch);
     }
     /**
-    * Searches the provided `Predefined search` list with your search criteria. Results returned here indicate potential matches (depending on the predefined Search used).
-    * @param string $predefinedSearch the predefined search that the search will be made against. See the `/predefinedSearches` endpoint
-    * @param array{
-    *    "countries"?: string, //A Comma-separated list of country codes to search for Individuals in. The list takes ISO/Alpha 2 format country codes. For example US,GB represents searching for Companies in the United States and Great Britain.
-    *    "name": string, //Entity Name
-    *    "street"?: string, //Address part identifier - Street of the entity.
-    *    "houseNo"?: string, //Address part identifier - House/Building Number of the entity.
-    *    "city"?: string, //Address part identifier - City of the entity.
-    *    "postCode"?: string, //Address part identifier - Postcode/Zip Code of the entity.
-    *    "province"?: string, //Address part identifier - Province/State of the entity.
-    *    "phoneNo"?: string, //Phone Number of the entity.
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\IndividualPersonComplianceSearchBadRequestException
-    * @throws \CreditSafe\API\Exception\IndividualPersonComplianceSearchUnauthorizedException
-    * @throws \CreditSafe\API\Exception\IndividualPersonComplianceSearchForbiddenException
-    *
-    * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\ComplianceSearchResult : \Psr\Http\Message\ResponseInterface)
-    */
+     * Searches the provided `Predefined search` list with your search criteria. Results returned here indicate potential matches (depending on the predefined Search used).
+     * @param string $predefinedSearch the predefined search that the search will be made against. See the `/predefinedSearches` endpoint
+     * @param array{
+     *    "countries"?: string, //A Comma-separated list of country codes to search for Individuals in. The list takes ISO/Alpha 2 format country codes. For example US,GB represents searching for Companies in the United States and Great Britain.
+     *    "name": string, //Entity Name
+     *    "street"?: string, //Address part identifier - Street of the entity.
+     *    "houseNo"?: string, //Address part identifier - House/Building Number of the entity.
+     *    "city"?: string, //Address part identifier - City of the entity.
+     *    "postCode"?: string, //Address part identifier - Postcode/Zip Code of the entity.
+     *    "province"?: string, //Address part identifier - Province/State of the entity.
+     *    "phoneNo"?: string, //Phone Number of the entity.
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\IndividualPersonComplianceSearchBadRequestException
+     * @throws \CreditSafe\API\Exception\IndividualPersonComplianceSearchUnauthorizedException
+     * @throws \CreditSafe\API\Exception\IndividualPersonComplianceSearchForbiddenException
+     *
+     * @return ($fetch is 'object' ? null|\CreditSafe\API\Model\ComplianceSearchResult : \Psr\Http\Message\ResponseInterface)
+     */
     public function individualPersonComplianceSearch(string $predefinedSearch, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\IndividualPersonComplianceSearch($predefinedSearch, $queryParameters, $headerParameters), $fetch);
     }
     /**
-    * Endpoint to return mandatory parameters or metadata associated with specific country Company Report requests. To add a custom data parameter, add a Parameter with the key=value pair in the format customData=key::allowedValue I.e. Suppling `DE` as a country code will return a list of reasons for requesting a DE Credit Report (which is a legal requirement to supply with each Credit Report request in Germany). This will provide a list of allowedValues to enter into the mandatory Parameter `customData` = `de_reason_code::allowedValue`
-    * @param string $country An ISO/Alpha-2 country code to display any special mandatory parameters when ordering a Credit Report in that territory.
-    * @param array{
-    *    "template"?: string, //Report template (currently unncessary to provide.)
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \CreditSafe\API\Exception\CustomReportParametersBadRequestException
-    * @throws \CreditSafe\API\Exception\CustomReportParametersUnauthorizedException
-    * @throws \CreditSafe\API\Exception\CustomReportParametersForbiddenException
-    * @throws \CreditSafe\API\Exception\CustomReportParametersNotFoundException
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * Endpoint to return mandatory parameters or metadata associated with specific country Company Report requests. To add a custom data parameter, add a Parameter with the key=value pair in the format customData=key::allowedValue I.e. Suppling `DE` as a country code will return a list of reasons for requesting a DE Credit Report (which is a legal requirement to supply with each Credit Report request in Germany). This will provide a list of allowedValues to enter into the mandatory Parameter `customData` = `de_reason_code::allowedValue`
+     * @param string $country An ISO/Alpha-2 country code to display any special mandatory parameters when ordering a Credit Report in that territory.
+     * @param array{
+     *    "template"?: string, //Report template (currently unncessary to provide.)
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \CreditSafe\API\Exception\CustomReportParametersBadRequestException
+     * @throws \CreditSafe\API\Exception\CustomReportParametersUnauthorizedException
+     * @throws \CreditSafe\API\Exception\CustomReportParametersForbiddenException
+     * @throws \CreditSafe\API\Exception\CustomReportParametersNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function customReportParameters(string $country, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CustomReportParameters($country, $queryParameters, $headerParameters), $fetch);

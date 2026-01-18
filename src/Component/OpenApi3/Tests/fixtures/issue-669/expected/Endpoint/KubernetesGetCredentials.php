@@ -6,28 +6,28 @@ class KubernetesGetCredentials extends \Jane\Generated\DigitalOcean\Runtime\Clie
 {
     protected $cluster_id;
     /**
-    * This endpoint returns a JSON object . It can be used to programmatically
-    * construct Kubernetes clients which cannot parse kubeconfig files.
-    *
-    * The resulting JSON object contains token-based authentication for clusters
-    * supporting it, and certificate-based authentication otherwise. For a list of
-    * supported versions and more information, see "[How to Connect to a DigitalOcean
-    * Kubernetes Cluster](https://docs.digitalocean.com/products/kubernetes/how-to/connect-to-cluster/)".
-    *
-    * To retrieve credentials for accessing a Kubernetes cluster, send a GET
-    * request to `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/credentials`.
-    *
-    * Clusters supporting token-based authentication may define an expiration by
-    * passing a duration in seconds as a query parameter to
-    * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/credentials?expiry_seconds=$DURATION_IN_SECONDS`.
-    * If not set or 0, then the token will have a 7 day expiry. The query parameter
-    * has no impact in certificate-based authentication.
-    *
-    * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
-    * @param array{
-    *    "expiry_seconds"?: int, //The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
-    } $queryParameters
-    */
+     * This endpoint returns a JSON object . It can be used to programmatically
+     * construct Kubernetes clients which cannot parse kubeconfig files.
+     *
+     * The resulting JSON object contains token-based authentication for clusters
+     * supporting it, and certificate-based authentication otherwise. For a list of
+     * supported versions and more information, see "[How to Connect to a DigitalOcean
+     * Kubernetes Cluster](https://docs.digitalocean.com/products/kubernetes/how-to/connect-to-cluster/)".
+     *
+     * To retrieve credentials for accessing a Kubernetes cluster, send a GET
+     * request to `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/credentials`.
+     *
+     * Clusters supporting token-based authentication may define an expiration by
+     * passing a duration in seconds as a query parameter to
+     * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/credentials?expiry_seconds=$DURATION_IN_SECONDS`.
+     * If not set or 0, then the token will have a 7 day expiry. The query parameter
+     * has no impact in certificate-based authentication.
+     *
+     * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
+     * @param array{
+     *    "expiry_seconds"?: int, //The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+     * } $queryParameters
+     */
     public function __construct(string $clusterId, array $queryParameters = [])
     {
         $this->cluster_id = $clusterId;

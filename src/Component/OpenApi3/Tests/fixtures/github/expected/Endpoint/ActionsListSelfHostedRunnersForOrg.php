@@ -6,15 +6,15 @@ class ActionsListSelfHostedRunnersForOrg extends \Github\Runtime\Client\BaseEndp
 {
     protected $org;
     /**
-    * **Warning:** The self-hosted runners API for organizations is currently in public beta and subject to change.
-    *
-    * Lists all self-hosted runners for an organization. You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    * @param string $org
-    * @param array{
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * **Warning:** The self-hosted runners API for organizations is currently in public beta and subject to change.
+     *
+     * Lists all self-hosted runners for an organization. You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+     * @param string $org
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $org, array $queryParameters = [])
     {
         $this->org = $org;

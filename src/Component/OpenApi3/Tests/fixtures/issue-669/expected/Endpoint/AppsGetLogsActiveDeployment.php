@@ -18,7 +18,7 @@ class AppsGetLogsActiveDeployment extends \Jane\Generated\DigitalOcean\Runtime\C
     - RUN: Live run-time logs
     - RUN_RESTARTED: Logs of crashed/restarted instances during runtime
     *    "pod_connection_timeout"?: string, //An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
-    } $queryParameters
+    * } $queryParameters
     */
     public function __construct(string $appId, string $componentName, array $queryParameters = [])
     {

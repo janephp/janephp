@@ -7,18 +7,18 @@ class ActivityListRepoNotificationsForAuthenticatedUser extends \Github\Runtime\
     protected $owner;
     protected $repo;
     /**
-    * List all notifications for the current user.
-    * @param string $owner
-    * @param string $repo
-    * @param array{
-    *    "all"?: bool, //If `true`, show notifications marked as read.
-    *    "participating"?: bool, //If `true`, only shows notifications in which the user is directly participating or mentioned.
-    *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-    *    "before"?: string, //Only show notifications updated before the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * List all notifications for the current user.
+     * @param string $owner
+     * @param string $repo
+     * @param array{
+     *    "all"?: bool, //If `true`, show notifications marked as read.
+     *    "participating"?: bool, //If `true`, only shows notifications in which the user is directly participating or mentioned.
+     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "before"?: string, //Only show notifications updated before the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $owner, string $repo, array $queryParameters = [])
     {
         $this->owner = $owner;

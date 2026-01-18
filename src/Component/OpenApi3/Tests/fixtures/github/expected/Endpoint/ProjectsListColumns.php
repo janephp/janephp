@@ -6,12 +6,12 @@ class ProjectsListColumns extends \Github\Runtime\Client\BaseEndpoint implements
 {
     protected $project_id;
     /**
-    * @param int $projectId
-    * @param array{
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * @param int $projectId
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(int $projectId, array $queryParameters = [])
     {
         $this->project_id = $projectId;

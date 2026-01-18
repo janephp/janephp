@@ -6,15 +6,15 @@ class AppsListJobInvocations extends \Jane\Generated\DigitalOcean\Runtime\Client
 {
     protected $app_id;
     /**
-    * List all job invocations for an app.
-    * @param string $appId The app ID
-    * @param array{
-    *    "job_names"?: array, //The job names to list job invocations for.
-    *    "deployment_id"?: string, //The deployment ID
-    *    "page"?: int, //Which 'page' of paginated results to return.
-    *    "per_page"?: int, //Number of items returned per page
-    } $queryParameters
-    */
+     * List all job invocations for an app.
+     * @param string $appId The app ID
+     * @param array{
+     *    "job_names"?: array, //The job names to list job invocations for.
+     *    "deployment_id"?: string, //The deployment ID
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     *    "per_page"?: int, //Number of items returned per page
+     * } $queryParameters
+     */
     public function __construct(string $appId, array $queryParameters = [])
     {
         $this->app_id = $appId;

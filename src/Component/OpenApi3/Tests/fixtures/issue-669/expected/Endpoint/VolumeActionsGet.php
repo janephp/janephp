@@ -7,16 +7,16 @@ class VolumeActionsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseE
     protected $volume_id;
     protected $action_id;
     /**
-    * To retrieve the status of a volume action, send a GET request to `/v2/volumes/$VOLUME_ID/actions/$ACTION_ID`.
-    *
-    *
-    * @param string $volumeId The ID of the block storage volume.
-    * @param int $actionId A unique numeric ID that can be used to identify and reference an action.
-    * @param array{
-    *    "per_page"?: int, //Number of items returned per page
-    *    "page"?: int, //Which 'page' of paginated results to return.
-    } $queryParameters
-    */
+     * To retrieve the status of a volume action, send a GET request to `/v2/volumes/$VOLUME_ID/actions/$ACTION_ID`.
+     *
+     *
+     * @param string $volumeId The ID of the block storage volume.
+     * @param int $actionId A unique numeric ID that can be used to identify and reference an action.
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
+     */
     public function __construct(string $volumeId, int $actionId, array $queryParameters = [])
     {
         $this->volume_id = $volumeId;

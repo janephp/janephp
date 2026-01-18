@@ -5,10 +5,10 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
 class TestObjectQuery extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
-    * @param array{
-    *    "filter"?: array,
-    } $queryParameters
-    */
+     * @param array{
+     *    "filter"?: array,
+     * } $queryParameters
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

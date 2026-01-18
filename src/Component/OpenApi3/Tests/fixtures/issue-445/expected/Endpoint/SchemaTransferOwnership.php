@@ -12,7 +12,7 @@ class SchemaTransferOwnership extends \PicturePark\API\Runtime\Client\BaseEndpoi
     * @param array{
     *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
                Only the waiting is aborted, and the calls returned.
-    } $queryParameters
+    * } $queryParameters
     */
     public function __construct(string $id, \PicturePark\API\Model\SchemaOwnershipTransferRequest $requestBody, array $queryParameters = [])
     {

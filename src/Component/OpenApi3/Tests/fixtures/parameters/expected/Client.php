@@ -5,71 +5,67 @@ namespace Jane\Component\OpenApi3\Tests\Expected;
 class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Client
 {
     /**
-    * @param string $testPath
-    * @param array{
-    *    "testQuery"?: string,
-    } $queryParameters
-    * @param array{
-    *    "testHeader"?: string,
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * @param string $testPath
+     * @param array{
+     *    "testQuery"?: string,
+     * } $queryParameters
+     * @param array{
+     *    "testHeader"?: string,
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function testGetWithPathParameters(string $testPath, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestGetWithPathParameters($testPath, $queryParameters, $headerParameters), $fetch);
     }
     /**
-    * @param string $testPath
-    * @param array{
-    *    "testQuery"?: string,
-    } $queryParameters
-    * @param array{
-    *    "testHeader"?: string,
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * @param string $testPath
+     * @param array{
+     *    "testQuery"?: string,
+     * } $queryParameters
+     * @param array{
+     *    "testHeader"?: string,
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function testPostWithPathParameters(string $testPath, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestPostWithPathParameters($testPath, $queryParameters, $headerParameters), $fetch);
     }
     /**
-    * @param array{
-    *    "testString"?: string,
-    *    "testInteger"?: int,
-    *    "testFloat"?: float,
-    *    "testArray"?: array,
-    *    "testRequired": string,
-    *    "testDefault"?: string,
-    } $queryParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * @param array{
+     *    "testString"?: string,
+     *    "testInteger"?: int,
+     *    "testFloat"?: float,
+     *    "testArray"?: array,
+     *    "testRequired": string,
+     *    "testDefault"?: string,
+     * } $queryParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function testQueryParameters(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestQueryParameters($queryParameters), $fetch);
     }
     /**
-    * @param array{
-    *    "testString"?: string,
-    *    "testInteger"?: int,
-    *    "testFloat"?: float,
-    *    "testArray"?: array,
-    *    "testRequired": string,
-    *    "testDefault"?: string,
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * @param array{
+     *    "testString"?: string,
+     *    "testInteger"?: int,
+     *    "testFloat"?: float,
+     *    "testArray"?: array,
+     *    "testRequired": string,
+     *    "testDefault"?: string,
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function testHeaderParameters(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestHeaderParameters($headerParameters), $fetch);
@@ -127,27 +123,25 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\GetByTestInteger($testInteger), $fetch);
     }
     /**
-    * @param array{
-    *    "input": string,
-    } $queryParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * @param array{
+     *    "input": string,
+     * } $queryParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function testDictionary(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestDictionary($queryParameters), $fetch);
     }
     /**
-    * @param array{
-    *    "filter"?: array,
-    } $queryParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * @param array{
+     *    "filter"?: array,
+     * } $queryParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function testObjectQuery(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestObjectQuery($queryParameters), $fetch);

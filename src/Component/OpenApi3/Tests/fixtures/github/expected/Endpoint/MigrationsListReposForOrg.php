@@ -7,14 +7,14 @@ class MigrationsListReposForOrg extends \Github\Runtime\Client\BaseEndpoint impl
     protected $org;
     protected $migration_id;
     /**
-    * List all the repositories for this organization migration.
-    * @param string $org
-    * @param int $migrationId migration_id parameter
-    * @param array{
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * List all the repositories for this organization migration.
+     * @param string $org
+     * @param int $migrationId migration_id parameter
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $org, int $migrationId, array $queryParameters = [])
     {
         $this->org = $org;

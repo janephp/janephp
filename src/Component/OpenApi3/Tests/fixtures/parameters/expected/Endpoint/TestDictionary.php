@@ -5,10 +5,10 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
 class TestDictionary extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
-    * @param array{
-    *    "input": string,
-    } $queryParameters
-    */
+     * @param array{
+     *    "input": string,
+     * } $queryParameters
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

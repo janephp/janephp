@@ -5,12 +5,12 @@ namespace Jane\Generated\DigitalOcean\Endpoint;
 class GenaiListDatacenterRegions extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint implements \Jane\Generated\DigitalOcean\Runtime\Client\Endpoint
 {
     /**
-    * To list all datacenter regions, send a GET request to `/v2/gen-ai/regions`.
-    * @param array{
-    *    "serves_inference"?: bool, //Include datacenters that serve inference.
-    *    "serves_batch"?: bool, //Include datacenters that are capable of running batch jobs.
-    } $queryParameters
-    */
+     * To list all datacenter regions, send a GET request to `/v2/gen-ai/regions`.
+     * @param array{
+     *    "serves_inference"?: bool, //Include datacenters that serve inference.
+     *    "serves_batch"?: bool, //Include datacenters that are capable of running batch jobs.
+     * } $queryParameters
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

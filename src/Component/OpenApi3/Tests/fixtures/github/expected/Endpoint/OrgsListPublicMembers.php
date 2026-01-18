@@ -6,13 +6,13 @@ class OrgsListPublicMembers extends \Github\Runtime\Client\BaseEndpoint implemen
 {
     protected $org;
     /**
-    * Members of an organization can choose to have their membership publicized or not.
-    * @param string $org
-    * @param array{
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * Members of an organization can choose to have their membership publicized or not.
+     * @param string $org
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $org, array $queryParameters = [])
     {
         $this->org = $org;

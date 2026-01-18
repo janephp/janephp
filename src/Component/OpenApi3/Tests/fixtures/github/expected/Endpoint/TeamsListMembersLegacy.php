@@ -17,7 +17,7 @@ class TeamsListMembersLegacy extends \Github\Runtime\Client\BaseEndpoint impleme
     \* `all` - all members of the team.
     *    "per_page"?: int, //Results per page (max 100)
     *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
+    * } $queryParameters
     */
     public function __construct(int $teamId, array $queryParameters = [])
     {

@@ -34,7 +34,7 @@ class ScimListProvisionedIdentities extends \Github\Runtime\Client\BaseEndpoint 
     To filter results for for the identity with the email `octocat@github.com`, you would use this query:
     
     `?filter=emails%20eq%20\"octocat@github.com\"`.
-    } $queryParameters
+    * } $queryParameters
     * @param array $accept Accept content header application/scim+json|application/json
     */
     public function __construct(string $org, array $queryParameters = [], array $accept = [])

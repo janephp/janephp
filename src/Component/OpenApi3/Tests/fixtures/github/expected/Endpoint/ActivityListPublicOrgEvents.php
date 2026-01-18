@@ -6,12 +6,12 @@ class ActivityListPublicOrgEvents extends \Github\Runtime\Client\BaseEndpoint im
 {
     protected $org;
     /**
-    * @param string $org
-    * @param array{
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * @param string $org
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $org, array $queryParameters = [])
     {
         $this->org = $org;

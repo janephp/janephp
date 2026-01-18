@@ -6,13 +6,13 @@ class MigrationsListReposForUser extends \Github\Runtime\Client\BaseEndpoint imp
 {
     protected $migration_id;
     /**
-    * Lists all the repositories for this user migration.
-    * @param int $migrationId migration_id parameter
-    * @param array{
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * Lists all the repositories for this user migration.
+     * @param int $migrationId migration_id parameter
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(int $migrationId, array $queryParameters = [])
     {
         $this->migration_id = $migrationId;

@@ -33,7 +33,7 @@ class IssuesList extends \Github\Runtime\Client\BaseEndpoint implements \Github\
     *    "pulls"?: bool,
     *    "per_page"?: int, //Results per page (max 100)
     *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
+    * } $queryParameters
     */
     public function __construct(array $queryParameters = [])
     {

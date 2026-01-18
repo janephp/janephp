@@ -5,13 +5,13 @@ namespace Jane\Generated\DigitalOcean\Endpoint;
 class MonitoringGetDropletCpuMetrics extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint implements \Jane\Generated\DigitalOcean\Runtime\Client\Endpoint
 {
     /**
-    * To retrieve CPU metrics for a given droplet, send a GET request to `/v2/monitoring/metrics/droplet/cpu`.
-    * @param array{
-    *    "host_id": string, //The droplet ID.
-    *    "start": string, //UNIX timestamp to start metric window.
-    *    "end": string, //UNIX timestamp to end metric window.
-    } $queryParameters
-    */
+     * To retrieve CPU metrics for a given droplet, send a GET request to `/v2/monitoring/metrics/droplet/cpu`.
+     * @param array{
+     *    "host_id": string, //The droplet ID.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

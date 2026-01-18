@@ -5,27 +5,27 @@ namespace CreditSafe\API\Endpoint;
 class ListSubmittedFreshInvestigations extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     /**
-    * Returns a list of your submitted Fresh Investigation Orders.
-    * @param array{
-    *    "page"?: int, //Starting page number (indexed from 0)
-    *    "pageSize"?: int, //Number of items to return per Page (max 1000)
-    *    "transactionId"?: string, //Fresh Investigation Identifier used internally and with our data partners.
-    *    "reportCreatedAfter"?: string, //Returns Fresh Investigations processed after this date
-    *    "reportCreatedBefore"?: string, //Returns ordered Fresh Investigations that were processed before this date
-    *    "createdBefore"?: string, //Returns Fresh Investigations created before this date
-    *    "createdSince"?: string, //Returns ordered Fresh Investigations created after this date
-    *    "lookUpOrderBy"?: string, //Use to search for your Fresh Investigations by either the returned Company Details in the `GET` `freshInvestigations/{orderId}` endpoint or your supplied Search Criteria in the `POST` `/freshInvestigations` endpoint
-    *    "companyDetailsCountry"?: string, //Looks for your returned Fresh Investigations where the returned Company Country is named this. Use with lookUpOrderBy=CompanyDetails
-    *    "companyDetailsName"?: string, //Looks for your returned Fresh Investigations where the returned Company Name is named this. Use with lookUpOrderBy=CompanyDetails
-    *    "searchCriteriaCountry"?: string, //Looks for your returned Fresh Investigations where your submitted Search Criteria Company Country is this. Use with lookUpOrderBy=searchCriteria
-    *    "searchCriteriaName"?: string, //Looks for your Fresh Investigations where your submitted Search Criteria Company Name is this. Use with lookUpOrderBy=searchCriteria
-    *    "sortBy"?: string, //Sorts  returned Fresh Investigations by this field
-    *    "sortDir"?: string, //Sorts returned Fresh Investigations by this direction
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    */
+     * Returns a list of your submitted Fresh Investigation Orders.
+     * @param array{
+     *    "page"?: int, //Starting page number (indexed from 0)
+     *    "pageSize"?: int, //Number of items to return per Page (max 1000)
+     *    "transactionId"?: string, //Fresh Investigation Identifier used internally and with our data partners.
+     *    "reportCreatedAfter"?: string, //Returns Fresh Investigations processed after this date
+     *    "reportCreatedBefore"?: string, //Returns ordered Fresh Investigations that were processed before this date
+     *    "createdBefore"?: string, //Returns Fresh Investigations created before this date
+     *    "createdSince"?: string, //Returns ordered Fresh Investigations created after this date
+     *    "lookUpOrderBy"?: string, //Use to search for your Fresh Investigations by either the returned Company Details in the `GET` `freshInvestigations/{orderId}` endpoint or your supplied Search Criteria in the `POST` `/freshInvestigations` endpoint
+     *    "companyDetailsCountry"?: string, //Looks for your returned Fresh Investigations where the returned Company Country is named this. Use with lookUpOrderBy=CompanyDetails
+     *    "companyDetailsName"?: string, //Looks for your returned Fresh Investigations where the returned Company Name is named this. Use with lookUpOrderBy=CompanyDetails
+     *    "searchCriteriaCountry"?: string, //Looks for your returned Fresh Investigations where your submitted Search Criteria Company Country is this. Use with lookUpOrderBy=searchCriteria
+     *    "searchCriteriaName"?: string, //Looks for your Fresh Investigations where your submitted Search Criteria Company Name is this. Use with lookUpOrderBy=searchCriteria
+     *    "sortBy"?: string, //Sorts  returned Fresh Investigations by this field
+     *    "sortDir"?: string, //Sorts returned Fresh Investigations by this direction
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     */
     public function __construct(array $queryParameters = [], array $headerParameters = [])
     {
         $this->queryParameters = $queryParameters;

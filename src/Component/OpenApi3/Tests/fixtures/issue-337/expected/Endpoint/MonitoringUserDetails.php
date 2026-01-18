@@ -5,11 +5,11 @@ namespace CreditSafe\API\Endpoint;
 class MonitoringUserDetails extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     /**
-    * Endpoint to return all user details relating to the Global Monitoring product.
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    */
+     * Endpoint to return all user details relating to the Global Monitoring product.
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     */
     public function __construct(array $headerParameters = [])
     {
         $this->headerParameters = $headerParameters;

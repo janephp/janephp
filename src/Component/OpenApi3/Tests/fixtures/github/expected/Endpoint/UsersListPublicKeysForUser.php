@@ -6,13 +6,13 @@ class UsersListPublicKeysForUser extends \Github\Runtime\Client\BaseEndpoint imp
 {
     protected $username;
     /**
-    * Lists the _verified_ public SSH keys for a user. This is accessible by anyone.
-    * @param string $username
-    * @param array{
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * Lists the _verified_ public SSH keys for a user. This is accessible by anyone.
+     * @param string $username
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $username, array $queryParameters = [])
     {
         $this->username = $username;

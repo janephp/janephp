@@ -5,12 +5,12 @@ namespace Jane\Generated\DigitalOcean\Endpoint;
 class PartnerAttachmentsList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint implements \Jane\Generated\DigitalOcean\Runtime\Client\Endpoint
 {
     /**
-    * To list all of the Partner Attachments on your account, send a `GET` request to `/v2/partner_network_connect/attachments`.
-    * @param array{
-    *    "per_page"?: int, //Number of items returned per page
-    *    "page"?: int, //Which 'page' of paginated results to return.
-    } $queryParameters
-    */
+     * To list all of the Partner Attachments on your account, send a `GET` request to `/v2/partner_network_connect/attachments`.
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

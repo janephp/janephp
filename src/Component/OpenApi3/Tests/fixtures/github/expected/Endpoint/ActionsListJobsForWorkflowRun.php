@@ -18,7 +18,7 @@ class ActionsListJobsForWorkflowRun extends \Github\Runtime\Client\BaseEndpoint 
     \* `all`: Returns all jobs for a workflow run, including from old executions of the workflow run.
     *    "per_page"?: int, //Results per page (max 100)
     *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
+    * } $queryParameters
     */
     public function __construct(string $owner, string $repo, int $runId, array $queryParameters = [])
     {

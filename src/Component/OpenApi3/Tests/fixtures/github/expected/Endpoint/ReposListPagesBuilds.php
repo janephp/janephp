@@ -7,13 +7,13 @@ class ReposListPagesBuilds extends \Github\Runtime\Client\BaseEndpoint implement
     protected $owner;
     protected $repo;
     /**
-    * @param string $owner
-    * @param string $repo
-    * @param array{
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * @param string $owner
+     * @param string $repo
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $owner, string $repo, array $queryParameters = [])
     {
         $this->owner = $owner;

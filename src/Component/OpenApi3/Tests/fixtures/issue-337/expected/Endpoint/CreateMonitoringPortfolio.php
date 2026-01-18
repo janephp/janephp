@@ -5,12 +5,12 @@ namespace CreditSafe\API\Endpoint;
 class CreateMonitoringPortfolio extends \CreditSafe\API\Runtime\Client\BaseEndpoint implements \CreditSafe\API\Runtime\Client\Endpoint
 {
     /**
-    * Endpoint to create a new Portfolio based on the supplied criteria. A portfolio can contain any number of `companies` that you wish to monitor changes to.
-    * @param \CreditSafe\API\Model\MonitoringPortfoliosPostBody $requestBody
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    */
+     * Endpoint to create a new Portfolio based on the supplied criteria. A portfolio can contain any number of `companies` that you wish to monitor changes to.
+     * @param \CreditSafe\API\Model\MonitoringPortfoliosPostBody $requestBody
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     */
     public function __construct(\CreditSafe\API\Model\MonitoringPortfoliosPostBody $requestBody, array $headerParameters = [])
     {
         $this->body = $requestBody;

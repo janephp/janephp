@@ -6,13 +6,13 @@ class ProjectsListCards extends \Github\Runtime\Client\BaseEndpoint implements \
 {
     protected $column_id;
     /**
-    * @param int $columnId column_id parameter
-    * @param array{
-    *    "archived_state"?: string, //Filters the project cards that are returned by the card's state. Can be one of `all`,`archived`, or `not_archived`.
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * @param int $columnId column_id parameter
+     * @param array{
+     *    "archived_state"?: string, //Filters the project cards that are returned by the card's state. Can be one of `all`,`archived`, or `not_archived`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(int $columnId, array $queryParameters = [])
     {
         $this->column_id = $columnId;

@@ -6,13 +6,13 @@ class ProjectsListForUser extends \Github\Runtime\Client\BaseEndpoint implements
 {
     protected $username;
     /**
-    * @param string $username
-    * @param array{
-    *    "state"?: string, //Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * @param string $username
+     * @param array{
+     *    "state"?: string, //Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $username, array $queryParameters = [])
     {
         $this->username = $username;

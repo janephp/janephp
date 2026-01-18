@@ -5,14 +5,13 @@ namespace Jane\Component\OpenApi3\Tests\Expected;
 class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Client
 {
     /**
-    * @param array{
-    *    "testBoolean"?: bool,
-    } $queryParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * @param array{
+     *    "testBoolean"?: bool,
+     * } $queryParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function getFoo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\GetFoo($queryParameters), $fetch);

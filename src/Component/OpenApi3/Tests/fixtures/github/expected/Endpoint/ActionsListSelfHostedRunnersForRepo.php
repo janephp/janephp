@@ -7,14 +7,14 @@ class ActionsListSelfHostedRunnersForRepo extends \Github\Runtime\Client\BaseEnd
     protected $owner;
     protected $repo;
     /**
-    * Lists all self-hosted runners for a repository. You must authenticate using an access token with the `repo` scope to use this endpoint.
-    * @param string $owner
-    * @param string $repo
-    * @param array{
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * Lists all self-hosted runners for a repository. You must authenticate using an access token with the `repo` scope to use this endpoint.
+     * @param string $owner
+     * @param string $repo
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $owner, string $repo, array $queryParameters = [])
     {
         $this->owner = $owner;

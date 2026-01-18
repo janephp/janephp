@@ -15,7 +15,7 @@ class ProjectsListCollaborators extends \Github\Runtime\Client\BaseEndpoint impl
     \* `all`: All collaborators the authenticated user can see.
     *    "per_page"?: int, //Results per page (max 100)
     *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
+    * } $queryParameters
     */
     public function __construct(int $projectId, array $queryParameters = [])
     {

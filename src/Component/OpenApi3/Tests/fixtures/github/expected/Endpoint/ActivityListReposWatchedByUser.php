@@ -6,13 +6,13 @@ class ActivityListReposWatchedByUser extends \Github\Runtime\Client\BaseEndpoint
 {
     protected $username;
     /**
-    * Lists repositories a user is watching.
-    * @param string $username
-    * @param array{
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * Lists repositories a user is watching.
+     * @param string $username
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $username, array $queryParameters = [])
     {
         $this->username = $username;

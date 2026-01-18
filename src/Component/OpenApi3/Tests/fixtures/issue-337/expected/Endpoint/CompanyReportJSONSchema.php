@@ -6,16 +6,16 @@ class CompanyReportJSONSchema extends \CreditSafe\API\Runtime\Client\BaseEndpoin
 {
     protected $countryCode;
     /**
-    * Returns the JSON schema of the companies/{connectId} endpoint for implementation in strong-typed languages.
-    * @param string $countryCode ISO2 / Alpha 2 Country Code
-    * @param array{
-    *    "section"?: string, //Use CompanyReportResponse for the Company Credit Report JSON schema, DirectorReportResponse for the Director Report JSON schema.
-    *    "template"?: string, //For Templated Company Report JSON Schemas
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    */
+     * Returns the JSON schema of the companies/{connectId} endpoint for implementation in strong-typed languages.
+     * @param string $countryCode ISO2 / Alpha 2 Country Code
+     * @param array{
+     *    "section"?: string, //Use CompanyReportResponse for the Company Credit Report JSON schema, DirectorReportResponse for the Director Report JSON schema.
+     *    "template"?: string, //For Templated Company Report JSON Schemas
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     */
     public function __construct(string $countryCode, array $queryParameters = [], array $headerParameters = [])
     {
         $this->countryCode = $countryCode;

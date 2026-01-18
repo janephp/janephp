@@ -8,14 +8,14 @@ class PullsListRequestedReviewers extends \Github\Runtime\Client\BaseEndpoint im
     protected $repo;
     protected $pull_number;
     /**
-    * @param string $owner
-    * @param string $repo
-    * @param int $pullNumber
-    * @param array{
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * @param string $owner
+     * @param string $repo
+     * @param int $pullNumber
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $owner, string $repo, int $pullNumber, array $queryParameters = [])
     {
         $this->owner = $owner;

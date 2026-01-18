@@ -95,12 +95,13 @@ trait GetConstructorTrait
             \count($contentTypes) > 1 ? [new Node\Param(new Expr\Variable('accept'), new Expr\Array_(), new Name('array'))] : []
         );
 
+
         $methodDocumentations = array_merge(
             $pathParamsDoc,
             $pathParamsWithDefaultValueDoc,
             $bodyDoc ? [$bodyDoc] : [],
-            \count($queryParamsDoc) > 0 ? [\sprintf(" * @param array{\n%s\n} \$queryParameters", implode("\n", $queryParamsDoc))] : [],
-            \count($headerParamsDoc) > 0 ? [\sprintf(" * @param array{\n%s\n} \$headerParameters", implode("\n", $headerParamsDoc))] : [],
+            \count($queryParamsDoc) > 0 ? [\sprintf(" * @param array{\n%s\n * } \$queryParameters", implode("\n", $queryParamsDoc))] : [],
+            \count($headerParamsDoc) > 0 ? [\sprintf(" * @param array{\n%s\n * } \$headerParameters", implode("\n", $headerParamsDoc))] : [],
             \count($contentTypes) > 1 ? [' * @param array $accept Accept content header ' .
                 str_replace('*/', '*\\/', implode('|', $this->getContentTypes($operation, $guessClass)))] : []
         );

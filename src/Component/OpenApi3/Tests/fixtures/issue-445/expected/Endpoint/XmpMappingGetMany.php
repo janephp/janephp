@@ -5,11 +5,11 @@ namespace PicturePark\API\Endpoint;
 class XmpMappingGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implements \PicturePark\API\Runtime\Client\Endpoint
 {
     /**
-    * Gets multiple xmp mapping details by the xmp mapping IDs. Can fetch maximum of 100 xmp mappings at once.
-    * @param array{
-    *    "ids"?: array, //Xmp mapping IDs to get information about.
-    } $queryParameters
-    */
+     * Gets multiple xmp mapping details by the xmp mapping IDs. Can fetch maximum of 100 xmp mappings at once.
+     * @param array{
+     *    "ids"?: array, //Xmp mapping IDs to get information about.
+     * } $queryParameters
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

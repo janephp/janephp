@@ -6,12 +6,12 @@ class StreamFilter extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Clien
 {
     protected $accept;
     /**
-    * Streams tweets matching a user's active rule set.
-    * @param array{
-    *    "expansions"?: array, //A comma-separated list of tweet expansions.
-    } $queryParameters
-    * @param array $accept Accept content header application/json|application/problem+json
-    */
+     * Streams tweets matching a user's active rule set.
+     * @param array{
+     *    "expansions"?: array, //A comma-separated list of tweet expansions.
+     * } $queryParameters
+     * @param array $accept Accept content header application/json|application/problem+json
+     */
     public function __construct(array $queryParameters = [], array $accept = [])
     {
         $this->queryParameters = $queryParameters;

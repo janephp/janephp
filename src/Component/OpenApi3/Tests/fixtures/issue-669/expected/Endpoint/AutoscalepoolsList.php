@@ -5,16 +5,16 @@ namespace Jane\Generated\DigitalOcean\Endpoint;
 class AutoscalepoolsList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint implements \Jane\Generated\DigitalOcean\Runtime\Client\Endpoint
 {
     /**
-    * To list all autoscale pools in your team, send a GET request to `/v2/droplets/autoscale`.
-    * The response body will be a JSON object with a key of `autoscale_pools` containing an array of autoscale pool objects.
-    * These each contain the standard autoscale pool attributes.
-    *
-    * @param array{
-    *    "per_page"?: int, //Number of items returned per page
-    *    "page"?: int, //Which 'page' of paginated results to return.
-    *    "name"?: string, //The name of the autoscale pool
-    } $queryParameters
-    */
+     * To list all autoscale pools in your team, send a GET request to `/v2/droplets/autoscale`.
+     * The response body will be a JSON object with a key of `autoscale_pools` containing an array of autoscale pool objects.
+     * These each contain the standard autoscale pool attributes.
+     *
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     *    "name"?: string, //The name of the autoscale pool
+     * } $queryParameters
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

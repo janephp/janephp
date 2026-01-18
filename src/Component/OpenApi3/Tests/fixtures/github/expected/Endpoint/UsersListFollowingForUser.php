@@ -6,13 +6,13 @@ class UsersListFollowingForUser extends \Github\Runtime\Client\BaseEndpoint impl
 {
     protected $username;
     /**
-    * Lists the people who the specified user follows.
-    * @param string $username
-    * @param array{
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * Lists the people who the specified user follows.
+     * @param string $username
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $username, array $queryParameters = [])
     {
         $this->username = $username;

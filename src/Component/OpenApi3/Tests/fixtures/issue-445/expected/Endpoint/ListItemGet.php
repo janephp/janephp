@@ -6,12 +6,12 @@ class ListItemGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implement
 {
     protected $id;
     /**
-    * Gets the list item detail by ID.
-    * @param string $id The list item ID.
-    * @param array{
-    *    "resolveBehaviors"?: array, //List of enums that control which parts of the list item are resolved and returned.
-    } $queryParameters
-    */
+     * Gets the list item detail by ID.
+     * @param string $id The list item ID.
+     * @param array{
+     *    "resolveBehaviors"?: array, //List of enums that control which parts of the list item are resolved and returned.
+     * } $queryParameters
+     */
     public function __construct(string $id, array $queryParameters = [])
     {
         $this->id = $id;

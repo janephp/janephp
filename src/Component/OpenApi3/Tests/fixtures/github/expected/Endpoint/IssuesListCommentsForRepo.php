@@ -7,17 +7,17 @@ class IssuesListCommentsForRepo extends \Github\Runtime\Client\BaseEndpoint impl
     protected $owner;
     protected $repo;
     /**
-    * By default, Issue Comments are ordered by ascending ID.
-    * @param string $owner
-    * @param string $repo
-    * @param array{
-    *    "sort"?: string, //One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-    *    "direction"?: string, //Either `asc` or `desc`. Ignored without the `sort` parameter.
-    *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * By default, Issue Comments are ordered by ascending ID.
+     * @param string $owner
+     * @param string $repo
+     * @param array{
+     *    "sort"?: string, //One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
+     *    "direction"?: string, //Either `asc` or `desc`. Ignored without the `sort` parameter.
+     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $owner, string $repo, array $queryParameters = [])
     {
         $this->owner = $owner;

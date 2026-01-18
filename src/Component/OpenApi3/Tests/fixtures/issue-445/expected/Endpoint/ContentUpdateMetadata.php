@@ -19,7 +19,7 @@ class ContentUpdateMetadata extends \PicturePark\API\Runtime\Client\BaseEndpoint
                Only the waiting is aborted, and the calls returned.
     *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    } $queryParameters
+    * } $queryParameters
     */
     public function __construct(string $id, \PicturePark\API\Model\ContentMetadataUpdateRequest $requestBody, array $queryParameters = [])
     {

@@ -8,15 +8,15 @@ class ReposListForks extends \Github\Runtime\Client\BaseEndpoint implements \Git
     protected $repo;
     protected $accept;
     /**
-    * @param string $owner
-    * @param string $repo
-    * @param array{
-    *    "sort"?: string, //The sort order. Can be either `newest`, `oldest`, or `stargazers`.
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    * @param array $accept Accept content header application/json|application/scim+json
-    */
+     * @param string $owner
+     * @param string $repo
+     * @param array{
+     *    "sort"?: string, //The sort order. Can be either `newest`, `oldest`, or `stargazers`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     * @param array $accept Accept content header application/json|application/scim+json
+     */
     public function __construct(string $owner, string $repo, array $queryParameters = [], array $accept = [])
     {
         $this->owner = $owner;

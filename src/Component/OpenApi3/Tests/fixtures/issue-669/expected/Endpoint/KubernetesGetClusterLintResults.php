@@ -6,19 +6,19 @@ class KubernetesGetClusterLintResults extends \Jane\Generated\DigitalOcean\Runti
 {
     protected $cluster_id;
     /**
-    * To request clusterlint diagnostics for your cluster, send a GET request to
-    * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/clusterlint`. If the `run_id` query
-    * parameter is provided, then the diagnostics for the specific run is fetched.
-    * By default, the latest results are shown.
-    *
-    * To find out how to address clusterlint feedback, please refer to
-    * [the clusterlint check documentation](https://github.com/digitalocean/clusterlint/blob/master/checks.md).
-    *
-    * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
-    * @param array{
-    *    "run_id"?: string, //Specifies the clusterlint run whose results will be retrieved.
-    } $queryParameters
-    */
+     * To request clusterlint diagnostics for your cluster, send a GET request to
+     * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/clusterlint`. If the `run_id` query
+     * parameter is provided, then the diagnostics for the specific run is fetched.
+     * By default, the latest results are shown.
+     *
+     * To find out how to address clusterlint feedback, please refer to
+     * [the clusterlint check documentation](https://github.com/digitalocean/clusterlint/blob/master/checks.md).
+     *
+     * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
+     * @param array{
+     *    "run_id"?: string, //Specifies the clusterlint run whose results will be retrieved.
+     * } $queryParameters
+     */
     public function __construct(string $clusterId, array $queryParameters = [])
     {
         $this->cluster_id = $clusterId;

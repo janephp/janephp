@@ -6,18 +6,18 @@ class CompanyEvents extends \CreditSafe\API\Runtime\Client\BaseEndpoint implemen
 {
     protected $id;
     /**
-    * Endpoint to return a collection of `events` for the given company, optionally filtered on the supplied search criteria. Event information will only be returned if the company exists in at least one of your `portfolios`.
-    * @param string $id The connectId of the company that you wish to retrieve events for.
-    * @param array{
-    *    "startDate"?: string, //The start date on which results are filtered.
-    *    "endDate"?: string, //The end date on which results are filtered.
-    *    "page"?: int, //Starting page number (indexed from 0)
-    *    "pageSize"?: int, //Number of items to return per Page (max 1000)
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    */
+     * Endpoint to return a collection of `events` for the given company, optionally filtered on the supplied search criteria. Event information will only be returned if the company exists in at least one of your `portfolios`.
+     * @param string $id The connectId of the company that you wish to retrieve events for.
+     * @param array{
+     *    "startDate"?: string, //The start date on which results are filtered.
+     *    "endDate"?: string, //The end date on which results are filtered.
+     *    "page"?: int, //Starting page number (indexed from 0)
+     *    "pageSize"?: int, //Number of items to return per Page (max 1000)
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     */
     public function __construct(string $id, array $queryParameters = [], array $headerParameters = [])
     {
         $this->id = $id;

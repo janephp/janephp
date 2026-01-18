@@ -19,7 +19,7 @@ class AppsListDeployments extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
      - AUTO_ROLLBACK: automatic revert to a previous deployment
      - UPDATE_DATABASE_TRUSTED_SOURCES: update database trusted sources
      - AUTOSCALED: deployment that has been autoscaled
-    } $queryParameters
+    * } $queryParameters
     */
     public function __construct(string $appId, array $queryParameters = [])
     {

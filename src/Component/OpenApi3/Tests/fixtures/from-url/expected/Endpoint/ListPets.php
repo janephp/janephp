@@ -5,10 +5,10 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
 class ListPets extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
-    * @param array{
-    *    "limit"?: int, //How many items to return at one time (max 100)
-    } $queryParameters
-    */
+     * @param array{
+     *    "limit"?: int, //How many items to return at one time (max 100)
+     * } $queryParameters
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

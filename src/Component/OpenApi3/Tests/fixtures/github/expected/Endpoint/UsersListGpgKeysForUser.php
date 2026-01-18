@@ -6,13 +6,13 @@ class UsersListGpgKeysForUser extends \Github\Runtime\Client\BaseEndpoint implem
 {
     protected $username;
     /**
-    * Lists the GPG keys for a user. This information is accessible by anyone.
-    * @param string $username
-    * @param array{
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * Lists the GPG keys for a user. This information is accessible by anyone.
+     * @param string $username
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $username, array $queryParameters = [])
     {
         $this->username = $username;

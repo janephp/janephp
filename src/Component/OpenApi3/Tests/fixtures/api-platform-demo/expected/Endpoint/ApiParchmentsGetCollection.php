@@ -6,12 +6,12 @@ class ApiParchmentsGetCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEn
 {
     protected $accept;
     /**
-    * Retrieves the collection of Parchment resources.
-    * @param array{
-    *    "page"?: int, //The collection page number
-    } $queryParameters
-    * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
-    */
+     * Retrieves the collection of Parchment resources.
+     * @param array{
+     *    "page"?: int, //The collection page number
+     * } $queryParameters
+     * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
+     */
     public function __construct(array $queryParameters = [], array $accept = [])
     {
         $this->queryParameters = $queryParameters;

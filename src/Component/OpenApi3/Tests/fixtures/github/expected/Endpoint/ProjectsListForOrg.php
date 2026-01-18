@@ -6,14 +6,14 @@ class ProjectsListForOrg extends \Github\Runtime\Client\BaseEndpoint implements 
 {
     protected $org;
     /**
-    * Lists the projects in an organization. Returns a `404 Not Found` status if projects are disabled in the organization. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
-    * @param string $org
-    * @param array{
-    *    "state"?: string, //Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * Lists the projects in an organization. Returns a `404 Not Found` status if projects are disabled in the organization. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
+     * @param string $org
+     * @param array{
+     *    "state"?: string, //Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $org, array $queryParameters = [])
     {
         $this->org = $org;

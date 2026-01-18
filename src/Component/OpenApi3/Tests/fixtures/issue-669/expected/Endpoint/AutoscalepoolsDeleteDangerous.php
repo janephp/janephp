@@ -6,14 +6,14 @@ class AutoscalepoolsDeleteDangerous extends \Jane\Generated\DigitalOcean\Runtime
 {
     protected $autoscale_pool_id;
     /**
-    * To destroy an autoscale pool and its associated resources (Droplets),
-    * send a DELETE request to the `/v2/droplets/autoscale/$AUTOSCALE_POOL_ID/dangerous` endpoint.
-    *
-    * @param string $autoscalePoolId A unique identifier for an autoscale pool.
-    * @param array{
-    *    "X-Dangerous": bool, //Acknowledge this action will destroy the autoscale pool and its associated resources and _can not_ be reversed.
-    } $headerParameters
-    */
+     * To destroy an autoscale pool and its associated resources (Droplets),
+     * send a DELETE request to the `/v2/droplets/autoscale/$AUTOSCALE_POOL_ID/dangerous` endpoint.
+     *
+     * @param string $autoscalePoolId A unique identifier for an autoscale pool.
+     * @param array{
+     *    "X-Dangerous": bool, //Acknowledge this action will destroy the autoscale pool and its associated resources and _can not_ be reversed.
+     * } $headerParameters
+     */
     public function __construct(string $autoscalePoolId, array $headerParameters = [])
     {
         $this->autoscale_pool_id = $autoscalePoolId;

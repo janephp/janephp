@@ -5,14 +5,14 @@ namespace Jane\Generated\DigitalOcean\Endpoint;
 class MonitoringGetAppMemoryPercentageMetrics extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint implements \Jane\Generated\DigitalOcean\Runtime\Client\Endpoint
 {
     /**
-    * To retrieve memory percentage metrics for a given app, send a GET request to `/v2/monitoring/metrics/apps/memory_percentage`.
-    * @param array{
-    *    "app_id": string, //The app UUID.
-    *    "app_component"?: string, //The app component name.
-    *    "start": string, //UNIX timestamp to start metric window.
-    *    "end": string, //UNIX timestamp to end metric window.
-    } $queryParameters
-    */
+     * To retrieve memory percentage metrics for a given app, send a GET request to `/v2/monitoring/metrics/apps/memory_percentage`.
+     * @param array{
+     *    "app_id": string, //The app UUID.
+     *    "app_component"?: string, //The app component name.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

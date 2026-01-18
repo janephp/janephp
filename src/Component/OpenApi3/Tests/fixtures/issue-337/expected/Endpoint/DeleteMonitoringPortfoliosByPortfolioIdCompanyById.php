@@ -7,13 +7,13 @@ class DeleteMonitoringPortfoliosByPortfolioIdCompanyById extends \CreditSafe\API
     protected $portfolioId;
     protected $id;
     /**
-    * Delete a Company
-    * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-    * @param string $id A company Safe Number or Connect ID.
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    */
+     * Delete a Company
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param string $id A company Safe Number or Connect ID.
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     */
     public function __construct(string $portfolioId, string $id, array $headerParameters = [])
     {
         $this->portfolioId = $portfolioId;

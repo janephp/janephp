@@ -19,7 +19,7 @@ class ReposListCollaborators extends \Github\Runtime\Client\BaseEndpoint impleme
     \* `all`: All collaborators the authenticated user can see.
     *    "per_page"?: int, //Results per page (max 100)
     *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
+    * } $queryParameters
     */
     public function __construct(string $owner, string $repo, array $queryParameters = [])
     {

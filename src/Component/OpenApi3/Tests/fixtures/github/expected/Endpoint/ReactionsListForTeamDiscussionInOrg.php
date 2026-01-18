@@ -8,18 +8,18 @@ class ReactionsListForTeamDiscussionInOrg extends \Github\Runtime\Client\BaseEnd
     protected $team_slug;
     protected $discussion_number;
     /**
-    * List the reactions to a [team discussion](https://developer.github.com/v3/teams/discussions/). OAuth access tokens require the `read:discussion` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    *
-    * **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
-    * @param string $org
-    * @param string $teamSlug team_slug parameter
-    * @param int $discussionNumber
-    * @param array{
-    *    "content"?: string, //Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to a team discussion.
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * List the reactions to a [team discussion](https://developer.github.com/v3/teams/discussions/). OAuth access tokens require the `read:discussion` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
+     *
+     * **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
+     * @param string $org
+     * @param string $teamSlug team_slug parameter
+     * @param int $discussionNumber
+     * @param array{
+     *    "content"?: string, //Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to a team discussion.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $org, string $teamSlug, int $discussionNumber, array $queryParameters = [])
     {
         $this->org = $org;

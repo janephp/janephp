@@ -5,13 +5,13 @@ namespace Jane\Generated\DigitalOcean\Endpoint;
 class GenaiListAgents extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint implements \Jane\Generated\DigitalOcean\Runtime\Client\Endpoint
 {
     /**
-    * To list all agents, send a GET request to `/v2/gen-ai/agents`.
-    * @param array{
-    *    "only_deployed"?: bool, //Only list agents that are deployed.
-    *    "page"?: int, //Page number.
-    *    "per_page"?: int, //Items per page.
-    } $queryParameters
-    */
+     * To list all agents, send a GET request to `/v2/gen-ai/agents`.
+     * @param array{
+     *    "only_deployed"?: bool, //Only list agents that are deployed.
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

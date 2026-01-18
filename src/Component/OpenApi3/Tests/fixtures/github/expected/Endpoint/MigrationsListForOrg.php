@@ -6,13 +6,13 @@ class MigrationsListForOrg extends \Github\Runtime\Client\BaseEndpoint implement
 {
     protected $org;
     /**
-    * Lists the most recent migrations.
-    * @param string $org
-    * @param array{
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * Lists the most recent migrations.
+     * @param string $org
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $org, array $queryParameters = [])
     {
         $this->org = $org;

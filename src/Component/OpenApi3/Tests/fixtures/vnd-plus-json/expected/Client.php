@@ -14,7 +14,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
     *    "Amazon-Advertising-API-ClientId": string, //The identifier of a client associated with a "Login with Amazon" account.
     *    "Amazon-Advertising-API-Scope": string, //The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list
     profiles associated with the access token passed in the HTTP Authorization header.
-    } $headerParameters
+    * } $headerParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *

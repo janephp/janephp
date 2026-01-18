@@ -5,12 +5,12 @@ namespace Jane\Generated\DigitalOcean\Endpoint;
 class GenaiListOpenaiApiKeys extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint implements \Jane\Generated\DigitalOcean\Runtime\Client\Endpoint
 {
     /**
-    * To list all OpenAI API keys, send a GET request to `/v2/gen-ai/openai/keys`.
-    * @param array{
-    *    "page"?: int, //Page number.
-    *    "per_page"?: int, //Items per page.
-    } $queryParameters
-    */
+     * To list all OpenAI API keys, send a GET request to `/v2/gen-ai/openai/keys`.
+     * @param array{
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

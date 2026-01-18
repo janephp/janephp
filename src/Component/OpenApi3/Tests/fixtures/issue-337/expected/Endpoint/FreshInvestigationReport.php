@@ -6,15 +6,15 @@ class FreshInvestigationReport extends \CreditSafe\API\Runtime\Client\BaseEndpoi
 {
     protected $orderId;
     /**
-    * Returns a specific Fresh Investigation order.
-    * @param string $orderId
-    * @param array{
-    *    "sections"?: string, //Specify a value to return a single section, or multiple-comma separated sections of the completed Fresh Investigation. Leave null to return the full report. Available sections; - companyIdentification - creditScore - contactInformation - directors - otherInformation - groupStructure - extendedGroupStructure - financialStatements - negativeInformation - additionalInformation - directorships - localFinancialStatements - paymentData - companySummary - alternateSummary
-    } $queryParameters
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    */
+     * Returns a specific Fresh Investigation order.
+     * @param string $orderId
+     * @param array{
+     *    "sections"?: string, //Specify a value to return a single section, or multiple-comma separated sections of the completed Fresh Investigation. Leave null to return the full report. Available sections; - companyIdentification - creditScore - contactInformation - directors - otherInformation - groupStructure - extendedGroupStructure - financialStatements - negativeInformation - additionalInformation - directorships - localFinancialStatements - paymentData - companySummary - alternateSummary
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     */
     public function __construct(string $orderId, array $queryParameters = [], array $headerParameters = [])
     {
         $this->orderId = $orderId;

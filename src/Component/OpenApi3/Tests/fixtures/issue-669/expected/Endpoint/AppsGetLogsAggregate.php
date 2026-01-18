@@ -18,7 +18,7 @@ class AppsGetLogsAggregate extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     - RUN: Live run-time logs
     - RUN_RESTARTED: Logs of crashed/restarted instances during runtime
     *    "pod_connection_timeout"?: string, //An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
-    } $queryParameters
+    * } $queryParameters
     */
     public function __construct(string $appId, string $deploymentId, array $queryParameters = [])
     {

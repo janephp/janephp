@@ -8,16 +8,16 @@ class BillingInsightsList extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     protected $start_date;
     protected $end_date;
     /**
-    *
-    * This endpoint returns day-over-day changes in billing resource usage based on nightly invoice items, including total amount, region, SKU, and description for a specified date range. It is important to note that the daily resource usage may not reflect month-end billing totals when totaled for a given month as nightly invoice item estimates do not necessarily encompass all invoicing factors for the entire month.
-    * @param string $accountUrn URN of the customer account, can be a team (do:team:uuid) or an organization (do:teamgroup:uuid)
-    * @param string $startDate Start date for billing insights in YYYY-MM-DD format
-    * @param string $endDate End date for billing insights in YYYY-MM-DD format. Must be within 31 days of start_date
-    * @param array{
-    *    "per_page"?: int, //Number of items returned per page
-    *    "page"?: int, //Which 'page' of paginated results to return.
-    } $queryParameters
-    */
+     *
+     * This endpoint returns day-over-day changes in billing resource usage based on nightly invoice items, including total amount, region, SKU, and description for a specified date range. It is important to note that the daily resource usage may not reflect month-end billing totals when totaled for a given month as nightly invoice item estimates do not necessarily encompass all invoicing factors for the entire month.
+     * @param string $accountUrn URN of the customer account, can be a team (do:team:uuid) or an organization (do:teamgroup:uuid)
+     * @param string $startDate Start date for billing insights in YYYY-MM-DD format
+     * @param string $endDate End date for billing insights in YYYY-MM-DD format. Must be within 31 days of start_date
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
+     */
     public function __construct(string $accountUrn, string $startDate, string $endDate, array $queryParameters = [])
     {
         $this->account_urn = $accountUrn;

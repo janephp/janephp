@@ -8,15 +8,15 @@ class PullsListReviews extends \Github\Runtime\Client\BaseEndpoint implements \G
     protected $repo;
     protected $pull_number;
     /**
-    * The list of reviews returns in chronological order.
-    * @param string $owner
-    * @param string $repo
-    * @param int $pullNumber
-    * @param array{
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * The list of reviews returns in chronological order.
+     * @param string $owner
+     * @param string $repo
+     * @param int $pullNumber
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $owner, string $repo, int $pullNumber, array $queryParameters = [])
     {
         $this->owner = $owner;

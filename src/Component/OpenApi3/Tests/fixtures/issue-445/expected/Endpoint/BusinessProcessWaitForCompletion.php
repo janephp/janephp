@@ -6,18 +6,18 @@ class BusinessProcessWaitForCompletion extends \PicturePark\API\Runtime\Client\B
 {
     protected $id;
     /**
-    * Shortcut to wait for the business process to hit one of the finished life cycles.
-    * Finished life cycles are:
-    * - Succeeded
-    * - SucceededWithErrors
-    * - Cancelled
-    * - Failed
-    * @param string $id The business process id.
-    * @param array{
-    *    "timeout"?: string, //The timeout to wait for completion.
-    *    "waitForContinuationCompletion"?: bool, //Waits for the completion of the continuation business process (if existing, recursively). Default to true.
-    } $queryParameters
-    */
+     * Shortcut to wait for the business process to hit one of the finished life cycles.
+     * Finished life cycles are:
+     * - Succeeded
+     * - SucceededWithErrors
+     * - Cancelled
+     * - Failed
+     * @param string $id The business process id.
+     * @param array{
+     *    "timeout"?: string, //The timeout to wait for completion.
+     *    "waitForContinuationCompletion"?: bool, //Waits for the completion of the continuation business process (if existing, recursively). Default to true.
+     * } $queryParameters
+     */
     public function __construct(string $id, array $queryParameters = [])
     {
         $this->id = $id;

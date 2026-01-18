@@ -6,13 +6,13 @@ class TeamsList extends \Github\Runtime\Client\BaseEndpoint implements \Github\R
 {
     protected $org;
     /**
-    * Lists all teams in an organization that are visible to the authenticated user.
-    * @param string $org
-    * @param array{
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * Lists all teams in an organization that are visible to the authenticated user.
+     * @param string $org
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $org, array $queryParameters = [])
     {
         $this->org = $org;

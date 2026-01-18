@@ -8,17 +8,17 @@ class ReposListCommitStatusesForRef extends \Github\Runtime\Client\BaseEndpoint 
     protected $repo;
     protected $ref;
     /**
-    * Users with pull access in a repository can view commit statuses for a given ref. The ref can be a SHA, a branch name, or a tag name. Statuses are returned in reverse chronological order. The first status in the list will be the latest one.
-    *
-    * This resource is also available via a legacy route: `GET /repos/:owner/:repo/statuses/:ref`.
-    * @param string $owner
-    * @param string $repo
-    * @param string $ref ref+ parameter
-    * @param array{
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * Users with pull access in a repository can view commit statuses for a given ref. The ref can be a SHA, a branch name, or a tag name. Statuses are returned in reverse chronological order. The first status in the list will be the latest one.
+     *
+     * This resource is also available via a legacy route: `GET /repos/:owner/:repo/statuses/:ref`.
+     * @param string $owner
+     * @param string $repo
+     * @param string $ref ref+ parameter
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $owner, string $repo, string $ref, array $queryParameters = [])
     {
         $this->owner = $owner;

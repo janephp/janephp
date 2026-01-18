@@ -5,11 +5,11 @@ namespace Jane\Generated\DigitalOcean\Endpoint;
 class MonitoringListSinks extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint implements \Jane\Generated\DigitalOcean\Runtime\Client\Endpoint
 {
     /**
-    * To list all sinks, send a GET request to `/v2/monitoring/sinks`.
-    * @param array{
-    *    "resource_id"?: string, //A unique URN for a resource.
-    } $queryParameters
-    */
+     * To list all sinks, send a GET request to `/v2/monitoring/sinks`.
+     * @param array{
+     *    "resource_id"?: string, //A unique URN for a resource.
+     * } $queryParameters
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

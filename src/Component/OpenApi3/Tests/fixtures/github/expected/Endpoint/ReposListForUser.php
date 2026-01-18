@@ -6,16 +6,16 @@ class ReposListForUser extends \Github\Runtime\Client\BaseEndpoint implements \G
 {
     protected $username;
     /**
-    * Lists public repositories for the specified user.
-    * @param string $username
-    * @param array{
-    *    "type"?: string, //Can be one of `all`, `owner`, `member`.
-    *    "sort"?: string, //Can be one of `created`, `updated`, `pushed`, `full_name`.
-    *    "direction"?: string, //Can be one of `asc` or `desc`. Default: `asc` when using `full_name`, otherwise `desc`
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * Lists public repositories for the specified user.
+     * @param string $username
+     * @param array{
+     *    "type"?: string, //Can be one of `all`, `owner`, `member`.
+     *    "sort"?: string, //Can be one of `created`, `updated`, `pushed`, `full_name`.
+     *    "direction"?: string, //Can be one of `asc` or `desc`. Default: `asc` when using `full_name`, otherwise `desc`
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $username, array $queryParameters = [])
     {
         $this->username = $username;

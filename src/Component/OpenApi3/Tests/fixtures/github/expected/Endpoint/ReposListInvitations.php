@@ -7,14 +7,14 @@ class ReposListInvitations extends \Github\Runtime\Client\BaseEndpoint implement
     protected $owner;
     protected $repo;
     /**
-    * When authenticating as a user with admin rights to a repository, this endpoint will list all currently open repository invitations.
-    * @param string $owner
-    * @param string $repo
-    * @param array{
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * When authenticating as a user with admin rights to a repository, this endpoint will list all currently open repository invitations.
+     * @param string $owner
+     * @param string $repo
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $owner, string $repo, array $queryParameters = [])
     {
         $this->owner = $owner;

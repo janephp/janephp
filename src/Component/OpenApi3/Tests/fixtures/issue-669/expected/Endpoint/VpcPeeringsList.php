@@ -5,13 +5,13 @@ namespace Jane\Generated\DigitalOcean\Endpoint;
 class VpcPeeringsList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint implements \Jane\Generated\DigitalOcean\Runtime\Client\Endpoint
 {
     /**
-    * To list all of the VPC peerings on your account, send a GET request to `/v2/vpc_peerings`.
-    * @param array{
-    *    "per_page"?: int, //Number of items returned per page
-    *    "page"?: int, //Which 'page' of paginated results to return.
-    *    "region"?: string, //The slug identifier for the region where the resource is available.
-    } $queryParameters
-    */
+     * To list all of the VPC peerings on your account, send a GET request to `/v2/vpc_peerings`.
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     *    "region"?: string, //The slug identifier for the region where the resource is available.
+     * } $queryParameters
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

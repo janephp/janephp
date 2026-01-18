@@ -5,19 +5,18 @@ namespace Jane\Component\OpenApi3\Tests\Expected;
 class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Client
 {
     /**
-    * @param string $bar
-    * @param string $foo
-    * @param array{
-    *    "testQuery"?: string,
-    } $queryParameters
-    * @param array{
-    *    "testHeader"?: string,
-    } $headerParameters
-    
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    *
-    * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
-    */
+     * @param string $bar
+     * @param string $foo
+     * @param array{
+     *    "testQuery"?: string,
+     * } $queryParameters
+     * @param array{
+     *    "testHeader"?: string,
+     * } $headerParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
     public function testGetWithDefaultValuesInPathParameters(string $bar, string $foo = 'foo', array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestGetWithDefaultValuesInPathParameters($bar, $foo, $queryParameters, $headerParameters), $fetch);

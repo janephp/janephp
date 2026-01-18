@@ -7,16 +7,16 @@ class TeamsListReposInOrg extends \Github\Runtime\Client\BaseEndpoint implements
     protected $org;
     protected $team_slug;
     /**
-    * Lists a team's repositories visible to the authenticated user.
-    *
-    * **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/repos`.
-    * @param string $org
-    * @param string $teamSlug team_slug parameter
-    * @param array{
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * Lists a team's repositories visible to the authenticated user.
+     *
+     * **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/repos`.
+     * @param string $org
+     * @param string $teamSlug team_slug parameter
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $org, string $teamSlug, array $queryParameters = [])
     {
         $this->org = $org;

@@ -6,13 +6,13 @@ class GenaiListKnowledgeBaseDataSources extends \Jane\Generated\DigitalOcean\Run
 {
     protected $knowledge_base_uuid;
     /**
-    * To list all data sources for a knowledge base, send a GET request to `/v2/gen-ai/knowledge_bases/{knowledge_base_uuid}/data_sources`.
-    * @param string $knowledgeBaseUuid Knowledge base id
-    * @param array{
-    *    "page"?: int, //Page number.
-    *    "per_page"?: int, //Items per page.
-    } $queryParameters
-    */
+     * To list all data sources for a knowledge base, send a GET request to `/v2/gen-ai/knowledge_bases/{knowledge_base_uuid}/data_sources`.
+     * @param string $knowledgeBaseUuid Knowledge base id
+     * @param array{
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
+     */
     public function __construct(string $knowledgeBaseUuid, array $queryParameters = [])
     {
         $this->knowledge_base_uuid = $knowledgeBaseUuid;

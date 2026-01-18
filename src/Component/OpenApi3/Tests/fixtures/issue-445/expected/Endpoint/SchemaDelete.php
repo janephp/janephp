@@ -12,7 +12,7 @@ class SchemaDelete extends \PicturePark\API\Runtime\Client\BaseEndpoint implemen
     * @param array{
     *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
                Only the waiting is aborted, and the calls returned.
-    } $queryParameters
+    * } $queryParameters
     */
     public function __construct(string $id, array $queryParameters = [])
     {

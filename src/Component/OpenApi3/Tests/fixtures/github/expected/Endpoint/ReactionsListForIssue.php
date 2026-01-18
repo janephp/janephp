@@ -8,16 +8,16 @@ class ReactionsListForIssue extends \Github\Runtime\Client\BaseEndpoint implemen
     protected $repo;
     protected $issue_number;
     /**
-    * List the reactions to an [issue](https://developer.github.com/v3/issues/).
-    * @param string $owner
-    * @param string $repo
-    * @param int $issueNumber issue_number parameter
-    * @param array{
-    *    "content"?: string, //Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to an issue.
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * List the reactions to an [issue](https://developer.github.com/v3/issues/).
+     * @param string $owner
+     * @param string $repo
+     * @param int $issueNumber issue_number parameter
+     * @param array{
+     *    "content"?: string, //Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to an issue.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $owner, string $repo, int $issueNumber, array $queryParameters = [])
     {
         $this->owner = $owner;

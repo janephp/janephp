@@ -8,20 +8,20 @@ class ChecksListForSuite extends \Github\Runtime\Client\BaseEndpoint implements 
     protected $repo;
     protected $check_suite_id;
     /**
-    * **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
-    *
-    * Lists check runs for a check suite using its `id`. GitHub Apps must have the `checks:read` permission on a private repository or pull access to a public repository to get check runs. OAuth Apps and authenticated users must have the `repo` scope to get check runs in a private repository.
-    * @param string $owner
-    * @param string $repo
-    * @param int $checkSuiteId check_suite_id parameter
-    * @param array{
-    *    "check_name"?: string, //Returns check runs with the specified `name`.
-    *    "status"?: string, //Returns check runs with the specified `status`. Can be one of `queued`, `in_progress`, or `completed`.
-    *    "filter"?: string, //Filters check runs by their `completed_at` timestamp. Can be one of `latest` (returning the most recent check runs) or `all`.
-    *    "per_page"?: int, //Results per page (max 100)
-    *    "page"?: int, //Page number of the results to fetch.
-    } $queryParameters
-    */
+     * **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
+     *
+     * Lists check runs for a check suite using its `id`. GitHub Apps must have the `checks:read` permission on a private repository or pull access to a public repository to get check runs. OAuth Apps and authenticated users must have the `repo` scope to get check runs in a private repository.
+     * @param string $owner
+     * @param string $repo
+     * @param int $checkSuiteId check_suite_id parameter
+     * @param array{
+     *    "check_name"?: string, //Returns check runs with the specified `name`.
+     *    "status"?: string, //Returns check runs with the specified `status`. Can be one of `queued`, `in_progress`, or `completed`.
+     *    "filter"?: string, //Filters check runs by their `completed_at` timestamp. Can be one of `latest` (returning the most recent check runs) or `all`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     */
     public function __construct(string $owner, string $repo, int $checkSuiteId, array $queryParameters = [])
     {
         $this->owner = $owner;

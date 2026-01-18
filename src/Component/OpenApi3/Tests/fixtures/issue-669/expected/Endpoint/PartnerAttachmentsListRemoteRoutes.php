@@ -6,15 +6,15 @@ class PartnerAttachmentsListRemoteRoutes extends \Jane\Generated\DigitalOcean\Ru
 {
     protected $pa_id;
     /**
-    * To list all remote routes associated with a partner attachment, send a `GET` request to
-    * `/v2/partner_network_connect/attachments/{pa_id}/remote_routes`.
-    *
-    * @param string $paId A unique identifier for a partner attachment.
-    * @param array{
-    *    "per_page"?: int, //Number of items returned per page
-    *    "page"?: int, //Which 'page' of paginated results to return.
-    } $queryParameters
-    */
+     * To list all remote routes associated with a partner attachment, send a `GET` request to
+     * `/v2/partner_network_connect/attachments/{pa_id}/remote_routes`.
+     *
+     * @param string $paId A unique identifier for a partner attachment.
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
+     */
     public function __construct(string $paId, array $queryParameters = [])
     {
         $this->pa_id = $paId;

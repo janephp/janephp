@@ -7,15 +7,15 @@ class TestGetWithDefaultValuesInPathParameters extends \Jane\Component\OpenApi3\
     protected $foo;
     protected $bar;
     /**
-    * @param string $bar
-    * @param string $foo
-    * @param array{
-    *    "testQuery"?: string,
-    } $queryParameters
-    * @param array{
-    *    "testHeader"?: string,
-    } $headerParameters
-    */
+     * @param string $bar
+     * @param string $foo
+     * @param array{
+     *    "testQuery"?: string,
+     * } $queryParameters
+     * @param array{
+     *    "testHeader"?: string,
+     * } $headerParameters
+     */
     public function __construct(string $bar, string $foo = 'foo', array $queryParameters = [], array $headerParameters = [])
     {
         $this->foo = $foo;

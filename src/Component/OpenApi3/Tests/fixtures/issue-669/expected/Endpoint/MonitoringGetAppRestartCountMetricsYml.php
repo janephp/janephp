@@ -5,14 +5,14 @@ namespace Jane\Generated\DigitalOcean\Endpoint;
 class MonitoringGetAppRestartCountMetricsYml extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint implements \Jane\Generated\DigitalOcean\Runtime\Client\Endpoint
 {
     /**
-    * To retrieve restart count metrics for a given app, send a GET request to `/v2/monitoring/metrics/apps/restart_count`.
-    * @param array{
-    *    "app_id": string, //The app UUID.
-    *    "app_component"?: string, //The app component name.
-    *    "start": string, //UNIX timestamp to start metric window.
-    *    "end": string, //UNIX timestamp to end metric window.
-    } $queryParameters
-    */
+     * To retrieve restart count metrics for a given app, send a GET request to `/v2/monitoring/metrics/apps/restart_count`.
+     * @param array{
+     *    "app_id": string, //The app UUID.
+     *    "app_component"?: string, //The app component name.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

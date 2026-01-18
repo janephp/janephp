@@ -7,13 +7,13 @@ class GetAMonitoredCompanyFromAPortfolio extends \CreditSafe\API\Runtime\Client\
     protected $portfolioId;
     protected $id;
     /**
-    * Get a company from a portofolio using a company id
-    * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-    * @param string $id A company Safe Number or Connect ID.
-    * @param array{
-    *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-    } $headerParameters
-    */
+     * Get a company from a portofolio using a company id
+     * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
+     * @param string $id A company Safe Number or Connect ID.
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
+     */
     public function __construct(string $portfolioId, string $id, array $headerParameters = [])
     {
         $this->portfolioId = $portfolioId;

@@ -6,17 +6,17 @@ class RegistryListRepositories extends \Jane\Generated\DigitalOcean\Runtime\Clie
 {
     protected $registry_name;
     /**
-    * This endpoint has been deprecated in favor of the _List All Container Registry Repositories [V2]_ endpoint.
-    *
-    * To list all repositories in your container registry, send a GET
-    * request to `/v2/registry/$REGISTRY_NAME/repositories`.
-    *
-    * @param string $registryName The name of a container registry.
-    * @param array{
-    *    "per_page"?: int, //Number of items returned per page
-    *    "page"?: int, //Which 'page' of paginated results to return.
-    } $queryParameters
-    */
+     * This endpoint has been deprecated in favor of the _List All Container Registry Repositories [V2]_ endpoint.
+     *
+     * To list all repositories in your container registry, send a GET
+     * request to `/v2/registry/$REGISTRY_NAME/repositories`.
+     *
+     * @param string $registryName The name of a container registry.
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
+     */
     public function __construct(string $registryName, array $queryParameters = [])
     {
         $this->registry_name = $registryName;
