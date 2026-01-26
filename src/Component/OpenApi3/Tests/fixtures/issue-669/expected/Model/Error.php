@@ -25,7 +25,7 @@ class Error extends \ArrayObject
      */
     protected $message;
     /**
-     * Optionally, some endpoints may include a request ID that should be  provided when reporting bugs or opening support tickets to help  identify the issue.
+     * Optionally, some endpoints may include a request ID that should be provided when reporting bugs or opening support tickets to help identify the issue.
      *
      * @var string
      */
@@ -75,7 +75,7 @@ class Error extends \ArrayObject
         return $this;
     }
     /**
-     * Optionally, some endpoints may include a request ID that should be  provided when reporting bugs or opening support tickets to help  identify the issue.
+     * Optionally, some endpoints may include a request ID that should be provided when reporting bugs or opening support tickets to help identify the issue.
      *
      * @return string
      */
@@ -84,7 +84,7 @@ class Error extends \ArrayObject
         return $this->requestId;
     }
     /**
-     * Optionally, some endpoints may include a request ID that should be  provided when reporting bugs or opening support tickets to help  identify the issue.
+     * Optionally, some endpoints may include a request ID that should be provided when reporting bugs or opening support tickets to help identify the issue.
      *
      * @param string $requestId
      *

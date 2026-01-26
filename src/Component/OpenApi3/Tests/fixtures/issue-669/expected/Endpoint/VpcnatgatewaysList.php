@@ -9,14 +9,14 @@ class VpcnatgatewaysList extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
      * The response body will be a JSON object with a key of `vpc_nat_gateways` containing an array of VPC NAT gateway objects.
      * These each contain the standard VPC NAT gateway attributes.
      *
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     *     @var string $state The current state of the VPC NAT gateway.
-     *     @var string $region The region where the VPC NAT gateway is located.
-     *     @var string $type The type of the VPC NAT gateway.
-     *     @var string $name The name of the VPC NAT gateway.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     *    "state"?: string, //The current state of the VPC NAT gateway.
+     *    "region"?: string, //The region where the VPC NAT gateway is located.
+     *    "type"?: string, //The type of the VPC NAT gateway.
+     *    "name"?: string, //The name of the VPC NAT gateway.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

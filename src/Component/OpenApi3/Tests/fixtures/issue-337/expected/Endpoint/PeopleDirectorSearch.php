@@ -6,25 +6,25 @@ class PeopleDirectorSearch extends \CreditSafe\API\Runtime\Client\BaseEndpoint i
 {
     /**
      * Endpoint to find Directors based on search criteria to order a Creditsafe Director Report.
-     * @param array $queryParameters {
-     *     @var string $countries A comma-separated list of countries to search for People with registered directorships against. The list takes ISO/Alpha 2 format country codes. For example US,GB represents searching for People/Directorships in the United States and Great Britain.
-     *     @var string $id connectId - The primary Company identifier that is used to uniquely identify all companies across Creditsafe's Universe and Partner Network.
-     *     @var string $regNo Local Company Identifier - The Company identifier typically associated with a Government Filing Agency. i.e. French SIREN/SIRET, United Kingdom Companies House CRN
-     *     @var string $safeNumber Safe Number - Creditsafe's identifier on all Companies owned in the Creditsafe Universe. This is returned on all Company Search Results
-     *     @var string $peopleId Person/Director Identifier - used to order a Director Report.
-     *     @var string $firstName Person's First Name.
-     *     @var string $lastName Person's Last Name
-     *     @var string $companyName Company Name of the Director's Company (Only use this for Directorship Searches, unavailable in Director Search)
-     *     @var string $companyNumber Local Registration Idenitifier of the Director's Company (Only use this for Directorship Searches, unavailable in Director Search).
-     *     @var string $localDirectorNumber Local Identifier of the Director, the PNR in GB.
-     *     @var string $dateOfBirth Person DOB - provide YYYY-MM-DD or YYYY-MM format.
-     *     @var int $page Page number
-     *     @var int $pageSize Number of directors per page
-     *     @var string $callRef Call Reference
-     * }
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
+     * @param array{
+     *    "countries": string, //A comma-separated list of countries to search for People with registered directorships against. The list takes ISO/Alpha 2 format country codes. For example US,GB represents searching for People/Directorships in the United States and Great Britain.
+     *    "id"?: string, //connectId - The primary Company identifier that is used to uniquely identify all companies across Creditsafe's Universe and Partner Network.
+     *    "regNo"?: string, //Local Company Identifier - The Company identifier typically associated with a Government Filing Agency. i.e. French SIREN/SIRET, United Kingdom Companies House CRN
+     *    "safeNumber"?: string, //Safe Number - Creditsafe's identifier on all Companies owned in the Creditsafe Universe. This is returned on all Company Search Results
+     *    "peopleId"?: string, //Person/Director Identifier - used to order a Director Report.
+     *    "firstName"?: string, //Person's First Name.
+     *    "lastName"?: string, //Person's Last Name
+     *    "companyName"?: string, //Company Name of the Director's Company (Only use this for Directorship Searches, unavailable in Director Search)
+     *    "companyNumber"?: string, //Local Registration Idenitifier of the Director's Company (Only use this for Directorship Searches, unavailable in Director Search).
+     *    "localDirectorNumber"?: string, //Local Identifier of the Director, the PNR in GB.
+     *    "dateOfBirth"?: string, //Person DOB - provide YYYY-MM-DD or YYYY-MM format.
+     *    "page"?: int, //Page number
+     *    "pageSize"?: int, //Number of directors per page
+     *    "callRef"?: string, //Call Reference
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
      */
     public function __construct(array $queryParameters = [], array $headerParameters = [])
     {

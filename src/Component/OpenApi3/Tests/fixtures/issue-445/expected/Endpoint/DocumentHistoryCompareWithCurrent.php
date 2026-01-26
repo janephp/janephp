@@ -10,9 +10,9 @@ class DocumentHistoryCompareWithCurrent extends \PicturePark\API\Runtime\Client\
      * Compare the current version of a document with the requested version and get the differences.
      * @param string $documentType The type of the document (e.g. Content).
      * @param string $documentId The ID of the document (e.g. contentId).
-     * @param array $queryParameters {
-     *     @var int $version The version of the document to compare with.
-     * }
+     * @param array{
+     *    "version"?: int, //The version of the document to compare with.
+     * } $queryParameters
      */
     public function __construct(string $documentType, string $documentId, array $queryParameters = [])
     {

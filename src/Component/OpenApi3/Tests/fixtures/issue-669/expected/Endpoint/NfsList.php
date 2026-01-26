@@ -9,9 +9,9 @@ class NfsList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint i
      *
      * A successful request will return all NFS shares belonging to the authenticated user.
      *
-     * @param array $queryParameters {
-     *     @var string $region The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
-     * }
+     * @param array{
+     *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

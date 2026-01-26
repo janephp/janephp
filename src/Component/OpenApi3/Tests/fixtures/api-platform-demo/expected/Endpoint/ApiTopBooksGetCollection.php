@@ -7,9 +7,9 @@ class ApiTopBooksGetCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndp
     protected $accept;
     /**
      * Retrieves the collection of TopBook resources.
-     * @param array $queryParameters {
-     *     @var int $page The collection page number
-     * }
+     * @param array{
+     *    "page"?: int, //The collection page number
+     * } $queryParameters
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
      */
     public function __construct(array $queryParameters = [], array $accept = [])

@@ -13,13 +13,13 @@ class SearchCommits extends \Github\Runtime\Client\BaseEndpoint implements \Gith
      * For example, if you want to find commits related to CSS in the [octocat/Spoon-Knife](https://github.com/octocat/Spoon-Knife) repository. Your query would look something like this:
      *
      * `q=repo:octocat/Spoon-Knife+css`
-     * @param array $queryParameters {
-     *     @var string $q The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To learn more about the format of the query, see [Constructing a search query](https://developer.github.com/v3/search/#constructing-a-search-query). See "[Searching commits](https://help.github.com/articles/searching-commits/)" for a detailed list of qualifiers.
-     *     @var string $sort Sorts the results of your query by `author-date` or `committer-date`. Default: [best match](https://developer.github.com/v3/search/#ranking-search-results)
-     *     @var string $order Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "q": string, //The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To learn more about the format of the query, see [Constructing a search query](https://developer.github.com/v3/search/#constructing-a-search-query). See "[Searching commits](https://help.github.com/articles/searching-commits/)" for a detailed list of qualifiers.
+     *    "sort"?: string, //Sorts the results of your query by `author-date` or `committer-date`. Default: [best match](https://developer.github.com/v3/search/#ranking-search-results)
+     *    "order"?: string, //Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

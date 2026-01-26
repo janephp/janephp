@@ -6,11 +6,11 @@ class MonitoringGetLbDropletsHttpSessionDurationAvg extends \Jane\Generated\Digi
 {
     /**
      * To retrieve Droplets average HTTP session duration in seconds for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/droplets_http_session_duration_avg`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

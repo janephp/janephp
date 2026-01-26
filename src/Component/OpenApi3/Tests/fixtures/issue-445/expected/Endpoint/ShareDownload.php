@@ -8,13 +8,13 @@ class ShareDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
     protected $accept;
     /**
      * @param string $token Share token
-     * @param array $queryParameters {
-     *     @var int $width Optional width in pixels to resize image
-     *     @var int $height Optional height in pixels to resize image
-     * }
-     * @param array $headerParameters {
-     *     @var string $range The range of bytes to download (http range header): bytes={from}-{to} (e.g. bytes=0-100000)
-     * }
+     * @param array{
+     *    "width"?: int, //Optional width in pixels to resize image
+     *    "height"?: int, //Optional height in pixels to resize image
+     * } $queryParameters
+     * @param array{
+     *    "range"?: string, //The range of bytes to download (http range header): bytes={from}-{to} (e.g. bytes=0-100000)
+     * } $headerParameters
      * @param array $accept Accept content header application/json|application/octet-stream
      */
     public function __construct(string $token, array $queryParameters = [], array $headerParameters = [], array $accept = [])

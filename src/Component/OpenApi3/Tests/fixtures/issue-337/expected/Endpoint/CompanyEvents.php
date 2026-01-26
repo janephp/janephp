@@ -8,15 +8,15 @@ class CompanyEvents extends \CreditSafe\API\Runtime\Client\BaseEndpoint implemen
     /**
      * Endpoint to return a collection of `events` for the given company, optionally filtered on the supplied search criteria. Event information will only be returned if the company exists in at least one of your `portfolios`.
      * @param string $id The connectId of the company that you wish to retrieve events for.
-     * @param array $queryParameters {
-     *     @var string $startDate The start date on which results are filtered.
-     *     @var string $endDate The end date on which results are filtered.
-     *     @var int $page Starting page number (indexed from 0)
-     *     @var int $pageSize Number of items to return per Page (max 1000)
-     * }
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
+     * @param array{
+     *    "startDate"?: string, //The start date on which results are filtered.
+     *    "endDate"?: string, //The end date on which results are filtered.
+     *    "page"?: int, //Starting page number (indexed from 0)
+     *    "pageSize"?: int, //Number of items to return per Page (max 1000)
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
      */
     public function __construct(string $id, array $queryParameters = [], array $headerParameters = [])
     {

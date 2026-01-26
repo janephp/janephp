@@ -5,14 +5,14 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
 class TestQueryParameters extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
-     * @param array $queryParameters {
-     *     @var string $testString
-     *     @var int $testInteger
-     *     @var float $testFloat
-     *     @var array $testArray
-     *     @var string $testRequired
-     *     @var string $testDefault
-     * }
+     * @param array{
+     *    "testString"?: string,
+     *    "testInteger"?: int,
+     *    "testFloat"?: float,
+     *    "testArray"?: array,
+     *    "testRequired": string,
+     *    "testDefault"?: string,
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

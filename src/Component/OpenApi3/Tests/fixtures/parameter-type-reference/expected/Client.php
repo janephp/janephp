@@ -6,9 +6,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
 {
     /**
      * caca
-     * @param array $queryParameters {
-     *     @var string $bar
-     * }
+     * @param array{
+     *    "bar": string,
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)

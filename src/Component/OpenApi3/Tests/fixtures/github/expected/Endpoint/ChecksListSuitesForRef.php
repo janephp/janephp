@@ -14,12 +14,12 @@ class ChecksListSuitesForRef extends \Github\Runtime\Client\BaseEndpoint impleme
      * @param string $owner
      * @param string $repo
      * @param string $ref ref+ parameter
-     * @param array $queryParameters {
-     *     @var int $app_id Filters check suites by GitHub App `id`.
-     *     @var string $check_name Returns check runs with the specified `name`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "app_id"?: int, //Filters check suites by GitHub App `id`.
+     *    "check_name"?: string, //Returns check runs with the specified `name`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $owner, string $repo, string $ref, array $queryParameters = [])
     {

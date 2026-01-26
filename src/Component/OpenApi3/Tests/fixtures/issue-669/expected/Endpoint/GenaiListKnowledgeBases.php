@@ -6,10 +6,10 @@ class GenaiListKnowledgeBases extends \Jane\Generated\DigitalOcean\Runtime\Clien
 {
     /**
      * To list all knowledge bases, send a GET request to `/v2/gen-ai/knowledge_bases`.
-     * @param array $queryParameters {
-     *     @var int $page Page number.
-     *     @var int $per_page Items per page.
-     * }
+     * @param array{
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

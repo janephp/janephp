@@ -32,13 +32,13 @@ class PullsListReviewComments extends \Github\Runtime\Client\BaseEndpoint implem
      * @param string $owner
      * @param string $repo
      * @param int $pullNumber
-     * @param array $queryParameters {
-     *     @var string $sort One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-     *     @var string $direction Can be either `asc` or `desc`. Ignored without `sort` parameter.
-     *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "sort"?: string, //One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
+     *    "direction"?: string, //Can be either `asc` or `desc`. Ignored without `sort` parameter.
+     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $owner, string $repo, int $pullNumber, array $queryParameters = [])
     {

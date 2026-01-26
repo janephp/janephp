@@ -38,7 +38,7 @@ class TagsResource extends \ArrayObject
         return $this->resources;
     }
     /**
-    * An array of objects containing resource_id and resource_type 
+    * An array of objects containing resource_id and resource_type
     attributes.
     
     This response will only include resources that you are authorized to see.

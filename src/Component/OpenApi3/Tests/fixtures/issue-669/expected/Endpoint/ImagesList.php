@@ -30,13 +30,13 @@ class ImagesList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoin
      *
      * To list all images assigned to a specific tag, include the `tag_name` query parameter set to the name of the tag in your GET request. For example, `/v2/images?tag_name=$TAG_NAME`.
      *
-     * @param array $queryParameters {
-     *     @var string $type Filters results based on image type which can be either `application` or `distribution`.
-     *     @var bool $private Used to filter only user images.
-     *     @var string $tag_name Used to filter images by a specific tag.
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "type"?: string, //Filters results based on image type which can be either `application` or `distribution`.
+     *    "private"?: bool, //Used to filter only user images.
+     *    "tag_name"?: string, //Used to filter images by a specific tag.
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

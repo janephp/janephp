@@ -8,10 +8,10 @@ class GenaiListKnowledgeBaseDataSources extends \Jane\Generated\DigitalOcean\Run
     /**
      * To list all data sources for a knowledge base, send a GET request to `/v2/gen-ai/knowledge_bases/{knowledge_base_uuid}/data_sources`.
      * @param string $knowledgeBaseUuid Knowledge base id
-     * @param array $queryParameters {
-     *     @var int $page Page number.
-     *     @var int $per_page Items per page.
-     * }
+     * @param array{
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
      */
     public function __construct(string $knowledgeBaseUuid, array $queryParameters = [])
     {

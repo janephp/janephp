@@ -8,9 +8,9 @@ class AppsGet extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint i
     /**
      * Retrieve details about an existing app by either its ID or name. To retrieve an app by its name, do not include an ID in the request path. Information about the current active deployment as well as any in progress ones will also be included in the response.
      * @param string $id The ID of the app
-     * @param array $queryParameters {
-     *     @var string $name The name of the app to retrieve.
-     * }
+     * @param array{
+     *    "name"?: string, //The name of the app to retrieve.
+     * } $queryParameters
      */
     public function __construct(string $id, array $queryParameters = [])
     {

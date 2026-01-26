@@ -12,11 +12,11 @@ class TeamsListDiscussionsInOrg extends \Github\Runtime\Client\BaseEndpoint impl
      * **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions`.
      * @param string $org
      * @param string $teamSlug team_slug parameter
-     * @param array $queryParameters {
-     *     @var string $direction One of `asc` (ascending) or `desc` (descending).
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "direction"?: string, //One of `asc` (ascending) or `desc` (descending).
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $org, string $teamSlug, array $queryParameters = [])
     {

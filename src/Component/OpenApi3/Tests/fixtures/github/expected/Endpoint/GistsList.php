@@ -6,11 +6,11 @@ class GistsList extends \Github\Runtime\Client\BaseEndpoint implements \Github\R
 {
     /**
      * Lists the authenticated user's gists or if called anonymously, this endpoint returns all public gists:
-     * @param array $queryParameters {
-     *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

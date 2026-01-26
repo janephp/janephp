@@ -14,11 +14,11 @@ class TeamsListDiscussionCommentsInOrg extends \Github\Runtime\Client\BaseEndpoi
      * @param string $org
      * @param string $teamSlug team_slug parameter
      * @param int $discussionNumber
-     * @param array $queryParameters {
-     *     @var string $direction One of `asc` (ascending) or `desc` (descending).
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "direction"?: string, //One of `asc` (ascending) or `desc` (descending).
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $org, string $teamSlug, int $discussionNumber, array $queryParameters = [])
     {

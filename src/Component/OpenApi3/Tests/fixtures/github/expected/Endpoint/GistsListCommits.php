@@ -7,10 +7,10 @@ class GistsListCommits extends \Github\Runtime\Client\BaseEndpoint implements \G
     protected $gist_id;
     /**
      * @param string $gistId gist_id parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $gistId, array $queryParameters = [])
     {

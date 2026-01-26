@@ -6,10 +6,10 @@ class GenaiListDatacenterRegions extends \Jane\Generated\DigitalOcean\Runtime\Cl
 {
     /**
      * To list all datacenter regions, send a GET request to `/v2/gen-ai/regions`.
-     * @param array $queryParameters {
-     *     @var bool $serves_inference Include datacenters that serve inference.
-     *     @var bool $serves_batch Include datacenters that are capable of running batch jobs.
-     * }
+     * @param array{
+     *    "serves_inference"?: bool, //Include datacenters that serve inference.
+     *    "serves_batch"?: bool, //Include datacenters that are capable of running batch jobs.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

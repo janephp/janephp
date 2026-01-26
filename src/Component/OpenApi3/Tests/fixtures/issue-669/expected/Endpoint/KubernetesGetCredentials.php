@@ -24,9 +24,9 @@ class KubernetesGetCredentials extends \Jane\Generated\DigitalOcean\Runtime\Clie
      * has no impact in certificate-based authentication.
      *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
-     * @param array $queryParameters {
-     *     @var int $expiry_seconds The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
-     * }
+     * @param array{
+     *    "expiry_seconds"?: int, //The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+     * } $queryParameters
      */
     public function __construct(string $clusterId, array $queryParameters = [])
     {

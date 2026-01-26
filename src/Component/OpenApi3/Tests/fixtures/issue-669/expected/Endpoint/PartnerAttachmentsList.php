@@ -6,10 +6,10 @@ class PartnerAttachmentsList extends \Jane\Generated\DigitalOcean\Runtime\Client
 {
     /**
      * To list all of the Partner Attachments on your account, send a `GET` request to `/v2/partner_network_connect/attachments`.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

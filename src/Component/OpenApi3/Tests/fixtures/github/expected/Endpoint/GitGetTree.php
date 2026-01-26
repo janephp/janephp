@@ -14,9 +14,9 @@ class GitGetTree extends \Github\Runtime\Client\BaseEndpoint implements \Github\
      * @param string $owner
      * @param string $repo
      * @param string $treeSha tree_sha parameter
-     * @param array $queryParameters {
-     *     @var string $recursive Setting this parameter to any value returns the objects or subtrees referenced by the tree specified in `:tree_sha`. For example, setting `recursive` to any of the following will enable returning objects or subtrees: `0`, `1`, `"true"`, and `"false"`. Omit this parameter to prevent recursively returning objects or subtrees.
-     * }
+     * @param array{
+     *    "recursive"?: string, //Setting this parameter to any value returns the objects or subtrees referenced by the tree specified in `:tree_sha`. For example, setting `recursive` to any of the following will enable returning objects or subtrees: `0`, `1`, `"true"`, and `"false"`. Omit this parameter to prevent recursively returning objects or subtrees.
+     * } $queryParameters
      */
     public function __construct(string $owner, string $repo, string $treeSha, array $queryParameters = [])
     {

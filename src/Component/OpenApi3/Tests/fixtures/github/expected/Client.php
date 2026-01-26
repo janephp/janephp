@@ -7,13 +7,13 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Lists repositories for the specified organization.
      * @param string $org
-     * @param array $queryParameters {
-     *     @var string $type Specifies the types of repositories you want returned. Can be one of `all`, `public`, `private`, `forks`, `sources`, `member`, `internal`. Default: `all`. If your organization is associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `type` can also be `internal`.
-     *     @var string $sort Can be one of `created`, `updated`, `pushed`, `full_name`.
-     *     @var string $direction Can be one of `asc` or `desc`. Default: when using `full_name`: `asc`, otherwise `desc`
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "type"?: string, //Specifies the types of repositories you want returned. Can be one of `all`, `public`, `private`, `forks`, `sources`, `member`, `internal`. Default: `all`. If your organization is associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `type` can also be `internal`.
+     *    "sort"?: string, //Can be one of `created`, `updated`, `pushed`, `full_name`.
+     *    "direction"?: string, //Can be one of `asc` or `desc`. Default: when using `full_name`: `asc`, otherwise `desc`
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\MinimalRepository[] : \Psr\Http\Message\ResponseInterface)
@@ -351,9 +351,9 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $path path+ parameter
-     * @param array $queryParameters {
-     *     @var string $ref The name of the commit/branch/tag. Default: the repository’s default branch (usually `master`)
-     * }
+     * @param array{
+     *    "ref"?: string, //The name of the commit/branch/tag. Default: the repository’s default branch (usually `master`)
+     * } $queryParameters
      * @param array $accept Accept content header application/vnd.github.v3.object|application/json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetContentNotFoundException
@@ -451,14 +451,14 @@ class Client extends \Github\Runtime\Client\Client
      * Simple filtering of deployments is available via query parameters:
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $sha The SHA recorded at creation time.
-     *     @var string $ref The name of the ref. This can be a branch, tag, or SHA.
-     *     @var string $task The name of the task for the deployment (e.g., `deploy` or `deploy:migrations`).
-     *     @var string $environment The name of the environment that was deployed to (e.g., `staging` or `production`).
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "sha"?: string, //The SHA recorded at creation time.
+     *    "ref"?: string, //The name of the ref. This can be a branch, tag, or SHA.
+     *    "task"?: string, //The name of the task for the deployment (e.g., `deploy` or `deploy:migrations`).
+     *    "environment"?: string, //The name of the environment that was deployed to (e.g., `staging` or `production`).
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\Deployment[] : \Psr\Http\Message\ResponseInterface)
@@ -660,10 +660,10 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $ref ref+ parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\Status[] : \Psr\Http\Message\ResponseInterface)
@@ -725,10 +725,10 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $commitSha commit_sha+ parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListPullRequestsAssociatedWithCommitUnsupportedMediaTypeException
      *
@@ -955,11 +955,11 @@ class Client extends \Github\Runtime\Client\Client
      * Lists all public repositories in the order that they were created.
      *
      * Note: Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://developer.github.com/v3/#link-header) to get the URL for the next page of repositories.
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var string $visibility
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "visibility"?: string,
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListPublicUnprocessableEntityException
      *
@@ -972,11 +972,11 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var bool $protected Setting to `true` returns only protected branches. When set to `false`, only unprotected branches are returned. Omitting this parameter returns all branches.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "protected"?: bool, //Setting to `true` returns only protected branches. When set to `false`, only unprotected branches are returned. Omitting this parameter returns all branches.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListBranchesNotFoundException
      *
@@ -988,10 +988,10 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * When authenticating as a user, this endpoint will list all currently open repository invitations for that user.
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListInvitationsForAuthenticatedUserNotFoundException
      * @throws \Github\Exception\ReposListInvitationsForAuthenticatedUserForbiddenException
@@ -1020,10 +1020,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\DeployKey[] : \Psr\Http\Message\ResponseInterface)
@@ -1062,9 +1062,9 @@ class Client extends \Github\Runtime\Client\Client
      * Get the total number of clones and breakdown per day or week for the last 14 days. Timestamps are aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $per Must be one of: `day`, `week`.
-     * }
+     * @param array{
+     *    "per"?: string, //Must be one of: `day`, `week`.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetClonesForbiddenException
      *
@@ -1121,10 +1121,10 @@ class Client extends \Github\Runtime\Client\Client
      * Information about published releases are available to everyone. Only users with push access will receive listings for draft releases.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListReleasesNotFoundException
      *
@@ -1173,13 +1173,13 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Lists public repositories for the specified user.
      * @param string $username
-     * @param array $queryParameters {
-     *     @var string $type Can be one of `all`, `owner`, `member`.
-     *     @var string $sort Can be one of `created`, `updated`, `pushed`, `full_name`.
-     *     @var string $direction Can be one of `asc` or `desc`. Default: `asc` when using `full_name`, otherwise `desc`
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "type"?: string, //Can be one of `all`, `owner`, `member`.
+     *    "sort"?: string, //Can be one of `created`, `updated`, `pushed`, `full_name`.
+     *    "direction"?: string, //Can be one of `asc` or `desc`. Default: `asc` when using `full_name`, otherwise `desc`
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\MinimalRepository[] : \Psr\Http\Message\ResponseInterface)
@@ -1438,10 +1438,10 @@ class Client extends \Github\Runtime\Client\Client
      * When authenticating as a user with admin rights to a repository, this endpoint will list all currently open repository invitations.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\RepositoryInvitation[] : \Psr\Http\Message\ResponseInterface)
@@ -1493,10 +1493,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\Tag[] : \Psr\Http\Message\ResponseInterface)
@@ -1508,10 +1508,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\Team[] : \Psr\Http\Message\ResponseInterface)
@@ -1599,22 +1599,22 @@ class Client extends \Github\Runtime\Client\Client
     * Lists repositories that the authenticated user has explicit permission (`:read`, `:write`, or `:admin`) to access.
     *
     * The authenticated user has explicit permission to access repositories they own, repositories where they are a collaborator, and repositories that they can access through an organization membership.
-    * @param array $queryParameters {
-    *     @var string $visibility Can be one of `all`, `public`, or `private`.
-    *     @var string $affiliation Comma-separated list of values. Can include:
+    * @param array{
+    *    "visibility"?: string, //Can be one of `all`, `public`, or `private`.
+    *    "affiliation"?: string, //Comma-separated list of values. Can include:
     \* `owner`: Repositories that are owned by the authenticated user.
     \* `collaborator`: Repositories that the user has been added to as a collaborator.
     \* `organization_member`: Repositories that the user has access to through being a member of an organization. This includes every repository on every team that the user is on.
-    *     @var string $type Can be one of `all`, `owner`, `public`, `private`, `member`. Default: `all`
+    *    "type"?: string, //Can be one of `all`, `owner`, `public`, `private`, `member`. Default: `all`
     
     Will cause a `422` error if used in the same request as **visibility** or **affiliation**. Will cause a `422` error if used in the same request as **visibility** or **affiliation**.
-    *     @var string $sort Can be one of `created`, `updated`, `pushed`, `full_name`.
-    *     @var string $direction Can be one of `asc` or `desc`. Default: `asc` when using `full_name`, otherwise `desc`
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-    *     @var string $before Only show notifications updated before the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-    * }
+    *    "sort"?: string, //Can be one of `created`, `updated`, `pushed`, `full_name`.
+    *    "direction"?: string, //Can be one of `asc` or `desc`. Default: `asc` when using `full_name`, otherwise `desc`
+    *    "per_page"?: int, //Results per page (max 100)
+    *    "page"?: int, //Page number of the results to fetch.
+    *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    *    "before"?: string, //Only show notifications updated before the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposListForAuthenticatedUserIAmATeapotException
@@ -1655,10 +1655,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\PageBuild[] : \Psr\Http\Message\ResponseInterface)
@@ -1738,11 +1738,11 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $sort The sort order. Can be either `newest`, `oldest`, or `stargazers`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "sort"?: string, //The sort order. Can be either `newest`, `oldest`, or `stargazers`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param array $accept Accept content header application/json|application/scim+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListForksBadRequestException
@@ -1777,9 +1777,9 @@ class Client extends \Github\Runtime\Client\Client
      * Get the total number of views and breakdown per day or week for the last 14 days. Timestamps are aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $per Must be one of: `day`, `week`.
-     * }
+     * @param array{
+     *    "per"?: string, //Must be one of: `day`, `week`.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetViewsForbiddenException
      *
@@ -1793,10 +1793,10 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $releaseId release_id parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\ReleaseAsset[] : \Psr\Http\Message\ResponseInterface)
@@ -1828,10 +1828,10 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $releaseId release_id parameter
      * @param null|string $requestBody
-     * @param array $queryParameters {
-     *     @var string $name name parameter
-     *     @var string $label label parameter
-     * }
+     * @param array{
+     *    "name"?: string, //name parameter
+     *    "label"?: string, //label parameter
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\ReleaseAsset : \Psr\Http\Message\ResponseInterface)
@@ -1899,10 +1899,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListWebhooksNotFoundException
      *
@@ -1945,10 +1945,10 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $commitSha commit_sha+ parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\CommitComment[] : \Psr\Http\Message\ResponseInterface)
@@ -2014,15 +2014,15 @@ class Client extends \Github\Runtime\Client\Client
      * | `valid`                  | None of the above errors applied, so the signature is considered to be verified.                                                  |
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $sha SHA or branch to start listing commits from. Default: the repository’s default branch (usually `master`).
-     *     @var string $path Only commits containing this file path will be returned.
-     *     @var string $author GitHub login or email address by which to filter by commit author.
-     *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var string $until Only commits before this date will be returned. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "sha"?: string, //SHA or branch to start listing commits from. Default: the repository’s default branch (usually `master`).
+     *    "path"?: string, //Only commits containing this file path will be returned.
+     *    "author"?: string, //GitHub login or email address by which to filter by commit author.
+     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "until"?: string, //Only commits before this date will be returned. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param array $accept Accept content header application/json|application/scim+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListCommitsInternalServerErrorException
@@ -2213,10 +2213,10 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $deploymentId deployment_id parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListDeploymentStatusesNotFoundException
      *
@@ -2283,9 +2283,9 @@ class Client extends \Github\Runtime\Client\Client
      * READMEs support [custom media types](https://developer.github.com/v3/repos/contents/#custom-media-types) for retrieving the raw content or rendered HTML.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $ref The name of the commit/branch/tag. Default: the repository’s default branch (usually `master`)
-     * }
+     * @param array{
+     *    "ref"?: string, //The name of the commit/branch/tag. Default: the repository’s default branch (usually `master`)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetReadmeNotFoundException
      * @throws \Github\Exception\ReposGetReadmeUnprocessableEntityException
@@ -2302,10 +2302,10 @@ class Client extends \Github\Runtime\Client\Client
      * Comments are ordered by ascending ID.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\CommitComment[] : \Psr\Http\Message\ResponseInterface)
@@ -2388,11 +2388,11 @@ class Client extends \Github\Runtime\Client\Client
      * GitHub identifies contributors by author email address. This endpoint groups contribution counts by GitHub user, which includes all associated email addresses. To improve performance, only the first 500 author email addresses in the repository link to GitHub users. The rest will appear as anonymous contributors without associated GitHub user information.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $anon Set to `1` or `true` to include anonymous contributors in results.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "anon"?: string, //Set to `1` or `true` to include anonymous contributors in results.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposListContributorsForbiddenException
      * @throws \Github\Exception\ReposListContributorsNotFoundException
@@ -2409,14 +2409,14 @@ class Client extends \Github\Runtime\Client\Client
     * Team members will include the members of child teams.
     * @param string $owner
     * @param string $repo
-    * @param array $queryParameters {
-    *     @var string $affiliation Filter collaborators returned by their affiliation. Can be one of:
+    * @param array{
+    *    "affiliation"?: string, //Filter collaborators returned by their affiliation. Can be one of:
     \* `outside`: All outside collaborators of an organization-owned repository.
     \* `direct`: All collaborators with permissions to an organization-owned repository, regardless of organization membership status.
     \* `all`: All collaborators the authenticated user can see.
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
+    *    "per_page"?: int, //Results per page (max 100)
+    *    "page"?: int, //Page number of the results to fetch.
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ReposListCollaboratorsNotFoundException
@@ -2556,17 +2556,17 @@ class Client extends \Github\Runtime\Client\Client
     *    - If the user signs in, their GitHub account is linked to this entry.
     *    - If the user does not sign in (or does not create a new account when prompted), they are not added to the GitHub organization, and the external identity `null` entry remains in place.
     * @param string $org
-    * @param array $queryParameters {
-    *     @var int $startIndex Used for pagination: the index of the first result to return.
-    *     @var int $count Used for pagination: the number of results to return.
-    *     @var string $filter Filters results using the equals query parameter operator (`eq`). You can filter results that are equal to `id`, `userName`, `emails`, and `external_id`. For example, to search for an identity with the `userName` Octocat, you would use this query:
+    * @param array{
+    *    "startIndex"?: int, //Used for pagination: the index of the first result to return.
+    *    "count"?: int, //Used for pagination: the number of results to return.
+    *    "filter"?: string, //Filters results using the equals query parameter operator (`eq`). You can filter results that are equal to `id`, `userName`, `emails`, and `external_id`. For example, to search for an identity with the `userName` Octocat, you would use this query:
     
     `?filter=userName%20eq%20\"Octocat\"`.
     
     To filter results for for the identity with the email `octocat@github.com`, you would use this query:
     
     `?filter=emails%20eq%20\"octocat@github.com\"`.
-    * }
+    * } $queryParameters
     * @param array $accept Accept content header application/scim+json|application/json
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     
@@ -2601,10 +2601,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Lists the most recent migrations.
      * @param string $org
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\Migration[] : \Psr\Http\Message\ResponseInterface)
@@ -2637,9 +2637,9 @@ class Client extends \Github\Runtime\Client\Client
      *
      * Once the migration has been `exported` you can [download the migration archive](https://developer.github.com/v3/migrations/users/#download-a-user-migration-archive).
      * @param int $migrationId migration_id parameter
-     * @param array $queryParameters {
-     *     @var array $exclude
-     * }
+     * @param array{
+     *    "exclude"?: array,
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsGetStatusForAuthenticatedUserNotFoundException
      * @throws \Github\Exception\MigrationsGetStatusForAuthenticatedUserForbiddenException
@@ -2782,10 +2782,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Lists all the repositories for this user migration.
      * @param int $migrationId migration_id parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsListReposForUserNotFoundException
      *
@@ -2799,10 +2799,10 @@ class Client extends \Github\Runtime\Client\Client
      * List all the repositories for this organization migration.
      * @param string $org
      * @param int $migrationId migration_id parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsListReposForOrgNotFoundException
      *
@@ -2814,10 +2814,10 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * Lists all migrations a user has started.
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsListForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\MigrationsListForAuthenticatedUserUnauthorizedException
@@ -2957,9 +2957,9 @@ class Client extends \Github\Runtime\Client\Client
      * This endpoint and the [Map a commit author](https://developer.github.com/v3/migrations/source_imports/#map-a-commit-author) endpoint allow you to provide correct Git author information.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     * }
+     * @param array{
+     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\MigrationsGetCommitAuthorsNotFoundException
      *
@@ -3082,10 +3082,10 @@ class Client extends \Github\Runtime\Client\Client
         return $this->executeEndpoint(new \Github\Endpoint\LicensesGet($license), $fetch);
     }
     /**
-     * @param array $queryParameters {
-     *     @var bool $featured
-     *     @var int $per_page Results per page (max 100)
-     * }
+     * @param array{
+     *    "featured"?: bool,
+     *    "per_page"?: int, //Results per page (max 100)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\LicenseSimple[] : \Psr\Http\Message\ResponseInterface)
@@ -3135,10 +3135,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActivityListPublicEventsForRepoNetworkNotFoundException
      * @throws \Github\Exception\ActivityListPublicEventsForRepoNetworkForbiddenException
@@ -3152,10 +3152,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\Event[] : \Psr\Http\Message\ResponseInterface)
@@ -3166,10 +3166,10 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * We delay the public events feed by five minutes, which means the most recent event returned by the public events API actually occurred at least five minutes ago.
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActivityListPublicEventsForbiddenException
      * @throws \Github\Exception\ActivityListPublicEventsServiceUnavailableException
@@ -3225,10 +3225,10 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param string $username
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\Event[] : \Psr\Http\Message\ResponseInterface)
@@ -3241,14 +3241,14 @@ class Client extends \Github\Runtime\Client\Client
      * List all notifications for the current user.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var bool $all If `true`, show notifications marked as read.
-     *     @var bool $participating If `true`, only shows notifications in which the user is directly participating or mentioned.
-     *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var string $before Only show notifications updated before the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "all"?: bool, //If `true`, show notifications marked as read.
+     *    "participating"?: bool, //If `true`, only shows notifications in which the user is directly participating or mentioned.
+     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "before"?: string, //Only show notifications updated before the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\Thread[] : \Psr\Http\Message\ResponseInterface)
@@ -3274,10 +3274,10 @@ class Client extends \Github\Runtime\Client\Client
      * Lists the people watching the specified repository.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
@@ -3290,10 +3290,10 @@ class Client extends \Github\Runtime\Client\Client
      * This is the user's organization dashboard. You must be authenticated as the user to view this.
      * @param string $username
      * @param string $org
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\Event[] : \Psr\Http\Message\ResponseInterface)
@@ -3304,10 +3304,10 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param string $org
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\Event[] : \Psr\Http\Message\ResponseInterface)
@@ -3328,10 +3328,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * These are events that you've received by watching repos and following users. If you are authenticated as the given user, you will see private events. Otherwise, you'll only see public events.
      * @param string $username
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\Event[] : \Psr\Http\Message\ResponseInterface)
@@ -3345,12 +3345,12 @@ class Client extends \Github\Runtime\Client\Client
      *
      * You can also find out _when_ stars were created by passing the following custom [media type](https://developer.github.com/v3/media/) via the `Accept` header:
      * @param string $username
-     * @param array $queryParameters {
-     *     @var string $sort One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-     *     @var string $direction One of `asc` (ascending) or `desc` (descending).
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "sort"?: string, //One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
+     *    "direction"?: string, //One of `asc` (ascending) or `desc` (descending).
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -3363,10 +3363,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Lists repositories a user is watching.
      * @param string $username
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\MinimalRepository[] : \Psr\Http\Message\ResponseInterface)
@@ -3447,10 +3447,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * If you are authenticated as the given user, you will see your private events. Otherwise, you'll only see public events.
      * @param string $username
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\Event[] : \Psr\Http\Message\ResponseInterface)
@@ -3461,14 +3461,14 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * List all notifications for the current user, sorted by most recently updated.
-     * @param array $queryParameters {
-     *     @var bool $all If `true`, show notifications marked as read.
-     *     @var bool $participating If `true`, only shows notifications in which the user is directly participating or mentioned.
-     *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var string $before Only show notifications updated before the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "all"?: bool, //If `true`, show notifications marked as read.
+     *    "participating"?: bool, //If `true`, only shows notifications in which the user is directly participating or mentioned.
+     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "before"?: string, //Only show notifications updated before the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActivityListNotificationsForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\ActivityListNotificationsForAuthenticatedUserUnauthorizedException
@@ -3495,10 +3495,10 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * Lists repositories the authenticated user is watching.
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActivityListWatchedReposForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\ActivityListWatchedReposForAuthenticatedUserUnauthorizedException
@@ -3513,12 +3513,12 @@ class Client extends \Github\Runtime\Client\Client
      * Lists repositories the authenticated user has starred.
      *
      * You can also find out _when_ stars were created by passing the following custom [media type](https://developer.github.com/v3/media/) via the `Accept` header:
-     * @param array $queryParameters {
-     *     @var string $sort One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-     *     @var string $direction One of `asc` (ascending) or `desc` (descending).
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "sort"?: string, //One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
+     *    "direction"?: string, //One of `asc` (ascending) or `desc` (descending).
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActivityListReposStarredByAuthenticatedUserForbiddenException
@@ -3536,10 +3536,10 @@ class Client extends \Github\Runtime\Client\Client
      * You can also find out _when_ stars were created by passing the following custom [media type](https://developer.github.com/v3/media/) via the `Accept` header:
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ActivityListStargazersForRepoUnprocessableEntityException
@@ -3552,10 +3552,10 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param string $username
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\Event[] : \Psr\Http\Message\ResponseInterface)
@@ -3569,10 +3569,10 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $checkRunId check_run_id parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\CheckAnnotation[] : \Psr\Http\Message\ResponseInterface)
@@ -3588,12 +3588,12 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $ref ref+ parameter
-     * @param array $queryParameters {
-     *     @var int $app_id Filters check suites by GitHub App `id`.
-     *     @var string $check_name Returns check runs with the specified `name`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "app_id"?: int, //Filters check suites by GitHub App `id`.
+     *    "check_name"?: string, //Returns check runs with the specified `name`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\ReposOwnerRepoCommitsRefCheckSuitesGetResponse200 : \Psr\Http\Message\ResponseInterface)
@@ -3609,13 +3609,13 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $ref ref+ parameter
-     * @param array $queryParameters {
-     *     @var string $check_name Returns check runs with the specified `name`.
-     *     @var string $status Returns check runs with the specified `status`. Can be one of `queued`, `in_progress`, or `completed`.
-     *     @var string $filter Filters check runs by their `completed_at` timestamp. Can be one of `latest` (returning the most recent check runs) or `all`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "check_name"?: string, //Returns check runs with the specified `name`.
+     *    "status"?: string, //Returns check runs with the specified `status`. Can be one of `queued`, `in_progress`, or `completed`.
+     *    "filter"?: string, //Filters check runs by their `completed_at` timestamp. Can be one of `latest` (returning the most recent check runs) or `all`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\ReposOwnerRepoCommitsRefCheckRunsGetResponse200 : \Psr\Http\Message\ResponseInterface)
@@ -3631,13 +3631,13 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $checkSuiteId check_suite_id parameter
-     * @param array $queryParameters {
-     *     @var string $check_name Returns check runs with the specified `name`.
-     *     @var string $status Returns check runs with the specified `status`. Can be one of `queued`, `in_progress`, or `completed`.
-     *     @var string $filter Filters check runs by their `completed_at` timestamp. Can be one of `latest` (returning the most recent check runs) or `all`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "check_name"?: string, //Returns check runs with the specified `name`.
+     *    "status"?: string, //Returns check runs with the specified `status`. Can be one of `queued`, `in_progress`, or `completed`.
+     *    "filter"?: string, //Filters check runs by their `completed_at` timestamp. Can be one of `latest` (returning the most recent check runs) or `all`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200 : \Psr\Http\Message\ResponseInterface)
@@ -3774,11 +3774,11 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Lists the projects in an organization. Returns a `404 Not Found` status if projects are disabled in the organization. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
      * @param string $org
-     * @param array $queryParameters {
-     *     @var string $state Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "state"?: string, //Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsListForOrgUnprocessableEntityException
      *
@@ -3900,11 +3900,11 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param string $username
-     * @param array $queryParameters {
-     *     @var string $state Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "state"?: string, //Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsListForUserUnsupportedMediaTypeException
      * @throws \Github\Exception\ProjectsListForUserUnprocessableEntityException
@@ -3962,10 +3962,10 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param int $projectId
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsListColumnsForbiddenException
      * @throws \Github\Exception\ProjectsListColumnsUnauthorizedException
@@ -3992,11 +3992,11 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param int $columnId column_id parameter
-     * @param array $queryParameters {
-     *     @var string $archived_state Filters the project cards that are returned by the card's state. Can be one of `all`,`archived`, or `not_archived`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "archived_state"?: string, //Filters the project cards that are returned by the card's state. Can be one of `all`,`archived`, or `not_archived`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsListCardsForbiddenException
      * @throws \Github\Exception\ProjectsListCardsUnauthorizedException
@@ -4095,11 +4095,11 @@ class Client extends \Github\Runtime\Client\Client
      * Lists the projects in a repository. Returns a `404 Not Found` status if projects are disabled in the repository. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $state Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "state"?: string, //Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ProjectsListForRepoUnauthorizedException
      * @throws \Github\Exception\ProjectsListForRepoForbiddenException
@@ -4149,14 +4149,14 @@ class Client extends \Github\Runtime\Client\Client
     /**
     * Lists the collaborators for an organization project. For a project, the list of collaborators includes outside collaborators, organization members that are direct collaborators, organization members with access through team memberships, organization members with access through default organization permissions, and organization owners. You must be an organization owner or a project `admin` to list collaborators.
     * @param int $projectId
-    * @param array $queryParameters {
-    *     @var string $affiliation Filters the collaborators by their affiliation. Can be one of:
+    * @param array{
+    *    "affiliation"?: string, //Filters the collaborators by their affiliation. Can be one of:
     \* `outside`: Outside collaborators of a project that are not a member of the project's organization.
     \* `direct`: Collaborators with permissions to a project, regardless of organization membership status.
     \* `all`: All collaborators the authenticated user can see.
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
+    *    "per_page"?: int, //Results per page (max 100)
+    *    "page"?: int, //Page number of the results to fetch.
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\ProjectsListCollaboratorsNotFoundException
@@ -4178,11 +4178,11 @@ class Client extends \Github\Runtime\Client\Client
      * @param int $teamId
      * @param int $discussionNumber
      * @param int $commentNumber
-     * @param array $queryParameters {
-     *     @var string $content Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to a team discussion comment.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "content"?: string, //Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to a team discussion comment.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\Reaction[] : \Psr\Http\Message\ResponseInterface)
@@ -4213,11 +4213,11 @@ class Client extends \Github\Runtime\Client\Client
      * List the reactions to a [team discussion](https://developer.github.com/v3/teams/discussions/). OAuth access tokens require the `read:discussion` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
      * @param int $teamId
      * @param int $discussionNumber
-     * @param array $queryParameters {
-     *     @var string $content Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to a team discussion.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "content"?: string, //Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to a team discussion.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\Reaction[] : \Psr\Http\Message\ResponseInterface)
@@ -4246,11 +4246,11 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $commentId comment_id parameter
-     * @param array $queryParameters {
-     *     @var string $content Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to an issue comment.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "content"?: string, //Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to an issue comment.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReactionsListForIssueCommentNotFoundException
      * @throws \Github\Exception\ReactionsListForIssueCommentUnsupportedMediaTypeException
@@ -4298,11 +4298,11 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $issueNumber issue_number parameter
-     * @param array $queryParameters {
-     *     @var string $content Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to an issue.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "content"?: string, //Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to an issue.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReactionsListForIssueNotFoundException
      * @throws \Github\Exception\ReactionsListForIssueGoneException
@@ -4335,11 +4335,11 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $commentId comment_id parameter
-     * @param array $queryParameters {
-     *     @var string $content Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to a pull request review comment.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "content"?: string, //Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to a pull request review comment.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReactionsListForPullRequestReviewCommentNotFoundException
      * @throws \Github\Exception\ReactionsListForPullRequestReviewCommentUnsupportedMediaTypeException
@@ -4456,11 +4456,11 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $teamSlug team_slug parameter
      * @param int $discussionNumber
      * @param int $commentNumber
-     * @param array $queryParameters {
-     *     @var string $content Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to a team discussion comment.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "content"?: string, //Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to a team discussion comment.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\Reaction[] : \Psr\Http\Message\ResponseInterface)
@@ -4493,11 +4493,11 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $teamSlug team_slug parameter
      * @param int $discussionNumber
-     * @param array $queryParameters {
-     *     @var string $content Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to a team discussion.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "content"?: string, //Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to a team discussion.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\Reaction[] : \Psr\Http\Message\ResponseInterface)
@@ -4543,11 +4543,11 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $commentId comment_id parameter
-     * @param array $queryParameters {
-     *     @var string $content Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to a commit comment.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "content"?: string, //Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to a commit comment.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReactionsListForCommitCommentNotFoundException
      * @throws \Github\Exception\ReactionsListForCommitCommentUnsupportedMediaTypeException
@@ -4594,9 +4594,9 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * Get the octocat as ASCII art
-     * @param array $queryParameters {
-     *     @var string $s The words to show in Octocat's speech bubble
-     * }
+     * @param array{
+     *    "s"?: string, //The words to show in Octocat's speech bubble
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
@@ -4631,10 +4631,10 @@ class Client extends \Github\Runtime\Client\Client
      * List all teams associated with an invitation. In order to see invitations in an organization, the authenticated user must be an organization owner.
      * @param string $org
      * @param int $invitationId invitation_id parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsListInvitationTeamsNotFoundException
      *
@@ -4645,11 +4645,11 @@ class Client extends \Github\Runtime\Client\Client
         return $this->executeEndpoint(new \Github\Endpoint\OrgsListInvitationTeams($org, $invitationId, $queryParameters), $fetch);
     }
     /**
-     * @param array $queryParameters {
-     *     @var string $state Indicates the state of the memberships to return. Can be either `active` or `pending`. If not specified, the API returns both active and pending memberships.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "state"?: string, //Indicates the state of the memberships to return. Can be either `active` or `pending`. If not specified, the API returns both active and pending memberships.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsListMembershipsForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\OrgsListMembershipsForAuthenticatedUserUnauthorizedException
@@ -4810,10 +4810,10 @@ class Client extends \Github\Runtime\Client\Client
      *
      * This method only lists _public_ memberships, regardless of authentication. If you need to fetch all of the organization memberships (public and private) for the authenticated user, use the [List organizations for the authenticated user](https://developer.github.com/v3/orgs/#list-organizations-for-the-authenticated-user) API instead.
      * @param string $username
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\OrganizationSimple[] : \Psr\Http\Message\ResponseInterface)
@@ -4895,10 +4895,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Lists all GitHub Apps in an organization. The installation count includes all GitHub Apps installed on repositories in the organization. You must be an organization owner with `admin:read` scope to use this endpoint.
      * @param string $org
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\OrgsOrgInstallationsGetResponse200 : \Psr\Http\Message\ResponseInterface)
@@ -4948,13 +4948,13 @@ class Client extends \Github\Runtime\Client\Client
     /**
     * List all users who are outside collaborators of an organization.
     * @param string $org
-    * @param array $queryParameters {
-    *     @var string $filter Filter the list of outside collaborators. Can be one of:
+    * @param array{
+    *    "filter"?: string, //Filter the list of outside collaborators. Can be one of:
     \* `2fa_disabled`: Outside collaborators without [two-factor authentication](https://github.com/blog/1614-two-factor-authentication) enabled.
     \* `all`: All outside collaborators.
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
+    *    "per_page"?: int, //Results per page (max 100)
+    *    "page"?: int, //Page number of the results to fetch.
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
@@ -4967,10 +4967,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * The return hash contains a `role` field which refers to the Organization Invitation role and will be one of the following values: `direct_member`, `admin`, `billing_manager`, `hiring_manager`, or `reinstate`. If the invitee is not a GitHub member, the `login` field in the return hash will be `null`.
      * @param string $org
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsListPendingInvitationsNotFoundException
      *
@@ -5000,10 +5000,10 @@ class Client extends \Github\Runtime\Client\Client
      * Lists all organizations, in the order that they were created on GitHub.
      *
      * **Note:** Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://developer.github.com/v3/#link-header) to get the URL for the next page of organizations.
-     * @param array $queryParameters {
-     *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var int $per_page Results per page (max 100)
-     * }
+     * @param array{
+     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "per_page"?: int, //Results per page (max 100)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\OrganizationSimple[] : \Psr\Http\Message\ResponseInterface)
@@ -5014,10 +5014,10 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param string $org
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsListWebhooksNotFoundException
      *
@@ -5091,17 +5091,17 @@ class Client extends \Github\Runtime\Client\Client
     /**
     * List all users who are members of an organization. If the authenticated user is also a member of this organization then both concealed and public members will be returned.
     * @param string $org
-    * @param array $queryParameters {
-    *     @var string $filter Filter members returned in the list. Can be one of:
+    * @param array{
+    *    "filter"?: string, //Filter members returned in the list. Can be one of:
     \* `2fa_disabled` - Members without [two-factor authentication](https://github.com/blog/1614-two-factor-authentication) enabled. Available for organization owners.
     \* `all` - All members the authenticated user can see.
-    *     @var string $role Filter members returned by their role. Can be one of:
+    *    "role"?: string, //Filter members returned by their role. Can be one of:
     \* `all` - All members of the organization, regardless of role.
     \* `admin` - Organization owners.
     \* `member` - Non-owner organization members.
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
+    *    "per_page"?: int, //Results per page (max 100)
+    *    "page"?: int, //Page number of the results to fetch.
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\OrgsListMembersUnprocessableEntityException
@@ -5118,10 +5118,10 @@ class Client extends \Github\Runtime\Client\Client
      * **OAuth scope requirements**
      *
      * This only lists organizations that your authorization allows you to operate on in some way (e.g., you can list teams with `read:org` scope, you can publicize your organization membership with `user` scope, etc.). Therefore, this API requires at least `user` or `read:org` scope. OAuth requests with insufficient scope receive a `403 Forbidden` response.
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OrgsListForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\OrgsListForAuthenticatedUserUnauthorizedException
@@ -5150,10 +5150,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Members of an organization can choose to have their membership publicized or not.
      * @param string $org
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
@@ -5181,13 +5181,13 @@ class Client extends \Github\Runtime\Client\Client
      * *   Only files smaller than 384 KB are searchable.
      * *   You must always include at least one search term when searching source code. For example, searching for [`language:go`](https://github.com/search?utf8=%E2%9C%93&q=language%3Ago&type=Code) is not valid, while [`amazing
      * language:go`](https://github.com/search?utf8=%E2%9C%93&q=amazing+language%3Ago&type=Code) is.
-     * @param array $queryParameters {
-     *     @var string $q The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To learn more about the format of the query, see [Constructing a search query](https://developer.github.com/v3/search/#constructing-a-search-query). See "[Searching code](https://help.github.com/articles/searching-code/)" for a detailed list of qualifiers.
-     *     @var string $sort Sorts the results of your query. Can only be `indexed`, which indicates how recently a file has been indexed by the GitHub search infrastructure. Default: [best match](https://developer.github.com/v3/search/#ranking-search-results)
-     *     @var string $order Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "q": string, //The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To learn more about the format of the query, see [Constructing a search query](https://developer.github.com/v3/search/#constructing-a-search-query). See "[Searching code](https://help.github.com/articles/searching-code/)" for a detailed list of qualifiers.
+     *    "sort"?: string, //Sorts the results of your query. Can only be `indexed`, which indicates how recently a file has been indexed by the GitHub search infrastructure. Default: [best match](https://developer.github.com/v3/search/#ranking-search-results)
+     *    "order"?: string, //Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\SearchCodeServiceUnavailableException
      * @throws \Github\Exception\SearchCodeUnprocessableEntityException
@@ -5209,12 +5209,12 @@ class Client extends \Github\Runtime\Client\Client
      * `q=bug+defect+enhancement&repository_id=64778136`
      *
      * The labels that best match the query appear first in the search results.
-     * @param array $queryParameters {
-     *     @var int $repository_id The id of the repository.
-     *     @var string $q The search keywords. This endpoint does not accept qualifiers in the query. To learn more about the format of the query, see [Constructing a search query](https://developer.github.com/v3/search/#constructing-a-search-query).
-     *     @var string $sort Sorts the results of your query by when the label was `created` or `updated`. Default: [best match](https://developer.github.com/v3/search/#ranking-search-results)
-     *     @var string $order Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-     * }
+     * @param array{
+     *    "repository_id": int, //The id of the repository.
+     *    "q": string, //The search keywords. This endpoint does not accept qualifiers in the query. To learn more about the format of the query, see [Constructing a search query](https://developer.github.com/v3/search/#constructing-a-search-query).
+     *    "sort"?: string, //Sorts the results of your query by when the label was `created` or `updated`. Default: [best match](https://developer.github.com/v3/search/#ranking-search-results)
+     *    "order"?: string, //Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\SearchLabelsNotFoundException
      * @throws \Github\Exception\SearchLabelsForbiddenException
@@ -5236,13 +5236,13 @@ class Client extends \Github\Runtime\Client\Client
      * `q=tom+repos:%3E42+followers:%3E1000`
      *
      * This query searches for users with the name `tom`. The results are restricted to users with more than 42 repositories and over 1,000 followers.
-     * @param array $queryParameters {
-     *     @var string $q The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To learn more about the format of the query, see [Constructing a search query](https://developer.github.com/v3/search/#constructing-a-search-query). See "[Searching users](https://help.github.com/articles/searching-users/)" for a detailed list of qualifiers.
-     *     @var string $sort Sorts the results of your query by number of `followers` or `repositories`, or when the person `joined` GitHub. Default: [best match](https://developer.github.com/v3/search/#ranking-search-results)
-     *     @var string $order Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "q": string, //The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To learn more about the format of the query, see [Constructing a search query](https://developer.github.com/v3/search/#constructing-a-search-query). See "[Searching users](https://help.github.com/articles/searching-users/)" for a detailed list of qualifiers.
+     *    "sort"?: string, //Sorts the results of your query by number of `followers` or `repositories`, or when the person `joined` GitHub. Default: [best match](https://developer.github.com/v3/search/#ranking-search-results)
+     *    "order"?: string, //Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\SearchUsersServiceUnavailableException
      * @throws \Github\Exception\SearchUsersUnprocessableEntityException
@@ -5262,13 +5262,13 @@ class Client extends \Github\Runtime\Client\Client
      * For example, if you want to find commits related to CSS in the [octocat/Spoon-Knife](https://github.com/octocat/Spoon-Knife) repository. Your query would look something like this:
      *
      * `q=repo:octocat/Spoon-Knife+css`
-     * @param array $queryParameters {
-     *     @var string $q The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To learn more about the format of the query, see [Constructing a search query](https://developer.github.com/v3/search/#constructing-a-search-query). See "[Searching commits](https://help.github.com/articles/searching-commits/)" for a detailed list of qualifiers.
-     *     @var string $sort Sorts the results of your query by `author-date` or `committer-date`. Default: [best match](https://developer.github.com/v3/search/#ranking-search-results)
-     *     @var string $order Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "q": string, //The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To learn more about the format of the query, see [Constructing a search query](https://developer.github.com/v3/search/#constructing-a-search-query). See "[Searching commits](https://help.github.com/articles/searching-commits/)" for a detailed list of qualifiers.
+     *    "sort"?: string, //Sorts the results of your query by `author-date` or `committer-date`. Default: [best match](https://developer.github.com/v3/search/#ranking-search-results)
+     *    "order"?: string, //Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\SearchCommitsUnsupportedMediaTypeException
      *
@@ -5289,13 +5289,13 @@ class Client extends \Github\Runtime\Client\Client
      * `q=windows+label:bug+language:python+state:open&sort=created&order=asc`
      *
      * This query searches for the keyword `windows`, within any open issue that is labeled as `bug`. The search runs across repositories whose primary language is Python. The results are sorted by creation date in ascending order, whick means the oldest issues appear first in the search results.
-     * @param array $queryParameters {
-     *     @var string $q The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To learn more about the format of the query, see [Constructing a search query](https://developer.github.com/v3/search/#constructing-a-search-query). See "[Searching issues and pull requests](https://help.github.com/articles/searching-issues-and-pull-requests/)" for a detailed list of qualifiers.
-     *     @var string $sort Sorts the results of your query by the number of `comments`, `reactions`, `reactions-+1`, `reactions--1`, `reactions-smile`, `reactions-thinking_face`, `reactions-heart`, `reactions-tada`, or `interactions`. You can also sort results by how recently the items were `created` or `updated`, Default: [best match](https://developer.github.com/v3/search/#ranking-search-results)
-     *     @var string $order Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "q": string, //The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To learn more about the format of the query, see [Constructing a search query](https://developer.github.com/v3/search/#constructing-a-search-query). See "[Searching issues and pull requests](https://help.github.com/articles/searching-issues-and-pull-requests/)" for a detailed list of qualifiers.
+     *    "sort"?: string, //Sorts the results of your query by the number of `comments`, `reactions`, `reactions-+1`, `reactions--1`, `reactions-smile`, `reactions-thinking_face`, `reactions-heart`, `reactions-tada`, or `interactions`. You can also sort results by how recently the items were `created` or `updated`, Default: [best match](https://developer.github.com/v3/search/#ranking-search-results)
+     *    "order"?: string, //Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\SearchIssuesAndPullRequestsServiceUnavailableException
      * @throws \Github\Exception\SearchIssuesAndPullRequestsUnprocessableEntityException
@@ -5321,13 +5321,13 @@ class Client extends \Github\Runtime\Client\Client
      * When you include the `mercy` preview header, you can also search for multiple topics by adding more `topic:` instances. For example, your query might look like this:
      *
      * `q=topic:ruby+topic:rails`
-     * @param array $queryParameters {
-     *     @var string $q The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To learn more about the format of the query, see [Constructing a search query](https://developer.github.com/v3/search/#constructing-a-search-query). See "[Searching for repositories](https://help.github.com/articles/searching-for-repositories/)" for a detailed list of qualifiers.
-     *     @var string $sort Sorts the results of your query by number of `stars`, `forks`, or `help-wanted-issues` or how recently the items were `updated`. Default: [best match](https://developer.github.com/v3/search/#ranking-search-results)
-     *     @var string $order Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "q": string, //The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To learn more about the format of the query, see [Constructing a search query](https://developer.github.com/v3/search/#constructing-a-search-query). See "[Searching for repositories](https://help.github.com/articles/searching-for-repositories/)" for a detailed list of qualifiers.
+     *    "sort"?: string, //Sorts the results of your query by number of `stars`, `forks`, or `help-wanted-issues` or how recently the items were `updated`. Default: [best match](https://developer.github.com/v3/search/#ranking-search-results)
+     *    "order"?: string, //Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\SearchReposServiceUnavailableException
      * @throws \Github\Exception\SearchReposUnprocessableEntityException
@@ -5348,9 +5348,9 @@ class Client extends \Github\Runtime\Client\Client
      * `q=ruby+is:featured`
      *
      * This query searches for topics with the keyword `ruby` and limits the results to find only topics that are featured. The topics that are the best match for the query appear first in the search results.
-     * @param array $queryParameters {
-     *     @var string $q The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To learn more about the format of the query, see [Constructing a search query](https://developer.github.com/v3/search/#constructing-a-search-query).
-     * }
+     * @param array{
+     *    "q": string, //The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To learn more about the format of the query, see [Constructing a search query](https://developer.github.com/v3/search/#constructing-a-search-query).
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\SearchTopicsUnsupportedMediaTypeException
      *
@@ -5364,10 +5364,10 @@ class Client extends \Github\Runtime\Client\Client
      * **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://developer.github.com/v3/oauth_authorizations/), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth Authorizations API](https://developer.github.com/v3/oauth_authorizations/) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
      *
      * You can use this API to list the set of OAuth applications that have been granted access to your account. Unlike the [list your authorizations](https://developer.github.com/v3/oauth_authorizations/#list-your-authorizations) API, this API does not manage individual tokens. This API will return one entry for each OAuth application that has been granted access to your account, regardless of the number of tokens an application has generated for your user. The list of OAuth applications returned matches what is shown on [the application authorizations settings screen within GitHub](https://github.com/settings/applications#authorized). The `scopes` returned are the union of scopes authorized for the application. For example, if an application has one token with `repo` scope and another token with `user` scope, the grant will return `["repo", "user"]`.
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OauthAuthorizationsListGrantsForbiddenException
      * @throws \Github\Exception\OauthAuthorizationsListGrantsUnauthorizedException
@@ -5409,10 +5409,10 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://developer.github.com/v3/oauth_authorizations/), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth Authorizations API](https://developer.github.com/v3/oauth_authorizations/) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\OauthAuthorizationsListAuthorizationsForbiddenException
      * @throws \Github\Exception\OauthAuthorizationsListAuthorizationsUnauthorizedException
@@ -5571,10 +5571,10 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * Lists the people following the authenticated user.
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersListFollowersForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\UsersListFollowersForAuthenticatedUserUnauthorizedException
@@ -5587,10 +5587,10 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * Lists the people who the authenticated user follows.
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersListFollowedByAuthenticatedForbiddenException
      * @throws \Github\Exception\UsersListFollowedByAuthenticatedUnauthorizedException
@@ -5603,10 +5603,10 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * Lists the current user's GPG keys. Requires that you are authenticated via Basic Auth or via OAuth with at least `read:gpg_key` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersListGpgKeysForAuthenticatedNotFoundException
      * @throws \Github\Exception\UsersListGpgKeysForAuthenticatedForbiddenException
@@ -5707,10 +5707,10 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * Lists all of your email addresses, and specifies which one is visible to the public. This endpoint is accessible with the `user:email` scope.
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersListEmailsForAuthenticatedNotFoundException
      * @throws \Github\Exception\UsersListEmailsForAuthenticatedForbiddenException
@@ -5825,10 +5825,10 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * Lists your publicly visible email address, which you can set with the [Set primary email visibility for the authenticated user](https://developer.github.com/v3/users/emails/#set-primary-email-visibility-for-the-authenticated-user) endpoint. This endpoint is accessible with the `user:email` scope.
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersListPublicEmailsForAuthenticatedNotFoundException
      * @throws \Github\Exception\UsersListPublicEmailsForAuthenticatedForbiddenException
@@ -5843,10 +5843,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Lists the people who the specified user follows.
      * @param string $username
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
@@ -5889,10 +5889,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Lists the GPG keys for a user. This information is accessible by anyone.
      * @param string $username
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\GpgKey[] : \Psr\Http\Message\ResponseInterface)
@@ -5915,10 +5915,10 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * Lists the public SSH keys for the authenticated user's GitHub account. Requires that you are authenticated via Basic Auth or via OAuth with at least `read:public_key` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersListPublicSshKeysForAuthenticatedNotFoundException
      * @throws \Github\Exception\UsersListPublicSshKeysForAuthenticatedForbiddenException
@@ -5975,10 +5975,10 @@ class Client extends \Github\Runtime\Client\Client
      * Lists all users, in the order that they signed up on GitHub. This list includes personal user accounts and organization accounts.
      *
      * Note: Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://developer.github.com/v3/#link-header) to get the URL for the next page of users.
-     * @param array $queryParameters {
-     *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var int $per_page Results per page (max 100)
-     * }
+     * @param array{
+     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "per_page"?: int, //Results per page (max 100)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
@@ -5997,10 +5997,10 @@ class Client extends \Github\Runtime\Client\Client
      *   https://api.github.com/users/octocat/hovercard?subject_type=repository&subject_id=1300192
      * ```
      * @param string $username
-     * @param array $queryParameters {
-     *     @var string $subject_type Identifies which additional information you'd like to receive about the person's hovercard. Can be `organization`, `repository`, `issue`, `pull_request`. **Required** when using `subject_id`.
-     *     @var string $subject_id Uses the ID for the `subject_type` you specified. **Required** when using `subject_type`.
-     * }
+     * @param array{
+     *    "subject_type"?: string, //Identifies which additional information you'd like to receive about the person's hovercard. Can be `organization`, `repository`, `issue`, `pull_request`. **Required** when using `subject_id`.
+     *    "subject_id"?: string, //Uses the ID for the `subject_type` you specified. **Required** when using `subject_type`.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\UsersGetContextForUserNotFoundException
      * @throws \Github\Exception\UsersGetContextForUserUnprocessableEntityException
@@ -6029,10 +6029,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Lists the _verified_ public SSH keys for a user. This is accessible by anyone.
      * @param string $username
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\KeySimple[] : \Psr\Http\Message\ResponseInterface)
@@ -6044,10 +6044,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Lists the people following the specified user.
      * @param string $username
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\SimpleUser[] : \Psr\Http\Message\ResponseInterface)
@@ -6060,10 +6060,10 @@ class Client extends \Github\Runtime\Client\Client
      * Lists the workflows in a repository. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\ReposOwnerRepoActionsWorkflowsGetResponse200 : \Psr\Http\Message\ResponseInterface)
@@ -6123,10 +6123,10 @@ class Client extends \Github\Runtime\Client\Client
      *
      * Lists all self-hosted runners for an organization. You must authenticate using an access token with the `admin:org` scope to use this endpoint.
      * @param string $org
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\OrgsOrgActionsRunnersGetResponse200 : \Psr\Http\Message\ResponseInterface)
@@ -6151,10 +6151,10 @@ class Client extends \Github\Runtime\Client\Client
      * Lists all artifacts for a repository. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\ReposOwnerRepoActionsArtifactsGetResponse200 : \Psr\Http\Message\ResponseInterface)
@@ -6167,10 +6167,10 @@ class Client extends \Github\Runtime\Client\Client
      * Lists all secrets available in a repository without revealing their encrypted values. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository permission to use this endpoint.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\ReposOwnerRepoActionsSecretsGetResponse200 : \Psr\Http\Message\ResponseInterface)
@@ -6293,10 +6293,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Lists all secrets available in an organization without revealing their encrypted values. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint.
      * @param string $org
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\OrgsOrgActionsSecretsGetResponse200 : \Psr\Http\Message\ResponseInterface)
@@ -6549,13 +6549,13 @@ class Client extends \Github\Runtime\Client\Client
     * @param string $owner
     * @param string $repo
     * @param int $runId
-    * @param array $queryParameters {
-    *     @var string $filter Filters jobs by their `completed_at` timestamp. Can be one of:
+    * @param array{
+    *    "filter"?: string, //Filters jobs by their `completed_at` timestamp. Can be one of:
     \* `latest`: Returns jobs from the most recent execution of the workflow run.
     \* `all`: Returns all jobs for a workflow run, including from old executions of the workflow run.
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
+    *    "per_page"?: int, //Results per page (max 100)
+    *    "page"?: int, //Page number of the results to fetch.
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
@@ -6569,10 +6569,10 @@ class Client extends \Github\Runtime\Client\Client
      * Lists all self-hosted runners for a repository. You must authenticate using an access token with the `repo` scope to use this endpoint.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\ReposOwnerRepoActionsRunnersGetResponse200 : \Psr\Http\Message\ResponseInterface)
@@ -6826,10 +6826,10 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $runId
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200 : \Psr\Http\Message\ResponseInterface)
@@ -6887,14 +6887,14 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $workflowId
-     * @param array $queryParameters {
-     *     @var string $actor Returns someone's workflow runs. Use the login for the user who created the `push` associated with the check suite or workflow run.
-     *     @var string $branch Returns workflow runs associated with a branch. Use the name of the branch of the `push`.
-     *     @var string $event Returns workflow run triggered by the event you specify. For example, `push`, `pull_request` or `issue`. For more information, see "[Events that trigger workflows](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows)."
-     *     @var string $status Returns workflow runs associated with the check run `status` or `conclusion` you specify. For example, a conclusion can be `success` or a status can be `completed`. For more information, see the `status` and `conclusion` options available in "[Create a check run](https://developer.github.com/v3/checks/runs/#create-a-check-run)."
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "actor"?: string, //Returns someone's workflow runs. Use the login for the user who created the `push` associated with the check suite or workflow run.
+     *    "branch"?: string, //Returns workflow runs associated with a branch. Use the name of the branch of the `push`.
+     *    "event"?: string, //Returns workflow run triggered by the event you specify. For example, `push`, `pull_request` or `issue`. For more information, see "[Events that trigger workflows](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows)."
+     *    "status"?: string, //Returns workflow runs associated with the check run `status` or `conclusion` you specify. For example, a conclusion can be `success` or a status can be `completed`. For more information, see the `status` and `conclusion` options available in "[Create a check run](https://developer.github.com/v3/checks/runs/#create-a-check-run)."
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200 : \Psr\Http\Message\ResponseInterface)
@@ -6909,14 +6909,14 @@ class Client extends \Github\Runtime\Client\Client
      * Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $actor Returns someone's workflow runs. Use the login for the user who created the `push` associated with the check suite or workflow run.
-     *     @var string $branch Returns workflow runs associated with a branch. Use the name of the branch of the `push`.
-     *     @var string $event Returns workflow run triggered by the event you specify. For example, `push`, `pull_request` or `issue`. For more information, see "[Events that trigger workflows](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows)."
-     *     @var string $status Returns workflow runs associated with the check run `status` or `conclusion` you specify. For example, a conclusion can be `success` or a status can be `completed`. For more information, see the `status` and `conclusion` options available in "[Create a check run](https://developer.github.com/v3/checks/runs/#create-a-check-run)."
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "actor"?: string, //Returns someone's workflow runs. Use the login for the user who created the `push` associated with the check suite or workflow run.
+     *    "branch"?: string, //Returns workflow runs associated with a branch. Use the name of the branch of the `push`.
+     *    "event"?: string, //Returns workflow run triggered by the event you specify. For example, `push`, `pull_request` or `issue`. For more information, see "[Events that trigger workflows](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows)."
+     *    "status"?: string, //Returns workflow runs associated with the check run `status` or `conclusion` you specify. For example, a conclusion can be `success` or a status can be `completed`. For more information, see the `status` and `conclusion` options available in "[Create a check run](https://developer.github.com/v3/checks/runs/#create-a-check-run)."
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\ReposOwnerRepoActionsRunsGetResponse200 : \Psr\Http\Message\ResponseInterface)
@@ -7050,14 +7050,14 @@ class Client extends \Github\Runtime\Client\Client
     * To list members in a team, the team must be visible to the authenticated user.
     * @param string $org
     * @param string $teamSlug team_slug parameter
-    * @param array $queryParameters {
-    *     @var string $role Filters members returned by their role in the team. Can be one of:
+    * @param array{
+    *    "role"?: string, //Filters members returned by their role in the team. Can be one of:
     \* `member` - normal members of the team.
     \* `maintainer` - team maintainers.
     \* `all` - all members of the team.
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
+    *    "per_page"?: int, //Results per page (max 100)
+    *    "page"?: int, //Page number of the results to fetch.
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     *
@@ -7237,11 +7237,11 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $org
      * @param string $teamSlug team_slug parameter
      * @param int $discussionNumber
-     * @param array $queryParameters {
-     *     @var string $direction One of `asc` (ascending) or `desc` (descending).
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "direction"?: string, //One of `asc` (ascending) or `desc` (descending).
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\TeamDiscussionComment[] : \Psr\Http\Message\ResponseInterface)
@@ -7365,11 +7365,11 @@ class Client extends \Github\Runtime\Client\Client
      * **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions`.
      * @param string $org
      * @param string $teamSlug team_slug parameter
-     * @param array $queryParameters {
-     *     @var string $direction One of `asc` (ascending) or `desc` (descending).
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "direction"?: string, //One of `asc` (ascending) or `desc` (descending).
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\TeamDiscussion[] : \Psr\Http\Message\ResponseInterface)
@@ -7481,10 +7481,10 @@ class Client extends \Github\Runtime\Client\Client
      *
      * The return hash contains a `role` field which refers to the Organization Invitation role and will be one of the following values: `direct_member`, `admin`, `billing_manager`, `hiring_manager`, or `reinstate`. If the invitee is not a GitHub member, the `login` field in the return hash will be `null`.
      * @param int $teamId
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\OrganizationInvitation[] : \Psr\Http\Message\ResponseInterface)
@@ -7499,11 +7499,11 @@ class Client extends \Github\Runtime\Client\Client
      * List all comments on a team discussion. OAuth access tokens require the `read:discussion` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
      * @param int $teamId
      * @param int $discussionNumber
-     * @param array $queryParameters {
-     *     @var string $direction One of `asc` (ascending) or `desc` (descending).
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "direction"?: string, //One of `asc` (ascending) or `desc` (descending).
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\TeamDiscussionComment[] : \Psr\Http\Message\ResponseInterface)
@@ -7535,10 +7535,10 @@ class Client extends \Github\Runtime\Client\Client
      * **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/projects`.
      * @param string $org
      * @param string $teamSlug team_slug parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\TeamProject[] : \Psr\Http\Message\ResponseInterface)
@@ -7550,10 +7550,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [List team repositories](https://developer.github.com/v3/teams/#list-team-repositories) endpoint.
      * @param int $teamId
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsListReposLegacyNotFoundException
      *
@@ -7663,10 +7663,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List child teams`](https://developer.github.com/v3/teams/#list-child-teams) endpoint.
      * @param int $teamId
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsListChildLegacyNotFoundException
      * @throws \Github\Exception\TeamsListChildLegacyForbiddenException
@@ -7684,10 +7684,10 @@ class Client extends \Github\Runtime\Client\Client
      * **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/repos`.
      * @param string $org
      * @param string $teamSlug team_slug parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\MinimalRepository[] : \Psr\Http\Message\ResponseInterface)
@@ -7703,10 +7703,10 @@ class Client extends \Github\Runtime\Client\Client
      *
      * The `per_page` parameter provides pagination for a list of IdP groups the authenticated user can access in an organization. For example, if the user `octocat` wants to see two groups per page in `octo-org` via cURL, it would look like this:
      * @param string $org
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\GroupMapping : \Psr\Http\Message\ResponseInterface)
@@ -7838,10 +7838,10 @@ class Client extends \Github\Runtime\Client\Client
      *
      * Lists the organization projects for a team.
      * @param int $teamId
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsListProjectsLegacyNotFoundException
      * @throws \Github\Exception\TeamsListProjectsLegacyUnsupportedMediaTypeException
@@ -7858,10 +7858,10 @@ class Client extends \Github\Runtime\Client\Client
      * **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/invitations`.
      * @param string $org
      * @param string $teamSlug team_slug parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\OrganizationInvitation[] : \Psr\Http\Message\ResponseInterface)
@@ -7919,10 +7919,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Lists all teams in an organization that are visible to the authenticated user.
      * @param string $org
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsListForbiddenException
      *
@@ -7954,10 +7954,10 @@ class Client extends \Github\Runtime\Client\Client
      * **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/teams`.
      * @param string $org
      * @param string $teamSlug team_slug parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\Team[] : \Psr\Http\Message\ResponseInterface)
@@ -7971,11 +7971,11 @@ class Client extends \Github\Runtime\Client\Client
      *
      * List all discussions on a team's page. OAuth access tokens require the `read:discussion` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
      * @param int $teamId
-     * @param array $queryParameters {
-     *     @var string $direction One of `asc` (ascending) or `desc` (descending).
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "direction"?: string, //One of `asc` (ascending) or `desc` (descending).
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\TeamDiscussion[] : \Psr\Http\Message\ResponseInterface)
@@ -8038,14 +8038,14 @@ class Client extends \Github\Runtime\Client\Client
     *
     * Team members will include the members of child teams.
     * @param int $teamId
-    * @param array $queryParameters {
-    *     @var string $role Filters members returned by their role in the team. Can be one of:
+    * @param array{
+    *    "role"?: string, //Filters members returned by their role in the team. Can be one of:
     \* `member` - normal members of the team.
     \* `maintainer` - team maintainers.
     \* `all` - all members of the team.
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
+    *    "per_page"?: int, //Results per page (max 100)
+    *    "page"?: int, //Page number of the results to fetch.
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\TeamsListMembersLegacyNotFoundException
@@ -8058,10 +8058,10 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * List all of the teams across all of the organizations to which the authenticated user belongs. This method requires `user`, `repo`, or `read:org` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/) when authenticating via [OAuth](https://developer.github.com/apps/building-oauth-apps/).
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\TeamsListForAuthenticatedUserNotFoundException
      * @throws \Github\Exception\TeamsListForAuthenticatedUserForbiddenException
@@ -8177,13 +8177,13 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $pullNumber
-     * @param array $queryParameters {
-     *     @var string $sort One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-     *     @var string $direction Can be either `asc` or `desc`. Ignored without `sort` parameter.
-     *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "sort"?: string, //One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
+     *    "direction"?: string, //Can be either `asc` or `desc`. Ignored without `sort` parameter.
+     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\PullRequestReviewComment[] : \Psr\Http\Message\ResponseInterface)
@@ -8256,13 +8256,13 @@ class Client extends \Github\Runtime\Client\Client
      * The `reactions` key will have the following payload where `url` can be used to construct the API location for [listing and creating](https://developer.github.com/v3/reactions) reactions.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $sort One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-     *     @var string $direction Can be either `asc` or `desc`. Ignored without `sort` parameter.
-     *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "sort"?: string, //One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
+     *    "direction"?: string, //Can be either `asc` or `desc`. Ignored without `sort` parameter.
+     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\PullRequestReviewComment[] : \Psr\Http\Message\ResponseInterface)
@@ -8351,10 +8351,10 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $pullNumber
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\PullRequestReviewRequest : \Psr\Http\Message\ResponseInterface)
@@ -8431,10 +8431,10 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $pullNumber
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\PullRequestReview[] : \Psr\Http\Message\ResponseInterface)
@@ -8519,10 +8519,10 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $pullNumber
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsListFilesUnprocessableEntityException
      * @throws \Github\Exception\PullsListFilesInternalServerErrorException
@@ -8537,15 +8537,15 @@ class Client extends \Github\Runtime\Client\Client
      * Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $state Either `open`, `closed`, or `all` to filter by state.
-     *     @var string $head Filter pulls by head user or head organization and branch name in the format of `user:ref-name` or `organization:ref-name`. For example: `github:new-script-format` or `octocat:test-branch`.
-     *     @var string $base Filter pulls by base branch name. Example: `gh-pages`.
-     *     @var string $sort What to sort results by. Can be either `created`, `updated`, `popularity` (comment count) or `long-running` (age, filtering by pulls updated in the last month).
-     *     @var string $direction The direction of the sort. Can be either `asc` or `desc`. Default: `desc` when sort is `created` or sort is not specified, otherwise `asc`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "state"?: string, //Either `open`, `closed`, or `all` to filter by state.
+     *    "head"?: string, //Filter pulls by head user or head organization and branch name in the format of `user:ref-name` or `organization:ref-name`. For example: `github:new-script-format` or `octocat:test-branch`.
+     *    "base"?: string, //Filter pulls by base branch name. Example: `gh-pages`.
+     *    "sort"?: string, //What to sort results by. Can be either `created`, `updated`, `popularity` (comment count) or `long-running` (age, filtering by pulls updated in the last month).
+     *    "direction"?: string, //The direction of the sort. Can be either `asc` or `desc`. Default: `desc` when sort is `created` or sort is not specified, otherwise `asc`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsListUnprocessableEntityException
      *
@@ -8599,10 +8599,10 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $pullNumber
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\SimpleCommit[] : \Psr\Http\Message\ResponseInterface)
@@ -8634,10 +8634,10 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param int $pullNumber
      * @param int $reviewId review_id parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\PullsListCommentsForReviewNotFoundException
      *
@@ -8660,10 +8660,10 @@ class Client extends \Github\Runtime\Client\Client
      * Lists all open code scanning alerts for the default branch (usually `master`) and protected branches in a repository. You must use an access token with the `security_events` scope to use this endpoint. GitHub Apps must have the `security_events` read permission to use this endpoint.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $state Set to `closed` to list only closed code scanning alerts.
-     *     @var string $ref Returns a list of code scanning alerts for a specific brach reference. The `ref` must be formatted as `heads/<branch name>`.
-     * }
+     * @param array{
+     *    "state"?: string, //Set to `closed` to list only closed code scanning alerts.
+     *    "ref"?: string, //Returns a list of code scanning alerts for a specific brach reference. The `ref` must be formatted as `heads/<branch name>`.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\CodeScanningListAlertsForRepoNotFoundException
      * @throws \Github\Exception\CodeScanningListAlertsForRepoServiceUnavailableException
@@ -8699,21 +8699,21 @@ class Client extends \Github\Runtime\Client\Client
     * the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull
     * request id, use the "[List pull requests](https://developer.github.com/v3/pulls/#list-pull-requests)" endpoint.
     * @param string $org
-    * @param array $queryParameters {
-    *     @var string $filter Indicates which sorts of issues to return. Can be one of:
+    * @param array{
+    *    "filter"?: string, //Indicates which sorts of issues to return. Can be one of:
     \* `assigned`: Issues assigned to you
     \* `created`: Issues created by you
     \* `mentioned`: Issues mentioning you
     \* `subscribed`: Issues you're subscribed to updates for
     \* `all`: All issues the authenticated user can see, regardless of participation or creation
-    *     @var string $state Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
-    *     @var string $labels A list of comma separated label names. Example: `bug,ui,@high`
-    *     @var string $sort What to sort results by. Can be either `created`, `updated`, `comments`.
-    *     @var string $direction One of `asc` (ascending) or `desc` (descending).
-    *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
+    *    "state"?: string, //Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
+    *    "labels"?: string, //A list of comma separated label names. Example: `bug,ui,@high`
+    *    "sort"?: string, //What to sort results by. Can be either `created`, `updated`, `comments`.
+    *    "direction"?: string, //One of `asc` (ascending) or `desc` (descending).
+    *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    *    "per_page"?: int, //Results per page (max 100)
+    *    "page"?: int, //Page number of the results to fetch.
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\IssuesListForOrgNotFoundException
@@ -8817,13 +8817,13 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $state The state of the milestone. Either `open`, `closed`, or `all`.
-     *     @var string $sort What to sort results by. Either `due_on` or `completeness`.
-     *     @var string $direction The direction of the sort. Either `asc` or `desc`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "state"?: string, //The state of the milestone. Either `open`, `closed`, or `all`.
+     *    "sort"?: string, //What to sort results by. Either `due_on` or `completeness`.
+     *    "direction"?: string, //The direction of the sort. Either `asc` or `desc`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListMilestonesNotFoundException
      *
@@ -8971,10 +8971,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListLabelsForRepoNotFoundException
      *
@@ -9002,10 +9002,10 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $issueNumber issue_number parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListEventsForTimelineNotFoundException
      * @throws \Github\Exception\IssuesListEventsForTimelineGoneException
@@ -9021,10 +9021,10 @@ class Client extends \Github\Runtime\Client\Client
      * Lists the [available assignees](https://help.github.com/articles/assigning-issues-and-pull-requests-to-other-github-users/) for issues in a repository.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListAssigneesNotFoundException
      *
@@ -9045,25 +9045,25 @@ class Client extends \Github\Runtime\Client\Client
     * reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by
     * the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull
     * request id, use the "[List pull requests](https://developer.github.com/v3/pulls/#list-pull-requests)" endpoint.
-    * @param array $queryParameters {
-    *     @var string $filter Indicates which sorts of issues to return. Can be one of:
+    * @param array{
+    *    "filter"?: string, //Indicates which sorts of issues to return. Can be one of:
     \* `assigned`: Issues assigned to you
     \* `created`: Issues created by you
     \* `mentioned`: Issues mentioning you
     \* `subscribed`: Issues you're subscribed to updates for
     \* `all`: All issues the authenticated user can see, regardless of participation or creation
-    *     @var string $state Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
-    *     @var string $labels A list of comma separated label names. Example: `bug,ui,@high`
-    *     @var string $sort What to sort results by. Can be either `created`, `updated`, `comments`.
-    *     @var string $direction One of `asc` (ascending) or `desc` (descending).
-    *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-    *     @var bool $collab
-    *     @var bool $orgs
-    *     @var bool $owned
-    *     @var bool $pulls
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
+    *    "state"?: string, //Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
+    *    "labels"?: string, //A list of comma separated label names. Example: `bug,ui,@high`
+    *    "sort"?: string, //What to sort results by. Can be either `created`, `updated`, `comments`.
+    *    "direction"?: string, //One of `asc` (ascending) or `desc` (descending).
+    *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    *    "collab"?: bool,
+    *    "orgs"?: bool,
+    *    "owned"?: bool,
+    *    "pulls"?: bool,
+    *    "per_page"?: int, //Results per page (max 100)
+    *    "page"?: int, //Page number of the results to fetch.
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\IssuesListUnprocessableEntityException
@@ -9092,10 +9092,10 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $issueNumber issue_number parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListLabelsOnIssueGoneException
      *
@@ -9140,10 +9140,10 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $issueNumber issue_number parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListEventsGoneException
      *
@@ -9162,19 +9162,19 @@ class Client extends \Github\Runtime\Client\Client
      * request id, use the "[List pull requests](https://developer.github.com/v3/pulls/#list-pull-requests)" endpoint.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $milestone If an `integer` is passed, it should refer to a milestone by its `number` field. If the string `*` is passed, issues with any milestone are accepted. If the string `none` is passed, issues without milestones are returned.
-     *     @var string $state Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
-     *     @var string $assignee Can be the name of a user. Pass in `none` for issues with no assigned user, and `*` for issues assigned to any user.
-     *     @var string $creator The user that created the issue.
-     *     @var string $mentioned A user that's mentioned in the issue.
-     *     @var string $labels A list of comma separated label names. Example: `bug,ui,@high`
-     *     @var string $sort What to sort results by. Can be either `created`, `updated`, `comments`.
-     *     @var string $direction One of `asc` (ascending) or `desc` (descending).
-     *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "milestone"?: string, //If an `integer` is passed, it should refer to a milestone by its `number` field. If the string `*` is passed, issues with any milestone are accepted. If the string `none` is passed, issues without milestones are returned.
+     *    "state"?: string, //Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
+     *    "assignee"?: string, //Can be the name of a user. Pass in `none` for issues with no assigned user, and `*` for issues assigned to any user.
+     *    "creator"?: string, //The user that created the issue.
+     *    "mentioned"?: string, //A user that's mentioned in the issue.
+     *    "labels"?: string, //A list of comma separated label names. Example: `bug,ui,@high`
+     *    "sort"?: string, //What to sort results by. Can be either `created`, `updated`, `comments`.
+     *    "direction"?: string, //One of `asc` (ascending) or `desc` (descending).
+     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListForRepoUnprocessableEntityException
      * @throws \Github\Exception\IssuesListForRepoNotFoundException
@@ -9210,11 +9210,11 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $issueNumber issue_number parameter
-     * @param array $queryParameters {
-     *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListCommentsNotFoundException
      * @throws \Github\Exception\IssuesListCommentsGoneException
@@ -9274,10 +9274,10 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListEventsForRepoUnprocessableEntityException
      *
@@ -9312,21 +9312,21 @@ class Client extends \Github\Runtime\Client\Client
     * reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by
     * the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull
     * request id, use the "[List pull requests](https://developer.github.com/v3/pulls/#list-pull-requests)" endpoint.
-    * @param array $queryParameters {
-    *     @var string $filter Indicates which sorts of issues to return. Can be one of:
+    * @param array{
+    *    "filter"?: string, //Indicates which sorts of issues to return. Can be one of:
     \* `assigned`: Issues assigned to you
     \* `created`: Issues created by you
     \* `mentioned`: Issues mentioning you
     \* `subscribed`: Issues you're subscribed to updates for
     \* `all`: All issues the authenticated user can see, regardless of participation or creation
-    *     @var string $state Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
-    *     @var string $labels A list of comma separated label names. Example: `bug,ui,@high`
-    *     @var string $sort What to sort results by. Can be either `created`, `updated`, `comments`.
-    *     @var string $direction One of `asc` (ascending) or `desc` (descending).
-    *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
+    *    "state"?: string, //Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
+    *    "labels"?: string, //A list of comma separated label names. Example: `bug,ui,@high`
+    *    "sort"?: string, //What to sort results by. Can be either `created`, `updated`, `comments`.
+    *    "direction"?: string, //One of `asc` (ascending) or `desc` (descending).
+    *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    *    "per_page"?: int, //Results per page (max 100)
+    *    "page"?: int, //Page number of the results to fetch.
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Github\Exception\IssuesListForAuthenticatedUserNotFoundException
@@ -9341,10 +9341,10 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param int $milestoneNumber milestone_number parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\Label[] : \Psr\Http\Message\ResponseInterface)
@@ -9372,13 +9372,13 @@ class Client extends \Github\Runtime\Client\Client
      * By default, Issue Comments are ordered by ascending ID.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $sort One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-     *     @var string $direction Either `asc` or `desc`. Ignored without the `sort` parameter.
-     *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "sort"?: string, //One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
+     *    "direction"?: string, //Either `asc` or `desc`. Ignored without the `sort` parameter.
+     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\IssuesListCommentsForRepoUnprocessableEntityException
      * @throws \Github\Exception\IssuesListCommentsForRepoNotFoundException
@@ -9447,12 +9447,12 @@ class Client extends \Github\Runtime\Client\Client
      *
      * GitHub Apps must use a [JWT](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth Apps must use [basic authentication](https://developer.github.com/v3/auth/#basic-authentication) with their client ID and client secret to access this endpoint.
      * @param int $planId plan_id parameter
-     * @param array $queryParameters {
-     *     @var string $sort One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-     *     @var string $direction To return the oldest accounts first, set to `asc`. Can be one of `asc` or `desc`. Ignored without the `sort` parameter.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "sort"?: string, //One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
+     *    "direction"?: string, //To return the oldest accounts first, set to `asc`. Can be one of `asc` or `desc`. Ignored without the `sort` parameter.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsListAccountsForPlanNotFoundException
      * @throws \Github\Exception\AppsListAccountsForPlanUnprocessableEntityException
@@ -9520,12 +9520,12 @@ class Client extends \Github\Runtime\Client\Client
      *
      * GitHub Apps must use a [JWT](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth Apps must use [basic authentication](https://developer.github.com/v3/auth/#basic-authentication) with their client ID and client secret to access this endpoint.
      * @param int $planId plan_id parameter
-     * @param array $queryParameters {
-     *     @var string $sort One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-     *     @var string $direction To return the oldest accounts first, set to `asc`. Can be one of `asc` or `desc`. Ignored without the `sort` parameter.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "sort"?: string, //One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
+     *    "direction"?: string, //To return the oldest accounts first, set to `asc`. Can be one of `asc` or `desc`. Ignored without the `sort` parameter.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsListAccountsForPlanStubbedUnauthorizedException
      *
@@ -9543,10 +9543,10 @@ class Client extends \Github\Runtime\Client\Client
      * The authenticated user has explicit permission to access repositories they own, repositories where they are a collaborator, and repositories that they can access through an organization membership.
      *
      * You can find the permissions for the installation under the `permissions` key.
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsListInstallationsForAuthenticatedUserForbiddenException
      * @throws \Github\Exception\AppsListInstallationsForAuthenticatedUserUnauthorizedException
@@ -9598,10 +9598,10 @@ class Client extends \Github\Runtime\Client\Client
      * List repositories that an app installation can access.
      *
      * You must use an [installation access token](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation) to access this endpoint.
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsListReposAccessibleToInstallationForbiddenException
      * @throws \Github\Exception\AppsListReposAccessibleToInstallationUnauthorizedException
@@ -9621,10 +9621,10 @@ class Client extends \Github\Runtime\Client\Client
      *
      * The access the user has to each repository is included in the hash under the `permissions` key.
      * @param int $installationId installation_id parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsListInstallationReposForAuthenticatedUserNotFoundException
      * @throws \Github\Exception\AppsListInstallationReposForAuthenticatedUserForbiddenException
@@ -9698,10 +9698,10 @@ class Client extends \Github\Runtime\Client\Client
      * Lists all plans that are part of your GitHub Marketplace listing.
      *
      * GitHub Apps must use a [JWT](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth Apps must use [basic authentication](https://developer.github.com/v3/auth/#basic-authentication) with their client ID and client secret to access this endpoint.
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsListPlansStubbedUnauthorizedException
      *
@@ -9758,12 +9758,12 @@ class Client extends \Github\Runtime\Client\Client
      * You must use a [JWT](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
      *
      * The permissions the installation has are included under the `permissions` key.
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var string $outdated
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "outdated"?: string,
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\Installation[] : \Psr\Http\Message\ResponseInterface)
@@ -9852,10 +9852,10 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * Lists the active subscriptions for the authenticated user. You must use a [user-to-server OAuth access token](https://developer.github.com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site), created for a user who has authorized your GitHub App, to access this endpoint. . OAuth Apps must authenticate using an [OAuth token](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/).
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsListSubscriptionsForAuthenticatedUserUnauthorizedException
      * @throws \Github\Exception\AppsListSubscriptionsForAuthenticatedUserNotFoundException
@@ -9916,10 +9916,10 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * Lists the active subscriptions for the authenticated user. You must use a [user-to-server OAuth access token](https://developer.github.com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site), created for a user who has authorized your GitHub App, to access this endpoint. . OAuth Apps must authenticate using an [OAuth token](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/).
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsListSubscriptionsForAuthenticatedUserStubbedUnauthorizedException
      *
@@ -9933,10 +9933,10 @@ class Client extends \Github\Runtime\Client\Client
      * Lists all plans that are part of your GitHub Marketplace listing.
      *
      * GitHub Apps must use a [JWT](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth Apps must use [basic authentication](https://developer.github.com/v3/auth/#basic-authentication) with their client ID and client secret to access this endpoint.
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\AppsListPlansNotFoundException
      * @throws \Github\Exception\AppsListPlansUnauthorizedException
@@ -9986,11 +9986,11 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * List the authenticated user's starred gists:
-     * @param array $queryParameters {
-     *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsListStarredUnauthorizedException
      * @throws \Github\Exception\GistsListStarredForbiddenException
@@ -10044,11 +10044,11 @@ class Client extends \Github\Runtime\Client\Client
      * List public gists sorted by most recently updated to least recently updated.
      *
      * Note: With [pagination](https://developer.github.com/v3/#pagination), you can fetch up to 3000 gists. For example, you can fetch 100 pages with 30 gists per page or 30 pages with 100 gists per page.
-     * @param array $queryParameters {
-     *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsListPublicUnprocessableEntityException
      * @throws \Github\Exception\GistsListPublicForbiddenException
@@ -10062,11 +10062,11 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * Lists public gists for the specified user:
      * @param string $username
-     * @param array $queryParameters {
-     *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsListForUserUnprocessableEntityException
      *
@@ -10116,10 +10116,10 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param string $gistId gist_id parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsListForksNotFoundException
      * @throws \Github\Exception\GistsListForksForbiddenException
@@ -10146,11 +10146,11 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * Lists the authenticated user's gists or if called anonymously, this endpoint returns all public gists:
-     * @param array $queryParameters {
-     *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsListForbiddenException
      *
@@ -10178,10 +10178,10 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param string $gistId gist_id parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsListCommitsNotFoundException
      * @throws \Github\Exception\GistsListCommitsForbiddenException
@@ -10194,10 +10194,10 @@ class Client extends \Github\Runtime\Client\Client
     }
     /**
      * @param string $gistId gist_id parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GistsListCommentsNotFoundException
      * @throws \Github\Exception\GistsListCommentsForbiddenException
@@ -10405,9 +10405,9 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $treeSha tree_sha parameter
-     * @param array $queryParameters {
-     *     @var string $recursive Setting this parameter to any value returns the objects or subtrees referenced by the tree specified in `:tree_sha`. For example, setting `recursive` to any of the following will enable returning objects or subtrees: `0`, `1`, `"true"`, and `"false"`. Omit this parameter to prevent recursively returning objects or subtrees.
-     * }
+     * @param array{
+     *    "recursive"?: string, //Setting this parameter to any value returns the objects or subtrees referenced by the tree specified in `:tree_sha`. For example, setting `recursive` to any of the following will enable returning objects or subtrees: `0`, `1`, `"true"`, and `"false"`. Omit this parameter to prevent recursively returning objects or subtrees.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\GitGetTreeUnprocessableEntityException
      * @throws \Github\Exception\GitGetTreeNotFoundException
@@ -10429,10 +10429,10 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $owner
      * @param string $repo
      * @param string $ref ref+ parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Github\Model\GitRef[] : \Psr\Http\Message\ResponseInterface)

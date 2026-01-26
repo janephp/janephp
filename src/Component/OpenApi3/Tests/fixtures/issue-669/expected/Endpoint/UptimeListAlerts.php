@@ -8,10 +8,10 @@ class UptimeListAlerts extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseE
     /**
      * To list all of the alerts for an Uptime check, send a GET request to `/v2/uptime/checks/$CHECK_ID/alerts`.
      * @param string $checkId A unique identifier for a check.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      */
     public function __construct(string $checkId, array $queryParameters = [])
     {

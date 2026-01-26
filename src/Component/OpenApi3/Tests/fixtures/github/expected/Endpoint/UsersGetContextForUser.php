@@ -15,10 +15,10 @@ class UsersGetContextForUser extends \Github\Runtime\Client\BaseEndpoint impleme
      *   https://api.github.com/users/octocat/hovercard?subject_type=repository&subject_id=1300192
      * ```
      * @param string $username
-     * @param array $queryParameters {
-     *     @var string $subject_type Identifies which additional information you'd like to receive about the person's hovercard. Can be `organization`, `repository`, `issue`, `pull_request`. **Required** when using `subject_id`.
-     *     @var string $subject_id Uses the ID for the `subject_type` you specified. **Required** when using `subject_type`.
-     * }
+     * @param array{
+     *    "subject_type"?: string, //Identifies which additional information you'd like to receive about the person's hovercard. Can be `organization`, `repository`, `issue`, `pull_request`. **Required** when using `subject_id`.
+     *    "subject_id"?: string, //Uses the ID for the `subject_type` you specified. **Required** when using `subject_type`.
+     * } $queryParameters
      */
     public function __construct(string $username, array $queryParameters = [])
     {

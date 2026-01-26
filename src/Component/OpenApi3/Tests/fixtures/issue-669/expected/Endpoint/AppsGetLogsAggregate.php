@@ -10,15 +10,15 @@ class AppsGetLogsAggregate extends \Jane\Generated\DigitalOcean\Runtime\Client\B
     * Retrieve the logs of a past, in-progress, or active deployment. If a component name is specified, the logs will be limited to only that component. The response will include links to either real-time logs of an in-progress or active deployment or archived logs of a past deployment.
     * @param string $appId The app ID
     * @param string $deploymentId The deployment ID
-    * @param array $queryParameters {
-    *     @var bool $follow Whether the logs should follow live updates.
-    *     @var string $type The type of logs to retrieve
+    * @param array{
+    *    "follow"?: bool, //Whether the logs should follow live updates.
+    *    "type": string, //The type of logs to retrieve
     - BUILD: Build-time logs
     - DEPLOY: Deploy-time logs
     - RUN: Live run-time logs
     - RUN_RESTARTED: Logs of crashed/restarted instances during runtime
-    *     @var string $pod_connection_timeout An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
-    * }
+    *    "pod_connection_timeout"?: string, //An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
+    * } $queryParameters
     */
     public function __construct(string $appId, string $deploymentId, array $queryParameters = [])
     {

@@ -9,9 +9,9 @@ class SharePortfolioId extends \CreditSafe\API\Runtime\Client\BaseEndpoint imple
      * Update/Create user permissions within the customer for portfolio
      * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody $requestBody
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
      */
     public function __construct(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody $requestBody = null, array $headerParameters = [])
     {

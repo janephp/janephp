@@ -19,10 +19,10 @@ class RegistriesListRepositoryManifests extends \Jane\Generated\DigitalOcean\Run
      *
      * @param string $registryName The name of a container registry.
      * @param string $repositoryName The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      */
     public function __construct(string $registryName, string $repositoryName, array $queryParameters = [])
     {

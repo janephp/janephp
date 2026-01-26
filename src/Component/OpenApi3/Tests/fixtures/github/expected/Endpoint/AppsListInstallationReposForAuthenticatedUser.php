@@ -14,10 +14,10 @@ class AppsListInstallationReposForAuthenticatedUser extends \Github\Runtime\Clie
      *
      * The access the user has to each repository is included in the hash under the `permissions` key.
      * @param int $installationId installation_id parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(int $installationId, array $queryParameters = [])
     {

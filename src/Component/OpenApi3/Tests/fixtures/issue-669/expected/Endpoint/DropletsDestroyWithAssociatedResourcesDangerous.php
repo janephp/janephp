@@ -18,9 +18,9 @@ class DropletsDestroyWithAssociatedResourcesDangerous extends \Jane\Generated\Di
      * individual resources.
      *
      * @param int $dropletId A unique identifier for a Droplet instance.
-     * @param array $headerParameters {
-     *     @var bool $X-Dangerous Acknowledge this action will destroy the Droplet and all associated resources and _can not_ be reversed.
-     * }
+     * @param array{
+     *    "X-Dangerous": bool, //Acknowledge this action will destroy the Droplet and all associated resources and _can not_ be reversed.
+     * } $headerParameters
      */
     public function __construct(int $dropletId, array $headerParameters = [])
     {

@@ -6,11 +6,11 @@ class MonitoringGetDropletAutoscaleTargetInstances extends \Jane\Generated\Digit
 {
     /**
      * To retrieve the target size for a given Droplet Autoscale Pool, send a GET request to `/v2/monitoring/metrics/droplet_autoscale/target_instances`.
-     * @param array $queryParameters {
-     *     @var string $autoscale_pool_id A unique identifier for an autoscale pool.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "autoscale_pool_id": string, //A unique identifier for an autoscale pool.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

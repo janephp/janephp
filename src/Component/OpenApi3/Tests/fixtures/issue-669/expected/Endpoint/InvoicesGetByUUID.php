@@ -8,10 +8,10 @@ class InvoicesGetByUUID extends \Jane\Generated\DigitalOcean\Runtime\Client\Base
     /**
      * To retrieve the invoice items for an invoice, send a GET request to `/v2/customers/my/invoices/$INVOICE_UUID`.
      * @param string $invoiceUuid UUID of the invoice
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      */
     public function __construct(string $invoiceUuid, array $queryParameters = [])
     {

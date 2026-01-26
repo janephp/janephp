@@ -6,19 +6,19 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
 {
     /**
      * Retrieves the collection of Book resources.
-     * @param array $queryParameters {
-     *     @var int $page The collection page number
-     *     @var int $itemsPerPage The number of items per page
-     *     @var bool $archived
-     *     @var string $order[id]
-     *     @var string $order[title]
-     *     @var string $order[author]
-     *     @var string $order[isbn]
-     *     @var string $order[publicationDate]
-     *     @var array $properties[]
-     *     @var string $title
-     *     @var string $author
-     * }
+     * @param array{
+     *    "page"?: int, //The collection page number
+     *    "itemsPerPage"?: int, //The number of items per page
+     *    "archived"?: bool,
+     *    "order[id]"?: string,
+     *    "order[title]"?: string,
+     *    "order[author]"?: string,
+     *    "order[isbn]"?: string,
+     *    "order[publicationDate]"?: string,
+     *    "properties[]"?: array,
+     *    "title"?: string,
+     *    "author"?: string,
+     * } $queryParameters
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -45,13 +45,13 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     /**
      * Retrieves the collection of Review resources.
      * @param string $bookId Book identifier
-     * @param array $queryParameters {
-     *     @var int $page The collection page number
-     *     @var string $order[id]
-     *     @var string $order[publicationDate]
-     *     @var string $book
-     *     @var array $book[]
-     * }
+     * @param array{
+     *    "page"?: int, //The collection page number
+     *    "order[id]"?: string,
+     *    "order[publicationDate]"?: string,
+     *    "book"?: string,
+     *    "book[]"?: array,
+     * } $queryParameters
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -136,9 +136,9 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Retrieves the collection of Parchment resources.
-     * @param array $queryParameters {
-     *     @var int $page The collection page number
-     * }
+     * @param array{
+     *    "page"?: int, //The collection page number
+     * } $queryParameters
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -221,14 +221,14 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Retrieves the collection of Review resources.
-     * @param array $queryParameters {
-     *     @var int $page The collection page number
-     *     @var int $itemsPerPage The number of items per page
-     *     @var string $order[id]
-     *     @var string $order[publicationDate]
-     *     @var string $book
-     *     @var array $book[]
-     * }
+     * @param array{
+     *    "page"?: int, //The collection page number
+     *    "itemsPerPage"?: int, //The number of items per page
+     *    "order[id]"?: string,
+     *    "order[publicationDate]"?: string,
+     *    "book"?: string,
+     *    "book[]"?: array,
+     * } $queryParameters
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -320,9 +320,9 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Retrieves the collection of TopBook resources.
-     * @param array $queryParameters {
-     *     @var int $page The collection page number
-     * }
+     * @param array{
+     *    "page"?: int, //The collection page number
+     * } $queryParameters
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *

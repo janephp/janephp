@@ -12,13 +12,13 @@ class ActionsListJobsForWorkflowRun extends \Github\Runtime\Client\BaseEndpoint 
     * @param string $owner
     * @param string $repo
     * @param int $runId
-    * @param array $queryParameters {
-    *     @var string $filter Filters jobs by their `completed_at` timestamp. Can be one of:
+    * @param array{
+    *    "filter"?: string, //Filters jobs by their `completed_at` timestamp. Can be one of:
     \* `latest`: Returns jobs from the most recent execution of the workflow run.
     \* `all`: Returns all jobs for a workflow run, including from old executions of the workflow run.
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
+    *    "per_page"?: int, //Results per page (max 100)
+    *    "page"?: int, //Page number of the results to fetch.
+    * } $queryParameters
     */
     public function __construct(string $owner, string $repo, int $runId, array $queryParameters = [])
     {

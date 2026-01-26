@@ -10,10 +10,10 @@ class CodeScanningListAlertsForRepo extends \Github\Runtime\Client\BaseEndpoint 
      * Lists all open code scanning alerts for the default branch (usually `master`) and protected branches in a repository. You must use an access token with the `security_events` scope to use this endpoint. GitHub Apps must have the `security_events` read permission to use this endpoint.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $state Set to `closed` to list only closed code scanning alerts.
-     *     @var string $ref Returns a list of code scanning alerts for a specific brach reference. The `ref` must be formatted as `heads/<branch name>`.
-     * }
+     * @param array{
+     *    "state"?: string, //Set to `closed` to list only closed code scanning alerts.
+     *    "ref"?: string, //Returns a list of code scanning alerts for a specific brach reference. The `ref` must be formatted as `heads/<branch name>`.
+     * } $queryParameters
      */
     public function __construct(string $owner, string $repo, array $queryParameters = [])
     {

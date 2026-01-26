@@ -7,13 +7,13 @@ class DirectorReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint impleme
     protected $personId;
     /**
      * @param string $personId Identifier of the Person/Director required to order their Director Report. Obtained from `/people` search results.
-     * @param array $queryParameters {
-     *     @var string $language Report Language - The JSON structure of the Report is language invariant, but field content will return as the given language, where available.
-     *     @var string $callRef Call Reference
-     * }
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
+     * @param array{
+     *    "language"?: string, //Report Language - The JSON structure of the Report is language invariant, but field content will return as the given language, where available.
+     *    "callRef"?: string, //Call Reference
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
      */
     public function __construct(string $personId, array $queryParameters = [], array $headerParameters = [])
     {

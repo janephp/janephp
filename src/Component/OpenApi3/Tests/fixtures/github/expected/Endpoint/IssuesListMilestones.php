@@ -9,13 +9,13 @@ class IssuesListMilestones extends \Github\Runtime\Client\BaseEndpoint implement
     /**
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $state The state of the milestone. Either `open`, `closed`, or `all`.
-     *     @var string $sort What to sort results by. Either `due_on` or `completeness`.
-     *     @var string $direction The direction of the sort. Either `asc` or `desc`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "state"?: string, //The state of the milestone. Either `open`, `closed`, or `all`.
+     *    "sort"?: string, //What to sort results by. Either `due_on` or `completeness`.
+     *    "direction"?: string, //The direction of the sort. Either `asc` or `desc`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $owner, string $repo, array $queryParameters = [])
     {

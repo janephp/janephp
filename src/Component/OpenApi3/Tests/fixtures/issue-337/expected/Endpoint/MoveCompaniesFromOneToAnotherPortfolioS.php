@@ -9,12 +9,12 @@ class MoveCompaniesFromOneToAnotherPortfolioS extends \CreditSafe\API\Runtime\Cl
      * Move companies from one portfolio to single (or) multiple portfolios.
      * @param string $portfolioId The unique identifier of the portfolio you want to move companies from, obtained from `/portfolios`.
      * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesRemovePostBody $requestBody
-     * @param array $queryParameters {
-     *     @var bool $removeAll When RemoveAll queryparameter is False, portfolios and companies List needs to be passed. When RemoveAll queryparameter is True, only portfolios need to be passed and companies List must be empty. All companies are moved and deleted from current portfolio
-     * }
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
+     * @param array{
+     *    "removeAll"?: bool, //When RemoveAll queryparameter is False, portfolios and companies List needs to be passed. When RemoveAll queryparameter is True, only portfolios need to be passed and companies List must be empty. All companies are moved and deleted from current portfolio
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
      */
     public function __construct(string $portfolioId, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesRemovePostBody $requestBody = null, array $queryParameters = [], array $headerParameters = [])
     {

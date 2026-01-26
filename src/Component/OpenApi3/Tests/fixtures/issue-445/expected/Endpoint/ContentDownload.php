@@ -11,13 +11,13 @@ class ContentDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
      * Download a single content in a specific output format. To resize images on download specify target width &amp; height. To download only a portion of the file, specify the range parameter.
      * @param string $contentId The content ID.
      * @param string $outputFormatId The output format ID.
-     * @param array $queryParameters {
-     *     @var int $width Optional width in pixels to resize image.
-     *     @var int $height Optional height in pixels to resize image.
-     * }
-     * @param array $headerParameters {
-     *     @var string $range The range of bytes to download (http range header): bytes={from}-{to} (e.g. bytes=0-100000).
-     * }
+     * @param array{
+     *    "width"?: int, //Optional width in pixels to resize image.
+     *    "height"?: int, //Optional height in pixels to resize image.
+     * } $queryParameters
+     * @param array{
+     *    "range"?: string, //The range of bytes to download (http range header): bytes={from}-{to} (e.g. bytes=0-100000).
+     * } $headerParameters
      * @param array $accept Accept content header application/json|application/octet-stream
      */
     public function __construct(string $contentId, string $outputFormatId, array $queryParameters = [], array $headerParameters = [], array $accept = [])

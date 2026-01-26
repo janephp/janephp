@@ -14,12 +14,12 @@ class SearchLabels extends \Github\Runtime\Client\BaseEndpoint implements \Githu
      * `q=bug+defect+enhancement&repository_id=64778136`
      *
      * The labels that best match the query appear first in the search results.
-     * @param array $queryParameters {
-     *     @var int $repository_id The id of the repository.
-     *     @var string $q The search keywords. This endpoint does not accept qualifiers in the query. To learn more about the format of the query, see [Constructing a search query](https://developer.github.com/v3/search/#constructing-a-search-query).
-     *     @var string $sort Sorts the results of your query by when the label was `created` or `updated`. Default: [best match](https://developer.github.com/v3/search/#ranking-search-results)
-     *     @var string $order Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-     * }
+     * @param array{
+     *    "repository_id": int, //The id of the repository.
+     *    "q": string, //The search keywords. This endpoint does not accept qualifiers in the query. To learn more about the format of the query, see [Constructing a search query](https://developer.github.com/v3/search/#constructing-a-search-query).
+     *    "sort"?: string, //Sorts the results of your query by when the label was `created` or `updated`. Default: [best match](https://developer.github.com/v3/search/#ranking-search-results)
+     *    "order"?: string, //Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

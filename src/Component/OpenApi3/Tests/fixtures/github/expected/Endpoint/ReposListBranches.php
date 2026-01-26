@@ -9,11 +9,11 @@ class ReposListBranches extends \Github\Runtime\Client\BaseEndpoint implements \
     /**
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var bool $protected Setting to `true` returns only protected branches. When set to `false`, only unprotected branches are returned. Omitting this parameter returns all branches.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "protected"?: bool, //Setting to `true` returns only protected branches. When set to `false`, only unprotected branches are returned. Omitting this parameter returns all branches.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $owner, string $repo, array $queryParameters = [])
     {

@@ -12,11 +12,11 @@ class ReposListContributors extends \Github\Runtime\Client\BaseEndpoint implemen
      * GitHub identifies contributors by author email address. This endpoint groups contribution counts by GitHub user, which includes all associated email addresses. To improve performance, only the first 500 author email addresses in the repository link to GitHub users. The rest will appear as anonymous contributors without associated GitHub user information.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $anon Set to `1` or `true` to include anonymous contributors in results.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "anon"?: string, //Set to `1` or `true` to include anonymous contributors in results.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $owner, string $repo, array $queryParameters = [])
     {

@@ -10,15 +10,15 @@ class PullsList extends \Github\Runtime\Client\BaseEndpoint implements \Github\R
      * Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $state Either `open`, `closed`, or `all` to filter by state.
-     *     @var string $head Filter pulls by head user or head organization and branch name in the format of `user:ref-name` or `organization:ref-name`. For example: `github:new-script-format` or `octocat:test-branch`.
-     *     @var string $base Filter pulls by base branch name. Example: `gh-pages`.
-     *     @var string $sort What to sort results by. Can be either `created`, `updated`, `popularity` (comment count) or `long-running` (age, filtering by pulls updated in the last month).
-     *     @var string $direction The direction of the sort. Can be either `asc` or `desc`. Default: `desc` when sort is `created` or sort is not specified, otherwise `asc`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "state"?: string, //Either `open`, `closed`, or `all` to filter by state.
+     *    "head"?: string, //Filter pulls by head user or head organization and branch name in the format of `user:ref-name` or `organization:ref-name`. For example: `github:new-script-format` or `octocat:test-branch`.
+     *    "base"?: string, //Filter pulls by base branch name. Example: `gh-pages`.
+     *    "sort"?: string, //What to sort results by. Can be either `created`, `updated`, `popularity` (comment count) or `long-running` (age, filtering by pulls updated in the last month).
+     *    "direction"?: string, //The direction of the sort. Can be either `asc` or `desc`. Default: `desc` when sort is `created` or sort is not specified, otherwise `asc`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $owner, string $repo, array $queryParameters = [])
     {

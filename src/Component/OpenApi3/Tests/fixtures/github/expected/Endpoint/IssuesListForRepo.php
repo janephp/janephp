@@ -15,19 +15,19 @@ class IssuesListForRepo extends \Github\Runtime\Client\BaseEndpoint implements \
      * request id, use the "[List pull requests](https://developer.github.com/v3/pulls/#list-pull-requests)" endpoint.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $milestone If an `integer` is passed, it should refer to a milestone by its `number` field. If the string `*` is passed, issues with any milestone are accepted. If the string `none` is passed, issues without milestones are returned.
-     *     @var string $state Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
-     *     @var string $assignee Can be the name of a user. Pass in `none` for issues with no assigned user, and `*` for issues assigned to any user.
-     *     @var string $creator The user that created the issue.
-     *     @var string $mentioned A user that's mentioned in the issue.
-     *     @var string $labels A list of comma separated label names. Example: `bug,ui,@high`
-     *     @var string $sort What to sort results by. Can be either `created`, `updated`, `comments`.
-     *     @var string $direction One of `asc` (ascending) or `desc` (descending).
-     *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "milestone"?: string, //If an `integer` is passed, it should refer to a milestone by its `number` field. If the string `*` is passed, issues with any milestone are accepted. If the string `none` is passed, issues without milestones are returned.
+     *    "state"?: string, //Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
+     *    "assignee"?: string, //Can be the name of a user. Pass in `none` for issues with no assigned user, and `*` for issues assigned to any user.
+     *    "creator"?: string, //The user that created the issue.
+     *    "mentioned"?: string, //A user that's mentioned in the issue.
+     *    "labels"?: string, //A list of comma separated label names. Example: `bug,ui,@high`
+     *    "sort"?: string, //What to sort results by. Can be either `created`, `updated`, `comments`.
+     *    "direction"?: string, //One of `asc` (ascending) or `desc` (descending).
+     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $owner, string $repo, array $queryParameters = [])
     {

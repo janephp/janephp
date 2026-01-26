@@ -8,9 +8,9 @@ class ListCountriesOfMonitoredCompanies extends \CreditSafe\API\Runtime\Client\B
     /**
      * Get a list of distinct countries of companies monitored within a portfolio.
      * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
      */
     public function __construct(string $portfolioId, array $headerParameters = [])
     {

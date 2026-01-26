@@ -6,14 +6,14 @@ class Client extends \Jane\OpenApi3\Tests\Expected\Runtime\Client\Client
 {
     /**
      * @param string $testPath
-     * @param array $queryParameters {
-     *     @var string $testQuery
-     *     @var string $testQuerySkipped
-     * }
-     * @param array $headerParameters {
-     *     @var string $testHeader
-     *     @var string $testHeaderSkipped
-     * }
+     * @param array{
+     *    "testQuery": string,
+     *    "testQuerySkipped": string,
+     * } $queryParameters
+     * @param array{
+     *    "testHeader": string,
+     *    "testHeaderSkipped": string,
+     * } $headerParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)

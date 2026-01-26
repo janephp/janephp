@@ -25,13 +25,13 @@ class BillingHistory extends \ArrayObject
      */
     protected $amount;
     /**
-     * ID of the invoice associated with the billing history entry, if  applicable.
+     * ID of the invoice associated with the billing history entry, if applicable.
      *
      * @var string
      */
     protected $invoiceId;
     /**
-     * UUID of the invoice associated with the billing history entry, if  applicable.
+     * UUID of the invoice associated with the billing history entry, if applicable.
      *
      * @var string
      */
@@ -93,7 +93,7 @@ class BillingHistory extends \ArrayObject
         return $this;
     }
     /**
-     * ID of the invoice associated with the billing history entry, if  applicable.
+     * ID of the invoice associated with the billing history entry, if applicable.
      *
      * @return string
      */
@@ -102,7 +102,7 @@ class BillingHistory extends \ArrayObject
         return $this->invoiceId;
     }
     /**
-     * ID of the invoice associated with the billing history entry, if  applicable.
+     * ID of the invoice associated with the billing history entry, if applicable.
      *
      * @param string $invoiceId
      *
@@ -115,7 +115,7 @@ class BillingHistory extends \ArrayObject
         return $this;
     }
     /**
-     * UUID of the invoice associated with the billing history entry, if  applicable.
+     * UUID of the invoice associated with the billing history entry, if applicable.
      *
      * @return string
      */
@@ -124,7 +124,7 @@ class BillingHistory extends \ArrayObject
         return $this->invoiceUuid;
     }
     /**
-     * UUID of the invoice associated with the billing history entry, if  applicable.
+     * UUID of the invoice associated with the billing history entry, if applicable.
      *
      * @param string $invoiceUuid
      *

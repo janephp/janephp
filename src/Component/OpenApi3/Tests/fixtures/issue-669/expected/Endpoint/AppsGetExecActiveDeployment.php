@@ -10,9 +10,9 @@ class AppsGetExecActiveDeployment extends \Jane\Generated\DigitalOcean\Runtime\C
      * Returns a websocket URL that allows sending/receiving console input and output to a component of the active deployment if one exists.
      * @param string $appId The app ID
      * @param string $componentName An optional component name. If set, logs will be limited to this component only.
-     * @param array $queryParameters {
-     *     @var string $instance_name The name of the actively running ephemeral compute instance
-     * }
+     * @param array{
+     *    "instance_name"?: string, //The name of the actively running ephemeral compute instance
+     * } $queryParameters
      */
     public function __construct(string $appId, string $componentName, array $queryParameters = [])
     {

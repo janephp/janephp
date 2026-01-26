@@ -11,9 +11,9 @@ class NfsDelete extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoint
      * A successful request will return a `204 No Content` status code.
      *
      * @param string $nfsId The unique ID of the NFS share
-     * @param array $queryParameters {
-     *     @var string $region The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
-     * }
+     * @param array{
+     *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
+     * } $queryParameters
      */
     public function __construct(string $nfsId, array $queryParameters = [])
     {

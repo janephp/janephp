@@ -10,9 +10,9 @@ class ReposGetClones extends \Github\Runtime\Client\BaseEndpoint implements \Git
      * Get the total number of clones and breakdown per day or week for the last 14 days. Timestamps are aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $per Must be one of: `day`, `week`.
-     * }
+     * @param array{
+     *    "per"?: string, //Must be one of: `day`, `week`.
+     * } $queryParameters
      */
     public function __construct(string $owner, string $repo, array $queryParameters = [])
     {

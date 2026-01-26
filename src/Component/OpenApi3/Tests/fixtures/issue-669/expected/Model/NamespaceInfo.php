@@ -226,7 +226,7 @@ class NamespaceInfo extends \ArrayObject
         return $this->key;
     }
     /**
-    * A random alpha numeric string. This key is used in conjunction with the namespace's UUID to authenticate 
+    * A random alpha numeric string. This key is used in conjunction with the namespace's UUID to authenticate
     a user to use the namespace via `doctl`, DigitalOcean's official CLI.
     *
     * @param string $key

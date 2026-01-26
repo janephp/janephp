@@ -6,11 +6,11 @@ class VpcPeeringsList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
 {
     /**
      * To list all of the VPC peerings on your account, send a GET request to `/v2/vpc_peerings`.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     *     @var string $region The slug identifier for the region where the resource is available.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     *    "region"?: string, //The slug identifier for the region where the resource is available.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

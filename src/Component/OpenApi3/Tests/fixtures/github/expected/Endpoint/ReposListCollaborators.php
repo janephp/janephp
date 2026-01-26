@@ -12,14 +12,14 @@ class ReposListCollaborators extends \Github\Runtime\Client\BaseEndpoint impleme
     * Team members will include the members of child teams.
     * @param string $owner
     * @param string $repo
-    * @param array $queryParameters {
-    *     @var string $affiliation Filter collaborators returned by their affiliation. Can be one of:
+    * @param array{
+    *    "affiliation"?: string, //Filter collaborators returned by their affiliation. Can be one of:
     \* `outside`: All outside collaborators of an organization-owned repository.
     \* `direct`: All collaborators with permissions to an organization-owned repository, regardless of organization membership status.
     \* `all`: All collaborators the authenticated user can see.
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
+    *    "per_page"?: int, //Results per page (max 100)
+    *    "page"?: int, //Page number of the results to fetch.
+    * } $queryParameters
     */
     public function __construct(string $owner, string $repo, array $queryParameters = [])
     {

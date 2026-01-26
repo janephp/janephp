@@ -14,9 +14,9 @@ class SearchTopics extends \Github\Runtime\Client\BaseEndpoint implements \Githu
      * `q=ruby+is:featured`
      *
      * This query searches for topics with the keyword `ruby` and limits the results to find only topics that are featured. The topics that are the best match for the query appear first in the search results.
-     * @param array $queryParameters {
-     *     @var string $q The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To learn more about the format of the query, see [Constructing a search query](https://developer.github.com/v3/search/#constructing-a-search-query).
-     * }
+     * @param array{
+     *    "q": string, //The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To learn more about the format of the query, see [Constructing a search query](https://developer.github.com/v3/search/#constructing-a-search-query).
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

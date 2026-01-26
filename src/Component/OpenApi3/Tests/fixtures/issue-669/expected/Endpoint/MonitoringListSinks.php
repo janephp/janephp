@@ -6,9 +6,9 @@ class MonitoringListSinks extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
 {
     /**
      * To list all sinks, send a GET request to `/v2/monitoring/sinks`.
-     * @param array $queryParameters {
-     *     @var string $resource_id A unique URN for a resource.
-     * }
+     * @param array{
+     *    "resource_id"?: string, //A unique URN for a resource.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

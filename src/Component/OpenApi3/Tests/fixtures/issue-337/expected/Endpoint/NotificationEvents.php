@@ -6,18 +6,18 @@ class NotificationEvents extends \CreditSafe\API\Runtime\Client\BaseEndpoint imp
 {
     /**
      * Get all notification events generated for companies monitored in your portfolios, based on the notification rules enabled. The notification events returned will be filtered based upon the supplied search criteria.
-     * @param array $queryParameters {
-     *     @var string $searchQuery Return notificationEvents that match the given value
-     *     @var string $sortBy Sort results by this column. Null values of sort column are listed after non-nulls.
-     *     @var string $sortDir The direction that you wish to sort results by.
-     *     @var string $startDate The start date on which results are filtered.
-     *     @var string $endDate The end date on which results are filtered.
-     *     @var int $page Starting page number (indexed from 0)
-     *     @var int $pageSize Number of items to return per Page (max 1000)
-     * }
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
+     * @param array{
+     *    "searchQuery"?: string, //Return notificationEvents that match the given value
+     *    "sortBy"?: string, //Sort results by this column. Null values of sort column are listed after non-nulls.
+     *    "sortDir"?: string, //The direction that you wish to sort results by.
+     *    "startDate"?: string, //The start date on which results are filtered.
+     *    "endDate"?: string, //The end date on which results are filtered.
+     *    "page"?: int, //Starting page number (indexed from 0)
+     *    "pageSize"?: int, //Number of items to return per Page (max 1000)
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
      */
     public function __construct(array $queryParameters = [], array $headerParameters = [])
     {

@@ -6,9 +6,9 @@ class ContentPermissionSetGetMany extends \PicturePark\API\Runtime\Client\BaseEn
 {
     /**
      * Gets multiple content permission set details by the content permission set IDs.
-     * @param array $queryParameters {
-     *     @var array $ids Ids
-     * }
+     * @param array{
+     *    "ids"?: array, //Ids
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

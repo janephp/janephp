@@ -8,10 +8,10 @@ class OrgsListAppInstallations extends \Github\Runtime\Client\BaseEndpoint imple
     /**
      * Lists all GitHub Apps in an organization. The installation count includes all GitHub Apps installed on repositories in the organization. You must be an organization owner with `admin:read` scope to use this endpoint.
      * @param string $org
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $org, array $queryParameters = [])
     {

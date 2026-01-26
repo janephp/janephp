@@ -10,10 +10,10 @@ class ActionsListSelfHostedRunnersForOrg extends \Github\Runtime\Client\BaseEndp
      *
      * Lists all self-hosted runners for an organization. You must authenticate using an access token with the `admin:org` scope to use this endpoint.
      * @param string $org
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $org, array $queryParameters = [])
     {

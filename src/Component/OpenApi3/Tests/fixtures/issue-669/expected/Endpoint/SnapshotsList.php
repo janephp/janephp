@@ -26,11 +26,11 @@ class SnapshotsList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndp
      * To retrieve only snapshots based on volumes, include the `resource_type`
      * query parameter set to `volume`. For example, `/v2/snapshots?resource_type=volume`.
      *
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     *     @var string $resource_type Used to filter snapshots by a resource type.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     *    "resource_type"?: string, //Used to filter snapshots by a resource type.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

@@ -8,10 +8,10 @@ class ActivityListReceivedEventsForUser extends \Github\Runtime\Client\BaseEndpo
     /**
      * These are events that you've received by watching repos and following users. If you are authenticated as the given user, you will see private events. Otherwise, you'll only see public events.
      * @param string $username
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $username, array $queryParameters = [])
     {

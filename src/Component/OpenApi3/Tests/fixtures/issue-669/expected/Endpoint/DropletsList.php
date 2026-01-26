@@ -23,13 +23,13 @@ class DropletsList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpo
      * By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
      * the `type` query parameter to `gpus`. For example, `/v2/droplets?type=gpus`.
      *
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     *     @var string $tag_name Used to filter Droplets by a specific tag. Can not be combined with `name` or `type`.<br>Requires `tag:read` scope.
-     *     @var string $name Used to filter list response by Droplet name returning only exact matches. It is case-insensitive and can not be combined with `tag_name`.
-     *     @var string $type When `type` is set to `gpus`, only GPU Droplets will be returned. By default, only non-GPU Droplets are returned. Can not be combined with `tag_name`.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     *    "tag_name"?: string, //Used to filter Droplets by a specific tag. Can not be combined with `name` or `type`.<br>Requires `tag:read` scope.
+     *    "name"?: string, //Used to filter list response by Droplet name returning only exact matches. It is case-insensitive and can not be combined with `tag_name`.
+     *    "type"?: string, //When `type` is set to `gpus`, only GPU Droplets will be returned. By default, only non-GPU Droplets are returned. Can not be combined with `tag_name`.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

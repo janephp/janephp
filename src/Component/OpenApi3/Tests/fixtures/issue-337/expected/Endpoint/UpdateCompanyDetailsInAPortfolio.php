@@ -11,9 +11,9 @@ class UpdateCompanyDetailsInAPortfolio extends \CreditSafe\API\Runtime\Client\Ba
      * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param string $id A company Safe Number or Connect ID.
      * @param null|\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody $requestBody
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
      */
     public function __construct(string $portfolioId, string $id, ?\CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody $requestBody = null, array $headerParameters = [])
     {

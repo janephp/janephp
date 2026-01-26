@@ -12,11 +12,11 @@ class ReactionsListForIssue extends \Github\Runtime\Client\BaseEndpoint implemen
      * @param string $owner
      * @param string $repo
      * @param int $issueNumber issue_number parameter
-     * @param array $queryParameters {
-     *     @var string $content Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to an issue.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "content"?: string, //Returns a single [reaction type](https://developer.github.com/v3/reactions/#reaction-types). Omit this parameter to list all reactions to an issue.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $owner, string $repo, int $issueNumber, array $queryParameters = [])
     {

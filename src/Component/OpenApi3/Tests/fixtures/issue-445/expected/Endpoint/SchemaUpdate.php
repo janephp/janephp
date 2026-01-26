@@ -10,10 +10,10 @@ class SchemaUpdate extends \PicturePark\API\Runtime\Client\BaseEndpoint implemen
     * Depending on how much the schema is referenced by existing data, the operation can take a lot of time.
     * @param string $id The schema ID.
     * @param \PicturePark\API\Model\SchemaUpdateRequest $requestBody
-    * @param array $queryParameters {
-    *     @var string $timeout Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+    * @param array{
+    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
                Only the waiting is aborted, and the calls returned.
-    * }
+    * } $queryParameters
     */
     public function __construct(string $id, \PicturePark\API\Model\SchemaUpdateRequest $requestBody, array $queryParameters = [])
     {

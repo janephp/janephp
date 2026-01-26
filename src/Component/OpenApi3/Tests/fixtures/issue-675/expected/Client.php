@@ -5,11 +5,11 @@ namespace Jane\Component\OpenApi3\Tests\Expected;
 class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Client
 {
     /**
-     * @param array $queryParameters {
-     *     @var string $foo
-     *     @var string $bar
-     *     @var string $baz
-     * }
+     * @param array{
+     *    "foo"?: string,
+     *    "bar"?: string,
+     *    "baz"?: string,
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)

@@ -7,9 +7,9 @@ class SchemaGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
     /**
      * Gets multiple schema details by given schema IDs.
      * Can fetch 100 schema details at most.
-     * @param array $queryParameters {
-     *     @var array $ids Comma separated list of schema IDs.
-     * }
+     * @param array{
+     *    "ids"?: array, //Comma separated list of schema IDs.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

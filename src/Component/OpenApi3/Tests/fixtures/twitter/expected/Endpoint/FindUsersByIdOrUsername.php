@@ -7,15 +7,15 @@ class FindUsersByIdOrUsername extends \Jane\Component\OpenApi3\Tests\Expected\Ru
     protected $accept;
     /**
      * This endpoint returns information about users. You can specify users by their ID or screen name, or by a combination of the two.
-     * @param array $queryParameters {
-     *     @var array $ids Required (unless using `usernames`). A list of User IDs, comma-separated. You can specify up to 100 IDs.
-     *     @var array $usernames Required (unless using `ids`). A list of Twitter handles, comma-separated. You can specify up to 100 values.
-     *     @var string $format Format for all the objects returned as part of the response, including expansions.
-     *     @var string $tweet.format Format for all [Tweet](#Tweet) objects returned in response. Can be used together with other format parameters to expand or reduce Tweet objects only.
-     *     @var string $user.format Format for all [User](#User) objects returned in response. Can be used together with other format parameters to expand or reduce User objects only.
-     *     @var string $place.format Format for all place objects returned in response.
-     *     @var array $expansions A comma separated list of fields to expand.
-     * }
+     * @param array{
+     *    "ids"?: array, //Required (unless using `usernames`). A list of User IDs, comma-separated. You can specify up to 100 IDs.
+     *    "usernames"?: array, //Required (unless using `ids`). A list of Twitter handles, comma-separated. You can specify up to 100 values.
+     *    "format"?: string, //Format for all the objects returned as part of the response, including expansions.
+     *    "tweet.format"?: string, //Format for all [Tweet](#Tweet) objects returned in response. Can be used together with other format parameters to expand or reduce Tweet objects only.
+     *    "user.format"?: string, //Format for all [User](#User) objects returned in response. Can be used together with other format parameters to expand or reduce User objects only.
+     *    "place.format"?: string, //Format for all place objects returned in response.
+     *    "expansions"?: array, //A comma separated list of fields to expand.
+     * } $queryParameters
      * @param array $accept Accept content header application/json|application/problem+json
      */
     public function __construct(array $queryParameters = [], array $accept = [])

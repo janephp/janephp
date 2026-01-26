@@ -7,10 +7,10 @@ class AppsCreate extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoin
     /**
      * Create a new app by submitting an app specification. For documentation on app specifications (`AppSpec` objects), please refer to [the product documentation](https://docs.digitalocean.com/products/app-platform/reference/app-spec/).
      * @param \Jane\Generated\DigitalOcean\Model\AppsCreateAppRequest $requestBody
-     * @param array $headerParameters {
-     *     @var string $Accept The content-type that should be used by the response. By default, the response will be `application/json`. `application/yaml` is also supported.
-     *     @var string $Content-Type The content-type used for the request. By default, the requests are assumed to use `application/json`. `application/yaml` is also supported.
-     * }
+     * @param array{
+     *    "Accept"?: string, //The content-type that should be used by the response. By default, the response will be `application/json`. `application/yaml` is also supported.
+     *    "Content-Type"?: string, //The content-type used for the request. By default, the requests are assumed to use `application/json`. `application/yaml` is also supported.
+     * } $headerParameters
      */
     public function __construct(\Jane\Generated\DigitalOcean\Model\AppsCreateAppRequest $requestBody, array $headerParameters = [])
     {

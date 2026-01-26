@@ -56,7 +56,7 @@ class MysqlIncrementalBackup extends \ArrayObject
         return $this->fullBackupWeekSchedule;
     }
     /**
-     * Comma-separated list of days of the week when full backups should be created. Valid values: mon, tue, wed, thu, fri, sat, sun. Default is null. Example : "mon,fri,sun". 
+     * Comma-separated list of days of the week when full backups should be created. Valid values: mon, tue, wed, thu, fri, sat, sun. Default is null. Example : "mon,fri,sun".
      *
      * @param string $fullBackupWeekSchedule
      *

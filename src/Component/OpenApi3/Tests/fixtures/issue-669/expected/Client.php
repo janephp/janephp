@@ -12,9 +12,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * The response will be a JSON object with a key called `1_clicks`. This will be set to an array of
      * 1-Click application data, each of which will contain the the slug and type for the 1-Click.
      *
-     * @param array $queryParameters {
-     *     @var string $type Restrict results to a certain type of 1-Click.
-     * }
+     * @param array{
+     *    "type"?: string, //Restrict results to a certain type of 1-Click.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\OneClicksListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\OneClicksListTooManyRequestsException
@@ -58,10 +58,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all of the keys in your account, send a GET request to `/v2/account/keys`. The response will be a JSON object with a key set to `ssh_keys`. The value of this will be an array of ssh_key objects, each of which contains the standard ssh_key attributes.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\SshKeysListTooManyRequestsException
@@ -137,10 +137,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * This will be the entire list of actions taken on your account, so it will be quite large. As with any large collection returned by the API, the results will be paginated with only 20 on each page by default.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\ActionsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ActionsListTooManyRequestsException
@@ -298,11 +298,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * List all apps on your account. Information about the current active deployment as well as any in progress ones will also be included for each app.
-     * @param array $queryParameters {
-     *     @var int $page Which 'page' of paginated results to return.
-     *     @var int $per_page Number of items returned per page
-     *     @var bool $with_projects Whether the project_id of listed apps should be fetched and included.
-     * }
+     * @param array{
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     *    "per_page"?: int, //Number of items returned per page
+     *    "with_projects"?: bool, //Whether the project_id of listed apps should be fetched and included.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListTooManyRequestsException
@@ -317,10 +317,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * Create a new app by submitting an app specification. For documentation on app specifications (`AppSpec` objects), please refer to [the product documentation](https://docs.digitalocean.com/products/app-platform/reference/app-spec/).
      * @param \Jane\Generated\DigitalOcean\Model\AppsCreateAppRequest $requestBody
-     * @param array $headerParameters {
-     *     @var string $Accept The content-type that should be used by the response. By default, the response will be `application/json`. `application/yaml` is also supported.
-     *     @var string $Content-Type The content-type used for the request. By default, the requests are assumed to use `application/json`. `application/yaml` is also supported.
-     * }
+     * @param array{
+     *    "Accept"?: string, //The content-type that should be used by the response. By default, the response will be `application/json`. `application/yaml` is also supported.
+     *    "Content-Type"?: string, //The content-type used for the request. By default, the requests are assumed to use `application/json`. `application/yaml` is also supported.
+     * } $headerParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCreateUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsCreateTooManyRequestsException
@@ -350,9 +350,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * Retrieve details about an existing app by either its ID or name. To retrieve an app by its name, do not include an ID in the request path. Information about the current active deployment as well as any in progress ones will also be included in the response.
      * @param string $id The ID of the app
-     * @param array $queryParameters {
-     *     @var string $name The name of the app to retrieve.
-     * }
+     * @param array{
+     *    "name"?: string, //The name of the app to retrieve.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetNotFoundException
@@ -401,15 +401,15 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     * Retrieve the logs of the active deployment if one exists. The response will include links to either real-time logs of an in-progress or active deployment or archived logs of a past deployment. Note log_type=BUILD logs will return logs associated with the current active deployment (being served). To view build logs associated with in-progress build, the query must explicitly reference the deployment id.
     * @param string $appId The app ID
     * @param string $componentName An optional component name. If set, logs will be limited to this component only.
-    * @param array $queryParameters {
-    *     @var bool $follow Whether the logs should follow live updates.
-    *     @var string $type The type of logs to retrieve
+    * @param array{
+    *    "follow"?: bool, //Whether the logs should follow live updates.
+    *    "type": string, //The type of logs to retrieve
     - BUILD: Build-time logs
     - DEPLOY: Deploy-time logs
     - RUN: Live run-time logs
     - RUN_RESTARTED: Logs of crashed/restarted instances during runtime
-    *     @var string $pod_connection_timeout An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
-    * }
+    *    "pod_connection_timeout"?: string, //An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentUnauthorizedException
@@ -427,9 +427,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * Returns a websocket URL that allows sending/receiving console input and output to a component of the active deployment if one exists.
      * @param string $appId The app ID
      * @param string $componentName An optional component name. If set, logs will be limited to this component only.
-     * @param array $queryParameters {
-     *     @var string $instance_name The name of the actively running ephemeral compute instance
-     * }
+     * @param array{
+     *    "instance_name"?: string, //The name of the actively running ephemeral compute instance
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetExecActiveDeploymentUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetExecActiveDeploymentNotFoundException
@@ -460,10 +460,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
     * List all deployments of an app.
     * @param string $appId The app ID
-    * @param array $queryParameters {
-    *     @var int $page Which 'page' of paginated results to return.
-    *     @var int $per_page Number of items returned per page
-    *     @var array $deployment_types Optional. Filter deployments by deployment_type
+    * @param array{
+    *    "page"?: int, //Which 'page' of paginated results to return.
+    *    "per_page"?: int, //Number of items returned per page
+    *    "deployment_types"?: array, //Optional. Filter deployments by deployment_type
      - MANUAL: manual deployment
      - DEPLOY_ON_PUSH: deployment triggered by a push to the app's repository
      - MAINTENANCE: deployment for maintenance purposes
@@ -471,7 +471,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      - AUTO_ROLLBACK: automatic revert to a previous deployment
      - UPDATE_DATABASE_TRUSTED_SOURCES: update database trusted sources
      - AUTOSCALED: deployment that has been autoscaled
-    * }
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Jane\Generated\DigitalOcean\Exception\AppsListDeploymentsUnauthorizedException
@@ -538,15 +538,15 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     * @param string $appId The app ID
     * @param string $deploymentId The deployment ID
     * @param string $componentName An optional component name. If set, logs will be limited to this component only.
-    * @param array $queryParameters {
-    *     @var bool $follow Whether the logs should follow live updates.
-    *     @var string $type The type of logs to retrieve
+    * @param array{
+    *    "follow"?: bool, //Whether the logs should follow live updates.
+    *    "type": string, //The type of logs to retrieve
     - BUILD: Build-time logs
     - DEPLOY: Deploy-time logs
     - RUN: Live run-time logs
     - RUN_RESTARTED: Logs of crashed/restarted instances during runtime
-    *     @var string $pod_connection_timeout An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
-    * }
+    *    "pod_connection_timeout"?: string, //An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsUnauthorizedException
@@ -564,15 +564,15 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     * Retrieve the logs of a past, in-progress, or active deployment. If a component name is specified, the logs will be limited to only that component. The response will include links to either real-time logs of an in-progress or active deployment or archived logs of a past deployment.
     * @param string $appId The app ID
     * @param string $deploymentId The deployment ID
-    * @param array $queryParameters {
-    *     @var bool $follow Whether the logs should follow live updates.
-    *     @var string $type The type of logs to retrieve
+    * @param array{
+    *    "follow"?: bool, //Whether the logs should follow live updates.
+    *    "type": string, //The type of logs to retrieve
     - BUILD: Build-time logs
     - DEPLOY: Deploy-time logs
     - RUN: Live run-time logs
     - RUN_RESTARTED: Logs of crashed/restarted instances during runtime
-    *     @var string $pod_connection_timeout An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
-    * }
+    *    "pod_connection_timeout"?: string, //An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsAggregateUnauthorizedException
@@ -591,9 +591,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @param string $appId The app ID
      * @param string $deploymentId The deployment ID
      * @param string $componentName An optional component name. If set, logs will be limited to this component only.
-     * @param array $queryParameters {
-     *     @var string $instance_name The name of the actively running ephemeral compute instance
-     * }
+     * @param array{
+     *    "instance_name"?: string, //The name of the actively running ephemeral compute instance
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetExecUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetExecNotFoundException
@@ -609,15 +609,15 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
     * Retrieve the logs of the active deployment if one exists. The response will include links to either real-time logs of an in-progress or active deployment or archived logs of a past deployment. Note log_type=BUILD logs will return logs associated with the current active deployment (being served). To view build logs associated with in-progress build, the query must explicitly reference the deployment id.
     * @param string $appId The app ID
-    * @param array $queryParameters {
-    *     @var bool $follow Whether the logs should follow live updates.
-    *     @var string $type The type of logs to retrieve
+    * @param array{
+    *    "follow"?: bool, //Whether the logs should follow live updates.
+    *    "type": string, //The type of logs to retrieve
     - BUILD: Build-time logs
     - DEPLOY: Deploy-time logs
     - RUN: Live run-time logs
     - RUN_RESTARTED: Logs of crashed/restarted instances during runtime
-    *     @var string $pod_connection_timeout An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
-    * }
+    *    "pod_connection_timeout"?: string, //An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetLogsActiveDeploymentAggregateUnauthorizedException
@@ -634,12 +634,12 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * List all job invocations for an app.
      * @param string $appId The app ID
-     * @param array $queryParameters {
-     *     @var array $job_names The job names to list job invocations for.
-     *     @var string $deployment_id The deployment ID
-     *     @var int $page Which 'page' of paginated results to return.
-     *     @var int $per_page Number of items returned per page
-     * }
+     * @param array{
+     *    "job_names"?: array, //The job names to list job invocations for.
+     *    "deployment_id"?: string, //The deployment ID
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     *    "per_page"?: int, //Number of items returned per page
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListJobInvocationsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsListJobInvocationsNotFoundException
@@ -656,9 +656,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * Get a specific job invocation for an app.
      * @param string $appId The app ID
      * @param string $jobInvocationId The ID of the job invocation to retrieve.
-     * @param array $queryParameters {
-     *     @var string $job_name The job name to list job invocations for.
-     * }
+     * @param array{
+     *    "job_name"?: string, //The job name to list job invocations for.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetJobInvocationUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetJobInvocationNotFoundException
@@ -676,13 +676,13 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @param string $appId The app ID
      * @param string $jobName The job name to list job invocations for.
      * @param string $jobInvocationId The ID of the job invocation to retrieve.
-     * @param array $queryParameters {
-     *     @var string $deployment_id The deployment ID
-     *     @var bool $follow Whether the logs should follow live updates.
-     *     @var string $type The type of logs to retrieve
-     *     @var string $pod_connection_timeout An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
-     *     @var string $tail_lines The number of lines from the end of the logs to retrieve.
-     * }
+     * @param array{
+     *    "deployment_id"?: string, //The deployment ID
+     *    "follow"?: bool, //Whether the logs should follow live updates.
+     *    "type": string, //The type of logs to retrieve
+     *    "pod_connection_timeout"?: string, //An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.
+     *    "tail_lines"?: string, //The number of lines from the end of the logs to retrieve.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetJobInvocationLogsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetJobInvocationLogsNotFoundException
@@ -859,9 +859,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * Retrieve daily bandwidth usage metrics for a single app.
      * @param string $appId The app ID
-     * @param array $queryParameters {
-     *     @var string $date Optional day to query. Only the date component of the timestamp will be considered. Default: yesterday.
-     * }
+     * @param array{
+     *    "date"?: string, //Optional day to query. Only the date component of the timestamp will be considered. Default: yesterday.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetMetricsBandwidthDailyUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AppsGetMetricsBandwidthDailyNotFoundException
@@ -906,10 +906,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all of the CDN endpoints available on your account, send a GET request to `/v2/cdn/endpoints`.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnListEndpointsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\CdnListEndpointsTooManyRequestsException
@@ -1023,11 +1023,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all of the certificates available on your account, send a GET request to `/v2/certificates`.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     *     @var string $name Name of expected certificate
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     *    "name"?: string, //Name of expected certificate
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\CertificatesListTooManyRequestsException
@@ -1122,10 +1122,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve a list of all invoices, send a GET request to `/v2/customers/my/invoices`.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesListTooManyRequestsException
@@ -1140,10 +1140,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To retrieve the invoice items for an invoice, send a GET request to `/v2/customers/my/invoices/$INVOICE_UUID`.
      * @param string $invoiceUuid UUID of the invoice
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetByUUIDUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\InvoicesGetByUUIDNotFoundException
@@ -1209,10 +1209,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @param string $accountUrn URN of the customer account, can be a team (do:team:uuid) or an organization (do:teamgroup:uuid)
      * @param string $startDate Start date for billing insights in YYYY-MM-DD format
      * @param string $endDate End date for billing insights in YYYY-MM-DD format. Must be within 31 days of start_date
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\BillingInsightsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\BillingInsightsListNotFoundException
@@ -1246,9 +1246,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * The embedded `connection` and `private_connection` objects will contain the information needed to access the database cluster. For multi-node clusters, the `standby_connection` and `standby_private_connection` objects will contain the information needed to connect to the cluster's standby node(s).
      *
      * The embedded `maintenance_window` object will contain information about any scheduled maintenance for the database cluster.
-     * @param array $queryParameters {
-     *     @var string $tag_name Limits the results to database clusters with a specific tag.<br><br>Requires `tag:read` scope.
-     * }
+     * @param array{
+     *    "tag_name"?: string, //Limits the results to database clusters with a specific tag.<br><br>Requires `tag:read` scope.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListClustersUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DatabasesListClustersNotFoundException
@@ -1394,7 +1394,7 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To start an online migration, send a PUT request to `/v2/databases/$DATABASE_ID/online-migration` endpoint. Migrating a cluster establishes a connection with an existing cluster and replicates its contents to the target cluster. Online migration is only available for MySQL, PostgreSQL, Caching, and Valkey clusters.
-     * If the existing database is continuously being written to,  the migration process will continue for up to two weeks unless it is manually stopped. Online migration is only available for [MySQL](https://docs.digitalocean.com/products/databases/mysql/how-to/migrate/#:~:text=To%20migrate%20a%20MySQL%20database,then%20select%20Set%20Up%20Migration),  [PostgreSQL](https://docs.digitalocean.com/products/databases/postgresql/how-to/migrate/),  [Caching](https://docs.digitalocean.com/products/databases/redis/how-to/migrate/), and [Valkey](https://docs.digitalocean.com/products/databases/valkey/how-to/migrate/) clusters.
+     * If the existing database is continuously being written to,  the migration process will continue for up to two weeks unless it is manually stopped. Online migration is only available for [MySQL](https://docs.digitalocean.com/products/databases/mysql/how-to/migrate/#:~:text=To%20migrate%20a%20MySQL%20database,then%20select%20Set%20Up%20Migration), [PostgreSQL](https://docs.digitalocean.com/products/databases/postgresql/how-to/migrate/), [Caching](https://docs.digitalocean.com/products/databases/redis/how-to/migrate/), and [Valkey](https://docs.digitalocean.com/products/databases/valkey/how-to/migrate/) clusters.
      * @param string $databaseClusterUuid A unique identifier for a database cluster.
      * @param \Jane\Generated\DigitalOcean\Model\SourceDatabase $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -2570,10 +2570,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve a list of all of the domains in your account, send a GET request to `/v2/domains`.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsListTooManyRequestsException
@@ -2640,12 +2640,12 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      *
      * @param string $domainName The name of the domain itself.
-     * @param array $queryParameters {
-     *     @var string $name A fully qualified record name. For example, to only include records matching sub.example.com, send a GET request to `/v2/domains/$DOMAIN_NAME/records?name=sub.example.com`.
-     *     @var string $type The type of the DNS record. For example: A, CNAME, TXT, ...
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "name"?: string, //A fully qualified record name. For example, to only include records matching sub.example.com, send a GET request to `/v2/domains/$DOMAIN_NAME/records?name=sub.example.com`.
+     *    "type"?: string, //The type of the DNS record. For example: A, CNAME, TXT, ...
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsListRecordsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DomainsListRecordsNotFoundException
@@ -2775,9 +2775,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully.
      *
-     * @param array $queryParameters {
-     *     @var string $tag_name Specifies Droplets to be deleted by tag.
-     * }
+     * @param array{
+     *    "tag_name": string, //Specifies Droplets to be deleted by tag.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyByTagUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyByTagNotFoundException
@@ -2809,13 +2809,13 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
      * the `type` query parameter to `gpus`. For example, `/v2/droplets?type=gpus`.
      *
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     *     @var string $tag_name Used to filter Droplets by a specific tag. Can not be combined with `name` or `type`.<br>Requires `tag:read` scope.
-     *     @var string $name Used to filter list response by Droplet name returning only exact matches. It is case-insensitive and can not be combined with `tag_name`.
-     *     @var string $type When `type` is set to `gpus`, only GPU Droplets will be returned. By default, only non-GPU Droplets are returned. Can not be combined with `tag_name`.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     *    "tag_name"?: string, //Used to filter Droplets by a specific tag. Can not be combined with `name` or `type`.<br>Requires `tag:read` scope.
+     *    "name"?: string, //Used to filter list response by Droplet name returning only exact matches. It is case-insensitive and can not be combined with `tag_name`.
+     *    "type"?: string, //When `type` is set to `gpus`, only GPU Droplets will be returned. By default, only non-GPU Droplets are returned. Can not be combined with `tag_name`.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListTooManyRequestsException
@@ -2911,10 +2911,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * Droplet backup attributes.
      *
      * @param int $dropletId A unique identifier for a Droplet instance.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListBackupsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListBackupsNotFoundException
@@ -2948,10 +2948,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To list information about the backup policies for all Droplets in the account,
      * send a GET request to `/v2/droplets/backups/policies`.
      *
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListBackupPoliciesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListBackupPoliciesNotFoundException
@@ -2986,10 +2986,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * snapshot attributes.
      *
      * @param int $dropletId A unique identifier for a Droplet instance.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListSnapshotsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListSnapshotsNotFoundException
@@ -3011,10 +3011,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * `action` attributes.
      *
      * @param int $dropletId A unique identifier for a Droplet instance.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsListNotFoundException
@@ -3082,9 +3082,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * - `snapshot` (also requires `image:create` permission)
      *
      * @param null|mixed $requestBody
-     * @param array $queryParameters {
-     *     @var string $tag_name Used to filter Droplets by a specific tag. Can not be combined with `name` or `type`.<br>Requires `tag:read` scope.
-     * }
+     * @param array{
+     *    "tag_name"?: string, //Used to filter Droplets by a specific tag. Can not be combined with `name` or `type`.<br>Requires `tag:read` scope.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsPostByTagUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletActionsPostByTagTooManyRequestsException
@@ -3126,10 +3126,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * `kernel` attributes.
      *
      * @param int $dropletId A unique identifier for a Droplet instance.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListKernelsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListKernelsNotFoundException
@@ -3151,10 +3151,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * `firewall` attributes.
      *
      * @param int $dropletId A unique identifier for a Droplet instance.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListFirewallsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsListFirewallsNotFoundException
@@ -3255,9 +3255,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * individual resources.
      *
      * @param int $dropletId A unique identifier for a Droplet instance.
-     * @param array $headerParameters {
-     *     @var bool $X-Dangerous Acknowledge this action will destroy the Droplet and all associated resources and _can not_ be reversed.
-     * }
+     * @param array{
+     *    "X-Dangerous": bool, //Acknowledge this action will destroy the Droplet and all associated resources and _can not_ be reversed.
+     * } $headerParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyWithAssociatedResourcesDangerousUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\DropletsDestroyWithAssociatedResourcesDangerousNotFoundException
@@ -3317,11 +3317,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * The response body will be a JSON object with a key of `autoscale_pools` containing an array of autoscale pool objects.
      * These each contain the standard autoscale pool attributes.
      *
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     *     @var string $name The name of the autoscale pool
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     *    "name"?: string, //The name of the autoscale pool
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsListTooManyRequestsException
@@ -3409,9 +3409,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * send a DELETE request to the `/v2/droplets/autoscale/$AUTOSCALE_POOL_ID/dangerous` endpoint.
      *
      * @param string $autoscalePoolId A unique identifier for an autoscale pool.
-     * @param array $headerParameters {
-     *     @var bool $X-Dangerous Acknowledge this action will destroy the autoscale pool and its associated resources and _can not_ be reversed.
-     * }
+     * @param array{
+     *    "X-Dangerous": bool, //Acknowledge this action will destroy the autoscale pool and its associated resources and _can not_ be reversed.
+     * } $headerParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsDeleteDangerousUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsDeleteDangerousNotFoundException
@@ -3431,10 +3431,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * set to an array containing information about each of the Droplets in the autoscale pool.
      *
      * @param string $autoscalePoolId A unique identifier for an autoscale pool.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsListMembersUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsListMembersNotFoundException
@@ -3454,10 +3454,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * set to an array containing objects each representing a history event.
      *
      * @param string $autoscalePoolId A unique identifier for an autoscale pool.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsListHistoryUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\AutoscalepoolsListHistoryNotFoundException
@@ -3472,10 +3472,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all of the firewalls available on your account, send a GET request to `/v2/firewalls`.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\FirewallsListTooManyRequestsException
@@ -3710,10 +3710,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all of the floating IPs available on your account, send a GET request to `/v2/floating_ips`.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\FloatingIPsListTooManyRequestsException
@@ -4005,13 +4005,13 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * To list all images assigned to a specific tag, include the `tag_name` query parameter set to the name of the tag in your GET request. For example, `/v2/images?tag_name=$TAG_NAME`.
      *
-     * @param array $queryParameters {
-     *     @var string $type Filters results based on image type which can be either `application` or `distribution`.
-     *     @var bool $private Used to filter only user images.
-     *     @var string $tag_name Used to filter images by a specific tag.
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "type"?: string, //Filters results based on image type which can be either `application` or `distribution`.
+     *    "private"?: bool, //Used to filter only user images.
+     *    "tag_name"?: string, //Used to filter images by a specific tag.
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ImagesListTooManyRequestsException
@@ -4165,10 +4165,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To list all of the Kubernetes clusters on your account, send a GET request
      * to `/v2/kubernetes/clusters`.
      *
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListClustersUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesListClustersTooManyRequestsException
@@ -4344,9 +4344,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * by a cluster administrator.
      *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
-     * @param array $queryParameters {
-     *     @var int $expiry_seconds The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
-     * }
+     * @param array{
+     *    "expiry_seconds"?: int, //The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+     * } $queryParameters
      * @param array $accept Accept content header application/yaml|application/json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetKubeconfigUnauthorizedException
@@ -4379,9 +4379,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * has no impact in certificate-based authentication.
      *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
-     * @param array $queryParameters {
-     *     @var int $expiry_seconds The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
-     * }
+     * @param array{
+     *    "expiry_seconds"?: int, //The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetCredentialsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetCredentialsNotFoundException
@@ -4545,10 +4545,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param string $nodePoolId A unique ID that can be used to reference a Kubernetes node pool.
      * @param string $nodeId A unique ID that can be used to reference a node in a Kubernetes node pool.
-     * @param array $queryParameters {
-     *     @var int $skip_drain Specifies whether or not to drain workloads from a node before it is deleted. Setting it to `1` causes node draining to be skipped. Omitting the query parameter or setting its value to `0` carries out draining prior to deletion.
-     *     @var int $replace Specifies whether or not to replace a node after it has been deleted. Setting it to `1` causes the node to be replaced by a new one after deletion. Omitting the query parameter or setting its value to `0` deletes without replacement.
-     * }
+     * @param array{
+     *    "skip_drain"?: int, //Specifies whether or not to drain workloads from a node before it is deleted. Setting it to `1` causes node draining to be skipped. Omitting the query parameter or setting its value to `0` carries out draining prior to deletion.
+     *    "replace"?: int, //Specifies whether or not to replace a node after it has been deleted. Setting it to `1` causes the node to be replaced by a new one after deletion. Omitting the query parameter or setting its value to `0` deletes without replacement.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDeleteNodeUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesDeleteNodeNotFoundException
@@ -4621,9 +4621,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * [the clusterlint check documentation](https://github.com/digitalocean/clusterlint/blob/master/checks.md).
      *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
-     * @param array $queryParameters {
-     *     @var string $run_id Specifies the clusterlint run whose results will be retrieved.
-     * }
+     * @param array{
+     *    "run_id"?: string, //Specifies the clusterlint run whose results will be retrieved.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetClusterLintResultsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetClusterLintResultsNotFoundException
@@ -4724,9 +4724,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/status_messages`. Status messages inform users of any issues that come up during the cluster lifecycle.
      *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
-     * @param array $queryParameters {
-     *     @var string $since A timestamp used to return status messages emitted since the specified time. The timestamp should be in ISO8601 format.
-     * }
+     * @param array{
+     *    "since"?: string, //A timestamp used to return status messages emitted since the specified time. The timestamp should be in ISO8601 format.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetStatusMessagesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\KubernetesGetStatusMessagesNotFoundException
@@ -4743,10 +4743,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To list all of the load balancer instances on your account, send a GET request
      * to `/v2/load_balancers`.
      *
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\LoadBalancersListTooManyRequestsException
@@ -4962,10 +4962,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * Returns all alert policies that are configured for the given account. To List all alert policies, send a GET request to `/v2/monitoring/alerts`.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringListAlertPolicyUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringListAlertPolicyTooManyRequestsException
@@ -5040,13 +5040,13 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To retrieve bandwidth metrics for a given Droplet, send a GET request to `/v2/monitoring/metrics/droplet/bandwidth`. Use the `interface` query parameter to specify if the results should be for the `private` or `public` interface. Use the `direction` query parameter to specify if the results should be for `inbound` or `outbound` traffic.
      * The metrics in the response body are in megabits per second (Mbps).
-     * @param array $queryParameters {
-     *     @var string $host_id The droplet ID.
-     *     @var string $interface The network interface.
-     *     @var string $direction The traffic direction.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "host_id": string, //The droplet ID.
+     *    "interface": string, //The network interface.
+     *    "direction": string, //The traffic direction.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletBandwidthMetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletBandwidthMetricsTooManyRequestsException
@@ -5060,11 +5060,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve CPU metrics for a given droplet, send a GET request to `/v2/monitoring/metrics/droplet/cpu`.
-     * @param array $queryParameters {
-     *     @var string $host_id The droplet ID.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "host_id": string, //The droplet ID.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletCpuMetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletCpuMetricsTooManyRequestsException
@@ -5078,11 +5078,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve filesystem free metrics for a given droplet, send a GET request to `/v2/monitoring/metrics/droplet/filesystem_free`.
-     * @param array $queryParameters {
-     *     @var string $host_id The droplet ID.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "host_id": string, //The droplet ID.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletFilesystemFreeMetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletFilesystemFreeMetricsTooManyRequestsException
@@ -5096,11 +5096,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve filesystem size metrics for a given droplet, send a GET request to `/v2/monitoring/metrics/droplet/filesystem_size`.
-     * @param array $queryParameters {
-     *     @var string $host_id The droplet ID.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "host_id": string, //The droplet ID.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletFilesystemSizeMetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletFilesystemSizeMetricsTooManyRequestsException
@@ -5114,11 +5114,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve 1 minute load average metrics for a given droplet, send a GET request to `/v2/monitoring/metrics/droplet/load_1`.
-     * @param array $queryParameters {
-     *     @var string $host_id The droplet ID.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "host_id": string, //The droplet ID.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletLoad1MetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletLoad1MetricsTooManyRequestsException
@@ -5132,11 +5132,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve 5 minute load average metrics for a given droplet, send a GET request to `/v2/monitoring/metrics/droplet/load_5`.
-     * @param array $queryParameters {
-     *     @var string $host_id The droplet ID.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "host_id": string, //The droplet ID.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletLoad5MetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletLoad5MetricsTooManyRequestsException
@@ -5150,11 +5150,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve 15 minute load average metrics for a given droplet, send a GET request to `/v2/monitoring/metrics/droplet/load_15`.
-     * @param array $queryParameters {
-     *     @var string $host_id The droplet ID.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "host_id": string, //The droplet ID.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletLoad15MetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletLoad15MetricsTooManyRequestsException
@@ -5168,11 +5168,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve cached memory metrics for a given droplet, send a GET request to `/v2/monitoring/metrics/droplet/memory_cached`.
-     * @param array $queryParameters {
-     *     @var string $host_id The droplet ID.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "host_id": string, //The droplet ID.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryCachedMetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryCachedMetricsTooManyRequestsException
@@ -5186,11 +5186,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve free memory metrics for a given droplet, send a GET request to `/v2/monitoring/metrics/droplet/memory_free`.
-     * @param array $queryParameters {
-     *     @var string $host_id The droplet ID.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "host_id": string, //The droplet ID.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryFreeMetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryFreeMetricsTooManyRequestsException
@@ -5204,11 +5204,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve total memory metrics for a given droplet, send a GET request to `/v2/monitoring/metrics/droplet/memory_total`.
-     * @param array $queryParameters {
-     *     @var string $host_id The droplet ID.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "host_id": string, //The droplet ID.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryTotalMetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryTotalMetricsTooManyRequestsException
@@ -5222,11 +5222,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve available memory metrics for a given droplet, send a GET request to `/v2/monitoring/metrics/droplet/memory_available`.
-     * @param array $queryParameters {
-     *     @var string $host_id The droplet ID.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "host_id": string, //The droplet ID.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryAvailableMetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletMemoryAvailableMetricsTooManyRequestsException
@@ -5240,12 +5240,12 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve memory percentage metrics for a given app, send a GET request to `/v2/monitoring/metrics/apps/memory_percentage`.
-     * @param array $queryParameters {
-     *     @var string $app_id The app UUID.
-     *     @var string $app_component The app component name.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "app_id": string, //The app UUID.
+     *    "app_component"?: string, //The app component name.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAppMemoryPercentageMetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAppMemoryPercentageMetricsTooManyRequestsException
@@ -5259,12 +5259,12 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve cpu percentage metrics for a given app, send a GET request to `/v2/monitoring/metrics/apps/cpu_percentage`.
-     * @param array $queryParameters {
-     *     @var string $app_id The app UUID.
-     *     @var string $app_component The app component name.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "app_id": string, //The app UUID.
+     *    "app_component"?: string, //The app component name.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAppCPUPercentageMetricsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAppCPUPercentageMetricsTooManyRequestsException
@@ -5278,12 +5278,12 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve restart count metrics for a given app, send a GET request to `/v2/monitoring/metrics/apps/restart_count`.
-     * @param array $queryParameters {
-     *     @var string $app_id The app UUID.
-     *     @var string $app_component The app component name.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "app_id": string, //The app UUID.
+     *    "app_component"?: string, //The app component name.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAppRestartCountMetricsYmlUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetAppRestartCountMetricsYmlTooManyRequestsException
@@ -5297,11 +5297,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve frontend total current active connections for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/frontend_connections_current`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendConnectionsCurrentUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendConnectionsCurrentTooManyRequestsException
@@ -5315,11 +5315,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve frontend max connections limit for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/frontend_connections_limit`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendConnectionsLimitUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendConnectionsLimitTooManyRequestsException
@@ -5333,11 +5333,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve frontend average percentage CPU utilization for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/frontend_cpu_utilization`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendCpuUtilizationUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendCpuUtilizationTooManyRequestsException
@@ -5351,11 +5351,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve firewall dropped bytes for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/frontend_firewall_dropped_bytes`. This is currently only supported for network load balancers.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendFirewallDroppedBytesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendFirewallDroppedBytesTooManyRequestsException
@@ -5369,11 +5369,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve firewall dropped packets per second for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/frontend_firewall_dropped_packets`. This is currently only supported for network load balancers.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendFirewallDroppedPacketsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendFirewallDroppedPacketsTooManyRequestsException
@@ -5387,11 +5387,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve frontend HTTP rate of response code for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/frontend_http_responses`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendHttpResponsesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendHttpResponsesTooManyRequestsException
@@ -5405,11 +5405,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve frontend HTTP requests per second for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/frontend_http_requests_per_second`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendHttpRequestsPerSecondUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendHttpRequestsPerSecondTooManyRequestsException
@@ -5423,11 +5423,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve frontend HTTP throughput in bytes per second for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/frontend_network_throughput_http`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNetworkThroughputHttpUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNetworkThroughputHttpTooManyRequestsException
@@ -5441,11 +5441,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve frontend UDP throughput in bytes per second for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/frontend_network_throughput_udp`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNetworkThroughputUdpUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNetworkThroughputUdpTooManyRequestsException
@@ -5459,11 +5459,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve frontend TCP throughput in bytes per second for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/frontend_network_throughput_tcp`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNetworkThroughputTcpUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNetworkThroughputTcpTooManyRequestsException
@@ -5477,11 +5477,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve frontend TCP throughput in bytes per second for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/frontend_nlb_tcp_network_throughput`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNlbTcpNetworkThroughputUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNlbTcpNetworkThroughputTooManyRequestsException
@@ -5495,11 +5495,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve frontend UDP throughput in bytes per second for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/frontend_nlb_udp_network_throughput`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNlbUdpNetworkThroughputUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendNlbUdpNetworkThroughputTooManyRequestsException
@@ -5513,11 +5513,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve frontend current TLS connections rate for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/frontend_tls_connections_current`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendTlsConnectionsCurrentUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendTlsConnectionsCurrentTooManyRequestsException
@@ -5531,11 +5531,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve frontend max TLS connections limit for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/frontend_tls_connections_limit`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendTlsConnectionsLimitUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendTlsConnectionsLimitTooManyRequestsException
@@ -5549,11 +5549,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve frontend closed TLS connections for exceeded rate limit for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/frontend_tls_connections_exceeding_rate_limit`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendTlsConnectionsExceedingRateLimitUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbFrontendTlsConnectionsExceedingRateLimitTooManyRequestsException
@@ -5567,11 +5567,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve Droplets average HTTP session duration in seconds for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/droplets_http_session_duration_avg`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpSessionDurationAvgUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpSessionDurationAvgTooManyRequestsException
@@ -5585,11 +5585,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve Droplets 50th percentile HTTP session duration in seconds for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/droplets_http_session_duration_50p`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpSessionDuration50pUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpSessionDuration50pTooManyRequestsException
@@ -5603,11 +5603,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve Droplets 95th percentile HTTP session duration in seconds for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/droplets_http_session_duration_95p`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpSessionDuration95pUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpSessionDuration95pTooManyRequestsException
@@ -5621,11 +5621,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve Droplets average HTTP response time in seconds for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/droplets_http_response_time_avg`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTimeAvgUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTimeAvgTooManyRequestsException
@@ -5639,11 +5639,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve Droplets 50th percentile HTTP response time in seconds for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/droplets_http_response_time_50p`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTime50pUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTime50pTooManyRequestsException
@@ -5657,11 +5657,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve Droplets 95th percentile HTTP response time in seconds for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/droplets_http_response_time_95p`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTime95pUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTime95pTooManyRequestsException
@@ -5675,11 +5675,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve Droplets 99th percentile HTTP response time in seconds for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/droplets_http_response_time_99p`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTime99pUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponseTime99pTooManyRequestsException
@@ -5693,11 +5693,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve Droplets queue size for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/droplets_queue_size`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsQueueSizeUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsQueueSizeTooManyRequestsException
@@ -5711,11 +5711,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve Droplets HTTP rate of response code for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/droplets_http_responses`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponsesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHttpResponsesTooManyRequestsException
@@ -5729,11 +5729,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve Droplets active connections for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/droplets_connections`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsConnectionsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsConnectionsTooManyRequestsException
@@ -5747,11 +5747,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve Droplets health check status for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/droplets_health_checks`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHealthChecksUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsHealthChecksTooManyRequestsException
@@ -5765,11 +5765,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve Droplets downtime status for a given load balancer, send a GET request to `/v2/monitoring/metrics/load_balancer/droplets_downtime`.
-     * @param array $queryParameters {
-     *     @var string $lb_id A unique identifier for a load balancer.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "lb_id": string, //A unique identifier for a load balancer.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsDowntimeUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetLbDropletsDowntimeTooManyRequestsException
@@ -5783,11 +5783,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve the current size for a given Droplet Autoscale Pool, send a GET request to `/v2/monitoring/metrics/droplet_autoscale/current_instances`.
-     * @param array $queryParameters {
-     *     @var string $autoscale_pool_id A unique identifier for an autoscale pool.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "autoscale_pool_id": string, //A unique identifier for an autoscale pool.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleCurrentInstancesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleCurrentInstancesTooManyRequestsException
@@ -5801,11 +5801,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve the target size for a given Droplet Autoscale Pool, send a GET request to `/v2/monitoring/metrics/droplet_autoscale/target_instances`.
-     * @param array $queryParameters {
-     *     @var string $autoscale_pool_id A unique identifier for an autoscale pool.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "autoscale_pool_id": string, //A unique identifier for an autoscale pool.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleTargetInstancesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleTargetInstancesTooManyRequestsException
@@ -5819,11 +5819,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve the current average CPU utilization for a given Droplet Autoscale Pool, send a GET request to `/v2/monitoring/metrics/droplet_autoscale/current_cpu_utilization`.
-     * @param array $queryParameters {
-     *     @var string $autoscale_pool_id A unique identifier for an autoscale pool.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "autoscale_pool_id": string, //A unique identifier for an autoscale pool.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleCurrentCpuUtilizationYmlUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleCurrentCpuUtilizationYmlTooManyRequestsException
@@ -5837,11 +5837,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve the target average CPU utilization for a given Droplet Autoscale Pool, send a GET request to `/v2/monitoring/metrics/droplet_autoscale/target_cpu_utilization`.
-     * @param array $queryParameters {
-     *     @var string $autoscale_pool_id A unique identifier for an autoscale pool.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "autoscale_pool_id": string, //A unique identifier for an autoscale pool.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleTargetCpuUtilizationUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleTargetCpuUtilizationTooManyRequestsException
@@ -5855,11 +5855,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve the current average memory utilization for a given Droplet Autoscale Pool, send a GET request to `/v2/monitoring/metrics/droplet_autoscale/current_memory_utilization`.
-     * @param array $queryParameters {
-     *     @var string $autoscale_pool_id A unique identifier for an autoscale pool.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "autoscale_pool_id": string, //A unique identifier for an autoscale pool.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleCurrentMemoryUtilizationUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleCurrentMemoryUtilizationTooManyRequestsException
@@ -5873,11 +5873,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To retrieve the target average memory utilization for a given Droplet Autoscale Pool, send a GET request to `/v2/monitoring/metrics/droplet_autoscale/target_memory_utilization`.
-     * @param array $queryParameters {
-     *     @var string $autoscale_pool_id A unique identifier for an autoscale pool.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "autoscale_pool_id": string, //A unique identifier for an autoscale pool.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleTargetMemoryUtilizationUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringGetDropletAutoscaleTargetMemoryUtilizationTooManyRequestsException
@@ -5965,9 +5965,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all sinks, send a GET request to `/v2/monitoring/sinks`.
-     * @param array $queryParameters {
-     *     @var string $resource_id A unique URN for a resource.
-     * }
+     * @param array{
+     *    "resource_id"?: string, //A unique URN for a resource.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringListSinksUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\MonitoringListSinksNotFoundException
@@ -6032,9 +6032,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * A successful request will return all NFS shares belonging to the authenticated user.
      *
-     * @param array $queryParameters {
-     *     @var string $region The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
-     * }
+     * @param array{
+     *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsListNotFoundException
@@ -6069,9 +6069,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * A successful request will return a `204 No Content` status code.
      *
      * @param string $nfsId The unique ID of the NFS share
-     * @param array $queryParameters {
-     *     @var string $region The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
-     * }
+     * @param array{
+     *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsDeleteUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsDeleteNotFoundException
@@ -6090,9 +6090,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * A successful request will return the NFS share.
      *
      * @param string $nfsId The unique ID of the NFS share
-     * @param array $queryParameters {
-     *     @var string $region The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
-     * }
+     * @param array{
+     *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsGetUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsGetNotFoundException
@@ -6138,10 +6138,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * Optionally, you can filter snapshots by a specific NFS share by including the `share_id` query parameter.
      *
-     * @param array $queryParameters {
-     *     @var string $region The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
-     *     @var string $share_id The unique ID of an NFS share. If provided, only snapshots of this specific share will be returned.
-     * }
+     * @param array{
+     *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
+     *    "share_id"?: string, //The unique ID of an NFS share. If provided, only snapshots of this specific share will be returned.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsListSnapshotUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsListSnapshotNotFoundException
@@ -6160,9 +6160,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * A successful request will return a `204 No Content` status code.
      *
      * @param string $nfsSnapshotId The unique ID of the NFS snapshot
-     * @param array $queryParameters {
-     *     @var string $region The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
-     * }
+     * @param array{
+     *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsDeleteSnapshotUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsDeleteSnapshotNotFoundException
@@ -6181,9 +6181,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * A successful request will return the NFS snapshot.
      *
      * @param string $nfsSnapshotId The unique ID of the NFS snapshot
-     * @param array $queryParameters {
-     *     @var string $region The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
-     * }
+     * @param array{
+     *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsGetSnapshotUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\NfsGetSnapshotNotFoundException
@@ -6198,10 +6198,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all of the Partner Attachments on your account, send a `GET` request to `/v2/partner_network_connect/attachments`.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsListNotFoundException
@@ -6308,10 +6308,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * `/v2/partner_network_connect/attachments/{pa_id}/remote_routes`.
      *
      * @param string $paId A unique identifier for a partner attachment.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsListRemoteRoutesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\PartnerAttachmentsListRemoteRoutesNotFoundException
@@ -6359,10 +6359,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all your projects, send a GET request to `/v2/projects`.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsListTooManyRequestsException
@@ -6506,10 +6506,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * This endpoint will only return resources that you are authorized to see. For example, to see Droplets in a project, include the `droplet:read` scope.
      *
      * @param string $projectId A unique identifier for a project.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsListResourcesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ProjectsListResourcesNotFoundException
@@ -6575,10 +6575,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all of the regions that are available, send a GET request to `/v2/regions`.
      * The response will be a JSON object with a key called `regions`. The value of this will be an array of `region` objects, each of which will contain the standard region attributes.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\RegionsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegionsListTooManyRequestsException
@@ -6780,10 +6780,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To get information about past garbage collections for a registry, send a GET request to `/v2/registry/$REGISTRY_NAME/garbage-collections`.
      * @param string $registryName The name of a container registry.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListGarbageCollectionsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListGarbageCollectionsNotFoundException
@@ -6816,11 +6816,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all repositories in your container registry, send a GET request to `/v2/registries/$REGISTRY_NAME/repositoriesV2`. It is similar to GET `/v2/registry/$REGISTRY_NAME/repositoriesV2` and exists for backward compatibility.
      * @param string $registryName The name of a container registry.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return. Ignored when 'page_token' is provided.
-     *     @var string $page_token Token to retrieve of the next or previous set of results more quickly than using 'page'.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return. Ignored when 'page_token' is provided.
+     *    "page_token"?: string, //Token to retrieve of the next or previous set of results more quickly than using 'page'.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListRepositoriesV2BadRequestException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListRepositoriesV2UnauthorizedException
@@ -6868,10 +6868,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @param string $registryName The name of a container registry.
      * @param string $repositoryName The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListRepositoryTagsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListRepositoryTagsNotFoundException
@@ -6924,10 +6924,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @param string $registryName The name of a container registry.
      * @param string $repositoryName The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListRepositoryManifestsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistriesListRepositoryManifestsNotFoundException
@@ -7088,10 +7088,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * example: `/v2/registry/docker-credentials?expiry_seconds=3600` will return
      * credentials that expire after one hour.
      *
-     * @param array $queryParameters {
-     *     @var int $expiry_seconds The duration in seconds that the returned registry credentials will be valid. If not set or 0, the credentials will not expire.
-     *     @var bool $read_write By default, the registry credentials allow for read-only access. Set this query parameter to `true` to obtain read-write credentials.
-     * }
+     * @param array{
+     *    "expiry_seconds"?: int, //The duration in seconds that the returned registry credentials will be valid. If not set or 0, the credentials will not expire.
+     *    "read_write"?: bool, //By default, the registry credentials allow for read-only access. Set this query parameter to `true` to obtain read-write credentials.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetDockerCredentialsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryGetDockerCredentialsTooManyRequestsException
@@ -7131,10 +7131,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * request to `/v2/registry/$REGISTRY_NAME/repositories`.
      *
      * @param string $registryName The name of a container registry.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoriesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoriesNotFoundException
@@ -7150,11 +7150,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all repositories in your container registry, send a GET request to `/v2/registry/$REGISTRY_NAME/repositoriesV2`.
      * @param string $registryName The name of a container registry.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return. Ignored when 'page_token' is provided.
-     *     @var string $page_token Token to retrieve of the next or previous set of results more quickly than using 'page'.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return. Ignored when 'page_token' is provided.
+     *    "page_token"?: string, //Token to retrieve of the next or previous set of results more quickly than using 'page'.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoriesV2BadRequestException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoriesV2UnauthorizedException
@@ -7179,10 +7179,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @param string $registryName The name of a container registry.
      * @param string $repositoryName The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoryTagsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoryTagsNotFoundException
@@ -7233,10 +7233,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @param string $registryName The name of a container registry.
      * @param string $repositoryName The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoryManifestsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListRepositoryManifestsNotFoundException
@@ -7331,10 +7331,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To get information about past garbage collections for a registry, send a GET request to `/v2/registry/$REGISTRY_NAME/garbage-collections`.
      * @param string $registryName The name of a container registry.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListGarbageCollectionsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\RegistryListGarbageCollectionsNotFoundException
@@ -7391,10 +7391,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all of the reserved IPs available on your account, send a GET request to `/v2/reserved_ips`.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPsListTooManyRequestsException
@@ -7516,10 +7516,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all of the reserved IPv6s available on your account, send a GET request to `/v2/reserved_ipv6`.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6ListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ReservedIPv6ListTooManyRequestsException
@@ -7611,10 +7611,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To list all BYOIP prefixes, send a GET request to `/v2/byoip_prefixes`.
      * A successful response will return a list of all BYOIP prefixes associated with the account.
      *
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesListTooManyRequestsException
@@ -7712,10 +7712,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * A successful response will return a list of resources associated with the specified BYOIP prefix.
      *
      * @param string $byoipPrefixUuid The unique identifier for the BYOIP Prefix.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesListResourcesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\ByoipPrefixesListResourcesNotFoundException
@@ -7731,10 +7731,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all of available Droplet sizes, send a GET request to `/v2/sizes`.
      * The response will be a JSON object with a key called `sizes`. The value of this will be an array of `size` objects each of which contain the standard size attributes.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\SizesListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\SizesListTooManyRequestsException
@@ -7768,11 +7768,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * To retrieve only snapshots based on volumes, include the `resource_type`
      * query parameter set to `volume`. For example, `/v2/snapshots?resource_type=volume`.
      *
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     *     @var string $resource_type Used to filter snapshots by a resource type.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     *    "resource_type"?: string, //Used to filter snapshots by a resource type.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\SnapshotsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\SnapshotsListTooManyRequestsException
@@ -7830,15 +7830,15 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list Spaces Access Key, send a GET request to `/v2/spaces/keys`. Sort parameter must be used with Sort Direction.
      *
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     *     @var string $sort The field to sort by.
-     *     @var string $sort_direction The direction to sort by. Possible values are `asc` or `desc`.
-     *     @var string $name The access key's name.
-     *     @var string $bucket The bucket's name.
-     *     @var string $permission The permission of the access key. Possible values are `read`, `readwrite`, `fullaccess`, or an empty string.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     *    "sort"?: string, //The field to sort by.
+     *    "sort_direction"?: string, //The direction to sort by. Possible values are `asc` or `desc`.
+     *    "name"?: string, //The access key's name.
+     *    "bucket"?: string, //The bucket's name.
+     *    "permission"?: string, //The permission of the access key. Possible values are `read`, `readwrite`, `fullaccess`, or an empty string.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\SpacesKeyListTooManyRequestsException
@@ -7948,10 +7948,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * This endpoint will only return tagged resources that you are authorized to see
      * (e.g. Droplets will only be returned if you have `droplet:read`).
      *
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\TagsListTooManyRequestsException
@@ -8072,10 +8072,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * No response body will be sent back, but the response code will indicate success. Specifically, the response code will be a 204, which means that the action was successful with no returned body data.
      *
      *
-     * @param array $queryParameters {
-     *     @var string $name The block storage volume's name.
-     *     @var string $region The slug identifier for the region where the resource is available.
-     * }
+     * @param array{
+     *    "name"?: string, //The block storage volume's name.
+     *    "region"?: string, //The slug identifier for the region where the resource is available.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesDeleteByNameUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesDeleteByNameNotFoundException
@@ -8101,12 +8101,12 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      *
      *
-     * @param array $queryParameters {
-     *     @var string $name The block storage volume's name.
-     *     @var string $region The slug identifier for the region where the resource is available.
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "name"?: string, //The block storage volume's name.
+     *    "region"?: string, //The slug identifier for the region where the resource is available.
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumesListTooManyRequestsException
@@ -8165,10 +8165,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * | region      | Set to the slug representing the region where the volume is located |
      *
      * @param mixed $requestBody
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsPostUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsPostNotFoundException
@@ -8258,10 +8258,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      *
      * @param string $volumeId The ID of the block storage volume.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsListNotFoundException
@@ -8314,10 +8314,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @param string $volumeId The ID of the block storage volume.
      * @param mixed $requestBody
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsPostByIdUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsPostByIdNotFoundException
@@ -8336,10 +8336,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      * @param string $volumeId The ID of the block storage volume.
      * @param int $actionId A unique numeric ID that can be used to identify and reference an action.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsGetUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeActionsGetNotFoundException
@@ -8357,10 +8357,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      *
      *
      * @param string $volumeId The ID of the block storage volume.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VolumeSnapshotsListNotFoundException
@@ -8392,10 +8392,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all of the VPCs on your account, send a GET request to `/v2/vpcs`.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListNotFoundException
@@ -8512,11 +8512,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * you must have `droplet:read`).
      *
      * @param string $vpcId A unique identifier for a VPC.
-     * @param array $queryParameters {
-     *     @var string $resource_type Used to filter VPC members by a resource type.
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "resource_type"?: string, //Used to filter VPC members by a resource type.
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListMembersUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListMembersNotFoundException
@@ -8534,10 +8534,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * `/v2/vpcs/$VPC_ID/peerings`.
      *
      * @param string $vpcId A unique identifier for a VPC.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListPeeringsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcsListPeeringsNotFoundException
@@ -8590,11 +8590,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all of the VPC peerings on your account, send a GET request to `/v2/vpc_peerings`.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     *     @var string $region The slug identifier for the region where the resource is available.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     *    "region"?: string, //The slug identifier for the region where the resource is available.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcPeeringsListNotFoundException
@@ -8679,14 +8679,14 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
      * The response body will be a JSON object with a key of `vpc_nat_gateways` containing an array of VPC NAT gateway objects.
      * These each contain the standard VPC NAT gateway attributes.
      *
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     *     @var string $state The current state of the VPC NAT gateway.
-     *     @var string $region The region where the VPC NAT gateway is located.
-     *     @var string $type The type of the VPC NAT gateway.
-     *     @var string $name The name of the VPC NAT gateway.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     *    "state"?: string, //The current state of the VPC NAT gateway.
+     *    "region"?: string, //The region where the VPC NAT gateway is located.
+     *    "type"?: string, //The type of the VPC NAT gateway.
+     *    "name"?: string, //The name of the VPC NAT gateway.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysListUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\VpcnatgatewaysListTooManyRequestsException
@@ -8771,10 +8771,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all of the Uptime checks on your account, send a GET request to `/v2/uptime/checks`.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeListChecksUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeListChecksNotFoundException
@@ -8873,10 +8873,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all of the alerts for an Uptime check, send a GET request to `/v2/uptime/checks/$CHECK_ID/alerts`.
      * @param string $checkId A unique identifier for a check.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeListAlertsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\UptimeListAlertsNotFoundException
@@ -8961,11 +8961,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all agents, send a GET request to `/v2/gen-ai/agents`.
-     * @param array $queryParameters {
-     *     @var bool $only_deployed Only list agents that are deployed.
-     *     @var int $page Page number.
-     *     @var int $per_page Items per page.
-     * }
+     * @param array{
+     *    "only_deployed"?: bool, //Only list agents that are deployed.
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsNotFoundException
@@ -8996,10 +8996,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all agent API keys, send a GET request to `/v2/gen-ai/agents/{agent_uuid}/api_keys`.
      * @param string $agentUuid Agent id
-     * @param array $queryParameters {
-     *     @var int $page Page number.
-     *     @var int $per_page Items per page.
-     * }
+     * @param array{
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentApiKeysUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentApiKeysNotFoundException
@@ -9303,10 +9303,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To get agent usage, send a GET request to `/v2/gen-ai/agents/{uuid}/usage`. Returns usage metrics for the specified agent within the provided time range.
      * @param string $uuid Agent id
-     * @param array $queryParameters {
-     *     @var string $start Return all usage data from this date.
-     *     @var string $stop Return all usage data up to this date, if omitted, will return up to the current date.
-     * }
+     * @param array{
+     *    "start"?: string, //Return all usage data from this date.
+     *    "stop"?: string, //Return all usage data up to this date, if omitted, will return up to the current date.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetAgentUsageUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetAgentUsageNotFoundException
@@ -9322,10 +9322,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all agent versions, send a GET request to `/v2/gen-ai/agents/{uuid}/versions`.
      * @param string $uuid Agent uuid
-     * @param array $queryParameters {
-     *     @var int $page Page number.
-     *     @var int $per_page Items per page.
-     * }
+     * @param array{
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentVersionsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentVersionsNotFoundException
@@ -9356,10 +9356,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all Anthropic API keys, send a GET request to `/v2/gen-ai/anthropic/keys`.
-     * @param array $queryParameters {
-     *     @var int $page Page number.
-     *     @var int $per_page Items per page.
-     * }
+     * @param array{
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAnthropicApiKeysUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAnthropicApiKeysNotFoundException
@@ -9436,10 +9436,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * List Agents by Anthropic Key.
      * @param string $uuid Unique ID of Anthropic key
-     * @param array $queryParameters {
-     *     @var int $page Page number.
-     *     @var int $per_page Items per page.
-     * }
+     * @param array{
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsByAnthropicKeyUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsByAnthropicKeyNotFoundException
@@ -9528,10 +9528,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To retrieve results of an evaluation run, send a GET request to `/v2/gen-ai/evaluation_runs/{evaluation_run_uuid}/results`.
      * @param string $evaluationRunUuid Evaluation run UUID.
-     * @param array $queryParameters {
-     *     @var int $page Page number.
-     *     @var int $per_page Items per page.
-     * }
+     * @param array{
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationRunResultsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationRunResultsNotFoundException
@@ -9591,9 +9591,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all evaluation runs by test case, send a GET request to `/v2/gen-ai/evaluation_test_cases/{evaluation_test_case_uuid}/evaluation_runs`.
      * @param string $evaluationTestCaseUuid Evaluation run UUID.
-     * @param array $queryParameters {
-     *     @var int $evaluation_test_case_version Version of the test case.
-     * }
+     * @param array{
+     *    "evaluation_test_case_version"?: int, //Version of the test case.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListEvaluationRunsByTestCaseUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListEvaluationRunsByTestCaseNotFoundException
@@ -9609,9 +9609,9 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To retrive information about an existing evaluation test case, send a GET request to `/v2/gen-ai/evaluation_test_case/{test_case_uuid}`.
      * @param string $testCaseUuid The test case uuid to retrieve.
-     * @param array $queryParameters {
-     *     @var int $evaluation_test_case_version Version of the test case.
-     * }
+     * @param array{
+     *    "evaluation_test_case_version"?: int, //Version of the test case.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationTestCaseUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetEvaluationTestCaseNotFoundException
@@ -9642,10 +9642,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all indexing jobs for a knowledge base, send a GET request to `/v2/gen-ai/indexing_jobs`.
-     * @param array $queryParameters {
-     *     @var int $page Page number.
-     *     @var int $per_page Items per page.
-     * }
+     * @param array{
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListIndexingJobsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListIndexingJobsNotFoundException
@@ -9736,10 +9736,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all knowledge bases, send a GET request to `/v2/gen-ai/knowledge_bases`.
-     * @param array $queryParameters {
-     *     @var int $page Page number.
-     *     @var int $per_page Items per page.
-     * }
+     * @param array{
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListKnowledgeBasesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListKnowledgeBasesNotFoundException
@@ -9785,10 +9785,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all data sources for a knowledge base, send a GET request to `/v2/gen-ai/knowledge_bases/{knowledge_base_uuid}/data_sources`.
      * @param string $knowledgeBaseUuid Knowledge base id
-     * @param array $queryParameters {
-     *     @var int $page Page number.
-     *     @var int $per_page Items per page.
-     * }
+     * @param array{
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListKnowledgeBaseDataSourcesUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListKnowledgeBaseDataSourcesNotFoundException
@@ -9896,8 +9896,8 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
     * To list all models, send a GET request to `/v2/gen-ai/models`.
-    * @param array $queryParameters {
-    *     @var array $usecases Include only models defined for the listed usecases.
+    * @param array{
+    *    "usecases"?: array, //Include only models defined for the listed usecases.
     
     - MODEL_USECASE_UNKNOWN: The use case of the model is unknown
     - MODEL_USECASE_AGENT: The model maybe used in an agent
@@ -9906,10 +9906,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     - MODEL_USECASE_GUARDRAIL: The model maybe used for guardrails
     - MODEL_USECASE_REASONING: The model usecase for reasoning
     - MODEL_USECASE_SERVERLESS: The model usecase for serverless inference
-    *     @var bool $public_only Only include models that are publicly available.
-    *     @var int $page Page number.
-    *     @var int $per_page Items per page.
-    * }
+    *    "public_only"?: bool, //Only include models that are publicly available.
+    *    "page"?: int, //Page number.
+    *    "per_page"?: int, //Items per page.
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListModelsUnauthorizedException
@@ -9925,10 +9925,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all model API keys, send a GET request to `/v2/gen-ai/models/api_keys`.
-     * @param array $queryParameters {
-     *     @var int $page Page number.
-     *     @var int $per_page Items per page.
-     * }
+     * @param array{
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListModelApiKeysUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListModelApiKeysNotFoundException
@@ -10019,10 +10019,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To generate an Oauth2-URL for use with your localhost, send a GET request to `/v2/gen-ai/oauth2/url`. Pass 'http://localhost:3000 as redirect_url
-     * @param array $queryParameters {
-     *     @var string $type Type "google" / "dropbox".
-     *     @var string $redirect_url The redirect url.
-     * }
+     * @param array{
+     *    "type"?: string, //Type "google" / "dropbox".
+     *    "redirect_url"?: string, //The redirect url.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetOauth2UrlUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiGetOauth2UrlNotFoundException
@@ -10037,10 +10037,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all OpenAI API keys, send a GET request to `/v2/gen-ai/openai/keys`.
-     * @param array $queryParameters {
-     *     @var int $page Page number.
-     *     @var int $per_page Items per page.
-     * }
+     * @param array{
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListOpenaiApiKeysUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListOpenaiApiKeysNotFoundException
@@ -10117,10 +10117,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * List Agents by OpenAI Key.
      * @param string $uuid Unique ID of OpenAI key
-     * @param array $queryParameters {
-     *     @var int $page Page number.
-     *     @var int $per_page Items per page.
-     * }
+     * @param array{
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsByOpenaiKeyUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsByOpenaiKeyNotFoundException
@@ -10135,10 +10135,10 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     }
     /**
      * To list all datacenter regions, send a GET request to `/v2/gen-ai/regions`.
-     * @param array $queryParameters {
-     *     @var bool $serves_inference Include datacenters that serve inference.
-     *     @var bool $serves_batch Include datacenters that are capable of running batch jobs.
-     * }
+     * @param array{
+     *    "serves_inference"?: bool, //Include datacenters that serve inference.
+     *    "serves_batch"?: bool, //Include datacenters that are capable of running batch jobs.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListDatacenterRegionsUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListDatacenterRegionsNotFoundException
@@ -10273,11 +10273,11 @@ class Client extends \Jane\Generated\DigitalOcean\Runtime\Client\Client
     /**
      * To list all agents by a Workspace, send a GET request to `/v2/gen-ai/workspaces/{workspace_uuid}/agents`.
      * @param string $workspaceUuid Workspace UUID.
-     * @param array $queryParameters {
-     *     @var bool $only_deployed Only list agents that are deployed.
-     *     @var int $page Page number.
-     *     @var int $per_page Items per page.
-     * }
+     * @param array{
+     *    "only_deployed"?: bool, //Only list agents that are deployed.
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsByWorkspaceUnauthorizedException
      * @throws \Jane\Generated\DigitalOcean\Exception\GenaiListAgentsByWorkspaceNotFoundException

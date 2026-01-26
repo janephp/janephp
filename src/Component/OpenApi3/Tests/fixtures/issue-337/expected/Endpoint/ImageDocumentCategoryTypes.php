@@ -6,12 +6,12 @@ class ImageDocumentCategoryTypes extends \CreditSafe\API\Runtime\Client\BaseEndp
 {
     /**
      * Returns the type of Image that can be returned by for additional meta data.
-     * @param array $queryParameters {
-     *     @var string $countries Filter Images by country.
-     * }
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
+     * @param array{
+     *    "countries"?: string, //Filter Images by country.
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
      */
     public function __construct(array $queryParameters = [], array $headerParameters = [])
     {

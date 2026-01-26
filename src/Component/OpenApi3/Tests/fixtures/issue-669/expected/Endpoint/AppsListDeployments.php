@@ -8,10 +8,10 @@ class AppsListDeployments extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
     /**
     * List all deployments of an app.
     * @param string $appId The app ID
-    * @param array $queryParameters {
-    *     @var int $page Which 'page' of paginated results to return.
-    *     @var int $per_page Number of items returned per page
-    *     @var array $deployment_types Optional. Filter deployments by deployment_type
+    * @param array{
+    *    "page"?: int, //Which 'page' of paginated results to return.
+    *    "per_page"?: int, //Number of items returned per page
+    *    "deployment_types"?: array, //Optional. Filter deployments by deployment_type
      - MANUAL: manual deployment
      - DEPLOY_ON_PUSH: deployment triggered by a push to the app's repository
      - MAINTENANCE: deployment for maintenance purposes
@@ -19,7 +19,7 @@ class AppsListDeployments extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
      - AUTO_ROLLBACK: automatic revert to a previous deployment
      - UPDATE_DATABASE_TRUSTED_SOURCES: update database trusted sources
      - AUTOSCALED: deployment that has been autoscaled
-    * }
+    * } $queryParameters
     */
     public function __construct(string $appId, array $queryParameters = [])
     {

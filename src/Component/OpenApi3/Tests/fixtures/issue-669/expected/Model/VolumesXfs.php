@@ -67,7 +67,7 @@ class VolumesXfs extends \ArrayObject
      */
     protected $filesystemType;
     /**
-     * The slug identifier for the region where the resource will initially be  available.
+     * The slug identifier for the region where the resource will initially be available.
      *
      * @var string
      */
@@ -275,7 +275,7 @@ class VolumesXfs extends \ArrayObject
         return $this;
     }
     /**
-     * The slug identifier for the region where the resource will initially be  available.
+     * The slug identifier for the region where the resource will initially be available.
      *
      * @return string
      */
@@ -284,7 +284,7 @@ class VolumesXfs extends \ArrayObject
         return $this->region;
     }
     /**
-     * The slug identifier for the region where the resource will initially be  available.
+     * The slug identifier for the region where the resource will initially be available.
      *
      * @param string $region
      *

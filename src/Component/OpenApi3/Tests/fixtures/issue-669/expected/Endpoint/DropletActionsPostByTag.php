@@ -21,9 +21,9 @@ class DropletActionsPostByTag extends \Jane\Generated\DigitalOcean\Runtime\Clien
      * - `snapshot` (also requires `image:create` permission)
      *
      * @param null|mixed $requestBody
-     * @param array $queryParameters {
-     *     @var string $tag_name Used to filter Droplets by a specific tag. Can not be combined with `name` or `type`.<br>Requires `tag:read` scope.
-     * }
+     * @param array{
+     *    "tag_name"?: string, //Used to filter Droplets by a specific tag. Can not be combined with `name` or `type`.<br>Requires `tag:read` scope.
+     * } $queryParameters
      */
     public function __construct($requestBody = null, array $queryParameters = [])
     {

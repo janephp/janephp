@@ -6,9 +6,9 @@ class AllEventRules extends \CreditSafe\API\Runtime\Client\BaseEndpoint implemen
 {
     /**
      * Get all available notification event rules. Notification event rules allow you to control which events you wish to monitor for the `companies` contained within a given `portfolio`.
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
      */
     public function __construct(array $headerParameters = [])
     {

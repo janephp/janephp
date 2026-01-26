@@ -156,7 +156,15 @@ class NonBodyParameterGenerator extends ParameterGenerator
 
         $description = implode("\n", array_map(rtrim(...), explode("\n", $parameter->getDescription() ?: '')));
 
-        return rtrim(\sprintf(' *     @var %s $%s %s', $type, $parameter->getName(), $description));
+        return rtrim(
+            \sprintf(
+                ' *    "%s"%s: %s%s',
+                $parameter->getName(),
+                $parameter->getRequired() ? '' : '?',
+                $type,
+                $description !== '' ? ', //' . $description : ','
+            )
+        );
     }
 
     /**

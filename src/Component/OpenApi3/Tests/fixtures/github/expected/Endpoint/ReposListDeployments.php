@@ -10,14 +10,14 @@ class ReposListDeployments extends \Github\Runtime\Client\BaseEndpoint implement
      * Simple filtering of deployments is available via query parameters:
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $sha The SHA recorded at creation time.
-     *     @var string $ref The name of the ref. This can be a branch, tag, or SHA.
-     *     @var string $task The name of the task for the deployment (e.g., `deploy` or `deploy:migrations`).
-     *     @var string $environment The name of the environment that was deployed to (e.g., `staging` or `production`).
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "sha"?: string, //The SHA recorded at creation time.
+     *    "ref"?: string, //The name of the ref. This can be a branch, tag, or SHA.
+     *    "task"?: string, //The name of the task for the deployment (e.g., `deploy` or `deploy:migrations`).
+     *    "environment"?: string, //The name of the environment that was deployed to (e.g., `staging` or `production`).
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $owner, string $repo, array $queryParameters = [])
     {

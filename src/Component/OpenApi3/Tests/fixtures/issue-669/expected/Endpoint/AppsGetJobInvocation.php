@@ -10,9 +10,9 @@ class AppsGetJobInvocation extends \Jane\Generated\DigitalOcean\Runtime\Client\B
      * Get a specific job invocation for an app.
      * @param string $appId The app ID
      * @param string $jobInvocationId The ID of the job invocation to retrieve.
-     * @param array $queryParameters {
-     *     @var string $job_name The job name to list job invocations for.
-     * }
+     * @param array{
+     *    "job_name"?: string, //The job name to list job invocations for.
+     * } $queryParameters
      */
     public function __construct(string $appId, string $jobInvocationId, array $queryParameters = [])
     {

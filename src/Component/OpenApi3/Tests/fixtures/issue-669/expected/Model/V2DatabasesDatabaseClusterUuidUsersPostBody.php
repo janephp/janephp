@@ -57,7 +57,6 @@ class V2DatabasesDatabaseClusterUuidUsersPostBody extends \ArrayObject
      * For MongoDB clusters, set to `true` to create a read-only user.
      * This option is not currently supported for other database engines.
      * 
-     * 
      *
      * @var bool
      */
@@ -217,7 +216,6 @@ class V2DatabasesDatabaseClusterUuidUsersPostBody extends \ArrayObject
      * For MongoDB clusters, set to `true` to create a read-only user.
      * This option is not currently supported for other database engines.
      * 
-     * 
      *
      * @return bool
      */
@@ -226,10 +224,9 @@ class V2DatabasesDatabaseClusterUuidUsersPostBody extends \ArrayObject
         return $this->readonly;
     }
     /**
-    * (To be deprecated: use settings.mongo_user_settings.role instead for access controls to MongoDB databases). 
+    * (To be deprecated: use settings.mongo_user_settings.role instead for access controls to MongoDB databases).
     For MongoDB clusters, set to `true` to create a read-only user.
     This option is not currently supported for other database engines.
-              
     
     *
     * @param bool $readonly

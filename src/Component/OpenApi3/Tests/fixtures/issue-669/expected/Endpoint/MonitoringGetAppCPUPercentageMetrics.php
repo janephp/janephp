@@ -6,12 +6,12 @@ class MonitoringGetAppCPUPercentageMetrics extends \Jane\Generated\DigitalOcean\
 {
     /**
      * To retrieve cpu percentage metrics for a given app, send a GET request to `/v2/monitoring/metrics/apps/cpu_percentage`.
-     * @param array $queryParameters {
-     *     @var string $app_id The app UUID.
-     *     @var string $app_component The app component name.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "app_id": string, //The app UUID.
+     *    "app_component"?: string, //The app component name.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

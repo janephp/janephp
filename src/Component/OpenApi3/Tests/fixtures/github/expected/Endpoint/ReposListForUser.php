@@ -8,13 +8,13 @@ class ReposListForUser extends \Github\Runtime\Client\BaseEndpoint implements \G
     /**
      * Lists public repositories for the specified user.
      * @param string $username
-     * @param array $queryParameters {
-     *     @var string $type Can be one of `all`, `owner`, `member`.
-     *     @var string $sort Can be one of `created`, `updated`, `pushed`, `full_name`.
-     *     @var string $direction Can be one of `asc` or `desc`. Default: `asc` when using `full_name`, otherwise `desc`
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "type"?: string, //Can be one of `all`, `owner`, `member`.
+     *    "sort"?: string, //Can be one of `created`, `updated`, `pushed`, `full_name`.
+     *    "direction"?: string, //Can be one of `asc` or `desc`. Default: `asc` when using `full_name`, otherwise `desc`
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $username, array $queryParameters = [])
     {

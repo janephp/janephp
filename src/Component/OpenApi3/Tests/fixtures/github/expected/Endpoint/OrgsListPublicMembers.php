@@ -8,10 +8,10 @@ class OrgsListPublicMembers extends \Github\Runtime\Client\BaseEndpoint implemen
     /**
      * Members of an organization can choose to have their membership publicized or not.
      * @param string $org
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $org, array $queryParameters = [])
     {

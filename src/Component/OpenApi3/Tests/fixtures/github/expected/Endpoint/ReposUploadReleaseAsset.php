@@ -30,10 +30,10 @@ class ReposUploadReleaseAsset extends \Github\Runtime\Client\BaseEndpoint implem
      * @param string $repo
      * @param int $releaseId release_id parameter
      * @param null|string $requestBody
-     * @param array $queryParameters {
-     *     @var string $name name parameter
-     *     @var string $label label parameter
-     * }
+     * @param array{
+     *    "name"?: string, //name parameter
+     *    "label"?: string, //label parameter
+     * } $queryParameters
      */
     public function __construct(string $owner, string $repo, int $releaseId, ?string $requestBody = null, array $queryParameters = [])
     {

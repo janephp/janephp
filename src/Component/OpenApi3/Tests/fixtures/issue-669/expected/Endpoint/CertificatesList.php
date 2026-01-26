@@ -6,11 +6,11 @@ class CertificatesList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseE
 {
     /**
      * To list all of the certificates available on your account, send a GET request to `/v2/certificates`.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     *     @var string $name Name of expected certificate
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     *    "name"?: string, //Name of expected certificate
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

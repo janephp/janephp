@@ -13,10 +13,10 @@ class BillingInsightsList extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
      * @param string $accountUrn URN of the customer account, can be a team (do:team:uuid) or an organization (do:teamgroup:uuid)
      * @param string $startDate Start date for billing insights in YYYY-MM-DD format
      * @param string $endDate End date for billing insights in YYYY-MM-DD format. Must be within 31 days of start_date
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      */
     public function __construct(string $accountUrn, string $startDate, string $endDate, array $queryParameters = [])
     {

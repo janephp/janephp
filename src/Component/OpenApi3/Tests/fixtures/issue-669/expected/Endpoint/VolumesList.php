@@ -17,12 +17,12 @@ class VolumesList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoi
      *
      *
      *
-     * @param array $queryParameters {
-     *     @var string $name The block storage volume's name.
-     *     @var string $region The slug identifier for the region where the resource is available.
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "name"?: string, //The block storage volume's name.
+     *    "region"?: string, //The slug identifier for the region where the resource is available.
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

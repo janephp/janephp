@@ -14,13 +14,13 @@ class ChecksListForSuite extends \Github\Runtime\Client\BaseEndpoint implements 
      * @param string $owner
      * @param string $repo
      * @param int $checkSuiteId check_suite_id parameter
-     * @param array $queryParameters {
-     *     @var string $check_name Returns check runs with the specified `name`.
-     *     @var string $status Returns check runs with the specified `status`. Can be one of `queued`, `in_progress`, or `completed`.
-     *     @var string $filter Filters check runs by their `completed_at` timestamp. Can be one of `latest` (returning the most recent check runs) or `all`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "check_name"?: string, //Returns check runs with the specified `name`.
+     *    "status"?: string, //Returns check runs with the specified `status`. Can be one of `queued`, `in_progress`, or `completed`.
+     *    "filter"?: string, //Filters check runs by their `completed_at` timestamp. Can be one of `latest` (returning the most recent check runs) or `all`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $owner, string $repo, int $checkSuiteId, array $queryParameters = [])
     {

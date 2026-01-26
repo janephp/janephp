@@ -8,9 +8,9 @@ class RetrievePortfolioById extends \CreditSafe\API\Runtime\Client\BaseEndpoint 
     /**
      * Get the portfolio with portfolioId
      * @param string $portfolioId The unique identifier for the portfolio that you wish to retrieve, obtained from `/portfolios`.
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
      */
     public function __construct(string $portfolioId, array $headerParameters = [])
     {

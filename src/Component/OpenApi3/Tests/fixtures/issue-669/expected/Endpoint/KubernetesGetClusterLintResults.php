@@ -15,9 +15,9 @@ class KubernetesGetClusterLintResults extends \Jane\Generated\DigitalOcean\Runti
      * [the clusterlint check documentation](https://github.com/digitalocean/clusterlint/blob/master/checks.md).
      *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
-     * @param array $queryParameters {
-     *     @var string $run_id Specifies the clusterlint run whose results will be retrieved.
-     * }
+     * @param array{
+     *    "run_id"?: string, //Specifies the clusterlint run whose results will be retrieved.
+     * } $queryParameters
      */
     public function __construct(string $clusterId, array $queryParameters = [])
     {

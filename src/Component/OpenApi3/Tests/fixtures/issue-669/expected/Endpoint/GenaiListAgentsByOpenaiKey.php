@@ -8,10 +8,10 @@ class GenaiListAgentsByOpenaiKey extends \Jane\Generated\DigitalOcean\Runtime\Cl
     /**
      * List Agents by OpenAI Key.
      * @param string $uuid Unique ID of OpenAI key
-     * @param array $queryParameters {
-     *     @var int $page Page number.
-     *     @var int $per_page Items per page.
-     * }
+     * @param array{
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
      */
     public function __construct(string $uuid, array $queryParameters = [])
     {

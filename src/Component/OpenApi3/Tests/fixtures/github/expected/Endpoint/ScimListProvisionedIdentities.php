@@ -24,17 +24,17 @@ class ScimListProvisionedIdentities extends \Github\Runtime\Client\BaseEndpoint 
     *    - If the user signs in, their GitHub account is linked to this entry.
     *    - If the user does not sign in (or does not create a new account when prompted), they are not added to the GitHub organization, and the external identity `null` entry remains in place.
     * @param string $org
-    * @param array $queryParameters {
-    *     @var int $startIndex Used for pagination: the index of the first result to return.
-    *     @var int $count Used for pagination: the number of results to return.
-    *     @var string $filter Filters results using the equals query parameter operator (`eq`). You can filter results that are equal to `id`, `userName`, `emails`, and `external_id`. For example, to search for an identity with the `userName` Octocat, you would use this query:
+    * @param array{
+    *    "startIndex"?: int, //Used for pagination: the index of the first result to return.
+    *    "count"?: int, //Used for pagination: the number of results to return.
+    *    "filter"?: string, //Filters results using the equals query parameter operator (`eq`). You can filter results that are equal to `id`, `userName`, `emails`, and `external_id`. For example, to search for an identity with the `userName` Octocat, you would use this query:
     
     `?filter=userName%20eq%20\"Octocat\"`.
     
     To filter results for for the identity with the email `octocat@github.com`, you would use this query:
     
     `?filter=emails%20eq%20\"octocat@github.com\"`.
-    * }
+    * } $queryParameters
     * @param array $accept Accept content header application/scim+json|application/json
     */
     public function __construct(string $org, array $queryParameters = [], array $accept = [])

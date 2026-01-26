@@ -12,10 +12,10 @@ class AutoscalepoolsListHistory extends \Jane\Generated\DigitalOcean\Runtime\Cli
      * set to an array containing objects each representing a history event.
      *
      * @param string $autoscalePoolId A unique identifier for an autoscale pool.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      */
     public function __construct(string $autoscalePoolId, array $queryParameters = [])
     {

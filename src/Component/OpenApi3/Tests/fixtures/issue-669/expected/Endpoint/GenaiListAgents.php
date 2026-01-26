@@ -6,11 +6,11 @@ class GenaiListAgents extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
 {
     /**
      * To list all agents, send a GET request to `/v2/gen-ai/agents`.
-     * @param array $queryParameters {
-     *     @var bool $only_deployed Only list agents that are deployed.
-     *     @var int $page Page number.
-     *     @var int $per_page Items per page.
-     * }
+     * @param array{
+     *    "only_deployed"?: bool, //Only list agents that are deployed.
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

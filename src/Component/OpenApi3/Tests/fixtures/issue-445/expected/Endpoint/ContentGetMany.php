@@ -7,10 +7,10 @@ class ContentGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
     /**
      * Gets multiple content details by IDs.
      * Can fetch 100 contents at most.
-     * @param array $queryParameters {
-     *     @var array $ids List of content IDs
-     *     @var array $resolveBehaviors List of enums that control which parts of the content are resolved and returned.
-     * }
+     * @param array{
+     *    "ids": array, //List of content IDs
+     *    "resolveBehaviors"?: array, //List of enums that control which parts of the content are resolved and returned.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

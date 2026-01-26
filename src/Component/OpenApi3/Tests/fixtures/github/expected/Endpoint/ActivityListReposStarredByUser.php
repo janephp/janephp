@@ -11,12 +11,12 @@ class ActivityListReposStarredByUser extends \Github\Runtime\Client\BaseEndpoint
      *
      * You can also find out _when_ stars were created by passing the following custom [media type](https://developer.github.com/v3/media/) via the `Accept` header:
      * @param string $username
-     * @param array $queryParameters {
-     *     @var string $sort One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-     *     @var string $direction One of `asc` (ascending) or `desc` (descending).
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "sort"?: string, //One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
+     *    "direction"?: string, //One of `asc` (ascending) or `desc` (descending).
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
      */
     public function __construct(string $username, array $queryParameters = [], array $accept = [])

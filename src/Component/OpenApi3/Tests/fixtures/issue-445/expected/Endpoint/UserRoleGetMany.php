@@ -6,9 +6,9 @@ class UserRoleGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint imple
 {
     /**
      * Gets multiple user role details by the user role IDs. Can fetch maximum of 100 user roles at once.
-     * @param array $queryParameters {
-     *     @var array $ids User role IDs to get information about.
-     * }
+     * @param array{
+     *    "ids"?: array, //User role IDs to get information about.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

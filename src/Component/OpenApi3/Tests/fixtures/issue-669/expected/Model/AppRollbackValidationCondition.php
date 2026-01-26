@@ -73,7 +73,7 @@ class AppRollbackValidationCondition extends \ArrayObject
      - `app_pinned` - indicates that there is already a rollback in progress and the app is pinned.
      - `database_config_conflict` - indicates that the deployment's database config is different than the current config.
      - `region_conflict` - indicates that the deployment's region differs from the current app region.
-     
+    
     Warning conditions:
      - `static_site_requires_rebuild` - indicates that the deployment contains at least one static site that will require a rebuild.
      - `image_source_missing_digest` - indicates that the deployment contains at least one component with an image source that is missing a digest.

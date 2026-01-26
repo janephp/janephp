@@ -11,10 +11,10 @@ class NfsListSnapshot extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
      *
      * Optionally, you can filter snapshots by a specific NFS share by including the `share_id` query parameter.
      *
-     * @param array $queryParameters {
-     *     @var string $region The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
-     *     @var string $share_id The unique ID of an NFS share. If provided, only snapshots of this specific share will be returned.
-     * }
+     * @param array{
+     *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
+     *    "share_id"?: string, //The unique ID of an NFS share. If provided, only snapshots of this specific share will be returned.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

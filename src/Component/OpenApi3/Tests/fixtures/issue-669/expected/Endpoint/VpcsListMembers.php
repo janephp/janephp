@@ -17,11 +17,11 @@ class VpcsListMembers extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
      * you must have `droplet:read`).
      *
      * @param string $vpcId A unique identifier for a VPC.
-     * @param array $queryParameters {
-     *     @var string $resource_type Used to filter VPC members by a resource type.
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "resource_type"?: string, //Used to filter VPC members by a resource type.
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      */
     public function __construct(string $vpcId, array $queryParameters = [])
     {

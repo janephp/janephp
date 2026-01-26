@@ -12,11 +12,11 @@ class TeamsListDiscussionCommentsLegacy extends \Github\Runtime\Client\BaseEndpo
      * List all comments on a team discussion. OAuth access tokens require the `read:discussion` [scope](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
      * @param int $teamId
      * @param int $discussionNumber
-     * @param array $queryParameters {
-     *     @var string $direction One of `asc` (ascending) or `desc` (descending).
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "direction"?: string, //One of `asc` (ascending) or `desc` (descending).
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(int $teamId, int $discussionNumber, array $queryParameters = [])
     {

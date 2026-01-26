@@ -12,10 +12,10 @@ class ChecksListAnnotations extends \Github\Runtime\Client\BaseEndpoint implemen
      * @param string $owner
      * @param string $repo
      * @param int $checkRunId check_run_id parameter
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $owner, string $repo, int $checkRunId, array $queryParameters = [])
     {

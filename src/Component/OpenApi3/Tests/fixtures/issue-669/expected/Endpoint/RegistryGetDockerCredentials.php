@@ -27,10 +27,10 @@ class RegistryGetDockerCredentials extends \Jane\Generated\DigitalOcean\Runtime\
      * example: `/v2/registry/docker-credentials?expiry_seconds=3600` will return
      * credentials that expire after one hour.
      *
-     * @param array $queryParameters {
-     *     @var int $expiry_seconds The duration in seconds that the returned registry credentials will be valid. If not set or 0, the credentials will not expire.
-     *     @var bool $read_write By default, the registry credentials allow for read-only access. Set this query parameter to `true` to obtain read-write credentials.
-     * }
+     * @param array{
+     *    "expiry_seconds"?: int, //The duration in seconds that the returned registry credentials will be valid. If not set or 0, the credentials will not expire.
+     *    "read_write"?: bool, //By default, the registry credentials allow for read-only access. Set this query parameter to `true` to obtain read-write credentials.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

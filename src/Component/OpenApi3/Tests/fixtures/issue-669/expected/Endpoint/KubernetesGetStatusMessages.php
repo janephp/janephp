@@ -10,9 +10,9 @@ class KubernetesGetStatusMessages extends \Jane\Generated\DigitalOcean\Runtime\C
      * `/v2/kubernetes/clusters/$K8S_CLUSTER_ID/status_messages`. Status messages inform users of any issues that come up during the cluster lifecycle.
      *
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
-     * @param array $queryParameters {
-     *     @var string $since A timestamp used to return status messages emitted since the specified time. The timestamp should be in ISO8601 format.
-     * }
+     * @param array{
+     *    "since"?: string, //A timestamp used to return status messages emitted since the specified time. The timestamp should be in ISO8601 format.
+     * } $queryParameters
      */
     public function __construct(string $clusterId, array $queryParameters = [])
     {

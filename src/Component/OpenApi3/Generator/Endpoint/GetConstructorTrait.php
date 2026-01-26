@@ -95,12 +95,13 @@ trait GetConstructorTrait
             \count($contentTypes) > 1 ? [new Node\Param(new Expr\Variable('accept'), new Expr\Array_(), new Name('array'))] : []
         );
 
+
         $methodDocumentations = array_merge(
             $pathParamsDoc,
             $pathParamsWithDefaultValueDoc,
             $bodyDoc ? [$bodyDoc] : [],
-            \count($queryParamsDoc) > 0 ? array_merge([' * @param array $queryParameters {'], $queryParamsDoc, [' * }']) : [],
-            \count($headerParamsDoc) > 0 ? array_merge([' * @param array $headerParameters {'], $headerParamsDoc, [' * }']) : [],
+            \count($queryParamsDoc) > 0 ? [\sprintf(" * @param array{\n%s\n * } \$queryParameters", implode("\n", $queryParamsDoc))] : [],
+            \count($headerParamsDoc) > 0 ? [\sprintf(" * @param array{\n%s\n * } \$headerParameters", implode("\n", $headerParamsDoc))] : [],
             \count($contentTypes) > 1 ? [' * @param array $accept Accept content header ' .
                 str_replace('*/', '*\\/', implode('|', $this->getContentTypes($operation, $guessClass)))] : []
         );
@@ -116,12 +117,23 @@ trait GetConstructorTrait
 
         $methodParamsDoc = implode("\n", $methodParamsDoc);
 
-        return [new Stmt\ClassMethod('__construct', [
-            'flags' => Modifiers::PUBLIC,
-            'params' => $methodParams,
-            'stmts' => $methodStatements,
-        ], [
-            'comments' => [new Doc($methodParamsDoc),
-            ], ]), $methodParams, $methodParamsDoc, $pathProperties];
+        return [
+            new Stmt\ClassMethod(
+                '__construct',
+                [
+                    'flags' => Modifiers::PUBLIC,
+                    'params' => $methodParams,
+                    'stmts' => $methodStatements,
+                ],
+                [
+                    'comments' => [
+                        new Doc($methodParamsDoc),
+                    ],
+                ]
+            ),
+            $methodParams,
+            $methodParamsDoc,
+            $pathProperties,
+        ];
     }
 }

@@ -12,9 +12,9 @@ class OneClicksList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndp
      * The response will be a JSON object with a key called `1_clicks`. This will be set to an array of
      * 1-Click application data, each of which will contain the the slug and type for the 1-Click.
      *
-     * @param array $queryParameters {
-     *     @var string $type Restrict results to a certain type of 1-Click.
-     * }
+     * @param array{
+     *    "type"?: string, //Restrict results to a certain type of 1-Click.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

@@ -9,10 +9,10 @@ class VolumesDeleteByName extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
      * No response body will be sent back, but the response code will indicate success. Specifically, the response code will be a 204, which means that the action was successful with no returned body data.
      *
      *
-     * @param array $queryParameters {
-     *     @var string $name The block storage volume's name.
-     *     @var string $region The slug identifier for the region where the resource is available.
-     * }
+     * @param array{
+     *    "name"?: string, //The block storage volume's name.
+     *    "region"?: string, //The slug identifier for the region where the resource is available.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

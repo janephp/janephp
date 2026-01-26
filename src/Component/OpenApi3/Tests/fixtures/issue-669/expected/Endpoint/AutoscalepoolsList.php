@@ -9,11 +9,11 @@ class AutoscalepoolsList extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
      * The response body will be a JSON object with a key of `autoscale_pools` containing an array of autoscale pool objects.
      * These each contain the standard autoscale pool attributes.
      *
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     *     @var string $name The name of the autoscale pool
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     *    "name"?: string, //The name of the autoscale pool
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

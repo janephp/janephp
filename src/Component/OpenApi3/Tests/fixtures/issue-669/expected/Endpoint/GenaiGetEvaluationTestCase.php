@@ -8,9 +8,9 @@ class GenaiGetEvaluationTestCase extends \Jane\Generated\DigitalOcean\Runtime\Cl
     /**
      * To retrive information about an existing evaluation test case, send a GET request to `/v2/gen-ai/evaluation_test_case/{test_case_uuid}`.
      * @param string $testCaseUuid The test case uuid to retrieve.
-     * @param array $queryParameters {
-     *     @var int $evaluation_test_case_version Version of the test case.
-     * }
+     * @param array{
+     *    "evaluation_test_case_version"?: int, //Version of the test case.
+     * } $queryParameters
      */
     public function __construct(string $testCaseUuid, array $queryParameters = [])
     {

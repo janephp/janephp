@@ -8,11 +8,11 @@ class GenaiListAgentsByWorkspace extends \Jane\Generated\DigitalOcean\Runtime\Cl
     /**
      * To list all agents by a Workspace, send a GET request to `/v2/gen-ai/workspaces/{workspace_uuid}/agents`.
      * @param string $workspaceUuid Workspace UUID.
-     * @param array $queryParameters {
-     *     @var bool $only_deployed Only list agents that are deployed.
-     *     @var int $page Page number.
-     *     @var int $per_page Items per page.
-     * }
+     * @param array{
+     *    "only_deployed"?: bool, //Only list agents that are deployed.
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
      */
     public function __construct(string $workspaceUuid, array $queryParameters = [])
     {

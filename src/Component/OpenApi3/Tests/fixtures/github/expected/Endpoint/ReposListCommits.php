@@ -31,15 +31,15 @@ class ReposListCommits extends \Github\Runtime\Client\BaseEndpoint implements \G
      * | `valid`                  | None of the above errors applied, so the signature is considered to be verified.                                                  |
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $sha SHA or branch to start listing commits from. Default: the repository’s default branch (usually `master`).
-     *     @var string $path Only commits containing this file path will be returned.
-     *     @var string $author GitHub login or email address by which to filter by commit author.
-     *     @var string $since Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var string $until Only commits before this date will be returned. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "sha"?: string, //SHA or branch to start listing commits from. Default: the repository’s default branch (usually `master`).
+     *    "path"?: string, //Only commits containing this file path will be returned.
+     *    "author"?: string, //GitHub login or email address by which to filter by commit author.
+     *    "since"?: string, //Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "until"?: string, //Only commits before this date will be returned. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param array $accept Accept content header application/json|application/scim+json
      */
     public function __construct(string $owner, string $repo, array $queryParameters = [], array $accept = [])

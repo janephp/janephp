@@ -12,10 +12,10 @@ class ReposListReleases extends \Github\Runtime\Client\BaseEndpoint implements \
      * Information about published releases are available to everyone. Only users with push access will receive listings for draft releases.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $owner, string $repo, array $queryParameters = [])
     {

@@ -41,13 +41,13 @@ class KafkaTopicConfig extends \ArrayObject
      *
      * @var int
      */
-    protected $flushMessages = '9223372036854776000';
+    protected $flushMessages = 9223372036854775807;
     /**
      * The flush_ms specifies the maximum time (in ms) that a message is kept in memory before being flushed to disk.
      *
      * @var int
      */
-    protected $flushMs = '9223372036854776000';
+    protected $flushMs = 9223372036854775807;
     /**
      * The index_interval_bytes specifies the number of bytes between entries being added into te offset index.
      *
@@ -59,7 +59,7 @@ class KafkaTopicConfig extends \ArrayObject
      *
      * @var int
      */
-    protected $maxCompactionLagMs = '9223372036854776000';
+    protected $maxCompactionLagMs = 9223372036854775807;
     /**
      * The max_messages_bytes specifies the largest record batch size (in bytes) that can be sent to the server.  This is calculated after compression if compression is enabled.
      *

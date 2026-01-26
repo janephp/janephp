@@ -8,11 +8,11 @@ class RegistryListRepositoriesV2 extends \Jane\Generated\DigitalOcean\Runtime\Cl
     /**
      * To list all repositories in your container registry, send a GET request to `/v2/registry/$REGISTRY_NAME/repositoriesV2`.
      * @param string $registryName The name of a container registry.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return. Ignored when 'page_token' is provided.
-     *     @var string $page_token Token to retrieve of the next or previous set of results more quickly than using 'page'.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return. Ignored when 'page_token' is provided.
+     *    "page_token"?: string, //Token to retrieve of the next or previous set of results more quickly than using 'page'.
+     * } $queryParameters
      */
     public function __construct(string $registryName, array $queryParameters = [])
     {

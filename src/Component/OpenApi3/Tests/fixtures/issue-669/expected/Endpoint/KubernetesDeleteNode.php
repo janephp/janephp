@@ -22,10 +22,10 @@ class KubernetesDeleteNode extends \Jane\Generated\DigitalOcean\Runtime\Client\B
      * @param string $clusterId A unique ID that can be used to reference a Kubernetes cluster.
      * @param string $nodePoolId A unique ID that can be used to reference a Kubernetes node pool.
      * @param string $nodeId A unique ID that can be used to reference a node in a Kubernetes node pool.
-     * @param array $queryParameters {
-     *     @var int $skip_drain Specifies whether or not to drain workloads from a node before it is deleted. Setting it to `1` causes node draining to be skipped. Omitting the query parameter or setting its value to `0` carries out draining prior to deletion.
-     *     @var int $replace Specifies whether or not to replace a node after it has been deleted. Setting it to `1` causes the node to be replaced by a new one after deletion. Omitting the query parameter or setting its value to `0` deletes without replacement.
-     * }
+     * @param array{
+     *    "skip_drain"?: int, //Specifies whether or not to drain workloads from a node before it is deleted. Setting it to `1` causes node draining to be skipped. Omitting the query parameter or setting its value to `0` carries out draining prior to deletion.
+     *    "replace"?: int, //Specifies whether or not to replace a node after it has been deleted. Setting it to `1` causes the node to be replaced by a new one after deletion. Omitting the query parameter or setting its value to `0` deletes without replacement.
+     * } $queryParameters
      */
     public function __construct(string $clusterId, string $nodePoolId, string $nodeId, array $queryParameters = [])
     {

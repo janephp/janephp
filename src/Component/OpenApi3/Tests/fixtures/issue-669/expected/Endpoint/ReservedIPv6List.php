@@ -6,10 +6,10 @@ class ReservedIPv6List extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseE
 {
     /**
      * To list all of the reserved IPv6s available on your account, send a GET request to `/v2/reserved_ipv6`.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

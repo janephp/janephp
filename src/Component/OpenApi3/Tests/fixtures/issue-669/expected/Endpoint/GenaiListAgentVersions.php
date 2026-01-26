@@ -8,10 +8,10 @@ class GenaiListAgentVersions extends \Jane\Generated\DigitalOcean\Runtime\Client
     /**
      * To list all agent versions, send a GET request to `/v2/gen-ai/agents/{uuid}/versions`.
      * @param string $uuid Agent uuid
-     * @param array $queryParameters {
-     *     @var int $page Page number.
-     *     @var int $per_page Items per page.
-     * }
+     * @param array{
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
      */
     public function __construct(string $uuid, array $queryParameters = [])
     {

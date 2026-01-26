@@ -8,10 +8,10 @@ class RegistryListGarbageCollections extends \Jane\Generated\DigitalOcean\Runtim
     /**
      * To get information about past garbage collections for a registry, send a GET request to `/v2/registry/$REGISTRY_NAME/garbage-collections`.
      * @param string $registryName The name of a container registry.
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     * } $queryParameters
      */
     public function __construct(string $registryName, array $queryParameters = [])
     {

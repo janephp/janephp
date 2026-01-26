@@ -7,10 +7,10 @@ class ShareGetShareJson extends \PicturePark\API\Runtime\Client\BaseEndpoint imp
     protected $token;
     /**
      * @param string $token Share token
-     * @param array $queryParameters {
-     *     @var string $lang Language code
-     *     @var array $resolveBehaviors List of enums that control which parts of the share are resolved and returned.
-     * }
+     * @param array{
+     *    "lang"?: string, //Language code
+     *    "resolveBehaviors"?: array, //List of enums that control which parts of the share are resolved and returned.
+     * } $queryParameters
      */
     public function __construct(string $token, array $queryParameters = [])
     {

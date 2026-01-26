@@ -8,12 +8,12 @@ class AppsListJobInvocations extends \Jane\Generated\DigitalOcean\Runtime\Client
     /**
      * List all job invocations for an app.
      * @param string $appId The app ID
-     * @param array $queryParameters {
-     *     @var array $job_names The job names to list job invocations for.
-     *     @var string $deployment_id The deployment ID
-     *     @var int $page Which 'page' of paginated results to return.
-     *     @var int $per_page Number of items returned per page
-     * }
+     * @param array{
+     *    "job_names"?: array, //The job names to list job invocations for.
+     *    "deployment_id"?: string, //The deployment ID
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     *    "per_page"?: int, //Number of items returned per page
+     * } $queryParameters
      */
     public function __construct(string $appId, array $queryParameters = [])
     {

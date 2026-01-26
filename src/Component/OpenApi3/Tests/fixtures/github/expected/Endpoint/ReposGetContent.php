@@ -44,9 +44,9 @@ class ReposGetContent extends \Github\Runtime\Client\BaseEndpoint implements \Gi
      * @param string $owner
      * @param string $repo
      * @param string $path path+ parameter
-     * @param array $queryParameters {
-     *     @var string $ref The name of the commit/branch/tag. Default: the repository’s default branch (usually `master`)
-     * }
+     * @param array{
+     *    "ref"?: string, //The name of the commit/branch/tag. Default: the repository’s default branch (usually `master`)
+     * } $queryParameters
      * @param array $accept Accept content header application/vnd.github.v3.object|application/json
      */
     public function __construct(string $owner, string $repo, string $path, array $queryParameters = [], array $accept = [])

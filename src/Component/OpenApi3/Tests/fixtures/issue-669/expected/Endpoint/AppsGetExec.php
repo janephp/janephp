@@ -12,9 +12,9 @@ class AppsGetExec extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndpoi
      * @param string $appId The app ID
      * @param string $deploymentId The deployment ID
      * @param string $componentName An optional component name. If set, logs will be limited to this component only.
-     * @param array $queryParameters {
-     *     @var string $instance_name The name of the actively running ephemeral compute instance
-     * }
+     * @param array{
+     *    "instance_name"?: string, //The name of the actively running ephemeral compute instance
+     * } $queryParameters
      */
     public function __construct(string $appId, string $deploymentId, string $componentName, array $queryParameters = [])
     {

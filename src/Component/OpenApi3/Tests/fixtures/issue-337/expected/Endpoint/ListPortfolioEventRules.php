@@ -8,9 +8,9 @@ class ListPortfolioEventRules extends \CreditSafe\API\Runtime\Client\BaseEndpoin
     /**
      * Get all notification `eventRules` for the given `portfolioId`. Notification event rules allow you to control which events you wish to monitor for the `companies` contained within the given `portfolio`.
      * @param string $portfolioId The unique identifier for the portfolio that you wish to retrieve notification event rules for, obtained from `/portfolios`.
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
      */
     public function __construct(string $portfolioId, array $headerParameters = [])
     {

@@ -10,11 +10,11 @@ class ProjectsListForRepo extends \Github\Runtime\Client\BaseEndpoint implements
      * Lists the projects in a repository. Returns a `404 Not Found` status if projects are disabled in the repository. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var string $state Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "state"?: string, //Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $owner, string $repo, array $queryParameters = [])
     {

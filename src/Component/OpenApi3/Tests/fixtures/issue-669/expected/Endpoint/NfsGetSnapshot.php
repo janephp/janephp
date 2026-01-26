@@ -11,9 +11,9 @@ class NfsGetSnapshot extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEnd
      * A successful request will return the NFS snapshot.
      *
      * @param string $nfsSnapshotId The unique ID of the NFS snapshot
-     * @param array $queryParameters {
-     *     @var string $region The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
-     * }
+     * @param array{
+     *    "region": string, //The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides.
+     * } $queryParameters
      */
     public function __construct(string $nfsSnapshotId, array $queryParameters = [])
     {

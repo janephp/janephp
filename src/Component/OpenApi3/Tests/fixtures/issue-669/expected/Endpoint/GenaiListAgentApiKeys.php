@@ -8,10 +8,10 @@ class GenaiListAgentApiKeys extends \Jane\Generated\DigitalOcean\Runtime\Client\
     /**
      * To list all agent API keys, send a GET request to `/v2/gen-ai/agents/{agent_uuid}/api_keys`.
      * @param string $agentUuid Agent id
-     * @param array $queryParameters {
-     *     @var int $page Page number.
-     *     @var int $per_page Items per page.
-     * }
+     * @param array{
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
      */
     public function __construct(string $agentUuid, array $queryParameters = [])
     {

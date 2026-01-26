@@ -6,9 +6,9 @@ class Foo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEnd
 {
     /**
      * caca
-     * @param array $queryParameters {
-     *     @var string $bar
-     * }
+     * @param array{
+     *    "bar": string,
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

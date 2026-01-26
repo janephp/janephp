@@ -8,10 +8,10 @@ class GenaiGetAgentUsage extends \Jane\Generated\DigitalOcean\Runtime\Client\Bas
     /**
      * To get agent usage, send a GET request to `/v2/gen-ai/agents/{uuid}/usage`. Returns usage metrics for the specified agent within the provided time range.
      * @param string $uuid Agent id
-     * @param array $queryParameters {
-     *     @var string $start Return all usage data from this date.
-     *     @var string $stop Return all usage data up to this date, if omitted, will return up to the current date.
-     * }
+     * @param array{
+     *    "start"?: string, //Return all usage data from this date.
+     *    "stop"?: string, //Return all usage data up to this date, if omitted, will return up to the current date.
+     * } $queryParameters
      */
     public function __construct(string $uuid, array $queryParameters = [])
     {

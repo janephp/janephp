@@ -7,15 +7,15 @@ class SpacesKeyList extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEndp
     /**
      * To list Spaces Access Key, send a GET request to `/v2/spaces/keys`. Sort parameter must be used with Sort Direction.
      *
-     * @param array $queryParameters {
-     *     @var int $per_page Number of items returned per page
-     *     @var int $page Which 'page' of paginated results to return.
-     *     @var string $sort The field to sort by.
-     *     @var string $sort_direction The direction to sort by. Possible values are `asc` or `desc`.
-     *     @var string $name The access key's name.
-     *     @var string $bucket The bucket's name.
-     *     @var string $permission The permission of the access key. Possible values are `read`, `readwrite`, `fullaccess`, or an empty string.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Number of items returned per page
+     *    "page"?: int, //Which 'page' of paginated results to return.
+     *    "sort"?: string, //The field to sort by.
+     *    "sort_direction"?: string, //The direction to sort by. Possible values are `asc` or `desc`.
+     *    "name"?: string, //The access key's name.
+     *    "bucket"?: string, //The bucket's name.
+     *    "permission"?: string, //The permission of the access key. Possible values are `read`, `readwrite`, `fullaccess`, or an empty string.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

@@ -16,12 +16,12 @@ class TransferUploadFile extends \PicturePark\API\Runtime\Client\BaseEndpoint im
      * @param string $transferId ID of transfer.
      * @param string $requestId Identifier of file.
      * @param null|string|resource|\Psr\Http\Message\StreamInterface $requestBody
-     * @param array $queryParameters {
-     *     @var int $ChunkNumber Information about chunk.
-     *     @var int $CurrentChunkSize Information about chunk.
-     *     @var int $TotalSize Information about chunk.
-     *     @var int $TotalChunks Information about chunk.
-     * }
+     * @param array{
+     *    "ChunkNumber": int, //Information about chunk.
+     *    "CurrentChunkSize": int, //Information about chunk.
+     *    "TotalSize": int, //Information about chunk.
+     *    "TotalChunks": int, //Information about chunk.
+     * } $queryParameters
      */
     public function __construct(string $transferId, string $requestId, $requestBody = null, array $queryParameters = [])
     {

@@ -8,9 +8,9 @@ class GenaiListEvaluationRunsByTestCase extends \Jane\Generated\DigitalOcean\Run
     /**
      * To list all evaluation runs by test case, send a GET request to `/v2/gen-ai/evaluation_test_cases/{evaluation_test_case_uuid}/evaluation_runs`.
      * @param string $evaluationTestCaseUuid Evaluation run UUID.
-     * @param array $queryParameters {
-     *     @var int $evaluation_test_case_version Version of the test case.
-     * }
+     * @param array{
+     *    "evaluation_test_case_version"?: int, //Version of the test case.
+     * } $queryParameters
      */
     public function __construct(string $evaluationTestCaseUuid, array $queryParameters = [])
     {

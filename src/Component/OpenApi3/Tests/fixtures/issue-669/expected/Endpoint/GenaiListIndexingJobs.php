@@ -6,10 +6,10 @@ class GenaiListIndexingJobs extends \Jane\Generated\DigitalOcean\Runtime\Client\
 {
     /**
      * To list all indexing jobs for a knowledge base, send a GET request to `/v2/gen-ai/indexing_jobs`.
-     * @param array $queryParameters {
-     *     @var int $page Page number.
-     *     @var int $per_page Items per page.
-     * }
+     * @param array{
+     *    "page"?: int, //Page number.
+     *    "per_page"?: int, //Items per page.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

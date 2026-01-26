@@ -15,9 +15,9 @@ class MigrationsGetStatusForAuthenticatedUser extends \Github\Runtime\Client\Bas
      *
      * Once the migration has been `exported` you can [download the migration archive](https://developer.github.com/v3/migrations/users/#download-a-user-migration-archive).
      * @param int $migrationId migration_id parameter
-     * @param array $queryParameters {
-     *     @var array $exclude
-     * }
+     * @param array{
+     *    "exclude"?: array,
+     * } $queryParameters
      */
     public function __construct(int $migrationId, array $queryParameters = [])
     {

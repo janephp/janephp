@@ -10,14 +10,14 @@ class TeamsListMembersLegacy extends \Github\Runtime\Client\BaseEndpoint impleme
     *
     * Team members will include the members of child teams.
     * @param int $teamId
-    * @param array $queryParameters {
-    *     @var string $role Filters members returned by their role in the team. Can be one of:
+    * @param array{
+    *    "role"?: string, //Filters members returned by their role in the team. Can be one of:
     \* `member` - normal members of the team.
     \* `maintainer` - team maintainers.
     \* `all` - all members of the team.
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
+    *    "per_page"?: int, //Results per page (max 100)
+    *    "page"?: int, //Page number of the results to fetch.
+    * } $queryParameters
     */
     public function __construct(int $teamId, array $queryParameters = [])
     {

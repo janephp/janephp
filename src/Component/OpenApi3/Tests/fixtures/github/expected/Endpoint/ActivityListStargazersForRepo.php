@@ -13,10 +13,10 @@ class ActivityListStargazersForRepo extends \Github\Runtime\Client\BaseEndpoint 
      * You can also find out _when_ stars were created by passing the following custom [media type](https://developer.github.com/v3/media/) via the `Accept` header:
      * @param string $owner
      * @param string $repo
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
      */
     public function __construct(string $owner, string $repo, array $queryParameters = [], array $accept = [])

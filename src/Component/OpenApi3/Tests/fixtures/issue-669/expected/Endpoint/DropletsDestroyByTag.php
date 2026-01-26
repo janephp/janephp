@@ -14,9 +14,9 @@ class DropletsDestroyByTag extends \Jane\Generated\DigitalOcean\Runtime\Client\B
      * A successful request will receive a 204 status code with no body in response.
      * This indicates that the request was processed successfully.
      *
-     * @param array $queryParameters {
-     *     @var string $tag_name Specifies Droplets to be deleted by tag.
-     * }
+     * @param array{
+     *    "tag_name": string, //Specifies Droplets to be deleted by tag.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

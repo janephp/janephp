@@ -10,10 +10,10 @@ class ActivityListOrgEventsForAuthenticatedUser extends \Github\Runtime\Client\B
      * This is the user's organization dashboard. You must be authenticated as the user to view this.
      * @param string $username
      * @param string $org
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $username, string $org, array $queryParameters = [])
     {

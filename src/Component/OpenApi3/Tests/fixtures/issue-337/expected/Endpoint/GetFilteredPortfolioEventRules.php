@@ -10,9 +10,9 @@ class GetFilteredPortfolioEventRules extends \CreditSafe\API\Runtime\Client\Base
      * Get all eventRules, optionally filtered by country code
      * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
      * @param string $countryCode Country code to show events for.
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
      */
     public function __construct(string $portfolioId, string $countryCode, array $headerParameters = [])
     {

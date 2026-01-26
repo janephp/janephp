@@ -97,10 +97,10 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     /**
      * Wait for the business process to hit one of the given states.
      * @param string $id The business process id.
-     * @param array $queryParameters {
-     *     @var array $states Business process states to wait for.
-     *     @var string $timeout The timeout to wait for completion.
-     * }
+     * @param array{
+     *    "states"?: array, //Business process states to wait for.
+     *    "timeout"?: string, //The timeout to wait for completion.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForStatesBadRequestException
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForStatesUnauthorizedException
@@ -119,10 +119,10 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     /**
      * Wait for the business process to hit one of the given life cycles.
      * @param string $id The business process id.
-     * @param array $queryParameters {
-     *     @var array $lifeCycles Business process life cycles to wait for.
-     *     @var string $timeout The timeout to wait for completion.
-     * }
+     * @param array{
+     *    "lifeCycles"?: array, //Business process life cycles to wait for.
+     *    "timeout"?: string, //The timeout to wait for completion.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForLifeCyclesBadRequestException
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForLifeCyclesUnauthorizedException
@@ -146,10 +146,10 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * - Cancelled
      * - Failed
      * @param string $id The business process id.
-     * @param array $queryParameters {
-     *     @var string $timeout The timeout to wait for completion.
-     *     @var bool $waitForContinuationCompletion Waits for the completion of the continuation business process (if existing, recursively). Default to true.
-     * }
+     * @param array{
+     *    "timeout"?: string, //The timeout to wait for completion.
+     *    "waitForContinuationCompletion"?: bool, //Waits for the completion of the continuation business process (if existing, recursively). Default to true.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForCompletionBadRequestException
      * @throws \PicturePark\API\Exception\BusinessProcessWaitForCompletionUnauthorizedException
@@ -397,9 +397,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     }
     /**
      * Gets multiple content permission set details by the content permission set IDs.
-     * @param array $queryParameters {
-     *     @var array $ids Ids
-     * }
+     * @param array{
+     *    "ids"?: array, //Ids
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetManyBadRequestException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetManyUnauthorizedException
@@ -544,9 +544,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     }
     /**
      * Returns permissions for multiple content permission sets for the current user.
-     * @param array $queryParameters {
-     *     @var array $ids Ids
-     * }
+     * @param array{
+     *    "ids"?: array, //Ids
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsManyBadRequestException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsManyUnauthorizedException
@@ -583,13 +583,13 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     /**
     * Deletes a single content. The lifecycle is changed to Inactive. After a customer instance specified time (default 30 days), the content and all files will be hard deleted.
     * @param string $id The ID of the content to delete.
-    * @param array $queryParameters {
-    *     @var bool $forceReferenceRemoval A value indicating whether references to the content should be removed.
-    *     @var string $timeout Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+    * @param array{
+    *    "forceReferenceRemoval"?: bool, //A value indicating whether references to the content should be removed.
+    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
                Only the waiting is aborted, and the calls returned.
-    *     @var bool $waitSearchDocCreation Wait for the creation of the search document and the rendered display values.
+    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * }
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\ContentDeleteBadRequestException
@@ -609,9 +609,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     /**
      * Gets the content detail by ID.
      * @param string $id The content ID.
-     * @param array $queryParameters {
-     *     @var array $resolveBehaviors List of enums that control which parts of the content are resolved and returned.
-     * }
+     * @param array{
+     *    "resolveBehaviors"?: array, //List of enums that control which parts of the content are resolved and returned.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentGetBadRequestException
      * @throws \PicturePark\API\Exception\ContentGetUnauthorizedException
@@ -631,13 +631,13 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * Download a single content in a specific output format. To resize images on download specify target width &amp; height. To download only a portion of the file, specify the range parameter.
      * @param string $contentId The content ID.
      * @param string $outputFormatId The output format ID.
-     * @param array $queryParameters {
-     *     @var int $width Optional width in pixels to resize image.
-     *     @var int $height Optional height in pixels to resize image.
-     * }
-     * @param array $headerParameters {
-     *     @var string $range The range of bytes to download (http range header): bytes={from}-{to} (e.g. bytes=0-100000).
-     * }
+     * @param array{
+     *    "width"?: int, //Optional width in pixels to resize image.
+     *    "height"?: int, //Optional height in pixels to resize image.
+     * } $queryParameters
+     * @param array{
+     *    "range"?: string, //The range of bytes to download (http range header): bytes={from}-{to} (e.g. bytes=0-100000).
+     * } $headerParameters
      * @param array $accept Accept content header application/json|application/octet-stream
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentDownloadBadRequestException
@@ -659,10 +659,10 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * Provides a lightweight endpoint to download content thumbnails.
      * @param string $id The content ID.
      * @param string $size Thumbnail size. Either small, medium or large.
-     * @param array $queryParameters {
-     *     @var int $width Optional width in pixels to resize image.
-     *     @var int $height Optional height in pixels to resize image.
-     * }
+     * @param array{
+     *    "width"?: int, //Optional width in pixels to resize image.
+     *    "height"?: int, //Optional height in pixels to resize image.
+     * } $queryParameters
      * @param array $accept Accept content header application/json|application/octet-stream
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentDownloadThumbnailBadRequestException
@@ -683,10 +683,10 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     /**
      * Gets multiple content details by IDs.
      * Can fetch 100 contents at most.
-     * @param array $queryParameters {
-     *     @var array $ids List of content IDs
-     *     @var array $resolveBehaviors List of enums that control which parts of the content are resolved and returned.
-     * }
+     * @param array{
+     *    "ids": array, //List of content IDs
+     *    "resolveBehaviors"?: array, //List of enums that control which parts of the content are resolved and returned.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ContentGetManyBadRequestException
      * @throws \PicturePark\API\Exception\ContentGetManyUnauthorizedException
@@ -705,14 +705,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     /**
     * Create a single file-less content item. To import files, see [Transfer](#tag/Transfer).
     * @param \PicturePark\API\Model\ContentCreateRequest $requestBody
-    * @param array $queryParameters {
-    *     @var array $resolveBehaviors List of enums that control which parts of the content are resolved and returned.
-    *     @var bool $allowMissingDependencies Allows creating contents that refer to list items or contents that don't exist in the system.
-    *     @var string $timeout Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+    * @param array{
+    *    "resolveBehaviors"?: array, //List of enums that control which parts of the content are resolved and returned.
+    *    "allowMissingDependencies"?: bool, //Allows creating contents that refer to list items or contents that don't exist in the system.
+    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
                Only the waiting is aborted, and the calls returned.
-    *     @var bool $waitSearchDocCreation Wait for the creation of the search document and the rendered display values.
+    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * }
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\ContentCreateBadRequestException
@@ -736,14 +736,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * See [ShouldUpdateMetadata](https://github.com/Picturepark/Picturepark.SDK.DotNet/blob/master/src/Picturepark.SDK.V1.Tests/Clients/ContentTests.cs) tests.
     * @param string $id The content ID.
     * @param \PicturePark\API\Model\ContentMetadataUpdateRequest $requestBody
-    * @param array $queryParameters {
-    *     @var array $resolveBehaviors List of enums that control which parts of the content are resolved and returned.
-    *     @var bool $allowMissingDependencies Allows storing references to list items or contents that don't exist in the system.
-    *     @var string $timeout Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+    * @param array{
+    *    "resolveBehaviors"?: array, //List of enums that control which parts of the content are resolved and returned.
+    *    "allowMissingDependencies"?: bool, //Allows storing references to list items or contents that don't exist in the system.
+    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
                Only the waiting is aborted, and the calls returned.
-    *     @var bool $waitSearchDocCreation Wait for the creation of the search document and the rendered display values.
+    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * }
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\ContentUpdateMetadataBadRequestException
@@ -764,13 +764,13 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * Updates the content permission sets of a single content. To get a list of available content permission sets, see [Permissions](operation/Permission_SearchContentPermissions)
     * @param string $id The content ID.
     * @param \PicturePark\API\Model\ContentPermissionsUpdateRequest $requestBody
-    * @param array $queryParameters {
-    *     @var array $resolveBehaviors List of enums that control which parts of the content are resolved and returned.
-    *     @var string $timeout Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+    * @param array{
+    *    "resolveBehaviors"?: array, //List of enums that control which parts of the content are resolved and returned.
+    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
                Only the waiting is aborted, and the calls returned.
-    *     @var bool $waitSearchDocCreation Wait for the creation of the search document and the rendered display values.
+    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * }
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\ContentUpdatePermissionsBadRequestException
@@ -790,13 +790,13 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     /**
     * Restores a previously deleted content.
     * @param string $id The content ID.
-    * @param array $queryParameters {
-    *     @var bool $allowMissingDependencies Allows restoring contents that refer to list items or contents that don't exist in the system.
-    *     @var string $timeout Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+    * @param array{
+    *    "allowMissingDependencies"?: bool, //Allows restoring contents that refer to list items or contents that don't exist in the system.
+    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
                Only the waiting is aborted, and the calls returned.
-    *     @var bool $waitSearchDocCreation Wait for the creation of the search document and the rendered display values.
+    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * }
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\ContentRestoreBadRequestException
@@ -817,12 +817,12 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * Transfers ownership of a content to another user. The target user must have the ManageContent UserRight.
     * @param string $id The content ID.
     * @param \PicturePark\API\Model\ContentOwnershipTransferRequest $requestBody
-    * @param array $queryParameters {
-    *     @var string $timeout Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+    * @param array{
+    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
                Only the waiting is aborted, and the calls returned.
-    *     @var bool $waitSearchDocCreation Wait for the creation of the search document and the rendered display values.
+    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * }
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\ContentTransferOwnershipBadRequestException
@@ -1273,9 +1273,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * Compare the current version of a document with the requested version and get the differences.
      * @param string $documentType The type of the document (e.g. Content).
      * @param string $documentId The ID of the document (e.g. contentId).
-     * @param array $queryParameters {
-     *     @var int $version The version of the document to compare with.
-     * }
+     * @param array{
+     *    "version"?: int, //The version of the document to compare with.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\DocumentHistoryCompareWithCurrentBadRequestException
      * @throws \PicturePark\API\Exception\DocumentHistoryCompareWithCurrentUnauthorizedException
@@ -1296,9 +1296,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @param string $documentType The type of the document (e.g. Content).
      * @param string $documentId The ID of the document (e.g. contentId).
      * @param int $documentVersion The version of the document to use for the comparison.
-     * @param array $queryParameters {
-     *     @var int $version The version of the document to compare with.
-     * }
+     * @param array{
+     *    "version"?: int, //The version of the document to compare with.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\DocumentHistoryCompareWithVersionBadRequestException
      * @throws \PicturePark\API\Exception\DocumentHistoryCompareWithVersionUnauthorizedException
@@ -1464,13 +1464,13 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     /**
     * Deletes a list item. The lifecycle is changed to Inactive. After a customer instance specified time (default 30 days), the list item and all related files will be deleted.
     * @param string $id The ID of the list item to delete.
-    * @param array $queryParameters {
-    *     @var bool $forceReferenceRemoval A value indicating whether references to the list item should be removed.
-    *     @var string $timeout Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+    * @param array{
+    *    "forceReferenceRemoval"?: bool, //A value indicating whether references to the list item should be removed.
+    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
                Only the waiting is aborted, and the calls returned.
-    *     @var bool $waitSearchDocCreation Wait for the creation of the search document and the rendered display values.
+    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * }
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\ListItemDeleteBadRequestException
@@ -1490,9 +1490,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     /**
      * Gets the list item detail by ID.
      * @param string $id The list item ID.
-     * @param array $queryParameters {
-     *     @var array $resolveBehaviors List of enums that control which parts of the list item are resolved and returned.
-     * }
+     * @param array{
+     *    "resolveBehaviors"?: array, //List of enums that control which parts of the list item are resolved and returned.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ListItemGetBadRequestException
      * @throws \PicturePark\API\Exception\ListItemGetUnauthorizedException
@@ -1512,14 +1512,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * Updates a single list item.
     * @param string $id The list item ID.
     * @param \PicturePark\API\Model\ListItemUpdateRequest $requestBody
-    * @param array $queryParameters {
-    *     @var array $resolveBehaviors List of enums that control which parts of the list item are resolved and returned.
-    *     @var bool $allowMissingDependencies Allows creating list items that refer to list items or contents that don't exist in the system.
-    *     @var string $timeout Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+    * @param array{
+    *    "resolveBehaviors"?: array, //List of enums that control which parts of the list item are resolved and returned.
+    *    "allowMissingDependencies"?: bool, //Allows creating list items that refer to list items or contents that don't exist in the system.
+    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
                Only the waiting is aborted, and the calls returned.
-    *     @var bool $waitSearchDocCreation Wait for the creation of the search document and the rendered display values.
+    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * }
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\ListItemUpdateBadRequestException
@@ -1539,13 +1539,13 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     /**
     * Restores a previously deleted list item.
     * @param string $id The list item ID.
-    * @param array $queryParameters {
-    *     @var bool $allowMissingDependencies Allows restoring list items that refer to list items or contents that don't exist in the system.
-    *     @var string $timeout Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+    * @param array{
+    *    "allowMissingDependencies"?: bool, //Allows restoring list items that refer to list items or contents that don't exist in the system.
+    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
                Only the waiting is aborted, and the calls returned.
-    *     @var bool $waitSearchDocCreation Wait for the creation of the search document and the rendered display values.
+    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * }
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\ListItemRestoreBadRequestException
@@ -1584,10 +1584,10 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     /**
      * Gets multiple list item details by IDs.
      * Can fetch 100 list items at most.
-     * @param array $queryParameters {
-     *     @var array $ids List of list item IDs.
-     *     @var array $resolveBehaviors List of enums that control which parts of the list items are resolved and returned.
-     * }
+     * @param array{
+     *    "ids"?: array, //List of list item IDs.
+     *    "resolveBehaviors"?: array, //List of enums that control which parts of the list items are resolved and returned.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ListItemGetManyBadRequestException
      * @throws \PicturePark\API\Exception\ListItemGetManyUnauthorizedException
@@ -1606,14 +1606,14 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     /**
     * Create a new list item.
     * @param \PicturePark\API\Model\ListItemCreateRequest $requestBody
-    * @param array $queryParameters {
-    *     @var array $resolveBehaviors List of enums that control which parts of the list item are resolved and returned.
-    *     @var bool $allowMissingDependencies Allows creating list items that refer to list items or contents that don't exist in the system.
-    *     @var string $timeout Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+    * @param array{
+    *    "resolveBehaviors"?: array, //List of enums that control which parts of the list item are resolved and returned.
+    *    "allowMissingDependencies"?: bool, //Allows creating list items that refer to list items or contents that don't exist in the system.
+    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
                Only the waiting is aborted, and the calls returned.
-    *     @var bool $waitSearchDocCreation Wait for the creation of the search document and the rendered display values.
+    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * }
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\ListItemCreateBadRequestException
@@ -1966,9 +1966,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     }
     /**
      * Gets multiple output format details by the output format IDs. Can fetch maximum of 100 output formats at once.
-     * @param array $queryParameters {
-     *     @var array $ids Output format IDs to get information about. If this is omitted, all output formats in the system will be returned.
-     * }
+     * @param array{
+     *    "ids"?: array, //Output format IDs to get information about. If this is omitted, all output formats in the system will be returned.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\OutputFormatGetManyBadRequestException
      * @throws \PicturePark\API\Exception\OutputFormatGetManyUnauthorizedException
@@ -2274,9 +2274,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     }
     /**
      * Gets multiple schema permission set details by the schema permission set IDs.
-     * @param array $queryParameters {
-     *     @var array $ids Ids
-     * }
+     * @param array{
+     *    "ids"?: array, //Ids
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetManyBadRequestException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetManyUnauthorizedException
@@ -2421,9 +2421,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     }
     /**
      * Returns permissions for multiple schema permission sets for the current user.
-     * @param array $queryParameters {
-     *     @var array $ids Ids
-     * }
+     * @param array{
+     *    "ids"?: array, //Ids
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsManyBadRequestException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsManyUnauthorizedException
@@ -2461,10 +2461,10 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * Deletes an existing schema.
     * Depending on how much the schema is referenced, the operation can take a lot of time.
     * @param string $id The schema ID.
-    * @param array $queryParameters {
-    *     @var string $timeout Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+    * @param array{
+    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
                Only the waiting is aborted, and the calls returned.
-    * }
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\SchemaDeleteBadRequestException
@@ -2504,10 +2504,10 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * Depending on how much the schema is referenced by existing data, the operation can take a lot of time.
     * @param string $id The schema ID.
     * @param \PicturePark\API\Model\SchemaUpdateRequest $requestBody
-    * @param array $queryParameters {
-    *     @var string $timeout Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+    * @param array{
+    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
                Only the waiting is aborted, and the calls returned.
-    * }
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\SchemaUpdateBadRequestException
@@ -2584,10 +2584,10 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     * Transfer ownership of the schema specified in
     * @param string $id The schema ID.
     * @param \PicturePark\API\Model\SchemaOwnershipTransferRequest $requestBody
-    * @param array $queryParameters {
-    *     @var string $timeout Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+    * @param array{
+    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
                Only the waiting is aborted, and the calls returned.
-    * }
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\SchemaTransferOwnershipBadRequestException
@@ -2607,9 +2607,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     /**
      * Gets multiple schema details by given schema IDs.
      * Can fetch 100 schema details at most.
-     * @param array $queryParameters {
-     *     @var array $ids Comma separated list of schema IDs.
-     * }
+     * @param array{
+     *    "ids"?: array, //Comma separated list of schema IDs.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaGetManyBadRequestException
      * @throws \PicturePark\API\Exception\SchemaGetManyUnauthorizedException
@@ -2628,10 +2628,10 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     /**
     * Create a new schema.
     * @param \PicturePark\API\Model\SchemaCreateRequest $requestBody
-    * @param array $queryParameters {
-    *     @var string $timeout Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+    * @param array{
+    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
                Only the waiting is aborted, and the calls returned.
-    * }
+    * } $queryParameters
     
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \PicturePark\API\Exception\SchemaCreateBadRequestException
@@ -2686,9 +2686,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
         return $this->executeEndpoint(new \PicturePark\API\Endpoint\SchemaUpdateMany($requestBody), $fetch);
     }
     /**
-     * @param array $queryParameters {
-     *     @var array $ids The schema IDs.
-     * }
+     * @param array{
+     *    "ids"?: array, //The schema IDs.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\SchemaGetManyReferencedBadRequestException
      * @throws \PicturePark\API\Exception\SchemaGetManyReferencedUnauthorizedException
@@ -2783,10 +2783,10 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     }
     /**
      * @param string $token Share token
-     * @param array $queryParameters {
-     *     @var string $lang Language code
-     *     @var array $resolveBehaviors List of enums that control which parts of the share are resolved and returned.
-     * }
+     * @param array{
+     *    "lang"?: string, //Language code
+     *    "resolveBehaviors"?: array, //List of enums that control which parts of the share are resolved and returned.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ShareGetShareJsonBadRequestException
      * @throws \PicturePark\API\Exception\ShareGetShareJsonUnauthorizedException
@@ -2804,13 +2804,13 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     }
     /**
      * @param string $token Share token
-     * @param array $queryParameters {
-     *     @var int $width Optional width in pixels to resize image
-     *     @var int $height Optional height in pixels to resize image
-     * }
-     * @param array $headerParameters {
-     *     @var string $range The range of bytes to download (http range header): bytes={from}-{to} (e.g. bytes=0-100000)
-     * }
+     * @param array{
+     *    "width"?: int, //Optional width in pixels to resize image
+     *    "height"?: int, //Optional height in pixels to resize image
+     * } $queryParameters
+     * @param array{
+     *    "range"?: string, //The range of bytes to download (http range header): bytes={from}-{to} (e.g. bytes=0-100000)
+     * } $headerParameters
      * @param array $accept Accept content header application/json|application/octet-stream
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ShareDownloadBadRequestException
@@ -2833,13 +2833,13 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @param string $token Share token
      * @param string $contentId The content id
      * @param string $outputFormatId The output format id
-     * @param array $queryParameters {
-     *     @var int $width Optional width in pixels to resize image
-     *     @var int $height Optional height in pixels to resize image
-     * }
-     * @param array $headerParameters {
-     *     @var string $range The range of bytes to download (http range header): bytes={from}-{to} (e.g. bytes=0-100000)
-     * }
+     * @param array{
+     *    "width"?: int, //Optional width in pixels to resize image
+     *    "height"?: int, //Optional height in pixels to resize image
+     * } $queryParameters
+     * @param array{
+     *    "range"?: string, //The range of bytes to download (http range header): bytes={from}-{to} (e.g. bytes=0-100000)
+     * } $headerParameters
      * @param array $accept Accept content header application/json|application/octet-stream
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ShareDownloadSingleContentBadRequestException
@@ -2860,9 +2860,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     /**
      * Get share by id (basic or embed).
      * @param string $id Share Id (not token, use [GetShareJson](#operation/Share_GetShareJson) to get share by token)
-     * @param array $queryParameters {
-     *     @var array $resolveBehaviors List of enums that control which parts of the share are resolved and returned.
-     * }
+     * @param array{
+     *    "resolveBehaviors"?: array, //List of enums that control which parts of the share are resolved and returned.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\ShareGetBadRequestException
      * @throws \PicturePark\API\Exception\ShareGetUnauthorizedException
@@ -3198,12 +3198,12 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @param string $transferId ID of transfer.
      * @param string $requestId Identifier of file.
      * @param null|string|resource|\Psr\Http\Message\StreamInterface $requestBody
-     * @param array $queryParameters {
-     *     @var int $ChunkNumber Information about chunk.
-     *     @var int $CurrentChunkSize Information about chunk.
-     *     @var int $TotalSize Information about chunk.
-     *     @var int $TotalChunks Information about chunk.
-     * }
+     * @param array{
+     *    "ChunkNumber": int, //Information about chunk.
+     *    "CurrentChunkSize": int, //Information about chunk.
+     *    "TotalSize": int, //Information about chunk.
+     *    "TotalChunks": int, //Information about chunk.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\TransferUploadFileBadRequestException
      * @throws \PicturePark\API\Exception\TransferUploadFileUnauthorizedException
@@ -3238,9 +3238,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     }
     /**
      * Gets multiple user role details by the user role IDs. Can fetch maximum of 100 user roles at once.
-     * @param array $queryParameters {
-     *     @var array $ids User role IDs to get information about.
-     * }
+     * @param array{
+     *    "ids"?: array, //User role IDs to get information about.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserRoleGetManyBadRequestException
      * @throws \PicturePark\API\Exception\UserRoleGetManyUnauthorizedException
@@ -3673,9 +3673,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     }
     /**
      * Can fetch 100 users at most.
-     * @param array $queryParameters {
-     *     @var array $ids User IDs.
-     * }
+     * @param array{
+     *    "ids"?: array, //User IDs.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\UserGetManyBadRequestException
      * @throws \PicturePark\API\Exception\UserGetManyUnauthorizedException
@@ -3832,9 +3832,9 @@ class Client extends \PicturePark\API\Runtime\Client\Client
     }
     /**
      * Gets multiple xmp mapping details by the xmp mapping IDs. Can fetch maximum of 100 xmp mappings at once.
-     * @param array $queryParameters {
-     *     @var array $ids Xmp mapping IDs to get information about.
-     * }
+     * @param array{
+     *    "ids"?: array, //Xmp mapping IDs to get information about.
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \PicturePark\API\Exception\XmpMappingGetManyBadRequestException
      * @throws \PicturePark\API\Exception\XmpMappingGetManyUnauthorizedException

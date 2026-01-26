@@ -5,11 +5,11 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
 class TestSimple extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
-     * @param array $queryParameters {
-     *     @var string $foo
-     *     @var string $bar
-     *     @var string $baz
-     * }
+     * @param array{
+     *    "foo"?: string,
+     *    "bar"?: string,
+     *    "baz"?: string,
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

@@ -10,12 +10,12 @@ class AppsListAccountsForPlan extends \Github\Runtime\Client\BaseEndpoint implem
      *
      * GitHub Apps must use a [JWT](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth Apps must use [basic authentication](https://developer.github.com/v3/auth/#basic-authentication) with their client ID and client secret to access this endpoint.
      * @param int $planId plan_id parameter
-     * @param array $queryParameters {
-     *     @var string $sort One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-     *     @var string $direction To return the oldest accounts first, set to `asc`. Can be one of `asc` or `desc`. Ignored without the `sort` parameter.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param array{
+     *    "sort"?: string, //One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
+     *    "direction"?: string, //To return the oldest accounts first, set to `asc`. Can be one of `asc` or `desc`. Ignored without the `sort` parameter.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(int $planId, array $queryParameters = [])
     {

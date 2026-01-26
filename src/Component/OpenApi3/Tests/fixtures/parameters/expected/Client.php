@@ -6,12 +6,12 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
 {
     /**
      * @param string $testPath
-     * @param array $queryParameters {
-     *     @var string $testQuery
-     * }
-     * @param array $headerParameters {
-     *     @var string $testHeader
-     * }
+     * @param array{
+     *    "testQuery"?: string,
+     * } $queryParameters
+     * @param array{
+     *    "testHeader"?: string,
+     * } $headerParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
@@ -22,12 +22,12 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
     }
     /**
      * @param string $testPath
-     * @param array $queryParameters {
-     *     @var string $testQuery
-     * }
-     * @param array $headerParameters {
-     *     @var string $testHeader
-     * }
+     * @param array{
+     *    "testQuery"?: string,
+     * } $queryParameters
+     * @param array{
+     *    "testHeader"?: string,
+     * } $headerParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
@@ -37,14 +37,14 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestPostWithPathParameters($testPath, $queryParameters, $headerParameters), $fetch);
     }
     /**
-     * @param array $queryParameters {
-     *     @var string $testString
-     *     @var int $testInteger
-     *     @var float $testFloat
-     *     @var array $testArray
-     *     @var string $testRequired
-     *     @var string $testDefault
-     * }
+     * @param array{
+     *    "testString"?: string,
+     *    "testInteger"?: int,
+     *    "testFloat"?: float,
+     *    "testArray"?: array,
+     *    "testRequired": string,
+     *    "testDefault"?: string,
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
@@ -54,14 +54,14 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestQueryParameters($queryParameters), $fetch);
     }
     /**
-     * @param array $headerParameters {
-     *     @var string $testString
-     *     @var int $testInteger
-     *     @var float $testFloat
-     *     @var array $testArray
-     *     @var string $testRequired
-     *     @var string $testDefault
-     * }
+     * @param array{
+     *    "testString"?: string,
+     *    "testInteger"?: int,
+     *    "testFloat"?: float,
+     *    "testArray"?: array,
+     *    "testRequired": string,
+     *    "testDefault"?: string,
+     * } $headerParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
@@ -123,9 +123,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\GetByTestInteger($testInteger), $fetch);
     }
     /**
-     * @param array $queryParameters {
-     *     @var string $input
-     * }
+     * @param array{
+     *    "input": string,
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
@@ -135,9 +135,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestDictionary($queryParameters), $fetch);
     }
     /**
-     * @param array $queryParameters {
-     *     @var array $filter
-     * }
+     * @param array{
+     *    "filter"?: array,
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)

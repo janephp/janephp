@@ -6,8 +6,8 @@ class GenaiListModels extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
 {
     /**
     * To list all models, send a GET request to `/v2/gen-ai/models`.
-    * @param array $queryParameters {
-    *     @var array $usecases Include only models defined for the listed usecases.
+    * @param array{
+    *    "usecases"?: array, //Include only models defined for the listed usecases.
     
     - MODEL_USECASE_UNKNOWN: The use case of the model is unknown
     - MODEL_USECASE_AGENT: The model maybe used in an agent
@@ -16,10 +16,10 @@ class GenaiListModels extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
     - MODEL_USECASE_GUARDRAIL: The model maybe used for guardrails
     - MODEL_USECASE_REASONING: The model usecase for reasoning
     - MODEL_USECASE_SERVERLESS: The model usecase for serverless inference
-    *     @var bool $public_only Only include models that are publicly available.
-    *     @var int $page Page number.
-    *     @var int $per_page Items per page.
-    * }
+    *    "public_only"?: bool, //Only include models that are publicly available.
+    *    "page"?: int, //Page number.
+    *    "per_page"?: int, //Items per page.
+    * } $queryParameters
     */
     public function __construct(array $queryParameters = [])
     {

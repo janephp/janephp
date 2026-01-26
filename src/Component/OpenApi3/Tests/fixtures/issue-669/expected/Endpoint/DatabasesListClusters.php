@@ -12,9 +12,9 @@ class DatabasesListClusters extends \Jane\Generated\DigitalOcean\Runtime\Client\
      * The embedded `connection` and `private_connection` objects will contain the information needed to access the database cluster. For multi-node clusters, the `standby_connection` and `standby_private_connection` objects will contain the information needed to connect to the cluster's standby node(s).
      *
      * The embedded `maintenance_window` object will contain information about any scheduled maintenance for the database cluster.
-     * @param array $queryParameters {
-     *     @var string $tag_name Limits the results to database clusters with a specific tag.<br><br>Requires `tag:read` scope.
-     * }
+     * @param array{
+     *    "tag_name"?: string, //Limits the results to database clusters with a specific tag.<br><br>Requires `tag:read` scope.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {

@@ -8,19 +8,19 @@ class CompanyComplianceSearch extends \CreditSafe\API\Runtime\Client\BaseEndpoin
     /**
      * Searches the provided `Predefined search` list with your search criteria. Results returned here indicate potential matches (depending on the predefined Search used).
      * @param string $predefinedSearch the predefined search that the search will be made against. See the `/predefinedSearches` endpoint
-     * @param array $queryParameters {
-     *     @var string $countries A Comma-separated list of country codes to search for Companies in. The list takes ISO/Alpha 2 format country codes. For example US,GB represents searching for Companies in the United States and Great Britain.
-     *     @var string $name Entity Name
-     *     @var string $street Address part identifier - Street of the entity.
-     *     @var string $houseNo Address part identifier - House/Building Number of the entity.
-     *     @var string $city Address part identifier - City of the entity.
-     *     @var string $postCode Address part identifier - Postcode/Zip Code of the entity.
-     *     @var string $province Address part identifier - Province/State of the entity.
-     *     @var string $phoneNo Phone Number of the entity.
-     * }
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
+     * @param array{
+     *    "countries"?: string, //A Comma-separated list of country codes to search for Companies in. The list takes ISO/Alpha 2 format country codes. For example US,GB represents searching for Companies in the United States and Great Britain.
+     *    "name": string, //Entity Name
+     *    "street"?: string, //Address part identifier - Street of the entity.
+     *    "houseNo"?: string, //Address part identifier - House/Building Number of the entity.
+     *    "city"?: string, //Address part identifier - City of the entity.
+     *    "postCode"?: string, //Address part identifier - Postcode/Zip Code of the entity.
+     *    "province"?: string, //Address part identifier - Province/State of the entity.
+     *    "phoneNo"?: string, //Phone Number of the entity.
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
      */
     public function __construct(string $predefinedSearch, array $queryParameters = [], array $headerParameters = [])
     {

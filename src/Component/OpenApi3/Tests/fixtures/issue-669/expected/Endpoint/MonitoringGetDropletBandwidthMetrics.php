@@ -7,13 +7,13 @@ class MonitoringGetDropletBandwidthMetrics extends \Jane\Generated\DigitalOcean\
     /**
      * To retrieve bandwidth metrics for a given Droplet, send a GET request to `/v2/monitoring/metrics/droplet/bandwidth`. Use the `interface` query parameter to specify if the results should be for the `private` or `public` interface. Use the `direction` query parameter to specify if the results should be for `inbound` or `outbound` traffic.
      * The metrics in the response body are in megabits per second (Mbps).
-     * @param array $queryParameters {
-     *     @var string $host_id The droplet ID.
-     *     @var string $interface The network interface.
-     *     @var string $direction The traffic direction.
-     *     @var string $start UNIX timestamp to start metric window.
-     *     @var string $end UNIX timestamp to end metric window.
-     * }
+     * @param array{
+     *    "host_id": string, //The droplet ID.
+     *    "interface": string, //The network interface.
+     *    "direction": string, //The traffic direction.
+     *    "start": string, //UNIX timestamp to start metric window.
+     *    "end": string, //UNIX timestamp to end metric window.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
