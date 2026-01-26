@@ -6,12 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [7.10.4] - 2026-01-26
 ### Added
 - [OpenApi] [GH#907](https://github.com/janephp/janephp/pull/907) Add support for object type in query parameters
 - [Jane] [GH#894](https://github.com/janephp/janephp/pull/894) New documentation with MkDocs & Mike (available at: https://jane.jolicode.com/)
 
 ### Changed
 - [Jane] [GH#894](https://github.com/janephp/janephp/pull/894) Improved tooling to use [castor](https://castor.jolicode.com/)
+
+### Fixed
+- [OpenApi] [GH#908](https://github.com/janephp/janephp/pull/908) Fix arrays as query params
+- [OpenApi] [GH#910](https://github.com/janephp/janephp/pull/910) Fix query parameters PHPDoc
 
 ## [7.10.3] - 2025-12-24
 ### Fixed
@@ -830,7 +836,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.10.3...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.10.4...HEAD
+[7.10.4]: https://github.com/janephp/janephp/compare/v7.10.3...v7.10.4
 [7.10.3]: https://github.com/janephp/janephp/compare/v7.10.2...v7.10.3
 [7.10.2]: https://github.com/janephp/janephp/compare/v7.10.1...v7.10.2
 [7.10.1]: https://github.com/janephp/janephp/compare/v7.10.0...v7.10.1
