@@ -1,0 +1,51 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "API Test",
+        "version": "1.0"
+    },
+    "paths": {
+        "/File": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "fichier": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "item": {
+                                        "type": "object",
+                                        "properties": {
+                                            "itemId": {
+                                                "type": "integer"
+                                            },
+                                            "itemType": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "description",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

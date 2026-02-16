@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- [OpenApi3] [GH#917](https://github.com/janephp/janephp/pull/917) Fix [GH#738](https://github.com/janephp/janephp/issues/738) multipart/form-data requests failing with non-scalar properties (objects, arrays) by serializing them to JSON
 
 ## [7.10.4] - 2026-01-26
 ### Added
