@@ -58,7 +58,6 @@
         "symfony/framework-bundle": "^6.4 || ^7.0",
         "symfony/uid": "^6.4  || ^7.0"
     },
-
     "suggest": {
         "friendsofphp/php-cs-fixer": "Allow to automatically fix cs on generated code for better visualisation",
         "phpdocumentor/reflection-docblock": "Allow to extract informations from PHP Doc blocks"
@@ -88,7 +87,8 @@
         "psr-4": {
             "Jane\\Component\\JsonSchema\\Tests\\": "src/Component/JsonSchema/Tests/",
             "Jane\\Component\\OpenApi2\\Tests\\Client\\": "src/Component/OpenApi2/Tests/client/generated/",
-            "Jane\\Component\\OpenApi3\\Tests\\Client\\": "src/Component/OpenApi3/Tests/client/generated/"
+            "Jane\\Component\\OpenApi3\\Tests\\Client\\": "src/Component/OpenApi3/Tests/client/generated/",
+            "Jane\\Component\\OpenApi2\\Tests\\Fixtures\\AllOfSchemaWithOneOfProperty\\": "src/Component/OpenApi2/Tests/fixtures/all-of-schema-with-one-of-property/generated/"
         }
     },
     "bin": [

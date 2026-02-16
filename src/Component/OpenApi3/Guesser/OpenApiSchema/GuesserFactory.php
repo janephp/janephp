@@ -12,6 +12,7 @@ use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\CustomStringFormatGuesser
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\DateGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\DateTimeGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\ItemsGuesser;
+use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\OneOfGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\MultipleGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\ReferenceGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\SimpleTypeGuesser;
@@ -43,6 +44,7 @@ class GuesserFactory
         $chainGuesser->addGuesser(new ArrayGuesser(Schema::class));
         $chainGuesser->addGuesser(new ItemsGuesser(Schema::class));
         $chainGuesser->addGuesser(new SimpleTypeGuesser(Schema::class));
+        $chainGuesser->addGuesser(new OneOfGuesser(Schema::class));
         $chainGuesser->addGuesser(new MultipleGuesser(Schema::class));
 
         return $chainGuesser;
