@@ -45,7 +45,7 @@ class FormBodyContentGenerator extends AbstractBodyContentGenerator
                                             new Arg(new Scalar\String_('json')),
                                         ])
                                     )),
-                                ]
+                                ],
                             ]
                         ),
                         new Stmt\Expression(new Expr\MethodCall(new Expr\Variable('bodyBuilder'), 'addResource', [

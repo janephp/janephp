@@ -98,6 +98,10 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
                 $propertyObj = $this->resolve($propertyObj, $this->getSchemaClass());
             }
 
+            if (!\is_object($propertyObj)) {
+                continue;
+            }
+
             $nullable = $this->isPropertyNullable($propertyObj);
 
             $required = false;
@@ -118,6 +122,10 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
 
     protected function isPropertyNullable($property): bool
     {
+        if (!\is_object($property) || !method_exists($property, 'getOneOf')) {
+            return false;
+        }
+
         $oneOf = $property->getOneOf();
         if (!empty($oneOf)) {
             foreach ($oneOf as $oneOfProperty) {
@@ -149,6 +157,10 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
 
             if ($property instanceof Reference) {
                 $property = $this->resolve($property, $this->getSchemaClass());
+            }
+
+            if (!\is_object($property)) {
+                continue;
             }
 
             if (null !== $property->getEnum()) {

@@ -13,21 +13,45 @@ class JsonSchema
         return array_key_exists($property, $this->initialized);
     }
     /**
+     * @var string|null
+     */
+    protected $dollarId;
+    /**
+     * @var string|null
+     */
+    protected $dollarSchema;
+    /**
+     * @var string|null
+     */
+    protected $dollarRef;
+    /**
+     * @var string|null
+     */
+    protected $dollarAnchor;
+    /**
+     * @var string|null
+     */
+    protected $dollarDynamicRef;
+    /**
+     * @var string|null
+     */
+    protected $dollarDynamicAnchor;
+    /**
+     * @var array<string, bool>|null
+     */
+    protected $dollarVocabulary;
+    /**
+     * @var string|null
+     */
+    protected $dollarComment;
+    /**
      * @var array<string, JsonSchema|bool>|null
      */
-    protected $definitions;
+    protected $dollarDefs;
     /**
-     * @var array<string, JsonSchema|bool|list<string>>|null
+     * @var list<JsonSchema>|list<bool>|null
      */
-    protected $dependencies;
-    /**
-     * @var JsonSchema|bool|null
-     */
-    protected $additionalItems;
-    /**
-     * @var JsonSchema|bool|null
-     */
-    protected $unevaluatedItems;
+    protected $prefixItems;
     /**
      * @var JsonSchema|bool|list<JsonSchema>|list<bool>|null
      */
@@ -40,10 +64,6 @@ class JsonSchema
      * @var JsonSchema|bool|null
      */
     protected $additionalProperties;
-    /**
-     * @var array<string, JsonSchema|bool>|null
-     */
-    protected $unevaluatedProperties;
     /**
      * @var array<string, JsonSchema|bool>|null
      */
@@ -89,85 +109,25 @@ class JsonSchema
      */
     protected $not;
     /**
-     * @var string|null
+     * @var JsonSchema|bool|null
      */
-    protected $contentMediaType;
-    /**
-     * @var string|null
-     */
-    protected $contentEncoding;
+    protected $unevaluatedItems;
     /**
      * @var JsonSchema|bool|null
      */
-    protected $contentSchema;
+    protected $unevaluatedProperties;
     /**
-     * @var string|null
+     * @var mixed|list<mixed>|null
      */
-    protected $dollarId;
-    /**
-     * @var string|null
-     */
-    protected $dollarSchema;
-    /**
-     * @var string|null
-     */
-    protected $dollarAnchor;
-    /**
-     * @var string|null
-     */
-    protected $dollarRef;
-    /**
-     * @var string|null
-     */
-    protected $dollarRecursiveRef;
-    /**
-     * @var bool|null
-     */
-    protected $dollarRecursiveAnchor = false;
-    /**
-     * @var array<string, bool>|null
-     */
-    protected $dollarVocabulary;
-    /**
-     * @var string|null
-     */
-    protected $dollarComment;
-    /**
-     * @var array<string, JsonSchema|bool>|null
-     */
-    protected $dollarDefs;
-    /**
-     * @var string|null
-     */
-    protected $format;
-    /**
-     * @var string|null
-     */
-    protected $title;
-    /**
-     * @var string|null
-     */
-    protected $description;
+    protected $type;
     /**
      * @var mixed|null
      */
-    protected $default;
-    /**
-     * @var bool|null
-     */
-    protected $deprecated = false;
-    /**
-     * @var bool|null
-     */
-    protected $readOnly = false;
-    /**
-     * @var bool|null
-     */
-    protected $writeOnly = false;
+    protected $const;
     /**
      * @var list<mixed>|null
      */
-    protected $examples;
+    protected $enum;
     /**
      * @var float|null
      */
@@ -239,85 +199,251 @@ class JsonSchema
     /**
      * @var string|null
      */
-    protected $const;
+    protected $title;
     /**
-     * @var list<string>|null
+     * @var string|null
      */
-    protected $enum;
+    protected $description;
     /**
-     * @var mixed|list<mixed>|null
+     * @var mixed|null
      */
-    protected $type;
+    protected $default;
+    /**
+     * @var bool|null
+     */
+    protected $deprecated = false;
+    /**
+     * @var bool|null
+     */
+    protected $readOnly = false;
+    /**
+     * @var bool|null
+     */
+    protected $writeOnly = false;
+    /**
+     * @var list<mixed>|null
+     */
+    protected $examples;
+    /**
+     * @var string|null
+     */
+    protected $format;
+    /**
+     * @var string|null
+     */
+    protected $contentEncoding;
+    /**
+     * @var string|null
+     */
+    protected $contentMediaType;
+    /**
+     * @var JsonSchema|bool|null
+     */
+    protected $contentSchema;
+    /**
+     * @deprecated
+     *
+     * @var array<string, JsonSchema|bool>|null
+     */
+    protected $definitions;
+    /**
+     * @deprecated
+     *
+     * @var array<string, JsonSchema|bool|list<string>>|null
+     */
+    protected $dependencies;
+    /**
+     * @deprecated
+     *
+     * @var bool|null
+     */
+    protected $dollarRecursiveAnchor = false;
+    /**
+     * @var string|null
+     */
+    protected $dollarRecursiveRef;
+    /**
+     * @var JsonSchema|bool|null
+     */
+    protected $additionalItems;
+    /**
+     * @return string|null
+     */
+    public function getDollarId(): ?string
+    {
+        return $this->dollarId;
+    }
+    /**
+     * @param string|null $dollarId
+     *
+     * @return self
+     */
+    public function setDollarId(?string $dollarId): self
+    {
+        $this->initialized['dollarId'] = true;
+        $this->dollarId = $dollarId;
+        return $this;
+    }
+    /**
+     * @return string|null
+     */
+    public function getDollarSchema(): ?string
+    {
+        return $this->dollarSchema;
+    }
+    /**
+     * @param string|null $dollarSchema
+     *
+     * @return self
+     */
+    public function setDollarSchema(?string $dollarSchema): self
+    {
+        $this->initialized['dollarSchema'] = true;
+        $this->dollarSchema = $dollarSchema;
+        return $this;
+    }
+    /**
+     * @return string|null
+     */
+    public function getDollarRef(): ?string
+    {
+        return $this->dollarRef;
+    }
+    /**
+     * @param string|null $dollarRef
+     *
+     * @return self
+     */
+    public function setDollarRef(?string $dollarRef): self
+    {
+        $this->initialized['dollarRef'] = true;
+        $this->dollarRef = $dollarRef;
+        return $this;
+    }
+    /**
+     * @return string|null
+     */
+    public function getDollarAnchor(): ?string
+    {
+        return $this->dollarAnchor;
+    }
+    /**
+     * @param string|null $dollarAnchor
+     *
+     * @return self
+     */
+    public function setDollarAnchor(?string $dollarAnchor): self
+    {
+        $this->initialized['dollarAnchor'] = true;
+        $this->dollarAnchor = $dollarAnchor;
+        return $this;
+    }
+    /**
+     * @return string|null
+     */
+    public function getDollarDynamicRef(): ?string
+    {
+        return $this->dollarDynamicRef;
+    }
+    /**
+     * @param string|null $dollarDynamicRef
+     *
+     * @return self
+     */
+    public function setDollarDynamicRef(?string $dollarDynamicRef): self
+    {
+        $this->initialized['dollarDynamicRef'] = true;
+        $this->dollarDynamicRef = $dollarDynamicRef;
+        return $this;
+    }
+    /**
+     * @return string|null
+     */
+    public function getDollarDynamicAnchor(): ?string
+    {
+        return $this->dollarDynamicAnchor;
+    }
+    /**
+     * @param string|null $dollarDynamicAnchor
+     *
+     * @return self
+     */
+    public function setDollarDynamicAnchor(?string $dollarDynamicAnchor): self
+    {
+        $this->initialized['dollarDynamicAnchor'] = true;
+        $this->dollarDynamicAnchor = $dollarDynamicAnchor;
+        return $this;
+    }
+    /**
+     * @return array<string, bool>|null
+     */
+    public function getDollarVocabulary(): ?iterable
+    {
+        return $this->dollarVocabulary;
+    }
+    /**
+     * @param array<string, bool>|null $dollarVocabulary
+     *
+     * @return self
+     */
+    public function setDollarVocabulary(?iterable $dollarVocabulary): self
+    {
+        $this->initialized['dollarVocabulary'] = true;
+        $this->dollarVocabulary = $dollarVocabulary;
+        return $this;
+    }
+    /**
+     * @return string|null
+     */
+    public function getDollarComment(): ?string
+    {
+        return $this->dollarComment;
+    }
+    /**
+     * @param string|null $dollarComment
+     *
+     * @return self
+     */
+    public function setDollarComment(?string $dollarComment): self
+    {
+        $this->initialized['dollarComment'] = true;
+        $this->dollarComment = $dollarComment;
+        return $this;
+    }
     /**
      * @return array<string, JsonSchema|bool>|null
      */
-    public function getDefinitions(): ?iterable
+    public function getDollarDefs(): ?iterable
     {
-        return $this->definitions;
+        return $this->dollarDefs;
     }
     /**
-     * @param array<string, JsonSchema|bool>|null $definitions
+     * @param array<string, JsonSchema|bool>|null $dollarDefs
      *
      * @return self
      */
-    public function setDefinitions(?iterable $definitions): self
+    public function setDollarDefs(?iterable $dollarDefs): self
     {
-        $this->initialized['definitions'] = true;
-        $this->definitions = $definitions;
+        $this->initialized['dollarDefs'] = true;
+        $this->dollarDefs = $dollarDefs;
         return $this;
     }
     /**
-     * @return array<string, JsonSchema|bool|list<string>>|null
+     * @return list<JsonSchema>|list<bool>|null
      */
-    public function getDependencies(): ?iterable
+    public function getPrefixItems(): ?array
     {
-        return $this->dependencies;
+        return $this->prefixItems;
     }
     /**
-     * @param array<string, JsonSchema|bool|list<string>>|null $dependencies
+     * @param list<JsonSchema>|list<bool>|null $prefixItems
      *
      * @return self
      */
-    public function setDependencies(?iterable $dependencies): self
+    public function setPrefixItems(?array $prefixItems): self
     {
-        $this->initialized['dependencies'] = true;
-        $this->dependencies = $dependencies;
-        return $this;
-    }
-    /**
-     * @return JsonSchema|bool|null
-     */
-    public function getAdditionalItems()
-    {
-        return $this->additionalItems;
-    }
-    /**
-     * @param JsonSchema|bool|null $additionalItems
-     *
-     * @return self
-     */
-    public function setAdditionalItems($additionalItems): self
-    {
-        $this->initialized['additionalItems'] = true;
-        $this->additionalItems = $additionalItems;
-        return $this;
-    }
-    /**
-     * @return JsonSchema|bool|null
-     */
-    public function getUnevaluatedItems()
-    {
-        return $this->unevaluatedItems;
-    }
-    /**
-     * @param JsonSchema|bool|null $unevaluatedItems
-     *
-     * @return self
-     */
-    public function setUnevaluatedItems($unevaluatedItems): self
-    {
-        $this->initialized['unevaluatedItems'] = true;
-        $this->unevaluatedItems = $unevaluatedItems;
+        $this->initialized['prefixItems'] = true;
+        $this->prefixItems = $prefixItems;
         return $this;
     }
     /**
@@ -372,24 +498,6 @@ class JsonSchema
     {
         $this->initialized['additionalProperties'] = true;
         $this->additionalProperties = $additionalProperties;
-        return $this;
-    }
-    /**
-     * @return array<string, JsonSchema|bool>|null
-     */
-    public function getUnevaluatedProperties(): ?iterable
-    {
-        return $this->unevaluatedProperties;
-    }
-    /**
-     * @param array<string, JsonSchema|bool>|null $unevaluatedProperties
-     *
-     * @return self
-     */
-    public function setUnevaluatedProperties(?iterable $unevaluatedProperties): self
-    {
-        $this->initialized['unevaluatedProperties'] = true;
-        $this->unevaluatedProperties = $unevaluatedProperties;
         return $this;
     }
     /**
@@ -591,363 +699,93 @@ class JsonSchema
         return $this;
     }
     /**
-     * @return string|null
+     * @return JsonSchema|bool|null
      */
-    public function getContentMediaType(): ?string
+    public function getUnevaluatedItems()
     {
-        return $this->contentMediaType;
+        return $this->unevaluatedItems;
     }
     /**
-     * @param string|null $contentMediaType
+     * @param JsonSchema|bool|null $unevaluatedItems
      *
      * @return self
      */
-    public function setContentMediaType(?string $contentMediaType): self
+    public function setUnevaluatedItems($unevaluatedItems): self
     {
-        $this->initialized['contentMediaType'] = true;
-        $this->contentMediaType = $contentMediaType;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getContentEncoding(): ?string
-    {
-        return $this->contentEncoding;
-    }
-    /**
-     * @param string|null $contentEncoding
-     *
-     * @return self
-     */
-    public function setContentEncoding(?string $contentEncoding): self
-    {
-        $this->initialized['contentEncoding'] = true;
-        $this->contentEncoding = $contentEncoding;
+        $this->initialized['unevaluatedItems'] = true;
+        $this->unevaluatedItems = $unevaluatedItems;
         return $this;
     }
     /**
      * @return JsonSchema|bool|null
      */
-    public function getContentSchema()
+    public function getUnevaluatedProperties()
     {
-        return $this->contentSchema;
+        return $this->unevaluatedProperties;
     }
     /**
-     * @param JsonSchema|bool|null $contentSchema
+     * @param JsonSchema|bool|null $unevaluatedProperties
      *
      * @return self
      */
-    public function setContentSchema($contentSchema): self
+    public function setUnevaluatedProperties($unevaluatedProperties): self
     {
-        $this->initialized['contentSchema'] = true;
-        $this->contentSchema = $contentSchema;
+        $this->initialized['unevaluatedProperties'] = true;
+        $this->unevaluatedProperties = $unevaluatedProperties;
         return $this;
     }
     /**
-     * @return string|null
+     * @return mixed|list<mixed>
      */
-    public function getDollarId(): ?string
+    public function getType()
     {
-        return $this->dollarId;
+        return $this->type;
     }
     /**
-     * @param string|null $dollarId
+     * @param mixed|list<mixed> $type
      *
      * @return self
      */
-    public function setDollarId(?string $dollarId): self
+    public function setType($type): self
     {
-        $this->initialized['dollarId'] = true;
-        $this->dollarId = $dollarId;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getDollarSchema(): ?string
-    {
-        return $this->dollarSchema;
-    }
-    /**
-     * @param string|null $dollarSchema
-     *
-     * @return self
-     */
-    public function setDollarSchema(?string $dollarSchema): self
-    {
-        $this->initialized['dollarSchema'] = true;
-        $this->dollarSchema = $dollarSchema;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getDollarAnchor(): ?string
-    {
-        return $this->dollarAnchor;
-    }
-    /**
-     * @param string|null $dollarAnchor
-     *
-     * @return self
-     */
-    public function setDollarAnchor(?string $dollarAnchor): self
-    {
-        $this->initialized['dollarAnchor'] = true;
-        $this->dollarAnchor = $dollarAnchor;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getDollarRef(): ?string
-    {
-        return $this->dollarRef;
-    }
-    /**
-     * @param string|null $dollarRef
-     *
-     * @return self
-     */
-    public function setDollarRef(?string $dollarRef): self
-    {
-        $this->initialized['dollarRef'] = true;
-        $this->dollarRef = $dollarRef;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getDollarRecursiveRef(): ?string
-    {
-        return $this->dollarRecursiveRef;
-    }
-    /**
-     * @param string|null $dollarRecursiveRef
-     *
-     * @return self
-     */
-    public function setDollarRecursiveRef(?string $dollarRecursiveRef): self
-    {
-        $this->initialized['dollarRecursiveRef'] = true;
-        $this->dollarRecursiveRef = $dollarRecursiveRef;
-        return $this;
-    }
-    /**
-     * @return bool|null
-     */
-    public function getDollarRecursiveAnchor(): ?bool
-    {
-        return $this->dollarRecursiveAnchor;
-    }
-    /**
-     * @param bool|null $dollarRecursiveAnchor
-     *
-     * @return self
-     */
-    public function setDollarRecursiveAnchor(?bool $dollarRecursiveAnchor): self
-    {
-        $this->initialized['dollarRecursiveAnchor'] = true;
-        $this->dollarRecursiveAnchor = $dollarRecursiveAnchor;
-        return $this;
-    }
-    /**
-     * @return array<string, bool>|null
-     */
-    public function getDollarVocabulary(): ?iterable
-    {
-        return $this->dollarVocabulary;
-    }
-    /**
-     * @param array<string, bool>|null $dollarVocabulary
-     *
-     * @return self
-     */
-    public function setDollarVocabulary(?iterable $dollarVocabulary): self
-    {
-        $this->initialized['dollarVocabulary'] = true;
-        $this->dollarVocabulary = $dollarVocabulary;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getDollarComment(): ?string
-    {
-        return $this->dollarComment;
-    }
-    /**
-     * @param string|null $dollarComment
-     *
-     * @return self
-     */
-    public function setDollarComment(?string $dollarComment): self
-    {
-        $this->initialized['dollarComment'] = true;
-        $this->dollarComment = $dollarComment;
-        return $this;
-    }
-    /**
-     * @return array<string, JsonSchema|bool>|null
-     */
-    public function getDollarDefs(): ?iterable
-    {
-        return $this->dollarDefs;
-    }
-    /**
-     * @param array<string, JsonSchema|bool>|null $dollarDefs
-     *
-     * @return self
-     */
-    public function setDollarDefs(?iterable $dollarDefs): self
-    {
-        $this->initialized['dollarDefs'] = true;
-        $this->dollarDefs = $dollarDefs;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getFormat(): ?string
-    {
-        return $this->format;
-    }
-    /**
-     * @param string|null $format
-     *
-     * @return self
-     */
-    public function setFormat(?string $format): self
-    {
-        $this->initialized['format'] = true;
-        $this->format = $format;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-    /**
-     * @param string|null $title
-     *
-     * @return self
-     */
-    public function setTitle(?string $title): self
-    {
-        $this->initialized['title'] = true;
-        $this->title = $title;
-        return $this;
-    }
-    /**
-     * @return string|null
-     */
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-    /**
-     * @param string|null $description
-     *
-     * @return self
-     */
-    public function setDescription(?string $description): self
-    {
-        $this->initialized['description'] = true;
-        $this->description = $description;
+        $this->initialized['type'] = true;
+        $this->type = $type;
         return $this;
     }
     /**
      * @return mixed
      */
-    public function getDefault()
+    public function getConst()
     {
-        return $this->default;
+        return $this->const;
     }
     /**
-     * @param mixed $default
+     * @param mixed $const
      *
      * @return self
      */
-    public function setDefault($default): self
+    public function setConst($const): self
     {
-        $this->initialized['default'] = true;
-        $this->default = $default;
-        return $this;
-    }
-    /**
-     * @return bool|null
-     */
-    public function getDeprecated(): ?bool
-    {
-        return $this->deprecated;
-    }
-    /**
-     * @param bool|null $deprecated
-     *
-     * @return self
-     */
-    public function setDeprecated(?bool $deprecated): self
-    {
-        $this->initialized['deprecated'] = true;
-        $this->deprecated = $deprecated;
-        return $this;
-    }
-    /**
-     * @return bool|null
-     */
-    public function getReadOnly(): ?bool
-    {
-        return $this->readOnly;
-    }
-    /**
-     * @param bool|null $readOnly
-     *
-     * @return self
-     */
-    public function setReadOnly(?bool $readOnly): self
-    {
-        $this->initialized['readOnly'] = true;
-        $this->readOnly = $readOnly;
-        return $this;
-    }
-    /**
-     * @return bool|null
-     */
-    public function getWriteOnly(): ?bool
-    {
-        return $this->writeOnly;
-    }
-    /**
-     * @param bool|null $writeOnly
-     *
-     * @return self
-     */
-    public function setWriteOnly(?bool $writeOnly): self
-    {
-        $this->initialized['writeOnly'] = true;
-        $this->writeOnly = $writeOnly;
+        $this->initialized['const'] = true;
+        $this->const = $const;
         return $this;
     }
     /**
      * @return list<mixed>|null
      */
-    public function getExamples(): ?array
+    public function getEnum(): ?array
     {
-        return $this->examples;
+        return $this->enum;
     }
     /**
-     * @param list<mixed>|null $examples
+     * @param list<mixed>|null $enum
      *
      * @return self
      */
-    public function setExamples(?array $examples): self
+    public function setEnum(?array $enum): self
     {
-        $this->initialized['examples'] = true;
-        $this->examples = $examples;
+        $this->initialized['enum'] = true;
+        $this->enum = $enum;
         return $this;
     }
     /**
@@ -1259,55 +1097,301 @@ class JsonSchema
     /**
      * @return string|null
      */
-    public function getConst(): ?string
+    public function getTitle(): ?string
     {
-        return $this->const;
+        return $this->title;
     }
     /**
-     * @param string|null $const
+     * @param string|null $title
      *
      * @return self
      */
-    public function setConst(?string $const): self
+    public function setTitle(?string $title): self
     {
-        $this->initialized['const'] = true;
-        $this->const = $const;
+        $this->initialized['title'] = true;
+        $this->title = $title;
         return $this;
     }
     /**
-     * @return list<string>|null
+     * @return string|null
      */
-    public function getEnum(): ?array
+    public function getDescription(): ?string
     {
-        return $this->enum;
+        return $this->description;
     }
     /**
-     * @param list<string>|null $enum
+     * @param string|null $description
      *
      * @return self
      */
-    public function setEnum(?array $enum): self
+    public function setDescription(?string $description): self
     {
-        $this->initialized['enum'] = true;
-        $this->enum = $enum;
+        $this->initialized['description'] = true;
+        $this->description = $description;
         return $this;
     }
     /**
-     * @return mixed|list<mixed>
+     * @return mixed
      */
-    public function getType()
+    public function getDefault()
     {
-        return $this->type;
+        return $this->default;
     }
     /**
-     * @param mixed|list<mixed> $type
+     * @param mixed $default
      *
      * @return self
      */
-    public function setType($type): self
+    public function setDefault($default): self
     {
-        $this->initialized['type'] = true;
-        $this->type = $type;
+        $this->initialized['default'] = true;
+        $this->default = $default;
+        return $this;
+    }
+    /**
+     * @return bool|null
+     */
+    public function getDeprecated(): ?bool
+    {
+        return $this->deprecated;
+    }
+    /**
+     * @param bool|null $deprecated
+     *
+     * @return self
+     */
+    public function setDeprecated(?bool $deprecated): self
+    {
+        $this->initialized['deprecated'] = true;
+        $this->deprecated = $deprecated;
+        return $this;
+    }
+    /**
+     * @return bool|null
+     */
+    public function getReadOnly(): ?bool
+    {
+        return $this->readOnly;
+    }
+    /**
+     * @param bool|null $readOnly
+     *
+     * @return self
+     */
+    public function setReadOnly(?bool $readOnly): self
+    {
+        $this->initialized['readOnly'] = true;
+        $this->readOnly = $readOnly;
+        return $this;
+    }
+    /**
+     * @return bool|null
+     */
+    public function getWriteOnly(): ?bool
+    {
+        return $this->writeOnly;
+    }
+    /**
+     * @param bool|null $writeOnly
+     *
+     * @return self
+     */
+    public function setWriteOnly(?bool $writeOnly): self
+    {
+        $this->initialized['writeOnly'] = true;
+        $this->writeOnly = $writeOnly;
+        return $this;
+    }
+    /**
+     * @return list<mixed>|null
+     */
+    public function getExamples(): ?array
+    {
+        return $this->examples;
+    }
+    /**
+     * @param list<mixed>|null $examples
+     *
+     * @return self
+     */
+    public function setExamples(?array $examples): self
+    {
+        $this->initialized['examples'] = true;
+        $this->examples = $examples;
+        return $this;
+    }
+    /**
+     * @return string|null
+     */
+    public function getFormat(): ?string
+    {
+        return $this->format;
+    }
+    /**
+     * @param string|null $format
+     *
+     * @return self
+     */
+    public function setFormat(?string $format): self
+    {
+        $this->initialized['format'] = true;
+        $this->format = $format;
+        return $this;
+    }
+    /**
+     * @return string|null
+     */
+    public function getContentEncoding(): ?string
+    {
+        return $this->contentEncoding;
+    }
+    /**
+     * @param string|null $contentEncoding
+     *
+     * @return self
+     */
+    public function setContentEncoding(?string $contentEncoding): self
+    {
+        $this->initialized['contentEncoding'] = true;
+        $this->contentEncoding = $contentEncoding;
+        return $this;
+    }
+    /**
+     * @return string|null
+     */
+    public function getContentMediaType(): ?string
+    {
+        return $this->contentMediaType;
+    }
+    /**
+     * @param string|null $contentMediaType
+     *
+     * @return self
+     */
+    public function setContentMediaType(?string $contentMediaType): self
+    {
+        $this->initialized['contentMediaType'] = true;
+        $this->contentMediaType = $contentMediaType;
+        return $this;
+    }
+    /**
+     * @return JsonSchema|bool|null
+     */
+    public function getContentSchema()
+    {
+        return $this->contentSchema;
+    }
+    /**
+     * @param JsonSchema|bool|null $contentSchema
+     *
+     * @return self
+     */
+    public function setContentSchema($contentSchema): self
+    {
+        $this->initialized['contentSchema'] = true;
+        $this->contentSchema = $contentSchema;
+        return $this;
+    }
+    /**
+     * @deprecated
+     *
+     * @return array<string, JsonSchema|bool>|null
+     */
+    public function getDefinitions(): ?iterable
+    {
+        return $this->definitions;
+    }
+    /**
+     * @param array<string, JsonSchema|bool>|null $definitions
+     *
+     * @deprecated
+     *
+     * @return self
+     */
+    public function setDefinitions(?iterable $definitions): self
+    {
+        $this->initialized['definitions'] = true;
+        $this->definitions = $definitions;
+        return $this;
+    }
+    /**
+     * @deprecated
+     *
+     * @return array<string, JsonSchema|bool|list<string>>|null
+     */
+    public function getDependencies(): ?iterable
+    {
+        return $this->dependencies;
+    }
+    /**
+     * @param array<string, JsonSchema|bool|list<string>>|null $dependencies
+     *
+     * @deprecated
+     *
+     * @return self
+     */
+    public function setDependencies(?iterable $dependencies): self
+    {
+        $this->initialized['dependencies'] = true;
+        $this->dependencies = $dependencies;
+        return $this;
+    }
+    /**
+     * @deprecated
+     *
+     * @return bool|null
+     */
+    public function getDollarRecursiveAnchor(): ?bool
+    {
+        return $this->dollarRecursiveAnchor;
+    }
+    /**
+     * @param bool|null $dollarRecursiveAnchor
+     *
+     * @deprecated
+     *
+     * @return self
+     */
+    public function setDollarRecursiveAnchor(?bool $dollarRecursiveAnchor): self
+    {
+        $this->initialized['dollarRecursiveAnchor'] = true;
+        $this->dollarRecursiveAnchor = $dollarRecursiveAnchor;
+        return $this;
+    }
+    /**
+     * @return string|null
+     */
+    public function getDollarRecursiveRef(): ?string
+    {
+        return $this->dollarRecursiveRef;
+    }
+    /**
+     * @param string|null $dollarRecursiveRef
+     *
+     * @return self
+     */
+    public function setDollarRecursiveRef(?string $dollarRecursiveRef): self
+    {
+        $this->initialized['dollarRecursiveRef'] = true;
+        $this->dollarRecursiveRef = $dollarRecursiveRef;
+        return $this;
+    }
+    /**
+     * @return JsonSchema|bool|null
+     */
+    public function getAdditionalItems()
+    {
+        return $this->additionalItems;
+    }
+    /**
+     * @param JsonSchema|bool|null $additionalItems
+     *
+     * @return self
+     */
+    public function setAdditionalItems($additionalItems): self
+    {
+        $this->initialized['additionalItems'] = true;
+        $this->additionalItems = $additionalItems;
         return $this;
     }
 }

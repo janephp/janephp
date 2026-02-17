@@ -95,7 +95,6 @@ trait GetConstructorTrait
             \count($contentTypes) > 1 ? [new Node\Param(new Expr\Variable('accept'), new Expr\Array_(), new Name('array'))] : []
         );
 
-
         $methodDocumentations = array_merge(
             $pathParamsDoc,
             $pathParamsWithDefaultValueDoc,

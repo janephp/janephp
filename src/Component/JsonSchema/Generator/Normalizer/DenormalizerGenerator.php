@@ -57,8 +57,21 @@ trait DenormalizerGenerator
         $statements = [];
 
         if ($this->useReference) {
+            // In JSON Schema 2020-12, $ref can coexist with other keywords like type, properties, allOf, etc.
+            // Only return a Reference when $ref is not accompanied by structural schema keywords.
+            $refIssetCondition = new Expr\Isset_([new Expr\ArrayDimFetch($dataVariable, new Scalar\String_('$ref'))]);
+            $noTypeCondition = new Expr\BooleanNot(new Expr\Isset_([new Expr\ArrayDimFetch($dataVariable, new Scalar\String_('type'))]));
+            $noPropertiesCondition = new Expr\BooleanNot(new Expr\Isset_([new Expr\ArrayDimFetch($dataVariable, new Scalar\String_('properties'))]));
+            $noAllOfCondition = new Expr\BooleanNot(new Expr\Isset_([new Expr\ArrayDimFetch($dataVariable, new Scalar\String_('allOf'))]));
+
             $statements[] = new Stmt\If_(
-                new Expr\Isset_([new Expr\ArrayDimFetch($dataVariable, new Scalar\String_('$ref'))]),
+                new Expr\BinaryOp\BooleanAnd(
+                    new Expr\BinaryOp\BooleanAnd(
+                        new Expr\BinaryOp\BooleanAnd($refIssetCondition, $noTypeCondition),
+                        $noPropertiesCondition
+                    ),
+                    $noAllOfCondition
+                ),
                 [
                     'stmts' => [
                         new Stmt\Return_(new Expr\New_(new Name('Reference'), [

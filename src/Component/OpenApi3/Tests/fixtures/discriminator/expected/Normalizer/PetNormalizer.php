@@ -33,7 +33,7 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if (array_key_exists('petType', $data) and 'Dog' === $data['petType']) {
             return $this->denormalizer->denormalize($data, 'Jane\Component\OpenApi3\Tests\Expected\Model\Dog', $format, $context);
         }
-        if (isset($data['$ref'])) {
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {

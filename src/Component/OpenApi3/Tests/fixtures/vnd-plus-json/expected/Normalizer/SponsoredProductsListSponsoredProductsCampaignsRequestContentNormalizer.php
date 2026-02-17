@@ -28,7 +28,7 @@ class SponsoredProductsListSponsoredProductsCampaignsRequestContentNormalizer im
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
