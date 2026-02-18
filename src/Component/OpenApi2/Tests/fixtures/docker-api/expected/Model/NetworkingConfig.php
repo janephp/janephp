@@ -14,12 +14,14 @@ class NetworkingConfig
     }
     /**
      * A mapping of network name to endpoint configuration for that network.
+     * 
      *
      * @var array<string, EndpointSettings>
      */
     protected $endpointsConfig;
     /**
      * A mapping of network name to endpoint configuration for that network.
+     * 
      *
      * @return array<string, EndpointSettings>
      */

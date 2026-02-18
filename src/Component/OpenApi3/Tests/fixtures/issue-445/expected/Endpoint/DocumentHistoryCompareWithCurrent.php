@@ -8,12 +8,11 @@ class DocumentHistoryCompareWithCurrent extends \PicturePark\API\Runtime\Client\
     protected $documentId;
     /**
      * Compare the current version of a document with the requested version and get the differences.
-     *
      * @param string $documentType The type of the document (e.g. Content).
      * @param string $documentId The ID of the document (e.g. contentId).
-     * @param array $queryParameters {
-     *     @var int $version The version of the document to compare with.
-     * }
+     * @param array{
+     *    "version"?: int, //The version of the document to compare with.
+     * } $queryParameters
      */
     public function __construct(string $documentType, string $documentId, array $queryParameters = [])
     {
@@ -64,28 +63,28 @@ class DocumentHistoryCompareWithCurrent extends \PicturePark\API\Runtime\Client\
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'PicturePark\API\Model\DocumentHistoryDifference', 'json');
         }
-        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\DocumentHistoryCompareWithCurrentBadRequestException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkValidationException', 'json'), $response);
         }
         if (401 === $status) {
             throw new \PicturePark\API\Exception\DocumentHistoryCompareWithCurrentUnauthorizedException($response);
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\DocumentHistoryCompareWithCurrentNotFoundException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkNotFoundException', 'json'), $response);
         }
         if (405 === $status) {
             throw new \PicturePark\API\Exception\DocumentHistoryCompareWithCurrentMethodNotAllowedException($response);
         }
-        if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (409 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\DocumentHistoryCompareWithCurrentConflictException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkConflictException', 'json'), $response);
         }
         if (429 === $status) {
             throw new \PicturePark\API\Exception\DocumentHistoryCompareWithCurrentTooManyRequestsException($response);
         }
-        if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (500 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\DocumentHistoryCompareWithCurrentInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
     }

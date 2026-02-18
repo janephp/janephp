@@ -37,14 +37,10 @@ class ReposOwnerRepoHooksHookIdPatchBodyConfig extends \ArrayObject
      */
     protected $insecureSsl;
     /**
-     * 
-     *
      * @var string
      */
     protected $address;
     /**
-     * 
-     *
      * @var string
      */
     protected $room;
@@ -137,8 +133,6 @@ class ReposOwnerRepoHooksHookIdPatchBodyConfig extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAddress(): string
@@ -146,8 +140,6 @@ class ReposOwnerRepoHooksHookIdPatchBodyConfig extends \ArrayObject
         return $this->address;
     }
     /**
-     * 
-     *
      * @param string $address
      *
      * @return self
@@ -159,8 +151,6 @@ class ReposOwnerRepoHooksHookIdPatchBodyConfig extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRoom(): string
@@ -168,8 +158,6 @@ class ReposOwnerRepoHooksHookIdPatchBodyConfig extends \ArrayObject
         return $this->room;
     }
     /**
-     * 
-     *
      * @param string $room
      *
      * @return self

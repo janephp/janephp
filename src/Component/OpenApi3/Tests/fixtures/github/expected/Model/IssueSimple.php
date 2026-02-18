@@ -13,170 +13,114 @@ class IssueSimple extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $repositoryUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $labelsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $commentsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $eventsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var int
      */
     protected $number;
     /**
-     * 
-     *
      * @var string
      */
     protected $state;
     /**
-     * 
-     *
      * @var string
      */
     protected $title;
     /**
-     * 
-     *
      * @var string
      */
     protected $body;
     /**
-     * 
-     *
      * @var IssueSimpleUser|null
      */
     protected $user;
     /**
-     * 
-     *
      * @var list<IssueSimpleLabelsItem>
      */
     protected $labels;
     /**
-     * 
-     *
      * @var IssueSimpleAssignee|null
      */
     protected $assignee;
     /**
-     * 
-     *
      * @var list<SimpleUser>|null
      */
     protected $assignees;
     /**
-     * 
-     *
      * @var IssueSimpleMilestone|null
      */
     protected $milestone;
     /**
-     * 
-     *
      * @var bool
      */
     protected $locked;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $activeLockReason;
     /**
-     * 
-     *
      * @var int
      */
     protected $comments;
     /**
-     * 
-     *
      * @var IssueSimplePullRequest
      */
     protected $pullRequest;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $closedAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $authorAssociation;
     /**
-     * 
-     *
      * @var string
      */
     protected $bodyHtml;
     /**
-     * 
-     *
      * @var string
      */
     protected $bodyText;
     /**
-     * 
-     *
      * @var string
      */
     protected $timelineUrl;
@@ -187,14 +131,10 @@ class IssueSimple extends \ArrayObject
      */
     protected $repository;
     /**
-     * 
-     *
      * @var IssueSimplePerformedViaGithubApp|null
      */
     protected $performedViaGithubApp;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -202,8 +142,6 @@ class IssueSimple extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -215,8 +153,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -224,8 +160,6 @@ class IssueSimple extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -237,8 +171,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -246,8 +178,6 @@ class IssueSimple extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -259,8 +189,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRepositoryUrl(): string
@@ -268,8 +196,6 @@ class IssueSimple extends \ArrayObject
         return $this->repositoryUrl;
     }
     /**
-     * 
-     *
      * @param string $repositoryUrl
      *
      * @return self
@@ -281,8 +207,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLabelsUrl(): string
@@ -290,8 +214,6 @@ class IssueSimple extends \ArrayObject
         return $this->labelsUrl;
     }
     /**
-     * 
-     *
      * @param string $labelsUrl
      *
      * @return self
@@ -303,8 +225,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCommentsUrl(): string
@@ -312,8 +232,6 @@ class IssueSimple extends \ArrayObject
         return $this->commentsUrl;
     }
     /**
-     * 
-     *
      * @param string $commentsUrl
      *
      * @return self
@@ -325,8 +243,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEventsUrl(): string
@@ -334,8 +250,6 @@ class IssueSimple extends \ArrayObject
         return $this->eventsUrl;
     }
     /**
-     * 
-     *
      * @param string $eventsUrl
      *
      * @return self
@@ -347,8 +261,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -356,8 +268,6 @@ class IssueSimple extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -369,8 +279,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getNumber(): int
@@ -378,8 +286,6 @@ class IssueSimple extends \ArrayObject
         return $this->number;
     }
     /**
-     * 
-     *
      * @param int $number
      *
      * @return self
@@ -391,8 +297,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getState(): string
@@ -400,8 +304,6 @@ class IssueSimple extends \ArrayObject
         return $this->state;
     }
     /**
-     * 
-     *
      * @param string $state
      *
      * @return self
@@ -413,8 +315,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTitle(): string
@@ -422,8 +322,6 @@ class IssueSimple extends \ArrayObject
         return $this->title;
     }
     /**
-     * 
-     *
      * @param string $title
      *
      * @return self
@@ -435,8 +333,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBody(): string
@@ -444,8 +340,6 @@ class IssueSimple extends \ArrayObject
         return $this->body;
     }
     /**
-     * 
-     *
      * @param string $body
      *
      * @return self
@@ -457,8 +351,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return IssueSimpleUser|null
      */
     public function getUser(): ?IssueSimpleUser
@@ -466,8 +358,6 @@ class IssueSimple extends \ArrayObject
         return $this->user;
     }
     /**
-     * 
-     *
      * @param IssueSimpleUser|null $user
      *
      * @return self
@@ -479,8 +369,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<IssueSimpleLabelsItem>
      */
     public function getLabels(): array
@@ -488,8 +376,6 @@ class IssueSimple extends \ArrayObject
         return $this->labels;
     }
     /**
-     * 
-     *
      * @param list<IssueSimpleLabelsItem> $labels
      *
      * @return self
@@ -501,8 +387,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return IssueSimpleAssignee|null
      */
     public function getAssignee(): ?IssueSimpleAssignee
@@ -510,8 +394,6 @@ class IssueSimple extends \ArrayObject
         return $this->assignee;
     }
     /**
-     * 
-     *
      * @param IssueSimpleAssignee|null $assignee
      *
      * @return self
@@ -523,8 +405,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<SimpleUser>|null
      */
     public function getAssignees(): ?array
@@ -532,8 +412,6 @@ class IssueSimple extends \ArrayObject
         return $this->assignees;
     }
     /**
-     * 
-     *
      * @param list<SimpleUser>|null $assignees
      *
      * @return self
@@ -545,8 +423,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return IssueSimpleMilestone|null
      */
     public function getMilestone(): ?IssueSimpleMilestone
@@ -554,8 +430,6 @@ class IssueSimple extends \ArrayObject
         return $this->milestone;
     }
     /**
-     * 
-     *
      * @param IssueSimpleMilestone|null $milestone
      *
      * @return self
@@ -567,8 +441,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getLocked(): bool
@@ -576,8 +448,6 @@ class IssueSimple extends \ArrayObject
         return $this->locked;
     }
     /**
-     * 
-     *
      * @param bool $locked
      *
      * @return self
@@ -589,8 +459,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getActiveLockReason(): ?string
@@ -598,8 +466,6 @@ class IssueSimple extends \ArrayObject
         return $this->activeLockReason;
     }
     /**
-     * 
-     *
      * @param string|null $activeLockReason
      *
      * @return self
@@ -611,8 +477,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getComments(): int
@@ -620,8 +484,6 @@ class IssueSimple extends \ArrayObject
         return $this->comments;
     }
     /**
-     * 
-     *
      * @param int $comments
      *
      * @return self
@@ -633,8 +495,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return IssueSimplePullRequest
      */
     public function getPullRequest(): IssueSimplePullRequest
@@ -642,8 +502,6 @@ class IssueSimple extends \ArrayObject
         return $this->pullRequest;
     }
     /**
-     * 
-     *
      * @param IssueSimplePullRequest $pullRequest
      *
      * @return self
@@ -655,8 +513,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getClosedAt(): ?\DateTime
@@ -664,8 +520,6 @@ class IssueSimple extends \ArrayObject
         return $this->closedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $closedAt
      *
      * @return self
@@ -677,8 +531,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -686,8 +538,6 @@ class IssueSimple extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -699,8 +549,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -708,8 +556,6 @@ class IssueSimple extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -721,8 +567,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAuthorAssociation(): string
@@ -730,8 +574,6 @@ class IssueSimple extends \ArrayObject
         return $this->authorAssociation;
     }
     /**
-     * 
-     *
      * @param string $authorAssociation
      *
      * @return self
@@ -743,8 +585,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBodyHtml(): string
@@ -752,8 +592,6 @@ class IssueSimple extends \ArrayObject
         return $this->bodyHtml;
     }
     /**
-     * 
-     *
      * @param string $bodyHtml
      *
      * @return self
@@ -765,8 +603,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBodyText(): string
@@ -774,8 +610,6 @@ class IssueSimple extends \ArrayObject
         return $this->bodyText;
     }
     /**
-     * 
-     *
      * @param string $bodyText
      *
      * @return self
@@ -787,8 +621,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTimelineUrl(): string
@@ -796,8 +628,6 @@ class IssueSimple extends \ArrayObject
         return $this->timelineUrl;
     }
     /**
-     * 
-     *
      * @param string $timelineUrl
      *
      * @return self
@@ -831,8 +661,6 @@ class IssueSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return IssueSimplePerformedViaGithubApp|null
      */
     public function getPerformedViaGithubApp(): ?IssueSimplePerformedViaGithubApp
@@ -840,8 +668,6 @@ class IssueSimple extends \ArrayObject
         return $this->performedViaGithubApp;
     }
     /**
-     * 
-     *
      * @param IssueSimplePerformedViaGithubApp|null $performedViaGithubApp
      *
      * @return self

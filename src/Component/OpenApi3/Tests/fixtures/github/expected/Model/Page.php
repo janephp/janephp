@@ -43,8 +43,6 @@ class Page extends \ArrayObject
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var PagesSourceHash
      */
     protected $source;
@@ -159,8 +157,6 @@ class Page extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return PagesSourceHash
      */
     public function getSource(): PagesSourceHash
@@ -168,8 +164,6 @@ class Page extends \ArrayObject
         return $this->source;
     }
     /**
-     * 
-     *
      * @param PagesSourceHash $source
      *
      * @return self

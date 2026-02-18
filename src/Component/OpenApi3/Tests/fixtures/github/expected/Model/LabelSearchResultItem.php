@@ -13,62 +13,42 @@ class LabelSearchResultItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $color;
     /**
-     * 
-     *
      * @var bool
      */
     protected $default;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var int
      */
     protected $score;
     /**
-     * 
-     *
      * @var list<SearchResultTextMatchesItem>
      */
     protected $textMatches;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -76,8 +56,6 @@ class LabelSearchResultItem extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -89,8 +67,6 @@ class LabelSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -98,8 +74,6 @@ class LabelSearchResultItem extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -111,8 +85,6 @@ class LabelSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -120,8 +92,6 @@ class LabelSearchResultItem extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -133,8 +103,6 @@ class LabelSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -142,8 +110,6 @@ class LabelSearchResultItem extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -155,8 +121,6 @@ class LabelSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getColor(): string
@@ -164,8 +128,6 @@ class LabelSearchResultItem extends \ArrayObject
         return $this->color;
     }
     /**
-     * 
-     *
      * @param string $color
      *
      * @return self
@@ -177,8 +139,6 @@ class LabelSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getDefault(): bool
@@ -186,8 +146,6 @@ class LabelSearchResultItem extends \ArrayObject
         return $this->default;
     }
     /**
-     * 
-     *
      * @param bool $default
      *
      * @return self
@@ -199,8 +157,6 @@ class LabelSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription(): ?string
@@ -208,8 +164,6 @@ class LabelSearchResultItem extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -221,8 +175,6 @@ class LabelSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getScore(): int
@@ -230,8 +182,6 @@ class LabelSearchResultItem extends \ArrayObject
         return $this->score;
     }
     /**
-     * 
-     *
      * @param int $score
      *
      * @return self
@@ -243,8 +193,6 @@ class LabelSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<SearchResultTextMatchesItem>
      */
     public function getTextMatches(): array
@@ -252,8 +200,6 @@ class LabelSearchResultItem extends \ArrayObject
         return $this->textMatches;
     }
     /**
-     * 
-     *
      * @param list<SearchResultTextMatchesItem> $textMatches
      *
      * @return self

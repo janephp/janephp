@@ -13,32 +13,22 @@ class Response extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var array<string, Header|Reference>|null
      */
     protected $headers;
     /**
-     * 
-     *
      * @var array<string, MediaType>|null
      */
     protected $content;
     /**
-     * 
-     *
      * @var array<string, Link|Reference>|null
      */
     protected $links;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription() : ?string
@@ -46,8 +36,6 @@ class Response extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -59,8 +47,6 @@ class Response extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, Header|Reference>|null
      */
     public function getHeaders() : ?iterable
@@ -68,8 +54,6 @@ class Response extends \ArrayObject
         return $this->headers;
     }
     /**
-     * 
-     *
      * @param array<string, Header|Reference>|null $headers
      *
      * @return self
@@ -81,8 +65,6 @@ class Response extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, MediaType>|null
      */
     public function getContent() : ?iterable
@@ -90,8 +72,6 @@ class Response extends \ArrayObject
         return $this->content;
     }
     /**
-     * 
-     *
      * @param array<string, MediaType>|null $content
      *
      * @return self
@@ -103,8 +83,6 @@ class Response extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, Link|Reference>|null
      */
     public function getLinks() : ?iterable
@@ -112,8 +90,6 @@ class Response extends \ArrayObject
         return $this->links;
     }
     /**
-     * 
-     *
      * @param array<string, Link|Reference>|null $links
      *
      * @return self

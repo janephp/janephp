@@ -7,13 +7,12 @@ class ActionsGetSelfHostedRunnerForOrg extends \Github\Runtime\Client\BaseEndpoi
     protected $org;
     protected $runner_id;
     /**
-    * **Warning:** The self-hosted runners API for organizations is currently in public beta and subject to change.
-    
-    Gets a specific self-hosted runner for an organization. You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    *
-    * @param string $org 
-    * @param int $runnerId runner_id parameter
-    */
+     * **Warning:** The self-hosted runners API for organizations is currently in public beta and subject to change.
+     *
+     * Gets a specific self-hosted runner for an organization. You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+     * @param string $org
+     * @param int $runnerId runner_id parameter
+     */
     public function __construct(string $org, int $runnerId)
     {
         $this->org = $org;
@@ -46,7 +45,7 @@ class ActionsGetSelfHostedRunnerForOrg extends \Github\Runtime\Client\BaseEndpoi
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\Runner', 'json');
         }
     }

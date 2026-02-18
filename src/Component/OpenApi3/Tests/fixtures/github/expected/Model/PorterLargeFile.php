@@ -13,32 +13,22 @@ class PorterLargeFile extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $refName;
     /**
-     * 
-     *
      * @var string
      */
     protected $path;
     /**
-     * 
-     *
      * @var string
      */
     protected $oid;
     /**
-     * 
-     *
      * @var int
      */
     protected $size;
     /**
-     * 
-     *
      * @return string
      */
     public function getRefName(): string
@@ -46,8 +36,6 @@ class PorterLargeFile extends \ArrayObject
         return $this->refName;
     }
     /**
-     * 
-     *
      * @param string $refName
      *
      * @return self
@@ -59,8 +47,6 @@ class PorterLargeFile extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPath(): string
@@ -68,8 +54,6 @@ class PorterLargeFile extends \ArrayObject
         return $this->path;
     }
     /**
-     * 
-     *
      * @param string $path
      *
      * @return self
@@ -81,8 +65,6 @@ class PorterLargeFile extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getOid(): string
@@ -90,8 +72,6 @@ class PorterLargeFile extends \ArrayObject
         return $this->oid;
     }
     /**
-     * 
-     *
      * @param string $oid
      *
      * @return self
@@ -103,8 +83,6 @@ class PorterLargeFile extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getSize(): int
@@ -112,8 +90,6 @@ class PorterLargeFile extends \ArrayObject
         return $this->size;
     }
     /**
-     * 
-     *
      * @param int $size
      *
      * @return self

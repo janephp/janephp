@@ -11,9 +11,6 @@ use Jane\Component\OpenApiCommon\Guesser\Guess\ParentClass;
 
 class SchemaGuesser extends ObjectGuesser
 {
-    /**
-     * {@inheritdoc}
-     */
     public function supportObject($object): bool
     {
         return ($object instanceof Schema) && ('object' === $object->getType() || null === $object->getType()) && null !== $object->getProperties();
@@ -42,7 +39,7 @@ class SchemaGuesser extends ObjectGuesser
                     $subClassName,
                     preg_replace(
                         '#components/schemas\/.+$#',
-                        sprintf('components/schemas/%s', $subClassName),
+                        \sprintf('components/schemas/%s', $subClassName),
                         $reference
                     ),
                     $discriminatorValue
@@ -61,7 +58,7 @@ class SchemaGuesser extends ObjectGuesser
                     $subClassName,
                     preg_replace(
                         '#components/schemas\/.+$#',
-                        sprintf('components/schemas/%s', $subClassName),
+                        \sprintf('components/schemas/%s', $subClassName),
                         $reference
                     )
                 );

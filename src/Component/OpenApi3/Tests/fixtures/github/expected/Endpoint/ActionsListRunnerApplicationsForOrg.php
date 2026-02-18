@@ -6,12 +6,11 @@ class ActionsListRunnerApplicationsForOrg extends \Github\Runtime\Client\BaseEnd
 {
     protected $org;
     /**
-    * **Warning:** The self-hosted runners API for organizations is currently in public beta and subject to change.
-    
-    Lists binaries for the runner application that you can download and run. You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    *
-    * @param string $org 
-    */
+     * **Warning:** The self-hosted runners API for organizations is currently in public beta and subject to change.
+     *
+     * Lists binaries for the runner application that you can download and run. You must authenticate using an access token with the `admin:org` scope to use this endpoint.
+     * @param string $org
+     */
     public function __construct(string $org)
     {
         $this->org = $org;
@@ -43,7 +42,7 @@ class ActionsListRunnerApplicationsForOrg extends \Github\Runtime\Client\BaseEnd
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\RunnerApplication[]', 'json');
         }
     }

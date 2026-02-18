@@ -13,62 +13,42 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $yearEndDate;
     /**
-     * 
-     *
      * @var float
      */
     protected $numberOfWeeks;
     /**
-     * 
-     *
      * @var string
      */
     protected $currency;
     /**
-     * 
-     *
      * @var bool
      */
     protected $consolidatedAccounts;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss
      */
     protected $profitAndLoss;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportFinancialStatementsItemBalanceSheet
      */
     protected $balanceSheet;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportFinancialStatementsItemOtherFinancials
      */
     protected $otherFinancials;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportFinancialStatementsItemRatios
      */
     protected $ratios;
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -76,8 +56,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -89,8 +67,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getYearEndDate(): string
@@ -98,8 +74,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
         return $this->yearEndDate;
     }
     /**
-     * 
-     *
      * @param string $yearEndDate
      *
      * @return self
@@ -111,8 +85,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getNumberOfWeeks(): float
@@ -120,8 +92,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
         return $this->numberOfWeeks;
     }
     /**
-     * 
-     *
      * @param float $numberOfWeeks
      *
      * @return self
@@ -133,8 +103,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCurrency(): string
@@ -142,8 +110,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
         return $this->currency;
     }
     /**
-     * 
-     *
      * @param string $currency
      *
      * @return self
@@ -155,8 +121,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getConsolidatedAccounts(): bool
@@ -164,8 +128,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
         return $this->consolidatedAccounts;
     }
     /**
-     * 
-     *
      * @param bool $consolidatedAccounts
      *
      * @return self
@@ -177,8 +139,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss
      */
     public function getProfitAndLoss(): GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss
@@ -186,8 +146,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
         return $this->profitAndLoss;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss $profitAndLoss
      *
      * @return self
@@ -199,8 +157,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportFinancialStatementsItemBalanceSheet
      */
     public function getBalanceSheet(): GbCompanyReportExampleResponseReportFinancialStatementsItemBalanceSheet
@@ -208,8 +164,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
         return $this->balanceSheet;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportFinancialStatementsItemBalanceSheet $balanceSheet
      *
      * @return self
@@ -221,8 +175,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportFinancialStatementsItemOtherFinancials
      */
     public function getOtherFinancials(): GbCompanyReportExampleResponseReportFinancialStatementsItemOtherFinancials
@@ -230,8 +182,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
         return $this->otherFinancials;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportFinancialStatementsItemOtherFinancials $otherFinancials
      *
      * @return self
@@ -243,8 +193,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportFinancialStatementsItemRatios
      */
     public function getRatios(): GbCompanyReportExampleResponseReportFinancialStatementsItemRatios
@@ -252,8 +200,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
         return $this->ratios;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportFinancialStatementsItemRatios $ratios
      *
      * @return self

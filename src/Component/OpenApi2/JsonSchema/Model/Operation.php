@@ -13,8 +13,6 @@ class Operation extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string[]|null
      */
     protected $tags;
@@ -73,20 +71,14 @@ class Operation extends \ArrayObject
      */
     protected $schemes;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $deprecated = false;
     /**
-     * 
-     *
      * @var array<string, string[]>[]|null
      */
     protected $security;
     /**
-     * 
-     *
      * @return string[]|null
      */
     public function getTags() : ?array
@@ -94,8 +86,6 @@ class Operation extends \ArrayObject
         return $this->tags;
     }
     /**
-     * 
-     *
      * @param string[]|null $tags
      *
      * @return self
@@ -305,8 +295,6 @@ class Operation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getDeprecated() : ?bool
@@ -314,8 +302,6 @@ class Operation extends \ArrayObject
         return $this->deprecated;
     }
     /**
-     * 
-     *
      * @param bool|null $deprecated
      *
      * @return self
@@ -327,8 +313,6 @@ class Operation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, string[]>[]|null
      */
     public function getSecurity() : ?array
@@ -336,8 +320,6 @@ class Operation extends \ArrayObject
         return $this->security;
     }
     /**
-     * 
-     *
      * @param array<string, string[]>[]|null $security
      *
      * @return self

@@ -37,25 +37,25 @@ class SchemaUpdateRequest
      */
     protected $fields;
     /**
-    * A list of schema fields overwrite information. It is used to overwrite the field configuration coming from the parent schema.
-    Only a subset of properties of a FieldSingleTagbox and FieldMultiTagbox can be be overwritten. All other properties and fields cannot.
-    *
-    * @var list<FieldOverwriteBase>|null
-    */
+     * A list of schema fields overwrite information. It is used to overwrite the field configuration coming from the parent schema.
+     * Only a subset of properties of a FieldSingleTagbox and FieldMultiTagbox can be be overwritten. All other properties and fields cannot.
+     *
+     * @var list<FieldOverwriteBase>|null
+     */
     protected $fieldsOverwrite;
     /**
-    * An optional list of aggregations to show grouped list item documents. When aggregations are defined for a List,
-    the UI uses such information to show the available filters and grouped results.
-    *
-    * @var list<AggregatorBase>|null
-    */
+     * An optional list of aggregations to show grouped list item documents. When aggregations are defined for a List,
+     * the UI uses such information to show the available filters and grouped results.
+     *
+     * @var list<AggregatorBase>|null
+     */
     protected $aggregations;
     /**
-    * Sorts content documents and/or list items. In order for the sorting to work properly, the Sortable property of the related field
-    must be set to true. Multiple sorting is supported: they are applied in the specified order.
-    *
-    * @var list<SortInfo>|null
-    */
+     * Sorts content documents and/or list items. In order for the sorting to work properly, the Sortable property of the related field
+     * must be set to true. Multiple sorting is supported: they are applied in the specified order.
+     *
+     * @var list<SortInfo>|null
+     */
     protected $sort;
     /**
      * Defines a schema as viewable by everyone. Everyone with ManageSchema user permission is able to see the schema.
@@ -76,11 +76,11 @@ class SchemaUpdateRequest
      */
     protected $layerSchemaIds;
     /**
-    * If the schema if of type Layer, the list contains the schemas with type Content
-    that reference the layer.
-    *
-    * @var list<string>|null
-    */
+     * If the schema if of type Layer, the list contains the schemas with type Content
+     * that reference the layer.
+     *
+     * @var list<string>|null
+     */
     protected $referencedInContentSchemaIds;
     /**
      * Language specific schema names.
@@ -171,11 +171,11 @@ class SchemaUpdateRequest
         return $this;
     }
     /**
-    * A list of schema fields overwrite information. It is used to overwrite the field configuration coming from the parent schema.
-    Only a subset of properties of a FieldSingleTagbox and FieldMultiTagbox can be be overwritten. All other properties and fields cannot.
-    *
-    * @return list<FieldOverwriteBase>|null
-    */
+     * A list of schema fields overwrite information. It is used to overwrite the field configuration coming from the parent schema.
+     * Only a subset of properties of a FieldSingleTagbox and FieldMultiTagbox can be be overwritten. All other properties and fields cannot.
+     *
+     * @return list<FieldOverwriteBase>|null
+     */
     public function getFieldsOverwrite(): ?array
     {
         return $this->fieldsOverwrite;
@@ -195,11 +195,11 @@ class SchemaUpdateRequest
         return $this;
     }
     /**
-    * An optional list of aggregations to show grouped list item documents. When aggregations are defined for a List,
-    the UI uses such information to show the available filters and grouped results.
-    *
-    * @return list<AggregatorBase>|null
-    */
+     * An optional list of aggregations to show grouped list item documents. When aggregations are defined for a List,
+     * the UI uses such information to show the available filters and grouped results.
+     *
+     * @return list<AggregatorBase>|null
+     */
     public function getAggregations(): ?array
     {
         return $this->aggregations;
@@ -219,11 +219,11 @@ class SchemaUpdateRequest
         return $this;
     }
     /**
-    * Sorts content documents and/or list items. In order for the sorting to work properly, the Sortable property of the related field
-    must be set to true. Multiple sorting is supported: they are applied in the specified order.
-    *
-    * @return list<SortInfo>|null
-    */
+     * Sorts content documents and/or list items. In order for the sorting to work properly, the Sortable property of the related field
+     * must be set to true. Multiple sorting is supported: they are applied in the specified order.
+     *
+     * @return list<SortInfo>|null
+     */
     public function getSort(): ?array
     {
         return $this->sort;
@@ -309,11 +309,11 @@ class SchemaUpdateRequest
         return $this;
     }
     /**
-    * If the schema if of type Layer, the list contains the schemas with type Content
-    that reference the layer.
-    *
-    * @return list<string>|null
-    */
+     * If the schema if of type Layer, the list contains the schemas with type Content
+     * that reference the layer.
+     *
+     * @return list<string>|null
+     */
     public function getReferencedInContentSchemaIds(): ?array
     {
         return $this->referencedInContentSchemaIds;

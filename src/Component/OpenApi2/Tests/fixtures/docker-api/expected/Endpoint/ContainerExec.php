@@ -7,7 +7,6 @@ class ContainerExec extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
     protected $id;
     /**
      * Run a command inside a running container.
-     *
      * @param string $id ID or name of container
      * @param \Docker\Api\Model\ContainersIdExecPostBody $execConfig Exec configuration
      */

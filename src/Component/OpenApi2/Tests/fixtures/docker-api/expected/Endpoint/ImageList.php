@@ -5,24 +5,23 @@ namespace Docker\Api\Endpoint;
 class ImageList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docker\Api\Runtime\Client\Endpoint
 {
     /**
-    * Returns a list of images on the server. Note that it uses a different, smaller representation of an image than inspecting a single image.
-    *
-    * @param array $queryParameters {
-    *     @var bool $all Show all images. Only images from a final layer (no children) are shown by default.
-    *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
-    process on the images list.
-    
-    Available filters:
-    
-    - `before`=(`<image-name>[:<tag>]`,  `<image id>` or `<image@digest>`)
-    - `dangling=true`
-    - `label=key` or `label="key=value"` of an image label
-    - `reference`=(`<image-name>[:<tag>]`)
-    - `since`=(`<image-name>[:<tag>]`,  `<image id>` or `<image@digest>`)
-    
-    *     @var bool $digests Show digest information as a `RepoDigests` field on each image.
-    * }
-    */
+     * Returns a list of images on the server. Note that it uses a different, smaller representation of an image than inspecting a single image.
+     * @param array $queryParameters {
+     *     @var bool $all Show all images. Only images from a final layer (no children) are shown by default.
+     *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
+     *     process on the images list.
+     *     
+     *     Available filters:
+     *     
+     *     - `before`=(`<image-name>[:<tag>]`,  `<image id>` or `<image@digest>`)
+     *     - `dangling=true`
+     *     - `label=key` or `label="key=value"` of an image label
+     *     - `reference`=(`<image-name>[:<tag>]`)
+     *     - `since`=(`<image-name>[:<tag>]`,  `<image id>` or `<image@digest>`)
+     *     
+     *     @var bool $digests Show digest information as a `RepoDigests` field on each image.
+     * }
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

@@ -13,20 +13,14 @@ class PullRequestReviewLinks extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var PullRequestReviewLinksHtml
      */
     protected $html;
     /**
-     * 
-     *
      * @var PullRequestReviewLinksPullRequest
      */
     protected $pullRequest;
     /**
-     * 
-     *
      * @return PullRequestReviewLinksHtml
      */
     public function getHtml(): PullRequestReviewLinksHtml
@@ -34,8 +28,6 @@ class PullRequestReviewLinks extends \ArrayObject
         return $this->html;
     }
     /**
-     * 
-     *
      * @param PullRequestReviewLinksHtml $html
      *
      * @return self
@@ -47,8 +39,6 @@ class PullRequestReviewLinks extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return PullRequestReviewLinksPullRequest
      */
     public function getPullRequest(): PullRequestReviewLinksPullRequest
@@ -56,8 +46,6 @@ class PullRequestReviewLinks extends \ArrayObject
         return $this->pullRequest;
     }
     /**
-     * 
-     *
      * @param PullRequestReviewLinksPullRequest $pullRequest
      *
      * @return self

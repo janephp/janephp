@@ -13,8 +13,6 @@ class DetailedUser extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $format;
@@ -109,8 +107,6 @@ class DetailedUser extends \ArrayObject
      */
     protected $stats;
     /**
-     * 
-     *
      * @return string
      */
     public function getFormat(): string
@@ -118,8 +114,6 @@ class DetailedUser extends \ArrayObject
         return $this->format;
     }
     /**
-     * 
-     *
      * @param string $format
      *
      * @return self

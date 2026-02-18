@@ -8,13 +8,12 @@ class ActionsListRepoSecrets extends \Github\Runtime\Client\BaseEndpoint impleme
     protected $repo;
     /**
      * Lists all secrets available in a repository without revealing their encrypted values. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository permission to use this endpoint.
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param string $owner
+     * @param string $repo
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $owner, string $repo, array $queryParameters = [])
     {
@@ -59,7 +58,7 @@ class ActionsListRepoSecrets extends \Github\Runtime\Client\BaseEndpoint impleme
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\ReposOwnerRepoActionsSecretsGetResponse200', 'json');
         }
     }

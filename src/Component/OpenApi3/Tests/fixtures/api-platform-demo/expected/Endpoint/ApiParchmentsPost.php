@@ -7,8 +7,7 @@ class ApiParchmentsPost extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint im
     protected $accept;
     /**
      * Creates a Parchment resource.
-     *
-     * @param \ApiPlatform\Demo\Model\ParchmentJsonld|\ApiPlatform\Demo\Model\ParchmentJsonhal|\ApiPlatform\Demo\Model\Parchment $requestBody 
+     * @param \ApiPlatform\Demo\Model\ParchmentJsonld|\ApiPlatform\Demo\Model\ParchmentJsonhal|\ApiPlatform\Demo\Model\Parchment $requestBody
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
      */
     public function __construct($requestBody, array $accept = [])
@@ -76,16 +75,16 @@ class ApiParchmentsPost extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint im
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (201 === $status) {
-            if (mb_strpos($contentType, 'application/ld+json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/ld+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\ParchmentJsonld', 'json');
             }
-            if (mb_strpos($contentType, 'application/hal+json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/hal+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\ParchmentJsonhal', 'json');
             }
-            if (mb_strpos($contentType, 'application/vnd.api+json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/vnd.api+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\Parchment', 'json');
             }
-            if (mb_strpos($contentType, 'application/json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\Parchment', 'json');
             }
         }

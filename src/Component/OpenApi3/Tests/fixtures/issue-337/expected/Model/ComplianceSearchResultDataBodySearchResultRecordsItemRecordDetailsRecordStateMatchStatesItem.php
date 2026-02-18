@@ -13,20 +13,14 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $matchID;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @return int
      */
     public function getMatchID(): int
@@ -34,8 +28,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return $this->matchID;
     }
     /**
-     * 
-     *
      * @param int $matchID
      *
      * @return self
@@ -47,8 +39,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -56,8 +46,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self

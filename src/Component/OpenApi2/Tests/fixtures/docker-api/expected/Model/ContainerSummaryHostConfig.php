@@ -13,14 +13,10 @@ class ContainerSummaryHostConfig
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $networkMode;
     /**
-     * 
-     *
      * @return string
      */
     public function getNetworkMode(): string
@@ -28,8 +24,6 @@ class ContainerSummaryHostConfig
         return $this->networkMode;
     }
     /**
-     * 
-     *
      * @param string $networkMode
      *
      * @return self

@@ -7,13 +7,12 @@ class OrgsRemoveMembershipForUser extends \Github\Runtime\Client\BaseEndpoint im
     protected $org;
     protected $username;
     /**
-    * In order to remove a user's membership with an organization, the authenticated user must be an organization owner.
-    
-    If the specified user is an active member of the organization, this will remove them from the organization. If the specified user has been invited to the organization, this will cancel their invitation. The specified user will receive an email notification in both cases.
-    *
-    * @param string $org 
-    * @param string $username 
-    */
+     * In order to remove a user's membership with an organization, the authenticated user must be an organization owner.
+     *
+     * If the specified user is an active member of the organization, this will remove them from the organization. If the specified user has been invited to the organization, this will cancel their invitation. The specified user will receive an email notification in both cases.
+     * @param string $org
+     * @param string $username
+     */
     public function __construct(string $org, string $username)
     {
         $this->org = $org;
@@ -51,10 +50,10 @@ class OrgsRemoveMembershipForUser extends \Github\Runtime\Client\BaseEndpoint im
         if (204 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\OrgsRemoveMembershipForUserForbiddenException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\OrgsRemoveMembershipForUserNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

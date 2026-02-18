@@ -6,8 +6,6 @@ class NetworkInspect extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
 {
     protected $id;
     /**
-     * 
-     *
      * @param string $id Network ID or name
      * @param array $queryParameters {
      *     @var bool $verbose Detailed inspect output for troubleshooting

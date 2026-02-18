@@ -13,9 +13,6 @@ class ItemsGuesser implements GuesserInterface, ClassGuesserInterface, ChainGues
 {
     use ChainGuesserAwareTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
         if ($object->getItems() instanceof JsonSchema) {
@@ -27,9 +24,6 @@ class ItemsGuesser implements GuesserInterface, ClassGuesserInterface, ChainGues
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportObject($object): bool
     {
         $class = $this->getSchemaClass();

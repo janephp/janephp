@@ -6,14 +6,13 @@ class TeamsDeleteLegacy extends \Github\Runtime\Client\BaseEndpoint implements \
 {
     protected $team_id;
     /**
-    * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Delete a team](https://developer.github.com/v3/teams/#delete-a-team) endpoint.
-    
-    To delete a team, the authenticated user must be an organization owner or team maintainer.
-    
-    If you are an organization owner, deleting a parent team will delete all of its child teams as well.
-    *
-    * @param int $teamId 
-    */
+     * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Delete a team](https://developer.github.com/v3/teams/#delete-a-team) endpoint.
+     *
+     * To delete a team, the authenticated user must be an organization owner or team maintainer.
+     *
+     * If you are an organization owner, deleting a parent team will delete all of its child teams as well.
+     * @param int $teamId
+     */
     public function __construct(int $teamId)
     {
         $this->team_id = $teamId;
@@ -50,10 +49,10 @@ class TeamsDeleteLegacy extends \Github\Runtime\Client\BaseEndpoint implements \
         if (204 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\TeamsDeleteLegacyNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\TeamsDeleteLegacyUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationError', 'json'), $response);
         }
     }

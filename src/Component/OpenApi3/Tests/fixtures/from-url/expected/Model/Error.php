@@ -13,20 +13,14 @@ class Error extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $code;
     /**
-     * 
-     *
      * @var string
      */
     protected $message;
     /**
-     * 
-     *
      * @return int
      */
     public function getCode(): int
@@ -34,8 +28,6 @@ class Error extends \ArrayObject
         return $this->code;
     }
     /**
-     * 
-     *
      * @param int $code
      *
      * @return self
@@ -47,8 +39,6 @@ class Error extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMessage(): string
@@ -56,8 +46,6 @@ class Error extends \ArrayObject
         return $this->message;
     }
     /**
-     * 
-     *
      * @param string $message
      *
      * @return self

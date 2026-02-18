@@ -13,68 +13,46 @@ class FileCommitCommit extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $sha;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var FileCommitCommitAuthor
      */
     protected $author;
     /**
-     * 
-     *
      * @var FileCommitCommitCommitter
      */
     protected $committer;
     /**
-     * 
-     *
      * @var string
      */
     protected $message;
     /**
-     * 
-     *
      * @var FileCommitCommitTree
      */
     protected $tree;
     /**
-     * 
-     *
      * @var list<FileCommitCommitParentsItem>
      */
     protected $parents;
     /**
-     * 
-     *
      * @var FileCommitCommitVerification
      */
     protected $verification;
     /**
-     * 
-     *
      * @return string
      */
     public function getSha(): string
@@ -82,8 +60,6 @@ class FileCommitCommit extends \ArrayObject
         return $this->sha;
     }
     /**
-     * 
-     *
      * @param string $sha
      *
      * @return self
@@ -95,8 +71,6 @@ class FileCommitCommit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -104,8 +78,6 @@ class FileCommitCommit extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -117,8 +89,6 @@ class FileCommitCommit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -126,8 +96,6 @@ class FileCommitCommit extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -139,8 +107,6 @@ class FileCommitCommit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -148,8 +114,6 @@ class FileCommitCommit extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -161,8 +125,6 @@ class FileCommitCommit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return FileCommitCommitAuthor
      */
     public function getAuthor(): FileCommitCommitAuthor
@@ -170,8 +132,6 @@ class FileCommitCommit extends \ArrayObject
         return $this->author;
     }
     /**
-     * 
-     *
      * @param FileCommitCommitAuthor $author
      *
      * @return self
@@ -183,8 +143,6 @@ class FileCommitCommit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return FileCommitCommitCommitter
      */
     public function getCommitter(): FileCommitCommitCommitter
@@ -192,8 +150,6 @@ class FileCommitCommit extends \ArrayObject
         return $this->committer;
     }
     /**
-     * 
-     *
      * @param FileCommitCommitCommitter $committer
      *
      * @return self
@@ -205,8 +161,6 @@ class FileCommitCommit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMessage(): string
@@ -214,8 +168,6 @@ class FileCommitCommit extends \ArrayObject
         return $this->message;
     }
     /**
-     * 
-     *
      * @param string $message
      *
      * @return self
@@ -227,8 +179,6 @@ class FileCommitCommit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return FileCommitCommitTree
      */
     public function getTree(): FileCommitCommitTree
@@ -236,8 +186,6 @@ class FileCommitCommit extends \ArrayObject
         return $this->tree;
     }
     /**
-     * 
-     *
      * @param FileCommitCommitTree $tree
      *
      * @return self
@@ -249,8 +197,6 @@ class FileCommitCommit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<FileCommitCommitParentsItem>
      */
     public function getParents(): array
@@ -258,8 +204,6 @@ class FileCommitCommit extends \ArrayObject
         return $this->parents;
     }
     /**
-     * 
-     *
      * @param list<FileCommitCommitParentsItem> $parents
      *
      * @return self
@@ -271,8 +215,6 @@ class FileCommitCommit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return FileCommitCommitVerification
      */
     public function getVerification(): FileCommitCommitVerification
@@ -280,8 +222,6 @@ class FileCommitCommit extends \ArrayObject
         return $this->verification;
     }
     /**
-     * 
-     *
      * @param FileCommitCommitVerification $verification
      *
      * @return self

@@ -13,20 +13,14 @@ class OrgsOrgInstallationsGetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $totalCount;
     /**
-     * 
-     *
      * @var list<Installation>
      */
     protected $installations;
     /**
-     * 
-     *
      * @return int
      */
     public function getTotalCount(): int
@@ -34,8 +28,6 @@ class OrgsOrgInstallationsGetResponse200 extends \ArrayObject
         return $this->totalCount;
     }
     /**
-     * 
-     *
      * @param int $totalCount
      *
      * @return self
@@ -47,8 +39,6 @@ class OrgsOrgInstallationsGetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<Installation>
      */
     public function getInstallations(): array
@@ -56,8 +46,6 @@ class OrgsOrgInstallationsGetResponse200 extends \ArrayObject
         return $this->installations;
     }
     /**
-     * 
-     *
      * @param list<Installation> $installations
      *
      * @return self

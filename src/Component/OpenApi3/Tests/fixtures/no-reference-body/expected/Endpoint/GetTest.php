@@ -5,9 +5,7 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
 class GetTest extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
-     * 
-     *
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\TestGetBody $requestBody 
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\TestGetBody $requestBody
      */
     public function __construct(\Jane\Component\OpenApi3\Tests\Expected\Model\TestGetBody $requestBody)
     {

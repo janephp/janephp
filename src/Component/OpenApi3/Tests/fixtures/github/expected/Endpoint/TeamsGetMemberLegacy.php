@@ -7,15 +7,14 @@ class TeamsGetMemberLegacy extends \Github\Runtime\Client\BaseEndpoint implement
     protected $team_id;
     protected $username;
     /**
-    * The "Get team member" endpoint (described below) is deprecated.
-    
-    We recommend using the [Get team membership for a user](https://developer.github.com/v3/teams/members/#get-team-membership-for-a-user) endpoint instead. It allows you to get both active and pending memberships.
-    
-    To list members in a team, the team must be visible to the authenticated user.
-    *
-    * @param int $teamId 
-    * @param string $username 
-    */
+     * The "Get team member" endpoint (described below) is deprecated.
+     *
+     * We recommend using the [Get team membership for a user](https://developer.github.com/v3/teams/members/#get-team-membership-for-a-user) endpoint instead. It allows you to get both active and pending memberships.
+     *
+     * To list members in a team, the team must be visible to the authenticated user.
+     * @param int $teamId
+     * @param string $username
+     */
     public function __construct(int $teamId, string $username)
     {
         $this->team_id = $teamId;

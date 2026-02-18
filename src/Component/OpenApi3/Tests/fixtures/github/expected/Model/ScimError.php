@@ -13,44 +13,30 @@ class ScimError extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $message;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $documentationUrl;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $detail;
     /**
-     * 
-     *
      * @var int
      */
     protected $status;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $scimType;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $schemas;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getMessage(): ?string
@@ -58,8 +44,6 @@ class ScimError extends \ArrayObject
         return $this->message;
     }
     /**
-     * 
-     *
      * @param string|null $message
      *
      * @return self
@@ -71,8 +55,6 @@ class ScimError extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDocumentationUrl(): ?string
@@ -80,8 +62,6 @@ class ScimError extends \ArrayObject
         return $this->documentationUrl;
     }
     /**
-     * 
-     *
      * @param string|null $documentationUrl
      *
      * @return self
@@ -93,8 +73,6 @@ class ScimError extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDetail(): ?string
@@ -102,8 +80,6 @@ class ScimError extends \ArrayObject
         return $this->detail;
     }
     /**
-     * 
-     *
      * @param string|null $detail
      *
      * @return self
@@ -115,8 +91,6 @@ class ScimError extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getStatus(): int
@@ -124,8 +98,6 @@ class ScimError extends \ArrayObject
         return $this->status;
     }
     /**
-     * 
-     *
      * @param int $status
      *
      * @return self
@@ -137,8 +109,6 @@ class ScimError extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getScimType(): ?string
@@ -146,8 +116,6 @@ class ScimError extends \ArrayObject
         return $this->scimType;
     }
     /**
-     * 
-     *
      * @param string|null $scimType
      *
      * @return self
@@ -159,8 +127,6 @@ class ScimError extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getSchemas(): array
@@ -168,8 +134,6 @@ class ScimError extends \ArrayObject
         return $this->schemas;
     }
     /**
-     * 
-     *
      * @param list<string> $schemas
      *
      * @return self

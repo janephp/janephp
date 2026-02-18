@@ -9,10 +9,9 @@ class ActionsGetWorkflow extends \Github\Runtime\Client\BaseEndpoint implements 
     protected $workflow_id;
     /**
      * Gets a specific workflow. You can also replace `:workflow_id` with `:workflow_file_name`. For example, you could use `main.yml`. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param int $workflowId 
+     * @param string $owner
+     * @param string $repo
+     * @param int $workflowId
      */
     public function __construct(string $owner, string $repo, int $workflowId)
     {
@@ -47,7 +46,7 @@ class ActionsGetWorkflow extends \Github\Runtime\Client\BaseEndpoint implements 
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\Workflow', 'json');
         }
     }

@@ -1,0 +1,81 @@
+<?php
+
+namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+
+class PartialUpdateProfilesTunnelSoftgreById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+{
+    protected $id;
+    /**
+     * @param string $id
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifySoftGREProfile $body
+     * @param array $queryParameters {
+     *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
+     * }
+     */
+    public function __construct(string $id, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifySoftGREProfile $body, array $queryParameters = [])
+    {
+        $this->id = $id;
+        $this->body = $body;
+        $this->queryParameters = $queryParameters;
+    }
+    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    public function getMethod(): string
+    {
+        return 'PATCH';
+    }
+    public function getUri(): string
+    {
+        return str_replace(['{id}'], [$this->id], '/profiles/tunnel/softgre/{id}');
+    }
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    {
+        return $this->getSerializedBody($serializer);
+    }
+    public function getExtraHeaders(): array
+    {
+        return ['Accept' => ['application/json']];
+    }
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(['serviceTicket']);
+        $optionsResolver->setRequired(['serviceTicket']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('serviceTicket', ['string']);
+        return $optionsResolver;
+    }
+    /**
+     * {@inheritdoc}
+     *
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesTunnelSoftgreByIdBadRequestException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesTunnelSoftgreByIdForbiddenException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesTunnelSoftgreByIdInternalServerErrorException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesTunnelSoftgreByIdUnprocessableEntityException
+     *
+     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult
+     */
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    {
+        $status = $response->getStatusCode();
+        $body = (string) $response->getBody();
+        if (400 === $status) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesTunnelSoftgreByIdBadRequestException($response);
+        }
+        if (403 === $status) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesTunnelSoftgreByIdForbiddenException($response);
+        }
+        if (500 === $status) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesTunnelSoftgreByIdInternalServerErrorException($response);
+        }
+        if (422 === $status) {
+            throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PartialUpdateProfilesTunnelSoftgreByIdUnprocessableEntityException($response);
+        }
+        if (204 === $status) {
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\CommonEmptyResult', 'json');
+        }
+    }
+    public function getAuthenticationScopes(): array
+    {
+        return [];
+    }
+}

@@ -9,11 +9,10 @@ class IssuesAddAssignees extends \Github\Runtime\Client\BaseEndpoint implements 
     protected $issue_number;
     /**
      * Adds up to 10 assignees to an issue. Users already assigned to an issue are not replaced.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $issueNumber issue_number parameter
-     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody $requestBody
      */
     public function __construct(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberAssigneesPostBody $requestBody = null)
     {
@@ -52,7 +51,7 @@ class IssuesAddAssignees extends \Github\Runtime\Client\BaseEndpoint implements 
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\IssueSimple', 'json');
         }
     }

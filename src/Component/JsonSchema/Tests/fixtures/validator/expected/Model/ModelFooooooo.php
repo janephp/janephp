@@ -13,152 +13,102 @@ class ModelFooooooo
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $enumString;
     /**
-     * 
-     *
      * @var string
      */
     protected $enumArrayString;
     /**
-     * 
-     *
      * @var mixed
      */
     protected $enumNoType;
     /**
-     * 
-     *
      * @var string
      */
     protected $constString;
     /**
-     * 
-     *
      * @var string
      */
     protected $minLengthString;
     /**
-     * 
-     *
      * @var string
      */
     protected $maxLengthString;
     /**
-     * 
-     *
      * @var string
      */
     protected $minMaxLengthString;
     /**
-     * 
-     *
      * @var string
      */
     protected $patternString;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $arrayMinItems;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $arrayMaxItems;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $arrayMinMaxItems;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $arrayUnique;
     /**
-     * 
-     *
      * @var int
      */
     protected $numericMultipleOf;
     /**
-     * 
-     *
      * @var int
      */
     protected $numericMaximum;
     /**
-     * 
-     *
      * @var int
      */
     protected $numericExclusiveMaximum;
     /**
-     * 
-     *
      * @var int
      */
     protected $numericMinimum;
     /**
-     * 
-     *
      * @var int
      */
     protected $numericExclusiveMinimum;
     /**
-     * 
-     *
      * @var string
      */
     protected $emailFormat;
     /**
-     * 
-     *
      * @var string
      */
     protected $ipv4Format;
     /**
-     * 
-     *
      * @var string
      */
     protected $ipv6Format;
     /**
-     * 
-     *
      * @var string
      */
     protected $uriFormat;
     /**
-     * 
-     *
      * @var string
      */
     protected $iriFormat;
     /**
-     * 
-     *
      * @var string
      */
     protected $uuidFormat;
     /**
-     * 
-     *
      * @var FooFooFoo
      */
     protected $foo;
     /**
-     * 
-     *
      * @return string
      */
     public function getEnumString(): string
@@ -166,8 +116,6 @@ class ModelFooooooo
         return $this->enumString;
     }
     /**
-     * 
-     *
      * @param string $enumString
      *
      * @return self
@@ -179,8 +127,6 @@ class ModelFooooooo
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEnumArrayString(): string
@@ -188,8 +134,6 @@ class ModelFooooooo
         return $this->enumArrayString;
     }
     /**
-     * 
-     *
      * @param string $enumArrayString
      *
      * @return self
@@ -201,8 +145,6 @@ class ModelFooooooo
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getEnumNoType()
@@ -210,8 +152,6 @@ class ModelFooooooo
         return $this->enumNoType;
     }
     /**
-     * 
-     *
      * @param mixed $enumNoType
      *
      * @return self
@@ -223,8 +163,6 @@ class ModelFooooooo
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getConstString(): string
@@ -232,8 +170,6 @@ class ModelFooooooo
         return $this->constString;
     }
     /**
-     * 
-     *
      * @param string $constString
      *
      * @return self
@@ -245,8 +181,6 @@ class ModelFooooooo
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMinLengthString(): string
@@ -254,8 +188,6 @@ class ModelFooooooo
         return $this->minLengthString;
     }
     /**
-     * 
-     *
      * @param string $minLengthString
      *
      * @return self
@@ -267,8 +199,6 @@ class ModelFooooooo
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMaxLengthString(): string
@@ -276,8 +206,6 @@ class ModelFooooooo
         return $this->maxLengthString;
     }
     /**
-     * 
-     *
      * @param string $maxLengthString
      *
      * @return self
@@ -289,8 +217,6 @@ class ModelFooooooo
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMinMaxLengthString(): string
@@ -298,8 +224,6 @@ class ModelFooooooo
         return $this->minMaxLengthString;
     }
     /**
-     * 
-     *
      * @param string $minMaxLengthString
      *
      * @return self
@@ -311,8 +235,6 @@ class ModelFooooooo
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPatternString(): string
@@ -320,8 +242,6 @@ class ModelFooooooo
         return $this->patternString;
     }
     /**
-     * 
-     *
      * @param string $patternString
      *
      * @return self
@@ -333,8 +253,6 @@ class ModelFooooooo
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getArrayMinItems(): array
@@ -342,8 +260,6 @@ class ModelFooooooo
         return $this->arrayMinItems;
     }
     /**
-     * 
-     *
      * @param list<string> $arrayMinItems
      *
      * @return self
@@ -355,8 +271,6 @@ class ModelFooooooo
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getArrayMaxItems(): array
@@ -364,8 +278,6 @@ class ModelFooooooo
         return $this->arrayMaxItems;
     }
     /**
-     * 
-     *
      * @param list<string> $arrayMaxItems
      *
      * @return self
@@ -377,8 +289,6 @@ class ModelFooooooo
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getArrayMinMaxItems(): array
@@ -386,8 +296,6 @@ class ModelFooooooo
         return $this->arrayMinMaxItems;
     }
     /**
-     * 
-     *
      * @param list<string> $arrayMinMaxItems
      *
      * @return self
@@ -399,8 +307,6 @@ class ModelFooooooo
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getArrayUnique(): array
@@ -408,8 +314,6 @@ class ModelFooooooo
         return $this->arrayUnique;
     }
     /**
-     * 
-     *
      * @param list<string> $arrayUnique
      *
      * @return self
@@ -421,8 +325,6 @@ class ModelFooooooo
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getNumericMultipleOf(): int
@@ -430,8 +332,6 @@ class ModelFooooooo
         return $this->numericMultipleOf;
     }
     /**
-     * 
-     *
      * @param int $numericMultipleOf
      *
      * @return self
@@ -443,8 +343,6 @@ class ModelFooooooo
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getNumericMaximum(): int
@@ -452,8 +350,6 @@ class ModelFooooooo
         return $this->numericMaximum;
     }
     /**
-     * 
-     *
      * @param int $numericMaximum
      *
      * @return self
@@ -465,8 +361,6 @@ class ModelFooooooo
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getNumericExclusiveMaximum(): int
@@ -474,8 +368,6 @@ class ModelFooooooo
         return $this->numericExclusiveMaximum;
     }
     /**
-     * 
-     *
      * @param int $numericExclusiveMaximum
      *
      * @return self
@@ -487,8 +379,6 @@ class ModelFooooooo
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getNumericMinimum(): int
@@ -496,8 +386,6 @@ class ModelFooooooo
         return $this->numericMinimum;
     }
     /**
-     * 
-     *
      * @param int $numericMinimum
      *
      * @return self
@@ -509,8 +397,6 @@ class ModelFooooooo
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getNumericExclusiveMinimum(): int
@@ -518,8 +404,6 @@ class ModelFooooooo
         return $this->numericExclusiveMinimum;
     }
     /**
-     * 
-     *
      * @param int $numericExclusiveMinimum
      *
      * @return self
@@ -531,8 +415,6 @@ class ModelFooooooo
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEmailFormat(): string
@@ -540,8 +422,6 @@ class ModelFooooooo
         return $this->emailFormat;
     }
     /**
-     * 
-     *
      * @param string $emailFormat
      *
      * @return self
@@ -553,8 +433,6 @@ class ModelFooooooo
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIpv4Format(): string
@@ -562,8 +440,6 @@ class ModelFooooooo
         return $this->ipv4Format;
     }
     /**
-     * 
-     *
      * @param string $ipv4Format
      *
      * @return self
@@ -575,8 +451,6 @@ class ModelFooooooo
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIpv6Format(): string
@@ -584,8 +458,6 @@ class ModelFooooooo
         return $this->ipv6Format;
     }
     /**
-     * 
-     *
      * @param string $ipv6Format
      *
      * @return self
@@ -597,8 +469,6 @@ class ModelFooooooo
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUriFormat(): string
@@ -606,8 +476,6 @@ class ModelFooooooo
         return $this->uriFormat;
     }
     /**
-     * 
-     *
      * @param string $uriFormat
      *
      * @return self
@@ -619,8 +487,6 @@ class ModelFooooooo
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIriFormat(): string
@@ -628,8 +494,6 @@ class ModelFooooooo
         return $this->iriFormat;
     }
     /**
-     * 
-     *
      * @param string $iriFormat
      *
      * @return self
@@ -641,8 +505,6 @@ class ModelFooooooo
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUuidFormat(): string
@@ -650,8 +512,6 @@ class ModelFooooooo
         return $this->uuidFormat;
     }
     /**
-     * 
-     *
      * @param string $uuidFormat
      *
      * @return self
@@ -663,8 +523,6 @@ class ModelFooooooo
         return $this;
     }
     /**
-     * 
-     *
      * @return FooFooFoo
      */
     public function getFoo(): FooFooFoo
@@ -672,8 +530,6 @@ class ModelFooooooo
         return $this->foo;
     }
     /**
-     * 
-     *
      * @param FooFooFoo $foo
      *
      * @return self

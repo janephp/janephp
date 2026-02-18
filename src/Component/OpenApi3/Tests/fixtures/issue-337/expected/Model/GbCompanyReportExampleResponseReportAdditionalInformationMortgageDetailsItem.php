@@ -13,50 +13,34 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $mortgageType;
     /**
-     * 
-     *
      * @var string
      */
     protected $dateChargeCreated;
     /**
-     * 
-     *
      * @var string
      */
     protected $dateChargeRegistered;
     /**
-     * 
-     *
      * @var string
      */
     protected $status;
     /**
-     * 
-     *
      * @var string
      */
     protected $personsEntitled;
     /**
-     * 
-     *
      * @var string
      */
     protected $amountSecured;
     /**
-     * 
-     *
      * @var string
      */
     protected $details;
     /**
-     * 
-     *
      * @return string
      */
     public function getMortgageType(): string
@@ -64,8 +48,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
         return $this->mortgageType;
     }
     /**
-     * 
-     *
      * @param string $mortgageType
      *
      * @return self
@@ -77,8 +59,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDateChargeCreated(): string
@@ -86,8 +66,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
         return $this->dateChargeCreated;
     }
     /**
-     * 
-     *
      * @param string $dateChargeCreated
      *
      * @return self
@@ -99,8 +77,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDateChargeRegistered(): string
@@ -108,8 +84,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
         return $this->dateChargeRegistered;
     }
     /**
-     * 
-     *
      * @param string $dateChargeRegistered
      *
      * @return self
@@ -121,8 +95,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStatus(): string
@@ -130,8 +102,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
         return $this->status;
     }
     /**
-     * 
-     *
      * @param string $status
      *
      * @return self
@@ -143,8 +113,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPersonsEntitled(): string
@@ -152,8 +120,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
         return $this->personsEntitled;
     }
     /**
-     * 
-     *
      * @param string $personsEntitled
      *
      * @return self
@@ -165,8 +131,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAmountSecured(): string
@@ -174,8 +138,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
         return $this->amountSecured;
     }
     /**
-     * 
-     *
      * @param string $amountSecured
      *
      * @return self
@@ -187,8 +149,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDetails(): string
@@ -196,8 +156,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
         return $this->details;
     }
     /**
-     * 
-     *
      * @param string $details
      *
      * @return self

@@ -7,17 +7,16 @@ class ListItemUpdate extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
     protected $id;
     /**
     * Updates a single list item.
-    *
     * @param string $id The list item ID.
-    * @param \PicturePark\API\Model\ListItemUpdateRequest $requestBody 
-    * @param array $queryParameters {
-    *     @var array $resolveBehaviors List of enums that control which parts of the list item are resolved and returned.
-    *     @var bool $allowMissingDependencies Allows creating list items that refer to list items or contents that don't exist in the system.
-    *     @var string $timeout Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
+    * @param \PicturePark\API\Model\ListItemUpdateRequest $requestBody
+    * @param array{
+    *    "resolveBehaviors"?: array, //List of enums that control which parts of the list item are resolved and returned.
+    *    "allowMissingDependencies"?: bool, //Allows creating list items that refer to list items or contents that don't exist in the system.
+    *    "timeout"?: string, //Maximum time to wait for the operation to complete. If timeout is exceeded, the operation is not aborted but continues anyhow.
                Only the waiting is aborted, and the calls returned.
-    *     @var bool $waitSearchDocCreation Wait for the creation of the search document and the rendered display values.
+    *    "waitSearchDocCreation"?: bool, //Wait for the creation of the search document and the rendered display values.
                By default the endpoint waits for the search document creation. Passing false, the endpoint will return when the main entity has been created and the creation of the search document has been enqueued but not yet performed.
-    * }
+    * } $queryParameters
     */
     public function __construct(string $id, \PicturePark\API\Model\ListItemUpdateRequest $requestBody, array $queryParameters = [])
     {
@@ -74,28 +73,28 @@ class ListItemUpdate extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'PicturePark\API\Model\ListItemDetail', 'json');
         }
-        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ListItemUpdateBadRequestException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkValidationException', 'json'), $response);
         }
         if (401 === $status) {
             throw new \PicturePark\API\Exception\ListItemUpdateUnauthorizedException($response);
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ListItemUpdateNotFoundException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkNotFoundException', 'json'), $response);
         }
         if (405 === $status) {
             throw new \PicturePark\API\Exception\ListItemUpdateMethodNotAllowedException($response);
         }
-        if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (409 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ListItemUpdateConflictException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkConflictException', 'json'), $response);
         }
         if (429 === $status) {
             throw new \PicturePark\API\Exception\ListItemUpdateTooManyRequestsException($response);
         }
-        if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (500 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ListItemUpdateInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
     }

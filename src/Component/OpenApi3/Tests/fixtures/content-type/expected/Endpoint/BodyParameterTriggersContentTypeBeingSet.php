@@ -5,9 +5,7 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
 class BodyParameterTriggersContentTypeBeingSet extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
-     * 
-     *
-     * @param string $requestBody 
+     * @param string $requestBody
      */
     public function __construct(string $requestBody)
     {
@@ -25,7 +23,7 @@ class BodyParameterTriggersContentTypeBeingSet extends \Jane\Component\OpenApi3\
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if (is_string($this->body)) {
-            return [['Content-Type' => ['application/json']], json_encode($this->body)];
+            return [['Content-Type' => ['application/json;charset=utf-8']], $serializer->serialize($this->body, 'json')];
         }
         return [[], null];
     }

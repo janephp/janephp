@@ -13,20 +13,14 @@ class RulesResponseMetadata extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $sent;
     /**
-     * 
-     *
      * @var array<string, mixed>
      */
     protected $summary;
     /**
-     * 
-     *
      * @return string
      */
     public function getSent(): string
@@ -34,8 +28,6 @@ class RulesResponseMetadata extends \ArrayObject
         return $this->sent;
     }
     /**
-     * 
-     *
      * @param string $sent
      *
      * @return self
@@ -47,8 +39,6 @@ class RulesResponseMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, mixed>
      */
     public function getSummary(): iterable
@@ -56,8 +46,6 @@ class RulesResponseMetadata extends \ArrayObject
         return $this->summary;
     }
     /**
-     * 
-     *
      * @param array<string, mixed> $summary
      *
      * @return self

@@ -13,32 +13,22 @@ class MediaType extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var Schema|Reference|null
      */
     protected $schema;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $example;
     /**
-     * 
-     *
      * @var array<string, Example|Reference>|null
      */
     protected $examples;
     /**
-     * 
-     *
      * @var array<string, Encoding>|null
      */
     protected $encoding;
     /**
-     * 
-     *
      * @return Schema|Reference|null
      */
     public function getSchema()
@@ -46,8 +36,6 @@ class MediaType extends \ArrayObject
         return $this->schema;
     }
     /**
-     * 
-     *
      * @param Schema|Reference|null $schema
      *
      * @return self
@@ -59,8 +47,6 @@ class MediaType extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getExample()
@@ -68,8 +54,6 @@ class MediaType extends \ArrayObject
         return $this->example;
     }
     /**
-     * 
-     *
      * @param mixed $example
      *
      * @return self
@@ -81,8 +65,6 @@ class MediaType extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, Example|Reference>|null
      */
     public function getExamples() : ?iterable
@@ -90,8 +72,6 @@ class MediaType extends \ArrayObject
         return $this->examples;
     }
     /**
-     * 
-     *
      * @param array<string, Example|Reference>|null $examples
      *
      * @return self
@@ -103,8 +83,6 @@ class MediaType extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, Encoding>|null
      */
     public function getEncoding() : ?iterable
@@ -112,8 +90,6 @@ class MediaType extends \ArrayObject
         return $this->encoding;
     }
     /**
-     * 
-     *
      * @param array<string, Encoding>|null $encoding
      *
      * @return self

@@ -7,11 +7,9 @@ class GistsUpdateComment extends \Github\Runtime\Client\BaseEndpoint implements 
     protected $gist_id;
     protected $comment_id;
     /**
-     * 
-     *
      * @param string $gistId gist_id parameter
      * @param int $commentId comment_id parameter
-     * @param null|\Github\Model\GistsGistIdCommentsCommentIdPatchBody $requestBody 
+     * @param null|\Github\Model\GistsGistIdCommentsCommentIdPatchBody $requestBody
      */
     public function __construct(string $gistId, int $commentId, ?\Github\Model\GistsGistIdCommentsCommentIdPatchBody $requestBody = null)
     {
@@ -50,10 +48,10 @@ class GistsUpdateComment extends \Github\Runtime\Client\BaseEndpoint implements 
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\GistComment', 'json');
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\GistsUpdateCommentNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

@@ -8,9 +8,9 @@ class TeamsGetByName extends \Github\Runtime\Client\BaseEndpoint implements \Git
     protected $team_slug;
     /**
      * Gets a team using the team's `slug`. GitHub generates the `slug` from the team `name`.
-     **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}`.
      *
-     * @param string $org 
+     * **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}`.
+     * @param string $org
      * @param string $teamSlug team_slug parameter
      */
     public function __construct(string $org, string $teamSlug)
@@ -46,10 +46,10 @@ class TeamsGetByName extends \Github\Runtime\Client\BaseEndpoint implements \Git
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\TeamFull', 'json');
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\TeamsGetByNameNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

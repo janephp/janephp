@@ -8,9 +8,8 @@ class HideReplyById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Clie
     protected $accept;
     /**
      * Tweet ID in the path is that of the reply to hide.
-     *
      * @param string $id The ID of the reply that you want to hide.
-     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\HideReplyRequest $requestBody 
+     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\HideReplyRequest $requestBody
      * @param array $accept Accept content header application/json|application/problem+json
      */
     public function __construct(string $id, ?\Jane\Component\OpenApi3\Tests\Expected\Model\HideReplyRequest $requestBody = null, array $accept = [])
@@ -52,13 +51,13 @@ class HideReplyById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Clie
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\HideReplyResponse', 'json');
         }
-        if (mb_strpos($contentType, 'application/json') !== false) {
+        if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\Error', 'json');
         }
-        if (mb_strpos($contentType, 'application/problem+json') !== false) {
+        if (mb_strpos(strtolower($contentType), 'application/problem+json') !== false) {
             return json_decode($body);
         }
     }

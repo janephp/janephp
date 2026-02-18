@@ -9,14 +9,13 @@ class PullsListReviews extends \Github\Runtime\Client\BaseEndpoint implements \G
     protected $pull_number;
     /**
      * The list of reviews returns in chronological order.
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param int $pullNumber 
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param string $owner
+     * @param string $repo
+     * @param int $pullNumber
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $owner, string $repo, int $pullNumber, array $queryParameters = [])
     {
@@ -62,7 +61,7 @@ class PullsListReviews extends \Github\Runtime\Client\BaseEndpoint implements \G
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\PullRequestReview[]', 'json');
         }
     }

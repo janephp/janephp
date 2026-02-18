@@ -13,44 +13,30 @@ class Link extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $operationId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $operationRef;
     /**
-     * 
-     *
      * @var array<string, mixed>|null
      */
     protected $parameters;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $requestBody;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var Server|null
      */
     protected $server;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getOperationId() : ?string
@@ -58,8 +44,6 @@ class Link extends \ArrayObject
         return $this->operationId;
     }
     /**
-     * 
-     *
      * @param string|null $operationId
      *
      * @return self
@@ -71,8 +55,6 @@ class Link extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getOperationRef() : ?string
@@ -80,8 +62,6 @@ class Link extends \ArrayObject
         return $this->operationRef;
     }
     /**
-     * 
-     *
      * @param string|null $operationRef
      *
      * @return self
@@ -93,8 +73,6 @@ class Link extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, mixed>|null
      */
     public function getParameters() : ?iterable
@@ -102,8 +80,6 @@ class Link extends \ArrayObject
         return $this->parameters;
     }
     /**
-     * 
-     *
      * @param array<string, mixed>|null $parameters
      *
      * @return self
@@ -115,8 +91,6 @@ class Link extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getRequestBody()
@@ -124,8 +98,6 @@ class Link extends \ArrayObject
         return $this->requestBody;
     }
     /**
-     * 
-     *
      * @param mixed $requestBody
      *
      * @return self
@@ -137,8 +109,6 @@ class Link extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription() : ?string
@@ -146,8 +116,6 @@ class Link extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -159,8 +127,6 @@ class Link extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Server|null
      */
     public function getServer() : ?Server
@@ -168,8 +134,6 @@ class Link extends \ArrayObject
         return $this->server;
     }
     /**
-     * 
-     *
      * @param Server|null $server
      *
      * @return self

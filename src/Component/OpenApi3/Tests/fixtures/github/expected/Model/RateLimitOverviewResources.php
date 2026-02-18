@@ -13,38 +13,26 @@ class RateLimitOverviewResources extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var RateLimit
      */
     protected $core;
     /**
-     * 
-     *
      * @var RateLimit
      */
     protected $graphql;
     /**
-     * 
-     *
      * @var RateLimit
      */
     protected $search;
     /**
-     * 
-     *
      * @var RateLimit
      */
     protected $sourceImport;
     /**
-     * 
-     *
      * @var RateLimit
      */
     protected $integrationManifest;
     /**
-     * 
-     *
      * @return RateLimit
      */
     public function getCore(): RateLimit
@@ -52,8 +40,6 @@ class RateLimitOverviewResources extends \ArrayObject
         return $this->core;
     }
     /**
-     * 
-     *
      * @param RateLimit $core
      *
      * @return self
@@ -65,8 +51,6 @@ class RateLimitOverviewResources extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return RateLimit
      */
     public function getGraphql(): RateLimit
@@ -74,8 +58,6 @@ class RateLimitOverviewResources extends \ArrayObject
         return $this->graphql;
     }
     /**
-     * 
-     *
      * @param RateLimit $graphql
      *
      * @return self
@@ -87,8 +69,6 @@ class RateLimitOverviewResources extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return RateLimit
      */
     public function getSearch(): RateLimit
@@ -96,8 +76,6 @@ class RateLimitOverviewResources extends \ArrayObject
         return $this->search;
     }
     /**
-     * 
-     *
      * @param RateLimit $search
      *
      * @return self
@@ -109,8 +87,6 @@ class RateLimitOverviewResources extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return RateLimit
      */
     public function getSourceImport(): RateLimit
@@ -118,8 +94,6 @@ class RateLimitOverviewResources extends \ArrayObject
         return $this->sourceImport;
     }
     /**
-     * 
-     *
      * @param RateLimit $sourceImport
      *
      * @return self
@@ -131,8 +105,6 @@ class RateLimitOverviewResources extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return RateLimit
      */
     public function getIntegrationManifest(): RateLimit
@@ -140,8 +112,6 @@ class RateLimitOverviewResources extends \ArrayObject
         return $this->integrationManifest;
     }
     /**
-     * 
-     *
      * @param RateLimit $integrationManifest
      *
      * @return self

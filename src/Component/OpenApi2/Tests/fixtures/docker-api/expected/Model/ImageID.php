@@ -13,14 +13,10 @@ class ImageID
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $iD;
     /**
-     * 
-     *
      * @return string
      */
     public function getID(): string
@@ -28,8 +24,6 @@ class ImageID
         return $this->iD;
     }
     /**
-     * 
-     *
      * @param string $iD
      *
      * @return self

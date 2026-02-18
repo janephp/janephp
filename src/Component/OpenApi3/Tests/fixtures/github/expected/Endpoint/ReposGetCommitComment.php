@@ -8,10 +8,8 @@ class ReposGetCommitComment extends \Github\Runtime\Client\BaseEndpoint implemen
     protected $repo;
     protected $comment_id;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $commentId comment_id parameter
      */
     public function __construct(string $owner, string $repo, int $commentId)
@@ -48,10 +46,10 @@ class ReposGetCommitComment extends \Github\Runtime\Client\BaseEndpoint implemen
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\CommitComment', 'json');
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposGetCommitCommentNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

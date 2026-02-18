@@ -10,19 +10,14 @@ use Jane\Component\JsonSchema\Registry\Schema;
  */
 class Context
 {
-    private $registry;
+    private UniqueVariableScope $variableScope;
+    private Schema $currentSchema;
 
-    private $variableScope;
-
-    private $currentSchema;
-
-    private $strict;
-
-    public function __construct(Registry $registry, bool $strict = true)
-    {
-        $this->registry = $registry;
+    public function __construct(
+        private readonly Registry $registry,
+        private readonly bool $strict = true,
+    ) {
         $this->variableScope = new UniqueVariableScope();
-        $this->strict = $strict;
     }
 
     public function isStrict(): bool

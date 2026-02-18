@@ -5,11 +5,9 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
 class ListPets extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
-     * 
-     *
-     * @param array $queryParameters {
-     *     @var int $limit How many items to return at one time (max 100)
-     * }
+     * @param array{
+     *    "limit"?: int, //How many items to return at one time (max 100)
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -51,10 +49,10 @@ class ListPets extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Ba
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\Pet[]', 'json');
         }
-        if (mb_strpos($contentType, 'application/json') !== false) {
+        if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\Error', 'json');
         }
     }

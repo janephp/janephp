@@ -13,98 +13,66 @@ class GistFull extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $forksUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $commitsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $gitPullUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $gitPushUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var array<string, GistSimpleFilesItem>
      */
     protected $files;
     /**
-     * 
-     *
      * @var bool
      */
     protected $public;
     /**
-     * 
-     *
      * @var string
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var int
      */
     protected $comments;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $user;
     /**
-     * 
-     *
      * @var string
      */
     protected $commentsUrl;
@@ -115,32 +83,22 @@ class GistFull extends \ArrayObject
      */
     protected $owner;
     /**
-     * 
-     *
      * @var bool
      */
     protected $truncated;
     /**
-     * 
-     *
      * @var list<GistFullforksItem>
      */
     protected $forks;
     /**
-     * 
-     *
      * @var list<GistFullhistoryItem>
      */
     protected $history;
     /**
-     * 
-     *
      * @var GistFullforkOf|null
      */
     protected $forkOf;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -148,8 +106,6 @@ class GistFull extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -161,8 +117,6 @@ class GistFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getForksUrl(): string
@@ -170,8 +124,6 @@ class GistFull extends \ArrayObject
         return $this->forksUrl;
     }
     /**
-     * 
-     *
      * @param string $forksUrl
      *
      * @return self
@@ -183,8 +135,6 @@ class GistFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCommitsUrl(): string
@@ -192,8 +142,6 @@ class GistFull extends \ArrayObject
         return $this->commitsUrl;
     }
     /**
-     * 
-     *
      * @param string $commitsUrl
      *
      * @return self
@@ -205,8 +153,6 @@ class GistFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -214,8 +160,6 @@ class GistFull extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -227,8 +171,6 @@ class GistFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -236,8 +178,6 @@ class GistFull extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -249,8 +189,6 @@ class GistFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGitPullUrl(): string
@@ -258,8 +196,6 @@ class GistFull extends \ArrayObject
         return $this->gitPullUrl;
     }
     /**
-     * 
-     *
      * @param string $gitPullUrl
      *
      * @return self
@@ -271,8 +207,6 @@ class GistFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGitPushUrl(): string
@@ -280,8 +214,6 @@ class GistFull extends \ArrayObject
         return $this->gitPushUrl;
     }
     /**
-     * 
-     *
      * @param string $gitPushUrl
      *
      * @return self
@@ -293,8 +225,6 @@ class GistFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -302,8 +232,6 @@ class GistFull extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -315,8 +243,6 @@ class GistFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, GistSimpleFilesItem>
      */
     public function getFiles(): iterable
@@ -324,8 +250,6 @@ class GistFull extends \ArrayObject
         return $this->files;
     }
     /**
-     * 
-     *
      * @param array<string, GistSimpleFilesItem> $files
      *
      * @return self
@@ -337,8 +261,6 @@ class GistFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getPublic(): bool
@@ -346,8 +268,6 @@ class GistFull extends \ArrayObject
         return $this->public;
     }
     /**
-     * 
-     *
      * @param bool $public
      *
      * @return self
@@ -359,8 +279,6 @@ class GistFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCreatedAt(): string
@@ -368,8 +286,6 @@ class GistFull extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param string $createdAt
      *
      * @return self
@@ -381,8 +297,6 @@ class GistFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUpdatedAt(): string
@@ -390,8 +304,6 @@ class GistFull extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param string $updatedAt
      *
      * @return self
@@ -403,8 +315,6 @@ class GistFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription(): ?string
@@ -412,8 +322,6 @@ class GistFull extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -425,8 +333,6 @@ class GistFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getComments(): int
@@ -434,8 +340,6 @@ class GistFull extends \ArrayObject
         return $this->comments;
     }
     /**
-     * 
-     *
      * @param int $comments
      *
      * @return self
@@ -447,8 +351,6 @@ class GistFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getUser(): ?string
@@ -456,8 +358,6 @@ class GistFull extends \ArrayObject
         return $this->user;
     }
     /**
-     * 
-     *
      * @param string|null $user
      *
      * @return self
@@ -469,8 +369,6 @@ class GistFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCommentsUrl(): string
@@ -478,8 +376,6 @@ class GistFull extends \ArrayObject
         return $this->commentsUrl;
     }
     /**
-     * 
-     *
      * @param string $commentsUrl
      *
      * @return self
@@ -513,8 +409,6 @@ class GistFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getTruncated(): bool
@@ -522,8 +416,6 @@ class GistFull extends \ArrayObject
         return $this->truncated;
     }
     /**
-     * 
-     *
      * @param bool $truncated
      *
      * @return self
@@ -535,8 +427,6 @@ class GistFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<GistFullforksItem>
      */
     public function getForks(): array
@@ -544,8 +434,6 @@ class GistFull extends \ArrayObject
         return $this->forks;
     }
     /**
-     * 
-     *
      * @param list<GistFullforksItem> $forks
      *
      * @return self
@@ -557,8 +445,6 @@ class GistFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<GistFullhistoryItem>
      */
     public function getHistory(): array
@@ -566,8 +452,6 @@ class GistFull extends \ArrayObject
         return $this->history;
     }
     /**
-     * 
-     *
      * @param list<GistFullhistoryItem> $history
      *
      * @return self
@@ -579,8 +463,6 @@ class GistFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GistFullforkOf|null
      */
     public function getForkOf(): ?GistFullforkOf
@@ -588,8 +470,6 @@ class GistFull extends \ArrayObject
         return $this->forkOf;
     }
     /**
-     * 
-     *
      * @param GistFullforkOf|null $forkOf
      *
      * @return self

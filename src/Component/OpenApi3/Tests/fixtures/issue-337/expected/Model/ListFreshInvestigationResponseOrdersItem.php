@@ -13,68 +13,46 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $orderID;
     /**
-     * 
-     *
      * @var string
      */
     protected $userID;
     /**
-     * 
-     *
      * @var string
      */
     protected $creationDate;
     /**
-     * 
-     *
      * @var string
      */
     protected $lastStatusChangeDate;
     /**
-     * 
-     *
      * @var int
      */
     protected $transactionID;
     /**
-     * 
-     *
      * @var string
      */
     protected $chargeReference;
     /**
-     * 
-     *
      * @var ListFreshInvestigationResponseOrdersItemContactDetails
      */
     protected $contactDetails;
     /**
-     * 
-     *
      * @var ListFreshInvestigationResponseOrdersItemStatus
      */
     protected $status;
     /**
-     * 
-     *
      * @var bool
      */
     protected $consent;
     /**
-     * 
-     *
      * @var ListFreshInvestigationResponseOrdersItemSearchCriteria
      */
     protected $searchCriteria;
     /**
-     * 
-     *
      * @return int
      */
     public function getOrderID(): int
@@ -82,8 +60,6 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
         return $this->orderID;
     }
     /**
-     * 
-     *
      * @param int $orderID
      *
      * @return self
@@ -95,8 +71,6 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUserID(): string
@@ -104,8 +78,6 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
         return $this->userID;
     }
     /**
-     * 
-     *
      * @param string $userID
      *
      * @return self
@@ -117,8 +89,6 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCreationDate(): string
@@ -126,8 +96,6 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
         return $this->creationDate;
     }
     /**
-     * 
-     *
      * @param string $creationDate
      *
      * @return self
@@ -139,8 +107,6 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLastStatusChangeDate(): string
@@ -148,8 +114,6 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
         return $this->lastStatusChangeDate;
     }
     /**
-     * 
-     *
      * @param string $lastStatusChangeDate
      *
      * @return self
@@ -161,8 +125,6 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getTransactionID(): int
@@ -170,8 +132,6 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
         return $this->transactionID;
     }
     /**
-     * 
-     *
      * @param int $transactionID
      *
      * @return self
@@ -183,8 +143,6 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getChargeReference(): string
@@ -192,8 +150,6 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
         return $this->chargeReference;
     }
     /**
-     * 
-     *
      * @param string $chargeReference
      *
      * @return self
@@ -205,8 +161,6 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ListFreshInvestigationResponseOrdersItemContactDetails
      */
     public function getContactDetails(): ListFreshInvestigationResponseOrdersItemContactDetails
@@ -214,8 +168,6 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
         return $this->contactDetails;
     }
     /**
-     * 
-     *
      * @param ListFreshInvestigationResponseOrdersItemContactDetails $contactDetails
      *
      * @return self
@@ -227,8 +179,6 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ListFreshInvestigationResponseOrdersItemStatus
      */
     public function getStatus(): ListFreshInvestigationResponseOrdersItemStatus
@@ -236,8 +186,6 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
         return $this->status;
     }
     /**
-     * 
-     *
      * @param ListFreshInvestigationResponseOrdersItemStatus $status
      *
      * @return self
@@ -249,8 +197,6 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getConsent(): bool
@@ -258,8 +204,6 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
         return $this->consent;
     }
     /**
-     * 
-     *
      * @param bool $consent
      *
      * @return self
@@ -271,8 +215,6 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ListFreshInvestigationResponseOrdersItemSearchCriteria
      */
     public function getSearchCriteria(): ListFreshInvestigationResponseOrdersItemSearchCriteria
@@ -280,8 +222,6 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
         return $this->searchCriteria;
     }
     /**
-     * 
-     *
      * @param ListFreshInvestigationResponseOrdersItemSearchCriteria $searchCriteria
      *
      * @return self

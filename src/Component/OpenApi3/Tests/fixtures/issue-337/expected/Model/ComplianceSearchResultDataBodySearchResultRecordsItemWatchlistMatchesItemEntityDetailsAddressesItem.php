@@ -13,44 +13,30 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $city;
     /**
-     * 
-     *
      * @var string
      */
     protected $country;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $postalCode;
     /**
-     * 
-     *
      * @var string
      */
     protected $street1;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @return string
      */
     public function getCity(): string
@@ -58,8 +44,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this->city;
     }
     /**
-     * 
-     *
      * @param string $city
      *
      * @return self
@@ -71,8 +55,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCountry(): string
@@ -80,8 +62,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this->country;
     }
     /**
-     * 
-     *
      * @param string $country
      *
      * @return self
@@ -93,8 +73,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -102,8 +80,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -115,8 +91,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPostalCode(): string
@@ -124,8 +98,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this->postalCode;
     }
     /**
-     * 
-     *
      * @param string $postalCode
      *
      * @return self
@@ -137,8 +109,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStreet1(): string
@@ -146,8 +116,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this->street1;
     }
     /**
-     * 
-     *
      * @param string $street1
      *
      * @return self
@@ -159,8 +127,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -168,8 +134,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self

@@ -11,12 +11,10 @@ class AuthenticationRegistry implements Plugin
 {
     public const SCOPES_HEADER = 'X-Jane-Authentication';
 
-    /** @var AuthenticationPlugin[] */
-    private $authenticationPlugins;
-
-    public function __construct(array $authenticationPlugins)
-    {
-        $this->authenticationPlugins = $authenticationPlugins;
+    /** @param AuthenticationPlugin[] $authenticationPlugins */
+    public function __construct(
+        private readonly array $authenticationPlugins,
+    ) {
     }
 
     public function handleRequest(RequestInterface $request, callable $next, callable $first): Promise

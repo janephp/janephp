@@ -6,6 +6,6 @@ class MountVolumeOptionsConstraint extends \Symfony\Component\Validator\Constrai
 {
     protected function getConstraints($options): array
     {
-        return [new \Symfony\Component\Validator\Constraints\Collection(['fields' => ['NoCopy' => new \Symfony\Component\Validator\Constraints\Optional([new \Symfony\Component\Validator\Constraints\Type(['0' => 'bool'])]), 'Labels' => new \Symfony\Component\Validator\Constraints\Optional([]), 'DriverConfig' => new \Symfony\Component\Validator\Constraints\Optional([])], 'allowExtraFields' => true])];
+        return [new \Symfony\Component\Validator\Constraints\Collection(fields: ['NoCopy' => new \Symfony\Component\Validator\Constraints\Optional([new \Symfony\Component\Validator\Constraints\Type(type: ['bool'])]), 'Labels' => new \Symfony\Component\Validator\Constraints\Optional([]), 'DriverConfig' => new \Symfony\Component\Validator\Constraints\Optional([])], allowExtraFields: true)];
     }
 }

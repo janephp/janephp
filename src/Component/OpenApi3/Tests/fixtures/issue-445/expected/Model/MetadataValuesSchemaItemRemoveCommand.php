@@ -13,11 +13,11 @@ class MetadataValuesSchemaItemRemoveCommand extends MetadataValuesChangeCommandB
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * The path of the field relative to the Content or Layer schema values defined by the schemaId property.
-    (i.e. add a team (existing list item) to the work information of a person: fieldPath = "workInfo.teams", schemaId = "PersonLayer").
-    *
-    * @var string
-    */
+     * The path of the field relative to the Content or Layer schema values defined by the schemaId property.
+     * (i.e. add a team (existing list item) to the work information of a person: fieldPath = "workInfo.teams", schemaId = "PersonLayer").
+     *
+     * @var string
+     */
     protected $fieldPath;
     /**
      * The field namespace.
@@ -32,11 +32,11 @@ class MetadataValuesSchemaItemRemoveCommand extends MetadataValuesChangeCommandB
      */
     protected $referenceId;
     /**
-    * The path of the field relative to the Content or Layer schema values defined by the schemaId property.
-    (i.e. add a team (existing list item) to the work information of a person: fieldPath = "workInfo.teams", schemaId = "PersonLayer").
-    *
-    * @return string
-    */
+     * The path of the field relative to the Content or Layer schema values defined by the schemaId property.
+     * (i.e. add a team (existing list item) to the work information of a person: fieldPath = "workInfo.teams", schemaId = "PersonLayer").
+     *
+     * @return string
+     */
     public function getFieldPath(): string
     {
         return $this->fieldPath;

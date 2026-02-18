@@ -13,20 +13,14 @@ class IssueEventLabel extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $name;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $color;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getName(): ?string
@@ -34,8 +28,6 @@ class IssueEventLabel extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string|null $name
      *
      * @return self
@@ -47,8 +39,6 @@ class IssueEventLabel extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getColor(): ?string
@@ -56,8 +46,6 @@ class IssueEventLabel extends \ArrayObject
         return $this->color;
     }
     /**
-     * 
-     *
      * @param string|null $color
      *
      * @return self

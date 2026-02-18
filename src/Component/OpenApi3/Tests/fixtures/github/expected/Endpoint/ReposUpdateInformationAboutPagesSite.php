@@ -8,11 +8,9 @@ class ReposUpdateInformationAboutPagesSite extends \Github\Runtime\Client\BaseEn
     protected $repo;
     protected $accept;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param null|\Github\Model\ReposOwnerRepoPagesPutBody $requestBody 
+     * @param string $owner
+     * @param string $repo
+     * @param null|\Github\Model\ReposOwnerRepoPagesPutBody $requestBody
      * @param array $accept Accept content header application/json|application/scim+json
      */
     public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoPagesPutBody $requestBody = null, array $accept = [])
@@ -60,11 +58,16 @@ class ReposUpdateInformationAboutPagesSite extends \Github\Runtime\Client\BaseEn
         if (204 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposUpdateInformationAboutPagesSiteUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ReposUpdateInformationAboutPagesSiteBadRequestException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
+        if (400 === $status) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+                throw new \Github\Exception\ReposUpdateInformationAboutPagesSiteBadRequestException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
+            }
+            if (mb_strpos(strtolower($contentType), 'application/scim+json') !== false) {
+                throw new \Github\Exception\ReposUpdateInformationAboutPagesSiteBadRequestException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
         }
     }
     public function getAuthenticationScopes(): array

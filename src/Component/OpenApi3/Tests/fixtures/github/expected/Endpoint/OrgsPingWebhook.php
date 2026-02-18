@@ -8,9 +8,8 @@ class OrgsPingWebhook extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     protected $hook_id;
     /**
      * This will trigger a [ping event](https://developer.github.com/webhooks/#ping-event) to be sent to the hook.
-     *
-     * @param string $org 
-     * @param int $hookId 
+     * @param string $org
+     * @param int $hookId
      */
     public function __construct(string $org, int $hookId)
     {
@@ -48,7 +47,7 @@ class OrgsPingWebhook extends \Github\Runtime\Client\BaseEndpoint implements \Gi
         if (204 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\OrgsPingWebhookNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

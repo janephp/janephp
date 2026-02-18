@@ -13,32 +13,22 @@ class GuidSuccessResponseGUIDListItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $friendlyName;
     /**
-     * 
-     *
      * @var string
      */
     protected $gUID;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $serviceLine;
     /**
-     * 
-     *
      * @return string
      */
     public function getFriendlyName(): string
@@ -46,8 +36,6 @@ class GuidSuccessResponseGUIDListItem extends \ArrayObject
         return $this->friendlyName;
     }
     /**
-     * 
-     *
      * @param string $friendlyName
      *
      * @return self
@@ -59,8 +47,6 @@ class GuidSuccessResponseGUIDListItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGUID(): string
@@ -68,8 +54,6 @@ class GuidSuccessResponseGUIDListItem extends \ArrayObject
         return $this->gUID;
     }
     /**
-     * 
-     *
      * @param string $gUID
      *
      * @return self
@@ -81,8 +65,6 @@ class GuidSuccessResponseGUIDListItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -90,8 +72,6 @@ class GuidSuccessResponseGUIDListItem extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -103,8 +83,6 @@ class GuidSuccessResponseGUIDListItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getServiceLine(): string
@@ -112,8 +90,6 @@ class GuidSuccessResponseGUIDListItem extends \ArrayObject
         return $this->serviceLine;
     }
     /**
-     * 
-     *
      * @param string $serviceLine
      *
      * @return self

@@ -5,14 +5,12 @@ namespace Jane\Component\OpenApi2\Tests\Expected\Endpoint;
 class TestPostWithPathParameters extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
-     * 
-     *
-     * @param array $testBody 
+     * @param array $testBody
      * @param array $queryParameters {
-     *     @var string $testQuery 
+     *     @var string $testQuery
      * }
      * @param array $headerParameters {
-     *     @var string $testHeader 
+     *     @var string $testHeader
      * }
      */
     public function __construct(array $testBody, array $queryParameters = [], array $headerParameters = [])

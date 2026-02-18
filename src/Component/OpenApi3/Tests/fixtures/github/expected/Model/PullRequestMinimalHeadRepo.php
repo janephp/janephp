@@ -13,26 +13,18 @@ class PullRequestMinimalHeadRepo extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -40,8 +32,6 @@ class PullRequestMinimalHeadRepo extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -53,8 +43,6 @@ class PullRequestMinimalHeadRepo extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -62,8 +50,6 @@ class PullRequestMinimalHeadRepo extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -75,8 +61,6 @@ class PullRequestMinimalHeadRepo extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -84,8 +68,6 @@ class PullRequestMinimalHeadRepo extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self

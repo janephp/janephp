@@ -13,72 +13,57 @@ class BuildCache
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $iD;
     /**
-     * 
-     *
      * @var string
      */
     protected $parent;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $description;
     /**
-     * 
-     *
      * @var bool
      */
     protected $inUse;
     /**
-     * 
-     *
      * @var bool
      */
     protected $shared;
     /**
      * Amount of disk space used by the build cache (in bytes).
+     * 
      *
      * @var int
      */
     protected $size;
     /**
-    * Date and time at which the build cache was created in
-    [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
-    
-    *
-    * @var string
-    */
-    protected $createdAt;
-    /**
-    * Date and time at which the build cache was last used in
-    [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
-    
-    *
-    * @var string|null
-    */
-    protected $lastUsedAt;
-    /**
+     * Date and time at which the build cache was created in
+     * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
      * 
      *
+     * @var string
+     */
+    protected $createdAt;
+    /**
+     * Date and time at which the build cache was last used in
+     * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
+     * 
+     *
+     * @var string|null
+     */
+    protected $lastUsedAt;
+    /**
      * @var int
      */
     protected $usageCount;
     /**
-     * 
-     *
      * @return string
      */
     public function getID(): string
@@ -86,8 +71,6 @@ class BuildCache
         return $this->iD;
     }
     /**
-     * 
-     *
      * @param string $iD
      *
      * @return self
@@ -99,8 +82,6 @@ class BuildCache
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getParent(): string
@@ -108,8 +89,6 @@ class BuildCache
         return $this->parent;
     }
     /**
-     * 
-     *
      * @param string $parent
      *
      * @return self
@@ -121,8 +100,6 @@ class BuildCache
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -130,8 +107,6 @@ class BuildCache
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -143,8 +118,6 @@ class BuildCache
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDescription(): string
@@ -152,8 +125,6 @@ class BuildCache
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string $description
      *
      * @return self
@@ -165,8 +136,6 @@ class BuildCache
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getInUse(): bool
@@ -174,8 +143,6 @@ class BuildCache
         return $this->inUse;
     }
     /**
-     * 
-     *
      * @param bool $inUse
      *
      * @return self
@@ -187,8 +154,6 @@ class BuildCache
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getShared(): bool
@@ -196,8 +161,6 @@ class BuildCache
         return $this->shared;
     }
     /**
-     * 
-     *
      * @param bool $shared
      *
      * @return self
@@ -210,6 +173,7 @@ class BuildCache
     }
     /**
      * Amount of disk space used by the build cache (in bytes).
+     * 
      *
      * @return int
      */
@@ -231,12 +195,12 @@ class BuildCache
         return $this;
     }
     /**
-    * Date and time at which the build cache was created in
-    [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
-    
-    *
-    * @return string
-    */
+     * Date and time at which the build cache was created in
+     * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
+     * 
+     *
+     * @return string
+     */
     public function getCreatedAt(): string
     {
         return $this->createdAt;
@@ -257,12 +221,12 @@ class BuildCache
         return $this;
     }
     /**
-    * Date and time at which the build cache was last used in
-    [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
-    
-    *
-    * @return string|null
-    */
+     * Date and time at which the build cache was last used in
+     * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format with nano-seconds.
+     * 
+     *
+     * @return string|null
+     */
     public function getLastUsedAt(): ?string
     {
         return $this->lastUsedAt;
@@ -283,8 +247,6 @@ class BuildCache
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getUsageCount(): int
@@ -292,8 +254,6 @@ class BuildCache
         return $this->usageCount;
     }
     /**
-     * 
-     *
      * @param int $usageCount
      *
      * @return self

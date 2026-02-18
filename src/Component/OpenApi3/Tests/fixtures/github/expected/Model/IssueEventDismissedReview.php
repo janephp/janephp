@@ -13,32 +13,22 @@ class IssueEventDismissedReview extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $state;
     /**
-     * 
-     *
      * @var int
      */
     protected $reviewId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $dismissalMessage;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $dismissalCommitId;
     /**
-     * 
-     *
      * @return string
      */
     public function getState(): string
@@ -46,8 +36,6 @@ class IssueEventDismissedReview extends \ArrayObject
         return $this->state;
     }
     /**
-     * 
-     *
      * @param string $state
      *
      * @return self
@@ -59,8 +47,6 @@ class IssueEventDismissedReview extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getReviewId(): int
@@ -68,8 +54,6 @@ class IssueEventDismissedReview extends \ArrayObject
         return $this->reviewId;
     }
     /**
-     * 
-     *
      * @param int $reviewId
      *
      * @return self
@@ -81,8 +65,6 @@ class IssueEventDismissedReview extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDismissalMessage(): ?string
@@ -90,8 +72,6 @@ class IssueEventDismissedReview extends \ArrayObject
         return $this->dismissalMessage;
     }
     /**
-     * 
-     *
      * @param string|null $dismissalMessage
      *
      * @return self
@@ -103,8 +83,6 @@ class IssueEventDismissedReview extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDismissalCommitId(): ?string
@@ -112,8 +90,6 @@ class IssueEventDismissedReview extends \ArrayObject
         return $this->dismissalCommitId;
     }
     /**
-     * 
-     *
      * @param string|null $dismissalCommitId
      *
      * @return self

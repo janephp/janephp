@@ -5,184 +5,91 @@ namespace Github\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
 use Github\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\HttpKernel\Kernel;
-if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
-    class RunnerApplicationNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class RunnerApplicationNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
-        {
-            return $type === \Github\Model\RunnerApplication::class;
-        }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \Github\Model\RunnerApplication::class;
-        }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \Github\Model\RunnerApplication();
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Github\Validator\RunnerApplicationConstraint());
-            }
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('os', $data)) {
-                $object->setOs($data['os']);
-                unset($data['os']);
-            }
-            if (\array_key_exists('architecture', $data)) {
-                $object->setArchitecture($data['architecture']);
-                unset($data['architecture']);
-            }
-            if (\array_key_exists('download_url', $data)) {
-                $object->setDownloadUrl($data['download_url']);
-                unset($data['download_url']);
-            }
-            if (\array_key_exists('filename', $data)) {
-                $object->setFilename($data['filename']);
-                unset($data['filename']);
-            }
-            foreach ($data as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
-                }
-            }
-            return $object;
-        }
-        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $data = [];
-            if ($object->isInitialized('os') && null !== $object->getOs()) {
-                $data['os'] = $object->getOs();
-            }
-            if ($object->isInitialized('architecture') && null !== $object->getArchitecture()) {
-                $data['architecture'] = $object->getArchitecture();
-            }
-            if ($object->isInitialized('downloadUrl') && null !== $object->getDownloadUrl()) {
-                $data['download_url'] = $object->getDownloadUrl();
-            }
-            if ($object->isInitialized('filename') && null !== $object->getFilename()) {
-                $data['filename'] = $object->getFilename();
-            }
-            foreach ($object as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
-                }
-            }
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Github\Validator\RunnerApplicationConstraint());
-            }
-            return $data;
-        }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\Github\Model\RunnerApplication::class => false];
-        }
+        return $type === \Github\Model\RunnerApplication::class;
     }
-} else {
-    class RunnerApplicationNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
-        {
-            return $type === \Github\Model\RunnerApplication::class;
+        return is_object($data) && get_class($data) === \Github\Model\RunnerApplication::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \Github\Model\RunnerApplication::class;
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        /**
-         * @return mixed
-         */
-        public function denormalize($data, $type, $format = null, array $context = [])
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \Github\Model\RunnerApplication();
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Github\Validator\RunnerApplicationConstraint());
-            }
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('os', $data)) {
-                $object->setOs($data['os']);
-                unset($data['os']);
-            }
-            if (\array_key_exists('architecture', $data)) {
-                $object->setArchitecture($data['architecture']);
-                unset($data['architecture']);
-            }
-            if (\array_key_exists('download_url', $data)) {
-                $object->setDownloadUrl($data['download_url']);
-                unset($data['download_url']);
-            }
-            if (\array_key_exists('filename', $data)) {
-                $object->setFilename($data['filename']);
-                unset($data['filename']);
-            }
-            foreach ($data as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
-                }
-            }
+        $object = new \Github\Model\RunnerApplication();
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\RunnerApplicationConstraint());
+        }
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        /**
-         * @return array|string|int|float|bool|\ArrayObject|null
-         */
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $data = [];
-            if ($object->isInitialized('os') && null !== $object->getOs()) {
-                $data['os'] = $object->getOs();
-            }
-            if ($object->isInitialized('architecture') && null !== $object->getArchitecture()) {
-                $data['architecture'] = $object->getArchitecture();
-            }
-            if ($object->isInitialized('downloadUrl') && null !== $object->getDownloadUrl()) {
-                $data['download_url'] = $object->getDownloadUrl();
-            }
-            if ($object->isInitialized('filename') && null !== $object->getFilename()) {
-                $data['filename'] = $object->getFilename();
-            }
-            foreach ($object as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
-                }
-            }
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Github\Validator\RunnerApplicationConstraint());
-            }
-            return $data;
+        if (\array_key_exists('os', $data)) {
+            $object->setOs($data['os']);
+            unset($data['os']);
         }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\Github\Model\RunnerApplication::class => false];
+        if (\array_key_exists('architecture', $data)) {
+            $object->setArchitecture($data['architecture']);
+            unset($data['architecture']);
         }
+        if (\array_key_exists('download_url', $data)) {
+            $object->setDownloadUrl($data['download_url']);
+            unset($data['download_url']);
+        }
+        if (\array_key_exists('filename', $data)) {
+            $object->setFilename($data['filename']);
+            unset($data['filename']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
+        }
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        if ($data->isInitialized('os') && null !== $data->getOs()) {
+            $dataArray['os'] = $data->getOs();
+        }
+        if ($data->isInitialized('architecture') && null !== $data->getArchitecture()) {
+            $dataArray['architecture'] = $data->getArchitecture();
+        }
+        if ($data->isInitialized('downloadUrl') && null !== $data->getDownloadUrl()) {
+            $dataArray['download_url'] = $data->getDownloadUrl();
+        }
+        if ($data->isInitialized('filename') && null !== $data->getFilename()) {
+            $dataArray['filename'] = $data->getFilename();
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
+        }
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($dataArray, new \Github\Validator\RunnerApplicationConstraint());
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Github\Model\RunnerApplication::class => false];
     }
 }

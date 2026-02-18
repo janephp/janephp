@@ -13,26 +13,18 @@ class EndpointIPAMConfig
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $iPv4Address;
     /**
-     * 
-     *
      * @var string
      */
     protected $iPv6Address;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $linkLocalIPs;
     /**
-     * 
-     *
      * @return string
      */
     public function getIPv4Address(): string
@@ -40,8 +32,6 @@ class EndpointIPAMConfig
         return $this->iPv4Address;
     }
     /**
-     * 
-     *
      * @param string $iPv4Address
      *
      * @return self
@@ -53,8 +43,6 @@ class EndpointIPAMConfig
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIPv6Address(): string
@@ -62,8 +50,6 @@ class EndpointIPAMConfig
         return $this->iPv6Address;
     }
     /**
-     * 
-     *
      * @param string $iPv6Address
      *
      * @return self
@@ -75,8 +61,6 @@ class EndpointIPAMConfig
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getLinkLocalIPs(): array
@@ -84,8 +68,6 @@ class EndpointIPAMConfig
         return $this->linkLocalIPs;
     }
     /**
-     * 
-     *
      * @param list<string> $linkLocalIPs
      *
      * @return self

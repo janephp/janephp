@@ -9,11 +9,9 @@ class PullsGetReview extends \Github\Runtime\Client\BaseEndpoint implements \Git
     protected $pull_number;
     protected $review_id;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param int $pullNumber 
+     * @param string $owner
+     * @param string $repo
+     * @param int $pullNumber
      * @param int $reviewId review_id parameter
      */
     public function __construct(string $owner, string $repo, int $pullNumber, int $reviewId)
@@ -51,10 +49,10 @@ class PullsGetReview extends \Github\Runtime\Client\BaseEndpoint implements \Git
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\PullRequestReview', 'json');
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\PullsGetReviewNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

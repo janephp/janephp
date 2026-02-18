@@ -9,11 +9,10 @@ class MigrationsMapCommitAuthor extends \Github\Runtime\Client\BaseEndpoint impl
     protected $author_id;
     /**
      * Update an author's identity for the import. Your application can continue updating authors any time before you push new commits to the repository.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $authorId author_id parameter
-     * @param null|\Github\Model\ReposOwnerRepoImportAuthorsAuthorIdPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoImportAuthorsAuthorIdPatchBody $requestBody
      */
     public function __construct(string $owner, string $repo, int $authorId, ?\Github\Model\ReposOwnerRepoImportAuthorsAuthorIdPatchBody $requestBody = null)
     {
@@ -54,13 +53,13 @@ class MigrationsMapCommitAuthor extends \Github\Runtime\Client\BaseEndpoint impl
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\PorterAuthor', 'json');
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\MigrationsMapCommitAuthorUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\MigrationsMapCommitAuthorNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

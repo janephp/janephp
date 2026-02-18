@@ -13,38 +13,26 @@ class ImagesSearchGetResponse200Item
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $description;
     /**
-     * 
-     *
      * @var bool
      */
     protected $isOfficial;
     /**
-     * 
-     *
      * @var bool
      */
     protected $isAutomated;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var int
      */
     protected $starCount;
     /**
-     * 
-     *
      * @return string
      */
     public function getDescription(): string
@@ -52,8 +40,6 @@ class ImagesSearchGetResponse200Item
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string $description
      *
      * @return self
@@ -65,8 +51,6 @@ class ImagesSearchGetResponse200Item
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getIsOfficial(): bool
@@ -74,8 +58,6 @@ class ImagesSearchGetResponse200Item
         return $this->isOfficial;
     }
     /**
-     * 
-     *
      * @param bool $isOfficial
      *
      * @return self
@@ -87,8 +69,6 @@ class ImagesSearchGetResponse200Item
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getIsAutomated(): bool
@@ -96,8 +76,6 @@ class ImagesSearchGetResponse200Item
         return $this->isAutomated;
     }
     /**
-     * 
-     *
      * @param bool $isAutomated
      *
      * @return self
@@ -109,8 +87,6 @@ class ImagesSearchGetResponse200Item
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -118,8 +94,6 @@ class ImagesSearchGetResponse200Item
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -131,8 +105,6 @@ class ImagesSearchGetResponse200Item
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getStarCount(): int
@@ -140,8 +112,6 @@ class ImagesSearchGetResponse200Item
         return $this->starCount;
     }
     /**
-     * 
-     *
      * @param int $starCount
      *
      * @return self

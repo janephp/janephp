@@ -13,38 +13,26 @@ class IntegrationPermissions extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $issues;
     /**
-     * 
-     *
      * @var string
      */
     protected $checks;
     /**
-     * 
-     *
      * @var string
      */
     protected $metadata;
     /**
-     * 
-     *
      * @var string
      */
     protected $contents;
     /**
-     * 
-     *
      * @var string
      */
     protected $deployments;
     /**
-     * 
-     *
      * @return string
      */
     public function getIssues(): string
@@ -52,8 +40,6 @@ class IntegrationPermissions extends \ArrayObject
         return $this->issues;
     }
     /**
-     * 
-     *
      * @param string $issues
      *
      * @return self
@@ -65,8 +51,6 @@ class IntegrationPermissions extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getChecks(): string
@@ -74,8 +58,6 @@ class IntegrationPermissions extends \ArrayObject
         return $this->checks;
     }
     /**
-     * 
-     *
      * @param string $checks
      *
      * @return self
@@ -87,8 +69,6 @@ class IntegrationPermissions extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMetadata(): string
@@ -96,8 +76,6 @@ class IntegrationPermissions extends \ArrayObject
         return $this->metadata;
     }
     /**
-     * 
-     *
      * @param string $metadata
      *
      * @return self
@@ -109,8 +87,6 @@ class IntegrationPermissions extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getContents(): string
@@ -118,8 +94,6 @@ class IntegrationPermissions extends \ArrayObject
         return $this->contents;
     }
     /**
-     * 
-     *
      * @param string $contents
      *
      * @return self
@@ -131,8 +105,6 @@ class IntegrationPermissions extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDeployments(): string
@@ -140,8 +112,6 @@ class IntegrationPermissions extends \ArrayObject
         return $this->deployments;
     }
     /**
-     * 
-     *
      * @param string $deployments
      *
      * @return self

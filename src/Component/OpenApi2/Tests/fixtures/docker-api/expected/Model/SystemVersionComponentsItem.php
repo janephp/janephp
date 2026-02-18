@@ -14,30 +14,33 @@ class SystemVersionComponentsItem
     }
     /**
      * Name of the component
+     * 
      *
      * @var string
      */
     protected $name;
     /**
      * Version of the component
+     * 
      *
      * @var string
      */
     protected $version;
     /**
-    * Key/value pairs of strings with additional information about the
-    component. These values are intended for informational purposes
-    only, and their content is not defined, and not part of the API
-    specification.
-    
-    These messages can be printed by the client as information to the user.
-    
-    *
-    * @var mixed|null
-    */
+     * Key/value pairs of strings with additional information about the
+     * component. These values are intended for informational purposes
+     * only, and their content is not defined, and not part of the API
+     * specification.
+     * 
+     * These messages can be printed by the client as information to the user.
+     * 
+     *
+     * @var mixed|null
+     */
     protected $details;
     /**
      * Name of the component
+     * 
      *
      * @return string
      */
@@ -60,6 +63,7 @@ class SystemVersionComponentsItem
     }
     /**
      * Version of the component
+     * 
      *
      * @return string
      */
@@ -81,16 +85,16 @@ class SystemVersionComponentsItem
         return $this;
     }
     /**
-    * Key/value pairs of strings with additional information about the
-    component. These values are intended for informational purposes
-    only, and their content is not defined, and not part of the API
-    specification.
-    
-    These messages can be printed by the client as information to the user.
-    
-    *
-    * @return mixed
-    */
+     * Key/value pairs of strings with additional information about the
+     * component. These values are intended for informational purposes
+     * only, and their content is not defined, and not part of the API
+     * specification.
+     * 
+     * These messages can be printed by the client as information to the user.
+     * 
+     *
+     * @return mixed
+     */
     public function getDetails()
     {
         return $this->details;

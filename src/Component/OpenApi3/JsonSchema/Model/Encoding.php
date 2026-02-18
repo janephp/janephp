@@ -13,38 +13,26 @@ class Encoding
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $contentType;
     /**
-     * 
-     *
      * @var array<string, Header>|null
      */
     protected $headers;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $style;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $explode;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $allowReserved = false;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getContentType() : ?string
@@ -52,8 +40,6 @@ class Encoding
         return $this->contentType;
     }
     /**
-     * 
-     *
      * @param string|null $contentType
      *
      * @return self
@@ -65,8 +51,6 @@ class Encoding
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, Header>|null
      */
     public function getHeaders() : ?iterable
@@ -74,8 +58,6 @@ class Encoding
         return $this->headers;
     }
     /**
-     * 
-     *
      * @param array<string, Header>|null $headers
      *
      * @return self
@@ -87,8 +69,6 @@ class Encoding
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getStyle() : ?string
@@ -96,8 +76,6 @@ class Encoding
         return $this->style;
     }
     /**
-     * 
-     *
      * @param string|null $style
      *
      * @return self
@@ -109,8 +87,6 @@ class Encoding
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getExplode() : ?bool
@@ -118,8 +94,6 @@ class Encoding
         return $this->explode;
     }
     /**
-     * 
-     *
      * @param bool|null $explode
      *
      * @return self
@@ -131,8 +105,6 @@ class Encoding
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getAllowReserved() : ?bool
@@ -140,8 +112,6 @@ class Encoding
         return $this->allowReserved;
     }
     /**
-     * 
-     *
      * @param bool|null $allowReserved
      *
      * @return self

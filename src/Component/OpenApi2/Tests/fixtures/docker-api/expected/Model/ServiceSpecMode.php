@@ -13,36 +13,30 @@ class ServiceSpecMode
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var ServiceSpecModeReplicated
      */
     protected $replicated;
     /**
-     * 
-     *
      * @var mixed
      */
     protected $global;
     /**
-    * The mode used for services with a finite number of tasks that run
-    to a completed state.
-    
-    *
-    * @var ServiceSpecModeReplicatedJob
-    */
-    protected $replicatedJob;
-    /**
-    * The mode used for services which run a task to the completed state
-    on each valid node.
-    
-    *
-    * @var mixed
-    */
-    protected $globalJob;
-    /**
+     * The mode used for services with a finite number of tasks that run
+     * to a completed state.
      * 
      *
+     * @var ServiceSpecModeReplicatedJob
+     */
+    protected $replicatedJob;
+    /**
+     * The mode used for services which run a task to the completed state
+     * on each valid node.
+     * 
+     *
+     * @var mixed
+     */
+    protected $globalJob;
+    /**
      * @return ServiceSpecModeReplicated
      */
     public function getReplicated(): ServiceSpecModeReplicated
@@ -50,8 +44,6 @@ class ServiceSpecMode
         return $this->replicated;
     }
     /**
-     * 
-     *
      * @param ServiceSpecModeReplicated $replicated
      *
      * @return self
@@ -63,8 +55,6 @@ class ServiceSpecMode
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getGlobal()
@@ -72,8 +62,6 @@ class ServiceSpecMode
         return $this->global;
     }
     /**
-     * 
-     *
      * @param mixed $global
      *
      * @return self
@@ -85,12 +73,12 @@ class ServiceSpecMode
         return $this;
     }
     /**
-    * The mode used for services with a finite number of tasks that run
-    to a completed state.
-    
-    *
-    * @return ServiceSpecModeReplicatedJob
-    */
+     * The mode used for services with a finite number of tasks that run
+     * to a completed state.
+     * 
+     *
+     * @return ServiceSpecModeReplicatedJob
+     */
     public function getReplicatedJob(): ServiceSpecModeReplicatedJob
     {
         return $this->replicatedJob;
@@ -111,12 +99,12 @@ class ServiceSpecMode
         return $this;
     }
     /**
-    * The mode used for services which run a task to the completed state
-    on each valid node.
-    
-    *
-    * @return mixed
-    */
+     * The mode used for services which run a task to the completed state
+     * on each valid node.
+     * 
+     *
+     * @return mixed
+     */
     public function getGlobalJob()
     {
         return $this->globalJob;

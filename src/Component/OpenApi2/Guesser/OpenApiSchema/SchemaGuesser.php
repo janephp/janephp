@@ -10,9 +10,6 @@ use Jane\Component\OpenApiCommon\Guesser\Guess\ParentClass;
 
 class SchemaGuesser extends ObjectGuesser
 {
-    /**
-     * {@inheritdoc}
-     */
     public function supportObject($object): bool
     {
         return ($object instanceof Schema) && ('object' === $object->getType() || null === $object->getType()) && null !== $object->getProperties();
@@ -38,7 +35,7 @@ class SchemaGuesser extends ObjectGuesser
             $classGuess = new ParentClass($classGuess, $object->getDiscriminator());
 
             foreach ($object->getEnum() as $subClassName) {
-                $subReference = preg_replace('#definitions\/.+$#', sprintf('definitions/%s', $subClassName), $reference);
+                $subReference = preg_replace('#definitions\/.+$#', \sprintf('definitions/%s', $subClassName), $reference);
                 $classGuess->addChildEntry($subClassName, $subReference);
             }
         }

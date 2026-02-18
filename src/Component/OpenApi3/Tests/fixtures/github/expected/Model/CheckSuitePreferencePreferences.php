@@ -13,14 +13,10 @@ class CheckSuitePreferencePreferences extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<CheckSuitePreferencePreferencesAutoTriggerChecksItem>
      */
     protected $autoTriggerChecks;
     /**
-     * 
-     *
      * @return list<CheckSuitePreferencePreferencesAutoTriggerChecksItem>
      */
     public function getAutoTriggerChecks(): array
@@ -28,8 +24,6 @@ class CheckSuitePreferencePreferences extends \ArrayObject
         return $this->autoTriggerChecks;
     }
     /**
-     * 
-     *
      * @param list<CheckSuitePreferencePreferencesAutoTriggerChecksItem> $autoTriggerChecks
      *
      * @return self

@@ -8,7 +8,6 @@ class ApiTopBooksIdGet extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint imp
     protected $accept;
     /**
      * Retrieves a TopBook resource.
-     *
      * @param string $id TopBook identifier
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
      */
@@ -49,16 +48,16 @@ class ApiTopBooksIdGet extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint imp
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (200 === $status) {
-            if (mb_strpos($contentType, 'application/ld+json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/ld+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\TopBookJsonld', 'json');
             }
-            if (mb_strpos($contentType, 'application/hal+json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/hal+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\TopBookJsonhal', 'json');
             }
-            if (mb_strpos($contentType, 'application/vnd.api+json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/vnd.api+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\TopBook', 'json');
             }
-            if (mb_strpos($contentType, 'application/json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\TopBook', 'json');
             }
         }

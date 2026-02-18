@@ -31,8 +31,6 @@ class TaskSpecPluginSpec
      */
     protected $disabled;
     /**
-     * 
-     *
      * @var list<PluginPrivilege>
      */
     protected $pluginPrivilege;
@@ -103,8 +101,6 @@ class TaskSpecPluginSpec
         return $this;
     }
     /**
-     * 
-     *
      * @return list<PluginPrivilege>
      */
     public function getPluginPrivilege(): array
@@ -112,8 +108,6 @@ class TaskSpecPluginSpec
         return $this->pluginPrivilege;
     }
     /**
-     * 
-     *
      * @param list<PluginPrivilege> $pluginPrivilege
      *
      * @return self

@@ -5,9 +5,7 @@ namespace Jane\Component\OpenApi2\Tests\Expected\Endpoint;
 class Test extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
-     * 
-     *
-     * @param \Jane\Component\OpenApi2\Tests\Expected\Model\TestPostBody $body 
+     * @param \Jane\Component\OpenApi2\Tests\Expected\Model\TestPostBody $body
      */
     public function __construct(\Jane\Component\OpenApi2\Tests\Expected\Model\TestPostBody $body)
     {

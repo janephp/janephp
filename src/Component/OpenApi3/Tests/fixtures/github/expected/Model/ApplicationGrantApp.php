@@ -13,26 +13,18 @@ class ApplicationGrantApp extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $clientId;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @return string
      */
     public function getClientId(): string
@@ -40,8 +32,6 @@ class ApplicationGrantApp extends \ArrayObject
         return $this->clientId;
     }
     /**
-     * 
-     *
      * @param string $clientId
      *
      * @return self
@@ -53,8 +43,6 @@ class ApplicationGrantApp extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -62,8 +50,6 @@ class ApplicationGrantApp extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -75,8 +61,6 @@ class ApplicationGrantApp extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -84,8 +68,6 @@ class ApplicationGrantApp extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self

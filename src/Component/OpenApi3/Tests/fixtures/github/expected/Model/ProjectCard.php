@@ -13,8 +13,6 @@ class ProjectCard extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
@@ -25,32 +23,22 @@ class ProjectCard extends \ArrayObject
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $note;
     /**
-     * 
-     *
      * @var ProjectCardCreator|null
      */
     protected $creator;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
@@ -61,26 +49,18 @@ class ProjectCard extends \ArrayObject
      */
     protected $archived;
     /**
-     * 
-     *
      * @var string
      */
     protected $columnUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $contentUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $projectUrl;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -88,8 +68,6 @@ class ProjectCard extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -123,8 +101,6 @@ class ProjectCard extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -132,8 +108,6 @@ class ProjectCard extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -145,8 +119,6 @@ class ProjectCard extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getNote(): ?string
@@ -154,8 +126,6 @@ class ProjectCard extends \ArrayObject
         return $this->note;
     }
     /**
-     * 
-     *
      * @param string|null $note
      *
      * @return self
@@ -167,8 +137,6 @@ class ProjectCard extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ProjectCardCreator|null
      */
     public function getCreator(): ?ProjectCardCreator
@@ -176,8 +144,6 @@ class ProjectCard extends \ArrayObject
         return $this->creator;
     }
     /**
-     * 
-     *
      * @param ProjectCardCreator|null $creator
      *
      * @return self
@@ -189,8 +155,6 @@ class ProjectCard extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -198,8 +162,6 @@ class ProjectCard extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -211,8 +173,6 @@ class ProjectCard extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -220,8 +180,6 @@ class ProjectCard extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -255,8 +213,6 @@ class ProjectCard extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getColumnUrl(): string
@@ -264,8 +220,6 @@ class ProjectCard extends \ArrayObject
         return $this->columnUrl;
     }
     /**
-     * 
-     *
      * @param string $columnUrl
      *
      * @return self
@@ -277,8 +231,6 @@ class ProjectCard extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getContentUrl(): string
@@ -286,8 +238,6 @@ class ProjectCard extends \ArrayObject
         return $this->contentUrl;
     }
     /**
-     * 
-     *
      * @param string $contentUrl
      *
      * @return self
@@ -299,8 +249,6 @@ class ProjectCard extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getProjectUrl(): string
@@ -308,8 +256,6 @@ class ProjectCard extends \ArrayObject
         return $this->projectUrl;
     }
     /**
-     * 
-     *
      * @param string $projectUrl
      *
      * @return self

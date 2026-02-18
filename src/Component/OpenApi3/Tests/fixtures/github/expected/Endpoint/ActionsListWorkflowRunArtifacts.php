@@ -9,14 +9,13 @@ class ActionsListWorkflowRunArtifacts extends \Github\Runtime\Client\BaseEndpoin
     protected $run_id;
     /**
      * Lists artifacts for a workflow run. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param int $runId 
-     * @param array $queryParameters {
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param string $owner
+     * @param string $repo
+     * @param int $runId
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $owner, string $repo, int $runId, array $queryParameters = [])
     {
@@ -62,7 +61,7 @@ class ActionsListWorkflowRunArtifacts extends \Github\Runtime\Client\BaseEndpoin
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200', 'json');
         }
     }

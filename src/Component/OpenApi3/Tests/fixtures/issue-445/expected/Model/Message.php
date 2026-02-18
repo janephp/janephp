@@ -13,38 +13,26 @@ class Message
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $id;
     /**
-     * 
-     *
      * @var int
      */
     protected $retries;
     /**
-     * 
-     *
      * @var int
      */
     protected $priority;
     /**
-     * 
-     *
      * @var bool
      */
     protected $deduplicate;
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getId(): ?string
@@ -52,8 +40,6 @@ class Message
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string|null $id
      */
     public function setId(?string $id)
@@ -62,8 +48,6 @@ class Message
         $this->id = $id;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getRetries(): int
@@ -71,8 +55,6 @@ class Message
         return $this->retries;
     }
     /**
-     * 
-     *
      * @param int $retries
      */
     public function setRetries(int $retries)
@@ -81,8 +63,6 @@ class Message
         $this->retries = $retries;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getPriority(): int
@@ -90,8 +70,6 @@ class Message
         return $this->priority;
     }
     /**
-     * 
-     *
      * @param int $priority
      */
     public function setPriority(int $priority)
@@ -100,8 +78,6 @@ class Message
         $this->priority = $priority;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getDeduplicate(): bool
@@ -109,8 +85,6 @@ class Message
         return $this->deduplicate;
     }
     /**
-     * 
-     *
      * @param bool $deduplicate
      */
     public function setDeduplicate(bool $deduplicate)
@@ -119,8 +93,6 @@ class Message
         $this->deduplicate = $deduplicate;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -128,8 +100,6 @@ class Message
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      */
     public function setKind(string $kind)

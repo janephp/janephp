@@ -13,44 +13,30 @@ class Image
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $repoTags;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $repoDigests;
     /**
-     * 
-     *
      * @var string
      */
     protected $parent;
     /**
-     * 
-     *
      * @var string
      */
     protected $comment;
     /**
-     * 
-     *
      * @var string
      */
     protected $created;
     /**
-     * 
-     *
      * @var string
      */
     protected $container;
@@ -61,14 +47,10 @@ class Image
      */
     protected $containerConfig;
     /**
-     * 
-     *
      * @var string
      */
     protected $dockerVersion;
     /**
-     * 
-     *
      * @var string
      */
     protected $author;
@@ -79,32 +61,22 @@ class Image
      */
     protected $config;
     /**
-     * 
-     *
      * @var string
      */
     protected $architecture;
     /**
-     * 
-     *
      * @var string
      */
     protected $os;
     /**
-     * 
-     *
      * @var string
      */
     protected $osVersion;
     /**
-     * 
-     *
      * @var int
      */
     protected $size;
     /**
-     * 
-     *
      * @var int
      */
     protected $virtualSize;
@@ -115,20 +87,14 @@ class Image
      */
     protected $graphDriver;
     /**
-     * 
-     *
      * @var ImageRootFS
      */
     protected $rootFS;
     /**
-     * 
-     *
      * @var ImageMetadata
      */
     protected $metadata;
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -136,8 +102,6 @@ class Image
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -149,8 +113,6 @@ class Image
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getRepoTags(): array
@@ -158,8 +120,6 @@ class Image
         return $this->repoTags;
     }
     /**
-     * 
-     *
      * @param list<string> $repoTags
      *
      * @return self
@@ -171,8 +131,6 @@ class Image
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getRepoDigests(): array
@@ -180,8 +138,6 @@ class Image
         return $this->repoDigests;
     }
     /**
-     * 
-     *
      * @param list<string> $repoDigests
      *
      * @return self
@@ -193,8 +149,6 @@ class Image
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getParent(): string
@@ -202,8 +156,6 @@ class Image
         return $this->parent;
     }
     /**
-     * 
-     *
      * @param string $parent
      *
      * @return self
@@ -215,8 +167,6 @@ class Image
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getComment(): string
@@ -224,8 +174,6 @@ class Image
         return $this->comment;
     }
     /**
-     * 
-     *
      * @param string $comment
      *
      * @return self
@@ -237,8 +185,6 @@ class Image
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCreated(): string
@@ -246,8 +192,6 @@ class Image
         return $this->created;
     }
     /**
-     * 
-     *
      * @param string $created
      *
      * @return self
@@ -259,8 +203,6 @@ class Image
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getContainer(): string
@@ -268,8 +210,6 @@ class Image
         return $this->container;
     }
     /**
-     * 
-     *
      * @param string $container
      *
      * @return self
@@ -303,8 +243,6 @@ class Image
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDockerVersion(): string
@@ -312,8 +250,6 @@ class Image
         return $this->dockerVersion;
     }
     /**
-     * 
-     *
      * @param string $dockerVersion
      *
      * @return self
@@ -325,8 +261,6 @@ class Image
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAuthor(): string
@@ -334,8 +268,6 @@ class Image
         return $this->author;
     }
     /**
-     * 
-     *
      * @param string $author
      *
      * @return self
@@ -369,8 +301,6 @@ class Image
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getArchitecture(): string
@@ -378,8 +308,6 @@ class Image
         return $this->architecture;
     }
     /**
-     * 
-     *
      * @param string $architecture
      *
      * @return self
@@ -391,8 +319,6 @@ class Image
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getOs(): string
@@ -400,8 +326,6 @@ class Image
         return $this->os;
     }
     /**
-     * 
-     *
      * @param string $os
      *
      * @return self
@@ -413,8 +337,6 @@ class Image
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getOsVersion(): string
@@ -422,8 +344,6 @@ class Image
         return $this->osVersion;
     }
     /**
-     * 
-     *
      * @param string $osVersion
      *
      * @return self
@@ -435,8 +355,6 @@ class Image
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getSize(): int
@@ -444,8 +362,6 @@ class Image
         return $this->size;
     }
     /**
-     * 
-     *
      * @param int $size
      *
      * @return self
@@ -457,8 +373,6 @@ class Image
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getVirtualSize(): int
@@ -466,8 +380,6 @@ class Image
         return $this->virtualSize;
     }
     /**
-     * 
-     *
      * @param int $virtualSize
      *
      * @return self
@@ -501,8 +413,6 @@ class Image
         return $this;
     }
     /**
-     * 
-     *
      * @return ImageRootFS
      */
     public function getRootFS(): ImageRootFS
@@ -510,8 +420,6 @@ class Image
         return $this->rootFS;
     }
     /**
-     * 
-     *
      * @param ImageRootFS $rootFS
      *
      * @return self
@@ -523,8 +431,6 @@ class Image
         return $this;
     }
     /**
-     * 
-     *
      * @return ImageMetadata
      */
     public function getMetadata(): ImageMetadata
@@ -532,8 +438,6 @@ class Image
         return $this->metadata;
     }
     /**
-     * 
-     *
      * @param ImageMetadata $metadata
      *
      * @return self

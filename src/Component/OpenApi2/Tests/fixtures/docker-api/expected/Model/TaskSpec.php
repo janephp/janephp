@@ -13,80 +13,79 @@ class TaskSpec
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * Plugin spec for the service.  *(Experimental release only.)*
-    
-    <p><br /></p>
-    
-    > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
-    > mutually exclusive. PluginSpec is only used when the Runtime field
-    > is set to `plugin`. NetworkAttachmentSpec is used when the Runtime
-    > field is set to `attachment`.
-    
-    *
-    * @var TaskSpecPluginSpec
-    */
-    protected $pluginSpec;
-    /**
-    * Container spec for the service.
-    
-    <p><br /></p>
-    
-    > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
-    > mutually exclusive. PluginSpec is only used when the Runtime field
-    > is set to `plugin`. NetworkAttachmentSpec is used when the Runtime
-    > field is set to `attachment`.
-    
-    *
-    * @var TaskSpecContainerSpec
-    */
-    protected $containerSpec;
-    /**
-    * Read-only spec type for non-swarm containers attached to swarm overlay
-    networks.
-    
-    <p><br /></p>
-    
-    > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
-    > mutually exclusive. PluginSpec is only used when the Runtime field
-    > is set to `plugin`. NetworkAttachmentSpec is used when the Runtime
-    > field is set to `attachment`.
-    
-    *
-    * @var TaskSpecNetworkAttachmentSpec
-    */
-    protected $networkAttachmentSpec;
-    /**
-    * Resource requirements which apply to each individual container created
-    as part of the service.
-    
-    *
-    * @var TaskSpecResources
-    */
-    protected $resources;
-    /**
-    * Specification for the restart policy which applies to containers
-    created as part of this service.
-    
-    *
-    * @var TaskSpecRestartPolicy
-    */
-    protected $restartPolicy;
-    /**
+     * Plugin spec for the service.  *(Experimental release only.)*
+     * 
+     * <p><br /></p>
+     * 
+     * > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
+     * > mutually exclusive. PluginSpec is only used when the Runtime field
+     * > is set to `plugin`. NetworkAttachmentSpec is used when the Runtime
+     * > field is set to `attachment`.
      * 
      *
+     * @var TaskSpecPluginSpec
+     */
+    protected $pluginSpec;
+    /**
+     * Container spec for the service.
+     * 
+     * <p><br /></p>
+     * 
+     * > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
+     * > mutually exclusive. PluginSpec is only used when the Runtime field
+     * > is set to `plugin`. NetworkAttachmentSpec is used when the Runtime
+     * > field is set to `attachment`.
+     * 
+     *
+     * @var TaskSpecContainerSpec
+     */
+    protected $containerSpec;
+    /**
+     * Read-only spec type for non-swarm containers attached to swarm overlay
+     * networks.
+     * 
+     * <p><br /></p>
+     * 
+     * > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
+     * > mutually exclusive. PluginSpec is only used when the Runtime field
+     * > is set to `plugin`. NetworkAttachmentSpec is used when the Runtime
+     * > field is set to `attachment`.
+     * 
+     *
+     * @var TaskSpecNetworkAttachmentSpec
+     */
+    protected $networkAttachmentSpec;
+    /**
+     * Resource requirements which apply to each individual container created
+     * as part of the service.
+     * 
+     *
+     * @var TaskSpecResources
+     */
+    protected $resources;
+    /**
+     * Specification for the restart policy which applies to containers
+     * created as part of this service.
+     * 
+     *
+     * @var TaskSpecRestartPolicy
+     */
+    protected $restartPolicy;
+    /**
      * @var TaskSpecPlacement
      */
     protected $placement;
     /**
-    * A counter that triggers an update even if no relevant parameters have
-    been changed.
-    
-    *
-    * @var int
-    */
+     * A counter that triggers an update even if no relevant parameters have
+     * been changed.
+     * 
+     *
+     * @var int
+     */
     protected $forceUpdate;
     /**
      * Runtime is the type of runtime specified for the task executor.
+     * 
      *
      * @var string
      */
@@ -98,27 +97,27 @@ class TaskSpec
      */
     protected $networks;
     /**
-    * Specifies the log driver to use for tasks created from this spec. If
-    not present, the default one for the swarm will be used, finally
-    falling back to the engine default if not specified.
-    
-    *
-    * @var TaskSpecLogDriver
-    */
+     * Specifies the log driver to use for tasks created from this spec. If
+     * not present, the default one for the swarm will be used, finally
+     * falling back to the engine default if not specified.
+     * 
+     *
+     * @var TaskSpecLogDriver
+     */
     protected $logDriver;
     /**
-    * Plugin spec for the service.  *(Experimental release only.)*
-    
-    <p><br /></p>
-    
-    > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
-    > mutually exclusive. PluginSpec is only used when the Runtime field
-    > is set to `plugin`. NetworkAttachmentSpec is used when the Runtime
-    > field is set to `attachment`.
-    
-    *
-    * @return TaskSpecPluginSpec
-    */
+     * Plugin spec for the service.  *(Experimental release only.)*
+     * 
+     * <p><br /></p>
+     * 
+     * > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
+     * > mutually exclusive. PluginSpec is only used when the Runtime field
+     * > is set to `plugin`. NetworkAttachmentSpec is used when the Runtime
+     * > field is set to `attachment`.
+     * 
+     *
+     * @return TaskSpecPluginSpec
+     */
     public function getPluginSpec(): TaskSpecPluginSpec
     {
         return $this->pluginSpec;
@@ -145,18 +144,18 @@ class TaskSpec
         return $this;
     }
     /**
-    * Container spec for the service.
-    
-    <p><br /></p>
-    
-    > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
-    > mutually exclusive. PluginSpec is only used when the Runtime field
-    > is set to `plugin`. NetworkAttachmentSpec is used when the Runtime
-    > field is set to `attachment`.
-    
-    *
-    * @return TaskSpecContainerSpec
-    */
+     * Container spec for the service.
+     * 
+     * <p><br /></p>
+     * 
+     * > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
+     * > mutually exclusive. PluginSpec is only used when the Runtime field
+     * > is set to `plugin`. NetworkAttachmentSpec is used when the Runtime
+     * > field is set to `attachment`.
+     * 
+     *
+     * @return TaskSpecContainerSpec
+     */
     public function getContainerSpec(): TaskSpecContainerSpec
     {
         return $this->containerSpec;
@@ -183,19 +182,19 @@ class TaskSpec
         return $this;
     }
     /**
-    * Read-only spec type for non-swarm containers attached to swarm overlay
-    networks.
-    
-    <p><br /></p>
-    
-    > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
-    > mutually exclusive. PluginSpec is only used when the Runtime field
-    > is set to `plugin`. NetworkAttachmentSpec is used when the Runtime
-    > field is set to `attachment`.
-    
-    *
-    * @return TaskSpecNetworkAttachmentSpec
-    */
+     * Read-only spec type for non-swarm containers attached to swarm overlay
+     * networks.
+     * 
+     * <p><br /></p>
+     * 
+     * > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
+     * > mutually exclusive. PluginSpec is only used when the Runtime field
+     * > is set to `plugin`. NetworkAttachmentSpec is used when the Runtime
+     * > field is set to `attachment`.
+     * 
+     *
+     * @return TaskSpecNetworkAttachmentSpec
+     */
     public function getNetworkAttachmentSpec(): TaskSpecNetworkAttachmentSpec
     {
         return $this->networkAttachmentSpec;
@@ -223,12 +222,12 @@ class TaskSpec
         return $this;
     }
     /**
-    * Resource requirements which apply to each individual container created
-    as part of the service.
-    
-    *
-    * @return TaskSpecResources
-    */
+     * Resource requirements which apply to each individual container created
+     * as part of the service.
+     * 
+     *
+     * @return TaskSpecResources
+     */
     public function getResources(): TaskSpecResources
     {
         return $this->resources;
@@ -249,12 +248,12 @@ class TaskSpec
         return $this;
     }
     /**
-    * Specification for the restart policy which applies to containers
-    created as part of this service.
-    
-    *
-    * @return TaskSpecRestartPolicy
-    */
+     * Specification for the restart policy which applies to containers
+     * created as part of this service.
+     * 
+     *
+     * @return TaskSpecRestartPolicy
+     */
     public function getRestartPolicy(): TaskSpecRestartPolicy
     {
         return $this->restartPolicy;
@@ -275,8 +274,6 @@ class TaskSpec
         return $this;
     }
     /**
-     * 
-     *
      * @return TaskSpecPlacement
      */
     public function getPlacement(): TaskSpecPlacement
@@ -284,8 +281,6 @@ class TaskSpec
         return $this->placement;
     }
     /**
-     * 
-     *
      * @param TaskSpecPlacement $placement
      *
      * @return self
@@ -297,12 +292,12 @@ class TaskSpec
         return $this;
     }
     /**
-    * A counter that triggers an update even if no relevant parameters have
-    been changed.
-    
-    *
-    * @return int
-    */
+     * A counter that triggers an update even if no relevant parameters have
+     * been changed.
+     * 
+     *
+     * @return int
+     */
     public function getForceUpdate(): int
     {
         return $this->forceUpdate;
@@ -324,6 +319,7 @@ class TaskSpec
     }
     /**
      * Runtime is the type of runtime specified for the task executor.
+     * 
      *
      * @return string
      */
@@ -367,13 +363,13 @@ class TaskSpec
         return $this;
     }
     /**
-    * Specifies the log driver to use for tasks created from this spec. If
-    not present, the default one for the swarm will be used, finally
-    falling back to the engine default if not specified.
-    
-    *
-    * @return TaskSpecLogDriver
-    */
+     * Specifies the log driver to use for tasks created from this spec. If
+     * not present, the default one for the swarm will be used, finally
+     * falling back to the engine default if not specified.
+     * 
+     *
+     * @return TaskSpecLogDriver
+     */
     public function getLogDriver(): TaskSpecLogDriver
     {
         return $this->logDriver;

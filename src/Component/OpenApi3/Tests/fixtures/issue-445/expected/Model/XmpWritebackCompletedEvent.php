@@ -13,14 +13,10 @@ class XmpWritebackCompletedEvent extends ApplicationEvent
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $outputDocId;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getOutputDocId(): ?string
@@ -28,8 +24,6 @@ class XmpWritebackCompletedEvent extends ApplicationEvent
         return $this->outputDocId;
     }
     /**
-     * 
-     *
      * @param string|null $outputDocId
      *
      * @return self

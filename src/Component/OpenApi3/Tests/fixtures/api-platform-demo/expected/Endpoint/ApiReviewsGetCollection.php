@@ -7,15 +7,14 @@ class ApiReviewsGetCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpo
     protected $accept;
     /**
      * Retrieves the collection of Review resources.
-     *
-     * @param array $queryParameters {
-     *     @var int $page The collection page number
-     *     @var int $itemsPerPage The number of items per page
-     *     @var string $order[id] 
-     *     @var string $order[publicationDate] 
-     *     @var string $book 
-     *     @var array $book[] 
-     * }
+     * @param array{
+     *    "page"?: int, //The collection page number
+     *    "itemsPerPage"?: int, //The number of items per page
+     *    "order[id]"?: string,
+     *    "order[publicationDate]"?: string,
+     *    "book"?: string,
+     *    "book[]"?: array,
+     * } $queryParameters
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
      */
     public function __construct(array $queryParameters = [], array $accept = [])
@@ -68,16 +67,16 @@ class ApiReviewsGetCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpo
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (200 === $status) {
-            if (mb_strpos($contentType, 'application/ld+json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/ld+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\ReviewsGetLdjsonResponse200', 'json');
             }
-            if (mb_strpos($contentType, 'application/hal+json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/hal+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\ReviewsGetHaljsonResponse200', 'json');
             }
-            if (mb_strpos($contentType, 'application/vnd.api+json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/vnd.api+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\ReviewReviewRead[]', 'json');
             }
-            if (mb_strpos($contentType, 'application/json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\ReviewReviewRead[]', 'json');
             }
         }

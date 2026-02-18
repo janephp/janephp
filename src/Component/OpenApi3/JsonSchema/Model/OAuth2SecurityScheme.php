@@ -13,26 +13,18 @@ class OAuth2SecurityScheme extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $type;
     /**
-     * 
-     *
      * @var OAuthFlows|null
      */
     protected $flows;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getType() : ?string
@@ -40,8 +32,6 @@ class OAuth2SecurityScheme extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string|null $type
      *
      * @return self
@@ -53,8 +43,6 @@ class OAuth2SecurityScheme extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return OAuthFlows|null
      */
     public function getFlows() : ?OAuthFlows
@@ -62,8 +50,6 @@ class OAuth2SecurityScheme extends \ArrayObject
         return $this->flows;
     }
     /**
-     * 
-     *
      * @param OAuthFlows|null $flows
      *
      * @return self
@@ -75,8 +61,6 @@ class OAuth2SecurityScheme extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription() : ?string
@@ -84,8 +68,6 @@ class OAuth2SecurityScheme extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self

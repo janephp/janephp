@@ -13,38 +13,26 @@ class NetworkContainer
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $endpointID;
     /**
-     * 
-     *
      * @var string
      */
     protected $macAddress;
     /**
-     * 
-     *
      * @var string
      */
     protected $iPv4Address;
     /**
-     * 
-     *
      * @var string
      */
     protected $iPv6Address;
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -52,8 +40,6 @@ class NetworkContainer
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -65,8 +51,6 @@ class NetworkContainer
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEndpointID(): string
@@ -74,8 +58,6 @@ class NetworkContainer
         return $this->endpointID;
     }
     /**
-     * 
-     *
      * @param string $endpointID
      *
      * @return self
@@ -87,8 +69,6 @@ class NetworkContainer
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMacAddress(): string
@@ -96,8 +76,6 @@ class NetworkContainer
         return $this->macAddress;
     }
     /**
-     * 
-     *
      * @param string $macAddress
      *
      * @return self
@@ -109,8 +87,6 @@ class NetworkContainer
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIPv4Address(): string
@@ -118,8 +94,6 @@ class NetworkContainer
         return $this->iPv4Address;
     }
     /**
-     * 
-     *
      * @param string $iPv4Address
      *
      * @return self
@@ -131,8 +105,6 @@ class NetworkContainer
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIPv6Address(): string
@@ -140,8 +112,6 @@ class NetworkContainer
         return $this->iPv6Address;
     }
     /**
-     * 
-     *
      * @param string $iPv6Address
      *
      * @return self

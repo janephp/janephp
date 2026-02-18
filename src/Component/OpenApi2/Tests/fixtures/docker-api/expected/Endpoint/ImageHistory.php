@@ -7,7 +7,6 @@ class ImageHistory extends \Docker\Api\Runtime\Client\BaseEndpoint implements \D
     protected $name;
     /**
      * Return parent layers of an image.
-     *
      * @param string $name Image name or ID
      */
     public function __construct(string $name)

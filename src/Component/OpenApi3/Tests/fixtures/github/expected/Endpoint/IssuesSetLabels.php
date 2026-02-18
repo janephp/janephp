@@ -9,11 +9,10 @@ class IssuesSetLabels extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     protected $issue_number;
     /**
      * Removes any previous labels and sets the new labels for an issue.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $issueNumber issue_number parameter
-     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPutBody $requestBody
      */
     public function __construct(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberLabelsPutBody $requestBody = null)
     {
@@ -54,13 +53,13 @@ class IssuesSetLabels extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\Label[]', 'json');
         }
-        if (is_null($contentType) === false && (410 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (410 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\IssuesSetLabelsGoneException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\IssuesSetLabelsUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationError', 'json'), $response);
         }
     }

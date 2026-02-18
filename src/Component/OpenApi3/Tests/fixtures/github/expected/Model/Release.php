@@ -13,50 +13,34 @@ class Release extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $assetsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $uploadUrl;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $tarballUrl;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $zipballUrl;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
@@ -73,14 +57,10 @@ class Release extends \ArrayObject
      */
     protected $targetCommitish;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $name;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $body;
@@ -97,14 +77,10 @@ class Release extends \ArrayObject
      */
     protected $prerelease;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $publishedAt;
@@ -115,26 +91,18 @@ class Release extends \ArrayObject
      */
     protected $author;
     /**
-     * 
-     *
      * @var list<ReleaseAsset>
      */
     protected $assets;
     /**
-     * 
-     *
      * @var string
      */
     protected $bodyHtml;
     /**
-     * 
-     *
      * @var string
      */
     protected $bodyText;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -142,8 +110,6 @@ class Release extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -155,8 +121,6 @@ class Release extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -164,8 +128,6 @@ class Release extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -177,8 +139,6 @@ class Release extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAssetsUrl(): string
@@ -186,8 +146,6 @@ class Release extends \ArrayObject
         return $this->assetsUrl;
     }
     /**
-     * 
-     *
      * @param string $assetsUrl
      *
      * @return self
@@ -199,8 +157,6 @@ class Release extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUploadUrl(): string
@@ -208,8 +164,6 @@ class Release extends \ArrayObject
         return $this->uploadUrl;
     }
     /**
-     * 
-     *
      * @param string $uploadUrl
      *
      * @return self
@@ -221,8 +175,6 @@ class Release extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTarballUrl(): ?string
@@ -230,8 +182,6 @@ class Release extends \ArrayObject
         return $this->tarballUrl;
     }
     /**
-     * 
-     *
      * @param string|null $tarballUrl
      *
      * @return self
@@ -243,8 +193,6 @@ class Release extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getZipballUrl(): ?string
@@ -252,8 +200,6 @@ class Release extends \ArrayObject
         return $this->zipballUrl;
     }
     /**
-     * 
-     *
      * @param string|null $zipballUrl
      *
      * @return self
@@ -265,8 +211,6 @@ class Release extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -274,8 +218,6 @@ class Release extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -287,8 +229,6 @@ class Release extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -296,8 +236,6 @@ class Release extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -353,8 +291,6 @@ class Release extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getName(): ?string
@@ -362,8 +298,6 @@ class Release extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string|null $name
      *
      * @return self
@@ -375,8 +309,6 @@ class Release extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getBody(): ?string
@@ -384,8 +316,6 @@ class Release extends \ArrayObject
         return $this->body;
     }
     /**
-     * 
-     *
      * @param string|null $body
      *
      * @return self
@@ -441,8 +371,6 @@ class Release extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -450,8 +378,6 @@ class Release extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -463,8 +389,6 @@ class Release extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getPublishedAt(): ?\DateTime
@@ -472,8 +396,6 @@ class Release extends \ArrayObject
         return $this->publishedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $publishedAt
      *
      * @return self
@@ -507,8 +429,6 @@ class Release extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<ReleaseAsset>
      */
     public function getAssets(): array
@@ -516,8 +436,6 @@ class Release extends \ArrayObject
         return $this->assets;
     }
     /**
-     * 
-     *
      * @param list<ReleaseAsset> $assets
      *
      * @return self
@@ -529,8 +447,6 @@ class Release extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBodyHtml(): string
@@ -538,8 +454,6 @@ class Release extends \ArrayObject
         return $this->bodyHtml;
     }
     /**
-     * 
-     *
      * @param string $bodyHtml
      *
      * @return self
@@ -551,8 +465,6 @@ class Release extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBodyText(): string
@@ -560,8 +472,6 @@ class Release extends \ArrayObject
         return $this->bodyText;
     }
     /**
-     * 
-     *
      * @param string $bodyText
      *
      * @return self

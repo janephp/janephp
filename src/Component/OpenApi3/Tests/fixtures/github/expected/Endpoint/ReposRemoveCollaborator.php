@@ -8,11 +8,9 @@ class ReposRemoveCollaborator extends \Github\Runtime\Client\BaseEndpoint implem
     protected $repo;
     protected $username;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param string $username 
+     * @param string $owner
+     * @param string $repo
+     * @param string $username
      */
     public function __construct(string $owner, string $repo, string $username)
     {

@@ -5,16 +5,15 @@ namespace Docker\Api\Endpoint;
 class ImageLoad extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docker\Api\Runtime\Client\Endpoint
 {
     /**
-    * Load a set of images and tags into a repository.
-    
-    For details on the format, see the [export image endpoint](#operation/ImageGet).
-    
-    *
-    * @param string|resource|\Psr\Http\Message\StreamInterface $imagesTarball Tar archive containing images
-    * @param array $queryParameters {
-    *     @var bool $quiet Suppress progress details during load.
-    * }
-    */
+     * Load a set of images and tags into a repository.
+     *
+     * For details on the format, see the [export image endpoint](#operation/ImageGet).
+     *
+     * @param string|resource|\Psr\Http\Message\StreamInterface $imagesTarball Tar archive containing images
+     * @param array $queryParameters {
+     *     @var bool $quiet Suppress progress details during load.
+     * }
+     */
     public function __construct($imagesTarball, array $queryParameters = [])
     {
         $this->body = $imagesTarball;

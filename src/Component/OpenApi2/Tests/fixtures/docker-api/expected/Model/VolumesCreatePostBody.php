@@ -14,6 +14,7 @@ class VolumesCreatePostBody
     }
     /**
      * The new volume's name. If not specified, Docker generates a name.
+     * 
      *
      * @var string
      */
@@ -25,12 +26,12 @@ class VolumesCreatePostBody
      */
     protected $driver = 'local';
     /**
-    * A mapping of driver options and values. These options are
-    passed directly to the driver and are driver specific.
-    
-    *
-    * @var array<string, string>
-    */
+     * A mapping of driver options and values. These options are
+     * passed directly to the driver and are driver specific.
+     * 
+     *
+     * @var array<string, string>
+     */
     protected $driverOpts;
     /**
      * User-defined key/value metadata.
@@ -40,6 +41,7 @@ class VolumesCreatePostBody
     protected $labels;
     /**
      * The new volume's name. If not specified, Docker generates a name.
+     * 
      *
      * @return string
      */
@@ -83,12 +85,12 @@ class VolumesCreatePostBody
         return $this;
     }
     /**
-    * A mapping of driver options and values. These options are
-    passed directly to the driver and are driver specific.
-    
-    *
-    * @return array<string, string>
-    */
+     * A mapping of driver options and values. These options are
+     * passed directly to the driver and are driver specific.
+     * 
+     *
+     * @return array<string, string>
+     */
     public function getDriverOpts(): iterable
     {
         return $this->driverOpts;

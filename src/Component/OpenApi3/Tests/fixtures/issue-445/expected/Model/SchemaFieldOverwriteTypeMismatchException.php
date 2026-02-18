@@ -13,86 +13,58 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $traceLevel;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $traceId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $traceJobId;
     /**
-     * 
-     *
      * @var int
      */
     protected $httpStatusCode;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $exceptionMessage;
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $customerId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $customerAlias;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $userId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $schemaId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $fieldId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $fieldOverwriteType;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $fieldType;
     /**
-     * 
-     *
      * @return string
      */
     public function getTraceLevel(): string
@@ -100,8 +72,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this->traceLevel;
     }
     /**
-     * 
-     *
      * @param string $traceLevel
      *
      * @return self
@@ -113,8 +83,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTraceId(): ?string
@@ -122,8 +90,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this->traceId;
     }
     /**
-     * 
-     *
      * @param string|null $traceId
      *
      * @return self
@@ -135,8 +101,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTraceJobId(): ?string
@@ -144,8 +108,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this->traceJobId;
     }
     /**
-     * 
-     *
      * @param string|null $traceJobId
      *
      * @return self
@@ -157,8 +119,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getHttpStatusCode(): int
@@ -166,8 +126,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this->httpStatusCode;
     }
     /**
-     * 
-     *
      * @param int $httpStatusCode
      *
      * @return self
@@ -179,8 +137,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getExceptionMessage(): ?string
@@ -188,8 +144,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this->exceptionMessage;
     }
     /**
-     * 
-     *
      * @param string|null $exceptionMessage
      *
      * @return self
@@ -201,8 +155,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -210,8 +162,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      *
      * @return self
@@ -223,8 +173,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCustomerId(): ?string
@@ -232,8 +180,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this->customerId;
     }
     /**
-     * 
-     *
      * @param string|null $customerId
      *
      * @return self
@@ -245,8 +191,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCustomerAlias(): ?string
@@ -254,8 +198,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this->customerAlias;
     }
     /**
-     * 
-     *
      * @param string|null $customerAlias
      *
      * @return self
@@ -267,8 +209,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getUserId(): ?string
@@ -276,8 +216,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this->userId;
     }
     /**
-     * 
-     *
      * @param string|null $userId
      *
      * @return self
@@ -289,8 +227,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getSchemaId(): ?string
@@ -298,8 +234,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this->schemaId;
     }
     /**
-     * 
-     *
      * @param string|null $schemaId
      *
      * @return self
@@ -311,8 +245,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFieldId(): ?string
@@ -320,8 +252,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this->fieldId;
     }
     /**
-     * 
-     *
      * @param string|null $fieldId
      *
      * @return self
@@ -333,8 +263,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFieldOverwriteType(): ?string
@@ -342,8 +270,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this->fieldOverwriteType;
     }
     /**
-     * 
-     *
      * @param string|null $fieldOverwriteType
      *
      * @return self
@@ -355,8 +281,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFieldType(): ?string
@@ -364,8 +288,6 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         return $this->fieldType;
     }
     /**
-     * 
-     *
      * @param string|null $fieldType
      *
      * @return self

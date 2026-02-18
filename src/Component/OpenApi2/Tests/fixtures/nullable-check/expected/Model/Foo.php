@@ -13,26 +13,18 @@ class Foo
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $foo;
     /**
-     * 
-     *
      * @var string
      */
     protected $bar;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $baz;
     /**
-     * 
-     *
      * @return string
      */
     public function getFoo(): string
@@ -40,8 +32,6 @@ class Foo
         return $this->foo;
     }
     /**
-     * 
-     *
      * @param string $foo
      *
      * @return self
@@ -53,8 +43,6 @@ class Foo
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBar(): string
@@ -62,8 +50,6 @@ class Foo
         return $this->bar;
     }
     /**
-     * 
-     *
      * @param string $bar
      *
      * @return self
@@ -75,8 +61,6 @@ class Foo
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getBaz(): ?string
@@ -84,8 +68,6 @@ class Foo
         return $this->baz;
     }
     /**
-     * 
-     *
      * @param string|null $baz
      *
      * @return self

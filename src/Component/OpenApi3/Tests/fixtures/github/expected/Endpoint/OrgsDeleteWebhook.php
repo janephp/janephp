@@ -7,10 +7,8 @@ class OrgsDeleteWebhook extends \Github\Runtime\Client\BaseEndpoint implements \
     protected $org;
     protected $hook_id;
     /**
-     * 
-     *
-     * @param string $org 
-     * @param int $hookId 
+     * @param string $org
+     * @param int $hookId
      */
     public function __construct(string $org, int $hookId)
     {
@@ -48,7 +46,7 @@ class OrgsDeleteWebhook extends \Github\Runtime\Client\BaseEndpoint implements \
         if (204 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\OrgsDeleteWebhookNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

@@ -7,7 +7,6 @@ class ContainerUnpause extends \Docker\Api\Runtime\Client\BaseEndpoint implement
     protected $id;
     /**
      * Resume a container which has been paused.
-     *
      * @param string $id ID or name of the container
      */
     public function __construct(string $id)

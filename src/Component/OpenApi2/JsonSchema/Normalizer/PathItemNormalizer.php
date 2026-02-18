@@ -18,7 +18,7 @@ class PathItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\PathItem';
     }
@@ -29,7 +29,7 @@ class PathItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
     /**
      * @return mixed
      */
-    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -132,32 +132,32 @@ class PathItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+    public function normalize(mixed $object, ?string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
-        $data = [];
+        $dataArray = [];
         if ($object->isInitialized('dollarRef') && null !== $object->getDollarRef()) {
-            $data['$ref'] = $object->getDollarRef();
+            $dataArray['$ref'] = $object->getDollarRef();
         }
         if ($object->isInitialized('get') && null !== $object->getGet()) {
-            $data['get'] = $this->normalizer->normalize($object->getGet(), 'json', $context);
+            $dataArray['get'] = $this->normalizer->normalize($object->getGet(), 'json', $context);
         }
         if ($object->isInitialized('put') && null !== $object->getPut()) {
-            $data['put'] = $this->normalizer->normalize($object->getPut(), 'json', $context);
+            $dataArray['put'] = $this->normalizer->normalize($object->getPut(), 'json', $context);
         }
         if ($object->isInitialized('post') && null !== $object->getPost()) {
-            $data['post'] = $this->normalizer->normalize($object->getPost(), 'json', $context);
+            $dataArray['post'] = $this->normalizer->normalize($object->getPost(), 'json', $context);
         }
         if ($object->isInitialized('delete') && null !== $object->getDelete()) {
-            $data['delete'] = $this->normalizer->normalize($object->getDelete(), 'json', $context);
+            $dataArray['delete'] = $this->normalizer->normalize($object->getDelete(), 'json', $context);
         }
         if ($object->isInitialized('options') && null !== $object->getOptions()) {
-            $data['options'] = $this->normalizer->normalize($object->getOptions(), 'json', $context);
+            $dataArray['options'] = $this->normalizer->normalize($object->getOptions(), 'json', $context);
         }
         if ($object->isInitialized('head') && null !== $object->getHead()) {
-            $data['head'] = $this->normalizer->normalize($object->getHead(), 'json', $context);
+            $dataArray['head'] = $this->normalizer->normalize($object->getHead(), 'json', $context);
         }
         if ($object->isInitialized('patch') && null !== $object->getPatch()) {
-            $data['patch'] = $this->normalizer->normalize($object->getPatch(), 'json', $context);
+            $dataArray['patch'] = $this->normalizer->normalize($object->getPatch(), 'json', $context);
         }
         if ($object->isInitialized('parameters') && null !== $object->getParameters()) {
             $values = [];
@@ -178,14 +178,14 @@ class PathItemNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 }
                 $values[] = $value_1;
             }
-            $data['parameters'] = $values;
+            $dataArray['parameters'] = $values;
         }
         foreach ($object as $key => $value_2) {
             if (preg_match('/^x-/', (string) $key)) {
-                $data[$key] = $value_2;
+                $dataArray[$key] = $value_2;
             }
         }
-        return $data;
+        return $dataArray;
     }
     public function getSupportedTypes(?string $format = null) : array
     {

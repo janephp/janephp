@@ -6,18 +6,17 @@ class ReposCreateForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoin
 {
     protected $accept;
     /**
-    * Creates a new repository for the authenticated user.
-    
-    **OAuth scope requirements**
-    
-    When using [OAuth](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), authorizations must include:
-    
-    *   `public_repo` scope or `repo` scope to create a public repository
-    *   `repo` scope to create a private repository
-    *
-    * @param null|\Github\Model\UserReposPostBody $requestBody 
-    * @param array $accept Accept content header application/json|application/scim+json
-    */
+     * Creates a new repository for the authenticated user.
+     *
+     * **OAuth scope requirements**
+     *
+     * When using [OAuth](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), authorizations must include:
+     *
+     * *   `public_repo` scope or `repo` scope to create a public repository
+     * *   `repo` scope to create a private repository
+     * @param null|\Github\Model\UserReposPostBody $requestBody
+     * @param array $accept Accept content header application/json|application/scim+json
+     */
     public function __construct(?\Github\Model\UserReposPostBody $requestBody = null, array $accept = [])
     {
         $this->body = $requestBody;
@@ -61,26 +60,31 @@ class ReposCreateForAuthenticatedUser extends \Github\Runtime\Client\BaseEndpoin
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\Repository', 'json');
         }
-        if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (401 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateForAuthenticatedUserUnauthorizedException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
         if (304 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateForAuthenticatedUserNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateForAuthenticatedUserForbiddenException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateForAuthenticatedUserUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ReposCreateForAuthenticatedUserBadRequestException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
+        if (400 === $status) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+                throw new \Github\Exception\ReposCreateForAuthenticatedUserBadRequestException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
+            }
+            if (mb_strpos(strtolower($contentType), 'application/scim+json') !== false) {
+                throw new \Github\Exception\ReposCreateForAuthenticatedUserBadRequestException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
         }
     }
     public function getAuthenticationScopes(): array

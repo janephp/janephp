@@ -13,20 +13,14 @@ class Activity
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $creationDate;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $modificationDate;
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getCreationDate(): ?\DateTime
@@ -34,8 +28,6 @@ class Activity
         return $this->creationDate;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $creationDate
      *
      * @return self
@@ -47,8 +39,6 @@ class Activity
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getModificationDate(): ?\DateTime
@@ -56,8 +46,6 @@ class Activity
         return $this->modificationDate;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $modificationDate
      *
      * @return self

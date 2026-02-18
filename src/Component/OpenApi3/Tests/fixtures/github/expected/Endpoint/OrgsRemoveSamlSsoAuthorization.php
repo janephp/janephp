@@ -7,13 +7,12 @@ class OrgsRemoveSamlSsoAuthorization extends \Github\Runtime\Client\BaseEndpoint
     protected $org;
     protected $credential_id;
     /**
-    * Listing and deleting credential authorizations is available to organizations with GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products).
-    
-    An authenticated organization owner with the `admin:org` scope can remove a credential authorization for an organization that uses SAML SSO. Once you remove someone's credential authorization, they will need to create a new personal access token or SSH key and authorize it for the organization they want to access.
-    *
-    * @param string $org 
-    * @param int $credentialId credential_id parameter
-    */
+     * Listing and deleting credential authorizations is available to organizations with GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products).
+     *
+     * An authenticated organization owner with the `admin:org` scope can remove a credential authorization for an organization that uses SAML SSO. Once you remove someone's credential authorization, they will need to create a new personal access token or SSH key and authorize it for the organization they want to access.
+     * @param string $org
+     * @param int $credentialId credential_id parameter
+     */
     public function __construct(string $org, int $credentialId)
     {
         $this->org = $org;
@@ -50,7 +49,7 @@ class OrgsRemoveSamlSsoAuthorization extends \Github\Runtime\Client\BaseEndpoint
         if (204 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\OrgsRemoveSamlSsoAuthorizationNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

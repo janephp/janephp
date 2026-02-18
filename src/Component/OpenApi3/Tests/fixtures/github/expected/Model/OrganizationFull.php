@@ -13,266 +13,178 @@ class OrganizationFull extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $login;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $reposUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $eventsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $hooksUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $issuesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $membersUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $publicMembersUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $avatarUrl;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $company;
     /**
-     * 
-     *
      * @var string
      */
     protected $blog;
     /**
-     * 
-     *
      * @var string
      */
     protected $location;
     /**
-     * 
-     *
      * @var string
      */
     protected $email;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $twitterUsername;
     /**
-     * 
-     *
      * @var bool
      */
     protected $isVerified;
     /**
-     * 
-     *
      * @var bool
      */
     protected $hasOrganizationProjects;
     /**
-     * 
-     *
      * @var bool
      */
     protected $hasRepositoryProjects;
     /**
-     * 
-     *
      * @var int
      */
     protected $publicRepos;
     /**
-     * 
-     *
      * @var int
      */
     protected $publicGists;
     /**
-     * 
-     *
      * @var int
      */
     protected $followers;
     /**
-     * 
-     *
      * @var int
      */
     protected $following;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var int
      */
     protected $totalPrivateRepos;
     /**
-     * 
-     *
      * @var int
      */
     protected $ownedPrivateRepos;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $privateGists;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $diskUsage;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $collaborators;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $billingEmail;
     /**
-     * 
-     *
      * @var OrganizationFullPlan
      */
     protected $plan;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $defaultRepositoryPermission;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $membersCanCreateRepositories;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $twoFactorRequirementEnabled;
     /**
-     * 
-     *
      * @var string
      */
     protected $membersAllowedRepositoryCreationType;
     /**
-     * 
-     *
      * @var bool
      */
     protected $membersCanCreatePublicRepositories;
     /**
-     * 
-     *
      * @var bool
      */
     protected $membersCanCreatePrivateRepositories;
     /**
-     * 
-     *
      * @var bool
      */
     protected $membersCanCreateInternalRepositories;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @return string
      */
     public function getLogin(): string
@@ -280,8 +192,6 @@ class OrganizationFull extends \ArrayObject
         return $this->login;
     }
     /**
-     * 
-     *
      * @param string $login
      *
      * @return self
@@ -293,8 +203,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -302,8 +210,6 @@ class OrganizationFull extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -315,8 +221,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -324,8 +228,6 @@ class OrganizationFull extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -337,8 +239,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -346,8 +246,6 @@ class OrganizationFull extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -359,8 +257,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getReposUrl(): string
@@ -368,8 +264,6 @@ class OrganizationFull extends \ArrayObject
         return $this->reposUrl;
     }
     /**
-     * 
-     *
      * @param string $reposUrl
      *
      * @return self
@@ -381,8 +275,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEventsUrl(): string
@@ -390,8 +282,6 @@ class OrganizationFull extends \ArrayObject
         return $this->eventsUrl;
     }
     /**
-     * 
-     *
      * @param string $eventsUrl
      *
      * @return self
@@ -403,8 +293,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHooksUrl(): string
@@ -412,8 +300,6 @@ class OrganizationFull extends \ArrayObject
         return $this->hooksUrl;
     }
     /**
-     * 
-     *
      * @param string $hooksUrl
      *
      * @return self
@@ -425,8 +311,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIssuesUrl(): string
@@ -434,8 +318,6 @@ class OrganizationFull extends \ArrayObject
         return $this->issuesUrl;
     }
     /**
-     * 
-     *
      * @param string $issuesUrl
      *
      * @return self
@@ -447,8 +329,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMembersUrl(): string
@@ -456,8 +336,6 @@ class OrganizationFull extends \ArrayObject
         return $this->membersUrl;
     }
     /**
-     * 
-     *
      * @param string $membersUrl
      *
      * @return self
@@ -469,8 +347,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPublicMembersUrl(): string
@@ -478,8 +354,6 @@ class OrganizationFull extends \ArrayObject
         return $this->publicMembersUrl;
     }
     /**
-     * 
-     *
      * @param string $publicMembersUrl
      *
      * @return self
@@ -491,8 +365,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAvatarUrl(): string
@@ -500,8 +372,6 @@ class OrganizationFull extends \ArrayObject
         return $this->avatarUrl;
     }
     /**
-     * 
-     *
      * @param string $avatarUrl
      *
      * @return self
@@ -513,8 +383,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription(): ?string
@@ -522,8 +390,6 @@ class OrganizationFull extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -535,8 +401,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -544,8 +408,6 @@ class OrganizationFull extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -557,8 +419,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCompany(): string
@@ -566,8 +426,6 @@ class OrganizationFull extends \ArrayObject
         return $this->company;
     }
     /**
-     * 
-     *
      * @param string $company
      *
      * @return self
@@ -579,8 +437,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBlog(): string
@@ -588,8 +444,6 @@ class OrganizationFull extends \ArrayObject
         return $this->blog;
     }
     /**
-     * 
-     *
      * @param string $blog
      *
      * @return self
@@ -601,8 +455,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLocation(): string
@@ -610,8 +462,6 @@ class OrganizationFull extends \ArrayObject
         return $this->location;
     }
     /**
-     * 
-     *
      * @param string $location
      *
      * @return self
@@ -623,8 +473,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEmail(): string
@@ -632,8 +480,6 @@ class OrganizationFull extends \ArrayObject
         return $this->email;
     }
     /**
-     * 
-     *
      * @param string $email
      *
      * @return self
@@ -645,8 +491,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTwitterUsername(): ?string
@@ -654,8 +498,6 @@ class OrganizationFull extends \ArrayObject
         return $this->twitterUsername;
     }
     /**
-     * 
-     *
      * @param string|null $twitterUsername
      *
      * @return self
@@ -667,8 +509,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getIsVerified(): bool
@@ -676,8 +516,6 @@ class OrganizationFull extends \ArrayObject
         return $this->isVerified;
     }
     /**
-     * 
-     *
      * @param bool $isVerified
      *
      * @return self
@@ -689,8 +527,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getHasOrganizationProjects(): bool
@@ -698,8 +534,6 @@ class OrganizationFull extends \ArrayObject
         return $this->hasOrganizationProjects;
     }
     /**
-     * 
-     *
      * @param bool $hasOrganizationProjects
      *
      * @return self
@@ -711,8 +545,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getHasRepositoryProjects(): bool
@@ -720,8 +552,6 @@ class OrganizationFull extends \ArrayObject
         return $this->hasRepositoryProjects;
     }
     /**
-     * 
-     *
      * @param bool $hasRepositoryProjects
      *
      * @return self
@@ -733,8 +563,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getPublicRepos(): int
@@ -742,8 +570,6 @@ class OrganizationFull extends \ArrayObject
         return $this->publicRepos;
     }
     /**
-     * 
-     *
      * @param int $publicRepos
      *
      * @return self
@@ -755,8 +581,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getPublicGists(): int
@@ -764,8 +588,6 @@ class OrganizationFull extends \ArrayObject
         return $this->publicGists;
     }
     /**
-     * 
-     *
      * @param int $publicGists
      *
      * @return self
@@ -777,8 +599,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getFollowers(): int
@@ -786,8 +606,6 @@ class OrganizationFull extends \ArrayObject
         return $this->followers;
     }
     /**
-     * 
-     *
      * @param int $followers
      *
      * @return self
@@ -799,8 +617,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getFollowing(): int
@@ -808,8 +624,6 @@ class OrganizationFull extends \ArrayObject
         return $this->following;
     }
     /**
-     * 
-     *
      * @param int $following
      *
      * @return self
@@ -821,8 +635,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -830,8 +642,6 @@ class OrganizationFull extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -843,8 +653,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -852,8 +660,6 @@ class OrganizationFull extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -865,8 +671,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -874,8 +678,6 @@ class OrganizationFull extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -887,8 +689,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getTotalPrivateRepos(): int
@@ -896,8 +696,6 @@ class OrganizationFull extends \ArrayObject
         return $this->totalPrivateRepos;
     }
     /**
-     * 
-     *
      * @param int $totalPrivateRepos
      *
      * @return self
@@ -909,8 +707,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getOwnedPrivateRepos(): int
@@ -918,8 +714,6 @@ class OrganizationFull extends \ArrayObject
         return $this->ownedPrivateRepos;
     }
     /**
-     * 
-     *
      * @param int $ownedPrivateRepos
      *
      * @return self
@@ -931,8 +725,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getPrivateGists(): ?int
@@ -940,8 +732,6 @@ class OrganizationFull extends \ArrayObject
         return $this->privateGists;
     }
     /**
-     * 
-     *
      * @param int|null $privateGists
      *
      * @return self
@@ -953,8 +743,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getDiskUsage(): ?int
@@ -962,8 +750,6 @@ class OrganizationFull extends \ArrayObject
         return $this->diskUsage;
     }
     /**
-     * 
-     *
      * @param int|null $diskUsage
      *
      * @return self
@@ -975,8 +761,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getCollaborators(): ?int
@@ -984,8 +768,6 @@ class OrganizationFull extends \ArrayObject
         return $this->collaborators;
     }
     /**
-     * 
-     *
      * @param int|null $collaborators
      *
      * @return self
@@ -997,8 +779,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getBillingEmail(): ?string
@@ -1006,8 +786,6 @@ class OrganizationFull extends \ArrayObject
         return $this->billingEmail;
     }
     /**
-     * 
-     *
      * @param string|null $billingEmail
      *
      * @return self
@@ -1019,8 +797,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return OrganizationFullPlan
      */
     public function getPlan(): OrganizationFullPlan
@@ -1028,8 +804,6 @@ class OrganizationFull extends \ArrayObject
         return $this->plan;
     }
     /**
-     * 
-     *
      * @param OrganizationFullPlan $plan
      *
      * @return self
@@ -1041,8 +815,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDefaultRepositoryPermission(): ?string
@@ -1050,8 +822,6 @@ class OrganizationFull extends \ArrayObject
         return $this->defaultRepositoryPermission;
     }
     /**
-     * 
-     *
      * @param string|null $defaultRepositoryPermission
      *
      * @return self
@@ -1063,8 +833,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getMembersCanCreateRepositories(): ?bool
@@ -1072,8 +840,6 @@ class OrganizationFull extends \ArrayObject
         return $this->membersCanCreateRepositories;
     }
     /**
-     * 
-     *
      * @param bool|null $membersCanCreateRepositories
      *
      * @return self
@@ -1085,8 +851,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getTwoFactorRequirementEnabled(): ?bool
@@ -1094,8 +858,6 @@ class OrganizationFull extends \ArrayObject
         return $this->twoFactorRequirementEnabled;
     }
     /**
-     * 
-     *
      * @param bool|null $twoFactorRequirementEnabled
      *
      * @return self
@@ -1107,8 +869,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMembersAllowedRepositoryCreationType(): string
@@ -1116,8 +876,6 @@ class OrganizationFull extends \ArrayObject
         return $this->membersAllowedRepositoryCreationType;
     }
     /**
-     * 
-     *
      * @param string $membersAllowedRepositoryCreationType
      *
      * @return self
@@ -1129,8 +887,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getMembersCanCreatePublicRepositories(): bool
@@ -1138,8 +894,6 @@ class OrganizationFull extends \ArrayObject
         return $this->membersCanCreatePublicRepositories;
     }
     /**
-     * 
-     *
      * @param bool $membersCanCreatePublicRepositories
      *
      * @return self
@@ -1151,8 +905,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getMembersCanCreatePrivateRepositories(): bool
@@ -1160,8 +912,6 @@ class OrganizationFull extends \ArrayObject
         return $this->membersCanCreatePrivateRepositories;
     }
     /**
-     * 
-     *
      * @param bool $membersCanCreatePrivateRepositories
      *
      * @return self
@@ -1173,8 +923,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getMembersCanCreateInternalRepositories(): bool
@@ -1182,8 +930,6 @@ class OrganizationFull extends \ArrayObject
         return $this->membersCanCreateInternalRepositories;
     }
     /**
-     * 
-     *
      * @param bool $membersCanCreateInternalRepositories
      *
      * @return self
@@ -1195,8 +941,6 @@ class OrganizationFull extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -1204,8 +948,6 @@ class OrganizationFull extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self

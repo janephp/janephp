@@ -12,24 +12,19 @@ class OperationGuess
     public const OPTIONS = 'OPTIONS';
     public const HEAD = 'HEAD';
 
-    private $operation;
+    private string $path;
+    private array $parameters;
+    private array $securityScopes;
 
-    private $path;
-
-    private $method;
-
-    private $reference;
-
-    private $parameters;
-
-    private $securityScopes;
-
-    public function __construct(object $pathItem, object $operation, string $path, string $method, string $reference, array $securityScopes = [])
-    {
-        $this->operation = $operation;
+    public function __construct(
+        object $pathItem,
+        private readonly object $operation,
+        string $path,
+        private readonly string $method,
+        private readonly string $reference,
+        array $securityScopes = [],
+    ) {
         $this->path = preg_replace('#^/+#', '/', $path);
-        $this->method = $method;
-        $this->reference = $reference;
         $this->parameters = array_merge(
             $pathItem->getParameters() ?? [],
             $operation->getParameters() ?? []

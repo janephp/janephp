@@ -13,14 +13,10 @@ class SubLevel1 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var SubLevel2
      */
     protected $subLevel2;
     /**
-     * 
-     *
      * @return SubLevel2
      */
     public function getSubLevel2(): SubLevel2
@@ -28,8 +24,6 @@ class SubLevel1 extends \ArrayObject
         return $this->subLevel2;
     }
     /**
-     * 
-     *
      * @param SubLevel2 $subLevel2
      *
      * @return self

@@ -7,16 +7,14 @@ class ShareDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
     protected $token;
     protected $accept;
     /**
-     * 
-     *
      * @param string $token Share token
-     * @param array $queryParameters {
-     *     @var int $width Optional width in pixels to resize image
-     *     @var int $height Optional height in pixels to resize image
-     * }
-     * @param array $headerParameters {
-     *     @var string $range The range of bytes to download (http range header): bytes={from}-{to} (e.g. bytes=0-100000)
-     * }
+     * @param array{
+     *    "width"?: int, //Optional width in pixels to resize image
+     *    "height"?: int, //Optional height in pixels to resize image
+     * } $queryParameters
+     * @param array{
+     *    "range"?: string, //The range of bytes to download (http range header): bytes={from}-{to} (e.g. bytes=0-100000)
+     * } $headerParameters
      * @param array $accept Accept content header application/json|application/octet-stream
      */
     public function __construct(string $token, array $queryParameters = [], array $headerParameters = [], array $accept = [])
@@ -83,25 +81,25 @@ class ShareDownload extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ShareDownloadBadRequestException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkValidationException', 'json'), $response);
         }
         if (401 === $status) {
             throw new \PicturePark\API\Exception\ShareDownloadUnauthorizedException($response);
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ShareDownloadNotFoundException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkNotFoundException', 'json'), $response);
         }
         if (405 === $status) {
             throw new \PicturePark\API\Exception\ShareDownloadMethodNotAllowedException($response);
         }
-        if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (409 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ShareDownloadConflictException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkConflictException', 'json'), $response);
         }
         if (429 === $status) {
             throw new \PicturePark\API\Exception\ShareDownloadTooManyRequestsException($response);
         }
-        if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (500 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\ShareDownloadInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
         if (200 === $status) {

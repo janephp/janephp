@@ -13,11 +13,11 @@ class PrefixFilter extends FilterBase
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * The field's name to execute the filter on. It is composed by the field ids of the hierarchy joined with "."
-    (i.e. personLayer.address.street).
-    *
-    * @var string
-    */
+     * The field's name to execute the filter on. It is composed by the field ids of the hierarchy joined with "."
+     * (i.e. personLayer.address.street).
+     *
+     * @var string
+     */
     protected $field;
     /**
      * The value to be used as prefix.
@@ -26,11 +26,11 @@ class PrefixFilter extends FilterBase
      */
     protected $prefix;
     /**
-    * The field's name to execute the filter on. It is composed by the field ids of the hierarchy joined with "."
-    (i.e. personLayer.address.street).
-    *
-    * @return string
-    */
+     * The field's name to execute the filter on. It is composed by the field ids of the hierarchy joined with "."
+     * (i.e. personLayer.address.street).
+     *
+     * @return string
+     */
     public function getField(): string
     {
         return $this->field;

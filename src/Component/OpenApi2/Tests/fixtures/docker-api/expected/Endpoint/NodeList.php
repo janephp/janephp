@@ -5,21 +5,19 @@ namespace Docker\Api\Endpoint;
 class NodeList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docker\Api\Runtime\Client\Endpoint
 {
     /**
-    * 
-    *
-    * @param array $queryParameters {
-    *     @var string $filters Filters to process on the nodes list, encoded as JSON (a `map[string][]string`).
-    
-    Available filters:
-    - `id=<node id>`
-    - `label=<engine label>`
-    - `membership=`(`accepted`|`pending`)`
-    - `name=<node name>`
-    - `node.label=<node label>`
-    - `role=`(`manager`|`worker`)`
-    
-    * }
-    */
+     * @param array $queryParameters {
+     *     @var string $filters Filters to process on the nodes list, encoded as JSON (a `map[string][]string`).
+     *     
+     *     Available filters:
+     *     - `id=<node id>`
+     *     - `label=<engine label>`
+     *     - `membership=`(`accepted`|`pending`)`
+     *     - `name=<node name>`
+     *     - `node.label=<node label>`
+     *     - `role=`(`manager`|`worker`)`
+     *     
+     * }
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

@@ -13,30 +13,31 @@ class Runtime
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * Name and, optional, path, of the OCI executable binary.
-    
-    If the path is omitted, the daemon searches the host's `$PATH` for the
-    binary and uses the first result.
-    
-    *
-    * @var string
-    */
+     * Name and, optional, path, of the OCI executable binary.
+     * 
+     * If the path is omitted, the daemon searches the host's `$PATH` for the
+     * binary and uses the first result.
+     * 
+     *
+     * @var string
+     */
     protected $path;
     /**
      * List of command-line arguments to pass to the runtime when invoked.
+     * 
      *
      * @var list<string>|null
      */
     protected $runtimeArgs;
     /**
-    * Name and, optional, path, of the OCI executable binary.
-    
-    If the path is omitted, the daemon searches the host's `$PATH` for the
-    binary and uses the first result.
-    
-    *
-    * @return string
-    */
+     * Name and, optional, path, of the OCI executable binary.
+     * 
+     * If the path is omitted, the daemon searches the host's `$PATH` for the
+     * binary and uses the first result.
+     * 
+     *
+     * @return string
+     */
     public function getPath(): string
     {
         return $this->path;
@@ -60,6 +61,7 @@ class Runtime
     }
     /**
      * List of command-line arguments to pass to the runtime when invoked.
+     * 
      *
      * @return list<string>|null
      */

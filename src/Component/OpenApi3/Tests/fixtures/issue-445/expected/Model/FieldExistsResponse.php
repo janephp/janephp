@@ -19,19 +19,19 @@ class FieldExistsResponse
      */
     protected $exists;
     /**
-    * Indicates if a field with the specified ID was previously used.
-    A field ID that was previously in use cannot be used again.
-    *
-    * @var bool
-    */
+     * Indicates if a field with the specified ID was previously used.
+     * A field ID that was previously in use cannot be used again.
+     *
+     * @var bool
+     */
     protected $previouslyUsed;
     /**
-    * If the field does already exist or has already existed, this will contain the ID
-    of the schema containing it. It case of parent-child schemas, a field ID
-    has to be unique across the schema hierarchy.
-    *
-    * @var string|null
-    */
+     * If the field does already exist or has already existed, this will contain the ID
+     * of the schema containing it. It case of parent-child schemas, a field ID
+     * has to be unique across the schema hierarchy.
+     *
+     * @var string|null
+     */
     protected $schemaId;
     /**
      * Indicates if a field with the specified ID currently exists.
@@ -56,11 +56,11 @@ class FieldExistsResponse
         return $this;
     }
     /**
-    * Indicates if a field with the specified ID was previously used.
-    A field ID that was previously in use cannot be used again.
-    *
-    * @return bool
-    */
+     * Indicates if a field with the specified ID was previously used.
+     * A field ID that was previously in use cannot be used again.
+     *
+     * @return bool
+     */
     public function getPreviouslyUsed(): bool
     {
         return $this->previouslyUsed;
@@ -80,12 +80,12 @@ class FieldExistsResponse
         return $this;
     }
     /**
-    * If the field does already exist or has already existed, this will contain the ID
-    of the schema containing it. It case of parent-child schemas, a field ID
-    has to be unique across the schema hierarchy.
-    *
-    * @return string|null
-    */
+     * If the field does already exist or has already existed, this will contain the ID
+     * of the schema containing it. It case of parent-child schemas, a field ID
+     * has to be unique across the schema hierarchy.
+     *
+     * @return string|null
+     */
     public function getSchemaId(): ?string
     {
         return $this->schemaId;

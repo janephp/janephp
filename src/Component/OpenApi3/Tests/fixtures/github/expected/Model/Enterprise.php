@@ -19,8 +19,6 @@ class Enterprise extends \ArrayObject
      */
     protected $description;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
@@ -37,8 +35,6 @@ class Enterprise extends \ArrayObject
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
@@ -55,20 +51,14 @@ class Enterprise extends \ArrayObject
      */
     protected $slug;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $avatarUrl;
@@ -95,8 +85,6 @@ class Enterprise extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -104,8 +92,6 @@ class Enterprise extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -161,8 +147,6 @@ class Enterprise extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -170,8 +154,6 @@ class Enterprise extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -227,8 +209,6 @@ class Enterprise extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
@@ -236,8 +216,6 @@ class Enterprise extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $createdAt
      *
      * @return self
@@ -249,8 +227,6 @@ class Enterprise extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
@@ -258,8 +234,6 @@ class Enterprise extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $updatedAt
      *
      * @return self
@@ -271,8 +245,6 @@ class Enterprise extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAvatarUrl(): string
@@ -280,8 +252,6 @@ class Enterprise extends \ArrayObject
         return $this->avatarUrl;
     }
     /**
-     * 
-     *
      * @param string $avatarUrl
      *
      * @return self

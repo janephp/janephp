@@ -13,14 +13,10 @@ class ParchmentJsonhalLinks extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var ParchmentJsonhalLinksSelf
      */
     protected $self;
     /**
-     * 
-     *
      * @return ParchmentJsonhalLinksSelf
      */
     public function getSelf(): ParchmentJsonhalLinksSelf
@@ -28,8 +24,6 @@ class ParchmentJsonhalLinks extends \ArrayObject
         return $this->self;
     }
     /**
-     * 
-     *
      * @param ParchmentJsonhalLinksSelf $self
      *
      * @return self

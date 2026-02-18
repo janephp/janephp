@@ -8,9 +8,8 @@ class ScimProvisionAndInviteUser extends \Github\Runtime\Client\BaseEndpoint imp
     protected $accept;
     /**
      * Provision organization membership for a user, and send an activation email to the email address.
-     *
-     * @param string $org 
-     * @param null|\Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody 
+     * @param string $org
+     * @param null|\Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody
      * @param array $accept Accept content header application/scim+json|application/json
      */
     public function __construct(string $org, ?\Github\Model\ScimV2OrganizationsOrgUsersPostBody $requestBody = null, array $accept = [])
@@ -51,31 +50,57 @@ class ScimProvisionAndInviteUser extends \Github\Runtime\Client\BaseEndpoint imp
      * @throws \Github\Exception\ScimProvisionAndInviteUserConflictException
      * @throws \Github\Exception\ScimProvisionAndInviteUserBadRequestException
      *
-     * @return null
+     * @return null|\Github\Model\ScimUser
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (201 === $status) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos(strtolower($contentType), 'application/scim+json') !== false)) {
+            return $serializer->deserialize($body, 'Github\Model\ScimUser', 'json');
         }
         if (304 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimProvisionAndInviteUserNotFoundException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+        if (404 === $status) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+                throw new \Github\Exception\ScimProvisionAndInviteUserNotFoundException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
+            if (mb_strpos(strtolower($contentType), 'application/scim+json') !== false) {
+                throw new \Github\Exception\ScimProvisionAndInviteUserNotFoundException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimProvisionAndInviteUserForbiddenException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+        if (403 === $status) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+                throw new \Github\Exception\ScimProvisionAndInviteUserForbiddenException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
+            if (mb_strpos(strtolower($contentType), 'application/scim+json') !== false) {
+                throw new \Github\Exception\ScimProvisionAndInviteUserForbiddenException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
         }
-        if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimProvisionAndInviteUserInternalServerErrorException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+        if (500 === $status) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+                throw new \Github\Exception\ScimProvisionAndInviteUserInternalServerErrorException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
+            if (mb_strpos(strtolower($contentType), 'application/scim+json') !== false) {
+                throw new \Github\Exception\ScimProvisionAndInviteUserInternalServerErrorException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
         }
-        if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimProvisionAndInviteUserConflictException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+        if (409 === $status) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+                throw new \Github\Exception\ScimProvisionAndInviteUserConflictException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
+            if (mb_strpos(strtolower($contentType), 'application/scim+json') !== false) {
+                throw new \Github\Exception\ScimProvisionAndInviteUserConflictException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
         }
-        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimProvisionAndInviteUserBadRequestException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+        if (400 === $status) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+                throw new \Github\Exception\ScimProvisionAndInviteUserBadRequestException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
+            if (mb_strpos(strtolower($contentType), 'application/scim+json') !== false) {
+                throw new \Github\Exception\ScimProvisionAndInviteUserBadRequestException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
         }
     }
     public function getAuthenticationScopes(): array

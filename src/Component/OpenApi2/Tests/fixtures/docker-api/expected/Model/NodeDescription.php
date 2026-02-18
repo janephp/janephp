@@ -13,24 +13,23 @@ class NodeDescription
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $hostname;
     /**
      * Platform represents the platform (Arch/OS).
+     * 
      *
      * @var Platform
      */
     protected $platform;
     /**
-    * An object describing the resources which can be advertised by a node and
-    requested by a task.
-    
-    *
-    * @var ResourceObject
-    */
+     * An object describing the resources which can be advertised by a node and
+     * requested by a task.
+     * 
+     *
+     * @var ResourceObject
+     */
     protected $resources;
     /**
      * EngineDescription provides information about an engine.
@@ -39,16 +38,14 @@ class NodeDescription
      */
     protected $engine;
     /**
-    * Information about the issuer of leaf TLS certificates and the trusted root
-    CA certificate.
-    
-    *
-    * @var TLSInfo
-    */
-    protected $tLSInfo;
-    /**
+     * Information about the issuer of leaf TLS certificates and the trusted root
+     * CA certificate.
      * 
      *
+     * @var TLSInfo
+     */
+    protected $tLSInfo;
+    /**
      * @return string
      */
     public function getHostname(): string
@@ -56,8 +53,6 @@ class NodeDescription
         return $this->hostname;
     }
     /**
-     * 
-     *
      * @param string $hostname
      *
      * @return self
@@ -70,6 +65,7 @@ class NodeDescription
     }
     /**
      * Platform represents the platform (Arch/OS).
+     * 
      *
      * @return Platform
      */
@@ -91,12 +87,12 @@ class NodeDescription
         return $this;
     }
     /**
-    * An object describing the resources which can be advertised by a node and
-    requested by a task.
-    
-    *
-    * @return ResourceObject
-    */
+     * An object describing the resources which can be advertised by a node and
+     * requested by a task.
+     * 
+     *
+     * @return ResourceObject
+     */
     public function getResources(): ResourceObject
     {
         return $this->resources;
@@ -139,12 +135,12 @@ class NodeDescription
         return $this;
     }
     /**
-    * Information about the issuer of leaf TLS certificates and the trusted root
-    CA certificate.
-    
-    *
-    * @return TLSInfo
-    */
+     * Information about the issuer of leaf TLS certificates and the trusted root
+     * CA certificate.
+     * 
+     *
+     * @return TLSInfo
+     */
     public function getTLSInfo(): TLSInfo
     {
         return $this->tLSInfo;

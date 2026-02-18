@@ -13,80 +13,54 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $imageId;
     /**
-     * 
-     *
      * @var ListCompanyImagesDataItemCompany
      */
     protected $company;
     /**
-     * 
-     *
      * @var ListCompanyImagesDataItemDocument
      */
     protected $document;
     /**
-     * 
-     *
      * @var string
      */
     protected $format;
     /**
-     * 
-     *
      * @var string
      */
     protected $source;
     /**
-     * 
-     *
      * @var string
      */
     protected $filingDate;
     /**
-     * 
-     *
      * @var string
      */
     protected $uploadDate;
     /**
-     * 
-     *
      * @var string
      */
     protected $accountingDate;
     /**
-     * 
-     *
      * @var string
      */
     protected $language;
     /**
-     * 
-     *
      * @var string
      */
     protected $comments;
     /**
-     * 
-     *
      * @var string
      */
     protected $status;
     /**
-     * 
-     *
      * @var ListCompanyImagesDataItemLocalProperties
      */
     protected $localProperties;
     /**
-     * 
-     *
      * @return string
      */
     public function getImageId(): string
@@ -94,8 +68,6 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return $this->imageId;
     }
     /**
-     * 
-     *
      * @param string $imageId
      *
      * @return self
@@ -107,8 +79,6 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ListCompanyImagesDataItemCompany
      */
     public function getCompany(): ListCompanyImagesDataItemCompany
@@ -116,8 +86,6 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return $this->company;
     }
     /**
-     * 
-     *
      * @param ListCompanyImagesDataItemCompany $company
      *
      * @return self
@@ -129,8 +97,6 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ListCompanyImagesDataItemDocument
      */
     public function getDocument(): ListCompanyImagesDataItemDocument
@@ -138,8 +104,6 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return $this->document;
     }
     /**
-     * 
-     *
      * @param ListCompanyImagesDataItemDocument $document
      *
      * @return self
@@ -151,8 +115,6 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFormat(): string
@@ -160,8 +122,6 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return $this->format;
     }
     /**
-     * 
-     *
      * @param string $format
      *
      * @return self
@@ -173,8 +133,6 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSource(): string
@@ -182,8 +140,6 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return $this->source;
     }
     /**
-     * 
-     *
      * @param string $source
      *
      * @return self
@@ -195,8 +151,6 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFilingDate(): string
@@ -204,8 +158,6 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return $this->filingDate;
     }
     /**
-     * 
-     *
      * @param string $filingDate
      *
      * @return self
@@ -217,8 +169,6 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUploadDate(): string
@@ -226,8 +176,6 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return $this->uploadDate;
     }
     /**
-     * 
-     *
      * @param string $uploadDate
      *
      * @return self
@@ -239,8 +187,6 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAccountingDate(): string
@@ -248,8 +194,6 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return $this->accountingDate;
     }
     /**
-     * 
-     *
      * @param string $accountingDate
      *
      * @return self
@@ -261,8 +205,6 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLanguage(): string
@@ -270,8 +212,6 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return $this->language;
     }
     /**
-     * 
-     *
      * @param string $language
      *
      * @return self
@@ -283,8 +223,6 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getComments(): string
@@ -292,8 +230,6 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return $this->comments;
     }
     /**
-     * 
-     *
      * @param string $comments
      *
      * @return self
@@ -305,8 +241,6 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStatus(): string
@@ -314,8 +248,6 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return $this->status;
     }
     /**
-     * 
-     *
      * @param string $status
      *
      * @return self
@@ -327,8 +259,6 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ListCompanyImagesDataItemLocalProperties
      */
     public function getLocalProperties(): ListCompanyImagesDataItemLocalProperties
@@ -336,8 +266,6 @@ class ListCompanyImagesDataItem extends \ArrayObject
         return $this->localProperties;
     }
     /**
-     * 
-     *
      * @param ListCompanyImagesDataItemLocalProperties $localProperties
      *
      * @return self

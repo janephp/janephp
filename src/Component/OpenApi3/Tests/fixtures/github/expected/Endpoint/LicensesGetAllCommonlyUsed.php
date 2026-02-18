@@ -5,12 +5,10 @@ namespace Github\Endpoint;
 class LicensesGetAllCommonlyUsed extends \Github\Runtime\Client\BaseEndpoint implements \Github\Runtime\Client\Endpoint
 {
     /**
-     * 
-     *
-     * @param array $queryParameters {
-     *     @var bool $featured 
-     *     @var int $per_page Results per page (max 100)
-     * }
+     * @param array{
+     *    "featured"?: bool,
+     *    "per_page"?: int, //Results per page (max 100)
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -53,7 +51,7 @@ class LicensesGetAllCommonlyUsed extends \Github\Runtime\Client\BaseEndpoint imp
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\LicenseSimple[]', 'json');
         }
         if (304 === $status) {

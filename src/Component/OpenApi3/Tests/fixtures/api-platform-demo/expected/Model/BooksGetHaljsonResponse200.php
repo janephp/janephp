@@ -13,32 +13,22 @@ class BooksGetHaljsonResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<BookJsonhalBookRead>
      */
     protected $embedded;
     /**
-     * 
-     *
      * @var int
      */
     protected $totalItems;
     /**
-     * 
-     *
      * @var int
      */
     protected $itemsPerPage;
     /**
-     * 
-     *
      * @var BooksGetHaljsonResponse200Links
      */
     protected $links;
     /**
-     * 
-     *
      * @return list<BookJsonhalBookRead>
      */
     public function getEmbedded(): array
@@ -46,8 +36,6 @@ class BooksGetHaljsonResponse200 extends \ArrayObject
         return $this->embedded;
     }
     /**
-     * 
-     *
      * @param list<BookJsonhalBookRead> $embedded
      *
      * @return self
@@ -59,8 +47,6 @@ class BooksGetHaljsonResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getTotalItems(): int
@@ -68,8 +54,6 @@ class BooksGetHaljsonResponse200 extends \ArrayObject
         return $this->totalItems;
     }
     /**
-     * 
-     *
      * @param int $totalItems
      *
      * @return self
@@ -81,8 +65,6 @@ class BooksGetHaljsonResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getItemsPerPage(): int
@@ -90,8 +72,6 @@ class BooksGetHaljsonResponse200 extends \ArrayObject
         return $this->itemsPerPage;
     }
     /**
-     * 
-     *
      * @param int $itemsPerPage
      *
      * @return self
@@ -103,8 +83,6 @@ class BooksGetHaljsonResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return BooksGetHaljsonResponse200Links
      */
     public function getLinks(): BooksGetHaljsonResponse200Links
@@ -112,8 +90,6 @@ class BooksGetHaljsonResponse200 extends \ArrayObject
         return $this->links;
     }
     /**
-     * 
-     *
      * @param BooksGetHaljsonResponse200Links $links
      *
      * @return self

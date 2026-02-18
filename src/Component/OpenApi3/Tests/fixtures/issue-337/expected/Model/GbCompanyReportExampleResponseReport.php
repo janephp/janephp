@@ -13,104 +13,70 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $companyId;
     /**
-     * 
-     *
      * @var string
      */
     protected $language;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportCompanySummary
      */
     protected $companySummary;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportCompanyIdentification
      */
     protected $companyIdentification;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportCreditScore
      */
     protected $creditScore;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportContactInformation
      */
     protected $contactInformation;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportShareCapitalStructure
      */
     protected $shareCapitalStructure;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportDirectors
      */
     protected $directors;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportOtherInformation
      */
     protected $otherInformation;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportGroupStructure
      */
     protected $groupStructure;
     /**
-     * 
-     *
      * @var list<GbCompanyReportExampleResponseReportExtendedGroupStructureItem>
      */
     protected $extendedGroupStructure;
     /**
-     * 
-     *
      * @var list<GbCompanyReportExampleResponseReportFinancialStatementsItem>
      */
     protected $financialStatements;
     /**
-     * 
-     *
      * @var list<GbCompanyReportExampleResponseReportLocalFinancialStatementsItem>
      */
     protected $localFinancialStatements;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportPaymentData
      */
     protected $paymentData;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportNegativeInformation
      */
     protected $negativeInformation;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportAdditionalInformation
      */
     protected $additionalInformation;
     /**
-     * 
-     *
      * @return string
      */
     public function getCompanyId(): string
@@ -118,8 +84,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this->companyId;
     }
     /**
-     * 
-     *
      * @param string $companyId
      *
      * @return self
@@ -131,8 +95,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLanguage(): string
@@ -140,8 +102,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this->language;
     }
     /**
-     * 
-     *
      * @param string $language
      *
      * @return self
@@ -153,8 +113,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportCompanySummary
      */
     public function getCompanySummary(): GbCompanyReportExampleResponseReportCompanySummary
@@ -162,8 +120,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this->companySummary;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportCompanySummary $companySummary
      *
      * @return self
@@ -175,8 +131,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportCompanyIdentification
      */
     public function getCompanyIdentification(): GbCompanyReportExampleResponseReportCompanyIdentification
@@ -184,8 +138,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this->companyIdentification;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportCompanyIdentification $companyIdentification
      *
      * @return self
@@ -197,8 +149,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportCreditScore
      */
     public function getCreditScore(): GbCompanyReportExampleResponseReportCreditScore
@@ -206,8 +156,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this->creditScore;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportCreditScore $creditScore
      *
      * @return self
@@ -219,8 +167,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportContactInformation
      */
     public function getContactInformation(): GbCompanyReportExampleResponseReportContactInformation
@@ -228,8 +174,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this->contactInformation;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportContactInformation $contactInformation
      *
      * @return self
@@ -241,8 +185,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportShareCapitalStructure
      */
     public function getShareCapitalStructure(): GbCompanyReportExampleResponseReportShareCapitalStructure
@@ -250,8 +192,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this->shareCapitalStructure;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportShareCapitalStructure $shareCapitalStructure
      *
      * @return self
@@ -263,8 +203,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportDirectors
      */
     public function getDirectors(): GbCompanyReportExampleResponseReportDirectors
@@ -272,8 +210,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this->directors;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportDirectors $directors
      *
      * @return self
@@ -285,8 +221,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportOtherInformation
      */
     public function getOtherInformation(): GbCompanyReportExampleResponseReportOtherInformation
@@ -294,8 +228,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this->otherInformation;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportOtherInformation $otherInformation
      *
      * @return self
@@ -307,8 +239,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportGroupStructure
      */
     public function getGroupStructure(): GbCompanyReportExampleResponseReportGroupStructure
@@ -316,8 +246,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this->groupStructure;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportGroupStructure $groupStructure
      *
      * @return self
@@ -329,8 +257,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<GbCompanyReportExampleResponseReportExtendedGroupStructureItem>
      */
     public function getExtendedGroupStructure(): array
@@ -338,8 +264,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this->extendedGroupStructure;
     }
     /**
-     * 
-     *
      * @param list<GbCompanyReportExampleResponseReportExtendedGroupStructureItem> $extendedGroupStructure
      *
      * @return self
@@ -351,8 +275,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<GbCompanyReportExampleResponseReportFinancialStatementsItem>
      */
     public function getFinancialStatements(): array
@@ -360,8 +282,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this->financialStatements;
     }
     /**
-     * 
-     *
      * @param list<GbCompanyReportExampleResponseReportFinancialStatementsItem> $financialStatements
      *
      * @return self
@@ -373,8 +293,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<GbCompanyReportExampleResponseReportLocalFinancialStatementsItem>
      */
     public function getLocalFinancialStatements(): array
@@ -382,8 +300,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this->localFinancialStatements;
     }
     /**
-     * 
-     *
      * @param list<GbCompanyReportExampleResponseReportLocalFinancialStatementsItem> $localFinancialStatements
      *
      * @return self
@@ -395,8 +311,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportPaymentData
      */
     public function getPaymentData(): GbCompanyReportExampleResponseReportPaymentData
@@ -404,8 +318,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this->paymentData;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportPaymentData $paymentData
      *
      * @return self
@@ -417,8 +329,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportNegativeInformation
      */
     public function getNegativeInformation(): GbCompanyReportExampleResponseReportNegativeInformation
@@ -426,8 +336,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this->negativeInformation;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportNegativeInformation $negativeInformation
      *
      * @return self
@@ -439,8 +347,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportAdditionalInformation
      */
     public function getAdditionalInformation(): GbCompanyReportExampleResponseReportAdditionalInformation
@@ -448,8 +354,6 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         return $this->additionalInformation;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportAdditionalInformation $additionalInformation
      *
      * @return self

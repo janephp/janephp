@@ -13,20 +13,14 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScoreCurrentCredi
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $currency;
     /**
-     * 
-     *
      * @var string
      */
     protected $value;
     /**
-     * 
-     *
      * @return string
      */
     public function getCurrency(): string
@@ -34,8 +28,6 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScoreCurrentCredi
         return $this->currency;
     }
     /**
-     * 
-     *
      * @param string $currency
      *
      * @return self
@@ -47,8 +39,6 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScoreCurrentCredi
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getValue(): string
@@ -56,8 +46,6 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScoreCurrentCredi
         return $this->value;
     }
     /**
-     * 
-     *
      * @param string $value
      *
      * @return self

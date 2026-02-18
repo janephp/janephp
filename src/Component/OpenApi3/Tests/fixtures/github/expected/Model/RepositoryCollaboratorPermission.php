@@ -13,20 +13,14 @@ class RepositoryCollaboratorPermission extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $permission;
     /**
-     * 
-     *
      * @var RepositoryCollaboratorPermissionUser|null
      */
     protected $user;
     /**
-     * 
-     *
      * @return string
      */
     public function getPermission(): string
@@ -34,8 +28,6 @@ class RepositoryCollaboratorPermission extends \ArrayObject
         return $this->permission;
     }
     /**
-     * 
-     *
      * @param string $permission
      *
      * @return self
@@ -47,8 +39,6 @@ class RepositoryCollaboratorPermission extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return RepositoryCollaboratorPermissionUser|null
      */
     public function getUser(): ?RepositoryCollaboratorPermissionUser
@@ -56,8 +46,6 @@ class RepositoryCollaboratorPermission extends \ArrayObject
         return $this->user;
     }
     /**
-     * 
-     *
      * @param RepositoryCollaboratorPermissionUser|null $user
      *
      * @return self

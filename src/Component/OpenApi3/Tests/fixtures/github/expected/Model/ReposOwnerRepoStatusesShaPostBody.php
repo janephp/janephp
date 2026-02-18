@@ -19,12 +19,12 @@ class ReposOwnerRepoStatusesShaPostBody extends \ArrayObject
      */
     protected $state;
     /**
-    * The target URL to associate with this status. This URL will be linked from the GitHub UI to allow users to easily see the source of the status.  
-    For example, if your continuous integration system is posting build status, you would want to provide the deep link for the build output for this specific SHA:  
-    `http://ci.example.com/user/repo/build/sha`
-    *
-    * @var string
-    */
+     * The target URL to associate with this status. This URL will be linked from the GitHub UI to allow users to easily see the source of the status.
+     * For example, if your continuous integration system is posting build status, you would want to provide the deep link for the build output for this specific SHA:
+     * `http://ci.example.com/user/repo/build/sha`
+     *
+     * @var string
+     */
     protected $targetUrl;
     /**
      * A short description of the status.
@@ -61,12 +61,12 @@ class ReposOwnerRepoStatusesShaPostBody extends \ArrayObject
         return $this;
     }
     /**
-    * The target URL to associate with this status. This URL will be linked from the GitHub UI to allow users to easily see the source of the status.  
-    For example, if your continuous integration system is posting build status, you would want to provide the deep link for the build output for this specific SHA:  
-    `http://ci.example.com/user/repo/build/sha`
-    *
-    * @return string
-    */
+     * The target URL to associate with this status. This URL will be linked from the GitHub UI to allow users to easily see the source of the status.
+     * For example, if your continuous integration system is posting build status, you would want to provide the deep link for the build output for this specific SHA:
+     * `http://ci.example.com/user/repo/build/sha`
+     *
+     * @return string
+     */
     public function getTargetUrl(): string
     {
         return $this->targetUrl;

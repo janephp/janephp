@@ -49,8 +49,6 @@ class BusinessRule
      */
     protected $enableTracing;
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
@@ -169,8 +167,6 @@ class BusinessRule
         $this->enableTracing = $enableTracing;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -178,8 +174,6 @@ class BusinessRule
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      */
     public function setKind(string $kind)

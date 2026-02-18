@@ -13,68 +13,46 @@ class ImageSummary
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $parentId;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $repoTags;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $repoDigests;
     /**
-     * 
-     *
      * @var int
      */
     protected $created;
     /**
-     * 
-     *
      * @var int
      */
     protected $size;
     /**
-     * 
-     *
      * @var int
      */
     protected $sharedSize;
     /**
-     * 
-     *
      * @var int
      */
     protected $virtualSize;
     /**
-     * 
-     *
      * @var array<string, string>
      */
     protected $labels;
     /**
-     * 
-     *
      * @var int
      */
     protected $containers;
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -82,8 +60,6 @@ class ImageSummary
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -95,8 +71,6 @@ class ImageSummary
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getParentId(): string
@@ -104,8 +78,6 @@ class ImageSummary
         return $this->parentId;
     }
     /**
-     * 
-     *
      * @param string $parentId
      *
      * @return self
@@ -117,8 +89,6 @@ class ImageSummary
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getRepoTags(): array
@@ -126,8 +96,6 @@ class ImageSummary
         return $this->repoTags;
     }
     /**
-     * 
-     *
      * @param list<string> $repoTags
      *
      * @return self
@@ -139,8 +107,6 @@ class ImageSummary
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getRepoDigests(): array
@@ -148,8 +114,6 @@ class ImageSummary
         return $this->repoDigests;
     }
     /**
-     * 
-     *
      * @param list<string> $repoDigests
      *
      * @return self
@@ -161,8 +125,6 @@ class ImageSummary
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getCreated(): int
@@ -170,8 +132,6 @@ class ImageSummary
         return $this->created;
     }
     /**
-     * 
-     *
      * @param int $created
      *
      * @return self
@@ -183,8 +143,6 @@ class ImageSummary
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getSize(): int
@@ -192,8 +150,6 @@ class ImageSummary
         return $this->size;
     }
     /**
-     * 
-     *
      * @param int $size
      *
      * @return self
@@ -205,8 +161,6 @@ class ImageSummary
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getSharedSize(): int
@@ -214,8 +168,6 @@ class ImageSummary
         return $this->sharedSize;
     }
     /**
-     * 
-     *
      * @param int $sharedSize
      *
      * @return self
@@ -227,8 +179,6 @@ class ImageSummary
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getVirtualSize(): int
@@ -236,8 +186,6 @@ class ImageSummary
         return $this->virtualSize;
     }
     /**
-     * 
-     *
      * @param int $virtualSize
      *
      * @return self
@@ -249,8 +197,6 @@ class ImageSummary
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, string>
      */
     public function getLabels(): iterable
@@ -258,8 +204,6 @@ class ImageSummary
         return $this->labels;
     }
     /**
-     * 
-     *
      * @param array<string, string> $labels
      *
      * @return self
@@ -271,8 +215,6 @@ class ImageSummary
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getContainers(): int
@@ -280,8 +222,6 @@ class ImageSummary
         return $this->containers;
     }
     /**
-     * 
-     *
      * @param int $containers
      *
      * @return self

@@ -13,26 +13,18 @@ class TestComplexListGetResponse200Item2
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $image32;
     /**
-     * 
-     *
      * @var string
      */
     protected $image64;
     /**
-     * 
-     *
      * @var string
      */
     protected $image128;
     /**
-     * 
-     *
      * @return string
      */
     public function getImage32(): string
@@ -40,8 +32,6 @@ class TestComplexListGetResponse200Item2
         return $this->image32;
     }
     /**
-     * 
-     *
      * @param string $image32
      *
      * @return self
@@ -53,8 +43,6 @@ class TestComplexListGetResponse200Item2
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getImage64(): string
@@ -62,8 +50,6 @@ class TestComplexListGetResponse200Item2
         return $this->image64;
     }
     /**
-     * 
-     *
      * @param string $image64
      *
      * @return self
@@ -75,8 +61,6 @@ class TestComplexListGetResponse200Item2
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getImage128(): string
@@ -84,8 +68,6 @@ class TestComplexListGetResponse200Item2
         return $this->image128;
     }
     /**
-     * 
-     *
      * @param string $image128
      *
      * @return self

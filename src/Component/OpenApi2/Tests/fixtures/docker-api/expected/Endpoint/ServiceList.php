@@ -5,23 +5,21 @@ namespace Docker\Api\Endpoint;
 class ServiceList extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docker\Api\Runtime\Client\Endpoint
 {
     /**
-    * 
-    *
-    * @param array $queryParameters {
-    *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
-    process on the services list.
-    
-    Available filters:
-    
-    - `id=<service id>`
-    - `label=<service label>`
-    - `mode=["replicated"|"global"]`
-    - `name=<service name>`
-    
-    *     @var bool $status Include service status, with count of running and desired tasks.
-    
-    * }
-    */
+     * @param array $queryParameters {
+     *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to
+     *     process on the services list.
+     *     
+     *     Available filters:
+     *     
+     *     - `id=<service id>`
+     *     - `label=<service label>`
+     *     - `mode=["replicated"|"global"]`
+     *     - `name=<service name>`
+     *     
+     *     @var bool $status Include service status, with count of running and desired tasks.
+     *     
+     * }
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;

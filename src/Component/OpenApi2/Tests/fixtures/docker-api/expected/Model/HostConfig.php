@@ -13,12 +13,12 @@ class HostConfig
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * An integer value representing this container's relative CPU weight
-    versus other containers.
-    
-    *
-    * @var int
-    */
+     * An integer value representing this container's relative CPU weight
+     * versus other containers.
+     * 
+     *
+     * @var int
+     */
     protected $cpuShares;
     /**
      * Memory limit in bytes.
@@ -27,14 +27,14 @@ class HostConfig
      */
     protected $memory = 0;
     /**
-    * Path to `cgroups` under which the container's `cgroup` is created. If
-    the path is not absolute, the path is considered to be relative to the
-    `cgroups` path of the init process. Cgroups are created if they do not
-    already exist.
-    
-    *
-    * @var string
-    */
+     * Path to `cgroups` under which the container's `cgroup` is created. If
+     * the path is not absolute, the path is considered to be relative to the
+     * `cgroups` path of the init process. Cgroups are created if they do not
+     * already exist.
+     * 
+     *
+     * @var string
+     */
     protected $cgroupParent;
     /**
      * Block IO weight (relative weight).
@@ -43,59 +43,59 @@ class HostConfig
      */
     protected $blkioWeight;
     /**
-    * Block IO weight (relative device weight) in the form:
-    
-    ```
-    [{"Path": "device_path", "Weight": weight}]
-    ```
-    
-    *
-    * @var list<ResourcesBlkioWeightDeviceItem>
-    */
+     * Block IO weight (relative device weight) in the form:
+     * 
+     * ```
+     * [{"Path": "device_path", "Weight": weight}]
+     * ```
+     * 
+     *
+     * @var list<ResourcesBlkioWeightDeviceItem>
+     */
     protected $blkioWeightDevice;
     /**
-    * Limit read rate (bytes per second) from a device, in the form:
-    
-    ```
-    [{"Path": "device_path", "Rate": rate}]
-    ```
-    
-    *
-    * @var list<ThrottleDevice>
-    */
+     * Limit read rate (bytes per second) from a device, in the form:
+     * 
+     * ```
+     * [{"Path": "device_path", "Rate": rate}]
+     * ```
+     * 
+     *
+     * @var list<ThrottleDevice>
+     */
     protected $blkioDeviceReadBps;
     /**
-    * Limit write rate (bytes per second) to a device, in the form:
-    
-    ```
-    [{"Path": "device_path", "Rate": rate}]
-    ```
-    
-    *
-    * @var list<ThrottleDevice>
-    */
+     * Limit write rate (bytes per second) to a device, in the form:
+     * 
+     * ```
+     * [{"Path": "device_path", "Rate": rate}]
+     * ```
+     * 
+     *
+     * @var list<ThrottleDevice>
+     */
     protected $blkioDeviceWriteBps;
     /**
-    * Limit read rate (IO per second) from a device, in the form:
-    
-    ```
-    [{"Path": "device_path", "Rate": rate}]
-    ```
-    
-    *
-    * @var list<ThrottleDevice>
-    */
+     * Limit read rate (IO per second) from a device, in the form:
+     * 
+     * ```
+     * [{"Path": "device_path", "Rate": rate}]
+     * ```
+     * 
+     *
+     * @var list<ThrottleDevice>
+     */
     protected $blkioDeviceReadIOps;
     /**
-    * Limit write rate (IO per second) to a device, in the form:
-    
-    ```
-    [{"Path": "device_path", "Rate": rate}]
-    ```
-    
-    *
-    * @var list<ThrottleDevice>
-    */
+     * Limit write rate (IO per second) to a device, in the form:
+     * 
+     * ```
+     * [{"Path": "device_path", "Rate": rate}]
+     * ```
+     * 
+     *
+     * @var list<ThrottleDevice>
+     */
     protected $blkioDeviceWriteIOps;
     /**
      * The length of a CPU period in microseconds.
@@ -105,39 +105,41 @@ class HostConfig
     protected $cpuPeriod;
     /**
      * Microseconds of CPU time that the container can get in a CPU period.
+     * 
      *
      * @var int
      */
     protected $cpuQuota;
     /**
-    * The length of a CPU real-time period in microseconds. Set to 0 to
-    allocate no time allocated to real-time tasks.
-    
-    *
-    * @var int
-    */
+     * The length of a CPU real-time period in microseconds. Set to 0 to
+     * allocate no time allocated to real-time tasks.
+     * 
+     *
+     * @var int
+     */
     protected $cpuRealtimePeriod;
     /**
-    * The length of a CPU real-time runtime in microseconds. Set to 0 to
-    allocate no time allocated to real-time tasks.
-    
-    *
-    * @var int
-    */
+     * The length of a CPU real-time runtime in microseconds. Set to 0 to
+     * allocate no time allocated to real-time tasks.
+     * 
+     *
+     * @var int
+     */
     protected $cpuRealtimeRuntime;
     /**
      * CPUs in which to allow execution (e.g., `0-3`, `0,1`).
+     * 
      *
      * @var string
      */
     protected $cpusetCpus;
     /**
-    * Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only
-    effective on NUMA systems.
-    
-    *
-    * @var string
-    */
+     * Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only
+     * effective on NUMA systems.
+     * 
+     *
+     * @var string
+     */
     protected $cpusetMems;
     /**
      * A list of devices to add to the container.
@@ -153,21 +155,22 @@ class HostConfig
     protected $deviceCgroupRules;
     /**
      * A list of requests for devices to be sent to device drivers.
+     * 
      *
      * @var list<DeviceRequest>
      */
     protected $deviceRequests;
     /**
-    * Kernel memory limit in bytes.
-    
-    <p><br /></p>
-    
-    > **Deprecated**: This field is deprecated as the kernel 5.4 deprecated
-    > `kmem.limit_in_bytes`.
-    
-    *
-    * @var int
-    */
+     * Kernel memory limit in bytes.
+     * 
+     * <p><br /></p>
+     * 
+     * > **Deprecated**: This field is deprecated as the kernel 5.4 deprecated
+     * > `kmem.limit_in_bytes`.
+     * 
+     *
+     * @var int
+     */
     protected $kernelMemory;
     /**
      * Hard limit for kernel TCP buffer memory (in bytes).
@@ -182,20 +185,20 @@ class HostConfig
      */
     protected $memoryReservation;
     /**
-    * Total memory limit (memory + swap). Set as `-1` to enable unlimited
-    swap.
-    
-    *
-    * @var int
-    */
+     * Total memory limit (memory + swap). Set as `-1` to enable unlimited
+     * swap.
+     * 
+     *
+     * @var int
+     */
     protected $memorySwap;
     /**
-    * Tune a container's memory swappiness behavior. Accepts an integer
-    between 0 and 100.
-    
-    *
-    * @var int
-    */
+     * Tune a container's memory swappiness behavior. Accepts an integer
+     * between 0 and 100.
+     * 
+     *
+     * @var int
+     */
     protected $memorySwappiness;
     /**
      * CPU quota in units of 10<sup>-9</sup> CPUs.
@@ -210,54 +213,54 @@ class HostConfig
      */
     protected $oomKillDisable;
     /**
-    * Run an init inside the container that forwards signals and reaps
-    processes. This field is omitted if empty, and the default (as
-    configured on the daemon) is used.
-    
-    *
-    * @var bool|null
-    */
+     * Run an init inside the container that forwards signals and reaps
+     * processes. This field is omitted if empty, and the default (as
+     * configured on the daemon) is used.
+     * 
+     *
+     * @var bool|null
+     */
     protected $init;
     /**
-    * Tune a container's PIDs limit. Set `0` or `-1` for unlimited, or `null`
-    to not change.
-    
-    *
-    * @var int|null
-    */
+     * Tune a container's PIDs limit. Set `0` or `-1` for unlimited, or `null`
+     * to not change.
+     * 
+     *
+     * @var int|null
+     */
     protected $pidsLimit;
     /**
-    * A list of resource limits to set in the container. For example:
-    
-    ```
-    {"Name": "nofile", "Soft": 1024, "Hard": 2048}
-    ```
-    
-    *
-    * @var list<ResourcesUlimitsItem>
-    */
+     * A list of resource limits to set in the container. For example:
+     * 
+     * ```
+     * {"Name": "nofile", "Soft": 1024, "Hard": 2048}
+     * ```
+     * 
+     *
+     * @var list<ResourcesUlimitsItem>
+     */
     protected $ulimits;
     /**
-    * The number of usable CPUs (Windows only).
-    
-    On Windows Server containers, the processor resource controls are
-    mutually exclusive. The order of precedence is `CPUCount` first, then
-    `CPUShares`, and `CPUPercent` last.
-    
-    *
-    * @var int
-    */
+     * The number of usable CPUs (Windows only).
+     * 
+     * On Windows Server containers, the processor resource controls are
+     * mutually exclusive. The order of precedence is `CPUCount` first, then
+     * `CPUShares`, and `CPUPercent` last.
+     * 
+     *
+     * @var int
+     */
     protected $cpuCount;
     /**
-    * The usable percentage of the available CPUs (Windows only).
-    
-    On Windows Server containers, the processor resource controls are
-    mutually exclusive. The order of precedence is `CPUCount` first, then
-    `CPUShares`, and `CPUPercent` last.
-    
-    *
-    * @var int
-    */
+     * The usable percentage of the available CPUs (Windows only).
+     * 
+     * On Windows Server containers, the processor resource controls are
+     * mutually exclusive. The order of precedence is `CPUCount` first, then
+     * `CPUShares`, and `CPUPercent` last.
+     * 
+     *
+     * @var int
+     */
     protected $cpuPercent;
     /**
      * Maximum IOps for the container system drive (Windows only)
@@ -266,56 +269,56 @@ class HostConfig
      */
     protected $iOMaximumIOps;
     /**
-    * Maximum IO in bytes per second for the container system drive
-    (Windows only).
-    
-    *
-    * @var int
-    */
+     * Maximum IO in bytes per second for the container system drive
+     * (Windows only).
+     * 
+     *
+     * @var int
+     */
     protected $iOMaximumBandwidth;
     /**
-    * A list of volume bindings for this container. Each volume binding
-    is a string in one of these forms:
-    
-    - `host-src:container-dest[:options]` to bind-mount a host path
-     into the container. Both `host-src`, and `container-dest` must
-     be an _absolute_ path.
-    - `volume-name:container-dest[:options]` to bind-mount a volume
-     managed by a volume driver into the container. `container-dest`
-     must be an _absolute_ path.
-    
-    `options` is an optional, comma-delimited list of:
-    
-    - `nocopy` disables automatic copying of data from the container
-     path to the volume. The `nocopy` flag only applies to named volumes.
-    - `[ro|rw]` mounts a volume read-only or read-write, respectively.
-     If omitted or set to `rw`, volumes are mounted read-write.
-    - `[z|Z]` applies SELinux labels to allow or deny multiple containers
-     to read and write to the same volume.
-       - `z`: a _shared_ content label is applied to the content. This
-         label indicates that multiple containers can share the volume
-         content, for both reading and writing.
-       - `Z`: a _private unshared_ label is applied to the content.
-         This label indicates that only the current container can use
-         a private volume. Labeling systems such as SELinux require
-         proper labels to be placed on volume content that is mounted
-         into a container. Without a label, the security system can
-         prevent a container's processes from using the content. By
-         default, the labels set by the host operating system are not
-         modified.
-    - `[[r]shared|[r]slave|[r]private]` specifies mount
-     [propagation behavior](https://www.kernel.org/doc/Documentation/filesystems/sharedsubtree.txt).
-     This only applies to bind-mounted volumes, not internal volumes
-     or named volumes. Mount propagation requires the source mount
-     point (the location where the source directory is mounted in the
-     host operating system) to have the correct propagation properties.
-     For shared volumes, the source mount point must be set to `shared`.
-     For slave volumes, the mount must be set to either `shared` or
-     `slave`.
-    
-    *
-    * @var list<string>
-    */
+     * A list of volume bindings for this container. Each volume binding
+     * is a string in one of these forms:
+     * 
+     * - `host-src:container-dest[:options]` to bind-mount a host path
+     *   into the container. Both `host-src`, and `container-dest` must
+     *   be an _absolute_ path.
+     * - `volume-name:container-dest[:options]` to bind-mount a volume
+     *   managed by a volume driver into the container. `container-dest`
+     *   must be an _absolute_ path.
+     * 
+     * `options` is an optional, comma-delimited list of:
+     * 
+     * - `nocopy` disables automatic copying of data from the container
+     *   path to the volume. The `nocopy` flag only applies to named volumes.
+     * - `[ro|rw]` mounts a volume read-only or read-write, respectively.
+     *   If omitted or set to `rw`, volumes are mounted read-write.
+     * - `[z|Z]` applies SELinux labels to allow or deny multiple containers
+     *   to read and write to the same volume.
+     *     - `z`: a _shared_ content label is applied to the content. This
+     *       label indicates that multiple containers can share the volume
+     *       content, for both reading and writing.
+     *     - `Z`: a _private unshared_ label is applied to the content.
+     *       This label indicates that only the current container can use
+     *       a private volume. Labeling systems such as SELinux require
+     *       proper labels to be placed on volume content that is mounted
+     *       into a container. Without a label, the security system can
+     *       prevent a container's processes from using the content. By
+     *       default, the labels set by the host operating system are not
+     *       modified.
+     * - `[[r]shared|[r]slave|[r]private]` specifies mount
+     *   [propagation behavior](https://www.kernel.org/doc/Documentation/filesystems/sharedsubtree.txt).
+     *   This only applies to bind-mounted volumes, not internal volumes
+     *   or named volumes. Mount propagation requires the source mount
+     *   point (the location where the source directory is mounted in the
+     *   host operating system) to have the correct propagation properties.
+     *   For shared volumes, the source mount point must be set to `shared`.
+     *   For slave volumes, the mount must be set to either `shared` or
+     *   `slave`.
+     * 
+     *
+     * @var list<string>
+     */
     protected $binds;
     /**
      * Path to a file where the container ID is written
@@ -330,45 +333,45 @@ class HostConfig
      */
     protected $logConfig;
     /**
-    * Network mode to use for this container. Supported standard values
-    are: `bridge`, `host`, `none`, and `container:<name|id>`. Any
-    other value is taken as a custom network's name to which this
-    container should connect to.
-    
-    *
-    * @var string
-    */
+     * Network mode to use for this container. Supported standard values
+     * are: `bridge`, `host`, `none`, and `container:<name|id>`. Any
+     * other value is taken as a custom network's name to which this
+     * container should connect to.
+     * 
+     *
+     * @var string
+     */
     protected $networkMode;
     /**
-    * PortMap describes the mapping of container ports to host ports, using the
-    container's port-number and protocol as key in the format `<port>/<protocol>`,
-    for example, `80/udp`.
-    
-    If a container's port is mapped for multiple protocols, separate entries
-    are added to the mapping table.
-    
-    *
-    * @var array<string, list<PortBinding>>
-    */
+     * PortMap describes the mapping of container ports to host ports, using the
+     * container's port-number and protocol as key in the format `<port>/<protocol>`,
+     * for example, `80/udp`.
+     * 
+     * If a container's port is mapped for multiple protocols, separate entries
+     * are added to the mapping table.
+     * 
+     *
+     * @var array<string, list<PortBinding>>
+     */
     protected $portBindings;
     /**
-    * The behavior to apply when the container exits. The default is not to
-    restart.
-    
-    An ever increasing delay (double the previous delay, starting at 100ms) is
-    added before each restart to prevent flooding the server.
-    
-    *
-    * @var RestartPolicy
-    */
+     * The behavior to apply when the container exits. The default is not to
+     * restart.
+     * 
+     * An ever increasing delay (double the previous delay, starting at 100ms) is
+     * added before each restart to prevent flooding the server.
+     * 
+     *
+     * @var RestartPolicy
+     */
     protected $restartPolicy;
     /**
-    * Automatically remove the container when the container's process
-    exits. This has no effect if `RestartPolicy` is set.
-    
-    *
-    * @var bool
-    */
+     * Automatically remove the container when the container's process
+     * exits. This has no effect if `RestartPolicy` is set.
+     * 
+     *
+     * @var bool
+     */
     protected $autoRemove;
     /**
      * Driver that this container uses to mount volumes.
@@ -377,47 +380,48 @@ class HostConfig
      */
     protected $volumeDriver;
     /**
-    * A list of volumes to inherit from another container, specified in
-    the form `<container name>[:<ro|rw>]`.
-    
-    *
-    * @var list<string>
-    */
+     * A list of volumes to inherit from another container, specified in
+     * the form `<container name>[:<ro|rw>]`.
+     * 
+     *
+     * @var list<string>
+     */
     protected $volumesFrom;
     /**
      * Specification for mounts to be added to the container.
+     * 
      *
      * @var list<Mount>
      */
     protected $mounts;
     /**
-    * A list of kernel capabilities to add to the container. Conflicts
-    with option 'Capabilities'.
-    
-    *
-    * @var list<string>
-    */
+     * A list of kernel capabilities to add to the container. Conflicts
+     * with option 'Capabilities'.
+     * 
+     *
+     * @var list<string>
+     */
     protected $capAdd;
     /**
-    * A list of kernel capabilities to drop from the container. Conflicts
-    with option 'Capabilities'.
-    
-    *
-    * @var list<string>
-    */
+     * A list of kernel capabilities to drop from the container. Conflicts
+     * with option 'Capabilities'.
+     * 
+     *
+     * @var list<string>
+     */
     protected $capDrop;
     /**
-    * cgroup namespace mode for the container. Possible values are:
-    
-    - `"private"`: the container runs in its own private cgroup namespace
-    - `"host"`: use the host system's cgroup namespace
-    
-    If not specified, the daemon default is used, which can either be `"private"`
-    or `"host"`, depending on daemon version, kernel support and configuration.
-    
-    *
-    * @var string
-    */
+     * cgroup namespace mode for the container. Possible values are:
+     * 
+     * - `"private"`: the container runs in its own private cgroup namespace
+     * - `"host"`: use the host system's cgroup namespace
+     * 
+     * If not specified, the daemon default is used, which can either be `"private"`
+     * or `"host"`, depending on daemon version, kernel support and configuration.
+     * 
+     *
+     * @var string
+     */
     protected $cgroupnsMode;
     /**
      * A list of DNS servers for the container to use.
@@ -438,34 +442,35 @@ class HostConfig
      */
     protected $dnsSearch;
     /**
-    * A list of hostnames/IP mappings to add to the container's `/etc/hosts`
-    file. Specified in the form `["hostname:IP"]`.
-    
-    *
-    * @var list<string>
-    */
+     * A list of hostnames/IP mappings to add to the container's `/etc/hosts`
+     * file. Specified in the form `["hostname:IP"]`.
+     * 
+     *
+     * @var list<string>
+     */
     protected $extraHosts;
     /**
      * A list of additional groups that the container process will run as.
+     * 
      *
      * @var list<string>
      */
     protected $groupAdd;
     /**
-    * IPC sharing mode for the container. Possible values are:
-    
-    - `"none"`: own private IPC namespace, with /dev/shm not mounted
-    - `"private"`: own private IPC namespace
-    - `"shareable"`: own private IPC namespace, with a possibility to share it with other containers
-    - `"container:<name|id>"`: join another (shareable) container's IPC namespace
-    - `"host"`: use the host system's IPC namespace
-    
-    If not specified, daemon default is used, which can either be `"private"`
-    or `"shareable"`, depending on daemon version and configuration.
-    
-    *
-    * @var string
-    */
+     * IPC sharing mode for the container. Possible values are:
+     * 
+     * - `"none"`: own private IPC namespace, with /dev/shm not mounted
+     * - `"private"`: own private IPC namespace
+     * - `"shareable"`: own private IPC namespace, with a possibility to share it with other containers
+     * - `"container:<name|id>"`: join another (shareable) container's IPC namespace
+     * - `"host"`: use the host system's IPC namespace
+     * 
+     * If not specified, daemon default is used, which can either be `"private"`
+     * or `"shareable"`, depending on daemon version and configuration.
+     * 
+     *
+     * @var string
+     */
     protected $ipcMode;
     /**
      * Cgroup to use for the container.
@@ -475,28 +480,29 @@ class HostConfig
     protected $cgroup;
     /**
      * A list of links for the container in the form `container_name:alias`.
+     * 
      *
      * @var list<string>
      */
     protected $links;
     /**
-    * An integer value containing the score given to the container in
-    order to tune OOM killer preferences.
-    
-    *
-    * @var int
-    */
+     * An integer value containing the score given to the container in
+     * order to tune OOM killer preferences.
+     * 
+     *
+     * @var int
+     */
     protected $oomScoreAdj;
     /**
-    * Set the PID (Process) Namespace mode for the container. It can be
-    either:
-    
-    - `"container:<name|id>"`: joins another container's PID namespace
-    - `"host"`: use the host's PID namespace inside the container
-    
-    *
-    * @var string
-    */
+     * Set the PID (Process) Namespace mode for the container. It can be
+     * either:
+     * 
+     * - `"container:<name|id>"`: joins another container's PID namespace
+     * - `"host"`: use the host's PID namespace inside the container
+     * 
+     *
+     * @var string
+     */
     protected $pidMode;
     /**
      * Gives the container full access to the host.
@@ -505,20 +511,20 @@ class HostConfig
      */
     protected $privileged;
     /**
-    * Allocates an ephemeral host port for all of a container's
-    exposed ports.
-    
-    Ports are de-allocated when the container stops and allocated when
-    the container starts. The allocated port might be changed when
-    restarting the container.
-    
-    The port is selected from the ephemeral port range that depends on
-    the kernel. For example, on Linux the range is defined by
-    `/proc/sys/net/ipv4/ip_local_port_range`.
-    
-    *
-    * @var bool
-    */
+     * Allocates an ephemeral host port for all of a container's
+     * exposed ports.
+     * 
+     * Ports are de-allocated when the container stops and allocated when
+     * the container starts. The allocated port might be changed when
+     * restarting the container.
+     * 
+     * The port is selected from the ephemeral port range that depends on
+     * the kernel. For example, on Linux the range is defined by
+     * `/proc/sys/net/ipv4/ip_local_port_range`.
+     * 
+     *
+     * @var bool
+     */
     protected $publishAllPorts;
     /**
      * Mount the container's root filesystem as read only.
@@ -534,21 +540,22 @@ class HostConfig
     protected $securityOpt;
     /**
      * Storage driver options for this container, in the form `{"size": "120G"}`.
+     * 
      *
      * @var array<string, string>
      */
     protected $storageOpt;
     /**
-    * A map of container directories which should be replaced by tmpfs
-    mounts, and their corresponding mount options. For example:
-    
-    ```
-    { "/run": "rw,noexec,nosuid,size=65536k" }
-    ```
-    
-    *
-    * @var array<string, string>
-    */
+     * A map of container directories which should be replaced by tmpfs
+     * mounts, and their corresponding mount options. For example:
+     * 
+     * ```
+     * { "/run": "rw,noexec,nosuid,size=65536k" }
+     * ```
+     * 
+     *
+     * @var array<string, string>
+     */
     protected $tmpfs;
     /**
      * UTS namespace to use for the container.
@@ -557,30 +564,31 @@ class HostConfig
      */
     protected $uTSMode;
     /**
-    * Sets the usernamespace mode for the container when usernamespace
-    remapping option is enabled.
-    
-    *
-    * @var string
-    */
+     * Sets the usernamespace mode for the container when usernamespace
+     * remapping option is enabled.
+     * 
+     *
+     * @var string
+     */
     protected $usernsMode;
     /**
      * Size of `/dev/shm` in bytes. If omitted, the system uses 64MB.
+     * 
      *
      * @var int
      */
     protected $shmSize;
     /**
-    * A list of kernel parameters (sysctls) to set in the container.
-    For example:
-    
-    ```
-    {"net.ipv4.ip_forward": "1"}
-    ```
-    
-    *
-    * @var array<string, string>
-    */
+     * A list of kernel parameters (sysctls) to set in the container.
+     * For example:
+     * 
+     * ```
+     * {"net.ipv4.ip_forward": "1"}
+     * ```
+     * 
+     *
+     * @var array<string, string>
+     */
     protected $sysctls;
     /**
      * Runtime to use with this container.
@@ -590,39 +598,41 @@ class HostConfig
     protected $runtime;
     /**
      * Initial console size, as an `[height, width]` array. (Windows only)
+     * 
      *
      * @var list<int>
      */
     protected $consoleSize;
     /**
      * Isolation technology of the container. (Windows only)
+     * 
      *
      * @var string
      */
     protected $isolation;
     /**
-    * The list of paths to be masked inside the container (this overrides
-    the default set of paths).
-    
-    *
-    * @var list<string>
-    */
+     * The list of paths to be masked inside the container (this overrides
+     * the default set of paths).
+     * 
+     *
+     * @var list<string>
+     */
     protected $maskedPaths;
     /**
-    * The list of paths to be set as read-only inside the container
-    (this overrides the default set of paths).
-    
-    *
-    * @var list<string>
-    */
+     * The list of paths to be set as read-only inside the container
+     * (this overrides the default set of paths).
+     * 
+     *
+     * @var list<string>
+     */
     protected $readonlyPaths;
     /**
-    * An integer value representing this container's relative CPU weight
-    versus other containers.
-    
-    *
-    * @return int
-    */
+     * An integer value representing this container's relative CPU weight
+     * versus other containers.
+     * 
+     *
+     * @return int
+     */
     public function getCpuShares(): int
     {
         return $this->cpuShares;
@@ -665,14 +675,14 @@ class HostConfig
         return $this;
     }
     /**
-    * Path to `cgroups` under which the container's `cgroup` is created. If
-    the path is not absolute, the path is considered to be relative to the
-    `cgroups` path of the init process. Cgroups are created if they do not
-    already exist.
-    
-    *
-    * @return string
-    */
+     * Path to `cgroups` under which the container's `cgroup` is created. If
+     * the path is not absolute, the path is considered to be relative to the
+     * `cgroups` path of the init process. Cgroups are created if they do not
+     * already exist.
+     * 
+     *
+     * @return string
+     */
     public function getCgroupParent(): string
     {
         return $this->cgroupParent;
@@ -717,15 +727,15 @@ class HostConfig
         return $this;
     }
     /**
-    * Block IO weight (relative device weight) in the form:
-    
-    ```
-    [{"Path": "device_path", "Weight": weight}]
-    ```
-    
-    *
-    * @return list<ResourcesBlkioWeightDeviceItem>
-    */
+     * Block IO weight (relative device weight) in the form:
+     * 
+     * ```
+     * [{"Path": "device_path", "Weight": weight}]
+     * ```
+     * 
+     *
+     * @return list<ResourcesBlkioWeightDeviceItem>
+     */
     public function getBlkioWeightDevice(): array
     {
         return $this->blkioWeightDevice;
@@ -749,15 +759,15 @@ class HostConfig
         return $this;
     }
     /**
-    * Limit read rate (bytes per second) from a device, in the form:
-    
-    ```
-    [{"Path": "device_path", "Rate": rate}]
-    ```
-    
-    *
-    * @return list<ThrottleDevice>
-    */
+     * Limit read rate (bytes per second) from a device, in the form:
+     * 
+     * ```
+     * [{"Path": "device_path", "Rate": rate}]
+     * ```
+     * 
+     *
+     * @return list<ThrottleDevice>
+     */
     public function getBlkioDeviceReadBps(): array
     {
         return $this->blkioDeviceReadBps;
@@ -781,15 +791,15 @@ class HostConfig
         return $this;
     }
     /**
-    * Limit write rate (bytes per second) to a device, in the form:
-    
-    ```
-    [{"Path": "device_path", "Rate": rate}]
-    ```
-    
-    *
-    * @return list<ThrottleDevice>
-    */
+     * Limit write rate (bytes per second) to a device, in the form:
+     * 
+     * ```
+     * [{"Path": "device_path", "Rate": rate}]
+     * ```
+     * 
+     *
+     * @return list<ThrottleDevice>
+     */
     public function getBlkioDeviceWriteBps(): array
     {
         return $this->blkioDeviceWriteBps;
@@ -813,15 +823,15 @@ class HostConfig
         return $this;
     }
     /**
-    * Limit read rate (IO per second) from a device, in the form:
-    
-    ```
-    [{"Path": "device_path", "Rate": rate}]
-    ```
-    
-    *
-    * @return list<ThrottleDevice>
-    */
+     * Limit read rate (IO per second) from a device, in the form:
+     * 
+     * ```
+     * [{"Path": "device_path", "Rate": rate}]
+     * ```
+     * 
+     *
+     * @return list<ThrottleDevice>
+     */
     public function getBlkioDeviceReadIOps(): array
     {
         return $this->blkioDeviceReadIOps;
@@ -845,15 +855,15 @@ class HostConfig
         return $this;
     }
     /**
-    * Limit write rate (IO per second) to a device, in the form:
-    
-    ```
-    [{"Path": "device_path", "Rate": rate}]
-    ```
-    
-    *
-    * @return list<ThrottleDevice>
-    */
+     * Limit write rate (IO per second) to a device, in the form:
+     * 
+     * ```
+     * [{"Path": "device_path", "Rate": rate}]
+     * ```
+     * 
+     *
+     * @return list<ThrottleDevice>
+     */
     public function getBlkioDeviceWriteIOps(): array
     {
         return $this->blkioDeviceWriteIOps;
@@ -900,6 +910,7 @@ class HostConfig
     }
     /**
      * Microseconds of CPU time that the container can get in a CPU period.
+     * 
      *
      * @return int
      */
@@ -921,12 +932,12 @@ class HostConfig
         return $this;
     }
     /**
-    * The length of a CPU real-time period in microseconds. Set to 0 to
-    allocate no time allocated to real-time tasks.
-    
-    *
-    * @return int
-    */
+     * The length of a CPU real-time period in microseconds. Set to 0 to
+     * allocate no time allocated to real-time tasks.
+     * 
+     *
+     * @return int
+     */
     public function getCpuRealtimePeriod(): int
     {
         return $this->cpuRealtimePeriod;
@@ -947,12 +958,12 @@ class HostConfig
         return $this;
     }
     /**
-    * The length of a CPU real-time runtime in microseconds. Set to 0 to
-    allocate no time allocated to real-time tasks.
-    
-    *
-    * @return int
-    */
+     * The length of a CPU real-time runtime in microseconds. Set to 0 to
+     * allocate no time allocated to real-time tasks.
+     * 
+     *
+     * @return int
+     */
     public function getCpuRealtimeRuntime(): int
     {
         return $this->cpuRealtimeRuntime;
@@ -974,6 +985,7 @@ class HostConfig
     }
     /**
      * CPUs in which to allow execution (e.g., `0-3`, `0,1`).
+     * 
      *
      * @return string
      */
@@ -995,12 +1007,12 @@ class HostConfig
         return $this;
     }
     /**
-    * Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only
-    effective on NUMA systems.
-    
-    *
-    * @return string
-    */
+     * Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only
+     * effective on NUMA systems.
+     * 
+     *
+     * @return string
+     */
     public function getCpusetMems(): string
     {
         return $this->cpusetMems;
@@ -1066,6 +1078,7 @@ class HostConfig
     }
     /**
      * A list of requests for devices to be sent to device drivers.
+     * 
      *
      * @return list<DeviceRequest>
      */
@@ -1087,16 +1100,16 @@ class HostConfig
         return $this;
     }
     /**
-    * Kernel memory limit in bytes.
-    
-    <p><br /></p>
-    
-    > **Deprecated**: This field is deprecated as the kernel 5.4 deprecated
-    > `kmem.limit_in_bytes`.
-    
-    *
-    * @return int
-    */
+     * Kernel memory limit in bytes.
+     * 
+     * <p><br /></p>
+     * 
+     * > **Deprecated**: This field is deprecated as the kernel 5.4 deprecated
+     * > `kmem.limit_in_bytes`.
+     * 
+     *
+     * @return int
+     */
     public function getKernelMemory(): int
     {
         return $this->kernelMemory;
@@ -1165,12 +1178,12 @@ class HostConfig
         return $this;
     }
     /**
-    * Total memory limit (memory + swap). Set as `-1` to enable unlimited
-    swap.
-    
-    *
-    * @return int
-    */
+     * Total memory limit (memory + swap). Set as `-1` to enable unlimited
+     * swap.
+     * 
+     *
+     * @return int
+     */
     public function getMemorySwap(): int
     {
         return $this->memorySwap;
@@ -1191,12 +1204,12 @@ class HostConfig
         return $this;
     }
     /**
-    * Tune a container's memory swappiness behavior. Accepts an integer
-    between 0 and 100.
-    
-    *
-    * @return int
-    */
+     * Tune a container's memory swappiness behavior. Accepts an integer
+     * between 0 and 100.
+     * 
+     *
+     * @return int
+     */
     public function getMemorySwappiness(): int
     {
         return $this->memorySwappiness;
@@ -1261,13 +1274,13 @@ class HostConfig
         return $this;
     }
     /**
-    * Run an init inside the container that forwards signals and reaps
-    processes. This field is omitted if empty, and the default (as
-    configured on the daemon) is used.
-    
-    *
-    * @return bool|null
-    */
+     * Run an init inside the container that forwards signals and reaps
+     * processes. This field is omitted if empty, and the default (as
+     * configured on the daemon) is used.
+     * 
+     *
+     * @return bool|null
+     */
     public function getInit(): ?bool
     {
         return $this->init;
@@ -1289,12 +1302,12 @@ class HostConfig
         return $this;
     }
     /**
-    * Tune a container's PIDs limit. Set `0` or `-1` for unlimited, or `null`
-    to not change.
-    
-    *
-    * @return int|null
-    */
+     * Tune a container's PIDs limit. Set `0` or `-1` for unlimited, or `null`
+     * to not change.
+     * 
+     *
+     * @return int|null
+     */
     public function getPidsLimit(): ?int
     {
         return $this->pidsLimit;
@@ -1315,15 +1328,15 @@ class HostConfig
         return $this;
     }
     /**
-    * A list of resource limits to set in the container. For example:
-    
-    ```
-    {"Name": "nofile", "Soft": 1024, "Hard": 2048}
-    ```
-    
-    *
-    * @return list<ResourcesUlimitsItem>
-    */
+     * A list of resource limits to set in the container. For example:
+     * 
+     * ```
+     * {"Name": "nofile", "Soft": 1024, "Hard": 2048}
+     * ```
+     * 
+     *
+     * @return list<ResourcesUlimitsItem>
+     */
     public function getUlimits(): array
     {
         return $this->ulimits;
@@ -1347,15 +1360,15 @@ class HostConfig
         return $this;
     }
     /**
-    * The number of usable CPUs (Windows only).
-    
-    On Windows Server containers, the processor resource controls are
-    mutually exclusive. The order of precedence is `CPUCount` first, then
-    `CPUShares`, and `CPUPercent` last.
-    
-    *
-    * @return int
-    */
+     * The number of usable CPUs (Windows only).
+     * 
+     * On Windows Server containers, the processor resource controls are
+     * mutually exclusive. The order of precedence is `CPUCount` first, then
+     * `CPUShares`, and `CPUPercent` last.
+     * 
+     *
+     * @return int
+     */
     public function getCpuCount(): int
     {
         return $this->cpuCount;
@@ -1379,15 +1392,15 @@ class HostConfig
         return $this;
     }
     /**
-    * The usable percentage of the available CPUs (Windows only).
-    
-    On Windows Server containers, the processor resource controls are
-    mutually exclusive. The order of precedence is `CPUCount` first, then
-    `CPUShares`, and `CPUPercent` last.
-    
-    *
-    * @return int
-    */
+     * The usable percentage of the available CPUs (Windows only).
+     * 
+     * On Windows Server containers, the processor resource controls are
+     * mutually exclusive. The order of precedence is `CPUCount` first, then
+     * `CPUShares`, and `CPUPercent` last.
+     * 
+     *
+     * @return int
+     */
     public function getCpuPercent(): int
     {
         return $this->cpuPercent;
@@ -1433,12 +1446,12 @@ class HostConfig
         return $this;
     }
     /**
-    * Maximum IO in bytes per second for the container system drive
-    (Windows only).
-    
-    *
-    * @return int
-    */
+     * Maximum IO in bytes per second for the container system drive
+     * (Windows only).
+     * 
+     *
+     * @return int
+     */
     public function getIOMaximumBandwidth(): int
     {
         return $this->iOMaximumBandwidth;
@@ -1459,48 +1472,48 @@ class HostConfig
         return $this;
     }
     /**
-    * A list of volume bindings for this container. Each volume binding
-    is a string in one of these forms:
-    
-    - `host-src:container-dest[:options]` to bind-mount a host path
-     into the container. Both `host-src`, and `container-dest` must
-     be an _absolute_ path.
-    - `volume-name:container-dest[:options]` to bind-mount a volume
-     managed by a volume driver into the container. `container-dest`
-     must be an _absolute_ path.
-    
-    `options` is an optional, comma-delimited list of:
-    
-    - `nocopy` disables automatic copying of data from the container
-     path to the volume. The `nocopy` flag only applies to named volumes.
-    - `[ro|rw]` mounts a volume read-only or read-write, respectively.
-     If omitted or set to `rw`, volumes are mounted read-write.
-    - `[z|Z]` applies SELinux labels to allow or deny multiple containers
-     to read and write to the same volume.
-       - `z`: a _shared_ content label is applied to the content. This
-         label indicates that multiple containers can share the volume
-         content, for both reading and writing.
-       - `Z`: a _private unshared_ label is applied to the content.
-         This label indicates that only the current container can use
-         a private volume. Labeling systems such as SELinux require
-         proper labels to be placed on volume content that is mounted
-         into a container. Without a label, the security system can
-         prevent a container's processes from using the content. By
-         default, the labels set by the host operating system are not
-         modified.
-    - `[[r]shared|[r]slave|[r]private]` specifies mount
-     [propagation behavior](https://www.kernel.org/doc/Documentation/filesystems/sharedsubtree.txt).
-     This only applies to bind-mounted volumes, not internal volumes
-     or named volumes. Mount propagation requires the source mount
-     point (the location where the source directory is mounted in the
-     host operating system) to have the correct propagation properties.
-     For shared volumes, the source mount point must be set to `shared`.
-     For slave volumes, the mount must be set to either `shared` or
-     `slave`.
-    
-    *
-    * @return list<string>
-    */
+     * A list of volume bindings for this container. Each volume binding
+     * is a string in one of these forms:
+     * 
+     * - `host-src:container-dest[:options]` to bind-mount a host path
+     *   into the container. Both `host-src`, and `container-dest` must
+     *   be an _absolute_ path.
+     * - `volume-name:container-dest[:options]` to bind-mount a volume
+     *   managed by a volume driver into the container. `container-dest`
+     *   must be an _absolute_ path.
+     * 
+     * `options` is an optional, comma-delimited list of:
+     * 
+     * - `nocopy` disables automatic copying of data from the container
+     *   path to the volume. The `nocopy` flag only applies to named volumes.
+     * - `[ro|rw]` mounts a volume read-only or read-write, respectively.
+     *   If omitted or set to `rw`, volumes are mounted read-write.
+     * - `[z|Z]` applies SELinux labels to allow or deny multiple containers
+     *   to read and write to the same volume.
+     *     - `z`: a _shared_ content label is applied to the content. This
+     *       label indicates that multiple containers can share the volume
+     *       content, for both reading and writing.
+     *     - `Z`: a _private unshared_ label is applied to the content.
+     *       This label indicates that only the current container can use
+     *       a private volume. Labeling systems such as SELinux require
+     *       proper labels to be placed on volume content that is mounted
+     *       into a container. Without a label, the security system can
+     *       prevent a container's processes from using the content. By
+     *       default, the labels set by the host operating system are not
+     *       modified.
+     * - `[[r]shared|[r]slave|[r]private]` specifies mount
+     *   [propagation behavior](https://www.kernel.org/doc/Documentation/filesystems/sharedsubtree.txt).
+     *   This only applies to bind-mounted volumes, not internal volumes
+     *   or named volumes. Mount propagation requires the source mount
+     *   point (the location where the source directory is mounted in the
+     *   host operating system) to have the correct propagation properties.
+     *   For shared volumes, the source mount point must be set to `shared`.
+     *   For slave volumes, the mount must be set to either `shared` or
+     *   `slave`.
+     * 
+     *
+     * @return list<string>
+     */
     public function getBinds(): array
     {
         return $this->binds;
@@ -1601,14 +1614,14 @@ class HostConfig
         return $this;
     }
     /**
-    * Network mode to use for this container. Supported standard values
-    are: `bridge`, `host`, `none`, and `container:<name|id>`. Any
-    other value is taken as a custom network's name to which this
-    container should connect to.
-    
-    *
-    * @return string
-    */
+     * Network mode to use for this container. Supported standard values
+     * are: `bridge`, `host`, `none`, and `container:<name|id>`. Any
+     * other value is taken as a custom network's name to which this
+     * container should connect to.
+     * 
+     *
+     * @return string
+     */
     public function getNetworkMode(): string
     {
         return $this->networkMode;
@@ -1631,16 +1644,16 @@ class HostConfig
         return $this;
     }
     /**
-    * PortMap describes the mapping of container ports to host ports, using the
-    container's port-number and protocol as key in the format `<port>/<protocol>`,
-    for example, `80/udp`.
-    
-    If a container's port is mapped for multiple protocols, separate entries
-    are added to the mapping table.
-    
-    *
-    * @return array<string, list<PortBinding>>
-    */
+     * PortMap describes the mapping of container ports to host ports, using the
+     * container's port-number and protocol as key in the format `<port>/<protocol>`,
+     * for example, `80/udp`.
+     * 
+     * If a container's port is mapped for multiple protocols, separate entries
+     * are added to the mapping table.
+     * 
+     *
+     * @return array<string, list<PortBinding>>
+     */
     public function getPortBindings(): iterable
     {
         return $this->portBindings;
@@ -1665,15 +1678,15 @@ class HostConfig
         return $this;
     }
     /**
-    * The behavior to apply when the container exits. The default is not to
-    restart.
-    
-    An ever increasing delay (double the previous delay, starting at 100ms) is
-    added before each restart to prevent flooding the server.
-    
-    *
-    * @return RestartPolicy
-    */
+     * The behavior to apply when the container exits. The default is not to
+     * restart.
+     * 
+     * An ever increasing delay (double the previous delay, starting at 100ms) is
+     * added before each restart to prevent flooding the server.
+     * 
+     *
+     * @return RestartPolicy
+     */
     public function getRestartPolicy(): RestartPolicy
     {
         return $this->restartPolicy;
@@ -1697,12 +1710,12 @@ class HostConfig
         return $this;
     }
     /**
-    * Automatically remove the container when the container's process
-    exits. This has no effect if `RestartPolicy` is set.
-    
-    *
-    * @return bool
-    */
+     * Automatically remove the container when the container's process
+     * exits. This has no effect if `RestartPolicy` is set.
+     * 
+     *
+     * @return bool
+     */
     public function getAutoRemove(): bool
     {
         return $this->autoRemove;
@@ -1745,12 +1758,12 @@ class HostConfig
         return $this;
     }
     /**
-    * A list of volumes to inherit from another container, specified in
-    the form `<container name>[:<ro|rw>]`.
-    
-    *
-    * @return list<string>
-    */
+     * A list of volumes to inherit from another container, specified in
+     * the form `<container name>[:<ro|rw>]`.
+     * 
+     *
+     * @return list<string>
+     */
     public function getVolumesFrom(): array
     {
         return $this->volumesFrom;
@@ -1772,6 +1785,7 @@ class HostConfig
     }
     /**
      * Specification for mounts to be added to the container.
+     * 
      *
      * @return list<Mount>
      */
@@ -1793,12 +1807,12 @@ class HostConfig
         return $this;
     }
     /**
-    * A list of kernel capabilities to add to the container. Conflicts
-    with option 'Capabilities'.
-    
-    *
-    * @return list<string>
-    */
+     * A list of kernel capabilities to add to the container. Conflicts
+     * with option 'Capabilities'.
+     * 
+     *
+     * @return list<string>
+     */
     public function getCapAdd(): array
     {
         return $this->capAdd;
@@ -1819,12 +1833,12 @@ class HostConfig
         return $this;
     }
     /**
-    * A list of kernel capabilities to drop from the container. Conflicts
-    with option 'Capabilities'.
-    
-    *
-    * @return list<string>
-    */
+     * A list of kernel capabilities to drop from the container. Conflicts
+     * with option 'Capabilities'.
+     * 
+     *
+     * @return list<string>
+     */
     public function getCapDrop(): array
     {
         return $this->capDrop;
@@ -1845,17 +1859,17 @@ class HostConfig
         return $this;
     }
     /**
-    * cgroup namespace mode for the container. Possible values are:
-    
-    - `"private"`: the container runs in its own private cgroup namespace
-    - `"host"`: use the host system's cgroup namespace
-    
-    If not specified, the daemon default is used, which can either be `"private"`
-    or `"host"`, depending on daemon version, kernel support and configuration.
-    
-    *
-    * @return string
-    */
+     * cgroup namespace mode for the container. Possible values are:
+     * 
+     * - `"private"`: the container runs in its own private cgroup namespace
+     * - `"host"`: use the host system's cgroup namespace
+     * 
+     * If not specified, the daemon default is used, which can either be `"private"`
+     * or `"host"`, depending on daemon version, kernel support and configuration.
+     * 
+     *
+     * @return string
+     */
     public function getCgroupnsMode(): string
     {
         return $this->cgroupnsMode;
@@ -1947,12 +1961,12 @@ class HostConfig
         return $this;
     }
     /**
-    * A list of hostnames/IP mappings to add to the container's `/etc/hosts`
-    file. Specified in the form `["hostname:IP"]`.
-    
-    *
-    * @return list<string>
-    */
+     * A list of hostnames/IP mappings to add to the container's `/etc/hosts`
+     * file. Specified in the form `["hostname:IP"]`.
+     * 
+     *
+     * @return list<string>
+     */
     public function getExtraHosts(): array
     {
         return $this->extraHosts;
@@ -1974,6 +1988,7 @@ class HostConfig
     }
     /**
      * A list of additional groups that the container process will run as.
+     * 
      *
      * @return list<string>
      */
@@ -1995,20 +2010,20 @@ class HostConfig
         return $this;
     }
     /**
-    * IPC sharing mode for the container. Possible values are:
-    
-    - `"none"`: own private IPC namespace, with /dev/shm not mounted
-    - `"private"`: own private IPC namespace
-    - `"shareable"`: own private IPC namespace, with a possibility to share it with other containers
-    - `"container:<name|id>"`: join another (shareable) container's IPC namespace
-    - `"host"`: use the host system's IPC namespace
-    
-    If not specified, daemon default is used, which can either be `"private"`
-    or `"shareable"`, depending on daemon version and configuration.
-    
-    *
-    * @return string
-    */
+     * IPC sharing mode for the container. Possible values are:
+     * 
+     * - `"none"`: own private IPC namespace, with /dev/shm not mounted
+     * - `"private"`: own private IPC namespace
+     * - `"shareable"`: own private IPC namespace, with a possibility to share it with other containers
+     * - `"container:<name|id>"`: join another (shareable) container's IPC namespace
+     * - `"host"`: use the host system's IPC namespace
+     * 
+     * If not specified, daemon default is used, which can either be `"private"`
+     * or `"shareable"`, depending on daemon version and configuration.
+     * 
+     *
+     * @return string
+     */
     public function getIpcMode(): string
     {
         return $this->ipcMode;
@@ -2060,6 +2075,7 @@ class HostConfig
     }
     /**
      * A list of links for the container in the form `container_name:alias`.
+     * 
      *
      * @return list<string>
      */
@@ -2081,12 +2097,12 @@ class HostConfig
         return $this;
     }
     /**
-    * An integer value containing the score given to the container in
-    order to tune OOM killer preferences.
-    
-    *
-    * @return int
-    */
+     * An integer value containing the score given to the container in
+     * order to tune OOM killer preferences.
+     * 
+     *
+     * @return int
+     */
     public function getOomScoreAdj(): int
     {
         return $this->oomScoreAdj;
@@ -2107,15 +2123,15 @@ class HostConfig
         return $this;
     }
     /**
-    * Set the PID (Process) Namespace mode for the container. It can be
-    either:
-    
-    - `"container:<name|id>"`: joins another container's PID namespace
-    - `"host"`: use the host's PID namespace inside the container
-    
-    *
-    * @return string
-    */
+     * Set the PID (Process) Namespace mode for the container. It can be
+     * either:
+     * 
+     * - `"container:<name|id>"`: joins another container's PID namespace
+     * - `"host"`: use the host's PID namespace inside the container
+     * 
+     *
+     * @return string
+     */
     public function getPidMode(): string
     {
         return $this->pidMode;
@@ -2161,20 +2177,20 @@ class HostConfig
         return $this;
     }
     /**
-    * Allocates an ephemeral host port for all of a container's
-    exposed ports.
-    
-    Ports are de-allocated when the container stops and allocated when
-    the container starts. The allocated port might be changed when
-    restarting the container.
-    
-    The port is selected from the ephemeral port range that depends on
-    the kernel. For example, on Linux the range is defined by
-    `/proc/sys/net/ipv4/ip_local_port_range`.
-    
-    *
-    * @return bool
-    */
+     * Allocates an ephemeral host port for all of a container's
+     * exposed ports.
+     * 
+     * Ports are de-allocated when the container stops and allocated when
+     * the container starts. The allocated port might be changed when
+     * restarting the container.
+     * 
+     * The port is selected from the ephemeral port range that depends on
+     * the kernel. For example, on Linux the range is defined by
+     * `/proc/sys/net/ipv4/ip_local_port_range`.
+     * 
+     *
+     * @return bool
+     */
     public function getPublishAllPorts(): bool
     {
         return $this->publishAllPorts;
@@ -2248,6 +2264,7 @@ class HostConfig
     }
     /**
      * Storage driver options for this container, in the form `{"size": "120G"}`.
+     * 
      *
      * @return array<string, string>
      */
@@ -2269,16 +2286,16 @@ class HostConfig
         return $this;
     }
     /**
-    * A map of container directories which should be replaced by tmpfs
-    mounts, and their corresponding mount options. For example:
-    
-    ```
-    { "/run": "rw,noexec,nosuid,size=65536k" }
-    ```
-    
-    *
-    * @return array<string, string>
-    */
+     * A map of container directories which should be replaced by tmpfs
+     * mounts, and their corresponding mount options. For example:
+     * 
+     * ```
+     * { "/run": "rw,noexec,nosuid,size=65536k" }
+     * ```
+     * 
+     *
+     * @return array<string, string>
+     */
     public function getTmpfs(): iterable
     {
         return $this->tmpfs;
@@ -2325,12 +2342,12 @@ class HostConfig
         return $this;
     }
     /**
-    * Sets the usernamespace mode for the container when usernamespace
-    remapping option is enabled.
-    
-    *
-    * @return string
-    */
+     * Sets the usernamespace mode for the container when usernamespace
+     * remapping option is enabled.
+     * 
+     *
+     * @return string
+     */
     public function getUsernsMode(): string
     {
         return $this->usernsMode;
@@ -2352,6 +2369,7 @@ class HostConfig
     }
     /**
      * Size of `/dev/shm` in bytes. If omitted, the system uses 64MB.
+     * 
      *
      * @return int
      */
@@ -2373,16 +2391,16 @@ class HostConfig
         return $this;
     }
     /**
-    * A list of kernel parameters (sysctls) to set in the container.
-    For example:
-    
-    ```
-    {"net.ipv4.ip_forward": "1"}
-    ```
-    
-    *
-    * @return array<string, string>
-    */
+     * A list of kernel parameters (sysctls) to set in the container.
+     * For example:
+     * 
+     * ```
+     * {"net.ipv4.ip_forward": "1"}
+     * ```
+     * 
+     *
+     * @return array<string, string>
+     */
     public function getSysctls(): iterable
     {
         return $this->sysctls;
@@ -2430,6 +2448,7 @@ class HostConfig
     }
     /**
      * Initial console size, as an `[height, width]` array. (Windows only)
+     * 
      *
      * @return list<int>
      */
@@ -2452,6 +2471,7 @@ class HostConfig
     }
     /**
      * Isolation technology of the container. (Windows only)
+     * 
      *
      * @return string
      */
@@ -2473,12 +2493,12 @@ class HostConfig
         return $this;
     }
     /**
-    * The list of paths to be masked inside the container (this overrides
-    the default set of paths).
-    
-    *
-    * @return list<string>
-    */
+     * The list of paths to be masked inside the container (this overrides
+     * the default set of paths).
+     * 
+     *
+     * @return list<string>
+     */
     public function getMaskedPaths(): array
     {
         return $this->maskedPaths;
@@ -2499,12 +2519,12 @@ class HostConfig
         return $this;
     }
     /**
-    * The list of paths to be set as read-only inside the container
-    (this overrides the default set of paths).
-    
-    *
-    * @return list<string>
-    */
+     * The list of paths to be set as read-only inside the container
+     * (this overrides the default set of paths).
+     * 
+     *
+     * @return list<string>
+     */
     public function getReadonlyPaths(): array
     {
         return $this->readonlyPaths;

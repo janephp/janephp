@@ -1,17 +1,22 @@
-<p align="center">
-    <img width="500" height="180" src="https://raw.githubusercontent.com/janephp/janephp/next/identity/logo_jane_full@4x.png" alt="Jane logo" />
-</p>
+<h1 align="center">
+  <a href="https://github.com/janephp/janephp"><img src="https://jolicode.com/media/original/oss/headers/jane.png?v2" alt="jane"></a>
+  <br />
+  Jane
+  <br />
+  <sub><em><h6>A set of libraries to generate Models & API Clients based on JsonSchema / OpenAPI specs.</h6></em></sub>
+</h1>
 
+<!-- Quelques badges optionnels, cool pour l'open source -->
+<div align="center">
 
-[![Latest Version](https://img.shields.io/github/release/janephp/janephp.svg?style=flat-square)](https://github.com/janephp/janephp/releases)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Build Status](https://img.shields.io/travis/janephp/janephp.svg?style=flat-square)](https://travis-ci.org/janephp/janephp)
+[![PHP Version Require](http://poser.pugx.org/jane-php/jane-php/require/php)](https://packagist.org/explore/?query=jane-php%2F)
+[![Monthly Downloads](http://poser.pugx.org/jane-php/json-schema-runtime/d/monthly)](https://packagist.org/explore/?query=jane-php%2F)
 
-Jane is a set of libraries to generate Models & API Clients based on JsonSchema / OpenAPI specs
+</div>
 
 ## Documentation
 
-[Documentation is available at http://jane.readthedocs.io/en/latest/](http://jane.readthedocs.io/en/latest/)
+[Documentation is available at https://jane.jolicode.com/](https://jane.jolicode.com/)
 
 ## Changes
 
@@ -21,17 +26,16 @@ View the [CHANGELOG](CHANGELOG.md) file attached to this project.
 
 View the [CONTRIBUTING](CONTRIBUTING.md) file attached to this project.
 
-## Sponsor
-
-[![JoliCode](https://jolicode.com/images/logo.svg)](https://jolicode.com)
-
-Open Source time sponsored by JoliCode
-
 ## Credits
 
 * [All contributors](https://github.com/janephp/jane/graphs/contributors)
-* [Alexandre Godreau](https://www.instagram.com/coucou.alex/) for our logo
+* [Alexandre Godreau](https://www.instagram.com/studio.limace/) for our logo
 
 ## License
 
 View the [LICENSE](LICENSE) file attached to this project.
+
+<br><br>
+<div align="center">
+<a href="https://jolicode.com/"><img src="https://jolicode.com/media/original/oss/footer-github.png?v3" alt="JoliCode is sponsoring this project"></a>
+</div>

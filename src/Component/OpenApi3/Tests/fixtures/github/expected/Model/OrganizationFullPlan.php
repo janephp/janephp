@@ -13,38 +13,26 @@ class OrganizationFullPlan extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var int
      */
     protected $space;
     /**
-     * 
-     *
      * @var int
      */
     protected $privateRepos;
     /**
-     * 
-     *
      * @var int
      */
     protected $filledSeats;
     /**
-     * 
-     *
      * @var int
      */
     protected $seats;
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -52,8 +40,6 @@ class OrganizationFullPlan extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -65,8 +51,6 @@ class OrganizationFullPlan extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getSpace(): int
@@ -74,8 +58,6 @@ class OrganizationFullPlan extends \ArrayObject
         return $this->space;
     }
     /**
-     * 
-     *
      * @param int $space
      *
      * @return self
@@ -87,8 +69,6 @@ class OrganizationFullPlan extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getPrivateRepos(): int
@@ -96,8 +76,6 @@ class OrganizationFullPlan extends \ArrayObject
         return $this->privateRepos;
     }
     /**
-     * 
-     *
      * @param int $privateRepos
      *
      * @return self
@@ -109,8 +87,6 @@ class OrganizationFullPlan extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getFilledSeats(): int
@@ -118,8 +94,6 @@ class OrganizationFullPlan extends \ArrayObject
         return $this->filledSeats;
     }
     /**
-     * 
-     *
      * @param int $filledSeats
      *
      * @return self
@@ -131,8 +105,6 @@ class OrganizationFullPlan extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getSeats(): int
@@ -140,8 +112,6 @@ class OrganizationFullPlan extends \ArrayObject
         return $this->seats;
     }
     /**
-     * 
-     *
      * @param int $seats
      *
      * @return self

@@ -13,20 +13,14 @@ class GbCompanyReportExampleResponseReportNegativeInformation extends \ArrayObje
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportNegativeInformationCcjSummary
      */
     protected $ccjSummary;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgements
      */
     protected $countyCourtJudgements;
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportNegativeInformationCcjSummary
      */
     public function getCcjSummary(): GbCompanyReportExampleResponseReportNegativeInformationCcjSummary
@@ -34,8 +28,6 @@ class GbCompanyReportExampleResponseReportNegativeInformation extends \ArrayObje
         return $this->ccjSummary;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportNegativeInformationCcjSummary $ccjSummary
      *
      * @return self
@@ -47,8 +39,6 @@ class GbCompanyReportExampleResponseReportNegativeInformation extends \ArrayObje
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgements
      */
     public function getCountyCourtJudgements(): GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgements
@@ -56,8 +46,6 @@ class GbCompanyReportExampleResponseReportNegativeInformation extends \ArrayObje
         return $this->countyCourtJudgements;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgements $countyCourtJudgements
      *
      * @return self

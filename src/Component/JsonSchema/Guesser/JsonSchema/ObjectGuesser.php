@@ -19,38 +19,28 @@ use Jane\Component\JsonSchema\Guesser\Validator\ValidatorInterface;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, TypeGuesserInterface, ChainGuesserAwareInterface, ClassGuesserInterface
 {
     use ChainGuesserAwareTrait;
     use GuesserResolverTrait;
 
-    /**
-     * @var Naming
-     */
-    protected $naming;
+    protected ?ValidatorInterface $chainValidator = null;
 
-    /** @var ValidatorInterface */
-    protected $chainValidator;
-
-    public function __construct(Naming $naming, SerializerInterface $serializer)
-    {
-        $this->naming = $naming;
-        $this->serializer = $serializer;
+    public function __construct(
+        DenormalizerInterface $denormalizer,
+        protected Naming $naming,
+    ) {
+        $this->denormalizer = $denormalizer;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportObject($object): bool
     {
         return ($object instanceof JsonSchema) && (\is_array($object->getType()) ? \in_array('object', $object->getType()) : 'object' === $object->getType()) && null !== $object->getProperties();
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @param JsonSchema $object
      */
     public function guessClass($object, string $name, string $reference, Registry $registry): void
@@ -95,9 +85,6 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessProperties($object, string $name, string $reference, Registry $registry): array
     {
         /** @var JsonSchema $object */
@@ -150,9 +137,6 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
         return 'null' == $type || (\is_array($type) && \in_array('null', $type));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         $discriminants = [];
@@ -202,7 +186,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
     private function initChainValidator(Registry $registry): void
     {
         if (null === $this->chainValidator) {
-            $this->chainValidator = ChainValidatorFactory::create($this->naming, $registry, $this->serializer);
+            $this->chainValidator = ChainValidatorFactory::create($this->naming, $registry, $this->denormalizer);
         }
     }
 }

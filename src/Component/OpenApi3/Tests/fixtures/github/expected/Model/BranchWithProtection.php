@@ -13,8 +13,6 @@ class BranchWithProtection extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
@@ -25,14 +23,10 @@ class BranchWithProtection extends \ArrayObject
      */
     protected $commit;
     /**
-     * 
-     *
      * @var BranchWithProtectionLinks
      */
     protected $links;
     /**
-     * 
-     *
      * @var bool
      */
     protected $protected;
@@ -43,26 +37,18 @@ class BranchWithProtection extends \ArrayObject
      */
     protected $protection;
     /**
-     * 
-     *
      * @var string
      */
     protected $protectionUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $pattern;
     /**
-     * 
-     *
      * @var int
      */
     protected $requiredApprovingReviewCount;
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -70,8 +56,6 @@ class BranchWithProtection extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -105,8 +89,6 @@ class BranchWithProtection extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return BranchWithProtectionLinks
      */
     public function getLinks(): BranchWithProtectionLinks
@@ -114,8 +96,6 @@ class BranchWithProtection extends \ArrayObject
         return $this->links;
     }
     /**
-     * 
-     *
      * @param BranchWithProtectionLinks $links
      *
      * @return self
@@ -127,8 +107,6 @@ class BranchWithProtection extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getProtected(): bool
@@ -136,8 +114,6 @@ class BranchWithProtection extends \ArrayObject
         return $this->protected;
     }
     /**
-     * 
-     *
      * @param bool $protected
      *
      * @return self
@@ -171,8 +147,6 @@ class BranchWithProtection extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getProtectionUrl(): string
@@ -180,8 +154,6 @@ class BranchWithProtection extends \ArrayObject
         return $this->protectionUrl;
     }
     /**
-     * 
-     *
      * @param string $protectionUrl
      *
      * @return self
@@ -193,8 +165,6 @@ class BranchWithProtection extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPattern(): string
@@ -202,8 +172,6 @@ class BranchWithProtection extends \ArrayObject
         return $this->pattern;
     }
     /**
-     * 
-     *
      * @param string $pattern
      *
      * @return self
@@ -215,8 +183,6 @@ class BranchWithProtection extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getRequiredApprovingReviewCount(): int
@@ -224,8 +190,6 @@ class BranchWithProtection extends \ArrayObject
         return $this->requiredApprovingReviewCount;
     }
     /**
-     * 
-     *
      * @param int $requiredApprovingReviewCount
      *
      * @return self

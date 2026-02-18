@@ -8,14 +8,13 @@ class ChecksRerequestSuite extends \Github\Runtime\Client\BaseEndpoint implement
     protected $repo;
     protected $check_suite_id;
     /**
-    * Triggers GitHub to rerequest an existing check suite, without pushing new code to a repository. This endpoint will trigger the [`check_suite` webhook](https://developer.github.com/webhooks/event-payloads/#check_suite) event with the action `rerequested`. When a check suite is `rerequested`, its `status` is reset to `queued` and the `conclusion` is cleared.
-    
-    To rerequest a check suite, your GitHub App must have the `checks:read` permission on a private repository or pull access to a public repository.
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param int $checkSuiteId check_suite_id parameter
-    */
+     * Triggers GitHub to rerequest an existing check suite, without pushing new code to a repository. This endpoint will trigger the [`check_suite` webhook](https://developer.github.com/webhooks/event-payloads/#check_suite) event with the action `rerequested`. When a check suite is `rerequested`, its `status` is reset to `queued` and the `conclusion` is cleared.
+     *
+     * To rerequest a check suite, your GitHub App must have the `checks:read` permission on a private repository or pull access to a public repository.
+     * @param string $owner
+     * @param string $repo
+     * @param int $checkSuiteId check_suite_id parameter
+     */
     public function __construct(string $owner, string $repo, int $checkSuiteId)
     {
         $this->owner = $owner;

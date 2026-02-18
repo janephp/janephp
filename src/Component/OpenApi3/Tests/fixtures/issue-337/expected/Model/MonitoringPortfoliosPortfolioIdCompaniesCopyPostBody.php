@@ -13,20 +13,14 @@ class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $portfolios;
     /**
-     * 
-     *
      * @var list<MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyCompaniesItem>
      */
     protected $companies;
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getPortfolios(): array
@@ -34,8 +28,6 @@ class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody extends \ArrayObject
         return $this->portfolios;
     }
     /**
-     * 
-     *
      * @param list<string> $portfolios
      *
      * @return self
@@ -47,8 +39,6 @@ class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyCompaniesItem>
      */
     public function getCompanies(): array
@@ -56,8 +46,6 @@ class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody extends \ArrayObject
         return $this->companies;
     }
     /**
-     * 
-     *
      * @param list<MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyCompaniesItem> $companies
      *
      * @return self

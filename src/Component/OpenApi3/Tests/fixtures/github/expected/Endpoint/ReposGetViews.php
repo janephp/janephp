@@ -8,12 +8,11 @@ class ReposGetViews extends \Github\Runtime\Client\BaseEndpoint implements \Gith
     protected $repo;
     /**
      * Get the total number of views and breakdown per day or week for the last 14 days. Timestamps are aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param array $queryParameters {
-     *     @var string $per Must be one of: `day`, `week`.
-     * }
+     * @param string $owner
+     * @param string $repo
+     * @param array{
+     *    "per"?: string, //Must be one of: `day`, `week`.
+     * } $queryParameters
      */
     public function __construct(string $owner, string $repo, array $queryParameters = [])
     {
@@ -58,10 +57,10 @@ class ReposGetViews extends \Github\Runtime\Client\BaseEndpoint implements \Gith
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\ViewTraffic', 'json');
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposGetViewsForbiddenException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

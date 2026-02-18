@@ -7,8 +7,7 @@ class TeamsGetLegacy extends \Github\Runtime\Client\BaseEndpoint implements \Git
     protected $team_id;
     /**
      * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the [Get a team by name](https://developer.github.com/v3/teams/#get-a-team-by-name) endpoint.
-     *
-     * @param int $teamId 
+     * @param int $teamId
      */
     public function __construct(int $teamId)
     {
@@ -42,10 +41,10 @@ class TeamsGetLegacy extends \Github\Runtime\Client\BaseEndpoint implements \Git
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\TeamFull', 'json');
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\TeamsGetLegacyNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

@@ -6,26 +6,25 @@ class TaskLogs extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
 {
     protected $id;
     /**
-    * Get `stdout` and `stderr` logs from a task.
-    See also [`/containers/{id}/logs`](#operation/ContainerLogs).
-    
-    **Note**: This endpoint works only for services with the `local`,
-    `json-file` or `journald` logging drivers.
-    
-    *
-    * @param string $id ID of the task
-    * @param array $queryParameters {
-    *     @var bool $details Show task context and extra details provided to logs.
-    *     @var bool $follow Keep connection after returning logs.
-    *     @var bool $stdout Return logs from `stdout`
-    *     @var bool $stderr Return logs from `stderr`
-    *     @var int $since Only return logs since this time, as a UNIX timestamp
-    *     @var bool $timestamps Add timestamps to every log line
-    *     @var string $tail Only return this number of log lines from the end of the logs.
-    Specify as an integer or `all` to output all log lines.
-    
-    * }
-    */
+     * Get `stdout` and `stderr` logs from a task.
+     * See also [`/containers/{id}/logs`](#operation/ContainerLogs).
+     *
+     * **Note**: This endpoint works only for services with the `local`,
+     * `json-file` or `journald` logging drivers.
+     *
+     * @param string $id ID of the task
+     * @param array $queryParameters {
+     *     @var bool $details Show task context and extra details provided to logs.
+     *     @var bool $follow Keep connection after returning logs.
+     *     @var bool $stdout Return logs from `stdout`
+     *     @var bool $stderr Return logs from `stderr`
+     *     @var int $since Only return logs since this time, as a UNIX timestamp
+     *     @var bool $timestamps Add timestamps to every log line
+     *     @var string $tail Only return this number of log lines from the end of the logs.
+     *     Specify as an integer or `all` to output all log lines.
+     *     
+     * }
+     */
     public function __construct(string $id, array $queryParameters = [])
     {
         $this->id = $id;

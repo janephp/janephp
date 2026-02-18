@@ -13,26 +13,18 @@ class Server extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $url;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var array<string, ServerVariable>|null
      */
     protected $variables;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getUrl() : ?string
@@ -40,8 +32,6 @@ class Server extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string|null $url
      *
      * @return self
@@ -53,8 +43,6 @@ class Server extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription() : ?string
@@ -62,8 +50,6 @@ class Server extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -75,8 +61,6 @@ class Server extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, ServerVariable>|null
      */
     public function getVariables() : ?iterable
@@ -84,8 +68,6 @@ class Server extends \ArrayObject
         return $this->variables;
     }
     /**
-     * 
-     *
      * @param array<string, ServerVariable>|null $variables
      *
      * @return self

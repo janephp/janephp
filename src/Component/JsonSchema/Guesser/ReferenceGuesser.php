@@ -6,29 +6,24 @@ use Jane\Component\JsonSchema\Guesser\Guess\Type;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class ReferenceGuesser implements ClassGuesserInterface, GuesserInterface, TypeGuesserInterface, ChainGuesserAwareInterface
 {
     use ChainGuesserAwareTrait;
     use GuesserResolverTrait;
 
-    public function __construct(SerializerInterface $serializer)
+    public function __construct(DenormalizerInterface $denormalizer)
     {
-        $this->serializer = $serializer;
+        $this->denormalizer = $denormalizer;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportObject($object): bool
     {
         return $object instanceof Reference;
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @param Reference $object
      */
     public function guessClass($object, string $name, string $reference, Registry $registry): void
@@ -53,8 +48,6 @@ class ReferenceGuesser implements ClassGuesserInterface, GuesserInterface, TypeG
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @param Reference $object
      */
     public function guessType($object, string $name, string $reference, Registry $registry): Type

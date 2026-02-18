@@ -13,20 +13,14 @@ class TaskSpecLogDriver
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var array<string, string>
      */
     protected $options;
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -34,8 +28,6 @@ class TaskSpecLogDriver
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -47,8 +39,6 @@ class TaskSpecLogDriver
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, string>
      */
     public function getOptions(): iterable
@@ -56,8 +46,6 @@ class TaskSpecLogDriver
         return $this->options;
     }
     /**
-     * 
-     *
      * @param array<string, string> $options
      *
      * @return self

@@ -13,12 +13,12 @@ class TLSInfo
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * The root CA certificate(s) that are used to validate leaf TLS
-    certificates.
-    
-    *
-    * @var string
-    */
+     * The root CA certificate(s) that are used to validate leaf TLS
+     * certificates.
+     * 
+     *
+     * @var string
+     */
     protected $trustRoot;
     /**
      * The base64-url-safe-encoded raw subject bytes of the issuer.
@@ -28,17 +28,18 @@ class TLSInfo
     protected $certIssuerSubject;
     /**
      * The base64-url-safe-encoded raw public key bytes of the issuer.
+     * 
      *
      * @var string
      */
     protected $certIssuerPublicKey;
     /**
-    * The root CA certificate(s) that are used to validate leaf TLS
-    certificates.
-    
-    *
-    * @return string
-    */
+     * The root CA certificate(s) that are used to validate leaf TLS
+     * certificates.
+     * 
+     *
+     * @return string
+     */
     public function getTrustRoot(): string
     {
         return $this->trustRoot;
@@ -82,6 +83,7 @@ class TLSInfo
     }
     /**
      * The base64-url-safe-encoded raw public key bytes of the issuer.
+     * 
      *
      * @return string
      */

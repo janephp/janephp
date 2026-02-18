@@ -61,8 +61,6 @@ class UrlEntity extends \ArrayObject
      */
     protected $description;
     /**
-     * 
-     *
      * @var list<URLImage>
      */
     protected $images;
@@ -243,8 +241,6 @@ class UrlEntity extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<URLImage>
      */
     public function getImages(): array
@@ -252,8 +248,6 @@ class UrlEntity extends \ArrayObject
         return $this->images;
     }
     /**
-     * 
-     *
      * @param list<URLImage> $images
      *
      * @return self

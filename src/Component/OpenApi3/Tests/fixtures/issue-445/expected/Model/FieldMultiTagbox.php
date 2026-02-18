@@ -49,11 +49,11 @@ class FieldMultiTagbox extends FieldBase
      */
     protected $listItemCreateTemplate;
     /**
-    * Defines the display pattern type to be used (Name or List only) when showing a tagbox item in view mode. Defaults to "Name".
-    The information is only consumed by the client application. No actual logic is implemented in the backend.
-    *
-    * @var mixed
-    */
+     * Defines the display pattern type to be used (Name or List only) when showing a tagbox item in view mode. Defaults to "Name".
+     * The information is only consumed by the client application. No actual logic is implemented in the backend.
+     *
+     * @var mixed
+     */
     protected $viewModeDisplayPatternType = 'Name';
     /**
      * The ID of the schema to be used as tagbox (it must be of type List).
@@ -188,11 +188,11 @@ class FieldMultiTagbox extends FieldBase
         return $this;
     }
     /**
-    * Defines the display pattern type to be used (Name or List only) when showing a tagbox item in view mode. Defaults to "Name".
-    The information is only consumed by the client application. No actual logic is implemented in the backend.
-    *
-    * @return mixed
-    */
+     * Defines the display pattern type to be used (Name or List only) when showing a tagbox item in view mode. Defaults to "Name".
+     * The information is only consumed by the client application. No actual logic is implemented in the backend.
+     *
+     * @return mixed
+     */
     public function getViewModeDisplayPatternType()
     {
         return $this->viewModeDisplayPatternType;

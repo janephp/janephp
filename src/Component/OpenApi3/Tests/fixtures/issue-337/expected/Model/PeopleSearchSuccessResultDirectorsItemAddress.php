@@ -13,32 +13,22 @@ class PeopleSearchSuccessResultDirectorsItemAddress extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $simpleValue;
     /**
-     * 
-     *
      * @var string
      */
     protected $houseNo;
     /**
-     * 
-     *
      * @var string
      */
     protected $city;
     /**
-     * 
-     *
      * @var string
      */
     protected $postCode;
     /**
-     * 
-     *
      * @return string
      */
     public function getSimpleValue(): string
@@ -46,8 +36,6 @@ class PeopleSearchSuccessResultDirectorsItemAddress extends \ArrayObject
         return $this->simpleValue;
     }
     /**
-     * 
-     *
      * @param string $simpleValue
      *
      * @return self
@@ -59,8 +47,6 @@ class PeopleSearchSuccessResultDirectorsItemAddress extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHouseNo(): string
@@ -68,8 +54,6 @@ class PeopleSearchSuccessResultDirectorsItemAddress extends \ArrayObject
         return $this->houseNo;
     }
     /**
-     * 
-     *
      * @param string $houseNo
      *
      * @return self
@@ -81,8 +65,6 @@ class PeopleSearchSuccessResultDirectorsItemAddress extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCity(): string
@@ -90,8 +72,6 @@ class PeopleSearchSuccessResultDirectorsItemAddress extends \ArrayObject
         return $this->city;
     }
     /**
-     * 
-     *
      * @param string $city
      *
      * @return self
@@ -103,8 +83,6 @@ class PeopleSearchSuccessResultDirectorsItemAddress extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPostCode(): string
@@ -112,8 +90,6 @@ class PeopleSearchSuccessResultDirectorsItemAddress extends \ArrayObject
         return $this->postCode;
     }
     /**
-     * 
-     *
      * @param string $postCode
      *
      * @return self

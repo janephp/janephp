@@ -1,42 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!-- http://www.phpunit.de/manual/current/en/appendixes.configuration.html -->
-<phpunit
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
-        colors                      = "true"
-        bootstrap                   = "bootstrap.php">
-
-    <php>
-        <ini name="memory_limit" value="1024M"/>
-    </php>
-
-    <testsuites>
-        <testsuite name="Jane Unit Test Suite">
-            <directory>./src/Component/*/Tests</directory>
-            <exclude>./src/Component/JsonSchema/Tests/fixtures</exclude>
-            <exclude>./src/Component/OpenApi2/Tests/fixtures</exclude>
-            <exclude>./src/Component/OpenApi3/Tests/fixtures</exclude>
-        </testsuite>
-    </testsuites>
-
-    <filter>
-        <whitelist>
-            <directory suffix=".php">./src</directory>
-            <exclude>
-                <directory>./src/Component/*/Tests</directory>
-                <directory>./src/Bridge/ApiPlatform/Tests</directory>
-                <directory>./src/Component/JsonSchema/Model</directory>
-                <directory>./src/Component/JsonSchema/Normalizer</directory>
-                <directory>./src/Component/OpenApi2/JsonSchema</directory>
-                <directory>./src/Component/OpenApi3/JsonSchema</directory>
-            </exclude>
-        </whitelist>
-    </filter>
-
-    <groups>
-        <exclude>
-            <group>prism</group>
-        </exclude>
-    </groups>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" colors="true" bootstrap="bootstrap.php">
+  <coverage>
+    <include>
+      <directory suffix=".php">./src</directory>
+    </include>
+    <exclude>
+      <directory>./src/Component/*/Tests</directory>
+      <directory>./src/Bundle/*/Tests</directory>
+      <directory>./src/Bridge/ApiPlatform/Tests</directory>
+      <directory>./src/Component/JsonSchema/Model</directory>
+      <directory>./src/Component/JsonSchema/Normalizer</directory>
+      <directory>./src/Component/OpenApi2/JsonSchema</directory>
+      <directory>./src/Component/OpenApi3/JsonSchema</directory>
+    </exclude>
+  </coverage>
+  <php>
+    <ini name="memory_limit" value="1024M"/>
+  </php>
+  <testsuites>
+    <testsuite name="Jane Unit Test Suite">
+      <directory>./src/Component/*/Tests</directory>
+      <directory>./src/Bundle/*/Tests</directory>
+      <exclude>./src/Component/JsonSchema/Tests/fixtures</exclude>
+      <exclude>./src/Component/OpenApi2/Tests/fixtures</exclude>
+      <exclude>./src/Component/OpenApi3/Tests/fixtures</exclude>
+    </testsuite>
+  </testsuites>
+  <groups>
+    <exclude>
+      <group>prism</group>
+    </exclude>
+  </groups>
 </phpunit>

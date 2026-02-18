@@ -9,7 +9,7 @@ class ReferenceNormalizer implements NormalizerInterface
     /**
      * {@inheritdoc}
      */
-    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+    public function normalize(mixed $object, ?string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
         $ref = [];
         $ref['$ref'] = (string) $object->getReferenceUri();

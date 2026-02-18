@@ -8,7 +8,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\One\Runtime\Client\
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Component\OpenApi2\Tests\Expected\One\Exception\TestOneNotFoundException
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\One\Model\TestOneGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi2\Tests\Expected\One\Model\TestOneGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function testOne(string $fetch = self::FETCH_OBJECT)
     {

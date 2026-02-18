@@ -6,10 +6,8 @@ class NetworkDisconnect extends \Docker\Api\Runtime\Client\BaseEndpoint implemen
 {
     protected $id;
     /**
-     * 
-     *
      * @param string $id Network ID or name
-     * @param \Docker\Api\Model\NetworksIdDisconnectPostBody $container 
+     * @param \Docker\Api\Model\NetworksIdDisconnectPostBody $container
      */
     public function __construct(string $id, \Docker\Api\Model\NetworksIdDisconnectPostBody $container)
     {

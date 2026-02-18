@@ -7,16 +7,15 @@ class ProjectsListCollaborators extends \Github\Runtime\Client\BaseEndpoint impl
     protected $project_id;
     /**
     * Lists the collaborators for an organization project. For a project, the list of collaborators includes outside collaborators, organization members that are direct collaborators, organization members with access through team memberships, organization members with access through default organization permissions, and organization owners. You must be an organization owner or a project `admin` to list collaborators.
-    *
-    * @param int $projectId 
-    * @param array $queryParameters {
-    *     @var string $affiliation Filters the collaborators by their affiliation. Can be one of:  
-    \* `outside`: Outside collaborators of a project that are not a member of the project's organization.  
-    \* `direct`: Collaborators with permissions to a project, regardless of organization membership status.  
+    * @param int $projectId
+    * @param array{
+    *    "affiliation"?: string, //Filters the collaborators by their affiliation. Can be one of:
+    \* `outside`: Outside collaborators of a project that are not a member of the project's organization.
+    \* `direct`: Collaborators with permissions to a project, regardless of organization membership status.
     \* `all`: All collaborators the authenticated user can see.
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
+    *    "per_page"?: int, //Results per page (max 100)
+    *    "page"?: int, //Page number of the results to fetch.
+    * } $queryParameters
     */
     public function __construct(int $projectId, array $queryParameters = [])
     {
@@ -66,25 +65,25 @@ class ProjectsListCollaborators extends \Github\Runtime\Client\BaseEndpoint impl
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\SimpleUser[]', 'json');
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ProjectsListCollaboratorsNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (415 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (415 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ProjectsListCollaboratorsUnsupportedMediaTypeException($serializer->deserialize($body, 'Github\Model\ResponsePreviewHeaderMissing', 'json'), $response);
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ProjectsListCollaboratorsUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationError', 'json'), $response);
         }
         if (304 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ProjectsListCollaboratorsForbiddenException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (401 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ProjectsListCollaboratorsUnauthorizedException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

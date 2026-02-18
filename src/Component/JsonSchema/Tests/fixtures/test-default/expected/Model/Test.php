@@ -13,50 +13,34 @@ class Test
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $string = 'content';
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $bool = true;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $integer = 10;
     /**
-     * 
-     *
      * @var float|null
      */
     protected $float = 3.4;
     /**
-     * 
-     *
      * @var list<mixed>|null
      */
     protected $array = array(0 => 'value');
     /**
-     * 
-     *
      * @var list<mixed>|null
      */
     protected $object = array('key' => 'value');
     /**
-     * 
-     *
      * @var TestSubObject|null
      */
     protected $subObject;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getString(): ?string
@@ -64,8 +48,6 @@ class Test
         return $this->string;
     }
     /**
-     * 
-     *
      * @param string|null $string
      *
      * @return self
@@ -77,8 +59,6 @@ class Test
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getBool(): ?bool
@@ -86,8 +66,6 @@ class Test
         return $this->bool;
     }
     /**
-     * 
-     *
      * @param bool|null $bool
      *
      * @return self
@@ -99,8 +77,6 @@ class Test
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getInteger(): ?int
@@ -108,8 +84,6 @@ class Test
         return $this->integer;
     }
     /**
-     * 
-     *
      * @param int|null $integer
      *
      * @return self
@@ -121,8 +95,6 @@ class Test
         return $this;
     }
     /**
-     * 
-     *
      * @return float|null
      */
     public function getFloat(): ?float
@@ -130,8 +102,6 @@ class Test
         return $this->float;
     }
     /**
-     * 
-     *
      * @param float|null $float
      *
      * @return self
@@ -143,8 +113,6 @@ class Test
         return $this;
     }
     /**
-     * 
-     *
      * @return list<mixed>|null
      */
     public function getArray(): ?array
@@ -152,8 +120,6 @@ class Test
         return $this->array;
     }
     /**
-     * 
-     *
      * @param list<mixed>|null $array
      *
      * @return self
@@ -165,8 +131,6 @@ class Test
         return $this;
     }
     /**
-     * 
-     *
      * @return list<mixed>|null
      */
     public function getObject(): ?array
@@ -174,8 +138,6 @@ class Test
         return $this->object;
     }
     /**
-     * 
-     *
      * @param list<mixed>|null $object
      *
      * @return self
@@ -187,8 +149,6 @@ class Test
         return $this;
     }
     /**
-     * 
-     *
      * @return TestSubObject|null
      */
     public function getSubObject(): ?TestSubObject
@@ -196,8 +156,6 @@ class Test
         return $this->subObject;
     }
     /**
-     * 
-     *
      * @param TestSubObject|null $subObject
      *
      * @return self

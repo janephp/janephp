@@ -6,7 +6,9 @@ use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\File;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\OpenApiCommon\Naming\ExceptionNaming;
+use Jane\Component\OpenApiCommon\Registry\Registry;
 use PhpParser\Comment\Doc;
+use PhpParser\Modifiers;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -16,7 +18,8 @@ use PhpParser\Node\Stmt;
 
 class ExceptionGenerator
 {
-    public static $statusTexts = [
+    /** @var array<int, string> */
+    public static array $statusTexts = [
         400 => 'Bad Request',
         401 => 'Unauthorized',
         402 => 'Payment Required',
@@ -60,8 +63,8 @@ class ExceptionGenerator
     ];
 
     private const BANNED_VARIABLES = ['message', 'code', 'file', 'line'];
-    private $exceptionNaming;
-    private $intialized = [];
+    private ExceptionNaming $exceptionNaming;
+    private array $initialized = [];
 
     public function __construct()
     {
@@ -92,10 +95,10 @@ class ExceptionGenerator
             }
 
             if (\in_array($propertyName, self::BANNED_VARIABLES)) {
-                $propertyName = sprintf('%sObject', $propertyName);
+                $propertyName = \sprintf('%sObject', $propertyName);
             }
 
-            $propertyComment = sprintf(<<<EOD
+            $propertyComment = \sprintf(<<<EOD
 /**
  * @var %s%s
  */
@@ -109,10 +112,10 @@ EOD
                     [
                         'extends' => new Name($highLevelExceptionName),
                         'stmts' => [
-                            new Stmt\Property(Stmt\Class_::MODIFIER_PRIVATE, [
+                            new Stmt\Property(Modifiers::PRIVATE, [
                                 new Stmt\PropertyProperty($propertyName),
                             ], ['comments' => [new Doc($propertyComment)]]),
-                            new Stmt\Property(Stmt\Class_::MODIFIER_PRIVATE, [
+                            new Stmt\Property(Modifiers::PRIVATE, [
                                 new Stmt\PropertyProperty('response'),
                             ], ['comments' => [new Doc(<<<EOD
 /**
@@ -121,15 +124,13 @@ EOD
 EOD
                             )]]),
                             new Stmt\ClassMethod('__construct', [
-                                'type' => Stmt\Class_::MODIFIER_PUBLIC,
+                                'flags' => Modifiers::PUBLIC,
                                 'params' => [
                                     new Param(new Expr\Variable($realPropertyName), null, $isArray ? null : new Name('\\' . $classFqdn)),
                                     new Param(new Expr\Variable('response'), null, new Name('\\Psr\\Http\\Message\\ResponseInterface')),
                                 ],
                                 'stmts' => [
-                                    new Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
-                                        new Scalar\String_($description),
-                                    ])),
+                                    new Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [new Node\Arg(new Scalar\String_($description))])),
                                     new Stmt\Expression(new Expr\Assign(
                                         new Expr\PropertyFetch(
                                             new Expr\Variable('this'),
@@ -145,7 +146,7 @@ EOD
                                 ],
                             ]),
                             new Stmt\ClassMethod($methodName, [
-                                'type' => Stmt\Class_::MODIFIER_PUBLIC,
+                                'flags' => Modifiers::PUBLIC,
                                 'stmts' => [
                                     new Stmt\Return_(
                                         new Expr\PropertyFetch(
@@ -157,7 +158,7 @@ EOD
                                 'returnType' => ($isArray ? null : new Name('\\' . $classFqdn)),
                             ]),
                             new Stmt\ClassMethod('getResponse', [
-                                'type' => Stmt\Class_::MODIFIER_PUBLIC,
+                                'flags' => Modifiers::PUBLIC,
                                 'stmts' => [
                                     new Stmt\Return_(
                                         new Expr\PropertyFetch(
@@ -184,7 +185,7 @@ EOD
                 [
                     'extends' => new Name($highLevelExceptionName),
                     'stmts' => [
-                        new Stmt\Property(Stmt\Class_::MODIFIER_PRIVATE, [
+                        new Stmt\Property(Modifiers::PRIVATE, [
                             new Stmt\PropertyProperty('response'),
                         ], ['comments' => [new Doc(<<<EOD
 /**
@@ -193,7 +194,7 @@ EOD
 EOD
                         )]]),
                         new Stmt\ClassMethod('__construct', [
-                            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+                            'flags' => Modifiers::PUBLIC,
                             'params' => [
                                 new Param(new Expr\Variable('response'), new Expr\ConstFetch(new Name('null')), new Name('\\Psr\\Http\\Message\\ResponseInterface')),
                             ],
@@ -210,7 +211,7 @@ EOD
                             ],
                         ]),
                         new Stmt\ClassMethod('getResponse', [
-                            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+                            'flags' => Modifiers::PUBLIC,
                             'stmts' => [
                                 new Stmt\Return_(
                                     new Expr\PropertyFetch(
@@ -234,13 +235,14 @@ EOD
     public function createBaseExceptions(Context $context): void
     {
         $schema = $context->getCurrentSchema();
+        /** @var Registry $registry */
         $registry = $context->getRegistry();
 
         $unique = $schema->getRootName() . $schema->getDirectory();
-        if (\array_key_exists($unique, $this->intialized) && $this->intialized[$unique]['base'] ?? false) {
+        if (\array_key_exists($unique, $this->initialized) && $this->initialized[$unique]['base'] ?? false) {
             return;
         }
-        $this->intialized[$unique]['base'] = true;
+        $this->initialized[$unique]['base'] = true;
 
         $apiException = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Exception'), [
             new Stmt\Interface_(
@@ -288,10 +290,10 @@ EOD
                             new Name('ClientException'),
                         ],
                         'extends' => new Name('\\RuntimeException'),
-                        'flags' => Stmt\Class_::MODIFIER_FINAL,
+                        'flags' => Modifiers::FINAL,
                         'stmts' => [
                             new Stmt\ClassMethod('__construct', [
-                                'type' => Stmt\Class_::MODIFIER_PUBLIC,
+                                'flags' => Modifiers::PUBLIC,
                                 'params' => [
                                     new Param(new Expr\Variable('status')),
                                     new Param(new Expr\Variable('message'), new Scalar\String_('')),
@@ -318,10 +320,10 @@ EOD
         $highLevelExceptionName = $this->exceptionNaming->generateExceptionName($code);
         $unique = $schema->getRootName() . $schema->getDirectory();
 
-        if (\array_key_exists($unique, $this->intialized) && ($this->intialized[$unique] ?? false) && ($this->intialized[$unique][$code] ?? false)) {
+        if (\array_key_exists($unique, $this->initialized) && ($this->initialized[$unique] ?? false) && ($this->initialized[$unique][$code] ?? false)) {
             return $highLevelExceptionName;
         }
-        $this->intialized[$unique][$code] = true;
+        $this->initialized[$unique][$code] = true;
 
         $highLevelException = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Exception'), [
             new Stmt\Class_(
@@ -331,7 +333,7 @@ EOD
                     'implements' => [new Name($code >= 500 ? 'ServerException' : 'ClientException')],
                     'stmts' => [
                         new Stmt\ClassMethod('__construct', [
-                            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+                            'flags' => Modifiers::PUBLIC,
                             'params' => [
                                 new Param(new Expr\Variable('message'), null, new Name('string')),
                             ],
@@ -347,7 +349,7 @@ EOD
             ),
         ]);
 
-        $schema->addFile(new File(sprintf('%s/Exception/%s.php', $schema->getDirectory(), $highLevelExceptionName), $highLevelException, 'Exception'));
+        $schema->addFile(new File(\sprintf('%s/Exception/%s.php', $schema->getDirectory(), $highLevelExceptionName), $highLevelException, 'Exception'));
 
         return $highLevelExceptionName;
     }

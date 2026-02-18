@@ -13,8 +13,6 @@ class GitRefObject extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
@@ -25,14 +23,10 @@ class GitRefObject extends \ArrayObject
      */
     protected $sha;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -40,8 +34,6 @@ class GitRefObject extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -75,8 +67,6 @@ class GitRefObject extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -84,8 +74,6 @@ class GitRefObject extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self

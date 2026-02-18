@@ -6,24 +6,23 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
 {
     /**
      * Retrieves the collection of Book resources.
-     *
-     * @param array $queryParameters {
-     *     @var int $page The collection page number
-     *     @var int $itemsPerPage The number of items per page
-     *     @var bool $archived 
-     *     @var string $order[id] 
-     *     @var string $order[title] 
-     *     @var string $order[author] 
-     *     @var string $order[isbn] 
-     *     @var string $order[publicationDate] 
-     *     @var array $properties[] 
-     *     @var string $title 
-     *     @var string $author 
-     * }
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array{
+     *    "page"?: int, //The collection page number
+     *    "itemsPerPage"?: int, //The number of items per page
+     *    "archived"?: bool,
+     *    "order[id]"?: string,
+     *    "order[title]"?: string,
+     *    "order[author]"?: string,
+     *    "order[isbn]"?: string,
+     *    "order[publicationDate]"?: string,
+     *    "properties[]"?: array,
+     *    "title"?: string,
+     *    "author"?: string,
+     * } $queryParameters
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\ApiPlatform\Demo\Model\BooksGetLdjsonResponse200|\ApiPlatform\Demo\Model\BooksGetHaljsonResponse200|\ApiPlatform\Demo\Model\BookBookRead[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\ApiPlatform\Demo\Model\BooksGetLdjsonResponse200|\ApiPlatform\Demo\Model\BooksGetHaljsonResponse200|\ApiPlatform\Demo\Model\BookBookRead[] : \Psr\Http\Message\ResponseInterface)
      */
     public function apiBooksGetCollection(array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -31,14 +30,13 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Creates a Book resource.
-     *
-     * @param \ApiPlatform\Demo\Model\BookJsonld|\ApiPlatform\Demo\Model\BookJsonhal|\ApiPlatform\Demo\Model\Book $requestBody 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param \ApiPlatform\Demo\Model\BookJsonld|\ApiPlatform\Demo\Model\BookJsonhal|\ApiPlatform\Demo\Model\Book $requestBody
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\ApiBooksPostBadRequestException
      * @throws \ApiPlatform\Demo\Exception\ApiBooksPostUnprocessableEntityException
      *
-     * @return null|\ApiPlatform\Demo\Model\BookJsonldBookRead|\ApiPlatform\Demo\Model\BookJsonhalBookRead|\ApiPlatform\Demo\Model\BookBookRead|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\ApiPlatform\Demo\Model\BookJsonldBookRead|\ApiPlatform\Demo\Model\BookJsonhalBookRead|\ApiPlatform\Demo\Model\BookBookRead : \Psr\Http\Message\ResponseInterface)
      */
     public function apiBooksPost($requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -46,19 +44,18 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Retrieves the collection of Review resources.
-     *
      * @param string $bookId Book identifier
-     * @param array $queryParameters {
-     *     @var int $page The collection page number
-     *     @var string $order[id] 
-     *     @var string $order[publicationDate] 
-     *     @var string $book 
-     *     @var array $book[] 
-     * }
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array{
+     *    "page"?: int, //The collection page number
+     *    "order[id]"?: string,
+     *    "order[publicationDate]"?: string,
+     *    "book"?: string,
+     *    "book[]"?: array,
+     * } $queryParameters
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\ApiPlatform\Demo\Model\BooksBookIdReviewsGetLdjsonResponse200|\ApiPlatform\Demo\Model\BooksBookIdReviewsGetHaljsonResponse200|\ApiPlatform\Demo\Model\ReviewReviewRead[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\ApiPlatform\Demo\Model\BooksBookIdReviewsGetLdjsonResponse200|\ApiPlatform\Demo\Model\BooksBookIdReviewsGetHaljsonResponse200|\ApiPlatform\Demo\Model\ReviewReviewRead[] : \Psr\Http\Message\ResponseInterface)
      */
     public function apiBooksBookIdreviewsGetCollection(string $bookId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -66,12 +63,11 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Removes the Book resource.
-     *
      * @param string $id Book identifier
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\ApiBooksIdDeleteNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function apiBooksIdDelete(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -79,13 +75,12 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Retrieves a Book resource.
-     *
      * @param string $id Book identifier
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\ApiBooksIdGetNotFoundException
      *
-     * @return null|\ApiPlatform\Demo\Model\BookJsonldBookRead|\ApiPlatform\Demo\Model\BookJsonhalBookRead|\ApiPlatform\Demo\Model\BookBookRead|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\ApiPlatform\Demo\Model\BookJsonldBookRead|\ApiPlatform\Demo\Model\BookJsonhalBookRead|\ApiPlatform\Demo\Model\BookBookRead : \Psr\Http\Message\ResponseInterface)
      */
     public function apiBooksIdGet(string $id, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -93,16 +88,15 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Updates the Book resource.
-     *
      * @param string $id Book identifier
-     * @param \ApiPlatform\Demo\Model\Book $requestBody 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param \ApiPlatform\Demo\Model\Book $requestBody
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\ApiBooksIdPatchBadRequestException
      * @throws \ApiPlatform\Demo\Exception\ApiBooksIdPatchUnprocessableEntityException
      * @throws \ApiPlatform\Demo\Exception\ApiBooksIdPatchNotFoundException
      *
-     * @return null|\ApiPlatform\Demo\Model\BookJsonldBookRead|\ApiPlatform\Demo\Model\BookJsonhalBookRead|\ApiPlatform\Demo\Model\BookBookRead|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\ApiPlatform\Demo\Model\BookJsonldBookRead|\ApiPlatform\Demo\Model\BookJsonhalBookRead|\ApiPlatform\Demo\Model\BookBookRead : \Psr\Http\Message\ResponseInterface)
      */
     public function apiBooksIdPatch(string $id, \ApiPlatform\Demo\Model\Book $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -110,16 +104,15 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Replaces the Book resource.
-     *
      * @param string $id Book identifier
-     * @param \ApiPlatform\Demo\Model\BookJsonld|\ApiPlatform\Demo\Model\BookJsonhal|\ApiPlatform\Demo\Model\Book $requestBody 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param \ApiPlatform\Demo\Model\BookJsonld|\ApiPlatform\Demo\Model\BookJsonhal|\ApiPlatform\Demo\Model\Book $requestBody
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\ApiBooksIdPutBadRequestException
      * @throws \ApiPlatform\Demo\Exception\ApiBooksIdPutUnprocessableEntityException
      * @throws \ApiPlatform\Demo\Exception\ApiBooksIdPutNotFoundException
      *
-     * @return null|\ApiPlatform\Demo\Model\BookJsonldBookRead|\ApiPlatform\Demo\Model\BookJsonhalBookRead|\ApiPlatform\Demo\Model\BookBookRead|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\ApiPlatform\Demo\Model\BookJsonldBookRead|\ApiPlatform\Demo\Model\BookJsonhalBookRead|\ApiPlatform\Demo\Model\BookBookRead : \Psr\Http\Message\ResponseInterface)
      */
     public function apiBooksIdPut(string $id, $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -127,16 +120,15 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Replaces the Book resource.
-     *
      * @param string $id Book identifier
-     * @param \ApiPlatform\Demo\Model\BookJsonld|\ApiPlatform\Demo\Model\BookJsonhal|\ApiPlatform\Demo\Model\Book $requestBody 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param \ApiPlatform\Demo\Model\BookJsonld|\ApiPlatform\Demo\Model\BookJsonhal|\ApiPlatform\Demo\Model\Book $requestBody
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\ApiBooksIdgenerateCoverPutBadRequestException
      * @throws \ApiPlatform\Demo\Exception\ApiBooksIdgenerateCoverPutUnprocessableEntityException
      * @throws \ApiPlatform\Demo\Exception\ApiBooksIdgenerateCoverPutNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function apiBooksIdgenerateCoverPut(string $id, $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -144,14 +136,13 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Retrieves the collection of Parchment resources.
-     *
-     * @param array $queryParameters {
-     *     @var int $page The collection page number
-     * }
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array{
+     *    "page"?: int, //The collection page number
+     * } $queryParameters
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\ApiPlatform\Demo\Model\ParchmentsGetLdjsonResponse200|\ApiPlatform\Demo\Model\ParchmentsGetHaljsonResponse200|\ApiPlatform\Demo\Model\Parchment[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\ApiPlatform\Demo\Model\ParchmentsGetLdjsonResponse200|\ApiPlatform\Demo\Model\ParchmentsGetHaljsonResponse200|\ApiPlatform\Demo\Model\Parchment[] : \Psr\Http\Message\ResponseInterface)
      */
     public function apiParchmentsGetCollection(array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -159,14 +150,13 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Creates a Parchment resource.
-     *
-     * @param \ApiPlatform\Demo\Model\ParchmentJsonld|\ApiPlatform\Demo\Model\ParchmentJsonhal|\ApiPlatform\Demo\Model\Parchment $requestBody 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param \ApiPlatform\Demo\Model\ParchmentJsonld|\ApiPlatform\Demo\Model\ParchmentJsonhal|\ApiPlatform\Demo\Model\Parchment $requestBody
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\ApiParchmentsPostBadRequestException
      * @throws \ApiPlatform\Demo\Exception\ApiParchmentsPostUnprocessableEntityException
      *
-     * @return null|\ApiPlatform\Demo\Model\ParchmentJsonld|\ApiPlatform\Demo\Model\ParchmentJsonhal|\ApiPlatform\Demo\Model\Parchment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\ApiPlatform\Demo\Model\ParchmentJsonld|\ApiPlatform\Demo\Model\ParchmentJsonhal|\ApiPlatform\Demo\Model\Parchment : \Psr\Http\Message\ResponseInterface)
      */
     public function apiParchmentsPost($requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -174,12 +164,11 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Removes the Parchment resource.
-     *
      * @param string $id Parchment identifier
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\ApiParchmentsIdDeleteNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function apiParchmentsIdDelete(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -187,13 +176,12 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Retrieves a Parchment resource.
-     *
      * @param string $id Parchment identifier
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\ApiParchmentsIdGetNotFoundException
      *
-     * @return null|\ApiPlatform\Demo\Model\ParchmentJsonld|\ApiPlatform\Demo\Model\ParchmentJsonhal|\ApiPlatform\Demo\Model\Parchment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\ApiPlatform\Demo\Model\ParchmentJsonld|\ApiPlatform\Demo\Model\ParchmentJsonhal|\ApiPlatform\Demo\Model\Parchment : \Psr\Http\Message\ResponseInterface)
      */
     public function apiParchmentsIdGet(string $id, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -201,16 +189,15 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Updates the Parchment resource.
-     *
      * @param string $id Parchment identifier
-     * @param \ApiPlatform\Demo\Model\Parchment $requestBody 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param \ApiPlatform\Demo\Model\Parchment $requestBody
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\ApiParchmentsIdPatchBadRequestException
      * @throws \ApiPlatform\Demo\Exception\ApiParchmentsIdPatchUnprocessableEntityException
      * @throws \ApiPlatform\Demo\Exception\ApiParchmentsIdPatchNotFoundException
      *
-     * @return null|\ApiPlatform\Demo\Model\ParchmentJsonld|\ApiPlatform\Demo\Model\ParchmentJsonhal|\ApiPlatform\Demo\Model\Parchment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\ApiPlatform\Demo\Model\ParchmentJsonld|\ApiPlatform\Demo\Model\ParchmentJsonhal|\ApiPlatform\Demo\Model\Parchment : \Psr\Http\Message\ResponseInterface)
      */
     public function apiParchmentsIdPatch(string $id, \ApiPlatform\Demo\Model\Parchment $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -218,16 +205,15 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Replaces the Parchment resource.
-     *
      * @param string $id Parchment identifier
-     * @param \ApiPlatform\Demo\Model\ParchmentJsonld|\ApiPlatform\Demo\Model\ParchmentJsonhal|\ApiPlatform\Demo\Model\Parchment $requestBody 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param \ApiPlatform\Demo\Model\ParchmentJsonld|\ApiPlatform\Demo\Model\ParchmentJsonhal|\ApiPlatform\Demo\Model\Parchment $requestBody
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\ApiParchmentsIdPutBadRequestException
      * @throws \ApiPlatform\Demo\Exception\ApiParchmentsIdPutUnprocessableEntityException
      * @throws \ApiPlatform\Demo\Exception\ApiParchmentsIdPutNotFoundException
      *
-     * @return null|\ApiPlatform\Demo\Model\ParchmentJsonld|\ApiPlatform\Demo\Model\ParchmentJsonhal|\ApiPlatform\Demo\Model\Parchment|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\ApiPlatform\Demo\Model\ParchmentJsonld|\ApiPlatform\Demo\Model\ParchmentJsonhal|\ApiPlatform\Demo\Model\Parchment : \Psr\Http\Message\ResponseInterface)
      */
     public function apiParchmentsIdPut(string $id, $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -235,19 +221,18 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Retrieves the collection of Review resources.
-     *
-     * @param array $queryParameters {
-     *     @var int $page The collection page number
-     *     @var int $itemsPerPage The number of items per page
-     *     @var string $order[id] 
-     *     @var string $order[publicationDate] 
-     *     @var string $book 
-     *     @var array $book[] 
-     * }
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array{
+     *    "page"?: int, //The collection page number
+     *    "itemsPerPage"?: int, //The number of items per page
+     *    "order[id]"?: string,
+     *    "order[publicationDate]"?: string,
+     *    "book"?: string,
+     *    "book[]"?: array,
+     * } $queryParameters
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\ApiPlatform\Demo\Model\ReviewsGetLdjsonResponse200|\ApiPlatform\Demo\Model\ReviewsGetHaljsonResponse200|\ApiPlatform\Demo\Model\ReviewReviewRead[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\ApiPlatform\Demo\Model\ReviewsGetLdjsonResponse200|\ApiPlatform\Demo\Model\ReviewsGetHaljsonResponse200|\ApiPlatform\Demo\Model\ReviewReviewRead[] : \Psr\Http\Message\ResponseInterface)
      */
     public function apiReviewsGetCollection(array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -255,14 +240,13 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Creates a Review resource.
-     *
-     * @param \ApiPlatform\Demo\Model\ReviewJsonldReviewWrite|\ApiPlatform\Demo\Model\ReviewJsonhalReviewWrite|\ApiPlatform\Demo\Model\ReviewReviewWrite $requestBody 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param \ApiPlatform\Demo\Model\ReviewJsonldReviewWrite|\ApiPlatform\Demo\Model\ReviewJsonhalReviewWrite|\ApiPlatform\Demo\Model\ReviewReviewWrite $requestBody
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\ApiReviewsPostBadRequestException
      * @throws \ApiPlatform\Demo\Exception\ApiReviewsPostUnprocessableEntityException
      *
-     * @return null|\ApiPlatform\Demo\Model\ReviewJsonldReviewRead|\ApiPlatform\Demo\Model\ReviewJsonhalReviewRead|\ApiPlatform\Demo\Model\ReviewReviewRead|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\ApiPlatform\Demo\Model\ReviewJsonldReviewRead|\ApiPlatform\Demo\Model\ReviewJsonhalReviewRead|\ApiPlatform\Demo\Model\ReviewReviewRead : \Psr\Http\Message\ResponseInterface)
      */
     public function apiReviewsPost($requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -270,12 +254,11 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Removes the Review resource.
-     *
      * @param string $id Review identifier
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\ApiReviewsIdDeleteNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function apiReviewsIdDelete(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -283,13 +266,12 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Retrieves a Review resource.
-     *
      * @param string $id Review identifier
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\ApiReviewsIdGetNotFoundException
      *
-     * @return null|\ApiPlatform\Demo\Model\ReviewJsonldReviewRead|\ApiPlatform\Demo\Model\ReviewJsonhalReviewRead|\ApiPlatform\Demo\Model\ReviewReviewRead|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\ApiPlatform\Demo\Model\ReviewJsonldReviewRead|\ApiPlatform\Demo\Model\ReviewJsonhalReviewRead|\ApiPlatform\Demo\Model\ReviewReviewRead : \Psr\Http\Message\ResponseInterface)
      */
     public function apiReviewsIdGet(string $id, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -297,16 +279,15 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Updates the Review resource.
-     *
      * @param string $id Review identifier
-     * @param \ApiPlatform\Demo\Model\ReviewReviewWrite $requestBody 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param \ApiPlatform\Demo\Model\ReviewReviewWrite $requestBody
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\ApiReviewsIdPatchBadRequestException
      * @throws \ApiPlatform\Demo\Exception\ApiReviewsIdPatchUnprocessableEntityException
      * @throws \ApiPlatform\Demo\Exception\ApiReviewsIdPatchNotFoundException
      *
-     * @return null|\ApiPlatform\Demo\Model\ReviewJsonldReviewRead|\ApiPlatform\Demo\Model\ReviewJsonhalReviewRead|\ApiPlatform\Demo\Model\ReviewReviewRead|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\ApiPlatform\Demo\Model\ReviewJsonldReviewRead|\ApiPlatform\Demo\Model\ReviewJsonhalReviewRead|\ApiPlatform\Demo\Model\ReviewReviewRead : \Psr\Http\Message\ResponseInterface)
      */
     public function apiReviewsIdPatch(string $id, \ApiPlatform\Demo\Model\ReviewReviewWrite $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -314,16 +295,15 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Replaces the Review resource.
-     *
      * @param string $id Review identifier
-     * @param \ApiPlatform\Demo\Model\ReviewJsonldReviewWrite|\ApiPlatform\Demo\Model\ReviewJsonhalReviewWrite|\ApiPlatform\Demo\Model\ReviewReviewWrite $requestBody 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param \ApiPlatform\Demo\Model\ReviewJsonldReviewWrite|\ApiPlatform\Demo\Model\ReviewJsonhalReviewWrite|\ApiPlatform\Demo\Model\ReviewReviewWrite $requestBody
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\ApiReviewsIdPutBadRequestException
      * @throws \ApiPlatform\Demo\Exception\ApiReviewsIdPutUnprocessableEntityException
      * @throws \ApiPlatform\Demo\Exception\ApiReviewsIdPutNotFoundException
      *
-     * @return null|\ApiPlatform\Demo\Model\ReviewJsonldReviewRead|\ApiPlatform\Demo\Model\ReviewJsonhalReviewRead|\ApiPlatform\Demo\Model\ReviewReviewRead|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\ApiPlatform\Demo\Model\ReviewJsonldReviewRead|\ApiPlatform\Demo\Model\ReviewJsonhalReviewRead|\ApiPlatform\Demo\Model\ReviewReviewRead : \Psr\Http\Message\ResponseInterface)
      */
     public function apiReviewsIdPut(string $id, $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -332,7 +312,7 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\ApiPlatform\Demo\Model\StatsGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\ApiPlatform\Demo\Model\StatsGetResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function apiGetStats(string $fetch = self::FETCH_OBJECT)
     {
@@ -340,14 +320,13 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Retrieves the collection of TopBook resources.
-     *
-     * @param array $queryParameters {
-     *     @var int $page The collection page number
-     * }
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array{
+     *    "page"?: int, //The collection page number
+     * } $queryParameters
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\ApiPlatform\Demo\Model\TopBooksGetLdjsonResponse200|\ApiPlatform\Demo\Model\TopBooksGetHaljsonResponse200|\ApiPlatform\Demo\Model\TopBook[]|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\ApiPlatform\Demo\Model\TopBooksGetLdjsonResponse200|\ApiPlatform\Demo\Model\TopBooksGetHaljsonResponse200|\ApiPlatform\Demo\Model\TopBook[] : \Psr\Http\Message\ResponseInterface)
      */
     public function apiTopBooksGetCollection(array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -355,13 +334,12 @@ class Client extends \ApiPlatform\Demo\Runtime\Client\Client
     }
     /**
      * Retrieves a TopBook resource.
-     *
      * @param string $id TopBook identifier
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \ApiPlatform\Demo\Exception\ApiTopBooksIdGetNotFoundException
      *
-     * @return null|\ApiPlatform\Demo\Model\TopBookJsonld|\ApiPlatform\Demo\Model\TopBookJsonhal|\ApiPlatform\Demo\Model\TopBook|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\ApiPlatform\Demo\Model\TopBookJsonld|\ApiPlatform\Demo\Model\TopBookJsonhal|\ApiPlatform\Demo\Model\TopBook : \Psr\Http\Message\ResponseInterface)
      */
     public function apiTopBooksIdGet(string $id, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {

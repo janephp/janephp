@@ -8,10 +8,8 @@ class ReposDeleteCommitComment extends \Github\Runtime\Client\BaseEndpoint imple
     protected $repo;
     protected $comment_id;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $commentId comment_id parameter
      */
     public function __construct(string $owner, string $repo, int $commentId)
@@ -51,7 +49,7 @@ class ReposDeleteCommitComment extends \Github\Runtime\Client\BaseEndpoint imple
         if (204 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposDeleteCommitCommentNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

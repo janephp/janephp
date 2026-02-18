@@ -13,14 +13,10 @@ class CashtagFields extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $tag;
     /**
-     * 
-     *
      * @return string
      */
     public function getTag(): string
@@ -28,8 +24,6 @@ class CashtagFields extends \ArrayObject
         return $this->tag;
     }
     /**
-     * 
-     *
      * @param string $tag
      *
      * @return self

@@ -6,6 +6,7 @@ use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Normalizer\NormalizerGenerator as JsonSchemaNormalizerGenerator;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\OpenApiCommon\Guesser\Guess\ParentClass;
+use PhpParser\Modifiers;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Identifier;
@@ -26,7 +27,7 @@ trait NormalizerGenerator
 
         if ($classGuess instanceof ParentClass) {
             foreach ($classGuess->getChildEntryKeys() as $discriminatorValue) {
-                $objectVar = new Expr\Variable('object');
+                $objectVar = new Expr\Variable('data');
                 $propertyVar = new Expr\MethodCall($objectVar, $this->getNaming()->getPrefixedMethodName('get', $classGuess->getDiscriminator()));
 
                 $statements[] = new Stmt\If_(
@@ -58,17 +59,21 @@ trait NormalizerGenerator
     }
 
     /**
-     * We want stricly same class for OpenApi Normalizers since we can have inheritance and this could avoid
+     * We want strictly the same class for OpenApi Normalizers since we can have inheritance and this could avoid
      * normalization to use child classes. This is why we use `get_class` and not `instanceof`.
      */
-    protected function createSupportsNormalizationMethod(string $modelFqdn, bool $symfony7): Stmt\ClassMethod
+    protected function createSupportsNormalizationMethod(string $modelFqdn): Stmt\ClassMethod
     {
         return new Stmt\ClassMethod('supportsNormalization', [
-            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'flags' => Modifiers::PUBLIC,
             'returnType' => new Identifier('bool'),
             'params' => [
                 new Param(new Expr\Variable('data'), type: new Identifier('mixed')),
-                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Identifier('string')),
+                new Param(
+                    new Expr\Variable('format'),
+                    new Expr\ConstFetch(new Name('null')),
+                    new Identifier('?string')
+                ),
                 new Param(new Expr\Variable('context'), new Expr\Array_(), new Identifier('array')),
             ],
             'stmts' => [

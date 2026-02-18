@@ -13,20 +13,14 @@ class HovercardContextsItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $message;
     /**
-     * 
-     *
      * @var string
      */
     protected $octicon;
     /**
-     * 
-     *
      * @return string
      */
     public function getMessage(): string
@@ -34,8 +28,6 @@ class HovercardContextsItem extends \ArrayObject
         return $this->message;
     }
     /**
-     * 
-     *
      * @param string $message
      *
      * @return self
@@ -47,8 +39,6 @@ class HovercardContextsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getOcticon(): string
@@ -56,8 +46,6 @@ class HovercardContextsItem extends \ArrayObject
         return $this->octicon;
     }
     /**
-     * 
-     *
      * @param string $octicon
      *
      * @return self

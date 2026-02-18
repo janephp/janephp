@@ -13,14 +13,10 @@ class BookJsonhalLinks extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var BookJsonhalLinksSelf
      */
     protected $self;
     /**
-     * 
-     *
      * @return BookJsonhalLinksSelf
      */
     public function getSelf(): BookJsonhalLinksSelf
@@ -28,8 +24,6 @@ class BookJsonhalLinks extends \ArrayObject
         return $this->self;
     }
     /**
-     * 
-     *
      * @param BookJsonhalLinksSelf $self
      *
      * @return self

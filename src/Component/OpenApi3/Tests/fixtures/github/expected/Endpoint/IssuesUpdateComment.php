@@ -8,12 +8,10 @@ class IssuesUpdateComment extends \Github\Runtime\Client\BaseEndpoint implements
     protected $repo;
     protected $comment_id;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $commentId comment_id parameter
-     * @param null|\Github\Model\ReposOwnerRepoIssuesCommentsCommentIdPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoIssuesCommentsCommentIdPatchBody $requestBody
      */
     public function __construct(string $owner, string $repo, int $commentId, ?\Github\Model\ReposOwnerRepoIssuesCommentsCommentIdPatchBody $requestBody = null)
     {
@@ -53,10 +51,10 @@ class IssuesUpdateComment extends \Github\Runtime\Client\BaseEndpoint implements
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\IssueComment', 'json');
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\IssuesUpdateCommentUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationError', 'json'), $response);
         }
     }

@@ -13,14 +13,10 @@ class AddRulesRequest extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<RuleNoId>
      */
     protected $add;
     /**
-     * 
-     *
      * @return list<RuleNoId>
      */
     public function getAdd(): array
@@ -28,8 +24,6 @@ class AddRulesRequest extends \ArrayObject
         return $this->add;
     }
     /**
-     * 
-     *
      * @param list<RuleNoId> $add
      *
      * @return self

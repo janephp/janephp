@@ -10,12 +10,11 @@ class PullsUpdateReview extends \Github\Runtime\Client\BaseEndpoint implements \
     protected $review_id;
     /**
      * Update the review summary comment with new text.
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param int $pullNumber 
+     * @param string $owner
+     * @param string $repo
+     * @param int $pullNumber
      * @param int $reviewId review_id parameter
-     * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody $requestBody
      */
     public function __construct(string $owner, string $repo, int $pullNumber, int $reviewId, ?\Github\Model\ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody $requestBody = null)
     {
@@ -56,10 +55,10 @@ class PullsUpdateReview extends \Github\Runtime\Client\BaseEndpoint implements \
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\PullRequestReview', 'json');
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\PullsUpdateReviewUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationErrorSimple', 'json'), $response);
         }
     }

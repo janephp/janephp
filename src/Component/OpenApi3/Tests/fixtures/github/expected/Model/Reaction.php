@@ -13,20 +13,14 @@ class Reaction extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var ReactionUser|null
      */
     protected $user;
@@ -37,14 +31,10 @@ class Reaction extends \ArrayObject
      */
     protected $content;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -52,8 +42,6 @@ class Reaction extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -65,8 +53,6 @@ class Reaction extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -74,8 +60,6 @@ class Reaction extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -87,8 +71,6 @@ class Reaction extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ReactionUser|null
      */
     public function getUser(): ?ReactionUser
@@ -96,8 +78,6 @@ class Reaction extends \ArrayObject
         return $this->user;
     }
     /**
-     * 
-     *
      * @param ReactionUser|null $user
      *
      * @return self
@@ -131,8 +111,6 @@ class Reaction extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -140,8 +118,6 @@ class Reaction extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self

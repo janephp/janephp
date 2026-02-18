@@ -13,44 +13,30 @@ class MetadataError
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $errorType;
     /**
-     * 
-     *
      * @var int
      */
     protected $lineNumber;
     /**
-     * 
-     *
      * @var int
      */
     protected $linePosition;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $path;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $message;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $schemaId;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getErrorType(): ?string
@@ -58,8 +44,6 @@ class MetadataError
         return $this->errorType;
     }
     /**
-     * 
-     *
      * @param string|null $errorType
      *
      * @return self
@@ -71,8 +55,6 @@ class MetadataError
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getLineNumber(): int
@@ -80,8 +62,6 @@ class MetadataError
         return $this->lineNumber;
     }
     /**
-     * 
-     *
      * @param int $lineNumber
      *
      * @return self
@@ -93,8 +73,6 @@ class MetadataError
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getLinePosition(): int
@@ -102,8 +80,6 @@ class MetadataError
         return $this->linePosition;
     }
     /**
-     * 
-     *
      * @param int $linePosition
      *
      * @return self
@@ -115,8 +91,6 @@ class MetadataError
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getPath(): ?string
@@ -124,8 +98,6 @@ class MetadataError
         return $this->path;
     }
     /**
-     * 
-     *
      * @param string|null $path
      *
      * @return self
@@ -137,8 +109,6 @@ class MetadataError
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getMessage(): ?string
@@ -146,8 +116,6 @@ class MetadataError
         return $this->message;
     }
     /**
-     * 
-     *
      * @param string|null $message
      *
      * @return self
@@ -159,8 +127,6 @@ class MetadataError
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getSchemaId(): ?string
@@ -168,8 +134,6 @@ class MetadataError
         return $this->schemaId;
     }
     /**
-     * 
-     *
      * @param string|null $schemaId
      *
      * @return self

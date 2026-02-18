@@ -19,6 +19,7 @@ use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Encoder\YamlEncoder;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Yaml\Dumper;
@@ -29,31 +30,25 @@ abstract class JaneOpenApi extends ChainGenerator
     protected const OBJECT_NORMALIZER_CLASS = null;
     protected const WHITELIST_FETCH_CLASS = null;
 
-    /** @var SchemaParser */
-    protected $schemaParser;
+    protected SchemaParser $schemaParser;
+    protected Naming $naming;
 
-    /** @var ChainGuesser */
-    protected $chainGuesser;
+    protected NormalizerInterface|DenormalizerInterface $serializer;
 
-    /** @var Naming */
-    protected $naming;
-
-    /** @var bool */
-    protected $strict;
-
-    /** @var SerializerInterface */
-    protected $serializer;
-
-    public function __construct(string $schemaParserClass, ChainGuesser $chainGuesser, bool $strict = true)
-    {
+    /**
+     * @param class-string $schemaParserClass
+     */
+    public function __construct(
+        string $schemaParserClass,
+        protected ChainGuesser $chainGuesser,
+        protected bool $strict = true,
+    ) {
         $this->serializer = self::buildSerializer();
         $this->schemaParser = new $schemaParserClass($this->serializer);
-        $this->chainGuesser = $chainGuesser;
-        $this->strict = $strict;
         $this->naming = new Naming();
     }
 
-    public function getSerializer(): SerializerInterface
+    public function getSerializer(): NormalizerInterface|DenormalizerInterface
     {
         return $this->serializer;
     }
@@ -141,10 +136,10 @@ abstract class JaneOpenApi extends ChainGenerator
         }
     }
 
-    public static function buildSerializer()
+    public static function buildSerializer(): SerializerInterface|DenormalizerInterface|NormalizerInterface
     {
         $encoders = [
-            new JsonEncoder(new JsonEncode([JsonEncode::OPTIONS => JSON_UNESCAPED_SLASHES]), new JsonDecode()),
+            new JsonEncoder(new JsonEncode([JsonEncode::OPTIONS => \JSON_UNESCAPED_SLASHES]), new JsonDecode()),
             new YamlEncoder(new Dumper(), new Parser()),
         ];
 

@@ -6,16 +6,15 @@ class ListDecisionTrees extends \CreditSafe\API\Runtime\Client\BaseEndpoint impl
 {
     /**
      * List available decision trees available.
-     *
-     * @param array $queryParameters {
-     *     @var string $type Filter the list of available decision trees by the provided tree type.
-     *     @var string $sortBy Sort results by this column. Null values of sort column are listed after non-nulls.
-     *     @var string $sortDir 
-     *     @var string $callRef Call Reference
-     * }
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
+     * @param array{
+     *    "type"?: string, //Filter the list of available decision trees by the provided tree type.
+     *    "sortBy"?: string, //Sort results by this column. Null values of sort column are listed after non-nulls.
+     *    "sortDir"?: string,
+     *    "callRef"?: string, //Call Reference
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
      */
     public function __construct(array $queryParameters = [], array $headerParameters = [])
     {
@@ -73,16 +72,16 @@ class ListDecisionTrees extends \CreditSafe\API\Runtime\Client\BaseEndpoint impl
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'CreditSafe\API\Model\GuidSuccessResponse', 'json');
         }
-        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\ListDecisionTreesBadRequestException($response);
         }
-        if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (401 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\ListDecisionTreesUnauthorizedException($response);
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\ListDecisionTreesNotFoundException($response);
         }
     }

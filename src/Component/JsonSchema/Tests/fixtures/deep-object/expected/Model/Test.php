@@ -13,14 +13,10 @@ class Test
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<TestFooItem>
      */
     protected $foo;
     /**
-     * 
-     *
      * @return list<TestFooItem>
      */
     public function getFoo(): array
@@ -28,8 +24,6 @@ class Test
         return $this->foo;
     }
     /**
-     * 
-     *
      * @param list<TestFooItem> $foo
      *
      * @return self

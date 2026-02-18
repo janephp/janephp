@@ -13,44 +13,30 @@ class Info extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $title;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $termsOfService;
     /**
-     * 
-     *
      * @var Contact|null
      */
     protected $contact;
     /**
-     * 
-     *
      * @var License|null
      */
     protected $license;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $version;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTitle() : ?string
@@ -58,8 +44,6 @@ class Info extends \ArrayObject
         return $this->title;
     }
     /**
-     * 
-     *
      * @param string|null $title
      *
      * @return self
@@ -71,8 +55,6 @@ class Info extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription() : ?string
@@ -80,8 +62,6 @@ class Info extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -93,8 +73,6 @@ class Info extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTermsOfService() : ?string
@@ -102,8 +80,6 @@ class Info extends \ArrayObject
         return $this->termsOfService;
     }
     /**
-     * 
-     *
      * @param string|null $termsOfService
      *
      * @return self
@@ -115,8 +91,6 @@ class Info extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Contact|null
      */
     public function getContact() : ?Contact
@@ -124,8 +98,6 @@ class Info extends \ArrayObject
         return $this->contact;
     }
     /**
-     * 
-     *
      * @param Contact|null $contact
      *
      * @return self
@@ -137,8 +109,6 @@ class Info extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return License|null
      */
     public function getLicense() : ?License
@@ -146,8 +116,6 @@ class Info extends \ArrayObject
         return $this->license;
     }
     /**
-     * 
-     *
      * @param License|null $license
      *
      * @return self
@@ -159,8 +127,6 @@ class Info extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getVersion() : ?string
@@ -168,8 +134,6 @@ class Info extends \ArrayObject
         return $this->version;
     }
     /**
-     * 
-     *
      * @param string|null $version
      *
      * @return self

@@ -13,61 +13,61 @@ class SwarmInitPostBody
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * Listen address used for inter-manager communication, as well
-    as determining the networking interface used for the VXLAN
-    Tunnel Endpoint (VTEP). This can either be an address/port
-    combination in the form `192.168.1.1:4567`, or an interface
-    followed by a port number, like `eth0:4567`. If the port number
-    is omitted, the default swarm listening port is used.
-    
-    *
-    * @var string
-    */
+     * Listen address used for inter-manager communication, as well
+     * as determining the networking interface used for the VXLAN
+     * Tunnel Endpoint (VTEP). This can either be an address/port
+     * combination in the form `192.168.1.1:4567`, or an interface
+     * followed by a port number, like `eth0:4567`. If the port number
+     * is omitted, the default swarm listening port is used.
+     * 
+     *
+     * @var string
+     */
     protected $listenAddr;
     /**
-    * Externally reachable address advertised to other nodes. This
-    can either be an address/port combination in the form
-    `192.168.1.1:4567`, or an interface followed by a port number,
-    like `eth0:4567`. If the port number is omitted, the port
-    number from the listen address is used. If `AdvertiseAddr` is
-    not specified, it will be automatically detected when possible.
-    
-    *
-    * @var string
-    */
+     * Externally reachable address advertised to other nodes. This
+     * can either be an address/port combination in the form
+     * `192.168.1.1:4567`, or an interface followed by a port number,
+     * like `eth0:4567`. If the port number is omitted, the port
+     * number from the listen address is used. If `AdvertiseAddr` is
+     * not specified, it will be automatically detected when possible.
+     * 
+     *
+     * @var string
+     */
     protected $advertiseAddr;
     /**
-    * Address or interface to use for data path traffic (format:
-    `<ip|interface>`), for example,  `192.168.1.1`, or an interface,
-    like `eth0`. If `DataPathAddr` is unspecified, the same address
-    as `AdvertiseAddr` is used.
-    
-    The `DataPathAddr` specifies the address that global scope
-    network drivers will publish towards other  nodes in order to
-    reach the containers running on this node. Using this parameter
-    it is possible to separate the container data traffic from the
-    management traffic of the cluster.
-    
-    *
-    * @var string
-    */
+     * Address or interface to use for data path traffic (format:
+     * `<ip|interface>`), for example,  `192.168.1.1`, or an interface,
+     * like `eth0`. If `DataPathAddr` is unspecified, the same address
+     * as `AdvertiseAddr` is used.
+     * 
+     * The `DataPathAddr` specifies the address that global scope
+     * network drivers will publish towards other  nodes in order to
+     * reach the containers running on this node. Using this parameter
+     * it is possible to separate the container data traffic from the
+     * management traffic of the cluster.
+     * 
+     *
+     * @var string
+     */
     protected $dataPathAddr;
     /**
-    * DataPathPort specifies the data path port number for data traffic.
-    Acceptable port range is 1024 to 49151.
-    if no port is set or is set to 0, default port 4789 will be used.
-    
-    *
-    * @var int
-    */
+     * DataPathPort specifies the data path port number for data traffic.
+     * Acceptable port range is 1024 to 49151.
+     * if no port is set or is set to 0, default port 4789 will be used.
+     * 
+     *
+     * @var int
+     */
     protected $dataPathPort;
     /**
-    * Default Address Pool specifies default subnet pools for global
-    scope networks.
-    
-    *
-    * @var list<string>
-    */
+     * Default Address Pool specifies default subnet pools for global
+     * scope networks.
+     * 
+     *
+     * @var list<string>
+     */
     protected $defaultAddrPool;
     /**
      * Force creation of a new swarm.
@@ -76,12 +76,12 @@ class SwarmInitPostBody
      */
     protected $forceNewCluster;
     /**
-    * SubnetSize specifies the subnet size of the networks created
-    from the default subnet pool.
-    
-    *
-    * @var int
-    */
+     * SubnetSize specifies the subnet size of the networks created
+     * from the default subnet pool.
+     * 
+     *
+     * @var int
+     */
     protected $subnetSize;
     /**
      * User modifiable swarm configuration.
@@ -90,16 +90,16 @@ class SwarmInitPostBody
      */
     protected $spec;
     /**
-    * Listen address used for inter-manager communication, as well
-    as determining the networking interface used for the VXLAN
-    Tunnel Endpoint (VTEP). This can either be an address/port
-    combination in the form `192.168.1.1:4567`, or an interface
-    followed by a port number, like `eth0:4567`. If the port number
-    is omitted, the default swarm listening port is used.
-    
-    *
-    * @return string
-    */
+     * Listen address used for inter-manager communication, as well
+     * as determining the networking interface used for the VXLAN
+     * Tunnel Endpoint (VTEP). This can either be an address/port
+     * combination in the form `192.168.1.1:4567`, or an interface
+     * followed by a port number, like `eth0:4567`. If the port number
+     * is omitted, the default swarm listening port is used.
+     * 
+     *
+     * @return string
+     */
     public function getListenAddr(): string
     {
         return $this->listenAddr;
@@ -124,16 +124,16 @@ class SwarmInitPostBody
         return $this;
     }
     /**
-    * Externally reachable address advertised to other nodes. This
-    can either be an address/port combination in the form
-    `192.168.1.1:4567`, or an interface followed by a port number,
-    like `eth0:4567`. If the port number is omitted, the port
-    number from the listen address is used. If `AdvertiseAddr` is
-    not specified, it will be automatically detected when possible.
-    
-    *
-    * @return string
-    */
+     * Externally reachable address advertised to other nodes. This
+     * can either be an address/port combination in the form
+     * `192.168.1.1:4567`, or an interface followed by a port number,
+     * like `eth0:4567`. If the port number is omitted, the port
+     * number from the listen address is used. If `AdvertiseAddr` is
+     * not specified, it will be automatically detected when possible.
+     * 
+     *
+     * @return string
+     */
     public function getAdvertiseAddr(): string
     {
         return $this->advertiseAddr;
@@ -158,20 +158,20 @@ class SwarmInitPostBody
         return $this;
     }
     /**
-    * Address or interface to use for data path traffic (format:
-    `<ip|interface>`), for example,  `192.168.1.1`, or an interface,
-    like `eth0`. If `DataPathAddr` is unspecified, the same address
-    as `AdvertiseAddr` is used.
-    
-    The `DataPathAddr` specifies the address that global scope
-    network drivers will publish towards other  nodes in order to
-    reach the containers running on this node. Using this parameter
-    it is possible to separate the container data traffic from the
-    management traffic of the cluster.
-    
-    *
-    * @return string
-    */
+     * Address or interface to use for data path traffic (format:
+     * `<ip|interface>`), for example,  `192.168.1.1`, or an interface,
+     * like `eth0`. If `DataPathAddr` is unspecified, the same address
+     * as `AdvertiseAddr` is used.
+     * 
+     * The `DataPathAddr` specifies the address that global scope
+     * network drivers will publish towards other  nodes in order to
+     * reach the containers running on this node. Using this parameter
+     * it is possible to separate the container data traffic from the
+     * management traffic of the cluster.
+     * 
+     *
+     * @return string
+     */
     public function getDataPathAddr(): string
     {
         return $this->dataPathAddr;
@@ -200,13 +200,13 @@ class SwarmInitPostBody
         return $this;
     }
     /**
-    * DataPathPort specifies the data path port number for data traffic.
-    Acceptable port range is 1024 to 49151.
-    if no port is set or is set to 0, default port 4789 will be used.
-    
-    *
-    * @return int
-    */
+     * DataPathPort specifies the data path port number for data traffic.
+     * Acceptable port range is 1024 to 49151.
+     * if no port is set or is set to 0, default port 4789 will be used.
+     * 
+     *
+     * @return int
+     */
     public function getDataPathPort(): int
     {
         return $this->dataPathPort;
@@ -228,12 +228,12 @@ class SwarmInitPostBody
         return $this;
     }
     /**
-    * Default Address Pool specifies default subnet pools for global
-    scope networks.
-    
-    *
-    * @return list<string>
-    */
+     * Default Address Pool specifies default subnet pools for global
+     * scope networks.
+     * 
+     *
+     * @return list<string>
+     */
     public function getDefaultAddrPool(): array
     {
         return $this->defaultAddrPool;
@@ -276,12 +276,12 @@ class SwarmInitPostBody
         return $this;
     }
     /**
-    * SubnetSize specifies the subnet size of the networks created
-    from the default subnet pool.
-    
-    *
-    * @return int
-    */
+     * SubnetSize specifies the subnet size of the networks created
+     * from the default subnet pool.
+     * 
+     *
+     * @return int
+     */
     public function getSubnetSize(): int
     {
         return $this->subnetSize;

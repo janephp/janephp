@@ -7,11 +7,10 @@ class ResetPortfolioEventRulesToDefaultValues extends \CreditSafe\API\Runtime\Cl
     protected $portfolioId;
     /**
      * Update a portofolios event rules to default state. In Connect, default state means all rules are turned off.
-     *
      * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
      */
     public function __construct(string $portfolioId, array $headerParameters = [])
     {
@@ -60,16 +59,16 @@ class ResetPortfolioEventRulesToDefaultValues extends \CreditSafe\API\Runtime\Cl
         $body = (string) $response->getBody();
         if (204 === $status) {
         }
-        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesBadRequestException($response);
         }
-        if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (401 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesUnauthorizedException($response);
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesForbiddenException($response);
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesNotFoundException($response);
         }
     }

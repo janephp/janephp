@@ -13,20 +13,14 @@ class Something extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var \Symfony\Component\Uid\UuidV4
      */
     protected $uuid;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -34,8 +28,6 @@ class Something extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -47,8 +39,6 @@ class Something extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \Symfony\Component\Uid\UuidV4
      */
     public function getUuid(): \Symfony\Component\Uid\UuidV4
@@ -56,8 +46,6 @@ class Something extends \ArrayObject
         return $this->uuid;
     }
     /**
-     * 
-     *
      * @param \Symfony\Component\Uid\UuidV4 $uuid
      *
      * @return self

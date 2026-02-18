@@ -7,12 +7,11 @@ class BusinessProcessWaitForLifeCycles extends \PicturePark\API\Runtime\Client\B
     protected $id;
     /**
      * Wait for the business process to hit one of the given life cycles.
-     *
      * @param string $id The business process id.
-     * @param array $queryParameters {
-     *     @var array $lifeCycles Business process life cycles to wait for.
-     *     @var string $timeout The timeout to wait for completion.
-     * }
+     * @param array{
+     *    "lifeCycles"?: array, //Business process life cycles to wait for.
+     *    "timeout"?: string, //The timeout to wait for completion.
+     * } $queryParameters
      */
     public function __construct(string $id, array $queryParameters = [])
     {
@@ -63,28 +62,28 @@ class BusinessProcessWaitForLifeCycles extends \PicturePark\API\Runtime\Client\B
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'PicturePark\API\Model\BusinessProcessWaitForLifeCycleResult', 'json');
         }
-        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\BusinessProcessWaitForLifeCyclesBadRequestException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkValidationException', 'json'), $response);
         }
         if (401 === $status) {
             throw new \PicturePark\API\Exception\BusinessProcessWaitForLifeCyclesUnauthorizedException($response);
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\BusinessProcessWaitForLifeCyclesNotFoundException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkNotFoundException', 'json'), $response);
         }
         if (405 === $status) {
             throw new \PicturePark\API\Exception\BusinessProcessWaitForLifeCyclesMethodNotAllowedException($response);
         }
-        if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (409 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\BusinessProcessWaitForLifeCyclesConflictException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkConflictException', 'json'), $response);
         }
         if (429 === $status) {
             throw new \PicturePark\API\Exception\BusinessProcessWaitForLifeCyclesTooManyRequestsException($response);
         }
-        if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (500 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\BusinessProcessWaitForLifeCyclesInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
     }

@@ -13,20 +13,14 @@ class PullRequestReviewRequest extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<PullRequestReviewRequestUsersItem>
      */
     protected $users;
     /**
-     * 
-     *
      * @var list<PullRequestReviewRequestTeamsItem>
      */
     protected $teams;
     /**
-     * 
-     *
      * @return list<PullRequestReviewRequestUsersItem>
      */
     public function getUsers(): array
@@ -34,8 +28,6 @@ class PullRequestReviewRequest extends \ArrayObject
         return $this->users;
     }
     /**
-     * 
-     *
      * @param list<PullRequestReviewRequestUsersItem> $users
      *
      * @return self
@@ -47,8 +39,6 @@ class PullRequestReviewRequest extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<PullRequestReviewRequestTeamsItem>
      */
     public function getTeams(): array
@@ -56,8 +46,6 @@ class PullRequestReviewRequest extends \ArrayObject
         return $this->teams;
     }
     /**
-     * 
-     *
      * @param list<PullRequestReviewRequestTeamsItem> $teams
      *
      * @return self

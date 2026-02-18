@@ -14,42 +14,45 @@ class OCIPlatform
     }
     /**
      * The CPU architecture, for example `amd64` or `ppc64`.
+     * 
      *
      * @var string
      */
     protected $architecture;
     /**
      * The operating system, for example `linux` or `windows`.
+     * 
      *
      * @var string
      */
     protected $os;
     /**
-    * Optional field specifying the operating system version, for example on
-    Windows `10.0.19041.1165`.
-    
-    *
-    * @var string
-    */
+     * Optional field specifying the operating system version, for example on
+     * Windows `10.0.19041.1165`.
+     * 
+     *
+     * @var string
+     */
     protected $osVersion;
     /**
-    * Optional field specifying an array of strings, each listing a required
-    OS feature (for example on Windows `win32k`).
-    
-    *
-    * @var list<string>
-    */
+     * Optional field specifying an array of strings, each listing a required
+     * OS feature (for example on Windows `win32k`).
+     * 
+     *
+     * @var list<string>
+     */
     protected $osFeatures;
     /**
-    * Optional field specifying a variant of the CPU, for example `v7` to
-    specify ARMv7 when architecture is `arm`.
-    
-    *
-    * @var string
-    */
+     * Optional field specifying a variant of the CPU, for example `v7` to
+     * specify ARMv7 when architecture is `arm`.
+     * 
+     *
+     * @var string
+     */
     protected $variant;
     /**
      * The CPU architecture, for example `amd64` or `ppc64`.
+     * 
      *
      * @return string
      */
@@ -72,6 +75,7 @@ class OCIPlatform
     }
     /**
      * The operating system, for example `linux` or `windows`.
+     * 
      *
      * @return string
      */
@@ -93,12 +97,12 @@ class OCIPlatform
         return $this;
     }
     /**
-    * Optional field specifying the operating system version, for example on
-    Windows `10.0.19041.1165`.
-    
-    *
-    * @return string
-    */
+     * Optional field specifying the operating system version, for example on
+     * Windows `10.0.19041.1165`.
+     * 
+     *
+     * @return string
+     */
     public function getOsVersion(): string
     {
         return $this->osVersion;
@@ -119,12 +123,12 @@ class OCIPlatform
         return $this;
     }
     /**
-    * Optional field specifying an array of strings, each listing a required
-    OS feature (for example on Windows `win32k`).
-    
-    *
-    * @return list<string>
-    */
+     * Optional field specifying an array of strings, each listing a required
+     * OS feature (for example on Windows `win32k`).
+     * 
+     *
+     * @return list<string>
+     */
     public function getOsFeatures(): array
     {
         return $this->osFeatures;
@@ -145,12 +149,12 @@ class OCIPlatform
         return $this;
     }
     /**
-    * Optional field specifying a variant of the CPU, for example `v7` to
-    specify ARMv7 when architecture is `arm`.
-    
-    *
-    * @return string
-    */
+     * Optional field specifying a variant of the CPU, for example `v7` to
+     * specify ARMv7 when architecture is `arm`.
+     * 
+     *
+     * @return string
+     */
     public function getVariant(): string
     {
         return $this->variant;

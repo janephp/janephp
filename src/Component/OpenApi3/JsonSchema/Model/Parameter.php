@@ -13,86 +13,58 @@ class Parameter extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $name;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $in;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $required = false;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $deprecated = false;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $allowEmptyValue = false;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $style;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $explode;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $allowReserved = false;
     /**
-     * 
-     *
      * @var Schema|Reference|null
      */
     protected $schema;
     /**
-     * 
-     *
      * @var array<string, MediaType>|null
      */
     protected $content;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $example;
     /**
-     * 
-     *
      * @var array<string, Example|Reference>|null
      */
     protected $examples;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getName() : ?string
@@ -100,8 +72,6 @@ class Parameter extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string|null $name
      *
      * @return self
@@ -113,8 +83,6 @@ class Parameter extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getIn() : ?string
@@ -122,8 +90,6 @@ class Parameter extends \ArrayObject
         return $this->in;
     }
     /**
-     * 
-     *
      * @param string|null $in
      *
      * @return self
@@ -135,8 +101,6 @@ class Parameter extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription() : ?string
@@ -144,8 +108,6 @@ class Parameter extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -157,8 +119,6 @@ class Parameter extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getRequired() : ?bool
@@ -166,8 +126,6 @@ class Parameter extends \ArrayObject
         return $this->required;
     }
     /**
-     * 
-     *
      * @param bool|null $required
      *
      * @return self
@@ -179,8 +137,6 @@ class Parameter extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getDeprecated() : ?bool
@@ -188,8 +144,6 @@ class Parameter extends \ArrayObject
         return $this->deprecated;
     }
     /**
-     * 
-     *
      * @param bool|null $deprecated
      *
      * @return self
@@ -201,8 +155,6 @@ class Parameter extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getAllowEmptyValue() : ?bool
@@ -210,8 +162,6 @@ class Parameter extends \ArrayObject
         return $this->allowEmptyValue;
     }
     /**
-     * 
-     *
      * @param bool|null $allowEmptyValue
      *
      * @return self
@@ -223,8 +173,6 @@ class Parameter extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getStyle() : ?string
@@ -232,8 +180,6 @@ class Parameter extends \ArrayObject
         return $this->style;
     }
     /**
-     * 
-     *
      * @param string|null $style
      *
      * @return self
@@ -245,8 +191,6 @@ class Parameter extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getExplode() : ?bool
@@ -254,8 +198,6 @@ class Parameter extends \ArrayObject
         return $this->explode;
     }
     /**
-     * 
-     *
      * @param bool|null $explode
      *
      * @return self
@@ -267,8 +209,6 @@ class Parameter extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getAllowReserved() : ?bool
@@ -276,8 +216,6 @@ class Parameter extends \ArrayObject
         return $this->allowReserved;
     }
     /**
-     * 
-     *
      * @param bool|null $allowReserved
      *
      * @return self
@@ -289,8 +227,6 @@ class Parameter extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Schema|Reference|null
      */
     public function getSchema()
@@ -298,8 +234,6 @@ class Parameter extends \ArrayObject
         return $this->schema;
     }
     /**
-     * 
-     *
      * @param Schema|Reference|null $schema
      *
      * @return self
@@ -311,8 +245,6 @@ class Parameter extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, MediaType>|null
      */
     public function getContent() : ?iterable
@@ -320,8 +252,6 @@ class Parameter extends \ArrayObject
         return $this->content;
     }
     /**
-     * 
-     *
      * @param array<string, MediaType>|null $content
      *
      * @return self
@@ -333,8 +263,6 @@ class Parameter extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getExample()
@@ -342,8 +270,6 @@ class Parameter extends \ArrayObject
         return $this->example;
     }
     /**
-     * 
-     *
      * @param mixed $example
      *
      * @return self
@@ -355,8 +281,6 @@ class Parameter extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, Example|Reference>|null
      */
     public function getExamples() : ?iterable
@@ -364,8 +288,6 @@ class Parameter extends \ArrayObject
         return $this->examples;
     }
     /**
-     * 
-     *
      * @param array<string, Example|Reference>|null $examples
      *
      * @return self

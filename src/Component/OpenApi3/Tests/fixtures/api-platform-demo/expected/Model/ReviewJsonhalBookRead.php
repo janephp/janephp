@@ -13,14 +13,10 @@ class ReviewJsonhalBookRead extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var ReviewJsonhalBookReadLinks
      */
     protected $links;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $id;
@@ -31,8 +27,6 @@ class ReviewJsonhalBookRead extends \ArrayObject
      */
     protected $body;
     /**
-     * 
-     *
      * @return ReviewJsonhalBookReadLinks
      */
     public function getLinks(): ReviewJsonhalBookReadLinks
@@ -40,8 +34,6 @@ class ReviewJsonhalBookRead extends \ArrayObject
         return $this->links;
     }
     /**
-     * 
-     *
      * @param ReviewJsonhalBookReadLinks $links
      *
      * @return self
@@ -53,8 +45,6 @@ class ReviewJsonhalBookRead extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getId(): ?string
@@ -62,8 +52,6 @@ class ReviewJsonhalBookRead extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string|null $id
      *
      * @return self

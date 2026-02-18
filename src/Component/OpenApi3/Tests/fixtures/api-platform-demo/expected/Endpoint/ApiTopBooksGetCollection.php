@@ -7,10 +7,9 @@ class ApiTopBooksGetCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndp
     protected $accept;
     /**
      * Retrieves the collection of TopBook resources.
-     *
-     * @param array $queryParameters {
-     *     @var int $page The collection page number
-     * }
+     * @param array{
+     *    "page"?: int, //The collection page number
+     * } $queryParameters
      * @param array $accept Accept content header application/ld+json|application/hal+json|application/vnd.api+json|application/json|application/xml|text/xml|application/x-yaml|text/csv|text/html
      */
     public function __construct(array $queryParameters = [], array $accept = [])
@@ -58,16 +57,16 @@ class ApiTopBooksGetCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndp
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (200 === $status) {
-            if (mb_strpos($contentType, 'application/ld+json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/ld+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\TopBooksGetLdjsonResponse200', 'json');
             }
-            if (mb_strpos($contentType, 'application/hal+json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/hal+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\TopBooksGetHaljsonResponse200', 'json');
             }
-            if (mb_strpos($contentType, 'application/vnd.api+json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/vnd.api+json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\TopBook[]', 'json');
             }
-            if (mb_strpos($contentType, 'application/json') !== false) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
                 return $serializer->deserialize($body, 'ApiPlatform\Demo\Model\TopBook[]', 'json');
             }
         }

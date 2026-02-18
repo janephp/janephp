@@ -31,13 +31,13 @@ class ContainersIdExecPostBody
      */
     protected $attachStderr;
     /**
-    * Override the key sequence for detaching a container. Format is
-    a single character `[a-Z]` or `ctrl-<value>` where `<value>`
-    is one of: `a-z`, `@`, `^`, `[`, `,` or `_`.
-    
-    *
-    * @var string
-    */
+     * Override the key sequence for detaching a container. Format is
+     * a single character `[a-Z]` or `ctrl-<value>` where `<value>`
+     * is one of: `a-z`, `@`, `^`, `[`, `,` or `_`.
+     * 
+     *
+     * @var string
+     */
     protected $detachKeys;
     /**
      * Allocate a pseudo-TTY.
@@ -47,6 +47,7 @@ class ContainersIdExecPostBody
     protected $tty;
     /**
      * A list of environment variables in the form `["VAR=value", ...]`.
+     * 
      *
      * @var list<string>
      */
@@ -64,16 +65,17 @@ class ContainersIdExecPostBody
      */
     protected $privileged = false;
     /**
-    * The user, and optionally, group to run the exec process inside
-    the container. Format is one of: `user`, `user:group`, `uid`,
-    or `uid:gid`.
-    
-    *
-    * @var string
-    */
+     * The user, and optionally, group to run the exec process inside
+     * the container. Format is one of: `user`, `user:group`, `uid`,
+     * or `uid:gid`.
+     * 
+     *
+     * @var string
+     */
     protected $user;
     /**
      * The working directory for the exec process inside the container.
+     * 
      *
      * @var string
      */
@@ -145,13 +147,13 @@ class ContainersIdExecPostBody
         return $this;
     }
     /**
-    * Override the key sequence for detaching a container. Format is
-    a single character `[a-Z]` or `ctrl-<value>` where `<value>`
-    is one of: `a-z`, `@`, `^`, `[`, `,` or `_`.
-    
-    *
-    * @return string
-    */
+     * Override the key sequence for detaching a container. Format is
+     * a single character `[a-Z]` or `ctrl-<value>` where `<value>`
+     * is one of: `a-z`, `@`, `^`, `[`, `,` or `_`.
+     * 
+     *
+     * @return string
+     */
     public function getDetachKeys(): string
     {
         return $this->detachKeys;
@@ -196,6 +198,7 @@ class ContainersIdExecPostBody
     }
     /**
      * A list of environment variables in the form `["VAR=value", ...]`.
+     * 
      *
      * @return list<string>
      */
@@ -261,13 +264,13 @@ class ContainersIdExecPostBody
         return $this;
     }
     /**
-    * The user, and optionally, group to run the exec process inside
-    the container. Format is one of: `user`, `user:group`, `uid`,
-    or `uid:gid`.
-    
-    *
-    * @return string
-    */
+     * The user, and optionally, group to run the exec process inside
+     * the container. Format is one of: `user`, `user:group`, `uid`,
+     * or `uid:gid`.
+     * 
+     *
+     * @return string
+     */
     public function getUser(): string
     {
         return $this->user;
@@ -290,6 +293,7 @@ class ContainersIdExecPostBody
     }
     /**
      * The working directory for the exec process inside the container.
+     * 
      *
      * @return string
      */

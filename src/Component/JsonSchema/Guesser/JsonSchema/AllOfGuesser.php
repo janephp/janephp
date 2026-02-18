@@ -16,24 +16,20 @@ use Jane\Component\JsonSchema\Guesser\TypeGuesserInterface;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuesserAwareInterface, PropertiesGuesserInterface, ClassGuesserInterface
 {
     use ChainGuesserAwareTrait;
     use GuesserResolverTrait;
 
-    protected $naming;
-
-    public function __construct(SerializerInterface $serializer, Naming $naming)
-    {
-        $this->serializer = $serializer;
-        $this->naming = $naming;
+    public function __construct(
+        DenormalizerInterface $denormalizer,
+        protected Naming $naming,
+    ) {
+        $this->denormalizer = $denormalizer;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
         $hasSubObject = false;
@@ -95,9 +91,6 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         $type = null;
@@ -146,9 +139,6 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
         return $type;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportObject($object): bool
     {
         $class = $this->getSchemaClass();
@@ -156,9 +146,6 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
         return ($object instanceof $class) && \is_array($object->getAllOf()) && \count($object->getAllOf()) > 0;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessProperties($object, string $name, string $reference, Registry $registry): array
     {
         $properties = [];

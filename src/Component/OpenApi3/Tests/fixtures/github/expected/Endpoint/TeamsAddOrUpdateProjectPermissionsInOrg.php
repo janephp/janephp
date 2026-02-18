@@ -9,12 +9,12 @@ class TeamsAddOrUpdateProjectPermissionsInOrg extends \Github\Runtime\Client\Bas
     protected $project_id;
     /**
      * Adds an organization project to a team. To add a project to a team or update the team's permission on a project, the authenticated user must have `admin` permissions for the project. The project and team must be part of the same organization.
-     **Note:** You can also specify a team by `org_id` and `team_id` using the route `PUT /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
      *
-     * @param string $org 
+     * **Note:** You can also specify a team by `org_id` and `team_id` using the route `PUT /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
+     * @param string $org
      * @param string $teamSlug team_slug parameter
-     * @param int $projectId 
-     * @param null|\Github\Model\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody $requestBody 
+     * @param int $projectId
+     * @param null|\Github\Model\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody $requestBody
      */
     public function __construct(string $org, string $teamSlug, int $projectId, ?\Github\Model\OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody $requestBody = null)
     {
@@ -57,7 +57,7 @@ class TeamsAddOrUpdateProjectPermissionsInOrg extends \Github\Runtime\Client\Bas
         if (204 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\TeamsAddOrUpdateProjectPermissionsInOrgForbiddenException($serializer->deserialize($body, 'Github\Model\OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403', 'json'), $response);
         }
     }

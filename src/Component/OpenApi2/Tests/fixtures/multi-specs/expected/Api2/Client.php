@@ -7,7 +7,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Api2\Runtime\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Api1\Model\Body|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi2\Tests\Expected\Api1\Model\Body : \Psr\Http\Message\ResponseInterface)
      */
     public function testReferenceResponse(string $fetch = self::FETCH_OBJECT)
     {

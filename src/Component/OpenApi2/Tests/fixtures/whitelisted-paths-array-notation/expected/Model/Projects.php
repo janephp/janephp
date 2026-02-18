@@ -13,56 +13,38 @@ class Projects
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<Project>
      */
     protected $projects;
     /**
-     * 
-     *
      * @var int
      */
     protected $perPage;
     /**
-     * 
-     *
      * @var int
      */
     protected $totalPages;
     /**
-     * 
-     *
      * @var int
      */
     protected $totalEntries;
     /**
-     * 
-     *
      * @var int
      */
     protected $nextPage;
     /**
-     * 
-     *
      * @var int
      */
     protected $previousPage;
     /**
-     * 
-     *
      * @var int
      */
     protected $page;
     /**
-     * 
-     *
      * @var PaginationLinks
      */
     protected $links;
     /**
-     * 
-     *
      * @return list<Project>
      */
     public function getProjects(): array
@@ -70,8 +52,6 @@ class Projects
         return $this->projects;
     }
     /**
-     * 
-     *
      * @param list<Project> $projects
      *
      * @return self
@@ -83,8 +63,6 @@ class Projects
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getPerPage(): int
@@ -92,8 +70,6 @@ class Projects
         return $this->perPage;
     }
     /**
-     * 
-     *
      * @param int $perPage
      *
      * @return self
@@ -105,8 +81,6 @@ class Projects
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getTotalPages(): int
@@ -114,8 +88,6 @@ class Projects
         return $this->totalPages;
     }
     /**
-     * 
-     *
      * @param int $totalPages
      *
      * @return self
@@ -127,8 +99,6 @@ class Projects
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getTotalEntries(): int
@@ -136,8 +106,6 @@ class Projects
         return $this->totalEntries;
     }
     /**
-     * 
-     *
      * @param int $totalEntries
      *
      * @return self
@@ -149,8 +117,6 @@ class Projects
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getNextPage(): int
@@ -158,8 +124,6 @@ class Projects
         return $this->nextPage;
     }
     /**
-     * 
-     *
      * @param int $nextPage
      *
      * @return self
@@ -171,8 +135,6 @@ class Projects
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getPreviousPage(): int
@@ -180,8 +142,6 @@ class Projects
         return $this->previousPage;
     }
     /**
-     * 
-     *
      * @param int $previousPage
      *
      * @return self
@@ -193,8 +153,6 @@ class Projects
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getPage(): int
@@ -202,8 +160,6 @@ class Projects
         return $this->page;
     }
     /**
-     * 
-     *
      * @param int $page
      *
      * @return self
@@ -215,8 +171,6 @@ class Projects
         return $this;
     }
     /**
-     * 
-     *
      * @return PaginationLinks
      */
     public function getLinks(): PaginationLinks
@@ -224,8 +178,6 @@ class Projects
         return $this->links;
     }
     /**
-     * 
-     *
      * @param PaginationLinks $links
      *
      * @return self

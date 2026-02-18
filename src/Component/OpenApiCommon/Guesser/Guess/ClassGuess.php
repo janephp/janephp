@@ -7,8 +7,7 @@ use Jane\Component\JsonSchema\Guesser\Guess\Property;
 
 class ClassGuess extends BaseClassGuess
 {
-    /** @var ParentClass */
-    private $parentClass;
+    private ?ParentClass $parentClass = null;
 
     public function getParentClass(): ?ParentClass
     {

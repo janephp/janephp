@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block htmltitle %}
+    {% if page.meta and page.meta.title %}
+        <title>{{ page.meta.title }} - AutoMapper</title>
+    {% elif page.title and not page.is_homepage %}
+        <title>{{ page.title | striptags }} - AutoMapper</title>
+    {% else %}
+        <title>{{ config.site_name }}</title>
+    {% endif %}
+{% endblock %}
+
+{% block footer %}
+{{ super() }}
+{% include "jolicode-footer.html" %}
+{% endblock %}

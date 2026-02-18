@@ -13,32 +13,22 @@ class AuthConfig
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $username;
     /**
-     * 
-     *
      * @var string
      */
     protected $password;
     /**
-     * 
-     *
      * @var string
      */
     protected $email;
     /**
-     * 
-     *
      * @var string
      */
     protected $serveraddress;
     /**
-     * 
-     *
      * @return string
      */
     public function getUsername(): string
@@ -46,8 +36,6 @@ class AuthConfig
         return $this->username;
     }
     /**
-     * 
-     *
      * @param string $username
      *
      * @return self
@@ -59,8 +47,6 @@ class AuthConfig
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPassword(): string
@@ -68,8 +54,6 @@ class AuthConfig
         return $this->password;
     }
     /**
-     * 
-     *
      * @param string $password
      *
      * @return self
@@ -81,8 +65,6 @@ class AuthConfig
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEmail(): string
@@ -90,8 +72,6 @@ class AuthConfig
         return $this->email;
     }
     /**
-     * 
-     *
      * @param string $email
      *
      * @return self
@@ -103,8 +83,6 @@ class AuthConfig
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getServeraddress(): string
@@ -112,8 +90,6 @@ class AuthConfig
         return $this->serveraddress;
     }
     /**
-     * 
-     *
      * @param string $serveraddress
      *
      * @return self

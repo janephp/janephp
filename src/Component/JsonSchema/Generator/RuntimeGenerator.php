@@ -12,13 +12,10 @@ class RuntimeGenerator implements GeneratorInterface
 {
     public const FILE_TYPE_RUNTIME = 'runtime';
 
-    private $naming;
-    private $parser;
-
-    public function __construct(Naming $naming, Parser $parser)
-    {
-        $this->naming = $naming;
-        $this->parser = $parser;
+    public function __construct(
+        private readonly Naming $naming,
+        private readonly Parser $parser,
+    ) {
     }
 
     /**
@@ -57,7 +54,7 @@ class RuntimeGenerator implements GeneratorInterface
     {
         $files = scandir($directory);
         foreach ($files as $file) {
-            $fullPath = sprintf('%s/%s', $directory, $file);
+            $fullPath = \sprintf('%s/%s', $directory, $file);
             if (\in_array($file, ['.', '..'])) {
                 continue;
             }

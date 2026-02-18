@@ -8,11 +8,9 @@ class ReposGetWebhook extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     protected $repo;
     protected $hook_id;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param int $hookId 
+     * @param string $owner
+     * @param string $repo
+     * @param int $hookId
      */
     public function __construct(string $owner, string $repo, int $hookId)
     {
@@ -48,10 +46,10 @@ class ReposGetWebhook extends \Github\Runtime\Client\BaseEndpoint implements \Gi
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\Hook', 'json');
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposGetWebhookNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

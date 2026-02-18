@@ -5,162 +5,80 @@ namespace Github\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Github\Runtime\Normalizer\CheckArray;
 use Github\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\HttpKernel\Kernel;
-if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
-    class ReposOwnerRepoGitRefsPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ReposOwnerRepoGitRefsPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
-        {
-            return $type === \Github\Model\ReposOwnerRepoGitRefsPostBody::class;
-        }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \Github\Model\ReposOwnerRepoGitRefsPostBody::class;
-        }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \Github\Model\ReposOwnerRepoGitRefsPostBody();
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Github\Validator\ReposOwnerRepoGitRefsPostBodyConstraint());
-            }
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('ref', $data)) {
-                $object->setRef($data['ref']);
-                unset($data['ref']);
-            }
-            if (\array_key_exists('sha', $data)) {
-                $object->setSha($data['sha']);
-                unset($data['sha']);
-            }
-            if (\array_key_exists('key', $data)) {
-                $object->setKey($data['key']);
-                unset($data['key']);
-            }
-            foreach ($data as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
-                }
-            }
-            return $object;
-        }
-        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $data = [];
-            $data['ref'] = $object->getRef();
-            $data['sha'] = $object->getSha();
-            if ($object->isInitialized('key') && null !== $object->getKey()) {
-                $data['key'] = $object->getKey();
-            }
-            foreach ($object as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
-                }
-            }
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Github\Validator\ReposOwnerRepoGitRefsPostBodyConstraint());
-            }
-            return $data;
-        }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\Github\Model\ReposOwnerRepoGitRefsPostBody::class => false];
-        }
+        return $type === \Github\Model\ReposOwnerRepoGitRefsPostBody::class;
     }
-} else {
-    class ReposOwnerRepoGitRefsPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
-        {
-            return $type === \Github\Model\ReposOwnerRepoGitRefsPostBody::class;
+        return is_object($data) && get_class($data) === \Github\Model\ReposOwnerRepoGitRefsPostBody::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \Github\Model\ReposOwnerRepoGitRefsPostBody::class;
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        /**
-         * @return mixed
-         */
-        public function denormalize($data, $type, $format = null, array $context = [])
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \Github\Model\ReposOwnerRepoGitRefsPostBody();
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Github\Validator\ReposOwnerRepoGitRefsPostBodyConstraint());
-            }
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('ref', $data)) {
-                $object->setRef($data['ref']);
-                unset($data['ref']);
-            }
-            if (\array_key_exists('sha', $data)) {
-                $object->setSha($data['sha']);
-                unset($data['sha']);
-            }
-            if (\array_key_exists('key', $data)) {
-                $object->setKey($data['key']);
-                unset($data['key']);
-            }
-            foreach ($data as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $object[$key] = $value;
-                }
-            }
+        $object = new \Github\Model\ReposOwnerRepoGitRefsPostBody();
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Github\Validator\ReposOwnerRepoGitRefsPostBodyConstraint());
+        }
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        /**
-         * @return array|string|int|float|bool|\ArrayObject|null
-         */
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $data = [];
-            $data['ref'] = $object->getRef();
-            $data['sha'] = $object->getSha();
-            if ($object->isInitialized('key') && null !== $object->getKey()) {
-                $data['key'] = $object->getKey();
-            }
-            foreach ($object as $key => $value) {
-                if (preg_match('/.*/', (string) $key)) {
-                    $data[$key] = $value;
-                }
-            }
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Github\Validator\ReposOwnerRepoGitRefsPostBodyConstraint());
-            }
-            return $data;
+        if (\array_key_exists('ref', $data)) {
+            $object->setRef($data['ref']);
+            unset($data['ref']);
         }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\Github\Model\ReposOwnerRepoGitRefsPostBody::class => false];
+        if (\array_key_exists('sha', $data)) {
+            $object->setSha($data['sha']);
+            unset($data['sha']);
         }
+        if (\array_key_exists('key', $data)) {
+            $object->setKey($data['key']);
+            unset($data['key']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
+        }
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        $dataArray['ref'] = $data->getRef();
+        $dataArray['sha'] = $data->getSha();
+        if ($data->isInitialized('key') && null !== $data->getKey()) {
+            $dataArray['key'] = $data->getKey();
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
+        }
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($dataArray, new \Github\Validator\ReposOwnerRepoGitRefsPostBodyConstraint());
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Github\Model\ReposOwnerRepoGitRefsPostBody::class => false];
     }
 }

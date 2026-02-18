@@ -13,44 +13,30 @@ class LiveStream
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $document;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $scopeType;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $timestamp;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $traceJob;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $audit;
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -58,8 +44,6 @@ class LiveStream
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -71,8 +55,6 @@ class LiveStream
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDocument(): ?string
@@ -80,8 +62,6 @@ class LiveStream
         return $this->document;
     }
     /**
-     * 
-     *
      * @param string|null $document
      *
      * @return self
@@ -93,8 +73,6 @@ class LiveStream
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getScopeType(): ?string
@@ -102,8 +80,6 @@ class LiveStream
         return $this->scopeType;
     }
     /**
-     * 
-     *
      * @param string|null $scopeType
      *
      * @return self
@@ -115,8 +91,6 @@ class LiveStream
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getTimestamp(): \DateTime
@@ -124,8 +98,6 @@ class LiveStream
         return $this->timestamp;
     }
     /**
-     * 
-     *
      * @param \DateTime $timestamp
      *
      * @return self
@@ -137,8 +109,6 @@ class LiveStream
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getTraceJob()
@@ -146,8 +116,6 @@ class LiveStream
         return $this->traceJob;
     }
     /**
-     * 
-     *
      * @param mixed $traceJob
      *
      * @return self
@@ -159,8 +127,6 @@ class LiveStream
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getAudit()
@@ -168,8 +134,6 @@ class LiveStream
         return $this->audit;
     }
     /**
-     * 
-     *
      * @param mixed $audit
      *
      * @return self

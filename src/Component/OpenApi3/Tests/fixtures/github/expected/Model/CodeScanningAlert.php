@@ -13,8 +13,6 @@ class CodeScanningAlert extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $number;
@@ -43,8 +41,6 @@ class CodeScanningAlert extends \ArrayObject
      */
     protected $tool;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
@@ -55,38 +51,26 @@ class CodeScanningAlert extends \ArrayObject
      */
     protected $open;
     /**
-     * 
-     *
      * @var CodeScanningAlertClosedBy|null
      */
     protected $closedBy;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $closedAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $closedReason;
     /**
-     * 
-     *
      * @return int
      */
     public function getNumber(): int
@@ -94,8 +78,6 @@ class CodeScanningAlert extends \ArrayObject
         return $this->number;
     }
     /**
-     * 
-     *
      * @param int $number
      *
      * @return self
@@ -195,8 +177,6 @@ class CodeScanningAlert extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -204,8 +184,6 @@ class CodeScanningAlert extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -239,8 +217,6 @@ class CodeScanningAlert extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CodeScanningAlertClosedBy|null
      */
     public function getClosedBy(): ?CodeScanningAlertClosedBy
@@ -248,8 +224,6 @@ class CodeScanningAlert extends \ArrayObject
         return $this->closedBy;
     }
     /**
-     * 
-     *
      * @param CodeScanningAlertClosedBy|null $closedBy
      *
      * @return self
@@ -261,8 +235,6 @@ class CodeScanningAlert extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getClosedAt(): ?\DateTime
@@ -270,8 +242,6 @@ class CodeScanningAlert extends \ArrayObject
         return $this->closedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $closedAt
      *
      * @return self
@@ -283,8 +253,6 @@ class CodeScanningAlert extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -292,8 +260,6 @@ class CodeScanningAlert extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -305,8 +271,6 @@ class CodeScanningAlert extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -314,8 +278,6 @@ class CodeScanningAlert extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -327,8 +289,6 @@ class CodeScanningAlert extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getClosedReason(): ?string
@@ -336,8 +296,6 @@ class CodeScanningAlert extends \ArrayObject
         return $this->closedReason;
     }
     /**
-     * 
-     *
      * @param string|null $closedReason
      *
      * @return self

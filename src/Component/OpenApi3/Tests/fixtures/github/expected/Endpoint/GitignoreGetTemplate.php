@@ -6,11 +6,10 @@ class GitignoreGetTemplate extends \Github\Runtime\Client\BaseEndpoint implement
 {
     protected $name;
     /**
-    * The API also allows fetching the source of a single template.
-    Use the raw [media type](https://developer.github.com/v3/media/) to get the raw contents.
-    *
-    * @param string $name name parameter
-    */
+     * The API also allows fetching the source of a single template.
+     * Use the raw [media type](https://developer.github.com/v3/media/) to get the raw contents.
+     * @param string $name name parameter
+     */
     public function __construct(string $name)
     {
         $this->name = $name;
@@ -42,7 +41,7 @@ class GitignoreGetTemplate extends \Github\Runtime\Client\BaseEndpoint implement
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\GitignoreTemplate', 'json');
         }
         if (304 === $status) {

@@ -14,25 +14,20 @@ use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchema\Tools\JsonSchemaMerger;
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class ObjectOneOfGuesser implements GuesserInterface, TypeGuesserInterface, ClassGuesserInterface, ChainGuesserAwareInterface
 {
     use ChainGuesserAwareTrait;
     use GuesserResolverTrait;
 
-    /** @var JsonSchemaMerger */
-    private $jsonSchemaMerger;
-
-    public function __construct(JsonSchemaMerger $jsonSchemaMerger, SerializerInterface $serializer)
-    {
-        $this->jsonSchemaMerger = $jsonSchemaMerger;
-        $this->serializer = $serializer;
+    public function __construct(
+        DenormalizerInterface $denormalizer,
+        private readonly JsonSchemaMerger $jsonSchemaMerger,
+    ) {
+        $this->denormalizer = $denormalizer;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
         foreach ($object->getOneOf() as $key => $oneOf) {
@@ -50,9 +45,6 @@ class ObjectOneOfGuesser implements GuesserInterface, TypeGuesserInterface, Clas
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         $type = new MultipleType($object);
@@ -74,9 +66,6 @@ class ObjectOneOfGuesser implements GuesserInterface, TypeGuesserInterface, Clas
         return $type;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportObject($object): bool
     {
         return ($object instanceof JsonSchema) && 'object' === $object->getType() && \is_array($object->getOneOf()) && \count($object->getOneOf()) > 0;

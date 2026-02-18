@@ -13,32 +13,22 @@ class GbCompanyReportExampleResponseReportContactInformationOtherAddressesItem e
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $simpleValue;
     /**
-     * 
-     *
      * @var string
      */
     protected $postalCode;
     /**
-     * 
-     *
      * @var string
      */
     protected $telephone;
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -46,8 +36,6 @@ class GbCompanyReportExampleResponseReportContactInformationOtherAddressesItem e
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -59,8 +47,6 @@ class GbCompanyReportExampleResponseReportContactInformationOtherAddressesItem e
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSimpleValue(): string
@@ -68,8 +54,6 @@ class GbCompanyReportExampleResponseReportContactInformationOtherAddressesItem e
         return $this->simpleValue;
     }
     /**
-     * 
-     *
      * @param string $simpleValue
      *
      * @return self
@@ -81,8 +65,6 @@ class GbCompanyReportExampleResponseReportContactInformationOtherAddressesItem e
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPostalCode(): string
@@ -90,8 +72,6 @@ class GbCompanyReportExampleResponseReportContactInformationOtherAddressesItem e
         return $this->postalCode;
     }
     /**
-     * 
-     *
      * @param string $postalCode
      *
      * @return self
@@ -103,8 +83,6 @@ class GbCompanyReportExampleResponseReportContactInformationOtherAddressesItem e
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTelephone(): string
@@ -112,8 +90,6 @@ class GbCompanyReportExampleResponseReportContactInformationOtherAddressesItem e
         return $this->telephone;
     }
     /**
-     * 
-     *
      * @param string $telephone
      *
      * @return self

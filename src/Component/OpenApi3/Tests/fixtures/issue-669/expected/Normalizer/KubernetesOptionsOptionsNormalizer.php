@@ -1,0 +1,106 @@
+<?php
+
+namespace Jane\Generated\DigitalOcean\Normalizer;
+
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Jane\Generated\DigitalOcean\Runtime\Normalizer\CheckArray;
+use Jane\Generated\DigitalOcean\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+class KubernetesOptionsOptionsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+    {
+        return $type === \Jane\Generated\DigitalOcean\Model\KubernetesOptionsOptions::class;
+    }
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+    {
+        return is_object($data) && get_class($data) === \Jane\Generated\DigitalOcean\Model\KubernetesOptionsOptions::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
+        $object = new \Jane\Generated\DigitalOcean\Model\KubernetesOptionsOptions();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (\array_key_exists('regions', $data)) {
+            $values = [];
+            foreach ($data['regions'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\KubernetesRegion::class, 'json', $context);
+            }
+            $object->setRegions($values);
+            unset($data['regions']);
+        }
+        if (\array_key_exists('versions', $data)) {
+            $values_1 = [];
+            foreach ($data['versions'] as $value_1) {
+                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Generated\DigitalOcean\Model\KubernetesVersion::class, 'json', $context);
+            }
+            $object->setVersions($values_1);
+            unset($data['versions']);
+        }
+        if (\array_key_exists('sizes', $data)) {
+            $values_2 = [];
+            foreach ($data['sizes'] as $value_2) {
+                $values_2[] = $this->denormalizer->denormalize($value_2, \Jane\Generated\DigitalOcean\Model\KubernetesSize::class, 'json', $context);
+            }
+            $object->setSizes($values_2);
+            unset($data['sizes']);
+        }
+        foreach ($data as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_3;
+            }
+        }
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        if ($data->isInitialized('regions') && null !== $data->getRegions()) {
+            $values = [];
+            foreach ($data->getRegions() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $dataArray['regions'] = $values;
+        }
+        if ($data->isInitialized('versions') && null !== $data->getVersions()) {
+            $values_1 = [];
+            foreach ($data->getVersions() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            }
+            $dataArray['versions'] = $values_1;
+        }
+        if ($data->isInitialized('sizes') && null !== $data->getSizes()) {
+            $values_2 = [];
+            foreach ($data->getSizes() as $value_2) {
+                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+            }
+            $dataArray['sizes'] = $values_2;
+        }
+        foreach ($data as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_3;
+            }
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Jane\Generated\DigitalOcean\Model\KubernetesOptionsOptions::class => false];
+    }
+}

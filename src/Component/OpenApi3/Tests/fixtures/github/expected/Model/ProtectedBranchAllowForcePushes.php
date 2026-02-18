@@ -13,14 +13,10 @@ class ProtectedBranchAllowForcePushes
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var bool
      */
     protected $enabled;
     /**
-     * 
-     *
      * @return bool
      */
     public function getEnabled(): bool
@@ -28,8 +24,6 @@ class ProtectedBranchAllowForcePushes
         return $this->enabled;
     }
     /**
-     * 
-     *
      * @param bool $enabled
      *
      * @return self

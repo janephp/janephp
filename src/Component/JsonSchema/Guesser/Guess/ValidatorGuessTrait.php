@@ -6,8 +6,8 @@ use Jane\Component\JsonSchema\Guesser\Validator\ValidatorGuess;
 
 trait ValidatorGuessTrait
 {
-    /** @var ValidatorGuess[] */
-    private $validators = [];
+    /** @var array<ValidatorGuess> */
+    private array $validators = [];
 
     public function addValidatorGuess(ValidatorGuess $validatorGuess): void
     {

@@ -13,26 +13,18 @@ class Model extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $foo;
     /**
-     * 
-     *
      * @var string
      */
     protected $bar;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $date;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFoo(): ?string
@@ -40,8 +32,6 @@ class Model extends \ArrayObject
         return $this->foo;
     }
     /**
-     * 
-     *
      * @param string|null $foo
      *
      * @return self
@@ -53,8 +43,6 @@ class Model extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBar(): string
@@ -62,8 +50,6 @@ class Model extends \ArrayObject
         return $this->bar;
     }
     /**
-     * 
-     *
      * @param string $bar
      *
      * @return self
@@ -75,8 +61,6 @@ class Model extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getDate(): ?\DateTime
@@ -84,8 +68,6 @@ class Model extends \ArrayObject
         return $this->date;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $date
      *
      * @return self

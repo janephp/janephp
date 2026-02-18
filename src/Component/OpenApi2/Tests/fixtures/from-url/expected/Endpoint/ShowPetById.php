@@ -6,8 +6,6 @@ class ShowPetById extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client
 {
     protected $petId;
     /**
-     * 
-     *
      * @param string $petId The id of the pet to retrieve
      */
     public function __construct(string $petId)

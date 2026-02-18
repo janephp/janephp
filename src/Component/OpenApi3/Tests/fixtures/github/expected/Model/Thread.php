@@ -13,8 +13,6 @@ class Thread extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
@@ -25,50 +23,34 @@ class Thread extends \ArrayObject
      */
     protected $repository;
     /**
-     * 
-     *
      * @var ThreadSubject
      */
     protected $subject;
     /**
-     * 
-     *
      * @var string
      */
     protected $reason;
     /**
-     * 
-     *
      * @var bool
      */
     protected $unread;
     /**
-     * 
-     *
      * @var string
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $lastReadAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $subscriptionUrl;
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -76,8 +58,6 @@ class Thread extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -111,8 +91,6 @@ class Thread extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ThreadSubject
      */
     public function getSubject(): ThreadSubject
@@ -120,8 +98,6 @@ class Thread extends \ArrayObject
         return $this->subject;
     }
     /**
-     * 
-     *
      * @param ThreadSubject $subject
      *
      * @return self
@@ -133,8 +109,6 @@ class Thread extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getReason(): string
@@ -142,8 +116,6 @@ class Thread extends \ArrayObject
         return $this->reason;
     }
     /**
-     * 
-     *
      * @param string $reason
      *
      * @return self
@@ -155,8 +127,6 @@ class Thread extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getUnread(): bool
@@ -164,8 +134,6 @@ class Thread extends \ArrayObject
         return $this->unread;
     }
     /**
-     * 
-     *
      * @param bool $unread
      *
      * @return self
@@ -177,8 +145,6 @@ class Thread extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUpdatedAt(): string
@@ -186,8 +152,6 @@ class Thread extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param string $updatedAt
      *
      * @return self
@@ -199,8 +163,6 @@ class Thread extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getLastReadAt(): ?string
@@ -208,8 +170,6 @@ class Thread extends \ArrayObject
         return $this->lastReadAt;
     }
     /**
-     * 
-     *
      * @param string|null $lastReadAt
      *
      * @return self
@@ -221,8 +181,6 @@ class Thread extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -230,8 +188,6 @@ class Thread extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -243,8 +199,6 @@ class Thread extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSubscriptionUrl(): string
@@ -252,8 +206,6 @@ class Thread extends \ArrayObject
         return $this->subscriptionUrl;
     }
     /**
-     * 
-     *
      * @param string $subscriptionUrl
      *
      * @return self

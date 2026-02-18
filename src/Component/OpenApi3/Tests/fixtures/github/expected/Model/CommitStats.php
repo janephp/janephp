@@ -13,26 +13,18 @@ class CommitStats extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $additions;
     /**
-     * 
-     *
      * @var int
      */
     protected $deletions;
     /**
-     * 
-     *
      * @var int
      */
     protected $total;
     /**
-     * 
-     *
      * @return int
      */
     public function getAdditions(): int
@@ -40,8 +32,6 @@ class CommitStats extends \ArrayObject
         return $this->additions;
     }
     /**
-     * 
-     *
      * @param int $additions
      *
      * @return self
@@ -53,8 +43,6 @@ class CommitStats extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getDeletions(): int
@@ -62,8 +50,6 @@ class CommitStats extends \ArrayObject
         return $this->deletions;
     }
     /**
-     * 
-     *
      * @param int $deletions
      *
      * @return self
@@ -75,8 +61,6 @@ class CommitStats extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getTotal(): int
@@ -84,8 +68,6 @@ class CommitStats extends \ArrayObject
         return $this->total;
     }
     /**
-     * 
-     *
      * @param int $total
      *
      * @return self

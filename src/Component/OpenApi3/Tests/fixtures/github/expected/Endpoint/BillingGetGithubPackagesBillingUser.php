@@ -6,16 +6,15 @@ class BillingGetGithubPackagesBillingUser extends \Github\Runtime\Client\BaseEnd
 {
     protected $username;
     /**
-    * **Warning:** The Billing API is currently in public beta and subject to change.
-    
-    Gets the free and paid storage used for GitHub Packages in gigabytes.
-    
-    Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-    
-    Access tokens must have the `user` scope.
-    *
-    * @param string $username 
-    */
+     * **Warning:** The Billing API is currently in public beta and subject to change.
+     *
+     * Gets the free and paid storage used for GitHub Packages in gigabytes.
+     *
+     * Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+     *
+     * Access tokens must have the `user` scope.
+     * @param string $username
+     */
     public function __construct(string $username)
     {
         $this->username = $username;
@@ -47,7 +46,7 @@ class BillingGetGithubPackagesBillingUser extends \Github\Runtime\Client\BaseEnd
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\PackagesBillingUsage', 'json');
         }
     }

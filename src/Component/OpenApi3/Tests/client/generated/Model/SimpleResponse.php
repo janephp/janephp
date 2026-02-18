@@ -13,20 +13,14 @@ class SimpleResponse extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $foo;
     /**
-     * 
-     *
      * @var bool
      */
     protected $baz;
     /**
-     * 
-     *
      * @return string
      */
     public function getFoo(): string
@@ -34,8 +28,6 @@ class SimpleResponse extends \ArrayObject
         return $this->foo;
     }
     /**
-     * 
-     *
      * @param string $foo
      *
      * @return self
@@ -47,8 +39,6 @@ class SimpleResponse extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getBaz(): bool
@@ -56,8 +46,6 @@ class SimpleResponse extends \ArrayObject
         return $this->baz;
     }
     /**
-     * 
-     *
      * @param bool $baz
      *
      * @return self

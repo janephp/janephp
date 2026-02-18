@@ -13,62 +13,42 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $businessName;
     /**
-     * 
-     *
      * @var string
      */
     protected $registeredCompanyName;
     /**
-     * 
-     *
      * @var string
      */
     protected $companyRegistrationNumber;
     /**
-     * 
-     *
      * @var string
      */
     protected $country;
     /**
-     * 
-     *
      * @var string
      */
     protected $companyRegistrationDate;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationLegalForm
      */
     protected $legalForm;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationCompanyStatus
      */
     protected $companyStatus;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationPrincipalActivity
      */
     protected $principalActivity;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationContactAddress
      */
     protected $contactAddress;
     /**
-     * 
-     *
      * @return string
      */
     public function getBusinessName(): string
@@ -76,8 +56,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
         return $this->businessName;
     }
     /**
-     * 
-     *
      * @param string $businessName
      *
      * @return self
@@ -89,8 +67,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRegisteredCompanyName(): string
@@ -98,8 +74,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
         return $this->registeredCompanyName;
     }
     /**
-     * 
-     *
      * @param string $registeredCompanyName
      *
      * @return self
@@ -111,8 +85,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCompanyRegistrationNumber(): string
@@ -120,8 +92,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
         return $this->companyRegistrationNumber;
     }
     /**
-     * 
-     *
      * @param string $companyRegistrationNumber
      *
      * @return self
@@ -133,8 +103,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCountry(): string
@@ -142,8 +110,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
         return $this->country;
     }
     /**
-     * 
-     *
      * @param string $country
      *
      * @return self
@@ -155,8 +121,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCompanyRegistrationDate(): string
@@ -164,8 +128,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
         return $this->companyRegistrationDate;
     }
     /**
-     * 
-     *
      * @param string $companyRegistrationDate
      *
      * @return self
@@ -177,8 +139,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationLegalForm
      */
     public function getLegalForm(): GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationLegalForm
@@ -186,8 +146,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
         return $this->legalForm;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationLegalForm $legalForm
      *
      * @return self
@@ -199,8 +157,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationCompanyStatus
      */
     public function getCompanyStatus(): GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationCompanyStatus
@@ -208,8 +164,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
         return $this->companyStatus;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationCompanyStatus $companyStatus
      *
      * @return self
@@ -221,8 +175,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationPrincipalActivity
      */
     public function getPrincipalActivity(): GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationPrincipalActivity
@@ -230,8 +182,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
         return $this->principalActivity;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationPrincipalActivity $principalActivity
      *
      * @return self
@@ -243,8 +193,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationContactAddress
      */
     public function getContactAddress(): GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationContactAddress
@@ -252,8 +200,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
         return $this->contactAddress;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationContactAddress $contactAddress
      *
      * @return self

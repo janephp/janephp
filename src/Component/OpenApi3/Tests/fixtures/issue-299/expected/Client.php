@@ -7,12 +7,12 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
     /**
      * Foo bar
      *
-     * @param array $queryParameters {
-     *     @var string $userState User state
-     * }
+     * @param array{
+     *    "userState": string, //User state
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function getUsers(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {

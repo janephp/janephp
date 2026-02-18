@@ -20,6 +20,7 @@ class VolumesGetResponse200
     protected $volumes;
     /**
      * Warnings that occurred when fetching the list of volumes.
+     * 
      *
      * @var list<string>
      */
@@ -48,6 +49,7 @@ class VolumesGetResponse200
     }
     /**
      * Warnings that occurred when fetching the list of volumes.
+     * 
      *
      * @return list<string>
      */

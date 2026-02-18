@@ -67,8 +67,6 @@ class JpegFormat extends FormatBase
      */
     protected $chromaSubsamplingEnabled;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $extension;
@@ -271,8 +269,6 @@ class JpegFormat extends FormatBase
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getExtension(): ?string
@@ -280,8 +276,6 @@ class JpegFormat extends FormatBase
         return $this->extension;
     }
     /**
-     * 
-     *
      * @param string|null $extension
      *
      * @return self

@@ -11,13 +11,10 @@ use Symfony\Component\VarDumper\VarDumper;
 
 class DumpConfigCommand extends Command
 {
-    /** @var ConfigLoaderInterface */
-    protected $configLoader;
-
-    public function __construct(ConfigLoaderInterface $configLoader)
-    {
+    public function __construct(
+        protected ConfigLoaderInterface $configLoader,
+    ) {
         parent::__construct();
-        $this->configLoader = $configLoader;
     }
 
     public function configure(): void
@@ -31,6 +28,6 @@ class DumpConfigCommand extends Command
     {
         VarDumper::dump($this->configLoader->load($input->getOption('config-file')));
 
-        return 0;
+        return Command::SUCCESS;
     }
 }

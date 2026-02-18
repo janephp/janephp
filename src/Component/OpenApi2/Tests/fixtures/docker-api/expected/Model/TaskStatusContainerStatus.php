@@ -13,26 +13,18 @@ class TaskStatusContainerStatus
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $containerID;
     /**
-     * 
-     *
      * @var int
      */
     protected $pID;
     /**
-     * 
-     *
      * @var int
      */
     protected $exitCode;
     /**
-     * 
-     *
      * @return string
      */
     public function getContainerID(): string
@@ -40,8 +32,6 @@ class TaskStatusContainerStatus
         return $this->containerID;
     }
     /**
-     * 
-     *
      * @param string $containerID
      *
      * @return self
@@ -53,8 +43,6 @@ class TaskStatusContainerStatus
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getPID(): int
@@ -62,8 +50,6 @@ class TaskStatusContainerStatus
         return $this->pID;
     }
     /**
-     * 
-     *
      * @param int $pID
      *
      * @return self
@@ -75,8 +61,6 @@ class TaskStatusContainerStatus
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getExitCode(): int
@@ -84,8 +68,6 @@ class TaskStatusContainerStatus
         return $this->exitCode;
     }
     /**
-     * 
-     *
      * @param int $exitCode
      *
      * @return self

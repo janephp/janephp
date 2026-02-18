@@ -73,8 +73,6 @@ class TiffFormat extends FormatBase
      */
     protected $includeUnspecifiedTiffExtraChannels;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $extension;
@@ -299,8 +297,6 @@ class TiffFormat extends FormatBase
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getExtension(): ?string
@@ -308,8 +304,6 @@ class TiffFormat extends FormatBase
         return $this->extension;
     }
     /**
-     * 
-     *
      * @param string|null $extension
      *
      * @return self

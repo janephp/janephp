@@ -13,44 +13,30 @@ class BuildInfo
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $stream;
     /**
-     * 
-     *
      * @var string
      */
     protected $error;
     /**
-     * 
-     *
      * @var ErrorDetail
      */
     protected $errorDetail;
     /**
-     * 
-     *
      * @var string
      */
     protected $status;
     /**
-     * 
-     *
      * @var string
      */
     protected $progress;
     /**
-     * 
-     *
      * @var ProgressDetail
      */
     protected $progressDetail;
@@ -61,8 +47,6 @@ class BuildInfo
      */
     protected $aux;
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -70,8 +54,6 @@ class BuildInfo
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -83,8 +65,6 @@ class BuildInfo
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStream(): string
@@ -92,8 +72,6 @@ class BuildInfo
         return $this->stream;
     }
     /**
-     * 
-     *
      * @param string $stream
      *
      * @return self
@@ -105,8 +83,6 @@ class BuildInfo
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getError(): string
@@ -114,8 +90,6 @@ class BuildInfo
         return $this->error;
     }
     /**
-     * 
-     *
      * @param string $error
      *
      * @return self
@@ -127,8 +101,6 @@ class BuildInfo
         return $this;
     }
     /**
-     * 
-     *
      * @return ErrorDetail
      */
     public function getErrorDetail(): ErrorDetail
@@ -136,8 +108,6 @@ class BuildInfo
         return $this->errorDetail;
     }
     /**
-     * 
-     *
      * @param ErrorDetail $errorDetail
      *
      * @return self
@@ -149,8 +119,6 @@ class BuildInfo
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStatus(): string
@@ -158,8 +126,6 @@ class BuildInfo
         return $this->status;
     }
     /**
-     * 
-     *
      * @param string $status
      *
      * @return self
@@ -171,8 +137,6 @@ class BuildInfo
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getProgress(): string
@@ -180,8 +144,6 @@ class BuildInfo
         return $this->progress;
     }
     /**
-     * 
-     *
      * @param string $progress
      *
      * @return self
@@ -193,8 +155,6 @@ class BuildInfo
         return $this;
     }
     /**
-     * 
-     *
      * @return ProgressDetail
      */
     public function getProgressDetail(): ProgressDetail
@@ -202,8 +162,6 @@ class BuildInfo
         return $this->progressDetail;
     }
     /**
-     * 
-     *
      * @param ProgressDetail $progressDetail
      *
      * @return self

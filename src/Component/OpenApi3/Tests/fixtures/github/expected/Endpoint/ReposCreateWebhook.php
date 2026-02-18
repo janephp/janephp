@@ -7,13 +7,12 @@ class ReposCreateWebhook extends \Github\Runtime\Client\BaseEndpoint implements 
     protected $owner;
     protected $repo;
     /**
-    * Repositories can have multiple webhooks installed. Each webhook should have a unique `config`. Multiple webhooks can
-    share the same `config` as long as those webhooks do not have any `events` that overlap.
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param null|\Github\Model\ReposOwnerRepoHooksPostBody $requestBody 
-    */
+     * Repositories can have multiple webhooks installed. Each webhook should have a unique `config`. Multiple webhooks can
+     * share the same `config` as long as those webhooks do not have any `events` that overlap.
+     * @param string $owner
+     * @param string $repo
+     * @param null|\Github\Model\ReposOwnerRepoHooksPostBody $requestBody
+     */
     public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoHooksPostBody $requestBody = null)
     {
         $this->owner = $owner;
@@ -53,16 +52,16 @@ class ReposCreateWebhook extends \Github\Runtime\Client\BaseEndpoint implements 
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\Hook', 'json');
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateWebhookNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateWebhookUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateWebhookForbiddenException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

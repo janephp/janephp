@@ -6,13 +6,16 @@ use Jane\Component\OpenApi2\JaneOpenApi as OpenApi2Base;
 use Jane\Component\OpenApi3\JaneOpenApi as OpenApi3Base;
 use Jane\Component\OpenApiCommon\Exception\CouldNotParseException;
 use Jane\Component\OpenApiCommon\Exception\OpenApiVersionSupportException;
+use Jane\Component\OpenApiCommon\SchemaParser\SchemaParser;
 
 class OpenApiMatcher
 {
-    private $schemaParsers = [];
+    /** @var array<class-string, SchemaParser> */
+    private array $schemaParsers = [];
 
     public function match(string $origin): string
     {
+        $openApi3Message = null;
         [$openApiClass, $openApi2Message] = $this->isOpenApi2($origin);
 
         if (null === $openApiClass) {
@@ -21,7 +24,7 @@ class OpenApiMatcher
 
         if (null === $openApiClass) {
             if (null !== $openApi2Message || null !== $openApi3Message) {
-                throw new CouldNotParseException(sprintf("Could not parse schema in OpenApi v2 nor v3 format:\n- OpenApi v2 error: \"%s\"\n- OpenApi v3: \"%s\"\n", (string) $openApi2Message, (string) $openApi3Message));
+                throw new CouldNotParseException(\sprintf("Could not parse schema in OpenApi v2 nor v3 format:\n- OpenApi v2 error: \"%s\"\n- OpenApi v3: \"%s\"\n", $openApi2Message, $openApi3Message));
             } else {
                 throw new OpenApiVersionSupportException('Only OpenApi v2 / v3 specifications are supported, use an external tool to convert your api files.');
             }
@@ -30,6 +33,9 @@ class OpenApiMatcher
         return $openApiClass;
     }
 
+    /**
+     * @return array{0: class-string|null, 1: string|null}
+     */
     private function isOpenApi2(string $origin): array
     {
         $class = null;
@@ -54,6 +60,9 @@ class OpenApiMatcher
         return [$class, $message];
     }
 
+    /**
+     * @return array{0: class-string|null, 1: string|null}
+     */
     private function isOpenApi3(string $origin): array
     {
         $class = null;

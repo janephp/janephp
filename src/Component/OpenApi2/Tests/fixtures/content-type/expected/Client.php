@@ -5,12 +5,10 @@ namespace Jane\Component\OpenApi2\Tests\Expected;
 class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Client
 {
     /**
-     * 
-     *
-     * @param string $testString 
+     * @param string $testString
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function bodyParameterTriggersContentTypeBeingSet(string $testString, string $fetch = self::FETCH_OBJECT)
     {
@@ -19,7 +17,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function producesTriggersAcceptBeingSet(string $fetch = self::FETCH_OBJECT)
     {

@@ -6,20 +6,19 @@ class MigrationsGetStatusForAuthenticatedUser extends \Github\Runtime\Client\Bas
 {
     protected $migration_id;
     /**
-    * Fetches a single user migration. The response includes the `state` of the migration, which can be one of the following values:
-    
-    *   `pending` - the migration hasn't started yet.
-    *   `exporting` - the migration is in progress.
-    *   `exported` - the migration finished successfully.
-    *   `failed` - the migration failed.
-    
-    Once the migration has been `exported` you can [download the migration archive](https://developer.github.com/v3/migrations/users/#download-a-user-migration-archive).
-    *
-    * @param int $migrationId migration_id parameter
-    * @param array $queryParameters {
-    *     @var array $exclude 
-    * }
-    */
+     * Fetches a single user migration. The response includes the `state` of the migration, which can be one of the following values:
+     *
+     * *   `pending` - the migration hasn't started yet.
+     * *   `exporting` - the migration is in progress.
+     * *   `exported` - the migration finished successfully.
+     * *   `failed` - the migration failed.
+     *
+     * Once the migration has been `exported` you can [download the migration archive](https://developer.github.com/v3/migrations/users/#download-a-user-migration-archive).
+     * @param int $migrationId migration_id parameter
+     * @param array{
+     *    "exclude"?: array,
+     * } $queryParameters
+     */
     public function __construct(int $migrationId, array $queryParameters = [])
     {
         $this->migration_id = $migrationId;
@@ -64,19 +63,19 @@ class MigrationsGetStatusForAuthenticatedUser extends \Github\Runtime\Client\Bas
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\Migration', 'json');
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\MigrationsGetStatusForAuthenticatedUserNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
         if (304 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\MigrationsGetStatusForAuthenticatedUserForbiddenException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (401 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\MigrationsGetStatusForAuthenticatedUserUnauthorizedException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

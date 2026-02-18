@@ -13,50 +13,34 @@ class GbPeopleReportReponseReportOtherAddressesItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $simpleValue;
     /**
-     * 
-     *
      * @var string
      */
     protected $street;
     /**
-     * 
-     *
      * @var string
      */
     protected $city;
     /**
-     * 
-     *
      * @var string
      */
     protected $postalCode;
     /**
-     * 
-     *
      * @var string
      */
     protected $province;
     /**
-     * 
-     *
      * @var string
      */
     protected $country;
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -64,8 +48,6 @@ class GbPeopleReportReponseReportOtherAddressesItem extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -77,8 +59,6 @@ class GbPeopleReportReponseReportOtherAddressesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSimpleValue(): string
@@ -86,8 +66,6 @@ class GbPeopleReportReponseReportOtherAddressesItem extends \ArrayObject
         return $this->simpleValue;
     }
     /**
-     * 
-     *
      * @param string $simpleValue
      *
      * @return self
@@ -99,8 +77,6 @@ class GbPeopleReportReponseReportOtherAddressesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStreet(): string
@@ -108,8 +84,6 @@ class GbPeopleReportReponseReportOtherAddressesItem extends \ArrayObject
         return $this->street;
     }
     /**
-     * 
-     *
      * @param string $street
      *
      * @return self
@@ -121,8 +95,6 @@ class GbPeopleReportReponseReportOtherAddressesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCity(): string
@@ -130,8 +102,6 @@ class GbPeopleReportReponseReportOtherAddressesItem extends \ArrayObject
         return $this->city;
     }
     /**
-     * 
-     *
      * @param string $city
      *
      * @return self
@@ -143,8 +113,6 @@ class GbPeopleReportReponseReportOtherAddressesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPostalCode(): string
@@ -152,8 +120,6 @@ class GbPeopleReportReponseReportOtherAddressesItem extends \ArrayObject
         return $this->postalCode;
     }
     /**
-     * 
-     *
      * @param string $postalCode
      *
      * @return self
@@ -165,8 +131,6 @@ class GbPeopleReportReponseReportOtherAddressesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getProvince(): string
@@ -174,8 +138,6 @@ class GbPeopleReportReponseReportOtherAddressesItem extends \ArrayObject
         return $this->province;
     }
     /**
-     * 
-     *
      * @param string $province
      *
      * @return self
@@ -187,8 +149,6 @@ class GbPeopleReportReponseReportOtherAddressesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCountry(): string
@@ -196,8 +156,6 @@ class GbPeopleReportReponseReportOtherAddressesItem extends \ArrayObject
         return $this->country;
     }
     /**
-     * 
-     *
      * @param string $country
      *
      * @return self

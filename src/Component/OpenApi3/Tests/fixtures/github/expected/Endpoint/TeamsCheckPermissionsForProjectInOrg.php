@@ -9,11 +9,11 @@ class TeamsCheckPermissionsForProjectInOrg extends \Github\Runtime\Client\BaseEn
     protected $project_id;
     /**
      * Checks whether a team has `read`, `write`, or `admin` permissions for an organization project. The response includes projects inherited from a parent team.
-     **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
      *
-     * @param string $org 
+     * **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
+     * @param string $org
      * @param string $teamSlug team_slug parameter
-     * @param int $projectId 
+     * @param int $projectId
      */
     public function __construct(string $org, string $teamSlug, int $projectId)
     {
@@ -49,7 +49,7 @@ class TeamsCheckPermissionsForProjectInOrg extends \Github\Runtime\Client\BaseEn
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\TeamProject', 'json');
         }
         if (404 === $status) {

@@ -9,8 +9,7 @@ class MigrationsUnlockRepoForOrg extends \Github\Runtime\Client\BaseEndpoint imp
     protected $repo_name;
     /**
      * Unlocks a repository that was locked for migration. You should unlock each migrated repository and [delete them](https://developer.github.com/v3/repos/#delete-a-repository) when the migration is complete and you no longer need the source data.
-     *
-     * @param string $org 
+     * @param string $org
      * @param int $migrationId migration_id parameter
      * @param string $repoName repo_name parameter
      */
@@ -51,7 +50,7 @@ class MigrationsUnlockRepoForOrg extends \Github\Runtime\Client\BaseEndpoint imp
         if (204 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\MigrationsUnlockRepoForOrgNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

@@ -13,62 +13,42 @@ class Components extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var Schema|Reference[]|null
      */
     protected $schemas;
     /**
-     * 
-     *
      * @var Reference|Response[]|null
      */
     protected $responses;
     /**
-     * 
-     *
      * @var Reference|Parameter[]|null
      */
     protected $parameters;
     /**
-     * 
-     *
      * @var Reference|Example[]|null
      */
     protected $examples;
     /**
-     * 
-     *
      * @var Reference|RequestBody[]|null
      */
     protected $requestBodies;
     /**
-     * 
-     *
      * @var Reference|Header[]|null
      */
     protected $headers;
     /**
-     * 
-     *
      * @var Reference|APIKeySecurityScheme|HTTPSecurityScheme|OAuth2SecurityScheme|OpenIdConnectSecurityScheme[]|null
      */
     protected $securitySchemes;
     /**
-     * 
-     *
      * @var Reference|Link[]|null
      */
     protected $links;
     /**
-     * 
-     *
      * @var Reference|mixed[][]|null
      */
     protected $callbacks;
     /**
-     * 
-     *
      * @return Schema|Reference[]
      */
     public function getSchemas()
@@ -76,8 +56,6 @@ class Components extends \ArrayObject
         return $this->schemas;
     }
     /**
-     * 
-     *
      * @param Schema|Reference[] $schemas
      *
      * @return self
@@ -89,8 +67,6 @@ class Components extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Reference|Response[]
      */
     public function getResponses()
@@ -98,8 +74,6 @@ class Components extends \ArrayObject
         return $this->responses;
     }
     /**
-     * 
-     *
      * @param Reference|Response[] $responses
      *
      * @return self
@@ -111,8 +85,6 @@ class Components extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Reference|Parameter[]
      */
     public function getParameters()
@@ -120,8 +92,6 @@ class Components extends \ArrayObject
         return $this->parameters;
     }
     /**
-     * 
-     *
      * @param Reference|Parameter[] $parameters
      *
      * @return self
@@ -133,8 +103,6 @@ class Components extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Reference|Example[]
      */
     public function getExamples()
@@ -142,8 +110,6 @@ class Components extends \ArrayObject
         return $this->examples;
     }
     /**
-     * 
-     *
      * @param Reference|Example[] $examples
      *
      * @return self
@@ -155,8 +121,6 @@ class Components extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Reference|RequestBody[]
      */
     public function getRequestBodies()
@@ -164,8 +128,6 @@ class Components extends \ArrayObject
         return $this->requestBodies;
     }
     /**
-     * 
-     *
      * @param Reference|RequestBody[] $requestBodies
      *
      * @return self
@@ -177,8 +139,6 @@ class Components extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Reference|Header[]
      */
     public function getHeaders()
@@ -186,8 +146,6 @@ class Components extends \ArrayObject
         return $this->headers;
     }
     /**
-     * 
-     *
      * @param Reference|Header[] $headers
      *
      * @return self
@@ -199,8 +157,6 @@ class Components extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Reference|APIKeySecurityScheme|HTTPSecurityScheme|OAuth2SecurityScheme|OpenIdConnectSecurityScheme[]
      */
     public function getSecuritySchemes()
@@ -208,8 +164,6 @@ class Components extends \ArrayObject
         return $this->securitySchemes;
     }
     /**
-     * 
-     *
      * @param Reference|APIKeySecurityScheme|HTTPSecurityScheme|OAuth2SecurityScheme|OpenIdConnectSecurityScheme[] $securitySchemes
      *
      * @return self
@@ -221,8 +175,6 @@ class Components extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Reference|Link[]
      */
     public function getLinks()
@@ -230,8 +182,6 @@ class Components extends \ArrayObject
         return $this->links;
     }
     /**
-     * 
-     *
      * @param Reference|Link[] $links
      *
      * @return self
@@ -243,8 +193,6 @@ class Components extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Reference|mixed[][]
      */
     public function getCallbacks()
@@ -252,8 +200,6 @@ class Components extends \ArrayObject
         return $this->callbacks;
     }
     /**
-     * 
-     *
      * @param Reference|mixed[][] $callbacks
      *
      * @return self

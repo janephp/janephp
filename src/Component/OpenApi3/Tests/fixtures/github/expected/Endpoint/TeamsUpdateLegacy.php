@@ -6,15 +6,14 @@ class TeamsUpdateLegacy extends \Github\Runtime\Client\BaseEndpoint implements \
 {
     protected $team_id;
     /**
-    * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Update a team](https://developer.github.com/v3/teams/#update-a-team) endpoint.
-    
-    To edit a team, the authenticated user must either be an organization owner or a team maintainer.
-    
-    **Note:** With nested teams, the `privacy` for parent teams cannot be `secret`.
-    *
-    * @param int $teamId 
-    * @param null|\Github\Model\TeamsTeamIdPatchBody $requestBody 
-    */
+     * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Update a team](https://developer.github.com/v3/teams/#update-a-team) endpoint.
+     *
+     * To edit a team, the authenticated user must either be an organization owner or a team maintainer.
+     *
+     * **Note:** With nested teams, the `privacy` for parent teams cannot be `secret`.
+     * @param int $teamId
+     * @param null|\Github\Model\TeamsTeamIdPatchBody $requestBody
+     */
     public function __construct(int $teamId, ?\Github\Model\TeamsTeamIdPatchBody $requestBody = null)
     {
         $this->team_id = $teamId;
@@ -53,16 +52,16 @@ class TeamsUpdateLegacy extends \Github\Runtime\Client\BaseEndpoint implements \
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\TeamFull', 'json');
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\TeamsUpdateLegacyNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\TeamsUpdateLegacyUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\TeamsUpdateLegacyForbiddenException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

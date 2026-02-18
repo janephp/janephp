@@ -8,14 +8,13 @@ class GitGetBlob extends \Github\Runtime\Client\BaseEndpoint implements \Github\
     protected $repo;
     protected $file_sha;
     /**
-    * The `content` in the response will always be Base64 encoded.
-    
-    _Note_: This API supports blobs up to 100 megabytes in size.
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param string $fileSha file_sha parameter
-    */
+     * The `content` in the response will always be Base64 encoded.
+     *
+     * _Note_: This API supports blobs up to 100 megabytes in size.
+     * @param string $owner
+     * @param string $repo
+     * @param string $fileSha file_sha parameter
+     */
     public function __construct(string $owner, string $repo, string $fileSha)
     {
         $this->owner = $owner;
@@ -52,16 +51,16 @@ class GitGetBlob extends \Github\Runtime\Client\BaseEndpoint implements \Github\
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\Blob', 'json');
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\GitGetBlobNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\GitGetBlobUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\GitGetBlobForbiddenException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

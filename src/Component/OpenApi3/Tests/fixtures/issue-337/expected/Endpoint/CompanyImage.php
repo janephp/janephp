@@ -7,11 +7,10 @@ class CompanyImage extends \CreditSafe\API\Runtime\Client\BaseEndpoint implement
     protected $imageId;
     /**
      * Endpoint to order an Image Document by Image ID.
-     *
      * @param string $imageId Image ID retrieved from `images/companies`
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
      */
     public function __construct(string $imageId, array $headerParameters = [])
     {
@@ -60,13 +59,13 @@ class CompanyImage extends \CreditSafe\API\Runtime\Client\BaseEndpoint implement
         if (200 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\CompanyImageBadRequestException($response);
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\CompanyImageForbiddenException($response);
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\CompanyImageNotFoundException($response);
         }
     }

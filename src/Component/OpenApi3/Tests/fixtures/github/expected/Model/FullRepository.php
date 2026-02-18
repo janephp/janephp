@@ -13,404 +13,270 @@ class FullRepository extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $fullName;
     /**
-     * 
-     *
      * @var FullRepositoryOwner|null
      */
     protected $owner;
     /**
-     * 
-     *
      * @var bool
      */
     protected $private;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var bool
      */
     protected $fork;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $archiveUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $assigneesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $blobsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $branchesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $collaboratorsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $commentsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $commitsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $compareUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $contentsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $contributorsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $deploymentsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $downloadsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $eventsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $forksUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $gitCommitsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $gitRefsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $gitTagsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $gitUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $issueCommentUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $issueEventsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $issuesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $keysUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $labelsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $languagesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $mergesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $milestonesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $notificationsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $pullsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $releasesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $sshUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $stargazersUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $statusesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $subscribersUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $subscriptionUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $tagsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $teamsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $treesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $cloneUrl;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $mirrorUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $hooksUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $svnUrl;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $homepage;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $language;
     /**
-     * 
-     *
      * @var int
      */
     protected $forksCount;
     /**
-     * 
-     *
      * @var int
      */
     protected $stargazersCount;
     /**
-     * 
-     *
      * @var int
      */
     protected $watchersCount;
     /**
-     * 
-     *
      * @var int
      */
     protected $size;
     /**
-     * 
-     *
      * @var string
      */
     protected $defaultBranch;
     /**
-     * 
-     *
      * @var int
      */
     protected $openIssuesCount;
     /**
-     * 
-     *
      * @var bool
      */
     protected $isTemplate;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $topics;
     /**
-     * 
-     *
      * @var bool
      */
     protected $hasIssues;
     /**
-     * 
-     *
      * @var bool
      */
     protected $hasProjects;
     /**
-     * 
-     *
      * @var bool
      */
     protected $hasWiki;
     /**
-     * 
-     *
      * @var bool
      */
     protected $hasPages;
     /**
-     * 
-     *
      * @var bool
      */
     protected $hasDownloads;
     /**
-     * 
-     *
      * @var bool
      */
     protected $archived;
@@ -427,86 +293,58 @@ class FullRepository extends \ArrayObject
      */
     protected $visibility;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $pushedAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var FullRepositoryPermissions
      */
     protected $permissions;
     /**
-     * 
-     *
      * @var bool
      */
     protected $allowRebaseMerge;
     /**
-     * 
-     *
      * @var FullRepositoryTemplateRepository|null
      */
     protected $templateRepository;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $tempCloneToken;
     /**
-     * 
-     *
      * @var bool
      */
     protected $allowSquashMerge;
     /**
-     * 
-     *
      * @var bool
      */
     protected $deleteBranchOnMerge;
     /**
-     * 
-     *
      * @var bool
      */
     protected $allowMergeCommit;
     /**
-     * 
-     *
      * @var int
      */
     protected $subscribersCount;
     /**
-     * 
-     *
      * @var int
      */
     protected $networkCount;
     /**
-     * 
-     *
      * @var FullRepositoryLicense|null
      */
     protected $license;
     /**
-     * 
-     *
      * @var FullRepositoryOrganization|null
      */
     protected $organization;
@@ -523,26 +361,18 @@ class FullRepository extends \ArrayObject
      */
     protected $source;
     /**
-     * 
-     *
      * @var int
      */
     protected $forks;
     /**
-     * 
-     *
      * @var string
      */
     protected $masterBranch;
     /**
-     * 
-     *
      * @var int
      */
     protected $openIssues;
     /**
-     * 
-     *
      * @var int
      */
     protected $watchers;
@@ -553,8 +383,6 @@ class FullRepository extends \ArrayObject
      */
     protected $anonymousAccessEnabled = true;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -562,8 +390,6 @@ class FullRepository extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -575,8 +401,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -584,8 +408,6 @@ class FullRepository extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -597,8 +419,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -606,8 +426,6 @@ class FullRepository extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -619,8 +437,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFullName(): string
@@ -628,8 +444,6 @@ class FullRepository extends \ArrayObject
         return $this->fullName;
     }
     /**
-     * 
-     *
      * @param string $fullName
      *
      * @return self
@@ -641,8 +455,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return FullRepositoryOwner|null
      */
     public function getOwner(): ?FullRepositoryOwner
@@ -650,8 +462,6 @@ class FullRepository extends \ArrayObject
         return $this->owner;
     }
     /**
-     * 
-     *
      * @param FullRepositoryOwner|null $owner
      *
      * @return self
@@ -663,8 +473,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getPrivate(): bool
@@ -672,8 +480,6 @@ class FullRepository extends \ArrayObject
         return $this->private;
     }
     /**
-     * 
-     *
      * @param bool $private
      *
      * @return self
@@ -685,8 +491,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -694,8 +498,6 @@ class FullRepository extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -707,8 +509,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription(): ?string
@@ -716,8 +516,6 @@ class FullRepository extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -729,8 +527,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getFork(): bool
@@ -738,8 +534,6 @@ class FullRepository extends \ArrayObject
         return $this->fork;
     }
     /**
-     * 
-     *
      * @param bool $fork
      *
      * @return self
@@ -751,8 +545,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -760,8 +552,6 @@ class FullRepository extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -773,8 +563,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getArchiveUrl(): string
@@ -782,8 +570,6 @@ class FullRepository extends \ArrayObject
         return $this->archiveUrl;
     }
     /**
-     * 
-     *
      * @param string $archiveUrl
      *
      * @return self
@@ -795,8 +581,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAssigneesUrl(): string
@@ -804,8 +588,6 @@ class FullRepository extends \ArrayObject
         return $this->assigneesUrl;
     }
     /**
-     * 
-     *
      * @param string $assigneesUrl
      *
      * @return self
@@ -817,8 +599,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBlobsUrl(): string
@@ -826,8 +606,6 @@ class FullRepository extends \ArrayObject
         return $this->blobsUrl;
     }
     /**
-     * 
-     *
      * @param string $blobsUrl
      *
      * @return self
@@ -839,8 +617,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBranchesUrl(): string
@@ -848,8 +624,6 @@ class FullRepository extends \ArrayObject
         return $this->branchesUrl;
     }
     /**
-     * 
-     *
      * @param string $branchesUrl
      *
      * @return self
@@ -861,8 +635,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCollaboratorsUrl(): string
@@ -870,8 +642,6 @@ class FullRepository extends \ArrayObject
         return $this->collaboratorsUrl;
     }
     /**
-     * 
-     *
      * @param string $collaboratorsUrl
      *
      * @return self
@@ -883,8 +653,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCommentsUrl(): string
@@ -892,8 +660,6 @@ class FullRepository extends \ArrayObject
         return $this->commentsUrl;
     }
     /**
-     * 
-     *
      * @param string $commentsUrl
      *
      * @return self
@@ -905,8 +671,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCommitsUrl(): string
@@ -914,8 +678,6 @@ class FullRepository extends \ArrayObject
         return $this->commitsUrl;
     }
     /**
-     * 
-     *
      * @param string $commitsUrl
      *
      * @return self
@@ -927,8 +689,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCompareUrl(): string
@@ -936,8 +696,6 @@ class FullRepository extends \ArrayObject
         return $this->compareUrl;
     }
     /**
-     * 
-     *
      * @param string $compareUrl
      *
      * @return self
@@ -949,8 +707,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getContentsUrl(): string
@@ -958,8 +714,6 @@ class FullRepository extends \ArrayObject
         return $this->contentsUrl;
     }
     /**
-     * 
-     *
      * @param string $contentsUrl
      *
      * @return self
@@ -971,8 +725,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getContributorsUrl(): string
@@ -980,8 +732,6 @@ class FullRepository extends \ArrayObject
         return $this->contributorsUrl;
     }
     /**
-     * 
-     *
      * @param string $contributorsUrl
      *
      * @return self
@@ -993,8 +743,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDeploymentsUrl(): string
@@ -1002,8 +750,6 @@ class FullRepository extends \ArrayObject
         return $this->deploymentsUrl;
     }
     /**
-     * 
-     *
      * @param string $deploymentsUrl
      *
      * @return self
@@ -1015,8 +761,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDownloadsUrl(): string
@@ -1024,8 +768,6 @@ class FullRepository extends \ArrayObject
         return $this->downloadsUrl;
     }
     /**
-     * 
-     *
      * @param string $downloadsUrl
      *
      * @return self
@@ -1037,8 +779,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEventsUrl(): string
@@ -1046,8 +786,6 @@ class FullRepository extends \ArrayObject
         return $this->eventsUrl;
     }
     /**
-     * 
-     *
      * @param string $eventsUrl
      *
      * @return self
@@ -1059,8 +797,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getForksUrl(): string
@@ -1068,8 +804,6 @@ class FullRepository extends \ArrayObject
         return $this->forksUrl;
     }
     /**
-     * 
-     *
      * @param string $forksUrl
      *
      * @return self
@@ -1081,8 +815,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGitCommitsUrl(): string
@@ -1090,8 +822,6 @@ class FullRepository extends \ArrayObject
         return $this->gitCommitsUrl;
     }
     /**
-     * 
-     *
      * @param string $gitCommitsUrl
      *
      * @return self
@@ -1103,8 +833,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGitRefsUrl(): string
@@ -1112,8 +840,6 @@ class FullRepository extends \ArrayObject
         return $this->gitRefsUrl;
     }
     /**
-     * 
-     *
      * @param string $gitRefsUrl
      *
      * @return self
@@ -1125,8 +851,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGitTagsUrl(): string
@@ -1134,8 +858,6 @@ class FullRepository extends \ArrayObject
         return $this->gitTagsUrl;
     }
     /**
-     * 
-     *
      * @param string $gitTagsUrl
      *
      * @return self
@@ -1147,8 +869,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGitUrl(): string
@@ -1156,8 +876,6 @@ class FullRepository extends \ArrayObject
         return $this->gitUrl;
     }
     /**
-     * 
-     *
      * @param string $gitUrl
      *
      * @return self
@@ -1169,8 +887,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIssueCommentUrl(): string
@@ -1178,8 +894,6 @@ class FullRepository extends \ArrayObject
         return $this->issueCommentUrl;
     }
     /**
-     * 
-     *
      * @param string $issueCommentUrl
      *
      * @return self
@@ -1191,8 +905,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIssueEventsUrl(): string
@@ -1200,8 +912,6 @@ class FullRepository extends \ArrayObject
         return $this->issueEventsUrl;
     }
     /**
-     * 
-     *
      * @param string $issueEventsUrl
      *
      * @return self
@@ -1213,8 +923,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIssuesUrl(): string
@@ -1222,8 +930,6 @@ class FullRepository extends \ArrayObject
         return $this->issuesUrl;
     }
     /**
-     * 
-     *
      * @param string $issuesUrl
      *
      * @return self
@@ -1235,8 +941,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKeysUrl(): string
@@ -1244,8 +948,6 @@ class FullRepository extends \ArrayObject
         return $this->keysUrl;
     }
     /**
-     * 
-     *
      * @param string $keysUrl
      *
      * @return self
@@ -1257,8 +959,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLabelsUrl(): string
@@ -1266,8 +966,6 @@ class FullRepository extends \ArrayObject
         return $this->labelsUrl;
     }
     /**
-     * 
-     *
      * @param string $labelsUrl
      *
      * @return self
@@ -1279,8 +977,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLanguagesUrl(): string
@@ -1288,8 +984,6 @@ class FullRepository extends \ArrayObject
         return $this->languagesUrl;
     }
     /**
-     * 
-     *
      * @param string $languagesUrl
      *
      * @return self
@@ -1301,8 +995,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMergesUrl(): string
@@ -1310,8 +1002,6 @@ class FullRepository extends \ArrayObject
         return $this->mergesUrl;
     }
     /**
-     * 
-     *
      * @param string $mergesUrl
      *
      * @return self
@@ -1323,8 +1013,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMilestonesUrl(): string
@@ -1332,8 +1020,6 @@ class FullRepository extends \ArrayObject
         return $this->milestonesUrl;
     }
     /**
-     * 
-     *
      * @param string $milestonesUrl
      *
      * @return self
@@ -1345,8 +1031,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNotificationsUrl(): string
@@ -1354,8 +1038,6 @@ class FullRepository extends \ArrayObject
         return $this->notificationsUrl;
     }
     /**
-     * 
-     *
      * @param string $notificationsUrl
      *
      * @return self
@@ -1367,8 +1049,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPullsUrl(): string
@@ -1376,8 +1056,6 @@ class FullRepository extends \ArrayObject
         return $this->pullsUrl;
     }
     /**
-     * 
-     *
      * @param string $pullsUrl
      *
      * @return self
@@ -1389,8 +1067,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getReleasesUrl(): string
@@ -1398,8 +1074,6 @@ class FullRepository extends \ArrayObject
         return $this->releasesUrl;
     }
     /**
-     * 
-     *
      * @param string $releasesUrl
      *
      * @return self
@@ -1411,8 +1085,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSshUrl(): string
@@ -1420,8 +1092,6 @@ class FullRepository extends \ArrayObject
         return $this->sshUrl;
     }
     /**
-     * 
-     *
      * @param string $sshUrl
      *
      * @return self
@@ -1433,8 +1103,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStargazersUrl(): string
@@ -1442,8 +1110,6 @@ class FullRepository extends \ArrayObject
         return $this->stargazersUrl;
     }
     /**
-     * 
-     *
      * @param string $stargazersUrl
      *
      * @return self
@@ -1455,8 +1121,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStatusesUrl(): string
@@ -1464,8 +1128,6 @@ class FullRepository extends \ArrayObject
         return $this->statusesUrl;
     }
     /**
-     * 
-     *
      * @param string $statusesUrl
      *
      * @return self
@@ -1477,8 +1139,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSubscribersUrl(): string
@@ -1486,8 +1146,6 @@ class FullRepository extends \ArrayObject
         return $this->subscribersUrl;
     }
     /**
-     * 
-     *
      * @param string $subscribersUrl
      *
      * @return self
@@ -1499,8 +1157,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSubscriptionUrl(): string
@@ -1508,8 +1164,6 @@ class FullRepository extends \ArrayObject
         return $this->subscriptionUrl;
     }
     /**
-     * 
-     *
      * @param string $subscriptionUrl
      *
      * @return self
@@ -1521,8 +1175,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTagsUrl(): string
@@ -1530,8 +1182,6 @@ class FullRepository extends \ArrayObject
         return $this->tagsUrl;
     }
     /**
-     * 
-     *
      * @param string $tagsUrl
      *
      * @return self
@@ -1543,8 +1193,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTeamsUrl(): string
@@ -1552,8 +1200,6 @@ class FullRepository extends \ArrayObject
         return $this->teamsUrl;
     }
     /**
-     * 
-     *
      * @param string $teamsUrl
      *
      * @return self
@@ -1565,8 +1211,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTreesUrl(): string
@@ -1574,8 +1218,6 @@ class FullRepository extends \ArrayObject
         return $this->treesUrl;
     }
     /**
-     * 
-     *
      * @param string $treesUrl
      *
      * @return self
@@ -1587,8 +1229,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCloneUrl(): string
@@ -1596,8 +1236,6 @@ class FullRepository extends \ArrayObject
         return $this->cloneUrl;
     }
     /**
-     * 
-     *
      * @param string $cloneUrl
      *
      * @return self
@@ -1609,8 +1247,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getMirrorUrl(): ?string
@@ -1618,8 +1254,6 @@ class FullRepository extends \ArrayObject
         return $this->mirrorUrl;
     }
     /**
-     * 
-     *
      * @param string|null $mirrorUrl
      *
      * @return self
@@ -1631,8 +1265,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHooksUrl(): string
@@ -1640,8 +1272,6 @@ class FullRepository extends \ArrayObject
         return $this->hooksUrl;
     }
     /**
-     * 
-     *
      * @param string $hooksUrl
      *
      * @return self
@@ -1653,8 +1283,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSvnUrl(): string
@@ -1662,8 +1290,6 @@ class FullRepository extends \ArrayObject
         return $this->svnUrl;
     }
     /**
-     * 
-     *
      * @param string $svnUrl
      *
      * @return self
@@ -1675,8 +1301,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getHomepage(): ?string
@@ -1684,8 +1308,6 @@ class FullRepository extends \ArrayObject
         return $this->homepage;
     }
     /**
-     * 
-     *
      * @param string|null $homepage
      *
      * @return self
@@ -1697,8 +1319,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getLanguage(): ?string
@@ -1706,8 +1326,6 @@ class FullRepository extends \ArrayObject
         return $this->language;
     }
     /**
-     * 
-     *
      * @param string|null $language
      *
      * @return self
@@ -1719,8 +1337,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getForksCount(): int
@@ -1728,8 +1344,6 @@ class FullRepository extends \ArrayObject
         return $this->forksCount;
     }
     /**
-     * 
-     *
      * @param int $forksCount
      *
      * @return self
@@ -1741,8 +1355,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getStargazersCount(): int
@@ -1750,8 +1362,6 @@ class FullRepository extends \ArrayObject
         return $this->stargazersCount;
     }
     /**
-     * 
-     *
      * @param int $stargazersCount
      *
      * @return self
@@ -1763,8 +1373,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getWatchersCount(): int
@@ -1772,8 +1380,6 @@ class FullRepository extends \ArrayObject
         return $this->watchersCount;
     }
     /**
-     * 
-     *
      * @param int $watchersCount
      *
      * @return self
@@ -1785,8 +1391,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getSize(): int
@@ -1794,8 +1398,6 @@ class FullRepository extends \ArrayObject
         return $this->size;
     }
     /**
-     * 
-     *
      * @param int $size
      *
      * @return self
@@ -1807,8 +1409,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDefaultBranch(): string
@@ -1816,8 +1416,6 @@ class FullRepository extends \ArrayObject
         return $this->defaultBranch;
     }
     /**
-     * 
-     *
      * @param string $defaultBranch
      *
      * @return self
@@ -1829,8 +1427,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getOpenIssuesCount(): int
@@ -1838,8 +1434,6 @@ class FullRepository extends \ArrayObject
         return $this->openIssuesCount;
     }
     /**
-     * 
-     *
      * @param int $openIssuesCount
      *
      * @return self
@@ -1851,8 +1445,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getIsTemplate(): bool
@@ -1860,8 +1452,6 @@ class FullRepository extends \ArrayObject
         return $this->isTemplate;
     }
     /**
-     * 
-     *
      * @param bool $isTemplate
      *
      * @return self
@@ -1873,8 +1463,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getTopics(): array
@@ -1882,8 +1470,6 @@ class FullRepository extends \ArrayObject
         return $this->topics;
     }
     /**
-     * 
-     *
      * @param list<string> $topics
      *
      * @return self
@@ -1895,8 +1481,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getHasIssues(): bool
@@ -1904,8 +1488,6 @@ class FullRepository extends \ArrayObject
         return $this->hasIssues;
     }
     /**
-     * 
-     *
      * @param bool $hasIssues
      *
      * @return self
@@ -1917,8 +1499,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getHasProjects(): bool
@@ -1926,8 +1506,6 @@ class FullRepository extends \ArrayObject
         return $this->hasProjects;
     }
     /**
-     * 
-     *
      * @param bool $hasProjects
      *
      * @return self
@@ -1939,8 +1517,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getHasWiki(): bool
@@ -1948,8 +1524,6 @@ class FullRepository extends \ArrayObject
         return $this->hasWiki;
     }
     /**
-     * 
-     *
      * @param bool $hasWiki
      *
      * @return self
@@ -1961,8 +1535,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getHasPages(): bool
@@ -1970,8 +1542,6 @@ class FullRepository extends \ArrayObject
         return $this->hasPages;
     }
     /**
-     * 
-     *
      * @param bool $hasPages
      *
      * @return self
@@ -1983,8 +1553,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getHasDownloads(): bool
@@ -1992,8 +1560,6 @@ class FullRepository extends \ArrayObject
         return $this->hasDownloads;
     }
     /**
-     * 
-     *
      * @param bool $hasDownloads
      *
      * @return self
@@ -2005,8 +1571,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getArchived(): bool
@@ -2014,8 +1578,6 @@ class FullRepository extends \ArrayObject
         return $this->archived;
     }
     /**
-     * 
-     *
      * @param bool $archived
      *
      * @return self
@@ -2071,8 +1633,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getPushedAt(): \DateTime
@@ -2080,8 +1640,6 @@ class FullRepository extends \ArrayObject
         return $this->pushedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $pushedAt
      *
      * @return self
@@ -2093,8 +1651,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -2102,8 +1658,6 @@ class FullRepository extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -2115,8 +1669,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -2124,8 +1676,6 @@ class FullRepository extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -2137,8 +1687,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return FullRepositoryPermissions
      */
     public function getPermissions(): FullRepositoryPermissions
@@ -2146,8 +1694,6 @@ class FullRepository extends \ArrayObject
         return $this->permissions;
     }
     /**
-     * 
-     *
      * @param FullRepositoryPermissions $permissions
      *
      * @return self
@@ -2159,8 +1705,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getAllowRebaseMerge(): bool
@@ -2168,8 +1712,6 @@ class FullRepository extends \ArrayObject
         return $this->allowRebaseMerge;
     }
     /**
-     * 
-     *
      * @param bool $allowRebaseMerge
      *
      * @return self
@@ -2181,8 +1723,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return FullRepositoryTemplateRepository|null
      */
     public function getTemplateRepository(): ?FullRepositoryTemplateRepository
@@ -2190,8 +1730,6 @@ class FullRepository extends \ArrayObject
         return $this->templateRepository;
     }
     /**
-     * 
-     *
      * @param FullRepositoryTemplateRepository|null $templateRepository
      *
      * @return self
@@ -2203,8 +1741,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTempCloneToken(): ?string
@@ -2212,8 +1748,6 @@ class FullRepository extends \ArrayObject
         return $this->tempCloneToken;
     }
     /**
-     * 
-     *
      * @param string|null $tempCloneToken
      *
      * @return self
@@ -2225,8 +1759,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getAllowSquashMerge(): bool
@@ -2234,8 +1766,6 @@ class FullRepository extends \ArrayObject
         return $this->allowSquashMerge;
     }
     /**
-     * 
-     *
      * @param bool $allowSquashMerge
      *
      * @return self
@@ -2247,8 +1777,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getDeleteBranchOnMerge(): bool
@@ -2256,8 +1784,6 @@ class FullRepository extends \ArrayObject
         return $this->deleteBranchOnMerge;
     }
     /**
-     * 
-     *
      * @param bool $deleteBranchOnMerge
      *
      * @return self
@@ -2269,8 +1795,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getAllowMergeCommit(): bool
@@ -2278,8 +1802,6 @@ class FullRepository extends \ArrayObject
         return $this->allowMergeCommit;
     }
     /**
-     * 
-     *
      * @param bool $allowMergeCommit
      *
      * @return self
@@ -2291,8 +1813,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getSubscribersCount(): int
@@ -2300,8 +1820,6 @@ class FullRepository extends \ArrayObject
         return $this->subscribersCount;
     }
     /**
-     * 
-     *
      * @param int $subscribersCount
      *
      * @return self
@@ -2313,8 +1831,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getNetworkCount(): int
@@ -2322,8 +1838,6 @@ class FullRepository extends \ArrayObject
         return $this->networkCount;
     }
     /**
-     * 
-     *
      * @param int $networkCount
      *
      * @return self
@@ -2335,8 +1849,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return FullRepositoryLicense|null
      */
     public function getLicense(): ?FullRepositoryLicense
@@ -2344,8 +1856,6 @@ class FullRepository extends \ArrayObject
         return $this->license;
     }
     /**
-     * 
-     *
      * @param FullRepositoryLicense|null $license
      *
      * @return self
@@ -2357,8 +1867,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return FullRepositoryOrganization|null
      */
     public function getOrganization(): ?FullRepositoryOrganization
@@ -2366,8 +1874,6 @@ class FullRepository extends \ArrayObject
         return $this->organization;
     }
     /**
-     * 
-     *
      * @param FullRepositoryOrganization|null $organization
      *
      * @return self
@@ -2423,8 +1929,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getForks(): int
@@ -2432,8 +1936,6 @@ class FullRepository extends \ArrayObject
         return $this->forks;
     }
     /**
-     * 
-     *
      * @param int $forks
      *
      * @return self
@@ -2445,8 +1947,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMasterBranch(): string
@@ -2454,8 +1954,6 @@ class FullRepository extends \ArrayObject
         return $this->masterBranch;
     }
     /**
-     * 
-     *
      * @param string $masterBranch
      *
      * @return self
@@ -2467,8 +1965,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getOpenIssues(): int
@@ -2476,8 +1972,6 @@ class FullRepository extends \ArrayObject
         return $this->openIssues;
     }
     /**
-     * 
-     *
      * @param int $openIssues
      *
      * @return self
@@ -2489,8 +1983,6 @@ class FullRepository extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getWatchers(): int
@@ -2498,8 +1990,6 @@ class FullRepository extends \ArrayObject
         return $this->watchers;
     }
     /**
-     * 
-     *
      * @param int $watchers
      *
      * @return self

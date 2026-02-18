@@ -5,220 +5,112 @@ namespace Docker\Api\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Docker\Api\Runtime\Normalizer\CheckArray;
 use Docker\Api\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\HttpKernel\Kernel;
-if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR_VERSION === 6 and Kernel::MINOR_VERSION === 4)) {
-    class SwarmInitPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class SwarmInitPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
-        {
-            return $type === \Docker\Api\Model\SwarmInitPostBody::class;
-        }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \Docker\Api\Model\SwarmInitPostBody::class;
-        }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \Docker\Api\Model\SwarmInitPostBody();
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Docker\Api\Validator\SwarmInitPostBodyConstraint());
-            }
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('ListenAddr', $data)) {
-                $object->setListenAddr($data['ListenAddr']);
-            }
-            if (\array_key_exists('AdvertiseAddr', $data)) {
-                $object->setAdvertiseAddr($data['AdvertiseAddr']);
-            }
-            if (\array_key_exists('DataPathAddr', $data)) {
-                $object->setDataPathAddr($data['DataPathAddr']);
-            }
-            if (\array_key_exists('DataPathPort', $data)) {
-                $object->setDataPathPort($data['DataPathPort']);
-            }
-            if (\array_key_exists('DefaultAddrPool', $data)) {
-                $values = [];
-                foreach ($data['DefaultAddrPool'] as $value) {
-                    $values[] = $value;
-                }
-                $object->setDefaultAddrPool($values);
-            }
-            if (\array_key_exists('ForceNewCluster', $data)) {
-                $object->setForceNewCluster($data['ForceNewCluster']);
-            }
-            if (\array_key_exists('SubnetSize', $data)) {
-                $object->setSubnetSize($data['SubnetSize']);
-            }
-            if (\array_key_exists('Spec', $data)) {
-                $object->setSpec($this->denormalizer->denormalize($data['Spec'], \Docker\Api\Model\SwarmSpec::class, 'json', $context));
-            }
-            return $object;
-        }
-        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $data = [];
-            if ($object->isInitialized('listenAddr') && null !== $object->getListenAddr()) {
-                $data['ListenAddr'] = $object->getListenAddr();
-            }
-            if ($object->isInitialized('advertiseAddr') && null !== $object->getAdvertiseAddr()) {
-                $data['AdvertiseAddr'] = $object->getAdvertiseAddr();
-            }
-            if ($object->isInitialized('dataPathAddr') && null !== $object->getDataPathAddr()) {
-                $data['DataPathAddr'] = $object->getDataPathAddr();
-            }
-            if ($object->isInitialized('dataPathPort') && null !== $object->getDataPathPort()) {
-                $data['DataPathPort'] = $object->getDataPathPort();
-            }
-            if ($object->isInitialized('defaultAddrPool') && null !== $object->getDefaultAddrPool()) {
-                $values = [];
-                foreach ($object->getDefaultAddrPool() as $value) {
-                    $values[] = $value;
-                }
-                $data['DefaultAddrPool'] = $values;
-            }
-            if ($object->isInitialized('forceNewCluster') && null !== $object->getForceNewCluster()) {
-                $data['ForceNewCluster'] = $object->getForceNewCluster();
-            }
-            if ($object->isInitialized('subnetSize') && null !== $object->getSubnetSize()) {
-                $data['SubnetSize'] = $object->getSubnetSize();
-            }
-            if ($object->isInitialized('spec') && null !== $object->getSpec()) {
-                $data['Spec'] = $this->normalizer->normalize($object->getSpec(), 'json', $context);
-            }
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Docker\Api\Validator\SwarmInitPostBodyConstraint());
-            }
-            return $data;
-        }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\Docker\Api\Model\SwarmInitPostBody::class => false];
-        }
+        return $type === \Docker\Api\Model\SwarmInitPostBody::class;
     }
-} else {
-    class SwarmInitPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use CheckArray;
-        use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
-        {
-            return $type === \Docker\Api\Model\SwarmInitPostBody::class;
+        return is_object($data) && get_class($data) === \Docker\Api\Model\SwarmInitPostBody::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
-        {
-            return is_object($data) && get_class($data) === \Docker\Api\Model\SwarmInitPostBody::class;
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        /**
-         * @return mixed
-         */
-        public function denormalize($data, $type, $format = null, array $context = [])
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \Docker\Api\Model\SwarmInitPostBody();
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Docker\Api\Validator\SwarmInitPostBodyConstraint());
-            }
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('ListenAddr', $data)) {
-                $object->setListenAddr($data['ListenAddr']);
-            }
-            if (\array_key_exists('AdvertiseAddr', $data)) {
-                $object->setAdvertiseAddr($data['AdvertiseAddr']);
-            }
-            if (\array_key_exists('DataPathAddr', $data)) {
-                $object->setDataPathAddr($data['DataPathAddr']);
-            }
-            if (\array_key_exists('DataPathPort', $data)) {
-                $object->setDataPathPort($data['DataPathPort']);
-            }
-            if (\array_key_exists('DefaultAddrPool', $data)) {
-                $values = [];
-                foreach ($data['DefaultAddrPool'] as $value) {
-                    $values[] = $value;
-                }
-                $object->setDefaultAddrPool($values);
-            }
-            if (\array_key_exists('ForceNewCluster', $data)) {
-                $object->setForceNewCluster($data['ForceNewCluster']);
-            }
-            if (\array_key_exists('SubnetSize', $data)) {
-                $object->setSubnetSize($data['SubnetSize']);
-            }
-            if (\array_key_exists('Spec', $data)) {
-                $object->setSpec($this->denormalizer->denormalize($data['Spec'], \Docker\Api\Model\SwarmSpec::class, 'json', $context));
-            }
+        $object = new \Docker\Api\Model\SwarmInitPostBody();
+        if (\array_key_exists('ForceNewCluster', $data) && \is_int($data['ForceNewCluster'])) {
+            $data['ForceNewCluster'] = (bool) $data['ForceNewCluster'];
+        }
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($data, new \Docker\Api\Validator\SwarmInitPostBodyConstraint());
+        }
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        /**
-         * @return array|string|int|float|bool|\ArrayObject|null
-         */
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $data = [];
-            if ($object->isInitialized('listenAddr') && null !== $object->getListenAddr()) {
-                $data['ListenAddr'] = $object->getListenAddr();
-            }
-            if ($object->isInitialized('advertiseAddr') && null !== $object->getAdvertiseAddr()) {
-                $data['AdvertiseAddr'] = $object->getAdvertiseAddr();
-            }
-            if ($object->isInitialized('dataPathAddr') && null !== $object->getDataPathAddr()) {
-                $data['DataPathAddr'] = $object->getDataPathAddr();
-            }
-            if ($object->isInitialized('dataPathPort') && null !== $object->getDataPathPort()) {
-                $data['DataPathPort'] = $object->getDataPathPort();
-            }
-            if ($object->isInitialized('defaultAddrPool') && null !== $object->getDefaultAddrPool()) {
-                $values = [];
-                foreach ($object->getDefaultAddrPool() as $value) {
-                    $values[] = $value;
-                }
-                $data['DefaultAddrPool'] = $values;
-            }
-            if ($object->isInitialized('forceNewCluster') && null !== $object->getForceNewCluster()) {
-                $data['ForceNewCluster'] = $object->getForceNewCluster();
-            }
-            if ($object->isInitialized('subnetSize') && null !== $object->getSubnetSize()) {
-                $data['SubnetSize'] = $object->getSubnetSize();
-            }
-            if ($object->isInitialized('spec') && null !== $object->getSpec()) {
-                $data['Spec'] = $this->normalizer->normalize($object->getSpec(), 'json', $context);
-            }
-            if (!($context['skip_validation'] ?? false)) {
-                $this->validate($data, new \Docker\Api\Validator\SwarmInitPostBodyConstraint());
-            }
-            return $data;
+        if (\array_key_exists('ListenAddr', $data)) {
+            $object->setListenAddr($data['ListenAddr']);
         }
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\Docker\Api\Model\SwarmInitPostBody::class => false];
+        if (\array_key_exists('AdvertiseAddr', $data)) {
+            $object->setAdvertiseAddr($data['AdvertiseAddr']);
         }
+        if (\array_key_exists('DataPathAddr', $data)) {
+            $object->setDataPathAddr($data['DataPathAddr']);
+        }
+        if (\array_key_exists('DataPathPort', $data)) {
+            $object->setDataPathPort($data['DataPathPort']);
+        }
+        if (\array_key_exists('DefaultAddrPool', $data)) {
+            $values = [];
+            foreach ($data['DefaultAddrPool'] as $value) {
+                $values[] = $value;
+            }
+            $object->setDefaultAddrPool($values);
+        }
+        if (\array_key_exists('ForceNewCluster', $data)) {
+            $object->setForceNewCluster($data['ForceNewCluster']);
+        }
+        if (\array_key_exists('SubnetSize', $data)) {
+            $object->setSubnetSize($data['SubnetSize']);
+        }
+        if (\array_key_exists('Spec', $data)) {
+            $object->setSpec($this->denormalizer->denormalize($data['Spec'], \Docker\Api\Model\SwarmSpec::class, 'json', $context));
+        }
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        if ($data->isInitialized('listenAddr') && null !== $data->getListenAddr()) {
+            $dataArray['ListenAddr'] = $data->getListenAddr();
+        }
+        if ($data->isInitialized('advertiseAddr') && null !== $data->getAdvertiseAddr()) {
+            $dataArray['AdvertiseAddr'] = $data->getAdvertiseAddr();
+        }
+        if ($data->isInitialized('dataPathAddr') && null !== $data->getDataPathAddr()) {
+            $dataArray['DataPathAddr'] = $data->getDataPathAddr();
+        }
+        if ($data->isInitialized('dataPathPort') && null !== $data->getDataPathPort()) {
+            $dataArray['DataPathPort'] = $data->getDataPathPort();
+        }
+        if ($data->isInitialized('defaultAddrPool') && null !== $data->getDefaultAddrPool()) {
+            $values = [];
+            foreach ($data->getDefaultAddrPool() as $value) {
+                $values[] = $value;
+            }
+            $dataArray['DefaultAddrPool'] = $values;
+        }
+        if ($data->isInitialized('forceNewCluster') && null !== $data->getForceNewCluster()) {
+            $dataArray['ForceNewCluster'] = $data->getForceNewCluster();
+        }
+        if ($data->isInitialized('subnetSize') && null !== $data->getSubnetSize()) {
+            $dataArray['SubnetSize'] = $data->getSubnetSize();
+        }
+        if ($data->isInitialized('spec') && null !== $data->getSpec()) {
+            $dataArray['Spec'] = $this->normalizer->normalize($data->getSpec(), 'json', $context);
+        }
+        if (!($context['skip_validation'] ?? false)) {
+            $this->validate($dataArray, new \Docker\Api\Validator\SwarmInitPostBodyConstraint());
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Docker\Api\Model\SwarmInitPostBody::class => false];
     }
 }

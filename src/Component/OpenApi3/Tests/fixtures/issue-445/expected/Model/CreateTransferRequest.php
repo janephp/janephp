@@ -25,20 +25,20 @@ class CreateTransferRequest
      */
     protected $transferType;
     /**
-    * Files uploaded in transfer.
-    The client is responsible for uploading files to backend.
-    Required when TransferType is FileUpload or FileUploadAutoImport.
-    *
-    * @var list<TransferUploadFile>|null
-    */
+     * Files uploaded in transfer.
+     * The client is responsible for uploading files to backend.
+     * Required when TransferType is FileUpload or FileUploadAutoImport.
+     *
+     * @var list<TransferUploadFile>|null
+     */
     protected $files;
     /**
-    * Weblinks downloaded in transfer.
-    The backend will download files using HTTP, therefore public access to files is needed.
-    Required when TransferType is WebDownload.
-    *
-    * @var list<TransferWebLink>|null
-    */
+     * Weblinks downloaded in transfer.
+     * The backend will download files using HTTP, therefore public access to files is needed.
+     * Required when TransferType is WebDownload.
+     *
+     * @var list<TransferWebLink>|null
+     */
     protected $webLinks;
     /**
      * Name of collection created after transfer.
@@ -97,12 +97,12 @@ class CreateTransferRequest
         return $this;
     }
     /**
-    * Files uploaded in transfer.
-    The client is responsible for uploading files to backend.
-    Required when TransferType is FileUpload or FileUploadAutoImport.
-    *
-    * @return list<TransferUploadFile>|null
-    */
+     * Files uploaded in transfer.
+     * The client is responsible for uploading files to backend.
+     * Required when TransferType is FileUpload or FileUploadAutoImport.
+     *
+     * @return list<TransferUploadFile>|null
+     */
     public function getFiles(): ?array
     {
         return $this->files;
@@ -123,12 +123,12 @@ class CreateTransferRequest
         return $this;
     }
     /**
-    * Weblinks downloaded in transfer.
-    The backend will download files using HTTP, therefore public access to files is needed.
-    Required when TransferType is WebDownload.
-    *
-    * @return list<TransferWebLink>|null
-    */
+     * Weblinks downloaded in transfer.
+     * The backend will download files using HTTP, therefore public access to files is needed.
+     * Required when TransferType is WebDownload.
+     *
+     * @return list<TransferWebLink>|null
+     */
     public function getWebLinks(): ?array
     {
         return $this->webLinks;

@@ -8,18 +8,17 @@ class ActivityListStargazersForRepo extends \Github\Runtime\Client\BaseEndpoint 
     protected $repo;
     protected $accept;
     /**
-    * Lists the people that have starred the repository.
-    
-    You can also find out _when_ stars were created by passing the following custom [media type](https://developer.github.com/v3/media/) via the `Accept` header:
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param array $queryParameters {
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
-    * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
-    */
+     * Lists the people that have starred the repository.
+     *
+     * You can also find out _when_ stars were created by passing the following custom [media type](https://developer.github.com/v3/media/) via the `Accept` header:
+     * @param string $owner
+     * @param string $repo
+     * @param array{
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
+     */
     public function __construct(string $owner, string $repo, array $queryParameters = [], array $accept = [])
     {
         $this->owner = $owner;
@@ -62,16 +61,21 @@ class ActivityListStargazersForRepo extends \Github\Runtime\Client\BaseEndpoint 
      *
      * @throws \Github\Exception\ActivityListStargazersForRepoUnprocessableEntityException
      *
-     * @return null|\Github\Model\SimpleUser[]
+     * @return null|\Github\Model\SimpleUser[]|\Github\Model\Stargazer[]
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\Model\SimpleUser[]', 'json');
+        if (200 === $status) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+                return $serializer->deserialize($body, 'Github\Model\SimpleUser[]', 'json');
+            }
+            if (mb_strpos(strtolower($contentType), 'application/vnd.github.v3.star+json') !== false) {
+                return $serializer->deserialize($body, 'Github\Model\Stargazer[]', 'json');
+            }
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ActivityListStargazersForRepoUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationError', 'json'), $response);
         }
     }

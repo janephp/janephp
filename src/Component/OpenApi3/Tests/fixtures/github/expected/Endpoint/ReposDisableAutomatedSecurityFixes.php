@@ -8,9 +8,8 @@ class ReposDisableAutomatedSecurityFixes extends \Github\Runtime\Client\BaseEndp
     protected $repo;
     /**
      * Disables automated security fixes for a repository. The authenticated user must have admin access to the repository. For more information, see "[Configuring automated security fixes](https://help.github.com/en/articles/configuring-automated-security-fixes)".
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      */
     public function __construct(string $owner, string $repo)
     {

@@ -13,8 +13,6 @@ class IndexField
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $id;
@@ -37,11 +35,11 @@ class IndexField
      */
     protected $indexFields;
     /**
-    * Contains all simple search field name variants of the field.
-    The amount of simple search fields can be equal or less to the amount of IndexFields, but never more.
-    *
-    * @var array<string, string>|null
-    */
+     * Contains all simple search field name variants of the field.
+     * The amount of simple search fields can be equal or less to the amount of IndexFields, but never more.
+     *
+     * @var array<string, string>|null
+     */
     protected $simpleSearchFields;
     /**
      * Contains the fields boost value.
@@ -68,8 +66,6 @@ class IndexField
      */
     protected $sortField;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getId(): ?string
@@ -77,8 +73,6 @@ class IndexField
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string|null $id
      *
      * @return self
@@ -156,11 +150,11 @@ class IndexField
         return $this;
     }
     /**
-    * Contains all simple search field name variants of the field.
-    The amount of simple search fields can be equal or less to the amount of IndexFields, but never more.
-    *
-    * @return array<string, string>|null
-    */
+     * Contains all simple search field name variants of the field.
+     * The amount of simple search fields can be equal or less to the amount of IndexFields, but never more.
+     *
+     * @return array<string, string>|null
+     */
     public function getSimpleSearchFields(): ?iterable
     {
         return $this->simpleSearchFields;

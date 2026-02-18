@@ -6,8 +6,6 @@ class NetworkDelete extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
 {
     protected $id;
     /**
-     * 
-     *
      * @param string $id Network ID or name
      */
     public function __construct(string $id)

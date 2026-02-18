@@ -3,7 +3,6 @@
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
 /**
- *
  * @deprecated
  */
 class Foo extends \ArrayObject
@@ -17,22 +16,16 @@ class Foo extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $email;
     /**
-     * 
-     *
      * @deprecated
      *
      * @var string
      */
     protected $bar;
     /**
-     * 
-     *
      * @return string
      */
     public function getEmail(): string
@@ -40,8 +33,6 @@ class Foo extends \ArrayObject
         return $this->email;
     }
     /**
-     * 
-     *
      * @param string $email
      *
      * @return self
@@ -53,8 +44,6 @@ class Foo extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @deprecated
      *
      * @return string
@@ -64,8 +53,6 @@ class Foo extends \ArrayObject
         return $this->bar;
     }
     /**
-     * 
-     *
      * @param string $bar
      *
      * @deprecated

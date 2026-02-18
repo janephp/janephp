@@ -6,16 +6,14 @@ class DirectorReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint impleme
 {
     protected $personId;
     /**
-     * 
-     *
      * @param string $personId Identifier of the Person/Director required to order their Director Report. Obtained from `/people` search results.
-     * @param array $queryParameters {
-     *     @var string $language Report Language - The JSON structure of the Report is language invariant, but field content will return as the given language, where available.
-     *     @var string $callRef Call Reference
-     * }
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
+     * @param array{
+     *    "language"?: string, //Report Language - The JSON structure of the Report is language invariant, but field content will return as the given language, where available.
+     *    "callRef"?: string, //Call Reference
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
      */
     public function __construct(string $personId, array $queryParameters = [], array $headerParameters = [])
     {
@@ -72,16 +70,16 @@ class DirectorReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint impleme
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'CreditSafe\API\Model\GbPeopleReportReponse', 'json');
         }
-        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\DirectorReportBadRequestException($response);
         }
-        if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (401 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\DirectorReportUnauthorizedException($response);
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\DirectorReportNotFoundException($response);
         }
     }

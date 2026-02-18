@@ -13,8 +13,6 @@ class CompactTweetFieldsReferencedTweetsItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
@@ -25,8 +23,6 @@ class CompactTweetFieldsReferencedTweetsItem extends \ArrayObject
      */
     protected $id;
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -34,8 +30,6 @@ class CompactTweetFieldsReferencedTweetsItem extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self

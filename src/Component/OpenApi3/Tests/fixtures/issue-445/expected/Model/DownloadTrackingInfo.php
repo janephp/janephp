@@ -13,38 +13,26 @@ class DownloadTrackingInfo
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $contentId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $outputFormatId;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $width;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $height;
     /**
-     * 
-     *
      * @var string
      */
     protected $contentDisposition;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getContentId(): ?string
@@ -52,8 +40,6 @@ class DownloadTrackingInfo
         return $this->contentId;
     }
     /**
-     * 
-     *
      * @param string|null $contentId
      *
      * @return self
@@ -65,8 +51,6 @@ class DownloadTrackingInfo
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getOutputFormatId(): ?string
@@ -74,8 +58,6 @@ class DownloadTrackingInfo
         return $this->outputFormatId;
     }
     /**
-     * 
-     *
      * @param string|null $outputFormatId
      *
      * @return self
@@ -87,8 +69,6 @@ class DownloadTrackingInfo
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getWidth(): ?int
@@ -96,8 +76,6 @@ class DownloadTrackingInfo
         return $this->width;
     }
     /**
-     * 
-     *
      * @param int|null $width
      *
      * @return self
@@ -109,8 +87,6 @@ class DownloadTrackingInfo
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getHeight(): ?int
@@ -118,8 +94,6 @@ class DownloadTrackingInfo
         return $this->height;
     }
     /**
-     * 
-     *
      * @param int|null $height
      *
      * @return self
@@ -131,8 +105,6 @@ class DownloadTrackingInfo
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getContentDisposition(): string
@@ -140,8 +112,6 @@ class DownloadTrackingInfo
         return $this->contentDisposition;
     }
     /**
-     * 
-     *
      * @param string $contentDisposition
      *
      * @return self

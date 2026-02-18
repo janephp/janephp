@@ -19,13 +19,13 @@ class MetadataReference
      */
     protected $targetMetadataItemId;
     /**
-    * Indicates if the source of the reference is restricted because of permissions.
-    If this is true and the SourceMetadataItemId property is filled, the user does not have the
-    edit permission on the source metadata item. If the SourceMetadataItemId is null, the user also
-    does not have the view permission on that item.
-    *
-    * @var bool
-    */
+     * Indicates if the source of the reference is restricted because of permissions.
+     * If this is true and the SourceMetadataItemId property is filled, the user does not have the
+     * edit permission on the source metadata item. If the SourceMetadataItemId is null, the user also
+     * does not have the view permission on that item.
+     *
+     * @var bool
+     */
     protected $isRestricted;
     /**
      * ID of the source of the reference.
@@ -62,13 +62,13 @@ class MetadataReference
         return $this;
     }
     /**
-    * Indicates if the source of the reference is restricted because of permissions.
-    If this is true and the SourceMetadataItemId property is filled, the user does not have the
-    edit permission on the source metadata item. If the SourceMetadataItemId is null, the user also
-    does not have the view permission on that item.
-    *
-    * @return bool
-    */
+     * Indicates if the source of the reference is restricted because of permissions.
+     * If this is true and the SourceMetadataItemId property is filled, the user does not have the
+     * edit permission on the source metadata item. If the SourceMetadataItemId is null, the user also
+     * does not have the view permission on that item.
+     *
+     * @return bool
+     */
     public function getIsRestricted(): bool
     {
         return $this->isRestricted;

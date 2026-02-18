@@ -7,10 +7,8 @@ use Jane\Component\JsonSchema\Guesser\Guess\Property;
 
 class ChainValidator implements ValidatorInterface
 {
-    /**
-     * @var ValidatorInterface[]
-     */
-    private $validators = [];
+    /** @var array<ValidatorInterface> */
+    private array $validators = [];
 
     public function addValidator(ValidatorInterface $validator): void
     {

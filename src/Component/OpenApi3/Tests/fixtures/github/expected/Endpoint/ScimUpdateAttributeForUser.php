@@ -8,28 +8,27 @@ class ScimUpdateAttributeForUser extends \Github\Runtime\Client\BaseEndpoint imp
     protected $scim_user_id;
     protected $accept;
     /**
-    * Allows you to change a provisioned user's individual attributes. To change a user's values, you must provide a specific `Operations` JSON format that contains at least one of the `add`, `remove`, or `replace` operations. For examples and more information on the SCIM operations format, see the [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
-    
-    **Note:** Complicated SCIM `path` selectors that include filters are not supported. For example, a `path` selector defined as `"path": "emails[type eq \"work\"]"` will not work.
-    
-    **Warning:** If you set `active:false` using the `replace` operation (as shown in the JSON example below), it removes the user from the organization, deletes the external identity, and deletes the associated `:scim_user_id`.
-    
-    ```
-    {
-     "Operations":[{
-       "op":"replace",
-       "value":{
-         "active":false
-       }
-     }]
-    }
-    ```
-    *
-    * @param string $org 
-    * @param string $scimUserId scim_user_id parameter
-    * @param null|\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPatchBody $requestBody 
-    * @param array $accept Accept content header application/scim+json|application/json
-    */
+     * Allows you to change a provisioned user's individual attributes. To change a user's values, you must provide a specific `Operations` JSON format that contains at least one of the `add`, `remove`, or `replace` operations. For examples and more information on the SCIM operations format, see the [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
+     *
+     * **Note:** Complicated SCIM `path` selectors that include filters are not supported. For example, a `path` selector defined as `"path": "emails[type eq \"work\"]"` will not work.
+     *
+     * **Warning:** If you set `active:false` using the `replace` operation (as shown in the JSON example below), it removes the user from the organization, deletes the external identity, and deletes the associated `:scim_user_id`.
+     *
+     * ```
+     * {
+     *   "Operations":[{
+     *     "op":"replace",
+     *     "value":{
+     *       "active":false
+     *     }
+     *   }]
+     * }
+     * ```
+     * @param string $org
+     * @param string $scimUserId scim_user_id parameter
+     * @param null|\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPatchBody $requestBody
+     * @param array $accept Accept content header application/scim+json|application/json
+     */
     public function __construct(string $org, string $scimUserId, ?\Github\Model\ScimV2OrganizationsOrgUsersScimUserIdPatchBody $requestBody = null, array $accept = [])
     {
         $this->org = $org;
@@ -68,27 +67,43 @@ class ScimUpdateAttributeForUser extends \Github\Runtime\Client\BaseEndpoint imp
      * @throws \Github\Exception\ScimUpdateAttributeForUserBadRequestException
      * @throws \Github\Exception\ScimUpdateAttributeForUserTooManyRequestsException
      *
-     * @return null
+     * @return null|\Github\Model\ScimUser
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (200 === $status) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/scim+json') !== false)) {
+            return $serializer->deserialize($body, 'Github\Model\ScimUser', 'json');
         }
         if (304 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimUpdateAttributeForUserNotFoundException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+        if (404 === $status) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+                throw new \Github\Exception\ScimUpdateAttributeForUserNotFoundException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
+            if (mb_strpos(strtolower($contentType), 'application/scim+json') !== false) {
+                throw new \Github\Exception\ScimUpdateAttributeForUserNotFoundException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimUpdateAttributeForUserForbiddenException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+        if (403 === $status) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+                throw new \Github\Exception\ScimUpdateAttributeForUserForbiddenException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
+            if (mb_strpos(strtolower($contentType), 'application/scim+json') !== false) {
+                throw new \Github\Exception\ScimUpdateAttributeForUserForbiddenException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
         }
-        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ScimUpdateAttributeForUserBadRequestException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+        if (400 === $status) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+                throw new \Github\Exception\ScimUpdateAttributeForUserBadRequestException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
+            if (mb_strpos(strtolower($contentType), 'application/scim+json') !== false) {
+                throw new \Github\Exception\ScimUpdateAttributeForUserBadRequestException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
         }
-        if (is_null($contentType) === false && (429 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (429 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ScimUpdateAttributeForUserTooManyRequestsException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

@@ -13,14 +13,10 @@ class HideReplyResponse extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var HideReplyResponseData
      */
     protected $data;
     /**
-     * 
-     *
      * @return HideReplyResponseData
      */
     public function getData(): HideReplyResponseData
@@ -28,8 +24,6 @@ class HideReplyResponse extends \ArrayObject
         return $this->data;
     }
     /**
-     * 
-     *
      * @param HideReplyResponseData $data
      *
      * @return self

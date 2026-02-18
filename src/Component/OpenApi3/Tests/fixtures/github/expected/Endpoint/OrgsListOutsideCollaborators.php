@@ -7,15 +7,14 @@ class OrgsListOutsideCollaborators extends \Github\Runtime\Client\BaseEndpoint i
     protected $org;
     /**
     * List all users who are outside collaborators of an organization.
-    *
-    * @param string $org 
-    * @param array $queryParameters {
-    *     @var string $filter Filter the list of outside collaborators. Can be one of:  
-    \* `2fa_disabled`: Outside collaborators without [two-factor authentication](https://github.com/blog/1614-two-factor-authentication) enabled.  
+    * @param string $org
+    * @param array{
+    *    "filter"?: string, //Filter the list of outside collaborators. Can be one of:
+    \* `2fa_disabled`: Outside collaborators without [two-factor authentication](https://github.com/blog/1614-two-factor-authentication) enabled.
     \* `all`: All outside collaborators.
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
+    *    "per_page"?: int, //Results per page (max 100)
+    *    "page"?: int, //Page number of the results to fetch.
+    * } $queryParameters
     */
     public function __construct(string $org, array $queryParameters = [])
     {
@@ -60,7 +59,7 @@ class OrgsListOutsideCollaborators extends \Github\Runtime\Client\BaseEndpoint i
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\SimpleUser[]', 'json');
         }
     }

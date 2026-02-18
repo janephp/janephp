@@ -13,32 +13,22 @@ class CreateFreshInvestigationRequestContactInfo extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $emailAddress;
     /**
-     * 
-     *
      * @var string
      */
     protected $telephoneNumber;
     /**
-     * 
-     *
      * @var CreateFreshInvestigationRequestContactInfoCompany
      */
     protected $company;
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -46,8 +36,6 @@ class CreateFreshInvestigationRequestContactInfo extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -59,8 +47,6 @@ class CreateFreshInvestigationRequestContactInfo extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEmailAddress(): string
@@ -68,8 +54,6 @@ class CreateFreshInvestigationRequestContactInfo extends \ArrayObject
         return $this->emailAddress;
     }
     /**
-     * 
-     *
      * @param string $emailAddress
      *
      * @return self
@@ -81,8 +65,6 @@ class CreateFreshInvestigationRequestContactInfo extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTelephoneNumber(): string
@@ -90,8 +72,6 @@ class CreateFreshInvestigationRequestContactInfo extends \ArrayObject
         return $this->telephoneNumber;
     }
     /**
-     * 
-     *
      * @param string $telephoneNumber
      *
      * @return self
@@ -103,8 +83,6 @@ class CreateFreshInvestigationRequestContactInfo extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CreateFreshInvestigationRequestContactInfoCompany
      */
     public function getCompany(): CreateFreshInvestigationRequestContactInfoCompany
@@ -112,8 +90,6 @@ class CreateFreshInvestigationRequestContactInfo extends \ArrayObject
         return $this->company;
     }
     /**
-     * 
-     *
      * @param CreateFreshInvestigationRequestContactInfoCompany $company
      *
      * @return self

@@ -13,38 +13,26 @@ class CreateImageInfo
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $error;
     /**
-     * 
-     *
      * @var string
      */
     protected $status;
     /**
-     * 
-     *
      * @var string
      */
     protected $progress;
     /**
-     * 
-     *
      * @var ProgressDetail
      */
     protected $progressDetail;
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -52,8 +40,6 @@ class CreateImageInfo
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -65,8 +51,6 @@ class CreateImageInfo
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getError(): string
@@ -74,8 +58,6 @@ class CreateImageInfo
         return $this->error;
     }
     /**
-     * 
-     *
      * @param string $error
      *
      * @return self
@@ -87,8 +69,6 @@ class CreateImageInfo
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStatus(): string
@@ -96,8 +76,6 @@ class CreateImageInfo
         return $this->status;
     }
     /**
-     * 
-     *
      * @param string $status
      *
      * @return self
@@ -109,8 +87,6 @@ class CreateImageInfo
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getProgress(): string
@@ -118,8 +94,6 @@ class CreateImageInfo
         return $this->progress;
     }
     /**
-     * 
-     *
      * @param string $progress
      *
      * @return self
@@ -131,8 +105,6 @@ class CreateImageInfo
         return $this;
     }
     /**
-     * 
-     *
      * @return ProgressDetail
      */
     public function getProgressDetail(): ProgressDetail
@@ -140,8 +112,6 @@ class CreateImageInfo
         return $this->progressDetail;
     }
     /**
-     * 
-     *
      * @param ProgressDetail $progressDetail
      *
      * @return self

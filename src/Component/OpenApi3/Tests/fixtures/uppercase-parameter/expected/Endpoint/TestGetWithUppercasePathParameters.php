@@ -6,9 +6,7 @@ class TestGetWithUppercasePathParameters extends \Jane\Component\OpenApi3\Tests\
 {
     protected $TestParameter;
     /**
-     * 
-     *
-     * @param mixed $testParameter 
+     * @param mixed $testParameter
      */
     public function __construct($testParameter)
     {

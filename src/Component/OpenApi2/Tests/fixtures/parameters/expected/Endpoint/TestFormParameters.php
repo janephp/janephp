@@ -5,15 +5,13 @@ namespace Jane\Component\OpenApi2\Tests\Expected\Endpoint;
 class TestFormParameters extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
-     * 
-     *
      * @param array $formParameters {
-     *     @var string $testString 
-     *     @var int $testInteger 
-     *     @var float $testFloat 
-     *     @var array $testArray 
-     *     @var string $testRequired 
-     *     @var string $testDefault 
+     *     @var string $testString
+     *     @var int $testInteger
+     *     @var float $testFloat
+     *     @var array $testArray
+     *     @var string $testRequired
+     *     @var string $testDefault
      * }
      */
     public function __construct(array $formParameters = [])

@@ -13,38 +13,26 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissions extends \Arr
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $contents;
     /**
-     * 
-     *
      * @var string
      */
     protected $issues;
     /**
-     * 
-     *
      * @var string
      */
     protected $deployments;
     /**
-     * 
-     *
      * @var string
      */
     protected $singleFile;
     /**
-     * 
-     *
      * @var string
      */
     protected $defNotARepo;
     /**
-     * 
-     *
      * @return string
      */
     public function getContents(): string
@@ -52,8 +40,6 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissions extends \Arr
         return $this->contents;
     }
     /**
-     * 
-     *
      * @param string $contents
      *
      * @return self
@@ -65,8 +51,6 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissions extends \Arr
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIssues(): string
@@ -74,8 +58,6 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissions extends \Arr
         return $this->issues;
     }
     /**
-     * 
-     *
      * @param string $issues
      *
      * @return self
@@ -87,8 +69,6 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissions extends \Arr
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDeployments(): string
@@ -96,8 +76,6 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissions extends \Arr
         return $this->deployments;
     }
     /**
-     * 
-     *
      * @param string $deployments
      *
      * @return self
@@ -109,8 +87,6 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissions extends \Arr
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSingleFile(): string
@@ -118,8 +94,6 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissions extends \Arr
         return $this->singleFile;
     }
     /**
-     * 
-     *
      * @param string $singleFile
      *
      * @return self
@@ -131,8 +105,6 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissions extends \Arr
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDefNotARepo(): string
@@ -140,8 +112,6 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissions extends \Arr
         return $this->defNotARepo;
     }
     /**
-     * 
-     *
      * @param string $defNotARepo
      *
      * @return self

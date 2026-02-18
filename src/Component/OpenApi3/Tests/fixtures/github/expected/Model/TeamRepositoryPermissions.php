@@ -13,38 +13,26 @@ class TeamRepositoryPermissions extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var bool
      */
     protected $admin;
     /**
-     * 
-     *
      * @var bool
      */
     protected $pull;
     /**
-     * 
-     *
      * @var bool
      */
     protected $triage;
     /**
-     * 
-     *
      * @var bool
      */
     protected $push;
     /**
-     * 
-     *
      * @var bool
      */
     protected $maintain;
     /**
-     * 
-     *
      * @return bool
      */
     public function getAdmin(): bool
@@ -52,8 +40,6 @@ class TeamRepositoryPermissions extends \ArrayObject
         return $this->admin;
     }
     /**
-     * 
-     *
      * @param bool $admin
      *
      * @return self
@@ -65,8 +51,6 @@ class TeamRepositoryPermissions extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getPull(): bool
@@ -74,8 +58,6 @@ class TeamRepositoryPermissions extends \ArrayObject
         return $this->pull;
     }
     /**
-     * 
-     *
      * @param bool $pull
      *
      * @return self
@@ -87,8 +69,6 @@ class TeamRepositoryPermissions extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getTriage(): bool
@@ -96,8 +76,6 @@ class TeamRepositoryPermissions extends \ArrayObject
         return $this->triage;
     }
     /**
-     * 
-     *
      * @param bool $triage
      *
      * @return self
@@ -109,8 +87,6 @@ class TeamRepositoryPermissions extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getPush(): bool
@@ -118,8 +94,6 @@ class TeamRepositoryPermissions extends \ArrayObject
         return $this->push;
     }
     /**
-     * 
-     *
      * @param bool $push
      *
      * @return self
@@ -131,8 +105,6 @@ class TeamRepositoryPermissions extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getMaintain(): bool
@@ -140,8 +112,6 @@ class TeamRepositoryPermissions extends \ArrayObject
         return $this->maintain;
     }
     /**
-     * 
-     *
      * @param bool $maintain
      *
      * @return self

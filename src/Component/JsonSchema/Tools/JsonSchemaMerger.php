@@ -8,12 +8,8 @@ class JsonSchemaMerger
 {
     /**
      * Create a new JsonSchema based on two merged schema.
-     *
-     * @TODO Handle more fields
-     *
-     * @return JsonSchema
      */
-    public function merge(JsonSchema $left, JsonSchema $right)
+    public function merge(JsonSchema $left, JsonSchema $right): JsonSchema
     {
         $merged = clone $right;
 

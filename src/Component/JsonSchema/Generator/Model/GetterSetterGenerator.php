@@ -7,6 +7,7 @@ use Jane\Component\JsonSchema\Guesser\Guess\MultipleType;
 use Jane\Component\JsonSchema\Guesser\Guess\Property;
 use Jane\Component\JsonSchema\Guesser\Guess\Type;
 use PhpParser\Comment\Doc;
+use PhpParser\Modifiers;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\NullableType;
@@ -34,7 +35,7 @@ trait GetterSetterGenerator
             $this->getNaming()->getPrefixedMethodName('get', $property->getAccessorName()),
             [
                 // public function
-                'type' => Stmt\Class_::MODIFIER_PUBLIC,
+                'flags' => Modifiers::PUBLIC,
                 'stmts' => [
                     // return $this->property;
                     new Stmt\Return_(
@@ -82,7 +83,7 @@ trait GetterSetterGenerator
             $this->getNaming()->getPrefixedMethodName('set', $property->getAccessorName()),
             [
                 // public function
-                'type' => Stmt\Class_::MODIFIER_PUBLIC,
+                'flags' => Modifiers::PUBLIC,
                 // ($property)
                 'params' => [
                     new Param(
@@ -101,74 +102,50 @@ trait GetterSetterGenerator
 
     protected function createGetterDoc(Property $property, string $namespace, bool $strict): Doc
     {
-        $description = sprintf(
-            <<<EOD
-/**
- * %s
- *
-
-EOD
-            ,
-            $property->getDescription()
-        );
-
-        if ($property->isDeprecated()) {
-            $description .= <<<EOD
- * @deprecated
- *
-
-EOD;
+        $description = ['/**'];
+        if ($property->getDescription()) {
+            foreach (array_map(rtrim(...), explode("\n", $property->getDescription())) as $line) {
+                $description[] = ' * ' . $line;
+            }
+            $description[] = ' *';
         }
 
-        $description .= sprintf(
-            <<<EOD
- * @return %s
- */
-EOD
-            ,
+        if ($property->isDeprecated()) {
+            $description[] = ' * @deprecated';
+            $description[] = ' *';
+        }
+
+        $description[] = \sprintf(' * @return %s',
             $this->getDocType($property, $namespace, $strict)
         );
+        $description[] = ' */';
 
-        return new Doc($description);
+        return new Doc(implode("\n", $description));
     }
 
     protected function createSetterDoc(Property $property, string $namespace, bool $strict, bool $fluent): Doc
     {
-        $description = sprintf(
-            <<<EOD
-/**
- * %s
- *
- * @param %s %s
+        $description = ['/**'];
+        if ($property->getDescription()) {
+            $description[] = ' * ' . $property->getDescription();
+            $description[] = ' *';
+        }
 
-EOD
-            ,
-            $property->getDescription(),
-            $this->getDocType($property, $namespace, $strict),
-            '$' . $property->getPhpName()
-        );
+        $description[] = \sprintf(' * @param %s %s', $this->getDocType($property, $namespace, $strict), '$' . $property->getPhpName());
 
         if ($property->isDeprecated()) {
-            $description .= <<<EOD
- *
- * @deprecated
-
-EOD;
+            $description[] = ' *';
+            $description[] = ' * @deprecated';
         }
 
         if ($fluent) {
-            $description .= <<<EOD
- *
- * @return self
-
-EOD;
+            $description[] = ' *';
+            $description[] = ' * @return self';
         }
 
-        $description .= <<<EOD
- */
-EOD;
+        $description[] = ' */';
 
-        return new Doc($description);
+        return new Doc(implode("\n", $description));
     }
 
     private function getDocType(Property $property, string $namespace, bool $strict): string

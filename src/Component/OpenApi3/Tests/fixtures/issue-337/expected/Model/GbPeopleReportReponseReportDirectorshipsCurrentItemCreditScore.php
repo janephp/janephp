@@ -13,14 +13,10 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScore extends \Ar
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScoreCurrentCreditRating
      */
     protected $currentCreditRating;
     /**
-     * 
-     *
      * @return GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScoreCurrentCreditRating
      */
     public function getCurrentCreditRating(): GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScoreCurrentCreditRating
@@ -28,8 +24,6 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScore extends \Ar
         return $this->currentCreditRating;
     }
     /**
-     * 
-     *
      * @param GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScoreCurrentCreditRating $currentCreditRating
      *
      * @return self

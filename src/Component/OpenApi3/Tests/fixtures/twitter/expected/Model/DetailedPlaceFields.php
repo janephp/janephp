@@ -13,14 +13,10 @@ class DetailedPlaceFields extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var Geo
      */
     protected $geo;
     /**
-     * 
-     *
      * @return Geo
      */
     public function getGeo(): Geo
@@ -28,8 +24,6 @@ class DetailedPlaceFields extends \ArrayObject
         return $this->geo;
     }
     /**
-     * 
-     *
      * @param Geo $geo
      *
      * @return self

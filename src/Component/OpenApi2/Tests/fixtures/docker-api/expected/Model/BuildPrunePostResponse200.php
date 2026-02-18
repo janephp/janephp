@@ -13,8 +13,6 @@ class BuildPrunePostResponse200
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $cachesDeleted;
@@ -25,8 +23,6 @@ class BuildPrunePostResponse200
      */
     protected $spaceReclaimed;
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getCachesDeleted(): array
@@ -34,8 +30,6 @@ class BuildPrunePostResponse200
         return $this->cachesDeleted;
     }
     /**
-     * 
-     *
      * @param list<string> $cachesDeleted
      *
      * @return self

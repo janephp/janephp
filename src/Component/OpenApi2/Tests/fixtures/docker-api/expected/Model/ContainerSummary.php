@@ -85,8 +85,6 @@ class ContainerSummary
      */
     protected $status;
     /**
-     * 
-     *
      * @var ContainerSummaryHostConfig
      */
     protected $hostConfig;
@@ -97,8 +95,6 @@ class ContainerSummary
      */
     protected $networkSettings;
     /**
-     * 
-     *
      * @var list<Mount>
      */
     protected $mounts;
@@ -367,8 +363,6 @@ class ContainerSummary
         return $this;
     }
     /**
-     * 
-     *
      * @return ContainerSummaryHostConfig
      */
     public function getHostConfig(): ContainerSummaryHostConfig
@@ -376,8 +370,6 @@ class ContainerSummary
         return $this->hostConfig;
     }
     /**
-     * 
-     *
      * @param ContainerSummaryHostConfig $hostConfig
      *
      * @return self
@@ -411,8 +403,6 @@ class ContainerSummary
         return $this;
     }
     /**
-     * 
-     *
      * @return list<Mount>
      */
     public function getMounts(): array
@@ -420,8 +410,6 @@ class ContainerSummary
         return $this->mounts;
     }
     /**
-     * 
-     *
      * @param list<Mount> $mounts
      *
      * @return self

@@ -37,11 +37,11 @@ class OutputFormat extends \ArrayObject
      */
     protected $retentionTime;
     /**
-    * Optional patterns (liquid syntax) that produce the filename for item of this output format.
-    If set, the customer's default language is required.
-    *
-    * @var mixed|null
-    */
+     * Optional patterns (liquid syntax) that produce the filename for item of this output format.
+     * If set, the customer's default language is required.
+     *
+     * @var mixed|null
+     */
     protected $downloadFileNamePatterns;
     /**
      * Indicates if outputs derived from original output format should be accessible also for users not having AccessOriginal permission on the content.
@@ -174,11 +174,11 @@ class OutputFormat extends \ArrayObject
         return $this;
     }
     /**
-    * Optional patterns (liquid syntax) that produce the filename for item of this output format.
-    If set, the customer's default language is required.
-    *
-    * @return mixed
-    */
+     * Optional patterns (liquid syntax) that produce the filename for item of this output format.
+     * If set, the customer's default language is required.
+     *
+     * @return mixed
+     */
     public function getDownloadFileNamePatterns()
     {
         return $this->downloadFileNamePatterns;

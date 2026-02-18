@@ -8,7 +8,7 @@ use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\JsonSchema\Guesser\Guess\MultipleType;
 use Jane\Component\JsonSchema\Guesser\Guess\Property;
 use Jane\Component\JsonSchema\Guesser\Guess\Type;
-use PhpParser\Comment\Doc;
+use PhpParser\Modifiers;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Identifier;
@@ -22,12 +22,10 @@ trait NormalizerGenerator
 {
     /**
      * The naming service.
-     *
-     * @return Naming
      */
-    abstract protected function getNaming();
+    abstract protected function getNaming(): Naming;
 
-    protected function createNormalizerClass($name, $methods, $useCacheableSupportsMethod = false)
+    protected function createNormalizerClass($name, $methods, $useCacheableSupportsMethod = false): Stmt\Class_
     {
         $traits = [
             new Stmt\TraitUse([new Name('DenormalizerAwareTrait')]),
@@ -57,20 +55,18 @@ trait NormalizerGenerator
     }
 
     /**
-     * Create method to check if denormalization is supported.
+     * Create a method to check if denormalization is supported.
      *
      * @param string $modelFqdn Fully Qualified name of the model class denormalized
-     *
-     * @return Stmt\ClassMethod
      */
-    protected function createSupportsNormalizationMethod(string $modelFqdn, bool $symfony7)
+    protected function createSupportsNormalizationMethod(string $modelFqdn): Stmt\ClassMethod
     {
         return new Stmt\ClassMethod('supportsNormalization', [
-            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'flags' => Modifiers::PUBLIC,
             'returnType' => new Identifier('bool'),
             'params' => [
-                $symfony7 ? new Param(new Expr\Variable('data'), type: new Identifier('mixed')) : new Param(new Expr\Variable('data')),
-                $symfony7 ? new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Identifier('string')) : new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                new Param(new Expr\Variable('data'), type: new Identifier('mixed')),
+                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Identifier('?string')),
                 new Param(new Expr\Variable('context'), new Expr\Array_(), new Identifier('array')),
             ],
             'stmts' => [new Stmt\Return_(new Expr\Instanceof_(
@@ -82,14 +78,12 @@ trait NormalizerGenerator
 
     /**
      * Create the normalization method.
-     *
-     * @return Stmt\ClassMethod
      */
-    protected function createNormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess, bool $symfony7, bool $skipNullValues = true, bool $skipRequiredFields = false, bool $includeNullValue = true)
+    protected function createNormalizeMethod(string $modelFqdn, Context $context, ClassGuess $classGuess, bool $skipNullValues = true, bool $skipRequiredFields = false, bool $includeNullValue = true): Stmt\ClassMethod
     {
         $context->refreshScope();
-        $dataVariable = new Expr\Variable('data');
-        $objectVariable = new Expr\Variable('object');
+        $dataVariable = new Expr\Variable('dataArray');
+        $objectVariable = new Expr\Variable('data');
         $statements = $this->normalizeMethodStatements($dataVariable, $classGuess, $context);
 
         /** @var Property $property */
@@ -124,13 +118,20 @@ trait NormalizerGenerator
                 }
 
                 if (!$property->isRequired()) {
-                    $statements[] = new Stmt\If_(
-                        new Expr\BinaryOp\BooleanAnd(
+                    if ($property->isNullable()) {
+                        $statements[] = new Stmt\If_(
                             new Expr\MethodCall($objectVariable, 'isInitialized', [new Arg(new Scalar\String_($property->getPhpName()))]),
-                            new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar)
-                        ),
-                        ['stmts' => $normalizationStatements]
-                    );
+                            ['stmts' => $normalizationStatements]
+                        );
+                    } else {
+                        $statements[] = new Stmt\If_(
+                            new Expr\BinaryOp\BooleanAnd(
+                                new Expr\MethodCall($objectVariable, 'isInitialized', [new Arg(new Scalar\String_($property->getPhpName()))]),
+                                new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar)
+                            ),
+                            ['stmts' => $normalizationStatements]
+                        );
+                    }
                 } else {
                     $statements[] = new Stmt\If_(
                         new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar),
@@ -190,43 +191,26 @@ trait NormalizerGenerator
         $statements[] = new Stmt\Return_($dataVariable);
 
         return new Stmt\ClassMethod('normalize', [
-            'type' => Stmt\Class_::MODIFIER_PUBLIC,
-            'returnType' => $symfony7
-                ? new UnionType([
-                    new Identifier('array'),
-                    new Identifier('string'),
-                    new Identifier('int'),
-                    new Identifier('float'),
-                    new Identifier('bool'),
-                    new Name('\ArrayObject'),
-                    new Identifier('null'),
-                ])
-                : null,
+            'flags' => Modifiers::PUBLIC,
+            'returnType' => new UnionType([new Identifier('array'), new Identifier('string'), new Identifier('int'), new Identifier('float'), new Identifier('bool'), new Name('\ArrayObject'), new Identifier('null')]),
             'params' => [
-                $symfony7 ? new Param($objectVariable, type: new Identifier('mixed')) : new Param($objectVariable),
-                $symfony7 ? new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Identifier('string')) : new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                new Param($objectVariable, type: new Identifier('mixed')),
+                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Identifier('?string')),
                 new Param(new Expr\Variable('context'), new Expr\Array_(), new Identifier('array')),
             ],
             'stmts' => $statements,
         ], [
-            'comments' => $symfony7 ? [] : [new Doc(<<<EOD
-/**
- * @return array|string|int|float|bool|\ArrayObject|null
- */
-EOD
-            )],
+            'comments' => [],
         ]);
     }
 
     /**
-     * Create method to say that hasCacheableSupportsMethod is supported.
-     *
-     * @return Stmt\ClassMethod
+     * Create a method to say that hasCacheableSupportsMethod is supported.
      */
-    protected function createHasCacheableSupportsMethod()
+    protected function createHasCacheableSupportsMethod(): Stmt\ClassMethod
     {
         return new Stmt\ClassMethod('hasCacheableSupportsMethod', [
-            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'flags' => Modifiers::PUBLIC,
             'returnType' => new Identifier('bool'),
             'stmts' => [
                 new Stmt\Return_(new Expr\ConstFetch(new Name('true'))),

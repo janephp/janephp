@@ -13,206 +13,138 @@ class PullRequestSimple extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $diffUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $patchUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $issueUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $commitsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $reviewCommentsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $reviewCommentUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $commentsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $statusesUrl;
     /**
-     * 
-     *
      * @var int
      */
     protected $number;
     /**
-     * 
-     *
      * @var string
      */
     protected $state;
     /**
-     * 
-     *
      * @var bool
      */
     protected $locked;
     /**
-     * 
-     *
      * @var string
      */
     protected $title;
     /**
-     * 
-     *
      * @var PullRequestSimpleUser|null
      */
     protected $user;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $body;
     /**
-     * 
-     *
      * @var list<PullRequestSimpleLabelsItem>
      */
     protected $labels;
     /**
-     * 
-     *
      * @var PullRequestSimpleMilestone|null
      */
     protected $milestone;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $activeLockReason;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $closedAt;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $mergedAt;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $mergeCommitSha;
     /**
-     * 
-     *
      * @var PullRequestSimpleAssignee|null
      */
     protected $assignee;
     /**
-     * 
-     *
      * @var list<SimpleUser>|null
      */
     protected $assignees;
     /**
-     * 
-     *
      * @var list<SimpleUser>|null
      */
     protected $requestedReviewers;
     /**
-     * 
-     *
      * @var list<TeamSimple>|null
      */
     protected $requestedTeams;
     /**
-     * 
-     *
      * @var PullRequestSimpleHead
      */
     protected $head;
     /**
-     * 
-     *
      * @var PullRequestSimpleBase
      */
     protected $base;
     /**
-     * 
-     *
      * @var PullRequestSimpleLinks
      */
     protected $links;
     /**
-     * 
-     *
      * @var string
      */
     protected $authorAssociation;
@@ -223,8 +155,6 @@ class PullRequestSimple extends \ArrayObject
      */
     protected $draft;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -232,8 +162,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -245,8 +173,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -254,8 +180,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -267,8 +191,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -276,8 +198,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -289,8 +209,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -298,8 +216,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -311,8 +227,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDiffUrl(): string
@@ -320,8 +234,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->diffUrl;
     }
     /**
-     * 
-     *
      * @param string $diffUrl
      *
      * @return self
@@ -333,8 +245,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPatchUrl(): string
@@ -342,8 +252,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->patchUrl;
     }
     /**
-     * 
-     *
      * @param string $patchUrl
      *
      * @return self
@@ -355,8 +263,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIssueUrl(): string
@@ -364,8 +270,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->issueUrl;
     }
     /**
-     * 
-     *
      * @param string $issueUrl
      *
      * @return self
@@ -377,8 +281,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCommitsUrl(): string
@@ -386,8 +288,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->commitsUrl;
     }
     /**
-     * 
-     *
      * @param string $commitsUrl
      *
      * @return self
@@ -399,8 +299,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getReviewCommentsUrl(): string
@@ -408,8 +306,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->reviewCommentsUrl;
     }
     /**
-     * 
-     *
      * @param string $reviewCommentsUrl
      *
      * @return self
@@ -421,8 +317,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getReviewCommentUrl(): string
@@ -430,8 +324,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->reviewCommentUrl;
     }
     /**
-     * 
-     *
      * @param string $reviewCommentUrl
      *
      * @return self
@@ -443,8 +335,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCommentsUrl(): string
@@ -452,8 +342,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->commentsUrl;
     }
     /**
-     * 
-     *
      * @param string $commentsUrl
      *
      * @return self
@@ -465,8 +353,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStatusesUrl(): string
@@ -474,8 +360,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->statusesUrl;
     }
     /**
-     * 
-     *
      * @param string $statusesUrl
      *
      * @return self
@@ -487,8 +371,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getNumber(): int
@@ -496,8 +378,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->number;
     }
     /**
-     * 
-     *
      * @param int $number
      *
      * @return self
@@ -509,8 +389,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getState(): string
@@ -518,8 +396,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->state;
     }
     /**
-     * 
-     *
      * @param string $state
      *
      * @return self
@@ -531,8 +407,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getLocked(): bool
@@ -540,8 +414,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->locked;
     }
     /**
-     * 
-     *
      * @param bool $locked
      *
      * @return self
@@ -553,8 +425,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTitle(): string
@@ -562,8 +432,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->title;
     }
     /**
-     * 
-     *
      * @param string $title
      *
      * @return self
@@ -575,8 +443,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return PullRequestSimpleUser|null
      */
     public function getUser(): ?PullRequestSimpleUser
@@ -584,8 +450,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->user;
     }
     /**
-     * 
-     *
      * @param PullRequestSimpleUser|null $user
      *
      * @return self
@@ -597,8 +461,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getBody(): ?string
@@ -606,8 +468,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->body;
     }
     /**
-     * 
-     *
      * @param string|null $body
      *
      * @return self
@@ -619,8 +479,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<PullRequestSimpleLabelsItem>
      */
     public function getLabels(): array
@@ -628,8 +486,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->labels;
     }
     /**
-     * 
-     *
      * @param list<PullRequestSimpleLabelsItem> $labels
      *
      * @return self
@@ -641,8 +497,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return PullRequestSimpleMilestone|null
      */
     public function getMilestone(): ?PullRequestSimpleMilestone
@@ -650,8 +504,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->milestone;
     }
     /**
-     * 
-     *
      * @param PullRequestSimpleMilestone|null $milestone
      *
      * @return self
@@ -663,8 +515,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getActiveLockReason(): ?string
@@ -672,8 +522,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->activeLockReason;
     }
     /**
-     * 
-     *
      * @param string|null $activeLockReason
      *
      * @return self
@@ -685,8 +533,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -694,8 +540,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -707,8 +551,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -716,8 +558,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -729,8 +569,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getClosedAt(): ?\DateTime
@@ -738,8 +576,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->closedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $closedAt
      *
      * @return self
@@ -751,8 +587,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getMergedAt(): ?\DateTime
@@ -760,8 +594,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->mergedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $mergedAt
      *
      * @return self
@@ -773,8 +605,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getMergeCommitSha(): ?string
@@ -782,8 +612,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->mergeCommitSha;
     }
     /**
-     * 
-     *
      * @param string|null $mergeCommitSha
      *
      * @return self
@@ -795,8 +623,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return PullRequestSimpleAssignee|null
      */
     public function getAssignee(): ?PullRequestSimpleAssignee
@@ -804,8 +630,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->assignee;
     }
     /**
-     * 
-     *
      * @param PullRequestSimpleAssignee|null $assignee
      *
      * @return self
@@ -817,8 +641,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<SimpleUser>|null
      */
     public function getAssignees(): ?array
@@ -826,8 +648,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->assignees;
     }
     /**
-     * 
-     *
      * @param list<SimpleUser>|null $assignees
      *
      * @return self
@@ -839,8 +659,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<SimpleUser>|null
      */
     public function getRequestedReviewers(): ?array
@@ -848,8 +666,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->requestedReviewers;
     }
     /**
-     * 
-     *
      * @param list<SimpleUser>|null $requestedReviewers
      *
      * @return self
@@ -861,8 +677,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<TeamSimple>|null
      */
     public function getRequestedTeams(): ?array
@@ -870,8 +684,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->requestedTeams;
     }
     /**
-     * 
-     *
      * @param list<TeamSimple>|null $requestedTeams
      *
      * @return self
@@ -883,8 +695,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return PullRequestSimpleHead
      */
     public function getHead(): PullRequestSimpleHead
@@ -892,8 +702,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->head;
     }
     /**
-     * 
-     *
      * @param PullRequestSimpleHead $head
      *
      * @return self
@@ -905,8 +713,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return PullRequestSimpleBase
      */
     public function getBase(): PullRequestSimpleBase
@@ -914,8 +720,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->base;
     }
     /**
-     * 
-     *
      * @param PullRequestSimpleBase $base
      *
      * @return self
@@ -927,8 +731,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return PullRequestSimpleLinks
      */
     public function getLinks(): PullRequestSimpleLinks
@@ -936,8 +738,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->links;
     }
     /**
-     * 
-     *
      * @param PullRequestSimpleLinks $links
      *
      * @return self
@@ -949,8 +749,6 @@ class PullRequestSimple extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAuthorAssociation(): string
@@ -958,8 +756,6 @@ class PullRequestSimple extends \ArrayObject
         return $this->authorAssociation;
     }
     /**
-     * 
-     *
      * @param string $authorAssociation
      *
      * @return self

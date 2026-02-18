@@ -13,22 +13,22 @@ class ContainersIdArchiveGetResponse400
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * The error message. Either "must specify path parameter"
-    (path cannot be empty) or "not a directory" (path was
-    asserted to be a directory but exists as a file).
-    
-    *
-    * @var string
-    */
+     * The error message. Either "must specify path parameter"
+     * (path cannot be empty) or "not a directory" (path was
+     * asserted to be a directory but exists as a file).
+     * 
+     *
+     * @var string
+     */
     protected $message;
     /**
-    * The error message. Either "must specify path parameter"
-    (path cannot be empty) or "not a directory" (path was
-    asserted to be a directory but exists as a file).
-    
-    *
-    * @return string
-    */
+     * The error message. Either "must specify path parameter"
+     * (path cannot be empty) or "not a directory" (path was
+     * asserted to be a directory but exists as a file).
+     * 
+     *
+     * @return string
+     */
     public function getMessage(): string
     {
         return $this->message;

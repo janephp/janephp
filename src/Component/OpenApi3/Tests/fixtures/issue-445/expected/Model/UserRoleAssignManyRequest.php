@@ -25,11 +25,11 @@ class UserRoleAssignManyRequest extends \ArrayObject
      */
     protected $userRoleIds;
     /**
-    * Defines how to apply specified UserRoleIds to UserIds
-    If an operation results in no change for a user, that user will be returned as succeeded.
-    *
-    * @var mixed
-    */
+     * Defines how to apply specified UserRoleIds to UserIds
+     * If an operation results in no change for a user, that user will be returned as succeeded.
+     *
+     * @var mixed
+     */
     protected $operation;
     /**
      * User IDs.
@@ -76,11 +76,11 @@ class UserRoleAssignManyRequest extends \ArrayObject
         return $this;
     }
     /**
-    * Defines how to apply specified UserRoleIds to UserIds
-    If an operation results in no change for a user, that user will be returned as succeeded.
-    *
-    * @return mixed
-    */
+     * Defines how to apply specified UserRoleIds to UserIds
+     * If an operation results in no change for a user, that user will be returned as succeeded.
+     *
+     * @return mixed
+     */
     public function getOperation()
     {
         return $this->operation;

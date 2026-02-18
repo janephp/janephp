@@ -12,13 +12,11 @@ use Jane\Component\JsonSchema\Registry\Registry;
 class CustomStringFormatGuesser implements GuesserInterface, TypeGuesserInterface
 {
     /**
-     * @var array<string, string> key: format, value: classname of the normalizer
+     * @param array<string, string> $mapping key: format, value: classname of the normalizer
      */
-    protected $mapping;
-
-    public function __construct(array $mapping)
-    {
-        $this->mapping = $mapping;
+    public function __construct(
+        protected array $mapping,
+    ) {
     }
 
     public function supportObject($object): bool

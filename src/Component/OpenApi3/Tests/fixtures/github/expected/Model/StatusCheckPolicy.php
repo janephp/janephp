@@ -13,32 +13,22 @@ class StatusCheckPolicy extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var bool
      */
     protected $strict;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $contexts;
     /**
-     * 
-     *
      * @var string
      */
     protected $contextsUrl;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -46,8 +36,6 @@ class StatusCheckPolicy extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -59,8 +47,6 @@ class StatusCheckPolicy extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getStrict(): bool
@@ -68,8 +54,6 @@ class StatusCheckPolicy extends \ArrayObject
         return $this->strict;
     }
     /**
-     * 
-     *
      * @param bool $strict
      *
      * @return self
@@ -81,8 +65,6 @@ class StatusCheckPolicy extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getContexts(): array
@@ -90,8 +72,6 @@ class StatusCheckPolicy extends \ArrayObject
         return $this->contexts;
     }
     /**
-     * 
-     *
      * @param list<string> $contexts
      *
      * @return self
@@ -103,8 +83,6 @@ class StatusCheckPolicy extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getContextsUrl(): string
@@ -112,8 +90,6 @@ class StatusCheckPolicy extends \ArrayObject
         return $this->contextsUrl;
     }
     /**
-     * 
-     *
      * @param string $contextsUrl
      *
      * @return self

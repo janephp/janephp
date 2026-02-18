@@ -6,10 +6,8 @@ class NetworkConnect extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
 {
     protected $id;
     /**
-     * 
-     *
      * @param string $id Network ID or name
-     * @param \Docker\Api\Model\NetworksIdConnectPostBody $container 
+     * @param \Docker\Api\Model\NetworksIdConnectPostBody $container
      */
     public function __construct(string $id, \Docker\Api\Model\NetworksIdConnectPostBody $container)
     {

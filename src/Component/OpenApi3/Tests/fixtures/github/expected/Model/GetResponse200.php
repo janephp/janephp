@@ -13,206 +13,138 @@ class GetResponse200 extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $currentUserUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $currentUserAuthorizationsHtmlUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $authorizationsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $codeSearchUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $commitSearchUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $emailsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $emojisUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $eventsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $feedsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $followersUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $followingUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $gistsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $hubUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $issueSearchUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $issuesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $keysUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $labelSearchUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $notificationsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $organizationUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $organizationRepositoriesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $organizationTeamsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $publicGistsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $rateLimitUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $repositoryUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $repositorySearchUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $currentUserRepositoriesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $starredUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $starredGistsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $topicSearchUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $userUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $userOrganizationsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $userRepositoriesUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $userSearchUrl;
     /**
-     * 
-     *
      * @return string
      */
     public function getCurrentUserUrl(): string
@@ -220,8 +152,6 @@ class GetResponse200 extends \ArrayObject
         return $this->currentUserUrl;
     }
     /**
-     * 
-     *
      * @param string $currentUserUrl
      *
      * @return self
@@ -233,8 +163,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCurrentUserAuthorizationsHtmlUrl(): string
@@ -242,8 +170,6 @@ class GetResponse200 extends \ArrayObject
         return $this->currentUserAuthorizationsHtmlUrl;
     }
     /**
-     * 
-     *
      * @param string $currentUserAuthorizationsHtmlUrl
      *
      * @return self
@@ -255,8 +181,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAuthorizationsUrl(): string
@@ -264,8 +188,6 @@ class GetResponse200 extends \ArrayObject
         return $this->authorizationsUrl;
     }
     /**
-     * 
-     *
      * @param string $authorizationsUrl
      *
      * @return self
@@ -277,8 +199,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCodeSearchUrl(): string
@@ -286,8 +206,6 @@ class GetResponse200 extends \ArrayObject
         return $this->codeSearchUrl;
     }
     /**
-     * 
-     *
      * @param string $codeSearchUrl
      *
      * @return self
@@ -299,8 +217,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCommitSearchUrl(): string
@@ -308,8 +224,6 @@ class GetResponse200 extends \ArrayObject
         return $this->commitSearchUrl;
     }
     /**
-     * 
-     *
      * @param string $commitSearchUrl
      *
      * @return self
@@ -321,8 +235,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEmailsUrl(): string
@@ -330,8 +242,6 @@ class GetResponse200 extends \ArrayObject
         return $this->emailsUrl;
     }
     /**
-     * 
-     *
      * @param string $emailsUrl
      *
      * @return self
@@ -343,8 +253,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEmojisUrl(): string
@@ -352,8 +260,6 @@ class GetResponse200 extends \ArrayObject
         return $this->emojisUrl;
     }
     /**
-     * 
-     *
      * @param string $emojisUrl
      *
      * @return self
@@ -365,8 +271,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEventsUrl(): string
@@ -374,8 +278,6 @@ class GetResponse200 extends \ArrayObject
         return $this->eventsUrl;
     }
     /**
-     * 
-     *
      * @param string $eventsUrl
      *
      * @return self
@@ -387,8 +289,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFeedsUrl(): string
@@ -396,8 +296,6 @@ class GetResponse200 extends \ArrayObject
         return $this->feedsUrl;
     }
     /**
-     * 
-     *
      * @param string $feedsUrl
      *
      * @return self
@@ -409,8 +307,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFollowersUrl(): string
@@ -418,8 +314,6 @@ class GetResponse200 extends \ArrayObject
         return $this->followersUrl;
     }
     /**
-     * 
-     *
      * @param string $followersUrl
      *
      * @return self
@@ -431,8 +325,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFollowingUrl(): string
@@ -440,8 +332,6 @@ class GetResponse200 extends \ArrayObject
         return $this->followingUrl;
     }
     /**
-     * 
-     *
      * @param string $followingUrl
      *
      * @return self
@@ -453,8 +343,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGistsUrl(): string
@@ -462,8 +350,6 @@ class GetResponse200 extends \ArrayObject
         return $this->gistsUrl;
     }
     /**
-     * 
-     *
      * @param string $gistsUrl
      *
      * @return self
@@ -475,8 +361,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHubUrl(): string
@@ -484,8 +368,6 @@ class GetResponse200 extends \ArrayObject
         return $this->hubUrl;
     }
     /**
-     * 
-     *
      * @param string $hubUrl
      *
      * @return self
@@ -497,8 +379,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIssueSearchUrl(): string
@@ -506,8 +386,6 @@ class GetResponse200 extends \ArrayObject
         return $this->issueSearchUrl;
     }
     /**
-     * 
-     *
      * @param string $issueSearchUrl
      *
      * @return self
@@ -519,8 +397,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIssuesUrl(): string
@@ -528,8 +404,6 @@ class GetResponse200 extends \ArrayObject
         return $this->issuesUrl;
     }
     /**
-     * 
-     *
      * @param string $issuesUrl
      *
      * @return self
@@ -541,8 +415,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKeysUrl(): string
@@ -550,8 +422,6 @@ class GetResponse200 extends \ArrayObject
         return $this->keysUrl;
     }
     /**
-     * 
-     *
      * @param string $keysUrl
      *
      * @return self
@@ -563,8 +433,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLabelSearchUrl(): string
@@ -572,8 +440,6 @@ class GetResponse200 extends \ArrayObject
         return $this->labelSearchUrl;
     }
     /**
-     * 
-     *
      * @param string $labelSearchUrl
      *
      * @return self
@@ -585,8 +451,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNotificationsUrl(): string
@@ -594,8 +458,6 @@ class GetResponse200 extends \ArrayObject
         return $this->notificationsUrl;
     }
     /**
-     * 
-     *
      * @param string $notificationsUrl
      *
      * @return self
@@ -607,8 +469,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getOrganizationUrl(): string
@@ -616,8 +476,6 @@ class GetResponse200 extends \ArrayObject
         return $this->organizationUrl;
     }
     /**
-     * 
-     *
      * @param string $organizationUrl
      *
      * @return self
@@ -629,8 +487,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getOrganizationRepositoriesUrl(): string
@@ -638,8 +494,6 @@ class GetResponse200 extends \ArrayObject
         return $this->organizationRepositoriesUrl;
     }
     /**
-     * 
-     *
      * @param string $organizationRepositoriesUrl
      *
      * @return self
@@ -651,8 +505,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getOrganizationTeamsUrl(): string
@@ -660,8 +512,6 @@ class GetResponse200 extends \ArrayObject
         return $this->organizationTeamsUrl;
     }
     /**
-     * 
-     *
      * @param string $organizationTeamsUrl
      *
      * @return self
@@ -673,8 +523,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPublicGistsUrl(): string
@@ -682,8 +530,6 @@ class GetResponse200 extends \ArrayObject
         return $this->publicGistsUrl;
     }
     /**
-     * 
-     *
      * @param string $publicGistsUrl
      *
      * @return self
@@ -695,8 +541,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRateLimitUrl(): string
@@ -704,8 +548,6 @@ class GetResponse200 extends \ArrayObject
         return $this->rateLimitUrl;
     }
     /**
-     * 
-     *
      * @param string $rateLimitUrl
      *
      * @return self
@@ -717,8 +559,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRepositoryUrl(): string
@@ -726,8 +566,6 @@ class GetResponse200 extends \ArrayObject
         return $this->repositoryUrl;
     }
     /**
-     * 
-     *
      * @param string $repositoryUrl
      *
      * @return self
@@ -739,8 +577,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRepositorySearchUrl(): string
@@ -748,8 +584,6 @@ class GetResponse200 extends \ArrayObject
         return $this->repositorySearchUrl;
     }
     /**
-     * 
-     *
      * @param string $repositorySearchUrl
      *
      * @return self
@@ -761,8 +595,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCurrentUserRepositoriesUrl(): string
@@ -770,8 +602,6 @@ class GetResponse200 extends \ArrayObject
         return $this->currentUserRepositoriesUrl;
     }
     /**
-     * 
-     *
      * @param string $currentUserRepositoriesUrl
      *
      * @return self
@@ -783,8 +613,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStarredUrl(): string
@@ -792,8 +620,6 @@ class GetResponse200 extends \ArrayObject
         return $this->starredUrl;
     }
     /**
-     * 
-     *
      * @param string $starredUrl
      *
      * @return self
@@ -805,8 +631,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStarredGistsUrl(): string
@@ -814,8 +638,6 @@ class GetResponse200 extends \ArrayObject
         return $this->starredGistsUrl;
     }
     /**
-     * 
-     *
      * @param string $starredGistsUrl
      *
      * @return self
@@ -827,8 +649,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTopicSearchUrl(): string
@@ -836,8 +656,6 @@ class GetResponse200 extends \ArrayObject
         return $this->topicSearchUrl;
     }
     /**
-     * 
-     *
      * @param string $topicSearchUrl
      *
      * @return self
@@ -849,8 +667,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUserUrl(): string
@@ -858,8 +674,6 @@ class GetResponse200 extends \ArrayObject
         return $this->userUrl;
     }
     /**
-     * 
-     *
      * @param string $userUrl
      *
      * @return self
@@ -871,8 +685,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUserOrganizationsUrl(): string
@@ -880,8 +692,6 @@ class GetResponse200 extends \ArrayObject
         return $this->userOrganizationsUrl;
     }
     /**
-     * 
-     *
      * @param string $userOrganizationsUrl
      *
      * @return self
@@ -893,8 +703,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUserRepositoriesUrl(): string
@@ -902,8 +710,6 @@ class GetResponse200 extends \ArrayObject
         return $this->userRepositoriesUrl;
     }
     /**
-     * 
-     *
      * @param string $userRepositoriesUrl
      *
      * @return self
@@ -915,8 +721,6 @@ class GetResponse200 extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUserSearchUrl(): string
@@ -924,8 +728,6 @@ class GetResponse200 extends \ArrayObject
         return $this->userSearchUrl;
     }
     /**
-     * 
-     *
      * @param string $userSearchUrl
      *
      * @return self

@@ -25,14 +25,10 @@ class Job extends \ArrayObject
      */
     protected $runId;
     /**
-     * 
-     *
      * @var string
      */
     protected $runUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
@@ -43,14 +39,10 @@ class Job extends \ArrayObject
      */
     protected $headSha;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $htmlUrl;
@@ -91,8 +83,6 @@ class Job extends \ArrayObject
      */
     protected $steps;
     /**
-     * 
-     *
      * @var string
      */
     protected $checkRunUrl;
@@ -141,8 +131,6 @@ class Job extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRunUrl(): string
@@ -150,8 +138,6 @@ class Job extends \ArrayObject
         return $this->runUrl;
     }
     /**
-     * 
-     *
      * @param string $runUrl
      *
      * @return self
@@ -163,8 +149,6 @@ class Job extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -172,8 +156,6 @@ class Job extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -207,8 +189,6 @@ class Job extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -216,8 +196,6 @@ class Job extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -229,8 +207,6 @@ class Job extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getHtmlUrl(): ?string
@@ -238,8 +214,6 @@ class Job extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string|null $htmlUrl
      *
      * @return self
@@ -383,8 +357,6 @@ class Job extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCheckRunUrl(): string
@@ -392,8 +364,6 @@ class Job extends \ArrayObject
         return $this->checkRunUrl;
     }
     /**
-     * 
-     *
      * @param string $checkRunUrl
      *
      * @return self

@@ -13,80 +13,54 @@ class Team extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $slug;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var string
      */
     protected $privacy;
     /**
-     * 
-     *
      * @var string
      */
     protected $permission;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $membersUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $repositoriesUrl;
     /**
-     * 
-     *
      * @var TeamParent|null
      */
     protected $parent;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -94,8 +68,6 @@ class Team extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -107,8 +79,6 @@ class Team extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -116,8 +86,6 @@ class Team extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -129,8 +97,6 @@ class Team extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -138,8 +104,6 @@ class Team extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -151,8 +115,6 @@ class Team extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSlug(): string
@@ -160,8 +122,6 @@ class Team extends \ArrayObject
         return $this->slug;
     }
     /**
-     * 
-     *
      * @param string $slug
      *
      * @return self
@@ -173,8 +133,6 @@ class Team extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription(): ?string
@@ -182,8 +140,6 @@ class Team extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -195,8 +151,6 @@ class Team extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPrivacy(): string
@@ -204,8 +158,6 @@ class Team extends \ArrayObject
         return $this->privacy;
     }
     /**
-     * 
-     *
      * @param string $privacy
      *
      * @return self
@@ -217,8 +169,6 @@ class Team extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPermission(): string
@@ -226,8 +176,6 @@ class Team extends \ArrayObject
         return $this->permission;
     }
     /**
-     * 
-     *
      * @param string $permission
      *
      * @return self
@@ -239,8 +187,6 @@ class Team extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -248,8 +194,6 @@ class Team extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -261,8 +205,6 @@ class Team extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -270,8 +212,6 @@ class Team extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -283,8 +223,6 @@ class Team extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMembersUrl(): string
@@ -292,8 +230,6 @@ class Team extends \ArrayObject
         return $this->membersUrl;
     }
     /**
-     * 
-     *
      * @param string $membersUrl
      *
      * @return self
@@ -305,8 +241,6 @@ class Team extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRepositoriesUrl(): string
@@ -314,8 +248,6 @@ class Team extends \ArrayObject
         return $this->repositoriesUrl;
     }
     /**
-     * 
-     *
      * @param string $repositoriesUrl
      *
      * @return self
@@ -327,8 +259,6 @@ class Team extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return TeamParent|null
      */
     public function getParent(): ?TeamParent
@@ -336,8 +266,6 @@ class Team extends \ArrayObject
         return $this->parent;
     }
     /**
-     * 
-     *
      * @param TeamParent|null $parent
      *
      * @return self

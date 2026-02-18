@@ -14,29 +14,31 @@ class TaskSpecContainerSpecSecretsItem
     }
     /**
      * File represents a specific target that is backed by a file.
+     * 
      *
      * @var TaskSpecContainerSpecSecretsItemFile
      */
     protected $file;
     /**
-    * SecretID represents the ID of the specific secret that we're
-    referencing.
-    
-    *
-    * @var string
-    */
+     * SecretID represents the ID of the specific secret that we're
+     * referencing.
+     * 
+     *
+     * @var string
+     */
     protected $secretID;
     /**
-    * SecretName is the name of the secret that this references,
-    but this is just provided for lookup/display purposes. The
-    secret in the reference will be identified by its ID.
-    
-    *
-    * @var string
-    */
+     * SecretName is the name of the secret that this references,
+     * but this is just provided for lookup/display purposes. The
+     * secret in the reference will be identified by its ID.
+     * 
+     *
+     * @var string
+     */
     protected $secretName;
     /**
      * File represents a specific target that is backed by a file.
+     * 
      *
      * @return TaskSpecContainerSpecSecretsItemFile
      */
@@ -58,12 +60,12 @@ class TaskSpecContainerSpecSecretsItem
         return $this;
     }
     /**
-    * SecretID represents the ID of the specific secret that we're
-    referencing.
-    
-    *
-    * @return string
-    */
+     * SecretID represents the ID of the specific secret that we're
+     * referencing.
+     * 
+     *
+     * @return string
+     */
     public function getSecretID(): string
     {
         return $this->secretID;
@@ -84,13 +86,13 @@ class TaskSpecContainerSpecSecretsItem
         return $this;
     }
     /**
-    * SecretName is the name of the secret that this references,
-    but this is just provided for lookup/display purposes. The
-    secret in the reference will be identified by its ID.
-    
-    *
-    * @return string
-    */
+     * SecretName is the name of the secret that this references,
+     * but this is just provided for lookup/display purposes. The
+     * secret in the reference will be identified by its ID.
+     * 
+     *
+     * @return string
+     */
     public function getSecretName(): string
     {
         return $this->secretName;

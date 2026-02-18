@@ -13,98 +13,66 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $country;
     /**
-     * 
-     *
      * @var string
      */
     protected $regNo;
     /**
-     * 
-     *
      * @var CompanySearchSuccessResultCompaniesItemVatNo
      */
     protected $vatNo;
     /**
-     * 
-     *
      * @var string
      */
     protected $safeNo;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $status;
     /**
-     * 
-     *
      * @var string
      */
     protected $officeType;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $statusDescription;
     /**
-     * 
-     *
      * @var string
      */
     protected $activityCode;
     /**
-     * 
-     *
      * @var CompanySearchSuccessResultCompaniesItemTradingNames
      */
     protected $tradingNames;
     /**
-     * 
-     *
      * @var CompanySearchSuccessResultCompaniesItemAddress
      */
     protected $address;
     /**
-     * 
-     *
      * @var CompanySearchSuccessResultCompaniesItemDateOfLatestChange
      */
     protected $dateOfLatestChange;
     /**
-     * 
-     *
      * @var CompanySearchSuccessResultCompaniesItemDateOfLatestCAccounts
      */
     protected $dateOfLatestCAccounts;
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -112,8 +80,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -125,8 +91,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCountry(): string
@@ -134,8 +98,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this->country;
     }
     /**
-     * 
-     *
      * @param string $country
      *
      * @return self
@@ -147,8 +109,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRegNo(): string
@@ -156,8 +116,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this->regNo;
     }
     /**
-     * 
-     *
      * @param string $regNo
      *
      * @return self
@@ -169,8 +127,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CompanySearchSuccessResultCompaniesItemVatNo
      */
     public function getVatNo(): CompanySearchSuccessResultCompaniesItemVatNo
@@ -178,8 +134,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this->vatNo;
     }
     /**
-     * 
-     *
      * @param CompanySearchSuccessResultCompaniesItemVatNo $vatNo
      *
      * @return self
@@ -191,8 +145,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSafeNo(): string
@@ -200,8 +152,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this->safeNo;
     }
     /**
-     * 
-     *
      * @param string $safeNo
      *
      * @return self
@@ -213,8 +163,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -222,8 +170,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -235,8 +181,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStatus(): string
@@ -244,8 +188,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this->status;
     }
     /**
-     * 
-     *
      * @param string $status
      *
      * @return self
@@ -257,8 +199,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getOfficeType(): string
@@ -266,8 +206,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this->officeType;
     }
     /**
-     * 
-     *
      * @param string $officeType
      *
      * @return self
@@ -279,8 +217,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -288,8 +224,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -301,8 +235,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStatusDescription(): string
@@ -310,8 +242,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this->statusDescription;
     }
     /**
-     * 
-     *
      * @param string $statusDescription
      *
      * @return self
@@ -323,8 +253,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getActivityCode(): string
@@ -332,8 +260,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this->activityCode;
     }
     /**
-     * 
-     *
      * @param string $activityCode
      *
      * @return self
@@ -345,8 +271,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CompanySearchSuccessResultCompaniesItemTradingNames
      */
     public function getTradingNames(): CompanySearchSuccessResultCompaniesItemTradingNames
@@ -354,8 +278,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this->tradingNames;
     }
     /**
-     * 
-     *
      * @param CompanySearchSuccessResultCompaniesItemTradingNames $tradingNames
      *
      * @return self
@@ -367,8 +289,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CompanySearchSuccessResultCompaniesItemAddress
      */
     public function getAddress(): CompanySearchSuccessResultCompaniesItemAddress
@@ -376,8 +296,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this->address;
     }
     /**
-     * 
-     *
      * @param CompanySearchSuccessResultCompaniesItemAddress $address
      *
      * @return self
@@ -389,8 +307,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CompanySearchSuccessResultCompaniesItemDateOfLatestChange
      */
     public function getDateOfLatestChange(): CompanySearchSuccessResultCompaniesItemDateOfLatestChange
@@ -398,8 +314,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this->dateOfLatestChange;
     }
     /**
-     * 
-     *
      * @param CompanySearchSuccessResultCompaniesItemDateOfLatestChange $dateOfLatestChange
      *
      * @return self
@@ -411,8 +325,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CompanySearchSuccessResultCompaniesItemDateOfLatestCAccounts
      */
     public function getDateOfLatestCAccounts(): CompanySearchSuccessResultCompaniesItemDateOfLatestCAccounts
@@ -420,8 +332,6 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         return $this->dateOfLatestCAccounts;
     }
     /**
-     * 
-     *
      * @param CompanySearchSuccessResultCompaniesItemDateOfLatestCAccounts $dateOfLatestCAccounts
      *
      * @return self

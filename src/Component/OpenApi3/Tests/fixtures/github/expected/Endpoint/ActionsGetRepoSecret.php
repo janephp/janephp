@@ -9,9 +9,8 @@ class ActionsGetRepoSecret extends \Github\Runtime\Client\BaseEndpoint implement
     protected $secret_name;
     /**
      * Gets a single repository secret without revealing its encrypted value. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository permission to use this endpoint.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param string $secretName secret_name parameter
      */
     public function __construct(string $owner, string $repo, string $secretName)
@@ -47,7 +46,7 @@ class ActionsGetRepoSecret extends \Github\Runtime\Client\BaseEndpoint implement
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\ActionsSecret', 'json');
         }
     }

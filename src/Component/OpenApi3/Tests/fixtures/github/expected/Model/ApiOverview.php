@@ -13,68 +13,46 @@ class ApiOverview extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var bool
      */
     protected $verifiablePasswordAuthentication;
     /**
-     * 
-     *
      * @var ApiOverviewSshKeyFingerprints
      */
     protected $sshKeyFingerprints;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $hooks;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $web;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $api;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $git;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $pages;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $importer;
     /**
-     * 
-     *
      * @var string
      */
     protected $githubServicesSha;
     /**
-     * 
-     *
      * @var string
      */
     protected $installedVersion;
     /**
-     * 
-     *
      * @return bool
      */
     public function getVerifiablePasswordAuthentication(): bool
@@ -82,8 +60,6 @@ class ApiOverview extends \ArrayObject
         return $this->verifiablePasswordAuthentication;
     }
     /**
-     * 
-     *
      * @param bool $verifiablePasswordAuthentication
      *
      * @return self
@@ -95,8 +71,6 @@ class ApiOverview extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ApiOverviewSshKeyFingerprints
      */
     public function getSshKeyFingerprints(): ApiOverviewSshKeyFingerprints
@@ -104,8 +78,6 @@ class ApiOverview extends \ArrayObject
         return $this->sshKeyFingerprints;
     }
     /**
-     * 
-     *
      * @param ApiOverviewSshKeyFingerprints $sshKeyFingerprints
      *
      * @return self
@@ -117,8 +89,6 @@ class ApiOverview extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getHooks(): array
@@ -126,8 +96,6 @@ class ApiOverview extends \ArrayObject
         return $this->hooks;
     }
     /**
-     * 
-     *
      * @param list<string> $hooks
      *
      * @return self
@@ -139,8 +107,6 @@ class ApiOverview extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getWeb(): array
@@ -148,8 +114,6 @@ class ApiOverview extends \ArrayObject
         return $this->web;
     }
     /**
-     * 
-     *
      * @param list<string> $web
      *
      * @return self
@@ -161,8 +125,6 @@ class ApiOverview extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getApi(): array
@@ -170,8 +132,6 @@ class ApiOverview extends \ArrayObject
         return $this->api;
     }
     /**
-     * 
-     *
      * @param list<string> $api
      *
      * @return self
@@ -183,8 +143,6 @@ class ApiOverview extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getGit(): array
@@ -192,8 +150,6 @@ class ApiOverview extends \ArrayObject
         return $this->git;
     }
     /**
-     * 
-     *
      * @param list<string> $git
      *
      * @return self
@@ -205,8 +161,6 @@ class ApiOverview extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getPages(): array
@@ -214,8 +168,6 @@ class ApiOverview extends \ArrayObject
         return $this->pages;
     }
     /**
-     * 
-     *
      * @param list<string> $pages
      *
      * @return self
@@ -227,8 +179,6 @@ class ApiOverview extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getImporter(): array
@@ -236,8 +186,6 @@ class ApiOverview extends \ArrayObject
         return $this->importer;
     }
     /**
-     * 
-     *
      * @param list<string> $importer
      *
      * @return self
@@ -249,8 +197,6 @@ class ApiOverview extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGithubServicesSha(): string
@@ -258,8 +204,6 @@ class ApiOverview extends \ArrayObject
         return $this->githubServicesSha;
     }
     /**
-     * 
-     *
      * @param string $githubServicesSha
      *
      * @return self
@@ -271,8 +215,6 @@ class ApiOverview extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getInstalledVersion(): string
@@ -280,8 +222,6 @@ class ApiOverview extends \ArrayObject
         return $this->installedVersion;
     }
     /**
-     * 
-     *
      * @param string $installedVersion
      *
      * @return self

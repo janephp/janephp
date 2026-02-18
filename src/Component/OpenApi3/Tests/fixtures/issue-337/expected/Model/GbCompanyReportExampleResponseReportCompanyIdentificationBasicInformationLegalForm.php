@@ -13,14 +13,10 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationL
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $description;
     /**
-     * 
-     *
      * @return string
      */
     public function getDescription(): string
@@ -28,8 +24,6 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationL
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string $description
      *
      * @return self

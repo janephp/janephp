@@ -13,116 +13,78 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $login;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $avatarUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $gravatarId;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $followersUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $followingUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $gistsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $starredUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $subscriptionsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $organizationsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $reposUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $eventsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $receivedEventsUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var bool
      */
     protected $siteAdmin;
     /**
-     * 
-     *
      * @return string
      */
     public function getLogin(): string
@@ -130,8 +92,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this->login;
     }
     /**
-     * 
-     *
      * @param string $login
      *
      * @return self
@@ -143,8 +103,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -152,8 +110,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -165,8 +121,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -174,8 +128,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -187,8 +139,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAvatarUrl(): string
@@ -196,8 +146,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this->avatarUrl;
     }
     /**
-     * 
-     *
      * @param string $avatarUrl
      *
      * @return self
@@ -209,8 +157,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGravatarId(): string
@@ -218,8 +164,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this->gravatarId;
     }
     /**
-     * 
-     *
      * @param string $gravatarId
      *
      * @return self
@@ -231,8 +175,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -240,8 +182,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -253,8 +193,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -262,8 +200,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -275,8 +211,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFollowersUrl(): string
@@ -284,8 +218,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this->followersUrl;
     }
     /**
-     * 
-     *
      * @param string $followersUrl
      *
      * @return self
@@ -297,8 +229,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFollowingUrl(): string
@@ -306,8 +236,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this->followingUrl;
     }
     /**
-     * 
-     *
      * @param string $followingUrl
      *
      * @return self
@@ -319,8 +247,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGistsUrl(): string
@@ -328,8 +254,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this->gistsUrl;
     }
     /**
-     * 
-     *
      * @param string $gistsUrl
      *
      * @return self
@@ -341,8 +265,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStarredUrl(): string
@@ -350,8 +272,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this->starredUrl;
     }
     /**
-     * 
-     *
      * @param string $starredUrl
      *
      * @return self
@@ -363,8 +283,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSubscriptionsUrl(): string
@@ -372,8 +290,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this->subscriptionsUrl;
     }
     /**
-     * 
-     *
      * @param string $subscriptionsUrl
      *
      * @return self
@@ -385,8 +301,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getOrganizationsUrl(): string
@@ -394,8 +308,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this->organizationsUrl;
     }
     /**
-     * 
-     *
      * @param string $organizationsUrl
      *
      * @return self
@@ -407,8 +319,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getReposUrl(): string
@@ -416,8 +326,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this->reposUrl;
     }
     /**
-     * 
-     *
      * @param string $reposUrl
      *
      * @return self
@@ -429,8 +337,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getEventsUrl(): string
@@ -438,8 +344,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this->eventsUrl;
     }
     /**
-     * 
-     *
      * @param string $eventsUrl
      *
      * @return self
@@ -451,8 +355,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getReceivedEventsUrl(): string
@@ -460,8 +362,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this->receivedEventsUrl;
     }
     /**
-     * 
-     *
      * @param string $receivedEventsUrl
      *
      * @return self
@@ -473,8 +373,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -482,8 +380,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -495,8 +391,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getSiteAdmin(): bool
@@ -504,8 +398,6 @@ class PullRequestReviewRequestUsersItem extends \ArrayObject
         return $this->siteAdmin;
     }
     /**
-     * 
-     *
      * @param bool $siteAdmin
      *
      * @return self

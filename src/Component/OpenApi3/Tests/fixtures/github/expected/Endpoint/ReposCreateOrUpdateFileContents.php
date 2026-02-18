@@ -9,11 +9,10 @@ class ReposCreateOrUpdateFileContents extends \Github\Runtime\Client\BaseEndpoin
     protected $path;
     /**
      * Creates a new file or replaces an existing file in a repository.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param string $path path+ parameter
-     * @param null|\Github\Model\ReposOwnerRepoContentsPathPutBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoContentsPathPutBody $requestBody
      */
     public function __construct(string $owner, string $repo, string $path, ?\Github\Model\ReposOwnerRepoContentsPathPutBody $requestBody = null)
     {
@@ -55,19 +54,19 @@ class ReposCreateOrUpdateFileContents extends \Github\Runtime\Client\BaseEndpoin
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\FileCommit', 'json');
         }
-        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\FileCommit', 'json');
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateOrUpdateFileContentsNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateOrUpdateFileContentsUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (409 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateOrUpdateFileContentsConflictException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

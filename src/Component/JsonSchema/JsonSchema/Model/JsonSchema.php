@@ -13,362 +13,242 @@ class JsonSchema
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var array<string, JsonSchema|bool>|null
      */
     protected $definitions;
     /**
-     * 
-     *
      * @var array<string, JsonSchema|bool|list<string>>|null
      */
     protected $dependencies;
     /**
-     * 
-     *
      * @var JsonSchema|bool|null
      */
     protected $additionalItems;
     /**
-     * 
-     *
      * @var JsonSchema|bool|null
      */
     protected $unevaluatedItems;
     /**
-     * 
-     *
      * @var JsonSchema|bool|list<JsonSchema>|list<bool>|null
      */
     protected $items;
     /**
-     * 
-     *
      * @var JsonSchema|bool|null
      */
     protected $contains;
     /**
-     * 
-     *
      * @var JsonSchema|bool|null
      */
     protected $additionalProperties;
     /**
-     * 
-     *
      * @var array<string, JsonSchema|bool>|null
      */
     protected $unevaluatedProperties;
     /**
-     * 
-     *
      * @var array<string, JsonSchema|bool>|null
      */
     protected $properties;
     /**
-     * 
-     *
      * @var array<string, JsonSchema|bool>|null
      */
     protected $patternProperties;
     /**
-     * 
-     *
      * @var array<string, JsonSchema|bool>|null
      */
     protected $dependentSchemas;
     /**
-     * 
-     *
      * @var JsonSchema|bool|null
      */
     protected $propertyNames;
     /**
-     * 
-     *
      * @var JsonSchema|bool|null
      */
     protected $if;
     /**
-     * 
-     *
      * @var JsonSchema|bool|null
      */
     protected $then;
     /**
-     * 
-     *
      * @var JsonSchema|bool|null
      */
     protected $else;
     /**
-     * 
-     *
      * @var list<JsonSchema>|list<bool>|null
      */
     protected $allOf;
     /**
-     * 
-     *
      * @var list<JsonSchema>|list<bool>|null
      */
     protected $anyOf;
     /**
-     * 
-     *
      * @var list<JsonSchema>|list<bool>|null
      */
     protected $oneOf;
     /**
-     * 
-     *
      * @var JsonSchema|bool|null
      */
     protected $not;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $contentMediaType;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $contentEncoding;
     /**
-     * 
-     *
      * @var JsonSchema|bool|null
      */
     protected $contentSchema;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $dollarId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $dollarSchema;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $dollarAnchor;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $dollarRef;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $dollarRecursiveRef;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $dollarRecursiveAnchor = false;
     /**
-     * 
-     *
      * @var array<string, bool>|null
      */
     protected $dollarVocabulary;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $dollarComment;
     /**
-     * 
-     *
      * @var array<string, JsonSchema|bool>|null
      */
     protected $dollarDefs;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $format;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $title;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var mixed|null
      */
     protected $default;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $deprecated = false;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $readOnly = false;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $writeOnly = false;
     /**
-     * 
-     *
      * @var list<mixed>|null
      */
     protected $examples;
     /**
-     * 
-     *
      * @var float|null
      */
     protected $multipleOf;
     /**
-     * 
-     *
      * @var float|null
      */
     protected $maximum;
     /**
-     * 
-     *
      * @var float|null
      */
     protected $exclusiveMaximum;
     /**
-     * 
-     *
      * @var float|null
      */
     protected $minimum;
     /**
-     * 
-     *
      * @var float|null
      */
     protected $exclusiveMinimum;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $maxLength;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $minLength;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $pattern;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $maxItems;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $minItems;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $uniqueItems = false;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $maxContains;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $minContains;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $maxProperties;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $minProperties;
     /**
-     * 
-     *
      * @var list<string>|null
      */
     protected $required = array();
     /**
-     * 
-     *
      * @var array<string, list<string>>|null
      */
     protected $dependentRequired;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $const;
     /**
-     * 
-     *
      * @var list<string>|null
      */
     protected $enum;
     /**
-     * 
-     *
      * @var mixed|list<mixed>|null
      */
     protected $type;
     /**
-     * 
-     *
      * @return array<string, JsonSchema|bool>|null
      */
     public function getDefinitions(): ?iterable
@@ -376,8 +256,6 @@ class JsonSchema
         return $this->definitions;
     }
     /**
-     * 
-     *
      * @param array<string, JsonSchema|bool>|null $definitions
      *
      * @return self
@@ -389,8 +267,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, JsonSchema|bool|list<string>>|null
      */
     public function getDependencies(): ?iterable
@@ -398,8 +274,6 @@ class JsonSchema
         return $this->dependencies;
     }
     /**
-     * 
-     *
      * @param array<string, JsonSchema|bool|list<string>>|null $dependencies
      *
      * @return self
@@ -411,8 +285,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return JsonSchema|bool|null
      */
     public function getAdditionalItems()
@@ -420,8 +292,6 @@ class JsonSchema
         return $this->additionalItems;
     }
     /**
-     * 
-     *
      * @param JsonSchema|bool|null $additionalItems
      *
      * @return self
@@ -433,8 +303,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return JsonSchema|bool|null
      */
     public function getUnevaluatedItems()
@@ -442,8 +310,6 @@ class JsonSchema
         return $this->unevaluatedItems;
     }
     /**
-     * 
-     *
      * @param JsonSchema|bool|null $unevaluatedItems
      *
      * @return self
@@ -455,8 +321,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return JsonSchema|bool|list<JsonSchema>|list<bool>|null
      */
     public function getItems()
@@ -464,8 +328,6 @@ class JsonSchema
         return $this->items;
     }
     /**
-     * 
-     *
      * @param JsonSchema|bool|list<JsonSchema>|list<bool>|null $items
      *
      * @return self
@@ -477,8 +339,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return JsonSchema|bool|null
      */
     public function getContains()
@@ -486,8 +346,6 @@ class JsonSchema
         return $this->contains;
     }
     /**
-     * 
-     *
      * @param JsonSchema|bool|null $contains
      *
      * @return self
@@ -499,8 +357,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return JsonSchema|bool|null
      */
     public function getAdditionalProperties()
@@ -508,8 +364,6 @@ class JsonSchema
         return $this->additionalProperties;
     }
     /**
-     * 
-     *
      * @param JsonSchema|bool|null $additionalProperties
      *
      * @return self
@@ -521,8 +375,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, JsonSchema|bool>|null
      */
     public function getUnevaluatedProperties(): ?iterable
@@ -530,8 +382,6 @@ class JsonSchema
         return $this->unevaluatedProperties;
     }
     /**
-     * 
-     *
      * @param array<string, JsonSchema|bool>|null $unevaluatedProperties
      *
      * @return self
@@ -543,8 +393,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, JsonSchema|bool>|null
      */
     public function getProperties(): ?iterable
@@ -552,8 +400,6 @@ class JsonSchema
         return $this->properties;
     }
     /**
-     * 
-     *
      * @param array<string, JsonSchema|bool>|null $properties
      *
      * @return self
@@ -565,8 +411,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, JsonSchema|bool>|null
      */
     public function getPatternProperties(): ?iterable
@@ -574,8 +418,6 @@ class JsonSchema
         return $this->patternProperties;
     }
     /**
-     * 
-     *
      * @param array<string, JsonSchema|bool>|null $patternProperties
      *
      * @return self
@@ -587,8 +429,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, JsonSchema|bool>|null
      */
     public function getDependentSchemas(): ?iterable
@@ -596,8 +436,6 @@ class JsonSchema
         return $this->dependentSchemas;
     }
     /**
-     * 
-     *
      * @param array<string, JsonSchema|bool>|null $dependentSchemas
      *
      * @return self
@@ -609,8 +447,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return JsonSchema|bool|null
      */
     public function getPropertyNames()
@@ -618,8 +454,6 @@ class JsonSchema
         return $this->propertyNames;
     }
     /**
-     * 
-     *
      * @param JsonSchema|bool|null $propertyNames
      *
      * @return self
@@ -631,8 +465,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return JsonSchema|bool|null
      */
     public function getIf()
@@ -640,8 +472,6 @@ class JsonSchema
         return $this->if;
     }
     /**
-     * 
-     *
      * @param JsonSchema|bool|null $if
      *
      * @return self
@@ -653,8 +483,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return JsonSchema|bool|null
      */
     public function getThen()
@@ -662,8 +490,6 @@ class JsonSchema
         return $this->then;
     }
     /**
-     * 
-     *
      * @param JsonSchema|bool|null $then
      *
      * @return self
@@ -675,8 +501,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return JsonSchema|bool|null
      */
     public function getElse()
@@ -684,8 +508,6 @@ class JsonSchema
         return $this->else;
     }
     /**
-     * 
-     *
      * @param JsonSchema|bool|null $else
      *
      * @return self
@@ -697,8 +519,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return list<JsonSchema>|list<bool>|null
      */
     public function getAllOf(): ?array
@@ -706,8 +526,6 @@ class JsonSchema
         return $this->allOf;
     }
     /**
-     * 
-     *
      * @param list<JsonSchema>|list<bool>|null $allOf
      *
      * @return self
@@ -719,8 +537,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return list<JsonSchema>|list<bool>|null
      */
     public function getAnyOf(): ?array
@@ -728,8 +544,6 @@ class JsonSchema
         return $this->anyOf;
     }
     /**
-     * 
-     *
      * @param list<JsonSchema>|list<bool>|null $anyOf
      *
      * @return self
@@ -741,8 +555,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return list<JsonSchema>|list<bool>|null
      */
     public function getOneOf(): ?array
@@ -750,8 +562,6 @@ class JsonSchema
         return $this->oneOf;
     }
     /**
-     * 
-     *
      * @param list<JsonSchema>|list<bool>|null $oneOf
      *
      * @return self
@@ -763,8 +573,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return JsonSchema|bool|null
      */
     public function getNot()
@@ -772,8 +580,6 @@ class JsonSchema
         return $this->not;
     }
     /**
-     * 
-     *
      * @param JsonSchema|bool|null $not
      *
      * @return self
@@ -785,8 +591,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getContentMediaType(): ?string
@@ -794,8 +598,6 @@ class JsonSchema
         return $this->contentMediaType;
     }
     /**
-     * 
-     *
      * @param string|null $contentMediaType
      *
      * @return self
@@ -807,8 +609,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getContentEncoding(): ?string
@@ -816,8 +616,6 @@ class JsonSchema
         return $this->contentEncoding;
     }
     /**
-     * 
-     *
      * @param string|null $contentEncoding
      *
      * @return self
@@ -829,8 +627,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return JsonSchema|bool|null
      */
     public function getContentSchema()
@@ -838,8 +634,6 @@ class JsonSchema
         return $this->contentSchema;
     }
     /**
-     * 
-     *
      * @param JsonSchema|bool|null $contentSchema
      *
      * @return self
@@ -851,8 +645,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDollarId(): ?string
@@ -860,8 +652,6 @@ class JsonSchema
         return $this->dollarId;
     }
     /**
-     * 
-     *
      * @param string|null $dollarId
      *
      * @return self
@@ -873,8 +663,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDollarSchema(): ?string
@@ -882,8 +670,6 @@ class JsonSchema
         return $this->dollarSchema;
     }
     /**
-     * 
-     *
      * @param string|null $dollarSchema
      *
      * @return self
@@ -895,8 +681,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDollarAnchor(): ?string
@@ -904,8 +688,6 @@ class JsonSchema
         return $this->dollarAnchor;
     }
     /**
-     * 
-     *
      * @param string|null $dollarAnchor
      *
      * @return self
@@ -917,8 +699,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDollarRef(): ?string
@@ -926,8 +706,6 @@ class JsonSchema
         return $this->dollarRef;
     }
     /**
-     * 
-     *
      * @param string|null $dollarRef
      *
      * @return self
@@ -939,8 +717,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDollarRecursiveRef(): ?string
@@ -948,8 +724,6 @@ class JsonSchema
         return $this->dollarRecursiveRef;
     }
     /**
-     * 
-     *
      * @param string|null $dollarRecursiveRef
      *
      * @return self
@@ -961,8 +735,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getDollarRecursiveAnchor(): ?bool
@@ -970,8 +742,6 @@ class JsonSchema
         return $this->dollarRecursiveAnchor;
     }
     /**
-     * 
-     *
      * @param bool|null $dollarRecursiveAnchor
      *
      * @return self
@@ -983,8 +753,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, bool>|null
      */
     public function getDollarVocabulary(): ?iterable
@@ -992,8 +760,6 @@ class JsonSchema
         return $this->dollarVocabulary;
     }
     /**
-     * 
-     *
      * @param array<string, bool>|null $dollarVocabulary
      *
      * @return self
@@ -1005,8 +771,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDollarComment(): ?string
@@ -1014,8 +778,6 @@ class JsonSchema
         return $this->dollarComment;
     }
     /**
-     * 
-     *
      * @param string|null $dollarComment
      *
      * @return self
@@ -1027,8 +789,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, JsonSchema|bool>|null
      */
     public function getDollarDefs(): ?iterable
@@ -1036,8 +796,6 @@ class JsonSchema
         return $this->dollarDefs;
     }
     /**
-     * 
-     *
      * @param array<string, JsonSchema|bool>|null $dollarDefs
      *
      * @return self
@@ -1049,8 +807,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFormat(): ?string
@@ -1058,8 +814,6 @@ class JsonSchema
         return $this->format;
     }
     /**
-     * 
-     *
      * @param string|null $format
      *
      * @return self
@@ -1071,8 +825,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTitle(): ?string
@@ -1080,8 +832,6 @@ class JsonSchema
         return $this->title;
     }
     /**
-     * 
-     *
      * @param string|null $title
      *
      * @return self
@@ -1093,8 +843,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription(): ?string
@@ -1102,8 +850,6 @@ class JsonSchema
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -1115,8 +861,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed
      */
     public function getDefault()
@@ -1124,8 +868,6 @@ class JsonSchema
         return $this->default;
     }
     /**
-     * 
-     *
      * @param mixed $default
      *
      * @return self
@@ -1137,8 +879,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getDeprecated(): ?bool
@@ -1146,8 +886,6 @@ class JsonSchema
         return $this->deprecated;
     }
     /**
-     * 
-     *
      * @param bool|null $deprecated
      *
      * @return self
@@ -1159,8 +897,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getReadOnly(): ?bool
@@ -1168,8 +904,6 @@ class JsonSchema
         return $this->readOnly;
     }
     /**
-     * 
-     *
      * @param bool|null $readOnly
      *
      * @return self
@@ -1181,8 +915,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getWriteOnly(): ?bool
@@ -1190,8 +922,6 @@ class JsonSchema
         return $this->writeOnly;
     }
     /**
-     * 
-     *
      * @param bool|null $writeOnly
      *
      * @return self
@@ -1203,8 +933,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return list<mixed>|null
      */
     public function getExamples(): ?array
@@ -1212,8 +940,6 @@ class JsonSchema
         return $this->examples;
     }
     /**
-     * 
-     *
      * @param list<mixed>|null $examples
      *
      * @return self
@@ -1225,8 +951,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return float|null
      */
     public function getMultipleOf(): ?float
@@ -1234,8 +958,6 @@ class JsonSchema
         return $this->multipleOf;
     }
     /**
-     * 
-     *
      * @param float|null $multipleOf
      *
      * @return self
@@ -1247,8 +969,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return float|null
      */
     public function getMaximum(): ?float
@@ -1256,8 +976,6 @@ class JsonSchema
         return $this->maximum;
     }
     /**
-     * 
-     *
      * @param float|null $maximum
      *
      * @return self
@@ -1269,8 +987,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return float|null
      */
     public function getExclusiveMaximum(): ?float
@@ -1278,8 +994,6 @@ class JsonSchema
         return $this->exclusiveMaximum;
     }
     /**
-     * 
-     *
      * @param float|null $exclusiveMaximum
      *
      * @return self
@@ -1291,8 +1005,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return float|null
      */
     public function getMinimum(): ?float
@@ -1300,8 +1012,6 @@ class JsonSchema
         return $this->minimum;
     }
     /**
-     * 
-     *
      * @param float|null $minimum
      *
      * @return self
@@ -1313,8 +1023,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return float|null
      */
     public function getExclusiveMinimum(): ?float
@@ -1322,8 +1030,6 @@ class JsonSchema
         return $this->exclusiveMinimum;
     }
     /**
-     * 
-     *
      * @param float|null $exclusiveMinimum
      *
      * @return self
@@ -1335,8 +1041,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getMaxLength(): ?int
@@ -1344,8 +1048,6 @@ class JsonSchema
         return $this->maxLength;
     }
     /**
-     * 
-     *
      * @param int|null $maxLength
      *
      * @return self
@@ -1357,8 +1059,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getMinLength(): ?int
@@ -1366,8 +1066,6 @@ class JsonSchema
         return $this->minLength;
     }
     /**
-     * 
-     *
      * @param int|null $minLength
      *
      * @return self
@@ -1379,8 +1077,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getPattern(): ?string
@@ -1388,8 +1084,6 @@ class JsonSchema
         return $this->pattern;
     }
     /**
-     * 
-     *
      * @param string|null $pattern
      *
      * @return self
@@ -1401,8 +1095,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getMaxItems(): ?int
@@ -1410,8 +1102,6 @@ class JsonSchema
         return $this->maxItems;
     }
     /**
-     * 
-     *
      * @param int|null $maxItems
      *
      * @return self
@@ -1423,8 +1113,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getMinItems(): ?int
@@ -1432,8 +1120,6 @@ class JsonSchema
         return $this->minItems;
     }
     /**
-     * 
-     *
      * @param int|null $minItems
      *
      * @return self
@@ -1445,8 +1131,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getUniqueItems(): ?bool
@@ -1454,8 +1138,6 @@ class JsonSchema
         return $this->uniqueItems;
     }
     /**
-     * 
-     *
      * @param bool|null $uniqueItems
      *
      * @return self
@@ -1467,8 +1149,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getMaxContains(): ?int
@@ -1476,8 +1156,6 @@ class JsonSchema
         return $this->maxContains;
     }
     /**
-     * 
-     *
      * @param int|null $maxContains
      *
      * @return self
@@ -1489,8 +1167,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getMinContains(): ?int
@@ -1498,8 +1174,6 @@ class JsonSchema
         return $this->minContains;
     }
     /**
-     * 
-     *
      * @param int|null $minContains
      *
      * @return self
@@ -1511,8 +1185,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getMaxProperties(): ?int
@@ -1520,8 +1192,6 @@ class JsonSchema
         return $this->maxProperties;
     }
     /**
-     * 
-     *
      * @param int|null $maxProperties
      *
      * @return self
@@ -1533,8 +1203,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getMinProperties(): ?int
@@ -1542,8 +1210,6 @@ class JsonSchema
         return $this->minProperties;
     }
     /**
-     * 
-     *
      * @param int|null $minProperties
      *
      * @return self
@@ -1555,8 +1221,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>|null
      */
     public function getRequired(): ?array
@@ -1564,8 +1228,6 @@ class JsonSchema
         return $this->required;
     }
     /**
-     * 
-     *
      * @param list<string>|null $required
      *
      * @return self
@@ -1577,8 +1239,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, list<string>>|null
      */
     public function getDependentRequired(): ?iterable
@@ -1586,8 +1246,6 @@ class JsonSchema
         return $this->dependentRequired;
     }
     /**
-     * 
-     *
      * @param array<string, list<string>>|null $dependentRequired
      *
      * @return self
@@ -1599,8 +1257,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getConst(): ?string
@@ -1608,8 +1264,6 @@ class JsonSchema
         return $this->const;
     }
     /**
-     * 
-     *
      * @param string|null $const
      *
      * @return self
@@ -1621,8 +1275,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>|null
      */
     public function getEnum(): ?array
@@ -1630,8 +1282,6 @@ class JsonSchema
         return $this->enum;
     }
     /**
-     * 
-     *
      * @param list<string>|null $enum
      *
      * @return self
@@ -1643,8 +1293,6 @@ class JsonSchema
         return $this;
     }
     /**
-     * 
-     *
      * @return mixed|list<mixed>
      */
     public function getType()
@@ -1652,8 +1300,6 @@ class JsonSchema
         return $this->type;
     }
     /**
-     * 
-     *
      * @param mixed|list<mixed> $type
      *
      * @return self

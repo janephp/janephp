@@ -13,32 +13,22 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCred
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $commonValue;
     /**
-     * 
-     *
      * @var string
      */
     protected $commonDescription;
     /**
-     * 
-     *
      * @var GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRatingCreditLimit
      */
     protected $creditLimit;
     /**
-     * 
-     *
      * @var GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRatingProviderValue
      */
     protected $providerValue;
     /**
-     * 
-     *
      * @return string
      */
     public function getCommonValue(): string
@@ -46,8 +36,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCred
         return $this->commonValue;
     }
     /**
-     * 
-     *
      * @param string $commonValue
      *
      * @return self
@@ -59,8 +47,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCred
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCommonDescription(): string
@@ -68,8 +54,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCred
         return $this->commonDescription;
     }
     /**
-     * 
-     *
      * @param string $commonDescription
      *
      * @return self
@@ -81,8 +65,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCred
         return $this;
     }
     /**
-     * 
-     *
      * @return GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRatingCreditLimit
      */
     public function getCreditLimit(): GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRatingCreditLimit
@@ -90,8 +72,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCred
         return $this->creditLimit;
     }
     /**
-     * 
-     *
      * @param GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRatingCreditLimit $creditLimit
      *
      * @return self
@@ -103,8 +83,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCred
         return $this;
     }
     /**
-     * 
-     *
      * @return GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRatingProviderValue
      */
     public function getProviderValue(): GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRatingProviderValue
@@ -112,8 +90,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCred
         return $this->providerValue;
     }
     /**
-     * 
-     *
      * @param GbPeopleReportReponseReportDirectorshipsInactiveItemCreditScoreCurrentCreditRatingProviderValue $providerValue
      *
      * @return self

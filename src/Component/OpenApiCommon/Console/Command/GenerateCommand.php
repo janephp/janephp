@@ -6,7 +6,6 @@ use Jane\Component\JsonSchema\Console\Command\GenerateCommand as BaseGenerateCom
 use Jane\Component\JsonSchema\Console\Loader\ConfigLoaderInterface;
 use Jane\Component\JsonSchema\Console\Loader\SchemaLoaderInterface;
 use Jane\Component\JsonSchema\Printer;
-use Jane\Component\JsonSchema\Registry\RegistryInterface;
 use Jane\Component\OpenApiCommon\Console\Loader\OpenApiMatcher;
 use Jane\Component\OpenApiCommon\JaneOpenApi;
 use Jane\Component\OpenApiCommon\Registry\Registry;
@@ -17,8 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class GenerateCommand extends BaseGenerateCommand
 {
-    /** @var OpenApiMatcher */
-    private $matcher;
+    private OpenApiMatcher $matcher;
 
     public function __construct(ConfigLoaderInterface $configLoader, SchemaLoaderInterface $schemaLoader, OpenApiMatcher $matcher)
     {
@@ -65,7 +63,7 @@ class GenerateCommand extends BaseGenerateCommand
         return 0;
     }
 
-    protected function newRegistry(string $schemaFile, array $options): RegistryInterface
+    protected function newRegistry(string $schemaFile, array $options): Registry
     {
         $registry = new Registry();
         $registry->setOpenApiClass($this->matcher->match($schemaFile));

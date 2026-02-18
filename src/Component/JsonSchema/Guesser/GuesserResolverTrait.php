@@ -7,8 +7,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 trait GuesserResolverTrait
 {
-    /** @var DenormalizerInterface */
-    protected $serializer;
+    protected DenormalizerInterface $denormalizer;
 
     /**
      * Resolve a reference with a denormalizer.
@@ -19,7 +18,7 @@ trait GuesserResolverTrait
 
         while ($result instanceof Reference) {
             $result = $result->resolve(function ($data) use ($result, $class) {
-                return $this->serializer->denormalize($data, $class, 'json', [
+                return $this->denormalizer->denormalize($data, $class, 'json', [
                     'document-origin' => (string) $result->getMergedUri()->withFragment(''),
                 ]);
             });

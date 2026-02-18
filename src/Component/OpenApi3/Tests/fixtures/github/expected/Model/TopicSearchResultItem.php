@@ -13,104 +13,70 @@ class TopicSearchResultItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $displayName;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $shortDescription;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $createdBy;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $released;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var bool
      */
     protected $featured;
     /**
-     * 
-     *
      * @var bool
      */
     protected $curated;
     /**
-     * 
-     *
      * @var int
      */
     protected $score;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $repositoryCount;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $logoUrl;
     /**
-     * 
-     *
      * @var list<SearchResultTextMatchesItem>
      */
     protected $textMatches;
     /**
-     * 
-     *
      * @var list<TopicSearchResultItemRelatedItem>|null
      */
     protected $related;
     /**
-     * 
-     *
      * @var list<TopicSearchResultItemAliasesItem>|null
      */
     protected $aliases;
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -118,8 +84,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -131,8 +95,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDisplayName(): ?string
@@ -140,8 +102,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this->displayName;
     }
     /**
-     * 
-     *
      * @param string|null $displayName
      *
      * @return self
@@ -153,8 +113,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getShortDescription(): ?string
@@ -162,8 +120,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this->shortDescription;
     }
     /**
-     * 
-     *
      * @param string|null $shortDescription
      *
      * @return self
@@ -175,8 +131,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription(): ?string
@@ -184,8 +138,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -197,8 +149,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCreatedBy(): ?string
@@ -206,8 +156,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this->createdBy;
     }
     /**
-     * 
-     *
      * @param string|null $createdBy
      *
      * @return self
@@ -219,8 +167,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getReleased(): ?string
@@ -228,8 +174,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this->released;
     }
     /**
-     * 
-     *
      * @param string|null $released
      *
      * @return self
@@ -241,8 +185,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -250,8 +192,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -263,8 +203,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -272,8 +210,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -285,8 +221,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getFeatured(): bool
@@ -294,8 +228,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this->featured;
     }
     /**
-     * 
-     *
      * @param bool $featured
      *
      * @return self
@@ -307,8 +239,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getCurated(): bool
@@ -316,8 +246,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this->curated;
     }
     /**
-     * 
-     *
      * @param bool $curated
      *
      * @return self
@@ -329,8 +257,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getScore(): int
@@ -338,8 +264,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this->score;
     }
     /**
-     * 
-     *
      * @param int $score
      *
      * @return self
@@ -351,8 +275,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getRepositoryCount(): ?int
@@ -360,8 +282,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this->repositoryCount;
     }
     /**
-     * 
-     *
      * @param int|null $repositoryCount
      *
      * @return self
@@ -373,8 +293,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getLogoUrl(): ?string
@@ -382,8 +300,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this->logoUrl;
     }
     /**
-     * 
-     *
      * @param string|null $logoUrl
      *
      * @return self
@@ -395,8 +311,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<SearchResultTextMatchesItem>
      */
     public function getTextMatches(): array
@@ -404,8 +318,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this->textMatches;
     }
     /**
-     * 
-     *
      * @param list<SearchResultTextMatchesItem> $textMatches
      *
      * @return self
@@ -417,8 +329,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<TopicSearchResultItemRelatedItem>|null
      */
     public function getRelated(): ?array
@@ -426,8 +336,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this->related;
     }
     /**
-     * 
-     *
      * @param list<TopicSearchResultItemRelatedItem>|null $related
      *
      * @return self
@@ -439,8 +347,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<TopicSearchResultItemAliasesItem>|null
      */
     public function getAliases(): ?array
@@ -448,8 +354,6 @@ class TopicSearchResultItem extends \ArrayObject
         return $this->aliases;
     }
     /**
-     * 
-     *
      * @param list<TopicSearchResultItemAliasesItem>|null $aliases
      *
      * @return self

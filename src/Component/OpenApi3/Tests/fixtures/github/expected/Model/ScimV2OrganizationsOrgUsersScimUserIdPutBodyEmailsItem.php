@@ -13,26 +13,18 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyEmailsItem extends \ArrayObjec
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $value;
     /**
-     * 
-     *
      * @var bool
      */
     protected $primary;
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -40,8 +32,6 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyEmailsItem extends \ArrayObjec
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -53,8 +43,6 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyEmailsItem extends \ArrayObjec
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getValue(): string
@@ -62,8 +50,6 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyEmailsItem extends \ArrayObjec
         return $this->value;
     }
     /**
-     * 
-     *
      * @param string $value
      *
      * @return self
@@ -75,8 +61,6 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyEmailsItem extends \ArrayObjec
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getPrimary(): bool
@@ -84,8 +68,6 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyEmailsItem extends \ArrayObjec
         return $this->primary;
     }
     /**
-     * 
-     *
      * @param bool $primary
      *
      * @return self

@@ -9,11 +9,10 @@ class ReposUpdateRelease extends \Github\Runtime\Client\BaseEndpoint implements 
     protected $release_id;
     /**
      * Users with push access to the repository can edit a release.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $releaseId release_id parameter
-     * @param null|\Github\Model\ReposOwnerRepoReleasesReleaseIdPatchBody $requestBody 
+     * @param null|\Github\Model\ReposOwnerRepoReleasesReleaseIdPatchBody $requestBody
      */
     public function __construct(string $owner, string $repo, int $releaseId, ?\Github\Model\ReposOwnerRepoReleasesReleaseIdPatchBody $requestBody = null)
     {
@@ -52,7 +51,7 @@ class ReposUpdateRelease extends \Github\Runtime\Client\BaseEndpoint implements 
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\Release', 'json');
         }
     }

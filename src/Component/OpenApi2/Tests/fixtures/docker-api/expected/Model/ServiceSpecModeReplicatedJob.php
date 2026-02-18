@@ -14,20 +14,22 @@ class ServiceSpecModeReplicatedJob
     }
     /**
      * The maximum number of replicas to run simultaneously.
+     * 
      *
      * @var int
      */
     protected $maxConcurrent = 1;
     /**
-    * The total number of replicas desired to reach the Completed
-    state. If unset, will default to the value of `MaxConcurrent`
-    
-    *
-    * @var int
-    */
+     * The total number of replicas desired to reach the Completed
+     * state. If unset, will default to the value of `MaxConcurrent`
+     * 
+     *
+     * @var int
+     */
     protected $totalCompletions;
     /**
      * The maximum number of replicas to run simultaneously.
+     * 
      *
      * @return int
      */
@@ -49,12 +51,12 @@ class ServiceSpecModeReplicatedJob
         return $this;
     }
     /**
-    * The total number of replicas desired to reach the Completed
-    state. If unset, will default to the value of `MaxConcurrent`
-    
-    *
-    * @return int
-    */
+     * The total number of replicas desired to reach the Completed
+     * state. If unset, will default to the value of `MaxConcurrent`
+     * 
+     *
+     * @return int
+     */
     public function getTotalCompletions(): int
     {
         return $this->totalCompletions;

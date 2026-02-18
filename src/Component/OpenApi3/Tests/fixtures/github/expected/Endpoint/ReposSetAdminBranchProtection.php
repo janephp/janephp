@@ -8,14 +8,13 @@ class ReposSetAdminBranchProtection extends \Github\Runtime\Client\BaseEndpoint 
     protected $repo;
     protected $branch;
     /**
-    * Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    
-    Adding admin enforcement requires admin or owner permissions to the repository and branch protection to be enabled.
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param string $branch branch+ parameter
-    */
+     * Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+     *
+     * Adding admin enforcement requires admin or owner permissions to the repository and branch protection to be enabled.
+     * @param string $owner
+     * @param string $repo
+     * @param string $branch branch+ parameter
+     */
     public function __construct(string $owner, string $repo, string $branch)
     {
         $this->owner = $owner;
@@ -49,7 +48,7 @@ class ReposSetAdminBranchProtection extends \Github\Runtime\Client\BaseEndpoint 
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\ProtectedBranchAdminEnforced', 'json');
         }
     }

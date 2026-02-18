@@ -13,20 +13,14 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202 extends \ArrayObje
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $message;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @return string
      */
     public function getMessage(): string
@@ -34,8 +28,6 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202 extends \ArrayObje
         return $this->message;
     }
     /**
-     * 
-     *
      * @param string $message
      *
      * @return self
@@ -47,8 +39,6 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202 extends \ArrayObje
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -56,8 +46,6 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202 extends \ArrayObje
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self

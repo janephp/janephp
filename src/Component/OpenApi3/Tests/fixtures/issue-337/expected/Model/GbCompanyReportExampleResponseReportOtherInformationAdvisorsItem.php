@@ -13,14 +13,10 @@ class GbCompanyReportExampleResponseReportOtherInformationAdvisorsItem extends \
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $auditorName;
     /**
-     * 
-     *
      * @return string
      */
     public function getAuditorName(): string
@@ -28,8 +24,6 @@ class GbCompanyReportExampleResponseReportOtherInformationAdvisorsItem extends \
         return $this->auditorName;
     }
     /**
-     * 
-     *
      * @param string $auditorName
      *
      * @return self

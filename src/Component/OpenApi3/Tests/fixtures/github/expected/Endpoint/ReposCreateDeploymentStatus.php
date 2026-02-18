@@ -8,15 +8,14 @@ class ReposCreateDeploymentStatus extends \Github\Runtime\Client\BaseEndpoint im
     protected $repo;
     protected $deployment_id;
     /**
-    * Users with `push` access can create deployment statuses for a given deployment.
-    
-    GitHub Apps require `read & write` access to "Deployments" and `read-only` access to "Repo contents" (for private repos). OAuth Apps require the `repo_deployment` scope.
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param int $deploymentId deployment_id parameter
-    * @param null|\Github\Model\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody $requestBody 
-    */
+     * Users with `push` access can create deployment statuses for a given deployment.
+     *
+     * GitHub Apps require `read & write` access to "Deployments" and `read-only` access to "Repo contents" (for private repos). OAuth Apps require the `repo_deployment` scope.
+     * @param string $owner
+     * @param string $repo
+     * @param int $deploymentId deployment_id parameter
+     * @param null|\Github\Model\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody $requestBody
+     */
     public function __construct(string $owner, string $repo, int $deploymentId, ?\Github\Model\ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody $requestBody = null)
     {
         $this->owner = $owner;
@@ -55,10 +54,10 @@ class ReposCreateDeploymentStatus extends \Github\Runtime\Client\BaseEndpoint im
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\DeploymentStatus', 'json');
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateDeploymentStatusUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationError', 'json'), $response);
         }
     }

@@ -8,15 +8,14 @@ class ReposCreateCommitComment extends \Github\Runtime\Client\BaseEndpoint imple
     protected $repo;
     protected $commit_sha;
     /**
-    * Create a comment for a commit using its `:commit_sha`.
-    
-    This endpoint triggers [notifications](https://help.github.com/articles/about-notifications/). Creating content too quickly using this endpoint may result in abuse rate limiting. See "[Abuse rate limits](https://developer.github.com/v3/#abuse-rate-limits)" and "[Dealing with abuse rate limits](https://developer.github.com/v3/guides/best-practices-for-integrators/#dealing-with-abuse-rate-limits)" for details.
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param string $commitSha commit_sha+ parameter
-    * @param null|\Github\Model\ReposOwnerRepoCommitsCommitShaCommentsPostBody $requestBody 
-    */
+     * Create a comment for a commit using its `:commit_sha`.
+     *
+     * This endpoint triggers [notifications](https://help.github.com/articles/about-notifications/). Creating content too quickly using this endpoint may result in abuse rate limiting. See "[Abuse rate limits](https://developer.github.com/v3/#abuse-rate-limits)" and "[Dealing with abuse rate limits](https://developer.github.com/v3/guides/best-practices-for-integrators/#dealing-with-abuse-rate-limits)" for details.
+     * @param string $owner
+     * @param string $repo
+     * @param string $commitSha commit_sha+ parameter
+     * @param null|\Github\Model\ReposOwnerRepoCommitsCommitShaCommentsPostBody $requestBody
+     */
     public function __construct(string $owner, string $repo, string $commitSha, ?\Github\Model\ReposOwnerRepoCommitsCommitShaCommentsPostBody $requestBody = null)
     {
         $this->owner = $owner;
@@ -56,13 +55,13 @@ class ReposCreateCommitComment extends \Github\Runtime\Client\BaseEndpoint imple
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\CommitComment', 'json');
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateCommitCommentForbiddenException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateCommitCommentUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationError', 'json'), $response);
         }
     }

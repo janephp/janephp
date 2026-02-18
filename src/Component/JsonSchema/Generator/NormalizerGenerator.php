@@ -8,13 +8,12 @@ use Jane\Component\JsonSchema\Generator\Normalizer\JaneObjectNormalizerGenerator
 use Jane\Component\JsonSchema\Generator\Normalizer\NormalizerGenerator as NormalizerGeneratorTrait;
 use Jane\Component\JsonSchema\Registry\Schema;
 use PhpParser\Comment;
-use PhpParser\Node\Arg;
+use PhpParser\Modifiers;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
 use PhpParser\Node\NullableType;
 use PhpParser\Node\Param;
-use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
 use PhpParser\Parser;
 
@@ -26,60 +25,25 @@ class NormalizerGenerator implements GeneratorInterface
     public const FILE_TYPE_NORMALIZER = 'normalizer';
 
     /**
-     * @var Naming The naming service
+     * @param Naming $naming                     The naming service
+     * @param Parser $parser                     PHP Parser
+     * @param bool   $useReference               Whether to generate the JSON Reference system
+     * @param bool   $useCacheableSupportsMethod Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
+     * @param bool   $skipNullValues             Skip null values or not
+     * @param bool   $skipRequiredFields         if we handle required fields or not during Normalizer generation
+     * @param bool   $validation                 if we run validation or not during normalization/denormalization
+     * @param bool   $includeNullValue           include null value in conditions
      */
-    protected $naming;
-
-    /**
-     * @var Parser PHP Parser
-     */
-    protected $parser;
-
-    /**
-     * @var bool Whether to generate the JSON Reference system
-     */
-    protected $useReference;
-
-    /**
-     * @var bool|null Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
-     */
-    protected $useCacheableSupportsMethod;
-
-    /**
-     * @var bool Whether to set property to null when object contains null value for it when property is nullable
-     */
-    protected $skipNullValues;
-
-    /**
-     * @var bool if we handle required fields or not during Normalizer generation
-     */
-    protected $skipRequiedFields;
-
-    /**
-     * @var bool if we run validation or not during normalization/denormalization
-     */
-    protected $validation;
-
-    /**
-     * @var bool include null value in conditions
-     */
-    protected $includeNullValue;
-
-    /**
-     * @param bool $useReference               Whether to generate the JSON Reference system
-     * @param bool $useCacheableSupportsMethod Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
-     * @param bool $skipNullValues             Skip null values or not
-     */
-    public function __construct(Naming $naming, Parser $parser, bool $useReference = true, bool $useCacheableSupportsMethod = null, bool $skipNullValues = true, bool $skipRequiedFields = false, bool $validation = false, bool $includeNullValue = true)
-    {
-        $this->naming = $naming;
-        $this->parser = $parser;
-        $this->useReference = $useReference;
-        $this->useCacheableSupportsMethod = $useCacheableSupportsMethod;
-        $this->skipNullValues = $skipNullValues;
-        $this->skipRequiedFields = $skipRequiedFields;
-        $this->validation = $validation;
-        $this->includeNullValue = $includeNullValue;
+    public function __construct(
+        protected Naming $naming,
+        protected Parser $parser,
+        protected bool $useReference = true,
+        protected ?bool $useCacheableSupportsMethod = null,
+        protected bool $skipNullValues = true,
+        protected bool $skipRequiredFields = false,
+        protected bool $validation = false,
+        protected bool $includeNullValue = true,
+    ) {
     }
 
     /**
@@ -101,53 +65,38 @@ class NormalizerGenerator implements GeneratorInterface
             $modelFqdn = $schema->getNamespace() . '\\Model\\' . $class->getName();
 
             $methods = [];
-            $methods[] = $this->createSupportsDenormalizationMethod($modelFqdn, true);
-            $methods[] = $this->createSupportsNormalizationMethod($modelFqdn, true);
-            $methods[] = $this->createDenormalizeMethod($modelFqdn, $context, $class, true);
-            $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class, true, $this->skipNullValues, $this->skipRequiedFields, $this->includeNullValue);
-            $methods[] = $this->createGetSupportedTypesMethod($modelFqdn, $this->useCacheableSupportsMethod);
-
-            $symfony7NormalizerClass = $this->createNormalizerClass(
-                $class->getName() . 'Normalizer',
-                $methods
-            );
-
-            $methods = [];
-            $methods[] = $this->createSupportsDenormalizationMethod($modelFqdn, false);
-            $methods[] = $this->createSupportsNormalizationMethod($modelFqdn, false);
-            $methods[] = $this->createDenormalizeMethod($modelFqdn, $context, $class, false);
-            $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class, false, $this->skipNullValues, $this->skipRequiedFields, $this->includeNullValue);
+            $methods[] = $this->createSupportsDenormalizationMethod($modelFqdn);
+            $methods[] = $this->createSupportsNormalizationMethod($modelFqdn);
+            $methods[] = $this->createDenormalizeMethod($modelFqdn, $context, $class);
+            $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class, $this->skipNullValues, $this->skipRequiredFields, $this->includeNullValue);
             $methods[] = $this->createGetSupportedTypesMethod($modelFqdn, $this->useCacheableSupportsMethod);
 
             if ($this->useCacheableSupportsMethod) {
                 $methods[] = $this->createHasCacheableSupportsMethod();
             }
 
-            $legacyNormalizerClass = $this->createNormalizerClass(
+            $symfony7NormalizerClass = $this->createNormalizerClass(
                 $class->getName() . 'Normalizer',
-                $methods,
-                $this->useCacheableSupportsMethod
+                $methods
             );
 
             $useStmts = [
                 new Stmt\Use_([new Stmt\UseUse(new Name('Jane\Component\JsonSchemaRuntime\Reference'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name($this->naming->getRuntimeClassFQCN($schema->getNamespace(), ['Normalizer'], 'CheckArray')))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name($this->naming->getRuntimeClassFQCN($schema->getNamespace(), ['Normalizer'], 'ValidatorTrait')))]),
-                new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Exception\InvalidArgumentException'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\DenormalizerInterface'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\NormalizerInterface'))]),
-                new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\HttpKernel\Kernel'))]),
             ];
 
             if ($this->useCacheableSupportsMethod) {
                 $useStmts[] = new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface'))]);
             }
 
-            $useStmts = array_merge($useStmts, $this->symfony7support([$symfony7NormalizerClass], [$legacyNormalizerClass]));
+            $useStmts = array_merge($useStmts, [$symfony7NormalizerClass]);
 
             $namespace = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), $useStmts);
             $normalizers[$modelFqdn] = $schema->getNamespace() . '\\Normalizer\\' . $symfony7NormalizerClass->name;
@@ -194,26 +143,11 @@ class NormalizerGenerator implements GeneratorInterface
         $properties[] = new Stmt\PropertyProperty('normalizersCache', new Expr\Array_());
 
         $methods = [];
-        $methods[] = new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, $properties);
+        $methods[] = new Stmt\Property(Modifiers::PROTECTED, $properties);
         $methods[] = $this->createBaseNormalizerSupportsDenormalizationMethod();
         $methods[] = $this->createBaseNormalizerSupportsNormalizationMethod();
-        $methods[] = $this->createBaseNormalizerNormalizeMethod(true);
-        $methods[] = $this->createBaseNormalizerDenormalizeMethod(true);
-        $methods[] = $this->createBaseNormalizerGetNormalizer();
-        $methods[] = $this->createBaseNormalizerInitNormalizerMethod();
-        $methods[] = $this->createProxyGetSupportedTypesMethod(array_keys($normalizers));
-
-        $symfony7NormalizerClass = $this->createNormalizerClass(
-            'JaneObjectNormalizer',
-            $methods
-        );
-
-        $methods = [];
-        $methods[] = new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, $properties);
-        $methods[] = $this->createBaseNormalizerSupportsDenormalizationMethod();
-        $methods[] = $this->createBaseNormalizerSupportsNormalizationMethod();
-        $methods[] = $this->createBaseNormalizerNormalizeMethod(false);
-        $methods[] = $this->createBaseNormalizerDenormalizeMethod(false);
+        $methods[] = $this->createBaseNormalizerNormalizeMethod();
+        $methods[] = $this->createBaseNormalizerDenormalizeMethod();
         $methods[] = $this->createBaseNormalizerGetNormalizer();
         $methods[] = $this->createBaseNormalizerInitNormalizerMethod();
         $methods[] = $this->createProxyGetSupportedTypesMethod(array_keys($normalizers));
@@ -222,10 +156,9 @@ class NormalizerGenerator implements GeneratorInterface
             $methods[] = $this->createHasCacheableSupportsMethod();
         }
 
-        $legacyNormalizerClass = $this->createNormalizerClass(
+        $symfony7NormalizerClass = $this->createNormalizerClass(
             'JaneObjectNormalizer',
-            $methods,
-            $this->useCacheableSupportsMethod
+            $methods
         );
 
         $useStmts = [
@@ -237,18 +170,17 @@ class NormalizerGenerator implements GeneratorInterface
             new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface'))]),
             new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait'))]),
             new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\NormalizerInterface'))]),
-            new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\HttpKernel\Kernel'))]),
         ];
 
         if ($this->useCacheableSupportsMethod) {
             $useStmts[] = new Stmt\Use_([new Stmt\UseUse(new Name('Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface'))]);
         }
 
-        return array_merge($useStmts, $this->symfony7support([$symfony7NormalizerClass], [$legacyNormalizerClass]));
+        return array_merge($useStmts, [$symfony7NormalizerClass]);
     }
 
     /**
-     * Create method to return the supported type.
+     * Create a method to return the supported type.
      *
      * @param string $modelFqdn Fully Qualified name of the model class denormalized
      *
@@ -257,7 +189,7 @@ class NormalizerGenerator implements GeneratorInterface
     protected function createGetSupportedTypesMethod(string $modelFqdn, bool $useCacheableSupportsMethod = false)
     {
         return new Stmt\ClassMethod('getSupportedTypes', [
-            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'flags' => Modifiers::PUBLIC,
             'returnType' => new Identifier('array'),
             'params' => [
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new NullableType(new Identifier('string'))),
@@ -275,7 +207,7 @@ class NormalizerGenerator implements GeneratorInterface
     }
 
     /**
-     * Create method to return the supported type.
+     * Create a method to return the supported type.
      *
      * @param string[] $modelsFqdn Fully Qualified name of the models class denormalized
      *
@@ -300,32 +232,12 @@ class NormalizerGenerator implements GeneratorInterface
         }
 
         return new Stmt\ClassMethod('getSupportedTypes', [
-            'type' => Stmt\Class_::MODIFIER_PUBLIC,
+            'flags' => Modifiers::PUBLIC,
             'returnType' => new Identifier('array'),
             'params' => [
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new NullableType(new Identifier('string'))),
             ],
             'stmts' => [new Stmt\Return_(new Expr\Array_($arrayItems))],
         ]);
-    }
-
-    private function symfony7support(array $symfony7Stmts, array $legacyStmts): array
-    {
-        return [new Stmt\If_(
-            new Expr\BinaryOp\LogicalOr(
-                new Expr\BooleanNot(new Expr\FuncCall(new Name('class_exists'), [new Arg(new Expr\ClassConstFetch(new Name('Kernel'), new Identifier('class')))])),
-                new Expr\BinaryOp\LogicalOr(
-                    new Expr\BinaryOp\GreaterOrEqual(new Expr\ClassConstFetch(new Name('Kernel'), new Identifier('MAJOR_VERSION')), new Scalar\LNumber(7)),
-                    new Expr\BinaryOp\LogicalAnd(
-                        new Expr\BinaryOp\Identical(new Expr\ClassConstFetch(new Name('Kernel'), new Identifier('MAJOR_VERSION')), new Scalar\LNumber(6)),
-                        new Expr\BinaryOp\Identical(new Expr\ClassConstFetch(new Name('Kernel'), new Identifier('MINOR_VERSION')), new Scalar\LNumber(4)),
-                    )
-                ),
-            ),
-            [
-                'stmts' => $symfony7Stmts,
-                'else' => new Stmt\Else_($legacyStmts),
-            ]
-        )];
     }
 }

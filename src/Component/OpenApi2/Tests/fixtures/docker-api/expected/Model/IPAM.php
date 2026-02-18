@@ -19,15 +19,15 @@ class IPAM
      */
     protected $driver = 'default';
     /**
-    * List of IPAM configuration options, specified as a map:
-    
-    ```
-    {"Subnet": <CIDR>, "IPRange": <CIDR>, "Gateway": <IP address>, "AuxAddress": <device_name:IP address>}
-    ```
-    
-    *
-    * @var list<array<string, string>>
-    */
+     * List of IPAM configuration options, specified as a map:
+     * 
+     * ```
+     * {"Subnet": <CIDR>, "IPRange": <CIDR>, "Gateway": <IP address>, "AuxAddress": <device_name:IP address>}
+     * ```
+     * 
+     *
+     * @var list<array<string, string>>
+     */
     protected $config;
     /**
      * Driver-specific options, specified as a map.
@@ -58,15 +58,15 @@ class IPAM
         return $this;
     }
     /**
-    * List of IPAM configuration options, specified as a map:
-    
-    ```
-    {"Subnet": <CIDR>, "IPRange": <CIDR>, "Gateway": <IP address>, "AuxAddress": <device_name:IP address>}
-    ```
-    
-    *
-    * @return list<array<string, string>>
-    */
+     * List of IPAM configuration options, specified as a map:
+     * 
+     * ```
+     * {"Subnet": <CIDR>, "IPRange": <CIDR>, "Gateway": <IP address>, "AuxAddress": <device_name:IP address>}
+     * ```
+     * 
+     *
+     * @return list<array<string, string>>
+     */
     public function getConfig(): array
     {
         return $this->config;

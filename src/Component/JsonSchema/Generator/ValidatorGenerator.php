@@ -5,6 +5,7 @@ namespace Jane\Component\JsonSchema\Generator;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Guesser\Validator\ValidatorGuess;
 use Jane\Component\JsonSchema\Registry\Schema;
+use PhpParser\Modifiers;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
@@ -18,12 +19,9 @@ class ValidatorGenerator implements GeneratorInterface
     public const VALIDATOR_INTERFACE_NAME = 'ValidatorInterface';
     public const VALIDATOR_EXCEPTION_NAME = 'ValidationException';
 
-    /** @var Naming */
-    private $naming;
-
-    public function __construct(Naming $naming)
-    {
-        $this->naming = $naming;
+    public function __construct(
+        private readonly Naming $naming,
+    ) {
     }
 
     public function generate(Schema $schema, string $className, Context $context): void
@@ -63,7 +61,7 @@ class ValidatorGenerator implements GeneratorInterface
                             }
                         }
 
-                        $classGuess->setConstraintClass(sprintf('%s\%s', $localNamespace, $classGuess->getConstraintClass()));
+                        $classGuess->setConstraintClass(\sprintf('%s\%s', $localNamespace, $classGuess->getConstraintClass()));
 
                         if (!\array_key_exists($classGuess->getSubProperty(), $collectionItemsConstraints)) {
                             $collectionItemsConstraints[$classGuess->getSubProperty()] = [$this->generateConstraint($classGuess)];
@@ -89,10 +87,14 @@ class ValidatorGenerator implements GeneratorInterface
                     }
 
                     $constraintsItems[] = new Expr\ArrayItem(new Expr\New_(new Node\Name\FullyQualified(Collection::class), [
-                        new Node\Arg(new Expr\Array_([
-                            new Expr\ArrayItem(new Expr\Array_($collectionItems), new Scalar\String_('fields')),
-                            new Expr\ArrayItem(new Expr\ConstFetch(new Node\Name($allowExtraFields)), new Scalar\String_('allowExtraFields')),
-                        ])),
+                        new Node\Arg(
+                            new Expr\Array_($collectionItems),
+                            name: new Node\Identifier('fields'),
+                        ),
+                        new Node\Arg(
+                            new Expr\ConstFetch(new Node\Name($allowExtraFields)),
+                            name: new Node\Identifier('allowExtraFields'),
+                        ),
                     ]));
                 }
 
@@ -103,7 +105,7 @@ class ValidatorGenerator implements GeneratorInterface
                             new Node\Stmt\ClassMethod(
                                 'getConstraints',
                                 [
-                                    'type' => Node\Stmt\Class_::MODIFIER_PROTECTED,
+                                    'flags' => Modifiers::PROTECTED,
                                     'params' => [new Node\Param($optionsVariable)],
                                     'stmts' => [
                                         new Node\Stmt\Return_(new Expr\Array_($constraintsItems)),
@@ -142,12 +144,10 @@ class ValidatorGenerator implements GeneratorInterface
             }
 
             if (null !== $value) {
-                $args[] = new Expr\ArrayItem($value, new Scalar\String_($argName));
+                $args[] = new Node\Arg($value, name: new Node\Identifier($argName));
             }
         }
 
-        return new Expr\New_(new Node\Name\FullyQualified($guess->getConstraintClass()), [
-            new Node\Arg(new Expr\Array_($args)),
-        ]);
+        return new Expr\New_(new Node\Name\FullyQualified($guess->getConstraintClass()), $args);
     }
 }

@@ -14,6 +14,7 @@ class TaskSpecContainerSpecSecretsItemFile
     }
     /**
      * Name represents the final filename in the filesystem.
+     * 
      *
      * @var string
      */
@@ -38,6 +39,7 @@ class TaskSpecContainerSpecSecretsItemFile
     protected $mode;
     /**
      * Name represents the final filename in the filesystem.
+     * 
      *
      * @return string
      */

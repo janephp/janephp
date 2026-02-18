@@ -13,8 +13,6 @@ class ProtectedBranch extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
@@ -25,38 +23,26 @@ class ProtectedBranch extends \ArrayObject
      */
     protected $requiredStatusChecks;
     /**
-     * 
-     *
      * @var ProtectedBranchRequiredPullRequestReviews
      */
     protected $requiredPullRequestReviews;
     /**
-     * 
-     *
      * @var ProtectedBranchRequiredSignatures
      */
     protected $requiredSignatures;
     /**
-     * 
-     *
      * @var ProtectedBranchEnforceAdmins
      */
     protected $enforceAdmins;
     /**
-     * 
-     *
      * @var ProtectedBranchRequiredLinearHistory
      */
     protected $requiredLinearHistory;
     /**
-     * 
-     *
      * @var ProtectedBranchAllowForcePushes
      */
     protected $allowForcePushes;
     /**
-     * 
-     *
      * @var ProtectedBranchAllowDeletions
      */
     protected $allowDeletions;
@@ -67,8 +53,6 @@ class ProtectedBranch extends \ArrayObject
      */
     protected $restrictions;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -76,8 +60,6 @@ class ProtectedBranch extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -111,8 +93,6 @@ class ProtectedBranch extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ProtectedBranchRequiredPullRequestReviews
      */
     public function getRequiredPullRequestReviews(): ProtectedBranchRequiredPullRequestReviews
@@ -120,8 +100,6 @@ class ProtectedBranch extends \ArrayObject
         return $this->requiredPullRequestReviews;
     }
     /**
-     * 
-     *
      * @param ProtectedBranchRequiredPullRequestReviews $requiredPullRequestReviews
      *
      * @return self
@@ -133,8 +111,6 @@ class ProtectedBranch extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ProtectedBranchRequiredSignatures
      */
     public function getRequiredSignatures(): ProtectedBranchRequiredSignatures
@@ -142,8 +118,6 @@ class ProtectedBranch extends \ArrayObject
         return $this->requiredSignatures;
     }
     /**
-     * 
-     *
      * @param ProtectedBranchRequiredSignatures $requiredSignatures
      *
      * @return self
@@ -155,8 +129,6 @@ class ProtectedBranch extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ProtectedBranchEnforceAdmins
      */
     public function getEnforceAdmins(): ProtectedBranchEnforceAdmins
@@ -164,8 +136,6 @@ class ProtectedBranch extends \ArrayObject
         return $this->enforceAdmins;
     }
     /**
-     * 
-     *
      * @param ProtectedBranchEnforceAdmins $enforceAdmins
      *
      * @return self
@@ -177,8 +147,6 @@ class ProtectedBranch extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ProtectedBranchRequiredLinearHistory
      */
     public function getRequiredLinearHistory(): ProtectedBranchRequiredLinearHistory
@@ -186,8 +154,6 @@ class ProtectedBranch extends \ArrayObject
         return $this->requiredLinearHistory;
     }
     /**
-     * 
-     *
      * @param ProtectedBranchRequiredLinearHistory $requiredLinearHistory
      *
      * @return self
@@ -199,8 +165,6 @@ class ProtectedBranch extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ProtectedBranchAllowForcePushes
      */
     public function getAllowForcePushes(): ProtectedBranchAllowForcePushes
@@ -208,8 +172,6 @@ class ProtectedBranch extends \ArrayObject
         return $this->allowForcePushes;
     }
     /**
-     * 
-     *
      * @param ProtectedBranchAllowForcePushes $allowForcePushes
      *
      * @return self
@@ -221,8 +183,6 @@ class ProtectedBranch extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ProtectedBranchAllowDeletions
      */
     public function getAllowDeletions(): ProtectedBranchAllowDeletions
@@ -230,8 +190,6 @@ class ProtectedBranch extends \ArrayObject
         return $this->allowDeletions;
     }
     /**
-     * 
-     *
      * @param ProtectedBranchAllowDeletions $allowDeletions
      *
      * @return self

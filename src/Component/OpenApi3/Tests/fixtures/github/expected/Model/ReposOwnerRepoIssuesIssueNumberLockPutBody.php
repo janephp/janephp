@@ -13,24 +13,24 @@ class ReposOwnerRepoIssuesIssueNumberLockPutBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons:  
-    \* `off-topic`  
-    \* `too heated`  
-    \* `resolved`  
-    \* `spam`
-    *
-    * @var string
-    */
+     * The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons:
+     * \* `off-topic`
+     * \* `too heated`
+     * \* `resolved`
+     * \* `spam`
+     *
+     * @var string
+     */
     protected $lockReason;
     /**
-    * The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons:  
-    \* `off-topic`  
-    \* `too heated`  
-    \* `resolved`  
-    \* `spam`
-    *
-    * @return string
-    */
+     * The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons:
+     * \* `off-topic`
+     * \* `too heated`
+     * \* `resolved`
+     * \* `spam`
+     *
+     * @return string
+     */
     public function getLockReason(): string
     {
         return $this->lockReason;

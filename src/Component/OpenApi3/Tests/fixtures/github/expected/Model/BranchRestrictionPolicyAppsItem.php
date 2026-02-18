@@ -13,80 +13,54 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $slug;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var BranchRestrictionPolicyAppsItemOwner
      */
     protected $owner;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $description;
     /**
-     * 
-     *
      * @var string
      */
     protected $externalUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var BranchRestrictionPolicyAppsItemPermissions
      */
     protected $permissions;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $events;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -94,8 +68,6 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -107,8 +79,6 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSlug(): string
@@ -116,8 +86,6 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return $this->slug;
     }
     /**
-     * 
-     *
      * @param string $slug
      *
      * @return self
@@ -129,8 +97,6 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -138,8 +104,6 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -151,8 +115,6 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return BranchRestrictionPolicyAppsItemOwner
      */
     public function getOwner(): BranchRestrictionPolicyAppsItemOwner
@@ -160,8 +122,6 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return $this->owner;
     }
     /**
-     * 
-     *
      * @param BranchRestrictionPolicyAppsItemOwner $owner
      *
      * @return self
@@ -173,8 +133,6 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -182,8 +140,6 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -195,8 +151,6 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDescription(): string
@@ -204,8 +158,6 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string $description
      *
      * @return self
@@ -217,8 +169,6 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getExternalUrl(): string
@@ -226,8 +176,6 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return $this->externalUrl;
     }
     /**
-     * 
-     *
      * @param string $externalUrl
      *
      * @return self
@@ -239,8 +187,6 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -248,8 +194,6 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -261,8 +205,6 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCreatedAt(): string
@@ -270,8 +212,6 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param string $createdAt
      *
      * @return self
@@ -283,8 +223,6 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUpdatedAt(): string
@@ -292,8 +230,6 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param string $updatedAt
      *
      * @return self
@@ -305,8 +241,6 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return BranchRestrictionPolicyAppsItemPermissions
      */
     public function getPermissions(): BranchRestrictionPolicyAppsItemPermissions
@@ -314,8 +248,6 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return $this->permissions;
     }
     /**
-     * 
-     *
      * @param BranchRestrictionPolicyAppsItemPermissions $permissions
      *
      * @return self
@@ -327,8 +259,6 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getEvents(): array
@@ -336,8 +266,6 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         return $this->events;
     }
     /**
-     * 
-     *
      * @param list<string> $events
      *
      * @return self

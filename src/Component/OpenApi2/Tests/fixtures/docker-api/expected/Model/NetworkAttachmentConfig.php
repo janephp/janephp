@@ -14,24 +14,28 @@ class NetworkAttachmentConfig
     }
     /**
      * The target network for attachment. Must be a network name or ID.
+     * 
      *
      * @var string
      */
     protected $target;
     /**
      * Discoverable alternate names for the service on this network.
+     * 
      *
      * @var list<string>
      */
     protected $aliases;
     /**
      * Driver attachment options for the network target.
+     * 
      *
      * @var array<string, string>
      */
     protected $driverOpts;
     /**
      * The target network for attachment. Must be a network name or ID.
+     * 
      *
      * @return string
      */
@@ -54,6 +58,7 @@ class NetworkAttachmentConfig
     }
     /**
      * Discoverable alternate names for the service on this network.
+     * 
      *
      * @return list<string>
      */
@@ -76,6 +81,7 @@ class NetworkAttachmentConfig
     }
     /**
      * Driver attachment options for the network target.
+     * 
      *
      * @return array<string, string>
      */

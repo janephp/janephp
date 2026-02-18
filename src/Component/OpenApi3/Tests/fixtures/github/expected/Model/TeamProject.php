@@ -13,62 +13,42 @@ class TeamProject extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $ownerUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $columnsUrl;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $body;
     /**
-     * 
-     *
      * @var int
      */
     protected $number;
     /**
-     * 
-     *
      * @var string
      */
     protected $state;
@@ -79,38 +59,26 @@ class TeamProject extends \ArrayObject
      */
     protected $creator;
     /**
-     * 
-     *
      * @var string
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var string
      */
     protected $organizationPermission;
     /**
-     * 
-     *
      * @var bool
      */
     protected $private;
     /**
-     * 
-     *
      * @var TeamProjectPermissions
      */
     protected $permissions;
     /**
-     * 
-     *
      * @return string
      */
     public function getOwnerUrl(): string
@@ -118,8 +86,6 @@ class TeamProject extends \ArrayObject
         return $this->ownerUrl;
     }
     /**
-     * 
-     *
      * @param string $ownerUrl
      *
      * @return self
@@ -131,8 +97,6 @@ class TeamProject extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -140,8 +104,6 @@ class TeamProject extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -153,8 +115,6 @@ class TeamProject extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -162,8 +122,6 @@ class TeamProject extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -175,8 +133,6 @@ class TeamProject extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getColumnsUrl(): string
@@ -184,8 +140,6 @@ class TeamProject extends \ArrayObject
         return $this->columnsUrl;
     }
     /**
-     * 
-     *
      * @param string $columnsUrl
      *
      * @return self
@@ -197,8 +151,6 @@ class TeamProject extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -206,8 +158,6 @@ class TeamProject extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -219,8 +169,6 @@ class TeamProject extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -228,8 +176,6 @@ class TeamProject extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -241,8 +187,6 @@ class TeamProject extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -250,8 +194,6 @@ class TeamProject extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -263,8 +205,6 @@ class TeamProject extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getBody(): ?string
@@ -272,8 +212,6 @@ class TeamProject extends \ArrayObject
         return $this->body;
     }
     /**
-     * 
-     *
      * @param string|null $body
      *
      * @return self
@@ -285,8 +223,6 @@ class TeamProject extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getNumber(): int
@@ -294,8 +230,6 @@ class TeamProject extends \ArrayObject
         return $this->number;
     }
     /**
-     * 
-     *
      * @param int $number
      *
      * @return self
@@ -307,8 +241,6 @@ class TeamProject extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getState(): string
@@ -316,8 +248,6 @@ class TeamProject extends \ArrayObject
         return $this->state;
     }
     /**
-     * 
-     *
      * @param string $state
      *
      * @return self
@@ -351,8 +281,6 @@ class TeamProject extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCreatedAt(): string
@@ -360,8 +288,6 @@ class TeamProject extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param string $createdAt
      *
      * @return self
@@ -373,8 +299,6 @@ class TeamProject extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUpdatedAt(): string
@@ -382,8 +306,6 @@ class TeamProject extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param string $updatedAt
      *
      * @return self
@@ -395,8 +317,6 @@ class TeamProject extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getOrganizationPermission(): string
@@ -404,8 +324,6 @@ class TeamProject extends \ArrayObject
         return $this->organizationPermission;
     }
     /**
-     * 
-     *
      * @param string $organizationPermission
      *
      * @return self
@@ -417,8 +335,6 @@ class TeamProject extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getPrivate(): bool
@@ -426,8 +342,6 @@ class TeamProject extends \ArrayObject
         return $this->private;
     }
     /**
-     * 
-     *
      * @param bool $private
      *
      * @return self
@@ -439,8 +353,6 @@ class TeamProject extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return TeamProjectPermissions
      */
     public function getPermissions(): TeamProjectPermissions
@@ -448,8 +360,6 @@ class TeamProject extends \ArrayObject
         return $this->permissions;
     }
     /**
-     * 
-     *
      * @param TeamProjectPermissions $permissions
      *
      * @return self

@@ -7,13 +7,12 @@ class LicensesGetForRepo extends \Github\Runtime\Client\BaseEndpoint implements 
     protected $owner;
     protected $repo;
     /**
-    * This method returns the contents of the repository's license file, if one is detected.
-    
-    Similar to [Get repository content](https://developer.github.com/v3/repos/contents/#get-repository-content), this method also supports [custom media types](https://developer.github.com/v3/repos/contents/#custom-media-types) for retrieving the raw license content or rendered license HTML.
-    *
-    * @param string $owner 
-    * @param string $repo 
-    */
+     * This method returns the contents of the repository's license file, if one is detected.
+     *
+     * Similar to [Get repository content](https://developer.github.com/v3/repos/contents/#get-repository-content), this method also supports [custom media types](https://developer.github.com/v3/repos/contents/#custom-media-types) for retrieving the raw license content or rendered license HTML.
+     * @param string $owner
+     * @param string $repo
+     */
     public function __construct(string $owner, string $repo)
     {
         $this->owner = $owner;
@@ -46,7 +45,7 @@ class LicensesGetForRepo extends \Github\Runtime\Client\BaseEndpoint implements 
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\LicenseContent', 'json');
         }
     }

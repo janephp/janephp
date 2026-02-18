@@ -6,16 +6,15 @@ class TransferPartialImport extends \PicturePark\API\Runtime\Client\BaseEndpoint
 {
     protected $id;
     /**
-    * This triggers the import of selected items in a Transfer, creating contents. All imported items will be enqueued for rendering.
-               
-    Wait for completion on the Business process ID that is returned to wait for import completion.
-               
-    Transfer will transition to state ImportDone if no files of the transfer remain for import.
-    Transfer will transition to state TransferReady if any files of the transfer remain for import.
-    *
-    * @param string $id ID of transfer.
-    * @param \PicturePark\API\Model\ImportTransferPartialRequest $requestBody 
-    */
+     * This triggers the import of selected items in a Transfer, creating contents. All imported items will be enqueued for rendering.
+     *
+     * Wait for completion on the Business process ID that is returned to wait for import completion.
+     *
+     * Transfer will transition to state ImportDone if no files of the transfer remain for import.
+     * Transfer will transition to state TransferReady if any files of the transfer remain for import.
+     * @param string $id ID of transfer.
+     * @param \PicturePark\API\Model\ImportTransferPartialRequest $requestBody
+     */
     public function __construct(string $id, \PicturePark\API\Model\ImportTransferPartialRequest $requestBody)
     {
         $this->id = $id;
@@ -58,28 +57,28 @@ class TransferPartialImport extends \PicturePark\API\Runtime\Client\BaseEndpoint
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'PicturePark\API\Model\Transfer', 'json');
         }
-        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\TransferPartialImportBadRequestException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkValidationException', 'json'), $response);
         }
         if (401 === $status) {
             throw new \PicturePark\API\Exception\TransferPartialImportUnauthorizedException($response);
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\TransferPartialImportNotFoundException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkNotFoundException', 'json'), $response);
         }
         if (405 === $status) {
             throw new \PicturePark\API\Exception\TransferPartialImportMethodNotAllowedException($response);
         }
-        if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (409 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\TransferPartialImportConflictException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkConflictException', 'json'), $response);
         }
         if (429 === $status) {
             throw new \PicturePark\API\Exception\TransferPartialImportTooManyRequestsException($response);
         }
-        if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (500 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\TransferPartialImportInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
     }

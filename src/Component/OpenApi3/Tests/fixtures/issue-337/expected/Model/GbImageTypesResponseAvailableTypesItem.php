@@ -13,32 +13,22 @@ class GbImageTypesResponseAvailableTypesItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $imageType;
     /**
-     * 
-     *
      * @var string
      */
     protected $description;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $availableFormats;
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -46,8 +36,6 @@ class GbImageTypesResponseAvailableTypesItem extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -59,8 +47,6 @@ class GbImageTypesResponseAvailableTypesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getImageType(): string
@@ -68,8 +54,6 @@ class GbImageTypesResponseAvailableTypesItem extends \ArrayObject
         return $this->imageType;
     }
     /**
-     * 
-     *
      * @param string $imageType
      *
      * @return self
@@ -81,8 +65,6 @@ class GbImageTypesResponseAvailableTypesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDescription(): string
@@ -90,8 +72,6 @@ class GbImageTypesResponseAvailableTypesItem extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string $description
      *
      * @return self
@@ -103,8 +83,6 @@ class GbImageTypesResponseAvailableTypesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getAvailableFormats(): array
@@ -112,8 +90,6 @@ class GbImageTypesResponseAvailableTypesItem extends \ArrayObject
         return $this->availableFormats;
     }
     /**
-     * 
-     *
      * @param list<string> $availableFormats
      *
      * @return self

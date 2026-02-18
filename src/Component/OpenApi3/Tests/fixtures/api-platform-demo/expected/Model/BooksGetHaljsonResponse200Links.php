@@ -13,38 +13,26 @@ class BooksGetHaljsonResponse200Links extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var BooksGetHaljsonResponse200LinksSelf
      */
     protected $self;
     /**
-     * 
-     *
      * @var BooksGetHaljsonResponse200LinksFirst
      */
     protected $first;
     /**
-     * 
-     *
      * @var BooksGetHaljsonResponse200LinksLast
      */
     protected $last;
     /**
-     * 
-     *
      * @var BooksGetHaljsonResponse200LinksNext
      */
     protected $next;
     /**
-     * 
-     *
      * @var BooksGetHaljsonResponse200LinksPrevious
      */
     protected $previous;
     /**
-     * 
-     *
      * @return BooksGetHaljsonResponse200LinksSelf
      */
     public function getSelf(): BooksGetHaljsonResponse200LinksSelf
@@ -52,8 +40,6 @@ class BooksGetHaljsonResponse200Links extends \ArrayObject
         return $this->self;
     }
     /**
-     * 
-     *
      * @param BooksGetHaljsonResponse200LinksSelf $self
      *
      * @return self
@@ -65,8 +51,6 @@ class BooksGetHaljsonResponse200Links extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return BooksGetHaljsonResponse200LinksFirst
      */
     public function getFirst(): BooksGetHaljsonResponse200LinksFirst
@@ -74,8 +58,6 @@ class BooksGetHaljsonResponse200Links extends \ArrayObject
         return $this->first;
     }
     /**
-     * 
-     *
      * @param BooksGetHaljsonResponse200LinksFirst $first
      *
      * @return self
@@ -87,8 +69,6 @@ class BooksGetHaljsonResponse200Links extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return BooksGetHaljsonResponse200LinksLast
      */
     public function getLast(): BooksGetHaljsonResponse200LinksLast
@@ -96,8 +76,6 @@ class BooksGetHaljsonResponse200Links extends \ArrayObject
         return $this->last;
     }
     /**
-     * 
-     *
      * @param BooksGetHaljsonResponse200LinksLast $last
      *
      * @return self
@@ -109,8 +87,6 @@ class BooksGetHaljsonResponse200Links extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return BooksGetHaljsonResponse200LinksNext
      */
     public function getNext(): BooksGetHaljsonResponse200LinksNext
@@ -118,8 +94,6 @@ class BooksGetHaljsonResponse200Links extends \ArrayObject
         return $this->next;
     }
     /**
-     * 
-     *
      * @param BooksGetHaljsonResponse200LinksNext $next
      *
      * @return self
@@ -131,8 +105,6 @@ class BooksGetHaljsonResponse200Links extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return BooksGetHaljsonResponse200LinksPrevious
      */
     public function getPrevious(): BooksGetHaljsonResponse200LinksPrevious
@@ -140,8 +112,6 @@ class BooksGetHaljsonResponse200Links extends \ArrayObject
         return $this->previous;
     }
     /**
-     * 
-     *
      * @param BooksGetHaljsonResponse200LinksPrevious $previous
      *
      * @return self

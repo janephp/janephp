@@ -19,11 +19,11 @@ class OutputFormatDownloadFileNamePatternUpdateRequestItem
      */
     protected $id;
     /**
-    * The patterns to use per metadata language.
-    The customer's default language is required.
-    *
-    * @var mixed|null
-    */
+     * The patterns to use per metadata language.
+     * The customer's default language is required.
+     *
+     * @var mixed|null
+     */
     protected $patterns;
     /**
      * ID of the output format to set pattern for.
@@ -48,11 +48,11 @@ class OutputFormatDownloadFileNamePatternUpdateRequestItem
         return $this;
     }
     /**
-    * The patterns to use per metadata language.
-    The customer's default language is required.
-    *
-    * @return mixed
-    */
+     * The patterns to use per metadata language.
+     * The customer's default language is required.
+     *
+     * @return mixed
+     */
     public function getPatterns()
     {
         return $this->patterns;

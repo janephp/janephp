@@ -19,8 +19,6 @@ class BusinessRuleAction
      */
     protected $traceRefId;
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
@@ -44,8 +42,6 @@ class BusinessRuleAction
         $this->traceRefId = $traceRefId;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -53,8 +49,6 @@ class BusinessRuleAction
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      */
     public function setKind(string $kind)

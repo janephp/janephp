@@ -13,26 +13,18 @@ class BusinessRuleFiredEventDetail
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $documentId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $documentType;
     /**
-     * 
-     *
      * @var list<string>|null
      */
     protected $ruleIds;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDocumentId(): ?string
@@ -40,8 +32,6 @@ class BusinessRuleFiredEventDetail
         return $this->documentId;
     }
     /**
-     * 
-     *
      * @param string|null $documentId
      *
      * @return self
@@ -53,8 +43,6 @@ class BusinessRuleFiredEventDetail
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDocumentType(): ?string
@@ -62,8 +50,6 @@ class BusinessRuleFiredEventDetail
         return $this->documentType;
     }
     /**
-     * 
-     *
      * @param string|null $documentType
      *
      * @return self
@@ -75,8 +61,6 @@ class BusinessRuleFiredEventDetail
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>|null
      */
     public function getRuleIds(): ?array
@@ -84,8 +68,6 @@ class BusinessRuleFiredEventDetail
         return $this->ruleIds;
     }
     /**
-     * 
-     *
      * @param list<string>|null $ruleIds
      *
      * @return self

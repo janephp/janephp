@@ -9,16 +9,13 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class GuessClass
 {
-    private $schemaClass;
-    protected $denormalizer;
-
-    public function __construct(string $schemaClass, DenormalizerInterface $denormalizer)
-    {
-        $this->schemaClass = $schemaClass;
-        $this->denormalizer = $denormalizer;
+    public function __construct(
+        private readonly string $schemaClass,
+        protected DenormalizerInterface $denormalizer,
+    ) {
     }
 
-    public function guessClass(&$schema, string $reference, Registry $registry, bool &$array = null): ?ClassGuess
+    public function guessClass(&$schema, string $reference, Registry $registry, ?bool &$array = null): ?ClassGuess
     {
         $array = false;
 
@@ -32,7 +29,7 @@ class GuessClass
             $items = $schema->getItems();
 
             if ($items instanceof Reference) {
-                [$reference, $_] = $this->resolve($items, $this->schemaClass);
+                [$reference] = $this->resolve($items, $this->schemaClass);
             }
         }
 

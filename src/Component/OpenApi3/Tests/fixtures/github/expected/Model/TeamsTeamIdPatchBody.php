@@ -25,24 +25,24 @@ class TeamsTeamIdPatchBody extends \ArrayObject
      */
     protected $description;
     /**
-    * The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:  
-    **For a non-nested team:**  
-    \* `secret` - only visible to organization owners and members of this team.  
-    \* `closed` - visible to all members of this organization.  
-    **For a parent or child team:**  
-    \* `closed` - visible to all members of this organization.
-    *
-    * @var string
-    */
+     * The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:
+     * **For a non-nested team:**
+     * \* `secret` - only visible to organization owners and members of this team.
+     * \* `closed` - visible to all members of this organization.
+     * **For a parent or child team:**
+     * \* `closed` - visible to all members of this organization.
+     *
+     * @var string
+     */
     protected $privacy;
     /**
-    * **Deprecated**. The permission that new repositories will be added to the team with when none is specified. Can be one of:  
-    \* `pull` - team members can pull, but not push to or administer newly-added repositories.  
-    \* `push` - team members can pull and push, but not administer newly-added repositories.  
-    \* `admin` - team members can pull, push and administer newly-added repositories.
-    *
-    * @var string
-    */
+     * **Deprecated**. The permission that new repositories will be added to the team with when none is specified. Can be one of:
+     * \* `pull` - team members can pull, but not push to or administer newly-added repositories.
+     * \* `push` - team members can pull and push, but not administer newly-added repositories.
+     * \* `admin` - team members can pull, push and administer newly-added repositories.
+     *
+     * @var string
+     */
     protected $permission = 'pull';
     /**
      * The ID of a team to set as the parent team.
@@ -95,15 +95,15 @@ class TeamsTeamIdPatchBody extends \ArrayObject
         return $this;
     }
     /**
-    * The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:  
-    **For a non-nested team:**  
-    \* `secret` - only visible to organization owners and members of this team.  
-    \* `closed` - visible to all members of this organization.  
-    **For a parent or child team:**  
-    \* `closed` - visible to all members of this organization.
-    *
-    * @return string
-    */
+     * The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:
+     * **For a non-nested team:**
+     * \* `secret` - only visible to organization owners and members of this team.
+     * \* `closed` - visible to all members of this organization.
+     * **For a parent or child team:**
+     * \* `closed` - visible to all members of this organization.
+     *
+     * @return string
+     */
     public function getPrivacy(): string
     {
         return $this->privacy;
@@ -127,13 +127,13 @@ class TeamsTeamIdPatchBody extends \ArrayObject
         return $this;
     }
     /**
-    * **Deprecated**. The permission that new repositories will be added to the team with when none is specified. Can be one of:  
-    \* `pull` - team members can pull, but not push to or administer newly-added repositories.  
-    \* `push` - team members can pull and push, but not administer newly-added repositories.  
-    \* `admin` - team members can pull, push and administer newly-added repositories.
-    *
-    * @return string
-    */
+     * **Deprecated**. The permission that new repositories will be added to the team with when none is specified. Can be one of:
+     * \* `pull` - team members can pull, but not push to or administer newly-added repositories.
+     * \* `push` - team members can pull and push, but not administer newly-added repositories.
+     * \* `admin` - team members can pull, push and administer newly-added repositories.
+     *
+     * @return string
+     */
     public function getPermission(): string
     {
         return $this->permission;

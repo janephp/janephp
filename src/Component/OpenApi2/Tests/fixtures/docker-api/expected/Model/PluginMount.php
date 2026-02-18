@@ -13,50 +13,34 @@ class PluginMount
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $description;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $settable;
     /**
-     * 
-     *
      * @var string
      */
     protected $source;
     /**
-     * 
-     *
      * @var string
      */
     protected $destination;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $options;
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -64,8 +48,6 @@ class PluginMount
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -77,8 +59,6 @@ class PluginMount
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDescription(): string
@@ -86,8 +66,6 @@ class PluginMount
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string $description
      *
      * @return self
@@ -99,8 +77,6 @@ class PluginMount
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getSettable(): array
@@ -108,8 +84,6 @@ class PluginMount
         return $this->settable;
     }
     /**
-     * 
-     *
      * @param list<string> $settable
      *
      * @return self
@@ -121,8 +95,6 @@ class PluginMount
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSource(): string
@@ -130,8 +102,6 @@ class PluginMount
         return $this->source;
     }
     /**
-     * 
-     *
      * @param string $source
      *
      * @return self
@@ -143,8 +113,6 @@ class PluginMount
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDestination(): string
@@ -152,8 +120,6 @@ class PluginMount
         return $this->destination;
     }
     /**
-     * 
-     *
      * @param string $destination
      *
      * @return self
@@ -165,8 +131,6 @@ class PluginMount
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -174,8 +138,6 @@ class PluginMount
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -187,8 +149,6 @@ class PluginMount
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getOptions(): array
@@ -196,8 +156,6 @@ class PluginMount
         return $this->options;
     }
     /**
-     * 
-     *
      * @param list<string> $options
      *
      * @return self

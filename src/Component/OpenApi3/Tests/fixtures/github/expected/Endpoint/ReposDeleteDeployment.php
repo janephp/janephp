@@ -8,19 +8,18 @@ class ReposDeleteDeployment extends \Github\Runtime\Client\BaseEndpoint implemen
     protected $repo;
     protected $deployment_id;
     /**
-    * To ensure there can always be an active deployment, you can only delete an _inactive_ deployment. Anyone with `repo` or `repo_deployment` scopes can delete an inactive deployment.
-    
-    To set a deployment as inactive, you must:
-    
-    *   Create a new deployment that is active so that the system has a record of the current state, then delete the previously active deployment.
-    *   Mark the active deployment as inactive by adding any non-successful deployment status.
-    
-    For more information, see "[Create a deployment](https://developer.github.com/v3/repos/deployments/#create-a-deployment)" and "[Create a deployment status](https://developer.github.com/v3/repos/deployments/#create-a-deployment-status)."
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param int $deploymentId deployment_id parameter
-    */
+     * To ensure there can always be an active deployment, you can only delete an _inactive_ deployment. Anyone with `repo` or `repo_deployment` scopes can delete an inactive deployment.
+     *
+     * To set a deployment as inactive, you must:
+     *
+     * *   Create a new deployment that is active so that the system has a record of the current state, then delete the previously active deployment.
+     * *   Mark the active deployment as inactive by adding any non-successful deployment status.
+     *
+     * For more information, see "[Create a deployment](https://developer.github.com/v3/repos/deployments/#create-a-deployment)" and "[Create a deployment status](https://developer.github.com/v3/repos/deployments/#create-a-deployment-status)."
+     * @param string $owner
+     * @param string $repo
+     * @param int $deploymentId deployment_id parameter
+     */
     public function __construct(string $owner, string $repo, int $deploymentId)
     {
         $this->owner = $owner;
@@ -59,10 +58,10 @@ class ReposDeleteDeployment extends \Github\Runtime\Client\BaseEndpoint implemen
         if (204 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposDeleteDeploymentNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposDeleteDeploymentUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationErrorSimple', 'json'), $response);
         }
     }

@@ -13,26 +13,18 @@ class GbPeopleReportReponseReportDirectorSummary extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $currentAppointments;
     /**
-     * 
-     *
      * @var int
      */
     protected $inactiveAppointments;
     /**
-     * 
-     *
      * @var int
      */
     protected $previousAppointments;
     /**
-     * 
-     *
      * @return int
      */
     public function getCurrentAppointments(): int
@@ -40,8 +32,6 @@ class GbPeopleReportReponseReportDirectorSummary extends \ArrayObject
         return $this->currentAppointments;
     }
     /**
-     * 
-     *
      * @param int $currentAppointments
      *
      * @return self
@@ -53,8 +43,6 @@ class GbPeopleReportReponseReportDirectorSummary extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getInactiveAppointments(): int
@@ -62,8 +50,6 @@ class GbPeopleReportReponseReportDirectorSummary extends \ArrayObject
         return $this->inactiveAppointments;
     }
     /**
-     * 
-     *
      * @param int $inactiveAppointments
      *
      * @return self
@@ -75,8 +61,6 @@ class GbPeopleReportReponseReportDirectorSummary extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getPreviousAppointments(): int
@@ -84,8 +68,6 @@ class GbPeopleReportReponseReportDirectorSummary extends \ArrayObject
         return $this->previousAppointments;
     }
     /**
-     * 
-     *
      * @param int $previousAppointments
      *
      * @return self

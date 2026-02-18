@@ -7,19 +7,18 @@ class ActivityListReposStarredByUser extends \Github\Runtime\Client\BaseEndpoint
     protected $username;
     protected $accept;
     /**
-    * Lists repositories a user has starred.
-    
-    You can also find out _when_ stars were created by passing the following custom [media type](https://developer.github.com/v3/media/) via the `Accept` header:
-    *
-    * @param string $username 
-    * @param array $queryParameters {
-    *     @var string $sort One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-    *     @var string $direction One of `asc` (ascending) or `desc` (descending).
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
-    * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
-    */
+     * Lists repositories a user has starred.
+     *
+     * You can also find out _when_ stars were created by passing the following custom [media type](https://developer.github.com/v3/media/) via the `Accept` header:
+     * @param string $username
+     * @param array{
+     *    "sort"?: string, //One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
+     *    "direction"?: string, //One of `asc` (ascending) or `desc` (descending).
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
+     * @param array $accept Accept content header application/json|application/vnd.github.v3.star+json
+     */
     public function __construct(string $username, array $queryParameters = [], array $accept = [])
     {
         $this->username = $username;
@@ -62,14 +61,19 @@ class ActivityListReposStarredByUser extends \Github\Runtime\Client\BaseEndpoint
      * {@inheritdoc}
      *
      *
-     * @return null|\Github\Model\Repository[]
+     * @return null|\Github\Model\Repository[]|\Github\Model\StarredRepository[]
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Github\Model\Repository[]', 'json');
+        if (200 === $status) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+                return $serializer->deserialize($body, 'Github\Model\Repository[]', 'json');
+            }
+            if (mb_strpos(strtolower($contentType), 'application/vnd.github.v3.star+json') !== false) {
+                return $serializer->deserialize($body, 'Github\Model\StarredRepository[]', 'json');
+            }
         }
     }
     public function getAuthenticationScopes(): array

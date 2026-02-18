@@ -8,9 +8,8 @@ class ActionsListRunnerApplicationsForRepo extends \Github\Runtime\Client\BaseEn
     protected $repo;
     /**
      * Lists binaries for the runner application that you can download and run. You must authenticate using an access token with the `repo` scope to use this endpoint.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      */
     public function __construct(string $owner, string $repo)
     {
@@ -44,7 +43,7 @@ class ActionsListRunnerApplicationsForRepo extends \Github\Runtime\Client\BaseEn
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\RunnerApplication[]', 'json');
         }
     }

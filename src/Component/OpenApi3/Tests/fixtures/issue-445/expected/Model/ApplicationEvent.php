@@ -13,20 +13,14 @@ class ApplicationEvent
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $timestamp;
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getTimestamp(): \DateTime
@@ -34,8 +28,6 @@ class ApplicationEvent
         return $this->timestamp;
     }
     /**
-     * 
-     *
      * @param \DateTime $timestamp
      */
     public function setTimestamp(\DateTime $timestamp)
@@ -44,8 +36,6 @@ class ApplicationEvent
         $this->timestamp = $timestamp;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -53,8 +43,6 @@ class ApplicationEvent
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      */
     public function setKind(string $kind)

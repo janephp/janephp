@@ -5,38 +5,32 @@ namespace Jane\Component\OpenApi3\Tests\Expected;
 class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Client
 {
     /**
-     * 
-     *
-     * @param array $queryParameters {
-     *     @var int $limit How many items to return at one time (max 100)
-     * }
+     * @param array{
+     *    "limit"?: int, //How many items to return at one time (max 100)
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Pet[]|\Jane\Component\OpenApi3\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\Pet[]|\Jane\Component\OpenApi3\Tests\Expected\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function listPets(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\ListPets($queryParameters), $fetch);
     }
     /**
-     * 
-     *
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\Pet $requestBody 
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\Pet $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function createPets(\Jane\Component\OpenApi3\Tests\Expected\Model\Pet $requestBody, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\CreatePets($requestBody), $fetch);
     }
     /**
-     * 
-     *
      * @param string $petId The id of the pet to retrieve
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return null|\Jane\Component\OpenApi3\Tests\Expected\Model\Pet|\Jane\Component\OpenApi3\Tests\Expected\Model\Error|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\Pet|\Jane\Component\OpenApi3\Tests\Expected\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function showPetById(string $petId, string $fetch = self::FETCH_OBJECT)
     {

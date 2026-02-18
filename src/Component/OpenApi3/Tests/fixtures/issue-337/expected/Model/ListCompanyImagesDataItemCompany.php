@@ -13,32 +13,22 @@ class ListCompanyImagesDataItemCompany extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $country;
     /**
-     * 
-     *
      * @var string
      */
     protected $localId;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -46,8 +36,6 @@ class ListCompanyImagesDataItemCompany extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -59,8 +47,6 @@ class ListCompanyImagesDataItemCompany extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCountry(): string
@@ -68,8 +54,6 @@ class ListCompanyImagesDataItemCompany extends \ArrayObject
         return $this->country;
     }
     /**
-     * 
-     *
      * @param string $country
      *
      * @return self
@@ -81,8 +65,6 @@ class ListCompanyImagesDataItemCompany extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLocalId(): string
@@ -90,8 +72,6 @@ class ListCompanyImagesDataItemCompany extends \ArrayObject
         return $this->localId;
     }
     /**
-     * 
-     *
      * @param string $localId
      *
      * @return self
@@ -103,8 +83,6 @@ class ListCompanyImagesDataItemCompany extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -112,8 +90,6 @@ class ListCompanyImagesDataItemCompany extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self

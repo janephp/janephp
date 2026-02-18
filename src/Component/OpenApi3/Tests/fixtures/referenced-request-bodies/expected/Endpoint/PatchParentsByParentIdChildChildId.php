@@ -7,11 +7,9 @@ class PatchParentsByParentIdChildChildId extends \Jane\Component\OpenApi3\Tests\
     protected $parent_id;
     protected $child_id;
     /**
-     * 
-     *
-     * @param string $parentId 
-     * @param string $childId 
-     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\ParentsParentIdChildChildIdPatchBody $requestBody 
+     * @param string $parentId
+     * @param string $childId
+     * @param \Jane\Component\OpenApi3\Tests\Expected\Model\ParentsParentIdChildChildIdPatchBody $requestBody
      */
     public function __construct(string $parentId, string $childId, \Jane\Component\OpenApi3\Tests\Expected\Model\ParentsParentIdChildChildIdPatchBody $requestBody)
     {
@@ -49,7 +47,7 @@ class PatchParentsByParentIdChildChildId extends \Jane\Component\OpenApi3\Tests\
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\Child', 'json');
         }
     }

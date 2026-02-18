@@ -6,24 +6,23 @@ class ActionsCreateRemoveTokenForOrg extends \Github\Runtime\Client\BaseEndpoint
 {
     protected $org;
     /**
-    * **Warning:** The self-hosted runners API for organizations is currently in public beta and subject to change.
-    
-    
-    Returns a token that you can pass to the `config` script to remove a self-hosted runner from an organization. The
-    token expires after one hour. You must authenticate using an access token with the `admin:org` scope to use this
-    endpoint.
-    
-    #### Example using remove token
-    
-    To remove your self-hosted runner from an organization, replace `TOKEN` with the remove token provided by this
-    endpoint.
-    
-    ```
-    ./config.sh remove --token TOKEN
-    ```
-    *
-    * @param string $org 
-    */
+     * **Warning:** The self-hosted runners API for organizations is currently in public beta and subject to change.
+     *
+     *
+     * Returns a token that you can pass to the `config` script to remove a self-hosted runner from an organization. The
+     * token expires after one hour. You must authenticate using an access token with the `admin:org` scope to use this
+     * endpoint.
+     *
+     * #### Example using remove token
+     *
+     * To remove your self-hosted runner from an organization, replace `TOKEN` with the remove token provided by this
+     * endpoint.
+     *
+     * ```
+     * ./config.sh remove --token TOKEN
+     * ```
+     * @param string $org
+     */
     public function __construct(string $org)
     {
         $this->org = $org;
@@ -55,7 +54,7 @@ class ActionsCreateRemoveTokenForOrg extends \Github\Runtime\Client\BaseEndpoint
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\AuthenticationToken', 'json');
         }
     }

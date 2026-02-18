@@ -13,38 +13,26 @@ class CheckRunOutput extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $title;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $summary;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $text;
     /**
-     * 
-     *
      * @var int
      */
     protected $annotationsCount;
     /**
-     * 
-     *
      * @var string
      */
     protected $annotationsUrl;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTitle(): ?string
@@ -52,8 +40,6 @@ class CheckRunOutput extends \ArrayObject
         return $this->title;
     }
     /**
-     * 
-     *
      * @param string|null $title
      *
      * @return self
@@ -65,8 +51,6 @@ class CheckRunOutput extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getSummary(): ?string
@@ -74,8 +58,6 @@ class CheckRunOutput extends \ArrayObject
         return $this->summary;
     }
     /**
-     * 
-     *
      * @param string|null $summary
      *
      * @return self
@@ -87,8 +69,6 @@ class CheckRunOutput extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getText(): ?string
@@ -96,8 +76,6 @@ class CheckRunOutput extends \ArrayObject
         return $this->text;
     }
     /**
-     * 
-     *
      * @param string|null $text
      *
      * @return self
@@ -109,8 +87,6 @@ class CheckRunOutput extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getAnnotationsCount(): int
@@ -118,8 +94,6 @@ class CheckRunOutput extends \ArrayObject
         return $this->annotationsCount;
     }
     /**
-     * 
-     *
      * @param int $annotationsCount
      *
      * @return self
@@ -131,8 +105,6 @@ class CheckRunOutput extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAnnotationsUrl(): string
@@ -140,8 +112,6 @@ class CheckRunOutput extends \ArrayObject
         return $this->annotationsUrl;
     }
     /**
-     * 
-     *
      * @param string $annotationsUrl
      *
      * @return self

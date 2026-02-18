@@ -13,20 +13,14 @@ class CheckSuite extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $headBranch;
@@ -37,44 +31,30 @@ class CheckSuite extends \ArrayObject
      */
     protected $headSha;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $status;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $conclusion;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $url;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $before;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $after;
     /**
-     * 
-     *
      * @var list<PullRequestMinimal>|null
      */
     protected $pullRequests;
     /**
-     * 
-     *
      * @var CheckSuiteApp|null
      */
     protected $app;
@@ -85,14 +65,10 @@ class CheckSuite extends \ArrayObject
      */
     protected $repository;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $updatedAt;
@@ -103,20 +79,14 @@ class CheckSuite extends \ArrayObject
      */
     protected $headCommit;
     /**
-     * 
-     *
      * @var int
      */
     protected $latestCheckRunsCount;
     /**
-     * 
-     *
      * @var string
      */
     protected $checkRunsUrl;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -124,8 +94,6 @@ class CheckSuite extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -137,8 +105,6 @@ class CheckSuite extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -146,8 +112,6 @@ class CheckSuite extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -159,8 +123,6 @@ class CheckSuite extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getHeadBranch(): ?string
@@ -168,8 +130,6 @@ class CheckSuite extends \ArrayObject
         return $this->headBranch;
     }
     /**
-     * 
-     *
      * @param string|null $headBranch
      *
      * @return self
@@ -203,8 +163,6 @@ class CheckSuite extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getStatus(): ?string
@@ -212,8 +170,6 @@ class CheckSuite extends \ArrayObject
         return $this->status;
     }
     /**
-     * 
-     *
      * @param string|null $status
      *
      * @return self
@@ -225,8 +181,6 @@ class CheckSuite extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getConclusion(): ?string
@@ -234,8 +188,6 @@ class CheckSuite extends \ArrayObject
         return $this->conclusion;
     }
     /**
-     * 
-     *
      * @param string|null $conclusion
      *
      * @return self
@@ -247,8 +199,6 @@ class CheckSuite extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getUrl(): ?string
@@ -256,8 +206,6 @@ class CheckSuite extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string|null $url
      *
      * @return self
@@ -269,8 +217,6 @@ class CheckSuite extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getBefore(): ?string
@@ -278,8 +224,6 @@ class CheckSuite extends \ArrayObject
         return $this->before;
     }
     /**
-     * 
-     *
      * @param string|null $before
      *
      * @return self
@@ -291,8 +235,6 @@ class CheckSuite extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getAfter(): ?string
@@ -300,8 +242,6 @@ class CheckSuite extends \ArrayObject
         return $this->after;
     }
     /**
-     * 
-     *
      * @param string|null $after
      *
      * @return self
@@ -313,8 +253,6 @@ class CheckSuite extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<PullRequestMinimal>|null
      */
     public function getPullRequests(): ?array
@@ -322,8 +260,6 @@ class CheckSuite extends \ArrayObject
         return $this->pullRequests;
     }
     /**
-     * 
-     *
      * @param list<PullRequestMinimal>|null $pullRequests
      *
      * @return self
@@ -335,8 +271,6 @@ class CheckSuite extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CheckSuiteApp|null
      */
     public function getApp(): ?CheckSuiteApp
@@ -344,8 +278,6 @@ class CheckSuite extends \ArrayObject
         return $this->app;
     }
     /**
-     * 
-     *
      * @param CheckSuiteApp|null $app
      *
      * @return self
@@ -379,8 +311,6 @@ class CheckSuite extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
@@ -388,8 +318,6 @@ class CheckSuite extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $createdAt
      *
      * @return self
@@ -401,8 +329,6 @@ class CheckSuite extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
@@ -410,8 +336,6 @@ class CheckSuite extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $updatedAt
      *
      * @return self
@@ -445,8 +369,6 @@ class CheckSuite extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getLatestCheckRunsCount(): int
@@ -454,8 +376,6 @@ class CheckSuite extends \ArrayObject
         return $this->latestCheckRunsCount;
     }
     /**
-     * 
-     *
      * @param int $latestCheckRunsCount
      *
      * @return self
@@ -467,8 +387,6 @@ class CheckSuite extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCheckRunsUrl(): string
@@ -476,8 +394,6 @@ class CheckSuite extends \ArrayObject
         return $this->checkRunsUrl;
     }
     /**
-     * 
-     *
      * @param string $checkRunsUrl
      *
      * @return self

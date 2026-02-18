@@ -1,0 +1,91 @@
+<?php
+
+namespace Jane\Generated\DigitalOcean\Normalizer;
+
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Jane\Generated\DigitalOcean\Runtime\Normalizer\CheckArray;
+use Jane\Generated\DigitalOcean\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+class DropletNetworksNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+    {
+        return $type === \Jane\Generated\DigitalOcean\Model\DropletNetworks::class;
+    }
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+    {
+        return is_object($data) && get_class($data) === \Jane\Generated\DigitalOcean\Model\DropletNetworks::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
+        $object = new \Jane\Generated\DigitalOcean\Model\DropletNetworks();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (\array_key_exists('v4', $data)) {
+            $values = [];
+            foreach ($data['v4'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\NetworkV4::class, 'json', $context);
+            }
+            $object->setV4($values);
+            unset($data['v4']);
+        }
+        if (\array_key_exists('v6', $data)) {
+            $values_1 = [];
+            foreach ($data['v6'] as $value_1) {
+                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Generated\DigitalOcean\Model\NetworkV6::class, 'json', $context);
+            }
+            $object->setV6($values_1);
+            unset($data['v6']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
+        }
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        if ($data->isInitialized('v4') && null !== $data->getV4()) {
+            $values = [];
+            foreach ($data->getV4() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $dataArray['v4'] = $values;
+        }
+        if ($data->isInitialized('v6') && null !== $data->getV6()) {
+            $values_1 = [];
+            foreach ($data->getV6() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            }
+            $dataArray['v6'] = $values_1;
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_2;
+            }
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Jane\Generated\DigitalOcean\Model\DropletNetworks::class => false];
+    }
+}

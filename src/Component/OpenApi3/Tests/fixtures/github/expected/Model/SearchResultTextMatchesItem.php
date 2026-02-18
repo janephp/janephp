@@ -13,38 +13,26 @@ class SearchResultTextMatchesItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $objectUrl;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $objectType;
     /**
-     * 
-     *
      * @var string
      */
     protected $property;
     /**
-     * 
-     *
      * @var string
      */
     protected $fragment;
     /**
-     * 
-     *
      * @var list<SearchResultTextMatchesItemMatchesItem>
      */
     protected $matches;
     /**
-     * 
-     *
      * @return string
      */
     public function getObjectUrl(): string
@@ -52,8 +40,6 @@ class SearchResultTextMatchesItem extends \ArrayObject
         return $this->objectUrl;
     }
     /**
-     * 
-     *
      * @param string $objectUrl
      *
      * @return self
@@ -65,8 +51,6 @@ class SearchResultTextMatchesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getObjectType(): ?string
@@ -74,8 +58,6 @@ class SearchResultTextMatchesItem extends \ArrayObject
         return $this->objectType;
     }
     /**
-     * 
-     *
      * @param string|null $objectType
      *
      * @return self
@@ -87,8 +69,6 @@ class SearchResultTextMatchesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getProperty(): string
@@ -96,8 +76,6 @@ class SearchResultTextMatchesItem extends \ArrayObject
         return $this->property;
     }
     /**
-     * 
-     *
      * @param string $property
      *
      * @return self
@@ -109,8 +87,6 @@ class SearchResultTextMatchesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFragment(): string
@@ -118,8 +94,6 @@ class SearchResultTextMatchesItem extends \ArrayObject
         return $this->fragment;
     }
     /**
-     * 
-     *
      * @param string $fragment
      *
      * @return self
@@ -131,8 +105,6 @@ class SearchResultTextMatchesItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<SearchResultTextMatchesItemMatchesItem>
      */
     public function getMatches(): array
@@ -140,8 +112,6 @@ class SearchResultTextMatchesItem extends \ArrayObject
         return $this->matches;
     }
     /**
-     * 
-     *
      * @param list<SearchResultTextMatchesItemMatchesItem> $matches
      *
      * @return self

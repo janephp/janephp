@@ -6,34 +6,32 @@ class ServiceUpdate extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
 {
     protected $id;
     /**
-    * 
-    *
-    * @param string $id ID or name of service.
-    * @param \Docker\Api\Model\ServicesIdUpdatePostBody $body 
-    * @param array $queryParameters {
-    *     @var int $version The version number of the service object being updated. This is
-    required to avoid conflicting writes.
-    This version number should be the value as currently set on the
-    service *before* the update. You can find the current version by
-    calling `GET /services/{id}`
-    
-    *     @var string $registryAuthFrom If the `X-Registry-Auth` header is not specified, this parameter
-    indicates where to find registry authorization credentials.
-    
-    *     @var string $rollback Set to this parameter to `previous` to cause a server-side rollback
-    to the previous service spec. The supplied spec will be ignored in
-    this case.
-    
-    * }
-    * @param array $headerParameters {
-    *     @var string $X-Registry-Auth A base64url-encoded auth configuration for pulling from private
-    registries.
-    
-    Refer to the [authentication section](#section/Authentication) for
-    details.
-    
-    * }
-    */
+     * @param string $id ID or name of service.
+     * @param \Docker\Api\Model\ServicesIdUpdatePostBody $body
+     * @param array $queryParameters {
+     *     @var int $version The version number of the service object being updated. This is
+     *     required to avoid conflicting writes.
+     *     This version number should be the value as currently set on the
+     *     service *before* the update. You can find the current version by
+     *     calling `GET /services/{id}`
+     *     
+     *     @var string $registryAuthFrom If the `X-Registry-Auth` header is not specified, this parameter
+     *     indicates where to find registry authorization credentials.
+     *     
+     *     @var string $rollback Set to this parameter to `previous` to cause a server-side rollback
+     *     to the previous service spec. The supplied spec will be ignored in
+     *     this case.
+     *     
+     * }
+     * @param array $headerParameters {
+     *     @var string $X-Registry-Auth A base64url-encoded auth configuration for pulling from private
+     *     registries.
+     *     
+     *     Refer to the [authentication section](#section/Authentication) for
+     *     details.
+     *     
+     * }
+     */
     public function __construct(string $id, \Docker\Api\Model\ServicesIdUpdatePostBody $body, array $queryParameters = [], array $headerParameters = [])
     {
         $this->id = $id;

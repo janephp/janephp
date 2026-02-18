@@ -37,12 +37,12 @@ class SchemaPermissionSetCreateRequest extends \ArrayObject
      */
     protected $exclusive;
     /**
-    * Optional client reference for this request.
-    Will be returned back in response to make easier for clients to match request items with the respective results.
-    It is not persisted anywhere and it is ignored in single operations.
-    *
-    * @var string|null
-    */
+     * Optional client reference for this request.
+     * Will be returned back in response to make easier for clients to match request items with the respective results.
+     * It is not persisted anywhere and it is ignored in single operations.
+     *
+     * @var string|null
+     */
     protected $requestId;
     /**
      * Language specific permission set names.
@@ -133,12 +133,12 @@ class SchemaPermissionSetCreateRequest extends \ArrayObject
         return $this;
     }
     /**
-    * Optional client reference for this request.
-    Will be returned back in response to make easier for clients to match request items with the respective results.
-    It is not persisted anywhere and it is ignored in single operations.
-    *
-    * @return string|null
-    */
+     * Optional client reference for this request.
+     * Will be returned back in response to make easier for clients to match request items with the respective results.
+     * It is not persisted anywhere and it is ignored in single operations.
+     *
+     * @return string|null
+     */
     public function getRequestId(): ?string
     {
         return $this->requestId;

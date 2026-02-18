@@ -6,8 +6,76 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [7.10.4] - 2026-01-26
+### Added
+- [OpenApi] [GH#907](https://github.com/janephp/janephp/pull/907) Add support for object type in query parameters
+- [Jane] [GH#894](https://github.com/janephp/janephp/pull/894) New documentation with MkDocs & Mike (available at: https://jane.jolicode.com/)
+
+### Changed
+- [Jane] [GH#894](https://github.com/janephp/janephp/pull/894) Improved tooling to use [castor](https://castor.jolicode.com/)
+
+### Fixed
+- [OpenApi] [GH#908](https://github.com/janephp/janephp/pull/908) Fix arrays as query params
+- [OpenApi] [GH#910](https://github.com/janephp/janephp/pull/910) Fix query parameters PHPDoc
+
+## [7.10.3] - 2025-12-24
+### Fixed
+- [OpenApi] [GH#895](https://github.com/janephp/janephp/pull/895) Cast parameter to string to avoid TypeError in BaseEndpoint class
+- [OpenApi3] [GH#897](https://github.com/janephp/janephp/pull/897) Download OpenApi3 "issue-669" schema to avoid frequent changes
+
+## [7.10.2] - 2025-12-15
+### Changed
+- [OpenApi] [GH#891](https://github.com/janephp/janephp/pull/891) Better generated Client operation method return types
+
+### Fixed
+- [OpenApi] [GH#890](https://github.com/janephp/janephp/pull/890) No double encoding for query parameters
+- [OpenApi] [GH#892](https://github.com/janephp/janephp/pull/892) Ensure allowReserved works in referenced parameters
+
+## [7.10.1] - 2025-12-08
+### Fixed
+- [Jane] [GH#886](https://github.com/janephp/janephp/pull/886) Fix version constraint for Symfony 8
+
+## [7.10.0] - 2025-12-04
+### Added
+- [Jane] [GH#855](https://github.com/janephp/janephp/pull/855) Add PHPStan
+- [Jane] [GH#856](https://github.com/janephp/janephp/pull/856) Add bundle tests
+- [OpenApi3] [GH#814](https://github.com/janephp/janephp/pull/814) Handle generic `+json` content-types
+- [OpenApi3] [GH#876](https://github.com/janephp/janephp/pull/876) Handle allowReserved on queryParameters
+- [Jane] [GH#871](https://github.com/janephp/janephp/pull/871) Symfony 8 support
+
+### Changed
+- [Jane] [GH#856](https://github.com/janephp/janephp/pull/856) Modernize bundle configuration
+- [Jane] [GH#857](https://github.com/janephp/janephp/pull/857) Modernize classes
+- [Jane] [GH#827](https://github.com/janephp/janephp/pull/827) Make doctypes with less whitespace and unnecessary new lines
+- [OpenApi3] [GH#864](https://github.com/janephp/janephp/pull/864) Use serializer rather than `json_encode` in generated `getBody` for requests
+- [OpenApi] [GH#875](https://github.com/janephp/janephp/pull/875) Re-order path parameters to put default ones at the end
+
+### Fixed
+- [JsonSchema] [GH#841](https://github.com/janephp/janephp/pull/841) Fix "nullable" property handing in generated normalizers
+- [OpenApi3] [GH#787](https://github.com/janephp/janephp/pull/787) Add null safe operator in case $schema is null
+- [OpenApi] [GH#866](https://github.com/janephp/janephp/pull/866) Fix trailing */ in comment block for Client endpoints methods
+- [OpenApi3] [GH#862](https://github.com/janephp/janephp/pull/862) Fix [GH#828](https://github.com/janephp/janephp/issues/828) with simpler array type check
+- [OpenApi3] [GH#874](https://github.com/janephp/janephp/pull/874) Fix error for anyOf in endpoint parameters
+- [JsonSchema] [GH#877](https://github.com/janephp/janephp/pull/877) Do no generate a MinLength constraint when value is zero
+- [OpenApi3] [GH#878](https://github.com/janephp/janephp/pull/878) Handle any content-type starting with application/json
+- [OpenApi2] [GH#879](https://github.com/janephp/janephp/pull/879) Error in BodyParameterGenerator::convertParameterType when generating
+
+## [7.9.0] - 2025-04-17
+### Added
+- [Jane] [GH#836](https://github.com/janephp/janephp/pull/836) Run test suite with PHP 8.3 & PHP 8.4
+- [Jane] [GH#843](https://github.com/janephp/janephp/pull/843) Add PHP 8.4 support
+- [Jane] [GH#842](https://github.com/janephp/janephp/pull/842) Add Symfony 7.2 support & remove deprecations
+
+### Changed
+- [CI] [GH#852](https://github.com/janephp/janephp/pull/852)  Update PHP-CS-Fixer to v3.75.0
+- [OpenAPI] [GH#835](https://github.com/janephp/janephp/pull/835) Add array support in simple style path parameters
+
 ### Fixed
 - [PHP] [GH#842](https://github.com/janephp/janephp/pull/842) Fix generated files to be compatible with PHP 8.4
+- [CI] [GH#850](https://github.com/janephp/janephp/pull/850) Update GH actions/cache to v4
+- [OpenApi] [GH#845](https://github.com/janephp/janephp/pull/845) Content */* breaks generated Endpoint PHP class
+- [JsonSchema] [GH#846](https://github.com/janephp/janephp/pull/846) Cast integer data to bool for boolean fields when integer is in data
 
 ## [7.8.1] - 2024-07-29
 ### Fixed
@@ -768,7 +836,13 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.8.1...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.10.4...HEAD
+[7.10.4]: https://github.com/janephp/janephp/compare/v7.10.3...v7.10.4
+[7.10.3]: https://github.com/janephp/janephp/compare/v7.10.2...v7.10.3
+[7.10.2]: https://github.com/janephp/janephp/compare/v7.10.1...v7.10.2
+[7.10.1]: https://github.com/janephp/janephp/compare/v7.10.0...v7.10.1
+[7.10.0]: https://github.com/janephp/janephp/compare/v7.9.0...v7.10.0
+[7.9.0]: https://github.com/janephp/janephp/compare/v7.8.1...v7.9.0
 [7.8.1]: https://github.com/janephp/janephp/compare/v7.8.0...v7.8.1
 [7.8.0]: https://github.com/janephp/janephp/compare/v7.7.0...v7.8.0
 [7.7.0]: https://github.com/janephp/janephp/compare/v7.6.2...v7.7.0

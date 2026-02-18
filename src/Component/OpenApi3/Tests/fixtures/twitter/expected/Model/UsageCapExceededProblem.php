@@ -13,38 +13,26 @@ class UsageCapExceededProblem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string
      */
     protected $period;
     /**
-     * 
-     *
      * @var string
      */
     protected $scope;
     /**
-     * 
-     *
      * @var string
      */
     protected $title;
     /**
-     * 
-     *
      * @var string
      */
     protected $detail;
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -52,8 +40,6 @@ class UsageCapExceededProblem extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -65,8 +51,6 @@ class UsageCapExceededProblem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPeriod(): string
@@ -74,8 +58,6 @@ class UsageCapExceededProblem extends \ArrayObject
         return $this->period;
     }
     /**
-     * 
-     *
      * @param string $period
      *
      * @return self
@@ -87,8 +69,6 @@ class UsageCapExceededProblem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getScope(): string
@@ -96,8 +76,6 @@ class UsageCapExceededProblem extends \ArrayObject
         return $this->scope;
     }
     /**
-     * 
-     *
      * @param string $scope
      *
      * @return self
@@ -109,8 +87,6 @@ class UsageCapExceededProblem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTitle(): string
@@ -118,8 +94,6 @@ class UsageCapExceededProblem extends \ArrayObject
         return $this->title;
     }
     /**
-     * 
-     *
      * @param string $title
      *
      * @return self
@@ -131,8 +105,6 @@ class UsageCapExceededProblem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDetail(): string
@@ -140,8 +112,6 @@ class UsageCapExceededProblem extends \ArrayObject
         return $this->detail;
     }
     /**
-     * 
-     *
      * @param string $detail
      *
      * @return self

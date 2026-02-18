@@ -14,7 +14,7 @@ trait ServerPluginGenerator
     /**
      * @param OpenApi $openApi
      */
-    private function discoverServer($openApi): array
+    protected function discoverServer($openApi): array
     {
         if (null !== ($host = $openApi->getHost())) {
             $scheme = 'https';

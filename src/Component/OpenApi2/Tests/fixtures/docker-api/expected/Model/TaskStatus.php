@@ -13,38 +13,26 @@ class TaskStatus
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $timestamp;
     /**
-     * 
-     *
      * @var string
      */
     protected $state;
     /**
-     * 
-     *
      * @var string
      */
     protected $message;
     /**
-     * 
-     *
      * @var string
      */
     protected $err;
     /**
-     * 
-     *
      * @var TaskStatusContainerStatus
      */
     protected $containerStatus;
     /**
-     * 
-     *
      * @return string
      */
     public function getTimestamp(): string
@@ -52,8 +40,6 @@ class TaskStatus
         return $this->timestamp;
     }
     /**
-     * 
-     *
      * @param string $timestamp
      *
      * @return self
@@ -65,8 +51,6 @@ class TaskStatus
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getState(): string
@@ -74,8 +58,6 @@ class TaskStatus
         return $this->state;
     }
     /**
-     * 
-     *
      * @param string $state
      *
      * @return self
@@ -87,8 +69,6 @@ class TaskStatus
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMessage(): string
@@ -96,8 +76,6 @@ class TaskStatus
         return $this->message;
     }
     /**
-     * 
-     *
      * @param string $message
      *
      * @return self
@@ -109,8 +87,6 @@ class TaskStatus
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getErr(): string
@@ -118,8 +94,6 @@ class TaskStatus
         return $this->err;
     }
     /**
-     * 
-     *
      * @param string $err
      *
      * @return self
@@ -131,8 +105,6 @@ class TaskStatus
         return $this;
     }
     /**
-     * 
-     *
      * @return TaskStatusContainerStatus
      */
     public function getContainerStatus(): TaskStatusContainerStatus
@@ -140,8 +112,6 @@ class TaskStatus
         return $this->containerStatus;
     }
     /**
-     * 
-     *
      * @param TaskStatusContainerStatus $containerStatus
      *
      * @return self

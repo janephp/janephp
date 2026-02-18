@@ -8,11 +8,11 @@ class TeamsUpdateInOrg extends \Github\Runtime\Client\BaseEndpoint implements \G
     protected $team_slug;
     /**
      * To edit a team, the authenticated user must either be an organization owner or a team maintainer.
-     **Note:** You can also specify a team by `org_id` and `team_id` using the route `PATCH /organizations/{org_id}/team/{team_id}`.
      *
-     * @param string $org 
+     * **Note:** You can also specify a team by `org_id` and `team_id` using the route `PATCH /organizations/{org_id}/team/{team_id}`.
+     * @param string $org
      * @param string $teamSlug team_slug parameter
-     * @param null|\Github\Model\OrgsOrgTeamsTeamSlugPatchBody $requestBody 
+     * @param null|\Github\Model\OrgsOrgTeamsTeamSlugPatchBody $requestBody
      */
     public function __construct(string $org, string $teamSlug, ?\Github\Model\OrgsOrgTeamsTeamSlugPatchBody $requestBody = null)
     {
@@ -50,7 +50,7 @@ class TeamsUpdateInOrg extends \Github\Runtime\Client\BaseEndpoint implements \G
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\TeamFull', 'json');
         }
     }

@@ -13,16 +13,16 @@ class Health
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * Status is one of `none`, `starting`, `healthy` or `unhealthy`
-    
-    - "none"      Indicates there is no healthcheck
-    - "starting"  Starting indicates that the container is not yet ready
-    - "healthy"   Healthy indicates that the container is running correctly
-    - "unhealthy" Unhealthy indicates that the container has a problem
-    
-    *
-    * @var string
-    */
+     * Status is one of `none`, `starting`, `healthy` or `unhealthy`
+     * 
+     * - "none"      Indicates there is no healthcheck
+     * - "starting"  Starting indicates that the container is not yet ready
+     * - "healthy"   Healthy indicates that the container is running correctly
+     * - "unhealthy" Unhealthy indicates that the container has a problem
+     * 
+     *
+     * @var string
+     */
     protected $status;
     /**
      * FailingStreak is the number of consecutive failures
@@ -32,21 +32,22 @@ class Health
     protected $failingStreak;
     /**
      * Log contains the last few results (oldest first)
+     * 
      *
      * @var list<HealthcheckResult>
      */
     protected $log;
     /**
-    * Status is one of `none`, `starting`, `healthy` or `unhealthy`
-    
-    - "none"      Indicates there is no healthcheck
-    - "starting"  Starting indicates that the container is not yet ready
-    - "healthy"   Healthy indicates that the container is running correctly
-    - "unhealthy" Unhealthy indicates that the container has a problem
-    
-    *
-    * @return string
-    */
+     * Status is one of `none`, `starting`, `healthy` or `unhealthy`
+     * 
+     * - "none"      Indicates there is no healthcheck
+     * - "starting"  Starting indicates that the container is not yet ready
+     * - "healthy"   Healthy indicates that the container is running correctly
+     * - "unhealthy" Unhealthy indicates that the container has a problem
+     * 
+     *
+     * @return string
+     */
     public function getStatus(): string
     {
         return $this->status;
@@ -94,6 +95,7 @@ class Health
     }
     /**
      * Log contains the last few results (oldest first)
+     * 
      *
      * @return list<HealthcheckResult>
      */

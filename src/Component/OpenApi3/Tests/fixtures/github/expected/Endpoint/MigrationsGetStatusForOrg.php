@@ -7,18 +7,17 @@ class MigrationsGetStatusForOrg extends \Github\Runtime\Client\BaseEndpoint impl
     protected $org;
     protected $migration_id;
     /**
-    * Fetches the status of a migration.
-    
-    The `state` of a migration can be one of the following values:
-    
-    *   `pending`, which means the migration hasn't started yet.
-    *   `exporting`, which means the migration is in progress.
-    *   `exported`, which means the migration finished successfully.
-    *   `failed`, which means the migration failed.
-    *
-    * @param string $org 
-    * @param int $migrationId migration_id parameter
-    */
+     * Fetches the status of a migration.
+     *
+     * The `state` of a migration can be one of the following values:
+     *
+     * *   `pending`, which means the migration hasn't started yet.
+     * *   `exporting`, which means the migration is in progress.
+     * *   `exported`, which means the migration finished successfully.
+     * *   `failed`, which means the migration failed.
+     * @param string $org
+     * @param int $migrationId migration_id parameter
+     */
     public function __construct(string $org, int $migrationId)
     {
         $this->org = $org;
@@ -52,10 +51,10 @@ class MigrationsGetStatusForOrg extends \Github\Runtime\Client\BaseEndpoint impl
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\Migration', 'json');
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\MigrationsGetStatusForOrgNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

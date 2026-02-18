@@ -4,7 +4,7 @@ namespace Jane\Component\OpenApiCommon\SchemaParser;
 
 use Jane\Component\OpenApiCommon\Exception\CouldNotParseException;
 use Jane\Component\OpenApiCommon\Exception\OpenApiVersionSupportException;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Yaml\Exception\ExceptionInterface as YamlException;
 use Symfony\Component\Yaml\Yaml;
 
@@ -15,12 +15,9 @@ abstract class SchemaParser
     protected const OPEN_API_MODEL = null;
     protected const OPEN_API_VERSION_MAJOR = null;
 
-    /** @var SerializerInterface */
-    private $serializer;
-
-    public function __construct(SerializerInterface $serializer)
-    {
-        $this->serializer = $serializer;
+    public function __construct(
+        private readonly DenormalizerInterface $denormalizer,
+    ) {
     }
 
     public function parseSchema(string $openApiSpecPath)
@@ -44,7 +41,7 @@ abstract class SchemaParser
 
                 return static::$parsed[$openApiSpecPath] = $this->denormalize($content, $openApiSpecPath);
             } catch (YamlException $yamlException) {
-                throw new CouldNotParseException(sprintf("Could not parse schema in JSON nor YAML format:\n- JSON error: \"%s\"\n- YAML error: \"%s\"\n", $jsonException->getMessage(), $yamlException->getMessage()));
+                throw new CouldNotParseException(\sprintf("Could not parse schema in JSON nor YAML format:\n- JSON error: \"%s\"\n- YAML error: \"%s\"\n", $jsonException->getMessage(), $yamlException->getMessage()));
             }
         }
 
@@ -63,10 +60,10 @@ abstract class SchemaParser
     protected function denormalize($openApiSpecData, $openApiSpecPath)
     {
         if (!$this->validSchema($openApiSpecData)) {
-            throw new OpenApiVersionSupportException(sprintf('Only OpenAPI v%s specifications and up are supported, use an external tool to convert your api files', static::OPEN_API_VERSION_MAJOR));
+            throw new OpenApiVersionSupportException(\sprintf('Only OpenAPI v%s specifications and up are supported, use an external tool to convert your api files', static::OPEN_API_VERSION_MAJOR));
         }
 
-        return $this->serializer->denormalize(
+        return $this->denormalizer->denormalize(
             $openApiSpecData,
             static::OPEN_API_MODEL,
             'json',

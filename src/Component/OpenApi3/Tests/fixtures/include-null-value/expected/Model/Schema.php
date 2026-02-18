@@ -13,80 +13,58 @@ class Schema extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $attribute1;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $attribute2;
     /**
-     * 
-     *
      * @var string
      */
     protected $attribute3;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $attribute4;
     /**
-     * 
-     *
      * @var string
      */
     protected $stringProperty;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $dateProperty;
     /**
-     * 
-     *
+     * @var \DateTime|null
+     */
+    protected $dateNullableProperty;
+    /**
      * @var int
      */
     protected $integerProperty;
     /**
-     * 
-     *
      * @var float
      */
     protected $floatProperty;
     /**
-     * 
-     *
      * @var list<mixed>
      */
     protected $arrayProperty;
     /**
-     * 
-     *
      * @var array<string, string>
      */
     protected $mapProperty;
     /**
-     * 
-     *
      * @var SchemaObjectProperty
      */
     protected $objectProperty;
     /**
-     * 
-     *
      * @var Schema
      */
     protected $objectRefProperty;
     /**
-     * 
-     *
      * @return string
      */
     public function getAttribute1(): string
@@ -94,8 +72,6 @@ class Schema extends \ArrayObject
         return $this->attribute1;
     }
     /**
-     * 
-     *
      * @param string $attribute1
      *
      * @return self
@@ -107,8 +83,6 @@ class Schema extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getAttribute2(): ?string
@@ -116,8 +90,6 @@ class Schema extends \ArrayObject
         return $this->attribute2;
     }
     /**
-     * 
-     *
      * @param string|null $attribute2
      *
      * @return self
@@ -129,8 +101,6 @@ class Schema extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAttribute3(): string
@@ -138,8 +108,6 @@ class Schema extends \ArrayObject
         return $this->attribute3;
     }
     /**
-     * 
-     *
      * @param string $attribute3
      *
      * @return self
@@ -151,8 +119,6 @@ class Schema extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getAttribute4(): ?string
@@ -160,8 +126,6 @@ class Schema extends \ArrayObject
         return $this->attribute4;
     }
     /**
-     * 
-     *
      * @param string|null $attribute4
      *
      * @return self
@@ -173,8 +137,6 @@ class Schema extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStringProperty(): string
@@ -182,8 +144,6 @@ class Schema extends \ArrayObject
         return $this->stringProperty;
     }
     /**
-     * 
-     *
      * @param string $stringProperty
      *
      * @return self
@@ -195,8 +155,6 @@ class Schema extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getDateProperty(): \DateTime
@@ -204,8 +162,6 @@ class Schema extends \ArrayObject
         return $this->dateProperty;
     }
     /**
-     * 
-     *
      * @param \DateTime $dateProperty
      *
      * @return self
@@ -217,8 +173,24 @@ class Schema extends \ArrayObject
         return $this;
     }
     /**
-     * 
+     * @return \DateTime|null
+     */
+    public function getDateNullableProperty(): ?\DateTime
+    {
+        return $this->dateNullableProperty;
+    }
+    /**
+     * @param \DateTime|null $dateNullableProperty
      *
+     * @return self
+     */
+    public function setDateNullableProperty(?\DateTime $dateNullableProperty): self
+    {
+        $this->initialized['dateNullableProperty'] = true;
+        $this->dateNullableProperty = $dateNullableProperty;
+        return $this;
+    }
+    /**
      * @return int
      */
     public function getIntegerProperty(): int
@@ -226,8 +198,6 @@ class Schema extends \ArrayObject
         return $this->integerProperty;
     }
     /**
-     * 
-     *
      * @param int $integerProperty
      *
      * @return self
@@ -239,8 +209,6 @@ class Schema extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getFloatProperty(): float
@@ -248,8 +216,6 @@ class Schema extends \ArrayObject
         return $this->floatProperty;
     }
     /**
-     * 
-     *
      * @param float $floatProperty
      *
      * @return self
@@ -261,8 +227,6 @@ class Schema extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<mixed>
      */
     public function getArrayProperty(): array
@@ -270,8 +234,6 @@ class Schema extends \ArrayObject
         return $this->arrayProperty;
     }
     /**
-     * 
-     *
      * @param list<mixed> $arrayProperty
      *
      * @return self
@@ -283,8 +245,6 @@ class Schema extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, string>
      */
     public function getMapProperty(): iterable
@@ -292,8 +252,6 @@ class Schema extends \ArrayObject
         return $this->mapProperty;
     }
     /**
-     * 
-     *
      * @param array<string, string> $mapProperty
      *
      * @return self
@@ -305,8 +263,6 @@ class Schema extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return SchemaObjectProperty
      */
     public function getObjectProperty(): SchemaObjectProperty
@@ -314,8 +270,6 @@ class Schema extends \ArrayObject
         return $this->objectProperty;
     }
     /**
-     * 
-     *
      * @param SchemaObjectProperty $objectProperty
      *
      * @return self
@@ -327,8 +281,6 @@ class Schema extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Schema
      */
     public function getObjectRefProperty(): Schema
@@ -336,8 +288,6 @@ class Schema extends \ArrayObject
         return $this->objectRefProperty;
     }
     /**
-     * 
-     *
      * @param Schema $objectRefProperty
      *
      * @return self

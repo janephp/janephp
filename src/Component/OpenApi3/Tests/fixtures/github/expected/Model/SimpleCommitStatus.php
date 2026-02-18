@@ -13,74 +13,50 @@ class SimpleCommitStatus extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var string
      */
     protected $state;
     /**
-     * 
-     *
      * @var string
      */
     protected $context;
     /**
-     * 
-     *
      * @var string
      */
     protected $targetUrl;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $required;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $avatarUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription(): ?string
@@ -88,8 +64,6 @@ class SimpleCommitStatus extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -101,8 +75,6 @@ class SimpleCommitStatus extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -110,8 +82,6 @@ class SimpleCommitStatus extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -123,8 +93,6 @@ class SimpleCommitStatus extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -132,8 +100,6 @@ class SimpleCommitStatus extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -145,8 +111,6 @@ class SimpleCommitStatus extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getState(): string
@@ -154,8 +118,6 @@ class SimpleCommitStatus extends \ArrayObject
         return $this->state;
     }
     /**
-     * 
-     *
      * @param string $state
      *
      * @return self
@@ -167,8 +129,6 @@ class SimpleCommitStatus extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getContext(): string
@@ -176,8 +136,6 @@ class SimpleCommitStatus extends \ArrayObject
         return $this->context;
     }
     /**
-     * 
-     *
      * @param string $context
      *
      * @return self
@@ -189,8 +147,6 @@ class SimpleCommitStatus extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getTargetUrl(): string
@@ -198,8 +154,6 @@ class SimpleCommitStatus extends \ArrayObject
         return $this->targetUrl;
     }
     /**
-     * 
-     *
      * @param string $targetUrl
      *
      * @return self
@@ -211,8 +165,6 @@ class SimpleCommitStatus extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getRequired(): ?bool
@@ -220,8 +172,6 @@ class SimpleCommitStatus extends \ArrayObject
         return $this->required;
     }
     /**
-     * 
-     *
      * @param bool|null $required
      *
      * @return self
@@ -233,8 +183,6 @@ class SimpleCommitStatus extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getAvatarUrl(): ?string
@@ -242,8 +190,6 @@ class SimpleCommitStatus extends \ArrayObject
         return $this->avatarUrl;
     }
     /**
-     * 
-     *
      * @param string|null $avatarUrl
      *
      * @return self
@@ -255,8 +201,6 @@ class SimpleCommitStatus extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -264,8 +208,6 @@ class SimpleCommitStatus extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -277,8 +219,6 @@ class SimpleCommitStatus extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -286,8 +226,6 @@ class SimpleCommitStatus extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -299,8 +237,6 @@ class SimpleCommitStatus extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -308,8 +244,6 @@ class SimpleCommitStatus extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self

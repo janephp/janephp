@@ -7,11 +7,10 @@ class AddOrDeleteRules extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\C
     protected $accept;
     /**
      * Add or delete rules from a user's active rule set. Users can provide unique, optionally tagged rules to add. Users can delete their entire rule set or a subset specified by rule ids or values.
-     *
-     * @param mixed $requestBody 
-     * @param array $queryParameters {
-     *     @var bool $dry_run Dry Run can be used with both the add and delete action, with the expected result given, but without actually taking any action in the system (meaning the end state will always be as it was when the request was submitted). This is particularly useful to validate rule changes.
-     * }
+     * @param mixed $requestBody
+     * @param array{
+     *    "dry_run"?: bool, //Dry Run can be used with both the add and delete action, with the expected result given, but without actually taking any action in the system (meaning the end state will always be as it was when the request was submitted). This is particularly useful to validate rule changes.
+     * } $queryParameters
      * @param array $accept Accept content header application/json|application/problem+json
      */
     public function __construct($requestBody, array $queryParameters = [], array $accept = [])
@@ -32,7 +31,7 @@ class AddOrDeleteRules extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\C
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if (isset($this->body)) {
-            return [['Content-Type' => ['application/json']], json_encode($this->body)];
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
         return [[], null];
     }
@@ -62,13 +61,13 @@ class AddOrDeleteRules extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\C
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return json_decode($body);
         }
-        if (mb_strpos($contentType, 'application/json') !== false) {
+        if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
             return json_decode($body);
         }
-        if (mb_strpos($contentType, 'application/problem+json') !== false) {
+        if (mb_strpos(strtolower($contentType), 'application/problem+json') !== false) {
             return json_decode($body);
         }
     }

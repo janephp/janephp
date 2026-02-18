@@ -19,8 +19,6 @@ class NodeStatus
      */
     protected $state;
     /**
-     * 
-     *
      * @var string
      */
     protected $message;
@@ -53,8 +51,6 @@ class NodeStatus
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMessage(): string
@@ -62,8 +58,6 @@ class NodeStatus
         return $this->message;
     }
     /**
-     * 
-     *
      * @param string $message
      *
      * @return self

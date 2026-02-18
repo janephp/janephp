@@ -7,9 +7,8 @@ class InteractionsSetRestrictionsForOrg extends \Github\Runtime\Client\BaseEndpo
     protected $org;
     /**
      * Temporarily restricts interactions to certain GitHub users in any public repository in the given organization. You must be an organization owner to set these restrictions.
-     *
-     * @param string $org 
-     * @param null|\Github\Model\OrgsOrgInteractionLimitsPutBody $requestBody 
+     * @param string $org
+     * @param null|\Github\Model\OrgsOrgInteractionLimitsPutBody $requestBody
      */
     public function __construct(string $org, ?\Github\Model\OrgsOrgInteractionLimitsPutBody $requestBody = null)
     {
@@ -47,10 +46,10 @@ class InteractionsSetRestrictionsForOrg extends \Github\Runtime\Client\BaseEndpo
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\InteractionLimit', 'json');
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\InteractionsSetRestrictionsForOrgUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationError', 'json'), $response);
         }
     }

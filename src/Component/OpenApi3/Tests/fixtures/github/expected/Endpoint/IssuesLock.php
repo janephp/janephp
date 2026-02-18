@@ -8,15 +8,14 @@ class IssuesLock extends \Github\Runtime\Client\BaseEndpoint implements \Github\
     protected $repo;
     protected $issue_number;
     /**
-    * Users with push access can lock an issue or pull request's conversation.
-    
-    Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://developer.github.com/v3/#http-verbs)."
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param int $issueNumber issue_number parameter
-    * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberLockPutBody $requestBody 
-    */
+     * Users with push access can lock an issue or pull request's conversation.
+     *
+     * Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://developer.github.com/v3/#http-verbs)."
+     * @param string $owner
+     * @param string $repo
+     * @param int $issueNumber issue_number parameter
+     * @param null|\Github\Model\ReposOwnerRepoIssuesIssueNumberLockPutBody $requestBody
+     */
     public function __construct(string $owner, string $repo, int $issueNumber, ?\Github\Model\ReposOwnerRepoIssuesIssueNumberLockPutBody $requestBody = null)
     {
         $this->owner = $owner;
@@ -61,16 +60,16 @@ class IssuesLock extends \Github\Runtime\Client\BaseEndpoint implements \Github\
         if (204 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\IssuesLockForbiddenException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (410 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (410 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\IssuesLockGoneException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\IssuesLockNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\IssuesLockUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationError', 'json'), $response);
         }
     }

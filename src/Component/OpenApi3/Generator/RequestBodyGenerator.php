@@ -14,27 +14,21 @@ use PhpParser\Node\Stmt;
 class RequestBodyGenerator
 {
     /** @var RequestBodyContentGeneratorInterface[] */
-    private $generators = [];
+    private array $generators = [];
 
-    /** @var RequestBodyContentGeneratorInterface */
-    private $defaultRequestBodyGenerator;
-
-    public function __construct(RequestBodyContentGeneratorInterface $defaultRequestBodyGenerator)
-    {
-        $this->defaultRequestBodyGenerator = $defaultRequestBodyGenerator;
+    public function __construct(
+        private readonly RequestBodyContentGeneratorInterface $defaultRequestBodyGenerator,
+    ) {
     }
 
-    public function addRequestBodyGenerator(array $contentTypes, RequestBodyContentGeneratorInterface $requestBodyGenerator)
+    public function addRequestBodyGenerator(array $contentTypes, RequestBodyContentGeneratorInterface $requestBodyGenerator): void
     {
         foreach ($contentTypes as $contentType) {
             $this->generators[$contentType] = $requestBodyGenerator;
         }
     }
 
-    /**
-     * @param $requestBody RequestBody|Reference
-     */
-    public function generateMethodParameter($requestBody, string $reference, Context $context): ?Param
+    public function generateMethodParameter(RequestBody|Reference $requestBody, string $reference, Context $context): ?Param
     {
         if (!$requestBody->getContent()) {
             return null;
@@ -60,18 +54,15 @@ class RequestBodyGenerator
         return new Param(new Expr\Variable($name), $default, $paramType === null ? $paramType : new Name($paramType));
     }
 
-    /**
-     * @param RequestBody|Reference $requestBody
-     */
-    public function generateMethodDocParameter($requestBody, string $reference, Context $context)
+    public function generateMethodDocParameter(RequestBody|Reference $requestBody, string $reference, Context $context): string
     {
-        [$types, $_] = $this->getTypes($requestBody, $reference, $context);
+        [$types] = $this->getTypes($requestBody, $reference, $context);
 
         if (!$requestBody->getRequired() || !$context->isStrict()) {
             array_unshift($types, 'null');
         }
 
-        return sprintf(' * @param %s $%s %s', implode('|', $types), 'requestBody', '');
+        return \sprintf(' * @param %s $%s', implode('|', $types), 'requestBody');
     }
 
     private function getTypes(?RequestBody $requestBody, string $reference, Context $context): array
@@ -121,8 +112,10 @@ class RequestBodyGenerator
         foreach ($requestBody->getContent() as $contentType => $content) {
             $generator = $this->defaultRequestBodyGenerator;
 
-            if (isset($this->generators[$contentType])) {
+            if (\array_key_exists($contentType, $this->generators)) {
                 $generator = $this->generators[$contentType];
+            } elseif (str_starts_with($contentType, 'application/json') || str_ends_with($contentType, '+json')) {
+                $generator = $this->generators['application/json'];
             }
 
             $statements[] = new Stmt\If_(

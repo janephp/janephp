@@ -9,9 +9,8 @@ class ActionsGetSelfHostedRunnerForRepo extends \Github\Runtime\Client\BaseEndpo
     protected $runner_id;
     /**
      * Gets a specific self-hosted runner. You must authenticate using an access token with the `repo` scope to use this endpoint.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      * @param int $runnerId runner_id parameter
      */
     public function __construct(string $owner, string $repo, int $runnerId)
@@ -47,7 +46,7 @@ class ActionsGetSelfHostedRunnerForRepo extends \Github\Runtime\Client\BaseEndpo
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\Runner', 'json');
         }
     }

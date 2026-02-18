@@ -7,18 +7,17 @@ class TeamsListMembersLegacy extends \Github\Runtime\Client\BaseEndpoint impleme
     protected $team_id;
     /**
     * **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List team members`](https://developer.github.com/v3/teams/members/#list-team-members) endpoint.
-    
-    Team members will include the members of child teams.
     *
-    * @param int $teamId 
-    * @param array $queryParameters {
-    *     @var string $role Filters members returned by their role in the team. Can be one of:  
-    \* `member` - normal members of the team.  
-    \* `maintainer` - team maintainers.  
+    * Team members will include the members of child teams.
+    * @param int $teamId
+    * @param array{
+    *    "role"?: string, //Filters members returned by their role in the team. Can be one of:
+    \* `member` - normal members of the team.
+    \* `maintainer` - team maintainers.
     \* `all` - all members of the team.
-    *     @var int $per_page Results per page (max 100)
-    *     @var int $page Page number of the results to fetch.
-    * }
+    *    "per_page"?: int, //Results per page (max 100)
+    *    "page"?: int, //Page number of the results to fetch.
+    * } $queryParameters
     */
     public function __construct(int $teamId, array $queryParameters = [])
     {
@@ -64,10 +63,10 @@ class TeamsListMembersLegacy extends \Github\Runtime\Client\BaseEndpoint impleme
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\SimpleUser[]', 'json');
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\TeamsListMembersLegacyNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

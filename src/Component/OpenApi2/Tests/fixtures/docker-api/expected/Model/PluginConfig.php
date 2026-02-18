@@ -19,14 +19,10 @@ class PluginConfig
      */
     protected $dockerVersion;
     /**
-     * 
-     *
      * @var string
      */
     protected $description;
     /**
-     * 
-     *
      * @var string
      */
     protected $documentation;
@@ -37,74 +33,50 @@ class PluginConfig
      */
     protected $interface;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $entrypoint;
     /**
-     * 
-     *
      * @var string
      */
     protected $workDir;
     /**
-     * 
-     *
      * @var PluginConfigUser
      */
     protected $user;
     /**
-     * 
-     *
      * @var PluginConfigNetwork
      */
     protected $network;
     /**
-     * 
-     *
      * @var PluginConfigLinux
      */
     protected $linux;
     /**
-     * 
-     *
      * @var string
      */
     protected $propagatedMount;
     /**
-     * 
-     *
      * @var bool
      */
     protected $ipcHost;
     /**
-     * 
-     *
      * @var bool
      */
     protected $pidHost;
     /**
-     * 
-     *
      * @var list<PluginMount>
      */
     protected $mounts;
     /**
-     * 
-     *
      * @var list<PluginEnv>
      */
     protected $env;
     /**
-     * 
-     *
      * @var PluginConfigArgs
      */
     protected $args;
     /**
-     * 
-     *
      * @var PluginConfigRootfs
      */
     protected $rootfs;
@@ -131,8 +103,6 @@ class PluginConfig
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDescription(): string
@@ -140,8 +110,6 @@ class PluginConfig
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string $description
      *
      * @return self
@@ -153,8 +121,6 @@ class PluginConfig
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDocumentation(): string
@@ -162,8 +128,6 @@ class PluginConfig
         return $this->documentation;
     }
     /**
-     * 
-     *
      * @param string $documentation
      *
      * @return self
@@ -197,8 +161,6 @@ class PluginConfig
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getEntrypoint(): array
@@ -206,8 +168,6 @@ class PluginConfig
         return $this->entrypoint;
     }
     /**
-     * 
-     *
      * @param list<string> $entrypoint
      *
      * @return self
@@ -219,8 +179,6 @@ class PluginConfig
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getWorkDir(): string
@@ -228,8 +186,6 @@ class PluginConfig
         return $this->workDir;
     }
     /**
-     * 
-     *
      * @param string $workDir
      *
      * @return self
@@ -241,8 +197,6 @@ class PluginConfig
         return $this;
     }
     /**
-     * 
-     *
      * @return PluginConfigUser
      */
     public function getUser(): PluginConfigUser
@@ -250,8 +204,6 @@ class PluginConfig
         return $this->user;
     }
     /**
-     * 
-     *
      * @param PluginConfigUser $user
      *
      * @return self
@@ -263,8 +215,6 @@ class PluginConfig
         return $this;
     }
     /**
-     * 
-     *
      * @return PluginConfigNetwork
      */
     public function getNetwork(): PluginConfigNetwork
@@ -272,8 +222,6 @@ class PluginConfig
         return $this->network;
     }
     /**
-     * 
-     *
      * @param PluginConfigNetwork $network
      *
      * @return self
@@ -285,8 +233,6 @@ class PluginConfig
         return $this;
     }
     /**
-     * 
-     *
      * @return PluginConfigLinux
      */
     public function getLinux(): PluginConfigLinux
@@ -294,8 +240,6 @@ class PluginConfig
         return $this->linux;
     }
     /**
-     * 
-     *
      * @param PluginConfigLinux $linux
      *
      * @return self
@@ -307,8 +251,6 @@ class PluginConfig
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPropagatedMount(): string
@@ -316,8 +258,6 @@ class PluginConfig
         return $this->propagatedMount;
     }
     /**
-     * 
-     *
      * @param string $propagatedMount
      *
      * @return self
@@ -329,8 +269,6 @@ class PluginConfig
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getIpcHost(): bool
@@ -338,8 +276,6 @@ class PluginConfig
         return $this->ipcHost;
     }
     /**
-     * 
-     *
      * @param bool $ipcHost
      *
      * @return self
@@ -351,8 +287,6 @@ class PluginConfig
         return $this;
     }
     /**
-     * 
-     *
      * @return bool
      */
     public function getPidHost(): bool
@@ -360,8 +294,6 @@ class PluginConfig
         return $this->pidHost;
     }
     /**
-     * 
-     *
      * @param bool $pidHost
      *
      * @return self
@@ -373,8 +305,6 @@ class PluginConfig
         return $this;
     }
     /**
-     * 
-     *
      * @return list<PluginMount>
      */
     public function getMounts(): array
@@ -382,8 +312,6 @@ class PluginConfig
         return $this->mounts;
     }
     /**
-     * 
-     *
      * @param list<PluginMount> $mounts
      *
      * @return self
@@ -395,8 +323,6 @@ class PluginConfig
         return $this;
     }
     /**
-     * 
-     *
      * @return list<PluginEnv>
      */
     public function getEnv(): array
@@ -404,8 +330,6 @@ class PluginConfig
         return $this->env;
     }
     /**
-     * 
-     *
      * @param list<PluginEnv> $env
      *
      * @return self
@@ -417,8 +341,6 @@ class PluginConfig
         return $this;
     }
     /**
-     * 
-     *
      * @return PluginConfigArgs
      */
     public function getArgs(): PluginConfigArgs
@@ -426,8 +348,6 @@ class PluginConfig
         return $this->args;
     }
     /**
-     * 
-     *
      * @param PluginConfigArgs $args
      *
      * @return self
@@ -439,8 +359,6 @@ class PluginConfig
         return $this;
     }
     /**
-     * 
-     *
      * @return PluginConfigRootfs
      */
     public function getRootfs(): PluginConfigRootfs
@@ -448,8 +366,6 @@ class PluginConfig
         return $this->rootfs;
     }
     /**
-     * 
-     *
      * @param PluginConfigRootfs $rootfs
      *
      * @return self

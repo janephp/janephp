@@ -9,6 +9,7 @@ use Jane\Component\JsonSchema\Registry\Schema;
 use Jane\Component\OpenApiCommon\Generator\Client\ClientGenerator as CommonClientGenerator;
 use Jane\Component\OpenApiCommon\Generator\Client\HttpClientCreateGenerator;
 use Jane\Component\OpenApiCommon\Naming\OperationNamingInterface;
+use Jane\Component\OpenApiCommon\Registry\Schema as OpenApiSchema;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 
@@ -17,18 +18,15 @@ abstract class ClientGenerator implements GeneratorInterface
     use CommonClientGenerator;
     use HttpClientCreateGenerator;
 
-    /** @var OperationGenerator */
-    private $operationGenerator;
-
-    /** @var OperationNamingInterface */
-    private $operationNaming;
-
-    public function __construct(OperationGenerator $operationGenerator, OperationNamingInterface $operationNaming)
-    {
-        $this->operationGenerator = $operationGenerator;
-        $this->operationNaming = $operationNaming;
+    public function __construct(
+        private readonly OperationGenerator $operationGenerator,
+        private readonly OperationNamingInterface $operationNaming,
+    ) {
     }
 
+    /**
+     * @param OpenApiSchema $schema
+     */
     public function generate(Schema $schema, string $className, Context $context): void
     {
         $statements = [];

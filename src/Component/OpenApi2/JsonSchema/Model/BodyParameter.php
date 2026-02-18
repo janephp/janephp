@@ -37,8 +37,6 @@ class BodyParameter extends \ArrayObject
      */
     protected $required = false;
     /**
-     * 
-     *
      * @var Schema|JsonReference|null
      */
     protected $schema;
@@ -131,8 +129,6 @@ class BodyParameter extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Schema|JsonReference|null
      */
     public function getSchema()
@@ -140,8 +136,6 @@ class BodyParameter extends \ArrayObject
         return $this->schema;
     }
     /**
-     * 
-     *
      * @param Schema|JsonReference|null $schema
      *
      * @return self

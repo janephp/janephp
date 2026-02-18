@@ -19,14 +19,10 @@ class PullRequestReview extends \ArrayObject
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
     /**
-     * 
-     *
      * @var PullRequestReviewUser|null
      */
     protected $user;
@@ -37,32 +33,22 @@ class PullRequestReview extends \ArrayObject
      */
     protected $body;
     /**
-     * 
-     *
      * @var string
      */
     protected $state;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $pullRequestUrl;
     /**
-     * 
-     *
      * @var PullRequestReviewLinks
      */
     protected $links;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $submittedAt;
@@ -73,20 +59,14 @@ class PullRequestReview extends \ArrayObject
      */
     protected $commitId;
     /**
-     * 
-     *
      * @var string
      */
     protected $bodyHtml;
     /**
-     * 
-     *
      * @var string
      */
     protected $bodyText;
     /**
-     * 
-     *
      * @var string
      */
     protected $authorAssociation;
@@ -113,8 +93,6 @@ class PullRequestReview extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -122,8 +100,6 @@ class PullRequestReview extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -135,8 +111,6 @@ class PullRequestReview extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return PullRequestReviewUser|null
      */
     public function getUser(): ?PullRequestReviewUser
@@ -144,8 +118,6 @@ class PullRequestReview extends \ArrayObject
         return $this->user;
     }
     /**
-     * 
-     *
      * @param PullRequestReviewUser|null $user
      *
      * @return self
@@ -179,8 +151,6 @@ class PullRequestReview extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getState(): string
@@ -188,8 +158,6 @@ class PullRequestReview extends \ArrayObject
         return $this->state;
     }
     /**
-     * 
-     *
      * @param string $state
      *
      * @return self
@@ -201,8 +169,6 @@ class PullRequestReview extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -210,8 +176,6 @@ class PullRequestReview extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -223,8 +187,6 @@ class PullRequestReview extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPullRequestUrl(): string
@@ -232,8 +194,6 @@ class PullRequestReview extends \ArrayObject
         return $this->pullRequestUrl;
     }
     /**
-     * 
-     *
      * @param string $pullRequestUrl
      *
      * @return self
@@ -245,8 +205,6 @@ class PullRequestReview extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return PullRequestReviewLinks
      */
     public function getLinks(): PullRequestReviewLinks
@@ -254,8 +212,6 @@ class PullRequestReview extends \ArrayObject
         return $this->links;
     }
     /**
-     * 
-     *
      * @param PullRequestReviewLinks $links
      *
      * @return self
@@ -267,8 +223,6 @@ class PullRequestReview extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getSubmittedAt(): \DateTime
@@ -276,8 +230,6 @@ class PullRequestReview extends \ArrayObject
         return $this->submittedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $submittedAt
      *
      * @return self
@@ -311,8 +263,6 @@ class PullRequestReview extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBodyHtml(): string
@@ -320,8 +270,6 @@ class PullRequestReview extends \ArrayObject
         return $this->bodyHtml;
     }
     /**
-     * 
-     *
      * @param string $bodyHtml
      *
      * @return self
@@ -333,8 +281,6 @@ class PullRequestReview extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getBodyText(): string
@@ -342,8 +288,6 @@ class PullRequestReview extends \ArrayObject
         return $this->bodyText;
     }
     /**
-     * 
-     *
      * @param string $bodyText
      *
      * @return self
@@ -355,8 +299,6 @@ class PullRequestReview extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAuthorAssociation(): string
@@ -364,8 +306,6 @@ class PullRequestReview extends \ArrayObject
         return $this->authorAssociation;
     }
     /**
-     * 
-     *
      * @param string $authorAssociation
      *
      * @return self

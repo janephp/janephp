@@ -8,9 +8,8 @@ class ReposGetCodeFrequencyStats extends \Github\Runtime\Client\BaseEndpoint imp
     protected $repo;
     /**
      * Returns a weekly aggregate of the number of additions and deletions pushed to a repository.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      */
     public function __construct(string $owner, string $repo)
     {
@@ -44,7 +43,7 @@ class ReposGetCodeFrequencyStats extends \Github\Runtime\Client\BaseEndpoint imp
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return json_decode($body);
         }
     }

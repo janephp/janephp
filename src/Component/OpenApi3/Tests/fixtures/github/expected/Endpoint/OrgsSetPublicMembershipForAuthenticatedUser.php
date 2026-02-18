@@ -7,13 +7,12 @@ class OrgsSetPublicMembershipForAuthenticatedUser extends \Github\Runtime\Client
     protected $org;
     protected $username;
     /**
-    * The user can publicize their own membership. (A user cannot publicize the membership for another user.)
-    
-    Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://developer.github.com/v3/#http-verbs)."
-    *
-    * @param string $org 
-    * @param string $username 
-    */
+     * The user can publicize their own membership. (A user cannot publicize the membership for another user.)
+     *
+     * Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://developer.github.com/v3/#http-verbs)."
+     * @param string $org
+     * @param string $username
+     */
     public function __construct(string $org, string $username)
     {
         $this->org = $org;
@@ -50,7 +49,7 @@ class OrgsSetPublicMembershipForAuthenticatedUser extends \Github\Runtime\Client
         if (204 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\OrgsSetPublicMembershipForAuthenticatedUserForbiddenException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

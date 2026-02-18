@@ -7,13 +7,12 @@ class MigrationsUpdateImport extends \Github\Runtime\Client\BaseEndpoint impleme
     protected $owner;
     protected $repo;
     /**
-    * An import can be updated with credentials or a project choice by passing in the appropriate parameters in this API
-    request. If no parameters are provided, the import will be restarted.
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param null|\Github\Model\ReposOwnerRepoImportPatchBody $requestBody 
-    */
+     * An import can be updated with credentials or a project choice by passing in the appropriate parameters in this API
+     * request. If no parameters are provided, the import will be restarted.
+     * @param string $owner
+     * @param string $repo
+     * @param null|\Github\Model\ReposOwnerRepoImportPatchBody $requestBody
+     */
     public function __construct(string $owner, string $repo, ?\Github\Model\ReposOwnerRepoImportPatchBody $requestBody = null)
     {
         $this->owner = $owner;
@@ -50,7 +49,7 @@ class MigrationsUpdateImport extends \Github\Runtime\Client\BaseEndpoint impleme
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\Import', 'json');
         }
     }

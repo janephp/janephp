@@ -16,9 +16,6 @@ class AnyOfGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuess
 {
     use ChainGuesserAwareTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
         foreach ($object->getAnyOf() as $anyOfKey => $anyOfObject) {
@@ -26,9 +23,6 @@ class AnyOfGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuess
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         if (1 == \count($object->getAnyOf())) {
@@ -44,9 +38,6 @@ class AnyOfGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuess
         return $type;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportObject($object): bool
     {
         return ($object instanceof JsonSchema) && \is_array($object->getAnyOf()) && \count($object->getAnyOf()) > 0;

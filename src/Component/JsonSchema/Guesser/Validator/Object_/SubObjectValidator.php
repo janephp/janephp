@@ -12,24 +12,19 @@ use Jane\Component\JsonSchema\Guesser\Validator\ValidatorInterface;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class SubObjectValidator implements ValidatorInterface
 {
     use GuesserResolverTrait;
     use ObjectCheckTrait;
 
-    /** @var Naming */
-    private $naming;
-
-    /** @var Registry */
-    private $registry;
-
-    public function __construct(Naming $naming, Registry $registry, SerializerInterface $denormalizer)
-    {
-        $this->naming = $naming;
-        $this->registry = $registry;
-        $this->serializer = $denormalizer;
+    public function __construct(
+        DenormalizerInterface $denormalizer,
+        private readonly Naming $naming,
+        private readonly Registry $registry,
+    ) {
+        $this->denormalizer = $denormalizer;
     }
 
     public function supports($object): bool

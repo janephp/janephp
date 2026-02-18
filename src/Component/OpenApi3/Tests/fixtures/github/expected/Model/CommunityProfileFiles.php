@@ -13,44 +13,30 @@ class CommunityProfileFiles extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var CommunityProfileFilesCodeOfConduct|null
      */
     protected $codeOfConduct;
     /**
-     * 
-     *
      * @var CommunityProfileFilesLicense|null
      */
     protected $license;
     /**
-     * 
-     *
      * @var CommunityProfileFilesContributing|null
      */
     protected $contributing;
     /**
-     * 
-     *
      * @var CommunityProfileFilesReadme|null
      */
     protected $readme;
     /**
-     * 
-     *
      * @var CommunityProfileFilesIssueTemplate|null
      */
     protected $issueTemplate;
     /**
-     * 
-     *
      * @var CommunityProfileFilesPullRequestTemplate|null
      */
     protected $pullRequestTemplate;
     /**
-     * 
-     *
      * @return CommunityProfileFilesCodeOfConduct|null
      */
     public function getCodeOfConduct(): ?CommunityProfileFilesCodeOfConduct
@@ -58,8 +44,6 @@ class CommunityProfileFiles extends \ArrayObject
         return $this->codeOfConduct;
     }
     /**
-     * 
-     *
      * @param CommunityProfileFilesCodeOfConduct|null $codeOfConduct
      *
      * @return self
@@ -71,8 +55,6 @@ class CommunityProfileFiles extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CommunityProfileFilesLicense|null
      */
     public function getLicense(): ?CommunityProfileFilesLicense
@@ -80,8 +62,6 @@ class CommunityProfileFiles extends \ArrayObject
         return $this->license;
     }
     /**
-     * 
-     *
      * @param CommunityProfileFilesLicense|null $license
      *
      * @return self
@@ -93,8 +73,6 @@ class CommunityProfileFiles extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CommunityProfileFilesContributing|null
      */
     public function getContributing(): ?CommunityProfileFilesContributing
@@ -102,8 +80,6 @@ class CommunityProfileFiles extends \ArrayObject
         return $this->contributing;
     }
     /**
-     * 
-     *
      * @param CommunityProfileFilesContributing|null $contributing
      *
      * @return self
@@ -115,8 +91,6 @@ class CommunityProfileFiles extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CommunityProfileFilesReadme|null
      */
     public function getReadme(): ?CommunityProfileFilesReadme
@@ -124,8 +98,6 @@ class CommunityProfileFiles extends \ArrayObject
         return $this->readme;
     }
     /**
-     * 
-     *
      * @param CommunityProfileFilesReadme|null $readme
      *
      * @return self
@@ -137,8 +109,6 @@ class CommunityProfileFiles extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CommunityProfileFilesIssueTemplate|null
      */
     public function getIssueTemplate(): ?CommunityProfileFilesIssueTemplate
@@ -146,8 +116,6 @@ class CommunityProfileFiles extends \ArrayObject
         return $this->issueTemplate;
     }
     /**
-     * 
-     *
      * @param CommunityProfileFilesIssueTemplate|null $issueTemplate
      *
      * @return self
@@ -159,8 +127,6 @@ class CommunityProfileFiles extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CommunityProfileFilesPullRequestTemplate|null
      */
     public function getPullRequestTemplate(): ?CommunityProfileFilesPullRequestTemplate
@@ -168,8 +134,6 @@ class CommunityProfileFiles extends \ArrayObject
         return $this->pullRequestTemplate;
     }
     /**
-     * 
-     *
      * @param CommunityProfileFilesPullRequestTemplate|null $pullRequestTemplate
      *
      * @return self

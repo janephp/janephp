@@ -13,26 +13,18 @@ class GbCompanyReportExampleResponseReportContactInformation extends \ArrayObjec
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportContactInformationMainAddress
      */
     protected $mainAddress;
     /**
-     * 
-     *
      * @var list<GbCompanyReportExampleResponseReportContactInformationOtherAddressesItem>
      */
     protected $otherAddresses;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $websites;
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportContactInformationMainAddress
      */
     public function getMainAddress(): GbCompanyReportExampleResponseReportContactInformationMainAddress
@@ -40,8 +32,6 @@ class GbCompanyReportExampleResponseReportContactInformation extends \ArrayObjec
         return $this->mainAddress;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportContactInformationMainAddress $mainAddress
      *
      * @return self
@@ -53,8 +43,6 @@ class GbCompanyReportExampleResponseReportContactInformation extends \ArrayObjec
         return $this;
     }
     /**
-     * 
-     *
      * @return list<GbCompanyReportExampleResponseReportContactInformationOtherAddressesItem>
      */
     public function getOtherAddresses(): array
@@ -62,8 +50,6 @@ class GbCompanyReportExampleResponseReportContactInformation extends \ArrayObjec
         return $this->otherAddresses;
     }
     /**
-     * 
-     *
      * @param list<GbCompanyReportExampleResponseReportContactInformationOtherAddressesItem> $otherAddresses
      *
      * @return self
@@ -75,8 +61,6 @@ class GbCompanyReportExampleResponseReportContactInformation extends \ArrayObjec
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getWebsites(): array
@@ -84,8 +68,6 @@ class GbCompanyReportExampleResponseReportContactInformation extends \ArrayObjec
         return $this->websites;
     }
     /**
-     * 
-     *
      * @param list<string> $websites
      *
      * @return self

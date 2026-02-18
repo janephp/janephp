@@ -7,10 +7,9 @@ class FindPrivateTweetMetricsById extends \Jane\Component\OpenApi3\Tests\Expecte
     protected $accept;
     /**
      * Returns various metrics about a Tweet, including metrics for an embedded Video if one exists
-     *
-     * @param array $queryParameters {
-     *     @var array $ids A comma separated list of Tweet IDs. Up to 50 are allowed in a single request.
-     * }
+     * @param array{
+     *    "ids": array, //A comma separated list of Tweet IDs. Up to 50 are allowed in a single request.
+     * } $queryParameters
      * @param array $accept Accept content header application/json|application/problem+json
      */
     public function __construct(array $queryParameters = [], array $accept = [])
@@ -57,13 +56,13 @@ class FindPrivateTweetMetricsById extends \Jane\Component\OpenApi3\Tests\Expecte
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\TweetMetricsResponse', 'json');
         }
-        if (mb_strpos($contentType, 'application/json') !== false) {
+        if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\Error', 'json');
         }
-        if (mb_strpos($contentType, 'application/problem+json') !== false) {
+        if (mb_strpos(strtolower($contentType), 'application/problem+json') !== false) {
             return json_decode($body);
         }
     }

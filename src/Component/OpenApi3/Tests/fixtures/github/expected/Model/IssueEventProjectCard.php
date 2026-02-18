@@ -13,44 +13,30 @@ class IssueEventProjectCard extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $projectUrl;
     /**
-     * 
-     *
      * @var int
      */
     protected $projectId;
     /**
-     * 
-     *
      * @var string
      */
     protected $columnName;
     /**
-     * 
-     *
      * @var string
      */
     protected $previousColumnName;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -58,8 +44,6 @@ class IssueEventProjectCard extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -71,8 +55,6 @@ class IssueEventProjectCard extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -80,8 +62,6 @@ class IssueEventProjectCard extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -93,8 +73,6 @@ class IssueEventProjectCard extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getProjectUrl(): string
@@ -102,8 +80,6 @@ class IssueEventProjectCard extends \ArrayObject
         return $this->projectUrl;
     }
     /**
-     * 
-     *
      * @param string $projectUrl
      *
      * @return self
@@ -115,8 +91,6 @@ class IssueEventProjectCard extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getProjectId(): int
@@ -124,8 +98,6 @@ class IssueEventProjectCard extends \ArrayObject
         return $this->projectId;
     }
     /**
-     * 
-     *
      * @param int $projectId
      *
      * @return self
@@ -137,8 +109,6 @@ class IssueEventProjectCard extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getColumnName(): string
@@ -146,8 +116,6 @@ class IssueEventProjectCard extends \ArrayObject
         return $this->columnName;
     }
     /**
-     * 
-     *
      * @param string $columnName
      *
      * @return self
@@ -159,8 +127,6 @@ class IssueEventProjectCard extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPreviousColumnName(): string
@@ -168,8 +134,6 @@ class IssueEventProjectCard extends \ArrayObject
         return $this->previousColumnName;
     }
     /**
-     * 
-     *
      * @param string $previousColumnName
      *
      * @return self

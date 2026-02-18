@@ -13,32 +13,22 @@ class GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsIte
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $statementDate;
     /**
-     * 
-     *
      * @var string
      */
     protected $registrationNumber;
     /**
-     * 
-     *
      * @var string
      */
     protected $companyName;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsItemAmount
      */
     protected $amount;
     /**
-     * 
-     *
      * @return string
      */
     public function getStatementDate(): string
@@ -46,8 +36,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsIte
         return $this->statementDate;
     }
     /**
-     * 
-     *
      * @param string $statementDate
      *
      * @return self
@@ -59,8 +47,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsIte
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRegistrationNumber(): string
@@ -68,8 +54,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsIte
         return $this->registrationNumber;
     }
     /**
-     * 
-     *
      * @param string $registrationNumber
      *
      * @return self
@@ -81,8 +65,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsIte
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCompanyName(): string
@@ -90,8 +72,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsIte
         return $this->companyName;
     }
     /**
-     * 
-     *
      * @param string $companyName
      *
      * @return self
@@ -103,8 +83,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsIte
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsItemAmount
      */
     public function getAmount(): GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsItemAmount
@@ -112,8 +90,6 @@ class GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsIte
         return $this->amount;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsItemAmount $amount
      *
      * @return self

@@ -7,23 +7,22 @@ class TransferUploadFile extends \PicturePark\API\Runtime\Client\BaseEndpoint im
     protected $transferId;
     protected $requestId;
     /**
-    * Uploads the specified chunk data.
-               
-    Use `Content-Type: application/octet-stream` for uploading chunked data.
-    The chunk data should be contained in the body of your request.
-               
-    To upload a file, split it into chunks of reasonable size (accepted range is 1MB-100MB). The last chunk may be smaller than 1MB.
-    *
-    * @param string $transferId ID of transfer.
-    * @param string $requestId Identifier of file.
-    * @param null|string|resource|\Psr\Http\Message\StreamInterface $requestBody 
-    * @param array $queryParameters {
-    *     @var int $ChunkNumber Information about chunk.
-    *     @var int $CurrentChunkSize Information about chunk.
-    *     @var int $TotalSize Information about chunk.
-    *     @var int $TotalChunks Information about chunk.
-    * }
-    */
+     * Uploads the specified chunk data.
+     *
+     * Use `Content-Type: application/octet-stream` for uploading chunked data.
+     * The chunk data should be contained in the body of your request.
+     *
+     * To upload a file, split it into chunks of reasonable size (accepted range is 1MB-100MB). The last chunk may be smaller than 1MB.
+     * @param string $transferId ID of transfer.
+     * @param string $requestId Identifier of file.
+     * @param null|string|resource|\Psr\Http\Message\StreamInterface $requestBody
+     * @param array{
+     *    "ChunkNumber": int, //Information about chunk.
+     *    "CurrentChunkSize": int, //Information about chunk.
+     *    "TotalSize": int, //Information about chunk.
+     *    "TotalChunks": int, //Information about chunk.
+     * } $queryParameters
+     */
     public function __construct(string $transferId, string $requestId, $requestBody = null, array $queryParameters = [])
     {
         $this->transferId = $transferId;
@@ -83,25 +82,25 @@ class TransferUploadFile extends \PicturePark\API\Runtime\Client\BaseEndpoint im
         if (200 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\TransferUploadFileBadRequestException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkValidationException', 'json'), $response);
         }
         if (401 === $status) {
             throw new \PicturePark\API\Exception\TransferUploadFileUnauthorizedException($response);
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\TransferUploadFileNotFoundException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkNotFoundException', 'json'), $response);
         }
         if (405 === $status) {
             throw new \PicturePark\API\Exception\TransferUploadFileMethodNotAllowedException($response);
         }
-        if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (409 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\TransferUploadFileConflictException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkConflictException', 'json'), $response);
         }
         if (429 === $status) {
             throw new \PicturePark\API\Exception\TransferUploadFileTooManyRequestsException($response);
         }
-        if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (500 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \PicturePark\API\Exception\TransferUploadFileInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
     }

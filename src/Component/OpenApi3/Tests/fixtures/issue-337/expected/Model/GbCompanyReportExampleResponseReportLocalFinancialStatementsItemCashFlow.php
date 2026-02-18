@@ -13,32 +13,22 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow e
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var float
      */
     protected $netCashFlowFromOperations;
     /**
-     * 
-     *
      * @var float
      */
     protected $netCashFlowBeforeFinancing;
     /**
-     * 
-     *
      * @var float
      */
     protected $netCashFlowFromFinancing;
     /**
-     * 
-     *
      * @var float
      */
     protected $increaseInCash;
     /**
-     * 
-     *
      * @return float
      */
     public function getNetCashFlowFromOperations(): float
@@ -46,8 +36,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow e
         return $this->netCashFlowFromOperations;
     }
     /**
-     * 
-     *
      * @param float $netCashFlowFromOperations
      *
      * @return self
@@ -59,8 +47,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow e
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getNetCashFlowBeforeFinancing(): float
@@ -68,8 +54,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow e
         return $this->netCashFlowBeforeFinancing;
     }
     /**
-     * 
-     *
      * @param float $netCashFlowBeforeFinancing
      *
      * @return self
@@ -81,8 +65,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow e
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getNetCashFlowFromFinancing(): float
@@ -90,8 +72,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow e
         return $this->netCashFlowFromFinancing;
     }
     /**
-     * 
-     *
      * @param float $netCashFlowFromFinancing
      *
      * @return self
@@ -103,8 +83,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow e
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getIncreaseInCash(): float
@@ -112,8 +90,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow e
         return $this->increaseInCash;
     }
     /**
-     * 
-     *
      * @param float $increaseInCash
      *
      * @return self

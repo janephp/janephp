@@ -13,32 +13,22 @@ class Milestone extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $labelsUrl;
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
@@ -61,56 +51,38 @@ class Milestone extends \ArrayObject
      */
     protected $title;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @var MilestoneCreator|null
      */
     protected $creator;
     /**
-     * 
-     *
      * @var int
      */
     protected $openIssues;
     /**
-     * 
-     *
      * @var int
      */
     protected $closedIssues;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $updatedAt;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $closedAt;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $dueOn;
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -118,8 +90,6 @@ class Milestone extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -131,8 +101,6 @@ class Milestone extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -140,8 +108,6 @@ class Milestone extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -153,8 +119,6 @@ class Milestone extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLabelsUrl(): string
@@ -162,8 +126,6 @@ class Milestone extends \ArrayObject
         return $this->labelsUrl;
     }
     /**
-     * 
-     *
      * @param string $labelsUrl
      *
      * @return self
@@ -175,8 +137,6 @@ class Milestone extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -184,8 +144,6 @@ class Milestone extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -197,8 +155,6 @@ class Milestone extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -206,8 +162,6 @@ class Milestone extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self
@@ -285,8 +239,6 @@ class Milestone extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription(): ?string
@@ -294,8 +246,6 @@ class Milestone extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self
@@ -307,8 +257,6 @@ class Milestone extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return MilestoneCreator|null
      */
     public function getCreator(): ?MilestoneCreator
@@ -316,8 +264,6 @@ class Milestone extends \ArrayObject
         return $this->creator;
     }
     /**
-     * 
-     *
      * @param MilestoneCreator|null $creator
      *
      * @return self
@@ -329,8 +275,6 @@ class Milestone extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getOpenIssues(): int
@@ -338,8 +282,6 @@ class Milestone extends \ArrayObject
         return $this->openIssues;
     }
     /**
-     * 
-     *
      * @param int $openIssues
      *
      * @return self
@@ -351,8 +293,6 @@ class Milestone extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getClosedIssues(): int
@@ -360,8 +300,6 @@ class Milestone extends \ArrayObject
         return $this->closedIssues;
     }
     /**
-     * 
-     *
      * @param int $closedIssues
      *
      * @return self
@@ -373,8 +311,6 @@ class Milestone extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -382,8 +318,6 @@ class Milestone extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -395,8 +329,6 @@ class Milestone extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -404,8 +336,6 @@ class Milestone extends \ArrayObject
         return $this->updatedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $updatedAt
      *
      * @return self
@@ -417,8 +347,6 @@ class Milestone extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getClosedAt(): ?\DateTime
@@ -426,8 +354,6 @@ class Milestone extends \ArrayObject
         return $this->closedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $closedAt
      *
      * @return self
@@ -439,8 +365,6 @@ class Milestone extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getDueOn(): ?\DateTime
@@ -448,8 +372,6 @@ class Milestone extends \ArrayObject
         return $this->dueOn;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $dueOn
      *
      * @return self

@@ -13,50 +13,34 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var bool
      */
     protected $addedToAcceptList;
     /**
-     * 
-     *
      * @var string
      */
     protected $alertState;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $assignedTo;
     /**
-     * 
-     *
      * @var string
      */
     protected $assignmentType;
     /**
-     * 
-     *
      * @var string
      */
     protected $division;
     /**
-     * 
-     *
      * @var list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateHistoryItem>
      */
     protected $history;
     /**
-     * 
-     *
      * @var list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateMatchStatesItem>
      */
     protected $matchStates;
     /**
-     * 
-     *
      * @return bool
      */
     public function getAddedToAcceptList(): bool
@@ -64,8 +48,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return $this->addedToAcceptList;
     }
     /**
-     * 
-     *
      * @param bool $addedToAcceptList
      *
      * @return self
@@ -77,8 +59,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAlertState(): string
@@ -86,8 +66,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return $this->alertState;
     }
     /**
-     * 
-     *
      * @param string $alertState
      *
      * @return self
@@ -99,8 +77,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getAssignedTo(): array
@@ -108,8 +84,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return $this->assignedTo;
     }
     /**
-     * 
-     *
      * @param list<string> $assignedTo
      *
      * @return self
@@ -121,8 +95,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAssignmentType(): string
@@ -130,8 +102,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return $this->assignmentType;
     }
     /**
-     * 
-     *
      * @param string $assignmentType
      *
      * @return self
@@ -143,8 +113,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDivision(): string
@@ -152,8 +120,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return $this->division;
     }
     /**
-     * 
-     *
      * @param string $division
      *
      * @return self
@@ -165,8 +131,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return $this;
     }
     /**
-     * 
-     *
      * @return list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateHistoryItem>
      */
     public function getHistory(): array
@@ -174,8 +138,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return $this->history;
     }
     /**
-     * 
-     *
      * @param list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateHistoryItem> $history
      *
      * @return self
@@ -187,8 +149,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return $this;
     }
     /**
-     * 
-     *
      * @return list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateMatchStatesItem>
      */
     public function getMatchStates(): array
@@ -196,8 +156,6 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         return $this->matchStates;
     }
     /**
-     * 
-     *
      * @param list<ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateMatchStatesItem> $matchStates
      *
      * @return self

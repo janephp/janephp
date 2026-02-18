@@ -5,15 +5,13 @@ namespace Gounlaf\JanephpBug;
 class Client extends \Gounlaf\JanephpBug\Runtime\Client\Client
 {
     /**
-     * 
-     *
      * @param int $id ID of the entity
-     * @param \Gounlaf\JanephpBug\Model\PatchableEntity $requestBody 
+     * @param \Gounlaf\JanephpBug\Model\PatchableEntity $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Gounlaf\JanephpBug\Exception\PatchEntityBadRequestException
      * @throws \Gounlaf\JanephpBug\Exception\PatchEntityNotFoundException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function patchEntity(int $id, \Gounlaf\JanephpBug\Model\PatchableEntity $requestBody, string $fetch = self::FETCH_OBJECT)
     {

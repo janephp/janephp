@@ -6,18 +6,17 @@ class ReposCreateInOrg extends \Github\Runtime\Client\BaseEndpoint implements \G
 {
     protected $org;
     /**
-    * Creates a new repository in the specified organization. The authenticated user must be a member of the organization.
-    
-    **OAuth scope requirements**
-    
-    When using [OAuth](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), authorizations must include:
-    
-    *   `public_repo` scope or `repo` scope to create a public repository
-    *   `repo` scope to create a private repository
-    *
-    * @param string $org 
-    * @param null|\Github\Model\OrgsOrgReposPostBody $requestBody 
-    */
+     * Creates a new repository in the specified organization. The authenticated user must be a member of the organization.
+     *
+     * **OAuth scope requirements**
+     *
+     * When using [OAuth](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), authorizations must include:
+     *
+     * *   `public_repo` scope or `repo` scope to create a public repository
+     * *   `repo` scope to create a private repository
+     * @param string $org
+     * @param null|\Github\Model\OrgsOrgReposPostBody $requestBody
+     */
     public function __construct(string $org, ?\Github\Model\OrgsOrgReposPostBody $requestBody = null)
     {
         $this->org = $org;
@@ -55,13 +54,13 @@ class ReposCreateInOrg extends \Github\Runtime\Client\BaseEndpoint implements \G
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\Repository', 'json');
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateInOrgForbiddenException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposCreateInOrgUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationError', 'json'), $response);
         }
     }

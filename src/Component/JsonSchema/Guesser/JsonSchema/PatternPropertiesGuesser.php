@@ -15,9 +15,6 @@ class PatternPropertiesGuesser implements GuesserInterface, TypeGuesserInterface
 {
     use ChainGuesserAwareTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportObject($object): bool
     {
         if (!($object instanceof JsonSchema)) {
@@ -39,9 +36,6 @@ class PatternPropertiesGuesser implements GuesserInterface, TypeGuesserInterface
         return true;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         $type = new PatternMultipleType($object);

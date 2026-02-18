@@ -8,9 +8,8 @@ class OrgsConvertMemberToOutsideCollaborator extends \Github\Runtime\Client\Base
     protected $username;
     /**
      * When an organization member is converted to an outside collaborator, they'll only have access to the repositories that their current team membership allows. The user will no longer be a member of the organization. For more information, see "[Converting an organization member to an outside collaborator](https://help.github.com/articles/converting-an-organization-member-to-an-outside-collaborator/)".
-     *
-     * @param string $org 
-     * @param string $username 
+     * @param string $org
+     * @param string $username
      */
     public function __construct(string $org, string $username)
     {
@@ -52,10 +51,10 @@ class OrgsConvertMemberToOutsideCollaborator extends \Github\Runtime\Client\Base
         if (204 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\OrgsConvertMemberToOutsideCollaboratorForbiddenException($serializer->deserialize($body, 'Github\Model\OrgsOrgOutsideCollaboratorsUsernamePutResponse403', 'json'), $response);
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\OrgsConvertMemberToOutsideCollaboratorNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

@@ -8,15 +8,13 @@ class ReposListForks extends \Github\Runtime\Client\BaseEndpoint implements \Git
     protected $repo;
     protected $accept;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param array $queryParameters {
-     *     @var string $sort The sort order. Can be either `newest`, `oldest`, or `stargazers`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param string $owner
+     * @param string $repo
+     * @param array{
+     *    "sort"?: string, //The sort order. Can be either `newest`, `oldest`, or `stargazers`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      * @param array $accept Accept content header application/json|application/scim+json
      */
     public function __construct(string $owner, string $repo, array $queryParameters = [], array $accept = [])
@@ -68,11 +66,16 @@ class ReposListForks extends \Github\Runtime\Client\BaseEndpoint implements \Git
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\MinimalRepository[]', 'json');
         }
-        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Github\Exception\ReposListForksBadRequestException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
+        if (400 === $status) {
+            if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+                throw new \Github\Exception\ReposListForksBadRequestException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
+            }
+            if (mb_strpos(strtolower($contentType), 'application/scim+json') !== false) {
+                throw new \Github\Exception\ReposListForksBadRequestException($serializer->deserialize($body, 'Github\Model\ScimError', 'json'), $response);
+            }
         }
     }
     public function getAuthenticationScopes(): array

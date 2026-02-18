@@ -5,15 +5,13 @@ namespace Jane\Component\OpenApi3\Tests\Expected;
 class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Client
 {
     /**
-     * 
-     *
-     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\FooPayload $requestBody 
+     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\FooPayload $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PostFooBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PostFooInternalServerErrorException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UnexpectedStatusCodeException
      *
-     * @return null|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
     public function postFoo(?\Jane\Component\OpenApi3\Tests\Expected\Model\FooPayload $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {

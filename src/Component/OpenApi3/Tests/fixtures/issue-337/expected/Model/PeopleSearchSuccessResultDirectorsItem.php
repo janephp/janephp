@@ -13,68 +13,46 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $peopleId;
     /**
-     * 
-     *
      * @var string
      */
     protected $firstName;
     /**
-     * 
-     *
      * @var string
      */
     protected $lastName;
     /**
-     * 
-     *
      * @var string
      */
     protected $country;
     /**
-     * 
-     *
      * @var PeopleSearchSuccessResultDirectorsItemCompany
      */
     protected $company;
     /**
-     * 
-     *
      * @var PeopleSearchSuccessResultDirectorsItemAddress
      */
     protected $address;
     /**
-     * 
-     *
      * @var string
      */
     protected $status;
     /**
-     * 
-     *
      * @var string
      */
     protected $dateOfLatestChange;
     /**
-     * 
-     *
      * @var string
      */
     protected $dateOfBirth;
     /**
-     * 
-     *
      * @var string
      */
     protected $localDirectorNumber;
     /**
-     * 
-     *
      * @return string
      */
     public function getPeopleId(): string
@@ -82,8 +60,6 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
         return $this->peopleId;
     }
     /**
-     * 
-     *
      * @param string $peopleId
      *
      * @return self
@@ -95,8 +71,6 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFirstName(): string
@@ -104,8 +78,6 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
         return $this->firstName;
     }
     /**
-     * 
-     *
      * @param string $firstName
      *
      * @return self
@@ -117,8 +89,6 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLastName(): string
@@ -126,8 +96,6 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
         return $this->lastName;
     }
     /**
-     * 
-     *
      * @param string $lastName
      *
      * @return self
@@ -139,8 +107,6 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCountry(): string
@@ -148,8 +114,6 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
         return $this->country;
     }
     /**
-     * 
-     *
      * @param string $country
      *
      * @return self
@@ -161,8 +125,6 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return PeopleSearchSuccessResultDirectorsItemCompany
      */
     public function getCompany(): PeopleSearchSuccessResultDirectorsItemCompany
@@ -170,8 +132,6 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
         return $this->company;
     }
     /**
-     * 
-     *
      * @param PeopleSearchSuccessResultDirectorsItemCompany $company
      *
      * @return self
@@ -183,8 +143,6 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return PeopleSearchSuccessResultDirectorsItemAddress
      */
     public function getAddress(): PeopleSearchSuccessResultDirectorsItemAddress
@@ -192,8 +150,6 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
         return $this->address;
     }
     /**
-     * 
-     *
      * @param PeopleSearchSuccessResultDirectorsItemAddress $address
      *
      * @return self
@@ -205,8 +161,6 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getStatus(): string
@@ -214,8 +168,6 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
         return $this->status;
     }
     /**
-     * 
-     *
      * @param string $status
      *
      * @return self
@@ -227,8 +179,6 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDateOfLatestChange(): string
@@ -236,8 +186,6 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
         return $this->dateOfLatestChange;
     }
     /**
-     * 
-     *
      * @param string $dateOfLatestChange
      *
      * @return self
@@ -249,8 +197,6 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDateOfBirth(): string
@@ -258,8 +204,6 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
         return $this->dateOfBirth;
     }
     /**
-     * 
-     *
      * @param string $dateOfBirth
      *
      * @return self
@@ -271,8 +215,6 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLocalDirectorNumber(): string
@@ -280,8 +222,6 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
         return $this->localDirectorNumber;
     }
     /**
-     * 
-     *
      * @param string $localDirectorNumber
      *
      * @return self

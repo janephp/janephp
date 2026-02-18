@@ -25,7 +25,7 @@ class AuthenticationGenerator implements GeneratorInterface
     protected const REFERENCE = 'Authentication';
     protected const FILE_TYPE_AUTH = 'auth';
 
-    protected $naming;
+    protected Naming $naming;
 
     public function __construct()
     {
@@ -40,7 +40,7 @@ class AuthenticationGenerator implements GeneratorInterface
     public function generate(BaseSchema $schema, string $className, Context $context): void
     {
         if ($schema instanceof Schema) {
-            $baseNamespace = sprintf('%s\\%s', $schema->getNamespace(), self::REFERENCE);
+            $baseNamespace = \sprintf('%s\\%s', $schema->getNamespace(), self::REFERENCE);
 
             $securitySchemes = $schema->getSecuritySchemes();
             foreach ($securitySchemes as $securityScheme) {
@@ -53,7 +53,7 @@ class AuthenticationGenerator implements GeneratorInterface
 
                 $namespace = new Stmt\Namespace_(new Name($baseNamespace), [$authentication]);
 
-                $schema->addFile(new File(sprintf('%s/%s/%s.php', $schema->getDirectory(), self::REFERENCE, $className), $namespace, self::FILE_TYPE_AUTH));
+                $schema->addFile(new File(\sprintf('%s/%s/%s.php', $schema->getDirectory(), self::REFERENCE, $className), $namespace, self::FILE_TYPE_AUTH));
             }
         }
     }

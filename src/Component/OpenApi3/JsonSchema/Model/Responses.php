@@ -13,14 +13,10 @@ class Responses extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var Response|Reference|null
      */
     protected $default;
     /**
-     * 
-     *
      * @return Response|Reference|null
      */
     public function getDefault()
@@ -28,8 +24,6 @@ class Responses extends \ArrayObject
         return $this->default;
     }
     /**
-     * 
-     *
      * @param Response|Reference|null $default
      *
      * @return self

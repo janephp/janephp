@@ -14,6 +14,7 @@ class TypeValidator implements ValidatorInterface
 {
     use ObjectCheckTrait;
 
+    /** @var array<string, string> */
     private const TYPES_MAPPING = [
         'boolean' => 'bool',
         'number' => 'float',
@@ -47,6 +48,8 @@ class TypeValidator implements ValidatorInterface
             }
         }
 
-        $guess->addValidatorGuess(new ValidatorGuess(Type::class, array_keys($types)));
+        $guess->addValidatorGuess(new ValidatorGuess(Type::class, [
+            'type' => array_keys($types),
+        ]));
     }
 }

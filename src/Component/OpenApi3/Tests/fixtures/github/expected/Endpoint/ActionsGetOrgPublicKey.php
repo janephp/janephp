@@ -7,8 +7,7 @@ class ActionsGetOrgPublicKey extends \Github\Runtime\Client\BaseEndpoint impleme
     protected $org;
     /**
      * Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint.
-     *
-     * @param string $org 
+     * @param string $org
      */
     public function __construct(string $org)
     {
@@ -41,7 +40,7 @@ class ActionsGetOrgPublicKey extends \Github\Runtime\Client\BaseEndpoint impleme
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\ActionsPublicKey', 'json');
         }
     }

@@ -3,15 +3,16 @@
 namespace Jane\Component\OpenApi3\Tests\Expected\Api1\Runtime\Client;
 
 use Http\Message\MultipartStream\MultipartStreamBuilder;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\SerializerInterface;
 abstract class BaseEndpoint implements Endpoint
 {
-    protected $formParameters = [];
-    protected $queryParameters = [];
-    protected $headerParameters = [];
-    protected $body;
+    protected array $formParameters = [];
+    protected array $queryParameters = [];
+    protected array $headerParameters = [];
+    protected mixed $body;
     abstract public function getMethod(): string;
     abstract public function getBody(SerializerInterface $serializer, $streamFactory = null): array;
     abstract public function getUri(): string;
@@ -24,10 +25,16 @@ abstract class BaseEndpoint implements Endpoint
     public function getQueryString(): string
     {
         $optionsResolved = $this->getQueryOptionsResolver()->resolve($this->queryParameters);
-        $optionsResolved = array_map(function ($value) {
-            return null !== $value ? $value : '';
+        $optionsResolved = array_map(static function ($value) {
+            return $value ?? '';
         }, $optionsResolved);
-        return http_build_query($optionsResolved, '', '&', PHP_QUERY_RFC3986);
+        $allowReserved = $this->getQueryAllowReserved();
+        $queryParameters = [];
+        foreach ($optionsResolved as $key => $value) {
+            $allowReservedKey = in_array($key, $allowReserved, true);
+            $queryParameters[] = $this->encodeValue($key, $value, $allowReservedKey);
+        }
+        return implode('&', $queryParameters);
     }
     public function getHeaders(array $baseHeaders = []): array
     {
@@ -36,6 +43,10 @@ abstract class BaseEndpoint implements Endpoint
     protected function getQueryOptionsResolver(): OptionsResolver
     {
         return new OptionsResolver();
+    }
+    protected function getQueryAllowReserved(): array
+    {
+        return [];
     }
     protected function getHeadersOptionsResolver(): OptionsResolver
     {
@@ -63,5 +74,34 @@ abstract class BaseEndpoint implements Endpoint
     protected function getSerializedBody(SerializerInterface $serializer): array
     {
         return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+    }
+    private function encodeValue(string $key, mixed $value, bool $allowReserved): string
+    {
+        return match (true) {
+            is_int($value) => $this->encodeIntValue($key, $value, $allowReserved),
+            is_bool($value) => $this->encodeIntValue($key, (int) $value, $allowReserved),
+            is_string($value) => $this->encodeStringValue($key, $value, $allowReserved),
+            is_array($value) => $this->encodeArrayValue($key, $value, $allowReserved),
+            default => throw new InvalidArgumentException(sprintf('Query value for key %s must be either int|string|array|bool, %s given', $key, gettype($value))),
+        };
+    }
+    private function encodeIntValue(string $queryParamName, int $value, bool $allowReserved): string
+    {
+        $queryParamName = rawurlencode($queryParamName);
+        return sprintf('%s=%s', $queryParamName, $allowReserved ? $value : rawurlencode((string) $value));
+    }
+    private function encodeStringValue(string $queryParamName, string $value, bool $allowReserved): string
+    {
+        $queryParamName = rawurlencode($queryParamName);
+        return sprintf('%s=%s', $queryParamName, $allowReserved ? $value : rawurlencode($value));
+    }
+    private function encodeArrayValue(string $queryParamName, array $value, bool $allowReserved): string
+    {
+        $params = [];
+        foreach ($value as $subKey => $subValue) {
+            $arrayKey = $queryParamName . '[' . rawurlencode((string) $subKey) . ']';
+            $params[] = $this->encodeValue($arrayKey, $subValue, $allowReserved);
+        }
+        return implode('&', $params);
     }
 }

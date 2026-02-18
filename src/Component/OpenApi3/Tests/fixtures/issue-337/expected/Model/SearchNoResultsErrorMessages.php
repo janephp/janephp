@@ -13,26 +13,18 @@ class SearchNoResultsErrorMessages extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $code;
     /**
-     * 
-     *
      * @var string
      */
     protected $text;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @return string
      */
     public function getCode(): string
@@ -40,8 +32,6 @@ class SearchNoResultsErrorMessages extends \ArrayObject
         return $this->code;
     }
     /**
-     * 
-     *
      * @param string $code
      *
      * @return self
@@ -53,8 +43,6 @@ class SearchNoResultsErrorMessages extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getText(): string
@@ -62,8 +50,6 @@ class SearchNoResultsErrorMessages extends \ArrayObject
         return $this->text;
     }
     /**
-     * 
-     *
      * @param string $text
      *
      * @return self
@@ -75,8 +61,6 @@ class SearchNoResultsErrorMessages extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -84,8 +68,6 @@ class SearchNoResultsErrorMessages extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self

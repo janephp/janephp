@@ -7,16 +7,15 @@ class ReposGetReadme extends \Github\Runtime\Client\BaseEndpoint implements \Git
     protected $owner;
     protected $repo;
     /**
-    * Gets the preferred README for a repository.
-    
-    READMEs support [custom media types](https://developer.github.com/v3/repos/contents/#custom-media-types) for retrieving the raw content or rendered HTML.
-    *
-    * @param string $owner 
-    * @param string $repo 
-    * @param array $queryParameters {
-    *     @var string $ref The name of the commit/branch/tag. Default: the repository’s default branch (usually `master`)
-    * }
-    */
+     * Gets the preferred README for a repository.
+     *
+     * READMEs support [custom media types](https://developer.github.com/v3/repos/contents/#custom-media-types) for retrieving the raw content or rendered HTML.
+     * @param string $owner
+     * @param string $repo
+     * @param array{
+     *    "ref"?: string, //The name of the commit/branch/tag. Default: the repository’s default branch (usually `master`)
+     * } $queryParameters
+     */
     public function __construct(string $owner, string $repo, array $queryParameters = [])
     {
         $this->owner = $owner;
@@ -61,13 +60,13 @@ class ReposGetReadme extends \Github\Runtime\Client\BaseEndpoint implements \Git
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\ContentFile', 'json');
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposGetReadmeNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposGetReadmeUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationError', 'json'), $response);
         }
     }

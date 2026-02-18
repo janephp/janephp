@@ -8,9 +8,8 @@ class InteractionsGetRestrictionsForRepo extends \Github\Runtime\Client\BaseEndp
     protected $repo;
     /**
      * Shows which group of GitHub users can interact with this repository and when the restriction expires. If there are no restrictions, you will see an empty response.
-     *
-     * @param string $owner 
-     * @param string $repo 
+     * @param string $owner
+     * @param string $repo
      */
     public function __construct(string $owner, string $repo)
     {
@@ -44,7 +43,7 @@ class InteractionsGetRestrictionsForRepo extends \Github\Runtime\Client\BaseEndp
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\InteractionLimit', 'json');
         }
     }

@@ -6,27 +6,25 @@ class PluginUpgrade extends \Docker\Api\Runtime\Client\BaseEndpoint implements \
 {
     protected $name;
     /**
-    * 
-    *
-    * @param string $name The name of the plugin. The `:latest` tag is optional, and is the
-    default if omitted.
-    
-    * @param \Docker\Api\Model\PluginPrivilege[] $body 
-    * @param array $queryParameters {
-    *     @var string $remote Remote reference to upgrade to.
-    
-    The `:latest` tag is optional, and is used as the default if omitted.
-    
-    * }
-    * @param array $headerParameters {
-    *     @var string $X-Registry-Auth A base64url-encoded auth configuration to use when pulling a plugin
-    from a registry.
-    
-    Refer to the [authentication section](#section/Authentication) for
-    details.
-    
-    * }
-    */
+     * @param string $name The name of the plugin. The `:latest` tag is optional, and is the
+     * default if omitted.
+     * 
+     * @param \Docker\Api\Model\PluginPrivilege[] $body
+     * @param array $queryParameters {
+     *     @var string $remote Remote reference to upgrade to.
+     *     
+     *     The `:latest` tag is optional, and is used as the default if omitted.
+     *     
+     * }
+     * @param array $headerParameters {
+     *     @var string $X-Registry-Auth A base64url-encoded auth configuration to use when pulling a plugin
+     *     from a registry.
+     *     
+     *     Refer to the [authentication section](#section/Authentication) for
+     *     details.
+     *     
+     * }
+     */
     public function __construct(string $name, array $body, array $queryParameters = [], array $headerParameters = [])
     {
         $this->name = $name;

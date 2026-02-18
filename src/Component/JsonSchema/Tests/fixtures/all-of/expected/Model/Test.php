@@ -13,20 +13,14 @@ class Test
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var Childtype
      */
     protected $child;
     /**
-     * 
-     *
      * @var Parenttype
      */
     protected $parent;
     /**
-     * 
-     *
      * @return Childtype
      */
     public function getChild(): Childtype
@@ -34,8 +28,6 @@ class Test
         return $this->child;
     }
     /**
-     * 
-     *
      * @param Childtype $child
      *
      * @return self
@@ -47,8 +39,6 @@ class Test
         return $this;
     }
     /**
-     * 
-     *
      * @return Parenttype
      */
     public function getParent(): Parenttype
@@ -56,8 +46,6 @@ class Test
         return $this->parent;
     }
     /**
-     * 
-     *
      * @param Parenttype $parent
      *
      * @return self

@@ -13,32 +13,22 @@ class TopicSearchResultItemAliasesItemTopicRelation extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var int
      */
     protected $topicId;
     /**
-     * 
-     *
      * @var string
      */
     protected $relationType;
     /**
-     * 
-     *
      * @return int
      */
     public function getId(): int
@@ -46,8 +36,6 @@ class TopicSearchResultItemAliasesItemTopicRelation extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param int $id
      *
      * @return self
@@ -59,8 +47,6 @@ class TopicSearchResultItemAliasesItemTopicRelation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -68,8 +54,6 @@ class TopicSearchResultItemAliasesItemTopicRelation extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -81,8 +65,6 @@ class TopicSearchResultItemAliasesItemTopicRelation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getTopicId(): int
@@ -90,8 +72,6 @@ class TopicSearchResultItemAliasesItemTopicRelation extends \ArrayObject
         return $this->topicId;
     }
     /**
-     * 
-     *
      * @param int $topicId
      *
      * @return self
@@ -103,8 +83,6 @@ class TopicSearchResultItemAliasesItemTopicRelation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getRelationType(): string
@@ -112,8 +90,6 @@ class TopicSearchResultItemAliasesItemTopicRelation extends \ArrayObject
         return $this->relationType;
     }
     /**
-     * 
-     *
      * @param string $relationType
      *
      * @return self

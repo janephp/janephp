@@ -13,92 +13,62 @@ class VideoStream
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $bitRate;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $codec;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $displayAspectRatio;
     /**
-     * 
-     *
      * @var float
      */
     protected $durationInSeconds;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $format;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $frameCount;
     /**
-     * 
-     *
      * @var float|null
      */
     protected $frameRate;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $height;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $language;
     /**
-     * 
-     *
      * @var float|null
      */
     protected $pixelAspectRatio;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $resolution;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $streamSize;
     /**
-     * 
-     *
      * @var int|null
      */
     protected $width;
     /**
-     * 
-     *
      * @var float|null
      */
     protected $rotation;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getBitRate(): ?string
@@ -106,8 +76,6 @@ class VideoStream
         return $this->bitRate;
     }
     /**
-     * 
-     *
      * @param string|null $bitRate
      *
      * @return self
@@ -119,8 +87,6 @@ class VideoStream
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCodec(): ?string
@@ -128,8 +94,6 @@ class VideoStream
         return $this->codec;
     }
     /**
-     * 
-     *
      * @param string|null $codec
      *
      * @return self
@@ -141,8 +105,6 @@ class VideoStream
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDisplayAspectRatio(): ?string
@@ -150,8 +112,6 @@ class VideoStream
         return $this->displayAspectRatio;
     }
     /**
-     * 
-     *
      * @param string|null $displayAspectRatio
      *
      * @return self
@@ -163,8 +123,6 @@ class VideoStream
         return $this;
     }
     /**
-     * 
-     *
      * @return float
      */
     public function getDurationInSeconds(): float
@@ -172,8 +130,6 @@ class VideoStream
         return $this->durationInSeconds;
     }
     /**
-     * 
-     *
      * @param float $durationInSeconds
      *
      * @return self
@@ -185,8 +141,6 @@ class VideoStream
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFormat(): ?string
@@ -194,8 +148,6 @@ class VideoStream
         return $this->format;
     }
     /**
-     * 
-     *
      * @param string|null $format
      *
      * @return self
@@ -207,8 +159,6 @@ class VideoStream
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getFrameCount(): ?int
@@ -216,8 +166,6 @@ class VideoStream
         return $this->frameCount;
     }
     /**
-     * 
-     *
      * @param int|null $frameCount
      *
      * @return self
@@ -229,8 +177,6 @@ class VideoStream
         return $this;
     }
     /**
-     * 
-     *
      * @return float|null
      */
     public function getFrameRate(): ?float
@@ -238,8 +184,6 @@ class VideoStream
         return $this->frameRate;
     }
     /**
-     * 
-     *
      * @param float|null $frameRate
      *
      * @return self
@@ -251,8 +195,6 @@ class VideoStream
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getHeight(): ?int
@@ -260,8 +202,6 @@ class VideoStream
         return $this->height;
     }
     /**
-     * 
-     *
      * @param int|null $height
      *
      * @return self
@@ -273,8 +213,6 @@ class VideoStream
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getLanguage(): ?string
@@ -282,8 +220,6 @@ class VideoStream
         return $this->language;
     }
     /**
-     * 
-     *
      * @param string|null $language
      *
      * @return self
@@ -295,8 +231,6 @@ class VideoStream
         return $this;
     }
     /**
-     * 
-     *
      * @return float|null
      */
     public function getPixelAspectRatio(): ?float
@@ -304,8 +238,6 @@ class VideoStream
         return $this->pixelAspectRatio;
     }
     /**
-     * 
-     *
      * @param float|null $pixelAspectRatio
      *
      * @return self
@@ -317,8 +249,6 @@ class VideoStream
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getResolution(): ?int
@@ -326,8 +256,6 @@ class VideoStream
         return $this->resolution;
     }
     /**
-     * 
-     *
      * @param int|null $resolution
      *
      * @return self
@@ -339,8 +267,6 @@ class VideoStream
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getStreamSize(): ?int
@@ -348,8 +274,6 @@ class VideoStream
         return $this->streamSize;
     }
     /**
-     * 
-     *
      * @param int|null $streamSize
      *
      * @return self
@@ -361,8 +285,6 @@ class VideoStream
         return $this;
     }
     /**
-     * 
-     *
      * @return int|null
      */
     public function getWidth(): ?int
@@ -370,8 +292,6 @@ class VideoStream
         return $this->width;
     }
     /**
-     * 
-     *
      * @param int|null $width
      *
      * @return self
@@ -383,8 +303,6 @@ class VideoStream
         return $this;
     }
     /**
-     * 
-     *
      * @return float|null
      */
     public function getRotation(): ?float
@@ -392,8 +310,6 @@ class VideoStream
         return $this->rotation;
     }
     /**
-     * 
-     *
      * @param float|null $rotation
      *
      * @return self

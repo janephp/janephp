@@ -13,38 +13,26 @@ class Oauth2PasswordSecurity extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $type;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $flow;
     /**
-     * 
-     *
      * @var array<string, string>|null
      */
     protected $scopes;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $tokenUrl;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $description;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getType() : ?string
@@ -52,8 +40,6 @@ class Oauth2PasswordSecurity extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string|null $type
      *
      * @return self
@@ -65,8 +51,6 @@ class Oauth2PasswordSecurity extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getFlow() : ?string
@@ -74,8 +58,6 @@ class Oauth2PasswordSecurity extends \ArrayObject
         return $this->flow;
     }
     /**
-     * 
-     *
      * @param string|null $flow
      *
      * @return self
@@ -87,8 +69,6 @@ class Oauth2PasswordSecurity extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, string>|null
      */
     public function getScopes() : ?iterable
@@ -96,8 +76,6 @@ class Oauth2PasswordSecurity extends \ArrayObject
         return $this->scopes;
     }
     /**
-     * 
-     *
      * @param array<string, string>|null $scopes
      *
      * @return self
@@ -109,8 +87,6 @@ class Oauth2PasswordSecurity extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTokenUrl() : ?string
@@ -118,8 +94,6 @@ class Oauth2PasswordSecurity extends \ArrayObject
         return $this->tokenUrl;
     }
     /**
-     * 
-     *
      * @param string|null $tokenUrl
      *
      * @return self
@@ -131,8 +105,6 @@ class Oauth2PasswordSecurity extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDescription() : ?string
@@ -140,8 +112,6 @@ class Oauth2PasswordSecurity extends \ArrayObject
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string|null $description
      *
      * @return self

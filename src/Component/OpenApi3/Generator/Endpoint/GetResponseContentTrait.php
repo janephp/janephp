@@ -20,7 +20,7 @@ trait GetResponseContentTrait
         if ($operation->getOperation()->getResponses()) {
             foreach ($operation->getOperation()->getResponses() as $response) {
                 if ($response instanceof Reference) {
-                    [$_, $response] = $guessClass->resolve($response, Response::class);
+                    [, $response] = $guessClass->resolve($response, Response::class);
                 }
                 if (\is_array($response)) {
                     $normalizer = new ResponseNormalizer();
@@ -43,7 +43,7 @@ trait GetResponseContentTrait
                 $response = $operation->getOperation()->getResponses()->getDefault();
 
                 if ($response instanceof Reference) {
-                    [$_, $response] = $guessClass->resolve($response, Response::class);
+                    [, $response] = $guessClass->resolve($response, Response::class);
                 }
 
                 /** @var Response $response */

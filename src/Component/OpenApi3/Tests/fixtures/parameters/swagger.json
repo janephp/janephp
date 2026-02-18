@@ -345,6 +345,38 @@
                     }
                 ]
             }
+        },
+        "/test-object-query": {
+            "get": {
+                "tags": [
+                    "example"
+                ],
+                "operationId": "testObjectQuery",
+                "parameters": [
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "style": "deepObject",
+                        "explode": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "from": {
+                                    "type": "string"
+                                },
+                                "to": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "no error"
+                    }
+                }
+            }
         }
     },
     "info": {

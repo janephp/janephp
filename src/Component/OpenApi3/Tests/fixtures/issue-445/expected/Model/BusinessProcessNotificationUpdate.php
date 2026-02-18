@@ -25,11 +25,11 @@ class BusinessProcessNotificationUpdate
      */
     protected $message;
     /**
-    * An optional navigation link that allows the user to jump to a page giving more information
-    about the process.
-    *
-    * @var string|null
-    */
+     * An optional navigation link that allows the user to jump to a page giving more information
+     * about the process.
+     *
+     * @var string|null
+     */
     protected $navigationLink;
     /**
      * The event type of the notification.
@@ -82,11 +82,11 @@ class BusinessProcessNotificationUpdate
         return $this;
     }
     /**
-    * An optional navigation link that allows the user to jump to a page giving more information
-    about the process.
-    *
-    * @return string|null
-    */
+     * An optional navigation link that allows the user to jump to a page giving more information
+     * about the process.
+     *
+     * @return string|null
+     */
     public function getNavigationLink(): ?string
     {
         return $this->navigationLink;

@@ -13,20 +13,14 @@ class AccessCountriesResponse extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $correlationId;
     /**
-     * 
-     *
      * @var list<AccessCountriesResponseCountryAccessItem>
      */
     protected $countryAccess;
     /**
-     * 
-     *
      * @return string
      */
     public function getCorrelationId(): string
@@ -34,8 +28,6 @@ class AccessCountriesResponse extends \ArrayObject
         return $this->correlationId;
     }
     /**
-     * 
-     *
      * @param string $correlationId
      *
      * @return self
@@ -47,8 +39,6 @@ class AccessCountriesResponse extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<AccessCountriesResponseCountryAccessItem>
      */
     public function getCountryAccess(): array
@@ -56,8 +46,6 @@ class AccessCountriesResponse extends \ArrayObject
         return $this->countryAccess;
     }
     /**
-     * 
-     *
      * @param list<AccessCountriesResponseCountryAccessItem> $countryAccess
      *
      * @return self

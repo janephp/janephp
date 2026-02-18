@@ -7,17 +7,15 @@ class IssuesListMilestones extends \Github\Runtime\Client\BaseEndpoint implement
     protected $owner;
     protected $repo;
     /**
-     * 
-     *
-     * @param string $owner 
-     * @param string $repo 
-     * @param array $queryParameters {
-     *     @var string $state The state of the milestone. Either `open`, `closed`, or `all`.
-     *     @var string $sort What to sort results by. Either `due_on` or `completeness`.
-     *     @var string $direction The direction of the sort. Either `asc` or `desc`.
-     *     @var int $per_page Results per page (max 100)
-     *     @var int $page Page number of the results to fetch.
-     * }
+     * @param string $owner
+     * @param string $repo
+     * @param array{
+     *    "state"?: string, //The state of the milestone. Either `open`, `closed`, or `all`.
+     *    "sort"?: string, //What to sort results by. Either `due_on` or `completeness`.
+     *    "direction"?: string, //The direction of the sort. Either `asc` or `desc`.
+     *    "per_page"?: int, //Results per page (max 100)
+     *    "page"?: int, //Page number of the results to fetch.
+     * } $queryParameters
      */
     public function __construct(string $owner, string $repo, array $queryParameters = [])
     {
@@ -66,10 +64,10 @@ class IssuesListMilestones extends \Github\Runtime\Client\BaseEndpoint implement
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\Milestone[]', 'json');
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\IssuesListMilestonesNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

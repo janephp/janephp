@@ -31,8 +31,6 @@ class Port
      */
     protected $publicPort;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
@@ -103,8 +101,6 @@ class Port
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -112,8 +108,6 @@ class Port
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self

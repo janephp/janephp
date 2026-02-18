@@ -7,9 +7,8 @@ class OrgsCreateWebhook extends \Github\Runtime\Client\BaseEndpoint implements \
     protected $org;
     /**
      * Here's how you can create a hook that posts payloads in JSON format:
-     *
-     * @param string $org 
-     * @param null|\Github\Model\OrgsOrgHooksPostBody $requestBody 
+     * @param string $org
+     * @param null|\Github\Model\OrgsOrgHooksPostBody $requestBody
      */
     public function __construct(string $org, ?\Github\Model\OrgsOrgHooksPostBody $requestBody = null)
     {
@@ -48,13 +47,13 @@ class OrgsCreateWebhook extends \Github\Runtime\Client\BaseEndpoint implements \
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (201 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Github\Model\OrgHook', 'json');
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\OrgsCreateWebhookUnprocessableEntityException($serializer->deserialize($body, 'Github\Model\ValidationError', 'json'), $response);
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\OrgsCreateWebhookNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

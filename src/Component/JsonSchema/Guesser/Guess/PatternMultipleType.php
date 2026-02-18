@@ -10,10 +10,13 @@ use PhpParser\Node\Stmt;
 
 class PatternMultipleType extends Type
 {
-    protected $types = [];
-
-    public function __construct(object $object, array $types = [])
-    {
+    /**
+     * @param array<string, Type> $types
+     */
+    public function __construct(
+        object $object,
+        protected array $types = [],
+    ) {
         parent::__construct($object, 'mixed');
 
         $this->types = $types;
@@ -29,10 +32,7 @@ class PatternMultipleType extends Type
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getDocTypeHint(string $namespace)
+    public function getDocTypeHint(string $namespace): string|Name|null
     {
         $stringTypes = array_map(function ($type) use ($namespace) {
             return $type->getDocTypeHint($namespace) . '[]';
@@ -41,9 +41,6 @@ class PatternMultipleType extends Type
         return implode('|', $stringTypes);
     }
 
-    /**
-     * ({@inheritDoc}.
-     */
     public function createDenormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
     {
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));
@@ -85,9 +82,6 @@ class PatternMultipleType extends Type
         return [$statements, $valuesVar];
     }
 
-    /**
-     * ({@inheritDoc}.
-     */
     public function createNormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
     {
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));
@@ -129,9 +123,6 @@ class PatternMultipleType extends Type
         return [$statements, $valuesVar];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function createArrayValueStatement(): Expr
     {
         return new Expr\New_(new Name('\ArrayObject'), [
@@ -140,17 +131,11 @@ class PatternMultipleType extends Type
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function createNormalizationArrayValueStatement(): Expr
     {
         return new Expr\Array_();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function createLoopKeyStatement(Context $context): Expr
     {
         return new Expr\Variable($context->getUniqueVariableName('key'));

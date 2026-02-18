@@ -13,50 +13,34 @@ class CommitSearchResultItemCommit extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var CommitSearchResultItemCommitAuthor
      */
     protected $author;
     /**
-     * 
-     *
      * @var CommitSearchResultItemCommitCommitter|null
      */
     protected $committer;
     /**
-     * 
-     *
      * @var int
      */
     protected $commentCount;
     /**
-     * 
-     *
      * @var string
      */
     protected $message;
     /**
-     * 
-     *
      * @var CommitSearchResultItemCommitTree
      */
     protected $tree;
     /**
-     * 
-     *
      * @var string
      */
     protected $url;
     /**
-     * 
-     *
      * @var Verification
      */
     protected $verification;
     /**
-     * 
-     *
      * @return CommitSearchResultItemCommitAuthor
      */
     public function getAuthor(): CommitSearchResultItemCommitAuthor
@@ -64,8 +48,6 @@ class CommitSearchResultItemCommit extends \ArrayObject
         return $this->author;
     }
     /**
-     * 
-     *
      * @param CommitSearchResultItemCommitAuthor $author
      *
      * @return self
@@ -77,8 +59,6 @@ class CommitSearchResultItemCommit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CommitSearchResultItemCommitCommitter|null
      */
     public function getCommitter(): ?CommitSearchResultItemCommitCommitter
@@ -86,8 +66,6 @@ class CommitSearchResultItemCommit extends \ArrayObject
         return $this->committer;
     }
     /**
-     * 
-     *
      * @param CommitSearchResultItemCommitCommitter|null $committer
      *
      * @return self
@@ -99,8 +77,6 @@ class CommitSearchResultItemCommit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return int
      */
     public function getCommentCount(): int
@@ -108,8 +84,6 @@ class CommitSearchResultItemCommit extends \ArrayObject
         return $this->commentCount;
     }
     /**
-     * 
-     *
      * @param int $commentCount
      *
      * @return self
@@ -121,8 +95,6 @@ class CommitSearchResultItemCommit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getMessage(): string
@@ -130,8 +102,6 @@ class CommitSearchResultItemCommit extends \ArrayObject
         return $this->message;
     }
     /**
-     * 
-     *
      * @param string $message
      *
      * @return self
@@ -143,8 +113,6 @@ class CommitSearchResultItemCommit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return CommitSearchResultItemCommitTree
      */
     public function getTree(): CommitSearchResultItemCommitTree
@@ -152,8 +120,6 @@ class CommitSearchResultItemCommit extends \ArrayObject
         return $this->tree;
     }
     /**
-     * 
-     *
      * @param CommitSearchResultItemCommitTree $tree
      *
      * @return self
@@ -165,8 +131,6 @@ class CommitSearchResultItemCommit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getUrl(): string
@@ -174,8 +138,6 @@ class CommitSearchResultItemCommit extends \ArrayObject
         return $this->url;
     }
     /**
-     * 
-     *
      * @param string $url
      *
      * @return self
@@ -187,8 +149,6 @@ class CommitSearchResultItemCommit extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return Verification
      */
     public function getVerification(): Verification
@@ -196,8 +156,6 @@ class CommitSearchResultItemCommit extends \ArrayObject
         return $this->verification;
     }
     /**
-     * 
-     *
      * @param Verification $verification
      *
      * @return self

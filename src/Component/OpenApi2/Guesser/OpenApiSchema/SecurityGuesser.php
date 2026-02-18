@@ -12,17 +12,12 @@ use Jane\Component\OpenApiCommon\Registry\Schema;
 
 class SecurityGuesser implements GuesserInterface, ClassGuesserInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function supportObject($object): bool
     {
         return ($object instanceof ApiKeySecurity || $object instanceof BasicAuthenticationSecurity) && \in_array($object->getType(), SecuritySchemeGuess::getAvailableTypes());
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @param ApiKeySecurity|BasicAuthenticationSecurity $object
      */
     public function guessClass($object, string $name, string $reference, Registry $registry): void

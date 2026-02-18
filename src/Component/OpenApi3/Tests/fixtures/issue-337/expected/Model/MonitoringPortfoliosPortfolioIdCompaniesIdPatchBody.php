@@ -13,26 +13,18 @@ class MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $personalReference;
     /**
-     * 
-     *
      * @var string
      */
     protected $freeText;
     /**
-     * 
-     *
      * @var string
      */
     protected $personalLimit;
     /**
-     * 
-     *
      * @return string
      */
     public function getPersonalReference(): string
@@ -40,8 +32,6 @@ class MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody extends \ArrayObject
         return $this->personalReference;
     }
     /**
-     * 
-     *
      * @param string $personalReference
      *
      * @return self
@@ -53,8 +43,6 @@ class MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFreeText(): string
@@ -62,8 +50,6 @@ class MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody extends \ArrayObject
         return $this->freeText;
     }
     /**
-     * 
-     *
      * @param string $freeText
      *
      * @return self
@@ -75,8 +61,6 @@ class MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPersonalLimit(): string
@@ -84,8 +68,6 @@ class MonitoringPortfoliosPortfolioIdCompaniesIdPatchBody extends \ArrayObject
         return $this->personalLimit;
     }
     /**
-     * 
-     *
      * @param string $personalLimit
      *
      * @return self

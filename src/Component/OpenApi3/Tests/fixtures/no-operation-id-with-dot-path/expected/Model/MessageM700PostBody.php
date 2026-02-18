@@ -13,14 +13,10 @@ class MessageM700PostBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $bar;
     /**
-     * 
-     *
      * @return string
      */
     public function getBar(): string
@@ -28,8 +24,6 @@ class MessageM700PostBody extends \ArrayObject
         return $this->bar;
     }
     /**
-     * 
-     *
      * @param string $bar
      *
      * @return self

@@ -13,38 +13,26 @@ class Xml extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string|null
      */
     protected $name;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $namespace;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $prefix;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $attribute = false;
     /**
-     * 
-     *
      * @var bool|null
      */
     protected $wrapped = false;
     /**
-     * 
-     *
      * @return string|null
      */
     public function getName() : ?string
@@ -52,8 +40,6 @@ class Xml extends \ArrayObject
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string|null $name
      *
      * @return self
@@ -65,8 +51,6 @@ class Xml extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getNamespace() : ?string
@@ -74,8 +58,6 @@ class Xml extends \ArrayObject
         return $this->namespace;
     }
     /**
-     * 
-     *
      * @param string|null $namespace
      *
      * @return self
@@ -87,8 +69,6 @@ class Xml extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getPrefix() : ?string
@@ -96,8 +76,6 @@ class Xml extends \ArrayObject
         return $this->prefix;
     }
     /**
-     * 
-     *
      * @param string|null $prefix
      *
      * @return self
@@ -109,8 +87,6 @@ class Xml extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getAttribute() : ?bool
@@ -118,8 +94,6 @@ class Xml extends \ArrayObject
         return $this->attribute;
     }
     /**
-     * 
-     *
      * @param bool|null $attribute
      *
      * @return self
@@ -131,8 +105,6 @@ class Xml extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return bool|null
      */
     public function getWrapped() : ?bool
@@ -140,8 +112,6 @@ class Xml extends \ArrayObject
         return $this->wrapped;
     }
     /**
-     * 
-     *
      * @param bool|null $wrapped
      *
      * @return self

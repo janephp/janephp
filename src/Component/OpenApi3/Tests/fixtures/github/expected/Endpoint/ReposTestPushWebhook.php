@@ -9,11 +9,11 @@ class ReposTestPushWebhook extends \Github\Runtime\Client\BaseEndpoint implement
     protected $hook_id;
     /**
      * This will trigger the hook with the latest push to the current repository if the hook is subscribed to `push` events. If the hook is not subscribed to `push` events, the server will respond with 204 but no test POST will be generated.
-     **Note**: Previously `/repos/:owner/:repo/hooks/:hook_id/test`
      *
-     * @param string $owner 
-     * @param string $repo 
-     * @param int $hookId 
+     * **Note**: Previously `/repos/:owner/:repo/hooks/:hook_id/test`
+     * @param string $owner
+     * @param string $repo
+     * @param int $hookId
      */
     public function __construct(string $owner, string $repo, int $hookId)
     {
@@ -52,7 +52,7 @@ class ReposTestPushWebhook extends \Github\Runtime\Client\BaseEndpoint implement
         if (204 === $status) {
             return null;
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Github\Exception\ReposTestPushWebhookNotFoundException($serializer->deserialize($body, 'Github\Model\BasicError', 'json'), $response);
         }
     }

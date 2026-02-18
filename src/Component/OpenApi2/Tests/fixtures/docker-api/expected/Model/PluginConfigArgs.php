@@ -13,32 +13,22 @@ class PluginConfigArgs
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $name;
     /**
-     * 
-     *
      * @var string
      */
     protected $description;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $settable;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $value;
     /**
-     * 
-     *
      * @return string
      */
     public function getName(): string
@@ -46,8 +36,6 @@ class PluginConfigArgs
         return $this->name;
     }
     /**
-     * 
-     *
      * @param string $name
      *
      * @return self
@@ -59,8 +47,6 @@ class PluginConfigArgs
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDescription(): string
@@ -68,8 +54,6 @@ class PluginConfigArgs
         return $this->description;
     }
     /**
-     * 
-     *
      * @param string $description
      *
      * @return self
@@ -81,8 +65,6 @@ class PluginConfigArgs
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getSettable(): array
@@ -90,8 +72,6 @@ class PluginConfigArgs
         return $this->settable;
     }
     /**
-     * 
-     *
      * @param list<string> $settable
      *
      * @return self
@@ -103,8 +83,6 @@ class PluginConfigArgs
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getValue(): array
@@ -112,8 +90,6 @@ class PluginConfigArgs
         return $this->value;
     }
     /**
-     * 
-     *
      * @param list<string> $value
      *
      * @return self

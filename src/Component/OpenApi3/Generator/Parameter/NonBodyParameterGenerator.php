@@ -21,8 +21,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
 {
     use OptionResolverNormalizationTrait;
 
-    /** @var GuessClass */
-    private $guessClass;
+    private GuessClass $guessClass;
 
     public function __construct(DenormalizerInterface $denormalizer, Parser $parser)
     {
@@ -31,8 +30,6 @@ class NonBodyParameterGenerator extends ParameterGenerator
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @param Parameter $parameter
      */
     public function generateMethodParameter($parameter, Context $context, string $reference): ?Node\Param
@@ -46,6 +43,10 @@ class NonBodyParameterGenerator extends ParameterGenerator
 
         if (!$parameter->getRequired() || null !== $parameter->getSchema()->getDefault()) {
             $methodParameter->default = $this->getDefaultAsExpr($parameter);
+        }
+
+        if (null !== $parameter->getSchema()->getAnyOf() && \count($parameter->getSchema()->getAnyOf()) > 0) {
+            return $methodParameter;
         }
 
         $types = $this->convertParameterType($parameter->getSchema());
@@ -78,7 +79,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
             $schema = $parameter->getSchema();
 
             if ($schema instanceof Reference) {
-                [$_, $schema] = $this->guessClass->resolve($schema, Schema::class);
+                [, $schema] = $this->guessClass->resolve($schema, Schema::class);
             }
 
             if ($parameter->getRequired() && (null !== $schema && null === $schema->getDefault())) {
@@ -138,11 +139,11 @@ class NonBodyParameterGenerator extends ParameterGenerator
     {
         $type = 'mixed';
 
-        if ($parameter->getSchema()) {
+        if ($parameter->getSchema() && (null === $parameter->getSchema()->getAnyOf() || \count($parameter->getSchema()->getAnyOf()) === 0)) {
             $type = implode('|', $this->convertParameterType($parameter->getSchema()));
         }
 
-        return sprintf(' * @param %s $%s %s', $type, $this->getInflector()->camelize($parameter->getName()), $parameter->getDescription() ?: '');
+        return rtrim(\sprintf(' * @param %s $%s %s', $type, $this->getInflector()->camelize($parameter->getName()), $parameter->getDescription() ?: ''));
     }
 
     public function generateOptionDocParameter(Parameter $parameter): string
@@ -153,7 +154,17 @@ class NonBodyParameterGenerator extends ParameterGenerator
             $type = implode('|', $this->convertParameterType($parameter->getSchema()));
         }
 
-        return sprintf(' *     @var %s $%s %s', $type, $parameter->getName(), $parameter->getDescription() ?: '');
+        $description = implode("\n", array_map(rtrim(...), explode("\n", $parameter->getDescription() ?: '')));
+
+        return rtrim(
+            \sprintf(
+                ' *    "%s"%s: %s%s',
+                $parameter->getName(),
+                $parameter->getRequired() ? '' : '?',
+                $type,
+                $description !== '' ? ', //' . $description : ','
+            )
+        );
     }
 
     /**
@@ -161,6 +172,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
      */
     private function getDefaultAsExpr(Parameter $parameter): Expr
     {
+        /** @var Expr|Stmt\Expression $expr */
         $expr = $this->parser->parse('<?php ' . var_export($parameter->getSchema()->getDefault(), true) . ';')[0];
 
         if ($expr instanceof Stmt\Expression) {
@@ -191,6 +203,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
             'boolean' => ['bool'],
             'integer' => ['int'],
             'array' => ['array'],
+            'object' => ['array'],
             'file' => ['string', 'resource', '\\' . StreamInterface::class],
         ];
 

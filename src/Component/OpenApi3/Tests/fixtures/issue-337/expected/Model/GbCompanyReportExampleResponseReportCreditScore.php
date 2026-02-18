@@ -13,32 +13,22 @@ class GbCompanyReportExampleResponseReportCreditScore extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportCreditScoreCurrentCreditRating
      */
     protected $currentCreditRating;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportCreditScoreCurrentContractLimit
      */
     protected $currentContractLimit;
     /**
-     * 
-     *
      * @var GbCompanyReportExampleResponseReportCreditScorePreviousCreditRating
      */
     protected $previousCreditRating;
     /**
-     * 
-     *
      * @var string
      */
     protected $latestRatingChangeDate;
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportCreditScoreCurrentCreditRating
      */
     public function getCurrentCreditRating(): GbCompanyReportExampleResponseReportCreditScoreCurrentCreditRating
@@ -46,8 +36,6 @@ class GbCompanyReportExampleResponseReportCreditScore extends \ArrayObject
         return $this->currentCreditRating;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportCreditScoreCurrentCreditRating $currentCreditRating
      *
      * @return self
@@ -59,8 +47,6 @@ class GbCompanyReportExampleResponseReportCreditScore extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportCreditScoreCurrentContractLimit
      */
     public function getCurrentContractLimit(): GbCompanyReportExampleResponseReportCreditScoreCurrentContractLimit
@@ -68,8 +54,6 @@ class GbCompanyReportExampleResponseReportCreditScore extends \ArrayObject
         return $this->currentContractLimit;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportCreditScoreCurrentContractLimit $currentContractLimit
      *
      * @return self
@@ -81,8 +65,6 @@ class GbCompanyReportExampleResponseReportCreditScore extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return GbCompanyReportExampleResponseReportCreditScorePreviousCreditRating
      */
     public function getPreviousCreditRating(): GbCompanyReportExampleResponseReportCreditScorePreviousCreditRating
@@ -90,8 +72,6 @@ class GbCompanyReportExampleResponseReportCreditScore extends \ArrayObject
         return $this->previousCreditRating;
     }
     /**
-     * 
-     *
      * @param GbCompanyReportExampleResponseReportCreditScorePreviousCreditRating $previousCreditRating
      *
      * @return self
@@ -103,8 +83,6 @@ class GbCompanyReportExampleResponseReportCreditScore extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLatestRatingChangeDate(): string
@@ -112,8 +90,6 @@ class GbCompanyReportExampleResponseReportCreditScore extends \ArrayObject
         return $this->latestRatingChangeDate;
     }
     /**
-     * 
-     *
      * @param string $latestRatingChangeDate
      *
      * @return self

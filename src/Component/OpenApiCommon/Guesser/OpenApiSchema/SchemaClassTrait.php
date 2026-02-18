@@ -4,8 +4,7 @@ namespace Jane\Component\OpenApiCommon\Guesser\OpenApiSchema;
 
 trait SchemaClassTrait
 {
-    /** @var string */
-    private $schemaClass;
+    private string $schemaClass;
 
     public function __construct(string $schemaClass)
     {

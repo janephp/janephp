@@ -19,11 +19,11 @@ class FieldOverwriteBase
      */
     protected $id;
     /**
-    * Defines if a field value is mandatory or not: this value will overwrite the existing Required value specified in the parent schema  if
-    OverwriteRequired is set to true.
-    *
-    * @var bool
-    */
+     * Defines if a field value is mandatory or not: this value will overwrite the existing Required value specified in the parent schema  if
+     * OverwriteRequired is set to true.
+     *
+     * @var bool
+     */
     protected $required;
     /**
      * Enable the overwriting of the Required property of the field specified by the Id property.
@@ -32,8 +32,6 @@ class FieldOverwriteBase
      */
     protected $overwriteRequired;
     /**
-     * 
-     *
      * @var string
      */
     protected $kind;
@@ -57,11 +55,11 @@ class FieldOverwriteBase
         $this->id = $id;
     }
     /**
-    * Defines if a field value is mandatory or not: this value will overwrite the existing Required value specified in the parent schema  if
-    OverwriteRequired is set to true.
-    *
-    * @return bool
-    */
+     * Defines if a field value is mandatory or not: this value will overwrite the existing Required value specified in the parent schema  if
+     * OverwriteRequired is set to true.
+     *
+     * @return bool
+     */
     public function getRequired(): bool
     {
         return $this->required;
@@ -97,8 +95,6 @@ class FieldOverwriteBase
         $this->overwriteRequired = $overwriteRequired;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getKind(): string
@@ -106,8 +102,6 @@ class FieldOverwriteBase
         return $this->kind;
     }
     /**
-     * 
-     *
      * @param string $kind
      */
     public function setKind(string $kind)

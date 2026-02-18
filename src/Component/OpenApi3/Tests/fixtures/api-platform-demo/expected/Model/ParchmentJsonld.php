@@ -3,7 +3,6 @@
 namespace ApiPlatform\Demo\Model;
 
 /**
- *
  * @deprecated
  */
 class ParchmentJsonld extends \ArrayObject
@@ -17,26 +16,18 @@ class ParchmentJsonld extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var mixed
      */
     protected $context;
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $id2;
@@ -53,8 +44,6 @@ class ParchmentJsonld extends \ArrayObject
      */
     protected $description;
     /**
-     * 
-     *
      * @return mixed
      */
     public function getContext()
@@ -62,8 +51,6 @@ class ParchmentJsonld extends \ArrayObject
         return $this->context;
     }
     /**
-     * 
-     *
      * @param mixed $context
      *
      * @return self
@@ -75,8 +62,6 @@ class ParchmentJsonld extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -84,8 +69,6 @@ class ParchmentJsonld extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -97,8 +80,6 @@ class ParchmentJsonld extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -106,8 +87,6 @@ class ParchmentJsonld extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -119,8 +98,6 @@ class ParchmentJsonld extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getId2(): ?string
@@ -128,8 +105,6 @@ class ParchmentJsonld extends \ArrayObject
         return $this->id2;
     }
     /**
-     * 
-     *
      * @param string|null $id2
      *
      * @return self

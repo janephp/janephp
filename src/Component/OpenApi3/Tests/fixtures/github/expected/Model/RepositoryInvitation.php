@@ -25,14 +25,10 @@ class RepositoryInvitation extends \ArrayObject
      */
     protected $repository;
     /**
-     * 
-     *
      * @var RepositoryInvitationInvitee|null
      */
     protected $invitee;
     /**
-     * 
-     *
      * @var RepositoryInvitationInviter|null
      */
     protected $inviter;
@@ -43,8 +39,6 @@ class RepositoryInvitation extends \ArrayObject
      */
     protected $permissions;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $createdAt;
@@ -55,14 +49,10 @@ class RepositoryInvitation extends \ArrayObject
      */
     protected $url;
     /**
-     * 
-     *
      * @var string
      */
     protected $htmlUrl;
     /**
-     * 
-     *
      * @var string
      */
     protected $nodeId;
@@ -111,8 +101,6 @@ class RepositoryInvitation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return RepositoryInvitationInvitee|null
      */
     public function getInvitee(): ?RepositoryInvitationInvitee
@@ -120,8 +108,6 @@ class RepositoryInvitation extends \ArrayObject
         return $this->invitee;
     }
     /**
-     * 
-     *
      * @param RepositoryInvitationInvitee|null $invitee
      *
      * @return self
@@ -133,8 +119,6 @@ class RepositoryInvitation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return RepositoryInvitationInviter|null
      */
     public function getInviter(): ?RepositoryInvitationInviter
@@ -142,8 +126,6 @@ class RepositoryInvitation extends \ArrayObject
         return $this->inviter;
     }
     /**
-     * 
-     *
      * @param RepositoryInvitationInviter|null $inviter
      *
      * @return self
@@ -177,8 +159,6 @@ class RepositoryInvitation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getCreatedAt(): \DateTime
@@ -186,8 +166,6 @@ class RepositoryInvitation extends \ArrayObject
         return $this->createdAt;
     }
     /**
-     * 
-     *
      * @param \DateTime $createdAt
      *
      * @return self
@@ -221,8 +199,6 @@ class RepositoryInvitation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getHtmlUrl(): string
@@ -230,8 +206,6 @@ class RepositoryInvitation extends \ArrayObject
         return $this->htmlUrl;
     }
     /**
-     * 
-     *
      * @param string $htmlUrl
      *
      * @return self
@@ -243,8 +217,6 @@ class RepositoryInvitation extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getNodeId(): string
@@ -252,8 +224,6 @@ class RepositoryInvitation extends \ArrayObject
         return $this->nodeId;
     }
     /**
-     * 
-     *
      * @param string $nodeId
      *
      * @return self

@@ -16,9 +16,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 abstract class AbstractBodyContentGenerator implements RequestBodyContentGeneratorInterface
 {
-    /** @var GuessClass */
-    protected $guessClass;
-
+    protected GuessClass $guessClass;
     public const PHP_TYPE_MIXED = 'mixed';
 
     public function __construct(DenormalizerInterface $denormalizer)
@@ -32,7 +30,7 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
         $classGuess = $this->guessClass->guessClass($schema, $reference . '/schema', $context->getRegistry(), $array);
 
         if ($classGuess === null) {
-            $types = $this->schemaTypeToPHP($schema->getType(), $schema->getFormat());
+            $types = $this->schemaTypeToPHP($schema?->getType(), $schema?->getFormat());
 
             if ($array) {
                 $types = array_map(function ($type) {
@@ -52,36 +50,13 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
         return [['\\' . $class], $array];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTypeCondition(MediaType $content, string $reference, Context $context): Node
     {
         $schema = $content->getSchema();
         $classGuess = $this->guessClass->guessClass($schema, $reference . '/schema', $context->getRegistry(), $array);
 
         if (null === $classGuess) {
-            if ($array) {
-                return new Expr\BinaryOp\LogicalAnd(
-                    new Expr\BinaryOp\LogicalAnd(
-                        new Expr\FuncCall(new Name('is_array'), [new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'body'))]),
-                        new Expr\FuncCall(new Name('isset'), [new Arg(new Expr\ArrayDimFetch(
-                            new Expr\PropertyFetch(new Expr\Variable('this'), 'body'),
-                            new Expr\ConstFetch(new Name('0'))
-                        ))])
-                    ),
-                    $this->typeToCondition(
-                        $schema->getType(),
-                        $schema->getFormat(),
-                        new Expr\ArrayDimFetch(
-                            new Expr\PropertyFetch(new Expr\Variable('this'), 'body'),
-                            new Expr\ConstFetch(new Name('0'))
-                        )
-                    )
-                );
-            }
-
-            return $this->typeToCondition($schema->getType(), $schema->getFormat(), new Expr\PropertyFetch(new Expr\Variable('this'), 'body'));
+            return $this->typeToCondition($schema?->getType(), $schema?->getFormat(), new Expr\PropertyFetch(new Expr\Variable('this'), 'body'));
         }
 
         $class = $context->getRegistry()->getSchema($classGuess->getReference())->getNamespace() . '\\Model\\' . $classGuess->getName();

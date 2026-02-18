@@ -15,10 +15,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 final class OpenApiGenerateCommand extends Command
 {
-    /**
-     * @var GenerateCommand
-     */
-    private $generateCommand;
+    private GenerateCommand $generateCommand;
 
     public function __construct()
     {

@@ -8,7 +8,7 @@ use Jane\Component\JsonSchema\Registry\Registry;
 abstract class ChainGenerator
 {
     /** @var GeneratorInterface[] */
-    private $generators = [];
+    private array $generators = [];
 
     public function addGenerator(GeneratorInterface $generator): void
     {

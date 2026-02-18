@@ -17,27 +17,23 @@ class DateTimeType extends ObjectType
 
     /**
      * Format of the date to use when normalized.
-     *
-     * @var string
      */
-    private $outputFormat;
+    private string $outputFormat;
 
     /**
      * Format of the date to use when denormalized.
-     *
-     * @var string
      */
-    private $inputFormat;
+    private string $inputFormat;
 
     /**
-     * Indicator whether to use DateTime or DateTimeInterface as type hint.
-     *
-     * @var bool
+     * @param bool|null $preferInterface indicator whether to use DateTime or DateTimeInterface as type hint
      */
-    private $preferInterface;
-
-    public function __construct(object $object, string $outputFormat = \DateTime::RFC3339, ?string $inputFormat = null, ?bool $preferInterface = null)
-    {
+    public function __construct(
+        object $object,
+        string $outputFormat = \DateTimeInterface::RFC3339,
+        ?string $inputFormat = null,
+        private ?bool $preferInterface = null,
+    ) {
         parent::__construct($object, '\DateTime', '', []);
 
         $this->outputFormat = $outputFormat;
@@ -45,17 +41,11 @@ class DateTimeType extends ObjectType
         $this->preferInterface = $preferInterface ?? false;
     }
 
-    /**
-     * ({@inheritDoc}.
-     */
     protected function createDenormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
         return $this->generateParseExpression($input);
     }
 
-    /**
-     * ({@inheritDoc}.
-     */
     protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
         if ($this->isNullable($this->object)) {
@@ -71,9 +61,6 @@ class DateTimeType extends ObjectType
         ]);
     }
 
-    /**
-     * ({@inheritDoc}.
-     */
     public function createConditionStatement(Expr $input): Expr
     {
         return new Expr\BinaryOp\LogicalAnd(new Expr\FuncCall(

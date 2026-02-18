@@ -7,17 +7,16 @@ class CompanyCreditReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint im
     protected $id;
     /**
      * Orders a Company's Credit Report by connectId. Set the content-type of the request to `application\pdf` to receive a PDF of the report instead of JSON.
-     *
      * @param string $id The connectId (optionally Safe Number where available) of the Company required to order their Credit Report. Obtained from `/companies` search results.
-     * @param array $queryParameters {
-     *     @var string $language Report Language - The JSON structure of the Report is language invariant, but field content will return as the given language, where available.
-     *     @var string $template Optional parameter to request a Templated Company Report. A Template adds/reduces sections of the Credit Report depending on your subscription. Do not include this parameter if you have not been given a template to use.
-     *     @var string $customData A Key-Value pair (as a string format key::value) that is required for certain Report requests. I.e. German Report Reason Code. Use /reportcustomdata/{country} endpoint to see the necessary structure/values.
-     *     @var string $callRef Call Reference
-     * }
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
+     * @param array{
+     *    "language"?: string, //Report Language - The JSON structure of the Report is language invariant, but field content will return as the given language, where available.
+     *    "template"?: string, //Optional parameter to request a Templated Company Report. A Template adds/reduces sections of the Credit Report depending on your subscription. Do not include this parameter if you have not been given a template to use.
+     *    "customData"?: string, //A Key-Value pair (as a string format key::value) that is required for certain Report requests. I.e. German Report Reason Code. Use /reportcustomdata/{country} endpoint to see the necessary structure/values.
+     *    "callRef"?: string, //Call Reference
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
      */
     public function __construct(string $id, array $queryParameters = [], array $headerParameters = [])
     {
@@ -76,16 +75,16 @@ class CompanyCreditReport extends \CreditSafe\API\Runtime\Client\BaseEndpoint im
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return json_decode($body);
         }
-        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\CompanyCreditReportBadRequestException($response);
         }
-        if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (401 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\CompanyCreditReportUnauthorizedException($response);
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\CompanyCreditReportForbiddenException($response);
         }
     }

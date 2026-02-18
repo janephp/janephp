@@ -13,26 +13,18 @@ class BookJsonld extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var mixed
      */
     protected $context;
     /**
-     * 
-     *
      * @var string
      */
     protected $id;
     /**
-     * 
-     *
      * @var string
      */
     protected $type;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $id2;
@@ -79,14 +71,10 @@ class BookJsonld extends \ArrayObject
      */
     protected $cover;
     /**
-     * 
-     *
      * @var \DateTime|null
      */
     protected $archivedAt;
     /**
-     * 
-     *
      * @return mixed
      */
     public function getContext()
@@ -94,8 +82,6 @@ class BookJsonld extends \ArrayObject
         return $this->context;
     }
     /**
-     * 
-     *
      * @param mixed $context
      *
      * @return self
@@ -107,8 +93,6 @@ class BookJsonld extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getId(): string
@@ -116,8 +100,6 @@ class BookJsonld extends \ArrayObject
         return $this->id;
     }
     /**
-     * 
-     *
      * @param string $id
      *
      * @return self
@@ -129,8 +111,6 @@ class BookJsonld extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getType(): string
@@ -138,8 +118,6 @@ class BookJsonld extends \ArrayObject
         return $this->type;
     }
     /**
-     * 
-     *
      * @param string $type
      *
      * @return self
@@ -151,8 +129,6 @@ class BookJsonld extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getId2(): ?string
@@ -160,8 +136,6 @@ class BookJsonld extends \ArrayObject
         return $this->id2;
     }
     /**
-     * 
-     *
      * @param string|null $id2
      *
      * @return self
@@ -327,8 +301,6 @@ class BookJsonld extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime|null
      */
     public function getArchivedAt(): ?\DateTime
@@ -336,8 +308,6 @@ class BookJsonld extends \ArrayObject
         return $this->archivedAt;
     }
     /**
-     * 
-     *
      * @param \DateTime|null $archivedAt
      *
      * @return self

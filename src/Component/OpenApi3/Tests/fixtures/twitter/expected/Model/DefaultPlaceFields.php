@@ -13,32 +13,22 @@ class DefaultPlaceFields extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $placeType;
     /**
-     * 
-     *
      * @var string
      */
     protected $fullName;
     /**
-     * 
-     *
      * @var string
      */
     protected $country;
     /**
-     * 
-     *
      * @var list<string>
      */
     protected $containedWithin;
     /**
-     * 
-     *
      * @return string
      */
     public function getPlaceType(): string
@@ -46,8 +36,6 @@ class DefaultPlaceFields extends \ArrayObject
         return $this->placeType;
     }
     /**
-     * 
-     *
      * @param string $placeType
      *
      * @return self
@@ -59,8 +47,6 @@ class DefaultPlaceFields extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFullName(): string
@@ -68,8 +54,6 @@ class DefaultPlaceFields extends \ArrayObject
         return $this->fullName;
     }
     /**
-     * 
-     *
      * @param string $fullName
      *
      * @return self
@@ -81,8 +65,6 @@ class DefaultPlaceFields extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCountry(): string
@@ -90,8 +72,6 @@ class DefaultPlaceFields extends \ArrayObject
         return $this->country;
     }
     /**
-     * 
-     *
      * @param string $country
      *
      * @return self
@@ -103,8 +83,6 @@ class DefaultPlaceFields extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<string>
      */
     public function getContainedWithin(): array
@@ -112,8 +90,6 @@ class DefaultPlaceFields extends \ArrayObject
         return $this->containedWithin;
     }
     /**
-     * 
-     *
      * @param list<string> $containedWithin
      *
      * @return self

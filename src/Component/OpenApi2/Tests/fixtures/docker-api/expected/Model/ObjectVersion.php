@@ -13,14 +13,10 @@ class ObjectVersion
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var int
      */
     protected $index;
     /**
-     * 
-     *
      * @return int
      */
     public function getIndex(): int
@@ -28,8 +24,6 @@ class ObjectVersion
         return $this->index;
     }
     /**
-     * 
-     *
      * @param int $index
      *
      * @return self

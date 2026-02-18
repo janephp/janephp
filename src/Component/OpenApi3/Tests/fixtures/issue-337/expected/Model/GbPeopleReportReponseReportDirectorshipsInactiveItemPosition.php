@@ -13,26 +13,18 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemPosition extends \Arra
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $resignationDate;
     /**
-     * 
-     *
      * @var string
      */
     protected $dateAppointed;
     /**
-     * 
-     *
      * @var string
      */
     protected $positionName;
     /**
-     * 
-     *
      * @return string
      */
     public function getResignationDate(): string
@@ -40,8 +32,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemPosition extends \Arra
         return $this->resignationDate;
     }
     /**
-     * 
-     *
      * @param string $resignationDate
      *
      * @return self
@@ -53,8 +43,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemPosition extends \Arra
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDateAppointed(): string
@@ -62,8 +50,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemPosition extends \Arra
         return $this->dateAppointed;
     }
     /**
-     * 
-     *
      * @param string $dateAppointed
      *
      * @return self
@@ -75,8 +61,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemPosition extends \Arra
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getPositionName(): string
@@ -84,8 +68,6 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemPosition extends \Arra
         return $this->positionName;
     }
     /**
-     * 
-     *
      * @param string $positionName
      *
      * @return self

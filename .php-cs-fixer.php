@@ -19,13 +19,15 @@ $finder = (new PhpCsFixer\Finder())
 
 return (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
+    ->setUnsupportedPhpVersionAllowed(true)
+    ->setParallelConfig(PhpCsFixer\Runner\Parallel\ParallelConfigFactory::detect())
     ->setRules([
         '@Symfony' => true,
         '@Symfony:risky' => true,
         'array_syntax' => ['syntax' => 'short'],
         'concat_space' => ['spacing' => 'one'],
         'yoda_style' => false,
-        'native_constant_invocation' => false,
+        'native_constant_invocation' => true,
         'no_superfluous_phpdoc_tags' => [
             'remove_inheritdoc' => false,
         ],
@@ -34,6 +36,7 @@ return (new PhpCsFixer\Config())
         // Can be removed once PHP requirement is upgraded
         'get_class_to_class_keyword' => false,
         'modernize_strpos' => false,
+        'new_with_parentheses' => true,
     ])
     ->setFinder($finder)
 ;

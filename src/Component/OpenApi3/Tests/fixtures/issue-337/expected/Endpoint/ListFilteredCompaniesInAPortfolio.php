@@ -7,18 +7,17 @@ class ListFilteredCompaniesInAPortfolio extends \CreditSafe\API\Runtime\Client\B
     protected $portfolioId;
     /**
      * Get all companies from a specific portfolio based on the portfolio id, optionally filter with query parameters
-     *
      * @param string $portfolioId The unique identifier of the portfolio, obtained from `/portfolios`.
-     * @param array $queryParameters {
-     *     @var string $searchQuery Return companies that match the given value
-     *     @var int $pageSize Number of items to return per Page (max 1000)
-     *     @var int $page Starting page number (indexed from 0)
-     *     @var string $countryCode Return <<resourcePathName>> that match the given countryCode
-     *     @var bool $events If set to true, all events will be returned for each company
-     * }
-     * @param array $headerParameters {
-     *     @var string $Authorization Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
-     * }
+     * @param array{
+     *    "searchQuery"?: string, //Return companies that match the given value
+     *    "pageSize"?: int, //Number of items to return per Page (max 1000)
+     *    "page"?: int, //Starting page number (indexed from 0)
+     *    "countryCode"?: string, //Return <<resourcePathName>> that match the given countryCode
+     *    "events"?: bool, //If set to true, all events will be returned for each company
+     * } $queryParameters
+     * @param array{
+     *    "Authorization": string, //Bearer JWT (Authentication Token) generated from the /authenticate endpoint.
+     * } $headerParameters
      */
     public function __construct(string $portfolioId, array $queryParameters = [], array $headerParameters = [])
     {
@@ -79,19 +78,19 @@ class ListFilteredCompaniesInAPortfolio extends \CreditSafe\API\Runtime\Client\B
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             return json_decode($body);
         }
-        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (400 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioBadRequestException($response);
         }
-        if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (401 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioUnauthorizedException($response);
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (403 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioForbiddenException($response);
         }
-        if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (404 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \CreditSafe\API\Exception\ListFilteredCompaniesInAPortfolioNotFoundException($response);
         }
     }

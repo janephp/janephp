@@ -22,29 +22,19 @@ class SecuritySchemeGuess
     public const SCHEME_BEARER = 'Bearer';
     public const SCHEME_BASIC = 'Basic';
 
-    /** @var string */
-    private $name;
+    /** @var 'Bearer'|'Basic'|string|null */
+    private ?string $scheme = null;
+    private ?string $in = null;
 
-    /** @var string */
-    private $type;
-
-    /** @var string */
-    private $variable;
-
-    /** @var string|null */
-    private $scheme;
-
-    /** @var string|null */
-    private $in;
-
-    private $object;
-
-    public function __construct(string $name, object $object, string $variable, string $type)
-    {
-        $this->name = $name;
-        $this->object = $object;
-        $this->variable = $variable;
-        $this->type = $type;
+    /**
+     * @param 'apiKey'|'http'|'oauth2'|'openIdConnect'|string $type
+     */
+    public function __construct(
+        private readonly string $name,
+        private readonly object $object,
+        private readonly string $variable,
+        private readonly string $type,
+    ) {
     }
 
     public function getName(): string

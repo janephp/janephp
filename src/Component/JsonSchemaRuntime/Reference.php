@@ -11,21 +11,18 @@ use Rs\Json\Pointer;
 use Symfony\Component\Yaml\Yaml;
 
 /**
- * Deal with a Json Reference.
+ * Deal with a JSON Reference.
  */
 class Reference
 {
-    private static $fileCache = [];
-    private static $pointerCache = [];
-    private static $arrayCache = [];
+    private static array $fileCache = [];
+    private static array $pointerCache = [];
+    private static array $arrayCache = [];
 
-    private $resolved;
-
-    private $referenceUri;
-
-    private $originUri;
-
-    private $mergedUri;
+    private string|array|null $resolved = null;
+    private Http $referenceUri;
+    private Http $originUri;
+    private Http $mergedUri;
 
     public function __construct(string $reference, string $origin)
     {
@@ -49,7 +46,7 @@ class Reference
      *
      * @return mixed Return the json value (deserialized) referenced
      */
-    public function resolve(callable $deserializeCallback = null)
+    public function resolve(?callable $deserializeCallback = null)
     {
         if (null === $deserializeCallback) {
             $deserializeCallback = function ($data) { return $data; };
@@ -65,17 +62,17 @@ class Reference
     /**
      * Resolve a JSON Reference for a Schema.
      *
-     * @return mixed Return the json value referenced
+     * @return string|array Return the json value referenced
      */
-    protected function doResolve()
+    protected function doResolve(): string|array
     {
         $fragment = (string) $this->mergedUri->withFragment('');
-        $reference = sprintf('%s_%s', $fragment, $this->mergedUri->getFragment());
+        $reference = \sprintf('%s_%s', $fragment, $this->mergedUri->getFragment());
 
         if (!\array_key_exists($fragment, self::$fileCache)) {
             $contents = file_get_contents($fragment);
 
-            if (!json_decode($contents, true) || JSON_ERROR_NONE !== json_last_error()) {
+            if (!json_decode($contents, true) || \JSON_ERROR_NONE !== json_last_error()) {
                 $decoded = Yaml::parse($contents,
                     Yaml::PARSE_OBJECT | Yaml::PARSE_OBJECT_FOR_MAP | Yaml::PARSE_DATETIME | Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE);
                 $contents = json_encode($decoded);

@@ -13,20 +13,14 @@ class BankMatchVerify extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $companyNumber;
     /**
-     * 
-     *
      * @var string
      */
     protected $accountNumber;
     /**
-     * 
-     *
      * @var string
      */
     protected $iban;
@@ -37,20 +31,14 @@ class BankMatchVerify extends \ArrayObject
      */
     protected $ibanResult;
     /**
-     * 
-     *
      * @var string
      */
     protected $ibanText;
     /**
-     * 
-     *
      * @var string
      */
     protected $logDate;
     /**
-     * 
-     *
      * @var string
      */
     protected $safeNumber;
@@ -61,14 +49,10 @@ class BankMatchVerify extends \ArrayObject
      */
     protected $scanResult;
     /**
-     * 
-     *
      * @var string
      */
     protected $scanText;
     /**
-     * 
-     *
      * @var string
      */
     protected $sortCode;
@@ -91,14 +75,10 @@ class BankMatchVerify extends \ArrayObject
      */
     protected $vatResult;
     /**
-     * 
-     *
      * @var string
      */
     protected $vatText;
     /**
-     * 
-     *
      * @return string
      */
     public function getCompanyNumber(): string
@@ -106,8 +86,6 @@ class BankMatchVerify extends \ArrayObject
         return $this->companyNumber;
     }
     /**
-     * 
-     *
      * @param string $companyNumber
      *
      * @return self
@@ -119,8 +97,6 @@ class BankMatchVerify extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getAccountNumber(): string
@@ -128,8 +104,6 @@ class BankMatchVerify extends \ArrayObject
         return $this->accountNumber;
     }
     /**
-     * 
-     *
      * @param string $accountNumber
      *
      * @return self
@@ -141,8 +115,6 @@ class BankMatchVerify extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIban(): string
@@ -150,8 +122,6 @@ class BankMatchVerify extends \ArrayObject
         return $this->iban;
     }
     /**
-     * 
-     *
      * @param string $iban
      *
      * @return self
@@ -185,8 +155,6 @@ class BankMatchVerify extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getIbanText(): string
@@ -194,8 +162,6 @@ class BankMatchVerify extends \ArrayObject
         return $this->ibanText;
     }
     /**
-     * 
-     *
      * @param string $ibanText
      *
      * @return self
@@ -207,8 +173,6 @@ class BankMatchVerify extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLogDate(): string
@@ -216,8 +180,6 @@ class BankMatchVerify extends \ArrayObject
         return $this->logDate;
     }
     /**
-     * 
-     *
      * @param string $logDate
      *
      * @return self
@@ -229,8 +191,6 @@ class BankMatchVerify extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSafeNumber(): string
@@ -238,8 +198,6 @@ class BankMatchVerify extends \ArrayObject
         return $this->safeNumber;
     }
     /**
-     * 
-     *
      * @param string $safeNumber
      *
      * @return self
@@ -273,8 +231,6 @@ class BankMatchVerify extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getScanText(): string
@@ -282,8 +238,6 @@ class BankMatchVerify extends \ArrayObject
         return $this->scanText;
     }
     /**
-     * 
-     *
      * @param string $scanText
      *
      * @return self
@@ -295,8 +249,6 @@ class BankMatchVerify extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getSortCode(): string
@@ -304,8 +256,6 @@ class BankMatchVerify extends \ArrayObject
         return $this->sortCode;
     }
     /**
-     * 
-     *
      * @param string $sortCode
      *
      * @return self
@@ -383,8 +333,6 @@ class BankMatchVerify extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getVatText(): string
@@ -392,8 +340,6 @@ class BankMatchVerify extends \ArrayObject
         return $this->vatText;
     }
     /**
-     * 
-     *
      * @param string $vatText
      *
      * @return self
