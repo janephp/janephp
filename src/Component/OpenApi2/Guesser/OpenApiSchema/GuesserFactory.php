@@ -11,7 +11,7 @@ use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\ArrayGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\DateGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\DateTimeGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\ItemsGuesser;
-use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\OneOfGuesser;
+use Jane\Component\JsonSchema\Guesser\JsonSchema\OneOfGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\MultipleGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\ReferenceGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\SimpleTypeGuesser;

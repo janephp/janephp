@@ -15,12 +15,19 @@ class OneOfGuesser implements ChainGuesserAwareInterface, TypeGuesserInterface, 
 {
     use ChainGuesserAwareTrait;
 
+    protected $schemaClass;
+
+    public function __construct(string $schemaClass = JsonSchema::class)
+    {
+        $this->schemaClass = $schemaClass;
+    }
+
     /**
      * {@inheritdoc}
      */
     public function supportObject($object): bool
     {
-        return ($object instanceof JsonSchema) && 'object' !== $object->getType() && \is_array($object->getOneOf()) && \count($object->getOneOf()) > 0;
+        return ($object instanceof $this->schemaClass) && 'object' !== $object->getType() && \is_array($object->getOneOf()) && \count($object->getOneOf()) > 0;
     }
 
     /**
