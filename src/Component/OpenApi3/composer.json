@@ -4,7 +4,6 @@
     "description": "Generate a PHP Client API (PSR7/PSR18 compatible) given a OpenApi 3.x specification",
     "keywords": [
         "jane",
-        "swagger",
         "openapi"
     ],
     "license": "MIT",

@@ -4,7 +4,6 @@
     "description": "Utility for OpenApi 2/3 generators",
     "keywords": [
         "jane",
-        "swagger",
         "openapi",
         "utility"
     ],

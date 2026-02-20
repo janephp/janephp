@@ -43,7 +43,7 @@ abstract class JaneOpenApi extends ChainGenerator
         protected ChainGuesser $chainGuesser,
         protected bool $strict = true,
     ) {
-        $this->serializer = self::buildSerializer();
+        $this->serializer = static::buildSerializer();
         $this->schemaParser = new $schemaParserClass($this->serializer);
         $this->naming = new Naming();
     }
@@ -113,7 +113,7 @@ abstract class JaneOpenApi extends ChainGenerator
     {
         $whitelistFetchClass = static::WHITELIST_FETCH_CLASS;
         /** @var WhitelistFetchInterface $whitelistedSchema */
-        $whitelistedSchema = new $whitelistFetchClass($schema, self::buildSerializer());
+        $whitelistedSchema = new $whitelistFetchClass($schema, static::buildSerializer());
 
         foreach ($schema->getOperations() as $operation) {
             $whitelistedSchema->addOperationRelations($operation, $registry);

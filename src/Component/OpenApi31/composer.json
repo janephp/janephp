@@ -1,0 +1,64 @@
+{
+    "name": "jane-php/open-api-3-1",
+    "type": "library",
+    "description": "Generate a PHP Client API (PSR7/PSR18 compatible) given a OpenApi 3.1.x specification",
+    "keywords": [
+        "jane",
+        "openapi"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Baptiste Leduc",
+            "email": "baptiste.leduc@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Jane\\Component\\OpenApi31\\": ""
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Jane\\Component\\OpenApi31\\Tests\\Client\\": "/Tests/client/generated/"
+        }
+    },
+    "require": {
+        "php": "^8.1",
+        "ext-json": "*",
+        "jane-php/json-schema": "^7.5",
+        "jane-php/open-api-common": "^7.5",
+        "nikic/php-parser": "^4.19 || ^5.1",
+        "symfony/serializer": "^5.4 || ^6.4 || ^7.0 || ^8.0",
+        "symfony/yaml": "^5.4 || ^6.4 || ^7.0 || ^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5",
+        "symfony/finder": "^5.4 || ^6.4 || ^7.0 || ^8.0",
+        "kriswallsmith/buzz": "^1.2",
+        "nyholm/psr7": "^1.8"
+    },
+    "suggest": {
+        "friendsofphp/php-cs-fixer": "To have a nice formatting of the generated files"
+    },
+    "conflict": {
+        "symfony/framework-bundle": "5.1.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-next": "7-dev"
+        }
+    },
+    "config": {
+        "process-timeout": 1800,
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

@@ -6,6 +6,7 @@ parameters:
 	excludePaths:
 		analyse:
 			- src/Component/*/JsonSchema/*
+			- src/Component/*/vendor/*
 		analyseAndScan:
 			- src/Bundle/*/Tests/Resources/*
 			- src/Component/*/Tests/fixtures/*

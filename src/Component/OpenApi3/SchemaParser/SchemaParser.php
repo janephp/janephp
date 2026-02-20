@@ -16,6 +16,6 @@ class SchemaParser extends CommonSchemaParser
 
     protected function validSchema($openApiSpecData): bool
     {
-        return \is_array($openApiSpecData) && \array_key_exists('openapi', $openApiSpecData) && version_compare($openApiSpecData['openapi'], '3.0.0', '>=');
+        return \is_array($openApiSpecData) && \array_key_exists('openapi', $openApiSpecData) && version_compare($openApiSpecData['openapi'], '3.0.0', '>=') && version_compare($openApiSpecData['openapi'], '3.1.0', '<');
     }
 }

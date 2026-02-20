@@ -29,7 +29,7 @@ trait GetConstructorTrait
     {
         $pathParams = $pathParamsDoc = $pathParamsWithDefaultValue = $pathParamsWithDefaultValueDoc = $queryParamsDoc = $headerParamsDoc = $methodStatements = $pathProperties = [];
         $bodyParam = $bodyDoc = $bodyAssign = null;
-        $contentTypes = $this->getContentTypes($operation, $guessClass);
+        $contentTypes = $this->getContentTypes($operation, $guessClass, $context);
 
         foreach ($operation->getParameters() as $key => $parameter) {
             if ($parameter instanceof Reference) {
@@ -102,7 +102,7 @@ trait GetConstructorTrait
             \count($queryParamsDoc) > 0 ? [\sprintf(" * @param array{\n%s\n * } \$queryParameters", implode("\n", $queryParamsDoc))] : [],
             \count($headerParamsDoc) > 0 ? [\sprintf(" * @param array{\n%s\n * } \$headerParameters", implode("\n", $headerParamsDoc))] : [],
             \count($contentTypes) > 1 ? [' * @param array $accept Accept content header ' .
-                str_replace('*/', '*\\/', implode('|', $this->getContentTypes($operation, $guessClass)))] : []
+                str_replace('*/', '*\\/', implode('|', $this->getContentTypes($operation, $guessClass, $context)))] : []
         );
 
         $methodParamsDoc = ['/**'];
