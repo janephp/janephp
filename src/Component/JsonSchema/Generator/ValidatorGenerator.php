@@ -128,20 +128,7 @@ class ValidatorGenerator implements GeneratorInterface
     {
         $args = [];
         foreach ($guess->getArguments() as $argName => $argument) {
-            $value = null;
-            if (\is_array($argument)) {
-                $values = [];
-                foreach ($argument as $item) {
-                    $values[] = new Expr\ArrayItem(new Scalar\String_($item));
-                }
-                $value = new Expr\Array_($values);
-            } elseif (\is_string($argument)) {
-                $value = new Scalar\String_($argument);
-            } elseif (\is_int($argument)) {
-                $value = new Scalar\LNumber($argument);
-            } elseif (\is_float($argument)) {
-                $value = new Scalar\DNumber($argument);
-            }
+            $value = $this->generateConstraintArgument($argument);
 
             if (null !== $value) {
                 $args[] = new Node\Arg($value, name: new Node\Identifier($argName));
@@ -149,5 +136,31 @@ class ValidatorGenerator implements GeneratorInterface
         }
 
         return new Expr\New_(new Node\Name\FullyQualified($guess->getConstraintClass()), $args);
+    }
+
+    private function generateConstraintArgument($argument): ?Expr
+    {
+        if ($argument instanceof ValidatorGuess) {
+            return $this->generateConstraint($argument);
+        }
+        if (\is_array($argument)) {
+            $values = [];
+            foreach ($argument as $item) {
+                $values[] = new Expr\ArrayItem($this->generateConstraintArgument($item));
+            }
+
+            return new Expr\Array_($values);
+        }
+        if (\is_string($argument)) {
+            return new Scalar\String_($argument);
+        }
+        if (\is_int($argument)) {
+            return new Scalar\LNumber($argument);
+        }
+        if (\is_float($argument)) {
+            return new Scalar\DNumber($argument);
+        }
+
+        return null;
     }
 }

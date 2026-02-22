@@ -236,6 +236,55 @@
                     "minLength": 1
                 }
             }
+        },
+        "ArrayItemsObject": {
+            "type": "object",
+            "properties": {
+                "uuidArray": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                },
+                "enumStringArray": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": ["alpha", "beta", "gamma"]
+                    }
+                },
+                "constrainedStringArray": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 2,
+                        "maxLength": 10
+                    }
+                },
+                "constrainedIntegerArray": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 100
+                    }
+                },
+                "emailArray": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "email"
+                    }
+                },
+                "patternArray": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "pattern": "^[A-Z]{3}$"
+                    }
+                }
+            }
         }
     }
 }
