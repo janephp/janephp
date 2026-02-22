@@ -7,7 +7,6 @@ use Jane\Component\JsonSchema\Guesser\Guess\Property;
 use Jane\Component\JsonSchema\Guesser\Validator\ObjectCheckTrait;
 use Jane\Component\JsonSchema\Guesser\Validator\ValidatorGuess;
 use Jane\Component\JsonSchema\Guesser\Validator\ValidatorInterface;
-use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Symfony\Component\Validator\Constraints\All;
 use Symfony\Component\Validator\Constraints\Choice;
 use Symfony\Component\Validator\Constraints\DivisibleBy;
@@ -34,16 +33,14 @@ class ItemsValidator implements ValidatorInterface
 
     public function supports($object): bool
     {
-        return $this->checkObject($object) && (\is_array($object->getType()) ? \in_array('array', $object->getType()) : 'array' === $object->getType()) && null !== $object->getItems() && $object->getItems() instanceof JsonSchema;
+        return $this->checkObject($object) && (\is_array($object->getType()) ? \in_array('array', $object->getType()) : 'array' === $object->getType()) && null !== $object->getItems() && \is_object($object->getItems()) && $this->checkObject($object->getItems());
     }
 
     /**
-     * @param JsonSchema          $object
      * @param ClassGuess|Property $guess
      */
     public function guess($object, string $name, $guess): void
     {
-        /** @var JsonSchema $items */
         $items = $object->getItems();
         $innerConstraints = [];
 
@@ -63,7 +60,7 @@ class ItemsValidator implements ValidatorInterface
     /**
      * @param ValidatorGuess[] $innerConstraints
      */
-    private function guessTypeConstraints(JsonSchema $items, array &$innerConstraints): void
+    private function guessTypeConstraints(object $items, array &$innerConstraints): void
     {
         if (null === $items->getType()) {
             return;
@@ -94,7 +91,7 @@ class ItemsValidator implements ValidatorInterface
     /**
      * @param ValidatorGuess[] $innerConstraints
      */
-    private function guessFormatConstraints(JsonSchema $items, array &$innerConstraints): void
+    private function guessFormatConstraints(object $items, array &$innerConstraints): void
     {
         $format = $items->getFormat();
         if (null === $format) {
@@ -123,7 +120,7 @@ class ItemsValidator implements ValidatorInterface
     /**
      * @param ValidatorGuess[] $innerConstraints
      */
-    private function guessEnumConstraints(JsonSchema $items, array &$innerConstraints): void
+    private function guessEnumConstraints(object $items, array &$innerConstraints): void
     {
         if (null === $items->getEnum()) {
             return;
@@ -138,7 +135,7 @@ class ItemsValidator implements ValidatorInterface
     /**
      * @param ValidatorGuess[] $innerConstraints
      */
-    private function guessStringConstraints(JsonSchema $items, array &$innerConstraints): void
+    private function guessStringConstraints(object $items, array &$innerConstraints): void
     {
         if (null !== $items->getMinLength()) {
             $innerConstraints[] = new ValidatorGuess(Length::class, [
@@ -165,7 +162,7 @@ class ItemsValidator implements ValidatorInterface
     /**
      * @param ValidatorGuess[] $innerConstraints
      */
-    private function guessNumericConstraints(JsonSchema $items, array &$innerConstraints): void
+    private function guessNumericConstraints(object $items, array &$innerConstraints): void
     {
         if (null !== $items->getMinimum()) {
             $innerConstraints[] = new ValidatorGuess(GreaterThanOrEqual::class, ['value' => $items->getMinimum()]);
