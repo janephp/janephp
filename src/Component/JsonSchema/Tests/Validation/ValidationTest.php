@@ -5,6 +5,7 @@ namespace Jane\Component\JsonSchema\Tests\Validation;
 use Jane\Component\JsonSchema\Console\Command\GenerateCommand;
 use Jane\Component\JsonSchema\Console\Loader\ConfigLoader;
 use Jane\Component\JsonSchema\Console\Loader\SchemaLoader;
+use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\ArrayItemsObject;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\ArrayObject;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\FormatObject;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\NumericObject;
@@ -16,6 +17,7 @@ use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\SimpleObjectSubPr
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\StringObject;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\TypeObject;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Model\VerifyNullableStringPropertyWithMinLengthValidatesCorrectly;
+use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\ArrayItemsObjectNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\ArrayObjectNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\FormatObjectNormalizer;
 use Jane\Component\JsonSchema\Tests\Validation\Generated\Normalizer\NumericObjectNormalizer;
@@ -81,6 +83,9 @@ class ValidationTest extends TestCase
 
         // 12.
         $this->verifyNullableStringPropertyWithMinLengthValidatesCorrectly();
+
+        // 13. Array items validation
+        $this->arrayItemsValidation();
     }
 
     private function numericValidation(): void
@@ -947,5 +952,169 @@ class ValidationTest extends TestCase
 
         self::assertInstanceOf(VerifyNullableStringPropertyWithMinLengthValidatesCorrectly::class, $data);
         self::assertNull($data->getName());
+    }
+
+    private function arrayItemsValidation(): void
+    {
+        $normalizer = new ArrayItemsObjectNormalizer();
+
+        // Valid uuid array
+        $data = $normalizer->denormalize([
+            'uuidArray' => ['8309e3b3-0c6c-4ab8-b450-e7564f6d07fd', 'a1b2c3d4-e5f6-7890-abcd-ef1234567890'],
+        ], ArrayItemsObject::class);
+        $this->assertInstanceOf(ArrayItemsObject::class, $data);
+
+        // Invalid uuid in array
+        $caughtException = null;
+        try {
+            $normalizer->denormalize([
+                'uuidArray' => ['8309e3b3-0c6c-4ab8-b450-e7564f6d07fd', 'not-a-uuid'],
+            ], ArrayItemsObject::class);
+        } catch (ValidationException $exception) {
+            $caughtException = $exception;
+        }
+
+        $this->assertInstanceOf(ValidationException::class, $caughtException);
+        $this->assertEquals(400, $caughtException->getCode());
+        $this->assertGreaterThanOrEqual(1, $caughtException->getViolationList()->count());
+
+        // Valid enum string array
+        $data = $normalizer->denormalize([
+            'enumStringArray' => ['alpha', 'beta'],
+        ], ArrayItemsObject::class);
+        $this->assertInstanceOf(ArrayItemsObject::class, $data);
+
+        // Invalid enum value in array
+        $caughtException = null;
+        try {
+            $normalizer->denormalize([
+                'enumStringArray' => ['alpha', 'invalid'],
+            ], ArrayItemsObject::class);
+        } catch (ValidationException $exception) {
+            $caughtException = $exception;
+        }
+
+        $this->assertInstanceOf(ValidationException::class, $caughtException);
+        $this->assertEquals(400, $caughtException->getCode());
+        $this->assertGreaterThanOrEqual(1, $caughtException->getViolationList()->count());
+
+        // Valid constrained string array
+        $data = $normalizer->denormalize([
+            'constrainedStringArray' => ['ab', 'abcde'],
+        ], ArrayItemsObject::class);
+        $this->assertInstanceOf(ArrayItemsObject::class, $data);
+
+        // String too short in array
+        $caughtException = null;
+        try {
+            $normalizer->denormalize([
+                'constrainedStringArray' => ['a'],
+            ], ArrayItemsObject::class);
+        } catch (ValidationException $exception) {
+            $caughtException = $exception;
+        }
+
+        $this->assertInstanceOf(ValidationException::class, $caughtException);
+        $this->assertEquals(400, $caughtException->getCode());
+        $this->assertGreaterThanOrEqual(1, $caughtException->getViolationList()->count());
+
+        // String too long in array
+        $caughtException = null;
+        try {
+            $normalizer->denormalize([
+                'constrainedStringArray' => ['this-is-way-too-long-string'],
+            ], ArrayItemsObject::class);
+        } catch (ValidationException $exception) {
+            $caughtException = $exception;
+        }
+
+        $this->assertInstanceOf(ValidationException::class, $caughtException);
+        $this->assertEquals(400, $caughtException->getCode());
+        $this->assertGreaterThanOrEqual(1, $caughtException->getViolationList()->count());
+
+        // Valid constrained integer array
+        $data = $normalizer->denormalize([
+            'constrainedIntegerArray' => [1, 50, 100],
+        ], ArrayItemsObject::class);
+        $this->assertInstanceOf(ArrayItemsObject::class, $data);
+
+        // Integer below minimum in array
+        $caughtException = null;
+        try {
+            $normalizer->denormalize([
+                'constrainedIntegerArray' => [0],
+            ], ArrayItemsObject::class);
+        } catch (ValidationException $exception) {
+            $caughtException = $exception;
+        }
+
+        $this->assertInstanceOf(ValidationException::class, $caughtException);
+        $this->assertEquals(400, $caughtException->getCode());
+        $this->assertGreaterThanOrEqual(1, $caughtException->getViolationList()->count());
+
+        // Integer above maximum in array
+        $caughtException = null;
+        try {
+            $normalizer->denormalize([
+                'constrainedIntegerArray' => [101],
+            ], ArrayItemsObject::class);
+        } catch (ValidationException $exception) {
+            $caughtException = $exception;
+        }
+
+        $this->assertInstanceOf(ValidationException::class, $caughtException);
+        $this->assertEquals(400, $caughtException->getCode());
+        $this->assertGreaterThanOrEqual(1, $caughtException->getViolationList()->count());
+
+        // Valid email array
+        $data = $normalizer->denormalize([
+            'emailArray' => ['foo@bar.com', 'test@example.org'],
+        ], ArrayItemsObject::class);
+        $this->assertInstanceOf(ArrayItemsObject::class, $data);
+
+        // Invalid email in array
+        $caughtException = null;
+        try {
+            $normalizer->denormalize([
+                'emailArray' => ['not-an-email'],
+            ], ArrayItemsObject::class);
+        } catch (ValidationException $exception) {
+            $caughtException = $exception;
+        }
+
+        $this->assertInstanceOf(ValidationException::class, $caughtException);
+        $this->assertEquals(400, $caughtException->getCode());
+        $this->assertGreaterThanOrEqual(1, $caughtException->getViolationList()->count());
+
+        // Valid pattern array
+        $data = $normalizer->denormalize([
+            'patternArray' => ['ABC', 'XYZ'],
+        ], ArrayItemsObject::class);
+        $this->assertInstanceOf(ArrayItemsObject::class, $data);
+
+        // Invalid pattern in array
+        $caughtException = null;
+        try {
+            $normalizer->denormalize([
+                'patternArray' => ['abc'],
+            ], ArrayItemsObject::class);
+        } catch (ValidationException $exception) {
+            $caughtException = $exception;
+        }
+
+        $this->assertInstanceOf(ValidationException::class, $caughtException);
+        $this->assertEquals(400, $caughtException->getCode());
+        $this->assertGreaterThanOrEqual(1, $caughtException->getViolationList()->count());
+
+        // Empty array is always valid
+        $data = $normalizer->denormalize([
+            'uuidArray' => [],
+            'enumStringArray' => [],
+            'constrainedStringArray' => [],
+            'constrainedIntegerArray' => [],
+            'emailArray' => [],
+            'patternArray' => [],
+        ], ArrayItemsObject::class);
+        $this->assertInstanceOf(ArrayItemsObject::class, $data);
     }
 }
