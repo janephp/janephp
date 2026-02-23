@@ -25,7 +25,7 @@ class GistsPostBody extends \ArrayObject
      */
     protected $files;
     /**
-     * @var mixed
+     * @var bool|string|mixed
      */
     protected $public;
     /**
@@ -73,14 +73,14 @@ class GistsPostBody extends \ArrayObject
         return $this;
     }
     /**
-     * @return mixed
+     * @return bool|string|mixed
      */
     public function getPublic()
     {
         return $this->public;
     }
     /**
-     * @param mixed $public
+     * @param bool|string|mixed $public
      *
      * @return self
      */

@@ -89,7 +89,7 @@ class AppServiceSpec extends \ArrayObject
     /**
      * The instance size to use for this component. Default: `apps-s-1vcpu-0.5gb`
      *
-     * @var mixed
+     * @var string|string
      */
     protected $instanceSizeSlug;
     /**
@@ -436,7 +436,7 @@ class AppServiceSpec extends \ArrayObject
     /**
      * The instance size to use for this component. Default: `apps-s-1vcpu-0.5gb`
      *
-     * @return mixed
+     * @return string|string
      */
     public function getInstanceSizeSlug()
     {
@@ -445,7 +445,7 @@ class AppServiceSpec extends \ArrayObject
     /**
      * The instance size to use for this component. Default: `apps-s-1vcpu-0.5gb`
      *
-     * @param mixed $instanceSizeSlug
+     * @param string|string $instanceSizeSlug
      *
      * @return self
      */

@@ -38,14 +38,30 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
             return $object;
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $object->setNames($data['names']);
+            $value = $data['names'];
+            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
+                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                foreach ($data['names'] as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $object->setNames($value);
             unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
-            $object->setDescriptions($data['descriptions']);
+            $value_2 = $data['descriptions'];
+            if (is_array($data['descriptions']) && $this->isOnlyNumericKeys($data['descriptions'])) {
+                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                foreach ($data['descriptions'] as $key_1 => $value_3) {
+                    $values_1[$key_1] = $value_3;
+                }
+                $value_2 = $values_1;
+            }
+            $object->setDescriptions($value_2);
             unset($data['descriptions']);
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
@@ -147,15 +163,19 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
             unset($data['pageCount']);
         }
         if (\array_key_exists('epsInfo', $data) && $data['epsInfo'] !== null) {
-            $object->setEpsInfo($data['epsInfo']);
+            $value_4 = $data['epsInfo'];
+            if (is_array($data['epsInfo']) and isset($data['epsInfo']['isRasterized']) and isset($data['epsInfo']['widthInPoints']) and isset($data['epsInfo']['heightInPoints'])) {
+                $value_4 = $this->denormalizer->denormalize($data['epsInfo'], \PicturePark\API\Model\EpsMetadata::class, 'json', $context);
+            }
+            $object->setEpsInfo($value_4);
             unset($data['epsInfo']);
         }
         elseif (\array_key_exists('epsInfo', $data) && $data['epsInfo'] === null) {
             $object->setEpsInfo(null);
         }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+        foreach ($data as $key_2 => $value_5) {
+            if (preg_match('/.*/', (string) $key_2)) {
+                $object[$key_2] = $value_5;
             }
         }
         return $object;
@@ -164,10 +184,26 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if ($data->isInitialized('names')) {
-            $dataArray['names'] = $data->getNames();
+            $value = $data->getNames();
+            if (is_object($data->getNames())) {
+                $values = [];
+                foreach ($data->getNames() as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $dataArray['names'] = $value;
         }
         if ($data->isInitialized('descriptions')) {
-            $dataArray['descriptions'] = $data->getDescriptions();
+            $value_2 = $data->getDescriptions();
+            if (is_object($data->getDescriptions())) {
+                $values_1 = [];
+                foreach ($data->getDescriptions() as $key_1 => $value_3) {
+                    $values_1[$key_1] = $value_3;
+                }
+                $value_2 = $values_1;
+            }
+            $dataArray['descriptions'] = $value_2;
         }
         if ($data->isInitialized('fileExtension')) {
             $dataArray['fileExtension'] = $data->getFileExtension();
@@ -212,11 +248,15 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['pageCount'] = $data->getPageCount();
         }
         if ($data->isInitialized('epsInfo')) {
-            $dataArray['epsInfo'] = $data->getEpsInfo();
+            $value_4 = $data->getEpsInfo();
+            if (is_object($data->getEpsInfo())) {
+                $value_4 = $this->normalizer->normalize($data->getEpsInfo(), 'json', $context);
+            }
+            $dataArray['epsInfo'] = $value_4;
         }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+        foreach ($data as $key_2 => $value_5) {
+            if (preg_match('/.*/', (string) $key_2)) {
+                $dataArray[$key_2] = $value_5;
             }
         }
         return $dataArray;

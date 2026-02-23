@@ -27,13 +27,13 @@ class TransferDetail extends \ArrayObject
     /**
      * State of transfer.
      *
-     * @var mixed
+     * @var string
      */
     protected $state;
     /**
      * Type of transfer.
      *
-     * @var mixed
+     * @var string
      */
     protected $transferType;
     /**
@@ -57,7 +57,7 @@ class TransferDetail extends \ArrayObject
     /**
      * Audit information.
      *
-     * @var mixed
+     * @var UserAudit
      */
     protected $audit;
     /**
@@ -155,20 +155,20 @@ class TransferDetail extends \ArrayObject
     /**
      * State of transfer.
      *
-     * @return mixed
+     * @return string
      */
-    public function getState()
+    public function getState(): string
     {
         return $this->state;
     }
     /**
      * State of transfer.
      *
-     * @param mixed $state
+     * @param string $state
      *
      * @return self
      */
-    public function setState($state): self
+    public function setState(string $state): self
     {
         $this->initialized['state'] = true;
         $this->state = $state;
@@ -177,20 +177,20 @@ class TransferDetail extends \ArrayObject
     /**
      * Type of transfer.
      *
-     * @return mixed
+     * @return string
      */
-    public function getTransferType()
+    public function getTransferType(): string
     {
         return $this->transferType;
     }
     /**
      * Type of transfer.
      *
-     * @param mixed $transferType
+     * @param string $transferType
      *
      * @return self
      */
-    public function setTransferType($transferType): self
+    public function setTransferType(string $transferType): self
     {
         $this->initialized['transferType'] = true;
         $this->transferType = $transferType;
@@ -265,20 +265,20 @@ class TransferDetail extends \ArrayObject
     /**
      * Audit information.
      *
-     * @return mixed
+     * @return UserAudit
      */
-    public function getAudit()
+    public function getAudit(): UserAudit
     {
         return $this->audit;
     }
     /**
      * Audit information.
      *
-     * @param mixed $audit
+     * @param UserAudit $audit
      *
      * @return self
      */
-    public function setAudit($audit): self
+    public function setAudit(UserAudit $audit): self
     {
         $this->initialized['audit'] = true;
         $this->audit = $audit;

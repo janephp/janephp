@@ -77,7 +77,7 @@ class Issue extends \ArrayObject
     /**
      * Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository
      *
-     * @var list<mixed>
+     * @var list<string>|list<object>
      */
     protected $labels;
     /**
@@ -411,7 +411,7 @@ class Issue extends \ArrayObject
     /**
      * Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository
      *
-     * @return list<mixed>
+     * @return list<string>|list<object>
      */
     public function getLabels(): array
     {
@@ -420,7 +420,7 @@ class Issue extends \ArrayObject
     /**
      * Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository
      *
-     * @param list<mixed> $labels
+     * @param list<string>|list<object> $labels
      *
      * @return self
      */

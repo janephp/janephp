@@ -67,7 +67,15 @@ class ChannelCreateRequestNormalizer implements DenormalizerInterface, Normalize
             $object->setSortFields($values_1);
         }
         if (\array_key_exists('names', $data)) {
-            $object->setNames($data['names']);
+            $value_2 = $data['names'];
+            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
+                $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                foreach ($data['names'] as $key => $value_3) {
+                    $values_2[$key] = $value_3;
+                }
+                $value_2 = $values_2;
+            }
+            $object->setNames($value_2);
         }
         if (\array_key_exists('searchIndexId', $data) && $data['searchIndexId'] !== null) {
             $object->setSearchIndexId($data['searchIndexId']);
@@ -76,43 +84,55 @@ class ChannelCreateRequestNormalizer implements DenormalizerInterface, Normalize
             $object->setSearchIndexId(null);
         }
         if (\array_key_exists('grantedUserRoleIds', $data) && $data['grantedUserRoleIds'] !== null) {
-            $values_2 = [];
-            foreach ($data['grantedUserRoleIds'] as $value_2) {
-                $values_2[] = $value_2;
+            $values_3 = [];
+            foreach ($data['grantedUserRoleIds'] as $value_4) {
+                $values_3[] = $value_4;
             }
-            $object->setGrantedUserRoleIds($values_2);
+            $object->setGrantedUserRoleIds($values_3);
         }
         elseif (\array_key_exists('grantedUserRoleIds', $data) && $data['grantedUserRoleIds'] === null) {
             $object->setGrantedUserRoleIds(null);
         }
         if (\array_key_exists('aggregations', $data) && $data['aggregations'] !== null) {
-            $values_3 = [];
-            foreach ($data['aggregations'] as $value_3) {
-                $values_3[] = $this->denormalizer->denormalize($value_3, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
+            $values_4 = [];
+            foreach ($data['aggregations'] as $value_5) {
+                $values_4[] = $this->denormalizer->denormalize($value_5, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
             }
-            $object->setAggregations($values_3);
+            $object->setAggregations($values_4);
         }
         elseif (\array_key_exists('aggregations', $data) && $data['aggregations'] === null) {
             $object->setAggregations(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $object->setFilter($data['filter']);
+            $value_6 = $data['filter'];
+            if (is_array($data['filter']) and isset($data['filter']['kind'])) {
+                $value_6 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
+            }
+            $object->setFilter($value_6);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
         }
         if (\array_key_exists('extendedSimpleSearchFields', $data) && $data['extendedSimpleSearchFields'] !== null) {
-            $values_4 = [];
-            foreach ($data['extendedSimpleSearchFields'] as $value_4) {
-                $values_4[] = $value_4;
+            $values_5 = [];
+            foreach ($data['extendedSimpleSearchFields'] as $value_7) {
+                $values_5[] = $value_7;
             }
-            $object->setExtendedSimpleSearchFields($values_4);
+            $object->setExtendedSimpleSearchFields($values_5);
         }
         elseif (\array_key_exists('extendedSimpleSearchFields', $data) && $data['extendedSimpleSearchFields'] === null) {
             $object->setExtendedSimpleSearchFields(null);
         }
         if (\array_key_exists('missingResultsDisplayPatterns', $data) && $data['missingResultsDisplayPatterns'] !== null) {
-            $object->setMissingResultsDisplayPatterns($data['missingResultsDisplayPatterns']);
+            $value_8 = $data['missingResultsDisplayPatterns'];
+            if (is_array($data['missingResultsDisplayPatterns']) && $this->isOnlyNumericKeys($data['missingResultsDisplayPatterns'])) {
+                $values_6 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                foreach ($data['missingResultsDisplayPatterns'] as $key_1 => $value_9) {
+                    $values_6[$key_1] = $value_9;
+                }
+                $value_8 = $values_6;
+            }
+            $object->setMissingResultsDisplayPatterns($value_8);
         }
         elseif (\array_key_exists('missingResultsDisplayPatterns', $data) && $data['missingResultsDisplayPatterns'] === null) {
             $object->setMissingResultsDisplayPatterns(null);
@@ -141,36 +161,56 @@ class ChannelCreateRequestNormalizer implements DenormalizerInterface, Normalize
             $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
         $dataArray['sortFields'] = $values_1;
-        $dataArray['names'] = $data->getNames();
+        $value_2 = $data->getNames();
+        if (is_object($data->getNames())) {
+            $values_2 = [];
+            foreach ($data->getNames() as $key => $value_3) {
+                $values_2[$key] = $value_3;
+            }
+            $value_2 = $values_2;
+        }
+        $dataArray['names'] = $value_2;
         if ($data->isInitialized('searchIndexId')) {
             $dataArray['searchIndexId'] = $data->getSearchIndexId();
         }
         if ($data->isInitialized('grantedUserRoleIds')) {
-            $values_2 = [];
-            foreach ($data->getGrantedUserRoleIds() as $value_2) {
-                $values_2[] = $value_2;
+            $values_3 = [];
+            foreach ($data->getGrantedUserRoleIds() as $value_4) {
+                $values_3[] = $value_4;
             }
-            $dataArray['grantedUserRoleIds'] = $values_2;
+            $dataArray['grantedUserRoleIds'] = $values_3;
         }
         if ($data->isInitialized('aggregations')) {
-            $values_3 = [];
-            foreach ($data->getAggregations() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+            $values_4 = [];
+            foreach ($data->getAggregations() as $value_5) {
+                $values_4[] = $this->normalizer->normalize($value_5, 'json', $context);
             }
-            $dataArray['aggregations'] = $values_3;
+            $dataArray['aggregations'] = $values_4;
         }
         if ($data->isInitialized('filter')) {
-            $dataArray['filter'] = $data->getFilter();
+            $value_6 = $data->getFilter();
+            if (is_object($data->getFilter())) {
+                $value_6 = $this->normalizer->normalize($data->getFilter(), 'json', $context);
+            }
+            $dataArray['filter'] = $value_6;
         }
         if ($data->isInitialized('extendedSimpleSearchFields')) {
-            $values_4 = [];
-            foreach ($data->getExtendedSimpleSearchFields() as $value_4) {
-                $values_4[] = $value_4;
+            $values_5 = [];
+            foreach ($data->getExtendedSimpleSearchFields() as $value_7) {
+                $values_5[] = $value_7;
             }
-            $dataArray['extendedSimpleSearchFields'] = $values_4;
+            $dataArray['extendedSimpleSearchFields'] = $values_5;
         }
         if ($data->isInitialized('missingResultsDisplayPatterns')) {
-            $dataArray['missingResultsDisplayPatterns'] = $data->getMissingResultsDisplayPatterns();
+            $value_8 = $data->getMissingResultsDisplayPatterns();
+            if (is_object($data->getMissingResultsDisplayPatterns())) {
+                $values_6 = [];
+                foreach ($data->getMissingResultsDisplayPatterns() as $key_1 => $value_9) {
+                    $values_6[$key_1] = $value_9;
+                }
+                $value_8 = $values_6;
+            }
+            $dataArray['missingResultsDisplayPatterns'] = $value_8;
         }
         $dataArray['viewForAll'] = $data->getViewForAll();
         return $dataArray;

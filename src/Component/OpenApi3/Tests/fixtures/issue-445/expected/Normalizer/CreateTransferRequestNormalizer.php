@@ -44,12 +44,16 @@ class CreateTransferRequestNormalizer implements DenormalizerInterface, Normaliz
             $object->setName($data['name']);
         }
         if (\array_key_exists('transferType', $data)) {
-            $object->setTransferType($data['transferType']);
+            $value = $data['transferType'];
+            if (is_string($data['transferType'])) {
+                $value = $data['transferType'];
+            }
+            $object->setTransferType($value);
         }
         if (\array_key_exists('files', $data) && $data['files'] !== null) {
             $values = [];
-            foreach ($data['files'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\TransferUploadFile::class, 'json', $context);
+            foreach ($data['files'] as $value_1) {
+                $values[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\TransferUploadFile::class, 'json', $context);
             }
             $object->setFiles($values);
         }
@@ -58,8 +62,8 @@ class CreateTransferRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('webLinks', $data) && $data['webLinks'] !== null) {
             $values_1 = [];
-            foreach ($data['webLinks'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\TransferWebLink::class, 'json', $context);
+            foreach ($data['webLinks'] as $value_2) {
+                $values_1[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\TransferWebLink::class, 'json', $context);
             }
             $object->setWebLinks($values_1);
         }
@@ -81,18 +85,22 @@ class CreateTransferRequestNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         $dataArray['name'] = $data->getName();
-        $dataArray['transferType'] = $data->getTransferType();
+        $value = $data->getTransferType();
+        if (is_string($data->getTransferType())) {
+            $value = $data->getTransferType();
+        }
+        $dataArray['transferType'] = $value;
         if ($data->isInitialized('files')) {
             $values = [];
-            foreach ($data->getFiles() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            foreach ($data->getFiles() as $value_1) {
+                $values[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['files'] = $values;
         }
         if ($data->isInitialized('webLinks')) {
             $values_1 = [];
-            foreach ($data->getWebLinks() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            foreach ($data->getWebLinks() as $value_2) {
+                $values_1[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $dataArray['webLinks'] = $values_1;
         }

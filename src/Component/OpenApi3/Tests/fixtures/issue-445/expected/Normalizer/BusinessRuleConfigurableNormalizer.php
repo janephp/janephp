@@ -51,7 +51,11 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
             $object->setId(null);
         }
         if (\array_key_exists('triggerPoint', $data) && $data['triggerPoint'] !== null) {
-            $object->setTriggerPoint($data['triggerPoint']);
+            $value = $data['triggerPoint'];
+            if (is_array($data['triggerPoint']) and isset($data['triggerPoint']['executionScope']) and isset($data['triggerPoint']['documentType']) and isset($data['triggerPoint']['action'])) {
+                $value = $this->denormalizer->denormalize($data['triggerPoint'], \PicturePark\API\Model\BusinessRuleTriggerPoint::class, 'json', $context);
+            }
+            $object->setTriggerPoint($value);
             unset($data['triggerPoint']);
         }
         elseif (\array_key_exists('triggerPoint', $data) && $data['triggerPoint'] === null) {
@@ -62,14 +66,30 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
             unset($data['isEnabled']);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $object->setNames($data['names']);
+            $value_1 = $data['names'];
+            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
+                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                foreach ($data['names'] as $key => $value_2) {
+                    $values[$key] = $value_2;
+                }
+                $value_1 = $values;
+            }
+            $object->setNames($value_1);
             unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
-            $object->setDescription($data['description']);
+            $value_3 = $data['description'];
+            if (is_array($data['description']) && $this->isOnlyNumericKeys($data['description'])) {
+                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                foreach ($data['description'] as $key_1 => $value_4) {
+                    $values_1[$key_1] = $value_4;
+                }
+                $value_3 = $values_1;
+            }
+            $object->setDescription($value_3);
             unset($data['description']);
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
@@ -84,37 +104,41 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
             unset($data['kind']);
         }
         if (\array_key_exists('condition', $data) && $data['condition'] !== null) {
-            $object->setCondition($data['condition']);
+            $value_5 = $data['condition'];
+            if (is_array($data['condition']) and isset($data['condition']['kind'])) {
+                $value_5 = $this->denormalizer->denormalize($data['condition'], \PicturePark\API\Model\BusinessRuleCondition::class, 'json', $context);
+            }
+            $object->setCondition($value_5);
             unset($data['condition']);
         }
         elseif (\array_key_exists('condition', $data) && $data['condition'] === null) {
             $object->setCondition(null);
         }
         if (\array_key_exists('transformationGroups', $data) && $data['transformationGroups'] !== null) {
-            $values = [];
-            foreach ($data['transformationGroups'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\BusinessRuleTransformationGroup::class, 'json', $context);
+            $values_2 = [];
+            foreach ($data['transformationGroups'] as $value_6) {
+                $values_2[] = $this->denormalizer->denormalize($value_6, \PicturePark\API\Model\BusinessRuleTransformationGroup::class, 'json', $context);
             }
-            $object->setTransformationGroups($values);
+            $object->setTransformationGroups($values_2);
             unset($data['transformationGroups']);
         }
         elseif (\array_key_exists('transformationGroups', $data) && $data['transformationGroups'] === null) {
             $object->setTransformationGroups(null);
         }
         if (\array_key_exists('actions', $data) && $data['actions'] !== null) {
-            $values_1 = [];
-            foreach ($data['actions'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\BusinessRuleAction::class, 'json', $context);
+            $values_3 = [];
+            foreach ($data['actions'] as $value_7) {
+                $values_3[] = $this->denormalizer->denormalize($value_7, \PicturePark\API\Model\BusinessRuleAction::class, 'json', $context);
             }
-            $object->setActions($values_1);
+            $object->setActions($values_3);
             unset($data['actions']);
         }
         elseif (\array_key_exists('actions', $data) && $data['actions'] === null) {
             $object->setActions(null);
         }
-        foreach ($data as $key => $value_2) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_2;
+        foreach ($data as $key_2 => $value_8) {
+            if (preg_match('/.*/', (string) $key_2)) {
+                $object[$key_2] = $value_8;
             }
         }
         return $object;
@@ -126,37 +150,61 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
             $dataArray['id'] = $data->getId();
         }
         if ($data->isInitialized('triggerPoint')) {
-            $dataArray['triggerPoint'] = $data->getTriggerPoint();
+            $value = $data->getTriggerPoint();
+            if (is_object($data->getTriggerPoint())) {
+                $value = $this->normalizer->normalize($data->getTriggerPoint(), 'json', $context);
+            }
+            $dataArray['triggerPoint'] = $value;
         }
         $dataArray['isEnabled'] = $data->getIsEnabled();
         if ($data->isInitialized('names')) {
-            $dataArray['names'] = $data->getNames();
+            $value_1 = $data->getNames();
+            if (is_object($data->getNames())) {
+                $values = [];
+                foreach ($data->getNames() as $key => $value_2) {
+                    $values[$key] = $value_2;
+                }
+                $value_1 = $values;
+            }
+            $dataArray['names'] = $value_1;
         }
         if ($data->isInitialized('description')) {
-            $dataArray['description'] = $data->getDescription();
+            $value_3 = $data->getDescription();
+            if (is_object($data->getDescription())) {
+                $values_1 = [];
+                foreach ($data->getDescription() as $key_1 => $value_4) {
+                    $values_1[$key_1] = $value_4;
+                }
+                $value_3 = $values_1;
+            }
+            $dataArray['description'] = $value_3;
         }
         $dataArray['enableTracing'] = $data->getEnableTracing();
         $dataArray['kind'] = $data->getKind();
         if ($data->isInitialized('condition')) {
-            $dataArray['condition'] = $data->getCondition();
+            $value_5 = $data->getCondition();
+            if (is_object($data->getCondition())) {
+                $value_5 = $this->normalizer->normalize($data->getCondition(), 'json', $context);
+            }
+            $dataArray['condition'] = $value_5;
         }
         if ($data->isInitialized('transformationGroups')) {
-            $values = [];
-            foreach ($data->getTransformationGroups() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values_2 = [];
+            foreach ($data->getTransformationGroups() as $value_6) {
+                $values_2[] = $this->normalizer->normalize($value_6, 'json', $context);
             }
-            $dataArray['transformationGroups'] = $values;
+            $dataArray['transformationGroups'] = $values_2;
         }
         if ($data->isInitialized('actions')) {
-            $values_1 = [];
-            foreach ($data->getActions() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            $values_3 = [];
+            foreach ($data->getActions() as $value_7) {
+                $values_3[] = $this->normalizer->normalize($value_7, 'json', $context);
             }
-            $dataArray['actions'] = $values_1;
+            $dataArray['actions'] = $values_3;
         }
-        foreach ($data as $key => $value_2) {
-            if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_2;
+        foreach ($data as $key_2 => $value_8) {
+            if (preg_match('/.*/', (string) $key_2)) {
+                $dataArray[$key_2] = $value_8;
             }
         }
         return $dataArray;

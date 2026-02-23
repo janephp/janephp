@@ -44,13 +44,21 @@ class UserAuditDetailNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setModificationDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['modificationDate']));
         }
         if (\array_key_exists('createdByUser', $data) && $data['createdByUser'] !== null) {
-            $object->setCreatedByUser($data['createdByUser']);
+            $value = $data['createdByUser'];
+            if (is_array($data['createdByUser']) and isset($data['createdByUser']['emailAddress']) and isset($data['createdByUser']['isDeleted'])) {
+                $value = $this->denormalizer->denormalize($data['createdByUser'], \PicturePark\API\Model\User::class, 'json', $context);
+            }
+            $object->setCreatedByUser($value);
         }
         elseif (\array_key_exists('createdByUser', $data) && $data['createdByUser'] === null) {
             $object->setCreatedByUser(null);
         }
         if (\array_key_exists('modifiedByUser', $data) && $data['modifiedByUser'] !== null) {
-            $object->setModifiedByUser($data['modifiedByUser']);
+            $value_1 = $data['modifiedByUser'];
+            if (is_array($data['modifiedByUser']) and isset($data['modifiedByUser']['emailAddress']) and isset($data['modifiedByUser']['isDeleted'])) {
+                $value_1 = $this->denormalizer->denormalize($data['modifiedByUser'], \PicturePark\API\Model\User::class, 'json', $context);
+            }
+            $object->setModifiedByUser($value_1);
         }
         elseif (\array_key_exists('modifiedByUser', $data) && $data['modifiedByUser'] === null) {
             $object->setModifiedByUser(null);
@@ -63,10 +71,18 @@ class UserAuditDetailNormalizer implements DenormalizerInterface, NormalizerInte
         $dataArray['creationDate'] = $data->getCreationDate()->format('Y-m-d\TH:i:sP');
         $dataArray['modificationDate'] = $data->getModificationDate()->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('createdByUser')) {
-            $dataArray['createdByUser'] = $data->getCreatedByUser();
+            $value = $data->getCreatedByUser();
+            if (is_object($data->getCreatedByUser())) {
+                $value = $this->normalizer->normalize($data->getCreatedByUser(), 'json', $context);
+            }
+            $dataArray['createdByUser'] = $value;
         }
         if ($data->isInitialized('modifiedByUser')) {
-            $dataArray['modifiedByUser'] = $data->getModifiedByUser();
+            $value_1 = $data->getModifiedByUser();
+            if (is_object($data->getModifiedByUser())) {
+                $value_1 = $this->normalizer->normalize($data->getModifiedByUser(), 'json', $context);
+            }
+            $dataArray['modifiedByUser'] = $value_1;
         }
         return $dataArray;
     }

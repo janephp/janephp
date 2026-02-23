@@ -78,7 +78,11 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
             $object->setLayerSchemaIds(null);
         }
         if (\array_key_exists('outputAccess', $data)) {
-            $object->setOutputAccess($data['outputAccess']);
+            $value_2 = $data['outputAccess'];
+            if (is_string($data['outputAccess'])) {
+                $value_2 = $data['outputAccess'];
+            }
+            $object->setOutputAccess($value_2);
             unset($data['outputAccess']);
         }
         if (\array_key_exists('kind', $data)) {
@@ -87,8 +91,8 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
         }
         if (\array_key_exists('recipientEmails', $data) && $data['recipientEmails'] !== null) {
             $values_2 = [];
-            foreach ($data['recipientEmails'] as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\UserEmail::class, 'json', $context);
+            foreach ($data['recipientEmails'] as $value_3) {
+                $values_2[] = $this->denormalizer->denormalize($value_3, \PicturePark\API\Model\UserEmail::class, 'json', $context);
             }
             $object->setRecipientEmails($values_2);
             unset($data['recipientEmails']);
@@ -104,9 +108,9 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
             $object->setSuppressNotifications($data['suppressNotifications']);
             unset($data['suppressNotifications']);
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_3;
+                $object[$key] = $value_4;
             }
         }
         return $object;
@@ -133,12 +137,16 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
             }
             $dataArray['layerSchemaIds'] = $values_1;
         }
-        $dataArray['outputAccess'] = $data->getOutputAccess();
+        $value_2 = $data->getOutputAccess();
+        if (is_string($data->getOutputAccess())) {
+            $value_2 = $data->getOutputAccess();
+        }
+        $dataArray['outputAccess'] = $value_2;
         $dataArray['kind'] = $data->getKind();
         if ($data->isInitialized('recipientEmails')) {
             $values_2 = [];
-            foreach ($data->getRecipientEmails() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+            foreach ($data->getRecipientEmails() as $value_3) {
+                $values_2[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $dataArray['recipientEmails'] = $values_2;
         }
@@ -146,9 +154,9 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('suppressNotifications') && null !== $data->getSuppressNotifications()) {
             $dataArray['suppressNotifications'] = $data->getSuppressNotifications();
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_3;
+                $dataArray[$key] = $value_4;
             }
         }
         return $dataArray;

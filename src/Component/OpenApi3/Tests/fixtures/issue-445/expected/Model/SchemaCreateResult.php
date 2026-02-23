@@ -15,26 +15,26 @@ class SchemaCreateResult
     /**
      * The details of the created schema.
      *
-     * @var mixed|null
+     * @var SchemaDetail|null
      */
     protected $schema;
     /**
      * The details of the created schema.
      *
-     * @return mixed
+     * @return SchemaDetail|null
      */
-    public function getSchema()
+    public function getSchema(): ?SchemaDetail
     {
         return $this->schema;
     }
     /**
      * The details of the created schema.
      *
-     * @param mixed $schema
+     * @param SchemaDetail|null $schema
      *
      * @return self
      */
-    public function setSchema($schema): self
+    public function setSchema(?SchemaDetail $schema): self
     {
         $this->initialized['schema'] = true;
         $this->schema = $schema;

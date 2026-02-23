@@ -15,7 +15,7 @@ class SimpleAnalyzer extends AnalyzerBase
     /**
      * The analyzer type: Simple
      *
-     * @var mixed
+     * @var string
      */
     protected $type;
     /**
@@ -27,20 +27,20 @@ class SimpleAnalyzer extends AnalyzerBase
     /**
      * The analyzer type: Simple
      *
-     * @return mixed
+     * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
     /**
      * The analyzer type: Simple
      *
-     * @param mixed $type
+     * @param string $type
      *
      * @return self
      */
-    public function setType($type): self
+    public function setType(string $type): self
     {
         $this->initialized['type'] = true;
         $this->type = $type;

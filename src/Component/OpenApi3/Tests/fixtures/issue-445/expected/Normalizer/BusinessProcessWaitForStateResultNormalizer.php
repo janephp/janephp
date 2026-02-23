@@ -44,7 +44,11 @@ class BusinessProcessWaitForStateResultNormalizer implements DenormalizerInterfa
             $object->setStateHit(null);
         }
         if (\array_key_exists('businessProcess', $data)) {
-            $object->setBusinessProcess($data['businessProcess']);
+            $value = $data['businessProcess'];
+            if (is_array($data['businessProcess']) and isset($data['businessProcess']['id']) and isset($data['businessProcess']['processDefinitionId']) and isset($data['businessProcess']['supportsCancellation']) and isset($data['businessProcess']['businessProcessScope']) and isset($data['businessProcess']['lifeCycle']) and isset($data['businessProcess']['startDate']) and isset($data['businessProcess']['endDate']) and isset($data['businessProcess']['finished']) and isset($data['businessProcess']['kind'])) {
+                $value = $this->denormalizer->denormalize($data['businessProcess'], \PicturePark\API\Model\BusinessProcess::class, 'json', $context);
+            }
+            $object->setBusinessProcess($value);
         }
         return $object;
     }
@@ -54,7 +58,11 @@ class BusinessProcessWaitForStateResultNormalizer implements DenormalizerInterfa
         if ($data->isInitialized('stateHit')) {
             $dataArray['stateHit'] = $data->getStateHit();
         }
-        $dataArray['businessProcess'] = $data->getBusinessProcess();
+        $value = $data->getBusinessProcess();
+        if (is_object($data->getBusinessProcess())) {
+            $value = $this->normalizer->normalize($data->getBusinessProcess(), 'json', $context);
+        }
+        $dataArray['businessProcess'] = $value;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

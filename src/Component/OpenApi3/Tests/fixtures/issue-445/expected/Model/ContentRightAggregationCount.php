@@ -15,7 +15,7 @@ class ContentRightAggregationCount
     /**
      * ContentRight.
      *
-     * @var mixed
+     * @var string
      */
     protected $contentRight;
     /**
@@ -27,20 +27,20 @@ class ContentRightAggregationCount
     /**
      * ContentRight.
      *
-     * @return mixed
+     * @return string
      */
-    public function getContentRight()
+    public function getContentRight(): string
     {
         return $this->contentRight;
     }
     /**
      * ContentRight.
      *
-     * @param mixed $contentRight
+     * @param string $contentRight
      *
      * @return self
      */
-    public function setContentRight($contentRight): self
+    public function setContentRight(string $contentRight): self
     {
         $this->initialized['contentRight'] = true;
         $this->contentRight = $contentRight;

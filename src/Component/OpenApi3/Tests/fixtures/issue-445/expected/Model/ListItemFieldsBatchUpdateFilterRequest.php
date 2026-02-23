@@ -15,7 +15,7 @@ class ListItemFieldsBatchUpdateFilterRequest
     /**
      * Filters the list items on which the change commands must be applied.
      *
-     * @var mixed
+     * @var ListItemFilterRequest
      */
     protected $filterRequest;
     /**
@@ -39,20 +39,20 @@ class ListItemFieldsBatchUpdateFilterRequest
     /**
      * Filters the list items on which the change commands must be applied.
      *
-     * @return mixed
+     * @return ListItemFilterRequest
      */
-    public function getFilterRequest()
+    public function getFilterRequest(): ListItemFilterRequest
     {
         return $this->filterRequest;
     }
     /**
      * Filters the list items on which the change commands must be applied.
      *
-     * @param mixed $filterRequest
+     * @param ListItemFilterRequest $filterRequest
      *
      * @return self
      */
-    public function setFilterRequest($filterRequest): self
+    public function setFilterRequest(ListItemFilterRequest $filterRequest): self
     {
         $this->initialized['filterRequest'] = true;
         $this->filterRequest = $filterRequest;

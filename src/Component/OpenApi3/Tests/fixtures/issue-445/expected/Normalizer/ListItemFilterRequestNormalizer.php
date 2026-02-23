@@ -47,7 +47,11 @@ class ListItemFilterRequestNormalizer implements DenormalizerInterface, Normaliz
             $object->setSearchString(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $object->setFilter($data['filter']);
+            $value = $data['filter'];
+            if (is_array($data['filter']) and isset($data['filter']['kind'])) {
+                $value = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
+            }
+            $object->setFilter($value);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
@@ -57,8 +61,8 @@ class ListItemFilterRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('schemaIds', $data) && $data['schemaIds'] !== null) {
             $values = [];
-            foreach ($data['schemaIds'] as $value) {
-                $values[] = $value;
+            foreach ($data['schemaIds'] as $value_1) {
+                $values[] = $value_1;
             }
             $object->setSchemaIds($values);
         }
@@ -67,8 +71,8 @@ class ListItemFilterRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('searchLanguages', $data) && $data['searchLanguages'] !== null) {
             $values_1 = [];
-            foreach ($data['searchLanguages'] as $value_1) {
-                $values_1[] = $value_1;
+            foreach ($data['searchLanguages'] as $value_2) {
+                $values_1[] = $value_2;
             }
             $object->setSearchLanguages($values_1);
         }
@@ -76,7 +80,11 @@ class ListItemFilterRequestNormalizer implements DenormalizerInterface, Normaliz
             $object->setSearchLanguages(null);
         }
         if (\array_key_exists('brokenDependenciesFilter', $data)) {
-            $object->setBrokenDependenciesFilter($data['brokenDependenciesFilter']);
+            $value_3 = $data['brokenDependenciesFilter'];
+            if (is_string($data['brokenDependenciesFilter'])) {
+                $value_3 = $data['brokenDependenciesFilter'];
+            }
+            $object->setBrokenDependenciesFilter($value_3);
         }
         return $object;
     }
@@ -87,24 +95,32 @@ class ListItemFilterRequestNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['searchString'] = $data->getSearchString();
         }
         if ($data->isInitialized('filter')) {
-            $dataArray['filter'] = $data->getFilter();
+            $value = $data->getFilter();
+            if (is_object($data->getFilter())) {
+                $value = $this->normalizer->normalize($data->getFilter(), 'json', $context);
+            }
+            $dataArray['filter'] = $value;
         }
         $dataArray['includeAllSchemaChildren'] = $data->getIncludeAllSchemaChildren();
         if ($data->isInitialized('schemaIds')) {
             $values = [];
-            foreach ($data->getSchemaIds() as $value) {
-                $values[] = $value;
+            foreach ($data->getSchemaIds() as $value_1) {
+                $values[] = $value_1;
             }
             $dataArray['schemaIds'] = $values;
         }
         if ($data->isInitialized('searchLanguages')) {
             $values_1 = [];
-            foreach ($data->getSearchLanguages() as $value_1) {
-                $values_1[] = $value_1;
+            foreach ($data->getSearchLanguages() as $value_2) {
+                $values_1[] = $value_2;
             }
             $dataArray['searchLanguages'] = $values_1;
         }
-        $dataArray['brokenDependenciesFilter'] = $data->getBrokenDependenciesFilter();
+        $value_3 = $data->getBrokenDependenciesFilter();
+        if (is_string($data->getBrokenDependenciesFilter())) {
+            $value_3 = $data->getBrokenDependenciesFilter();
+        }
+        $dataArray['brokenDependenciesFilter'] = $value_3;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

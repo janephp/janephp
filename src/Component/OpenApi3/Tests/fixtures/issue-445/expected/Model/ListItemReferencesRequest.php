@@ -15,26 +15,26 @@ class ListItemReferencesRequest
     /**
      * Limits the number of the returned metadata references by setting paging information.
      *
-     * @var mixed|null
+     * @var MetadataReferencesPagingRequest|null
      */
     protected $references;
     /**
      * Limits the number of the returned metadata references by setting paging information.
      *
-     * @return mixed
+     * @return MetadataReferencesPagingRequest|null
      */
-    public function getReferences()
+    public function getReferences(): ?MetadataReferencesPagingRequest
     {
         return $this->references;
     }
     /**
      * Limits the number of the returned metadata references by setting paging information.
      *
-     * @param mixed $references
+     * @param MetadataReferencesPagingRequest|null $references
      *
      * @return self
      */
-    public function setReferences($references): self
+    public function setReferences(?MetadataReferencesPagingRequest $references): self
     {
         $this->initialized['references'] = true;
         $this->references = $references;

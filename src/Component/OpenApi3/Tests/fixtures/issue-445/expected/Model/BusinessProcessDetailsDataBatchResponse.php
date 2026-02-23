@@ -21,7 +21,7 @@ class BusinessProcessDetailsDataBatchResponse extends BusinessProcessDetailsData
     /**
      * The response of the batch operation.
      *
-     * @var mixed
+     * @var BatchResponse
      */
     protected $response;
     /**
@@ -49,20 +49,20 @@ class BusinessProcessDetailsDataBatchResponse extends BusinessProcessDetailsData
     /**
      * The response of the batch operation.
      *
-     * @return mixed
+     * @return BatchResponse
      */
-    public function getResponse()
+    public function getResponse(): BatchResponse
     {
         return $this->response;
     }
     /**
      * The response of the batch operation.
      *
-     * @param mixed $response
+     * @param BatchResponse $response
      *
      * @return self
      */
-    public function setResponse($response): self
+    public function setResponse(BatchResponse $response): self
     {
         $this->initialized['response'] = true;
         $this->response = $response;

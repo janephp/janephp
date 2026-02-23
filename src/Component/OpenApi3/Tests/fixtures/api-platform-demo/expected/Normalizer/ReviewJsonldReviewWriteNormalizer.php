@@ -38,7 +38,13 @@ class ReviewJsonldReviewWriteNormalizer implements DenormalizerInterface, Normal
             return $object;
         }
         if (\array_key_exists('@context', $data)) {
-            $object->setContext($data['@context']);
+            $value = $data['@context'];
+            if (is_string($data['@context'])) {
+                $value = $data['@context'];
+            } elseif (is_array($data['@context'])) {
+                $value = $data['@context'];
+            }
+            $object->setContext($value);
             unset($data['@context']);
         }
         if (\array_key_exists('@id', $data)) {
@@ -82,9 +88,9 @@ class ReviewJsonldReviewWriteNormalizer implements DenormalizerInterface, Normal
         elseif (\array_key_exists('publicationDate', $data) && $data['publicationDate'] === null) {
             $object->setPublicationDate(null);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;

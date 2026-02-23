@@ -21,7 +21,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItem extends \Arra
      */
     protected $path;
     /**
-     * @var mixed
+     * @var object|list<object>|string
      */
     protected $value;
     /**
@@ -61,14 +61,14 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItem extends \Arra
         return $this;
     }
     /**
-     * @return mixed
+     * @return object|list<object>|string
      */
     public function getValue()
     {
         return $this->value;
     }
     /**
-     * @param mixed $value
+     * @param object|list<object>|string $value
      *
      * @return self
      */

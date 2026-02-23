@@ -89,22 +89,30 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
             $object->setScope(null);
         }
         if (\array_key_exists('documentChange', $data) && $data['documentChange'] !== null) {
-            $object->setDocumentChange($data['documentChange']);
+            $value = $data['documentChange'];
+            if (is_array($data['documentChange']) and isset($data['documentChange']['version']) and isset($data['documentChange']['timeStamp'])) {
+                $value = $this->denormalizer->denormalize($data['documentChange'], \PicturePark\API\Model\DocumentChange::class, 'json', $context);
+            }
+            $object->setDocumentChange($value);
             unset($data['documentChange']);
         }
         elseif (\array_key_exists('documentChange', $data) && $data['documentChange'] === null) {
             $object->setDocumentChange(null);
         }
         if (\array_key_exists('applicationEvent', $data) && $data['applicationEvent'] !== null) {
-            $object->setApplicationEvent($data['applicationEvent']);
+            $value_1 = $data['applicationEvent'];
+            if (is_array($data['applicationEvent']) and isset($data['applicationEvent']['timestamp']) and isset($data['applicationEvent']['kind'])) {
+                $value_1 = $this->denormalizer->denormalize($data['applicationEvent'], \PicturePark\API\Model\ApplicationEvent::class, 'json', $context);
+            }
+            $object->setApplicationEvent($value_1);
             unset($data['applicationEvent']);
         }
         elseif (\array_key_exists('applicationEvent', $data) && $data['applicationEvent'] === null) {
             $object->setApplicationEvent(null);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_2;
             }
         }
         return $object;
@@ -132,14 +140,22 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
             $dataArray['scope'] = $data->getScope();
         }
         if ($data->isInitialized('documentChange')) {
-            $dataArray['documentChange'] = $data->getDocumentChange();
+            $value = $data->getDocumentChange();
+            if (is_object($data->getDocumentChange())) {
+                $value = $this->normalizer->normalize($data->getDocumentChange(), 'json', $context);
+            }
+            $dataArray['documentChange'] = $value;
         }
         if ($data->isInitialized('applicationEvent')) {
-            $dataArray['applicationEvent'] = $data->getApplicationEvent();
+            $value_1 = $data->getApplicationEvent();
+            if (is_object($data->getApplicationEvent())) {
+                $value_1 = $this->normalizer->normalize($data->getApplicationEvent(), 'json', $context);
+            }
+            $dataArray['applicationEvent'] = $value_1;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_2;
             }
         }
         return $dataArray;

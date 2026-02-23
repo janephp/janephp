@@ -13,7 +13,7 @@ class TweetSearchResponse extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var list<mixed>
+     * @var list<CompactTweet>|list<DefaultTweet>|list<DetailedTweet>
      */
     protected $data;
     /**
@@ -21,7 +21,7 @@ class TweetSearchResponse extends \ArrayObject
      */
     protected $includes;
     /**
-     * @var list<mixed>
+     * @var list<GenericProblem>|list<InvalidRequestProblem>|list<ClientForbiddenProblem>|list<ResourceNotFoundProblem>|list<ResourceUnauthorizedProblem>|list<DisallowedResourceProblem>|list<UnsupportedAuthenticationProblem>|list<UsageCapExceededProblem>|list<ConnectionExceptionProblem>|list<ClientDisconnectedProblem>|list<OperationalDisconnectProblem>|list<RulesCapProblem>|list<InvalidRuleProblem>
      */
     protected $errors;
     /**
@@ -29,14 +29,14 @@ class TweetSearchResponse extends \ArrayObject
      */
     protected $meta;
     /**
-     * @return list<mixed>
+     * @return list<CompactTweet>|list<DefaultTweet>|list<DetailedTweet>
      */
     public function getData(): array
     {
         return $this->data;
     }
     /**
-     * @param list<mixed> $data
+     * @param list<CompactTweet>|list<DefaultTweet>|list<DetailedTweet> $data
      *
      * @return self
      */
@@ -65,14 +65,14 @@ class TweetSearchResponse extends \ArrayObject
         return $this;
     }
     /**
-     * @return list<mixed>
+     * @return list<GenericProblem>|list<InvalidRequestProblem>|list<ClientForbiddenProblem>|list<ResourceNotFoundProblem>|list<ResourceUnauthorizedProblem>|list<DisallowedResourceProblem>|list<UnsupportedAuthenticationProblem>|list<UsageCapExceededProblem>|list<ConnectionExceptionProblem>|list<ClientDisconnectedProblem>|list<OperationalDisconnectProblem>|list<RulesCapProblem>|list<InvalidRuleProblem>
      */
     public function getErrors(): array
     {
         return $this->errors;
     }
     /**
-     * @param list<mixed> $errors
+     * @param list<GenericProblem>|list<InvalidRequestProblem>|list<ClientForbiddenProblem>|list<ResourceNotFoundProblem>|list<ResourceUnauthorizedProblem>|list<DisallowedResourceProblem>|list<UnsupportedAuthenticationProblem>|list<UsageCapExceededProblem>|list<ConnectionExceptionProblem>|list<ClientDisconnectedProblem>|list<OperationalDisconnectProblem>|list<RulesCapProblem>|list<InvalidRuleProblem> $errors
      *
      * @return self
      */

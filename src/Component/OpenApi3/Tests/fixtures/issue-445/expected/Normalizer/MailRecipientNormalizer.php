@@ -38,7 +38,11 @@ class MailRecipientNormalizer implements DenormalizerInterface, NormalizerInterf
             return $object;
         }
         if (\array_key_exists('userEmail', $data)) {
-            $object->setUserEmail($data['userEmail']);
+            $value = $data['userEmail'];
+            if (is_array($data['userEmail']) and isset($data['userEmail']['emailAddress'])) {
+                $value = $this->denormalizer->denormalize($data['userEmail'], \PicturePark\API\Model\UserEmail::class, 'json', $context);
+            }
+            $object->setUserEmail($value);
         }
         if (\array_key_exists('token', $data) && $data['token'] !== null) {
             $object->setToken($data['token']);
@@ -57,7 +61,11 @@ class MailRecipientNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['userEmail'] = $data->getUserEmail();
+        $value = $data->getUserEmail();
+        if (is_object($data->getUserEmail())) {
+            $value = $this->normalizer->normalize($data->getUserEmail(), 'json', $context);
+        }
+        $dataArray['userEmail'] = $value;
         if ($data->isInitialized('token')) {
             $dataArray['token'] = $data->getToken();
         }

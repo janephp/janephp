@@ -33,13 +33,13 @@ class ShareDetail
     /**
      * Creator of share.
      *
-     * @var mixed
+     * @var ShareUser
      */
     protected $creator;
     /**
      * Audit information.
      *
-     * @var mixed
+     * @var UserAudit
      */
     protected $audit;
     /**
@@ -57,7 +57,7 @@ class ShareDetail
     /**
      * Detail of share.
      *
-     * @var mixed|null
+     * @var ShareDataBase|null
      */
     protected $data;
     /**
@@ -75,13 +75,13 @@ class ShareDetail
     /**
      * Defined access for contents in share.
      *
-     * @var mixed
+     * @var string
      */
     protected $outputAccess;
     /**
      * Type of share.
      *
-     * @var mixed
+     * @var string
      */
     protected $shareType;
     /**
@@ -159,20 +159,20 @@ class ShareDetail
     /**
      * Creator of share.
      *
-     * @return mixed
+     * @return ShareUser
      */
-    public function getCreator()
+    public function getCreator(): ShareUser
     {
         return $this->creator;
     }
     /**
      * Creator of share.
      *
-     * @param mixed $creator
+     * @param ShareUser $creator
      *
      * @return self
      */
-    public function setCreator($creator): self
+    public function setCreator(ShareUser $creator): self
     {
         $this->initialized['creator'] = true;
         $this->creator = $creator;
@@ -181,20 +181,20 @@ class ShareDetail
     /**
      * Audit information.
      *
-     * @return mixed
+     * @return UserAudit
      */
-    public function getAudit()
+    public function getAudit(): UserAudit
     {
         return $this->audit;
     }
     /**
      * Audit information.
      *
-     * @param mixed $audit
+     * @param UserAudit $audit
      *
      * @return self
      */
-    public function setAudit($audit): self
+    public function setAudit(UserAudit $audit): self
     {
         $this->initialized['audit'] = true;
         $this->audit = $audit;
@@ -247,20 +247,20 @@ class ShareDetail
     /**
      * Detail of share.
      *
-     * @return mixed
+     * @return ShareDataBase|null
      */
-    public function getData()
+    public function getData(): ?ShareDataBase
     {
         return $this->data;
     }
     /**
      * Detail of share.
      *
-     * @param mixed $data
+     * @param ShareDataBase|null $data
      *
      * @return self
      */
-    public function setData($data): self
+    public function setData(?ShareDataBase $data): self
     {
         $this->initialized['data'] = true;
         $this->data = $data;
@@ -313,20 +313,20 @@ class ShareDetail
     /**
      * Defined access for contents in share.
      *
-     * @return mixed
+     * @return string
      */
-    public function getOutputAccess()
+    public function getOutputAccess(): string
     {
         return $this->outputAccess;
     }
     /**
      * Defined access for contents in share.
      *
-     * @param mixed $outputAccess
+     * @param string $outputAccess
      *
      * @return self
      */
-    public function setOutputAccess($outputAccess): self
+    public function setOutputAccess(string $outputAccess): self
     {
         $this->initialized['outputAccess'] = true;
         $this->outputAccess = $outputAccess;
@@ -335,20 +335,20 @@ class ShareDetail
     /**
      * Type of share.
      *
-     * @return mixed
+     * @return string
      */
-    public function getShareType()
+    public function getShareType(): string
     {
         return $this->shareType;
     }
     /**
      * Type of share.
      *
-     * @param mixed $shareType
+     * @param string $shareType
      *
      * @return self
      */
-    public function setShareType($shareType): self
+    public function setShareType(string $shareType): self
     {
         $this->initialized['shareType'] = true;
         $this->shareType = $shareType;

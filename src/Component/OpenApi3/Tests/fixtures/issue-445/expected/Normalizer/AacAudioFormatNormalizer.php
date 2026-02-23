@@ -49,11 +49,19 @@ class AacAudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setExtension(null);
         }
         if (\array_key_exists('profile', $data)) {
-            $object->setProfile($data['profile']);
+            $value = $data['profile'];
+            if (is_string($data['profile'])) {
+                $value = $data['profile'];
+            }
+            $object->setProfile($value);
             unset($data['profile']);
         }
         if (\array_key_exists('coder', $data)) {
-            $object->setCoder($data['coder']);
+            $value_1 = $data['coder'];
+            if (is_string($data['coder'])) {
+                $value_1 = $data['coder'];
+            }
+            $object->setCoder($value_1);
             unset($data['coder']);
         }
         if (\array_key_exists('bitrate', $data) && $data['bitrate'] !== null) {
@@ -70,9 +78,9 @@ class AacAudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
         elseif (\array_key_exists('variableBitRate', $data) && $data['variableBitRate'] === null) {
             $object->setVariableBitRate(null);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_2;
             }
         }
         return $object;
@@ -85,10 +93,18 @@ class AacAudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['extension'] = $data->getExtension();
         }
         if ($data->isInitialized('profile') && null !== $data->getProfile()) {
-            $dataArray['profile'] = $data->getProfile();
+            $value = $data->getProfile();
+            if (is_string($data->getProfile())) {
+                $value = $data->getProfile();
+            }
+            $dataArray['profile'] = $value;
         }
         if ($data->isInitialized('coder') && null !== $data->getCoder()) {
-            $dataArray['coder'] = $data->getCoder();
+            $value_1 = $data->getCoder();
+            if (is_string($data->getCoder())) {
+                $value_1 = $data->getCoder();
+            }
+            $dataArray['coder'] = $value_1;
         }
         if ($data->isInitialized('bitrate')) {
             $dataArray['bitrate'] = $data->getBitrate();
@@ -96,9 +112,9 @@ class AacAudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('variableBitRate')) {
             $dataArray['variableBitRate'] = $data->getVariableBitRate();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_2;
             }
         }
         return $dataArray;

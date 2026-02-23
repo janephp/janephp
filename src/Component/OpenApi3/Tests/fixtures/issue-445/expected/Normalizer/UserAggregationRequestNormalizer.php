@@ -62,20 +62,28 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
             $object->setSearchBehaviors(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $object->setFilter($data['filter']);
+            $value_1 = $data['filter'];
+            if (is_array($data['filter']) and isset($data['filter']['kind'])) {
+                $value_1 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
+            }
+            $object->setFilter($value_1);
             unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
         }
         if (\array_key_exists('lifeCycleFilter', $data)) {
-            $object->setLifeCycleFilter($data['lifeCycleFilter']);
+            $value_2 = $data['lifeCycleFilter'];
+            if (is_string($data['lifeCycleFilter'])) {
+                $value_2 = $data['lifeCycleFilter'];
+            }
+            $object->setLifeCycleFilter($value_2);
             unset($data['lifeCycleFilter']);
         }
         if (\array_key_exists('userRightsFilter', $data) && $data['userRightsFilter'] !== null) {
             $values_1 = [];
-            foreach ($data['userRightsFilter'] as $value_1) {
-                $values_1[] = $value_1;
+            foreach ($data['userRightsFilter'] as $value_3) {
+                $values_1[] = $value_3;
             }
             $object->setUserRightsFilter($values_1);
             unset($data['userRightsFilter']);
@@ -85,8 +93,8 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] !== null) {
             $values_2 = [];
-            foreach ($data['aggregationFilters'] as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\AggregationFilter::class, 'json', $context);
+            foreach ($data['aggregationFilters'] as $value_4) {
+                $values_2[] = $this->denormalizer->denormalize($value_4, \PicturePark\API\Model\AggregationFilter::class, 'json', $context);
             }
             $object->setAggregationFilters($values_2);
             unset($data['aggregationFilters']);
@@ -104,15 +112,15 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('aggregators', $data)) {
             $values_3 = [];
-            foreach ($data['aggregators'] as $value_3) {
-                $values_3[] = $this->denormalizer->denormalize($value_3, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
+            foreach ($data['aggregators'] as $value_5) {
+                $values_3[] = $this->denormalizer->denormalize($value_5, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
             }
             $object->setAggregators($values_3);
             unset($data['aggregators']);
         }
-        foreach ($data as $key => $value_4) {
+        foreach ($data as $key => $value_6) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_4;
+                $object[$key] = $value_6;
             }
         }
         return $object;
@@ -131,33 +139,41 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
             $dataArray['searchBehaviors'] = $values;
         }
         if ($data->isInitialized('filter')) {
-            $dataArray['filter'] = $data->getFilter();
+            $value_1 = $data->getFilter();
+            if (is_object($data->getFilter())) {
+                $value_1 = $this->normalizer->normalize($data->getFilter(), 'json', $context);
+            }
+            $dataArray['filter'] = $value_1;
         }
-        $dataArray['lifeCycleFilter'] = $data->getLifeCycleFilter();
+        $value_2 = $data->getLifeCycleFilter();
+        if (is_string($data->getLifeCycleFilter())) {
+            $value_2 = $data->getLifeCycleFilter();
+        }
+        $dataArray['lifeCycleFilter'] = $value_2;
         if ($data->isInitialized('userRightsFilter')) {
             $values_1 = [];
-            foreach ($data->getUserRightsFilter() as $value_1) {
-                $values_1[] = $value_1;
+            foreach ($data->getUserRightsFilter() as $value_3) {
+                $values_1[] = $value_3;
             }
             $dataArray['userRightsFilter'] = $values_1;
         }
         if ($data->isInitialized('aggregationFilters')) {
             $values_2 = [];
-            foreach ($data->getAggregationFilters() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+            foreach ($data->getAggregationFilters() as $value_4) {
+                $values_2[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
             $dataArray['aggregationFilters'] = $values_2;
         }
         $dataArray['includeServiceUser'] = $data->getIncludeServiceUser();
         $dataArray['editableOnly'] = $data->getEditableOnly();
         $values_3 = [];
-        foreach ($data->getAggregators() as $value_3) {
-            $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+        foreach ($data->getAggregators() as $value_5) {
+            $values_3[] = $this->normalizer->normalize($value_5, 'json', $context);
         }
         $dataArray['aggregators'] = $values_3;
-        foreach ($data as $key => $value_4) {
+        foreach ($data as $key => $value_6) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_4;
+                $dataArray[$key] = $value_6;
             }
         }
         return $dataArray;

@@ -42,25 +42,37 @@ class NumericRangeAggregatorNormalizer implements DenormalizerInterface, Normali
             unset($data['name']);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $object->setNames($data['names']);
+            $value = $data['names'];
+            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
+                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                foreach ($data['names'] as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $object->setNames($value);
             unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('aggregators', $data) && $data['aggregators'] !== null) {
-            $values = [];
-            foreach ($data['aggregators'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
+            $values_1 = [];
+            foreach ($data['aggregators'] as $value_2) {
+                $values_1[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
             }
-            $object->setAggregators($values);
+            $object->setAggregators($values_1);
             unset($data['aggregators']);
         }
         elseif (\array_key_exists('aggregators', $data) && $data['aggregators'] === null) {
             $object->setAggregators(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $object->setFilter($data['filter']);
+            $value_3 = $data['filter'];
+            if (is_array($data['filter']) and isset($data['filter']['kind'])) {
+                $value_3 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
+            }
+            $object->setFilter($value_3);
             unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
@@ -78,16 +90,16 @@ class NumericRangeAggregatorNormalizer implements DenormalizerInterface, Normali
             $object->setField(null);
         }
         if (\array_key_exists('ranges', $data)) {
-            $values_1 = [];
-            foreach ($data['ranges'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\NumericRangeForAggregator::class, 'json', $context);
+            $values_2 = [];
+            foreach ($data['ranges'] as $value_4) {
+                $values_2[] = $this->denormalizer->denormalize($value_4, \PicturePark\API\Model\NumericRangeForAggregator::class, 'json', $context);
             }
-            $object->setRanges($values_1);
+            $object->setRanges($values_2);
             unset($data['ranges']);
         }
-        foreach ($data as $key => $value_2) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_2;
+        foreach ($data as $key_1 => $value_5) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $object[$key_1] = $value_5;
             }
         }
         return $object;
@@ -97,30 +109,42 @@ class NumericRangeAggregatorNormalizer implements DenormalizerInterface, Normali
         $dataArray = [];
         $dataArray['name'] = $data->getName();
         if ($data->isInitialized('names')) {
-            $dataArray['names'] = $data->getNames();
+            $value = $data->getNames();
+            if (is_object($data->getNames())) {
+                $values = [];
+                foreach ($data->getNames() as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $dataArray['names'] = $value;
         }
         if ($data->isInitialized('aggregators')) {
-            $values = [];
-            foreach ($data->getAggregators() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values_1 = [];
+            foreach ($data->getAggregators() as $value_2) {
+                $values_1[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
-            $dataArray['aggregators'] = $values;
+            $dataArray['aggregators'] = $values_1;
         }
         if ($data->isInitialized('filter')) {
-            $dataArray['filter'] = $data->getFilter();
+            $value_3 = $data->getFilter();
+            if (is_object($data->getFilter())) {
+                $value_3 = $this->normalizer->normalize($data->getFilter(), 'json', $context);
+            }
+            $dataArray['filter'] = $value_3;
         }
         $dataArray['kind'] = $data->getKind();
         if ($data->isInitialized('field')) {
             $dataArray['field'] = $data->getField();
         }
-        $values_1 = [];
-        foreach ($data->getRanges() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+        $values_2 = [];
+        foreach ($data->getRanges() as $value_4) {
+            $values_2[] = $this->normalizer->normalize($value_4, 'json', $context);
         }
-        $dataArray['ranges'] = $values_1;
-        foreach ($data as $key => $value_2) {
-            if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_2;
+        $dataArray['ranges'] = $values_2;
+        foreach ($data as $key_1 => $value_5) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $dataArray[$key_1] = $value_5;
             }
         }
         return $dataArray;

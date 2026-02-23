@@ -74,14 +74,30 @@ class FieldGeoPointNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->setFieldNamespace(null);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $object->setNames($data['names']);
+            $value = $data['names'];
+            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
+                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                foreach ($data['names'] as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $object->setNames($value);
             unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
-            $object->setDescriptions($data['descriptions']);
+            $value_2 = $data['descriptions'];
+            if (is_array($data['descriptions']) && $this->isOnlyNumericKeys($data['descriptions'])) {
+                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                foreach ($data['descriptions'] as $key_1 => $value_3) {
+                    $values_1[$key_1] = $value_3;
+                }
+                $value_2 = $values_1;
+            }
+            $object->setDescriptions($value_2);
             unset($data['descriptions']);
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
@@ -115,9 +131,9 @@ class FieldGeoPointNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->setBoost($data['boost']);
             unset($data['boost']);
         }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+        foreach ($data as $key_2 => $value_4) {
+            if (preg_match('/.*/', (string) $key_2)) {
+                $object[$key_2] = $value_4;
             }
         }
         return $object;
@@ -133,10 +149,26 @@ class FieldGeoPointNormalizer implements DenormalizerInterface, NormalizerInterf
             $dataArray['fieldNamespace'] = $data->getFieldNamespace();
         }
         if ($data->isInitialized('names')) {
-            $dataArray['names'] = $data->getNames();
+            $value = $data->getNames();
+            if (is_object($data->getNames())) {
+                $values = [];
+                foreach ($data->getNames() as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $dataArray['names'] = $value;
         }
         if ($data->isInitialized('descriptions')) {
-            $dataArray['descriptions'] = $data->getDescriptions();
+            $value_2 = $data->getDescriptions();
+            if (is_object($data->getDescriptions())) {
+                $values_1 = [];
+                foreach ($data->getDescriptions() as $key_1 => $value_3) {
+                    $values_1[$key_1] = $value_3;
+                }
+                $value_2 = $values_1;
+            }
+            $dataArray['descriptions'] = $value_2;
         }
         $dataArray['required'] = $data->getRequired();
         $dataArray['fixed'] = $data->getFixed();
@@ -147,9 +179,9 @@ class FieldGeoPointNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('boost') && null !== $data->getBoost()) {
             $dataArray['boost'] = $data->getBoost();
         }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+        foreach ($data as $key_2 => $value_4) {
+            if (preg_match('/.*/', (string) $key_2)) {
+                $dataArray[$key_2] = $value_4;
             }
         }
         return $dataArray;

@@ -62,23 +62,35 @@ class AggregatorBaseNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setName($data['name']);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $object->setNames($data['names']);
+            $value = $data['names'];
+            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
+                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                foreach ($data['names'] as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $object->setNames($value);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('aggregators', $data) && $data['aggregators'] !== null) {
-            $values = [];
-            foreach ($data['aggregators'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
+            $values_1 = [];
+            foreach ($data['aggregators'] as $value_2) {
+                $values_1[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
             }
-            $object->setAggregators($values);
+            $object->setAggregators($values_1);
         }
         elseif (\array_key_exists('aggregators', $data) && $data['aggregators'] === null) {
             $object->setAggregators(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $object->setFilter($data['filter']);
+            $value_3 = $data['filter'];
+            if (is_array($data['filter']) and isset($data['filter']['kind'])) {
+                $value_3 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
+            }
+            $object->setFilter($value_3);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
@@ -114,17 +126,29 @@ class AggregatorBaseNormalizer implements DenormalizerInterface, NormalizerInter
         }
         $dataArray['name'] = $data->getName();
         if ($data->isInitialized('names')) {
-            $dataArray['names'] = $data->getNames();
+            $value = $data->getNames();
+            if (is_object($data->getNames())) {
+                $values = [];
+                foreach ($data->getNames() as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $dataArray['names'] = $value;
         }
         if ($data->isInitialized('aggregators')) {
-            $values = [];
-            foreach ($data->getAggregators() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values_1 = [];
+            foreach ($data->getAggregators() as $value_2) {
+                $values_1[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
-            $dataArray['aggregators'] = $values;
+            $dataArray['aggregators'] = $values_1;
         }
         if ($data->isInitialized('filter')) {
-            $dataArray['filter'] = $data->getFilter();
+            $value_3 = $data->getFilter();
+            if (is_object($data->getFilter())) {
+                $value_3 = $this->normalizer->normalize($data->getFilter(), 'json', $context);
+            }
+            $dataArray['filter'] = $value_3;
         }
         $dataArray['kind'] = $data->getKind();
         return $dataArray;

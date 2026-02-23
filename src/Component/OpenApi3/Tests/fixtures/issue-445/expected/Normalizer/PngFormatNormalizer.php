@@ -51,14 +51,22 @@ class PngFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
             unset($data['kind']);
         }
         if (\array_key_exists('colorProfile', $data) && $data['colorProfile'] !== null) {
-            $object->setColorProfile($data['colorProfile']);
+            $value = $data['colorProfile'];
+            if (is_string($data['colorProfile'])) {
+                $value = $data['colorProfile'];
+            }
+            $object->setColorProfile($value);
             unset($data['colorProfile']);
         }
         elseif (\array_key_exists('colorProfile', $data) && $data['colorProfile'] === null) {
             $object->setColorProfile(null);
         }
         if (\array_key_exists('colorTransformationIntent', $data)) {
-            $object->setColorTransformationIntent($data['colorTransformationIntent']);
+            $value_1 = $data['colorTransformationIntent'];
+            if (is_string($data['colorTransformationIntent'])) {
+                $value_1 = $data['colorTransformationIntent'];
+            }
+            $object->setColorTransformationIntent($value_1);
             unset($data['colorTransformationIntent']);
         }
         if (\array_key_exists('horizontalResolution', $data) && $data['horizontalResolution'] !== null) {
@@ -80,7 +88,11 @@ class PngFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
             unset($data['keepClippingPath']);
         }
         if (\array_key_exists('resizeAction', $data) && $data['resizeAction'] !== null) {
-            $object->setResizeAction($data['resizeAction']);
+            $value_2 = $data['resizeAction'];
+            if (is_array($data['resizeAction']) and isset($data['resizeAction']['width']) and isset($data['resizeAction']['height']) and isset($data['resizeAction']['resizeMode'])) {
+                $value_2 = $this->denormalizer->denormalize($data['resizeAction'], \PicturePark\API\Model\ResizeAction::class, 'json', $context);
+            }
+            $object->setResizeAction($value_2);
             unset($data['resizeAction']);
         }
         elseif (\array_key_exists('resizeAction', $data) && $data['resizeAction'] === null) {
@@ -88,8 +100,8 @@ class PngFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (\array_key_exists('actions', $data) && $data['actions'] !== null) {
             $values = [];
-            foreach ($data['actions'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\ImageActionBase::class, 'json', $context);
+            foreach ($data['actions'] as $value_3) {
+                $values[] = $this->denormalizer->denormalize($value_3, \PicturePark\API\Model\ImageActionBase::class, 'json', $context);
             }
             $object->setActions($values);
             unset($data['actions']);
@@ -104,9 +116,9 @@ class PngFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
             $object->setExtension(null);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value_4;
             }
         }
         return $object;
@@ -116,10 +128,18 @@ class PngFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
         if ($data->isInitialized('colorProfile')) {
-            $dataArray['colorProfile'] = $data->getColorProfile();
+            $value = $data->getColorProfile();
+            if (is_string($data->getColorProfile())) {
+                $value = $data->getColorProfile();
+            }
+            $dataArray['colorProfile'] = $value;
         }
         if ($data->isInitialized('colorTransformationIntent') && null !== $data->getColorTransformationIntent()) {
-            $dataArray['colorTransformationIntent'] = $data->getColorTransformationIntent();
+            $value_1 = $data->getColorTransformationIntent();
+            if (is_string($data->getColorTransformationIntent())) {
+                $value_1 = $data->getColorTransformationIntent();
+            }
+            $dataArray['colorTransformationIntent'] = $value_1;
         }
         if ($data->isInitialized('horizontalResolution')) {
             $dataArray['horizontalResolution'] = $data->getHorizontalResolution();
@@ -131,21 +151,25 @@ class PngFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
             $dataArray['keepClippingPath'] = $data->getKeepClippingPath();
         }
         if ($data->isInitialized('resizeAction')) {
-            $dataArray['resizeAction'] = $data->getResizeAction();
+            $value_2 = $data->getResizeAction();
+            if (is_object($data->getResizeAction())) {
+                $value_2 = $this->normalizer->normalize($data->getResizeAction(), 'json', $context);
+            }
+            $dataArray['resizeAction'] = $value_2;
         }
         if ($data->isInitialized('actions')) {
             $values = [];
-            foreach ($data->getActions() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            foreach ($data->getActions() as $value_3) {
+                $values[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $dataArray['actions'] = $values;
         }
         if ($data->isInitialized('extension')) {
             $dataArray['extension'] = $data->getExtension();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+                $dataArray[$key] = $value_4;
             }
         }
         return $dataArray;

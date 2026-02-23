@@ -44,7 +44,11 @@ class ListItemDeleteManyFilterRequestNormalizer implements DenormalizerInterface
             return $object;
         }
         if (\array_key_exists('filterRequest', $data)) {
-            $object->setFilterRequest($data['filterRequest']);
+            $value = $data['filterRequest'];
+            if (is_array($data['filterRequest']) and isset($data['filterRequest']['includeAllSchemaChildren']) and isset($data['filterRequest']['brokenDependenciesFilter'])) {
+                $value = $this->denormalizer->denormalize($data['filterRequest'], \PicturePark\API\Model\ListItemFilterRequest::class, 'json', $context);
+            }
+            $object->setFilterRequest($value);
         }
         if (\array_key_exists('forceReferenceRemoval', $data)) {
             $object->setForceReferenceRemoval($data['forceReferenceRemoval']);
@@ -57,7 +61,11 @@ class ListItemDeleteManyFilterRequestNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['filterRequest'] = $data->getFilterRequest();
+        $value = $data->getFilterRequest();
+        if (is_object($data->getFilterRequest())) {
+            $value = $this->normalizer->normalize($data->getFilterRequest(), 'json', $context);
+        }
+        $dataArray['filterRequest'] = $value;
         $dataArray['forceReferenceRemoval'] = $data->getForceReferenceRemoval();
         $dataArray['notifyProgress'] = $data->getNotifyProgress();
         return $dataArray;

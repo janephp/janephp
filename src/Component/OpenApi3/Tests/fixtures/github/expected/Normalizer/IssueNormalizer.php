@@ -101,7 +101,13 @@ class IssueNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (\array_key_exists('labels', $data)) {
             $values = [];
             foreach ($data['labels'] as $value) {
-                $values[] = $value;
+                $value_1 = $value;
+                if (is_string($value)) {
+                    $value_1 = $value;
+                } elseif (is_array($value)) {
+                    $value_1 = $value;
+                }
+                $values[] = $value_1;
             }
             $object->setLabels($values);
             unset($data['labels']);
@@ -115,8 +121,8 @@ class IssueNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (\array_key_exists('assignees', $data) && $data['assignees'] !== null) {
             $values_1 = [];
-            foreach ($data['assignees'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \Github\Model\SimpleUser::class, 'json', $context);
+            foreach ($data['assignees'] as $value_2) {
+                $values_1[] = $this->denormalizer->denormalize($value_2, \Github\Model\SimpleUser::class, 'json', $context);
             }
             $object->setAssignees($values_1);
             unset($data['assignees']);
@@ -203,9 +209,9 @@ class IssueNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $object->setReactions($this->denormalizer->denormalize($data['reactions'], \Github\Model\ReactionRollup::class, 'json', $context));
             unset($data['reactions']);
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_2;
+                $object[$key] = $value_3;
             }
         }
         return $object;
@@ -230,14 +236,20 @@ class IssueNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
         $values = [];
         foreach ($data->getLabels() as $value) {
-            $values[] = $value;
+            $value_1 = $value;
+            if (is_string($value)) {
+                $value_1 = $value;
+            } elseif (is_object($value)) {
+                $value_1 = $value;
+            }
+            $values[] = $value_1;
         }
         $dataArray['labels'] = $values;
         $dataArray['assignee'] = $this->normalizer->normalize($data->getAssignee(), 'json', $context);
         if ($data->isInitialized('assignees')) {
             $values_1 = [];
-            foreach ($data->getAssignees() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            foreach ($data->getAssignees() as $value_2) {
+                $values_1[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $dataArray['assignees'] = $values_1;
         }
@@ -275,9 +287,9 @@ class IssueNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if ($data->isInitialized('reactions') && null !== $data->getReactions()) {
             $dataArray['reactions'] = $this->normalizer->normalize($data->getReactions(), 'json', $context);
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_2;
+                $dataArray[$key] = $value_3;
             }
         }
         if (!($context['skip_validation'] ?? false)) {

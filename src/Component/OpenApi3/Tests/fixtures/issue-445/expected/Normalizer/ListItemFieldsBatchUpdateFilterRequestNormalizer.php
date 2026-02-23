@@ -44,12 +44,16 @@ class ListItemFieldsBatchUpdateFilterRequestNormalizer implements DenormalizerIn
             return $object;
         }
         if (\array_key_exists('filterRequest', $data)) {
-            $object->setFilterRequest($data['filterRequest']);
+            $value = $data['filterRequest'];
+            if (is_array($data['filterRequest']) and isset($data['filterRequest']['includeAllSchemaChildren']) and isset($data['filterRequest']['brokenDependenciesFilter'])) {
+                $value = $this->denormalizer->denormalize($data['filterRequest'], \PicturePark\API\Model\ListItemFilterRequest::class, 'json', $context);
+            }
+            $object->setFilterRequest($value);
         }
         if (\array_key_exists('changeCommands', $data)) {
             $values = [];
-            foreach ($data['changeCommands'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\MetadataValuesChangeCommandBase::class, 'json', $context);
+            foreach ($data['changeCommands'] as $value_1) {
+                $values[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\MetadataValuesChangeCommandBase::class, 'json', $context);
             }
             $object->setChangeCommands($values);
         }
@@ -64,10 +68,14 @@ class ListItemFieldsBatchUpdateFilterRequestNormalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['filterRequest'] = $data->getFilterRequest();
+        $value = $data->getFilterRequest();
+        if (is_object($data->getFilterRequest())) {
+            $value = $this->normalizer->normalize($data->getFilterRequest(), 'json', $context);
+        }
+        $dataArray['filterRequest'] = $value;
         $values = [];
-        foreach ($data->getChangeCommands() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+        foreach ($data->getChangeCommands() as $value_1) {
+            $values[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
         $dataArray['changeCommands'] = $values;
         $dataArray['allowMissingDependencies'] = $data->getAllowMissingDependencies();

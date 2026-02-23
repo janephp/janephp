@@ -50,12 +50,16 @@ class BusinessRuleTraceLogNormalizer implements DenormalizerInterface, Normalize
             $object->setDocumentId(null);
         }
         if (\array_key_exists('documentType', $data)) {
-            $object->setDocumentType($data['documentType']);
+            $value = $data['documentType'];
+            if (is_string($data['documentType'])) {
+                $value = $data['documentType'];
+            }
+            $object->setDocumentType($value);
         }
         if (\array_key_exists('ruleIds', $data) && $data['ruleIds'] !== null) {
             $values = [];
-            foreach ($data['ruleIds'] as $value) {
-                $values[] = $value;
+            foreach ($data['ruleIds'] as $value_1) {
+                $values[] = $value_1;
             }
             $object->setRuleIds($values);
         }
@@ -64,8 +68,8 @@ class BusinessRuleTraceLogNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('rules', $data) && $data['rules'] !== null) {
             $values_1 = [];
-            foreach ($data['rules'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\BusinessRuleTracedRule::class, 'json', $context);
+            foreach ($data['rules'] as $value_2) {
+                $values_1[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\BusinessRuleTracedRule::class, 'json', $context);
             }
             $object->setRules($values_1);
         }
@@ -74,8 +78,8 @@ class BusinessRuleTraceLogNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('validationErrors', $data) && $data['validationErrors'] !== null) {
             $values_2 = [];
-            foreach ($data['validationErrors'] as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\ErrorResponse::class, 'json', $context);
+            foreach ($data['validationErrors'] as $value_3) {
+                $values_2[] = $this->denormalizer->denormalize($value_3, \PicturePark\API\Model\ErrorResponse::class, 'json', $context);
             }
             $object->setValidationErrors($values_2);
         }
@@ -84,8 +88,8 @@ class BusinessRuleTraceLogNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('generalErrors', $data) && $data['generalErrors'] !== null) {
             $values_3 = [];
-            foreach ($data['generalErrors'] as $value_3) {
-                $values_3[] = $this->denormalizer->denormalize($value_3, \PicturePark\API\Model\ErrorResponse::class, 'json', $context);
+            foreach ($data['generalErrors'] as $value_4) {
+                $values_3[] = $this->denormalizer->denormalize($value_4, \PicturePark\API\Model\ErrorResponse::class, 'json', $context);
             }
             $object->setGeneralErrors($values_3);
         }
@@ -93,7 +97,11 @@ class BusinessRuleTraceLogNormalizer implements DenormalizerInterface, Normalize
             $object->setGeneralErrors(null);
         }
         if (\array_key_exists('audit', $data) && $data['audit'] !== null) {
-            $object->setAudit($data['audit']);
+            $value_5 = $data['audit'];
+            if (is_array($data['audit']) and isset($data['audit']['creationDate']) and isset($data['audit']['modificationDate'])) {
+                $value_5 = $this->denormalizer->denormalize($data['audit'], \PicturePark\API\Model\UserAudit::class, 'json', $context);
+            }
+            $object->setAudit($value_5);
         }
         elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
             $object->setAudit(null);
@@ -109,37 +117,45 @@ class BusinessRuleTraceLogNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('documentId')) {
             $dataArray['documentId'] = $data->getDocumentId();
         }
-        $dataArray['documentType'] = $data->getDocumentType();
+        $value = $data->getDocumentType();
+        if (is_string($data->getDocumentType())) {
+            $value = $data->getDocumentType();
+        }
+        $dataArray['documentType'] = $value;
         if ($data->isInitialized('ruleIds')) {
             $values = [];
-            foreach ($data->getRuleIds() as $value) {
-                $values[] = $value;
+            foreach ($data->getRuleIds() as $value_1) {
+                $values[] = $value_1;
             }
             $dataArray['ruleIds'] = $values;
         }
         if ($data->isInitialized('rules')) {
             $values_1 = [];
-            foreach ($data->getRules() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            foreach ($data->getRules() as $value_2) {
+                $values_1[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $dataArray['rules'] = $values_1;
         }
         if ($data->isInitialized('validationErrors')) {
             $values_2 = [];
-            foreach ($data->getValidationErrors() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+            foreach ($data->getValidationErrors() as $value_3) {
+                $values_2[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $dataArray['validationErrors'] = $values_2;
         }
         if ($data->isInitialized('generalErrors')) {
             $values_3 = [];
-            foreach ($data->getGeneralErrors() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+            foreach ($data->getGeneralErrors() as $value_4) {
+                $values_3[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
             $dataArray['generalErrors'] = $values_3;
         }
         if ($data->isInitialized('audit')) {
-            $dataArray['audit'] = $data->getAudit();
+            $value_5 = $data->getAudit();
+            if (is_object($data->getAudit())) {
+                $value_5 = $this->normalizer->normalize($data->getAudit(), 'json', $context);
+            }
+            $dataArray['audit'] = $value_5;
         }
         return $dataArray;
     }

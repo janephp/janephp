@@ -27,7 +27,7 @@ class DropletCreate extends \ArrayObject
     /**
      * The image ID of a public or private image or the slug identifier for a public image. This image will be the base image for your Droplet.<br>Requires `image:read` scope.
      *
-     * @var mixed
+     * @var string|int
      */
     protected $image;
     /**
@@ -143,7 +143,7 @@ class DropletCreate extends \ArrayObject
     /**
      * The image ID of a public or private image or the slug identifier for a public image. This image will be the base image for your Droplet.<br>Requires `image:read` scope.
      *
-     * @return mixed
+     * @return string|int
      */
     public function getImage()
     {
@@ -152,7 +152,7 @@ class DropletCreate extends \ArrayObject
     /**
      * The image ID of a public or private image or the slug identifier for a public image. This image will be the base image for your Droplet.<br>Requires `image:read` scope.
      *
-     * @param mixed $image
+     * @param string|int $image
      *
      * @return self
      */

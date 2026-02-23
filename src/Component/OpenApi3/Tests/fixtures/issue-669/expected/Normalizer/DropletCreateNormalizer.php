@@ -61,13 +61,19 @@ class DropletCreateNormalizer implements DenormalizerInterface, NormalizerInterf
             unset($data['size']);
         }
         if (\array_key_exists('image', $data)) {
-            $object->setImage($data['image']);
+            $value = $data['image'];
+            if (is_string($data['image'])) {
+                $value = $data['image'];
+            } elseif (is_int($data['image'])) {
+                $value = $data['image'];
+            }
+            $object->setImage($value);
             unset($data['image']);
         }
         if (\array_key_exists('ssh_keys', $data)) {
             $values = [];
-            foreach ($data['ssh_keys'] as $value) {
-                $values[] = $value;
+            foreach ($data['ssh_keys'] as $value_1) {
+                $values[] = $value_1;
             }
             $object->setSshKeys($values);
             unset($data['ssh_keys']);
@@ -90,8 +96,8 @@ class DropletCreateNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('tags', $data) && $data['tags'] !== null) {
             $values_1 = [];
-            foreach ($data['tags'] as $value_1) {
-                $values_1[] = $value_1;
+            foreach ($data['tags'] as $value_2) {
+                $values_1[] = $value_2;
             }
             $object->setTags($values_1);
             unset($data['tags']);
@@ -109,8 +115,8 @@ class DropletCreateNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('volumes', $data)) {
             $values_2 = [];
-            foreach ($data['volumes'] as $value_2) {
-                $values_2[] = $value_2;
+            foreach ($data['volumes'] as $value_3) {
+                $values_2[] = $value_3;
             }
             $object->setVolumes($values_2);
             unset($data['volumes']);
@@ -123,9 +129,9 @@ class DropletCreateNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->setWithDropletAgent($data['with_droplet_agent']);
             unset($data['with_droplet_agent']);
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_3;
+                $object[$key] = $value_4;
             }
         }
         return $object;
@@ -137,11 +143,17 @@ class DropletCreateNormalizer implements DenormalizerInterface, NormalizerInterf
             $dataArray['region'] = $data->getRegion();
         }
         $dataArray['size'] = $data->getSize();
-        $dataArray['image'] = $data->getImage();
+        $value = $data->getImage();
+        if (is_string($data->getImage())) {
+            $value = $data->getImage();
+        } elseif (is_int($data->getImage())) {
+            $value = $data->getImage();
+        }
+        $dataArray['image'] = $value;
         if ($data->isInitialized('sshKeys') && null !== $data->getSshKeys()) {
             $values = [];
-            foreach ($data->getSshKeys() as $value) {
-                $values[] = $value;
+            foreach ($data->getSshKeys() as $value_1) {
+                $values[] = $value_1;
             }
             $dataArray['ssh_keys'] = $values;
         }
@@ -159,8 +171,8 @@ class DropletCreateNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if ($data->isInitialized('tags')) {
             $values_1 = [];
-            foreach ($data->getTags() as $value_1) {
-                $values_1[] = $value_1;
+            foreach ($data->getTags() as $value_2) {
+                $values_1[] = $value_2;
             }
             $dataArray['tags'] = $values_1;
         }
@@ -172,8 +184,8 @@ class DropletCreateNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if ($data->isInitialized('volumes') && null !== $data->getVolumes()) {
             $values_2 = [];
-            foreach ($data->getVolumes() as $value_2) {
-                $values_2[] = $value_2;
+            foreach ($data->getVolumes() as $value_3) {
+                $values_2[] = $value_3;
             }
             $dataArray['volumes'] = $values_2;
         }
@@ -183,9 +195,9 @@ class DropletCreateNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('withDropletAgent') && null !== $data->getWithDropletAgent()) {
             $dataArray['with_droplet_agent'] = $data->getWithDropletAgent();
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_3;
+                $dataArray[$key] = $value_4;
             }
         }
         return $dataArray;

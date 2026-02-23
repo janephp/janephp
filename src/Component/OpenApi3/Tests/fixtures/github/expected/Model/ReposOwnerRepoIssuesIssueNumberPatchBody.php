@@ -45,7 +45,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBody extends \ArrayObject
     /**
      * Labels to associate with this issue. Pass one or more Labels to _replace_ the set of Labels on this Issue. Send an empty array (`[]`) to clear all Labels from the Issue. _NOTE: Only users with push access can set labels for issues. Labels are silently dropped otherwise._
      *
-     * @var list<mixed>
+     * @var list<string>|list<object>
      */
     protected $labels;
     /**
@@ -167,7 +167,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBody extends \ArrayObject
     /**
      * Labels to associate with this issue. Pass one or more Labels to _replace_ the set of Labels on this Issue. Send an empty array (`[]`) to clear all Labels from the Issue. _NOTE: Only users with push access can set labels for issues. Labels are silently dropped otherwise._
      *
-     * @return list<mixed>
+     * @return list<string>|list<object>
      */
     public function getLabels(): array
     {
@@ -176,7 +176,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBody extends \ArrayObject
     /**
      * Labels to associate with this issue. Pass one or more Labels to _replace_ the set of Labels on this Issue. Send an empty array (`[]`) to clear all Labels from the Issue. _NOTE: Only users with push access can set labels for issues. Labels are silently dropped otherwise._
      *
-     * @param list<mixed> $labels
+     * @param list<string>|list<object> $labels
      *
      * @return self
      */

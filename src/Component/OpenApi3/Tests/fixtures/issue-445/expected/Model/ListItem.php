@@ -15,7 +15,7 @@ class ListItem
     /**
      * Audit information.
      *
-     * @var mixed|null
+     * @var UserAudit|null
      */
     protected $audit;
     /**
@@ -33,7 +33,7 @@ class ListItem
     /**
      * Contains language specific display values, rendered according to the list schema's display pattern configuration.
      *
-     * @var mixed|null
+     * @var array<string, string>|null
      */
     protected $displayValues;
     /**
@@ -63,26 +63,26 @@ class ListItem
     /**
      * LifeCycle of list item
      *
-     * @var mixed
+     * @var string
      */
     protected $lifeCycle;
     /**
      * Audit information.
      *
-     * @return mixed
+     * @return UserAudit|null
      */
-    public function getAudit()
+    public function getAudit(): ?UserAudit
     {
         return $this->audit;
     }
     /**
      * Audit information.
      *
-     * @param mixed $audit
+     * @param UserAudit|null $audit
      *
      * @return self
      */
-    public function setAudit($audit): self
+    public function setAudit(?UserAudit $audit): self
     {
         $this->initialized['audit'] = true;
         $this->audit = $audit;
@@ -135,20 +135,20 @@ class ListItem
     /**
      * Contains language specific display values, rendered according to the list schema's display pattern configuration.
      *
-     * @return mixed
+     * @return array<string, string>|null
      */
-    public function getDisplayValues()
+    public function getDisplayValues(): ?iterable
     {
         return $this->displayValues;
     }
     /**
      * Contains language specific display values, rendered according to the list schema's display pattern configuration.
      *
-     * @param mixed $displayValues
+     * @param array<string, string>|null $displayValues
      *
      * @return self
      */
-    public function setDisplayValues($displayValues): self
+    public function setDisplayValues(?iterable $displayValues): self
     {
         $this->initialized['displayValues'] = true;
         $this->displayValues = $displayValues;
@@ -245,20 +245,20 @@ class ListItem
     /**
      * LifeCycle of list item
      *
-     * @return mixed
+     * @return string
      */
-    public function getLifeCycle()
+    public function getLifeCycle(): string
     {
         return $this->lifeCycle;
     }
     /**
      * LifeCycle of list item
      *
-     * @param mixed $lifeCycle
+     * @param string $lifeCycle
      *
      * @return self
      */
-    public function setLifeCycle($lifeCycle): self
+    public function setLifeCycle(string $lifeCycle): self
     {
         $this->initialized['lifeCycle'] = true;
         $this->lifeCycle = $lifeCycle;

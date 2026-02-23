@@ -39,7 +39,7 @@ class AddonsFeature extends \ArrayObject
     /**
      * Value of the feature, which can vary based on the type.
      *
-     * @var mixed
+     * @var string|bool|string
      */
     protected $value;
     /**
@@ -145,7 +145,7 @@ class AddonsFeature extends \ArrayObject
     /**
      * Value of the feature, which can vary based on the type.
      *
-     * @return mixed
+     * @return string|bool|string
      */
     public function getValue()
     {
@@ -154,7 +154,7 @@ class AddonsFeature extends \ArrayObject
     /**
      * Value of the feature, which can vary based on the type.
      *
-     * @param mixed $value
+     * @param string|bool|string $value
      *
      * @return self
      */

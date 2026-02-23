@@ -21,7 +21,7 @@ class BusinessProcessWaitForStateResult
     /**
      * The business process.
      *
-     * @var mixed
+     * @var BusinessProcess
      */
     protected $businessProcess;
     /**
@@ -49,20 +49,20 @@ class BusinessProcessWaitForStateResult
     /**
      * The business process.
      *
-     * @return mixed
+     * @return BusinessProcess
      */
-    public function getBusinessProcess()
+    public function getBusinessProcess(): BusinessProcess
     {
         return $this->businessProcess;
     }
     /**
      * The business process.
      *
-     * @param mixed $businessProcess
+     * @param BusinessProcess $businessProcess
      *
      * @return self
      */
-    public function setBusinessProcess($businessProcess): self
+    public function setBusinessProcess(BusinessProcess $businessProcess): self
     {
         $this->initialized['businessProcess'] = true;
         $this->businessProcess = $businessProcess;

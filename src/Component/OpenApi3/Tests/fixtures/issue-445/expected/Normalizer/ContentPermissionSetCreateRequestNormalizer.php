@@ -41,26 +41,34 @@ class ContentPermissionSetCreateRequestNormalizer implements DenormalizerInterfa
             return $object;
         }
         if (\array_key_exists('names', $data)) {
-            $object->setNames($data['names']);
+            $value = $data['names'];
+            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
+                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                foreach ($data['names'] as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $object->setNames($value);
             unset($data['names']);
         }
         if (\array_key_exists('userRolesRights', $data) && $data['userRolesRights'] !== null) {
-            $values = [];
-            foreach ($data['userRolesRights'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\UserRoleRightsOfContentRight::class, 'json', $context);
+            $values_1 = [];
+            foreach ($data['userRolesRights'] as $value_2) {
+                $values_1[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\UserRoleRightsOfContentRight::class, 'json', $context);
             }
-            $object->setUserRolesRights($values);
+            $object->setUserRolesRights($values_1);
             unset($data['userRolesRights']);
         }
         elseif (\array_key_exists('userRolesRights', $data) && $data['userRolesRights'] === null) {
             $object->setUserRolesRights(null);
         }
         if (\array_key_exists('userRolesPermissionSetRights', $data) && $data['userRolesPermissionSetRights'] !== null) {
-            $values_1 = [];
-            foreach ($data['userRolesPermissionSetRights'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\UserRoleRightsOfPermissionSetRight::class, 'json', $context);
+            $values_2 = [];
+            foreach ($data['userRolesPermissionSetRights'] as $value_3) {
+                $values_2[] = $this->denormalizer->denormalize($value_3, \PicturePark\API\Model\UserRoleRightsOfPermissionSetRight::class, 'json', $context);
             }
-            $object->setUserRolesPermissionSetRights($values_1);
+            $object->setUserRolesPermissionSetRights($values_2);
             unset($data['userRolesPermissionSetRights']);
         }
         elseif (\array_key_exists('userRolesPermissionSetRights', $data) && $data['userRolesPermissionSetRights'] === null) {
@@ -77,9 +85,9 @@ class ContentPermissionSetCreateRequestNormalizer implements DenormalizerInterfa
         elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
             $object->setRequestId(null);
         }
-        foreach ($data as $key => $value_2) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_2;
+        foreach ($data as $key_1 => $value_4) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $object[$key_1] = $value_4;
             }
         }
         return $object;
@@ -87,28 +95,36 @@ class ContentPermissionSetCreateRequestNormalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['names'] = $data->getNames();
-        if ($data->isInitialized('userRolesRights')) {
+        $value = $data->getNames();
+        if (is_object($data->getNames())) {
             $values = [];
-            foreach ($data->getUserRolesRights() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            foreach ($data->getNames() as $key => $value_1) {
+                $values[$key] = $value_1;
             }
-            $dataArray['userRolesRights'] = $values;
+            $value = $values;
+        }
+        $dataArray['names'] = $value;
+        if ($data->isInitialized('userRolesRights')) {
+            $values_1 = [];
+            foreach ($data->getUserRolesRights() as $value_2) {
+                $values_1[] = $this->normalizer->normalize($value_2, 'json', $context);
+            }
+            $dataArray['userRolesRights'] = $values_1;
         }
         if ($data->isInitialized('userRolesPermissionSetRights')) {
-            $values_1 = [];
-            foreach ($data->getUserRolesPermissionSetRights() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            $values_2 = [];
+            foreach ($data->getUserRolesPermissionSetRights() as $value_3) {
+                $values_2[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
-            $dataArray['userRolesPermissionSetRights'] = $values_1;
+            $dataArray['userRolesPermissionSetRights'] = $values_2;
         }
         $dataArray['exclusive'] = $data->getExclusive();
         if ($data->isInitialized('requestId')) {
             $dataArray['requestId'] = $data->getRequestId();
         }
-        foreach ($data as $key => $value_2) {
-            if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_2;
+        foreach ($data as $key_1 => $value_4) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $dataArray[$key_1] = $value_4;
             }
         }
         return $dataArray;

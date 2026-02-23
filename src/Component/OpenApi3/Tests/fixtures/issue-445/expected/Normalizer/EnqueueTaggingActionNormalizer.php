@@ -49,15 +49,19 @@ class EnqueueTaggingActionNormalizer implements DenormalizerInterface, Normalize
             unset($data['kind']);
         }
         if (\array_key_exists('options', $data) && $data['options'] !== null) {
-            $object->setOptions($data['options']);
+            $value = $data['options'];
+            if (is_array($data['options']) and isset($data['options']['kind'])) {
+                $value = $this->denormalizer->denormalize($data['options'], \PicturePark\API\Model\TaggingOptionsBase::class, 'json', $context);
+            }
+            $object->setOptions($value);
             unset($data['options']);
         }
         elseif (\array_key_exists('options', $data) && $data['options'] === null) {
             $object->setOptions(null);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -70,11 +74,15 @@ class EnqueueTaggingActionNormalizer implements DenormalizerInterface, Normalize
         }
         $dataArray['kind'] = $data->getKind();
         if ($data->isInitialized('options')) {
-            $dataArray['options'] = $data->getOptions();
+            $value = $data->getOptions();
+            if (is_object($data->getOptions())) {
+                $value = $this->normalizer->normalize($data->getOptions(), 'json', $context);
+            }
+            $dataArray['options'] = $value;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

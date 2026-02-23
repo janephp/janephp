@@ -22,7 +22,7 @@ class NumericRangeFilter extends FilterBase
     /**
      * The numeric range on which filtering.
      *
-     * @var mixed
+     * @var NumericRange
      */
     protected $range;
     /**
@@ -52,20 +52,20 @@ class NumericRangeFilter extends FilterBase
     /**
      * The numeric range on which filtering.
      *
-     * @return mixed
+     * @return NumericRange
      */
-    public function getRange()
+    public function getRange(): NumericRange
     {
         return $this->range;
     }
     /**
      * The numeric range on which filtering.
      *
-     * @param mixed $range
+     * @param NumericRange $range
      *
      * @return self
      */
-    public function setRange($range): self
+    public function setRange(NumericRange $range): self
     {
         $this->initialized['range'] = true;
         $this->range = $range;

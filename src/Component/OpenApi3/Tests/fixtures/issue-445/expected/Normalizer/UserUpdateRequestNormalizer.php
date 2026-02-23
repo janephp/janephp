@@ -95,7 +95,11 @@ class UserUpdateRequestNormalizer implements DenormalizerInterface, NormalizerIn
             $object->setLanguageCode(null);
         }
         if (\array_key_exists('address', $data) && $data['address'] !== null) {
-            $object->setAddress($data['address']);
+            $value_1 = $data['address'];
+            if (is_array($data['address'])) {
+                $value_1 = $this->denormalizer->denormalize($data['address'], \PicturePark\API\Model\UserAddress::class, 'json', $context);
+            }
+            $object->setAddress($value_1);
             unset($data['address']);
         }
         elseif (\array_key_exists('address', $data) && $data['address'] === null) {
@@ -108,9 +112,9 @@ class UserUpdateRequestNormalizer implements DenormalizerInterface, NormalizerIn
         elseif (\array_key_exists('identityProviderId', $data) && $data['identityProviderId'] === null) {
             $object->setIdentityProviderId(null);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value_2;
             }
         }
         return $object;
@@ -143,14 +147,18 @@ class UserUpdateRequestNormalizer implements DenormalizerInterface, NormalizerIn
             $dataArray['languageCode'] = $data->getLanguageCode();
         }
         if ($data->isInitialized('address')) {
-            $dataArray['address'] = $data->getAddress();
+            $value_1 = $data->getAddress();
+            if (is_object($data->getAddress())) {
+                $value_1 = $this->normalizer->normalize($data->getAddress(), 'json', $context);
+            }
+            $dataArray['address'] = $value_1;
         }
         if ($data->isInitialized('identityProviderId')) {
             $dataArray['identityProviderId'] = $data->getIdentityProviderId();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+                $dataArray[$key] = $value_2;
             }
         }
         return $dataArray;

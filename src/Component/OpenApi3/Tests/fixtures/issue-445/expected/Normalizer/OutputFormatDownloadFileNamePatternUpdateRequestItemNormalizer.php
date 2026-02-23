@@ -41,7 +41,15 @@ class OutputFormatDownloadFileNamePatternUpdateRequestItemNormalizer implements 
             $object->setId($data['id']);
         }
         if (\array_key_exists('patterns', $data) && $data['patterns'] !== null) {
-            $object->setPatterns($data['patterns']);
+            $value = $data['patterns'];
+            if (is_array($data['patterns']) && $this->isOnlyNumericKeys($data['patterns'])) {
+                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                foreach ($data['patterns'] as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $object->setPatterns($value);
         }
         elseif (\array_key_exists('patterns', $data) && $data['patterns'] === null) {
             $object->setPatterns(null);
@@ -53,7 +61,15 @@ class OutputFormatDownloadFileNamePatternUpdateRequestItemNormalizer implements 
         $dataArray = [];
         $dataArray['id'] = $data->getId();
         if ($data->isInitialized('patterns')) {
-            $dataArray['patterns'] = $data->getPatterns();
+            $value = $data->getPatterns();
+            if (is_object($data->getPatterns())) {
+                $values = [];
+                foreach ($data->getPatterns() as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $dataArray['patterns'] = $value;
         }
         return $dataArray;
     }

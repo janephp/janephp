@@ -56,7 +56,11 @@ class ShareAggregationRequestNormalizer implements DenormalizerInterface, Normal
             $object->setSearchBehaviors(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $object->setFilter($data['filter']);
+            $value_1 = $data['filter'];
+            if (is_array($data['filter']) and isset($data['filter']['kind'])) {
+                $value_1 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
+            }
+            $object->setFilter($value_1);
             unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
@@ -64,8 +68,8 @@ class ShareAggregationRequestNormalizer implements DenormalizerInterface, Normal
         }
         if (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] !== null) {
             $values_1 = [];
-            foreach ($data['aggregationFilters'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\AggregationFilter::class, 'json', $context);
+            foreach ($data['aggregationFilters'] as $value_2) {
+                $values_1[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\AggregationFilter::class, 'json', $context);
             }
             $object->setAggregationFilters($values_1);
             unset($data['aggregationFilters']);
@@ -75,15 +79,15 @@ class ShareAggregationRequestNormalizer implements DenormalizerInterface, Normal
         }
         if (\array_key_exists('aggregators', $data)) {
             $values_2 = [];
-            foreach ($data['aggregators'] as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
+            foreach ($data['aggregators'] as $value_3) {
+                $values_2[] = $this->denormalizer->denormalize($value_3, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
             }
             $object->setAggregators($values_2);
             unset($data['aggregators']);
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_3;
+                $object[$key] = $value_4;
             }
         }
         return $object;
@@ -102,23 +106,27 @@ class ShareAggregationRequestNormalizer implements DenormalizerInterface, Normal
             $dataArray['searchBehaviors'] = $values;
         }
         if ($data->isInitialized('filter')) {
-            $dataArray['filter'] = $data->getFilter();
+            $value_1 = $data->getFilter();
+            if (is_object($data->getFilter())) {
+                $value_1 = $this->normalizer->normalize($data->getFilter(), 'json', $context);
+            }
+            $dataArray['filter'] = $value_1;
         }
         if ($data->isInitialized('aggregationFilters')) {
             $values_1 = [];
-            foreach ($data->getAggregationFilters() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            foreach ($data->getAggregationFilters() as $value_2) {
+                $values_1[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $dataArray['aggregationFilters'] = $values_1;
         }
         $values_2 = [];
-        foreach ($data->getAggregators() as $value_2) {
-            $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+        foreach ($data->getAggregators() as $value_3) {
+            $values_2[] = $this->normalizer->normalize($value_3, 'json', $context);
         }
         $dataArray['aggregators'] = $values_2;
-        foreach ($data as $key => $value_3) {
+        foreach ($data as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_3;
+                $dataArray[$key] = $value_4;
             }
         }
         return $dataArray;

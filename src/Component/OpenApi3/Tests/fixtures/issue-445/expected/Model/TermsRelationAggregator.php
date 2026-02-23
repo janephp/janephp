@@ -51,7 +51,7 @@ class TermsRelationAggregator extends AggregatorBase
     /**
      * Type of the item target of the relation. It is used to resolve the target ID.
      *
-     * @var mixed
+     * @var string
      */
     protected $documentType;
     /**
@@ -189,20 +189,20 @@ class TermsRelationAggregator extends AggregatorBase
     /**
      * Type of the item target of the relation. It is used to resolve the target ID.
      *
-     * @return mixed
+     * @return string
      */
-    public function getDocumentType()
+    public function getDocumentType(): string
     {
         return $this->documentType;
     }
     /**
      * Type of the item target of the relation. It is used to resolve the target ID.
      *
-     * @param mixed $documentType
+     * @param string $documentType
      *
      * @return self
      */
-    public function setDocumentType($documentType): self
+    public function setDocumentType(string $documentType): self
     {
         $this->initialized['documentType'] = true;
         $this->documentType = $documentType;

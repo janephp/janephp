@@ -38,13 +38,21 @@ class BusinessProcessWaitForLifeCycleResultNormalizer implements DenormalizerInt
             return $object;
         }
         if (\array_key_exists('lifeCycleHit', $data) && $data['lifeCycleHit'] !== null) {
-            $object->setLifeCycleHit($data['lifeCycleHit']);
+            $value = $data['lifeCycleHit'];
+            if (is_string($data['lifeCycleHit'])) {
+                $value = $data['lifeCycleHit'];
+            }
+            $object->setLifeCycleHit($value);
         }
         elseif (\array_key_exists('lifeCycleHit', $data) && $data['lifeCycleHit'] === null) {
             $object->setLifeCycleHit(null);
         }
         if (\array_key_exists('businessProcess', $data)) {
-            $object->setBusinessProcess($data['businessProcess']);
+            $value_1 = $data['businessProcess'];
+            if (is_array($data['businessProcess']) and isset($data['businessProcess']['id']) and isset($data['businessProcess']['processDefinitionId']) and isset($data['businessProcess']['supportsCancellation']) and isset($data['businessProcess']['businessProcessScope']) and isset($data['businessProcess']['lifeCycle']) and isset($data['businessProcess']['startDate']) and isset($data['businessProcess']['endDate']) and isset($data['businessProcess']['finished']) and isset($data['businessProcess']['kind'])) {
+                $value_1 = $this->denormalizer->denormalize($data['businessProcess'], \PicturePark\API\Model\BusinessProcess::class, 'json', $context);
+            }
+            $object->setBusinessProcess($value_1);
         }
         return $object;
     }
@@ -52,9 +60,17 @@ class BusinessProcessWaitForLifeCycleResultNormalizer implements DenormalizerInt
     {
         $dataArray = [];
         if ($data->isInitialized('lifeCycleHit')) {
-            $dataArray['lifeCycleHit'] = $data->getLifeCycleHit();
+            $value = $data->getLifeCycleHit();
+            if (is_string($data->getLifeCycleHit())) {
+                $value = $data->getLifeCycleHit();
+            }
+            $dataArray['lifeCycleHit'] = $value;
         }
-        $dataArray['businessProcess'] = $data->getBusinessProcess();
+        $value_1 = $data->getBusinessProcess();
+        if (is_object($data->getBusinessProcess())) {
+            $value_1 = $this->normalizer->normalize($data->getBusinessProcess(), 'json', $context);
+        }
+        $dataArray['businessProcess'] = $value_1;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

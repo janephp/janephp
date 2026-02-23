@@ -28,7 +28,7 @@ class AggregationResultItem
      * Ready to use filter to filter the data based on the aggregation result values.
      * It can be passed as one of the aggregation filters of an aggregation query: it returns documents meeting the aggregation condition.
      *
-     * @var mixed|null
+     * @var AggregationFilter|null
      */
     protected $filter;
     /**
@@ -91,9 +91,9 @@ class AggregationResultItem
      * Ready to use filter to filter the data based on the aggregation result values.
      * It can be passed as one of the aggregation filters of an aggregation query: it returns documents meeting the aggregation condition.
      *
-     * @return mixed
+     * @return AggregationFilter|null
      */
-    public function getFilter()
+    public function getFilter(): ?AggregationFilter
     {
         return $this->filter;
     }
@@ -101,11 +101,11 @@ class AggregationResultItem
     * Ready to use filter to filter the data based on the aggregation result values.
     It can be passed as one of the aggregation filters of an aggregation query: it returns documents meeting the aggregation condition.
     *
-    * @param mixed $filter
+    * @param AggregationFilter|null $filter
     *
     * @return self
     */
-    public function setFilter($filter): self
+    public function setFilter(?AggregationFilter $filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;

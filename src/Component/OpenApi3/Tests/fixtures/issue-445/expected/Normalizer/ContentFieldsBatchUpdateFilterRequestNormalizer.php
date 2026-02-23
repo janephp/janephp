@@ -64,12 +64,16 @@ class ContentFieldsBatchUpdateFilterRequestNormalizer implements DenormalizerInt
             unset($data['kind']);
         }
         if (\array_key_exists('filterRequest', $data)) {
-            $object->setFilterRequest($data['filterRequest']);
+            $value_1 = $data['filterRequest'];
+            if (is_array($data['filterRequest']) and isset($data['filterRequest']['searchType']) and isset($data['filterRequest']['lifeCycleFilter']) and isset($data['filterRequest']['brokenDependenciesFilter'])) {
+                $value_1 = $this->denormalizer->denormalize($data['filterRequest'], \PicturePark\API\Model\ContentFilterRequest::class, 'json', $context);
+            }
+            $object->setFilterRequest($value_1);
             unset($data['filterRequest']);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value_2;
             }
         }
         return $object;
@@ -85,10 +89,14 @@ class ContentFieldsBatchUpdateFilterRequestNormalizer implements DenormalizerInt
         $dataArray['allowMissingDependencies'] = $data->getAllowMissingDependencies();
         $dataArray['notifyProgress'] = $data->getNotifyProgress();
         $dataArray['kind'] = $data->getKind();
-        $dataArray['filterRequest'] = $data->getFilterRequest();
-        foreach ($data as $key => $value_1) {
+        $value_1 = $data->getFilterRequest();
+        if (is_object($data->getFilterRequest())) {
+            $value_1 = $this->normalizer->normalize($data->getFilterRequest(), 'json', $context);
+        }
+        $dataArray['filterRequest'] = $value_1;
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+                $dataArray[$key] = $value_2;
             }
         }
         return $dataArray;

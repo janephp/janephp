@@ -33,7 +33,7 @@ class OutputResolveResult
     /**
      * Rendering state of output.
      *
-     * @var mixed
+     * @var string
      */
     protected $renderingState;
     /**
@@ -117,20 +117,20 @@ class OutputResolveResult
     /**
      * Rendering state of output.
      *
-     * @return mixed
+     * @return string
      */
-    public function getRenderingState()
+    public function getRenderingState(): string
     {
         return $this->renderingState;
     }
     /**
      * Rendering state of output.
      *
-     * @param mixed $renderingState
+     * @param string $renderingState
      *
      * @return self
      */
-    public function setRenderingState($renderingState): self
+    public function setRenderingState(string $renderingState): self
     {
         $this->initialized['renderingState'] = true;
         $this->renderingState = $renderingState;
