@@ -39,7 +39,7 @@ class GuesserFactory
         $chainGuesser->addGuesser(new ArrayGuesser(Schema::class));
         $chainGuesser->addGuesser(new ItemsGuesser(Schema::class));
         $chainGuesser->addGuesser(new SimpleTypeGuesser(Schema::class, ['boolean', 'integer', 'number', 'string']));
-        $chainGuesser->addGuesser(new OneOfGuesser(Schema::class));
+//        $chainGuesser->addGuesser(new OneOfGuesser(Schema::class));
         $chainGuesser->addGuesser(new MultipleGuesser(Schema::class, ['null']));
 
         return $chainGuesser;

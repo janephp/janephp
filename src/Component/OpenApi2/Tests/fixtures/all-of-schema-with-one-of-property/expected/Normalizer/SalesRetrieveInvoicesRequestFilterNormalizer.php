@@ -65,13 +65,7 @@ class SalesRetrieveInvoicesRequestFilterNormalizer implements DenormalizerInterf
         if (\array_key_exists('links', $data) && $data['links'] !== null) {
             $values_1 = [];
             foreach ($data['links'] as $value_1) {
-                $value_2 = $value_1;
-                if (is_array($value_1) and isset($value_1['discriminator'])) {
-                    $value_2 = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi2\Tests\Fixtures\AllOfSchemaWithOneOfProperty\Model\LinkLinkBase::class, 'json', $context);
-                } elseif (is_array($value_1) and isset($value_1['invoiceId'])) {
-                    $value_2 = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi2\Tests\Fixtures\AllOfSchemaWithOneOfProperty\Model\LinkInvoiceLink::class, 'json', $context);
-                }
-                $values_1[] = $value_2;
+                $values_1[] = $value_1;
             }
             $object->setLinks($values_1);
             unset($data['links']);
@@ -84,9 +78,9 @@ class SalesRetrieveInvoicesRequestFilterNormalizer implements DenormalizerInterf
         } elseif (\array_key_exists('includePositions', $data) && $data['includePositions'] === null) {
             $object->setIncludePositions(null);
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_3;
+                $object[$key] = $value_2;
             }
         }
 
@@ -106,22 +100,16 @@ class SalesRetrieveInvoicesRequestFilterNormalizer implements DenormalizerInterf
         if ($data->isInitialized('links')) {
             $values_1 = [];
             foreach ($data->getLinks() as $value_1) {
-                $value_2 = $value_1;
-                if (is_object($value_1)) {
-                    $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
-                } elseif (is_object($value_1)) {
-                    $value_2 = $this->normalizer->normalize($value_1, 'json', $context);
-                }
-                $values_1[] = $value_2;
+                $values_1[] = $value_1;
             }
             $dataArray['links'] = $values_1;
         }
         if ($data->isInitialized('includePositions')) {
             $dataArray['includePositions'] = $data->getIncludePositions();
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_3;
+                $dataArray[$key] = $value_2;
             }
         }
 

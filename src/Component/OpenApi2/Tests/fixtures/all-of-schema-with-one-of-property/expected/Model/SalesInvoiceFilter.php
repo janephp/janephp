@@ -26,7 +26,7 @@ class SalesInvoiceFilter
      */
     protected $invoiceIds;
     /**
-     * @var list<LinkLinkBase>|list<LinkInvoiceLink>|null
+     * @var list<mixed>|null
      */
     protected $links;
     /**
@@ -54,7 +54,7 @@ class SalesInvoiceFilter
     }
 
     /**
-     * @return list<LinkLinkBase>|list<LinkInvoiceLink>|null
+     * @return list<mixed>|null
      */
     public function getLinks(): ?array
     {
@@ -62,7 +62,7 @@ class SalesInvoiceFilter
     }
 
     /**
-     * @param list<LinkLinkBase>|list<LinkInvoiceLink>|null $links
+     * @param list<mixed>|null $links
      */
     public function setLinks(?array $links): self
     {
