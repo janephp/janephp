@@ -83,7 +83,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
                 if (is_a($allOf, $this->getSchemaClass())) {
                     if ($allOf->getProperties()) {
                         foreach ($allOf->getProperties() as $key => $property) {
-                            $this->chainGuesser->guessClass($property, $name . $key, $reference . '/allOf/' . $allOfIndex . '/properties/' . $key, $registry);
+                            $this->chainGuesser->guessClass($property, $name . ucfirst($key), $reference . '/allOf/' . $allOfIndex . '/properties/' . $key, $registry);
                         }
                     }
                 }

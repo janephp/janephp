@@ -2,7 +2,7 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class TagsResourcesvolumes extends \ArrayObject
+class TagsResourcesVolumes extends \ArrayObject
 {
     /**
      * @var array

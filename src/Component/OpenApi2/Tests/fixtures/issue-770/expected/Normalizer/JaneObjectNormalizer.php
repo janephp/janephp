@@ -28,7 +28,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserQueryCriteria::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ScguserQueryCriteriaNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserQueryCriteriafiltersItem::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ScguserQueryCriteriafiltersItemNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserQueryCriteriaFiltersItem::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ScguserQueryCriteriaFiltersItemNormalizer::class,
         
         \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserList::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ScguserScgUserListNormalizer::class,
         
@@ -84,13 +84,13 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteria::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ApQueryQueryCriteriaNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriafiltersItem::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ApQueryQueryCriteriafiltersItemNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaFiltersItem::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ApQueryQueryCriteriaFiltersItemNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaextraFiltersItem::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ApQueryQueryCriteriaextraFiltersItemNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaExtraFiltersItem::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ApQueryQueryCriteriaExtraFiltersItemNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaextraNotFiltersItem::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ApQueryQueryCriteriaextraNotFiltersItemNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaExtraNotFiltersItem::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ApQueryQueryCriteriaExtraNotFiltersItemNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaoptions::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ApQueryQueryCriteriaoptionsNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaOptions::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ApQueryQueryCriteriaOptionsNormalizer::class,
         
         \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryApQueryList::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ApQueryApQueryListNormalizer::class,
         
@@ -366,7 +366,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileQueryCriteriaWithProfileId::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ProfileQueryCriteriaWithProfileIdNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileQueryCriteriaWithProfileIdextraFiltersItem::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ProfileQueryCriteriaWithProfileIdextraFiltersItemNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileQueryCriteriaWithProfileIdExtraFiltersItem::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ProfileQueryCriteriaWithProfileIdExtraFiltersItemNormalizer::class,
         
         \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileAccountingProfileList::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ProfileAccountingProfileListNormalizer::class,
         
@@ -528,13 +528,13 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteria::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\IdentityQueryCriteriaNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriafiltersItem::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\IdentityQueryCriteriafiltersItemNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaFiltersItem::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\IdentityQueryCriteriaFiltersItemNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaoptions::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\IdentityQueryCriteriaoptionsNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptions::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\IdentityQueryCriteriaOptionsNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaoptionsLocalUserAuditTime::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\IdentityQueryCriteriaoptionsLocalUserAuditTimeNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptionsLocalUserAuditTime::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\IdentityQueryCriteriaOptionsLocalUserAuditTimeNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaoptionsGuestPassExpiration::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\IdentityQueryCriteriaoptionsGuestPassExpirationNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptionsGuestPassExpiration::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\IdentityQueryCriteriaOptionsGuestPassExpirationNormalizer::class,
         
         \Jane\Component\OpenApi3\Tests\Expected\Model\IdentitySubscriptionPackageList::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\IdentitySubscriptionPackageListNormalizer::class,
         
@@ -826,11 +826,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteria::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ZoneQueryCriteriaNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriafiltersItem::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ZoneQueryCriteriafiltersItemNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaFiltersItem::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ZoneQueryCriteriaFiltersItemNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaextraFiltersItem::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ZoneQueryCriteriaextraFiltersItemNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaExtraFiltersItem::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ZoneQueryCriteriaExtraFiltersItemNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaoptions::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ZoneQueryCriteriaoptionsNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaOptions::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ZoneQueryCriteriaOptionsNormalizer::class,
         
         \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneDhcpSiteConfigList::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ZoneDhcpSiteConfigListNormalizer::class,
         
@@ -1172,7 +1172,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfileQueryCriteria::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ProfileFirewallProfileQueryCriteriaNormalizer::class,
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfileQueryCriteriaoptions::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ProfileFirewallProfileQueryCriteriaoptionsNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfileQueryCriteriaOptions::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ProfileFirewallProfileQueryCriteriaOptionsNormalizer::class,
         
         \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfileArray::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ProfileFirewallProfileArrayNormalizer::class,
         
@@ -2017,7 +2017,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserModifyScgUser::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserCreateScgUser::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserQueryCriteria::class => false,
-            \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserQueryCriteriafiltersItem::class => false,
+            \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserQueryCriteriaFiltersItem::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserList::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\UrlFilteringUrlFilteringPolicyList::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\UrlFilteringUrlFilteringPolicy::class => false,
@@ -2045,10 +2045,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileBonjourFencingPolicyList::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\WlanQueryWlanQueryList::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteria::class => false,
-            \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriafiltersItem::class => false,
-            \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaextraFiltersItem::class => false,
-            \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaextraNotFiltersItem::class => false,
-            \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaoptions::class => false,
+            \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaFiltersItem::class => false,
+            \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaExtraFiltersItem::class => false,
+            \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaExtraNotFiltersItem::class => false,
+            \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaOptions::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryApQueryList::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\WlanQueryApWlanBssidQueryList::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\RacStatsRadiusProxyList::class => false,
@@ -2186,7 +2186,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyAuthenticationProfile::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDeleteBulkAuthenticationProfile::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileQueryCriteriaWithProfileId::class => false,
-            \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileQueryCriteriaWithProfileIdextraFiltersItem::class => false,
+            \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileQueryCriteriaWithProfileIdExtraFiltersItem::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileAccountingProfileList::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDeleteBulkAccountingProfile::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileUpdateL3RoamingConfig::class => false,
@@ -2267,10 +2267,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityIdentityGuestPassList::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityModifyGuestPass::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteria::class => false,
-            \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriafiltersItem::class => false,
-            \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaoptions::class => false,
-            \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaoptionsLocalUserAuditTime::class => false,
-            \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaoptionsGuestPassExpiration::class => false,
+            \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaFiltersItem::class => false,
+            \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptions::class => false,
+            \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptionsLocalUserAuditTime::class => false,
+            \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptionsGuestPassExpiration::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\IdentitySubscriptionPackageList::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\IdentitySubscriptionPackageListListItem::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityCreateSubscriptionPackage::class => false,
@@ -2416,9 +2416,9 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Component\OpenApi3\Tests\Expected\Model\ApCloudOnBoardingSyncResultFailAps::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\ApCloudOnBoardingSyncResultFailApsApsItem::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteria::class => false,
-            \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriafiltersItem::class => false,
-            \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaextraFiltersItem::class => false,
-            \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaoptions::class => false,
+            \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaFiltersItem::class => false,
+            \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaExtraFiltersItem::class => false,
+            \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaOptions::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneDhcpSiteConfigList::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateBonjourFencingPolicy::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneCreateZone::class => false,
@@ -2589,7 +2589,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Component\OpenApi3\Tests\Expected\Model\DpskDeleteExpiredDpskConfig::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfile::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfileQueryCriteria::class => false,
-            \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfileQueryCriteriaoptions::class => false,
+            \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfileQueryCriteriaOptions::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfileArray::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCreateFirewallProfile::class => false,
             \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyFirewallProfile::class => false,

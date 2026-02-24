@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GistFullforksItem extends \ArrayObject
+class GistFullForksItem extends \ArrayObject
 {
     /**
      * @var array
@@ -13,7 +13,7 @@ class GistFullforksItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var GistFullforksItemUser
+     * @var GistFullForksItemUser
      */
     protected $user;
     /**
@@ -33,18 +33,18 @@ class GistFullforksItem extends \ArrayObject
      */
     protected $updatedAt;
     /**
-     * @return GistFullforksItemUser
+     * @return GistFullForksItemUser
      */
-    public function getUser(): GistFullforksItemUser
+    public function getUser(): GistFullForksItemUser
     {
         return $this->user;
     }
     /**
-     * @param GistFullforksItemUser $user
+     * @param GistFullForksItemUser $user
      *
      * @return self
      */
-    public function setUser(GistFullforksItemUser $user): self
+    public function setUser(GistFullForksItemUser $user): self
     {
         $this->initialized['user'] = true;
         $this->user = $user;

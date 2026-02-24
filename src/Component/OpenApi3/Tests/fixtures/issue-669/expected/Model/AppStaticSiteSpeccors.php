@@ -2,7 +2,7 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppStaticSiteSpeccors extends \ArrayObject
+class AppStaticSiteSpecCors extends \ArrayObject
 {
     /**
      * @var array

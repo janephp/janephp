@@ -25,6 +25,10 @@ class Baz
      */
     protected $baz;
     /**
+     * @var BazInlineProperty
+     */
+    protected $inlineProperty;
+    /**
      * @return string
      */
     public function getFoo(): string
@@ -76,6 +80,24 @@ class Baz
     {
         $this->initialized['baz'] = true;
         $this->baz = $baz;
+        return $this;
+    }
+    /**
+     * @return BazInlineProperty
+     */
+    public function getInlineProperty(): BazInlineProperty
+    {
+        return $this->inlineProperty;
+    }
+    /**
+     * @param BazInlineProperty $inlineProperty
+     *
+     * @return self
+     */
+    public function setInlineProperty(BazInlineProperty $inlineProperty): self
+    {
+        $this->initialized['inlineProperty'] = true;
+        $this->inlineProperty = $inlineProperty;
         return $this;
     }
 }

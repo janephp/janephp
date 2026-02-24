@@ -62,7 +62,7 @@ class ProfileFirewallProfileQueryCriteriaNormalizer implements DenormalizerInter
             $object->setExtraNotFilters($values_2);
         }
         if (\array_key_exists('options', $data)) {
-            $object->setOptions($this->denormalizer->denormalize($data['options'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfileQueryCriteriaoptions::class, 'json', $context));
+            $object->setOptions($this->denormalizer->denormalize($data['options'], \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfileQueryCriteriaOptions::class, 'json', $context));
         }
         if (\array_key_exists('extraTimeRange', $data)) {
             $object->setExtraTimeRange($this->denormalizer->denormalize($data['extraTimeRange'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonTimeRange::class, 'json', $context));

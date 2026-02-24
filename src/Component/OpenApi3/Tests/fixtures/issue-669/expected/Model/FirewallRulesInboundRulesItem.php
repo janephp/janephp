@@ -25,7 +25,7 @@ class FirewallRulesInboundRulesItem extends \ArrayObject
      */
     protected $ports;
     /**
-     * @var FirewallRulesInboundRulesItemsources
+     * @var FirewallRulesInboundRulesItemSources
      */
     protected $sources;
     /**
@@ -73,18 +73,18 @@ class FirewallRulesInboundRulesItem extends \ArrayObject
         return $this;
     }
     /**
-     * @return FirewallRulesInboundRulesItemsources
+     * @return FirewallRulesInboundRulesItemSources
      */
-    public function getSources(): FirewallRulesInboundRulesItemsources
+    public function getSources(): FirewallRulesInboundRulesItemSources
     {
         return $this->sources;
     }
     /**
-     * @param FirewallRulesInboundRulesItemsources $sources
+     * @param FirewallRulesInboundRulesItemSources $sources
      *
      * @return self
      */
-    public function setSources(FirewallRulesInboundRulesItemsources $sources): self
+    public function setSources(FirewallRulesInboundRulesItemSources $sources): self
     {
         $this->initialized['sources'] = true;
         $this->sources = $sources;

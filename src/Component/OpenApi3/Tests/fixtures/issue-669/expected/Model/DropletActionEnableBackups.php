@@ -19,7 +19,7 @@ class DropletActionEnableBackups extends \ArrayObject
      */
     protected $type;
     /**
-     * @var DropletActionEnableBackupsbackupPolicy
+     * @var DropletActionEnableBackupsBackupPolicy
      */
     protected $backupPolicy;
     /**
@@ -45,18 +45,18 @@ class DropletActionEnableBackups extends \ArrayObject
         return $this;
     }
     /**
-     * @return DropletActionEnableBackupsbackupPolicy
+     * @return DropletActionEnableBackupsBackupPolicy
      */
-    public function getBackupPolicy(): DropletActionEnableBackupsbackupPolicy
+    public function getBackupPolicy(): DropletActionEnableBackupsBackupPolicy
     {
         return $this->backupPolicy;
     }
     /**
-     * @param DropletActionEnableBackupsbackupPolicy $backupPolicy
+     * @param DropletActionEnableBackupsBackupPolicy $backupPolicy
      *
      * @return self
      */
-    public function setBackupPolicy(DropletActionEnableBackupsbackupPolicy $backupPolicy): self
+    public function setBackupPolicy(DropletActionEnableBackupsBackupPolicy $backupPolicy): self
     {
         $this->initialized['backupPolicy'] = true;
         $this->backupPolicy = $backupPolicy;

@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class GistFullhistoryItemChangeStatusNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class GistFullHistoryItemChangeStatusNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -19,11 +19,11 @@ class GistFullhistoryItemChangeStatusNormalizer implements DenormalizerInterface
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Github\Model\GistFullhistoryItemChangeStatus::class;
+        return $type === \Github\Model\GistFullHistoryItemChangeStatus::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Github\Model\GistFullhistoryItemChangeStatus::class;
+        return is_object($data) && get_class($data) === \Github\Model\GistFullHistoryItemChangeStatus::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
@@ -33,9 +33,9 @@ class GistFullhistoryItemChangeStatusNormalizer implements DenormalizerInterface
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Github\Model\GistFullhistoryItemChangeStatus();
+        $object = new \Github\Model\GistFullHistoryItemChangeStatus();
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Github\Validator\GistFullhistoryItemChangeStatusConstraint());
+            $this->validate($data, new \Github\Validator\GistFullHistoryItemChangeStatusConstraint());
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -77,12 +77,12 @@ class GistFullhistoryItemChangeStatusNormalizer implements DenormalizerInterface
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Github\Validator\GistFullhistoryItemChangeStatusConstraint());
+            $this->validate($dataArray, new \Github\Validator\GistFullHistoryItemChangeStatusConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Github\Model\GistFullhistoryItemChangeStatus::class => false];
+        return [\Github\Model\GistFullHistoryItemChangeStatus::class => false];
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Github\Validator;
 
-class GistFullforksItemConstraint extends \Symfony\Component\Validator\Constraints\Compound
+class GistFullForksItemConstraint extends \Symfony\Component\Validator\Constraints\Compound
 {
     protected function getConstraints($options): array
     {

@@ -33,6 +33,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         \Jane\Component\JsonSchema\Tests\Expected\Model\Baz::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BazNormalizer::class,
         
         \Jane\Component\JsonSchema\Tests\Expected\Model\BazBaz::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BazBazNormalizer::class,
+        
+        \Jane\Component\JsonSchema\Tests\Expected\Model\BazInlineProperty::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BazInlinePropertyNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
@@ -78,6 +80,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Component\JsonSchema\Tests\Expected\Model\Bar::class => false,
             \Jane\Component\JsonSchema\Tests\Expected\Model\Baz::class => false,
             \Jane\Component\JsonSchema\Tests\Expected\Model\BazBaz::class => false,
+            \Jane\Component\JsonSchema\Tests\Expected\Model\BazInlineProperty::class => false,
         ];
     }
 }

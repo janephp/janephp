@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class AppStaticSiteSpeccorsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class AppStaticSiteSpecCorsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -19,11 +19,11 @@ class AppStaticSiteSpeccorsNormalizer implements DenormalizerInterface, Normaliz
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Generated\DigitalOcean\Model\AppStaticSiteSpeccors::class;
+        return $type === \Jane\Generated\DigitalOcean\Model\AppStaticSiteSpecCors::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Generated\DigitalOcean\Model\AppStaticSiteSpeccors::class;
+        return is_object($data) && get_class($data) === \Jane\Generated\DigitalOcean\Model\AppStaticSiteSpecCors::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
@@ -33,7 +33,7 @@ class AppStaticSiteSpeccorsNormalizer implements DenormalizerInterface, Normaliz
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\AppStaticSiteSpeccors();
+        $object = new \Jane\Generated\DigitalOcean\Model\AppStaticSiteSpecCors();
         if (\array_key_exists('allow_credentials', $data) && \is_int($data['allow_credentials'])) {
             $data['allow_credentials'] = (bool) $data['allow_credentials'];
         }
@@ -133,6 +133,6 @@ class AppStaticSiteSpeccorsNormalizer implements DenormalizerInterface, Normaliz
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Generated\DigitalOcean\Model\AppStaticSiteSpeccors::class => false];
+        return [\Jane\Generated\DigitalOcean\Model\AppStaticSiteSpecCors::class => false];
     }
 }

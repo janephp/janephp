@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ApQueryQueryCriteriafiltersItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ApQueryQueryCriteriaFiltersItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -19,11 +19,11 @@ class ApQueryQueryCriteriafiltersItemNormalizer implements DenormalizerInterface
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriafiltersItem::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaFiltersItem::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriafiltersItem::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaFiltersItem::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
@@ -33,7 +33,7 @@ class ApQueryQueryCriteriafiltersItemNormalizer implements DenormalizerInterface
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriafiltersItem();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaFiltersItem();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -64,6 +64,6 @@ class ApQueryQueryCriteriafiltersItemNormalizer implements DenormalizerInterface
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriafiltersItem::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaFiltersItem::class => false];
     }
 }

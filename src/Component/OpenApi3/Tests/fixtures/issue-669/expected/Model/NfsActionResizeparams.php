@@ -2,7 +2,7 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class NfsActionResizeparams extends \ArrayObject
+class NfsActionResizeParams extends \ArrayObject
 {
     /**
      * @var array

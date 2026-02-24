@@ -25,7 +25,7 @@ class FirewallRulesOutboundRulesItem extends \ArrayObject
      */
     protected $ports;
     /**
-     * @var FirewallRulesOutboundRulesItemdestinations
+     * @var FirewallRulesOutboundRulesItemDestinations
      */
     protected $destinations;
     /**
@@ -73,18 +73,18 @@ class FirewallRulesOutboundRulesItem extends \ArrayObject
         return $this;
     }
     /**
-     * @return FirewallRulesOutboundRulesItemdestinations
+     * @return FirewallRulesOutboundRulesItemDestinations
      */
-    public function getDestinations(): FirewallRulesOutboundRulesItemdestinations
+    public function getDestinations(): FirewallRulesOutboundRulesItemDestinations
     {
         return $this->destinations;
     }
     /**
-     * @param FirewallRulesOutboundRulesItemdestinations $destinations
+     * @param FirewallRulesOutboundRulesItemDestinations $destinations
      *
      * @return self
      */
-    public function setDestinations(FirewallRulesOutboundRulesItemdestinations $destinations): self
+    public function setDestinations(FirewallRulesOutboundRulesItemDestinations $destinations): self
     {
         $this->initialized['destinations'] = true;
         $this->destinations = $destinations;

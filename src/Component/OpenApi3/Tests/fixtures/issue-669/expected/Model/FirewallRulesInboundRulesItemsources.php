@@ -2,7 +2,7 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class FirewallRulesInboundRulesItemsources extends \ArrayObject
+class FirewallRulesInboundRulesItemSources extends \ArrayObject
 {
     /**
      * @var array

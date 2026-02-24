@@ -81,6 +81,14 @@
                                     "type": "string"
                                 }
                             }
+                        },
+                        "inlineProperty": {
+                            "type": "object",
+                            "properties": {
+                                "inline": {
+                                    "type": "string"
+                                }
+                            }
                         }
                     }
                 }

@@ -2,7 +2,7 @@
 
 namespace Github\Model;
 
-class GistFullhistoryItem extends \ArrayObject
+class GistFullHistoryItem extends \ArrayObject
 {
     /**
      * @var array
@@ -21,11 +21,11 @@ class GistFullhistoryItem extends \ArrayObject
      */
     protected $version;
     /**
-     * @var GistFullhistoryItemUser|null
+     * @var GistFullHistoryItemUser|null
      */
     protected $user;
     /**
-     * @var GistFullhistoryItemChangeStatus
+     * @var GistFullHistoryItemChangeStatus
      */
     protected $changeStatus;
     /**
@@ -69,36 +69,36 @@ class GistFullhistoryItem extends \ArrayObject
         return $this;
     }
     /**
-     * @return GistFullhistoryItemUser|null
+     * @return GistFullHistoryItemUser|null
      */
-    public function getUser(): ?GistFullhistoryItemUser
+    public function getUser(): ?GistFullHistoryItemUser
     {
         return $this->user;
     }
     /**
-     * @param GistFullhistoryItemUser|null $user
+     * @param GistFullHistoryItemUser|null $user
      *
      * @return self
      */
-    public function setUser(?GistFullhistoryItemUser $user): self
+    public function setUser(?GistFullHistoryItemUser $user): self
     {
         $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
     }
     /**
-     * @return GistFullhistoryItemChangeStatus
+     * @return GistFullHistoryItemChangeStatus
      */
-    public function getChangeStatus(): GistFullhistoryItemChangeStatus
+    public function getChangeStatus(): GistFullHistoryItemChangeStatus
     {
         return $this->changeStatus;
     }
     /**
-     * @param GistFullhistoryItemChangeStatus $changeStatus
+     * @param GistFullHistoryItemChangeStatus $changeStatus
      *
      * @return self
      */
-    public function setChangeStatus(GistFullhistoryItemChangeStatus $changeStatus): self
+    public function setChangeStatus(GistFullHistoryItemChangeStatus $changeStatus): self
     {
         $this->initialized['changeStatus'] = true;
         $this->changeStatus = $changeStatus;

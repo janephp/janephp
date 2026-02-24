@@ -99,7 +99,7 @@ class AppServiceSpec extends \ArrayObject
      */
     protected $autoscaling;
     /**
-     * @var AppServiceSpeccors
+     * @var AppServiceSpecCors
      */
     protected $cors;
     /**
@@ -478,18 +478,18 @@ class AppServiceSpec extends \ArrayObject
         return $this;
     }
     /**
-     * @return AppServiceSpeccors
+     * @return AppServiceSpecCors
      */
-    public function getCors(): AppServiceSpeccors
+    public function getCors(): AppServiceSpecCors
     {
         return $this->cors;
     }
     /**
-     * @param AppServiceSpeccors $cors
+     * @param AppServiceSpecCors $cors
      *
      * @return self
      */
-    public function setCors(AppServiceSpeccors $cors): self
+    public function setCors(AppServiceSpecCors $cors): self
     {
         $this->initialized['cors'] = true;
         $this->cors = $cors;

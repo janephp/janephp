@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class TagsResourcesdatabasesNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class TagsResourcesDatabasesNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -19,11 +19,11 @@ class TagsResourcesdatabasesNormalizer implements DenormalizerInterface, Normali
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Generated\DigitalOcean\Model\TagsResourcesdatabases::class;
+        return $type === \Jane\Generated\DigitalOcean\Model\TagsResourcesDatabases::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Generated\DigitalOcean\Model\TagsResourcesdatabases::class;
+        return is_object($data) && get_class($data) === \Jane\Generated\DigitalOcean\Model\TagsResourcesDatabases::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
@@ -33,7 +33,7 @@ class TagsResourcesdatabasesNormalizer implements DenormalizerInterface, Normali
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\TagsResourcesdatabases();
+        $object = new \Jane\Generated\DigitalOcean\Model\TagsResourcesDatabases();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -70,6 +70,6 @@ class TagsResourcesdatabasesNormalizer implements DenormalizerInterface, Normali
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Generated\DigitalOcean\Model\TagsResourcesdatabases::class => false];
+        return [\Jane\Generated\DigitalOcean\Model\TagsResourcesDatabases::class => false];
     }
 }

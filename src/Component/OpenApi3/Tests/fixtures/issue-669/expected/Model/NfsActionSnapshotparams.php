@@ -2,7 +2,7 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class NfsActionSnapshotparams extends \ArrayObject
+class NfsActionSnapshotParams extends \ArrayObject
 {
     /**
      * @var array

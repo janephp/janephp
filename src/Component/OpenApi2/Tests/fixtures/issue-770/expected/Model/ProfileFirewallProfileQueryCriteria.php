@@ -33,7 +33,7 @@ class ProfileFirewallProfileQueryCriteria
     /**
      * Specified feature required information.
      *
-     * @var ProfileFirewallProfileQueryCriteriaoptions
+     * @var ProfileFirewallProfileQueryCriteriaOptions
      */
     protected $options;
     /**
@@ -155,20 +155,20 @@ class ProfileFirewallProfileQueryCriteria
     /**
      * Specified feature required information.
      *
-     * @return ProfileFirewallProfileQueryCriteriaoptions
+     * @return ProfileFirewallProfileQueryCriteriaOptions
      */
-    public function getOptions(): ProfileFirewallProfileQueryCriteriaoptions
+    public function getOptions(): ProfileFirewallProfileQueryCriteriaOptions
     {
         return $this->options;
     }
     /**
      * Specified feature required information.
      *
-     * @param ProfileFirewallProfileQueryCriteriaoptions $options
+     * @param ProfileFirewallProfileQueryCriteriaOptions $options
      *
      * @return self
      */
-    public function setOptions(ProfileFirewallProfileQueryCriteriaoptions $options): self
+    public function setOptions(ProfileFirewallProfileQueryCriteriaOptions $options): self
     {
         $this->initialized['options'] = true;
         $this->options = $options;

@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class GistFullforksItemUserNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class GistFullForksItemUserNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -19,11 +19,11 @@ class GistFullforksItemUserNormalizer implements DenormalizerInterface, Normaliz
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Github\Model\GistFullforksItemUser::class;
+        return $type === \Github\Model\GistFullForksItemUser::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Github\Model\GistFullforksItemUser::class;
+        return is_object($data) && get_class($data) === \Github\Model\GistFullForksItemUser::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
@@ -33,12 +33,12 @@ class GistFullforksItemUserNormalizer implements DenormalizerInterface, Normaliz
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Github\Model\GistFullforksItemUser();
+        $object = new \Github\Model\GistFullForksItemUser();
         if (\array_key_exists('site_admin', $data) && \is_int($data['site_admin'])) {
             $data['site_admin'] = (bool) $data['site_admin'];
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Github\Validator\GistFullforksItemUserConstraint());
+            $this->validate($data, new \Github\Validator\GistFullForksItemUserConstraint());
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -185,12 +185,12 @@ class GistFullforksItemUserNormalizer implements DenormalizerInterface, Normaliz
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Github\Validator\GistFullforksItemUserConstraint());
+            $this->validate($dataArray, new \Github\Validator\GistFullForksItemUserConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Github\Model\GistFullforksItemUser::class => false];
+        return [\Github\Model\GistFullForksItemUser::class => false];
     }
 }

@@ -138,11 +138,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Generated\DigitalOcean\Model\AppServiceSpec::class => \Jane\Generated\DigitalOcean\Normalizer\AppServiceSpecNormalizer::class,
         
-        \Jane\Generated\DigitalOcean\Model\AppServiceSpeccors::class => \Jane\Generated\DigitalOcean\Normalizer\AppServiceSpeccorsNormalizer::class,
+        \Jane\Generated\DigitalOcean\Model\AppServiceSpecCors::class => \Jane\Generated\DigitalOcean\Normalizer\AppServiceSpecCorsNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\AppStaticSiteSpec::class => \Jane\Generated\DigitalOcean\Normalizer\AppStaticSiteSpecNormalizer::class,
         
-        \Jane\Generated\DigitalOcean\Model\AppStaticSiteSpeccors::class => \Jane\Generated\DigitalOcean\Normalizer\AppStaticSiteSpeccorsNormalizer::class,
+        \Jane\Generated\DigitalOcean\Model\AppStaticSiteSpecCors::class => \Jane\Generated\DigitalOcean\Normalizer\AppStaticSiteSpecCorsNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\AppJobSpecTermination::class => \Jane\Generated\DigitalOcean\Normalizer\AppJobSpecTerminationNormalizer::class,
         
@@ -630,11 +630,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Generated\DigitalOcean\Model\DropletActionEnableBackups::class => \Jane\Generated\DigitalOcean\Normalizer\DropletActionEnableBackupsNormalizer::class,
         
-        \Jane\Generated\DigitalOcean\Model\DropletActionEnableBackupsbackupPolicy::class => \Jane\Generated\DigitalOcean\Normalizer\DropletActionEnableBackupsbackupPolicyNormalizer::class,
+        \Jane\Generated\DigitalOcean\Model\DropletActionEnableBackupsBackupPolicy::class => \Jane\Generated\DigitalOcean\Normalizer\DropletActionEnableBackupsBackupPolicyNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\DropletActionChangeBackupPolicy::class => \Jane\Generated\DigitalOcean\Normalizer\DropletActionChangeBackupPolicyNormalizer::class,
         
-        \Jane\Generated\DigitalOcean\Model\DropletActionChangeBackupPolicybackupPolicy::class => \Jane\Generated\DigitalOcean\Normalizer\DropletActionChangeBackupPolicybackupPolicyNormalizer::class,
+        \Jane\Generated\DigitalOcean\Model\DropletActionChangeBackupPolicyBackupPolicy::class => \Jane\Generated\DigitalOcean\Normalizer\DropletActionChangeBackupPolicyBackupPolicyNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\DropletActionRestore::class => \Jane\Generated\DigitalOcean\Normalizer\DropletActionRestoreNormalizer::class,
         
@@ -656,15 +656,15 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Generated\DigitalOcean\Model\FirewallRulesInboundRulesItem::class => \Jane\Generated\DigitalOcean\Normalizer\FirewallRulesInboundRulesItemNormalizer::class,
         
-        \Jane\Generated\DigitalOcean\Model\FirewallRulesInboundRulesItemsources::class => \Jane\Generated\DigitalOcean\Normalizer\FirewallRulesInboundRulesItemsourcesNormalizer::class,
+        \Jane\Generated\DigitalOcean\Model\FirewallRulesInboundRulesItemSources::class => \Jane\Generated\DigitalOcean\Normalizer\FirewallRulesInboundRulesItemSourcesNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\FirewallRulesOutboundRulesItem::class => \Jane\Generated\DigitalOcean\Normalizer\FirewallRulesOutboundRulesItemNormalizer::class,
         
-        \Jane\Generated\DigitalOcean\Model\FirewallRulesOutboundRulesItemdestinations::class => \Jane\Generated\DigitalOcean\Normalizer\FirewallRulesOutboundRulesItemdestinationsNormalizer::class,
+        \Jane\Generated\DigitalOcean\Model\FirewallRulesOutboundRulesItemDestinations::class => \Jane\Generated\DigitalOcean\Normalizer\FirewallRulesOutboundRulesItemDestinationsNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\Firewall::class => \Jane\Generated\DigitalOcean\Normalizer\FirewallNormalizer::class,
         
-        \Jane\Generated\DigitalOcean\Model\FirewallpendingChangesItem::class => \Jane\Generated\DigitalOcean\Normalizer\FirewallpendingChangesItemNormalizer::class,
+        \Jane\Generated\DigitalOcean\Model\FirewallPendingChangesItem::class => \Jane\Generated\DigitalOcean\Normalizer\FirewallPendingChangesItemNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\AssociatedResource::class => \Jane\Generated\DigitalOcean\Normalizer\AssociatedResourceNormalizer::class,
         
@@ -822,7 +822,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Generated\DigitalOcean\Model\LoadBalancer::class => \Jane\Generated\DigitalOcean\Normalizer\LoadBalancerNormalizer::class,
         
-        \Jane\Generated\DigitalOcean\Model\LoadBalancerregion::class => \Jane\Generated\DigitalOcean\Normalizer\LoadBalancerregionNormalizer::class,
+        \Jane\Generated\DigitalOcean\Model\LoadBalancerRegion::class => \Jane\Generated\DigitalOcean\Normalizer\LoadBalancerRegionNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\SlackDetails::class => \Jane\Generated\DigitalOcean\Normalizer\SlackDetailsNormalizer::class,
         
@@ -874,19 +874,19 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Generated\DigitalOcean\Model\NfsActionResize::class => \Jane\Generated\DigitalOcean\Normalizer\NfsActionResizeNormalizer::class,
         
-        \Jane\Generated\DigitalOcean\Model\NfsActionResizeparams::class => \Jane\Generated\DigitalOcean\Normalizer\NfsActionResizeparamsNormalizer::class,
+        \Jane\Generated\DigitalOcean\Model\NfsActionResizeParams::class => \Jane\Generated\DigitalOcean\Normalizer\NfsActionResizeParamsNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\NfsActionSnapshot::class => \Jane\Generated\DigitalOcean\Normalizer\NfsActionSnapshotNormalizer::class,
         
-        \Jane\Generated\DigitalOcean\Model\NfsActionSnapshotparams::class => \Jane\Generated\DigitalOcean\Normalizer\NfsActionSnapshotparamsNormalizer::class,
+        \Jane\Generated\DigitalOcean\Model\NfsActionSnapshotParams::class => \Jane\Generated\DigitalOcean\Normalizer\NfsActionSnapshotParamsNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\NfsActionAttach::class => \Jane\Generated\DigitalOcean\Normalizer\NfsActionAttachNormalizer::class,
         
-        \Jane\Generated\DigitalOcean\Model\NfsActionAttachparams::class => \Jane\Generated\DigitalOcean\Normalizer\NfsActionAttachparamsNormalizer::class,
+        \Jane\Generated\DigitalOcean\Model\NfsActionAttachParams::class => \Jane\Generated\DigitalOcean\Normalizer\NfsActionAttachParamsNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\NfsActionDetach::class => \Jane\Generated\DigitalOcean\Normalizer\NfsActionDetachNormalizer::class,
         
-        \Jane\Generated\DigitalOcean\Model\NfsActionDetachparams::class => \Jane\Generated\DigitalOcean\Normalizer\NfsActionDetachparamsNormalizer::class,
+        \Jane\Generated\DigitalOcean\Model\NfsActionDetachParams::class => \Jane\Generated\DigitalOcean\Normalizer\NfsActionDetachParamsNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\NfsActionsResponse::class => \Jane\Generated\DigitalOcean\Normalizer\NfsActionsResponseNormalizer::class,
         
@@ -928,7 +928,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Generated\DigitalOcean\Model\Registry::class => \Jane\Generated\DigitalOcean\Normalizer\RegistryNormalizer::class,
         
-        \Jane\Generated\DigitalOcean\Model\Registrysubscription::class => \Jane\Generated\DigitalOcean\Normalizer\RegistrysubscriptionNormalizer::class,
+        \Jane\Generated\DigitalOcean\Model\RegistrySubscription::class => \Jane\Generated\DigitalOcean\Normalizer\RegistrySubscriptionNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\MultiregistryCreate::class => \Jane\Generated\DigitalOcean\Normalizer\MultiregistryCreateNormalizer::class,
         
@@ -1012,15 +1012,15 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Generated\DigitalOcean\Model\TagsResources::class => \Jane\Generated\DigitalOcean\Normalizer\TagsResourcesNormalizer::class,
         
-        \Jane\Generated\DigitalOcean\Model\TagsResourcesdroplets::class => \Jane\Generated\DigitalOcean\Normalizer\TagsResourcesdropletsNormalizer::class,
+        \Jane\Generated\DigitalOcean\Model\TagsResourcesDroplets::class => \Jane\Generated\DigitalOcean\Normalizer\TagsResourcesDropletsNormalizer::class,
         
-        \Jane\Generated\DigitalOcean\Model\TagsResourcesimgages::class => \Jane\Generated\DigitalOcean\Normalizer\TagsResourcesimgagesNormalizer::class,
+        \Jane\Generated\DigitalOcean\Model\TagsResourcesImgages::class => \Jane\Generated\DigitalOcean\Normalizer\TagsResourcesImgagesNormalizer::class,
         
-        \Jane\Generated\DigitalOcean\Model\TagsResourcesvolumes::class => \Jane\Generated\DigitalOcean\Normalizer\TagsResourcesvolumesNormalizer::class,
+        \Jane\Generated\DigitalOcean\Model\TagsResourcesVolumes::class => \Jane\Generated\DigitalOcean\Normalizer\TagsResourcesVolumesNormalizer::class,
         
-        \Jane\Generated\DigitalOcean\Model\TagsResourcesvolumeSnapshots::class => \Jane\Generated\DigitalOcean\Normalizer\TagsResourcesvolumeSnapshotsNormalizer::class,
+        \Jane\Generated\DigitalOcean\Model\TagsResourcesVolumeSnapshots::class => \Jane\Generated\DigitalOcean\Normalizer\TagsResourcesVolumeSnapshotsNormalizer::class,
         
-        \Jane\Generated\DigitalOcean\Model\TagsResourcesdatabases::class => \Jane\Generated\DigitalOcean\Normalizer\TagsResourcesdatabasesNormalizer::class,
+        \Jane\Generated\DigitalOcean\Model\TagsResourcesDatabases::class => \Jane\Generated\DigitalOcean\Normalizer\TagsResourcesDatabasesNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\ErrorWithRootCauses::class => \Jane\Generated\DigitalOcean\Normalizer\ErrorWithRootCausesNormalizer::class,
         
@@ -1032,7 +1032,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Generated\DigitalOcean\Model\VolumeFull::class => \Jane\Generated\DigitalOcean\Normalizer\VolumeFullNormalizer::class,
         
-        \Jane\Generated\DigitalOcean\Model\VolumeFullregion::class => \Jane\Generated\DigitalOcean\Normalizer\VolumeFullregionNormalizer::class,
+        \Jane\Generated\DigitalOcean\Model\VolumeFullRegion::class => \Jane\Generated\DigitalOcean\Normalizer\VolumeFullRegionNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\VolumeBase::class => \Jane\Generated\DigitalOcean\Normalizer\VolumeBaseNormalizer::class,
         
@@ -2050,9 +2050,9 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Generated\DigitalOcean\Model\AppRouteSpec::class => false,
             \Jane\Generated\DigitalOcean\Model\AppServiceSpecTermination::class => false,
             \Jane\Generated\DigitalOcean\Model\AppServiceSpec::class => false,
-            \Jane\Generated\DigitalOcean\Model\AppServiceSpeccors::class => false,
+            \Jane\Generated\DigitalOcean\Model\AppServiceSpecCors::class => false,
             \Jane\Generated\DigitalOcean\Model\AppStaticSiteSpec::class => false,
-            \Jane\Generated\DigitalOcean\Model\AppStaticSiteSpeccors::class => false,
+            \Jane\Generated\DigitalOcean\Model\AppStaticSiteSpecCors::class => false,
             \Jane\Generated\DigitalOcean\Model\AppJobSpecTermination::class => false,
             \Jane\Generated\DigitalOcean\Model\AppJobSpec::class => false,
             \Jane\Generated\DigitalOcean\Model\AppWorkerSpecTermination::class => false,
@@ -2296,9 +2296,9 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Generated\DigitalOcean\Model\SupportedDropletBackupPolicy::class => false,
             \Jane\Generated\DigitalOcean\Model\DropletAction::class => false,
             \Jane\Generated\DigitalOcean\Model\DropletActionEnableBackups::class => false,
-            \Jane\Generated\DigitalOcean\Model\DropletActionEnableBackupsbackupPolicy::class => false,
+            \Jane\Generated\DigitalOcean\Model\DropletActionEnableBackupsBackupPolicy::class => false,
             \Jane\Generated\DigitalOcean\Model\DropletActionChangeBackupPolicy::class => false,
-            \Jane\Generated\DigitalOcean\Model\DropletActionChangeBackupPolicybackupPolicy::class => false,
+            \Jane\Generated\DigitalOcean\Model\DropletActionChangeBackupPolicyBackupPolicy::class => false,
             \Jane\Generated\DigitalOcean\Model\DropletActionRestore::class => false,
             \Jane\Generated\DigitalOcean\Model\DropletActionResize::class => false,
             \Jane\Generated\DigitalOcean\Model\DropletActionRebuild::class => false,
@@ -2309,11 +2309,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Generated\DigitalOcean\Model\FirewallRuleTarget::class => false,
             \Jane\Generated\DigitalOcean\Model\FirewallRules::class => false,
             \Jane\Generated\DigitalOcean\Model\FirewallRulesInboundRulesItem::class => false,
-            \Jane\Generated\DigitalOcean\Model\FirewallRulesInboundRulesItemsources::class => false,
+            \Jane\Generated\DigitalOcean\Model\FirewallRulesInboundRulesItemSources::class => false,
             \Jane\Generated\DigitalOcean\Model\FirewallRulesOutboundRulesItem::class => false,
-            \Jane\Generated\DigitalOcean\Model\FirewallRulesOutboundRulesItemdestinations::class => false,
+            \Jane\Generated\DigitalOcean\Model\FirewallRulesOutboundRulesItemDestinations::class => false,
             \Jane\Generated\DigitalOcean\Model\Firewall::class => false,
-            \Jane\Generated\DigitalOcean\Model\FirewallpendingChangesItem::class => false,
+            \Jane\Generated\DigitalOcean\Model\FirewallPendingChangesItem::class => false,
             \Jane\Generated\DigitalOcean\Model\AssociatedResource::class => false,
             \Jane\Generated\DigitalOcean\Model\SelectiveDestroyAssociatedResource::class => false,
             \Jane\Generated\DigitalOcean\Model\DestroyedAssociatedResource::class => false,
@@ -2392,7 +2392,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Generated\DigitalOcean\Model\GlbSettingsCdn::class => false,
             \Jane\Generated\DigitalOcean\Model\LoadBalancerBase::class => false,
             \Jane\Generated\DigitalOcean\Model\LoadBalancer::class => false,
-            \Jane\Generated\DigitalOcean\Model\LoadBalancerregion::class => false,
+            \Jane\Generated\DigitalOcean\Model\LoadBalancerRegion::class => false,
             \Jane\Generated\DigitalOcean\Model\SlackDetails::class => false,
             \Jane\Generated\DigitalOcean\Model\Alerts::class => false,
             \Jane\Generated\DigitalOcean\Model\AlertPolicy::class => false,
@@ -2418,13 +2418,13 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Generated\DigitalOcean\Model\NfsGetResponse::class => false,
             \Jane\Generated\DigitalOcean\Model\NfsAction::class => false,
             \Jane\Generated\DigitalOcean\Model\NfsActionResize::class => false,
-            \Jane\Generated\DigitalOcean\Model\NfsActionResizeparams::class => false,
+            \Jane\Generated\DigitalOcean\Model\NfsActionResizeParams::class => false,
             \Jane\Generated\DigitalOcean\Model\NfsActionSnapshot::class => false,
-            \Jane\Generated\DigitalOcean\Model\NfsActionSnapshotparams::class => false,
+            \Jane\Generated\DigitalOcean\Model\NfsActionSnapshotParams::class => false,
             \Jane\Generated\DigitalOcean\Model\NfsActionAttach::class => false,
-            \Jane\Generated\DigitalOcean\Model\NfsActionAttachparams::class => false,
+            \Jane\Generated\DigitalOcean\Model\NfsActionAttachParams::class => false,
             \Jane\Generated\DigitalOcean\Model\NfsActionDetach::class => false,
-            \Jane\Generated\DigitalOcean\Model\NfsActionDetachparams::class => false,
+            \Jane\Generated\DigitalOcean\Model\NfsActionDetachParams::class => false,
             \Jane\Generated\DigitalOcean\Model\NfsActionsResponse::class => false,
             \Jane\Generated\DigitalOcean\Model\NfsActionsResponseAction::class => false,
             \Jane\Generated\DigitalOcean\Model\NfsSnapshotResponse::class => false,
@@ -2445,7 +2445,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Generated\DigitalOcean\Model\SubscriptionTierBase::class => false,
             \Jane\Generated\DigitalOcean\Model\Subscription::class => false,
             \Jane\Generated\DigitalOcean\Model\Registry::class => false,
-            \Jane\Generated\DigitalOcean\Model\Registrysubscription::class => false,
+            \Jane\Generated\DigitalOcean\Model\RegistrySubscription::class => false,
             \Jane\Generated\DigitalOcean\Model\MultiregistryCreate::class => false,
             \Jane\Generated\DigitalOcean\Model\Multiregistry::class => false,
             \Jane\Generated\DigitalOcean\Model\DockerCredentials::class => false,
@@ -2487,17 +2487,17 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Generated\DigitalOcean\Model\TagsMetadata::class => false,
             \Jane\Generated\DigitalOcean\Model\Tags::class => false,
             \Jane\Generated\DigitalOcean\Model\TagsResources::class => false,
-            \Jane\Generated\DigitalOcean\Model\TagsResourcesdroplets::class => false,
-            \Jane\Generated\DigitalOcean\Model\TagsResourcesimgages::class => false,
-            \Jane\Generated\DigitalOcean\Model\TagsResourcesvolumes::class => false,
-            \Jane\Generated\DigitalOcean\Model\TagsResourcesvolumeSnapshots::class => false,
-            \Jane\Generated\DigitalOcean\Model\TagsResourcesdatabases::class => false,
+            \Jane\Generated\DigitalOcean\Model\TagsResourcesDroplets::class => false,
+            \Jane\Generated\DigitalOcean\Model\TagsResourcesImgages::class => false,
+            \Jane\Generated\DigitalOcean\Model\TagsResourcesVolumes::class => false,
+            \Jane\Generated\DigitalOcean\Model\TagsResourcesVolumeSnapshots::class => false,
+            \Jane\Generated\DigitalOcean\Model\TagsResourcesDatabases::class => false,
             \Jane\Generated\DigitalOcean\Model\ErrorWithRootCauses::class => false,
             \Jane\Generated\DigitalOcean\Model\TagsResource::class => false,
             \Jane\Generated\DigitalOcean\Model\TagsResourceResourcesItem::class => false,
             \Jane\Generated\DigitalOcean\Model\VolumeBaseRead::class => false,
             \Jane\Generated\DigitalOcean\Model\VolumeFull::class => false,
-            \Jane\Generated\DigitalOcean\Model\VolumeFullregion::class => false,
+            \Jane\Generated\DigitalOcean\Model\VolumeFullRegion::class => false,
             \Jane\Generated\DigitalOcean\Model\VolumeBase::class => false,
             \Jane\Generated\DigitalOcean\Model\VolumeSnapshotId::class => false,
             \Jane\Generated\DigitalOcean\Model\VolumeWriteFileSystemType::class => false,

@@ -114,7 +114,7 @@ class AppStaticSiteSpecNormalizer implements DenormalizerInterface, NormalizerIn
             unset($data['output_dir']);
         }
         if (\array_key_exists('cors', $data)) {
-            $object->setCors($this->denormalizer->denormalize($data['cors'], \Jane\Generated\DigitalOcean\Model\AppStaticSiteSpeccors::class, 'json', $context));
+            $object->setCors($this->denormalizer->denormalize($data['cors'], \Jane\Generated\DigitalOcean\Model\AppStaticSiteSpecCors::class, 'json', $context));
             unset($data['cors']);
         }
         if (\array_key_exists('routes', $data)) {

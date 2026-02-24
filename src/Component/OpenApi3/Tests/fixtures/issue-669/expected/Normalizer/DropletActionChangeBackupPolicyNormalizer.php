@@ -42,7 +42,7 @@ class DropletActionChangeBackupPolicyNormalizer implements DenormalizerInterface
             unset($data['type']);
         }
         if (\array_key_exists('backup_policy', $data)) {
-            $object->setBackupPolicy($this->denormalizer->denormalize($data['backup_policy'], \Jane\Generated\DigitalOcean\Model\DropletActionChangeBackupPolicybackupPolicy::class, 'json', $context));
+            $object->setBackupPolicy($this->denormalizer->denormalize($data['backup_policy'], \Jane\Generated\DigitalOcean\Model\DropletActionChangeBackupPolicyBackupPolicy::class, 'json', $context));
             unset($data['backup_policy']);
         }
         foreach ($data as $key => $value) {

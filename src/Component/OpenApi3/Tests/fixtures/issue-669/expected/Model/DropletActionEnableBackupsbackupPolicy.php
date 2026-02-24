@@ -2,7 +2,7 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DropletActionEnableBackupsbackupPolicy extends \ArrayObject
+class DropletActionEnableBackupsBackupPolicy extends \ArrayObject
 {
     /**
      * @var array

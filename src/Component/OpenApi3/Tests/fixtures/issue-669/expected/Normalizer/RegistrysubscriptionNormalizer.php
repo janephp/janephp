@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class RegistrysubscriptionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class RegistrySubscriptionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -19,11 +19,11 @@ class RegistrysubscriptionNormalizer implements DenormalizerInterface, Normalize
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Generated\DigitalOcean\Model\Registrysubscription::class;
+        return $type === \Jane\Generated\DigitalOcean\Model\RegistrySubscription::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Generated\DigitalOcean\Model\Registrysubscription::class;
+        return is_object($data) && get_class($data) === \Jane\Generated\DigitalOcean\Model\RegistrySubscription::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
@@ -33,7 +33,7 @@ class RegistrysubscriptionNormalizer implements DenormalizerInterface, Normalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\Registrysubscription();
+        $object = new \Jane\Generated\DigitalOcean\Model\RegistrySubscription();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -71,6 +71,6 @@ class RegistrysubscriptionNormalizer implements DenormalizerInterface, Normalize
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Generated\DigitalOcean\Model\Registrysubscription::class => false];
+        return [\Jane\Generated\DigitalOcean\Model\RegistrySubscription::class => false];
     }
 }

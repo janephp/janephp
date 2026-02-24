@@ -2,7 +2,7 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class VolumeFullregion extends \ArrayObject
+class VolumeFullRegion extends \ArrayObject
 {
     /**
      * @var array

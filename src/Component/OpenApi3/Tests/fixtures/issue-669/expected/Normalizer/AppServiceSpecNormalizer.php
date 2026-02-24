@@ -110,7 +110,7 @@ class AppServiceSpecNormalizer implements DenormalizerInterface, NormalizerInter
             unset($data['autoscaling']);
         }
         if (\array_key_exists('cors', $data)) {
-            $object->setCors($this->denormalizer->denormalize($data['cors'], \Jane\Generated\DigitalOcean\Model\AppServiceSpeccors::class, 'json', $context));
+            $object->setCors($this->denormalizer->denormalize($data['cors'], \Jane\Generated\DigitalOcean\Model\AppServiceSpecCors::class, 'json', $context));
             unset($data['cors']);
         }
         if (\array_key_exists('health_check', $data)) {

@@ -43,7 +43,7 @@ class ScguserQueryCriteriaNormalizer implements DenormalizerInterface, Normalize
         if (\array_key_exists('filters', $data)) {
             $values = [];
             foreach ($data['filters'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserQueryCriteriafiltersItem::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserQueryCriteriaFiltersItem::class, 'json', $context);
             }
             $object->setFilters($values);
         }

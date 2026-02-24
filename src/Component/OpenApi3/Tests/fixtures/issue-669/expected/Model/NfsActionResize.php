@@ -25,7 +25,7 @@ class NfsActionResize extends \ArrayObject
      */
     protected $region;
     /**
-     * @var NfsActionResizeparams
+     * @var NfsActionResizeParams
      */
     protected $params;
     /**
@@ -73,18 +73,18 @@ class NfsActionResize extends \ArrayObject
         return $this;
     }
     /**
-     * @return NfsActionResizeparams
+     * @return NfsActionResizeParams
      */
-    public function getParams(): NfsActionResizeparams
+    public function getParams(): NfsActionResizeParams
     {
         return $this->params;
     }
     /**
-     * @param NfsActionResizeparams $params
+     * @param NfsActionResizeParams $params
      *
      * @return self
      */
-    public function setParams(NfsActionResizeparams $params): self
+    public function setParams(NfsActionResizeParams $params): self
     {
         $this->initialized['params'] = true;
         $this->params = $params;

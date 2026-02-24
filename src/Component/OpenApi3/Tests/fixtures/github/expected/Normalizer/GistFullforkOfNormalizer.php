@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class GistFullforkOfNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class GistFullForkOfNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -19,11 +19,11 @@ class GistFullforkOfNormalizer implements DenormalizerInterface, NormalizerInter
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Github\Model\GistFullforkOf::class;
+        return $type === \Github\Model\GistFullForkOf::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Github\Model\GistFullforkOf::class;
+        return is_object($data) && get_class($data) === \Github\Model\GistFullForkOf::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
@@ -33,7 +33,7 @@ class GistFullforkOfNormalizer implements DenormalizerInterface, NormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Github\Model\GistFullforkOf();
+        $object = new \Github\Model\GistFullForkOf();
         if (\array_key_exists('public', $data) && \is_int($data['public'])) {
             $data['public'] = (bool) $data['public'];
         }
@@ -41,7 +41,7 @@ class GistFullforkOfNormalizer implements DenormalizerInterface, NormalizerInter
             $data['truncated'] = (bool) $data['truncated'];
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Github\Validator\GistFullforkOfConstraint());
+            $this->validate($data, new \Github\Validator\GistFullForkOfConstraint());
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -205,12 +205,12 @@ class GistFullforkOfNormalizer implements DenormalizerInterface, NormalizerInter
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Github\Validator\GistFullforkOfConstraint());
+            $this->validate($dataArray, new \Github\Validator\GistFullForkOfConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Github\Model\GistFullforkOf::class => false];
+        return [\Github\Model\GistFullForkOf::class => false];
     }
 }

@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class GistFullhistoryItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class GistFullHistoryItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -19,11 +19,11 @@ class GistFullhistoryItemNormalizer implements DenormalizerInterface, Normalizer
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Github\Model\GistFullhistoryItem::class;
+        return $type === \Github\Model\GistFullHistoryItem::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Github\Model\GistFullhistoryItem::class;
+        return is_object($data) && get_class($data) === \Github\Model\GistFullHistoryItem::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
@@ -33,9 +33,9 @@ class GistFullhistoryItemNormalizer implements DenormalizerInterface, Normalizer
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Github\Model\GistFullhistoryItem();
+        $object = new \Github\Model\GistFullHistoryItem();
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Github\Validator\GistFullhistoryItemConstraint());
+            $this->validate($data, new \Github\Validator\GistFullHistoryItemConstraint());
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
@@ -49,14 +49,14 @@ class GistFullhistoryItemNormalizer implements DenormalizerInterface, Normalizer
             unset($data['version']);
         }
         if (\array_key_exists('user', $data) && $data['user'] !== null) {
-            $object->setUser($this->denormalizer->denormalize($data['user'], \Github\Model\GistFullhistoryItemUser::class, 'json', $context));
+            $object->setUser($this->denormalizer->denormalize($data['user'], \Github\Model\GistFullHistoryItemUser::class, 'json', $context));
             unset($data['user']);
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
         }
         if (\array_key_exists('change_status', $data)) {
-            $object->setChangeStatus($this->denormalizer->denormalize($data['change_status'], \Github\Model\GistFullhistoryItemChangeStatus::class, 'json', $context));
+            $object->setChangeStatus($this->denormalizer->denormalize($data['change_status'], \Github\Model\GistFullHistoryItemChangeStatus::class, 'json', $context));
             unset($data['change_status']);
         }
         if (\array_key_exists('committed_at', $data)) {
@@ -94,12 +94,12 @@ class GistFullhistoryItemNormalizer implements DenormalizerInterface, Normalizer
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Github\Validator\GistFullhistoryItemConstraint());
+            $this->validate($dataArray, new \Github\Validator\GistFullHistoryItemConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Github\Model\GistFullhistoryItem::class => false];
+        return [\Github\Model\GistFullHistoryItem::class => false];
     }
 }

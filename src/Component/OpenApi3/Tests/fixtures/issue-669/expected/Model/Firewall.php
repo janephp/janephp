@@ -33,7 +33,7 @@ class Firewall extends \ArrayObject
     /**
      * An array of objects each containing the fields "droplet_id", "removing", and "status". It is provided to detail exactly which Droplets are having their security policies updated. When empty, all changes have been successfully applied.
      *
-     * @var list<FirewallpendingChangesItem>
+     * @var list<FirewallPendingChangesItem>
      */
     protected $pendingChanges;
     /**
@@ -129,7 +129,7 @@ class Firewall extends \ArrayObject
     /**
      * An array of objects each containing the fields "droplet_id", "removing", and "status". It is provided to detail exactly which Droplets are having their security policies updated. When empty, all changes have been successfully applied.
      *
-     * @return list<FirewallpendingChangesItem>
+     * @return list<FirewallPendingChangesItem>
      */
     public function getPendingChanges(): array
     {
@@ -138,7 +138,7 @@ class Firewall extends \ArrayObject
     /**
      * An array of objects each containing the fields "droplet_id", "removing", and "status". It is provided to detail exactly which Droplets are having their security policies updated. When empty, all changes have been successfully applied.
      *
-     * @param list<FirewallpendingChangesItem> $pendingChanges
+     * @param list<FirewallPendingChangesItem> $pendingChanges
      *
      * @return self
      */

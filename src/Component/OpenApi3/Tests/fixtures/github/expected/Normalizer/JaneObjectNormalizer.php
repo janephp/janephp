@@ -848,17 +848,17 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Github\Model\GistFull::class => \Github\Normalizer\GistFullNormalizer::class,
         
-        \Github\Model\GistFullforksItem::class => \Github\Normalizer\GistFullforksItemNormalizer::class,
+        \Github\Model\GistFullForksItem::class => \Github\Normalizer\GistFullForksItemNormalizer::class,
         
-        \Github\Model\GistFullforksItemUser::class => \Github\Normalizer\GistFullforksItemUserNormalizer::class,
+        \Github\Model\GistFullForksItemUser::class => \Github\Normalizer\GistFullForksItemUserNormalizer::class,
         
-        \Github\Model\GistFullhistoryItem::class => \Github\Normalizer\GistFullhistoryItemNormalizer::class,
+        \Github\Model\GistFullHistoryItem::class => \Github\Normalizer\GistFullHistoryItemNormalizer::class,
         
-        \Github\Model\GistFullhistoryItemUser::class => \Github\Normalizer\GistFullhistoryItemUserNormalizer::class,
+        \Github\Model\GistFullHistoryItemUser::class => \Github\Normalizer\GistFullHistoryItemUserNormalizer::class,
         
-        \Github\Model\GistFullhistoryItemChangeStatus::class => \Github\Normalizer\GistFullhistoryItemChangeStatusNormalizer::class,
+        \Github\Model\GistFullHistoryItemChangeStatus::class => \Github\Normalizer\GistFullHistoryItemChangeStatusNormalizer::class,
         
-        \Github\Model\GistFullforkOf::class => \Github\Normalizer\GistFullforkOfNormalizer::class,
+        \Github\Model\GistFullForkOf::class => \Github\Normalizer\GistFullForkOfNormalizer::class,
         
         \Github\Model\GistCommit::class => \Github\Normalizer\GistCommitNormalizer::class,
         
@@ -1859,12 +1859,12 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Github\Model\GistSimple::class => false,
             \Github\Model\GistSimpleFilesItem::class => false,
             \Github\Model\GistFull::class => false,
-            \Github\Model\GistFullforksItem::class => false,
-            \Github\Model\GistFullforksItemUser::class => false,
-            \Github\Model\GistFullhistoryItem::class => false,
-            \Github\Model\GistFullhistoryItemUser::class => false,
-            \Github\Model\GistFullhistoryItemChangeStatus::class => false,
-            \Github\Model\GistFullforkOf::class => false,
+            \Github\Model\GistFullForksItem::class => false,
+            \Github\Model\GistFullForksItemUser::class => false,
+            \Github\Model\GistFullHistoryItem::class => false,
+            \Github\Model\GistFullHistoryItemUser::class => false,
+            \Github\Model\GistFullHistoryItemChangeStatus::class => false,
+            \Github\Model\GistFullForkOf::class => false,
             \Github\Model\GistCommit::class => false,
             \Github\Model\GistCommitUser::class => false,
             \Github\Model\GistCommitChangeStatus::class => false,
