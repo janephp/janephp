@@ -33,13 +33,13 @@ class Output
     /**
      * The rendering state of the output file.
      *
-     * @var string
+     * @var mixed
      */
     protected $renderingState;
     /**
      * Detail of the output that are format dependent.
      *
-     * @var OutputDataBase|null
+     * @var mixed|null
      */
     protected $detail;
     /**
@@ -130,18 +130,18 @@ class Output
     /**
      * The rendering state of the output file.
      *
-     * @return string
+     * @return mixed
      */
-    public function getRenderingState(): string
+    public function getRenderingState()
     {
         return $this->renderingState;
     }
     /**
      * The rendering state of the output file.
      *
-     * @param string $renderingState
+     * @param mixed $renderingState
      */
-    public function setRenderingState(string $renderingState)
+    public function setRenderingState($renderingState)
     {
         $this->initialized['renderingState'] = true;
         $this->renderingState = $renderingState;
@@ -149,18 +149,18 @@ class Output
     /**
      * Detail of the output that are format dependent.
      *
-     * @return OutputDataBase|null
+     * @return mixed
      */
-    public function getDetail(): ?OutputDataBase
+    public function getDetail()
     {
         return $this->detail;
     }
     /**
      * Detail of the output that are format dependent.
      *
-     * @param OutputDataBase|null $detail
+     * @param mixed $detail
      */
-    public function setDetail(?OutputDataBase $detail)
+    public function setDetail($detail)
     {
         $this->initialized['detail'] = true;
         $this->detail = $detail;

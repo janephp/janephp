@@ -57,11 +57,7 @@ class ShareNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $object->setContentIds($values);
         }
         if (\array_key_exists('audit', $data)) {
-            $value_1 = $data['audit'];
-            if (is_array($data['audit']) and isset($data['audit']['creationDate']) and isset($data['audit']['modificationDate'])) {
-                $value_1 = $this->denormalizer->denormalize($data['audit'], \PicturePark\API\Model\UserAudit::class, 'json', $context);
-            }
-            $object->setAudit($value_1);
+            $object->setAudit($data['audit']);
         }
         if (\array_key_exists('expirationDate', $data) && $data['expirationDate'] !== null) {
             $object->setExpirationDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['expirationDate']));
@@ -70,11 +66,7 @@ class ShareNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $object->setExpirationDate(null);
         }
         if (\array_key_exists('shareType', $data)) {
-            $value_2 = $data['shareType'];
-            if (is_string($data['shareType'])) {
-                $value_2 = $data['shareType'];
-            }
-            $object->setShareType($value_2);
+            $object->setShareType($data['shareType']);
         }
         if (\array_key_exists('isReadOnly', $data)) {
             $object->setIsReadOnly($data['isReadOnly']);
@@ -93,19 +85,11 @@ class ShareNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $values[] = $value;
         }
         $dataArray['contentIds'] = $values;
-        $value_1 = $data->getAudit();
-        if (is_object($data->getAudit())) {
-            $value_1 = $this->normalizer->normalize($data->getAudit(), 'json', $context);
-        }
-        $dataArray['audit'] = $value_1;
+        $dataArray['audit'] = $data->getAudit();
         if ($data->isInitialized('expirationDate')) {
             $dataArray['expirationDate'] = $data->getExpirationDate()?->format('Y-m-d\TH:i:sP');
         }
-        $value_2 = $data->getShareType();
-        if (is_string($data->getShareType())) {
-            $value_2 = $data->getShareType();
-        }
-        $dataArray['shareType'] = $value_2;
+        $dataArray['shareType'] = $data->getShareType();
         $dataArray['isReadOnly'] = $data->getIsReadOnly();
         return $dataArray;
     }

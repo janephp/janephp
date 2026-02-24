@@ -33,7 +33,7 @@ class ValidationErrorErrorsItem extends \ArrayObject
      */
     protected $index;
     /**
-     * @var string|int|list<string>
+     * @var mixed
      */
     protected $value;
     /**
@@ -127,14 +127,14 @@ class ValidationErrorErrorsItem extends \ArrayObject
         return $this;
     }
     /**
-     * @return string|int|list<string>
+     * @return mixed
      */
     public function getValue()
     {
         return $this->value;
     }
     /**
-     * @param string|int|list<string> $value
+     * @param mixed $value
      *
      * @return self
      */

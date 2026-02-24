@@ -29,11 +29,11 @@ class LiveStream
      */
     protected $timestamp;
     /**
-     * @var LiveStreamTraceJob|null
+     * @var mixed|null
      */
     protected $traceJob;
     /**
-     * @var UserAudit|null
+     * @var mixed|null
      */
     protected $audit;
     /**
@@ -109,36 +109,36 @@ class LiveStream
         return $this;
     }
     /**
-     * @return LiveStreamTraceJob|null
+     * @return mixed
      */
-    public function getTraceJob(): ?LiveStreamTraceJob
+    public function getTraceJob()
     {
         return $this->traceJob;
     }
     /**
-     * @param LiveStreamTraceJob|null $traceJob
+     * @param mixed $traceJob
      *
      * @return self
      */
-    public function setTraceJob(?LiveStreamTraceJob $traceJob): self
+    public function setTraceJob($traceJob): self
     {
         $this->initialized['traceJob'] = true;
         $this->traceJob = $traceJob;
         return $this;
     }
     /**
-     * @return UserAudit|null
+     * @return mixed
      */
-    public function getAudit(): ?UserAudit
+    public function getAudit()
     {
         return $this->audit;
     }
     /**
-     * @param UserAudit|null $audit
+     * @param mixed $audit
      *
      * @return self
      */
-    public function setAudit(?UserAudit $audit): self
+    public function setAudit($audit): self
     {
         $this->initialized['audit'] = true;
         $this->audit = $audit;

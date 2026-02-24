@@ -15,7 +15,7 @@ class BusinessRuleTracedRule
     /**
      * Configuration of the rule as it was running. Enriched with trace ref IDs.
      *
-     * @var BusinessRule|null
+     * @var mixed|null
      */
     protected $configuration;
     /**
@@ -27,20 +27,20 @@ class BusinessRuleTracedRule
     /**
      * Configuration of the rule as it was running. Enriched with trace ref IDs.
      *
-     * @return BusinessRule|null
+     * @return mixed
      */
-    public function getConfiguration(): ?BusinessRule
+    public function getConfiguration()
     {
         return $this->configuration;
     }
     /**
      * Configuration of the rule as it was running. Enriched with trace ref IDs.
      *
-     * @param BusinessRule|null $configuration
+     * @param mixed $configuration
      *
      * @return self
      */
-    public function setConfiguration(?BusinessRule $configuration): self
+    public function setConfiguration($configuration): self
     {
         $this->initialized['configuration'] = true;
         $this->configuration = $configuration;

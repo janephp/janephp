@@ -21,7 +21,7 @@ class AppComponentInstanceBase extends \ArrayObject
     /**
      * The instance size to use for this component. Default: `apps-s-1vcpu-0.5gb`
      *
-     * @var string|string
+     * @var mixed
      */
     protected $instanceSizeSlug;
     /**
@@ -55,7 +55,7 @@ class AppComponentInstanceBase extends \ArrayObject
     /**
      * The instance size to use for this component. Default: `apps-s-1vcpu-0.5gb`
      *
-     * @return string|string
+     * @return mixed
      */
     public function getInstanceSizeSlug()
     {
@@ -64,7 +64,7 @@ class AppComponentInstanceBase extends \ArrayObject
     /**
      * The instance size to use for this component. Default: `apps-s-1vcpu-0.5gb`
      *
-     * @param string|string $instanceSizeSlug
+     * @param mixed $instanceSizeSlug
      *
      * @return self
      */

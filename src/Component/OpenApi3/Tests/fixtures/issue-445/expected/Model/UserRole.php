@@ -15,7 +15,7 @@ class UserRole extends \ArrayObject
     /**
      * Language specific user role names.
      *
-     * @var array<string, string>
+     * @var mixed
      */
     protected $names;
     /**
@@ -33,20 +33,20 @@ class UserRole extends \ArrayObject
     /**
      * Language specific user role names.
      *
-     * @return array<string, string>
+     * @return mixed
      */
-    public function getNames(): iterable
+    public function getNames()
     {
         return $this->names;
     }
     /**
      * Language specific user role names.
      *
-     * @param array<string, string> $names
+     * @param mixed $names
      *
      * @return self
      */
-    public function setNames(iterable $names): self
+    public function setNames($names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;

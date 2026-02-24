@@ -21,7 +21,7 @@ class NumberCompareCondition extends BusinessRuleCondition
     /**
      * Mode to use for comparison.
      *
-     * @var string
+     * @var mixed
      */
     protected $mode;
     /**
@@ -55,20 +55,20 @@ class NumberCompareCondition extends BusinessRuleCondition
     /**
      * Mode to use for comparison.
      *
-     * @return string
+     * @return mixed
      */
-    public function getMode(): string
+    public function getMode()
     {
         return $this->mode;
     }
     /**
      * Mode to use for comparison.
      *
-     * @param string $mode
+     * @param mixed $mode
      *
      * @return self
      */
-    public function setMode(string $mode): self
+    public function setMode($mode): self
     {
         $this->initialized['mode'] = true;
         $this->mode = $mode;

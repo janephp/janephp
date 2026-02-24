@@ -15,38 +15,38 @@ class BusinessRuleTriggerPoint
     /**
      * Execution scope.
      *
-     * @var string
+     * @var mixed
      */
     protected $executionScope;
     /**
      * Document type.
      *
-     * @var string
+     * @var mixed
      */
     protected $documentType;
     /**
      * Action performed.
      *
-     * @var string
+     * @var mixed
      */
     protected $action;
     /**
      * Execution scope.
      *
-     * @return string
+     * @return mixed
      */
-    public function getExecutionScope(): string
+    public function getExecutionScope()
     {
         return $this->executionScope;
     }
     /**
      * Execution scope.
      *
-     * @param string $executionScope
+     * @param mixed $executionScope
      *
      * @return self
      */
-    public function setExecutionScope(string $executionScope): self
+    public function setExecutionScope($executionScope): self
     {
         $this->initialized['executionScope'] = true;
         $this->executionScope = $executionScope;
@@ -55,20 +55,20 @@ class BusinessRuleTriggerPoint
     /**
      * Document type.
      *
-     * @return string
+     * @return mixed
      */
-    public function getDocumentType(): string
+    public function getDocumentType()
     {
         return $this->documentType;
     }
     /**
      * Document type.
      *
-     * @param string $documentType
+     * @param mixed $documentType
      *
      * @return self
      */
-    public function setDocumentType(string $documentType): self
+    public function setDocumentType($documentType): self
     {
         $this->initialized['documentType'] = true;
         $this->documentType = $documentType;
@@ -77,20 +77,20 @@ class BusinessRuleTriggerPoint
     /**
      * Action performed.
      *
-     * @return string
+     * @return mixed
      */
-    public function getAction(): string
+    public function getAction()
     {
         return $this->action;
     }
     /**
      * Action performed.
      *
-     * @param string $action
+     * @param mixed $action
      *
      * @return self
      */
-    public function setAction(string $action): self
+    public function setAction($action): self
     {
         $this->initialized['action'] = true;
         $this->action = $action;

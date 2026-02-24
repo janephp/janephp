@@ -45,13 +45,13 @@ class UserWithRoles
     /**
      * Authorization state the user is currently in.
      *
-     * @var string
+     * @var mixed
      */
     protected $authorizationState;
     /**
      * Life cycle state the user is currently in.
      *
-     * @var string
+     * @var mixed
      */
     protected $lifeCycle;
     /**
@@ -191,20 +191,20 @@ class UserWithRoles
     /**
      * Authorization state the user is currently in.
      *
-     * @return string
+     * @return mixed
      */
-    public function getAuthorizationState(): string
+    public function getAuthorizationState()
     {
         return $this->authorizationState;
     }
     /**
      * Authorization state the user is currently in.
      *
-     * @param string $authorizationState
+     * @param mixed $authorizationState
      *
      * @return self
      */
-    public function setAuthorizationState(string $authorizationState): self
+    public function setAuthorizationState($authorizationState): self
     {
         $this->initialized['authorizationState'] = true;
         $this->authorizationState = $authorizationState;
@@ -213,20 +213,20 @@ class UserWithRoles
     /**
      * Life cycle state the user is currently in.
      *
-     * @return string
+     * @return mixed
      */
-    public function getLifeCycle(): string
+    public function getLifeCycle()
     {
         return $this->lifeCycle;
     }
     /**
      * Life cycle state the user is currently in.
      *
-     * @param string $lifeCycle
+     * @param mixed $lifeCycle
      *
      * @return self
      */
-    public function setLifeCycle(string $lifeCycle): self
+    public function setLifeCycle($lifeCycle): self
     {
         $this->initialized['lifeCycle'] = true;
         $this->lifeCycle = $lifeCycle;

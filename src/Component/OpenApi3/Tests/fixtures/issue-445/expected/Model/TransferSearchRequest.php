@@ -39,7 +39,7 @@ class TransferSearchRequest
     /**
      * An optional search filter. Limits the document result set.
      *
-     * @var FilterBase|null
+     * @var mixed|null
      */
     protected $filter;
     /**
@@ -140,20 +140,20 @@ class TransferSearchRequest
     /**
      * An optional search filter. Limits the document result set.
      *
-     * @return FilterBase|null
+     * @return mixed
      */
-    public function getFilter(): ?FilterBase
+    public function getFilter()
     {
         return $this->filter;
     }
     /**
      * An optional search filter. Limits the document result set.
      *
-     * @param FilterBase|null $filter
+     * @param mixed $filter
      *
      * @return self
      */
-    public function setFilter(?FilterBase $filter): self
+    public function setFilter($filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;

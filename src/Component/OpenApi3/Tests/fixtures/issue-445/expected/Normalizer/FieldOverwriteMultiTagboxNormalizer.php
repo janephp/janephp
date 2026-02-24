@@ -75,11 +75,7 @@ class FieldOverwriteMultiTagboxNormalizer implements DenormalizerInterface, Norm
             unset($data['kind']);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $value = $data['filter'];
-            if (is_array($data['filter']) and isset($data['filter']['kind'])) {
-                $value = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
-            }
-            $object->setFilter($value);
+            $object->setFilter($data['filter']);
             unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
@@ -122,9 +118,9 @@ class FieldOverwriteMultiTagboxNormalizer implements DenormalizerInterface, Norm
             $object->setOverwriteMinimumItems($data['overwriteMinimumItems']);
             unset($data['overwriteMinimumItems']);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value;
             }
         }
         return $object;
@@ -139,11 +135,7 @@ class FieldOverwriteMultiTagboxNormalizer implements DenormalizerInterface, Norm
         $dataArray['overwriteRequired'] = $data->getOverwriteRequired();
         $dataArray['kind'] = $data->getKind();
         if ($data->isInitialized('filter')) {
-            $value = $data->getFilter();
-            if (is_object($data->getFilter())) {
-                $value = $this->normalizer->normalize($data->getFilter(), 'json', $context);
-            }
-            $dataArray['filter'] = $value;
+            $dataArray['filter'] = $data->getFilter();
         }
         if ($data->isInitialized('overwriteFilter') && null !== $data->getOverwriteFilter()) {
             $dataArray['overwriteFilter'] = $data->getOverwriteFilter();
@@ -166,9 +158,9 @@ class FieldOverwriteMultiTagboxNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('overwriteMinimumItems') && null !== $data->getOverwriteMinimumItems()) {
             $dataArray['overwriteMinimumItems'] = $data->getOverwriteMinimumItems();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+                $dataArray[$key] = $value;
             }
         }
         return $dataArray;

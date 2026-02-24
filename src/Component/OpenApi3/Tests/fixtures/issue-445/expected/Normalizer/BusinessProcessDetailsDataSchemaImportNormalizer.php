@@ -42,30 +42,22 @@ class BusinessProcessDetailsDataSchemaImportNormalizer implements DenormalizerIn
             unset($data['kind']);
         }
         if (\array_key_exists('schemaImportResult', $data) && $data['schemaImportResult'] !== null) {
-            $value = $data['schemaImportResult'];
-            if (is_array($data['schemaImportResult']) and isset($data['schemaImportResult']['importedSchemaCount']) and isset($data['schemaImportResult']['skippedSchemaCount']) and isset($data['schemaImportResult']['totalSchemaCount'])) {
-                $value = $this->denormalizer->denormalize($data['schemaImportResult'], \PicturePark\API\Model\SchemaImportResult::class, 'json', $context);
-            }
-            $object->setSchemaImportResult($value);
+            $object->setSchemaImportResult($data['schemaImportResult']);
             unset($data['schemaImportResult']);
         }
         elseif (\array_key_exists('schemaImportResult', $data) && $data['schemaImportResult'] === null) {
             $object->setSchemaImportResult(null);
         }
         if (\array_key_exists('listItemImportResult', $data) && $data['listItemImportResult'] !== null) {
-            $value_1 = $data['listItemImportResult'];
-            if (is_array($data['listItemImportResult']) and isset($data['listItemImportResult']['importedListItemCount']) and isset($data['listItemImportResult']['skippedListItemCount']) and isset($data['listItemImportResult']['totalListItemCount'])) {
-                $value_1 = $this->denormalizer->denormalize($data['listItemImportResult'], \PicturePark\API\Model\ListItemImportResult::class, 'json', $context);
-            }
-            $object->setListItemImportResult($value_1);
+            $object->setListItemImportResult($data['listItemImportResult']);
             unset($data['listItemImportResult']);
         }
         elseif (\array_key_exists('listItemImportResult', $data) && $data['listItemImportResult'] === null) {
             $object->setListItemImportResult(null);
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_2;
+                $object[$key] = $value;
             }
         }
         return $object;
@@ -75,22 +67,14 @@ class BusinessProcessDetailsDataSchemaImportNormalizer implements DenormalizerIn
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
         if ($data->isInitialized('schemaImportResult')) {
-            $value = $data->getSchemaImportResult();
-            if (is_object($data->getSchemaImportResult())) {
-                $value = $this->normalizer->normalize($data->getSchemaImportResult(), 'json', $context);
-            }
-            $dataArray['schemaImportResult'] = $value;
+            $dataArray['schemaImportResult'] = $data->getSchemaImportResult();
         }
         if ($data->isInitialized('listItemImportResult')) {
-            $value_1 = $data->getListItemImportResult();
-            if (is_object($data->getListItemImportResult())) {
-                $value_1 = $this->normalizer->normalize($data->getListItemImportResult(), 'json', $context);
-            }
-            $dataArray['listItemImportResult'] = $value_1;
+            $dataArray['listItemImportResult'] = $data->getListItemImportResult();
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_2;
+                $dataArray[$key] = $value;
             }
         }
         return $dataArray;

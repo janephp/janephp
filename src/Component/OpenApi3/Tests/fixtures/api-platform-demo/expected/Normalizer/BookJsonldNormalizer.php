@@ -38,13 +38,7 @@ class BookJsonldNormalizer implements DenormalizerInterface, NormalizerInterface
             return $object;
         }
         if (\array_key_exists('@context', $data)) {
-            $value = $data['@context'];
-            if (is_string($data['@context'])) {
-                $value = $data['@context'];
-            } elseif (is_array($data['@context'])) {
-                $value = $data['@context'];
-            }
-            $object->setContext($value);
+            $object->setContext($data['@context']);
             unset($data['@context']);
         }
         if (\array_key_exists('@id', $data)) {
@@ -87,8 +81,8 @@ class BookJsonldNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (\array_key_exists('reviews', $data)) {
             $values = [];
-            foreach ($data['reviews'] as $value_1) {
-                $values[] = $value_1;
+            foreach ($data['reviews'] as $value) {
+                $values[] = $value;
             }
             $object->setReviews($values);
             unset($data['reviews']);
@@ -107,9 +101,9 @@ class BookJsonldNormalizer implements DenormalizerInterface, NormalizerInterface
         elseif (\array_key_exists('archivedAt', $data) && $data['archivedAt'] === null) {
             $object->setArchivedAt(null);
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_2;
+                $object[$key] = $value_1;
             }
         }
         return $object;

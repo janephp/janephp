@@ -53,30 +53,22 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setDescription(null);
         }
         if (\array_key_exists('creator', $data)) {
-            $value = $data['creator'];
-            if (is_array($data['creator']) and isset($data['creator']['displayName']) and isset($data['creator']['emailHash'])) {
-                $value = $this->denormalizer->denormalize($data['creator'], \PicturePark\API\Model\ShareUser::class, 'json', $context);
-            }
-            $object->setCreator($value);
+            $object->setCreator($data['creator']);
         }
         if (\array_key_exists('audit', $data)) {
-            $value_1 = $data['audit'];
-            if (is_array($data['audit']) and isset($data['audit']['creationDate']) and isset($data['audit']['modificationDate'])) {
-                $value_1 = $this->denormalizer->denormalize($data['audit'], \PicturePark\API\Model\UserAudit::class, 'json', $context);
-            }
-            $object->setAudit($value_1);
+            $object->setAudit($data['audit']);
         }
         if (\array_key_exists('contentSelections', $data)) {
             $values = [];
-            foreach ($data['contentSelections'] as $value_2) {
-                $values[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\ShareContentDetail::class, 'json', $context);
+            foreach ($data['contentSelections'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\ShareContentDetail::class, 'json', $context);
             }
             $object->setContentSelections($values);
         }
         if (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] !== null) {
             $values_1 = [];
-            foreach ($data['layerSchemaIds'] as $value_3) {
-                $values_1[] = $value_3;
+            foreach ($data['layerSchemaIds'] as $value_1) {
+                $values_1[] = $value_1;
             }
             $object->setLayerSchemaIds($values_1);
         }
@@ -84,11 +76,7 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setLayerSchemaIds(null);
         }
         if (\array_key_exists('data', $data) && $data['data'] !== null) {
-            $value_4 = $data['data'];
-            if (is_array($data['data']) and isset($data['data']['url']) and isset($data['data']['kind'])) {
-                $value_4 = $this->denormalizer->denormalize($data['data'], \PicturePark\API\Model\ShareDataBase::class, 'json', $context);
-            }
-            $object->setData($value_4);
+            $object->setData($data['data']);
         }
         elseif (\array_key_exists('data', $data) && $data['data'] === null) {
             $object->setData(null);
@@ -103,23 +91,15 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setExpired($data['expired']);
         }
         if (\array_key_exists('outputAccess', $data)) {
-            $value_5 = $data['outputAccess'];
-            if (is_string($data['outputAccess'])) {
-                $value_5 = $data['outputAccess'];
-            }
-            $object->setOutputAccess($value_5);
+            $object->setOutputAccess($data['outputAccess']);
         }
         if (\array_key_exists('shareType', $data)) {
-            $value_6 = $data['shareType'];
-            if (is_string($data['shareType'])) {
-                $value_6 = $data['shareType'];
-            }
-            $object->setShareType($value_6);
+            $object->setShareType($data['shareType']);
         }
         if (\array_key_exists('schemas', $data) && $data['schemas'] !== null) {
             $values_2 = [];
-            foreach ($data['schemas'] as $value_7) {
-                $values_2[] = $this->denormalizer->denormalize($value_7, \PicturePark\API\Model\SchemaDetail::class, 'json', $context);
+            foreach ($data['schemas'] as $value_2) {
+                $values_2[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\SchemaDetail::class, 'json', $context);
             }
             $object->setSchemas($values_2);
         }
@@ -136,53 +116,33 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('description')) {
             $dataArray['description'] = $data->getDescription();
         }
-        $value = $data->getCreator();
-        if (is_object($data->getCreator())) {
-            $value = $this->normalizer->normalize($data->getCreator(), 'json', $context);
-        }
-        $dataArray['creator'] = $value;
-        $value_1 = $data->getAudit();
-        if (is_object($data->getAudit())) {
-            $value_1 = $this->normalizer->normalize($data->getAudit(), 'json', $context);
-        }
-        $dataArray['audit'] = $value_1;
+        $dataArray['creator'] = $data->getCreator();
+        $dataArray['audit'] = $data->getAudit();
         $values = [];
-        foreach ($data->getContentSelections() as $value_2) {
-            $values[] = $this->normalizer->normalize($value_2, 'json', $context);
+        foreach ($data->getContentSelections() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $dataArray['contentSelections'] = $values;
         if ($data->isInitialized('layerSchemaIds')) {
             $values_1 = [];
-            foreach ($data->getLayerSchemaIds() as $value_3) {
-                $values_1[] = $value_3;
+            foreach ($data->getLayerSchemaIds() as $value_1) {
+                $values_1[] = $value_1;
             }
             $dataArray['layerSchemaIds'] = $values_1;
         }
         if ($data->isInitialized('data')) {
-            $value_4 = $data->getData();
-            if (is_object($data->getData())) {
-                $value_4 = $this->normalizer->normalize($data->getData(), 'json', $context);
-            }
-            $dataArray['data'] = $value_4;
+            $dataArray['data'] = $data->getData();
         }
         if ($data->isInitialized('expirationDate')) {
             $dataArray['expirationDate'] = $data->getExpirationDate()?->format('Y-m-d\TH:i:sP');
         }
         $dataArray['expired'] = $data->getExpired();
-        $value_5 = $data->getOutputAccess();
-        if (is_string($data->getOutputAccess())) {
-            $value_5 = $data->getOutputAccess();
-        }
-        $dataArray['outputAccess'] = $value_5;
-        $value_6 = $data->getShareType();
-        if (is_string($data->getShareType())) {
-            $value_6 = $data->getShareType();
-        }
-        $dataArray['shareType'] = $value_6;
+        $dataArray['outputAccess'] = $data->getOutputAccess();
+        $dataArray['shareType'] = $data->getShareType();
         if ($data->isInitialized('schemas')) {
             $values_2 = [];
-            foreach ($data->getSchemas() as $value_7) {
-                $values_2[] = $this->normalizer->normalize($value_7, 'json', $context);
+            foreach ($data->getSchemas() as $value_2) {
+                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $dataArray['schemas'] = $values_2;
         }

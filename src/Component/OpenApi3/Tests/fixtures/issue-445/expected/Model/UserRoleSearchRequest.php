@@ -45,7 +45,7 @@ class UserRoleSearchRequest
     /**
      * Filter applied to user roles.
      *
-     * @var FilterBase|null
+     * @var mixed|null
      */
     protected $filter;
     /**
@@ -179,20 +179,20 @@ class UserRoleSearchRequest
     /**
      * Filter applied to user roles.
      *
-     * @return FilterBase|null
+     * @return mixed
      */
-    public function getFilter(): ?FilterBase
+    public function getFilter()
     {
         return $this->filter;
     }
     /**
      * Filter applied to user roles.
      *
-     * @param FilterBase|null $filter
+     * @param mixed $filter
      *
      * @return self
      */
-    public function setFilter(?FilterBase $filter): self
+    public function setFilter($filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;

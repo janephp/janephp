@@ -15,26 +15,26 @@ class ListItemReferencesResult
     /**
      * List of references. Only available when requested in the request.
      *
-     * @var MetadataReferenceResult|null
+     * @var mixed|null
      */
     protected $metadataReferences;
     /**
      * List of references. Only available when requested in the request.
      *
-     * @return MetadataReferenceResult|null
+     * @return mixed
      */
-    public function getMetadataReferences(): ?MetadataReferenceResult
+    public function getMetadataReferences()
     {
         return $this->metadataReferences;
     }
     /**
      * List of references. Only available when requested in the request.
      *
-     * @param MetadataReferenceResult|null $metadataReferences
+     * @param mixed $metadataReferences
      *
      * @return self
      */
-    public function setMetadataReferences(?MetadataReferenceResult $metadataReferences): self
+    public function setMetadataReferences($metadataReferences): self
     {
         $this->initialized['metadataReferences'] = true;
         $this->metadataReferences = $metadataReferences;

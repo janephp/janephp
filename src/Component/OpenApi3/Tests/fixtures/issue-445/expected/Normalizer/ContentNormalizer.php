@@ -38,11 +38,7 @@ class ContentNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return $object;
         }
         if (\array_key_exists('audit', $data) && $data['audit'] !== null) {
-            $value = $data['audit'];
-            if (is_array($data['audit']) and isset($data['audit']['creationDate']) and isset($data['audit']['modificationDate'])) {
-                $value = $this->denormalizer->denormalize($data['audit'], \PicturePark\API\Model\UserAudit::class, 'json', $context);
-            }
-            $object->setAudit($value);
+            $object->setAudit($data['audit']);
         }
         elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
             $object->setAudit(null);
@@ -51,16 +47,12 @@ class ContentNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setContentSchemaId($data['contentSchemaId']);
         }
         if (\array_key_exists('contentType', $data)) {
-            $value_1 = $data['contentType'];
-            if (is_string($data['contentType'])) {
-                $value_1 = $data['contentType'];
-            }
-            $object->setContentType($value_1);
+            $object->setContentType($data['contentType']);
         }
         if (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] !== null) {
             $values = [];
-            foreach ($data['layerSchemaIds'] as $value_2) {
-                $values[] = $value_2;
+            foreach ($data['layerSchemaIds'] as $value) {
+                $values[] = $value;
             }
             $object->setLayerSchemaIds($values);
         }
@@ -69,8 +61,8 @@ class ContentNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('displayValues', $data)) {
             $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data['displayValues'] as $key => $value_3) {
-                $values_1[$key] = $value_3;
+            foreach ($data['displayValues'] as $key => $value_1) {
+                $values_1[$key] = $value_1;
             }
             $object->setDisplayValues($values_1);
         }
@@ -79,8 +71,8 @@ class ContentNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('brokenReferenceIds', $data) && $data['brokenReferenceIds'] !== null) {
             $values_2 = [];
-            foreach ($data['brokenReferenceIds'] as $value_4) {
-                $values_2[] = $value_4;
+            foreach ($data['brokenReferenceIds'] as $value_2) {
+                $values_2[] = $value_2;
             }
             $object->setBrokenReferenceIds($values_2);
         }
@@ -89,8 +81,8 @@ class ContentNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('brokenIndirectReferenceIds', $data) && $data['brokenIndirectReferenceIds'] !== null) {
             $values_3 = [];
-            foreach ($data['brokenIndirectReferenceIds'] as $value_5) {
-                $values_3[] = $value_5;
+            foreach ($data['brokenIndirectReferenceIds'] as $value_3) {
+                $values_3[] = $value_3;
             }
             $object->setBrokenIndirectReferenceIds($values_3);
         }
@@ -99,8 +91,8 @@ class ContentNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('brokenRelationTargetIds', $data) && $data['brokenRelationTargetIds'] !== null) {
             $values_4 = [];
-            foreach ($data['brokenRelationTargetIds'] as $value_6) {
-                $values_4[] = $value_6;
+            foreach ($data['brokenRelationTargetIds'] as $value_4) {
+                $values_4[] = $value_4;
             }
             $object->setBrokenRelationTargetIds($values_4);
         }
@@ -108,11 +100,7 @@ class ContentNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setBrokenRelationTargetIds(null);
         }
         if (\array_key_exists('lifeCycle', $data)) {
-            $value_7 = $data['lifeCycle'];
-            if (is_string($data['lifeCycle'])) {
-                $value_7 = $data['lifeCycle'];
-            }
-            $object->setLifeCycle($value_7);
+            $object->setLifeCycle($data['lifeCycle']);
         }
         return $object;
     }
@@ -120,57 +108,45 @@ class ContentNormalizer implements DenormalizerInterface, NormalizerInterface, D
     {
         $dataArray = [];
         if ($data->isInitialized('audit')) {
-            $value = $data->getAudit();
-            if (is_object($data->getAudit())) {
-                $value = $this->normalizer->normalize($data->getAudit(), 'json', $context);
-            }
-            $dataArray['audit'] = $value;
+            $dataArray['audit'] = $data->getAudit();
         }
         $dataArray['contentSchemaId'] = $data->getContentSchemaId();
-        $value_1 = $data->getContentType();
-        if (is_string($data->getContentType())) {
-            $value_1 = $data->getContentType();
-        }
-        $dataArray['contentType'] = $value_1;
+        $dataArray['contentType'] = $data->getContentType();
         if ($data->isInitialized('layerSchemaIds')) {
             $values = [];
-            foreach ($data->getLayerSchemaIds() as $value_2) {
-                $values[] = $value_2;
+            foreach ($data->getLayerSchemaIds() as $value) {
+                $values[] = $value;
             }
             $dataArray['layerSchemaIds'] = $values;
         }
         $values_1 = [];
-        foreach ($data->getDisplayValues() as $key => $value_3) {
-            $values_1[$key] = $value_3;
+        foreach ($data->getDisplayValues() as $key => $value_1) {
+            $values_1[$key] = $value_1;
         }
         $dataArray['displayValues'] = $values_1;
         $dataArray['id'] = $data->getId();
         if ($data->isInitialized('brokenReferenceIds')) {
             $values_2 = [];
-            foreach ($data->getBrokenReferenceIds() as $value_4) {
-                $values_2[] = $value_4;
+            foreach ($data->getBrokenReferenceIds() as $value_2) {
+                $values_2[] = $value_2;
             }
             $dataArray['brokenReferenceIds'] = $values_2;
         }
         if ($data->isInitialized('brokenIndirectReferenceIds')) {
             $values_3 = [];
-            foreach ($data->getBrokenIndirectReferenceIds() as $value_5) {
-                $values_3[] = $value_5;
+            foreach ($data->getBrokenIndirectReferenceIds() as $value_3) {
+                $values_3[] = $value_3;
             }
             $dataArray['brokenIndirectReferenceIds'] = $values_3;
         }
         if ($data->isInitialized('brokenRelationTargetIds')) {
             $values_4 = [];
-            foreach ($data->getBrokenRelationTargetIds() as $value_6) {
-                $values_4[] = $value_6;
+            foreach ($data->getBrokenRelationTargetIds() as $value_4) {
+                $values_4[] = $value_4;
             }
             $dataArray['brokenRelationTargetIds'] = $values_4;
         }
-        $value_7 = $data->getLifeCycle();
-        if (is_string($data->getLifeCycle())) {
-            $value_7 = $data->getLifeCycle();
-        }
-        $dataArray['lifeCycle'] = $value_7;
+        $dataArray['lifeCycle'] = $data->getLifeCycle();
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

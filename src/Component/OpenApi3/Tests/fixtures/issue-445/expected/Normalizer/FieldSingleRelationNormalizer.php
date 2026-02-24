@@ -71,30 +71,14 @@ class FieldSingleRelationNormalizer implements DenormalizerInterface, Normalizer
             $object->setFieldNamespace(null);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $value = $data['names'];
-            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
-                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['names'] as $key => $value_1) {
-                    $values[$key] = $value_1;
-                }
-                $value = $values;
-            }
-            $object->setNames($value);
+            $object->setNames($data['names']);
             unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
-            $value_2 = $data['descriptions'];
-            if (is_array($data['descriptions']) && $this->isOnlyNumericKeys($data['descriptions'])) {
-                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['descriptions'] as $key_1 => $value_3) {
-                    $values_1[$key_1] = $value_3;
-                }
-                $value_2 = $values_1;
-            }
-            $object->setDescriptions($value_2);
+            $object->setDescriptions($data['descriptions']);
             unset($data['descriptions']);
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
@@ -129,27 +113,23 @@ class FieldSingleRelationNormalizer implements DenormalizerInterface, Normalizer
             unset($data['schemaId']);
         }
         if (\array_key_exists('schemaIndexingInfo', $data) && $data['schemaIndexingInfo'] !== null) {
-            $value_4 = $data['schemaIndexingInfo'];
-            if (is_array($data['schemaIndexingInfo'])) {
-                $value_4 = $this->denormalizer->denormalize($data['schemaIndexingInfo'], \PicturePark\API\Model\SchemaIndexingInfo::class, 'json', $context);
-            }
-            $object->setSchemaIndexingInfo($value_4);
+            $object->setSchemaIndexingInfo($data['schemaIndexingInfo']);
             unset($data['schemaIndexingInfo']);
         }
         elseif (\array_key_exists('schemaIndexingInfo', $data) && $data['schemaIndexingInfo'] === null) {
             $object->setSchemaIndexingInfo(null);
         }
         if (\array_key_exists('relationTypes', $data)) {
-            $values_2 = [];
-            foreach ($data['relationTypes'] as $value_5) {
-                $values_2[] = $this->denormalizer->denormalize($value_5, \PicturePark\API\Model\RelationType::class, 'json', $context);
+            $values = [];
+            foreach ($data['relationTypes'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\RelationType::class, 'json', $context);
             }
-            $object->setRelationTypes($values_2);
+            $object->setRelationTypes($values);
             unset($data['relationTypes']);
         }
-        foreach ($data as $key_2 => $value_6) {
-            if (preg_match('/.*/', (string) $key_2)) {
-                $object[$key_2] = $value_6;
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -165,26 +145,10 @@ class FieldSingleRelationNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['fieldNamespace'] = $data->getFieldNamespace();
         }
         if ($data->isInitialized('names')) {
-            $value = $data->getNames();
-            if (is_object($data->getNames())) {
-                $values = [];
-                foreach ($data->getNames() as $key => $value_1) {
-                    $values[$key] = $value_1;
-                }
-                $value = $values;
-            }
-            $dataArray['names'] = $value;
+            $dataArray['names'] = $data->getNames();
         }
         if ($data->isInitialized('descriptions')) {
-            $value_2 = $data->getDescriptions();
-            if (is_object($data->getDescriptions())) {
-                $values_1 = [];
-                foreach ($data->getDescriptions() as $key_1 => $value_3) {
-                    $values_1[$key_1] = $value_3;
-                }
-                $value_2 = $values_1;
-            }
-            $dataArray['descriptions'] = $value_2;
+            $dataArray['descriptions'] = $data->getDescriptions();
         }
         $dataArray['required'] = $data->getRequired();
         $dataArray['fixed'] = $data->getFixed();
@@ -194,20 +158,16 @@ class FieldSingleRelationNormalizer implements DenormalizerInterface, Normalizer
         $dataArray['kind'] = $data->getKind();
         $dataArray['schemaId'] = $data->getSchemaId();
         if ($data->isInitialized('schemaIndexingInfo')) {
-            $value_4 = $data->getSchemaIndexingInfo();
-            if (is_object($data->getSchemaIndexingInfo())) {
-                $value_4 = $this->normalizer->normalize($data->getSchemaIndexingInfo(), 'json', $context);
-            }
-            $dataArray['schemaIndexingInfo'] = $value_4;
+            $dataArray['schemaIndexingInfo'] = $data->getSchemaIndexingInfo();
         }
-        $values_2 = [];
-        foreach ($data->getRelationTypes() as $value_5) {
-            $values_2[] = $this->normalizer->normalize($value_5, 'json', $context);
+        $values = [];
+        foreach ($data->getRelationTypes() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        $dataArray['relationTypes'] = $values_2;
-        foreach ($data as $key_2 => $value_6) {
-            if (preg_match('/.*/', (string) $key_2)) {
-                $dataArray[$key_2] = $value_6;
+        $dataArray['relationTypes'] = $values;
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

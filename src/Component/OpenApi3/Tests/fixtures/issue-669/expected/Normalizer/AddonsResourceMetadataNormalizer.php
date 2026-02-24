@@ -42,18 +42,12 @@ class AddonsResourceMetadataNormalizer implements DenormalizerInterface, Normali
             unset($data['name']);
         }
         if (\array_key_exists('value', $data)) {
-            $value = $data['value'];
-            if (is_string($data['value'])) {
-                $value = $data['value'];
-            } elseif (is_bool($data['value'])) {
-                $value = $data['value'];
-            }
-            $object->setValue($value);
+            $object->setValue($data['value']);
             unset($data['value']);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value;
             }
         }
         return $object;
@@ -62,16 +56,10 @@ class AddonsResourceMetadataNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         $dataArray['name'] = $data->getName();
-        $value = $data->getValue();
-        if (is_string($data->getValue())) {
-            $value = $data->getValue();
-        } elseif (is_bool($data->getValue())) {
-            $value = $data->getValue();
-        }
-        $dataArray['value'] = $value;
-        foreach ($data as $key => $value_1) {
+        $dataArray['value'] = $data->getValue();
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+                $dataArray[$key] = $value;
             }
         }
         return $dataArray;

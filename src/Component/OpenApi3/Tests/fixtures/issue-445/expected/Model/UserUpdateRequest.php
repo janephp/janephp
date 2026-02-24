@@ -63,7 +63,7 @@ class UserUpdateRequest extends \ArrayObject
     /**
      * User's address.
      *
-     * @var UserAddress|null
+     * @var mixed|null
      */
     protected $address;
     /**
@@ -251,20 +251,20 @@ class UserUpdateRequest extends \ArrayObject
     /**
      * User's address.
      *
-     * @return UserAddress|null
+     * @return mixed
      */
-    public function getAddress(): ?UserAddress
+    public function getAddress()
     {
         return $this->address;
     }
     /**
      * User's address.
      *
-     * @param UserAddress|null $address
+     * @param mixed $address
      *
      * @return self
      */
-    public function setAddress(?UserAddress $address): self
+    public function setAddress($address): self
     {
         $this->initialized['address'] = true;
         $this->address = $address;

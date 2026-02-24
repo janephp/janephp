@@ -56,18 +56,10 @@ class OutputNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setContentId($data['contentId']);
         }
         if (\array_key_exists('renderingState', $data)) {
-            $value = $data['renderingState'];
-            if (is_string($data['renderingState'])) {
-                $value = $data['renderingState'];
-            }
-            $object->setRenderingState($value);
+            $object->setRenderingState($data['renderingState']);
         }
         if (\array_key_exists('detail', $data) && $data['detail'] !== null) {
-            $value_1 = $data['detail'];
-            if (is_array($data['detail']) and isset($data['detail']['kind'])) {
-                $value_1 = $this->denormalizer->denormalize($data['detail'], \PicturePark\API\Model\OutputDataBase::class, 'json', $context);
-            }
-            $object->setDetail($value_1);
+            $object->setDetail($data['detail']);
         }
         elseif (\array_key_exists('detail', $data) && $data['detail'] === null) {
             $object->setDetail(null);
@@ -103,17 +95,9 @@ class OutputNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         $dataArray['outputFormatId'] = $data->getOutputFormatId();
         $dataArray['contentId'] = $data->getContentId();
-        $value = $data->getRenderingState();
-        if (is_string($data->getRenderingState())) {
-            $value = $data->getRenderingState();
-        }
-        $dataArray['renderingState'] = $value;
+        $dataArray['renderingState'] = $data->getRenderingState();
         if ($data->isInitialized('detail')) {
-            $value_1 = $data->getDetail();
-            if (is_object($data->getDetail())) {
-                $value_1 = $this->normalizer->normalize($data->getDetail(), 'json', $context);
-            }
-            $dataArray['detail'] = $value_1;
+            $dataArray['detail'] = $data->getDetail();
         }
         if ($data->isInitialized('backupTimestamp')) {
             $dataArray['backupTimestamp'] = $data->getBackupTimestamp()?->format('Y-m-d\TH:i:sP');

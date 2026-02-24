@@ -45,7 +45,7 @@ class ShareBaseUpdateRequest
     /**
      * Access for content outputs in share.
      *
-     * @var string
+     * @var mixed
      */
     protected $outputAccess;
     /**
@@ -150,18 +150,18 @@ class ShareBaseUpdateRequest
     /**
      * Access for content outputs in share.
      *
-     * @return string
+     * @return mixed
      */
-    public function getOutputAccess(): string
+    public function getOutputAccess()
     {
         return $this->outputAccess;
     }
     /**
      * Access for content outputs in share.
      *
-     * @param string $outputAccess
+     * @param mixed $outputAccess
      */
-    public function setOutputAccess(string $outputAccess)
+    public function setOutputAccess($outputAccess)
     {
         $this->initialized['outputAccess'] = true;
         $this->outputAccess = $outputAccess;

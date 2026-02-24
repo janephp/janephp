@@ -15,13 +15,13 @@ class ImageFormatBase extends FormatBase
     /**
      * Color profile to use. Colorspace is derived from the chosen profile.
      *
-     * @var string|null
+     * @var mixed|null
      */
     protected $colorProfile;
     /**
      * The method of conversion for color spaces (e.g. CMYK to RGB). Further information can be found here: http://www.colourphil.co.uk/rendering_intents.shtml
      *
-     * @var string
+     * @var mixed
      */
     protected $colorTransformationIntent;
     /**
@@ -45,7 +45,7 @@ class ImageFormatBase extends FormatBase
     /**
      * Allows resizing of the image.
      *
-     * @var ResizeAction|null
+     * @var mixed|null
      */
     protected $resizeAction;
     /**
@@ -57,20 +57,20 @@ class ImageFormatBase extends FormatBase
     /**
      * Color profile to use. Colorspace is derived from the chosen profile.
      *
-     * @return string|null
+     * @return mixed
      */
-    public function getColorProfile(): ?string
+    public function getColorProfile()
     {
         return $this->colorProfile;
     }
     /**
      * Color profile to use. Colorspace is derived from the chosen profile.
      *
-     * @param string|null $colorProfile
+     * @param mixed $colorProfile
      *
      * @return self
      */
-    public function setColorProfile(?string $colorProfile): self
+    public function setColorProfile($colorProfile): self
     {
         $this->initialized['colorProfile'] = true;
         $this->colorProfile = $colorProfile;
@@ -79,20 +79,20 @@ class ImageFormatBase extends FormatBase
     /**
      * The method of conversion for color spaces (e.g. CMYK to RGB). Further information can be found here: http://www.colourphil.co.uk/rendering_intents.shtml
      *
-     * @return string
+     * @return mixed
      */
-    public function getColorTransformationIntent(): string
+    public function getColorTransformationIntent()
     {
         return $this->colorTransformationIntent;
     }
     /**
      * The method of conversion for color spaces (e.g. CMYK to RGB). Further information can be found here: http://www.colourphil.co.uk/rendering_intents.shtml
      *
-     * @param string $colorTransformationIntent
+     * @param mixed $colorTransformationIntent
      *
      * @return self
      */
-    public function setColorTransformationIntent(string $colorTransformationIntent): self
+    public function setColorTransformationIntent($colorTransformationIntent): self
     {
         $this->initialized['colorTransformationIntent'] = true;
         $this->colorTransformationIntent = $colorTransformationIntent;
@@ -167,20 +167,20 @@ class ImageFormatBase extends FormatBase
     /**
      * Allows resizing of the image.
      *
-     * @return ResizeAction|null
+     * @return mixed
      */
-    public function getResizeAction(): ?ResizeAction
+    public function getResizeAction()
     {
         return $this->resizeAction;
     }
     /**
      * Allows resizing of the image.
      *
-     * @param ResizeAction|null $resizeAction
+     * @param mixed $resizeAction
      *
      * @return self
      */
-    public function setResizeAction(?ResizeAction $resizeAction): self
+    public function setResizeAction($resizeAction): self
     {
         $this->initialized['resizeAction'] = true;
         $this->resizeAction = $resizeAction;

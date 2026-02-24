@@ -49,19 +49,15 @@ class NotConditionNormalizer implements DenormalizerInterface, NormalizerInterfa
             unset($data['kind']);
         }
         if (\array_key_exists('condition', $data) && $data['condition'] !== null) {
-            $value = $data['condition'];
-            if (is_array($data['condition']) and isset($data['condition']['kind'])) {
-                $value = $this->denormalizer->denormalize($data['condition'], \PicturePark\API\Model\BusinessRuleCondition::class, 'json', $context);
-            }
-            $object->setCondition($value);
+            $object->setCondition($data['condition']);
             unset($data['condition']);
         }
         elseif (\array_key_exists('condition', $data) && $data['condition'] === null) {
             $object->setCondition(null);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value;
             }
         }
         return $object;
@@ -74,15 +70,11 @@ class NotConditionNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $dataArray['kind'] = $data->getKind();
         if ($data->isInitialized('condition')) {
-            $value = $data->getCondition();
-            if (is_object($data->getCondition())) {
-                $value = $this->normalizer->normalize($data->getCondition(), 'json', $context);
-            }
-            $dataArray['condition'] = $value;
+            $dataArray['condition'] = $data->getCondition();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+                $dataArray[$key] = $value;
             }
         }
         return $dataArray;

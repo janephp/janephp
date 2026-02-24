@@ -68,18 +68,10 @@ class BusinessProcessNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setSupportsCancellation($data['supportsCancellation']);
         }
         if (\array_key_exists('businessProcessScope', $data)) {
-            $value = $data['businessProcessScope'];
-            if (is_string($data['businessProcessScope'])) {
-                $value = $data['businessProcessScope'];
-            }
-            $object->setBusinessProcessScope($value);
+            $object->setBusinessProcessScope($data['businessProcessScope']);
         }
         if (\array_key_exists('lifeCycle', $data)) {
-            $value_1 = $data['lifeCycle'];
-            if (is_string($data['lifeCycle'])) {
-                $value_1 = $data['lifeCycle'];
-            }
-            $object->setLifeCycle($value_1);
+            $object->setLifeCycle($data['lifeCycle']);
         }
         if (\array_key_exists('startDate', $data)) {
             $object->setStartDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['startDate']));
@@ -92,8 +84,8 @@ class BusinessProcessNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('stateHistory', $data) && $data['stateHistory'] !== null) {
             $values = [];
-            foreach ($data['stateHistory'] as $value_2) {
-                $values[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\BusinessProcessState::class, 'json', $context);
+            foreach ($data['stateHistory'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\BusinessProcessState::class, 'json', $context);
             }
             $object->setStateHistory($values);
         }
@@ -138,23 +130,15 @@ class BusinessProcessNormalizer implements DenormalizerInterface, NormalizerInte
             $dataArray['referenceDocType'] = $data->getReferenceDocType();
         }
         $dataArray['supportsCancellation'] = $data->getSupportsCancellation();
-        $value = $data->getBusinessProcessScope();
-        if (is_string($data->getBusinessProcessScope())) {
-            $value = $data->getBusinessProcessScope();
-        }
-        $dataArray['businessProcessScope'] = $value;
-        $value_1 = $data->getLifeCycle();
-        if (is_string($data->getLifeCycle())) {
-            $value_1 = $data->getLifeCycle();
-        }
-        $dataArray['lifeCycle'] = $value_1;
+        $dataArray['businessProcessScope'] = $data->getBusinessProcessScope();
+        $dataArray['lifeCycle'] = $data->getLifeCycle();
         $dataArray['startDate'] = $data->getStartDate()->format('Y-m-d\TH:i:sP');
         $dataArray['endDate'] = $data->getEndDate()->format('Y-m-d\TH:i:sP');
         $dataArray['finished'] = $data->getFinished();
         if ($data->isInitialized('stateHistory')) {
             $values = [];
-            foreach ($data->getStateHistory() as $value_2) {
-                $values[] = $this->normalizer->normalize($value_2, 'json', $context);
+            foreach ($data->getStateHistory() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['stateHistory'] = $values;
         }

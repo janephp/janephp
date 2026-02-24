@@ -21,13 +21,13 @@ class BusinessProcessStateChangeRequest
     /**
      * The new life cycle of the business process.
      *
-     * @var string
+     * @var mixed
      */
     protected $lifeCycle;
     /**
      * An optional notification update to be posted together with the transition.
      *
-     * @var BusinessProcessNotificationUpdate|null
+     * @var mixed|null
      */
     protected $notification;
     /**
@@ -55,20 +55,20 @@ class BusinessProcessStateChangeRequest
     /**
      * The new life cycle of the business process.
      *
-     * @return string
+     * @return mixed
      */
-    public function getLifeCycle(): string
+    public function getLifeCycle()
     {
         return $this->lifeCycle;
     }
     /**
      * The new life cycle of the business process.
      *
-     * @param string $lifeCycle
+     * @param mixed $lifeCycle
      *
      * @return self
      */
-    public function setLifeCycle(string $lifeCycle): self
+    public function setLifeCycle($lifeCycle): self
     {
         $this->initialized['lifeCycle'] = true;
         $this->lifeCycle = $lifeCycle;
@@ -77,20 +77,20 @@ class BusinessProcessStateChangeRequest
     /**
      * An optional notification update to be posted together with the transition.
      *
-     * @return BusinessProcessNotificationUpdate|null
+     * @return mixed
      */
-    public function getNotification(): ?BusinessProcessNotificationUpdate
+    public function getNotification()
     {
         return $this->notification;
     }
     /**
      * An optional notification update to be posted together with the transition.
      *
-     * @param BusinessProcessNotificationUpdate|null $notification
+     * @param mixed $notification
      *
      * @return self
      */
-    public function setNotification(?BusinessProcessNotificationUpdate $notification): self
+    public function setNotification($notification): self
     {
         $this->initialized['notification'] = true;
         $this->notification = $notification;

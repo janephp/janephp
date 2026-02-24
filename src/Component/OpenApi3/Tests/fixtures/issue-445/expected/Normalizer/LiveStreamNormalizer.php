@@ -56,21 +56,13 @@ class LiveStreamNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']));
         }
         if (\array_key_exists('traceJob', $data) && $data['traceJob'] !== null) {
-            $value = $data['traceJob'];
-            if (is_array($data['traceJob'])) {
-                $value = $this->denormalizer->denormalize($data['traceJob'], \PicturePark\API\Model\LiveStreamTraceJob::class, 'json', $context);
-            }
-            $object->setTraceJob($value);
+            $object->setTraceJob($data['traceJob']);
         }
         elseif (\array_key_exists('traceJob', $data) && $data['traceJob'] === null) {
             $object->setTraceJob(null);
         }
         if (\array_key_exists('audit', $data) && $data['audit'] !== null) {
-            $value_1 = $data['audit'];
-            if (is_array($data['audit']) and isset($data['audit']['creationDate']) and isset($data['audit']['modificationDate'])) {
-                $value_1 = $this->denormalizer->denormalize($data['audit'], \PicturePark\API\Model\UserAudit::class, 'json', $context);
-            }
-            $object->setAudit($value_1);
+            $object->setAudit($data['audit']);
         }
         elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
             $object->setAudit(null);
@@ -89,18 +81,10 @@ class LiveStreamNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('traceJob')) {
-            $value = $data->getTraceJob();
-            if (is_object($data->getTraceJob())) {
-                $value = $this->normalizer->normalize($data->getTraceJob(), 'json', $context);
-            }
-            $dataArray['traceJob'] = $value;
+            $dataArray['traceJob'] = $data->getTraceJob();
         }
         if ($data->isInitialized('audit')) {
-            $value_1 = $data->getAudit();
-            if (is_object($data->getAudit())) {
-                $value_1 = $this->normalizer->normalize($data->getAudit(), 'json', $context);
-            }
-            $dataArray['audit'] = $value_1;
+            $dataArray['audit'] = $data->getAudit();
         }
         return $dataArray;
     }

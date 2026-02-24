@@ -27,7 +27,7 @@ class MetadataStatus
     /**
      * The global state of the Contents and ListItems compared to the schema structure (Green = ok, Red = update needed).
      *
-     * @var string
+     * @var mixed
      */
     protected $state;
     /**
@@ -83,20 +83,20 @@ class MetadataStatus
     /**
      * The global state of the Contents and ListItems compared to the schema structure (Green = ok, Red = update needed).
      *
-     * @return string
+     * @return mixed
      */
-    public function getState(): string
+    public function getState()
     {
         return $this->state;
     }
     /**
      * The global state of the Contents and ListItems compared to the schema structure (Green = ok, Red = update needed).
      *
-     * @param string $state
+     * @param mixed $state
      *
      * @return self
      */
-    public function setState(string $state): self
+    public function setState($state): self
     {
         $this->initialized['state'] = true;
         $this->state = $state;

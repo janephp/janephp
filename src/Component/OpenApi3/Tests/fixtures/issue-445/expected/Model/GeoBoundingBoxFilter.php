@@ -22,13 +22,13 @@ class GeoBoundingBoxFilter extends FilterBase
     /**
      * The top left corner of the bounding box's geo location (latitude and longitude).
      *
-     * @var GeoLocation
+     * @var mixed
      */
     protected $topLeft;
     /**
      * The bottom right corner of the bounding box's geo location (latitude and longitude).
      *
-     * @var GeoLocation
+     * @var mixed
      */
     protected $bottomRight;
     /**
@@ -58,20 +58,20 @@ class GeoBoundingBoxFilter extends FilterBase
     /**
      * The top left corner of the bounding box's geo location (latitude and longitude).
      *
-     * @return GeoLocation
+     * @return mixed
      */
-    public function getTopLeft(): GeoLocation
+    public function getTopLeft()
     {
         return $this->topLeft;
     }
     /**
      * The top left corner of the bounding box's geo location (latitude and longitude).
      *
-     * @param GeoLocation $topLeft
+     * @param mixed $topLeft
      *
      * @return self
      */
-    public function setTopLeft(GeoLocation $topLeft): self
+    public function setTopLeft($topLeft): self
     {
         $this->initialized['topLeft'] = true;
         $this->topLeft = $topLeft;
@@ -80,20 +80,20 @@ class GeoBoundingBoxFilter extends FilterBase
     /**
      * The bottom right corner of the bounding box's geo location (latitude and longitude).
      *
-     * @return GeoLocation
+     * @return mixed
      */
-    public function getBottomRight(): GeoLocation
+    public function getBottomRight()
     {
         return $this->bottomRight;
     }
     /**
      * The bottom right corner of the bounding box's geo location (latitude and longitude).
      *
-     * @param GeoLocation $bottomRight
+     * @param mixed $bottomRight
      *
      * @return self
      */
-    public function setBottomRight(GeoLocation $bottomRight): self
+    public function setBottomRight($bottomRight): self
     {
         $this->initialized['bottomRight'] = true;
         $this->bottomRight = $bottomRight;

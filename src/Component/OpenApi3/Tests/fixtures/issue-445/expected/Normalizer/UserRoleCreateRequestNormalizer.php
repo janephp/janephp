@@ -38,23 +38,15 @@ class UserRoleCreateRequestNormalizer implements DenormalizerInterface, Normaliz
             return $object;
         }
         if (\array_key_exists('names', $data)) {
-            $value = $data['names'];
-            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
-                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['names'] as $key => $value_1) {
-                    $values[$key] = $value_1;
-                }
-                $value = $values;
-            }
-            $object->setNames($value);
+            $object->setNames($data['names']);
             unset($data['names']);
         }
         if (\array_key_exists('userRights', $data)) {
-            $values_1 = [];
-            foreach ($data['userRights'] as $value_2) {
-                $values_1[] = $value_2;
+            $values = [];
+            foreach ($data['userRights'] as $value) {
+                $values[] = $value;
             }
-            $object->setUserRights($values_1);
+            $object->setUserRights($values);
             unset($data['userRights']);
         }
         if (\array_key_exists('requestId', $data) && $data['requestId'] !== null) {
@@ -64,9 +56,9 @@ class UserRoleCreateRequestNormalizer implements DenormalizerInterface, Normaliz
         elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
             $object->setRequestId(null);
         }
-        foreach ($data as $key_1 => $value_3) {
-            if (preg_match('/.*/', (string) $key_1)) {
-                $object[$key_1] = $value_3;
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -74,26 +66,18 @@ class UserRoleCreateRequestNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->getNames();
-        if (is_object($data->getNames())) {
-            $values = [];
-            foreach ($data->getNames() as $key => $value_1) {
-                $values[$key] = $value_1;
-            }
-            $value = $values;
+        $dataArray['names'] = $data->getNames();
+        $values = [];
+        foreach ($data->getUserRights() as $value) {
+            $values[] = $value;
         }
-        $dataArray['names'] = $value;
-        $values_1 = [];
-        foreach ($data->getUserRights() as $value_2) {
-            $values_1[] = $value_2;
-        }
-        $dataArray['userRights'] = $values_1;
+        $dataArray['userRights'] = $values;
         if ($data->isInitialized('requestId')) {
             $dataArray['requestId'] = $data->getRequestId();
         }
-        foreach ($data as $key_1 => $value_3) {
-            if (preg_match('/.*/', (string) $key_1)) {
-                $dataArray[$key_1] = $value_3;
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

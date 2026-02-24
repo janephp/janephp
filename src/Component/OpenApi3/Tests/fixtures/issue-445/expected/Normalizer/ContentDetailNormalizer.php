@@ -124,11 +124,7 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->setOutputs(null);
         }
         if (\array_key_exists('audit', $data) && $data['audit'] !== null) {
-            $value_8 = $data['audit'];
-            if (is_array($data['audit']) and isset($data['audit']['creationDate']) and isset($data['audit']['modificationDate'])) {
-                $value_8 = $this->denormalizer->denormalize($data['audit'], \PicturePark\API\Model\UserAuditDetail::class, 'json', $context);
-            }
-            $object->setAudit($value_8);
+            $object->setAudit($data['audit']);
         }
         elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
             $object->setAudit(null);
@@ -137,59 +133,35 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->setOwnerTokenId($data['ownerTokenId']);
         }
         if (\array_key_exists('owner', $data) && $data['owner'] !== null) {
-            $value_9 = $data['owner'];
-            if (is_array($data['owner']) and isset($data['owner']['emailAddress']) and isset($data['owner']['isDeleted'])) {
-                $value_9 = $this->denormalizer->denormalize($data['owner'], \PicturePark\API\Model\User::class, 'json', $context);
-            }
-            $object->setOwner($value_9);
+            $object->setOwner($data['owner']);
         }
         elseif (\array_key_exists('owner', $data) && $data['owner'] === null) {
             $object->setOwner(null);
         }
         if (\array_key_exists('contentType', $data)) {
-            $value_10 = $data['contentType'];
-            if (is_string($data['contentType'])) {
-                $value_10 = $data['contentType'];
-            }
-            $object->setContentType($value_10);
+            $object->setContentType($data['contentType']);
         }
         if (\array_key_exists('displayValues', $data) && $data['displayValues'] !== null) {
-            $value_11 = $data['displayValues'];
-            if (is_array($data['displayValues']) && $this->isOnlyNumericKeys($data['displayValues'])) {
-                $values_8 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['displayValues'] as $key_2 => $value_12) {
-                    $values_8[$key_2] = $value_12;
-                }
-                $value_11 = $values_8;
-            }
-            $object->setDisplayValues($value_11);
+            $object->setDisplayValues($data['displayValues']);
         }
         elseif (\array_key_exists('displayValues', $data) && $data['displayValues'] === null) {
             $object->setDisplayValues(null);
         }
         if (\array_key_exists('lifeCycle', $data)) {
-            $value_13 = $data['lifeCycle'];
-            if (is_string($data['lifeCycle'])) {
-                $value_13 = $data['lifeCycle'];
-            }
-            $object->setLifeCycle($value_13);
+            $object->setLifeCycle($data['lifeCycle']);
         }
         if (\array_key_exists('contentRights', $data) && $data['contentRights'] !== null) {
-            $values_9 = [];
-            foreach ($data['contentRights'] as $value_14) {
-                $values_9[] = $value_14;
+            $values_8 = [];
+            foreach ($data['contentRights'] as $value_8) {
+                $values_8[] = $value_8;
             }
-            $object->setContentRights($values_9);
+            $object->setContentRights($values_8);
         }
         elseif (\array_key_exists('contentRights', $data) && $data['contentRights'] === null) {
             $object->setContentRights(null);
         }
         if (\array_key_exists('activity', $data) && $data['activity'] !== null) {
-            $value_15 = $data['activity'];
-            if (is_array($data['activity'])) {
-                $value_15 = $this->denormalizer->denormalize($data['activity'], \PicturePark\API\Model\Activity::class, 'json', $context);
-            }
-            $object->setActivity($value_15);
+            $object->setActivity($data['activity']);
         }
         elseif (\array_key_exists('activity', $data) && $data['activity'] === null) {
             $object->setActivity(null);
@@ -258,54 +230,26 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
             $dataArray['outputs'] = $values_7;
         }
         if ($data->isInitialized('audit')) {
-            $value_8 = $data->getAudit();
-            if (is_object($data->getAudit())) {
-                $value_8 = $this->normalizer->normalize($data->getAudit(), 'json', $context);
-            }
-            $dataArray['audit'] = $value_8;
+            $dataArray['audit'] = $data->getAudit();
         }
         $dataArray['ownerTokenId'] = $data->getOwnerTokenId();
         if ($data->isInitialized('owner')) {
-            $value_9 = $data->getOwner();
-            if (is_object($data->getOwner())) {
-                $value_9 = $this->normalizer->normalize($data->getOwner(), 'json', $context);
-            }
-            $dataArray['owner'] = $value_9;
+            $dataArray['owner'] = $data->getOwner();
         }
-        $value_10 = $data->getContentType();
-        if (is_string($data->getContentType())) {
-            $value_10 = $data->getContentType();
-        }
-        $dataArray['contentType'] = $value_10;
+        $dataArray['contentType'] = $data->getContentType();
         if ($data->isInitialized('displayValues')) {
-            $value_11 = $data->getDisplayValues();
-            if (is_object($data->getDisplayValues())) {
-                $values_8 = [];
-                foreach ($data->getDisplayValues() as $key_2 => $value_12) {
-                    $values_8[$key_2] = $value_12;
-                }
-                $value_11 = $values_8;
-            }
-            $dataArray['displayValues'] = $value_11;
+            $dataArray['displayValues'] = $data->getDisplayValues();
         }
-        $value_13 = $data->getLifeCycle();
-        if (is_string($data->getLifeCycle())) {
-            $value_13 = $data->getLifeCycle();
-        }
-        $dataArray['lifeCycle'] = $value_13;
+        $dataArray['lifeCycle'] = $data->getLifeCycle();
         if ($data->isInitialized('contentRights')) {
-            $values_9 = [];
-            foreach ($data->getContentRights() as $value_14) {
-                $values_9[] = $value_14;
+            $values_8 = [];
+            foreach ($data->getContentRights() as $value_8) {
+                $values_8[] = $value_8;
             }
-            $dataArray['contentRights'] = $values_9;
+            $dataArray['contentRights'] = $values_8;
         }
         if ($data->isInitialized('activity')) {
-            $value_15 = $data->getActivity();
-            if (is_object($data->getActivity())) {
-                $value_15 = $this->normalizer->normalize($data->getActivity(), 'json', $context);
-            }
-            $dataArray['activity'] = $value_15;
+            $dataArray['activity'] = $data->getActivity();
         }
         return $dataArray;
     }

@@ -53,11 +53,7 @@ class BusinessProcessEventNormalizer implements DenormalizerInterface, Normalize
             $object->setBusinessProcessId(null);
         }
         if (\array_key_exists('lifeCycle', $data) && $data['lifeCycle'] !== null) {
-            $value = $data['lifeCycle'];
-            if (is_string($data['lifeCycle'])) {
-                $value = $data['lifeCycle'];
-            }
-            $object->setLifeCycle($value);
+            $object->setLifeCycle($data['lifeCycle']);
             unset($data['lifeCycle']);
         }
         elseif (\array_key_exists('lifeCycle', $data) && $data['lifeCycle'] === null) {
@@ -70,9 +66,9 @@ class BusinessProcessEventNormalizer implements DenormalizerInterface, Normalize
         elseif (\array_key_exists('state', $data) && $data['state'] === null) {
             $object->setState(null);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value;
             }
         }
         return $object;
@@ -86,18 +82,14 @@ class BusinessProcessEventNormalizer implements DenormalizerInterface, Normalize
             $dataArray['businessProcessId'] = $data->getBusinessProcessId();
         }
         if ($data->isInitialized('lifeCycle')) {
-            $value = $data->getLifeCycle();
-            if (is_string($data->getLifeCycle())) {
-                $value = $data->getLifeCycle();
-            }
-            $dataArray['lifeCycle'] = $value;
+            $dataArray['lifeCycle'] = $data->getLifeCycle();
         }
         if ($data->isInitialized('state')) {
             $dataArray['state'] = $data->getState();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+                $dataArray[$key] = $value;
             }
         }
         return $dataArray;

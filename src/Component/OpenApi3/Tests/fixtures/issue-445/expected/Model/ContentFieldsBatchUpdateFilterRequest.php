@@ -15,26 +15,26 @@ class ContentFieldsBatchUpdateFilterRequest extends MetadataValuesChangeRequestB
     /**
      * Filters the contents on which the change commands must be applied.
      *
-     * @var ContentFilterRequest
+     * @var mixed
      */
     protected $filterRequest;
     /**
      * Filters the contents on which the change commands must be applied.
      *
-     * @return ContentFilterRequest
+     * @return mixed
      */
-    public function getFilterRequest(): ContentFilterRequest
+    public function getFilterRequest()
     {
         return $this->filterRequest;
     }
     /**
      * Filters the contents on which the change commands must be applied.
      *
-     * @param ContentFilterRequest $filterRequest
+     * @param mixed $filterRequest
      *
      * @return self
      */
-    public function setFilterRequest(ContentFilterRequest $filterRequest): self
+    public function setFilterRequest($filterRequest): self
     {
         $this->initialized['filterRequest'] = true;
         $this->filterRequest = $filterRequest;

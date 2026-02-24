@@ -45,7 +45,7 @@ class ContentMetadataUpdateRequest
      * existing assigned layers not specified in the property are removed and missing layers are assigned.
      * Defaults to Merge.
      *
-     * @var string
+     * @var mixed
      */
     protected $layerSchemasUpdateOptions = 'Merge';
     /**
@@ -54,7 +54,7 @@ class ContentMetadataUpdateRequest
      * Replace: the values specified in the Metadata dictionary entirely replace any existing value of the corresponding schema on the content.
      * Defaults to Merge.
      *
-     * @var string
+     * @var mixed
      */
     protected $layerFieldsUpdateOptions = 'Merge';
     /**
@@ -63,7 +63,7 @@ class ContentMetadataUpdateRequest
      * Replace: the values specified in the Content object entirely replace the content.
      * Defaults to Merge.
      *
-     * @var string
+     * @var mixed
      */
     protected $contentFieldsUpdateOptions = 'Merge';
     /**
@@ -154,9 +154,9 @@ class ContentMetadataUpdateRequest
      * existing assigned layers not specified in the property are removed and missing layers are assigned.
      * Defaults to Merge.
      *
-     * @return string
+     * @return mixed
      */
-    public function getLayerSchemasUpdateOptions(): string
+    public function getLayerSchemasUpdateOptions()
     {
         return $this->layerSchemasUpdateOptions;
     }
@@ -168,11 +168,11 @@ class ContentMetadataUpdateRequest
     existing assigned layers not specified in the property are removed and missing layers are assigned.
     Defaults to Merge.
     *
-    * @param string $layerSchemasUpdateOptions
+    * @param mixed $layerSchemasUpdateOptions
     *
     * @return self
     */
-    public function setLayerSchemasUpdateOptions(string $layerSchemasUpdateOptions): self
+    public function setLayerSchemasUpdateOptions($layerSchemasUpdateOptions): self
     {
         $this->initialized['layerSchemasUpdateOptions'] = true;
         $this->layerSchemasUpdateOptions = $layerSchemasUpdateOptions;
@@ -184,9 +184,9 @@ class ContentMetadataUpdateRequest
      * Replace: the values specified in the Metadata dictionary entirely replace any existing value of the corresponding schema on the content.
      * Defaults to Merge.
      *
-     * @return string
+     * @return mixed
      */
-    public function getLayerFieldsUpdateOptions(): string
+    public function getLayerFieldsUpdateOptions()
     {
         return $this->layerFieldsUpdateOptions;
     }
@@ -196,11 +196,11 @@ class ContentMetadataUpdateRequest
     Replace: the values specified in the Metadata dictionary entirely replace any existing value of the corresponding schema on the content.
     Defaults to Merge.
     *
-    * @param string $layerFieldsUpdateOptions
+    * @param mixed $layerFieldsUpdateOptions
     *
     * @return self
     */
-    public function setLayerFieldsUpdateOptions(string $layerFieldsUpdateOptions): self
+    public function setLayerFieldsUpdateOptions($layerFieldsUpdateOptions): self
     {
         $this->initialized['layerFieldsUpdateOptions'] = true;
         $this->layerFieldsUpdateOptions = $layerFieldsUpdateOptions;
@@ -212,9 +212,9 @@ class ContentMetadataUpdateRequest
      * Replace: the values specified in the Content object entirely replace the content.
      * Defaults to Merge.
      *
-     * @return string
+     * @return mixed
      */
-    public function getContentFieldsUpdateOptions(): string
+    public function getContentFieldsUpdateOptions()
     {
         return $this->contentFieldsUpdateOptions;
     }
@@ -224,11 +224,11 @@ class ContentMetadataUpdateRequest
     Replace: the values specified in the Content object entirely replace the content.
     Defaults to Merge.
     *
-    * @param string $contentFieldsUpdateOptions
+    * @param mixed $contentFieldsUpdateOptions
     *
     * @return self
     */
-    public function setContentFieldsUpdateOptions(string $contentFieldsUpdateOptions): self
+    public function setContentFieldsUpdateOptions($contentFieldsUpdateOptions): self
     {
         $this->initialized['contentFieldsUpdateOptions'] = true;
         $this->contentFieldsUpdateOptions = $contentFieldsUpdateOptions;

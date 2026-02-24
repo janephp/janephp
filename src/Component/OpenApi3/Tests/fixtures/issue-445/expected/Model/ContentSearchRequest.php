@@ -27,7 +27,7 @@ class ContentSearchRequest extends \ArrayObject
     /**
      * An optional search filter. Limits the document result set.
      *
-     * @var FilterBase|null
+     * @var mixed|null
      */
     protected $filter;
     /**
@@ -64,19 +64,19 @@ class ContentSearchRequest extends \ArrayObject
     /**
      * Limits the aggregation to the contents that have the specified life cycle state. Defaults to ActiveOnly.
      *
-     * @var string
+     * @var mixed
      */
     protected $lifeCycleFilter = 'ActiveOnly';
     /**
      * Limits the aggregation to the contents that have or not have broken references. By default it includes both.
      *
-     * @var string
+     * @var mixed
      */
     protected $brokenDependenciesFilter = 'All';
     /**
      * Type of search to be performed: search only in metadata, only in the extracted fulltext from the file or both. Default to Metadata.
      *
-     * @var string
+     * @var mixed
      */
     protected $searchType = 'Metadata';
     /**
@@ -176,20 +176,20 @@ class ContentSearchRequest extends \ArrayObject
     /**
      * An optional search filter. Limits the document result set.
      *
-     * @return FilterBase|null
+     * @return mixed
      */
-    public function getFilter(): ?FilterBase
+    public function getFilter()
     {
         return $this->filter;
     }
     /**
      * An optional search filter. Limits the document result set.
      *
-     * @param FilterBase|null $filter
+     * @param mixed $filter
      *
      * @return self
      */
-    public function setFilter(?FilterBase $filter): self
+    public function setFilter($filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;
@@ -300,20 +300,20 @@ class ContentSearchRequest extends \ArrayObject
     /**
      * Limits the aggregation to the contents that have the specified life cycle state. Defaults to ActiveOnly.
      *
-     * @return string
+     * @return mixed
      */
-    public function getLifeCycleFilter(): string
+    public function getLifeCycleFilter()
     {
         return $this->lifeCycleFilter;
     }
     /**
      * Limits the aggregation to the contents that have the specified life cycle state. Defaults to ActiveOnly.
      *
-     * @param string $lifeCycleFilter
+     * @param mixed $lifeCycleFilter
      *
      * @return self
      */
-    public function setLifeCycleFilter(string $lifeCycleFilter): self
+    public function setLifeCycleFilter($lifeCycleFilter): self
     {
         $this->initialized['lifeCycleFilter'] = true;
         $this->lifeCycleFilter = $lifeCycleFilter;
@@ -322,20 +322,20 @@ class ContentSearchRequest extends \ArrayObject
     /**
      * Limits the aggregation to the contents that have or not have broken references. By default it includes both.
      *
-     * @return string
+     * @return mixed
      */
-    public function getBrokenDependenciesFilter(): string
+    public function getBrokenDependenciesFilter()
     {
         return $this->brokenDependenciesFilter;
     }
     /**
      * Limits the aggregation to the contents that have or not have broken references. By default it includes both.
      *
-     * @param string $brokenDependenciesFilter
+     * @param mixed $brokenDependenciesFilter
      *
      * @return self
      */
-    public function setBrokenDependenciesFilter(string $brokenDependenciesFilter): self
+    public function setBrokenDependenciesFilter($brokenDependenciesFilter): self
     {
         $this->initialized['brokenDependenciesFilter'] = true;
         $this->brokenDependenciesFilter = $brokenDependenciesFilter;
@@ -344,20 +344,20 @@ class ContentSearchRequest extends \ArrayObject
     /**
      * Type of search to be performed: search only in metadata, only in the extracted fulltext from the file or both. Default to Metadata.
      *
-     * @return string
+     * @return mixed
      */
-    public function getSearchType(): string
+    public function getSearchType()
     {
         return $this->searchType;
     }
     /**
      * Type of search to be performed: search only in metadata, only in the extracted fulltext from the file or both. Default to Metadata.
      *
-     * @param string $searchType
+     * @param mixed $searchType
      *
      * @return self
      */
-    public function setSearchType(string $searchType): self
+    public function setSearchType($searchType): self
     {
         $this->initialized['searchType'] = true;
         $this->searchType = $searchType;

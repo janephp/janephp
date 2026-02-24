@@ -53,11 +53,7 @@ class BatchResponseRowNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setVersion($data['version']);
         }
         if (\array_key_exists('error', $data) && $data['error'] !== null) {
-            $value = $data['error'];
-            if (is_array($data['error'])) {
-                $value = $this->denormalizer->denormalize($data['error'], \PicturePark\API\Model\ErrorResponse::class, 'json', $context);
-            }
-            $object->setError($value);
+            $object->setError($data['error']);
         }
         elseif (\array_key_exists('error', $data) && $data['error'] === null) {
             $object->setError(null);
@@ -78,11 +74,7 @@ class BatchResponseRowNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray['status'] = $data->getStatus();
         $dataArray['version'] = $data->getVersion();
         if ($data->isInitialized('error')) {
-            $value = $data->getError();
-            if (is_object($data->getError())) {
-                $value = $this->normalizer->normalize($data->getError(), 'json', $context);
-            }
-            $dataArray['error'] = $value;
+            $dataArray['error'] = $data->getError();
         }
         if ($data->isInitialized('requestId')) {
             $dataArray['requestId'] = $data->getRequestId();

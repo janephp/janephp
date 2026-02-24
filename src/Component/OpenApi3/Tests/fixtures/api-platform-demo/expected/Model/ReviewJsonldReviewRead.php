@@ -21,7 +21,7 @@ class ReviewJsonldReviewRead extends \ArrayObject
      */
     protected $type;
     /**
-     * @var string|object
+     * @var mixed
      */
     protected $context;
     /**
@@ -101,14 +101,14 @@ class ReviewJsonldReviewRead extends \ArrayObject
         return $this;
     }
     /**
-     * @return string|object
+     * @return mixed
      */
     public function getContext()
     {
         return $this->context;
     }
     /**
-     * @param string|object $context
+     * @param mixed $context
      *
      * @return self
      */

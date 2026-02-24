@@ -21,7 +21,7 @@ class NestedFilter extends FilterBase
     /**
      * The filter to be applied on the nested documents.
      *
-     * @var FilterBase
+     * @var mixed
      */
     protected $filter;
     /**
@@ -49,20 +49,20 @@ class NestedFilter extends FilterBase
     /**
      * The filter to be applied on the nested documents.
      *
-     * @return FilterBase
+     * @return mixed
      */
-    public function getFilter(): FilterBase
+    public function getFilter()
     {
         return $this->filter;
     }
     /**
      * The filter to be applied on the nested documents.
      *
-     * @param FilterBase $filter
+     * @param mixed $filter
      *
      * @return self
      */
-    public function setFilter(FilterBase $filter): self
+    public function setFilter($filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;

@@ -22,7 +22,7 @@ class DateRangeFilter extends FilterBase
     /**
      * The date time range.
      *
-     * @var DateRange
+     * @var mixed
      */
     protected $range;
     /**
@@ -52,20 +52,20 @@ class DateRangeFilter extends FilterBase
     /**
      * The date time range.
      *
-     * @return DateRange
+     * @return mixed
      */
-    public function getRange(): DateRange
+    public function getRange()
     {
         return $this->range;
     }
     /**
      * The date time range.
      *
-     * @param DateRange $range
+     * @param mixed $range
      *
      * @return self
      */
-    public function setRange(DateRange $range): self
+    public function setRange($range): self
     {
         $this->initialized['range'] = true;
         $this->range = $range;

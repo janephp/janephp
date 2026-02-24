@@ -38,19 +38,15 @@ class BusinessRuleTracedRuleNormalizer implements DenormalizerInterface, Normali
             return $object;
         }
         if (\array_key_exists('configuration', $data) && $data['configuration'] !== null) {
-            $value = $data['configuration'];
-            if (is_array($data['configuration']) and isset($data['configuration']['isEnabled']) and isset($data['configuration']['enableTracing']) and isset($data['configuration']['kind'])) {
-                $value = $this->denormalizer->denormalize($data['configuration'], \PicturePark\API\Model\BusinessRule::class, 'json', $context);
-            }
-            $object->setConfiguration($value);
+            $object->setConfiguration($data['configuration']);
         }
         elseif (\array_key_exists('configuration', $data) && $data['configuration'] === null) {
             $object->setConfiguration(null);
         }
         if (\array_key_exists('evaluations', $data) && $data['evaluations'] !== null) {
             $values = [];
-            foreach ($data['evaluations'] as $value_1) {
-                $values[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\BusinessRuleTracedEvaluation::class, 'json', $context);
+            foreach ($data['evaluations'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\BusinessRuleTracedEvaluation::class, 'json', $context);
             }
             $object->setEvaluations($values);
         }
@@ -63,16 +59,12 @@ class BusinessRuleTracedRuleNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if ($data->isInitialized('configuration')) {
-            $value = $data->getConfiguration();
-            if (is_object($data->getConfiguration())) {
-                $value = $this->normalizer->normalize($data->getConfiguration(), 'json', $context);
-            }
-            $dataArray['configuration'] = $value;
+            $dataArray['configuration'] = $data->getConfiguration();
         }
         if ($data->isInitialized('evaluations')) {
             $values = [];
-            foreach ($data->getEvaluations() as $value_1) {
-                $values[] = $this->normalizer->normalize($value_1, 'json', $context);
+            foreach ($data->getEvaluations() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['evaluations'] = $values;
         }

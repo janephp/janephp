@@ -21,7 +21,7 @@ class MetricsResult extends \ArrayObject
     /**
      * An array of values for the metric.
      *
-     * @var list<list<int>|list<string>>
+     * @var list<list<mixed>>
      */
     protected $values;
     /**
@@ -49,7 +49,7 @@ class MetricsResult extends \ArrayObject
     /**
      * An array of values for the metric.
      *
-     * @return list<list<int>|list<string>>
+     * @return list<list<mixed>>
      */
     public function getValues(): array
     {
@@ -58,7 +58,7 @@ class MetricsResult extends \ArrayObject
     /**
      * An array of values for the metric.
      *
-     * @param list<list<int>|list<string>> $values
+     * @param list<list<mixed>> $values
      *
      * @return self
      */

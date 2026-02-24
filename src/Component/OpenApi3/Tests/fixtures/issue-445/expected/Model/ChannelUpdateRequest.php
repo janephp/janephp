@@ -57,7 +57,7 @@ class ChannelUpdateRequest
     /**
      * An optional search filter. Limits the content document result set on each search and aggregation request.
      *
-     * @var FilterBase|null
+     * @var mixed|null
      */
     protected $filter;
     /**
@@ -69,7 +69,7 @@ class ChannelUpdateRequest
     /**
      * Display pattern to use for rendering details when 0 results are returned
      *
-     * @var array<string, string>|null
+     * @var mixed|null
      */
     protected $missingResultsDisplayPatterns;
     /**
@@ -235,20 +235,20 @@ class ChannelUpdateRequest
     /**
      * An optional search filter. Limits the content document result set on each search and aggregation request.
      *
-     * @return FilterBase|null
+     * @return mixed
      */
-    public function getFilter(): ?FilterBase
+    public function getFilter()
     {
         return $this->filter;
     }
     /**
      * An optional search filter. Limits the content document result set on each search and aggregation request.
      *
-     * @param FilterBase|null $filter
+     * @param mixed $filter
      *
      * @return self
      */
-    public function setFilter(?FilterBase $filter): self
+    public function setFilter($filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;
@@ -279,20 +279,20 @@ class ChannelUpdateRequest
     /**
      * Display pattern to use for rendering details when 0 results are returned
      *
-     * @return array<string, string>|null
+     * @return mixed
      */
-    public function getMissingResultsDisplayPatterns(): ?iterable
+    public function getMissingResultsDisplayPatterns()
     {
         return $this->missingResultsDisplayPatterns;
     }
     /**
      * Display pattern to use for rendering details when 0 results are returned
      *
-     * @param array<string, string>|null $missingResultsDisplayPatterns
+     * @param mixed $missingResultsDisplayPatterns
      *
      * @return self
      */
-    public function setMissingResultsDisplayPatterns(?iterable $missingResultsDisplayPatterns): self
+    public function setMissingResultsDisplayPatterns($missingResultsDisplayPatterns): self
     {
         $this->initialized['missingResultsDisplayPatterns'] = true;
         $this->missingResultsDisplayPatterns = $missingResultsDisplayPatterns;

@@ -21,7 +21,7 @@ class PermissionUserRoleRightsOfPermissionSetRight
     /**
      * Language specific user role names.
      *
-     * @var array<string, string>|null
+     * @var mixed|null
      */
     protected $names;
     /**
@@ -56,20 +56,20 @@ class PermissionUserRoleRightsOfPermissionSetRight
     /**
      * Language specific user role names.
      *
-     * @return array<string, string>|null
+     * @return mixed
      */
-    public function getNames(): ?iterable
+    public function getNames()
     {
         return $this->names;
     }
     /**
      * Language specific user role names.
      *
-     * @param array<string, string>|null $names
+     * @param mixed $names
      *
      * @return self
      */
-    public function setNames(?iterable $names): self
+    public function setNames($names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;

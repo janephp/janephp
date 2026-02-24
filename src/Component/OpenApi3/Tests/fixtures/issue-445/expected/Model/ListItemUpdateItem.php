@@ -24,7 +24,7 @@ class ListItemUpdateItem extends \ArrayObject
      * Replace: the values specified in the Content object entirely replace any existing content.
      * Defaults to Merge.
      *
-     * @var string
+     * @var mixed
      */
     protected $contentFieldsUpdateOptions = 'Merge';
     /**
@@ -61,9 +61,9 @@ class ListItemUpdateItem extends \ArrayObject
      * Replace: the values specified in the Content object entirely replace any existing content.
      * Defaults to Merge.
      *
-     * @return string
+     * @return mixed
      */
-    public function getContentFieldsUpdateOptions(): string
+    public function getContentFieldsUpdateOptions()
     {
         return $this->contentFieldsUpdateOptions;
     }
@@ -73,11 +73,11 @@ class ListItemUpdateItem extends \ArrayObject
     Replace: the values specified in the Content object entirely replace any existing content.
     Defaults to Merge.
     *
-    * @param string $contentFieldsUpdateOptions
+    * @param mixed $contentFieldsUpdateOptions
     *
     * @return self
     */
-    public function setContentFieldsUpdateOptions(string $contentFieldsUpdateOptions): self
+    public function setContentFieldsUpdateOptions($contentFieldsUpdateOptions): self
     {
         $this->initialized['contentFieldsUpdateOptions'] = true;
         $this->contentFieldsUpdateOptions = $contentFieldsUpdateOptions;

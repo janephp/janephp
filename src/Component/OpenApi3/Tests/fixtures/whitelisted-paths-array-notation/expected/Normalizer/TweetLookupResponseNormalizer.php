@@ -40,15 +40,7 @@ class TweetLookupResponseNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('data', $data)) {
             $values = [];
             foreach ($data['data'] as $value) {
-                $value_1 = $value;
-                if (is_array($value)) {
-                    $value_1 = $this->denormalizer->denormalize($value, \Jane\OpenApi3\Tests\Expected\Model\CompactTweet::class, 'json', $context);
-                } elseif (is_array($value)) {
-                    $value_1 = $this->denormalizer->denormalize($value, \Jane\OpenApi3\Tests\Expected\Model\DefaultTweet::class, 'json', $context);
-                } elseif (is_array($value)) {
-                    $value_1 = $this->denormalizer->denormalize($value, \Jane\OpenApi3\Tests\Expected\Model\DetailedTweet::class, 'json', $context);
-                }
-                $values[] = $value_1;
+                $values[] = $value;
             }
             $object->setData($values);
             unset($data['data']);
@@ -59,43 +51,15 @@ class TweetLookupResponseNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('errors', $data)) {
             $values_1 = [];
-            foreach ($data['errors'] as $value_2) {
-                $value_3 = $value_2;
-                if (is_array($value_2) and isset($value_2['status'])) {
-                    $value_3 = $this->denormalizer->denormalize($value_2, \Jane\OpenApi3\Tests\Expected\Model\GenericProblem::class, 'json', $context);
-                } elseif (is_array($value_2)) {
-                    $value_3 = $this->denormalizer->denormalize($value_2, \Jane\OpenApi3\Tests\Expected\Model\InvalidRequestProblem::class, 'json', $context);
-                } elseif (is_array($value_2)) {
-                    $value_3 = $this->denormalizer->denormalize($value_2, \Jane\OpenApi3\Tests\Expected\Model\ClientForbiddenProblem::class, 'json', $context);
-                } elseif (is_array($value_2) and isset($value_2['parameter']) and isset($value_2['value']) and (isset($value_2['resource_type']) and ($value_2['resource_type'] == 'user' or $value_2['resource_type'] == 'tweet'))) {
-                    $value_3 = $this->denormalizer->denormalize($value_2, \Jane\OpenApi3\Tests\Expected\Model\ResourceNotFoundProblem::class, 'json', $context);
-                } elseif (is_array($value_2) and isset($value_2['resource_id']) and (isset($value_2['resource_type']) and $value_2['resource_type'] == 'tweet') and (isset($value_2['section']) and ($value_2['section'] == 'data' or $value_2['section'] == 'includes'))) {
-                    $value_3 = $this->denormalizer->denormalize($value_2, \Jane\OpenApi3\Tests\Expected\Model\ResourceUnauthorizedProblem::class, 'json', $context);
-                } elseif (is_array($value_2) and isset($value_2['resource_id']) and (isset($value_2['resource_type']) and $value_2['resource_type'] == 'tweet') and (isset($value_2['section']) and ($value_2['section'] == 'data' or $value_2['section'] == 'includes'))) {
-                    $value_3 = $this->denormalizer->denormalize($value_2, \Jane\OpenApi3\Tests\Expected\Model\DisallowedResourceProblem::class, 'json', $context);
-                } elseif (is_array($value_2)) {
-                    $value_3 = $this->denormalizer->denormalize($value_2, \Jane\OpenApi3\Tests\Expected\Model\UnsupportedAuthenticationProblem::class, 'json', $context);
-                } elseif (is_array($value_2)) {
-                    $value_3 = $this->denormalizer->denormalize($value_2, \Jane\OpenApi3\Tests\Expected\Model\UsageCapExceededProblem::class, 'json', $context);
-                } elseif (is_array($value_2)) {
-                    $value_3 = $this->denormalizer->denormalize($value_2, \Jane\OpenApi3\Tests\Expected\Model\ConnectionExceptionProblem::class, 'json', $context);
-                } elseif (is_array($value_2)) {
-                    $value_3 = $this->denormalizer->denormalize($value_2, \Jane\OpenApi3\Tests\Expected\Model\ClientDisconnectedProblem::class, 'json', $context);
-                } elseif (is_array($value_2)) {
-                    $value_3 = $this->denormalizer->denormalize($value_2, \Jane\OpenApi3\Tests\Expected\Model\OperationalDisconnectProblem::class, 'json', $context);
-                } elseif (is_array($value_2)) {
-                    $value_3 = $this->denormalizer->denormalize($value_2, \Jane\OpenApi3\Tests\Expected\Model\RulesCapProblem::class, 'json', $context);
-                } elseif (is_array($value_2)) {
-                    $value_3 = $this->denormalizer->denormalize($value_2, \Jane\OpenApi3\Tests\Expected\Model\InvalidRuleProblem::class, 'json', $context);
-                }
-                $values_1[] = $value_3;
+            foreach ($data['errors'] as $value_1) {
+                $values_1[] = $value_1;
             }
             $object->setErrors($values_1);
             unset($data['errors']);
         }
-        foreach ($data as $key => $value_4) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_4;
+                $object[$key] = $value_2;
             }
         }
         return $object;
@@ -106,15 +70,7 @@ class TweetLookupResponseNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('data') && null !== $data->getData()) {
             $values = [];
             foreach ($data->getData() as $value) {
-                $value_1 = $value;
-                if (is_object($value)) {
-                    $value_1 = $this->normalizer->normalize($value, 'json', $context);
-                } elseif (is_object($value)) {
-                    $value_1 = $this->normalizer->normalize($value, 'json', $context);
-                } elseif (is_object($value)) {
-                    $value_1 = $this->normalizer->normalize($value, 'json', $context);
-                }
-                $values[] = $value_1;
+                $values[] = $value;
             }
             $dataArray['data'] = $values;
         }
@@ -123,42 +79,14 @@ class TweetLookupResponseNormalizer implements DenormalizerInterface, Normalizer
         }
         if ($data->isInitialized('errors') && null !== $data->getErrors()) {
             $values_1 = [];
-            foreach ($data->getErrors() as $value_2) {
-                $value_3 = $value_2;
-                if (is_object($value_2)) {
-                    $value_3 = $this->normalizer->normalize($value_2, 'json', $context);
-                } elseif (is_object($value_2)) {
-                    $value_3 = $this->normalizer->normalize($value_2, 'json', $context);
-                } elseif (is_object($value_2)) {
-                    $value_3 = $this->normalizer->normalize($value_2, 'json', $context);
-                } elseif (is_object($value_2)) {
-                    $value_3 = $this->normalizer->normalize($value_2, 'json', $context);
-                } elseif (is_object($value_2)) {
-                    $value_3 = $this->normalizer->normalize($value_2, 'json', $context);
-                } elseif (is_object($value_2)) {
-                    $value_3 = $this->normalizer->normalize($value_2, 'json', $context);
-                } elseif (is_object($value_2)) {
-                    $value_3 = $this->normalizer->normalize($value_2, 'json', $context);
-                } elseif (is_object($value_2)) {
-                    $value_3 = $this->normalizer->normalize($value_2, 'json', $context);
-                } elseif (is_object($value_2)) {
-                    $value_3 = $this->normalizer->normalize($value_2, 'json', $context);
-                } elseif (is_object($value_2)) {
-                    $value_3 = $this->normalizer->normalize($value_2, 'json', $context);
-                } elseif (is_object($value_2)) {
-                    $value_3 = $this->normalizer->normalize($value_2, 'json', $context);
-                } elseif (is_object($value_2)) {
-                    $value_3 = $this->normalizer->normalize($value_2, 'json', $context);
-                } elseif (is_object($value_2)) {
-                    $value_3 = $this->normalizer->normalize($value_2, 'json', $context);
-                }
-                $values_1[] = $value_3;
+            foreach ($data->getErrors() as $value_1) {
+                $values_1[] = $value_1;
             }
             $dataArray['errors'] = $values_1;
         }
-        foreach ($data as $key => $value_4) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_4;
+                $dataArray[$key] = $value_2;
             }
         }
         return $dataArray;

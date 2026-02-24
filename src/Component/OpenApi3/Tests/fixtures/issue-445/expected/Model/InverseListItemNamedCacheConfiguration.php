@@ -27,7 +27,7 @@ class InverseListItemNamedCacheConfiguration extends NamedCacheConfigurationBase
     /**
      * An optional filter to narrow down the cached list items
      *
-     * @var FilterBase|null
+     * @var mixed|null
      */
     protected $filter;
     /**
@@ -83,20 +83,20 @@ class InverseListItemNamedCacheConfiguration extends NamedCacheConfigurationBase
     /**
      * An optional filter to narrow down the cached list items
      *
-     * @return FilterBase|null
+     * @return mixed
      */
-    public function getFilter(): ?FilterBase
+    public function getFilter()
     {
         return $this->filter;
     }
     /**
      * An optional filter to narrow down the cached list items
      *
-     * @param FilterBase|null $filter
+     * @param mixed $filter
      *
      * @return self
      */
-    public function setFilter(?FilterBase $filter): self
+    public function setFilter($filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;

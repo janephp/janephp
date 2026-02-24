@@ -44,18 +44,10 @@ class TransferNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setName($data['name']);
         }
         if (\array_key_exists('state', $data)) {
-            $value = $data['state'];
-            if (is_string($data['state'])) {
-                $value = $data['state'];
-            }
-            $object->setState($value);
+            $object->setState($data['state']);
         }
         if (\array_key_exists('transferType', $data)) {
-            $value_1 = $data['transferType'];
-            if (is_string($data['transferType'])) {
-                $value_1 = $data['transferType'];
-            }
-            $object->setTransferType($value_1);
+            $object->setTransferType($data['transferType']);
         }
         if (\array_key_exists('businessProcessId', $data) && $data['businessProcessId'] !== null) {
             $object->setBusinessProcessId($data['businessProcessId']);
@@ -79,16 +71,8 @@ class TransferNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $dataArray = [];
         $dataArray['id'] = $data->getId();
         $dataArray['name'] = $data->getName();
-        $value = $data->getState();
-        if (is_string($data->getState())) {
-            $value = $data->getState();
-        }
-        $dataArray['state'] = $value;
-        $value_1 = $data->getTransferType();
-        if (is_string($data->getTransferType())) {
-            $value_1 = $data->getTransferType();
-        }
-        $dataArray['transferType'] = $value_1;
+        $dataArray['state'] = $data->getState();
+        $dataArray['transferType'] = $data->getTransferType();
         if ($data->isInitialized('businessProcessId')) {
             $dataArray['businessProcessId'] = $data->getBusinessProcessId();
         }

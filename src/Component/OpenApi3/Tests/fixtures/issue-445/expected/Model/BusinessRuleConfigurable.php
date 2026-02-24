@@ -15,7 +15,7 @@ class BusinessRuleConfigurable extends BusinessRule
     /**
      * The condition that makes this rule trigger.
      *
-     * @var BusinessRuleCondition|null
+     * @var mixed|null
      */
     protected $condition;
     /**
@@ -33,20 +33,20 @@ class BusinessRuleConfigurable extends BusinessRule
     /**
      * The condition that makes this rule trigger.
      *
-     * @return BusinessRuleCondition|null
+     * @return mixed
      */
-    public function getCondition(): ?BusinessRuleCondition
+    public function getCondition()
     {
         return $this->condition;
     }
     /**
      * The condition that makes this rule trigger.
      *
-     * @param BusinessRuleCondition|null $condition
+     * @param mixed $condition
      *
      * @return self
      */
-    public function setCondition(?BusinessRuleCondition $condition): self
+    public function setCondition($condition): self
     {
         $this->initialized['condition'] = true;
         $this->condition = $condition;

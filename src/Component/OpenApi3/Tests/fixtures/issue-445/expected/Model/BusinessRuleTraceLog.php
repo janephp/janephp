@@ -27,7 +27,7 @@ class BusinessRuleTraceLog
     /**
      * Type of the document.
      *
-     * @var string
+     * @var mixed
      */
     protected $documentType;
     /**
@@ -57,7 +57,7 @@ class BusinessRuleTraceLog
     /**
      * Audit information.
      *
-     * @var UserAudit|null
+     * @var mixed|null
      */
     protected $audit;
     /**
@@ -107,20 +107,20 @@ class BusinessRuleTraceLog
     /**
      * Type of the document.
      *
-     * @return string
+     * @return mixed
      */
-    public function getDocumentType(): string
+    public function getDocumentType()
     {
         return $this->documentType;
     }
     /**
      * Type of the document.
      *
-     * @param string $documentType
+     * @param mixed $documentType
      *
      * @return self
      */
-    public function setDocumentType(string $documentType): self
+    public function setDocumentType($documentType): self
     {
         $this->initialized['documentType'] = true;
         $this->documentType = $documentType;
@@ -217,20 +217,20 @@ class BusinessRuleTraceLog
     /**
      * Audit information.
      *
-     * @return UserAudit|null
+     * @return mixed
      */
-    public function getAudit(): ?UserAudit
+    public function getAudit()
     {
         return $this->audit;
     }
     /**
      * Audit information.
      *
-     * @param UserAudit|null $audit
+     * @param mixed $audit
      *
      * @return self
      */
-    public function setAudit(?UserAudit $audit): self
+    public function setAudit($audit): self
     {
         $this->initialized['audit'] = true;
         $this->audit = $audit;

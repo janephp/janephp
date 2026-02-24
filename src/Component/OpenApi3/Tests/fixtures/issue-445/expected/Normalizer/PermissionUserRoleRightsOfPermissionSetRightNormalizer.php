@@ -44,25 +44,17 @@ class PermissionUserRoleRightsOfPermissionSetRightNormalizer implements Denormal
             $object->setUserRoleId(null);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $value = $data['names'];
-            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
-                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['names'] as $key => $value_1) {
-                    $values[$key] = $value_1;
-                }
-                $value = $values;
-            }
-            $object->setNames($value);
+            $object->setNames($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('rights', $data) && $data['rights'] !== null) {
-            $values_1 = [];
-            foreach ($data['rights'] as $value_2) {
-                $values_1[] = $value_2;
+            $values = [];
+            foreach ($data['rights'] as $value) {
+                $values[] = $value;
             }
-            $object->setRights($values_1);
+            $object->setRights($values);
         }
         elseif (\array_key_exists('rights', $data) && $data['rights'] === null) {
             $object->setRights(null);
@@ -76,22 +68,14 @@ class PermissionUserRoleRightsOfPermissionSetRightNormalizer implements Denormal
             $dataArray['userRoleId'] = $data->getUserRoleId();
         }
         if ($data->isInitialized('names')) {
-            $value = $data->getNames();
-            if (is_object($data->getNames())) {
-                $values = [];
-                foreach ($data->getNames() as $key => $value_1) {
-                    $values[$key] = $value_1;
-                }
-                $value = $values;
-            }
-            $dataArray['names'] = $value;
+            $dataArray['names'] = $data->getNames();
         }
         if ($data->isInitialized('rights')) {
-            $values_1 = [];
-            foreach ($data->getRights() as $value_2) {
-                $values_1[] = $value_2;
+            $values = [];
+            foreach ($data->getRights() as $value) {
+                $values[] = $value;
             }
-            $dataArray['rights'] = $values_1;
+            $dataArray['rights'] = $values;
         }
         return $dataArray;
     }

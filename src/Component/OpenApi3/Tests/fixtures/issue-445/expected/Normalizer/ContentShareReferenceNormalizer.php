@@ -50,21 +50,13 @@ class ContentShareReferenceNormalizer implements DenormalizerInterface, Normaliz
             $object->setName(null);
         }
         if (\array_key_exists('audit', $data) && $data['audit'] !== null) {
-            $value = $data['audit'];
-            if (is_array($data['audit']) and isset($data['audit']['creationDate']) and isset($data['audit']['modificationDate'])) {
-                $value = $this->denormalizer->denormalize($data['audit'], \PicturePark\API\Model\UserAudit::class, 'json', $context);
-            }
-            $object->setAudit($value);
+            $object->setAudit($data['audit']);
         }
         elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
             $object->setAudit(null);
         }
         if (\array_key_exists('shareType', $data)) {
-            $value_1 = $data['shareType'];
-            if (is_string($data['shareType'])) {
-                $value_1 = $data['shareType'];
-            }
-            $object->setShareType($value_1);
+            $object->setShareType($data['shareType']);
         }
         if (\array_key_exists('emailAddress', $data) && $data['emailAddress'] !== null) {
             $object->setEmailAddress($data['emailAddress']);
@@ -84,17 +76,9 @@ class ContentShareReferenceNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['name'] = $data->getName();
         }
         if ($data->isInitialized('audit')) {
-            $value = $data->getAudit();
-            if (is_object($data->getAudit())) {
-                $value = $this->normalizer->normalize($data->getAudit(), 'json', $context);
-            }
-            $dataArray['audit'] = $value;
+            $dataArray['audit'] = $data->getAudit();
         }
-        $value_1 = $data->getShareType();
-        if (is_string($data->getShareType())) {
-            $value_1 = $data->getShareType();
-        }
-        $dataArray['shareType'] = $value_1;
+        $dataArray['shareType'] = $data->getShareType();
         if ($data->isInitialized('emailAddress')) {
             $dataArray['emailAddress'] = $data->getEmailAddress();
         }

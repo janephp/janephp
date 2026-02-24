@@ -15,7 +15,7 @@ class Language
     /**
      * Language translations.
      *
-     * @var array<string, string>
+     * @var mixed
      */
     protected $name;
     /**
@@ -45,20 +45,20 @@ class Language
     /**
      * Language translations.
      *
-     * @return array<string, string>
+     * @return mixed
      */
-    public function getName(): iterable
+    public function getName()
     {
         return $this->name;
     }
     /**
      * Language translations.
      *
-     * @param array<string, string> $name
+     * @param mixed $name
      *
      * @return self
      */
-    public function setName(iterable $name): self
+    public function setName($name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;

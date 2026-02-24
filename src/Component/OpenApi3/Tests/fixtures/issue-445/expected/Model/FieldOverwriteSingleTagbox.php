@@ -16,7 +16,7 @@ class FieldOverwriteSingleTagbox extends FieldOverwriteBase
      * An optional filter to limit the list items: this value will overwrite the existing Filter value specified in the parent schema  if
      * OverwriteFilter is set to true.
      *
-     * @var FilterBase|null
+     * @var mixed|null
      */
     protected $filter;
     /**
@@ -42,9 +42,9 @@ class FieldOverwriteSingleTagbox extends FieldOverwriteBase
      * An optional filter to limit the list items: this value will overwrite the existing Filter value specified in the parent schema  if
      * OverwriteFilter is set to true.
      *
-     * @return FilterBase|null
+     * @return mixed
      */
-    public function getFilter(): ?FilterBase
+    public function getFilter()
     {
         return $this->filter;
     }
@@ -52,11 +52,11 @@ class FieldOverwriteSingleTagbox extends FieldOverwriteBase
     * An optional filter to limit the list items: this value will overwrite the existing Filter value specified in the parent schema  if
     OverwriteFilter is set to true.
     *
-    * @param FilterBase|null $filter
+    * @param mixed $filter
     *
     * @return self
     */
-    public function setFilter(?FilterBase $filter): self
+    public function setFilter($filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;

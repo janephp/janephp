@@ -77,11 +77,7 @@ class ListItemNamedCacheConfigurationNormalizer implements DenormalizerInterface
             $object->setKeyFields(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $value_1 = $data['filter'];
-            if (is_array($data['filter']) and isset($data['filter']['kind'])) {
-                $value_1 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
-            }
-            $object->setFilter($value_1);
+            $object->setFilter($data['filter']);
             unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
@@ -91,9 +87,9 @@ class ListItemNamedCacheConfigurationNormalizer implements DenormalizerInterface
             $object->setIncludeAllSchemaChildren($data['includeAllSchemaChildren']);
             unset($data['includeAllSchemaChildren']);
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_2;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -117,18 +113,14 @@ class ListItemNamedCacheConfigurationNormalizer implements DenormalizerInterface
             $dataArray['keyFields'] = $values;
         }
         if ($data->isInitialized('filter')) {
-            $value_1 = $data->getFilter();
-            if (is_object($data->getFilter())) {
-                $value_1 = $this->normalizer->normalize($data->getFilter(), 'json', $context);
-            }
-            $dataArray['filter'] = $value_1;
+            $dataArray['filter'] = $data->getFilter();
         }
         if ($data->isInitialized('includeAllSchemaChildren') && null !== $data->getIncludeAllSchemaChildren()) {
             $dataArray['includeAllSchemaChildren'] = $data->getIncludeAllSchemaChildren();
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_2;
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

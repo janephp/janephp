@@ -49,20 +49,16 @@ class GeoDistanceFilterNormalizer implements DenormalizerInterface, NormalizerIn
             unset($data['field']);
         }
         if (\array_key_exists('location', $data)) {
-            $value = $data['location'];
-            if (is_array($data['location'])) {
-                $value = $this->denormalizer->denormalize($data['location'], \PicturePark\API\Model\GeoLocation::class, 'json', $context);
-            }
-            $object->setLocation($value);
+            $object->setLocation($data['location']);
             unset($data['location']);
         }
         if (\array_key_exists('distance', $data)) {
             $object->setDistance($data['distance']);
             unset($data['distance']);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value;
             }
         }
         return $object;
@@ -72,17 +68,13 @@ class GeoDistanceFilterNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
         $dataArray['field'] = $data->getField();
-        $value = $data->getLocation();
-        if (is_object($data->getLocation())) {
-            $value = $this->normalizer->normalize($data->getLocation(), 'json', $context);
-        }
-        $dataArray['location'] = $value;
+        $dataArray['location'] = $data->getLocation();
         if ($data->isInitialized('distance') && null !== $data->getDistance()) {
             $dataArray['distance'] = $data->getDistance();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+                $dataArray[$key] = $value;
             }
         }
         return $dataArray;

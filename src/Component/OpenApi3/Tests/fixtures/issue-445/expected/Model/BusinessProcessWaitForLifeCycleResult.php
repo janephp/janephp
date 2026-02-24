@@ -15,32 +15,32 @@ class BusinessProcessWaitForLifeCycleResult
     /**
      * The life cycle that was hit.
      *
-     * @var string|null
+     * @var mixed|null
      */
     protected $lifeCycleHit;
     /**
      * The business process.
      *
-     * @var BusinessProcess
+     * @var mixed
      */
     protected $businessProcess;
     /**
      * The life cycle that was hit.
      *
-     * @return string|null
+     * @return mixed
      */
-    public function getLifeCycleHit(): ?string
+    public function getLifeCycleHit()
     {
         return $this->lifeCycleHit;
     }
     /**
      * The life cycle that was hit.
      *
-     * @param string|null $lifeCycleHit
+     * @param mixed $lifeCycleHit
      *
      * @return self
      */
-    public function setLifeCycleHit(?string $lifeCycleHit): self
+    public function setLifeCycleHit($lifeCycleHit): self
     {
         $this->initialized['lifeCycleHit'] = true;
         $this->lifeCycleHit = $lifeCycleHit;
@@ -49,20 +49,20 @@ class BusinessProcessWaitForLifeCycleResult
     /**
      * The business process.
      *
-     * @return BusinessProcess
+     * @return mixed
      */
-    public function getBusinessProcess(): BusinessProcess
+    public function getBusinessProcess()
     {
         return $this->businessProcess;
     }
     /**
      * The business process.
      *
-     * @param BusinessProcess $businessProcess
+     * @param mixed $businessProcess
      *
      * @return self
      */
-    public function setBusinessProcess(BusinessProcess $businessProcess): self
+    public function setBusinessProcess($businessProcess): self
     {
         $this->initialized['businessProcess'] = true;
         $this->businessProcess = $businessProcess;

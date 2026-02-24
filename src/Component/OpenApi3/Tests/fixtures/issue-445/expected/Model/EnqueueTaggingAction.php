@@ -15,26 +15,26 @@ class EnqueueTaggingAction extends BusinessRuleAction
     /**
      * Options to use while tagging.
      *
-     * @var TaggingOptionsBase|null
+     * @var mixed|null
      */
     protected $options;
     /**
      * Options to use while tagging.
      *
-     * @return TaggingOptionsBase|null
+     * @return mixed
      */
-    public function getOptions(): ?TaggingOptionsBase
+    public function getOptions()
     {
         return $this->options;
     }
     /**
      * Options to use while tagging.
      *
-     * @param TaggingOptionsBase|null $options
+     * @param mixed $options
      *
      * @return self
      */
-    public function setOptions(?TaggingOptionsBase $options): self
+    public function setOptions($options): self
     {
         $this->initialized['options'] = true;
         $this->options = $options;

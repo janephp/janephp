@@ -13,19 +13,19 @@ class Expansions extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var list<CompactUser>|list<DefaultUser>|list<DetailedUser>
+     * @var list<mixed>
      */
     protected $users;
     /**
-     * @var list<CompactTweet>|list<DefaultTweet>|list<DetailedTweet>
+     * @var list<mixed>
      */
     protected $tweets;
     /**
-     * @var list<CompactPlace>|list<DefaultPlace>|list<DetailedPlace>
+     * @var list<mixed>
      */
     protected $places;
     /**
-     * @var list<Photo>|list<Video>|list<AnimatedGif>
+     * @var list<mixed>
      */
     protected $media;
     /**
@@ -33,14 +33,14 @@ class Expansions extends \ArrayObject
      */
     protected $polls;
     /**
-     * @return list<CompactUser>|list<DefaultUser>|list<DetailedUser>
+     * @return list<mixed>
      */
     public function getUsers(): array
     {
         return $this->users;
     }
     /**
-     * @param list<CompactUser>|list<DefaultUser>|list<DetailedUser> $users
+     * @param list<mixed> $users
      *
      * @return self
      */
@@ -51,14 +51,14 @@ class Expansions extends \ArrayObject
         return $this;
     }
     /**
-     * @return list<CompactTweet>|list<DefaultTweet>|list<DetailedTweet>
+     * @return list<mixed>
      */
     public function getTweets(): array
     {
         return $this->tweets;
     }
     /**
-     * @param list<CompactTweet>|list<DefaultTweet>|list<DetailedTweet> $tweets
+     * @param list<mixed> $tweets
      *
      * @return self
      */
@@ -69,14 +69,14 @@ class Expansions extends \ArrayObject
         return $this;
     }
     /**
-     * @return list<CompactPlace>|list<DefaultPlace>|list<DetailedPlace>
+     * @return list<mixed>
      */
     public function getPlaces(): array
     {
         return $this->places;
     }
     /**
-     * @param list<CompactPlace>|list<DefaultPlace>|list<DetailedPlace> $places
+     * @param list<mixed> $places
      *
      * @return self
      */
@@ -87,14 +87,14 @@ class Expansions extends \ArrayObject
         return $this;
     }
     /**
-     * @return list<Photo>|list<Video>|list<AnimatedGif>
+     * @return list<mixed>
      */
     public function getMedia(): array
     {
         return $this->media;
     }
     /**
-     * @param list<Photo>|list<Video>|list<AnimatedGif> $media
+     * @param list<mixed> $media
      *
      * @return self
      */

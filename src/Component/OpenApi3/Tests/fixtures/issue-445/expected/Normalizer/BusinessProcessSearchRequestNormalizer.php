@@ -50,11 +50,7 @@ class BusinessProcessSearchRequestNormalizer implements DenormalizerInterface, N
             $object->setPageToken(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $value = $data['filter'];
-            if (is_array($data['filter']) and isset($data['filter']['kind'])) {
-                $value = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
-            }
-            $object->setFilter($value);
+            $object->setFilter($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
@@ -67,8 +63,8 @@ class BusinessProcessSearchRequestNormalizer implements DenormalizerInterface, N
         }
         if (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] !== null) {
             $values = [];
-            foreach ($data['searchBehaviors'] as $value_1) {
-                $values[] = $value_1;
+            foreach ($data['searchBehaviors'] as $value) {
+                $values[] = $value;
             }
             $object->setSearchBehaviors($values);
         }
@@ -88,19 +84,15 @@ class BusinessProcessSearchRequestNormalizer implements DenormalizerInterface, N
             $dataArray['pageToken'] = $data->getPageToken();
         }
         if ($data->isInitialized('filter')) {
-            $value = $data->getFilter();
-            if (is_object($data->getFilter())) {
-                $value = $this->normalizer->normalize($data->getFilter(), 'json', $context);
-            }
-            $dataArray['filter'] = $value;
+            $dataArray['filter'] = $data->getFilter();
         }
         if ($data->isInitialized('searchString')) {
             $dataArray['searchString'] = $data->getSearchString();
         }
         if ($data->isInitialized('searchBehaviors')) {
             $values = [];
-            foreach ($data->getSearchBehaviors() as $value_1) {
-                $values[] = $value_1;
+            foreach ($data->getSearchBehaviors() as $value) {
+                $values[] = $value;
             }
             $dataArray['searchBehaviors'] = $values;
         }

@@ -46,16 +46,12 @@ class DateRangeFilterNormalizer implements DenormalizerInterface, NormalizerInte
             unset($data['field']);
         }
         if (\array_key_exists('range', $data)) {
-            $value = $data['range'];
-            if (is_array($data['range'])) {
-                $value = $this->denormalizer->denormalize($data['range'], \PicturePark\API\Model\DateRange::class, 'json', $context);
-            }
-            $object->setRange($value);
+            $object->setRange($data['range']);
             unset($data['range']);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value;
             }
         }
         return $object;
@@ -65,14 +61,10 @@ class DateRangeFilterNormalizer implements DenormalizerInterface, NormalizerInte
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
         $dataArray['field'] = $data->getField();
-        $value = $data->getRange();
-        if (is_object($data->getRange())) {
-            $value = $this->normalizer->normalize($data->getRange(), 'json', $context);
-        }
-        $dataArray['range'] = $value;
-        foreach ($data as $key => $value_1) {
+        $dataArray['range'] = $data->getRange();
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+                $dataArray[$key] = $value;
             }
         }
         return $dataArray;

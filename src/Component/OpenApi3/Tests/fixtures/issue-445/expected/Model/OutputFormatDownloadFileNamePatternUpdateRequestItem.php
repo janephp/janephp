@@ -22,7 +22,7 @@ class OutputFormatDownloadFileNamePatternUpdateRequestItem
      * The patterns to use per metadata language.
      * The customer's default language is required.
      *
-     * @var array<string, string>|null
+     * @var mixed|null
      */
     protected $patterns;
     /**
@@ -51,9 +51,9 @@ class OutputFormatDownloadFileNamePatternUpdateRequestItem
      * The patterns to use per metadata language.
      * The customer's default language is required.
      *
-     * @return array<string, string>|null
+     * @return mixed
      */
-    public function getPatterns(): ?iterable
+    public function getPatterns()
     {
         return $this->patterns;
     }
@@ -61,11 +61,11 @@ class OutputFormatDownloadFileNamePatternUpdateRequestItem
     * The patterns to use per metadata language.
     The customer's default language is required.
     *
-    * @param array<string, string>|null $patterns
+    * @param mixed $patterns
     *
     * @return self
     */
-    public function setPatterns(?iterable $patterns): self
+    public function setPatterns($patterns): self
     {
         $this->initialized['patterns'] = true;
         $this->patterns = $patterns;

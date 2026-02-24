@@ -21,7 +21,7 @@ class ListItemFilterRequest
     /**
      * An optional filter to limit the list items.
      *
-     * @var FilterBase|null
+     * @var mixed|null
      */
     protected $filter;
     /**
@@ -46,7 +46,7 @@ class ListItemFilterRequest
     /**
      * Limits the search to the list items that have or not have broken references. By default it includes both.
      *
-     * @var string
+     * @var mixed
      */
     protected $brokenDependenciesFilter = 'All';
     /**
@@ -74,20 +74,20 @@ class ListItemFilterRequest
     /**
      * An optional filter to limit the list items.
      *
-     * @return FilterBase|null
+     * @return mixed
      */
-    public function getFilter(): ?FilterBase
+    public function getFilter()
     {
         return $this->filter;
     }
     /**
      * An optional filter to limit the list items.
      *
-     * @param FilterBase|null $filter
+     * @param mixed $filter
      *
      * @return self
      */
-    public function setFilter(?FilterBase $filter): self
+    public function setFilter($filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;
@@ -164,20 +164,20 @@ class ListItemFilterRequest
     /**
      * Limits the search to the list items that have or not have broken references. By default it includes both.
      *
-     * @return string
+     * @return mixed
      */
-    public function getBrokenDependenciesFilter(): string
+    public function getBrokenDependenciesFilter()
     {
         return $this->brokenDependenciesFilter;
     }
     /**
      * Limits the search to the list items that have or not have broken references. By default it includes both.
      *
-     * @param string $brokenDependenciesFilter
+     * @param mixed $brokenDependenciesFilter
      *
      * @return self
      */
-    public function setBrokenDependenciesFilter(string $brokenDependenciesFilter): self
+    public function setBrokenDependenciesFilter($brokenDependenciesFilter): self
     {
         $this->initialized['brokenDependenciesFilter'] = true;
         $this->brokenDependenciesFilter = $brokenDependenciesFilter;

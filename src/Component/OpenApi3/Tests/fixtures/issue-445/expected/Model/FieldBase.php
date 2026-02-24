@@ -33,13 +33,13 @@ class FieldBase
     /**
      * Language specific field names.
      *
-     * @var array<string, string>|null
+     * @var mixed|null
      */
     protected $names;
     /**
      * Language specific field descriptions.
      *
-     * @var array<string, string>|null
+     * @var mixed|null
      */
     protected $descriptions;
     /**
@@ -136,18 +136,18 @@ class FieldBase
     /**
      * Language specific field names.
      *
-     * @return array<string, string>|null
+     * @return mixed
      */
-    public function getNames(): ?iterable
+    public function getNames()
     {
         return $this->names;
     }
     /**
      * Language specific field names.
      *
-     * @param array<string, string>|null $names
+     * @param mixed $names
      */
-    public function setNames(?iterable $names)
+    public function setNames($names)
     {
         $this->initialized['names'] = true;
         $this->names = $names;
@@ -155,18 +155,18 @@ class FieldBase
     /**
      * Language specific field descriptions.
      *
-     * @return array<string, string>|null
+     * @return mixed
      */
-    public function getDescriptions(): ?iterable
+    public function getDescriptions()
     {
         return $this->descriptions;
     }
     /**
      * Language specific field descriptions.
      *
-     * @param array<string, string>|null $descriptions
+     * @param mixed $descriptions
      */
-    public function setDescriptions(?iterable $descriptions)
+    public function setDescriptions($descriptions)
     {
         $this->initialized['descriptions'] = true;
         $this->descriptions = $descriptions;

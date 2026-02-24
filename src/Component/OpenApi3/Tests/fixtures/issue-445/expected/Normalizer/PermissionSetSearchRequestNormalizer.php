@@ -76,21 +76,13 @@ class PermissionSetSearchRequestNormalizer implements DenormalizerInterface, Nor
             $object->setPageToken(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $value_2 = $data['filter'];
-            if (is_array($data['filter']) and isset($data['filter']['kind'])) {
-                $value_2 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
-            }
-            $object->setFilter($value_2);
+            $object->setFilter($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
         }
         if (\array_key_exists('rightFilter', $data) && $data['rightFilter'] !== null) {
-            $value_3 = $data['rightFilter'];
-            if (is_string($data['rightFilter'])) {
-                $value_3 = $data['rightFilter'];
-            }
-            $object->setRightFilter($value_3);
+            $object->setRightFilter($data['rightFilter']);
         }
         elseif (\array_key_exists('rightFilter', $data) && $data['rightFilter'] === null) {
             $object->setRightFilter(null);
@@ -100,8 +92,8 @@ class PermissionSetSearchRequestNormalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('searchLanguages', $data) && $data['searchLanguages'] !== null) {
             $values_2 = [];
-            foreach ($data['searchLanguages'] as $value_4) {
-                $values_2[] = $value_4;
+            foreach ($data['searchLanguages'] as $value_2) {
+                $values_2[] = $value_2;
             }
             $object->setSearchLanguages($values_2);
         }
@@ -135,24 +127,16 @@ class PermissionSetSearchRequestNormalizer implements DenormalizerInterface, Nor
             $dataArray['pageToken'] = $data->getPageToken();
         }
         if ($data->isInitialized('filter')) {
-            $value_2 = $data->getFilter();
-            if (is_object($data->getFilter())) {
-                $value_2 = $this->normalizer->normalize($data->getFilter(), 'json', $context);
-            }
-            $dataArray['filter'] = $value_2;
+            $dataArray['filter'] = $data->getFilter();
         }
         if ($data->isInitialized('rightFilter')) {
-            $value_3 = $data->getRightFilter();
-            if (is_string($data->getRightFilter())) {
-                $value_3 = $data->getRightFilter();
-            }
-            $dataArray['rightFilter'] = $value_3;
+            $dataArray['rightFilter'] = $data->getRightFilter();
         }
         $dataArray['debugMode'] = $data->getDebugMode();
         if ($data->isInitialized('searchLanguages')) {
             $values_2 = [];
-            foreach ($data->getSearchLanguages() as $value_4) {
-                $values_2[] = $value_4;
+            foreach ($data->getSearchLanguages() as $value_2) {
+                $values_2[] = $value_2;
             }
             $dataArray['searchLanguages'] = $values_2;
         }

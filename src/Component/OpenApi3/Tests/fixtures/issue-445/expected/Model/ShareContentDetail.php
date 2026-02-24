@@ -53,13 +53,13 @@ class ShareContentDetail
     /**
      * The type of content
      *
-     * @var string
+     * @var mixed
      */
     protected $contentType;
     /**
      * Contains language specific display values, rendered according to the content schema's display pattern configuration.
      *
-     * @var array<string, string>
+     * @var mixed
      */
     protected $displayValues;
     /**
@@ -207,20 +207,20 @@ class ShareContentDetail
     /**
      * The type of content
      *
-     * @return string
+     * @return mixed
      */
-    public function getContentType(): string
+    public function getContentType()
     {
         return $this->contentType;
     }
     /**
      * The type of content
      *
-     * @param string $contentType
+     * @param mixed $contentType
      *
      * @return self
      */
-    public function setContentType(string $contentType): self
+    public function setContentType($contentType): self
     {
         $this->initialized['contentType'] = true;
         $this->contentType = $contentType;
@@ -229,20 +229,20 @@ class ShareContentDetail
     /**
      * Contains language specific display values, rendered according to the content schema's display pattern configuration.
      *
-     * @return array<string, string>
+     * @return mixed
      */
-    public function getDisplayValues(): iterable
+    public function getDisplayValues()
     {
         return $this->displayValues;
     }
     /**
      * Contains language specific display values, rendered according to the content schema's display pattern configuration.
      *
-     * @param array<string, string> $displayValues
+     * @param mixed $displayValues
      *
      * @return self
      */
-    public function setDisplayValues(iterable $displayValues): self
+    public function setDisplayValues($displayValues): self
     {
         $this->initialized['displayValues'] = true;
         $this->displayValues = $displayValues;

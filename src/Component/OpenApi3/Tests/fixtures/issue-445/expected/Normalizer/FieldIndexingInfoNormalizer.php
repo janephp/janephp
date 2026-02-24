@@ -65,11 +65,7 @@ class FieldIndexingInfoNormalizer implements DenormalizerInterface, NormalizerIn
             $object->setBoost($data['boost']);
         }
         if (\array_key_exists('relatedSchemaIndexing', $data) && $data['relatedSchemaIndexing'] !== null) {
-            $value = $data['relatedSchemaIndexing'];
-            if (is_array($data['relatedSchemaIndexing'])) {
-                $value = $this->denormalizer->denormalize($data['relatedSchemaIndexing'], \PicturePark\API\Model\SchemaIndexingInfo::class, 'json', $context);
-            }
-            $object->setRelatedSchemaIndexing($value);
+            $object->setRelatedSchemaIndexing($data['relatedSchemaIndexing']);
         }
         elseif (\array_key_exists('relatedSchemaIndexing', $data) && $data['relatedSchemaIndexing'] === null) {
             $object->setRelatedSchemaIndexing(null);
@@ -85,11 +81,7 @@ class FieldIndexingInfoNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray['sortable'] = $data->getSortable();
         $dataArray['boost'] = $data->getBoost();
         if ($data->isInitialized('relatedSchemaIndexing')) {
-            $value = $data->getRelatedSchemaIndexing();
-            if (is_object($data->getRelatedSchemaIndexing())) {
-                $value = $this->normalizer->normalize($data->getRelatedSchemaIndexing(), 'json', $context);
-            }
-            $dataArray['relatedSchemaIndexing'] = $value;
+            $dataArray['relatedSchemaIndexing'] = $data->getRelatedSchemaIndexing();
         }
         return $dataArray;
     }

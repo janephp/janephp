@@ -49,20 +49,16 @@ class ListItemUpdateItemNormalizer implements DenormalizerInterface, NormalizerI
             $object->setContent(null);
         }
         if (\array_key_exists('contentFieldsUpdateOptions', $data)) {
-            $value_1 = $data['contentFieldsUpdateOptions'];
-            if (is_string($data['contentFieldsUpdateOptions'])) {
-                $value_1 = $data['contentFieldsUpdateOptions'];
-            }
-            $object->setContentFieldsUpdateOptions($value_1);
+            $object->setContentFieldsUpdateOptions($data['contentFieldsUpdateOptions']);
             unset($data['contentFieldsUpdateOptions']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
             unset($data['id']);
         }
-        foreach ($data as $key_1 => $value_2) {
+        foreach ($data as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
-                $object[$key_1] = $value_2;
+                $object[$key_1] = $value_1;
             }
         }
         return $object;
@@ -77,15 +73,11 @@ class ListItemUpdateItemNormalizer implements DenormalizerInterface, NormalizerI
             }
             $dataArray['content'] = $values;
         }
-        $value_1 = $data->getContentFieldsUpdateOptions();
-        if (is_string($data->getContentFieldsUpdateOptions())) {
-            $value_1 = $data->getContentFieldsUpdateOptions();
-        }
-        $dataArray['contentFieldsUpdateOptions'] = $value_1;
+        $dataArray['contentFieldsUpdateOptions'] = $data->getContentFieldsUpdateOptions();
         $dataArray['id'] = $data->getId();
-        foreach ($data as $key_1 => $value_2) {
+        foreach ($data as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
-                $dataArray[$key_1] = $value_2;
+                $dataArray[$key_1] = $value_1;
             }
         }
         return $dataArray;

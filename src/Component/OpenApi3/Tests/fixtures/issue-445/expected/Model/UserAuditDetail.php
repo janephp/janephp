@@ -27,13 +27,13 @@ class UserAuditDetail
     /**
      * ID of the user who created the document.
      *
-     * @var User|null
+     * @var mixed|null
      */
     protected $createdByUser;
     /**
      * ID of the last user who modified the document.
      *
-     * @var User|null
+     * @var mixed|null
      */
     protected $modifiedByUser;
     /**
@@ -83,20 +83,20 @@ class UserAuditDetail
     /**
      * ID of the user who created the document.
      *
-     * @return User|null
+     * @return mixed
      */
-    public function getCreatedByUser(): ?User
+    public function getCreatedByUser()
     {
         return $this->createdByUser;
     }
     /**
      * ID of the user who created the document.
      *
-     * @param User|null $createdByUser
+     * @param mixed $createdByUser
      *
      * @return self
      */
-    public function setCreatedByUser(?User $createdByUser): self
+    public function setCreatedByUser($createdByUser): self
     {
         $this->initialized['createdByUser'] = true;
         $this->createdByUser = $createdByUser;
@@ -105,20 +105,20 @@ class UserAuditDetail
     /**
      * ID of the last user who modified the document.
      *
-     * @return User|null
+     * @return mixed
      */
-    public function getModifiedByUser(): ?User
+    public function getModifiedByUser()
     {
         return $this->modifiedByUser;
     }
     /**
      * ID of the last user who modified the document.
      *
-     * @param User|null $modifiedByUser
+     * @param mixed $modifiedByUser
      *
      * @return self
      */
-    public function setModifiedByUser(?User $modifiedByUser): self
+    public function setModifiedByUser($modifiedByUser): self
     {
         $this->initialized['modifiedByUser'] = true;
         $this->modifiedByUser = $modifiedByUser;

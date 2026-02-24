@@ -44,11 +44,7 @@ class BusinessProcessCreateRequestNormalizer implements DenormalizerInterface, N
             $object->setSupportsCancellation($data['supportsCancellation']);
         }
         if (\array_key_exists('notification', $data) && $data['notification'] !== null) {
-            $value = $data['notification'];
-            if (is_array($data['notification']) and isset($data['notification']['title']) and isset($data['notification']['message']) and isset($data['notification']['eventType'])) {
-                $value = $this->denormalizer->denormalize($data['notification'], \PicturePark\API\Model\BusinessProcessNotificationUpdate::class, 'json', $context);
-            }
-            $object->setNotification($value);
+            $object->setNotification($data['notification']);
         }
         elseif (\array_key_exists('notification', $data) && $data['notification'] === null) {
             $object->setNotification(null);
@@ -63,11 +59,7 @@ class BusinessProcessCreateRequestNormalizer implements DenormalizerInterface, N
         $dataArray = [];
         $dataArray['supportsCancellation'] = $data->getSupportsCancellation();
         if ($data->isInitialized('notification')) {
-            $value = $data->getNotification();
-            if (is_object($data->getNotification())) {
-                $value = $this->normalizer->normalize($data->getNotification(), 'json', $context);
-            }
-            $dataArray['notification'] = $value;
+            $dataArray['notification'] = $data->getNotification();
         }
         $dataArray['initialState'] = $data->getInitialState();
         return $dataArray;

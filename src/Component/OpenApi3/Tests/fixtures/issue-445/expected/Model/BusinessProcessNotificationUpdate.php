@@ -15,13 +15,13 @@ class BusinessProcessNotificationUpdate
     /**
      * The title the message that is shown to the user should have.
      *
-     * @var array<string, string>
+     * @var mixed
      */
     protected $title;
     /**
      * The message shown to the user.
      *
-     * @var array<string, string>
+     * @var mixed
      */
     protected $message;
     /**
@@ -34,26 +34,26 @@ class BusinessProcessNotificationUpdate
     /**
      * The event type of the notification.
      *
-     * @var string
+     * @var mixed
      */
     protected $eventType;
     /**
      * The title the message that is shown to the user should have.
      *
-     * @return array<string, string>
+     * @return mixed
      */
-    public function getTitle(): iterable
+    public function getTitle()
     {
         return $this->title;
     }
     /**
      * The title the message that is shown to the user should have.
      *
-     * @param array<string, string> $title
+     * @param mixed $title
      *
      * @return self
      */
-    public function setTitle(iterable $title): self
+    public function setTitle($title): self
     {
         $this->initialized['title'] = true;
         $this->title = $title;
@@ -62,20 +62,20 @@ class BusinessProcessNotificationUpdate
     /**
      * The message shown to the user.
      *
-     * @return array<string, string>
+     * @return mixed
      */
-    public function getMessage(): iterable
+    public function getMessage()
     {
         return $this->message;
     }
     /**
      * The message shown to the user.
      *
-     * @param array<string, string> $message
+     * @param mixed $message
      *
      * @return self
      */
-    public function setMessage(iterable $message): self
+    public function setMessage($message): self
     {
         $this->initialized['message'] = true;
         $this->message = $message;
@@ -108,20 +108,20 @@ class BusinessProcessNotificationUpdate
     /**
      * The event type of the notification.
      *
-     * @return string
+     * @return mixed
      */
-    public function getEventType(): string
+    public function getEventType()
     {
         return $this->eventType;
     }
     /**
      * The event type of the notification.
      *
-     * @param string $eventType
+     * @param mixed $eventType
      *
      * @return self
      */
-    public function setEventType(string $eventType): self
+    public function setEventType($eventType): self
     {
         $this->initialized['eventType'] = true;
         $this->eventType = $eventType;

@@ -41,18 +41,10 @@ class BusinessProcessStateChangeRequestNormalizer implements DenormalizerInterfa
             $object->setState($data['state']);
         }
         if (\array_key_exists('lifeCycle', $data)) {
-            $value = $data['lifeCycle'];
-            if (is_string($data['lifeCycle'])) {
-                $value = $data['lifeCycle'];
-            }
-            $object->setLifeCycle($value);
+            $object->setLifeCycle($data['lifeCycle']);
         }
         if (\array_key_exists('notification', $data) && $data['notification'] !== null) {
-            $value_1 = $data['notification'];
-            if (is_array($data['notification']) and isset($data['notification']['title']) and isset($data['notification']['message']) and isset($data['notification']['eventType'])) {
-                $value_1 = $this->denormalizer->denormalize($data['notification'], \PicturePark\API\Model\BusinessProcessNotificationUpdate::class, 'json', $context);
-            }
-            $object->setNotification($value_1);
+            $object->setNotification($data['notification']);
         }
         elseif (\array_key_exists('notification', $data) && $data['notification'] === null) {
             $object->setNotification(null);
@@ -63,17 +55,9 @@ class BusinessProcessStateChangeRequestNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         $dataArray['state'] = $data->getState();
-        $value = $data->getLifeCycle();
-        if (is_string($data->getLifeCycle())) {
-            $value = $data->getLifeCycle();
-        }
-        $dataArray['lifeCycle'] = $value;
+        $dataArray['lifeCycle'] = $data->getLifeCycle();
         if ($data->isInitialized('notification')) {
-            $value_1 = $data->getNotification();
-            if (is_object($data->getNotification())) {
-                $value_1 = $this->normalizer->normalize($data->getNotification(), 'json', $context);
-            }
-            $dataArray['notification'] = $value_1;
+            $dataArray['notification'] = $data->getNotification();
         }
         return $dataArray;
     }

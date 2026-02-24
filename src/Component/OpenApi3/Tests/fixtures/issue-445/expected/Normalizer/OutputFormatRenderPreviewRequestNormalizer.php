@@ -44,11 +44,7 @@ class OutputFormatRenderPreviewRequestNormalizer implements DenormalizerInterfac
             $object->setContentId(null);
         }
         if (\array_key_exists('outputFormat', $data) && $data['outputFormat'] !== null) {
-            $value = $data['outputFormat'];
-            if (is_array($data['outputFormat'])) {
-                $value = $this->denormalizer->denormalize($data['outputFormat'], \PicturePark\API\Model\OutputFormatRenderingSpecification::class, 'json', $context);
-            }
-            $object->setOutputFormat($value);
+            $object->setOutputFormat($data['outputFormat']);
         }
         elseif (\array_key_exists('outputFormat', $data) && $data['outputFormat'] === null) {
             $object->setOutputFormat(null);
@@ -62,11 +58,7 @@ class OutputFormatRenderPreviewRequestNormalizer implements DenormalizerInterfac
             $dataArray['contentId'] = $data->getContentId();
         }
         if ($data->isInitialized('outputFormat')) {
-            $value = $data->getOutputFormat();
-            if (is_object($data->getOutputFormat())) {
-                $value = $this->normalizer->normalize($data->getOutputFormat(), 'json', $context);
-            }
-            $dataArray['outputFormat'] = $value;
+            $dataArray['outputFormat'] = $data->getOutputFormat();
         }
         return $dataArray;
     }

@@ -45,13 +45,13 @@ class UserProfile
     /**
      * Address.
      *
-     * @var UserAddress|null
+     * @var mixed|null
      */
     protected $address;
     /**
      * Authorization state.
      *
-     * @var string
+     * @var mixed
      */
     protected $authorizationState;
     /**
@@ -209,20 +209,20 @@ class UserProfile
     /**
      * Address.
      *
-     * @return UserAddress|null
+     * @return mixed
      */
-    public function getAddress(): ?UserAddress
+    public function getAddress()
     {
         return $this->address;
     }
     /**
      * Address.
      *
-     * @param UserAddress|null $address
+     * @param mixed $address
      *
      * @return self
      */
-    public function setAddress(?UserAddress $address): self
+    public function setAddress($address): self
     {
         $this->initialized['address'] = true;
         $this->address = $address;
@@ -231,20 +231,20 @@ class UserProfile
     /**
      * Authorization state.
      *
-     * @return string
+     * @return mixed
      */
-    public function getAuthorizationState(): string
+    public function getAuthorizationState()
     {
         return $this->authorizationState;
     }
     /**
      * Authorization state.
      *
-     * @param string $authorizationState
+     * @param mixed $authorizationState
      *
      * @return self
      */
-    public function setAuthorizationState(string $authorizationState): self
+    public function setAuthorizationState($authorizationState): self
     {
         $this->initialized['authorizationState'] = true;
         $this->authorizationState = $authorizationState;

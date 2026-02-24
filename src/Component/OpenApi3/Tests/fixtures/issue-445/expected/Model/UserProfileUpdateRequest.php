@@ -45,7 +45,7 @@ class UserProfileUpdateRequest
     /**
      * Address.
      *
-     * @var UserAddress|null
+     * @var mixed|null
      */
     protected $address;
     /**
@@ -161,20 +161,20 @@ class UserProfileUpdateRequest
     /**
      * Address.
      *
-     * @return UserAddress|null
+     * @return mixed
      */
-    public function getAddress(): ?UserAddress
+    public function getAddress()
     {
         return $this->address;
     }
     /**
      * Address.
      *
-     * @param UserAddress|null $address
+     * @param mixed $address
      *
      * @return self
      */
-    public function setAddress(?UserAddress $address): self
+    public function setAddress($address): self
     {
         $this->initialized['address'] = true;
         $this->address = $address;

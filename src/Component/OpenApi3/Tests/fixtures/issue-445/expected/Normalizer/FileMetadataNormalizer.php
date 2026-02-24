@@ -38,29 +38,13 @@ class FileMetadataNormalizer implements DenormalizerInterface, NormalizerInterfa
             return $object;
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $value = $data['names'];
-            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
-                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['names'] as $key => $value_1) {
-                    $values[$key] = $value_1;
-                }
-                $value = $values;
-            }
-            $object->setNames($value);
+            $object->setNames($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
-            $value_2 = $data['descriptions'];
-            if (is_array($data['descriptions']) && $this->isOnlyNumericKeys($data['descriptions'])) {
-                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['descriptions'] as $key_1 => $value_3) {
-                    $values_1[$key_1] = $value_3;
-                }
-                $value_2 = $values_1;
-            }
-            $object->setDescriptions($value_2);
+            $object->setDescriptions($data['descriptions']);
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
             $object->setDescriptions(null);
@@ -119,26 +103,10 @@ class FileMetadataNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         if ($data->isInitialized('names')) {
-            $value = $data->getNames();
-            if (is_object($data->getNames())) {
-                $values = [];
-                foreach ($data->getNames() as $key => $value_1) {
-                    $values[$key] = $value_1;
-                }
-                $value = $values;
-            }
-            $dataArray['names'] = $value;
+            $dataArray['names'] = $data->getNames();
         }
         if ($data->isInitialized('descriptions')) {
-            $value_2 = $data->getDescriptions();
-            if (is_object($data->getDescriptions())) {
-                $values_1 = [];
-                foreach ($data->getDescriptions() as $key_1 => $value_3) {
-                    $values_1[$key_1] = $value_3;
-                }
-                $value_2 = $values_1;
-            }
-            $dataArray['descriptions'] = $value_2;
+            $dataArray['descriptions'] = $data->getDescriptions();
         }
         if ($data->isInitialized('fileExtension')) {
             $dataArray['fileExtension'] = $data->getFileExtension();

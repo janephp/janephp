@@ -13,7 +13,7 @@ class ReviewJsonldReviewWrite extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var string|object
+     * @var mixed
      */
     protected $context;
     /**
@@ -63,14 +63,14 @@ class ReviewJsonldReviewWrite extends \ArrayObject
      */
     protected $publicationDate;
     /**
-     * @return string|object
+     * @return mixed
      */
     public function getContext()
     {
         return $this->context;
     }
     /**
-     * @param string|object $context
+     * @param mixed $context
      *
      * @return self
      */

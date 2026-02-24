@@ -42,37 +42,25 @@ class GeoDistanceAggregatorNormalizer implements DenormalizerInterface, Normaliz
             unset($data['name']);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $value = $data['names'];
-            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
-                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['names'] as $key => $value_1) {
-                    $values[$key] = $value_1;
-                }
-                $value = $values;
-            }
-            $object->setNames($value);
+            $object->setNames($data['names']);
             unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('aggregators', $data) && $data['aggregators'] !== null) {
-            $values_1 = [];
-            foreach ($data['aggregators'] as $value_2) {
-                $values_1[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
+            $values = [];
+            foreach ($data['aggregators'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
             }
-            $object->setAggregators($values_1);
+            $object->setAggregators($values);
             unset($data['aggregators']);
         }
         elseif (\array_key_exists('aggregators', $data) && $data['aggregators'] === null) {
             $object->setAggregators(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $value_3 = $data['filter'];
-            if (is_array($data['filter']) and isset($data['filter']['kind'])) {
-                $value_3 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
-            }
-            $object->setFilter($value_3);
+            $object->setFilter($data['filter']);
             unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
@@ -87,24 +75,20 @@ class GeoDistanceAggregatorNormalizer implements DenormalizerInterface, Normaliz
             unset($data['field']);
         }
         if (\array_key_exists('location', $data)) {
-            $value_4 = $data['location'];
-            if (is_array($data['location'])) {
-                $value_4 = $this->denormalizer->denormalize($data['location'], \PicturePark\API\Model\GeoLocation::class, 'json', $context);
-            }
-            $object->setLocation($value_4);
+            $object->setLocation($data['location']);
             unset($data['location']);
         }
         if (\array_key_exists('ranges', $data)) {
-            $values_2 = [];
-            foreach ($data['ranges'] as $value_5) {
-                $values_2[] = $this->denormalizer->denormalize($value_5, \PicturePark\API\Model\GeoDistance::class, 'json', $context);
+            $values_1 = [];
+            foreach ($data['ranges'] as $value_1) {
+                $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\GeoDistance::class, 'json', $context);
             }
-            $object->setRanges($values_2);
+            $object->setRanges($values_1);
             unset($data['ranges']);
         }
-        foreach ($data as $key_1 => $value_6) {
-            if (preg_match('/.*/', (string) $key_1)) {
-                $object[$key_1] = $value_6;
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
             }
         }
         return $object;
@@ -114,45 +98,29 @@ class GeoDistanceAggregatorNormalizer implements DenormalizerInterface, Normaliz
         $dataArray = [];
         $dataArray['name'] = $data->getName();
         if ($data->isInitialized('names')) {
-            $value = $data->getNames();
-            if (is_object($data->getNames())) {
-                $values = [];
-                foreach ($data->getNames() as $key => $value_1) {
-                    $values[$key] = $value_1;
-                }
-                $value = $values;
-            }
-            $dataArray['names'] = $value;
+            $dataArray['names'] = $data->getNames();
         }
         if ($data->isInitialized('aggregators')) {
-            $values_1 = [];
-            foreach ($data->getAggregators() as $value_2) {
-                $values_1[] = $this->normalizer->normalize($value_2, 'json', $context);
+            $values = [];
+            foreach ($data->getAggregators() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $dataArray['aggregators'] = $values_1;
+            $dataArray['aggregators'] = $values;
         }
         if ($data->isInitialized('filter')) {
-            $value_3 = $data->getFilter();
-            if (is_object($data->getFilter())) {
-                $value_3 = $this->normalizer->normalize($data->getFilter(), 'json', $context);
-            }
-            $dataArray['filter'] = $value_3;
+            $dataArray['filter'] = $data->getFilter();
         }
         $dataArray['kind'] = $data->getKind();
         $dataArray['field'] = $data->getField();
-        $value_4 = $data->getLocation();
-        if (is_object($data->getLocation())) {
-            $value_4 = $this->normalizer->normalize($data->getLocation(), 'json', $context);
+        $dataArray['location'] = $data->getLocation();
+        $values_1 = [];
+        foreach ($data->getRanges() as $value_1) {
+            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
         }
-        $dataArray['location'] = $value_4;
-        $values_2 = [];
-        foreach ($data->getRanges() as $value_5) {
-            $values_2[] = $this->normalizer->normalize($value_5, 'json', $context);
-        }
-        $dataArray['ranges'] = $values_2;
-        foreach ($data as $key_1 => $value_6) {
-            if (preg_match('/.*/', (string) $key_1)) {
-                $dataArray[$key_1] = $value_6;
+        $dataArray['ranges'] = $values_1;
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_2;
             }
         }
         return $dataArray;

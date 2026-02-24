@@ -15,7 +15,7 @@ class SchemaPermissionSetUpdateRequest extends \ArrayObject
     /**
      * Language specific permission set names.
      *
-     * @var array<string, string>
+     * @var mixed
      */
     protected $names;
     /**
@@ -33,20 +33,20 @@ class SchemaPermissionSetUpdateRequest extends \ArrayObject
     /**
      * Language specific permission set names.
      *
-     * @return array<string, string>
+     * @return mixed
      */
-    public function getNames(): iterable
+    public function getNames()
     {
         return $this->names;
     }
     /**
      * Language specific permission set names.
      *
-     * @param array<string, string> $names
+     * @param mixed $names
      *
      * @return self
      */
-    public function setNames(iterable $names): self
+    public function setNames($names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;

@@ -21,7 +21,7 @@ class DropletActionRebuild extends \ArrayObject
     /**
      * The image ID of a public or private image or the slug identifier for a public image. The Droplet will be rebuilt using this image as its base.
      *
-     * @var string|int
+     * @var mixed
      */
     protected $image;
     /**
@@ -49,7 +49,7 @@ class DropletActionRebuild extends \ArrayObject
     /**
      * The image ID of a public or private image or the slug identifier for a public image. The Droplet will be rebuilt using this image as its base.
      *
-     * @return string|int
+     * @return mixed
      */
     public function getImage()
     {
@@ -58,7 +58,7 @@ class DropletActionRebuild extends \ArrayObject
     /**
      * The image ID of a public or private image or the slug identifier for a public image. The Droplet will be rebuilt using this image as its base.
      *
-     * @param string|int $image
+     * @param mixed $image
      *
      * @return self
      */

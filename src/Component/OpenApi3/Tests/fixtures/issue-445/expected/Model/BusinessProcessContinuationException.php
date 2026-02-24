@@ -57,7 +57,7 @@ class BusinessProcessContinuationException extends \ArrayObject
      */
     protected $precedingBusinessProcessId;
     /**
-     * @var PictureparkException|null
+     * @var mixed|null
      */
     protected $precedingBusinessProcessException;
     /**
@@ -259,18 +259,18 @@ class BusinessProcessContinuationException extends \ArrayObject
         return $this;
     }
     /**
-     * @return PictureparkException|null
+     * @return mixed
      */
-    public function getPrecedingBusinessProcessException(): ?PictureparkException
+    public function getPrecedingBusinessProcessException()
     {
         return $this->precedingBusinessProcessException;
     }
     /**
-     * @param PictureparkException|null $precedingBusinessProcessException
+     * @param mixed $precedingBusinessProcessException
      *
      * @return self
      */
-    public function setPrecedingBusinessProcessException(?PictureparkException $precedingBusinessProcessException): self
+    public function setPrecedingBusinessProcessException($precedingBusinessProcessException): self
     {
         $this->initialized['precedingBusinessProcessException'] = true;
         $this->precedingBusinessProcessException = $precedingBusinessProcessException;

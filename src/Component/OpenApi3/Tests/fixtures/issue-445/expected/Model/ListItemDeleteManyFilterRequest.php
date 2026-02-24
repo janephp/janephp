@@ -15,7 +15,7 @@ class ListItemDeleteManyFilterRequest
     /**
      * Filters the list items that need to be deleted.
      *
-     * @var ListItemFilterRequest
+     * @var mixed
      */
     protected $filterRequest;
     /**
@@ -33,20 +33,20 @@ class ListItemDeleteManyFilterRequest
     /**
      * Filters the list items that need to be deleted.
      *
-     * @return ListItemFilterRequest
+     * @return mixed
      */
-    public function getFilterRequest(): ListItemFilterRequest
+    public function getFilterRequest()
     {
         return $this->filterRequest;
     }
     /**
      * Filters the list items that need to be deleted.
      *
-     * @param ListItemFilterRequest $filterRequest
+     * @param mixed $filterRequest
      *
      * @return self
      */
-    public function setFilterRequest(ListItemFilterRequest $filterRequest): self
+    public function setFilterRequest($filterRequest): self
     {
         $this->initialized['filterRequest'] = true;
         $this->filterRequest = $filterRequest;

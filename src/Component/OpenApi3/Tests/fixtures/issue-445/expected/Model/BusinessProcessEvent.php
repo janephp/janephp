@@ -17,7 +17,7 @@ class BusinessProcessEvent extends ApplicationEvent
      */
     protected $businessProcessId;
     /**
-     * @var string|null
+     * @var mixed|null
      */
     protected $lifeCycle;
     /**
@@ -43,18 +43,18 @@ class BusinessProcessEvent extends ApplicationEvent
         return $this;
     }
     /**
-     * @return string|null
+     * @return mixed
      */
-    public function getLifeCycle(): ?string
+    public function getLifeCycle()
     {
         return $this->lifeCycle;
     }
     /**
-     * @param string|null $lifeCycle
+     * @param mixed $lifeCycle
      *
      * @return self
      */
-    public function setLifeCycle(?string $lifeCycle): self
+    public function setLifeCycle($lifeCycle): self
     {
         $this->initialized['lifeCycle'] = true;
         $this->lifeCycle = $lifeCycle;

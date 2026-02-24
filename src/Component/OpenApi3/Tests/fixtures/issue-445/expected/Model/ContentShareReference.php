@@ -27,13 +27,13 @@ class ContentShareReference
     /**
      * Audit information.
      *
-     * @var UserAudit|null
+     * @var mixed|null
      */
     protected $audit;
     /**
      * Type of the share.
      *
-     * @var string
+     * @var mixed
      */
     protected $shareType;
     /**
@@ -89,20 +89,20 @@ class ContentShareReference
     /**
      * Audit information.
      *
-     * @return UserAudit|null
+     * @return mixed
      */
-    public function getAudit(): ?UserAudit
+    public function getAudit()
     {
         return $this->audit;
     }
     /**
      * Audit information.
      *
-     * @param UserAudit|null $audit
+     * @param mixed $audit
      *
      * @return self
      */
-    public function setAudit(?UserAudit $audit): self
+    public function setAudit($audit): self
     {
         $this->initialized['audit'] = true;
         $this->audit = $audit;
@@ -111,20 +111,20 @@ class ContentShareReference
     /**
      * Type of the share.
      *
-     * @return string
+     * @return mixed
      */
-    public function getShareType(): string
+    public function getShareType()
     {
         return $this->shareType;
     }
     /**
      * Type of the share.
      *
-     * @param string $shareType
+     * @param mixed $shareType
      *
      * @return self
      */
-    public function setShareType(string $shareType): self
+    public function setShareType($shareType): self
     {
         $this->initialized['shareType'] = true;
         $this->shareType = $shareType;

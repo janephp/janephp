@@ -29,11 +29,11 @@ class LiveStreamMessage extends Message
      */
     protected $scope;
     /**
-     * @var DocumentChange|null
+     * @var mixed|null
      */
     protected $documentChange;
     /**
-     * @var ApplicationEvent|null
+     * @var mixed|null
      */
     protected $applicationEvent;
     /**
@@ -109,36 +109,36 @@ class LiveStreamMessage extends Message
         return $this;
     }
     /**
-     * @return DocumentChange|null
+     * @return mixed
      */
-    public function getDocumentChange(): ?DocumentChange
+    public function getDocumentChange()
     {
         return $this->documentChange;
     }
     /**
-     * @param DocumentChange|null $documentChange
+     * @param mixed $documentChange
      *
      * @return self
      */
-    public function setDocumentChange(?DocumentChange $documentChange): self
+    public function setDocumentChange($documentChange): self
     {
         $this->initialized['documentChange'] = true;
         $this->documentChange = $documentChange;
         return $this;
     }
     /**
-     * @return ApplicationEvent|null
+     * @return mixed
      */
-    public function getApplicationEvent(): ?ApplicationEvent
+    public function getApplicationEvent()
     {
         return $this->applicationEvent;
     }
     /**
-     * @param ApplicationEvent|null $applicationEvent
+     * @param mixed $applicationEvent
      *
      * @return self
      */
-    public function setApplicationEvent(?ApplicationEvent $applicationEvent): self
+    public function setApplicationEvent($applicationEvent): self
     {
         $this->initialized['applicationEvent'] = true;
         $this->applicationEvent = $applicationEvent;

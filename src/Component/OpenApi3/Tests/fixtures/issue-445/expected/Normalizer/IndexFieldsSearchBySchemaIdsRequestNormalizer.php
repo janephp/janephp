@@ -48,11 +48,7 @@ class IndexFieldsSearchBySchemaIdsRequestNormalizer implements DenormalizerInter
             $object->setSchemaIds(null);
         }
         if (\array_key_exists('searchMode', $data)) {
-            $value_1 = $data['searchMode'];
-            if (is_string($data['searchMode'])) {
-                $value_1 = $data['searchMode'];
-            }
-            $object->setSearchMode($value_1);
+            $object->setSearchMode($data['searchMode']);
         }
         return $object;
     }
@@ -66,11 +62,7 @@ class IndexFieldsSearchBySchemaIdsRequestNormalizer implements DenormalizerInter
             }
             $dataArray['schemaIds'] = $values;
         }
-        $value_1 = $data->getSearchMode();
-        if (is_string($data->getSearchMode())) {
-            $value_1 = $data->getSearchMode();
-        }
-        $dataArray['searchMode'] = $value_1;
+        $dataArray['searchMode'] = $data->getSearchMode();
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

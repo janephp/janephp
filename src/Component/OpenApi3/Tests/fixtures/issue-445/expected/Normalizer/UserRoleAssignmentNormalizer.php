@@ -41,11 +41,7 @@ class UserRoleAssignmentNormalizer implements DenormalizerInterface, NormalizerI
             return $object;
         }
         if (\array_key_exists('userRole', $data) && $data['userRole'] !== null) {
-            $value = $data['userRole'];
-            if (is_array($data['userRole'])) {
-                $value = $this->denormalizer->denormalize($data['userRole'], \PicturePark\API\Model\UserRole::class, 'json', $context);
-            }
-            $object->setUserRole($value);
+            $object->setUserRole($data['userRole']);
         }
         elseif (\array_key_exists('userRole', $data) && $data['userRole'] === null) {
             $object->setUserRole(null);
@@ -59,11 +55,7 @@ class UserRoleAssignmentNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if ($data->isInitialized('userRole')) {
-            $value = $data->getUserRole();
-            if (is_object($data->getUserRole())) {
-                $value = $this->normalizer->normalize($data->getUserRole(), 'json', $context);
-            }
-            $dataArray['userRole'] = $value;
+            $dataArray['userRole'] = $data->getUserRole();
         }
         $dataArray['isFederated'] = $data->getIsFederated();
         return $dataArray;

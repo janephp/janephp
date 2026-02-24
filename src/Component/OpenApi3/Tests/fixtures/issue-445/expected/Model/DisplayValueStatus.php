@@ -27,7 +27,7 @@ class DisplayValueStatus
     /**
      * The state of the display values compared to the schema structure (UpToDate = ok, Outdated = re-rendering needed).
      *
-     * @var string
+     * @var mixed
      */
     protected $state;
     /**
@@ -77,20 +77,20 @@ class DisplayValueStatus
     /**
      * The state of the display values compared to the schema structure (UpToDate = ok, Outdated = re-rendering needed).
      *
-     * @return string
+     * @return mixed
      */
-    public function getState(): string
+    public function getState()
     {
         return $this->state;
     }
     /**
      * The state of the display values compared to the schema structure (UpToDate = ok, Outdated = re-rendering needed).
      *
-     * @param string $state
+     * @param mixed $state
      *
      * @return self
      */
-    public function setState(string $state): self
+    public function setState($state): self
     {
         $this->initialized['state'] = true;
         $this->state = $state;

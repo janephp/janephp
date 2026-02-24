@@ -68,11 +68,7 @@ class DocumentHistoryNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']));
         }
         if (\array_key_exists('audit', $data) && $data['audit'] !== null) {
-            $value = $data['audit'];
-            if (is_array($data['audit']) and isset($data['audit']['modificationDate'])) {
-                $value = $this->denormalizer->denormalize($data['audit'], \PicturePark\API\Model\UserAuditHistory::class, 'json', $context);
-            }
-            $object->setAudit($value);
+            $object->setAudit($data['audit']);
         }
         elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
             $object->setAudit(null);
@@ -101,11 +97,7 @@ class DocumentHistoryNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('audit')) {
-            $value = $data->getAudit();
-            if (is_object($data->getAudit())) {
-                $value = $this->normalizer->normalize($data->getAudit(), 'json', $context);
-            }
-            $dataArray['audit'] = $value;
+            $dataArray['audit'] = $data->getAudit();
         }
         $dataArray['deleted'] = $data->getDeleted();
         $dataArray['action'] = $data->getAction();

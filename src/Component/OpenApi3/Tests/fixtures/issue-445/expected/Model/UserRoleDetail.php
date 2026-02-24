@@ -15,7 +15,7 @@ class UserRoleDetail extends \ArrayObject
     /**
      * Language specific user role names.
      *
-     * @var array<string, string>
+     * @var mixed
      */
     protected $names;
     /**
@@ -33,26 +33,26 @@ class UserRoleDetail extends \ArrayObject
     /**
      * Audit information.
      *
-     * @var UserAuditDetail|null
+     * @var mixed|null
      */
     protected $audit;
     /**
      * Language specific user role names.
      *
-     * @return array<string, string>
+     * @return mixed
      */
-    public function getNames(): iterable
+    public function getNames()
     {
         return $this->names;
     }
     /**
      * Language specific user role names.
      *
-     * @param array<string, string> $names
+     * @param mixed $names
      *
      * @return self
      */
-    public function setNames(iterable $names): self
+    public function setNames($names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;
@@ -105,20 +105,20 @@ class UserRoleDetail extends \ArrayObject
     /**
      * Audit information.
      *
-     * @return UserAuditDetail|null
+     * @return mixed
      */
-    public function getAudit(): ?UserAuditDetail
+    public function getAudit()
     {
         return $this->audit;
     }
     /**
      * Audit information.
      *
-     * @param UserAuditDetail|null $audit
+     * @param mixed $audit
      *
      * @return self
      */
-    public function setAudit(?UserAuditDetail $audit): self
+    public function setAudit($audit): self
     {
         $this->initialized['audit'] = true;
         $this->audit = $audit;

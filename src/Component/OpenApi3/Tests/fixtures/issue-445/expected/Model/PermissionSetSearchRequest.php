@@ -41,13 +41,13 @@ class PermissionSetSearchRequest
      */
     protected $pageToken;
     /**
-     * @var FilterBase|null
+     * @var mixed|null
      */
     protected $filter;
     /**
      * Filters based on the PermissionSetRight of the user.
      *
-     * @var string|null
+     * @var mixed|null
      */
     protected $rightFilter;
     /**
@@ -171,18 +171,18 @@ class PermissionSetSearchRequest
         return $this;
     }
     /**
-     * @return FilterBase|null
+     * @return mixed
      */
-    public function getFilter(): ?FilterBase
+    public function getFilter()
     {
         return $this->filter;
     }
     /**
-     * @param FilterBase|null $filter
+     * @param mixed $filter
      *
      * @return self
      */
-    public function setFilter(?FilterBase $filter): self
+    public function setFilter($filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;
@@ -191,20 +191,20 @@ class PermissionSetSearchRequest
     /**
      * Filters based on the PermissionSetRight of the user.
      *
-     * @return string|null
+     * @return mixed
      */
-    public function getRightFilter(): ?string
+    public function getRightFilter()
     {
         return $this->rightFilter;
     }
     /**
      * Filters based on the PermissionSetRight of the user.
      *
-     * @param string|null $rightFilter
+     * @param mixed $rightFilter
      *
      * @return self
      */
-    public function setRightFilter(?string $rightFilter): self
+    public function setRightFilter($rightFilter): self
     {
         $this->initialized['rightFilter'] = true;
         $this->rightFilter = $rightFilter;

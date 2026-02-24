@@ -41,15 +41,7 @@ class RelationTypeNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setId($data['id']);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $value = $data['names'];
-            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
-                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['names'] as $key => $value_1) {
-                    $values[$key] = $value_1;
-                }
-                $value = $values;
-            }
-            $object->setNames($value);
+            $object->setNames($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
@@ -58,11 +50,7 @@ class RelationTypeNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setTargetDocType($data['targetDocType']);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $value_2 = $data['filter'];
-            if (is_array($data['filter']) and isset($data['filter']['kind'])) {
-                $value_2 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
-            }
-            $object->setFilter($value_2);
+            $object->setFilter($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
@@ -74,23 +62,11 @@ class RelationTypeNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray = [];
         $dataArray['id'] = $data->getId();
         if ($data->isInitialized('names')) {
-            $value = $data->getNames();
-            if (is_object($data->getNames())) {
-                $values = [];
-                foreach ($data->getNames() as $key => $value_1) {
-                    $values[$key] = $value_1;
-                }
-                $value = $values;
-            }
-            $dataArray['names'] = $value;
+            $dataArray['names'] = $data->getNames();
         }
         $dataArray['targetDocType'] = $data->getTargetDocType();
         if ($data->isInitialized('filter')) {
-            $value_2 = $data->getFilter();
-            if (is_object($data->getFilter())) {
-                $value_2 = $this->normalizer->normalize($data->getFilter(), 'json', $context);
-            }
-            $dataArray['filter'] = $value_2;
+            $dataArray['filter'] = $data->getFilter();
         }
         return $dataArray;
     }

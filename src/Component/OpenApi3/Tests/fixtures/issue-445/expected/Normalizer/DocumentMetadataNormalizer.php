@@ -38,30 +38,14 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
             return $object;
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $value = $data['names'];
-            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
-                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['names'] as $key => $value_1) {
-                    $values[$key] = $value_1;
-                }
-                $value = $values;
-            }
-            $object->setNames($value);
+            $object->setNames($data['names']);
             unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
-            $value_2 = $data['descriptions'];
-            if (is_array($data['descriptions']) && $this->isOnlyNumericKeys($data['descriptions'])) {
-                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['descriptions'] as $key_1 => $value_3) {
-                    $values_1[$key_1] = $value_3;
-                }
-                $value_2 = $values_1;
-            }
-            $object->setDescriptions($value_2);
+            $object->setDescriptions($data['descriptions']);
             unset($data['descriptions']);
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
@@ -201,41 +185,37 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
             unset($data['revisionNumber']);
         }
         if (\array_key_exists('titles', $data) && $data['titles'] !== null) {
-            $values_2 = [];
-            foreach ($data['titles'] as $value_4) {
-                $values_2[] = $value_4;
+            $values = [];
+            foreach ($data['titles'] as $value) {
+                $values[] = $value;
             }
-            $object->setTitles($values_2);
+            $object->setTitles($values);
             unset($data['titles']);
         }
         elseif (\array_key_exists('titles', $data) && $data['titles'] === null) {
             $object->setTitles(null);
         }
         if (\array_key_exists('imageTitles', $data) && $data['imageTitles'] !== null) {
-            $values_3 = [];
-            foreach ($data['imageTitles'] as $value_5) {
-                $values_3[] = $value_5;
+            $values_1 = [];
+            foreach ($data['imageTitles'] as $value_1) {
+                $values_1[] = $value_1;
             }
-            $object->setImageTitles($values_3);
+            $object->setImageTitles($values_1);
             unset($data['imageTitles']);
         }
         elseif (\array_key_exists('imageTitles', $data) && $data['imageTitles'] === null) {
             $object->setImageTitles(null);
         }
         if (\array_key_exists('epsInfo', $data) && $data['epsInfo'] !== null) {
-            $value_6 = $data['epsInfo'];
-            if (is_array($data['epsInfo']) and isset($data['epsInfo']['isRasterized']) and isset($data['epsInfo']['widthInPoints']) and isset($data['epsInfo']['heightInPoints'])) {
-                $value_6 = $this->denormalizer->denormalize($data['epsInfo'], \PicturePark\API\Model\EpsMetadata::class, 'json', $context);
-            }
-            $object->setEpsInfo($value_6);
+            $object->setEpsInfo($data['epsInfo']);
             unset($data['epsInfo']);
         }
         elseif (\array_key_exists('epsInfo', $data) && $data['epsInfo'] === null) {
             $object->setEpsInfo(null);
         }
-        foreach ($data as $key_2 => $value_7) {
-            if (preg_match('/.*/', (string) $key_2)) {
-                $object[$key_2] = $value_7;
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
             }
         }
         return $object;
@@ -244,26 +224,10 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if ($data->isInitialized('names')) {
-            $value = $data->getNames();
-            if (is_object($data->getNames())) {
-                $values = [];
-                foreach ($data->getNames() as $key => $value_1) {
-                    $values[$key] = $value_1;
-                }
-                $value = $values;
-            }
-            $dataArray['names'] = $value;
+            $dataArray['names'] = $data->getNames();
         }
         if ($data->isInitialized('descriptions')) {
-            $value_2 = $data->getDescriptions();
-            if (is_object($data->getDescriptions())) {
-                $values_1 = [];
-                foreach ($data->getDescriptions() as $key_1 => $value_3) {
-                    $values_1[$key_1] = $value_3;
-                }
-                $value_2 = $values_1;
-            }
-            $dataArray['descriptions'] = $value_2;
+            $dataArray['descriptions'] = $data->getDescriptions();
         }
         if ($data->isInitialized('fileExtension')) {
             $dataArray['fileExtension'] = $data->getFileExtension();
@@ -332,29 +296,25 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['revisionNumber'] = $data->getRevisionNumber();
         }
         if ($data->isInitialized('titles')) {
-            $values_2 = [];
-            foreach ($data->getTitles() as $value_4) {
-                $values_2[] = $value_4;
+            $values = [];
+            foreach ($data->getTitles() as $value) {
+                $values[] = $value;
             }
-            $dataArray['titles'] = $values_2;
+            $dataArray['titles'] = $values;
         }
         if ($data->isInitialized('imageTitles')) {
-            $values_3 = [];
-            foreach ($data->getImageTitles() as $value_5) {
-                $values_3[] = $value_5;
+            $values_1 = [];
+            foreach ($data->getImageTitles() as $value_1) {
+                $values_1[] = $value_1;
             }
-            $dataArray['imageTitles'] = $values_3;
+            $dataArray['imageTitles'] = $values_1;
         }
         if ($data->isInitialized('epsInfo')) {
-            $value_6 = $data->getEpsInfo();
-            if (is_object($data->getEpsInfo())) {
-                $value_6 = $this->normalizer->normalize($data->getEpsInfo(), 'json', $context);
-            }
-            $dataArray['epsInfo'] = $value_6;
+            $dataArray['epsInfo'] = $data->getEpsInfo();
         }
-        foreach ($data as $key_2 => $value_7) {
-            if (preg_match('/.*/', (string) $key_2)) {
-                $dataArray[$key_2] = $value_7;
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_2;
             }
         }
         return $dataArray;

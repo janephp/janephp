@@ -15,7 +15,7 @@ class UserRoleAssignment
     /**
      * User role assigned.
      *
-     * @var UserRole|null
+     * @var mixed|null
      */
     protected $userRole;
     /**
@@ -27,20 +27,20 @@ class UserRoleAssignment
     /**
      * User role assigned.
      *
-     * @return UserRole|null
+     * @return mixed
      */
-    public function getUserRole(): ?UserRole
+    public function getUserRole()
     {
         return $this->userRole;
     }
     /**
      * User role assigned.
      *
-     * @param UserRole|null $userRole
+     * @param mixed $userRole
      *
      * @return self
      */
-    public function setUserRole(?UserRole $userRole): self
+    public function setUserRole($userRole): self
     {
         $this->initialized['userRole'] = true;
         $this->userRole = $userRole;

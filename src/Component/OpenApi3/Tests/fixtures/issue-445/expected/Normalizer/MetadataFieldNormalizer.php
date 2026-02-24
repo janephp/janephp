@@ -47,16 +47,12 @@ class MetadataFieldNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->setIsWritable($data['isWritable']);
         }
         if (\array_key_exists('dataType', $data)) {
-            $value = $data['dataType'];
-            if (is_string($data['dataType'])) {
-                $value = $data['dataType'];
-            }
-            $object->setDataType($value);
+            $object->setDataType($data['dataType']);
         }
         if (\array_key_exists('availableKeyFields', $data) && $data['availableKeyFields'] !== null) {
             $values = [];
-            foreach ($data['availableKeyFields'] as $value_1) {
-                $values[] = $value_1;
+            foreach ($data['availableKeyFields'] as $value) {
+                $values[] = $value;
             }
             $object->setAvailableKeyFields($values);
         }
@@ -70,15 +66,11 @@ class MetadataFieldNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray = [];
         $dataArray['path'] = $data->getPath();
         $dataArray['isWritable'] = $data->getIsWritable();
-        $value = $data->getDataType();
-        if (is_string($data->getDataType())) {
-            $value = $data->getDataType();
-        }
-        $dataArray['dataType'] = $value;
+        $dataArray['dataType'] = $data->getDataType();
         if ($data->isInitialized('availableKeyFields')) {
             $values = [];
-            foreach ($data->getAvailableKeyFields() as $value_1) {
-                $values[] = $value_1;
+            foreach ($data->getAvailableKeyFields() as $value) {
+                $values[] = $value;
             }
             $dataArray['availableKeyFields'] = $values;
         }

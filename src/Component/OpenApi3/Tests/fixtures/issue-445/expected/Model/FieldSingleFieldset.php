@@ -21,7 +21,7 @@ class FieldSingleFieldset extends FieldBase
     /**
      * Indexing information of fields of the related schema identified by the SchemaId property
      *
-     * @var SchemaIndexingInfo|null
+     * @var mixed|null
      */
     protected $schemaIndexingInfo;
     /**
@@ -49,20 +49,20 @@ class FieldSingleFieldset extends FieldBase
     /**
      * Indexing information of fields of the related schema identified by the SchemaId property
      *
-     * @return SchemaIndexingInfo|null
+     * @return mixed
      */
-    public function getSchemaIndexingInfo(): ?SchemaIndexingInfo
+    public function getSchemaIndexingInfo()
     {
         return $this->schemaIndexingInfo;
     }
     /**
      * Indexing information of fields of the related schema identified by the SchemaId property
      *
-     * @param SchemaIndexingInfo|null $schemaIndexingInfo
+     * @param mixed $schemaIndexingInfo
      *
      * @return self
      */
-    public function setSchemaIndexingInfo(?SchemaIndexingInfo $schemaIndexingInfo): self
+    public function setSchemaIndexingInfo($schemaIndexingInfo): self
     {
         $this->initialized['schemaIndexingInfo'] = true;
         $this->schemaIndexingInfo = $schemaIndexingInfo;

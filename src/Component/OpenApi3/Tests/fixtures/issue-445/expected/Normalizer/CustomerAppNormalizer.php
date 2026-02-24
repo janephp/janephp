@@ -44,29 +44,13 @@ class CustomerAppNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setAppId(null);
         }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
-            $value = $data['name'];
-            if (is_array($data['name']) && $this->isOnlyNumericKeys($data['name'])) {
-                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['name'] as $key => $value_1) {
-                    $values[$key] = $value_1;
-                }
-                $value = $values;
-            }
-            $object->setName($value);
+            $object->setName($data['name']);
         }
         elseif (\array_key_exists('name', $data) && $data['name'] === null) {
             $object->setName(null);
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
-            $value_2 = $data['description'];
-            if (is_array($data['description']) && $this->isOnlyNumericKeys($data['description'])) {
-                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['description'] as $key_1 => $value_3) {
-                    $values_1[$key_1] = $value_3;
-                }
-                $value_2 = $values_1;
-            }
-            $object->setDescription($value_2);
+            $object->setDescription($data['description']);
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
@@ -86,26 +70,10 @@ class CustomerAppNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['appId'] = $data->getAppId();
         }
         if ($data->isInitialized('name')) {
-            $value = $data->getName();
-            if (is_object($data->getName())) {
-                $values = [];
-                foreach ($data->getName() as $key => $value_1) {
-                    $values[$key] = $value_1;
-                }
-                $value = $values;
-            }
-            $dataArray['name'] = $value;
+            $dataArray['name'] = $data->getName();
         }
         if ($data->isInitialized('description')) {
-            $value_2 = $data->getDescription();
-            if (is_object($data->getDescription())) {
-                $values_1 = [];
-                foreach ($data->getDescription() as $key_1 => $value_3) {
-                    $values_1[$key_1] = $value_3;
-                }
-                $value_2 = $values_1;
-            }
-            $dataArray['description'] = $value_2;
+            $dataArray['description'] = $data->getDescription();
         }
         if ($data->isInitialized('icon')) {
             $dataArray['icon'] = $data->getIcon();

@@ -15,19 +15,19 @@ class Mp4VideoFormat extends FormatBase
     /**
      * Allows resizing of the video.
      *
-     * @var ResizeAction|null
+     * @var mixed|null
      */
     protected $resizeAction;
     /**
      * Gets or sets the encoding audio codec.
      *
-     * @var AudioFormatBase|null
+     * @var mixed|null
      */
     protected $audioCodec;
     /**
      * Gets or sets the encoding codec preset.
      *
-     * @var string
+     * @var mixed
      */
     protected $preset;
     /**
@@ -37,20 +37,20 @@ class Mp4VideoFormat extends FormatBase
     /**
      * Allows resizing of the video.
      *
-     * @return ResizeAction|null
+     * @return mixed
      */
-    public function getResizeAction(): ?ResizeAction
+    public function getResizeAction()
     {
         return $this->resizeAction;
     }
     /**
      * Allows resizing of the video.
      *
-     * @param ResizeAction|null $resizeAction
+     * @param mixed $resizeAction
      *
      * @return self
      */
-    public function setResizeAction(?ResizeAction $resizeAction): self
+    public function setResizeAction($resizeAction): self
     {
         $this->initialized['resizeAction'] = true;
         $this->resizeAction = $resizeAction;
@@ -59,20 +59,20 @@ class Mp4VideoFormat extends FormatBase
     /**
      * Gets or sets the encoding audio codec.
      *
-     * @return AudioFormatBase|null
+     * @return mixed
      */
-    public function getAudioCodec(): ?AudioFormatBase
+    public function getAudioCodec()
     {
         return $this->audioCodec;
     }
     /**
      * Gets or sets the encoding audio codec.
      *
-     * @param AudioFormatBase|null $audioCodec
+     * @param mixed $audioCodec
      *
      * @return self
      */
-    public function setAudioCodec(?AudioFormatBase $audioCodec): self
+    public function setAudioCodec($audioCodec): self
     {
         $this->initialized['audioCodec'] = true;
         $this->audioCodec = $audioCodec;
@@ -81,20 +81,20 @@ class Mp4VideoFormat extends FormatBase
     /**
      * Gets or sets the encoding codec preset.
      *
-     * @return string
+     * @return mixed
      */
-    public function getPreset(): string
+    public function getPreset()
     {
         return $this->preset;
     }
     /**
      * Gets or sets the encoding codec preset.
      *
-     * @param string $preset
+     * @param mixed $preset
      *
      * @return self
      */
-    public function setPreset(string $preset): self
+    public function setPreset($preset): self
     {
         $this->initialized['preset'] = true;
         $this->preset = $preset;

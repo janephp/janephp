@@ -38,11 +38,7 @@ class ListItemReferencesResultNormalizer implements DenormalizerInterface, Norma
             return $object;
         }
         if (\array_key_exists('metadataReferences', $data) && $data['metadataReferences'] !== null) {
-            $value = $data['metadataReferences'];
-            if (is_array($data['metadataReferences'])) {
-                $value = $this->denormalizer->denormalize($data['metadataReferences'], \PicturePark\API\Model\MetadataReferenceResult::class, 'json', $context);
-            }
-            $object->setMetadataReferences($value);
+            $object->setMetadataReferences($data['metadataReferences']);
         }
         elseif (\array_key_exists('metadataReferences', $data) && $data['metadataReferences'] === null) {
             $object->setMetadataReferences(null);
@@ -53,11 +49,7 @@ class ListItemReferencesResultNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if ($data->isInitialized('metadataReferences')) {
-            $value = $data->getMetadataReferences();
-            if (is_object($data->getMetadataReferences())) {
-                $value = $this->normalizer->normalize($data->getMetadataReferences(), 'json', $context);
-            }
-            $dataArray['metadataReferences'] = $value;
+            $dataArray['metadataReferences'] = $data->getMetadataReferences();
         }
         return $dataArray;
     }

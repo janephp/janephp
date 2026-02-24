@@ -38,26 +38,10 @@ class BusinessProcessNotificationUpdateNormalizer implements DenormalizerInterfa
             return $object;
         }
         if (\array_key_exists('title', $data)) {
-            $value = $data['title'];
-            if (is_array($data['title']) && $this->isOnlyNumericKeys($data['title'])) {
-                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['title'] as $key => $value_1) {
-                    $values[$key] = $value_1;
-                }
-                $value = $values;
-            }
-            $object->setTitle($value);
+            $object->setTitle($data['title']);
         }
         if (\array_key_exists('message', $data)) {
-            $value_2 = $data['message'];
-            if (is_array($data['message']) && $this->isOnlyNumericKeys($data['message'])) {
-                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['message'] as $key_1 => $value_3) {
-                    $values_1[$key_1] = $value_3;
-                }
-                $value_2 = $values_1;
-            }
-            $object->setMessage($value_2);
+            $object->setMessage($data['message']);
         }
         if (\array_key_exists('navigationLink', $data) && $data['navigationLink'] !== null) {
             $object->setNavigationLink($data['navigationLink']);
@@ -66,43 +50,19 @@ class BusinessProcessNotificationUpdateNormalizer implements DenormalizerInterfa
             $object->setNavigationLink(null);
         }
         if (\array_key_exists('eventType', $data)) {
-            $value_4 = $data['eventType'];
-            if (is_string($data['eventType'])) {
-                $value_4 = $data['eventType'];
-            }
-            $object->setEventType($value_4);
+            $object->setEventType($data['eventType']);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->getTitle();
-        if (is_object($data->getTitle())) {
-            $values = [];
-            foreach ($data->getTitle() as $key => $value_1) {
-                $values[$key] = $value_1;
-            }
-            $value = $values;
-        }
-        $dataArray['title'] = $value;
-        $value_2 = $data->getMessage();
-        if (is_object($data->getMessage())) {
-            $values_1 = [];
-            foreach ($data->getMessage() as $key_1 => $value_3) {
-                $values_1[$key_1] = $value_3;
-            }
-            $value_2 = $values_1;
-        }
-        $dataArray['message'] = $value_2;
+        $dataArray['title'] = $data->getTitle();
+        $dataArray['message'] = $data->getMessage();
         if ($data->isInitialized('navigationLink')) {
             $dataArray['navigationLink'] = $data->getNavigationLink();
         }
-        $value_4 = $data->getEventType();
-        if (is_string($data->getEventType())) {
-            $value_4 = $data->getEventType();
-        }
-        $dataArray['eventType'] = $value_4;
+        $dataArray['eventType'] = $data->getEventType();
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

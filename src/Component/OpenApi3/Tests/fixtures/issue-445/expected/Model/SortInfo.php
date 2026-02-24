@@ -21,7 +21,7 @@ class SortInfo
     /**
      * The sort direction (ascending/descending).
      *
-     * @var string
+     * @var mixed
      */
     protected $direction;
     /**
@@ -49,20 +49,20 @@ class SortInfo
     /**
      * The sort direction (ascending/descending).
      *
-     * @return string
+     * @return mixed
      */
-    public function getDirection(): string
+    public function getDirection()
     {
         return $this->direction;
     }
     /**
      * The sort direction (ascending/descending).
      *
-     * @param string $direction
+     * @param mixed $direction
      *
      * @return self
      */
-    public function setDirection(string $direction): self
+    public function setDirection($direction): self
     {
         $this->initialized['direction'] = true;
         $this->direction = $direction;

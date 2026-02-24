@@ -15,32 +15,32 @@ class ContentReferencesResult
     /**
      * List of references. Only available when requested in the request.
      *
-     * @var MetadataReferenceResult|null
+     * @var mixed|null
      */
     protected $metadataReferences;
     /**
      * List of share references
      *
-     * @var ContentShareReferenceResult|null
+     * @var mixed|null
      */
     protected $shareReferences;
     /**
      * List of references. Only available when requested in the request.
      *
-     * @return MetadataReferenceResult|null
+     * @return mixed
      */
-    public function getMetadataReferences(): ?MetadataReferenceResult
+    public function getMetadataReferences()
     {
         return $this->metadataReferences;
     }
     /**
      * List of references. Only available when requested in the request.
      *
-     * @param MetadataReferenceResult|null $metadataReferences
+     * @param mixed $metadataReferences
      *
      * @return self
      */
-    public function setMetadataReferences(?MetadataReferenceResult $metadataReferences): self
+    public function setMetadataReferences($metadataReferences): self
     {
         $this->initialized['metadataReferences'] = true;
         $this->metadataReferences = $metadataReferences;
@@ -49,20 +49,20 @@ class ContentReferencesResult
     /**
      * List of share references
      *
-     * @return ContentShareReferenceResult|null
+     * @return mixed
      */
-    public function getShareReferences(): ?ContentShareReferenceResult
+    public function getShareReferences()
     {
         return $this->shareReferences;
     }
     /**
      * List of share references
      *
-     * @param ContentShareReferenceResult|null $shareReferences
+     * @param mixed $shareReferences
      *
      * @return self
      */
-    public function setShareReferences(?ContentShareReferenceResult $shareReferences): self
+    public function setShareReferences($shareReferences): self
     {
         $this->initialized['shareReferences'] = true;
         $this->shareReferences = $shareReferences;

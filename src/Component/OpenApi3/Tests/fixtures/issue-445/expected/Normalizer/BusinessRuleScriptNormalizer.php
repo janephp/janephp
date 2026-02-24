@@ -51,11 +51,7 @@ class BusinessRuleScriptNormalizer implements DenormalizerInterface, NormalizerI
             $object->setId(null);
         }
         if (\array_key_exists('triggerPoint', $data) && $data['triggerPoint'] !== null) {
-            $value = $data['triggerPoint'];
-            if (is_array($data['triggerPoint']) and isset($data['triggerPoint']['executionScope']) and isset($data['triggerPoint']['documentType']) and isset($data['triggerPoint']['action'])) {
-                $value = $this->denormalizer->denormalize($data['triggerPoint'], \PicturePark\API\Model\BusinessRuleTriggerPoint::class, 'json', $context);
-            }
-            $object->setTriggerPoint($value);
+            $object->setTriggerPoint($data['triggerPoint']);
             unset($data['triggerPoint']);
         }
         elseif (\array_key_exists('triggerPoint', $data) && $data['triggerPoint'] === null) {
@@ -66,30 +62,14 @@ class BusinessRuleScriptNormalizer implements DenormalizerInterface, NormalizerI
             unset($data['isEnabled']);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $value_1 = $data['names'];
-            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
-                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['names'] as $key => $value_2) {
-                    $values[$key] = $value_2;
-                }
-                $value_1 = $values;
-            }
-            $object->setNames($value_1);
+            $object->setNames($data['names']);
             unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
-            $value_3 = $data['description'];
-            if (is_array($data['description']) && $this->isOnlyNumericKeys($data['description'])) {
-                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['description'] as $key_1 => $value_4) {
-                    $values_1[$key_1] = $value_4;
-                }
-                $value_3 = $values_1;
-            }
-            $object->setDescription($value_3);
+            $object->setDescription($data['description']);
             unset($data['description']);
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
@@ -110,9 +90,9 @@ class BusinessRuleScriptNormalizer implements DenormalizerInterface, NormalizerI
         elseif (\array_key_exists('script', $data) && $data['script'] === null) {
             $object->setScript(null);
         }
-        foreach ($data as $key_2 => $value_5) {
-            if (preg_match('/.*/', (string) $key_2)) {
-                $object[$key_2] = $value_5;
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
             }
         }
         return $object;
@@ -124,43 +104,23 @@ class BusinessRuleScriptNormalizer implements DenormalizerInterface, NormalizerI
             $dataArray['id'] = $data->getId();
         }
         if ($data->isInitialized('triggerPoint')) {
-            $value = $data->getTriggerPoint();
-            if (is_object($data->getTriggerPoint())) {
-                $value = $this->normalizer->normalize($data->getTriggerPoint(), 'json', $context);
-            }
-            $dataArray['triggerPoint'] = $value;
+            $dataArray['triggerPoint'] = $data->getTriggerPoint();
         }
         $dataArray['isEnabled'] = $data->getIsEnabled();
         if ($data->isInitialized('names')) {
-            $value_1 = $data->getNames();
-            if (is_object($data->getNames())) {
-                $values = [];
-                foreach ($data->getNames() as $key => $value_2) {
-                    $values[$key] = $value_2;
-                }
-                $value_1 = $values;
-            }
-            $dataArray['names'] = $value_1;
+            $dataArray['names'] = $data->getNames();
         }
         if ($data->isInitialized('description')) {
-            $value_3 = $data->getDescription();
-            if (is_object($data->getDescription())) {
-                $values_1 = [];
-                foreach ($data->getDescription() as $key_1 => $value_4) {
-                    $values_1[$key_1] = $value_4;
-                }
-                $value_3 = $values_1;
-            }
-            $dataArray['description'] = $value_3;
+            $dataArray['description'] = $data->getDescription();
         }
         $dataArray['enableTracing'] = $data->getEnableTracing();
         $dataArray['kind'] = $data->getKind();
         if ($data->isInitialized('script')) {
             $dataArray['script'] = $data->getScript();
         }
-        foreach ($data as $key_2 => $value_5) {
-            if (preg_match('/.*/', (string) $key_2)) {
-                $dataArray[$key_2] = $value_5;
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
             }
         }
         return $dataArray;

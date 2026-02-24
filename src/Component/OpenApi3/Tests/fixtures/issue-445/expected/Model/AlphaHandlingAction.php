@@ -15,7 +15,7 @@ class AlphaHandlingAction extends ImageActionBase
     /**
      * Specifies the kind of alpha handling to be applied.
      *
-     * @var string
+     * @var mixed
      */
     protected $alphaHandling;
     /**
@@ -27,20 +27,20 @@ class AlphaHandlingAction extends ImageActionBase
     /**
      * Specifies the kind of alpha handling to be applied.
      *
-     * @return string
+     * @return mixed
      */
-    public function getAlphaHandling(): string
+    public function getAlphaHandling()
     {
         return $this->alphaHandling;
     }
     /**
      * Specifies the kind of alpha handling to be applied.
      *
-     * @param string $alphaHandling
+     * @param mixed $alphaHandling
      *
      * @return self
      */
-    public function setAlphaHandling(string $alphaHandling): self
+    public function setAlphaHandling($alphaHandling): self
     {
         $this->initialized['alphaHandling'] = true;
         $this->alphaHandling = $alphaHandling;

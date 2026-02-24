@@ -38,29 +38,13 @@ class DisplayPatternNormalizer implements DenormalizerInterface, NormalizerInter
             return $object;
         }
         if (\array_key_exists('templateEngine', $data)) {
-            $value = $data['templateEngine'];
-            if (is_string($data['templateEngine'])) {
-                $value = $data['templateEngine'];
-            }
-            $object->setTemplateEngine($value);
+            $object->setTemplateEngine($data['templateEngine']);
         }
         if (\array_key_exists('displayPatternType', $data)) {
-            $value_1 = $data['displayPatternType'];
-            if (is_string($data['displayPatternType'])) {
-                $value_1 = $data['displayPatternType'];
-            }
-            $object->setDisplayPatternType($value_1);
+            $object->setDisplayPatternType($data['displayPatternType']);
         }
         if (\array_key_exists('templates', $data) && $data['templates'] !== null) {
-            $value_2 = $data['templates'];
-            if (is_array($data['templates']) && $this->isOnlyNumericKeys($data['templates'])) {
-                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['templates'] as $key => $value_3) {
-                    $values[$key] = $value_3;
-                }
-                $value_2 = $values;
-            }
-            $object->setTemplates($value_2);
+            $object->setTemplates($data['templates']);
         }
         elseif (\array_key_exists('templates', $data) && $data['templates'] === null) {
             $object->setTemplates(null);
@@ -70,26 +54,10 @@ class DisplayPatternNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->getTemplateEngine();
-        if (is_string($data->getTemplateEngine())) {
-            $value = $data->getTemplateEngine();
-        }
-        $dataArray['templateEngine'] = $value;
-        $value_1 = $data->getDisplayPatternType();
-        if (is_string($data->getDisplayPatternType())) {
-            $value_1 = $data->getDisplayPatternType();
-        }
-        $dataArray['displayPatternType'] = $value_1;
+        $dataArray['templateEngine'] = $data->getTemplateEngine();
+        $dataArray['displayPatternType'] = $data->getDisplayPatternType();
         if ($data->isInitialized('templates')) {
-            $value_2 = $data->getTemplates();
-            if (is_object($data->getTemplates())) {
-                $values = [];
-                foreach ($data->getTemplates() as $key => $value_3) {
-                    $values[$key] = $value_3;
-                }
-                $value_2 = $values;
-            }
-            $dataArray['templates'] = $value_2;
+            $dataArray['templates'] = $data->getTemplates();
         }
         return $dataArray;
     }

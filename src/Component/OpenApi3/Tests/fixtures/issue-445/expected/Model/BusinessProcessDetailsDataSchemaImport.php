@@ -15,32 +15,32 @@ class BusinessProcessDetailsDataSchemaImport extends BusinessProcessDetailsDataB
     /**
      * Result information of a schema import operation
      *
-     * @var SchemaImportResult|null
+     * @var mixed|null
      */
     protected $schemaImportResult;
     /**
      * Result information of a list item import operation
      *
-     * @var ListItemImportResult|null
+     * @var mixed|null
      */
     protected $listItemImportResult;
     /**
      * Result information of a schema import operation
      *
-     * @return SchemaImportResult|null
+     * @return mixed
      */
-    public function getSchemaImportResult(): ?SchemaImportResult
+    public function getSchemaImportResult()
     {
         return $this->schemaImportResult;
     }
     /**
      * Result information of a schema import operation
      *
-     * @param SchemaImportResult|null $schemaImportResult
+     * @param mixed $schemaImportResult
      *
      * @return self
      */
-    public function setSchemaImportResult(?SchemaImportResult $schemaImportResult): self
+    public function setSchemaImportResult($schemaImportResult): self
     {
         $this->initialized['schemaImportResult'] = true;
         $this->schemaImportResult = $schemaImportResult;
@@ -49,20 +49,20 @@ class BusinessProcessDetailsDataSchemaImport extends BusinessProcessDetailsDataB
     /**
      * Result information of a list item import operation
      *
-     * @return ListItemImportResult|null
+     * @return mixed
      */
-    public function getListItemImportResult(): ?ListItemImportResult
+    public function getListItemImportResult()
     {
         return $this->listItemImportResult;
     }
     /**
      * Result information of a list item import operation
      *
-     * @param ListItemImportResult|null $listItemImportResult
+     * @param mixed $listItemImportResult
      *
      * @return self
      */
-    public function setListItemImportResult(?ListItemImportResult $listItemImportResult): self
+    public function setListItemImportResult($listItemImportResult): self
     {
         $this->initialized['listItemImportResult'] = true;
         $this->listItemImportResult = $listItemImportResult;

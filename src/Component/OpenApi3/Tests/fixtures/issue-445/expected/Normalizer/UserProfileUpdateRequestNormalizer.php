@@ -68,11 +68,7 @@ class UserProfileUpdateRequestNormalizer implements DenormalizerInterface, Norma
             $object->setLanguageCode(null);
         }
         if (\array_key_exists('address', $data) && $data['address'] !== null) {
-            $value = $data['address'];
-            if (is_array($data['address'])) {
-                $value = $this->denormalizer->denormalize($data['address'], \PicturePark\API\Model\UserAddress::class, 'json', $context);
-            }
-            $object->setAddress($value);
+            $object->setAddress($data['address']);
         }
         elseif (\array_key_exists('address', $data) && $data['address'] === null) {
             $object->setAddress(null);
@@ -98,11 +94,7 @@ class UserProfileUpdateRequestNormalizer implements DenormalizerInterface, Norma
             $dataArray['languageCode'] = $data->getLanguageCode();
         }
         if ($data->isInitialized('address')) {
-            $value = $data->getAddress();
-            if (is_object($data->getAddress())) {
-                $value = $this->normalizer->normalize($data->getAddress(), 'json', $context);
-            }
-            $dataArray['address'] = $value;
+            $dataArray['address'] = $data->getAddress();
         }
         return $dataArray;
     }

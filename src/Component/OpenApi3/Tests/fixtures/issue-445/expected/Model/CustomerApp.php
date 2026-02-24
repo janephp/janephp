@@ -17,11 +17,11 @@ class CustomerApp
      */
     protected $appId;
     /**
-     * @var array<string, string>|null
+     * @var mixed|null
      */
     protected $name;
     /**
-     * @var array<string, string>|null
+     * @var mixed|null
      */
     protected $description;
     /**
@@ -47,36 +47,36 @@ class CustomerApp
         return $this;
     }
     /**
-     * @return array<string, string>|null
+     * @return mixed
      */
-    public function getName(): ?iterable
+    public function getName()
     {
         return $this->name;
     }
     /**
-     * @param array<string, string>|null $name
+     * @param mixed $name
      *
      * @return self
      */
-    public function setName(?iterable $name): self
+    public function setName($name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }
     /**
-     * @return array<string, string>|null
+     * @return mixed
      */
-    public function getDescription(): ?iterable
+    public function getDescription()
     {
         return $this->description;
     }
     /**
-     * @param array<string, string>|null $description
+     * @param mixed $description
      *
      * @return self
      */
-    public function setDescription(?iterable $description): self
+    public function setDescription($description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;

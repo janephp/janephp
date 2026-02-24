@@ -21,7 +21,7 @@ class SortField
     /**
      * The translated name of the field to be shown in the UI.
      *
-     * @var array<string, string>
+     * @var mixed
      */
     protected $names;
     /**
@@ -49,20 +49,20 @@ class SortField
     /**
      * The translated name of the field to be shown in the UI.
      *
-     * @return array<string, string>
+     * @return mixed
      */
-    public function getNames(): iterable
+    public function getNames()
     {
         return $this->names;
     }
     /**
      * The translated name of the field to be shown in the UI.
      *
-     * @param array<string, string> $names
+     * @param mixed $names
      *
      * @return self
      */
-    public function setNames(iterable $names): self
+    public function setNames($names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;

@@ -38,11 +38,7 @@ class SchemaCreateResultNormalizer implements DenormalizerInterface, NormalizerI
             return $object;
         }
         if (\array_key_exists('schema', $data) && $data['schema'] !== null) {
-            $value = $data['schema'];
-            if (is_array($data['schema']) and isset($data['schema']['id']) and isset($data['schema']['schemaNamespace']) and isset($data['schema']['types']) and isset($data['schema']['displayPatterns']) and isset($data['schema']['system']) and isset($data['schema']['ownerTokenId']) and isset($data['schema']['viewForAll'])) {
-                $value = $this->denormalizer->denormalize($data['schema'], \PicturePark\API\Model\SchemaDetail::class, 'json', $context);
-            }
-            $object->setSchema($value);
+            $object->setSchema($data['schema']);
         }
         elseif (\array_key_exists('schema', $data) && $data['schema'] === null) {
             $object->setSchema(null);
@@ -53,11 +49,7 @@ class SchemaCreateResultNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if ($data->isInitialized('schema')) {
-            $value = $data->getSchema();
-            if (is_object($data->getSchema())) {
-                $value = $this->normalizer->normalize($data->getSchema(), 'json', $context);
-            }
-            $dataArray['schema'] = $value;
+            $dataArray['schema'] = $data->getSchema();
         }
         return $dataArray;
     }

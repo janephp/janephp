@@ -13,18 +13,18 @@ class ResponseAllRegistriesInfo extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var list<array<string, mixed>>
+     * @var list<mixed>
      */
     protected $registries;
     /**
-     * @return list<array<string, mixed>>
+     * @return list<mixed>
      */
     public function getRegistries(): array
     {
         return $this->registries;
     }
     /**
-     * @param list<array<string, mixed>> $registries
+     * @param list<mixed> $registries
      *
      * @return self
      */

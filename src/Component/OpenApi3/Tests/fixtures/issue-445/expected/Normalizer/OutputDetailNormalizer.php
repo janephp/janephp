@@ -56,19 +56,11 @@ class OutputDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
             unset($data['contentId']);
         }
         if (\array_key_exists('renderingState', $data)) {
-            $value = $data['renderingState'];
-            if (is_string($data['renderingState'])) {
-                $value = $data['renderingState'];
-            }
-            $object->setRenderingState($value);
+            $object->setRenderingState($data['renderingState']);
             unset($data['renderingState']);
         }
         if (\array_key_exists('detail', $data) && $data['detail'] !== null) {
-            $value_1 = $data['detail'];
-            if (is_array($data['detail']) and isset($data['detail']['kind'])) {
-                $value_1 = $this->denormalizer->denormalize($data['detail'], \PicturePark\API\Model\OutputDataBase::class, 'json', $context);
-            }
-            $object->setDetail($value_1);
+            $object->setDetail($data['detail']);
             unset($data['detail']);
         }
         elseif (\array_key_exists('detail', $data) && $data['detail'] === null) {
@@ -97,9 +89,9 @@ class OutputDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setKind($data['kind']);
             unset($data['kind']);
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_2;
+                $object[$key] = $value;
             }
         }
         return $object;
@@ -112,17 +104,9 @@ class OutputDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $dataArray['outputFormatId'] = $data->getOutputFormatId();
         $dataArray['contentId'] = $data->getContentId();
-        $value = $data->getRenderingState();
-        if (is_string($data->getRenderingState())) {
-            $value = $data->getRenderingState();
-        }
-        $dataArray['renderingState'] = $value;
+        $dataArray['renderingState'] = $data->getRenderingState();
         if ($data->isInitialized('detail')) {
-            $value_1 = $data->getDetail();
-            if (is_object($data->getDetail())) {
-                $value_1 = $this->normalizer->normalize($data->getDetail(), 'json', $context);
-            }
-            $dataArray['detail'] = $value_1;
+            $dataArray['detail'] = $data->getDetail();
         }
         if ($data->isInitialized('backupTimestamp')) {
             $dataArray['backupTimestamp'] = $data->getBackupTimestamp()?->format('Y-m-d\TH:i:sP');
@@ -131,9 +115,9 @@ class OutputDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['fileVersion'] = $data->getFileVersion();
         $dataArray['dynamicRendering'] = $data->getDynamicRendering();
         $dataArray['kind'] = $data->getKind();
-        foreach ($data as $key => $value_2) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_2;
+                $dataArray[$key] = $value;
             }
         }
         return $dataArray;

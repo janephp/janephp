@@ -15,7 +15,7 @@ class NumericRangeForAggregator
     /**
      * Language specific range names.
      *
-     * @var array<string, string>|null
+     * @var mixed|null
      */
     protected $names;
     /**
@@ -33,20 +33,20 @@ class NumericRangeForAggregator
     /**
      * Language specific range names.
      *
-     * @return array<string, string>|null
+     * @return mixed
      */
-    public function getNames(): ?iterable
+    public function getNames()
     {
         return $this->names;
     }
     /**
      * Language specific range names.
      *
-     * @param array<string, string>|null $names
+     * @param mixed $names
      *
      * @return self
      */
-    public function setNames(?iterable $names): self
+    public function setNames($names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;

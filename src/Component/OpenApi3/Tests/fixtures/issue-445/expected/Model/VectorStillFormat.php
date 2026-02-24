@@ -19,7 +19,7 @@ class VectorStillFormat extends FormatBase
     /**
      * Specifies output dimensions for raster operation
      *
-     * @var ResizeAction|null
+     * @var mixed|null
      */
     protected $resizeAction;
     /**
@@ -43,20 +43,20 @@ class VectorStillFormat extends FormatBase
     /**
      * Specifies output dimensions for raster operation
      *
-     * @return ResizeAction|null
+     * @return mixed
      */
-    public function getResizeAction(): ?ResizeAction
+    public function getResizeAction()
     {
         return $this->resizeAction;
     }
     /**
      * Specifies output dimensions for raster operation
      *
-     * @param ResizeAction|null $resizeAction
+     * @param mixed $resizeAction
      *
      * @return self
      */
-    public function setResizeAction(?ResizeAction $resizeAction): self
+    public function setResizeAction($resizeAction): self
     {
         $this->initialized['resizeAction'] = true;
         $this->resizeAction = $resizeAction;

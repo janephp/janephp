@@ -78,22 +78,10 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
             $object->setOutputs($values_3);
         }
         if (\array_key_exists('contentType', $data)) {
-            $value_4 = $data['contentType'];
-            if (is_string($data['contentType'])) {
-                $value_4 = $data['contentType'];
-            }
-            $object->setContentType($value_4);
+            $object->setContentType($data['contentType']);
         }
         if (\array_key_exists('displayValues', $data)) {
-            $value_5 = $data['displayValues'];
-            if (is_array($data['displayValues']) && $this->isOnlyNumericKeys($data['displayValues'])) {
-                $values_4 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['displayValues'] as $key_2 => $value_6) {
-                    $values_4[$key_2] = $value_6;
-                }
-                $value_5 = $values_4;
-            }
-            $object->setDisplayValues($value_5);
+            $object->setDisplayValues($data['displayValues']);
         }
         if (\array_key_exists('iconUrl', $data) && $data['iconUrl'] !== null) {
             $object->setIconUrl($data['iconUrl']);
@@ -132,20 +120,8 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
             $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
         }
         $dataArray['outputs'] = $values_3;
-        $value_4 = $data->getContentType();
-        if (is_string($data->getContentType())) {
-            $value_4 = $data->getContentType();
-        }
-        $dataArray['contentType'] = $value_4;
-        $value_5 = $data->getDisplayValues();
-        if (is_object($data->getDisplayValues())) {
-            $values_4 = [];
-            foreach ($data->getDisplayValues() as $key_2 => $value_6) {
-                $values_4[$key_2] = $value_6;
-            }
-            $value_5 = $values_4;
-        }
-        $dataArray['displayValues'] = $value_5;
+        $dataArray['contentType'] = $data->getContentType();
+        $dataArray['displayValues'] = $data->getDisplayValues();
         if ($data->isInitialized('iconUrl')) {
             $dataArray['iconUrl'] = $data->getIconUrl();
         }

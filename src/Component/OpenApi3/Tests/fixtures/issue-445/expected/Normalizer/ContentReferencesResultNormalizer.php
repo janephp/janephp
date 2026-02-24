@@ -38,21 +38,13 @@ class ContentReferencesResultNormalizer implements DenormalizerInterface, Normal
             return $object;
         }
         if (\array_key_exists('metadataReferences', $data) && $data['metadataReferences'] !== null) {
-            $value = $data['metadataReferences'];
-            if (is_array($data['metadataReferences'])) {
-                $value = $this->denormalizer->denormalize($data['metadataReferences'], \PicturePark\API\Model\MetadataReferenceResult::class, 'json', $context);
-            }
-            $object->setMetadataReferences($value);
+            $object->setMetadataReferences($data['metadataReferences']);
         }
         elseif (\array_key_exists('metadataReferences', $data) && $data['metadataReferences'] === null) {
             $object->setMetadataReferences(null);
         }
         if (\array_key_exists('shareReferences', $data) && $data['shareReferences'] !== null) {
-            $value_1 = $data['shareReferences'];
-            if (is_array($data['shareReferences'])) {
-                $value_1 = $this->denormalizer->denormalize($data['shareReferences'], \PicturePark\API\Model\ContentShareReferenceResult::class, 'json', $context);
-            }
-            $object->setShareReferences($value_1);
+            $object->setShareReferences($data['shareReferences']);
         }
         elseif (\array_key_exists('shareReferences', $data) && $data['shareReferences'] === null) {
             $object->setShareReferences(null);
@@ -63,18 +55,10 @@ class ContentReferencesResultNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if ($data->isInitialized('metadataReferences')) {
-            $value = $data->getMetadataReferences();
-            if (is_object($data->getMetadataReferences())) {
-                $value = $this->normalizer->normalize($data->getMetadataReferences(), 'json', $context);
-            }
-            $dataArray['metadataReferences'] = $value;
+            $dataArray['metadataReferences'] = $data->getMetadataReferences();
         }
         if ($data->isInitialized('shareReferences')) {
-            $value_1 = $data->getShareReferences();
-            if (is_object($data->getShareReferences())) {
-                $value_1 = $this->normalizer->normalize($data->getShareReferences(), 'json', $context);
-            }
-            $dataArray['shareReferences'] = $value_1;
+            $dataArray['shareReferences'] = $data->getShareReferences();
         }
         return $dataArray;
     }

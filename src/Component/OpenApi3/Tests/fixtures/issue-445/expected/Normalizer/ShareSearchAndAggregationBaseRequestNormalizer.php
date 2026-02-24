@@ -54,19 +54,15 @@ class ShareSearchAndAggregationBaseRequestNormalizer implements DenormalizerInte
             $object->setSearchBehaviors(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $value_1 = $data['filter'];
-            if (is_array($data['filter']) and isset($data['filter']['kind'])) {
-                $value_1 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
-            }
-            $object->setFilter($value_1);
+            $object->setFilter($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
         }
         if (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] !== null) {
             $values_1 = [];
-            foreach ($data['aggregationFilters'] as $value_2) {
-                $values_1[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\AggregationFilter::class, 'json', $context);
+            foreach ($data['aggregationFilters'] as $value_1) {
+                $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\AggregationFilter::class, 'json', $context);
             }
             $object->setAggregationFilters($values_1);
         }
@@ -89,16 +85,12 @@ class ShareSearchAndAggregationBaseRequestNormalizer implements DenormalizerInte
             $dataArray['searchBehaviors'] = $values;
         }
         if ($data->isInitialized('filter')) {
-            $value_1 = $data->getFilter();
-            if (is_object($data->getFilter())) {
-                $value_1 = $this->normalizer->normalize($data->getFilter(), 'json', $context);
-            }
-            $dataArray['filter'] = $value_1;
+            $dataArray['filter'] = $data->getFilter();
         }
         if ($data->isInitialized('aggregationFilters')) {
             $values_1 = [];
-            foreach ($data->getAggregationFilters() as $value_2) {
-                $values_1[] = $this->normalizer->normalize($value_2, 'json', $context);
+            foreach ($data->getAggregationFilters() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['aggregationFilters'] = $values_1;
         }

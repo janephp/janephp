@@ -13,7 +13,7 @@ class SingleTweetLookupResponse extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var CompactTweet|DefaultTweet|DetailedTweet
+     * @var mixed
      */
     protected $data;
     /**
@@ -21,18 +21,18 @@ class SingleTweetLookupResponse extends \ArrayObject
      */
     protected $includes;
     /**
-     * @var list<GenericProblem>|list<InvalidRequestProblem>|list<ClientForbiddenProblem>|list<ResourceNotFoundProblem>|list<ResourceUnauthorizedProblem>|list<DisallowedResourceProblem>|list<UnsupportedAuthenticationProblem>|list<UsageCapExceededProblem>|list<ConnectionExceptionProblem>|list<ClientDisconnectedProblem>|list<OperationalDisconnectProblem>|list<RulesCapProblem>|list<InvalidRuleProblem>
+     * @var list<mixed>
      */
     protected $errors;
     /**
-     * @return CompactTweet|DefaultTweet|DetailedTweet
+     * @return mixed
      */
     public function getData()
     {
         return $this->data;
     }
     /**
-     * @param CompactTweet|DefaultTweet|DetailedTweet $data
+     * @param mixed $data
      *
      * @return self
      */
@@ -61,14 +61,14 @@ class SingleTweetLookupResponse extends \ArrayObject
         return $this;
     }
     /**
-     * @return list<GenericProblem>|list<InvalidRequestProblem>|list<ClientForbiddenProblem>|list<ResourceNotFoundProblem>|list<ResourceUnauthorizedProblem>|list<DisallowedResourceProblem>|list<UnsupportedAuthenticationProblem>|list<UsageCapExceededProblem>|list<ConnectionExceptionProblem>|list<ClientDisconnectedProblem>|list<OperationalDisconnectProblem>|list<RulesCapProblem>|list<InvalidRuleProblem>
+     * @return list<mixed>
      */
     public function getErrors(): array
     {
         return $this->errors;
     }
     /**
-     * @param list<GenericProblem>|list<InvalidRequestProblem>|list<ClientForbiddenProblem>|list<ResourceNotFoundProblem>|list<ResourceUnauthorizedProblem>|list<DisallowedResourceProblem>|list<UnsupportedAuthenticationProblem>|list<UsageCapExceededProblem>|list<ConnectionExceptionProblem>|list<ClientDisconnectedProblem>|list<OperationalDisconnectProblem>|list<RulesCapProblem>|list<InvalidRuleProblem> $errors
+     * @param list<mixed> $errors
      *
      * @return self
      */

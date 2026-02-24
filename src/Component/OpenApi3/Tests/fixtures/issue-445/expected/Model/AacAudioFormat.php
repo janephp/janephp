@@ -19,13 +19,13 @@ class AacAudioFormat extends FormatBase
     /**
      * Gets or sets the encoding profile.
      *
-     * @var string
+     * @var mixed
      */
     protected $profile;
     /**
      * Gets or sets the encoding coder.
      *
-     * @var string
+     * @var mixed
      */
     protected $coder;
     /**
@@ -61,20 +61,20 @@ class AacAudioFormat extends FormatBase
     /**
      * Gets or sets the encoding profile.
      *
-     * @return string
+     * @return mixed
      */
-    public function getProfile(): string
+    public function getProfile()
     {
         return $this->profile;
     }
     /**
      * Gets or sets the encoding profile.
      *
-     * @param string $profile
+     * @param mixed $profile
      *
      * @return self
      */
-    public function setProfile(string $profile): self
+    public function setProfile($profile): self
     {
         $this->initialized['profile'] = true;
         $this->profile = $profile;
@@ -83,20 +83,20 @@ class AacAudioFormat extends FormatBase
     /**
      * Gets or sets the encoding coder.
      *
-     * @return string
+     * @return mixed
      */
-    public function getCoder(): string
+    public function getCoder()
     {
         return $this->coder;
     }
     /**
      * Gets or sets the encoding coder.
      *
-     * @param string $coder
+     * @param mixed $coder
      *
      * @return self
      */
-    public function setCoder(string $coder): self
+    public function setCoder($coder): self
     {
         $this->initialized['coder'] = true;
         $this->coder = $coder;

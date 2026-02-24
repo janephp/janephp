@@ -21,7 +21,7 @@ class ChildFilter extends FilterBase
     /**
      * The filter to be applied on the child document. All kinds of filters are accepted.
      *
-     * @var FilterBase
+     * @var mixed
      */
     protected $filter;
     /**
@@ -49,20 +49,20 @@ class ChildFilter extends FilterBase
     /**
      * The filter to be applied on the child document. All kinds of filters are accepted.
      *
-     * @return FilterBase
+     * @return mixed
      */
-    public function getFilter(): FilterBase
+    public function getFilter()
     {
         return $this->filter;
     }
     /**
      * The filter to be applied on the child document. All kinds of filters are accepted.
      *
-     * @param FilterBase $filter
+     * @param mixed $filter
      *
      * @return self
      */
-    public function setFilter(FilterBase $filter): self
+    public function setFilter($filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;

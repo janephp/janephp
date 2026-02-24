@@ -45,21 +45,13 @@ class ContentManyReferencesRequestNormalizer implements DenormalizerInterface, N
             $object->setContentIds($values);
         }
         if (\array_key_exists('references', $data) && $data['references'] !== null) {
-            $value_1 = $data['references'];
-            if (is_array($data['references'])) {
-                $value_1 = $this->denormalizer->denormalize($data['references'], \PicturePark\API\Model\MetadataReferencesPagingRequest::class, 'json', $context);
-            }
-            $object->setReferences($value_1);
+            $object->setReferences($data['references']);
         }
         elseif (\array_key_exists('references', $data) && $data['references'] === null) {
             $object->setReferences(null);
         }
         if (\array_key_exists('shares', $data) && $data['shares'] !== null) {
-            $value_2 = $data['shares'];
-            if (is_array($data['shares']) and isset($data['shares']['limit'])) {
-                $value_2 = $this->denormalizer->denormalize($data['shares'], \PicturePark\API\Model\PagingRequest::class, 'json', $context);
-            }
-            $object->setShares($value_2);
+            $object->setShares($data['shares']);
         }
         elseif (\array_key_exists('shares', $data) && $data['shares'] === null) {
             $object->setShares(null);
@@ -75,18 +67,10 @@ class ContentManyReferencesRequestNormalizer implements DenormalizerInterface, N
         }
         $dataArray['contentIds'] = $values;
         if ($data->isInitialized('references')) {
-            $value_1 = $data->getReferences();
-            if (is_object($data->getReferences())) {
-                $value_1 = $this->normalizer->normalize($data->getReferences(), 'json', $context);
-            }
-            $dataArray['references'] = $value_1;
+            $dataArray['references'] = $data->getReferences();
         }
         if ($data->isInitialized('shares')) {
-            $value_2 = $data->getShares();
-            if (is_object($data->getShares())) {
-                $value_2 = $this->normalizer->normalize($data->getShares(), 'json', $context);
-            }
-            $dataArray['shares'] = $value_2;
+            $dataArray['shares'] = $data->getShares();
         }
         return $dataArray;
     }

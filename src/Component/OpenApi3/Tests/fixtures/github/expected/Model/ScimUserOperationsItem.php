@@ -21,7 +21,7 @@ class ScimUserOperationsItem extends \ArrayObject
      */
     protected $path;
     /**
-     * @var string|array<string, mixed>|list<mixed>
+     * @var mixed
      */
     protected $value;
     /**
@@ -61,14 +61,14 @@ class ScimUserOperationsItem extends \ArrayObject
         return $this;
     }
     /**
-     * @return string|array<string, mixed>|list<mixed>
+     * @return mixed
      */
     public function getValue()
     {
         return $this->value;
     }
     /**
-     * @param string|array<string, mixed>|list<mixed> $value
+     * @param mixed $value
      *
      * @return self
      */

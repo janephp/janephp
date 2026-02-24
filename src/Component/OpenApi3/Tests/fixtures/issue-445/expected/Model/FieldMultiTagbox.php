@@ -21,7 +21,7 @@ class FieldMultiTagbox extends FieldBase
     /**
      * Indexing information of fields of the related schema identified by the SchemaId property
      *
-     * @var SchemaIndexingInfo|null
+     * @var mixed|null
      */
     protected $schemaIndexingInfo;
     /**
@@ -39,7 +39,7 @@ class FieldMultiTagbox extends FieldBase
     /**
      * An optional filter to limit the returned list items.
      *
-     * @var FilterBase|null
+     * @var mixed|null
      */
     protected $filter;
     /**
@@ -52,7 +52,7 @@ class FieldMultiTagbox extends FieldBase
      * Defines the display pattern type to be used (Name or List only) when showing a tagbox item in view mode. Defaults to "Name".
      * The information is only consumed by the client application. No actual logic is implemented in the backend.
      *
-     * @var string
+     * @var mixed
      */
     protected $viewModeDisplayPatternType = 'Name';
     /**
@@ -80,20 +80,20 @@ class FieldMultiTagbox extends FieldBase
     /**
      * Indexing information of fields of the related schema identified by the SchemaId property
      *
-     * @return SchemaIndexingInfo|null
+     * @return mixed
      */
-    public function getSchemaIndexingInfo(): ?SchemaIndexingInfo
+    public function getSchemaIndexingInfo()
     {
         return $this->schemaIndexingInfo;
     }
     /**
      * Indexing information of fields of the related schema identified by the SchemaId property
      *
-     * @param SchemaIndexingInfo|null $schemaIndexingInfo
+     * @param mixed $schemaIndexingInfo
      *
      * @return self
      */
-    public function setSchemaIndexingInfo(?SchemaIndexingInfo $schemaIndexingInfo): self
+    public function setSchemaIndexingInfo($schemaIndexingInfo): self
     {
         $this->initialized['schemaIndexingInfo'] = true;
         $this->schemaIndexingInfo = $schemaIndexingInfo;
@@ -146,20 +146,20 @@ class FieldMultiTagbox extends FieldBase
     /**
      * An optional filter to limit the returned list items.
      *
-     * @return FilterBase|null
+     * @return mixed
      */
-    public function getFilter(): ?FilterBase
+    public function getFilter()
     {
         return $this->filter;
     }
     /**
      * An optional filter to limit the returned list items.
      *
-     * @param FilterBase|null $filter
+     * @param mixed $filter
      *
      * @return self
      */
-    public function setFilter(?FilterBase $filter): self
+    public function setFilter($filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;
@@ -191,9 +191,9 @@ class FieldMultiTagbox extends FieldBase
      * Defines the display pattern type to be used (Name or List only) when showing a tagbox item in view mode. Defaults to "Name".
      * The information is only consumed by the client application. No actual logic is implemented in the backend.
      *
-     * @return string
+     * @return mixed
      */
-    public function getViewModeDisplayPatternType(): string
+    public function getViewModeDisplayPatternType()
     {
         return $this->viewModeDisplayPatternType;
     }
@@ -201,11 +201,11 @@ class FieldMultiTagbox extends FieldBase
     * Defines the display pattern type to be used (Name or List only) when showing a tagbox item in view mode. Defaults to "Name".
     The information is only consumed by the client application. No actual logic is implemented in the backend.
     *
-    * @param string $viewModeDisplayPatternType
+    * @param mixed $viewModeDisplayPatternType
     *
     * @return self
     */
-    public function setViewModeDisplayPatternType(string $viewModeDisplayPatternType): self
+    public function setViewModeDisplayPatternType($viewModeDisplayPatternType): self
     {
         $this->initialized['viewModeDisplayPatternType'] = true;
         $this->viewModeDisplayPatternType = $viewModeDisplayPatternType;

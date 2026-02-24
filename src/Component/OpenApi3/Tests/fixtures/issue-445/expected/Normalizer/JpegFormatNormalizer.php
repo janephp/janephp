@@ -54,22 +54,14 @@ class JpegFormatNormalizer implements DenormalizerInterface, NormalizerInterface
             unset($data['kind']);
         }
         if (\array_key_exists('colorProfile', $data) && $data['colorProfile'] !== null) {
-            $value = $data['colorProfile'];
-            if (is_string($data['colorProfile'])) {
-                $value = $data['colorProfile'];
-            }
-            $object->setColorProfile($value);
+            $object->setColorProfile($data['colorProfile']);
             unset($data['colorProfile']);
         }
         elseif (\array_key_exists('colorProfile', $data) && $data['colorProfile'] === null) {
             $object->setColorProfile(null);
         }
         if (\array_key_exists('colorTransformationIntent', $data)) {
-            $value_1 = $data['colorTransformationIntent'];
-            if (is_string($data['colorTransformationIntent'])) {
-                $value_1 = $data['colorTransformationIntent'];
-            }
-            $object->setColorTransformationIntent($value_1);
+            $object->setColorTransformationIntent($data['colorTransformationIntent']);
             unset($data['colorTransformationIntent']);
         }
         if (\array_key_exists('horizontalResolution', $data) && $data['horizontalResolution'] !== null) {
@@ -91,11 +83,7 @@ class JpegFormatNormalizer implements DenormalizerInterface, NormalizerInterface
             unset($data['keepClippingPath']);
         }
         if (\array_key_exists('resizeAction', $data) && $data['resizeAction'] !== null) {
-            $value_2 = $data['resizeAction'];
-            if (is_array($data['resizeAction']) and isset($data['resizeAction']['width']) and isset($data['resizeAction']['height']) and isset($data['resizeAction']['resizeMode'])) {
-                $value_2 = $this->denormalizer->denormalize($data['resizeAction'], \PicturePark\API\Model\ResizeAction::class, 'json', $context);
-            }
-            $object->setResizeAction($value_2);
+            $object->setResizeAction($data['resizeAction']);
             unset($data['resizeAction']);
         }
         elseif (\array_key_exists('resizeAction', $data) && $data['resizeAction'] === null) {
@@ -103,8 +91,8 @@ class JpegFormatNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (\array_key_exists('actions', $data) && $data['actions'] !== null) {
             $values = [];
-            foreach ($data['actions'] as $value_3) {
-                $values[] = $this->denormalizer->denormalize($value_3, \PicturePark\API\Model\ImageActionBase::class, 'json', $context);
+            foreach ($data['actions'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\ImageActionBase::class, 'json', $context);
             }
             $object->setActions($values);
             unset($data['actions']);
@@ -127,9 +115,9 @@ class JpegFormatNormalizer implements DenormalizerInterface, NormalizerInterface
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
             $object->setExtension(null);
         }
-        foreach ($data as $key => $value_4) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_4;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -139,18 +127,10 @@ class JpegFormatNormalizer implements DenormalizerInterface, NormalizerInterface
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
         if ($data->isInitialized('colorProfile')) {
-            $value = $data->getColorProfile();
-            if (is_string($data->getColorProfile())) {
-                $value = $data->getColorProfile();
-            }
-            $dataArray['colorProfile'] = $value;
+            $dataArray['colorProfile'] = $data->getColorProfile();
         }
         if ($data->isInitialized('colorTransformationIntent') && null !== $data->getColorTransformationIntent()) {
-            $value_1 = $data->getColorTransformationIntent();
-            if (is_string($data->getColorTransformationIntent())) {
-                $value_1 = $data->getColorTransformationIntent();
-            }
-            $dataArray['colorTransformationIntent'] = $value_1;
+            $dataArray['colorTransformationIntent'] = $data->getColorTransformationIntent();
         }
         if ($data->isInitialized('horizontalResolution')) {
             $dataArray['horizontalResolution'] = $data->getHorizontalResolution();
@@ -162,16 +142,12 @@ class JpegFormatNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['keepClippingPath'] = $data->getKeepClippingPath();
         }
         if ($data->isInitialized('resizeAction')) {
-            $value_2 = $data->getResizeAction();
-            if (is_object($data->getResizeAction())) {
-                $value_2 = $this->normalizer->normalize($data->getResizeAction(), 'json', $context);
-            }
-            $dataArray['resizeAction'] = $value_2;
+            $dataArray['resizeAction'] = $data->getResizeAction();
         }
         if ($data->isInitialized('actions')) {
             $values = [];
-            foreach ($data->getActions() as $value_3) {
-                $values[] = $this->normalizer->normalize($value_3, 'json', $context);
+            foreach ($data->getActions() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['actions'] = $values;
         }
@@ -184,9 +160,9 @@ class JpegFormatNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('extension')) {
             $dataArray['extension'] = $data->getExtension();
         }
-        foreach ($data as $key => $value_4) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_4;
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

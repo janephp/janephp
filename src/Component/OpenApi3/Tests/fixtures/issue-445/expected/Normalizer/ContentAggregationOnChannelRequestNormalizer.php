@@ -54,19 +54,15 @@ class ContentAggregationOnChannelRequestNormalizer implements DenormalizerInterf
             $object->setSearchBehaviors(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $value_1 = $data['filter'];
-            if (is_array($data['filter']) and isset($data['filter']['kind'])) {
-                $value_1 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
-            }
-            $object->setFilter($value_1);
+            $object->setFilter($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
         }
         if (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] !== null) {
             $values_1 = [];
-            foreach ($data['aggregationFilters'] as $value_2) {
-                $values_1[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\AggregationFilter::class, 'json', $context);
+            foreach ($data['aggregationFilters'] as $value_1) {
+                $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\AggregationFilter::class, 'json', $context);
             }
             $object->setAggregationFilters($values_1);
         }
@@ -81,8 +77,8 @@ class ContentAggregationOnChannelRequestNormalizer implements DenormalizerInterf
         }
         if (\array_key_exists('searchLanguages', $data) && $data['searchLanguages'] !== null) {
             $values_2 = [];
-            foreach ($data['searchLanguages'] as $value_3) {
-                $values_2[] = $value_3;
+            foreach ($data['searchLanguages'] as $value_2) {
+                $values_2[] = $value_2;
             }
             $object->setSearchLanguages($values_2);
         }
@@ -96,25 +92,13 @@ class ContentAggregationOnChannelRequestNormalizer implements DenormalizerInterf
             $object->setCollectionId(null);
         }
         if (\array_key_exists('lifeCycleFilter', $data)) {
-            $value_4 = $data['lifeCycleFilter'];
-            if (is_string($data['lifeCycleFilter'])) {
-                $value_4 = $data['lifeCycleFilter'];
-            }
-            $object->setLifeCycleFilter($value_4);
+            $object->setLifeCycleFilter($data['lifeCycleFilter']);
         }
         if (\array_key_exists('brokenDependenciesFilter', $data)) {
-            $value_5 = $data['brokenDependenciesFilter'];
-            if (is_string($data['brokenDependenciesFilter'])) {
-                $value_5 = $data['brokenDependenciesFilter'];
-            }
-            $object->setBrokenDependenciesFilter($value_5);
+            $object->setBrokenDependenciesFilter($data['brokenDependenciesFilter']);
         }
         if (\array_key_exists('searchType', $data)) {
-            $value_6 = $data['searchType'];
-            if (is_string($data['searchType'])) {
-                $value_6 = $data['searchType'];
-            }
-            $object->setSearchType($value_6);
+            $object->setSearchType($data['searchType']);
         }
         return $object;
     }
@@ -132,16 +116,12 @@ class ContentAggregationOnChannelRequestNormalizer implements DenormalizerInterf
             $dataArray['searchBehaviors'] = $values;
         }
         if ($data->isInitialized('filter')) {
-            $value_1 = $data->getFilter();
-            if (is_object($data->getFilter())) {
-                $value_1 = $this->normalizer->normalize($data->getFilter(), 'json', $context);
-            }
-            $dataArray['filter'] = $value_1;
+            $dataArray['filter'] = $data->getFilter();
         }
         if ($data->isInitialized('aggregationFilters')) {
             $values_1 = [];
-            foreach ($data->getAggregationFilters() as $value_2) {
-                $values_1[] = $this->normalizer->normalize($value_2, 'json', $context);
+            foreach ($data->getAggregationFilters() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['aggregationFilters'] = $values_1;
         }
@@ -150,29 +130,17 @@ class ContentAggregationOnChannelRequestNormalizer implements DenormalizerInterf
         }
         if ($data->isInitialized('searchLanguages')) {
             $values_2 = [];
-            foreach ($data->getSearchLanguages() as $value_3) {
-                $values_2[] = $value_3;
+            foreach ($data->getSearchLanguages() as $value_2) {
+                $values_2[] = $value_2;
             }
             $dataArray['searchLanguages'] = $values_2;
         }
         if ($data->isInitialized('collectionId')) {
             $dataArray['collectionId'] = $data->getCollectionId();
         }
-        $value_4 = $data->getLifeCycleFilter();
-        if (is_string($data->getLifeCycleFilter())) {
-            $value_4 = $data->getLifeCycleFilter();
-        }
-        $dataArray['lifeCycleFilter'] = $value_4;
-        $value_5 = $data->getBrokenDependenciesFilter();
-        if (is_string($data->getBrokenDependenciesFilter())) {
-            $value_5 = $data->getBrokenDependenciesFilter();
-        }
-        $dataArray['brokenDependenciesFilter'] = $value_5;
-        $value_6 = $data->getSearchType();
-        if (is_string($data->getSearchType())) {
-            $value_6 = $data->getSearchType();
-        }
-        $dataArray['searchType'] = $value_6;
+        $dataArray['lifeCycleFilter'] = $data->getLifeCycleFilter();
+        $dataArray['brokenDependenciesFilter'] = $data->getBrokenDependenciesFilter();
+        $dataArray['searchType'] = $data->getSearchType();
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

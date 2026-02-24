@@ -45,7 +45,7 @@ class FieldIndexingInfo
     /**
      * Indexing information of schema's fields related to this field (if existing).
      *
-     * @var SchemaIndexingInfo|null
+     * @var mixed|null
      */
     protected $relatedSchemaIndexing;
     /**
@@ -161,20 +161,20 @@ class FieldIndexingInfo
     /**
      * Indexing information of schema's fields related to this field (if existing).
      *
-     * @return SchemaIndexingInfo|null
+     * @return mixed
      */
-    public function getRelatedSchemaIndexing(): ?SchemaIndexingInfo
+    public function getRelatedSchemaIndexing()
     {
         return $this->relatedSchemaIndexing;
     }
     /**
      * Indexing information of schema's fields related to this field (if existing).
      *
-     * @param SchemaIndexingInfo|null $relatedSchemaIndexing
+     * @param mixed $relatedSchemaIndexing
      *
      * @return self
      */
-    public function setRelatedSchemaIndexing(?SchemaIndexingInfo $relatedSchemaIndexing): self
+    public function setRelatedSchemaIndexing($relatedSchemaIndexing): self
     {
         $this->initialized['relatedSchemaIndexing'] = true;
         $this->relatedSchemaIndexing = $relatedSchemaIndexing;

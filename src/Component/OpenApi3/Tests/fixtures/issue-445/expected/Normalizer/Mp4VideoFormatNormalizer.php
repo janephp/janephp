@@ -42,33 +42,21 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
             unset($data['kind']);
         }
         if (\array_key_exists('resizeAction', $data) && $data['resizeAction'] !== null) {
-            $value = $data['resizeAction'];
-            if (is_array($data['resizeAction']) and isset($data['resizeAction']['width']) and isset($data['resizeAction']['height']) and isset($data['resizeAction']['resizeMode'])) {
-                $value = $this->denormalizer->denormalize($data['resizeAction'], \PicturePark\API\Model\ResizeAction::class, 'json', $context);
-            }
-            $object->setResizeAction($value);
+            $object->setResizeAction($data['resizeAction']);
             unset($data['resizeAction']);
         }
         elseif (\array_key_exists('resizeAction', $data) && $data['resizeAction'] === null) {
             $object->setResizeAction(null);
         }
         if (\array_key_exists('audioCodec', $data) && $data['audioCodec'] !== null) {
-            $value_1 = $data['audioCodec'];
-            if (is_array($data['audioCodec'])) {
-                $value_1 = $this->denormalizer->denormalize($data['audioCodec'], \PicturePark\API\Model\AudioFormatBase::class, 'json', $context);
-            }
-            $object->setAudioCodec($value_1);
+            $object->setAudioCodec($data['audioCodec']);
             unset($data['audioCodec']);
         }
         elseif (\array_key_exists('audioCodec', $data) && $data['audioCodec'] === null) {
             $object->setAudioCodec(null);
         }
         if (\array_key_exists('preset', $data)) {
-            $value_2 = $data['preset'];
-            if (is_string($data['preset'])) {
-                $value_2 = $data['preset'];
-            }
-            $object->setPreset($value_2);
+            $object->setPreset($data['preset']);
             unset($data['preset']);
         }
         if (\array_key_exists('extension', $data) && $data['extension'] !== null) {
@@ -78,9 +66,9 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
             $object->setExtension(null);
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_3;
+                $object[$key] = $value;
             }
         }
         return $object;
@@ -90,32 +78,20 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
         if ($data->isInitialized('resizeAction')) {
-            $value = $data->getResizeAction();
-            if (is_object($data->getResizeAction())) {
-                $value = $this->normalizer->normalize($data->getResizeAction(), 'json', $context);
-            }
-            $dataArray['resizeAction'] = $value;
+            $dataArray['resizeAction'] = $data->getResizeAction();
         }
         if ($data->isInitialized('audioCodec')) {
-            $value_1 = $data->getAudioCodec();
-            if (is_object($data->getAudioCodec())) {
-                $value_1 = $this->normalizer->normalize($data->getAudioCodec(), 'json', $context);
-            }
-            $dataArray['audioCodec'] = $value_1;
+            $dataArray['audioCodec'] = $data->getAudioCodec();
         }
         if ($data->isInitialized('preset') && null !== $data->getPreset()) {
-            $value_2 = $data->getPreset();
-            if (is_string($data->getPreset())) {
-                $value_2 = $data->getPreset();
-            }
-            $dataArray['preset'] = $value_2;
+            $dataArray['preset'] = $data->getPreset();
         }
         if ($data->isInitialized('extension')) {
             $dataArray['extension'] = $data->getExtension();
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_3;
+                $dataArray[$key] = $value;
             }
         }
         return $dataArray;

@@ -39,7 +39,7 @@ class ReposOwnerRepoIssuesPostBody extends \ArrayObject
     /**
      * Labels to associate with this issue. _NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise._
      *
-     * @var list<string>|list<object>
+     * @var list<mixed>
      */
     protected $labels;
     /**
@@ -139,7 +139,7 @@ class ReposOwnerRepoIssuesPostBody extends \ArrayObject
     /**
      * Labels to associate with this issue. _NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise._
      *
-     * @return list<string>|list<object>
+     * @return list<mixed>
      */
     public function getLabels(): array
     {
@@ -148,7 +148,7 @@ class ReposOwnerRepoIssuesPostBody extends \ArrayObject
     /**
      * Labels to associate with this issue. _NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise._
      *
-     * @param list<string>|list<object> $labels
+     * @param list<mixed> $labels
      *
      * @return self
      */

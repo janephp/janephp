@@ -15,7 +15,7 @@ class ContentDeleteManyFilterRequest
     /**
      * Filters the contents that need to be deleted.
      *
-     * @var ContentFilterRequest
+     * @var mixed
      */
     protected $filterRequest;
     /**
@@ -33,20 +33,20 @@ class ContentDeleteManyFilterRequest
     /**
      * Filters the contents that need to be deleted.
      *
-     * @return ContentFilterRequest
+     * @return mixed
      */
-    public function getFilterRequest(): ContentFilterRequest
+    public function getFilterRequest()
     {
         return $this->filterRequest;
     }
     /**
      * Filters the contents that need to be deleted.
      *
-     * @param ContentFilterRequest $filterRequest
+     * @param mixed $filterRequest
      *
      * @return self
      */
-    public function setFilterRequest(ContentFilterRequest $filterRequest): self
+    public function setFilterRequest($filterRequest): self
     {
         $this->initialized['filterRequest'] = true;
         $this->filterRequest = $filterRequest;

@@ -54,16 +54,12 @@ class UserRoleAssignManyRequestNormalizer implements DenormalizerInterface, Norm
             unset($data['userRoleIds']);
         }
         if (\array_key_exists('operation', $data)) {
-            $value_2 = $data['operation'];
-            if (is_string($data['operation'])) {
-                $value_2 = $data['operation'];
-            }
-            $object->setOperation($value_2);
+            $object->setOperation($data['operation']);
             unset($data['operation']);
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_3;
+                $object[$key] = $value_2;
             }
         }
         return $object;
@@ -81,14 +77,10 @@ class UserRoleAssignManyRequestNormalizer implements DenormalizerInterface, Norm
             $values_1[] = $value_1;
         }
         $dataArray['userRoleIds'] = $values_1;
-        $value_2 = $data->getOperation();
-        if (is_string($data->getOperation())) {
-            $value_2 = $data->getOperation();
-        }
-        $dataArray['operation'] = $value_2;
-        foreach ($data as $key => $value_3) {
+        $dataArray['operation'] = $data->getOperation();
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_3;
+                $dataArray[$key] = $value_2;
             }
         }
         return $dataArray;

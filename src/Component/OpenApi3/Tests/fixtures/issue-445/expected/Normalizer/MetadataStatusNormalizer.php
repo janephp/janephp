@@ -58,18 +58,14 @@ class MetadataStatusNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setListSchemaIds(null);
         }
         if (\array_key_exists('state', $data)) {
-            $value_2 = $data['state'];
-            if (is_string($data['state'])) {
-                $value_2 = $data['state'];
-            }
-            $object->setState($value_2);
+            $object->setState($data['state']);
         }
         if (\array_key_exists('fieldIdsToCleanup', $data) && $data['fieldIdsToCleanup'] !== null) {
             $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data['fieldIdsToCleanup'] as $key => $value_3) {
+            foreach ($data['fieldIdsToCleanup'] as $key => $value_2) {
                 $values_3 = [];
-                foreach ($value_3 as $value_4) {
-                    $values_3[] = $value_4;
+                foreach ($value_2 as $value_3) {
+                    $values_3[] = $value_3;
                 }
                 $values_2[$key] = $values_3;
             }
@@ -97,17 +93,13 @@ class MetadataStatusNormalizer implements DenormalizerInterface, NormalizerInter
             }
             $dataArray['listSchemaIds'] = $values_1;
         }
-        $value_2 = $data->getState();
-        if (is_string($data->getState())) {
-            $value_2 = $data->getState();
-        }
-        $dataArray['state'] = $value_2;
+        $dataArray['state'] = $data->getState();
         if ($data->isInitialized('fieldIdsToCleanup')) {
             $values_2 = [];
-            foreach ($data->getFieldIdsToCleanup() as $key => $value_3) {
+            foreach ($data->getFieldIdsToCleanup() as $key => $value_2) {
                 $values_3 = [];
-                foreach ($value_3 as $value_4) {
-                    $values_3[] = $value_4;
+                foreach ($value_2 as $value_3) {
+                    $values_3[] = $value_3;
                 }
                 $values_2[$key] = $values_3;
             }

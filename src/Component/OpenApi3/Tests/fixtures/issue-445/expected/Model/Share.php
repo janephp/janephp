@@ -33,7 +33,7 @@ class Share
     /**
      * Audit information.
      *
-     * @var UserAudit
+     * @var mixed
      */
     protected $audit;
     /**
@@ -45,7 +45,7 @@ class Share
     /**
      * Type of share.
      *
-     * @var string
+     * @var mixed
      */
     protected $shareType;
     /**
@@ -123,20 +123,20 @@ class Share
     /**
      * Audit information.
      *
-     * @return UserAudit
+     * @return mixed
      */
-    public function getAudit(): UserAudit
+    public function getAudit()
     {
         return $this->audit;
     }
     /**
      * Audit information.
      *
-     * @param UserAudit $audit
+     * @param mixed $audit
      *
      * @return self
      */
-    public function setAudit(UserAudit $audit): self
+    public function setAudit($audit): self
     {
         $this->initialized['audit'] = true;
         $this->audit = $audit;
@@ -167,20 +167,20 @@ class Share
     /**
      * Type of share.
      *
-     * @return string
+     * @return mixed
      */
-    public function getShareType(): string
+    public function getShareType()
     {
         return $this->shareType;
     }
     /**
      * Type of share.
      *
-     * @param string $shareType
+     * @param mixed $shareType
      *
      * @return self
      */
-    public function setShareType(string $shareType): self
+    public function setShareType($shareType): self
     {
         $this->initialized['shareType'] = true;
         $this->shareType = $shareType;

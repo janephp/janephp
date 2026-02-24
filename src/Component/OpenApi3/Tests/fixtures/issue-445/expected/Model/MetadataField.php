@@ -28,7 +28,7 @@ class MetadataField
     /**
      * Data type of the field.
      *
-     * @var string
+     * @var mixed
      */
     protected $dataType;
     /**
@@ -86,20 +86,20 @@ class MetadataField
     /**
      * Data type of the field.
      *
-     * @return string
+     * @return mixed
      */
-    public function getDataType(): string
+    public function getDataType()
     {
         return $this->dataType;
     }
     /**
      * Data type of the field.
      *
-     * @param string $dataType
+     * @param mixed $dataType
      *
      * @return self
      */
-    public function setDataType(string $dataType): self
+    public function setDataType($dataType): self
     {
         $this->initialized['dataType'] = true;
         $this->dataType = $dataType;

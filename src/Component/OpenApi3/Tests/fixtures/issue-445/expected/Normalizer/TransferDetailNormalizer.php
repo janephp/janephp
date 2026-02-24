@@ -46,19 +46,11 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
             unset($data['name']);
         }
         if (\array_key_exists('state', $data)) {
-            $value = $data['state'];
-            if (is_string($data['state'])) {
-                $value = $data['state'];
-            }
-            $object->setState($value);
+            $object->setState($data['state']);
             unset($data['state']);
         }
         if (\array_key_exists('transferType', $data)) {
-            $value_1 = $data['transferType'];
-            if (is_string($data['transferType'])) {
-                $value_1 = $data['transferType'];
-            }
-            $object->setTransferType($value_1);
+            $object->setTransferType($data['transferType']);
             unset($data['transferType']);
         }
         if (\array_key_exists('businessProcessId', $data) && $data['businessProcessId'] !== null) {
@@ -80,11 +72,7 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setCollectionId(null);
         }
         if (\array_key_exists('audit', $data)) {
-            $value_2 = $data['audit'];
-            if (is_array($data['audit']) and isset($data['audit']['creationDate']) and isset($data['audit']['modificationDate'])) {
-                $value_2 = $this->denormalizer->denormalize($data['audit'], \PicturePark\API\Model\UserAudit::class, 'json', $context);
-            }
-            $object->setAudit($value_2);
+            $object->setAudit($data['audit']);
             unset($data['audit']);
         }
         if (\array_key_exists('itemProgress', $data)) {
@@ -125,9 +113,9 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
         elseif (\array_key_exists('lastFileUploadProgressTimeStamp', $data) && $data['lastFileUploadProgressTimeStamp'] === null) {
             $object->setLastFileUploadProgressTimeStamp(null);
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_3;
+                $object[$key] = $value;
             }
         }
         return $object;
@@ -137,16 +125,8 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray = [];
         $dataArray['id'] = $data->getId();
         $dataArray['name'] = $data->getName();
-        $value = $data->getState();
-        if (is_string($data->getState())) {
-            $value = $data->getState();
-        }
-        $dataArray['state'] = $value;
-        $value_1 = $data->getTransferType();
-        if (is_string($data->getTransferType())) {
-            $value_1 = $data->getTransferType();
-        }
-        $dataArray['transferType'] = $value_1;
+        $dataArray['state'] = $data->getState();
+        $dataArray['transferType'] = $data->getTransferType();
         if ($data->isInitialized('businessProcessId')) {
             $dataArray['businessProcessId'] = $data->getBusinessProcessId();
         }
@@ -154,11 +134,7 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('collectionId')) {
             $dataArray['collectionId'] = $data->getCollectionId();
         }
-        $value_2 = $data->getAudit();
-        if (is_object($data->getAudit())) {
-            $value_2 = $this->normalizer->normalize($data->getAudit(), 'json', $context);
-        }
-        $dataArray['audit'] = $value_2;
+        $dataArray['audit'] = $data->getAudit();
         if ($data->isInitialized('itemProgress') && null !== $data->getItemProgress()) {
             $dataArray['itemProgress'] = $data->getItemProgress();
         }
@@ -183,9 +159,9 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('lastFileUploadProgressTimeStamp')) {
             $dataArray['lastFileUploadProgressTimeStamp'] = $data->getLastFileUploadProgressTimeStamp()?->format('Y-m-d\TH:i:sP');
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_3;
+                $dataArray[$key] = $value;
             }
         }
         return $dataArray;

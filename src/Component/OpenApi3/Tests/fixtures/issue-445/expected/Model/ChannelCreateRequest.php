@@ -39,7 +39,7 @@ class ChannelCreateRequest
     /**
      * Language specific channel names.
      *
-     * @var array<string, string>
+     * @var mixed
      */
     protected $names;
     /**
@@ -63,7 +63,7 @@ class ChannelCreateRequest
     /**
      * An optional search filter. Limits the content document result set on each search and aggregation request.
      *
-     * @var FilterBase|null
+     * @var mixed|null
      */
     protected $filter;
     /**
@@ -75,7 +75,7 @@ class ChannelCreateRequest
     /**
      * Display pattern to use for rendering details when 0 results are returned
      *
-     * @var array<string, string>|null
+     * @var mixed|null
      */
     protected $missingResultsDisplayPatterns;
     /**
@@ -175,20 +175,20 @@ class ChannelCreateRequest
     /**
      * Language specific channel names.
      *
-     * @return array<string, string>
+     * @return mixed
      */
-    public function getNames(): iterable
+    public function getNames()
     {
         return $this->names;
     }
     /**
      * Language specific channel names.
      *
-     * @param array<string, string> $names
+     * @param mixed $names
      *
      * @return self
      */
-    public function setNames(iterable $names): self
+    public function setNames($names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;
@@ -263,20 +263,20 @@ class ChannelCreateRequest
     /**
      * An optional search filter. Limits the content document result set on each search and aggregation request.
      *
-     * @return FilterBase|null
+     * @return mixed
      */
-    public function getFilter(): ?FilterBase
+    public function getFilter()
     {
         return $this->filter;
     }
     /**
      * An optional search filter. Limits the content document result set on each search and aggregation request.
      *
-     * @param FilterBase|null $filter
+     * @param mixed $filter
      *
      * @return self
      */
-    public function setFilter(?FilterBase $filter): self
+    public function setFilter($filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;
@@ -307,20 +307,20 @@ class ChannelCreateRequest
     /**
      * Display pattern to use for rendering details when 0 results are returned
      *
-     * @return array<string, string>|null
+     * @return mixed
      */
-    public function getMissingResultsDisplayPatterns(): ?iterable
+    public function getMissingResultsDisplayPatterns()
     {
         return $this->missingResultsDisplayPatterns;
     }
     /**
      * Display pattern to use for rendering details when 0 results are returned
      *
-     * @param array<string, string>|null $missingResultsDisplayPatterns
+     * @param mixed $missingResultsDisplayPatterns
      *
      * @return self
      */
-    public function setMissingResultsDisplayPatterns(?iterable $missingResultsDisplayPatterns): self
+    public function setMissingResultsDisplayPatterns($missingResultsDisplayPatterns): self
     {
         $this->initialized['missingResultsDisplayPatterns'] = true;
         $this->missingResultsDisplayPatterns = $missingResultsDisplayPatterns;

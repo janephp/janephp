@@ -15,26 +15,26 @@ class BusinessProcessDetails extends BusinessProcess
     /**
      * Details for the business process.
      *
-     * @var BusinessProcessDetailsDataBase|null
+     * @var mixed|null
      */
     protected $details;
     /**
      * Details for the business process.
      *
-     * @return BusinessProcessDetailsDataBase|null
+     * @return mixed
      */
-    public function getDetails(): ?BusinessProcessDetailsDataBase
+    public function getDetails()
     {
         return $this->details;
     }
     /**
      * Details for the business process.
      *
-     * @param BusinessProcessDetailsDataBase|null $details
+     * @param mixed $details
      *
      * @return self
      */
-    public function setDetails(?BusinessProcessDetailsDataBase $details): self
+    public function setDetails($details): self
     {
         $this->initialized['details'] = true;
         $this->details = $details;

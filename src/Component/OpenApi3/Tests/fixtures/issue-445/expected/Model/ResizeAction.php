@@ -27,7 +27,7 @@ class ResizeAction
     /**
      * Specifies additional resize behaviour.
      *
-     * @var string
+     * @var mixed
      */
     protected $resizeMode;
     /**
@@ -77,20 +77,20 @@ class ResizeAction
     /**
      * Specifies additional resize behaviour.
      *
-     * @return string
+     * @return mixed
      */
-    public function getResizeMode(): string
+    public function getResizeMode()
     {
         return $this->resizeMode;
     }
     /**
      * Specifies additional resize behaviour.
      *
-     * @param string $resizeMode
+     * @param mixed $resizeMode
      *
      * @return self
      */
-    public function setResizeMode(string $resizeMode): self
+    public function setResizeMode($resizeMode): self
     {
         $this->initialized['resizeMode'] = true;
         $this->resizeMode = $resizeMode;

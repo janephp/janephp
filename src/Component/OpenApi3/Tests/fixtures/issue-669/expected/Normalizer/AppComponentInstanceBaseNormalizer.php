@@ -42,22 +42,16 @@ class AppComponentInstanceBaseNormalizer implements DenormalizerInterface, Norma
             unset($data['instance_count']);
         }
         if (\array_key_exists('instance_size_slug', $data)) {
-            $value = $data['instance_size_slug'];
-            if (is_string($data['instance_size_slug'])) {
-                $value = $data['instance_size_slug'];
-            } elseif (is_string($data['instance_size_slug'])) {
-                $value = $data['instance_size_slug'];
-            }
-            $object->setInstanceSizeSlug($value);
+            $object->setInstanceSizeSlug($data['instance_size_slug']);
             unset($data['instance_size_slug']);
         }
         if (\array_key_exists('autoscaling', $data)) {
             $object->setAutoscaling($this->denormalizer->denormalize($data['autoscaling'], \Jane\Generated\DigitalOcean\Model\AppComponentInstanceBaseAutoscaling::class, 'json', $context));
             unset($data['autoscaling']);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value;
             }
         }
         return $object;
@@ -69,20 +63,14 @@ class AppComponentInstanceBaseNormalizer implements DenormalizerInterface, Norma
             $dataArray['instance_count'] = $data->getInstanceCount();
         }
         if ($data->isInitialized('instanceSizeSlug') && null !== $data->getInstanceSizeSlug()) {
-            $value = $data->getInstanceSizeSlug();
-            if (is_string($data->getInstanceSizeSlug())) {
-                $value = $data->getInstanceSizeSlug();
-            } elseif (is_string($data->getInstanceSizeSlug())) {
-                $value = $data->getInstanceSizeSlug();
-            }
-            $dataArray['instance_size_slug'] = $value;
+            $dataArray['instance_size_slug'] = $data->getInstanceSizeSlug();
         }
         if ($data->isInitialized('autoscaling') && null !== $data->getAutoscaling()) {
             $dataArray['autoscaling'] = $this->normalizer->normalize($data->getAutoscaling(), 'json', $context);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+                $dataArray[$key] = $value;
             }
         }
         return $dataArray;

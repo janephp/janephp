@@ -42,37 +42,25 @@ class TermsAggregatorNormalizer implements DenormalizerInterface, NormalizerInte
             unset($data['name']);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $value = $data['names'];
-            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
-                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['names'] as $key => $value_1) {
-                    $values[$key] = $value_1;
-                }
-                $value = $values;
-            }
-            $object->setNames($value);
+            $object->setNames($data['names']);
             unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('aggregators', $data) && $data['aggregators'] !== null) {
-            $values_1 = [];
-            foreach ($data['aggregators'] as $value_2) {
-                $values_1[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
+            $values = [];
+            foreach ($data['aggregators'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
             }
-            $object->setAggregators($values_1);
+            $object->setAggregators($values);
             unset($data['aggregators']);
         }
         elseif (\array_key_exists('aggregators', $data) && $data['aggregators'] === null) {
             $object->setAggregators(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $value_3 = $data['filter'];
-            if (is_array($data['filter']) and isset($data['filter']['kind'])) {
-                $value_3 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
-            }
-            $object->setFilter($value_3);
+            $object->setFilter($data['filter']);
             unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
@@ -94,22 +82,22 @@ class TermsAggregatorNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setSize(null);
         }
         if (\array_key_exists('includes', $data) && $data['includes'] !== null) {
-            $values_2 = [];
-            foreach ($data['includes'] as $value_4) {
-                $values_2[] = $value_4;
+            $values_1 = [];
+            foreach ($data['includes'] as $value_1) {
+                $values_1[] = $value_1;
             }
-            $object->setIncludes($values_2);
+            $object->setIncludes($values_1);
             unset($data['includes']);
         }
         elseif (\array_key_exists('includes', $data) && $data['includes'] === null) {
             $object->setIncludes(null);
         }
         if (\array_key_exists('excludes', $data) && $data['excludes'] !== null) {
-            $values_3 = [];
-            foreach ($data['excludes'] as $value_5) {
-                $values_3[] = $value_5;
+            $values_2 = [];
+            foreach ($data['excludes'] as $value_2) {
+                $values_2[] = $value_2;
             }
-            $object->setExcludes($values_3);
+            $object->setExcludes($values_2);
             unset($data['excludes']);
         }
         elseif (\array_key_exists('excludes', $data) && $data['excludes'] === null) {
@@ -123,19 +111,19 @@ class TermsAggregatorNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setSearchString(null);
         }
         if (\array_key_exists('searchFields', $data) && $data['searchFields'] !== null) {
-            $values_4 = [];
-            foreach ($data['searchFields'] as $value_6) {
-                $values_4[] = $value_6;
+            $values_3 = [];
+            foreach ($data['searchFields'] as $value_3) {
+                $values_3[] = $value_3;
             }
-            $object->setSearchFields($values_4);
+            $object->setSearchFields($values_3);
             unset($data['searchFields']);
         }
         elseif (\array_key_exists('searchFields', $data) && $data['searchFields'] === null) {
             $object->setSearchFields(null);
         }
-        foreach ($data as $key_1 => $value_7) {
-            if (preg_match('/.*/', (string) $key_1)) {
-                $object[$key_1] = $value_7;
+        foreach ($data as $key => $value_4) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_4;
             }
         }
         return $object;
@@ -145,29 +133,17 @@ class TermsAggregatorNormalizer implements DenormalizerInterface, NormalizerInte
         $dataArray = [];
         $dataArray['name'] = $data->getName();
         if ($data->isInitialized('names')) {
-            $value = $data->getNames();
-            if (is_object($data->getNames())) {
-                $values = [];
-                foreach ($data->getNames() as $key => $value_1) {
-                    $values[$key] = $value_1;
-                }
-                $value = $values;
-            }
-            $dataArray['names'] = $value;
+            $dataArray['names'] = $data->getNames();
         }
         if ($data->isInitialized('aggregators')) {
-            $values_1 = [];
-            foreach ($data->getAggregators() as $value_2) {
-                $values_1[] = $this->normalizer->normalize($value_2, 'json', $context);
+            $values = [];
+            foreach ($data->getAggregators() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $dataArray['aggregators'] = $values_1;
+            $dataArray['aggregators'] = $values;
         }
         if ($data->isInitialized('filter')) {
-            $value_3 = $data->getFilter();
-            if (is_object($data->getFilter())) {
-                $value_3 = $this->normalizer->normalize($data->getFilter(), 'json', $context);
-            }
-            $dataArray['filter'] = $value_3;
+            $dataArray['filter'] = $data->getFilter();
         }
         $dataArray['kind'] = $data->getKind();
         $dataArray['field'] = $data->getField();
@@ -175,32 +151,32 @@ class TermsAggregatorNormalizer implements DenormalizerInterface, NormalizerInte
             $dataArray['size'] = $data->getSize();
         }
         if ($data->isInitialized('includes')) {
-            $values_2 = [];
-            foreach ($data->getIncludes() as $value_4) {
-                $values_2[] = $value_4;
+            $values_1 = [];
+            foreach ($data->getIncludes() as $value_1) {
+                $values_1[] = $value_1;
             }
-            $dataArray['includes'] = $values_2;
+            $dataArray['includes'] = $values_1;
         }
         if ($data->isInitialized('excludes')) {
-            $values_3 = [];
-            foreach ($data->getExcludes() as $value_5) {
-                $values_3[] = $value_5;
+            $values_2 = [];
+            foreach ($data->getExcludes() as $value_2) {
+                $values_2[] = $value_2;
             }
-            $dataArray['excludes'] = $values_3;
+            $dataArray['excludes'] = $values_2;
         }
         if ($data->isInitialized('searchString')) {
             $dataArray['searchString'] = $data->getSearchString();
         }
         if ($data->isInitialized('searchFields')) {
-            $values_4 = [];
-            foreach ($data->getSearchFields() as $value_6) {
-                $values_4[] = $value_6;
+            $values_3 = [];
+            foreach ($data->getSearchFields() as $value_3) {
+                $values_3[] = $value_3;
             }
-            $dataArray['searchFields'] = $values_4;
+            $dataArray['searchFields'] = $values_3;
         }
-        foreach ($data as $key_1 => $value_7) {
-            if (preg_match('/.*/', (string) $key_1)) {
-                $dataArray[$key_1] = $value_7;
+        foreach ($data as $key => $value_4) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_4;
             }
         }
         return $dataArray;

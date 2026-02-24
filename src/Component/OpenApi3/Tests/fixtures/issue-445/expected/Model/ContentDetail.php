@@ -81,7 +81,7 @@ class ContentDetail
     /**
      * Audit information.
      *
-     * @var UserAuditDetail|null
+     * @var mixed|null
      */
     protected $audit;
     /**
@@ -93,25 +93,25 @@ class ContentDetail
     /**
      * The resolved owner.
      *
-     * @var User|null
+     * @var mixed|null
      */
     protected $owner;
     /**
      * Content type.
      *
-     * @var string
+     * @var mixed
      */
     protected $contentType;
     /**
      * Contains language specific display values. They are calculated values based on the template stored in the Content schema DisplayPatterns property.
      *
-     * @var array<string, string>|null
+     * @var mixed|null
      */
     protected $displayValues;
     /**
      * The actual lifecycle value of the content. Becomes Inactive when the content is deleted.
      *
-     * @var string
+     * @var mixed
      */
     protected $lifeCycle;
     /**
@@ -123,7 +123,7 @@ class ContentDetail
     /**
      * Activity information: dynamically mapped from configured metadata fields or from audit information if no mapping is configured.
      *
-     * @var Activity|null
+     * @var mixed|null
      */
     protected $activity;
     /**
@@ -361,20 +361,20 @@ class ContentDetail
     /**
      * Audit information.
      *
-     * @return UserAuditDetail|null
+     * @return mixed
      */
-    public function getAudit(): ?UserAuditDetail
+    public function getAudit()
     {
         return $this->audit;
     }
     /**
      * Audit information.
      *
-     * @param UserAuditDetail|null $audit
+     * @param mixed $audit
      *
      * @return self
      */
-    public function setAudit(?UserAuditDetail $audit): self
+    public function setAudit($audit): self
     {
         $this->initialized['audit'] = true;
         $this->audit = $audit;
@@ -405,20 +405,20 @@ class ContentDetail
     /**
      * The resolved owner.
      *
-     * @return User|null
+     * @return mixed
      */
-    public function getOwner(): ?User
+    public function getOwner()
     {
         return $this->owner;
     }
     /**
      * The resolved owner.
      *
-     * @param User|null $owner
+     * @param mixed $owner
      *
      * @return self
      */
-    public function setOwner(?User $owner): self
+    public function setOwner($owner): self
     {
         $this->initialized['owner'] = true;
         $this->owner = $owner;
@@ -427,20 +427,20 @@ class ContentDetail
     /**
      * Content type.
      *
-     * @return string
+     * @return mixed
      */
-    public function getContentType(): string
+    public function getContentType()
     {
         return $this->contentType;
     }
     /**
      * Content type.
      *
-     * @param string $contentType
+     * @param mixed $contentType
      *
      * @return self
      */
-    public function setContentType(string $contentType): self
+    public function setContentType($contentType): self
     {
         $this->initialized['contentType'] = true;
         $this->contentType = $contentType;
@@ -449,20 +449,20 @@ class ContentDetail
     /**
      * Contains language specific display values. They are calculated values based on the template stored in the Content schema DisplayPatterns property.
      *
-     * @return array<string, string>|null
+     * @return mixed
      */
-    public function getDisplayValues(): ?iterable
+    public function getDisplayValues()
     {
         return $this->displayValues;
     }
     /**
      * Contains language specific display values. They are calculated values based on the template stored in the Content schema DisplayPatterns property.
      *
-     * @param array<string, string>|null $displayValues
+     * @param mixed $displayValues
      *
      * @return self
      */
-    public function setDisplayValues(?iterable $displayValues): self
+    public function setDisplayValues($displayValues): self
     {
         $this->initialized['displayValues'] = true;
         $this->displayValues = $displayValues;
@@ -471,20 +471,20 @@ class ContentDetail
     /**
      * The actual lifecycle value of the content. Becomes Inactive when the content is deleted.
      *
-     * @return string
+     * @return mixed
      */
-    public function getLifeCycle(): string
+    public function getLifeCycle()
     {
         return $this->lifeCycle;
     }
     /**
      * The actual lifecycle value of the content. Becomes Inactive when the content is deleted.
      *
-     * @param string $lifeCycle
+     * @param mixed $lifeCycle
      *
      * @return self
      */
-    public function setLifeCycle(string $lifeCycle): self
+    public function setLifeCycle($lifeCycle): self
     {
         $this->initialized['lifeCycle'] = true;
         $this->lifeCycle = $lifeCycle;
@@ -515,20 +515,20 @@ class ContentDetail
     /**
      * Activity information: dynamically mapped from configured metadata fields or from audit information if no mapping is configured.
      *
-     * @return Activity|null
+     * @return mixed
      */
-    public function getActivity(): ?Activity
+    public function getActivity()
     {
         return $this->activity;
     }
     /**
      * Activity information: dynamically mapped from configured metadata fields or from audit information if no mapping is configured.
      *
-     * @param Activity|null $activity
+     * @param mixed $activity
      *
      * @return self
      */
-    public function setActivity(?Activity $activity): self
+    public function setActivity($activity): self
     {
         $this->initialized['activity'] = true;
         $this->activity = $activity;

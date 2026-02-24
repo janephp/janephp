@@ -15,7 +15,7 @@ class VideoSpriteFormat extends FormatBase
     /**
      * Specifies the dimensions of a single frame in the sprite.
      *
-     * @var ResizeAction|null
+     * @var mixed|null
      */
     protected $spriteResizeAction;
     /**
@@ -37,20 +37,20 @@ class VideoSpriteFormat extends FormatBase
     /**
      * Specifies the dimensions of a single frame in the sprite.
      *
-     * @return ResizeAction|null
+     * @return mixed
      */
-    public function getSpriteResizeAction(): ?ResizeAction
+    public function getSpriteResizeAction()
     {
         return $this->spriteResizeAction;
     }
     /**
      * Specifies the dimensions of a single frame in the sprite.
      *
-     * @param ResizeAction|null $spriteResizeAction
+     * @param mixed $spriteResizeAction
      *
      * @return self
      */
-    public function setSpriteResizeAction(?ResizeAction $spriteResizeAction): self
+    public function setSpriteResizeAction($spriteResizeAction): self
     {
         $this->initialized['spriteResizeAction'] = true;
         $this->spriteResizeAction = $spriteResizeAction;

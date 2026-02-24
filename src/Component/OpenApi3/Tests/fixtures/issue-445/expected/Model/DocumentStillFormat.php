@@ -19,7 +19,7 @@ class DocumentStillFormat extends FormatBase
     /**
      * Allows resizing of the image.
      *
-     * @var ResizeAction|null
+     * @var mixed|null
      */
     protected $resizeAction;
     /**
@@ -43,20 +43,20 @@ class DocumentStillFormat extends FormatBase
     /**
      * Allows resizing of the image.
      *
-     * @return ResizeAction|null
+     * @return mixed
      */
-    public function getResizeAction(): ?ResizeAction
+    public function getResizeAction()
     {
         return $this->resizeAction;
     }
     /**
      * Allows resizing of the image.
      *
-     * @param ResizeAction|null $resizeAction
+     * @param mixed $resizeAction
      *
      * @return self
      */
-    public function setResizeAction(?ResizeAction $resizeAction): self
+    public function setResizeAction($resizeAction): self
     {
         $this->initialized['resizeAction'] = true;
         $this->resizeAction = $resizeAction;

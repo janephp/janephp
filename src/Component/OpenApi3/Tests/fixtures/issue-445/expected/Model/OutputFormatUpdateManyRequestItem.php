@@ -15,19 +15,19 @@ class OutputFormatUpdateManyRequestItem extends \ArrayObject
     /**
      * Which output format should be used as a source of data.
      *
-     * @var SourceOutputFormats|null
+     * @var mixed|null
      */
     protected $sourceOutputFormats;
     /**
      * Information about the technical format of the data, e.g. JPEG, AAC or video still.
      *
-     * @var FormatBase|null
+     * @var mixed|null
      */
     protected $format;
     /**
      * Language specific names.
      *
-     * @var array<string, string>
+     * @var mixed
      */
     protected $names;
     /**
@@ -40,7 +40,7 @@ class OutputFormatUpdateManyRequestItem extends \ArrayObject
      * Optional patterns (liquid syntax) that produce the filename for item of this output format.
      * If set, the customer's default language is required.
      *
-     * @var array<string, string>|null
+     * @var mixed|null
      */
     protected $downloadFileNamePatterns;
     /**
@@ -64,20 +64,20 @@ class OutputFormatUpdateManyRequestItem extends \ArrayObject
     /**
      * Which output format should be used as a source of data.
      *
-     * @return SourceOutputFormats|null
+     * @return mixed
      */
-    public function getSourceOutputFormats(): ?SourceOutputFormats
+    public function getSourceOutputFormats()
     {
         return $this->sourceOutputFormats;
     }
     /**
      * Which output format should be used as a source of data.
      *
-     * @param SourceOutputFormats|null $sourceOutputFormats
+     * @param mixed $sourceOutputFormats
      *
      * @return self
      */
-    public function setSourceOutputFormats(?SourceOutputFormats $sourceOutputFormats): self
+    public function setSourceOutputFormats($sourceOutputFormats): self
     {
         $this->initialized['sourceOutputFormats'] = true;
         $this->sourceOutputFormats = $sourceOutputFormats;
@@ -86,20 +86,20 @@ class OutputFormatUpdateManyRequestItem extends \ArrayObject
     /**
      * Information about the technical format of the data, e.g. JPEG, AAC or video still.
      *
-     * @return FormatBase|null
+     * @return mixed
      */
-    public function getFormat(): ?FormatBase
+    public function getFormat()
     {
         return $this->format;
     }
     /**
      * Information about the technical format of the data, e.g. JPEG, AAC or video still.
      *
-     * @param FormatBase|null $format
+     * @param mixed $format
      *
      * @return self
      */
-    public function setFormat(?FormatBase $format): self
+    public function setFormat($format): self
     {
         $this->initialized['format'] = true;
         $this->format = $format;
@@ -108,20 +108,20 @@ class OutputFormatUpdateManyRequestItem extends \ArrayObject
     /**
      * Language specific names.
      *
-     * @return array<string, string>
+     * @return mixed
      */
-    public function getNames(): iterable
+    public function getNames()
     {
         return $this->names;
     }
     /**
      * Language specific names.
      *
-     * @param array<string, string> $names
+     * @param mixed $names
      *
      * @return self
      */
-    public function setNames(iterable $names): self
+    public function setNames($names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;
@@ -153,9 +153,9 @@ class OutputFormatUpdateManyRequestItem extends \ArrayObject
      * Optional patterns (liquid syntax) that produce the filename for item of this output format.
      * If set, the customer's default language is required.
      *
-     * @return array<string, string>|null
+     * @return mixed
      */
-    public function getDownloadFileNamePatterns(): ?iterable
+    public function getDownloadFileNamePatterns()
     {
         return $this->downloadFileNamePatterns;
     }
@@ -163,11 +163,11 @@ class OutputFormatUpdateManyRequestItem extends \ArrayObject
     * Optional patterns (liquid syntax) that produce the filename for item of this output format.
     If set, the customer's default language is required.
     *
-    * @param array<string, string>|null $downloadFileNamePatterns
+    * @param mixed $downloadFileNamePatterns
     *
     * @return self
     */
-    public function setDownloadFileNamePatterns(?iterable $downloadFileNamePatterns): self
+    public function setDownloadFileNamePatterns($downloadFileNamePatterns): self
     {
         $this->initialized['downloadFileNamePatterns'] = true;
         $this->downloadFileNamePatterns = $downloadFileNamePatterns;

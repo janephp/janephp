@@ -41,85 +41,69 @@ class SchemaUpdateItemNormalizer implements DenormalizerInterface, NormalizerInt
             return $object;
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $value = $data['names'];
-            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
-                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['names'] as $key => $value_1) {
-                    $values[$key] = $value_1;
-                }
-                $value = $values;
-            }
-            $object->setNames($value);
+            $object->setNames($data['names']);
             unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
-            $value_2 = $data['descriptions'];
-            if (is_array($data['descriptions']) && $this->isOnlyNumericKeys($data['descriptions'])) {
-                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['descriptions'] as $key_1 => $value_3) {
-                    $values_1[$key_1] = $value_3;
-                }
-                $value_2 = $values_1;
-            }
-            $object->setDescriptions($value_2);
+            $object->setDescriptions($data['descriptions']);
             unset($data['descriptions']);
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
             $object->setDescriptions(null);
         }
         if (\array_key_exists('displayPatterns', $data) && $data['displayPatterns'] !== null) {
-            $values_2 = [];
-            foreach ($data['displayPatterns'] as $value_4) {
-                $values_2[] = $this->denormalizer->denormalize($value_4, \PicturePark\API\Model\DisplayPattern::class, 'json', $context);
+            $values = [];
+            foreach ($data['displayPatterns'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\DisplayPattern::class, 'json', $context);
             }
-            $object->setDisplayPatterns($values_2);
+            $object->setDisplayPatterns($values);
             unset($data['displayPatterns']);
         }
         elseif (\array_key_exists('displayPatterns', $data) && $data['displayPatterns'] === null) {
             $object->setDisplayPatterns(null);
         }
         if (\array_key_exists('fields', $data) && $data['fields'] !== null) {
-            $values_3 = [];
-            foreach ($data['fields'] as $value_5) {
-                $values_3[] = $this->denormalizer->denormalize($value_5, \PicturePark\API\Model\FieldBase::class, 'json', $context);
+            $values_1 = [];
+            foreach ($data['fields'] as $value_1) {
+                $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\FieldBase::class, 'json', $context);
             }
-            $object->setFields($values_3);
+            $object->setFields($values_1);
             unset($data['fields']);
         }
         elseif (\array_key_exists('fields', $data) && $data['fields'] === null) {
             $object->setFields(null);
         }
         if (\array_key_exists('fieldsOverwrite', $data) && $data['fieldsOverwrite'] !== null) {
-            $values_4 = [];
-            foreach ($data['fieldsOverwrite'] as $value_6) {
-                $values_4[] = $this->denormalizer->denormalize($value_6, \PicturePark\API\Model\FieldOverwriteBase::class, 'json', $context);
+            $values_2 = [];
+            foreach ($data['fieldsOverwrite'] as $value_2) {
+                $values_2[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\FieldOverwriteBase::class, 'json', $context);
             }
-            $object->setFieldsOverwrite($values_4);
+            $object->setFieldsOverwrite($values_2);
             unset($data['fieldsOverwrite']);
         }
         elseif (\array_key_exists('fieldsOverwrite', $data) && $data['fieldsOverwrite'] === null) {
             $object->setFieldsOverwrite(null);
         }
         if (\array_key_exists('aggregations', $data) && $data['aggregations'] !== null) {
-            $values_5 = [];
-            foreach ($data['aggregations'] as $value_7) {
-                $values_5[] = $this->denormalizer->denormalize($value_7, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
+            $values_3 = [];
+            foreach ($data['aggregations'] as $value_3) {
+                $values_3[] = $this->denormalizer->denormalize($value_3, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
             }
-            $object->setAggregations($values_5);
+            $object->setAggregations($values_3);
             unset($data['aggregations']);
         }
         elseif (\array_key_exists('aggregations', $data) && $data['aggregations'] === null) {
             $object->setAggregations(null);
         }
         if (\array_key_exists('sort', $data) && $data['sort'] !== null) {
-            $values_6 = [];
-            foreach ($data['sort'] as $value_8) {
-                $values_6[] = $this->denormalizer->denormalize($value_8, \PicturePark\API\Model\SortInfo::class, 'json', $context);
+            $values_4 = [];
+            foreach ($data['sort'] as $value_4) {
+                $values_4[] = $this->denormalizer->denormalize($value_4, \PicturePark\API\Model\SortInfo::class, 'json', $context);
             }
-            $object->setSort($values_6);
+            $object->setSort($values_4);
             unset($data['sort']);
         }
         elseif (\array_key_exists('sort', $data) && $data['sort'] === null) {
@@ -130,33 +114,33 @@ class SchemaUpdateItemNormalizer implements DenormalizerInterface, NormalizerInt
             unset($data['viewForAll']);
         }
         if (\array_key_exists('schemaPermissionSetIds', $data) && $data['schemaPermissionSetIds'] !== null) {
-            $values_7 = [];
-            foreach ($data['schemaPermissionSetIds'] as $value_9) {
-                $values_7[] = $value_9;
+            $values_5 = [];
+            foreach ($data['schemaPermissionSetIds'] as $value_5) {
+                $values_5[] = $value_5;
             }
-            $object->setSchemaPermissionSetIds($values_7);
+            $object->setSchemaPermissionSetIds($values_5);
             unset($data['schemaPermissionSetIds']);
         }
         elseif (\array_key_exists('schemaPermissionSetIds', $data) && $data['schemaPermissionSetIds'] === null) {
             $object->setSchemaPermissionSetIds(null);
         }
         if (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] !== null) {
-            $values_8 = [];
-            foreach ($data['layerSchemaIds'] as $value_10) {
-                $values_8[] = $value_10;
+            $values_6 = [];
+            foreach ($data['layerSchemaIds'] as $value_6) {
+                $values_6[] = $value_6;
             }
-            $object->setLayerSchemaIds($values_8);
+            $object->setLayerSchemaIds($values_6);
             unset($data['layerSchemaIds']);
         }
         elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
             $object->setLayerSchemaIds(null);
         }
         if (\array_key_exists('referencedInContentSchemaIds', $data) && $data['referencedInContentSchemaIds'] !== null) {
-            $values_9 = [];
-            foreach ($data['referencedInContentSchemaIds'] as $value_11) {
-                $values_9[] = $value_11;
+            $values_7 = [];
+            foreach ($data['referencedInContentSchemaIds'] as $value_7) {
+                $values_7[] = $value_7;
             }
-            $object->setReferencedInContentSchemaIds($values_9);
+            $object->setReferencedInContentSchemaIds($values_7);
             unset($data['referencedInContentSchemaIds']);
         }
         elseif (\array_key_exists('referencedInContentSchemaIds', $data) && $data['referencedInContentSchemaIds'] === null) {
@@ -166,9 +150,9 @@ class SchemaUpdateItemNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setId($data['id']);
             unset($data['id']);
         }
-        foreach ($data as $key_2 => $value_12) {
-            if (preg_match('/.*/', (string) $key_2)) {
-                $object[$key_2] = $value_12;
+        foreach ($data as $key => $value_8) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_8;
             }
         }
         return $object;
@@ -177,88 +161,72 @@ class SchemaUpdateItemNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if ($data->isInitialized('names')) {
-            $value = $data->getNames();
-            if (is_object($data->getNames())) {
-                $values = [];
-                foreach ($data->getNames() as $key => $value_1) {
-                    $values[$key] = $value_1;
-                }
-                $value = $values;
-            }
-            $dataArray['names'] = $value;
+            $dataArray['names'] = $data->getNames();
         }
         if ($data->isInitialized('descriptions')) {
-            $value_2 = $data->getDescriptions();
-            if (is_object($data->getDescriptions())) {
-                $values_1 = [];
-                foreach ($data->getDescriptions() as $key_1 => $value_3) {
-                    $values_1[$key_1] = $value_3;
-                }
-                $value_2 = $values_1;
-            }
-            $dataArray['descriptions'] = $value_2;
+            $dataArray['descriptions'] = $data->getDescriptions();
         }
         if ($data->isInitialized('displayPatterns')) {
-            $values_2 = [];
-            foreach ($data->getDisplayPatterns() as $value_4) {
-                $values_2[] = $this->normalizer->normalize($value_4, 'json', $context);
+            $values = [];
+            foreach ($data->getDisplayPatterns() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $dataArray['displayPatterns'] = $values_2;
+            $dataArray['displayPatterns'] = $values;
         }
         if ($data->isInitialized('fields')) {
-            $values_3 = [];
-            foreach ($data->getFields() as $value_5) {
-                $values_3[] = $this->normalizer->normalize($value_5, 'json', $context);
+            $values_1 = [];
+            foreach ($data->getFields() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
-            $dataArray['fields'] = $values_3;
+            $dataArray['fields'] = $values_1;
         }
         if ($data->isInitialized('fieldsOverwrite')) {
-            $values_4 = [];
-            foreach ($data->getFieldsOverwrite() as $value_6) {
-                $values_4[] = $this->normalizer->normalize($value_6, 'json', $context);
+            $values_2 = [];
+            foreach ($data->getFieldsOverwrite() as $value_2) {
+                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
-            $dataArray['fieldsOverwrite'] = $values_4;
+            $dataArray['fieldsOverwrite'] = $values_2;
         }
         if ($data->isInitialized('aggregations')) {
-            $values_5 = [];
-            foreach ($data->getAggregations() as $value_7) {
-                $values_5[] = $this->normalizer->normalize($value_7, 'json', $context);
+            $values_3 = [];
+            foreach ($data->getAggregations() as $value_3) {
+                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
-            $dataArray['aggregations'] = $values_5;
+            $dataArray['aggregations'] = $values_3;
         }
         if ($data->isInitialized('sort')) {
-            $values_6 = [];
-            foreach ($data->getSort() as $value_8) {
-                $values_6[] = $this->normalizer->normalize($value_8, 'json', $context);
+            $values_4 = [];
+            foreach ($data->getSort() as $value_4) {
+                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
-            $dataArray['sort'] = $values_6;
+            $dataArray['sort'] = $values_4;
         }
         $dataArray['viewForAll'] = $data->getViewForAll();
         if ($data->isInitialized('schemaPermissionSetIds')) {
-            $values_7 = [];
-            foreach ($data->getSchemaPermissionSetIds() as $value_9) {
-                $values_7[] = $value_9;
+            $values_5 = [];
+            foreach ($data->getSchemaPermissionSetIds() as $value_5) {
+                $values_5[] = $value_5;
             }
-            $dataArray['schemaPermissionSetIds'] = $values_7;
+            $dataArray['schemaPermissionSetIds'] = $values_5;
         }
         if ($data->isInitialized('layerSchemaIds')) {
-            $values_8 = [];
-            foreach ($data->getLayerSchemaIds() as $value_10) {
-                $values_8[] = $value_10;
+            $values_6 = [];
+            foreach ($data->getLayerSchemaIds() as $value_6) {
+                $values_6[] = $value_6;
             }
-            $dataArray['layerSchemaIds'] = $values_8;
+            $dataArray['layerSchemaIds'] = $values_6;
         }
         if ($data->isInitialized('referencedInContentSchemaIds')) {
-            $values_9 = [];
-            foreach ($data->getReferencedInContentSchemaIds() as $value_11) {
-                $values_9[] = $value_11;
+            $values_7 = [];
+            foreach ($data->getReferencedInContentSchemaIds() as $value_7) {
+                $values_7[] = $value_7;
             }
-            $dataArray['referencedInContentSchemaIds'] = $values_9;
+            $dataArray['referencedInContentSchemaIds'] = $values_7;
         }
         $dataArray['id'] = $data->getId();
-        foreach ($data as $key_2 => $value_12) {
-            if (preg_match('/.*/', (string) $key_2)) {
-                $dataArray[$key_2] = $value_12;
+        foreach ($data as $key => $value_8) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_8;
             }
         }
         return $dataArray;

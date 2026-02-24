@@ -77,30 +77,14 @@ class FieldTranslatedStringNormalizer implements DenormalizerInterface, Normaliz
             $object->setFieldNamespace(null);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $value = $data['names'];
-            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
-                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['names'] as $key => $value_1) {
-                    $values[$key] = $value_1;
-                }
-                $value = $values;
-            }
-            $object->setNames($value);
+            $object->setNames($data['names']);
             unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
-            $value_2 = $data['descriptions'];
-            if (is_array($data['descriptions']) && $this->isOnlyNumericKeys($data['descriptions'])) {
-                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['descriptions'] as $key_1 => $value_3) {
-                    $values_1[$key_1] = $value_3;
-                }
-                $value_2 = $values_1;
-            }
-            $object->setDescriptions($value_2);
+            $object->setDescriptions($data['descriptions']);
             unset($data['descriptions']);
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
@@ -152,22 +136,22 @@ class FieldTranslatedStringNormalizer implements DenormalizerInterface, Normaliz
             $object->setMaximumLength(null);
         }
         if (\array_key_exists('indexAnalyzers', $data) && $data['indexAnalyzers'] !== null) {
-            $values_2 = [];
-            foreach ($data['indexAnalyzers'] as $value_4) {
-                $values_2[] = $this->denormalizer->denormalize($value_4, \PicturePark\API\Model\AnalyzerBase::class, 'json', $context);
+            $values = [];
+            foreach ($data['indexAnalyzers'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\AnalyzerBase::class, 'json', $context);
             }
-            $object->setIndexAnalyzers($values_2);
+            $object->setIndexAnalyzers($values);
             unset($data['indexAnalyzers']);
         }
         elseif (\array_key_exists('indexAnalyzers', $data) && $data['indexAnalyzers'] === null) {
             $object->setIndexAnalyzers(null);
         }
         if (\array_key_exists('simpleSearchAnalyzers', $data) && $data['simpleSearchAnalyzers'] !== null) {
-            $values_3 = [];
-            foreach ($data['simpleSearchAnalyzers'] as $value_5) {
-                $values_3[] = $this->denormalizer->denormalize($value_5, \PicturePark\API\Model\AnalyzerBase::class, 'json', $context);
+            $values_1 = [];
+            foreach ($data['simpleSearchAnalyzers'] as $value_1) {
+                $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\AnalyzerBase::class, 'json', $context);
             }
-            $object->setSimpleSearchAnalyzers($values_3);
+            $object->setSimpleSearchAnalyzers($values_1);
             unset($data['simpleSearchAnalyzers']);
         }
         elseif (\array_key_exists('simpleSearchAnalyzers', $data) && $data['simpleSearchAnalyzers'] === null) {
@@ -178,11 +162,11 @@ class FieldTranslatedStringNormalizer implements DenormalizerInterface, Normaliz
             unset($data['multiLine']);
         }
         if (\array_key_exists('requiredMetadataLanguages', $data) && $data['requiredMetadataLanguages'] !== null) {
-            $values_4 = [];
-            foreach ($data['requiredMetadataLanguages'] as $value_6) {
-                $values_4[] = $value_6;
+            $values_2 = [];
+            foreach ($data['requiredMetadataLanguages'] as $value_2) {
+                $values_2[] = $value_2;
             }
-            $object->setRequiredMetadataLanguages($values_4);
+            $object->setRequiredMetadataLanguages($values_2);
             unset($data['requiredMetadataLanguages']);
         }
         elseif (\array_key_exists('requiredMetadataLanguages', $data) && $data['requiredMetadataLanguages'] === null) {
@@ -199,9 +183,9 @@ class FieldTranslatedStringNormalizer implements DenormalizerInterface, Normaliz
             $object->setBoost($data['boost']);
             unset($data['boost']);
         }
-        foreach ($data as $key_2 => $value_7) {
-            if (preg_match('/.*/', (string) $key_2)) {
-                $object[$key_2] = $value_7;
+        foreach ($data as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_3;
             }
         }
         return $object;
@@ -217,26 +201,10 @@ class FieldTranslatedStringNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['fieldNamespace'] = $data->getFieldNamespace();
         }
         if ($data->isInitialized('names')) {
-            $value = $data->getNames();
-            if (is_object($data->getNames())) {
-                $values = [];
-                foreach ($data->getNames() as $key => $value_1) {
-                    $values[$key] = $value_1;
-                }
-                $value = $values;
-            }
-            $dataArray['names'] = $value;
+            $dataArray['names'] = $data->getNames();
         }
         if ($data->isInitialized('descriptions')) {
-            $value_2 = $data->getDescriptions();
-            if (is_object($data->getDescriptions())) {
-                $values_1 = [];
-                foreach ($data->getDescriptions() as $key_1 => $value_3) {
-                    $values_1[$key_1] = $value_3;
-                }
-                $value_2 = $values_1;
-            }
-            $dataArray['descriptions'] = $value_2;
+            $dataArray['descriptions'] = $data->getDescriptions();
         }
         $dataArray['required'] = $data->getRequired();
         $dataArray['fixed'] = $data->getFixed();
@@ -254,28 +222,28 @@ class FieldTranslatedStringNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['maximumLength'] = $data->getMaximumLength();
         }
         if ($data->isInitialized('indexAnalyzers')) {
-            $values_2 = [];
-            foreach ($data->getIndexAnalyzers() as $value_4) {
-                $values_2[] = $this->normalizer->normalize($value_4, 'json', $context);
+            $values = [];
+            foreach ($data->getIndexAnalyzers() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $dataArray['indexAnalyzers'] = $values_2;
+            $dataArray['indexAnalyzers'] = $values;
         }
         if ($data->isInitialized('simpleSearchAnalyzers')) {
-            $values_3 = [];
-            foreach ($data->getSimpleSearchAnalyzers() as $value_5) {
-                $values_3[] = $this->normalizer->normalize($value_5, 'json', $context);
+            $values_1 = [];
+            foreach ($data->getSimpleSearchAnalyzers() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
-            $dataArray['simpleSearchAnalyzers'] = $values_3;
+            $dataArray['simpleSearchAnalyzers'] = $values_1;
         }
         if ($data->isInitialized('multiLine') && null !== $data->getMultiLine()) {
             $dataArray['multiLine'] = $data->getMultiLine();
         }
         if ($data->isInitialized('requiredMetadataLanguages')) {
-            $values_4 = [];
-            foreach ($data->getRequiredMetadataLanguages() as $value_6) {
-                $values_4[] = $value_6;
+            $values_2 = [];
+            foreach ($data->getRequiredMetadataLanguages() as $value_2) {
+                $values_2[] = $value_2;
             }
-            $dataArray['requiredMetadataLanguages'] = $values_4;
+            $dataArray['requiredMetadataLanguages'] = $values_2;
         }
         if ($data->isInitialized('template')) {
             $dataArray['template'] = $data->getTemplate();
@@ -283,9 +251,9 @@ class FieldTranslatedStringNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('boost') && null !== $data->getBoost()) {
             $dataArray['boost'] = $data->getBoost();
         }
-        foreach ($data as $key_2 => $value_7) {
-            if (preg_match('/.*/', (string) $key_2)) {
-                $dataArray[$key_2] = $value_7;
+        foreach ($data as $key => $value_3) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_3;
             }
         }
         return $dataArray;

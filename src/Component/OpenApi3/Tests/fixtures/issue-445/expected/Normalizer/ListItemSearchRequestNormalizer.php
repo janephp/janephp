@@ -62,11 +62,7 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
             $object->setSearchBehaviors(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $value_1 = $data['filter'];
-            if (is_array($data['filter']) and isset($data['filter']['kind'])) {
-                $value_1 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
-            }
-            $object->setFilter($value_1);
+            $object->setFilter($data['filter']);
             unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
@@ -74,8 +70,8 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] !== null) {
             $values_1 = [];
-            foreach ($data['aggregationFilters'] as $value_2) {
-                $values_1[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\AggregationFilter::class, 'json', $context);
+            foreach ($data['aggregationFilters'] as $value_1) {
+                $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\AggregationFilter::class, 'json', $context);
             }
             $object->setAggregationFilters($values_1);
             unset($data['aggregationFilters']);
@@ -88,17 +84,13 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
             unset($data['includeAllSchemaChildren']);
         }
         if (\array_key_exists('brokenDependenciesFilter', $data)) {
-            $value_3 = $data['brokenDependenciesFilter'];
-            if (is_string($data['brokenDependenciesFilter'])) {
-                $value_3 = $data['brokenDependenciesFilter'];
-            }
-            $object->setBrokenDependenciesFilter($value_3);
+            $object->setBrokenDependenciesFilter($data['brokenDependenciesFilter']);
             unset($data['brokenDependenciesFilter']);
         }
         if (\array_key_exists('schemaIds', $data) && $data['schemaIds'] !== null) {
             $values_2 = [];
-            foreach ($data['schemaIds'] as $value_4) {
-                $values_2[] = $value_4;
+            foreach ($data['schemaIds'] as $value_2) {
+                $values_2[] = $value_2;
             }
             $object->setSchemaIds($values_2);
             unset($data['schemaIds']);
@@ -108,8 +100,8 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('searchLanguages', $data) && $data['searchLanguages'] !== null) {
             $values_3 = [];
-            foreach ($data['searchLanguages'] as $value_5) {
-                $values_3[] = $value_5;
+            foreach ($data['searchLanguages'] as $value_3) {
+                $values_3[] = $value_3;
             }
             $object->setSearchLanguages($values_3);
             unset($data['searchLanguages']);
@@ -118,17 +110,13 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
             $object->setSearchLanguages(null);
         }
         if (\array_key_exists('lifeCycleFilter', $data)) {
-            $value_6 = $data['lifeCycleFilter'];
-            if (is_string($data['lifeCycleFilter'])) {
-                $value_6 = $data['lifeCycleFilter'];
-            }
-            $object->setLifeCycleFilter($value_6);
+            $object->setLifeCycleFilter($data['lifeCycleFilter']);
             unset($data['lifeCycleFilter']);
         }
         if (\array_key_exists('sort', $data) && $data['sort'] !== null) {
             $values_4 = [];
-            foreach ($data['sort'] as $value_7) {
-                $values_4[] = $this->denormalizer->denormalize($value_7, \PicturePark\API\Model\SortInfo::class, 'json', $context);
+            foreach ($data['sort'] as $value_4) {
+                $values_4[] = $this->denormalizer->denormalize($value_4, \PicturePark\API\Model\SortInfo::class, 'json', $context);
             }
             $object->setSort($values_4);
             unset($data['sort']);
@@ -153,8 +141,8 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('resolveBehaviors', $data) && $data['resolveBehaviors'] !== null) {
             $values_5 = [];
-            foreach ($data['resolveBehaviors'] as $value_8) {
-                $values_5[] = $value_8;
+            foreach ($data['resolveBehaviors'] as $value_5) {
+                $values_5[] = $value_5;
             }
             $object->setResolveBehaviors($values_5);
             unset($data['resolveBehaviors']);
@@ -164,8 +152,8 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('aggregators', $data) && $data['aggregators'] !== null) {
             $values_6 = [];
-            foreach ($data['aggregators'] as $value_9) {
-                $values_6[] = $this->denormalizer->denormalize($value_9, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
+            foreach ($data['aggregators'] as $value_6) {
+                $values_6[] = $this->denormalizer->denormalize($value_6, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
             }
             $object->setAggregators($values_6);
             unset($data['aggregators']);
@@ -173,9 +161,9 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         elseif (\array_key_exists('aggregators', $data) && $data['aggregators'] === null) {
             $object->setAggregators(null);
         }
-        foreach ($data as $key => $value_10) {
+        foreach ($data as $key => $value_7) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_10;
+                $object[$key] = $value_7;
             }
         }
         return $object;
@@ -194,48 +182,36 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['searchBehaviors'] = $values;
         }
         if ($data->isInitialized('filter')) {
-            $value_1 = $data->getFilter();
-            if (is_object($data->getFilter())) {
-                $value_1 = $this->normalizer->normalize($data->getFilter(), 'json', $context);
-            }
-            $dataArray['filter'] = $value_1;
+            $dataArray['filter'] = $data->getFilter();
         }
         if ($data->isInitialized('aggregationFilters')) {
             $values_1 = [];
-            foreach ($data->getAggregationFilters() as $value_2) {
-                $values_1[] = $this->normalizer->normalize($value_2, 'json', $context);
+            foreach ($data->getAggregationFilters() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['aggregationFilters'] = $values_1;
         }
         $dataArray['includeAllSchemaChildren'] = $data->getIncludeAllSchemaChildren();
-        $value_3 = $data->getBrokenDependenciesFilter();
-        if (is_string($data->getBrokenDependenciesFilter())) {
-            $value_3 = $data->getBrokenDependenciesFilter();
-        }
-        $dataArray['brokenDependenciesFilter'] = $value_3;
+        $dataArray['brokenDependenciesFilter'] = $data->getBrokenDependenciesFilter();
         if ($data->isInitialized('schemaIds')) {
             $values_2 = [];
-            foreach ($data->getSchemaIds() as $value_4) {
-                $values_2[] = $value_4;
+            foreach ($data->getSchemaIds() as $value_2) {
+                $values_2[] = $value_2;
             }
             $dataArray['schemaIds'] = $values_2;
         }
         if ($data->isInitialized('searchLanguages')) {
             $values_3 = [];
-            foreach ($data->getSearchLanguages() as $value_5) {
-                $values_3[] = $value_5;
+            foreach ($data->getSearchLanguages() as $value_3) {
+                $values_3[] = $value_3;
             }
             $dataArray['searchLanguages'] = $values_3;
         }
-        $value_6 = $data->getLifeCycleFilter();
-        if (is_string($data->getLifeCycleFilter())) {
-            $value_6 = $data->getLifeCycleFilter();
-        }
-        $dataArray['lifeCycleFilter'] = $value_6;
+        $dataArray['lifeCycleFilter'] = $data->getLifeCycleFilter();
         if ($data->isInitialized('sort')) {
             $values_4 = [];
-            foreach ($data->getSort() as $value_7) {
-                $values_4[] = $this->normalizer->normalize($value_7, 'json', $context);
+            foreach ($data->getSort() as $value_4) {
+                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
             $dataArray['sort'] = $values_4;
         }
@@ -250,21 +226,21 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         if ($data->isInitialized('resolveBehaviors')) {
             $values_5 = [];
-            foreach ($data->getResolveBehaviors() as $value_8) {
-                $values_5[] = $value_8;
+            foreach ($data->getResolveBehaviors() as $value_5) {
+                $values_5[] = $value_5;
             }
             $dataArray['resolveBehaviors'] = $values_5;
         }
         if ($data->isInitialized('aggregators')) {
             $values_6 = [];
-            foreach ($data->getAggregators() as $value_9) {
-                $values_6[] = $this->normalizer->normalize($value_9, 'json', $context);
+            foreach ($data->getAggregators() as $value_6) {
+                $values_6[] = $this->normalizer->normalize($value_6, 'json', $context);
             }
             $dataArray['aggregators'] = $values_6;
         }
-        foreach ($data as $key => $value_10) {
+        foreach ($data as $key => $value_7) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_10;
+                $dataArray[$key] = $value_7;
             }
         }
         return $dataArray;

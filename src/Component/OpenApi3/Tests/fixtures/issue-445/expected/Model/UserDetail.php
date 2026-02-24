@@ -63,7 +63,7 @@ class UserDetail extends \ArrayObject
     /**
      * User's address.
      *
-     * @var UserAddress|null
+     * @var mixed|null
      */
     protected $address;
     /**
@@ -81,7 +81,7 @@ class UserDetail extends \ArrayObject
     /**
      * Authorization state the user is currently in.
      *
-     * @var string
+     * @var mixed
      */
     protected $authorizationState;
     /**
@@ -93,7 +93,7 @@ class UserDetail extends \ArrayObject
     /**
      * Life cycle state the user is currently in.
      *
-     * @var string
+     * @var mixed
      */
     protected $lifeCycle;
     /**
@@ -117,7 +117,7 @@ class UserDetail extends \ArrayObject
     /**
      * Audit information.
      *
-     * @var UserAuditDetail|null
+     * @var mixed|null
      */
     protected $audit;
     /**
@@ -299,20 +299,20 @@ class UserDetail extends \ArrayObject
     /**
      * User's address.
      *
-     * @return UserAddress|null
+     * @return mixed
      */
-    public function getAddress(): ?UserAddress
+    public function getAddress()
     {
         return $this->address;
     }
     /**
      * User's address.
      *
-     * @param UserAddress|null $address
+     * @param mixed $address
      *
      * @return self
      */
-    public function setAddress(?UserAddress $address): self
+    public function setAddress($address): self
     {
         $this->initialized['address'] = true;
         $this->address = $address;
@@ -365,20 +365,20 @@ class UserDetail extends \ArrayObject
     /**
      * Authorization state the user is currently in.
      *
-     * @return string
+     * @return mixed
      */
-    public function getAuthorizationState(): string
+    public function getAuthorizationState()
     {
         return $this->authorizationState;
     }
     /**
      * Authorization state the user is currently in.
      *
-     * @param string $authorizationState
+     * @param mixed $authorizationState
      *
      * @return self
      */
-    public function setAuthorizationState(string $authorizationState): self
+    public function setAuthorizationState($authorizationState): self
     {
         $this->initialized['authorizationState'] = true;
         $this->authorizationState = $authorizationState;
@@ -409,20 +409,20 @@ class UserDetail extends \ArrayObject
     /**
      * Life cycle state the user is currently in.
      *
-     * @return string
+     * @return mixed
      */
-    public function getLifeCycle(): string
+    public function getLifeCycle()
     {
         return $this->lifeCycle;
     }
     /**
      * Life cycle state the user is currently in.
      *
-     * @param string $lifeCycle
+     * @param mixed $lifeCycle
      *
      * @return self
      */
-    public function setLifeCycle(string $lifeCycle): self
+    public function setLifeCycle($lifeCycle): self
     {
         $this->initialized['lifeCycle'] = true;
         $this->lifeCycle = $lifeCycle;
@@ -497,20 +497,20 @@ class UserDetail extends \ArrayObject
     /**
      * Audit information.
      *
-     * @return UserAuditDetail|null
+     * @return mixed
      */
-    public function getAudit(): ?UserAuditDetail
+    public function getAudit()
     {
         return $this->audit;
     }
     /**
      * Audit information.
      *
-     * @param UserAuditDetail|null $audit
+     * @param mixed $audit
      *
      * @return self
      */
-    public function setAudit(?UserAuditDetail $audit): self
+    public function setAudit($audit): self
     {
         $this->initialized['audit'] = true;
         $this->audit = $audit;

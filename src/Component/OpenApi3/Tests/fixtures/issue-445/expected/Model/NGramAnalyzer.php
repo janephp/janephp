@@ -15,7 +15,7 @@ class NGramAnalyzer extends AnalyzerBase
     /**
      * The analyzer type: NGram
      *
-     * @var string
+     * @var mixed
      */
     protected $type;
     /**
@@ -27,20 +27,20 @@ class NGramAnalyzer extends AnalyzerBase
     /**
      * The analyzer type: NGram
      *
-     * @return string
+     * @return mixed
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->type;
     }
     /**
      * The analyzer type: NGram
      *
-     * @param string $type
+     * @param mixed $type
      *
      * @return self
      */
-    public function setType(string $type): self
+    public function setType($type): self
     {
         $this->initialized['type'] = true;
         $this->type = $type;

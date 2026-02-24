@@ -38,15 +38,7 @@ class LanguageNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return $object;
         }
         if (\array_key_exists('name', $data)) {
-            $value = $data['name'];
-            if (is_array($data['name']) && $this->isOnlyNumericKeys($data['name'])) {
-                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['name'] as $key => $value_1) {
-                    $values[$key] = $value_1;
-                }
-                $value = $values;
-            }
-            $object->setName($value);
+            $object->setName($data['name']);
         }
         if (\array_key_exists('ietf', $data)) {
             $object->setIetf($data['ietf']);
@@ -74,15 +66,7 @@ class LanguageNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->getName();
-        if (is_object($data->getName())) {
-            $values = [];
-            foreach ($data->getName() as $key => $value_1) {
-                $values[$key] = $value_1;
-            }
-            $value = $values;
-        }
-        $dataArray['name'] = $value;
+        $dataArray['name'] = $data->getName();
         $dataArray['ietf'] = $data->getIetf();
         if ($data->isInitialized('twoLetterISOLanguageName')) {
             $dataArray['twoLetterISOLanguageName'] = $data->getTwoLetterISOLanguageName();

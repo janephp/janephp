@@ -46,16 +46,12 @@ class ParentFilterNormalizer implements DenormalizerInterface, NormalizerInterfa
             unset($data['parentType']);
         }
         if (\array_key_exists('filter', $data)) {
-            $value = $data['filter'];
-            if (is_array($data['filter']) and isset($data['filter']['kind'])) {
-                $value = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
-            }
-            $object->setFilter($value);
+            $object->setFilter($data['filter']);
             unset($data['filter']);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value;
             }
         }
         return $object;
@@ -65,14 +61,10 @@ class ParentFilterNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
         $dataArray['parentType'] = $data->getParentType();
-        $value = $data->getFilter();
-        if (is_object($data->getFilter())) {
-            $value = $this->normalizer->normalize($data->getFilter(), 'json', $context);
-        }
-        $dataArray['filter'] = $value;
-        foreach ($data as $key => $value_1) {
+        $dataArray['filter'] = $data->getFilter();
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+                $dataArray[$key] = $value;
             }
         }
         return $dataArray;

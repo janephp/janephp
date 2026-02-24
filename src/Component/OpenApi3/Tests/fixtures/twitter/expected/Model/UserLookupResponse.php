@@ -13,7 +13,7 @@ class UserLookupResponse extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var list<CompactUser>|list<DefaultUser>|list<DetailedUser>
+     * @var list<mixed>
      */
     protected $data;
     /**
@@ -21,18 +21,18 @@ class UserLookupResponse extends \ArrayObject
      */
     protected $includes;
     /**
-     * @var list<GenericProblem>|list<InvalidRequestProblem>|list<ClientForbiddenProblem>|list<ResourceNotFoundProblem>|list<ResourceUnauthorizedProblem>|list<DisallowedResourceProblem>|list<UnsupportedAuthenticationProblem>|list<UsageCapExceededProblem>|list<ConnectionExceptionProblem>|list<ClientDisconnectedProblem>|list<OperationalDisconnectProblem>|list<RulesCapProblem>|list<InvalidRuleProblem>
+     * @var list<mixed>
      */
     protected $errors;
     /**
-     * @return list<CompactUser>|list<DefaultUser>|list<DetailedUser>
+     * @return list<mixed>
      */
     public function getData(): array
     {
         return $this->data;
     }
     /**
-     * @param list<CompactUser>|list<DefaultUser>|list<DetailedUser> $data
+     * @param list<mixed> $data
      *
      * @return self
      */
@@ -61,14 +61,14 @@ class UserLookupResponse extends \ArrayObject
         return $this;
     }
     /**
-     * @return list<GenericProblem>|list<InvalidRequestProblem>|list<ClientForbiddenProblem>|list<ResourceNotFoundProblem>|list<ResourceUnauthorizedProblem>|list<DisallowedResourceProblem>|list<UnsupportedAuthenticationProblem>|list<UsageCapExceededProblem>|list<ConnectionExceptionProblem>|list<ClientDisconnectedProblem>|list<OperationalDisconnectProblem>|list<RulesCapProblem>|list<InvalidRuleProblem>
+     * @return list<mixed>
      */
     public function getErrors(): array
     {
         return $this->errors;
     }
     /**
-     * @param list<GenericProblem>|list<InvalidRequestProblem>|list<ClientForbiddenProblem>|list<ResourceNotFoundProblem>|list<ResourceUnauthorizedProblem>|list<DisallowedResourceProblem>|list<UnsupportedAuthenticationProblem>|list<UsageCapExceededProblem>|list<ConnectionExceptionProblem>|list<ClientDisconnectedProblem>|list<OperationalDisconnectProblem>|list<RulesCapProblem>|list<InvalidRuleProblem> $errors
+     * @param list<mixed> $errors
      *
      * @return self
      */

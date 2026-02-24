@@ -49,19 +49,15 @@ class DocumentStillFormatNormalizer implements DenormalizerInterface, Normalizer
             $object->setExtension(null);
         }
         if (\array_key_exists('resizeAction', $data) && $data['resizeAction'] !== null) {
-            $value = $data['resizeAction'];
-            if (is_array($data['resizeAction']) and isset($data['resizeAction']['width']) and isset($data['resizeAction']['height']) and isset($data['resizeAction']['resizeMode'])) {
-                $value = $this->denormalizer->denormalize($data['resizeAction'], \PicturePark\API\Model\ResizeAction::class, 'json', $context);
-            }
-            $object->setResizeAction($value);
+            $object->setResizeAction($data['resizeAction']);
             unset($data['resizeAction']);
         }
         elseif (\array_key_exists('resizeAction', $data) && $data['resizeAction'] === null) {
             $object->setResizeAction(null);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value;
             }
         }
         return $object;
@@ -74,15 +70,11 @@ class DocumentStillFormatNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['extension'] = $data->getExtension();
         }
         if ($data->isInitialized('resizeAction')) {
-            $value = $data->getResizeAction();
-            if (is_object($data->getResizeAction())) {
-                $value = $this->normalizer->normalize($data->getResizeAction(), 'json', $context);
-            }
-            $dataArray['resizeAction'] = $value;
+            $dataArray['resizeAction'] = $data->getResizeAction();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+                $dataArray[$key] = $value;
             }
         }
         return $dataArray;

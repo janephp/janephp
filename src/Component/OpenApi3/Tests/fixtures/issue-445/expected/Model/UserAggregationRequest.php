@@ -27,13 +27,13 @@ class UserAggregationRequest extends \ArrayObject
     /**
      * An optional search filter. Limits the document result set.
      *
-     * @var FilterBase|null
+     * @var mixed|null
      */
     protected $filter;
     /**
      * Return only users in certain life cycle state(s).
      *
-     * @var string
+     * @var mixed
      */
     protected $lifeCycleFilter;
     /**
@@ -119,20 +119,20 @@ class UserAggregationRequest extends \ArrayObject
     /**
      * An optional search filter. Limits the document result set.
      *
-     * @return FilterBase|null
+     * @return mixed
      */
-    public function getFilter(): ?FilterBase
+    public function getFilter()
     {
         return $this->filter;
     }
     /**
      * An optional search filter. Limits the document result set.
      *
-     * @param FilterBase|null $filter
+     * @param mixed $filter
      *
      * @return self
      */
-    public function setFilter(?FilterBase $filter): self
+    public function setFilter($filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;
@@ -141,20 +141,20 @@ class UserAggregationRequest extends \ArrayObject
     /**
      * Return only users in certain life cycle state(s).
      *
-     * @return string
+     * @return mixed
      */
-    public function getLifeCycleFilter(): string
+    public function getLifeCycleFilter()
     {
         return $this->lifeCycleFilter;
     }
     /**
      * Return only users in certain life cycle state(s).
      *
-     * @param string $lifeCycleFilter
+     * @param mixed $lifeCycleFilter
      *
      * @return self
      */
-    public function setLifeCycleFilter(string $lifeCycleFilter): self
+    public function setLifeCycleFilter($lifeCycleFilter): self
     {
         $this->initialized['lifeCycleFilter'] = true;
         $this->lifeCycleFilter = $lifeCycleFilter;

@@ -106,19 +106,15 @@ class BusinessProcessContinuationExceptionNormalizer implements DenormalizerInte
             $object->setPrecedingBusinessProcessId(null);
         }
         if (\array_key_exists('precedingBusinessProcessException', $data) && $data['precedingBusinessProcessException'] !== null) {
-            $value = $data['precedingBusinessProcessException'];
-            if (is_array($data['precedingBusinessProcessException'])) {
-                $value = $this->denormalizer->denormalize($data['precedingBusinessProcessException'], \PicturePark\API\Model\PictureparkException::class, 'json', $context);
-            }
-            $object->setPrecedingBusinessProcessException($value);
+            $object->setPrecedingBusinessProcessException($data['precedingBusinessProcessException']);
             unset($data['precedingBusinessProcessException']);
         }
         elseif (\array_key_exists('precedingBusinessProcessException', $data) && $data['precedingBusinessProcessException'] === null) {
             $object->setPrecedingBusinessProcessException(null);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value;
             }
         }
         return $object;
@@ -158,15 +154,11 @@ class BusinessProcessContinuationExceptionNormalizer implements DenormalizerInte
             $dataArray['precedingBusinessProcessId'] = $data->getPrecedingBusinessProcessId();
         }
         if ($data->isInitialized('precedingBusinessProcessException')) {
-            $value = $data->getPrecedingBusinessProcessException();
-            if (is_object($data->getPrecedingBusinessProcessException())) {
-                $value = $this->normalizer->normalize($data->getPrecedingBusinessProcessException(), 'json', $context);
-            }
-            $dataArray['precedingBusinessProcessException'] = $value;
+            $dataArray['precedingBusinessProcessException'] = $data->getPrecedingBusinessProcessException();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+                $dataArray[$key] = $value;
             }
         }
         return $dataArray;

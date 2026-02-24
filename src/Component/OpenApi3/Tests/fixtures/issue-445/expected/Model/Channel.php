@@ -33,13 +33,13 @@ class Channel
     /**
      * An optional search filter. Limits the content document result set on each search and aggregation request.
      *
-     * @var FilterBase|null
+     * @var mixed|null
      */
     protected $filter;
     /**
      * Language specific names.
      *
-     * @var array<string, string>
+     * @var mixed
      */
     protected $names;
     /**
@@ -75,13 +75,13 @@ class Channel
     /**
      * Display pattern to use for rendering details when 0 results are returned
      *
-     * @var array<string, string>
+     * @var mixed
      */
     protected $missingResultsDisplayPatterns;
     /**
      * Audit information.
      *
-     * @var UserAudit
+     * @var mixed
      */
     protected $audit;
     /**
@@ -159,20 +159,20 @@ class Channel
     /**
      * An optional search filter. Limits the content document result set on each search and aggregation request.
      *
-     * @return FilterBase|null
+     * @return mixed
      */
-    public function getFilter(): ?FilterBase
+    public function getFilter()
     {
         return $this->filter;
     }
     /**
      * An optional search filter. Limits the content document result set on each search and aggregation request.
      *
-     * @param FilterBase|null $filter
+     * @param mixed $filter
      *
      * @return self
      */
-    public function setFilter(?FilterBase $filter): self
+    public function setFilter($filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;
@@ -181,20 +181,20 @@ class Channel
     /**
      * Language specific names.
      *
-     * @return array<string, string>
+     * @return mixed
      */
-    public function getNames(): iterable
+    public function getNames()
     {
         return $this->names;
     }
     /**
      * Language specific names.
      *
-     * @param array<string, string> $names
+     * @param mixed $names
      *
      * @return self
      */
-    public function setNames(iterable $names): self
+    public function setNames($names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;
@@ -313,20 +313,20 @@ class Channel
     /**
      * Display pattern to use for rendering details when 0 results are returned
      *
-     * @return array<string, string>
+     * @return mixed
      */
-    public function getMissingResultsDisplayPatterns(): iterable
+    public function getMissingResultsDisplayPatterns()
     {
         return $this->missingResultsDisplayPatterns;
     }
     /**
      * Display pattern to use for rendering details when 0 results are returned
      *
-     * @param array<string, string> $missingResultsDisplayPatterns
+     * @param mixed $missingResultsDisplayPatterns
      *
      * @return self
      */
-    public function setMissingResultsDisplayPatterns(iterable $missingResultsDisplayPatterns): self
+    public function setMissingResultsDisplayPatterns($missingResultsDisplayPatterns): self
     {
         $this->initialized['missingResultsDisplayPatterns'] = true;
         $this->missingResultsDisplayPatterns = $missingResultsDisplayPatterns;
@@ -335,20 +335,20 @@ class Channel
     /**
      * Audit information.
      *
-     * @return UserAudit
+     * @return mixed
      */
-    public function getAudit(): UserAudit
+    public function getAudit()
     {
         return $this->audit;
     }
     /**
      * Audit information.
      *
-     * @param UserAudit $audit
+     * @param mixed $audit
      *
      * @return self
      */
-    public function setAudit(UserAudit $audit): self
+    public function setAudit($audit): self
     {
         $this->initialized['audit'] = true;
         $this->audit = $audit;

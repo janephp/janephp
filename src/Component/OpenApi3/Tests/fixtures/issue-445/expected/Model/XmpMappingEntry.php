@@ -15,7 +15,7 @@ class XmpMappingEntry extends \ArrayObject
     /**
      * Direction of the mapping.
      *
-     * @var string
+     * @var mixed
      */
     protected $direction;
     /**
@@ -45,7 +45,7 @@ class XmpMappingEntry extends \ArrayObject
     /**
      * Optional additional configuration for the mapping.
      *
-     * @var XmpMappingEntryConfigurationBase|null
+     * @var mixed|null
      */
     protected $configuration;
     /**
@@ -55,20 +55,20 @@ class XmpMappingEntry extends \ArrayObject
     /**
      * Direction of the mapping.
      *
-     * @return string
+     * @return mixed
      */
-    public function getDirection(): string
+    public function getDirection()
     {
         return $this->direction;
     }
     /**
      * Direction of the mapping.
      *
-     * @param string $direction
+     * @param mixed $direction
      *
      * @return self
      */
-    public function setDirection(string $direction): self
+    public function setDirection($direction): self
     {
         $this->initialized['direction'] = true;
         $this->direction = $direction;
@@ -165,20 +165,20 @@ class XmpMappingEntry extends \ArrayObject
     /**
      * Optional additional configuration for the mapping.
      *
-     * @return XmpMappingEntryConfigurationBase|null
+     * @return mixed
      */
-    public function getConfiguration(): ?XmpMappingEntryConfigurationBase
+    public function getConfiguration()
     {
         return $this->configuration;
     }
     /**
      * Optional additional configuration for the mapping.
      *
-     * @param XmpMappingEntryConfigurationBase|null $configuration
+     * @param mixed $configuration
      *
      * @return self
      */
-    public function setConfiguration(?XmpMappingEntryConfigurationBase $configuration): self
+    public function setConfiguration($configuration): self
     {
         $this->initialized['configuration'] = true;
         $this->configuration = $configuration;

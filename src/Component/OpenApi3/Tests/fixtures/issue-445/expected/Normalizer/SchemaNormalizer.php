@@ -60,39 +60,23 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setTypes(null);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $value_1 = $data['names'];
-            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
-                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['names'] as $key => $value_2) {
-                    $values_1[$key] = $value_2;
-                }
-                $value_1 = $values_1;
-            }
-            $object->setNames($value_1);
+            $object->setNames($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
-            $value_3 = $data['descriptions'];
-            if (is_array($data['descriptions']) && $this->isOnlyNumericKeys($data['descriptions'])) {
-                $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-                foreach ($data['descriptions'] as $key_1 => $value_4) {
-                    $values_2[$key_1] = $value_4;
-                }
-                $value_3 = $values_2;
-            }
-            $object->setDescriptions($value_3);
+            $object->setDescriptions($data['descriptions']);
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
             $object->setDescriptions(null);
         }
         if (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] !== null) {
-            $values_3 = [];
-            foreach ($data['layerSchemaIds'] as $value_5) {
-                $values_3[] = $value_5;
+            $values_1 = [];
+            foreach ($data['layerSchemaIds'] as $value_1) {
+                $values_1[] = $value_1;
             }
-            $object->setLayerSchemaIds($values_3);
+            $object->setLayerSchemaIds($values_1);
         }
         elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
             $object->setLayerSchemaIds(null);
@@ -126,33 +110,17 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['types'] = $values;
         }
         if ($data->isInitialized('names')) {
-            $value_1 = $data->getNames();
-            if (is_object($data->getNames())) {
-                $values_1 = [];
-                foreach ($data->getNames() as $key => $value_2) {
-                    $values_1[$key] = $value_2;
-                }
-                $value_1 = $values_1;
-            }
-            $dataArray['names'] = $value_1;
+            $dataArray['names'] = $data->getNames();
         }
         if ($data->isInitialized('descriptions')) {
-            $value_3 = $data->getDescriptions();
-            if (is_object($data->getDescriptions())) {
-                $values_2 = [];
-                foreach ($data->getDescriptions() as $key_1 => $value_4) {
-                    $values_2[$key_1] = $value_4;
-                }
-                $value_3 = $values_2;
-            }
-            $dataArray['descriptions'] = $value_3;
+            $dataArray['descriptions'] = $data->getDescriptions();
         }
         if ($data->isInitialized('layerSchemaIds')) {
-            $values_3 = [];
-            foreach ($data->getLayerSchemaIds() as $value_5) {
-                $values_3[] = $value_5;
+            $values_1 = [];
+            foreach ($data->getLayerSchemaIds() as $value_1) {
+                $values_1[] = $value_1;
             }
-            $dataArray['layerSchemaIds'] = $values_3;
+            $dataArray['layerSchemaIds'] = $values_1;
         }
         $dataArray['fieldCount'] = $data->getFieldCount();
         $dataArray['childCount'] = $data->getChildCount();

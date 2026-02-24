@@ -38,11 +38,7 @@ class ListItemReferencesRequestNormalizer implements DenormalizerInterface, Norm
             return $object;
         }
         if (\array_key_exists('references', $data) && $data['references'] !== null) {
-            $value = $data['references'];
-            if (is_array($data['references'])) {
-                $value = $this->denormalizer->denormalize($data['references'], \PicturePark\API\Model\MetadataReferencesPagingRequest::class, 'json', $context);
-            }
-            $object->setReferences($value);
+            $object->setReferences($data['references']);
         }
         elseif (\array_key_exists('references', $data) && $data['references'] === null) {
             $object->setReferences(null);
@@ -53,11 +49,7 @@ class ListItemReferencesRequestNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if ($data->isInitialized('references')) {
-            $value = $data->getReferences();
-            if (is_object($data->getReferences())) {
-                $value = $this->normalizer->normalize($data->getReferences(), 'json', $context);
-            }
-            $dataArray['references'] = $value;
+            $dataArray['references'] = $data->getReferences();
         }
         return $dataArray;
     }

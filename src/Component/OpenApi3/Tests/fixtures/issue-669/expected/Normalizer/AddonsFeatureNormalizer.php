@@ -54,15 +54,7 @@ class AddonsFeatureNormalizer implements DenormalizerInterface, NormalizerInterf
             unset($data['unit']);
         }
         if (\array_key_exists('value', $data)) {
-            $value = $data['value'];
-            if (is_string($data['value'])) {
-                $value = $data['value'];
-            } elseif (is_bool($data['value'])) {
-                $value = $data['value'];
-            } elseif (is_string($data['value'])) {
-                $value = $data['value'];
-            }
-            $object->setValue($value);
+            $object->setValue($data['value']);
             unset($data['value']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -73,9 +65,9 @@ class AddonsFeatureNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
             unset($data['updated_at']);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value;
             }
         }
         return $object;
@@ -89,20 +81,12 @@ class AddonsFeatureNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('unit') && null !== $data->getUnit()) {
             $dataArray['unit'] = $data->getUnit();
         }
-        $value = $data->getValue();
-        if (is_string($data->getValue())) {
-            $value = $data->getValue();
-        } elseif (is_bool($data->getValue())) {
-            $value = $data->getValue();
-        } elseif (is_string($data->getValue())) {
-            $value = $data->getValue();
-        }
-        $dataArray['value'] = $value;
+        $dataArray['value'] = $data->getValue();
         $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+                $dataArray[$key] = $value;
             }
         }
         return $dataArray;

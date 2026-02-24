@@ -38,13 +38,7 @@ class ParchmentJsonldNormalizer implements DenormalizerInterface, NormalizerInte
             return $object;
         }
         if (\array_key_exists('@context', $data)) {
-            $value = $data['@context'];
-            if (is_string($data['@context'])) {
-                $value = $data['@context'];
-            } elseif (is_array($data['@context'])) {
-                $value = $data['@context'];
-            }
-            $object->setContext($value);
+            $object->setContext($data['@context']);
             unset($data['@context']);
         }
         if (\array_key_exists('@id', $data)) {
@@ -70,9 +64,9 @@ class ParchmentJsonldNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setDescription($data['description']);
             unset($data['description']);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value;
             }
         }
         return $object;

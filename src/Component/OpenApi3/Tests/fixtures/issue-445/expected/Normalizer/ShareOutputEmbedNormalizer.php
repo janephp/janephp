@@ -63,11 +63,7 @@ class ShareOutputEmbedNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setDownloadUrl(null);
         }
         if (\array_key_exists('detail', $data) && $data['detail'] !== null) {
-            $value = $data['detail'];
-            if (is_array($data['detail']) and isset($data['detail']['kind'])) {
-                $value = $this->denormalizer->denormalize($data['detail'], \PicturePark\API\Model\OutputDataBase::class, 'json', $context);
-            }
-            $object->setDetail($value);
+            $object->setDetail($data['detail']);
             unset($data['detail']);
         }
         elseif (\array_key_exists('detail', $data) && $data['detail'] === null) {
@@ -88,9 +84,9 @@ class ShareOutputEmbedNormalizer implements DenormalizerInterface, NormalizerInt
         elseif (\array_key_exists('token', $data) && $data['token'] === null) {
             $object->setToken(null);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value;
             }
         }
         return $object;
@@ -107,20 +103,16 @@ class ShareOutputEmbedNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['downloadUrl'] = $data->getDownloadUrl();
         }
         if ($data->isInitialized('detail')) {
-            $value = $data->getDetail();
-            if (is_object($data->getDetail())) {
-                $value = $this->normalizer->normalize($data->getDetail(), 'json', $context);
-            }
-            $dataArray['detail'] = $value;
+            $dataArray['detail'] = $data->getDetail();
         }
         $dataArray['dynamicRendering'] = $data->getDynamicRendering();
         $dataArray['kind'] = $data->getKind();
         if ($data->isInitialized('token')) {
             $dataArray['token'] = $data->getToken();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+                $dataArray[$key] = $value;
             }
         }
         return $dataArray;

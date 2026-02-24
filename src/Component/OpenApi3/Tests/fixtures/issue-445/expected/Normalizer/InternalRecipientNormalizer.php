@@ -38,11 +38,7 @@ class InternalRecipientNormalizer implements DenormalizerInterface, NormalizerIn
             return $object;
         }
         if (\array_key_exists('recipient', $data)) {
-            $value = $data['recipient'];
-            if (is_array($data['recipient']) and isset($data['recipient']['emailAddress']) and isset($data['recipient']['isDeleted'])) {
-                $value = $this->denormalizer->denormalize($data['recipient'], \PicturePark\API\Model\User::class, 'json', $context);
-            }
-            $object->setRecipient($value);
+            $object->setRecipient($data['recipient']);
         }
         if (\array_key_exists('token', $data) && $data['token'] !== null) {
             $object->setToken($data['token']);
@@ -61,11 +57,7 @@ class InternalRecipientNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->getRecipient();
-        if (is_object($data->getRecipient())) {
-            $value = $this->normalizer->normalize($data->getRecipient(), 'json', $context);
-        }
-        $dataArray['recipient'] = $value;
+        $dataArray['recipient'] = $data->getRecipient();
         if ($data->isInitialized('token')) {
             $dataArray['token'] = $data->getToken();
         }

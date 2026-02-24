@@ -46,24 +46,16 @@ class GeoBoundingBoxFilterNormalizer implements DenormalizerInterface, Normalize
             unset($data['field']);
         }
         if (\array_key_exists('topLeft', $data)) {
-            $value = $data['topLeft'];
-            if (is_array($data['topLeft'])) {
-                $value = $this->denormalizer->denormalize($data['topLeft'], \PicturePark\API\Model\GeoLocation::class, 'json', $context);
-            }
-            $object->setTopLeft($value);
+            $object->setTopLeft($data['topLeft']);
             unset($data['topLeft']);
         }
         if (\array_key_exists('bottomRight', $data)) {
-            $value_1 = $data['bottomRight'];
-            if (is_array($data['bottomRight'])) {
-                $value_1 = $this->denormalizer->denormalize($data['bottomRight'], \PicturePark\API\Model\GeoLocation::class, 'json', $context);
-            }
-            $object->setBottomRight($value_1);
+            $object->setBottomRight($data['bottomRight']);
             unset($data['bottomRight']);
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_2;
+                $object[$key] = $value;
             }
         }
         return $object;
@@ -73,19 +65,11 @@ class GeoBoundingBoxFilterNormalizer implements DenormalizerInterface, Normalize
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
         $dataArray['field'] = $data->getField();
-        $value = $data->getTopLeft();
-        if (is_object($data->getTopLeft())) {
-            $value = $this->normalizer->normalize($data->getTopLeft(), 'json', $context);
-        }
-        $dataArray['topLeft'] = $value;
-        $value_1 = $data->getBottomRight();
-        if (is_object($data->getBottomRight())) {
-            $value_1 = $this->normalizer->normalize($data->getBottomRight(), 'json', $context);
-        }
-        $dataArray['bottomRight'] = $value_1;
-        foreach ($data as $key => $value_2) {
+        $dataArray['topLeft'] = $data->getTopLeft();
+        $dataArray['bottomRight'] = $data->getBottomRight();
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_2;
+                $dataArray[$key] = $value;
             }
         }
         return $dataArray;

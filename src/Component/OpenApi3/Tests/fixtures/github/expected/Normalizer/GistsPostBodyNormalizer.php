@@ -53,20 +53,12 @@ class GistsPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
             unset($data['files']);
         }
         if (\array_key_exists('public', $data)) {
-            $value_1 = $data['public'];
-            if (is_bool($data['public'])) {
-                $value_1 = $data['public'];
-            } elseif (is_string($data['public'])) {
-                $value_1 = $data['public'];
-            } elseif (isset($data['public'])) {
-                $value_1 = $data['public'];
-            }
-            $object->setPublic($value_1);
+            $object->setPublic($data['public']);
             unset($data['public']);
         }
-        foreach ($data as $key_1 => $value_2) {
+        foreach ($data as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
-                $object[$key_1] = $value_2;
+                $object[$key_1] = $value_1;
             }
         }
         return $object;
@@ -83,19 +75,11 @@ class GistsPostBodyNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         $dataArray['files'] = $values;
         if ($data->isInitialized('public') && null !== $data->getPublic()) {
-            $value_1 = $data->getPublic();
-            if (is_bool($data->getPublic())) {
-                $value_1 = $data->getPublic();
-            } elseif (is_string($data->getPublic())) {
-                $value_1 = $data->getPublic();
-            } elseif (!is_null($data->getPublic())) {
-                $value_1 = $data->getPublic();
-            }
-            $dataArray['public'] = $value_1;
+            $dataArray['public'] = $data->getPublic();
         }
-        foreach ($data as $key_1 => $value_2) {
+        foreach ($data as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
-                $dataArray[$key_1] = $value_2;
+                $dataArray[$key_1] = $value_1;
             }
         }
         if (!($context['skip_validation'] ?? false)) {

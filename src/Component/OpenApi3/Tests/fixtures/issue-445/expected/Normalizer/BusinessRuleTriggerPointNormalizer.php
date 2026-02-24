@@ -38,46 +38,22 @@ class BusinessRuleTriggerPointNormalizer implements DenormalizerInterface, Norma
             return $object;
         }
         if (\array_key_exists('executionScope', $data)) {
-            $value = $data['executionScope'];
-            if (is_string($data['executionScope'])) {
-                $value = $data['executionScope'];
-            }
-            $object->setExecutionScope($value);
+            $object->setExecutionScope($data['executionScope']);
         }
         if (\array_key_exists('documentType', $data)) {
-            $value_1 = $data['documentType'];
-            if (is_string($data['documentType'])) {
-                $value_1 = $data['documentType'];
-            }
-            $object->setDocumentType($value_1);
+            $object->setDocumentType($data['documentType']);
         }
         if (\array_key_exists('action', $data)) {
-            $value_2 = $data['action'];
-            if (is_string($data['action'])) {
-                $value_2 = $data['action'];
-            }
-            $object->setAction($value_2);
+            $object->setAction($data['action']);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->getExecutionScope();
-        if (is_string($data->getExecutionScope())) {
-            $value = $data->getExecutionScope();
-        }
-        $dataArray['executionScope'] = $value;
-        $value_1 = $data->getDocumentType();
-        if (is_string($data->getDocumentType())) {
-            $value_1 = $data->getDocumentType();
-        }
-        $dataArray['documentType'] = $value_1;
-        $value_2 = $data->getAction();
-        if (is_string($data->getAction())) {
-            $value_2 = $data->getAction();
-        }
-        $dataArray['action'] = $value_2;
+        $dataArray['executionScope'] = $data->getExecutionScope();
+        $dataArray['documentType'] = $data->getDocumentType();
+        $dataArray['action'] = $data->getAction();
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

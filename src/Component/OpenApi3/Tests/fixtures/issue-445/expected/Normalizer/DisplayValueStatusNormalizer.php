@@ -58,11 +58,7 @@ class DisplayValueStatusNormalizer implements DenormalizerInterface, NormalizerI
             $object->setListSchemaIds(null);
         }
         if (\array_key_exists('state', $data)) {
-            $value_2 = $data['state'];
-            if (is_string($data['state'])) {
-                $value_2 = $data['state'];
-            }
-            $object->setState($value_2);
+            $object->setState($data['state']);
         }
         return $object;
     }
@@ -83,11 +79,7 @@ class DisplayValueStatusNormalizer implements DenormalizerInterface, NormalizerI
             }
             $dataArray['listSchemaIds'] = $values_1;
         }
-        $value_2 = $data->getState();
-        if (is_string($data->getState())) {
-            $value_2 = $data->getState();
-        }
-        $dataArray['state'] = $value_2;
+        $dataArray['state'] = $data->getState();
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
