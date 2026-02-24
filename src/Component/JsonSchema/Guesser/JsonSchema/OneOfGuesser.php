@@ -15,14 +15,9 @@ class OneOfGuesser implements ChainGuesserAwareInterface, TypeGuesserInterface, 
 {
     use ChainGuesserAwareTrait;
 
-    public function __construct(
-        private string $schemaClass = JsonSchema::class,
-    ) {
-    }
-
     public function supportObject($object): bool
     {
-        return ($object instanceof $this->schemaClass) && 'object' !== $object->getType() && \is_array($object->getOneOf()) && \count($object->getOneOf()) > 0;
+        return ($object instanceof JsonSchema) && 'object' !== $object->getType() && \is_array($object->getOneOf()) && \count($object->getOneOf()) > 0;
     }
 
     public function guessType($object, string $name, string $reference, Registry $registry): Type
