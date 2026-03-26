@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Jane\Component\OpenApiCommon\Tests\Generator\Runtime\data\Client;
 
-use Client;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -42,7 +41,7 @@ final class BaseEndpointTest extends TestCase
         $endpoint = $this->getEndpoint($queryParams);
 
         self::assertEquals($expectedQueryString, $endpoint->getQueryString());
-        self::assertEquals(http_build_query($queryParams, encoding_type: PHP_QUERY_RFC3986), $endpoint->getQueryString());
+        self::assertEquals(http_build_query($queryParams, encoding_type: \PHP_QUERY_RFC3986), $endpoint->getQueryString());
     }
 
     /**
@@ -51,7 +50,7 @@ final class BaseEndpointTest extends TestCase
     public function testQueryParamsWillBeProperlyEncodedWithReservedCharacters(
         array $queryParams,
         array $allowedQueryParams,
-        string $expectedQueryString
+        string $expectedQueryString,
     ): void {
         $endpoint = $this->getEndpoint($queryParams, $allowedQueryParams);
 
@@ -60,8 +59,7 @@ final class BaseEndpointTest extends TestCase
 
     private function getEndpoint(array $queryParams, array $allowReserved = []): object
     {
-        return new class($queryParams, $allowReserved) extends \BaseEndpoint
-        {
+        return new class($queryParams, $allowReserved) extends \BaseEndpoint {
             private array $allowReserved;
 
             public function __construct(array $queryParams, array $allowReserved)
@@ -93,7 +91,7 @@ final class BaseEndpointTest extends TestCase
             protected function transformResponseBody(
                 ResponseInterface $response,
                 SerializerInterface $serializer,
-                ?string $contentType = null
+                ?string $contentType = null,
             ) {
                 return null;
             }
@@ -101,7 +99,7 @@ final class BaseEndpointTest extends TestCase
             public function parseResponse(
                 ResponseInterface $response,
                 SerializerInterface $serializer,
-                string $fetchMode = Client::FETCH_OBJECT
+                string $fetchMode = \Client::FETCH_OBJECT,
             ) {
                 return $response;
             }

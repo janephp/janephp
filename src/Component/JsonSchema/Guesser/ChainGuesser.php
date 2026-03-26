@@ -21,6 +21,10 @@ class ChainGuesser implements TypeGuesserInterface, PropertiesGuesserInterface, 
 
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
+        if (\is_bool($object)) {
+            return;
+        }
+
         foreach ($this->guessers as $guesser) {
             if (!($guesser instanceof ClassGuesserInterface)) {
                 continue;
@@ -34,7 +38,9 @@ class ChainGuesser implements TypeGuesserInterface, PropertiesGuesserInterface, 
 
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
-        $type = null;
+        if (\is_bool($object)) {
+            return new Type(null, 'mixed');
+        }
 
         foreach ($this->guessers as $guesser) {
             if (!($guesser instanceof TypeGuesserInterface)) {
@@ -46,15 +52,15 @@ class ChainGuesser implements TypeGuesserInterface, PropertiesGuesserInterface, 
             }
         }
 
-        if (null === $type) {
-            return new Type($object, 'mixed');
-        }
-
-        return $type;
+        return new Type($object, 'mixed');
     }
 
     public function guessProperties($object, string $name, string $reference, Registry $registry): array
     {
+        if (\is_bool($object)) {
+            return [];
+        }
+
         $properties = [];
 
         foreach ($this->guessers as $guesser) {

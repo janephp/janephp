@@ -3,7 +3,6 @@
 namespace Jane\Component\OpenApi2\Tests\Expected\Api1\Runtime\Client;
 
 use Http\Message\MultipartStream\MultipartStreamBuilder;
-use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\SerializerInterface;

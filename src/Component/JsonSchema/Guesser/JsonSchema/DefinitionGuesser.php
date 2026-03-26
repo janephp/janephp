@@ -30,7 +30,7 @@ class DefinitionGuesser implements ChainGuesserAwareInterface, GuesserInterface,
          * @var JsonSchema $definition
          */
         foreach ($object->getDollarDefs() ?? [] as $key => $definition) {
-            $this->chainGuesser->guessClass($definition, $key, $reference . '/definitions/' . $key, $registry);
+            $this->chainGuesser->guessClass($definition, $key, $reference . '/$defs/' . $key, $registry);
         }
     }
 

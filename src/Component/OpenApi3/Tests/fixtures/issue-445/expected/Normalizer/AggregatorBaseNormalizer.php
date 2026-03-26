@@ -48,7 +48,7 @@ class AggregatorBaseNormalizer implements DenormalizerInterface, NormalizerInter
         if (array_key_exists('kind', $data) and 'TermsEnumAggregator' === $data['kind']) {
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\TermsEnumAggregator', $format, $context);
         }
-        if (isset($data['$ref'])) {
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {

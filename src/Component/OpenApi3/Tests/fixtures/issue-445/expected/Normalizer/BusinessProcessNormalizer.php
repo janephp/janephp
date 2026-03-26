@@ -30,7 +30,7 @@ class BusinessProcessNormalizer implements DenormalizerInterface, NormalizerInte
         if (array_key_exists('kind', $data) and 'BusinessProcessDetails' === $data['kind']) {
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\BusinessProcessDetails', $format, $context);
         }
-        if (isset($data['$ref'])) {
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
