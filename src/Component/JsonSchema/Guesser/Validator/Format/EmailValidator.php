@@ -25,6 +25,6 @@ class EmailValidator implements ValidatorInterface
      */
     public function guess($object, string $name, $guess): void
     {
-        $guess->addValidatorGuess(new ValidatorGuess(Email::class));
+        $guess->addValidatorGuess(new ValidatorGuess(Email::class, ['mode' => 'html5']));
     }
 }
