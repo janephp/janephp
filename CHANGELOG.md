@@ -9,12 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - [JsonSchema] [GH#918](https://github.com/janephp/janephp/pull/918) Add JSON Schema 2020-12 schema support
 - [OpenApi31] [GH#904](https://github.com/janephp/janephp/pull/904) Add OpenAPI 3.1 component
+- [OpenApi] [GH#930](https://github.com/janephp/janephp/pull/930) Add support for `float` in query string parameters
 
 ### Fixed
-- [OpenApi3] [GH#917](https://github.com/janephp/janephp/pull/917) Fix [GH#738](https://github.com/janephp/janephp/issues/738) multipart/form-data requests failing with non-scalar properties (objects, arrays) by serializing them to JSON
+- [OpenApi3] [GH#917](https://github.com/janephp/janephp/pull/917) Multipart/form-data requests failing with non-scalar properties (objects, arrays) by serializing them to JSON
 - [OpenApi3] [GH#921](https://github.com/janephp/janephp/pull/921) Fix lowercase class name suffix for inline properties in `allOf` schemas
 - [OpenApi] [GH#868](https://github.com/janephp/janephp/pull/868) Fix PHP 8.4 deprecation in generated Exception classes
-- [JsonSchema] [GH#929](https://github.com/janephp/janephp/pull/929) Fix [GH#923](https://github.com/janephp/janephp/issues/923) by generating `Email(mode: 'html5')` to avoid Symfony validator deprecation
+- [JsonSchema] [GH#929](https://github.com/janephp/janephp/pull/929) Remove deprecated usage of Email validator by generating `Email(mode: 'html5')`
 
 ## [7.10.4] - 2026-01-26
 ### Added
