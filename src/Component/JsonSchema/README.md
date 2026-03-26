@@ -4,14 +4,14 @@ Jane JsonSchema is a library to generate, in PHP, a model and a serializer from 
 
 ## License
 
-View the [LICENSE](LICENSE) file attach to this project.
+View the [LICENSE](LICENSE) file attached to this project.
 
 ## Resources
 
- * [Documentation](https://jane.jolicode.com/)
- * [Contributing](https://github.com/janephp/janephp/blob/master/CONTRIBUTING.md)
- * [Report Issues](https://github.com/janephp/janephp/issues) and [send Pull Requests](https://github.com/janephp/janephp/pulls)
- in the [main Jane Repository](https://github.com/janephp/janephp)
+* [Documentation](https://jane.jolicode.com/)
+* [Contributing](https://github.com/janephp/janephp/blob/master/CONTRIBUTING.md)
+* [Report Issues](https://github.com/janephp/janephp/issues) and [send Pull Requests](https://github.com/janephp/janephp/pulls)
+  in the [main Jane Repository](https://github.com/janephp/janephp)
 
 ## Sponsor
 
