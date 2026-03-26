@@ -2,7 +2,7 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class Registrysubscription extends \ArrayObject
+class RegistrySubscription extends \ArrayObject
 {
     /**
      * @var array

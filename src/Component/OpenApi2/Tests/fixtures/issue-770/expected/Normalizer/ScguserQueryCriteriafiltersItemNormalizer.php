@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ScguserQueryCriteriafiltersItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ScguserQueryCriteriaFiltersItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -19,11 +19,11 @@ class ScguserQueryCriteriafiltersItemNormalizer implements DenormalizerInterface
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserQueryCriteriafiltersItem::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserQueryCriteriaFiltersItem::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserQueryCriteriafiltersItem::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserQueryCriteriaFiltersItem::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
@@ -33,7 +33,7 @@ class ScguserQueryCriteriafiltersItemNormalizer implements DenormalizerInterface
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserQueryCriteriafiltersItem();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserQueryCriteriaFiltersItem();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -60,6 +60,6 @@ class ScguserQueryCriteriafiltersItemNormalizer implements DenormalizerInterface
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserQueryCriteriafiltersItem::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ScguserQueryCriteriaFiltersItem::class => false];
     }
 }

@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class IdentityQueryCriteriaoptionsLocalUserAuditTimeNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class IdentityQueryCriteriaOptionsLocalUserAuditTimeNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -19,11 +19,11 @@ class IdentityQueryCriteriaoptionsLocalUserAuditTimeNormalizer implements Denorm
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaoptionsLocalUserAuditTime::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptionsLocalUserAuditTime::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaoptionsLocalUserAuditTime::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptionsLocalUserAuditTime::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
@@ -33,7 +33,7 @@ class IdentityQueryCriteriaoptionsLocalUserAuditTimeNormalizer implements Denorm
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaoptionsLocalUserAuditTime();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptionsLocalUserAuditTime();
         if (\array_key_exists('start', $data) && \is_int($data['start'])) {
             $data['start'] = (double) $data['start'];
         }
@@ -73,6 +73,6 @@ class IdentityQueryCriteriaoptionsLocalUserAuditTimeNormalizer implements Denorm
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaoptionsLocalUserAuditTime::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptionsLocalUserAuditTime::class => false];
     }
 }

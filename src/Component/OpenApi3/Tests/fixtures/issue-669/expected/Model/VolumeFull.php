@@ -55,7 +55,7 @@ class VolumeFull extends \ArrayObject
      */
     protected $tags;
     /**
-     * @var VolumeFullregion
+     * @var VolumeFullRegion
      */
     protected $region;
     /**
@@ -225,18 +225,18 @@ class VolumeFull extends \ArrayObject
         return $this;
     }
     /**
-     * @return VolumeFullregion
+     * @return VolumeFullRegion
      */
-    public function getRegion(): VolumeFullregion
+    public function getRegion(): VolumeFullRegion
     {
         return $this->region;
     }
     /**
-     * @param VolumeFullregion $region
+     * @param VolumeFullRegion $region
      *
      * @return self
      */
-    public function setRegion(VolumeFullregion $region): self
+    public function setRegion(VolumeFullRegion $region): self
     {
         $this->initialized['region'] = true;
         $this->region = $region;

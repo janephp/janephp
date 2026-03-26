@@ -80,7 +80,7 @@ class VolumeFullNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setTags(null);
         }
         if (\array_key_exists('region', $data)) {
-            $object->setRegion($this->denormalizer->denormalize($data['region'], \Jane\Generated\DigitalOcean\Model\VolumeFullregion::class, 'json', $context));
+            $object->setRegion($this->denormalizer->denormalize($data['region'], \Jane\Generated\DigitalOcean\Model\VolumeFullRegion::class, 'json', $context));
             unset($data['region']);
         }
         if (\array_key_exists('filesystem_type', $data)) {

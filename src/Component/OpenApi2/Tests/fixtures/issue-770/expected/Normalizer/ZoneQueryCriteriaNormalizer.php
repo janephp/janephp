@@ -43,14 +43,14 @@ class ZoneQueryCriteriaNormalizer implements DenormalizerInterface, NormalizerIn
         if (\array_key_exists('filters', $data)) {
             $values = [];
             foreach ($data['filters'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriafiltersItem::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaFiltersItem::class, 'json', $context);
             }
             $object->setFilters($values);
         }
         if (\array_key_exists('extraFilters', $data)) {
             $values_1 = [];
             foreach ($data['extraFilters'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaextraFiltersItem::class, 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaExtraFiltersItem::class, 'json', $context);
             }
             $object->setExtraFilters($values_1);
         }
@@ -58,7 +58,7 @@ class ZoneQueryCriteriaNormalizer implements DenormalizerInterface, NormalizerIn
             $object->setExtraNotFilters($data['extraNotFilters']);
         }
         if (\array_key_exists('options', $data)) {
-            $object->setOptions($this->denormalizer->denormalize($data['options'], \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaoptions::class, 'json', $context));
+            $object->setOptions($this->denormalizer->denormalize($data['options'], \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaOptions::class, 'json', $context));
         }
         if (\array_key_exists('extraTimeRange', $data)) {
             $object->setExtraTimeRange($this->denormalizer->denormalize($data['extraTimeRange'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonTimeRange::class, 'json', $context));

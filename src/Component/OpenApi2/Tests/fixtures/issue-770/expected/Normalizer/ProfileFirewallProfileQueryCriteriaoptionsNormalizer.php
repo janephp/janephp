@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ProfileFirewallProfileQueryCriteriaoptionsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ProfileFirewallProfileQueryCriteriaOptionsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -19,11 +19,11 @@ class ProfileFirewallProfileQueryCriteriaoptionsNormalizer implements Denormaliz
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfileQueryCriteriaoptions::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfileQueryCriteriaOptions::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfileQueryCriteriaoptions::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfileQueryCriteriaOptions::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
@@ -33,7 +33,7 @@ class ProfileFirewallProfileQueryCriteriaoptionsNormalizer implements Denormaliz
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfileQueryCriteriaoptions();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfileQueryCriteriaOptions();
         if (\array_key_exists('auth_includeNa', $data) && \is_int($data['auth_includeNa'])) {
             $data['auth_includeNa'] = (bool) $data['auth_includeNa'];
         }
@@ -223,6 +223,6 @@ class ProfileFirewallProfileQueryCriteriaoptionsNormalizer implements Denormaliz
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfileQueryCriteriaoptions::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfileQueryCriteriaOptions::class => false];
     }
 }

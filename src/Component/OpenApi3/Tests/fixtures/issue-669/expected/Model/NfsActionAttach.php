@@ -25,7 +25,7 @@ class NfsActionAttach extends \ArrayObject
      */
     protected $region;
     /**
-     * @var NfsActionAttachparams
+     * @var NfsActionAttachParams
      */
     protected $params;
     /**
@@ -73,18 +73,18 @@ class NfsActionAttach extends \ArrayObject
         return $this;
     }
     /**
-     * @return NfsActionAttachparams
+     * @return NfsActionAttachParams
      */
-    public function getParams(): NfsActionAttachparams
+    public function getParams(): NfsActionAttachParams
     {
         return $this->params;
     }
     /**
-     * @param NfsActionAttachparams $params
+     * @param NfsActionAttachParams $params
      *
      * @return self
      */
-    public function setParams(NfsActionAttachparams $params): self
+    public function setParams(NfsActionAttachParams $params): self
     {
         $this->initialized['params'] = true;
         $this->params = $params;

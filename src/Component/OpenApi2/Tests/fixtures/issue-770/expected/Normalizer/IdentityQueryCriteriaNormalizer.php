@@ -43,7 +43,7 @@ class IdentityQueryCriteriaNormalizer implements DenormalizerInterface, Normaliz
         if (\array_key_exists('filters', $data)) {
             $values = [];
             foreach ($data['filters'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriafiltersItem::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaFiltersItem::class, 'json', $context);
             }
             $object->setFilters($values);
         }
@@ -54,7 +54,7 @@ class IdentityQueryCriteriaNormalizer implements DenormalizerInterface, Normaliz
             $object->setExtraNotFilters($data['extraNotFilters']);
         }
         if (\array_key_exists('options', $data)) {
-            $object->setOptions($this->denormalizer->denormalize($data['options'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaoptions::class, 'json', $context));
+            $object->setOptions($this->denormalizer->denormalize($data['options'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptions::class, 'json', $context));
         }
         if (\array_key_exists('extraTimeRange', $data)) {
             $object->setExtraTimeRange($this->denormalizer->denormalize($data['extraTimeRange'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonTimeRange::class, 'json', $context));

@@ -2,7 +2,7 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class NfsActionDetachparams extends \ArrayObject
+class NfsActionDetachParams extends \ArrayObject
 {
     /**
      * @var array

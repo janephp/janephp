@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class IdentityQueryCriteriaoptions
+class IdentityQueryCriteriaOptions
 {
     /**
      * @var array
@@ -39,7 +39,7 @@ class IdentityQueryCriteriaoptions
     /**
      * Audit time of local users
      *
-     * @var IdentityQueryCriteriaoptionsLocalUserAuditTime
+     * @var IdentityQueryCriteriaOptionsLocalUserAuditTime
      */
     protected $localUserAuditTime;
     /**
@@ -105,7 +105,7 @@ class IdentityQueryCriteriaoptions
     /**
      * Expiration time of guest pass
      *
-     * @var IdentityQueryCriteriaoptionsGuestPassExpiration
+     * @var IdentityQueryCriteriaOptionsGuestPassExpiration
      */
     protected $guestPassExpiration;
     /**
@@ -205,20 +205,20 @@ class IdentityQueryCriteriaoptions
     /**
      * Audit time of local users
      *
-     * @return IdentityQueryCriteriaoptionsLocalUserAuditTime
+     * @return IdentityQueryCriteriaOptionsLocalUserAuditTime
      */
-    public function getLocalUserAuditTime(): IdentityQueryCriteriaoptionsLocalUserAuditTime
+    public function getLocalUserAuditTime(): IdentityQueryCriteriaOptionsLocalUserAuditTime
     {
         return $this->localUserAuditTime;
     }
     /**
      * Audit time of local users
      *
-     * @param IdentityQueryCriteriaoptionsLocalUserAuditTime $localUserAuditTime
+     * @param IdentityQueryCriteriaOptionsLocalUserAuditTime $localUserAuditTime
      *
      * @return self
      */
-    public function setLocalUserAuditTime(IdentityQueryCriteriaoptionsLocalUserAuditTime $localUserAuditTime): self
+    public function setLocalUserAuditTime(IdentityQueryCriteriaOptionsLocalUserAuditTime $localUserAuditTime): self
     {
         $this->initialized['localUserAuditTime'] = true;
         $this->localUserAuditTime = $localUserAuditTime;
@@ -447,20 +447,20 @@ class IdentityQueryCriteriaoptions
     /**
      * Expiration time of guest pass
      *
-     * @return IdentityQueryCriteriaoptionsGuestPassExpiration
+     * @return IdentityQueryCriteriaOptionsGuestPassExpiration
      */
-    public function getGuestPassExpiration(): IdentityQueryCriteriaoptionsGuestPassExpiration
+    public function getGuestPassExpiration(): IdentityQueryCriteriaOptionsGuestPassExpiration
     {
         return $this->guestPassExpiration;
     }
     /**
      * Expiration time of guest pass
      *
-     * @param IdentityQueryCriteriaoptionsGuestPassExpiration $guestPassExpiration
+     * @param IdentityQueryCriteriaOptionsGuestPassExpiration $guestPassExpiration
      *
      * @return self
      */
-    public function setGuestPassExpiration(IdentityQueryCriteriaoptionsGuestPassExpiration $guestPassExpiration): self
+    public function setGuestPassExpiration(IdentityQueryCriteriaOptionsGuestPassExpiration $guestPassExpiration): self
     {
         $this->initialized['guestPassExpiration'] = true;
         $this->guestPassExpiration = $guestPassExpiration;

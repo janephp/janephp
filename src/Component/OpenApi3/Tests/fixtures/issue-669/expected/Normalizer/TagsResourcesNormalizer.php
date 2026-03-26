@@ -46,23 +46,23 @@ class TagsResourcesNormalizer implements DenormalizerInterface, NormalizerInterf
             unset($data['last_tagged_uri']);
         }
         if (\array_key_exists('droplets', $data)) {
-            $object->setDroplets($this->denormalizer->denormalize($data['droplets'], \Jane\Generated\DigitalOcean\Model\TagsResourcesdroplets::class, 'json', $context));
+            $object->setDroplets($this->denormalizer->denormalize($data['droplets'], \Jane\Generated\DigitalOcean\Model\TagsResourcesDroplets::class, 'json', $context));
             unset($data['droplets']);
         }
         if (\array_key_exists('imgages', $data)) {
-            $object->setImgages($this->denormalizer->denormalize($data['imgages'], \Jane\Generated\DigitalOcean\Model\TagsResourcesimgages::class, 'json', $context));
+            $object->setImgages($this->denormalizer->denormalize($data['imgages'], \Jane\Generated\DigitalOcean\Model\TagsResourcesImgages::class, 'json', $context));
             unset($data['imgages']);
         }
         if (\array_key_exists('volumes', $data)) {
-            $object->setVolumes($this->denormalizer->denormalize($data['volumes'], \Jane\Generated\DigitalOcean\Model\TagsResourcesvolumes::class, 'json', $context));
+            $object->setVolumes($this->denormalizer->denormalize($data['volumes'], \Jane\Generated\DigitalOcean\Model\TagsResourcesVolumes::class, 'json', $context));
             unset($data['volumes']);
         }
         if (\array_key_exists('volume_snapshots', $data)) {
-            $object->setVolumeSnapshots($this->denormalizer->denormalize($data['volume_snapshots'], \Jane\Generated\DigitalOcean\Model\TagsResourcesvolumeSnapshots::class, 'json', $context));
+            $object->setVolumeSnapshots($this->denormalizer->denormalize($data['volume_snapshots'], \Jane\Generated\DigitalOcean\Model\TagsResourcesVolumeSnapshots::class, 'json', $context));
             unset($data['volume_snapshots']);
         }
         if (\array_key_exists('databases', $data)) {
-            $object->setDatabases($this->denormalizer->denormalize($data['databases'], \Jane\Generated\DigitalOcean\Model\TagsResourcesdatabases::class, 'json', $context));
+            $object->setDatabases($this->denormalizer->denormalize($data['databases'], \Jane\Generated\DigitalOcean\Model\TagsResourcesDatabases::class, 'json', $context));
             unset($data['databases']);
         }
         foreach ($data as $key => $value) {

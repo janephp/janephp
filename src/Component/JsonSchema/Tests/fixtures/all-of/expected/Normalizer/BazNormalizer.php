@@ -40,6 +40,9 @@ class BazNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if (\array_key_exists('Baz', $data)) {
             $object->setBaz($this->denormalizer->denormalize($data['Baz'], \Jane\Component\JsonSchema\Tests\Expected\Model\BazBaz::class, 'json', $context));
         }
+        if (\array_key_exists('inlineProperty', $data)) {
+            $object->setInlineProperty($this->denormalizer->denormalize($data['inlineProperty'], \Jane\Component\JsonSchema\Tests\Expected\Model\BazInlineProperty::class, 'json', $context));
+        }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
@@ -53,6 +56,9 @@ class BazNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         if ($data->isInitialized('baz') && null !== $data->getBaz()) {
             $dataArray['Baz'] = $this->normalizer->normalize($data->getBaz(), 'json', $context);
+        }
+        if ($data->isInitialized('inlineProperty') && null !== $data->getInlineProperty()) {
+            $dataArray['inlineProperty'] = $this->normalizer->normalize($data->getInlineProperty(), 'json', $context);
         }
         return $dataArray;
     }

@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class GistFullforksItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class GistFullForksItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -19,11 +19,11 @@ class GistFullforksItemNormalizer implements DenormalizerInterface, NormalizerIn
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Github\Model\GistFullforksItem::class;
+        return $type === \Github\Model\GistFullForksItem::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Github\Model\GistFullforksItem::class;
+        return is_object($data) && get_class($data) === \Github\Model\GistFullForksItem::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
@@ -33,15 +33,15 @@ class GistFullforksItemNormalizer implements DenormalizerInterface, NormalizerIn
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Github\Model\GistFullforksItem();
+        $object = new \Github\Model\GistFullForksItem();
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Github\Validator\GistFullforksItemConstraint());
+            $this->validate($data, new \Github\Validator\GistFullForksItemConstraint());
         }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('user', $data)) {
-            $object->setUser($this->denormalizer->denormalize($data['user'], \Github\Model\GistFullforksItemUser::class, 'json', $context));
+            $object->setUser($this->denormalizer->denormalize($data['user'], \Github\Model\GistFullForksItemUser::class, 'json', $context));
             unset($data['user']);
         }
         if (\array_key_exists('url', $data)) {
@@ -91,12 +91,12 @@ class GistFullforksItemNormalizer implements DenormalizerInterface, NormalizerIn
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Github\Validator\GistFullforksItemConstraint());
+            $this->validate($dataArray, new \Github\Validator\GistFullForksItemConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Github\Model\GistFullforksItem::class => false];
+        return [\Github\Model\GistFullForksItem::class => false];
     }
 }

@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class NfsActionDetachparamsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class NfsActionDetachParamsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -19,11 +19,11 @@ class NfsActionDetachparamsNormalizer implements DenormalizerInterface, Normaliz
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Generated\DigitalOcean\Model\NfsActionDetachparams::class;
+        return $type === \Jane\Generated\DigitalOcean\Model\NfsActionDetachParams::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Generated\DigitalOcean\Model\NfsActionDetachparams::class;
+        return is_object($data) && get_class($data) === \Jane\Generated\DigitalOcean\Model\NfsActionDetachParams::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
@@ -33,7 +33,7 @@ class NfsActionDetachparamsNormalizer implements DenormalizerInterface, Normaliz
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\NfsActionDetachparams();
+        $object = new \Jane\Generated\DigitalOcean\Model\NfsActionDetachParams();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -61,6 +61,6 @@ class NfsActionDetachparamsNormalizer implements DenormalizerInterface, Normaliz
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Generated\DigitalOcean\Model\NfsActionDetachparams::class => false];
+        return [\Jane\Generated\DigitalOcean\Model\NfsActionDetachParams::class => false];
     }
 }

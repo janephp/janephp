@@ -46,7 +46,7 @@ class NfsActionResizeNormalizer implements DenormalizerInterface, NormalizerInte
             unset($data['region']);
         }
         if (\array_key_exists('params', $data)) {
-            $object->setParams($this->denormalizer->denormalize($data['params'], \Jane\Generated\DigitalOcean\Model\NfsActionResizeparams::class, 'json', $context));
+            $object->setParams($this->denormalizer->denormalize($data['params'], \Jane\Generated\DigitalOcean\Model\NfsActionResizeParams::class, 'json', $context));
             unset($data['params']);
         }
         foreach ($data as $key => $value) {

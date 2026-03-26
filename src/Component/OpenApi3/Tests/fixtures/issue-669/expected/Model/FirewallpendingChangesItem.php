@@ -2,7 +2,7 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class FirewallpendingChangesItem extends \ArrayObject
+class FirewallPendingChangesItem extends \ArrayObject
 {
     /**
      * @var array

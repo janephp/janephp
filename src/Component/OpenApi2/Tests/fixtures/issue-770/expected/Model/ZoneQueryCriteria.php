@@ -15,13 +15,13 @@ class ZoneQueryCriteria
     /**
      * Filters used to select specific resource scope
      *
-     * @var list<ZoneQueryCriteriafiltersItem>
+     * @var list<ZoneQueryCriteriaFiltersItem>
      */
     protected $filters;
     /**
      * "AND" condition for multiple filters
      *
-     * @var list<ZoneQueryCriteriaextraFiltersItem>
+     * @var list<ZoneQueryCriteriaExtraFiltersItem>
      */
     protected $extraFilters;
     /**
@@ -31,7 +31,7 @@ class ZoneQueryCriteria
     /**
      * Specified feature required information.
      *
-     * @var ZoneQueryCriteriaoptions
+     * @var ZoneQueryCriteriaOptions
      */
     protected $options;
     /**
@@ -87,7 +87,7 @@ class ZoneQueryCriteria
     /**
      * Filters used to select specific resource scope
      *
-     * @return list<ZoneQueryCriteriafiltersItem>
+     * @return list<ZoneQueryCriteriaFiltersItem>
      */
     public function getFilters(): array
     {
@@ -96,7 +96,7 @@ class ZoneQueryCriteria
     /**
      * Filters used to select specific resource scope
      *
-     * @param list<ZoneQueryCriteriafiltersItem> $filters
+     * @param list<ZoneQueryCriteriaFiltersItem> $filters
      *
      * @return self
      */
@@ -109,7 +109,7 @@ class ZoneQueryCriteria
     /**
      * "AND" condition for multiple filters
      *
-     * @return list<ZoneQueryCriteriaextraFiltersItem>
+     * @return list<ZoneQueryCriteriaExtraFiltersItem>
      */
     public function getExtraFilters(): array
     {
@@ -118,7 +118,7 @@ class ZoneQueryCriteria
     /**
      * "AND" condition for multiple filters
      *
-     * @param list<ZoneQueryCriteriaextraFiltersItem> $extraFilters
+     * @param list<ZoneQueryCriteriaExtraFiltersItem> $extraFilters
      *
      * @return self
      */
@@ -149,20 +149,20 @@ class ZoneQueryCriteria
     /**
      * Specified feature required information.
      *
-     * @return ZoneQueryCriteriaoptions
+     * @return ZoneQueryCriteriaOptions
      */
-    public function getOptions(): ZoneQueryCriteriaoptions
+    public function getOptions(): ZoneQueryCriteriaOptions
     {
         return $this->options;
     }
     /**
      * Specified feature required information.
      *
-     * @param ZoneQueryCriteriaoptions $options
+     * @param ZoneQueryCriteriaOptions $options
      *
      * @return self
      */
-    public function setOptions(ZoneQueryCriteriaoptions $options): self
+    public function setOptions(ZoneQueryCriteriaOptions $options): self
     {
         $this->initialized['options'] = true;
         $this->options = $options;

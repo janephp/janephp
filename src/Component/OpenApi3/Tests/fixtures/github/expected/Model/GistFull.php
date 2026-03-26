@@ -87,15 +87,15 @@ class GistFull extends \ArrayObject
      */
     protected $truncated;
     /**
-     * @var list<GistFullforksItem>
+     * @var list<GistFullForksItem>
      */
     protected $forks;
     /**
-     * @var list<GistFullhistoryItem>
+     * @var list<GistFullHistoryItem>
      */
     protected $history;
     /**
-     * @var GistFullforkOf|null
+     * @var GistFullForkOf|null
      */
     protected $forkOf;
     /**
@@ -427,14 +427,14 @@ class GistFull extends \ArrayObject
         return $this;
     }
     /**
-     * @return list<GistFullforksItem>
+     * @return list<GistFullForksItem>
      */
     public function getForks(): array
     {
         return $this->forks;
     }
     /**
-     * @param list<GistFullforksItem> $forks
+     * @param list<GistFullForksItem> $forks
      *
      * @return self
      */
@@ -445,14 +445,14 @@ class GistFull extends \ArrayObject
         return $this;
     }
     /**
-     * @return list<GistFullhistoryItem>
+     * @return list<GistFullHistoryItem>
      */
     public function getHistory(): array
     {
         return $this->history;
     }
     /**
-     * @param list<GistFullhistoryItem> $history
+     * @param list<GistFullHistoryItem> $history
      *
      * @return self
      */
@@ -463,18 +463,18 @@ class GistFull extends \ArrayObject
         return $this;
     }
     /**
-     * @return GistFullforkOf|null
+     * @return GistFullForkOf|null
      */
-    public function getForkOf(): ?GistFullforkOf
+    public function getForkOf(): ?GistFullForkOf
     {
         return $this->forkOf;
     }
     /**
-     * @param GistFullforkOf|null $forkOf
+     * @param GistFullForkOf|null $forkOf
      *
      * @return self
      */
-    public function setForkOf(?GistFullforkOf $forkOf): self
+    public function setForkOf(?GistFullForkOf $forkOf): self
     {
         $this->initialized['forkOf'] = true;
         $this->forkOf = $forkOf;

@@ -50,7 +50,7 @@ class ProfileQueryCriteriaWithProfileIdNormalizer implements DenormalizerInterfa
         if (\array_key_exists('extraFilters', $data)) {
             $values_1 = [];
             foreach ($data['extraFilters'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileQueryCriteriaWithProfileIdextraFiltersItem::class, 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileQueryCriteriaWithProfileIdExtraFiltersItem::class, 'json', $context);
             }
             $object->setExtraFilters($values_1);
         }

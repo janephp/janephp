@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class VolumeFullregionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class VolumeFullRegionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -19,11 +19,11 @@ class VolumeFullregionNormalizer implements DenormalizerInterface, NormalizerInt
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Generated\DigitalOcean\Model\VolumeFullregion::class;
+        return $type === \Jane\Generated\DigitalOcean\Model\VolumeFullRegion::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Generated\DigitalOcean\Model\VolumeFullregion::class;
+        return is_object($data) && get_class($data) === \Jane\Generated\DigitalOcean\Model\VolumeFullRegion::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
@@ -33,7 +33,7 @@ class VolumeFullregionNormalizer implements DenormalizerInterface, NormalizerInt
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\VolumeFullregion();
+        $object = new \Jane\Generated\DigitalOcean\Model\VolumeFullRegion();
         if (\array_key_exists('available', $data) && \is_int($data['available'])) {
             $data['available'] = (bool) $data['available'];
         }
@@ -100,6 +100,6 @@ class VolumeFullregionNormalizer implements DenormalizerInterface, NormalizerInt
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Generated\DigitalOcean\Model\VolumeFullregion::class => false];
+        return [\Jane\Generated\DigitalOcean\Model\VolumeFullRegion::class => false];
     }
 }

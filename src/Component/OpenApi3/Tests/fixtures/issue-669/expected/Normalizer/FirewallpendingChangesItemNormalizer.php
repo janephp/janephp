@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class FirewallpendingChangesItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class FirewallPendingChangesItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -19,11 +19,11 @@ class FirewallpendingChangesItemNormalizer implements DenormalizerInterface, Nor
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Generated\DigitalOcean\Model\FirewallpendingChangesItem::class;
+        return $type === \Jane\Generated\DigitalOcean\Model\FirewallPendingChangesItem::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Generated\DigitalOcean\Model\FirewallpendingChangesItem::class;
+        return is_object($data) && get_class($data) === \Jane\Generated\DigitalOcean\Model\FirewallPendingChangesItem::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
@@ -33,7 +33,7 @@ class FirewallpendingChangesItemNormalizer implements DenormalizerInterface, Nor
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\FirewallpendingChangesItem();
+        $object = new \Jane\Generated\DigitalOcean\Model\FirewallPendingChangesItem();
         if (\array_key_exists('removing', $data) && \is_int($data['removing'])) {
             $data['removing'] = (bool) $data['removing'];
         }
@@ -80,6 +80,6 @@ class FirewallpendingChangesItemNormalizer implements DenormalizerInterface, Nor
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Generated\DigitalOcean\Model\FirewallpendingChangesItem::class => false];
+        return [\Jane\Generated\DigitalOcean\Model\FirewallPendingChangesItem::class => false];
     }
 }

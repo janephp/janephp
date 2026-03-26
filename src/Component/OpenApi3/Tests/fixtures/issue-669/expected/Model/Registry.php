@@ -43,7 +43,7 @@ class Registry extends \ArrayObject
      */
     protected $storageUsageBytesUpdatedAt;
     /**
-     * @var Registrysubscription
+     * @var RegistrySubscription
      */
     protected $subscription;
     /**
@@ -157,18 +157,18 @@ class Registry extends \ArrayObject
         return $this;
     }
     /**
-     * @return Registrysubscription
+     * @return RegistrySubscription
      */
-    public function getSubscription(): Registrysubscription
+    public function getSubscription(): RegistrySubscription
     {
         return $this->subscription;
     }
     /**
-     * @param Registrysubscription $subscription
+     * @param RegistrySubscription $subscription
      *
      * @return self
      */
-    public function setSubscription(Registrysubscription $subscription): self
+    public function setSubscription(RegistrySubscription $subscription): self
     {
         $this->initialized['subscription'] = true;
         $this->subscription = $subscription;

@@ -15,25 +15,25 @@ class ApQueryQueryCriteria
     /**
      * Filters used to select specific resource scope
      *
-     * @var list<ApQueryQueryCriteriafiltersItem>
+     * @var list<ApQueryQueryCriteriaFiltersItem>
      */
     protected $filters;
     /**
      * "AND" condition for multiple filters
      *
-     * @var list<ApQueryQueryCriteriaextraFiltersItem>
+     * @var list<ApQueryQueryCriteriaExtraFiltersItem>
      */
     protected $extraFilters;
     /**
      * "NOT" condition for multiple filters
      *
-     * @var list<ApQueryQueryCriteriaextraNotFiltersItem>
+     * @var list<ApQueryQueryCriteriaExtraNotFiltersItem>
      */
     protected $extraNotFilters;
     /**
      * specified feature required informaion
      *
-     * @var ApQueryQueryCriteriaoptions
+     * @var ApQueryQueryCriteriaOptions
      */
     protected $options;
     /**
@@ -89,7 +89,7 @@ class ApQueryQueryCriteria
     /**
      * Filters used to select specific resource scope
      *
-     * @return list<ApQueryQueryCriteriafiltersItem>
+     * @return list<ApQueryQueryCriteriaFiltersItem>
      */
     public function getFilters(): array
     {
@@ -98,7 +98,7 @@ class ApQueryQueryCriteria
     /**
      * Filters used to select specific resource scope
      *
-     * @param list<ApQueryQueryCriteriafiltersItem> $filters
+     * @param list<ApQueryQueryCriteriaFiltersItem> $filters
      *
      * @return self
      */
@@ -111,7 +111,7 @@ class ApQueryQueryCriteria
     /**
      * "AND" condition for multiple filters
      *
-     * @return list<ApQueryQueryCriteriaextraFiltersItem>
+     * @return list<ApQueryQueryCriteriaExtraFiltersItem>
      */
     public function getExtraFilters(): array
     {
@@ -120,7 +120,7 @@ class ApQueryQueryCriteria
     /**
      * "AND" condition for multiple filters
      *
-     * @param list<ApQueryQueryCriteriaextraFiltersItem> $extraFilters
+     * @param list<ApQueryQueryCriteriaExtraFiltersItem> $extraFilters
      *
      * @return self
      */
@@ -133,7 +133,7 @@ class ApQueryQueryCriteria
     /**
      * "NOT" condition for multiple filters
      *
-     * @return list<ApQueryQueryCriteriaextraNotFiltersItem>
+     * @return list<ApQueryQueryCriteriaExtraNotFiltersItem>
      */
     public function getExtraNotFilters(): array
     {
@@ -142,7 +142,7 @@ class ApQueryQueryCriteria
     /**
      * "NOT" condition for multiple filters
      *
-     * @param list<ApQueryQueryCriteriaextraNotFiltersItem> $extraNotFilters
+     * @param list<ApQueryQueryCriteriaExtraNotFiltersItem> $extraNotFilters
      *
      * @return self
      */
@@ -155,20 +155,20 @@ class ApQueryQueryCriteria
     /**
      * specified feature required informaion
      *
-     * @return ApQueryQueryCriteriaoptions
+     * @return ApQueryQueryCriteriaOptions
      */
-    public function getOptions(): ApQueryQueryCriteriaoptions
+    public function getOptions(): ApQueryQueryCriteriaOptions
     {
         return $this->options;
     }
     /**
      * specified feature required informaion
      *
-     * @param ApQueryQueryCriteriaoptions $options
+     * @param ApQueryQueryCriteriaOptions $options
      *
      * @return self
      */
-    public function setOptions(ApQueryQueryCriteriaoptions $options): self
+    public function setOptions(ApQueryQueryCriteriaOptions $options): self
     {
         $this->initialized['options'] = true;
         $this->options = $options;

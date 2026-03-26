@@ -58,7 +58,7 @@ class RegistryNormalizer implements DenormalizerInterface, NormalizerInterface, 
             unset($data['storage_usage_bytes_updated_at']);
         }
         if (\array_key_exists('subscription', $data)) {
-            $object->setSubscription($this->denormalizer->denormalize($data['subscription'], \Jane\Generated\DigitalOcean\Model\Registrysubscription::class, 'json', $context));
+            $object->setSubscription($this->denormalizer->denormalize($data['subscription'], \Jane\Generated\DigitalOcean\Model\RegistrySubscription::class, 'json', $context));
             unset($data['subscription']);
         }
         foreach ($data as $key => $value) {

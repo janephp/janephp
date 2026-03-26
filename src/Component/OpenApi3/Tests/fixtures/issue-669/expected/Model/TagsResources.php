@@ -25,23 +25,23 @@ class TagsResources extends \ArrayObject
      */
     protected $lastTaggedUri;
     /**
-     * @var TagsResourcesdroplets
+     * @var TagsResourcesDroplets
      */
     protected $droplets;
     /**
-     * @var TagsResourcesimgages
+     * @var TagsResourcesImgages
      */
     protected $imgages;
     /**
-     * @var TagsResourcesvolumes
+     * @var TagsResourcesVolumes
      */
     protected $volumes;
     /**
-     * @var TagsResourcesvolumeSnapshots
+     * @var TagsResourcesVolumeSnapshots
      */
     protected $volumeSnapshots;
     /**
-     * @var TagsResourcesdatabases
+     * @var TagsResourcesDatabases
      */
     protected $databases;
     /**
@@ -89,90 +89,90 @@ class TagsResources extends \ArrayObject
         return $this;
     }
     /**
-     * @return TagsResourcesdroplets
+     * @return TagsResourcesDroplets
      */
-    public function getDroplets(): TagsResourcesdroplets
+    public function getDroplets(): TagsResourcesDroplets
     {
         return $this->droplets;
     }
     /**
-     * @param TagsResourcesdroplets $droplets
+     * @param TagsResourcesDroplets $droplets
      *
      * @return self
      */
-    public function setDroplets(TagsResourcesdroplets $droplets): self
+    public function setDroplets(TagsResourcesDroplets $droplets): self
     {
         $this->initialized['droplets'] = true;
         $this->droplets = $droplets;
         return $this;
     }
     /**
-     * @return TagsResourcesimgages
+     * @return TagsResourcesImgages
      */
-    public function getImgages(): TagsResourcesimgages
+    public function getImgages(): TagsResourcesImgages
     {
         return $this->imgages;
     }
     /**
-     * @param TagsResourcesimgages $imgages
+     * @param TagsResourcesImgages $imgages
      *
      * @return self
      */
-    public function setImgages(TagsResourcesimgages $imgages): self
+    public function setImgages(TagsResourcesImgages $imgages): self
     {
         $this->initialized['imgages'] = true;
         $this->imgages = $imgages;
         return $this;
     }
     /**
-     * @return TagsResourcesvolumes
+     * @return TagsResourcesVolumes
      */
-    public function getVolumes(): TagsResourcesvolumes
+    public function getVolumes(): TagsResourcesVolumes
     {
         return $this->volumes;
     }
     /**
-     * @param TagsResourcesvolumes $volumes
+     * @param TagsResourcesVolumes $volumes
      *
      * @return self
      */
-    public function setVolumes(TagsResourcesvolumes $volumes): self
+    public function setVolumes(TagsResourcesVolumes $volumes): self
     {
         $this->initialized['volumes'] = true;
         $this->volumes = $volumes;
         return $this;
     }
     /**
-     * @return TagsResourcesvolumeSnapshots
+     * @return TagsResourcesVolumeSnapshots
      */
-    public function getVolumeSnapshots(): TagsResourcesvolumeSnapshots
+    public function getVolumeSnapshots(): TagsResourcesVolumeSnapshots
     {
         return $this->volumeSnapshots;
     }
     /**
-     * @param TagsResourcesvolumeSnapshots $volumeSnapshots
+     * @param TagsResourcesVolumeSnapshots $volumeSnapshots
      *
      * @return self
      */
-    public function setVolumeSnapshots(TagsResourcesvolumeSnapshots $volumeSnapshots): self
+    public function setVolumeSnapshots(TagsResourcesVolumeSnapshots $volumeSnapshots): self
     {
         $this->initialized['volumeSnapshots'] = true;
         $this->volumeSnapshots = $volumeSnapshots;
         return $this;
     }
     /**
-     * @return TagsResourcesdatabases
+     * @return TagsResourcesDatabases
      */
-    public function getDatabases(): TagsResourcesdatabases
+    public function getDatabases(): TagsResourcesDatabases
     {
         return $this->databases;
     }
     /**
-     * @param TagsResourcesdatabases $databases
+     * @param TagsResourcesDatabases $databases
      *
      * @return self
      */
-    public function setDatabases(TagsResourcesdatabases $databases): self
+    public function setDatabases(TagsResourcesDatabases $databases): self
     {
         $this->initialized['databases'] = true;
         $this->databases = $databases;

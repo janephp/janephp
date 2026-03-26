@@ -52,7 +52,7 @@ class V2FirewallsPostBodyNormalizer implements DenormalizerInterface, Normalizer
         if (\array_key_exists('pending_changes', $data)) {
             $values = [];
             foreach ($data['pending_changes'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\FirewallpendingChangesItem::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\FirewallPendingChangesItem::class, 'json', $context);
             }
             $object->setPendingChanges($values);
             unset($data['pending_changes']);

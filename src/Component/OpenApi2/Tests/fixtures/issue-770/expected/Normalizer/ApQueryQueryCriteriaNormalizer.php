@@ -43,26 +43,26 @@ class ApQueryQueryCriteriaNormalizer implements DenormalizerInterface, Normalize
         if (\array_key_exists('filters', $data)) {
             $values = [];
             foreach ($data['filters'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriafiltersItem::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaFiltersItem::class, 'json', $context);
             }
             $object->setFilters($values);
         }
         if (\array_key_exists('extraFilters', $data)) {
             $values_1 = [];
             foreach ($data['extraFilters'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaextraFiltersItem::class, 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaExtraFiltersItem::class, 'json', $context);
             }
             $object->setExtraFilters($values_1);
         }
         if (\array_key_exists('extraNotFilters', $data)) {
             $values_2 = [];
             foreach ($data['extraNotFilters'] as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaextraNotFiltersItem::class, 'json', $context);
+                $values_2[] = $this->denormalizer->denormalize($value_2, \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaExtraNotFiltersItem::class, 'json', $context);
             }
             $object->setExtraNotFilters($values_2);
         }
         if (\array_key_exists('options', $data)) {
-            $object->setOptions($this->denormalizer->denormalize($data['options'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaoptions::class, 'json', $context));
+            $object->setOptions($this->denormalizer->denormalize($data['options'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryQueryCriteriaOptions::class, 'json', $context));
         }
         if (\array_key_exists('extraTimeRange', $data)) {
             $object->setExtraTimeRange($this->denormalizer->denormalize($data['extraTimeRange'], \Jane\Component\OpenApi3\Tests\Expected\Model\CommonTimeRange::class, 'json', $context));

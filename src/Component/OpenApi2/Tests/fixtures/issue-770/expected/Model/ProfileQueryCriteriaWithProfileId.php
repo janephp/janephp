@@ -21,7 +21,7 @@ class ProfileQueryCriteriaWithProfileId
     /**
      * "AND" condition for multiple filters
      *
-     * @var list<ProfileQueryCriteriaWithProfileIdextraFiltersItem>
+     * @var list<ProfileQueryCriteriaWithProfileIdExtraFiltersItem>
      */
     protected $extraFilters;
     /**
@@ -111,7 +111,7 @@ class ProfileQueryCriteriaWithProfileId
     /**
      * "AND" condition for multiple filters
      *
-     * @return list<ProfileQueryCriteriaWithProfileIdextraFiltersItem>
+     * @return list<ProfileQueryCriteriaWithProfileIdExtraFiltersItem>
      */
     public function getExtraFilters(): array
     {
@@ -120,7 +120,7 @@ class ProfileQueryCriteriaWithProfileId
     /**
      * "AND" condition for multiple filters
      *
-     * @param list<ProfileQueryCriteriaWithProfileIdextraFiltersItem> $extraFilters
+     * @param list<ProfileQueryCriteriaWithProfileIdExtraFiltersItem> $extraFilters
      *
      * @return self
      */

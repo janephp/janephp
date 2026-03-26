@@ -46,7 +46,7 @@ class FirewallRulesOutboundRulesItemNormalizer implements DenormalizerInterface,
             unset($data['ports']);
         }
         if (\array_key_exists('destinations', $data)) {
-            $object->setDestinations($this->denormalizer->denormalize($data['destinations'], \Jane\Generated\DigitalOcean\Model\FirewallRulesOutboundRulesItemdestinations::class, 'json', $context));
+            $object->setDestinations($this->denormalizer->denormalize($data['destinations'], \Jane\Generated\DigitalOcean\Model\FirewallRulesOutboundRulesItemDestinations::class, 'json', $context));
             unset($data['destinations']);
         }
         foreach ($data as $key => $value) {

@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class IdentityQueryCriteriaoptionsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class IdentityQueryCriteriaOptionsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -19,11 +19,11 @@ class IdentityQueryCriteriaoptionsNormalizer implements DenormalizerInterface, N
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaoptions::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptions::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaoptions::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptions::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
@@ -33,7 +33,7 @@ class IdentityQueryCriteriaoptionsNormalizer implements DenormalizerInterface, N
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaoptions();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptions();
         if (\array_key_exists('includeSharedResources', $data) && \is_int($data['includeSharedResources'])) {
             $data['includeSharedResources'] = (bool) $data['includeSharedResources'];
         }
@@ -56,7 +56,7 @@ class IdentityQueryCriteriaoptionsNormalizer implements DenormalizerInterface, N
             $object->setGlobalFilterId($data['globalFilterId']);
         }
         if (\array_key_exists('localUser_auditTime', $data)) {
-            $object->setLocalUserAuditTime($this->denormalizer->denormalize($data['localUser_auditTime'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaoptionsLocalUserAuditTime::class, 'json', $context));
+            $object->setLocalUserAuditTime($this->denormalizer->denormalize($data['localUser_auditTime'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptionsLocalUserAuditTime::class, 'json', $context));
         }
         if (\array_key_exists('localUser_firstName', $data)) {
             $object->setLocalUserFirstName($data['localUser_firstName']);
@@ -89,7 +89,7 @@ class IdentityQueryCriteriaoptionsNormalizer implements DenormalizerInterface, N
             $object->setGuestPassDisplayName($data['guestPass_displayName']);
         }
         if (\array_key_exists('guestPass_expiration', $data)) {
-            $object->setGuestPassExpiration($this->denormalizer->denormalize($data['guestPass_expiration'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaoptionsGuestPassExpiration::class, 'json', $context));
+            $object->setGuestPassExpiration($this->denormalizer->denormalize($data['guestPass_expiration'], \Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptionsGuestPassExpiration::class, 'json', $context));
         }
         if (\array_key_exists('guestPass_wlan', $data)) {
             $object->setGuestPassWlan($data['guestPass_wlan']);
@@ -154,6 +154,6 @@ class IdentityQueryCriteriaoptionsNormalizer implements DenormalizerInterface, N
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaoptions::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Model\IdentityQueryCriteriaOptions::class => false];
     }
 }

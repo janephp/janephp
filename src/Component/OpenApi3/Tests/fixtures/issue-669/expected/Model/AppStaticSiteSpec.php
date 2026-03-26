@@ -105,7 +105,7 @@ class AppStaticSiteSpec extends \ArrayObject
      */
     protected $outputDir;
     /**
-     * @var AppStaticSiteSpeccors
+     * @var AppStaticSiteSpecCors
      */
     protected $cors;
     /**
@@ -471,18 +471,18 @@ class AppStaticSiteSpec extends \ArrayObject
         return $this;
     }
     /**
-     * @return AppStaticSiteSpeccors
+     * @return AppStaticSiteSpecCors
      */
-    public function getCors(): AppStaticSiteSpeccors
+    public function getCors(): AppStaticSiteSpecCors
     {
         return $this->cors;
     }
     /**
-     * @param AppStaticSiteSpeccors $cors
+     * @param AppStaticSiteSpecCors $cors
      *
      * @return self
      */
-    public function setCors(AppStaticSiteSpeccors $cors): self
+    public function setCors(AppStaticSiteSpecCors $cors): self
     {
         $this->initialized['cors'] = true;
         $this->cors = $cors;

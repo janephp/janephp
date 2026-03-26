@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class ZoneQueryCriteriafiltersItem
+class ZoneQueryCriteriaFiltersItem
 {
     /**
      * @var array

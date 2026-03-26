@@ -25,7 +25,7 @@ class NfsActionDetach extends \ArrayObject
      */
     protected $region;
     /**
-     * @var NfsActionDetachparams
+     * @var NfsActionDetachParams
      */
     protected $params;
     /**
@@ -73,18 +73,18 @@ class NfsActionDetach extends \ArrayObject
         return $this;
     }
     /**
-     * @return NfsActionDetachparams
+     * @return NfsActionDetachParams
      */
-    public function getParams(): NfsActionDetachparams
+    public function getParams(): NfsActionDetachParams
     {
         return $this->params;
     }
     /**
-     * @param NfsActionDetachparams $params
+     * @param NfsActionDetachParams $params
      *
      * @return self
      */
-    public function setParams(NfsActionDetachparams $params): self
+    public function setParams(NfsActionDetachParams $params): self
     {
         $this->initialized['params'] = true;
         $this->params = $params;

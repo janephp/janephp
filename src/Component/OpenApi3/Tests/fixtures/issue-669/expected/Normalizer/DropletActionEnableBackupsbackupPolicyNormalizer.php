@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class DropletActionEnableBackupsbackupPolicyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class DropletActionEnableBackupsBackupPolicyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -19,11 +19,11 @@ class DropletActionEnableBackupsbackupPolicyNormalizer implements DenormalizerIn
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Generated\DigitalOcean\Model\DropletActionEnableBackupsbackupPolicy::class;
+        return $type === \Jane\Generated\DigitalOcean\Model\DropletActionEnableBackupsBackupPolicy::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Generated\DigitalOcean\Model\DropletActionEnableBackupsbackupPolicy::class;
+        return is_object($data) && get_class($data) === \Jane\Generated\DigitalOcean\Model\DropletActionEnableBackupsBackupPolicy::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
@@ -33,7 +33,7 @@ class DropletActionEnableBackupsbackupPolicyNormalizer implements DenormalizerIn
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\DropletActionEnableBackupsbackupPolicy();
+        $object = new \Jane\Generated\DigitalOcean\Model\DropletActionEnableBackupsBackupPolicy();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -85,6 +85,6 @@ class DropletActionEnableBackupsbackupPolicyNormalizer implements DenormalizerIn
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Generated\DigitalOcean\Model\DropletActionEnableBackupsbackupPolicy::class => false];
+        return [\Jane\Generated\DigitalOcean\Model\DropletActionEnableBackupsBackupPolicy::class => false];
     }
 }

@@ -134,7 +134,7 @@ class GistFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (\array_key_exists('forks', $data)) {
             $values_1 = [];
             foreach ($data['forks'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \Github\Model\GistFullforksItem::class, 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, \Github\Model\GistFullForksItem::class, 'json', $context);
             }
             $object->setForks($values_1);
             unset($data['forks']);
@@ -142,13 +142,13 @@ class GistFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (\array_key_exists('history', $data)) {
             $values_2 = [];
             foreach ($data['history'] as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, \Github\Model\GistFullhistoryItem::class, 'json', $context);
+                $values_2[] = $this->denormalizer->denormalize($value_2, \Github\Model\GistFullHistoryItem::class, 'json', $context);
             }
             $object->setHistory($values_2);
             unset($data['history']);
         }
         if (\array_key_exists('fork_of', $data) && $data['fork_of'] !== null) {
-            $object->setForkOf($this->denormalizer->denormalize($data['fork_of'], \Github\Model\GistFullforkOf::class, 'json', $context));
+            $object->setForkOf($this->denormalizer->denormalize($data['fork_of'], \Github\Model\GistFullForkOf::class, 'json', $context));
             unset($data['fork_of']);
         }
         elseif (\array_key_exists('fork_of', $data) && $data['fork_of'] === null) {

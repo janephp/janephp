@@ -15,7 +15,7 @@ class IdentityQueryCriteria
     /**
      * Filters used to select specific resource scope
      *
-     * @var list<IdentityQueryCriteriafiltersItem>
+     * @var list<IdentityQueryCriteriaFiltersItem>
      */
     protected $filters;
     /**
@@ -29,7 +29,7 @@ class IdentityQueryCriteria
     /**
      * Specified feature required information
      *
-     * @var IdentityQueryCriteriaoptions
+     * @var IdentityQueryCriteriaOptions
      */
     protected $options;
     /**
@@ -85,7 +85,7 @@ class IdentityQueryCriteria
     /**
      * Filters used to select specific resource scope
      *
-     * @return list<IdentityQueryCriteriafiltersItem>
+     * @return list<IdentityQueryCriteriaFiltersItem>
      */
     public function getFilters(): array
     {
@@ -94,7 +94,7 @@ class IdentityQueryCriteria
     /**
      * Filters used to select specific resource scope
      *
-     * @param list<IdentityQueryCriteriafiltersItem> $filters
+     * @param list<IdentityQueryCriteriaFiltersItem> $filters
      *
      * @return self
      */
@@ -143,20 +143,20 @@ class IdentityQueryCriteria
     /**
      * Specified feature required information
      *
-     * @return IdentityQueryCriteriaoptions
+     * @return IdentityQueryCriteriaOptions
      */
-    public function getOptions(): IdentityQueryCriteriaoptions
+    public function getOptions(): IdentityQueryCriteriaOptions
     {
         return $this->options;
     }
     /**
      * Specified feature required information
      *
-     * @param IdentityQueryCriteriaoptions $options
+     * @param IdentityQueryCriteriaOptions $options
      *
      * @return self
      */
-    public function setOptions(IdentityQueryCriteriaoptions $options): self
+    public function setOptions(IdentityQueryCriteriaOptions $options): self
     {
         $this->initialized['options'] = true;
         $this->options = $options;

@@ -2,7 +2,7 @@
 
 namespace Github\Validator;
 
-class GistFullhistoryItemConstraint extends \Symfony\Component\Validator\Constraints\Compound
+class GistFullHistoryItemConstraint extends \Symfony\Component\Validator\Constraints\Compound
 {
     protected function getConstraints($options): array
     {

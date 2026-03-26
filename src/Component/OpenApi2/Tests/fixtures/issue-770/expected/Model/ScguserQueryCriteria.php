@@ -15,7 +15,7 @@ class ScguserQueryCriteria
     /**
      * Filters used to select specific resource scope
      *
-     * @var list<ScguserQueryCriteriafiltersItem>
+     * @var list<ScguserQueryCriteriaFiltersItem>
      */
     protected $filters;
     /**
@@ -83,7 +83,7 @@ class ScguserQueryCriteria
     /**
      * Filters used to select specific resource scope
      *
-     * @return list<ScguserQueryCriteriafiltersItem>
+     * @return list<ScguserQueryCriteriaFiltersItem>
      */
     public function getFilters(): array
     {
@@ -92,7 +92,7 @@ class ScguserQueryCriteria
     /**
      * Filters used to select specific resource scope
      *
-     * @param list<ScguserQueryCriteriafiltersItem> $filters
+     * @param list<ScguserQueryCriteriaFiltersItem> $filters
      *
      * @return self
      */

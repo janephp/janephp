@@ -2,7 +2,7 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class LoadBalancerregion extends \ArrayObject
+class LoadBalancerRegion extends \ArrayObject
 {
     /**
      * @var array
