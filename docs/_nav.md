@@ -5,6 +5,7 @@
 - [OpenAPI](openapi/getting_started.md)
     - [Component](openapi/component.md)
 - [Guides](guides/index.md)
+    - [Compatibility](guides/compatibility.md)
     - [API Platform DTO](guides/apip_dto.md)
     - [Between two Symfony apps](guides/two_symfony_apps.md)
     - [Validation](guides/validation.md)

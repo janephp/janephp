@@ -1,6 +1,6 @@
 # Jane OpenAPI 3.1
 
-Generate a PHP Client API (PSR7/PSR18 compatible) given an [OpenAPI 3.1 specification](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md).
+Generate a PHP Client API (PSR7/PSR18 compatible) given an [OpenAPI 3.1.x specification](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md).
 
 ## License
 

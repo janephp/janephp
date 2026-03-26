@@ -1,7 +1,26 @@
 # Getting started: using OpenAPI
 
 Jane OpenAPI is a library to generate, in PHP, an http client and its associated models and serializers from a
-[OpenAPI](https://www.openapis.org/) specification: version 2 or 3.
+[OpenAPI](https://www.openapis.org/) specification: version 2.0, 3.0.x or 3.1.x.
+
+## At a glance
+
+- Generate a PSR-18 compatible client, endpoint classes, models and normalizers.
+- Works with OpenAPI 2.0, 3.0.x and 3.1.x.
+- Use [OpenAPI component](./component.md) for full options and advanced configuration.
+
+## Supported versions
+
+- OpenAPI 2.0
+- OpenAPI 3.0.x
+- OpenAPI 3.1.x
+
+## Jump to
+
+- [Installation](#installation)
+- [Generating](#generating)
+- [Configuration file](#configuration-file)
+- [Using](#using)
 
 Here is a quick schema to understand what Jane does and how does it work with your APIs
 
@@ -18,8 +37,8 @@ in the Client instance methods;
 
 ## Installation
 
-Jane supports both OpenAPI v2 & v3. Depending on your OpenAPI version, the command line will detect which version to use
-and if this version is actually installed in your dependencies.
+Jane supports OpenAPI v2, v3.0 and v3.1. Depending on your OpenAPI version, the command line will detect which version to use
+and if this version is installed in your dependencies.
 
 You have to add the generation library as a `dev` dependency. This library contains a lot of dependencies, to be able
 to generate code, which are not needed on runtime. However, the generated code depends on other libraries and a few
@@ -31,8 +50,12 @@ requirement. Choose your library depending on OpenAPI version you need (you can 
 composer require --dev jane-php/open-api-2
 composer require jane-php/open-api-runtime
 
-# OpenAPI 3
+# OpenAPI 3.0.x
 composer require --dev jane-php/open-api-3
+composer require jane-php/open-api-runtime
+
+# OpenAPI 3.1.x
+composer require --dev jane-php/open-api-3-1
 composer require jane-php/open-api-runtime
 ```
 
@@ -112,7 +135,7 @@ files:
 }
 ```
 
-For more details about generating JSON Schema, you can read the [OpenAPI component](./component.md) documentation.
+For more details about OpenAPI generation, you can read the [OpenAPI component](./component.md) documentation.
 
 ## Using
 
@@ -171,3 +194,10 @@ $foos = $apiClient->listFoo();
 
 Also depending on the parameters of the endpoint, it may have 2 or more arguments.
 For more details about using OpenAPI, you can read [OpenAPI component](./component.md) documentation.
+
+## Related
+
+- [OpenAPI component](./component.md)
+- [Nullability guide](../guides/nullable.md)
+- [Compatibility guide](../guides/compatibility.md)
+- [Project changelog](https://github.com/janephp/janephp/blob/main/CHANGELOG.md)

@@ -12,6 +12,9 @@ This section gathers advanced use-cases, integrations with other tools (like Sym
 
 ## Advanced Features
 
+* **[Compatibility and support](compatibility.md)**
+  Quick matrix of supported versions for OpenAPI and JSON Schema generation and validation.
+
 * **[Data Validation](validation.md)**
   How to integrate `symfony/validator` to automatically validate data within your generated objects (adding constraints, validating before serialization).
 

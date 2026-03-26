@@ -1,6 +1,24 @@
 # Getting started: using JSON Schema
 
-Jane JSON Schema is a library to generate models and serializers in PHP from a [JSON Schema](http://json-schema.org/) draft [2019-09](https://json-schema.org/specification.html).
+Jane JSON Schema is a library to generate models and serializers in PHP from [JSON Schema](http://json-schema.org/) specifications (draft 2019-09 and 2020-12).
+
+## At a glance
+
+- Generate typed models and normalizers from JSON Schema files.
+- Supports JSON Schema drafts 2019-09 and 2020-12 for generation.
+- Supports JSON Schema 2020-12 validation rules via the `validation` option.
+
+## Supported versions
+
+- JSON Schema generation: draft 2019-09 and draft 2020-12
+- JSON Schema validation: draft 2020-12
+
+## Jump to
+
+- [Installation](#installation)
+- [Generating](#generating)
+- [Configuration file](#configuration-file)
+- [Using](#using)
 
 ## Installation
 
@@ -97,7 +115,7 @@ autoload for the generated files:
 }
 ```
 
-For more details about generating JSON Schema, you can read [JSON Schema component](./component.md) documentation.
+For more details about JSON Schema generation, you can read [JSON Schema component](./component.md) documentation.
 
 ## Using
 
@@ -137,3 +155,10 @@ $serializer->deserialize('{...}');
 With Symfony ecosystem, you just have to use the recipe and all the configuration will be added automatically.
 This serializer will be able to encode and decode every data respecting your JSON Schema specification thanks to
 autowiring of the generated normalizers.
+
+## Related
+
+- [JSON Schema component](./component.md)
+- [Validation guide](../guides/validation.md)
+- [Compatibility guide](../guides/compatibility.md)
+- [Project changelog](https://github.com/janephp/janephp/blob/main/CHANGELOG.md)

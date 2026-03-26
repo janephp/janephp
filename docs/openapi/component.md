@@ -1,14 +1,26 @@
 # Component: OpenAPI
 
 Jane OpenAPI is a library to generate, in PHP, an HTTP client and its associated models and serializers from a
-[OpenAPI](https://www.openapis.org/) specification: version 2 or 3. Jane supports both OpenAPI v2 & v3. Depending on
-your OpenAPI version, the command line will detect which version to use and if this version is actually installed in
+[OpenAPI](https://www.openapis.org/) specification: version 2.0, 3.0.x or 3.1.x. Jane supports OpenAPI v2, v3.0 and v3.1. Depending on
+your OpenAPI version, the command line will detect which version to use and if this version is installed in
 your dependencies.
+
+## At a glance
+
+- OpenAPI code generation supports 2.0, 3.0.x and 3.1.x.
+- Generated client/runtime remains the same usage pattern across versions.
+- Validation follows the JSON Schema validation rules (see [Validation guide](../guides/validation.md)).
+
+## Supported versions
+
+- OpenAPI 2.0
+- OpenAPI 3.0.x
+- OpenAPI 3.1.x
 
 ## Installation
 
-Jane supports both OpenAPI v2 & v3. Depending on your OpenAPI version, the command line will detect which version to use
-and if this version is actually installed in your dependencies.
+Jane supports OpenAPI v2, v3.0 and v3.1. Depending on your OpenAPI version, the command line will detect which version to use
+and if this version is installed in your dependencies.
 
 You have to add the generation library as a `dev` dependency. This library contains a lot of dependencies, to be able
 to generate code, which are not needed on runtime. However, the generated code depends on other libraries and a few
@@ -20,10 +32,16 @@ Choose your library depending on OpenAPI version you need (you can even install 
 composer require --dev jane-php/open-api-2
 composer require jane-php/open-api-runtime
 
-# OpenAPI 3
+# OpenAPI 3.0.x
 composer require --dev jane-php/open-api-3
 composer require jane-php/open-api-runtime
+
+# OpenAPI 3.1.x
+composer require --dev jane-php/open-api-3-1
+composer require jane-php/open-api-runtime
 ```
+
+Check [Compatibility](guides/compatibility.md) for version support details.
 
 With Symfony ecosystem, we created a recipe to make it easier to use Jane. You just have to allow contrib recipes before
 installing our packages:
@@ -341,8 +359,8 @@ through the second argument of the static `create` method.
 
 We do generate a plugin for each authentication method declared in your scheme. It does support:
 
-- `apiKey` in header & query for both OpenAPI v2 & v3
-- HTTP Basic & Bearer for OpenAPI v3
+- `apiKey` in header & query for both OpenAPI v2 and v3.x
+- HTTP Basic & Bearer for OpenAPI v3.x
 
 Quick example of how your authentication definition could look (OpenAPI v3):
 

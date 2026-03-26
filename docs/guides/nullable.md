@@ -10,7 +10,7 @@ You can also try to fix your schema, here are some tips depending on which schem
 
 ## JSON Schema
 
-Jane is actually supporting JSON Schema draft 2019-09. Which support `null` type, you just have to add it to your
+Jane supports JSON Schema draft 2019-09 and 2020-12, both of which support `null` type. You just have to add it to your
 type field as follows:
 
 ```yaml
@@ -43,5 +43,12 @@ nullable: true
 
 ## OpenAPI v3.1.x
 
-This new OpenAPI version will be compatible with JSON Schema. So everything will be the same as JSON Schema. You still
-can use `nullable` field but it will be deprecated in favor of JSON Schema `null` type.
+OpenAPI 3.1 is compatible with JSON Schema semantics for this topic. In practice, use JSON Schema `null` type in your
+`type` list exactly as shown above. You can still find `nullable` in older specifications, but for new schemas prefer
+JSON Schema `null` type.
+
+## Related
+
+- [OpenAPI getting started](../openapi/getting_started.md)
+- [JSON Schema getting started](../json_schema/getting_started.md)
+- [Compatibility guide](compatibility.md)

@@ -1,7 +1,25 @@
 # Component: JSON Schema
 
 Jane JsonSchema is a library to generate models and serializers in PHP from a [JSON Schema](http://json-schema.org/)
-draft [2019-09](https://json-schema.org/specification.html).
+specification (draft [2019-09](https://json-schema.org/specification.html) and 2020-12).
+
+## At a glance
+
+- Generate models and normalizers from JSON Schema files.
+- Supports generation from draft 2019-09 and 2020-12 schemas.
+- Supports JSON Schema 2020-12 validation via the `validation` option.
+
+## Supported versions
+
+- JSON Schema generation: draft 2019-09 and 2020-12
+- JSON Schema validation: draft 2020-12
+
+## Jump to
+
+- [Installation](#installation)
+- [Generating a Model](#generating-a-model)
+- [Options](#options)
+- [Using a generated Model](#using-a-generated-model)
 
 ## Installation
 
@@ -134,7 +152,7 @@ Other options are available to customize the generated code:
 - `skip-required-fields`: If your model has required fields, this option allows you to skip the required behavior
  that forces them to be present during denormalization. By default it is disabled.
 - `validation`: Will enable validation following JSON Schema validation specification. By default it is disabled. You
-  can read more about it on the dedicated guide: :doc:`/guides/validation`.
+  can read more about it in the dedicated [Validation guide](../guides/validation.md).
 - `include-null-value`: Will enable a way to manage null values. By default it is enabled.
 
 ## Using a generated Model
@@ -258,3 +276,10 @@ $serializer->deserialize('{...}');
 > With Symfony ecosystem, you just have to use the recipe and all the configuration will be added automatically.
 > Both serializer will be able to encode and decode every data respecting your JSON Schema specification thanks to
 > autowiring of the generated normalizers.
+
+## Related
+
+- [JSON Schema getting started](./getting_started.md)
+- [Validation guide](../guides/validation.md)
+- [Compatibility guide](../guides/compatibility.md)
+- [Project changelog](https://github.com/janephp/janephp/blob/main/CHANGELOG.md)
