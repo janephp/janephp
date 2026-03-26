@@ -2,7 +2,10 @@
 
 Backwards compatiblity is an important topic. Those libraries follow Semver, so backwards compatibility will only
 break between major versions. This library may use deprecations notices to inform you of the change, but it's a low
-probability, you should always check the CHANGELOG when switching to a new major version.
+probability, you should always check the [CHANGELOG](https://github.com/janephp/janephp/blob/main/CHANGELOG.md) when switching to a new major version.
+
+> [!NOTE]
+> Specification support updates (for example OpenAPI 3.1 and JSON Schema 2020-12) are tracked in the changelog.
 
 ## JsonSchema and OpenAPI
 
