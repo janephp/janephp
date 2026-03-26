@@ -4,14 +4,14 @@ Jane Runtime are a collection of class used by a library generated via [Jane Jso
 
 ## License
 
-View the [LICENSE](LICENSE) file attach to this project.
+View the [LICENSE](LICENSE) file attached to this project.
 
 ## Resources
 
- * [Documentation](https://jane.jolicode.com/)
- * [Contributing](https://github.com/janephp/janephp/blob/master/CONTRIBUTING.md)
- * [Report Issues](https://github.com/janephp/janephp/issues) and [send Pull Requests](https://github.com/janephp/janephp/pulls)
- in the [main Jane Repository](https://github.com/janephp/janephp)
+* [Documentation](https://jane.jolicode.com/)
+* [Contributing](https://github.com/janephp/janephp/blob/master/CONTRIBUTING.md)
+* [Report Issues](https://github.com/janephp/janephp/issues) and [send Pull Requests](https://github.com/janephp/janephp/pulls)
+  in the [main Jane Repository](https://github.com/janephp/janephp)
 
 ## Sponsor
 
