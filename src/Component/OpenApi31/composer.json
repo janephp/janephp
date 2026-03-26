@@ -28,7 +28,6 @@
     },
     "require": {
         "php": "^8.1",
-        "ext-json": "*",
         "jane-php/json-schema": "^7.5",
         "jane-php/open-api-common": "^7.5",
         "nikic/php-parser": "^4.19 || ^5.1",
