@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit
+        colors                      = "true"
+        bootstrap                   = "vendor/autoload.php" >
+
+    <testsuites>
+        <testsuite name="Jane Open 3.1 Api Unit Test Suite">
+            <directory>Tests</directory>
+            <exclude>Tests/fixtures</exclude>
+        </testsuite>
+    </testsuites>
+
+    <groups>
+        <exclude>
+            <group>prism</group>
+        </exclude>
+    </groups>
+</phpunit>

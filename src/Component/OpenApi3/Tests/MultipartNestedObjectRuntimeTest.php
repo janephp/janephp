@@ -36,8 +36,9 @@ class MultipartNestedObjectRuntimeTest extends TestCase
 
         $body = new Expected\Model\FilePostBody();
         $body->setFichier('file-content');
-        /** @phpstan-ignore-next-line */
-        $body->setItem($item);
+        if (method_exists($body, 'setItem')) {
+            $body->setItem($item);
+        }
 
         $normalizers = [
             new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(),

@@ -13,6 +13,7 @@
       <directory>./src/Component/JsonSchema/Normalizer</directory>
       <directory>./src/Component/OpenApi2/JsonSchema</directory>
       <directory>./src/Component/OpenApi3/JsonSchema</directory>
+      <directory>./src/Component/OpenApi31/JsonSchema</directory>
     </exclude>
   </coverage>
   <php>
@@ -25,6 +26,7 @@
       <exclude>./src/Component/JsonSchema/Tests/fixtures</exclude>
       <exclude>./src/Component/OpenApi2/Tests/fixtures</exclude>
       <exclude>./src/Component/OpenApi3/Tests/fixtures</exclude>
+      <exclude>./src/Component/OpenApi31/Tests/fixtures</exclude>
     </testsuite>
   </testsuites>
   <groups>

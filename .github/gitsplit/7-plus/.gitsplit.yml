@@ -25,6 +25,9 @@ splits:
     prefix: "src/Component/OpenApi3"
     target: "https://${GH_TOKEN}@github.com/janephp/open-api-3.git"
   -
+    prefix: "src/Component/OpenApi31"
+    target: "https://${GH_TOKEN}@github.com/janephp/open-api-3-1.git"
+  -
     prefix: "src/Component/OpenApiRuntime"
     target: "https://${GH_TOKEN}@github.com/janephp/open-api-runtime.git"
 

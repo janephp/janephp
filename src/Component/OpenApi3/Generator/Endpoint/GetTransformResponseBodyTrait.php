@@ -45,7 +45,16 @@ trait GetTransformResponseBodyTrait
                 if (\is_array($response)) {
                     $normalizer = new ResponseNormalizer();
                     $normalizer->setDenormalizer($this->denormalizer);
-                    $response = $normalizer->denormalize($response, Response::class);
+                    $response = $normalizer->denormalize(
+                        $response,
+                        Response::class,
+                        'json',
+                        ['document-origin' => $context->getCurrentSchema()->getOrigin()]
+                    );
+
+                    if ($response instanceof Reference) {
+                        [$reference, $response] = $guessClass->resolve($response, Response::class);
+                    }
                 }
 
                 /* @var Response $response */
@@ -71,6 +80,21 @@ trait GetTransformResponseBodyTrait
 
                 if ($response instanceof Reference) {
                     [$reference, $response] = $guessClass->resolve($response, Response::class);
+                }
+
+                if (\is_array($response)) {
+                    $normalizer = new ResponseNormalizer();
+                    $normalizer->setDenormalizer($this->denormalizer);
+                    $response = $normalizer->denormalize(
+                        $response,
+                        Response::class,
+                        'json',
+                        ['document-origin' => $context->getCurrentSchema()->getOrigin()]
+                    );
+
+                    if ($response instanceof Reference) {
+                        [$reference, $response] = $guessClass->resolve($response, Response::class);
+                    }
                 }
 
                 /* @var Response $response */

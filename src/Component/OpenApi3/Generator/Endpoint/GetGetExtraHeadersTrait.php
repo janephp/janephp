@@ -4,6 +4,7 @@ namespace Jane\Component\OpenApi3\Generator\Endpoint;
 
 use Jane\Component\OpenApi3\Guesser\GuessClass;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
+use Jane\Component\JsonSchema\Generator\Context\Context;
 use PhpParser\Modifiers;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
@@ -13,10 +14,10 @@ use PhpParser\Node\Stmt;
 
 trait GetGetExtraHeadersTrait
 {
-    public function getExtraHeadersMethod(OperationGuess $operation, GuessClass $guessClass): ?Stmt\ClassMethod
+    public function getExtraHeadersMethod(OperationGuess $operation, GuessClass $guessClass, Context $context): ?Stmt\ClassMethod
     {
         $headers = [];
-        $produces = $this->getContentTypes($operation, $guessClass);
+        $produces = $this->getContentTypes($operation, $guessClass, $context);
 
         if (\count($produces) === 0) {
             return null;

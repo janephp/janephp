@@ -1,0 +1,21 @@
+<?php
+
+namespace Jane\Component\OpenApi31\SchemaParser;
+
+use Jane\Component\OpenApi31\JsonSchema\Model\OpenApi;
+use Jane\Component\OpenApiCommon\SchemaParser\SchemaParser as CommonSchemaParser;
+
+/**
+ * @method OpenApi parseSchema(string $openApiSpecPath)
+ * @method OpenApi denormalize($openApiSpecData, $openApiSpecPath)
+ */
+class SchemaParser extends CommonSchemaParser
+{
+    protected const OPEN_API_MODEL = OpenApi::class;
+    protected const OPEN_API_VERSION_MAJOR = '3.1';
+
+    protected function validSchema($openApiSpecData): bool
+    {
+        return \is_array($openApiSpecData) && \array_key_exists('openapi', $openApiSpecData) && version_compare($openApiSpecData['openapi'], '3.1.0', '>=');
+    }
+}

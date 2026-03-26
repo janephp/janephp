@@ -5,7 +5,7 @@
         bootstrap                   = "vendor/autoload.php" >
 
     <testsuites>
-        <testsuite name="Jane Open Api Unit Test Suite">
+        <testsuite name="Jane Open 3.0 Api Unit Test Suite">
             <directory>Tests</directory>
             <exclude>Tests/fixtures</exclude>
         </testsuite>
