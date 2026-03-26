@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - [OpenApi3] [GH#917](https://github.com/janephp/janephp/pull/917) Fix [GH#738](https://github.com/janephp/janephp/issues/738) multipart/form-data requests failing with non-scalar properties (objects, arrays) by serializing them to JSON
+- [OpenApi3] [GH#921](https://github.com/janephp/janephp/pull/921) Fix lowercase class name suffix for inline properties in `allOf` schemas
+- [OpenApi] [GH#868](https://github.com/janephp/janephp/pull/868) Fix PHP 8.4 deprecation in generated Exception classes
 
 ## [7.10.4] - 2026-01-26
 ### Added

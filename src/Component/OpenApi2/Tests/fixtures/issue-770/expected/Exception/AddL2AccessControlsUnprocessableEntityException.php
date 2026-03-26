@@ -8,7 +8,7 @@ class AddL2AccessControlsUnprocessableEntityException extends UnprocessableEntit
      * @var \Psr\Http\Message\ResponseInterface
      */
     private $response;
-    public function __construct(\Psr\Http\Message\ResponseInterface $response = null)
+    public function __construct(?\Psr\Http\Message\ResponseInterface $response = null)
     {
         parent::__construct('Unprocessable Entity - Business rule violation');
         $this->response = $response;

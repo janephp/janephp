@@ -8,7 +8,7 @@ class DeleteRkszonesApgroupsRadioConfigRadio24gChannelByIdForbiddenException ext
      * @var \Psr\Http\Message\ResponseInterface
      */
     private $response;
-    public function __construct(\Psr\Http\Message\ResponseInterface $response = null)
+    public function __construct(?\Psr\Http\Message\ResponseInterface $response = null)
     {
         parent::__construct('Forbidden - Lack of admin privilege');
         $this->response = $response;
