@@ -8,7 +8,7 @@ class TeamsCheckPermissionsForRepoInOrgNotFoundException extends NotFoundExcepti
      * @var \Psr\Http\Message\ResponseInterface
      */
     private $response;
-    public function __construct(\Psr\Http\Message\ResponseInterface $response = null)
+    public function __construct(?\Psr\Http\Message\ResponseInterface $response = null)
     {
         parent::__construct('Response if team does not have permission for the repository');
         $this->response = $response;

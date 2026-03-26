@@ -8,7 +8,7 @@ class ContentPermissionSetGetPermissionsManyMethodNotAllowedException extends Me
      * @var \Psr\Http\Message\ResponseInterface
      */
     private $response;
-    public function __construct(\Psr\Http\Message\ResponseInterface $response = null)
+    public function __construct(?\Psr\Http\Message\ResponseInterface $response = null)
     {
         parent::__construct('Method not allowed');
         $this->response = $response;

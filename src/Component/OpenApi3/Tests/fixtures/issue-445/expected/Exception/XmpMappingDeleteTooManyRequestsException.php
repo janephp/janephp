@@ -8,7 +8,7 @@ class XmpMappingDeleteTooManyRequestsException extends TooManyRequestsException
      * @var \Psr\Http\Message\ResponseInterface
      */
     private $response;
-    public function __construct(\Psr\Http\Message\ResponseInterface $response = null)
+    public function __construct(?\Psr\Http\Message\ResponseInterface $response = null)
     {
         parent::__construct('Too many requests');
         $this->response = $response;

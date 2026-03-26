@@ -102,8 +102,7 @@ class ExceptionGenerator
 /**
  * @var %s%s
  */
-EOD
-                , '\\' . $classFqdn, $isArray ? '[]' : '');
+EOD, '\\' . $classFqdn, $isArray ? '[]' : '');
 
             $methodName = 'get' . ucfirst($propertyName);
             $exception = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Exception'), [
@@ -196,7 +195,11 @@ EOD
                         new Stmt\ClassMethod('__construct', [
                             'flags' => Modifiers::PUBLIC,
                             'params' => [
-                                new Param(new Expr\Variable('response'), new Expr\ConstFetch(new Name('null')), new Name('\\Psr\\Http\\Message\\ResponseInterface')),
+                                new Param(
+                                    new Expr\Variable('response'),
+                                    new Expr\ConstFetch(new Name('null')),
+                                    new Node\NullableType(new Name('\\Psr\\Http\\Message\\ResponseInterface'))
+                                ),
                             ],
                             'stmts' => [
                                 new Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
