@@ -22,6 +22,7 @@ If you already know which component you need, jump directly to the documentation
 
 > [!IMPORTANT]
 > **What's supported**
+>
 > - OpenAPI: v2, v3.0.x and v3.1.x
 > - JSON Schema generation: draft 2019-09 and draft 2020-12
 > - JSON Schema validation: draft 2020-12 (see [Validation guide](guides/validation.md))

@@ -49,6 +49,7 @@ or [Slack](https://raw.githubusercontent.com/slackapi/slack-api-specs/master/web
 If you think this is what you need, start with [Getting started: using OpenAPI](openapi/getting_started.md).
 
 Or you can see our detailed guides with more feature-focused content:
+
 - [External API Client](guides/external_client.md)
 - [Between two Symfony apps](guides/two_symfony_apps.md)
 - [Nullability](guides/nullable.md)
