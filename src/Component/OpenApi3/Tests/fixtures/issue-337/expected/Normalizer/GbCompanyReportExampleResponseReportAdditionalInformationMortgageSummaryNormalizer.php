@@ -27,21 +27,21 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageSummaryNo
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportAdditionalInformationMortgageSummary();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportAdditionalInformationMortgageSummary();
         if (\array_key_exists('outstanding', $data) && \is_int($data['outstanding'])) {
             $data['outstanding'] = (double) $data['outstanding'];
         }
         if (\array_key_exists('satisfied', $data) && \is_int($data['satisfied'])) {
             $data['satisfied'] = (double) $data['satisfied'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('outstanding', $data)) {
             $object->setOutstanding($data['outstanding']);

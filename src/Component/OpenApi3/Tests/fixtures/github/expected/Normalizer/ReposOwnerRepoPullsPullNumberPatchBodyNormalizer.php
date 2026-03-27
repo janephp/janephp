@@ -27,21 +27,21 @@ class ReposOwnerRepoPullsPullNumberPatchBodyNormalizer implements DenormalizerIn
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Github\Model\ReposOwnerRepoPullsPullNumberPatchBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Github\Model\ReposOwnerRepoPullsPullNumberPatchBody();
         if (\array_key_exists('maintainer_can_modify', $data) && \is_int($data['maintainer_can_modify'])) {
             $data['maintainer_can_modify'] = (bool) $data['maintainer_can_modify'];
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoPullsPullNumberPatchBodyConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);

@@ -27,21 +27,21 @@ class SystemVersionNormalizer implements DenormalizerInterface, NormalizerInterf
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Docker\Api\Model\SystemVersion();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Docker\Api\Model\SystemVersion();
         if (\array_key_exists('Experimental', $data) && \is_int($data['Experimental'])) {
             $data['Experimental'] = (bool) $data['Experimental'];
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\SystemVersionConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('Platform', $data)) {
             $object->setPlatform($this->denormalizer->denormalize($data['Platform'], \Docker\Api\Model\SystemVersionPlatform::class, 'json', $context));

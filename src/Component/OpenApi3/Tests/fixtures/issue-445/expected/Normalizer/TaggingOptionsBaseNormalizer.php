@@ -27,11 +27,9 @@ class TaggingOptionsBaseNormalizer implements DenormalizerInterface, NormalizerI
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (array_key_exists('kind', $data) and 'ClarifaiTaggingOptions' === $data['kind']) {
-            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ClarifaiTaggingOptions', $format, $context);
-        }
-        if (array_key_exists('kind', $data) and 'SimulatedTaggingOptions' === $data['kind']) {
-            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\SimulatedTaggingOptions', $format, $context);
+        $object = new \PicturePark\API\Model\TaggingOptionsBase();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -39,9 +37,11 @@ class TaggingOptionsBaseNormalizer implements DenormalizerInterface, NormalizerI
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\TaggingOptionsBase();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
+        if (array_key_exists('kind', $data) and 'ClarifaiTaggingOptions' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ClarifaiTaggingOptions', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'SimulatedTaggingOptions' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\SimulatedTaggingOptions', $format, $context);
         }
         if (\array_key_exists('tagOutputFormatId', $data) && $data['tagOutputFormatId'] !== null) {
             $object->setTagOutputFormatId($data['tagOutputFormatId']);

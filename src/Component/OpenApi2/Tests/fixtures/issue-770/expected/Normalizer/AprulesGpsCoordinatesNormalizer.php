@@ -27,13 +27,16 @@ class AprulesGpsCoordinatesNormalizer implements DenormalizerInterface, Normaliz
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\AprulesGpsCoordinates();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\AprulesGpsCoordinates();
         if (\array_key_exists('latitude', $data) && \is_int($data['latitude'])) {
             $data['latitude'] = (double) $data['latitude'];
         }
@@ -42,9 +45,6 @@ class AprulesGpsCoordinatesNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('distance', $data) && \is_int($data['distance'])) {
             $data['distance'] = (double) $data['distance'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('latitude', $data)) {
             $object->setLatitude($data['latitude']);

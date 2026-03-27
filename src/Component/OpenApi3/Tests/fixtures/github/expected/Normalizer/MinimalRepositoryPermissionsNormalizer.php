@@ -27,13 +27,16 @@ class MinimalRepositoryPermissionsNormalizer implements DenormalizerInterface, N
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Github\Model\MinimalRepositoryPermissions();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Github\Model\MinimalRepositoryPermissions();
         if (\array_key_exists('admin', $data) && \is_int($data['admin'])) {
             $data['admin'] = (bool) $data['admin'];
         }
@@ -45,9 +48,6 @@ class MinimalRepositoryPermissionsNormalizer implements DenormalizerInterface, N
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\MinimalRepositoryPermissionsConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('admin', $data)) {
             $object->setAdmin($data['admin']);

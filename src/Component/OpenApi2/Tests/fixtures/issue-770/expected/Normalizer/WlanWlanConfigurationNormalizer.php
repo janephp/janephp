@@ -27,13 +27,16 @@ class WlanWlanConfigurationNormalizer implements DenormalizerInterface, Normaliz
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\WlanWlanConfiguration();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\WlanWlanConfiguration();
         if (\array_key_exists('firewallUplinkRateLimitingMbps', $data) && \is_int($data['firewallUplinkRateLimitingMbps'])) {
             $data['firewallUplinkRateLimitingMbps'] = (double) $data['firewallUplinkRateLimitingMbps'];
         }
@@ -69,9 +72,6 @@ class WlanWlanConfigurationNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('apHostNameAdvertisementEnabled', $data) && \is_int($data['apHostNameAdvertisementEnabled'])) {
             $data['apHostNameAdvertisementEnabled'] = (bool) $data['apHostNameAdvertisementEnabled'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

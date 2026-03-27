@@ -27,21 +27,21 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \PicturePark\API\Model\BusinessProcessDetails();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\BusinessProcessDetails();
         if (\array_key_exists('supportsCancellation', $data) && \is_int($data['supportsCancellation'])) {
             $data['supportsCancellation'] = (bool) $data['supportsCancellation'];
         }
         if (\array_key_exists('finished', $data) && \is_int($data['finished'])) {
             $data['finished'] = (bool) $data['finished'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

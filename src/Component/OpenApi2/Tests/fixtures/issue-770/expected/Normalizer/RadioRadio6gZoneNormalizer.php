@@ -27,21 +27,21 @@ class RadioRadio6gZoneNormalizer implements DenormalizerInterface, NormalizerInt
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\RadioRadio6gZone();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\RadioRadio6gZone();
         if (\array_key_exists('autoCellSizing', $data) && \is_int($data['autoCellSizing'])) {
             $data['autoCellSizing'] = (bool) $data['autoCellSizing'];
         }
         if (\array_key_exists('lowPowerIndoorModeEnabled', $data) && \is_int($data['lowPowerIndoorModeEnabled'])) {
             $data['lowPowerIndoorModeEnabled'] = (bool) $data['lowPowerIndoorModeEnabled'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('autoCellSizing', $data)) {
             $object->setAutoCellSizing($data['autoCellSizing']);

@@ -27,11 +27,9 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (array_key_exists('petType', $data) and 'Cat' === $data['petType']) {
-            return $this->denormalizer->denormalize($data, 'Jane\Component\OpenApi3\Tests\Expected\Model\Cat', $format, $context);
-        }
-        if (array_key_exists('petType', $data) and 'Dog' === $data['petType']) {
-            return $this->denormalizer->denormalize($data, 'Jane\Component\OpenApi3\Tests\Expected\Model\Dog', $format, $context);
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\Pet();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -39,9 +37,11 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\Pet();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
+        if (array_key_exists('petType', $data) and 'Cat' === $data['petType']) {
+            return $this->denormalizer->denormalize($data, 'Jane\Component\OpenApi3\Tests\Expected\Model\Cat', $format, $context);
+        }
+        if (array_key_exists('petType', $data) and 'Dog' === $data['petType']) {
+            return $this->denormalizer->denormalize($data, 'Jane\Component\OpenApi3\Tests\Expected\Model\Dog', $format, $context);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);

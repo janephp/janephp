@@ -27,18 +27,18 @@ class BusinessRuleConfigurationUpdateRequestNormalizer implements DenormalizerIn
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \PicturePark\API\Model\BusinessRuleConfigurationUpdateRequest();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\BusinessRuleConfigurationUpdateRequest();
         if (\array_key_exists('disableRuleEngine', $data) && \is_int($data['disableRuleEngine'])) {
             $data['disableRuleEngine'] = (bool) $data['disableRuleEngine'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('disableRuleEngine', $data)) {
             $object->setDisableRuleEngine($data['disableRuleEngine']);

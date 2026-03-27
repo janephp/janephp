@@ -27,13 +27,16 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \PicturePark\API\Model\UserDetail();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\UserDetail();
         if (\array_key_exists('isDeleted', $data) && \is_int($data['isDeleted'])) {
             $data['isDeleted'] = (bool) $data['isDeleted'];
         }
@@ -48,9 +51,6 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (\array_key_exists('isFederated', $data) && \is_int($data['isFederated'])) {
             $data['isFederated'] = (bool) $data['isFederated'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);

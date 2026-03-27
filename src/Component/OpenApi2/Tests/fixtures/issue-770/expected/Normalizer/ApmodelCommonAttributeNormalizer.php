@@ -27,13 +27,16 @@ class ApmodelCommonAttributeNormalizer implements DenormalizerInterface, Normali
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelCommonAttribute();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelCommonAttribute();
         if (\array_key_exists('isAllowDisableExtAnt', $data) && \is_int($data['isAllowDisableExtAnt'])) {
             $data['isAllowDisableExtAnt'] = (bool) $data['isAllowDisableExtAnt'];
         }
@@ -81,9 +84,6 @@ class ApmodelCommonAttributeNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('supportResetCablemodem', $data) && \is_int($data['supportResetCablemodem'])) {
             $data['supportResetCablemodem'] = (bool) $data['supportResetCablemodem'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('nonEditablePorts', $data)) {
             $values = [];

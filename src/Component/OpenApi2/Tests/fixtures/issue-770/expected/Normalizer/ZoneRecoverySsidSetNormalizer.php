@@ -27,18 +27,18 @@ class ZoneRecoverySsidSetNormalizer implements DenormalizerInterface, Normalizer
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneRecoverySsidSet();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneRecoverySsidSet();
         if (\array_key_exists('recoverySsidEnabled', $data) && \is_int($data['recoverySsidEnabled'])) {
             $data['recoverySsidEnabled'] = (bool) $data['recoverySsidEnabled'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('recoverySsidPskKey', $data)) {
             $object->setRecoverySsidPskKey($data['recoverySsidPskKey']);

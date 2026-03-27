@@ -28,18 +28,18 @@ class SponsoredProductsListSponsoredProductsCampaignsRequestContentNormalizer im
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\SponsoredProductsListSponsoredProductsCampaignsRequestContent();
         if (\array_key_exists('includeExtendedDataFields', $data) && \is_int($data['includeExtendedDataFields'])) {
             $data['includeExtendedDataFields'] = (bool) $data['includeExtendedDataFields'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('maxResults', $data)) {
             $object->setMaxResults($data['maxResults']);

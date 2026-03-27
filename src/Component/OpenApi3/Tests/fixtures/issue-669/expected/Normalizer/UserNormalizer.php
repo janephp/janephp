@@ -27,15 +27,15 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\User();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Jane\Generated\DigitalOcean\Model\User();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('kubernetes_cluster_user', $data)) {
             $object->setKubernetesClusterUser($this->denormalizer->denormalize($data['kubernetes_cluster_user'], \Jane\Generated\DigitalOcean\Model\UserKubernetesClusterUser::class, 'json', $context));

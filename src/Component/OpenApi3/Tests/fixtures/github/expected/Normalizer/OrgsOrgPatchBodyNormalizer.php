@@ -27,13 +27,16 @@ class OrgsOrgPatchBodyNormalizer implements DenormalizerInterface, NormalizerInt
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Github\Model\OrgsOrgPatchBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Github\Model\OrgsOrgPatchBody();
         if (\array_key_exists('has_organization_projects', $data) && \is_int($data['has_organization_projects'])) {
             $data['has_organization_projects'] = (bool) $data['has_organization_projects'];
         }
@@ -54,9 +57,6 @@ class OrgsOrgPatchBodyNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgPatchBodyConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('billing_email', $data)) {
             $object->setBillingEmail($data['billing_email']);

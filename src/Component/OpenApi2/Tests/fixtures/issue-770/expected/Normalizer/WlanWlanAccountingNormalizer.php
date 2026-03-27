@@ -27,13 +27,16 @@ class WlanWlanAccountingNormalizer implements DenormalizerInterface, NormalizerI
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\WlanWlanAccounting();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\WlanWlanAccounting();
         if (\array_key_exists('throughController', $data) && \is_int($data['throughController'])) {
             $data['throughController'] = (bool) $data['throughController'];
         }
@@ -42,9 +45,6 @@ class WlanWlanAccountingNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('accountingDelayEnabled', $data) && \is_int($data['accountingDelayEnabled'])) {
             $data['accountingDelayEnabled'] = (bool) $data['accountingDelayEnabled'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('throughController', $data)) {
             $object->setThroughController($data['throughController']);

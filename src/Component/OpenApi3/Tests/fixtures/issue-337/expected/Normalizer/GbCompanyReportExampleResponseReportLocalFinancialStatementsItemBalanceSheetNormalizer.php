@@ -27,13 +27,16 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemBalanceShe
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportLocalFinancialStatementsItemBalanceSheet();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportLocalFinancialStatementsItemBalanceSheet();
         if (\array_key_exists('tangibleAssets', $data) && \is_int($data['tangibleAssets'])) {
             $data['tangibleAssets'] = (double) $data['tangibleAssets'];
         }
@@ -105,9 +108,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemBalanceShe
         }
         if (\array_key_exists('totalShareholdersEquity', $data) && \is_int($data['totalShareholdersEquity'])) {
             $data['totalShareholdersEquity'] = (double) $data['totalShareholdersEquity'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('tangibleAssets', $data)) {
             $object->setTangibleAssets($data['tangibleAssets']);

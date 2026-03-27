@@ -27,11 +27,9 @@ class FloatingIPsActionNormalizer implements DenormalizerInterface, NormalizerIn
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (array_key_exists('type', $data) and 'assign' === $data['type']) {
-            return $this->denormalizer->denormalize($data, 'Jane\Generated\DigitalOcean\Model\FloatingIpActionAssign', $format, $context);
-        }
-        if (array_key_exists('type', $data) and 'unassign' === $data['type']) {
-            return $this->denormalizer->denormalize($data, 'Jane\Generated\DigitalOcean\Model\FloatingIpActionUnassign', $format, $context);
+        $object = new \Jane\Generated\DigitalOcean\Model\FloatingIPsAction();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -39,9 +37,11 @@ class FloatingIPsActionNormalizer implements DenormalizerInterface, NormalizerIn
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\FloatingIPsAction();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
+        if (array_key_exists('type', $data) and 'assign' === $data['type']) {
+            return $this->denormalizer->denormalize($data, 'Jane\Generated\DigitalOcean\Model\FloatingIpActionAssign', $format, $context);
+        }
+        if (array_key_exists('type', $data) and 'unassign' === $data['type']) {
+            return $this->denormalizer->denormalize($data, 'Jane\Generated\DigitalOcean\Model\FloatingIpActionUnassign', $format, $context);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);

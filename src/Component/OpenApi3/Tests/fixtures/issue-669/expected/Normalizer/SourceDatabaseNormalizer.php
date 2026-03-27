@@ -27,18 +27,18 @@ class SourceDatabaseNormalizer implements DenormalizerInterface, NormalizerInter
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\SourceDatabase();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\SourceDatabase();
         if (\array_key_exists('disable_ssl', $data) && \is_int($data['disable_ssl'])) {
             $data['disable_ssl'] = (bool) $data['disable_ssl'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('source', $data)) {
             $object->setSource($this->denormalizer->denormalize($data['source'], \Jane\Generated\DigitalOcean\Model\SourceDatabaseSource::class, 'json', $context));

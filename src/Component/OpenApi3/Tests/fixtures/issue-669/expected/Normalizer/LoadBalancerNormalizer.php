@@ -27,13 +27,16 @@ class LoadBalancerNormalizer implements DenormalizerInterface, NormalizerInterfa
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\LoadBalancer();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\LoadBalancer();
         if (\array_key_exists('redirect_http_to_https', $data) && \is_int($data['redirect_http_to_https'])) {
             $data['redirect_http_to_https'] = (bool) $data['redirect_http_to_https'];
         }
@@ -45,9 +48,6 @@ class LoadBalancerNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('disable_lets_encrypt_dns_records', $data) && \is_int($data['disable_lets_encrypt_dns_records'])) {
             $data['disable_lets_encrypt_dns_records'] = (bool) $data['disable_lets_encrypt_dns_records'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

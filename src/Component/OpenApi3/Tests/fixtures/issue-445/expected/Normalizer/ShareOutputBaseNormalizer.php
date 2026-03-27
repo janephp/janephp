@@ -27,11 +27,9 @@ class ShareOutputBaseNormalizer implements DenormalizerInterface, NormalizerInte
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (array_key_exists('kind', $data) and 'ShareOutputBasic' === $data['kind']) {
-            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ShareOutputBasic', $format, $context);
-        }
-        if (array_key_exists('kind', $data) and 'ShareOutputEmbed' === $data['kind']) {
-            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ShareOutputEmbed', $format, $context);
+        $object = new \PicturePark\API\Model\ShareOutputBase();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -39,12 +37,14 @@ class ShareOutputBaseNormalizer implements DenormalizerInterface, NormalizerInte
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\ShareOutputBase();
+        if (array_key_exists('kind', $data) and 'ShareOutputBasic' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ShareOutputBasic', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'ShareOutputEmbed' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ShareOutputEmbed', $format, $context);
+        }
         if (\array_key_exists('dynamicRendering', $data) && \is_int($data['dynamicRendering'])) {
             $data['dynamicRendering'] = (bool) $data['dynamicRendering'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('contentId', $data)) {
             $object->setContentId($data['contentId']);

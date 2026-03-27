@@ -27,13 +27,16 @@ class CommonQueryCriteriaOptionsNormalizer implements DenormalizerInterface, Nor
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaOptions();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\CommonQueryCriteriaOptions();
         if (\array_key_exists('auth_includeNa', $data) && \is_int($data['auth_includeNa'])) {
             $data['auth_includeNa'] = (bool) $data['auth_includeNa'];
         }
@@ -75,9 +78,6 @@ class CommonQueryCriteriaOptionsNormalizer implements DenormalizerInterface, Nor
         }
         if (\array_key_exists('includeUserClickNode', $data) && \is_int($data['includeUserClickNode'])) {
             $data['includeUserClickNode'] = (bool) $data['includeUserClickNode'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('auth_includeNa', $data)) {
             $object->setAuthIncludeNa($data['auth_includeNa']);

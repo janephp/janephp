@@ -27,13 +27,16 @@ class CommonDhcpSiteConfigListRefNormalizer implements DenormalizerInterface, No
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\CommonDhcpSiteConfigListRef();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\CommonDhcpSiteConfigListRef();
         if (\array_key_exists('siteEnabled', $data) && \is_int($data['siteEnabled'])) {
             $data['siteEnabled'] = (bool) $data['siteEnabled'];
         }
@@ -45,9 +48,6 @@ class CommonDhcpSiteConfigListRefNormalizer implements DenormalizerInterface, No
         }
         if (\array_key_exists('manualSelect', $data) && \is_int($data['manualSelect'])) {
             $data['manualSelect'] = (bool) $data['manualSelect'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('zoneName', $data)) {
             $object->setZoneName($data['zoneName']);

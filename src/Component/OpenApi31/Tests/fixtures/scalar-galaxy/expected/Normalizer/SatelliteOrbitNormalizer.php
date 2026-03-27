@@ -27,13 +27,16 @@ class SatelliteOrbitNormalizer implements DenormalizerInterface, NormalizerInter
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\SatelliteOrbit();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\SatelliteOrbit();
         if (\array_key_exists('orbitalPeriod', $data) && \is_int($data['orbitalPeriod'])) {
             $data['orbitalPeriod'] = (double) $data['orbitalPeriod'];
         }
@@ -42,9 +45,6 @@ class SatelliteOrbitNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\SatelliteOrbitConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('planet', $data)) {
             $object->setPlanet($this->denormalizer->denormalize($data['planet'], \Jane\Component\OpenApi31\Tests\Expected\Model\Planet::class, 'json', $context));

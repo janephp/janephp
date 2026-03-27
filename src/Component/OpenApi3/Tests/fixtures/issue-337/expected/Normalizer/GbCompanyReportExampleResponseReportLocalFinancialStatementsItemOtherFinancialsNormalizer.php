@@ -27,13 +27,16 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinancials();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinancials();
         if (\array_key_exists('bankOverdraftAndLTL', $data) && \is_int($data['bankOverdraftAndLTL'])) {
             $data['bankOverdraftAndLTL'] = (double) $data['bankOverdraftAndLTL'];
         }
@@ -48,9 +51,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
         }
         if (\array_key_exists('contingentLiabilities', $data) && \is_int($data['contingentLiabilities'])) {
             $data['contingentLiabilities'] = (bool) $data['contingentLiabilities'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('contingentLiabilities', $data)) {
             $object->setContingentLiabilities($data['contingentLiabilities']);

@@ -27,18 +27,18 @@ class ZoneQueryCriteriaOptionsNormalizer implements DenormalizerInterface, Norma
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaOptions();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneQueryCriteriaOptions();
         if (\array_key_exists('includeSharedResources', $data) && \is_int($data['includeSharedResources'])) {
             $data['includeSharedResources'] = (bool) $data['includeSharedResources'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('zone_ipmode', $data)) {
             $object->setZoneIpmode($data['zone_ipmode']);

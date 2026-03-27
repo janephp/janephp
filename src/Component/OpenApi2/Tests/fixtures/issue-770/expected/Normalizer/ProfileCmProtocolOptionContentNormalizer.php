@@ -27,21 +27,21 @@ class ProfileCmProtocolOptionContentNormalizer implements DenormalizerInterface,
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCmProtocolOptionContent();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileCmProtocolOptionContent();
         if (\array_key_exists('cmpDhcpOpt43Subcode', $data) && \is_int($data['cmpDhcpOpt43Subcode'])) {
             $data['cmpDhcpOpt43Subcode'] = (double) $data['cmpDhcpOpt43Subcode'];
         }
         if (\array_key_exists('cmpDhcpOpt43SubcodeRecipient', $data) && \is_int($data['cmpDhcpOpt43SubcodeRecipient'])) {
             $data['cmpDhcpOpt43SubcodeRecipient'] = (double) $data['cmpDhcpOpt43SubcodeRecipient'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('cmpDhcpOpt43Subcode', $data)) {
             $object->setCmpDhcpOpt43Subcode($data['cmpDhcpOpt43Subcode']);

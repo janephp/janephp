@@ -27,13 +27,16 @@ class VideoStreamNormalizer implements DenormalizerInterface, NormalizerInterfac
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \PicturePark\API\Model\VideoStream();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\VideoStream();
         if (\array_key_exists('durationInSeconds', $data) && \is_int($data['durationInSeconds'])) {
             $data['durationInSeconds'] = (double) $data['durationInSeconds'];
         }
@@ -45,9 +48,6 @@ class VideoStreamNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (\array_key_exists('rotation', $data) && \is_int($data['rotation'])) {
             $data['rotation'] = (double) $data['rotation'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('bitRate', $data) && $data['bitRate'] !== null) {
             $object->setBitRate($data['bitRate']);

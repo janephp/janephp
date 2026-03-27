@@ -27,21 +27,21 @@ class ClusterbladeClusterUpgradeProgressNormalizer implements DenormalizerInterf
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladeClusterUpgradeProgress();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterbladeClusterUpgradeProgress();
         if (\array_key_exists('isSelfBladeRebooting', $data) && \is_int($data['isSelfBladeRebooting'])) {
             $data['isSelfBladeRebooting'] = (bool) $data['isSelfBladeRebooting'];
         }
         if (\array_key_exists('clusterOperationBlockUI', $data) && \is_int($data['clusterOperationBlockUI'])) {
             $data['clusterOperationBlockUI'] = (bool) $data['clusterOperationBlockUI'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('operation', $data)) {
             $object->setOperation($data['operation']);

@@ -27,13 +27,16 @@ class OrgsOrgMigrationsPostBodyNormalizer implements DenormalizerInterface, Norm
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Github\Model\OrgsOrgMigrationsPostBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Github\Model\OrgsOrgMigrationsPostBody();
         if (\array_key_exists('lock_repositories', $data) && \is_int($data['lock_repositories'])) {
             $data['lock_repositories'] = (bool) $data['lock_repositories'];
         }
@@ -42,9 +45,6 @@ class OrgsOrgMigrationsPostBodyNormalizer implements DenormalizerInterface, Norm
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\OrgsOrgMigrationsPostBodyConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('repositories', $data)) {
             $values = [];

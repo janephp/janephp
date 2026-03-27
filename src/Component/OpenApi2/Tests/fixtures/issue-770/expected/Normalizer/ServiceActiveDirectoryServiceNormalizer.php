@@ -27,13 +27,16 @@ class ServiceActiveDirectoryServiceNormalizer implements DenormalizerInterface, 
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceActiveDirectoryService();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceActiveDirectoryService();
         if (\array_key_exists('tlsEnabled', $data) && \is_int($data['tlsEnabled'])) {
             $data['tlsEnabled'] = (bool) $data['tlsEnabled'];
         }
@@ -48,9 +51,6 @@ class ServiceActiveDirectoryServiceNormalizer implements DenormalizerInterface, 
         }
         if (\array_key_exists('standbyGlobalCatalogEnabled', $data) && \is_int($data['standbyGlobalCatalogEnabled'])) {
             $data['standbyGlobalCatalogEnabled'] = (bool) $data['standbyGlobalCatalogEnabled'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

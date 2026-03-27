@@ -27,21 +27,21 @@ class ClusterRedundancyClusterRedundancySettingsNormalizer implements Denormaliz
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterRedundancyClusterRedundancySettings();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ClusterRedundancyClusterRedundancySettings();
         if (\array_key_exists('clusterRedundancyEnabled', $data) && \is_int($data['clusterRedundancyEnabled'])) {
             $data['clusterRedundancyEnabled'] = (bool) $data['clusterRedundancyEnabled'];
         }
         if (\array_key_exists('scheduleSyncUpEnabled', $data) && \is_int($data['scheduleSyncUpEnabled'])) {
             $data['scheduleSyncUpEnabled'] = (bool) $data['scheduleSyncUpEnabled'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('clusterRedundancyEnabled', $data)) {
             $object->setClusterRedundancyEnabled($data['clusterRedundancyEnabled']);

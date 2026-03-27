@@ -27,21 +27,21 @@ class UserSearchAndAggregationBaseRequestNormalizer implements DenormalizerInter
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \PicturePark\API\Model\UserSearchAndAggregationBaseRequest();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\UserSearchAndAggregationBaseRequest();
         if (\array_key_exists('includeServiceUser', $data) && \is_int($data['includeServiceUser'])) {
             $data['includeServiceUser'] = (bool) $data['includeServiceUser'];
         }
         if (\array_key_exists('editableOnly', $data) && \is_int($data['editableOnly'])) {
             $data['editableOnly'] = (bool) $data['editableOnly'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
             $object->setSearchString($data['searchString']);

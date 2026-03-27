@@ -27,13 +27,16 @@ class NotificationEventNormalizer implements DenormalizerInterface, NormalizerIn
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \CreditSafe\API\Model\NotificationEvent();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \CreditSafe\API\Model\NotificationEvent();
         if (\array_key_exists('eventId', $data) && \is_int($data['eventId'])) {
             $data['eventId'] = (double) $data['eventId'];
         }
@@ -42,9 +45,6 @@ class NotificationEventNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('ruleCode', $data) && \is_int($data['ruleCode'])) {
             $data['ruleCode'] = (double) $data['ruleCode'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('company', $data)) {
             $object->setCompany($this->denormalizer->denormalize($data['company'], \CreditSafe\API\Model\Company::class, 'json', $context));

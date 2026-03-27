@@ -27,13 +27,16 @@ class EthernetPortModifyEthernetPortProfileNormalizer implements DenormalizerInt
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\EthernetPortModifyEthernetPortProfile();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\EthernetPortModifyEthernetPortProfile();
         if (\array_key_exists('tunnelEnabled', $data) && \is_int($data['tunnelEnabled'])) {
             $data['tunnelEnabled'] = (bool) $data['tunnelEnabled'];
         }
@@ -63,9 +66,6 @@ class EthernetPortModifyEthernetPortProfileNormalizer implements DenormalizerInt
         }
         if (\array_key_exists('clientIsolationAutoVrrpEnabled', $data) && \is_int($data['clientIsolationAutoVrrpEnabled'])) {
             $data['clientIsolationAutoVrrpEnabled'] = (bool) $data['clientIsolationAutoVrrpEnabled'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);

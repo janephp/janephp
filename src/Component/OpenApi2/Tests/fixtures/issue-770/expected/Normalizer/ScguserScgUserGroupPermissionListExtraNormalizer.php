@@ -27,21 +27,21 @@ class ScguserScgUserGroupPermissionListExtraNormalizer implements DenormalizerIn
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserGroupPermissionListExtra();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserScgUserGroupPermissionListExtra();
         if (\array_key_exists('isSuperAdmin', $data) && \is_int($data['isSuperAdmin'])) {
             $data['isSuperAdmin'] = (bool) $data['isSuperAdmin'];
         }
         if (\array_key_exists('isSuperAdminOfDomain', $data) && \is_int($data['isSuperAdminOfDomain'])) {
             $data['isSuperAdminOfDomain'] = (bool) $data['isSuperAdminOfDomain'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('isSuperAdmin', $data)) {
             $object->setIsSuperAdmin($data['isSuperAdmin']);

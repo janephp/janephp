@@ -27,13 +27,16 @@ class ProtectedBranchPullRequestReviewNormalizer implements DenormalizerInterfac
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Github\Model\ProtectedBranchPullRequestReview();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Github\Model\ProtectedBranchPullRequestReview();
         if (\array_key_exists('dismiss_stale_reviews', $data) && \is_int($data['dismiss_stale_reviews'])) {
             $data['dismiss_stale_reviews'] = (bool) $data['dismiss_stale_reviews'];
         }
@@ -42,9 +45,6 @@ class ProtectedBranchPullRequestReviewNormalizer implements DenormalizerInterfac
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ProtectedBranchPullRequestReviewConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);

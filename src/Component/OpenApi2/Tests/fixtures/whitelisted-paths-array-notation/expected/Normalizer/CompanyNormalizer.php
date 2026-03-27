@@ -27,13 +27,16 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\OpenApi2\Tests\Expected\Model\Company();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\OpenApi2\Tests\Expected\Model\Company();
         if (\array_key_exists('is_active', $data) && \is_int($data['is_active'])) {
             $data['is_active'] = (bool) $data['is_active'];
         }
@@ -51,9 +54,6 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('approval_feature', $data) && \is_int($data['approval_feature'])) {
             $data['approval_feature'] = (bool) $data['approval_feature'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('base_uri', $data)) {
             $object->setBaseUri($data['base_uri']);

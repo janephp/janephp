@@ -27,15 +27,15 @@ class Endpoint2GetResponseNormalizer implements DenormalizerInterface, Normalize
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint2GetResponse();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\Endpoint2GetResponse();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('field-2', $data)) {
             $object->setField2($this->denormalizer->denormalize($data['field-2'], \Jane\Component\OpenApi3\Tests\Expected\Model\SubLevel1::class, 'json', $context));

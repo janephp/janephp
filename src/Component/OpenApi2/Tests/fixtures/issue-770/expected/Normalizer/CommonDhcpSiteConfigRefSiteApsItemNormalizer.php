@@ -27,21 +27,21 @@ class CommonDhcpSiteConfigRefSiteApsItemNormalizer implements DenormalizerInterf
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\CommonDhcpSiteConfigRefSiteApsItem();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\CommonDhcpSiteConfigRefSiteApsItem();
         if (\array_key_exists('apServerEnabled', $data) && \is_int($data['apServerEnabled'])) {
             $data['apServerEnabled'] = (bool) $data['apServerEnabled'];
         }
         if (\array_key_exists('apServerPrimary', $data) && \is_int($data['apServerPrimary'])) {
             $data['apServerPrimary'] = (bool) $data['apServerPrimary'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('apMac', $data)) {
             $object->setApMac($data['apMac']);

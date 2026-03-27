@@ -27,13 +27,16 @@ class JpegFormatNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \PicturePark\API\Model\JpegFormat();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\JpegFormat();
         if (\array_key_exists('horizontalResolution', $data) && \is_int($data['horizontalResolution'])) {
             $data['horizontalResolution'] = (double) $data['horizontalResolution'];
         }
@@ -45,9 +48,6 @@ class JpegFormatNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (\array_key_exists('chromaSubsamplingEnabled', $data) && \is_int($data['chromaSubsamplingEnabled'])) {
             $data['chromaSubsamplingEnabled'] = (bool) $data['chromaSubsamplingEnabled'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);

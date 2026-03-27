@@ -27,13 +27,16 @@ class ServiceCreateRadiusAccountingNormalizer implements DenormalizerInterface, 
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceCreateRadiusAccounting();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ServiceCreateRadiusAccounting();
         if (\array_key_exists('standbyServerEnabled', $data) && \is_int($data['standbyServerEnabled'])) {
             $data['standbyServerEnabled'] = (bool) $data['standbyServerEnabled'];
         }
@@ -42,9 +45,6 @@ class ServiceCreateRadiusAccountingNormalizer implements DenormalizerInterface, 
         }
         if (\array_key_exists('standbyTlsEnabled', $data) && \is_int($data['standbyTlsEnabled'])) {
             $data['standbyTlsEnabled'] = (bool) $data['standbyTlsEnabled'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);

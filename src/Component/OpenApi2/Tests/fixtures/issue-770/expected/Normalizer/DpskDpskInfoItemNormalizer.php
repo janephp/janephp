@@ -27,21 +27,21 @@ class DpskDpskInfoItemNormalizer implements DenormalizerInterface, NormalizerInt
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\DpskDpskInfoItem();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\DpskDpskInfoItem();
         if (\array_key_exists('creationDateTime', $data) && \is_int($data['creationDateTime'])) {
             $data['creationDateTime'] = (double) $data['creationDateTime'];
         }
         if (\array_key_exists('groupDpsk', $data) && \is_int($data['groupDpsk'])) {
             $data['groupDpsk'] = (bool) $data['groupDpsk'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

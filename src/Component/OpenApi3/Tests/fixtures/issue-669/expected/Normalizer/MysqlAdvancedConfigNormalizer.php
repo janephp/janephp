@@ -27,13 +27,16 @@ class MysqlAdvancedConfigNormalizer implements DenormalizerInterface, Normalizer
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\MysqlAdvancedConfig();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\MysqlAdvancedConfig();
         if (\array_key_exists('long_query_time', $data) && \is_int($data['long_query_time'])) {
             $data['long_query_time'] = (double) $data['long_query_time'];
         }
@@ -51,9 +54,6 @@ class MysqlAdvancedConfigNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('slow_query_log', $data) && \is_int($data['slow_query_log'])) {
             $data['slow_query_log'] = (bool) $data['slow_query_log'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('backup_hour', $data)) {
             $object->setBackupHour($data['backup_hour']);

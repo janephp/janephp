@@ -27,18 +27,18 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureNormalizer implem
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportShareCapitalStructure();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportShareCapitalStructure();
         if (\array_key_exists('numberOfSharesIssued', $data) && \is_int($data['numberOfSharesIssued'])) {
             $data['numberOfSharesIssued'] = (double) $data['numberOfSharesIssued'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('issuedShareCapital', $data)) {
             $object->setIssuedShareCapital($this->denormalizer->denormalize($data['issuedShareCapital'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportShareCapitalStructureIssuedShareCapital::class, 'json', $context));

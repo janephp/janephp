@@ -27,13 +27,16 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyNormalizer implements Denorma
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBody();
         if (\array_key_exists('enforce_admins', $data) && \is_int($data['enforce_admins'])) {
             $data['enforce_admins'] = (bool) $data['enforce_admins'];
         }
@@ -48,9 +51,6 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyNormalizer implements Denorma
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoBranchesBranchProtectionPutBodyConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('required_status_checks', $data) && $data['required_status_checks'] !== null) {
             $object->setRequiredStatusChecks($this->denormalizer->denormalize($data['required_status_checks'], \Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecks::class, 'json', $context));

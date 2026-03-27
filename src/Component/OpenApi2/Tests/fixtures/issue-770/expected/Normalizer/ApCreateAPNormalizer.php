@@ -27,13 +27,16 @@ class ApCreateAPNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ApCreateAP();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ApCreateAP();
         if (\array_key_exists('latitude', $data) && \is_int($data['latitude'])) {
             $data['latitude'] = (double) $data['latitude'];
         }
@@ -45,9 +48,6 @@ class ApCreateAPNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (\array_key_exists('bssColoringEnable', $data) && \is_int($data['bssColoringEnable'])) {
             $data['bssColoringEnable'] = (bool) $data['bssColoringEnable'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('mac', $data)) {
             $object->setMac($data['mac']);

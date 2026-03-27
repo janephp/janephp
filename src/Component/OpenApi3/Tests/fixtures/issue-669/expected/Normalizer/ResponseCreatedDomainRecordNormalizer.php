@@ -27,15 +27,15 @@ class ResponseCreatedDomainRecordNormalizer implements DenormalizerInterface, No
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\ResponseCreatedDomainRecord();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Jane\Generated\DigitalOcean\Model\ResponseCreatedDomainRecord();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('domain_record', $data)) {
             $object->setDomainRecord($this->denormalizer->denormalize($data['domain_record'], \Jane\Generated\DigitalOcean\Model\DomainRecord::class, 'json', $context));

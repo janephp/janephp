@@ -27,15 +27,15 @@ class ComplianceSearchResultDataNormalizer implements DenormalizerInterface, Nor
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \CreditSafe\API\Model\ComplianceSearchResultData();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \CreditSafe\API\Model\ComplianceSearchResultData();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($this->denormalizer->denormalize($data['body'], \CreditSafe\API\Model\ComplianceSearchResultDataBody::class, 'json', $context));

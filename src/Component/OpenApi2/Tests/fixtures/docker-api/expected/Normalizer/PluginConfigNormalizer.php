@@ -27,13 +27,16 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Docker\Api\Model\PluginConfig();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Docker\Api\Model\PluginConfig();
         if (\array_key_exists('IpcHost', $data) && \is_int($data['IpcHost'])) {
             $data['IpcHost'] = (bool) $data['IpcHost'];
         }
@@ -42,9 +45,6 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\PluginConfigConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('DockerVersion', $data)) {
             $object->setDockerVersion($data['DockerVersion']);

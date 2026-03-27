@@ -27,13 +27,16 @@ class ZoneApmodelApModelNormalizer implements DenormalizerInterface, NormalizerI
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneApmodelApModel();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ZoneApmodelApModel();
         if (\array_key_exists('ledStatusEnabled', $data) && \is_int($data['ledStatusEnabled'])) {
             $data['ledStatusEnabled'] = (bool) $data['ledStatusEnabled'];
         }
@@ -45,9 +48,6 @@ class ZoneApmodelApModelNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('usbPowerEnable', $data) && \is_int($data['usbPowerEnable'])) {
             $data['usbPowerEnable'] = (bool) $data['usbPowerEnable'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('ledStatusEnabled', $data)) {
             $object->setLedStatusEnabled($data['ledStatusEnabled']);

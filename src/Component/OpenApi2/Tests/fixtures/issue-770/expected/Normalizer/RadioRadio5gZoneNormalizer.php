@@ -27,13 +27,16 @@ class RadioRadio5gZoneNormalizer implements DenormalizerInterface, NormalizerInt
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\RadioRadio5gZone();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\RadioRadio5gZone();
         if (\array_key_exists('autoCellSizing', $data) && \is_int($data['autoCellSizing'])) {
             $data['autoCellSizing'] = (bool) $data['autoCellSizing'];
         }
@@ -51,9 +54,6 @@ class RadioRadio5gZoneNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('channelModeEnabled', $data) && \is_int($data['channelModeEnabled'])) {
             $data['channelModeEnabled'] = (bool) $data['channelModeEnabled'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('autoCellSizing', $data)) {
             $object->setAutoCellSizing($data['autoCellSizing']);

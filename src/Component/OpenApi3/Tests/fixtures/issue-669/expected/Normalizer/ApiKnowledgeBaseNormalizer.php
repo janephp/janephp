@@ -27,18 +27,18 @@ class ApiKnowledgeBaseNormalizer implements DenormalizerInterface, NormalizerInt
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\ApiKnowledgeBase();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\ApiKnowledgeBase();
         if (\array_key_exists('is_public', $data) && \is_int($data['is_public'])) {
             $data['is_public'] = (bool) $data['is_public'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('added_to_agent_at', $data)) {
             $object->setAddedToAgentAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['added_to_agent_at']));

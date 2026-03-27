@@ -27,13 +27,16 @@ class ApiUpdateAgentInputPublicNormalizer implements DenormalizerInterface, Norm
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\ApiUpdateAgentInputPublic();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\ApiUpdateAgentInputPublic();
         if (\array_key_exists('temperature', $data) && \is_int($data['temperature'])) {
             $data['temperature'] = (double) $data['temperature'];
         }
@@ -48,9 +51,6 @@ class ApiUpdateAgentInputPublicNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('provide_citations', $data) && \is_int($data['provide_citations'])) {
             $data['provide_citations'] = (bool) $data['provide_citations'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('agent_log_insights_enabled', $data)) {
             $object->setAgentLogInsightsEnabled($data['agent_log_insights_enabled']);

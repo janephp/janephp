@@ -27,18 +27,18 @@ class CommonPortalCustomizationNormalizer implements DenormalizerInterface, Norm
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\CommonPortalCustomization();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\CommonPortalCustomization();
         if (\array_key_exists('termsAndConditionsRequired', $data) && \is_int($data['termsAndConditionsRequired'])) {
             $data['termsAndConditionsRequired'] = (bool) $data['termsAndConditionsRequired'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('language', $data)) {
             $object->setLanguage($data['language']);

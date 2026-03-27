@@ -27,13 +27,16 @@ class ProfileFirewallProfileNormalizer implements DenormalizerInterface, Normali
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfile();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileFirewallProfile();
         if (\array_key_exists('uplinkRateLimitingMbps', $data) && \is_int($data['uplinkRateLimitingMbps'])) {
             $data['uplinkRateLimitingMbps'] = (double) $data['uplinkRateLimitingMbps'];
         }
@@ -42,9 +45,6 @@ class ProfileFirewallProfileNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('factoryDefault', $data) && \is_int($data['factoryDefault'])) {
             $data['factoryDefault'] = (bool) $data['factoryDefault'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

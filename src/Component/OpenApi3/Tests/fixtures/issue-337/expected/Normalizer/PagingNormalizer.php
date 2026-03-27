@@ -27,13 +27,16 @@ class PagingNormalizer implements DenormalizerInterface, NormalizerInterface, De
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \CreditSafe\API\Model\Paging();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \CreditSafe\API\Model\Paging();
         if (\array_key_exists('size', $data) && \is_int($data['size'])) {
             $data['size'] = (double) $data['size'];
         }
@@ -45,9 +48,6 @@ class PagingNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (\array_key_exists('last', $data) && \is_int($data['last'])) {
             $data['last'] = (double) $data['last'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('size', $data)) {
             $object->setSize($data['size']);

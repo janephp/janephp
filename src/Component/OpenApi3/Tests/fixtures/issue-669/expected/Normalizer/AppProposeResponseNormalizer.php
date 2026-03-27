@@ -27,21 +27,21 @@ class AppProposeResponseNormalizer implements DenormalizerInterface, NormalizerI
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\AppProposeResponse();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\AppProposeResponse();
         if (\array_key_exists('app_is_static', $data) && \is_int($data['app_is_static'])) {
             $data['app_is_static'] = (bool) $data['app_is_static'];
         }
         if (\array_key_exists('app_name_available', $data) && \is_int($data['app_name_available'])) {
             $data['app_name_available'] = (bool) $data['app_name_available'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('app_is_static', $data)) {
             $object->setAppIsStatic($data['app_is_static']);

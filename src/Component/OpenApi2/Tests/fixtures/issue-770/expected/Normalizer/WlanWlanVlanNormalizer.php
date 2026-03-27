@@ -27,21 +27,21 @@ class WlanWlanVlanNormalizer implements DenormalizerInterface, NormalizerInterfa
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\WlanWlanVlan();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\WlanWlanVlan();
         if (\array_key_exists('aaaVlanOverride', $data) && \is_int($data['aaaVlanOverride'])) {
             $data['aaaVlanOverride'] = (bool) $data['aaaVlanOverride'];
         }
         if (\array_key_exists('coreQinQEnabled', $data) && \is_int($data['coreQinQEnabled'])) {
             $data['coreQinQEnabled'] = (bool) $data['coreQinQEnabled'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('accessVlan', $data)) {
             $object->setAccessVlan($data['accessVlan']);

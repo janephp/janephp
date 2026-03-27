@@ -27,13 +27,16 @@ class PortalserviceModifyGuestAccessNormalizer implements DenormalizerInterface,
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceModifyGuestAccess();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\PortalserviceModifyGuestAccess();
         if (\array_key_exists('selfRegistration', $data) && \is_int($data['selfRegistration'])) {
             $data['selfRegistration'] = (bool) $data['selfRegistration'];
         }
@@ -45,9 +48,6 @@ class PortalserviceModifyGuestAccessNormalizer implements DenormalizerInterface,
         }
         if (\array_key_exists('requireLoginAgain', $data) && \is_int($data['requireLoginAgain'])) {
             $data['requireLoginAgain'] = (bool) $data['requireLoginAgain'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);

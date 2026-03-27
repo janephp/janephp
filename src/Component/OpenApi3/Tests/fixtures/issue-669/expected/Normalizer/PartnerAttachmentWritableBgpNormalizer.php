@@ -27,15 +27,15 @@ class PartnerAttachmentWritableBgpNormalizer implements DenormalizerInterface, N
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\PartnerAttachmentWritableBgp();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Jane\Generated\DigitalOcean\Model\PartnerAttachmentWritableBgp();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('local_router_ip', $data)) {
             $object->setLocalRouterIp($data['local_router_ip']);
