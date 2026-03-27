@@ -2,9 +2,9 @@
 
 namespace Jane\Component\OpenApi31\Generator\Endpoint;
 
+use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\OpenApi31\Guesser\GuessClass;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
-use Jane\Component\JsonSchema\Generator\Context\Context;
 use PhpParser\Modifiers;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;

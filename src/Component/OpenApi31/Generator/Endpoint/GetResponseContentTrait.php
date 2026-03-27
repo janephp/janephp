@@ -2,8 +2,8 @@
 
 namespace Jane\Component\OpenApi31\Generator\Endpoint;
 
-use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\JsonSchema\Generator\Context\Context;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi31\Guesser\GuessClass;
 use Jane\Component\OpenApi31\JsonSchema\Model\Response;
 use Jane\Component\OpenApi31\JsonSchema\Normalizer\ResponseNormalizer;

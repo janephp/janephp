@@ -8,6 +8,7 @@ use Jane\Component\OpenApi2\JsonSchema\Model\HeaderParameterSubSchema;
 use Jane\Component\OpenApi2\JsonSchema\Model\PathParameterSubSchema;
 use Jane\Component\OpenApi2\JsonSchema\Model\QueryParameterSubSchema;
 use Jane\Component\OpenApiCommon\Generator\Parameter\ParameterGenerator;
+use Jane\Component\OpenApiCommon\Generator\Traits\OpenApiNumberTypeResolverTrait;
 use Jane\Component\OpenApiCommon\Generator\Traits\OptionResolverNormalizationTrait;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
@@ -17,6 +18,7 @@ use Psr\Http\Message\StreamInterface;
 
 class NonBodyParameterGenerator extends ParameterGenerator
 {
+    use OpenApiNumberTypeResolverTrait;
     use OptionResolverNormalizationTrait;
 
     /**
@@ -31,7 +33,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
             $methodParameter->default = $this->getDefaultAsExpr($parameter);
         }
 
-        $types = $this->convertParameterType($parameter->getType());
+        $types = $this->convertParameterType($parameter);
 
         if (\count($types) === 1) {
             $methodParameter->type = new Node\Name($types[0]);
@@ -66,7 +68,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
             if ($parameter->getType()) {
                 $types = [];
 
-                foreach ($this->convertParameterType($parameter->getType()) as $typeString) {
+                foreach ($this->convertParameterType($parameter) as $typeString) {
                     if (\in_array($typeString, $genericResolverKeys)) {
                         $matchGenericResolver = $typeString;
                     }
@@ -109,7 +111,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
      */
     public function generateMethodDocParameter($parameter, Context $context, string $reference): string
     {
-        $type = implode('|', $this->convertParameterType($parameter->getType()));
+        $type = implode('|', $this->convertParameterType($parameter));
         $description = array_map(rtrim(...), explode("\n", $parameter->getDescription() ?: ''));
 
         $param = [rtrim(\sprintf(' * @param %s $%s %s', $type, $this->getInflector()->camelize($parameter->getName()), array_shift($description)))];
@@ -122,7 +124,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
 
     public function generateOptionDocParameter(PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter): string
     {
-        $type = implode('|', $this->convertParameterType($parameter->getType()));
+        $type = implode('|', $this->convertParameterType($parameter));
         $description = array_map(rtrim(...), explode("\n", $parameter->getDescription() ?: ''));
 
         $var = [rtrim(\sprintf(' *     @var %s $%s %s', $type, $parameter->getName(), array_shift($description)))];
@@ -148,11 +150,19 @@ class NonBodyParameterGenerator extends ParameterGenerator
         return $expr;
     }
 
-    private function convertParameterType(string $type): array
+    private function convertParameterType(PathParameterSubSchema|HeaderParameterSubSchema|FormDataParameterSubSchema|QueryParameterSubSchema $parameter): array
     {
+        $type = $parameter->getType();
         $convertArray = [
             'string' => ['string'],
-            'number' => ['float'],
+            'number' => [$this->isNumberFloat(
+                $parameter->getFormat(),
+                $parameter->getDefault(),
+                $parameter->getMinimum(),
+                $parameter->getMaximum(),
+                $parameter->getMultipleOf(),
+                $parameter->getEnum()
+            ) ? 'float' : 'int'],
             'boolean' => ['bool'],
             'integer' => ['int'],
             'array' => ['array'],

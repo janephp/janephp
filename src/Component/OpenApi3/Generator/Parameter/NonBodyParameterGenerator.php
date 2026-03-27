@@ -8,6 +8,7 @@ use Jane\Component\OpenApi3\Guesser\GuessClass;
 use Jane\Component\OpenApi3\JsonSchema\Model\Parameter;
 use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
 use Jane\Component\OpenApiCommon\Generator\Parameter\ParameterGenerator;
+use Jane\Component\OpenApiCommon\Generator\Traits\OpenApiNumberTypeResolverTrait;
 use Jane\Component\OpenApiCommon\Generator\Traits\OptionResolverNormalizationTrait;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
@@ -19,6 +20,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class NonBodyParameterGenerator extends ParameterGenerator
 {
+    use OpenApiNumberTypeResolverTrait;
     use OptionResolverNormalizationTrait;
 
     private GuessClass $guessClass;
@@ -199,7 +201,14 @@ class NonBodyParameterGenerator extends ParameterGenerator
 
         $convertArray = [
             'string' => ['string'],
-            'number' => ['float'],
+            'number' => [$this->isNumberFloat(
+                $schema->getFormat(),
+                $schema->getDefault(),
+                $schema->getMinimum(),
+                $schema->getMaximum(),
+                $schema->getMultipleOf(),
+                $schema->getEnum()
+            ) ? 'float' : 'int'],
             'boolean' => ['bool'],
             'integer' => ['int'],
             'array' => ['array'],
