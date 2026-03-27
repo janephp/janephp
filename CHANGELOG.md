@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [JsonSchema] [GH#918](https://github.com/janephp/janephp/pull/918) Add JSON Schema 2020-12 schema support
 - [OpenApi31] [GH#904](https://github.com/janephp/janephp/pull/904) Add OpenAPI 3.1 component
 - [OpenApi] [GH#930](https://github.com/janephp/janephp/pull/930) Add support for `float` in query string parameters
+- [Jane] [GH#932](https://github.com/janephp/janephp/pull/932) Handle `.php` files for Jane configuration files
 
 ### Fixed
 - [OpenApi3] [GH#917](https://github.com/janephp/janephp/pull/917) Multipart/form-data requests failing with non-scalar properties (objects, arrays) by serializing them to JSON

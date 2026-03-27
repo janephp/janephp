@@ -14,6 +14,13 @@ class ConfigLoader implements ConfigLoaderInterface
     public function load(string $path): array
     {
         if (!file_exists($path)) {
+            $phpPath = $path . '.php';
+            if (file_exists($phpPath)) {
+                $path = $phpPath;
+            }
+        }
+
+        if (!file_exists($path)) {
             throw new \RuntimeException(\sprintf('Config file %s does not exist', $path));
         }
 
