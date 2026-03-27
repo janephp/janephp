@@ -2,11 +2,13 @@
 
 namespace Jane\Component\OpenApi3\Generator\Endpoint;
 
+use Jane\Component\JsonSchema\Tools\InflectorTrait;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi3\Generator\EndpointGenerator;
 use Jane\Component\OpenApi3\Guesser\GuessClass;
 use Jane\Component\OpenApi3\JsonSchema\Model\Parameter;
 use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
+use Jane\Component\OpenApiCommon\Generator\Endpoint\PathParameterNameTrait;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use PhpParser\Modifiers;
 use PhpParser\Node\Arg;
@@ -18,9 +20,12 @@ use PhpParser\Node\Stmt;
 
 trait GetGetUriTrait
 {
+    use InflectorTrait;
+    use PathParameterNameTrait;
+
     public function getGetUri(OperationGuess $operation, GuessClass $guessClass): Stmt\ClassMethod
     {
-        $names = $types = [];
+        $placeholders = $propertyNames = $types = [];
 
         foreach ($operation->getParameters() as $parameter) {
             if ($parameter instanceof Reference) {
@@ -36,11 +41,12 @@ trait GetGetUriTrait
                 [, $schema] = $guessClass->resolve($parameter->getSchema(), Schema::class);
             }
 
-            $names[] = $parameter->getName();
+            $placeholders[] = $parameter->getName();
+            $propertyNames[] = $this->normalizePathPropertyName($parameter->getName());
             $types[] = $schema instanceof Schema ? $schema->getType() : null;
         }
 
-        if (\count($names) === 0) {
+        if (\count($placeholders) === 0) {
             return new Stmt\ClassMethod('getUri', [
                 'flags' => Modifiers::PUBLIC,
                 'stmts' => [
@@ -56,14 +62,8 @@ trait GetGetUriTrait
                 new Stmt\Return_(new Expr\FuncCall(new Name('str_replace'), [
                     new Arg(new Expr\Array_(array_map(function ($name) {
                         return new ArrayItem(new Scalar\String_('{' . $name . '}'));
-                    }, $names))),
-                    new Arg(new Expr\Array_(array_map(function ($type, $name) {
-                        return 'array' === $type
-                            // return str_replace(['{param}'], [implode(',', $this->param)], '/path/{param}')
-                            ? new ArrayItem(new Expr\FuncCall(new Name('implode'), [new Arg(new Scalar\String_(',')), new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), $name))]))
-                            // return str_replace(['{param}'], [$this->param], '/path/{param}')
-                            : new ArrayItem(new Expr\PropertyFetch(new Expr\Variable('this'), $name));
-                    }, $types, $names))),
+                    }, $placeholders))),
+                    new Arg(new Expr\Array_($this->buildPathPropertyFetchArrayItems($propertyNames, $types))),
                     new Arg(new Scalar\String_($operation->getPath())),
                 ])),
             ],

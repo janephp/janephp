@@ -4,7 +4,7 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
 
 class DeleteClusterById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
-    protected $id:.+;
+    protected $id___;
     /**
      * @param string $id:.+
      * @param array $queryParameters {
@@ -13,7 +13,7 @@ class DeleteClusterById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\
      */
     public function __construct(string $id:.+, array $queryParameters = [])
     {
-        $this->id:.+ = $id:.+;
+        $this->id___ = $id:.+;
         $this->queryParameters = $queryParameters;
     }
     use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
@@ -23,7 +23,7 @@ class DeleteClusterById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\
     }
     public function getUri(): string
     {
-        return str_replace(['{id:.+}'], [$this->id:.+], '/cluster/{id:.+}');
+        return str_replace(['{id:.+}'], [$this->id___], '/cluster/{id:.+}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

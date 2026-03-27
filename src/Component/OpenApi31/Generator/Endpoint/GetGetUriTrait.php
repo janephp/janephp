@@ -3,10 +3,12 @@
 namespace Jane\Component\OpenApi31\Generator\Endpoint;
 
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
+use Jane\Component\JsonSchema\Tools\InflectorTrait;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi31\Generator\EndpointGenerator;
 use Jane\Component\OpenApi31\Guesser\GuessClass;
 use Jane\Component\OpenApi31\JsonSchema\Model\Parameter;
+use Jane\Component\OpenApiCommon\Generator\Endpoint\PathParameterNameTrait;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use PhpParser\Modifiers;
 use PhpParser\Node\Arg;
@@ -18,9 +20,12 @@ use PhpParser\Node\Stmt;
 
 trait GetGetUriTrait
 {
+    use InflectorTrait;
+    use PathParameterNameTrait;
+
     public function getGetUri(OperationGuess $operation, GuessClass $guessClass): Stmt\ClassMethod
     {
-        $names = $types = [];
+        $placeholders = $propertyNames = $types = [];
 
         foreach ($operation->getParameters() as $parameter) {
             if ($parameter instanceof Reference) {
@@ -36,7 +41,8 @@ trait GetGetUriTrait
                 [, $schema] = $guessClass->resolve($parameter->getSchema(), JsonSchema::class);
             }
 
-            $names[] = $parameter->getName();
+            $placeholders[] = $parameter->getName();
+            $propertyNames[] = $this->normalizePathPropertyName($parameter->getName());
             $schemaType = null;
             if ($schema instanceof JsonSchema) {
                 $schemaType = $schema->getType();
@@ -48,7 +54,7 @@ trait GetGetUriTrait
             $types[] = $schemaType;
         }
 
-        if (\count($names) === 0) {
+        if (\count($placeholders) === 0) {
             return new Stmt\ClassMethod('getUri', [
                 'flags' => Modifiers::PUBLIC,
                 'stmts' => [
@@ -64,12 +70,8 @@ trait GetGetUriTrait
                 new Stmt\Return_(new Expr\FuncCall(new Name('str_replace'), [
                     new Arg(new Expr\Array_(array_map(function ($name) {
                         return new ArrayItem(new Scalar\String_('{' . $name . '}'));
-                    }, $names))),
-                    new Arg(new Expr\Array_(array_map(function ($type, $name) {
-                        return 'array' === $type
-                            ? new ArrayItem(new Expr\FuncCall(new Name('implode'), [new Arg(new Scalar\String_(',')), new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), $name))]))
-                            : new ArrayItem(new Expr\PropertyFetch(new Expr\Variable('this'), $name));
-                    }, $types, $names))),
+                    }, $placeholders))),
+                    new Arg(new Expr\Array_($this->buildPathPropertyFetchArrayItems($propertyNames, $types))),
                     new Arg(new Scalar\String_($operation->getPath())),
                 ])),
             ],

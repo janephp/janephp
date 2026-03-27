@@ -12,6 +12,7 @@ use Jane\Component\OpenApi31\Generator\RequestBodyGenerator;
 use Jane\Component\OpenApi31\Guesser\GuessClass;
 use Jane\Component\OpenApi31\JsonSchema\Model\Parameter;
 use Jane\Component\OpenApi31\JsonSchema\Model\RequestBody;
+use Jane\Component\OpenApiCommon\Generator\Endpoint\PathParameterNameTrait;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use PhpParser\Comment\Doc;
 use PhpParser\Modifiers;
@@ -24,6 +25,7 @@ trait GetConstructorTrait
 {
     use GetResponseContentTrait;
     use InflectorTrait;
+    use PathParameterNameTrait;
 
     public function getConstructor(OperationGuess $operation, Context $context, GuessClass $guessClass, NonBodyParameterGenerator $nonBodyParameterGenerator, RequestBodyGenerator $requestBodyGenerator): array
     {
@@ -42,6 +44,8 @@ trait GetConstructorTrait
             }
 
             if ($parameter instanceof Parameter && EndpointGenerator::IN_PATH === $parameter->getIn()) {
+                $pathPropertyName = $this->normalizePathPropertyName($parameter->getName());
+                $pathVariableName = $this->getInflector()->camelize($parameter->getName());
                 $schema = $parameter->getSchema();
                 if (null === ($schema instanceof JsonSchema ? $schema->getDefault() : null)) {
                     $pathParams[] = $nonBodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
@@ -51,9 +55,9 @@ trait GetConstructorTrait
                     $pathParamsWithDefaultValueDoc[] = $nonBodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 }
 
-                $methodStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), $parameter->getName()), new Expr\Variable($this->getInflector()->camelize($parameter->getName()))));
+                $methodStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), $pathPropertyName), new Expr\Variable($pathVariableName)));
                 $pathProperties[] = new Stmt\Property(Modifiers::PROTECTED, [
-                    new Stmt\PropertyProperty($parameter->getName()),
+                    new Stmt\PropertyProperty($pathPropertyName),
                 ]);
             }
 
