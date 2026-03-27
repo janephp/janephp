@@ -12,6 +12,7 @@ use Jane\Component\OpenApi31\Generator\RequestBodyGenerator;
 use Jane\Component\OpenApi31\Guesser\GuessClass;
 use Jane\Component\OpenApi31\JsonSchema\Model\Parameter;
 use Jane\Component\OpenApi31\JsonSchema\Model\RequestBody;
+use Jane\Component\OpenApiCommon\Generator\Endpoint\PathParameterNameTrait;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use PhpParser\Comment\Doc;
 use PhpParser\Modifiers;
@@ -24,6 +25,7 @@ trait GetConstructorTrait
 {
     use GetResponseContentTrait;
     use InflectorTrait;
+    use PathParameterNameTrait;
 
     public function getConstructor(OperationGuess $operation, Context $context, GuessClass $guessClass, NonBodyParameterGenerator $nonBodyParameterGenerator, RequestBodyGenerator $requestBodyGenerator): array
     {
@@ -42,10 +44,7 @@ trait GetConstructorTrait
             }
 
             if ($parameter instanceof Parameter && EndpointGenerator::IN_PATH === $parameter->getIn()) {
-                $pathPropertyName = (string) preg_replace('/[^a-zA-Z0-9_\x80-\xff]/', '_', $parameter->getName());
-                if (is_numeric(substr($pathPropertyName, 0, 1))) {
-                    $pathPropertyName = '_' . $pathPropertyName;
-                }
+                $pathPropertyName = $this->normalizePathPropertyName($parameter->getName());
                 $pathVariableName = $this->getInflector()->camelize($parameter->getName());
                 $schema = $parameter->getSchema();
                 if (null === ($schema instanceof JsonSchema ? $schema->getDefault() : null)) {

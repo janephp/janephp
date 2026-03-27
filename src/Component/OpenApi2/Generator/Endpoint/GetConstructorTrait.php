@@ -13,6 +13,7 @@ use Jane\Component\OpenApi2\JsonSchema\Model\FormDataParameterSubSchema;
 use Jane\Component\OpenApi2\JsonSchema\Model\HeaderParameterSubSchema;
 use Jane\Component\OpenApi2\JsonSchema\Model\PathParameterSubSchema;
 use Jane\Component\OpenApi2\JsonSchema\Model\QueryParameterSubSchema;
+use Jane\Component\OpenApiCommon\Generator\Endpoint\PathParameterNameTrait;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use PhpParser\Comment\Doc;
 use PhpParser\Modifiers;
@@ -24,6 +25,7 @@ use PhpParser\Node\Stmt;
 trait GetConstructorTrait
 {
     use InflectorTrait;
+    use PathParameterNameTrait;
 
     public function getConstructor(OperationGuess $operation, Context $context, GuessClass $guessClass, BodyParameterGenerator $bodyParameterGenerator, NonBodyParameterGenerator $nonBodyParameterGenerator): array
     {
@@ -36,10 +38,7 @@ trait GetConstructorTrait
             }
 
             if ($parameter instanceof PathParameterSubSchema) {
-                $pathPropertyName = (string) preg_replace('/[^a-zA-Z0-9_\x80-\xff]/', '_', $parameter->getName());
-                if (is_numeric(substr($pathPropertyName, 0, 1))) {
-                    $pathPropertyName = '_' . $pathPropertyName;
-                }
+                $pathPropertyName = $this->normalizePathPropertyName($parameter->getName());
                 $pathVariableName = $this->getInflector()->camelize($parameter->getName());
                 if (null === $parameter->getDefault()) {
                     $pathParams[] = $nonBodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
