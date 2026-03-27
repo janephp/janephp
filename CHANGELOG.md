@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [OpenApi3] [GH#921](https://github.com/janephp/janephp/pull/921) Fix lowercase class name suffix for inline properties in `allOf` schemas
 - [OpenApi] [GH#868](https://github.com/janephp/janephp/pull/868) Fix PHP 8.4 deprecation in generated Exception classes
 - [JsonSchema] [GH#929](https://github.com/janephp/janephp/pull/929) Remove deprecated usage of Email validator by generating `Email(mode: 'html5')`
+- [OpenApi] [GH#935](https://github.com/janephp/janephp/pull/935) Fix invalid PHP generation for path parameters with dashes
 
 ## [7.10.4] - 2026-01-26
 ### Added

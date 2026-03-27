@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "paths": {
-        "/test-uppercase-path-parameters/{TestParameter}": {
+        "/test-uppercase-path-parameters/{test-parameter}": {
             "get": {
                 "operationId": "testGetWithUppercasePathParameters",
                 "consumes": [
@@ -12,7 +12,7 @@
                 ],
                 "parameters": [
                     {
-                        "name": "TestParameter",
+                        "name": "test-parameter",
                         "in": "path",
                         "type": "string",
                         "required": true,

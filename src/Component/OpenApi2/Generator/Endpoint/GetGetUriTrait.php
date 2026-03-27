@@ -2,6 +2,7 @@
 
 namespace Jane\Component\OpenApi2\Generator\Endpoint;
 
+use Jane\Component\JsonSchema\Tools\InflectorTrait;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi2\Guesser\GuessClass;
 use Jane\Component\OpenApi2\JsonSchema\Model\PathParameterSubSchema;
@@ -16,9 +17,12 @@ use PhpParser\Node\Stmt;
 
 trait GetGetUriTrait
 {
+    use InflectorTrait;
+
     public function getGetUri(OperationGuess $operation, GuessClass $guessClass): Stmt\ClassMethod
     {
-        $names = [];
+        $placeholders = [];
+        $propertyNames = [];
 
         foreach ($operation->getParameters() as $parameter) {
             if ($parameter instanceof Reference) {
@@ -27,11 +31,16 @@ trait GetGetUriTrait
 
             if ($parameter instanceof PathParameterSubSchema) {
                 // $url = str_replace('{param}', $param, $url)
-                $names[] = $parameter->getName();
+                $placeholders[] = $parameter->getName();
+                $pathPropertyName = (string) preg_replace('/[^a-zA-Z0-9_\x80-\xff]/', '_', $parameter->getName());
+                if (is_numeric(substr($pathPropertyName, 0, 1))) {
+                    $pathPropertyName = '_' . $pathPropertyName;
+                }
+                $propertyNames[] = $pathPropertyName;
             }
         }
 
-        if (\count($names) === 0) {
+        if (\count($placeholders) === 0) {
             return new Stmt\ClassMethod('getUri', [
                 'flags' => Modifiers::PUBLIC,
                 'stmts' => [
@@ -47,10 +56,10 @@ trait GetGetUriTrait
                 new Stmt\Return_(new Expr\FuncCall(new Name('str_replace'), [
                     new Arg(new Expr\Array_(array_map(function ($name) {
                         return new ArrayItem(new Scalar\String_('{' . $name . '}'));
-                    }, $names))),
+                    }, $placeholders))),
                     new Arg(new Expr\Array_(array_map(function ($name) {
                         return new ArrayItem(new Expr\PropertyFetch(new Expr\Variable('this'), $name));
-                    }, $names))),
+                    }, $propertyNames))),
                     new Arg(new Scalar\String_($operation->getPath())),
                 ])),
             ],

@@ -4,7 +4,7 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
 
 class FindSystemApmodelsByFirmwareVersion extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
-    protected $firmwareVersion:.+;
+    protected $firmwareVersion___;
     /**
      * @param string $firmwareVersion:.+
      * @param array $queryParameters {
@@ -13,7 +13,7 @@ class FindSystemApmodelsByFirmwareVersion extends \Jane\Component\OpenApi3\Tests
      */
     public function __construct(string $firmwareVersion:.+, array $queryParameters = [])
     {
-        $this->firmwareVersion:.+ = $firmwareVersion:.+;
+        $this->firmwareVersion___ = $firmwareVersion:.+;
         $this->queryParameters = $queryParameters;
     }
     use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
@@ -23,7 +23,7 @@ class FindSystemApmodelsByFirmwareVersion extends \Jane\Component\OpenApi3\Tests
     }
     public function getUri(): string
     {
-        return str_replace(['{firmwareVersion:.+}'], [$this->firmwareVersion:.+], '/system/apmodels/{firmwareVersion:.+}');
+        return str_replace(['{firmwareVersion:.+}'], [$this->firmwareVersion___], '/system/apmodels/{firmwareVersion:.+}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

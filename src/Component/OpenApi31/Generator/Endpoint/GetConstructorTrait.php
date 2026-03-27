@@ -42,6 +42,11 @@ trait GetConstructorTrait
             }
 
             if ($parameter instanceof Parameter && EndpointGenerator::IN_PATH === $parameter->getIn()) {
+                $pathPropertyName = (string) preg_replace('/[^a-zA-Z0-9_\x80-\xff]/', '_', $parameter->getName());
+                if (is_numeric(substr($pathPropertyName, 0, 1))) {
+                    $pathPropertyName = '_' . $pathPropertyName;
+                }
+                $pathVariableName = $this->getInflector()->camelize($parameter->getName());
                 $schema = $parameter->getSchema();
                 if (null === ($schema instanceof JsonSchema ? $schema->getDefault() : null)) {
                     $pathParams[] = $nonBodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
@@ -51,9 +56,9 @@ trait GetConstructorTrait
                     $pathParamsWithDefaultValueDoc[] = $nonBodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                 }
 
-                $methodStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), $parameter->getName()), new Expr\Variable($this->getInflector()->camelize($parameter->getName()))));
+                $methodStatements[] = new Stmt\Expression(new Expr\Assign(new Expr\PropertyFetch(new Expr\Variable('this'), $pathPropertyName), new Expr\Variable($pathVariableName)));
                 $pathProperties[] = new Stmt\Property(Modifiers::PROTECTED, [
-                    new Stmt\PropertyProperty($parameter->getName()),
+                    new Stmt\PropertyProperty($pathPropertyName),
                 ]);
             }
 
