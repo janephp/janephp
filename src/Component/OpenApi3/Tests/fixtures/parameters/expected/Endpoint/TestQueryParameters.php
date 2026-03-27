@@ -8,7 +8,7 @@ class TestQueryParameters extends \Jane\Component\OpenApi3\Tests\Expected\Runtim
      * @param array{
      *    "testString"?: string,
      *    "testInteger"?: int,
-     *    "testFloat"?: float,
+     *    "testFloat"?: int,
      *    "testArray"?: array,
      *    "testRequired": string,
      *    "testDefault"?: string,
@@ -39,7 +39,7 @@ class TestQueryParameters extends \Jane\Component\OpenApi3\Tests\Expected\Runtim
         $optionsResolver->setDefaults(['testDefault' => 'test']);
         $optionsResolver->addAllowedTypes('testString', ['string']);
         $optionsResolver->addAllowedTypes('testInteger', ['int']);
-        $optionsResolver->addAllowedTypes('testFloat', ['float']);
+        $optionsResolver->addAllowedTypes('testFloat', ['int']);
         $optionsResolver->addAllowedTypes('testArray', ['array']);
         $optionsResolver->addAllowedTypes('testRequired', ['string']);
         $optionsResolver->addAllowedTypes('testDefault', ['string']);

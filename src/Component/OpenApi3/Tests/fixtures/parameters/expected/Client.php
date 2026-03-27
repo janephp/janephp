@@ -40,7 +40,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param array{
      *    "testString"?: string,
      *    "testInteger"?: int,
-     *    "testFloat"?: float,
+     *    "testFloat"?: int,
      *    "testArray"?: array,
      *    "testRequired": string,
      *    "testDefault"?: string,
@@ -57,7 +57,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param array{
      *    "testString"?: string,
      *    "testInteger"?: int,
-     *    "testFloat"?: float,
+     *    "testFloat"?: int,
      *    "testArray"?: array,
      *    "testRequired": string,
      *    "testDefault"?: string,
@@ -103,12 +103,12 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
     /**
      * @param string $testString
      * @param int $testInteger
-     * @param float $testFloat
+     * @param int $testFloat
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
-    public function testPathParameters(string $testString, int $testInteger, float $testFloat, string $fetch = self::FETCH_OBJECT)
+    public function testPathParameters(string $testString, int $testInteger, int $testFloat, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestPathParameters($testString, $testInteger, $testFloat), $fetch);
     }

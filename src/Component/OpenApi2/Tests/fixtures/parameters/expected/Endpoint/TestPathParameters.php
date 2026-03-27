@@ -10,9 +10,9 @@ class TestPathParameters extends \Jane\Component\OpenApi2\Tests\Expected\Runtime
     /**
      * @param string $testString
      * @param int $testInteger
-     * @param float $testFloat
+     * @param int $testFloat
      */
-    public function __construct(string $testString, int $testInteger, float $testFloat)
+    public function __construct(string $testString, int $testInteger, int $testFloat)
     {
         $this->testString = $testString;
         $this->testInteger = $testInteger;

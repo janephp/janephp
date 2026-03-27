@@ -8,7 +8,7 @@ class TestFormParameters extends \Jane\Component\OpenApi2\Tests\Expected\Runtime
      * @param array $formParameters {
      *     @var string $testString
      *     @var int $testInteger
-     *     @var float $testFloat
+     *     @var int $testFloat
      *     @var array $testArray
      *     @var string $testRequired
      *     @var string $testDefault
@@ -39,7 +39,7 @@ class TestFormParameters extends \Jane\Component\OpenApi2\Tests\Expected\Runtime
         $optionsResolver->setDefaults(['testDefault' => 'test']);
         $optionsResolver->addAllowedTypes('testString', ['string']);
         $optionsResolver->addAllowedTypes('testInteger', ['int']);
-        $optionsResolver->addAllowedTypes('testFloat', ['float']);
+        $optionsResolver->addAllowedTypes('testFloat', ['int']);
         $optionsResolver->addAllowedTypes('testArray', ['array']);
         $optionsResolver->addAllowedTypes('testRequired', ['string']);
         $optionsResolver->addAllowedTypes('testDefault', ['string']);

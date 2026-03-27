@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - [JsonSchema] [GH#933](https://github.com/janephp/janephp/pull/933) Fix denormalizers using `$data` before type checking it
+- [OpenApi] [GH#934](https://github.com/janephp/janephp/pull/934) Allow number query parameters to accept int or float
 
 ### Fixed
 - [OpenApi3] [GH#917](https://github.com/janephp/janephp/pull/917) Multipart/form-data requests failing with non-scalar properties (objects, arrays) by serializing them to JSON
