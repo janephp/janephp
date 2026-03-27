@@ -27,21 +27,21 @@ class GeoLocationNormalizer implements DenormalizerInterface, NormalizerInterfac
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \PicturePark\API\Model\GeoLocation();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\GeoLocation();
         if (\array_key_exists('lat', $data) && \is_int($data['lat'])) {
             $data['lat'] = (double) $data['lat'];
         }
         if (\array_key_exists('lon', $data) && \is_int($data['lon'])) {
             $data['lon'] = (double) $data['lon'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('lat', $data)) {
             $object->setLat($data['lat']);

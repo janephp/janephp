@@ -27,13 +27,16 @@ class GpgKeyNormalizer implements DenormalizerInterface, NormalizerInterface, De
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Github\Model\GpgKey();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Github\Model\GpgKey();
         if (\array_key_exists('can_sign', $data) && \is_int($data['can_sign'])) {
             $data['can_sign'] = (bool) $data['can_sign'];
         }
@@ -48,9 +51,6 @@ class GpgKeyNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\GpgKeyConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

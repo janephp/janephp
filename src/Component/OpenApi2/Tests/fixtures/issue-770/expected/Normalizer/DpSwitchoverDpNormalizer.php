@@ -27,18 +27,18 @@ class DpSwitchoverDpNormalizer implements DenormalizerInterface, NormalizerInter
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\DpSwitchoverDp();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\DpSwitchoverDp();
         if (\array_key_exists('deleteRecord', $data) && \is_int($data['deleteRecord'])) {
             $data['deleteRecord'] = (bool) $data['deleteRecord'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('ipOrFqdn', $data)) {
             $object->setIpOrFqdn($data['ipOrFqdn']);

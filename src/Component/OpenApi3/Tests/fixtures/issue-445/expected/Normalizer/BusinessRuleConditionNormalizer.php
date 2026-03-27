@@ -27,6 +27,16 @@ class BusinessRuleConditionNormalizer implements DenormalizerInterface, Normaliz
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \PicturePark\API\Model\BusinessRuleCondition();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
         if (array_key_exists('kind', $data) and 'BooleanCondition' === $data['kind']) {
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\BooleanCondition', $format, $context);
         }
@@ -92,16 +102,6 @@ class BusinessRuleConditionNormalizer implements DenormalizerInterface, Normaliz
         }
         if (array_key_exists('kind', $data) and 'NotCondition' === $data['kind']) {
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\NotCondition', $format, $context);
-        }
-        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
-        }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \PicturePark\API\Model\BusinessRuleCondition();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
             $object->setTraceRefId($data['traceRefId']);

@@ -27,18 +27,18 @@ class StationNormalizer implements DenormalizerInterface, NormalizerInterface, D
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\Station();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\Station();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\StationConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

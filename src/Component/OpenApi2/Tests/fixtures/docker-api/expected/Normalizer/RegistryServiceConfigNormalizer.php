@@ -27,18 +27,18 @@ class RegistryServiceConfigNormalizer implements DenormalizerInterface, Normaliz
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Docker\Api\Model\RegistryServiceConfig();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Docker\Api\Model\RegistryServiceConfig();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\RegistryServiceConfigConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('AllowNondistributableArtifactsCIDRs', $data)) {
             $values = [];

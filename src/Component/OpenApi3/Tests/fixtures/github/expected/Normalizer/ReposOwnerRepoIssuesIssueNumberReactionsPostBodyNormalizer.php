@@ -27,18 +27,18 @@ class ReposOwnerRepoIssuesIssueNumberReactionsPostBodyNormalizer implements Deno
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberReactionsPostBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Github\Model\ReposOwnerRepoIssuesIssueNumberReactionsPostBody();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoIssuesIssueNumberReactionsPostBodyConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('content', $data)) {
             $object->setContent($data['content']);

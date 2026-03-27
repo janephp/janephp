@@ -27,18 +27,18 @@ class VpcNatGatewayUpdateVpcsItemNormalizer implements DenormalizerInterface, No
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\VpcNatGatewayUpdateVpcsItem();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\VpcNatGatewayUpdateVpcsItem();
         if (\array_key_exists('default_gateway', $data) && \is_int($data['default_gateway'])) {
             $data['default_gateway'] = (bool) $data['default_gateway'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('vpc_uuid', $data)) {
             $object->setVpcUuid($data['vpc_uuid']);

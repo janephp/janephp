@@ -27,21 +27,21 @@ class SplitTransformationNormalizer implements DenormalizerInterface, Normalizer
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \PicturePark\API\Model\SplitTransformation();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\SplitTransformation();
         if (\array_key_exists('keepEmpty', $data) && \is_int($data['keepEmpty'])) {
             $data['keepEmpty'] = (bool) $data['keepEmpty'];
         }
         if (\array_key_exists('trim', $data) && \is_int($data['trim'])) {
             $data['trim'] = (bool) $data['trim'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('traceRefId', $data) && $data['traceRefId'] !== null) {
             $object->setTraceRefId($data['traceRefId']);

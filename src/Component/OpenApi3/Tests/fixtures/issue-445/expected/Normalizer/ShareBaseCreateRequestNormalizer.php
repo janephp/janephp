@@ -27,11 +27,9 @@ class ShareBaseCreateRequestNormalizer implements DenormalizerInterface, Normali
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (array_key_exists('kind', $data) and 'ShareBasicCreateRequest' === $data['kind']) {
-            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ShareBasicCreateRequest', $format, $context);
-        }
-        if (array_key_exists('kind', $data) and 'ShareEmbedCreateRequest' === $data['kind']) {
-            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ShareEmbedCreateRequest', $format, $context);
+        $object = new \PicturePark\API\Model\ShareBaseCreateRequest();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -39,9 +37,11 @@ class ShareBaseCreateRequestNormalizer implements DenormalizerInterface, Normali
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\ShareBaseCreateRequest();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
+        if (array_key_exists('kind', $data) and 'ShareBasicCreateRequest' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ShareBasicCreateRequest', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'ShareEmbedCreateRequest' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ShareEmbedCreateRequest', $format, $context);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);

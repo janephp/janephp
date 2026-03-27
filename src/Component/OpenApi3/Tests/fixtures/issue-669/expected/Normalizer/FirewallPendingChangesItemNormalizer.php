@@ -27,18 +27,18 @@ class FirewallPendingChangesItemNormalizer implements DenormalizerInterface, Nor
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\FirewallPendingChangesItem();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\FirewallPendingChangesItem();
         if (\array_key_exists('removing', $data) && \is_int($data['removing'])) {
             $data['removing'] = (bool) $data['removing'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('droplet_id', $data)) {
             $object->setDropletId($data['droplet_id']);

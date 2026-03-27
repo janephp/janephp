@@ -27,13 +27,16 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemRatiosNormalize
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportFinancialStatementsItemRatios();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportFinancialStatementsItemRatios();
         if (\array_key_exists('preTaxProfitMargin', $data) && \is_int($data['preTaxProfitMargin'])) {
             $data['preTaxProfitMargin'] = (double) $data['preTaxProfitMargin'];
         }
@@ -75,9 +78,6 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemRatiosNormalize
         }
         if (\array_key_exists('totalDebtRatio', $data) && \is_int($data['totalDebtRatio'])) {
             $data['totalDebtRatio'] = (double) $data['totalDebtRatio'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('preTaxProfitMargin', $data)) {
             $object->setPreTaxProfitMargin($data['preTaxProfitMargin']);

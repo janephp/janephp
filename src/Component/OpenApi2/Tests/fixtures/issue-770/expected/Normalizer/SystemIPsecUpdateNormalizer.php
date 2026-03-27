@@ -27,13 +27,16 @@ class SystemIPsecUpdateNormalizer implements DenormalizerInterface, NormalizerIn
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\SystemIPsecUpdate();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\SystemIPsecUpdate();
         if (\array_key_exists('ipSecEnabled', $data) && \is_int($data['ipSecEnabled'])) {
             $data['ipSecEnabled'] = (bool) $data['ipSecEnabled'];
         }
@@ -45,9 +48,6 @@ class SystemIPsecUpdateNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('ocspEnabled', $data) && \is_int($data['ocspEnabled'])) {
             $data['ocspEnabled'] = (bool) $data['ocspEnabled'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('ipSecEnabled', $data)) {
             $object->setIpSecEnabled($data['ipSecEnabled']);

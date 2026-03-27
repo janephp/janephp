@@ -27,13 +27,16 @@ class GbCompanyReportExampleResponseReportPaymentDataNormalizer implements Denor
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportPaymentData();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportPaymentData();
         if (\array_key_exists('paymentsOnFile', $data) && \is_int($data['paymentsOnFile'])) {
             $data['paymentsOnFile'] = (double) $data['paymentsOnFile'];
         }
@@ -102,9 +105,6 @@ class GbCompanyReportExampleResponseReportPaymentDataNormalizer implements Denor
         }
         if (\array_key_exists('industryDBT', $data) && \is_int($data['industryDBT'])) {
             $data['industryDBT'] = (double) $data['industryDBT'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('paymentsOnFile', $data)) {
             $object->setPaymentsOnFile($data['paymentsOnFile']);

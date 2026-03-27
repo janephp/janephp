@@ -27,13 +27,16 @@ class ProfileL3AclRuleListNormalizer implements DenormalizerInterface, Normalize
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileL3AclRuleList();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileL3AclRuleList();
         if (\array_key_exists('enableSourceIpSubnet', $data) && \is_int($data['enableSourceIpSubnet'])) {
             $data['enableSourceIpSubnet'] = (bool) $data['enableSourceIpSubnet'];
         }
@@ -51,9 +54,6 @@ class ProfileL3AclRuleListNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('enableDestinationPortRange', $data) && \is_int($data['enableDestinationPortRange'])) {
             $data['enableDestinationPortRange'] = (bool) $data['enableDestinationPortRange'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('priority', $data)) {
             $object->setPriority($data['priority']);

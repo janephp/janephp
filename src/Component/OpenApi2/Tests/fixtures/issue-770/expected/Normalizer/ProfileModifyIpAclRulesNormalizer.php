@@ -27,13 +27,16 @@ class ProfileModifyIpAclRulesNormalizer implements DenormalizerInterface, Normal
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyIpAclRules();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileModifyIpAclRules();
         if (\array_key_exists('uplinkRateLimitingMbps', $data) && \is_int($data['uplinkRateLimitingMbps'])) {
             $data['uplinkRateLimitingMbps'] = (double) $data['uplinkRateLimitingMbps'];
         }
@@ -63,9 +66,6 @@ class ProfileModifyIpAclRulesNormalizer implements DenormalizerInterface, Normal
         }
         if (\array_key_exists('enableDestinationPortRange', $data) && \is_int($data['enableDestinationPortRange'])) {
             $data['enableDestinationPortRange'] = (bool) $data['enableDestinationPortRange'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('priority', $data)) {
             $object->setPriority($data['priority']);

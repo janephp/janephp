@@ -27,18 +27,18 @@ class AdministrationClusterBackupSummaryNormalizer implements DenormalizerInterf
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationClusterBackupSummary();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationClusterBackupSummary();
         if (\array_key_exists('filesize', $data) && \is_int($data['filesize'])) {
             $data['filesize'] = (double) $data['filesize'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

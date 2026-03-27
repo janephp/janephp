@@ -27,21 +27,21 @@ class ApiModelPublicNormalizer implements DenormalizerInterface, NormalizerInter
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\ApiModelPublic();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\ApiModelPublic();
         if (\array_key_exists('is_foundational', $data) && \is_int($data['is_foundational'])) {
             $data['is_foundational'] = (bool) $data['is_foundational'];
         }
         if (\array_key_exists('upload_complete', $data) && \is_int($data['upload_complete'])) {
             $data['upload_complete'] = (bool) $data['upload_complete'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('agreement', $data)) {
             $object->setAgreement($this->denormalizer->denormalize($data['agreement'], \Jane\Generated\DigitalOcean\Model\ApiAgreement::class, 'json', $context));

@@ -27,13 +27,16 @@ class PostgresAdvancedConfigNormalizer implements DenormalizerInterface, Normali
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\PostgresAdvancedConfig();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\PostgresAdvancedConfig();
         if (\array_key_exists('autovacuum_vacuum_scale_factor', $data) && \is_int($data['autovacuum_vacuum_scale_factor'])) {
             $data['autovacuum_vacuum_scale_factor'] = (double) $data['autovacuum_vacuum_scale_factor'];
         }
@@ -51,9 +54,6 @@ class PostgresAdvancedConfigNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('stat_monitor_enable', $data) && \is_int($data['stat_monitor_enable'])) {
             $data['stat_monitor_enable'] = (bool) $data['stat_monitor_enable'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('autovacuum_freeze_max_age', $data)) {
             $object->setAutovacuumFreezeMaxAge($data['autovacuum_freeze_max_age']);

@@ -27,13 +27,16 @@ class OpensearchAdvancedConfigNormalizer implements DenormalizerInterface, Norma
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\OpensearchAdvancedConfig();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\OpensearchAdvancedConfig();
         if (\array_key_exists('ism_enabled', $data) && \is_int($data['ism_enabled'])) {
             $data['ism_enabled'] = (bool) $data['ism_enabled'];
         }
@@ -60,9 +63,6 @@ class OpensearchAdvancedConfigNormalizer implements DenormalizerInterface, Norma
         }
         if (\array_key_exists('keep_index_refresh_interval', $data) && \is_int($data['keep_index_refresh_interval'])) {
             $data['keep_index_refresh_interval'] = (bool) $data['keep_index_refresh_interval'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('http_max_content_length_bytes', $data)) {
             $object->setHttpMaxContentLengthBytes($data['http_max_content_length_bytes']);

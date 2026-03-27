@@ -27,13 +27,16 @@ class FieldMultiFieldsetNormalizer implements DenormalizerInterface, NormalizerI
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \PicturePark\API\Model\FieldMultiFieldset();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\FieldMultiFieldset();
         if (\array_key_exists('required', $data) && \is_int($data['required'])) {
             $data['required'] = (bool) $data['required'];
         }
@@ -48,9 +51,6 @@ class FieldMultiFieldsetNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('sortable', $data) && \is_int($data['sortable'])) {
             $data['sortable'] = (bool) $data['sortable'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

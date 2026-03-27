@@ -27,18 +27,18 @@ class UserSettingsNormalizer implements DenormalizerInterface, NormalizerInterfa
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\UserSettings();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\UserSettings();
         if (\array_key_exists('pg_allow_replication', $data) && \is_int($data['pg_allow_replication'])) {
             $data['pg_allow_replication'] = (bool) $data['pg_allow_replication'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('pg_allow_replication', $data)) {
             $object->setPgAllowReplication($data['pg_allow_replication']);

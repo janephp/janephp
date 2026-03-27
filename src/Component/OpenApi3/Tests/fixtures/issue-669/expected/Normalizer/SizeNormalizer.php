@@ -27,13 +27,16 @@ class SizeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\Size();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\Size();
         if (\array_key_exists('transfer', $data) && \is_int($data['transfer'])) {
             $data['transfer'] = (double) $data['transfer'];
         }
@@ -45,9 +48,6 @@ class SizeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (\array_key_exists('available', $data) && \is_int($data['available'])) {
             $data['available'] = (bool) $data['available'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('slug', $data)) {
             $object->setSlug($data['slug']);

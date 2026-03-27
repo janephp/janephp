@@ -27,13 +27,16 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \PicturePark\API\Model\TiffFormat();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\TiffFormat();
         if (\array_key_exists('horizontalResolution', $data) && \is_int($data['horizontalResolution'])) {
             $data['horizontalResolution'] = (double) $data['horizontalResolution'];
         }
@@ -48,9 +51,6 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (\array_key_exists('includeUnspecifiedTiffExtraChannels', $data) && \is_int($data['includeUnspecifiedTiffExtraChannels'])) {
             $data['includeUnspecifiedTiffExtraChannels'] = (bool) $data['includeUnspecifiedTiffExtraChannels'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);

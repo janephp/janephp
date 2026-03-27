@@ -27,18 +27,18 @@ class SystemModifyLwapp2scgNormalizer implements DenormalizerInterface, Normaliz
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\SystemModifyLwapp2scg();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\SystemModifyLwapp2scg();
         if (\array_key_exists('natIpTranslation', $data) && \is_int($data['natIpTranslation'])) {
             $data['natIpTranslation'] = (bool) $data['natIpTranslation'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('policy', $data)) {
             $object->setPolicy($data['policy']);

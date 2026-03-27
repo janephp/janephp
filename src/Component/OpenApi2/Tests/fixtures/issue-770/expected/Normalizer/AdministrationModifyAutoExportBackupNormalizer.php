@@ -27,18 +27,18 @@ class AdministrationModifyAutoExportBackupNormalizer implements DenormalizerInte
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationModifyAutoExportBackup();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\AdministrationModifyAutoExportBackup();
         if (\array_key_exists('enableAutoExportBackup', $data) && \is_int($data['enableAutoExportBackup'])) {
             $data['enableAutoExportBackup'] = (bool) $data['enableAutoExportBackup'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('enableAutoExportBackup', $data)) {
             $object->setEnableAutoExportBackup($data['enableAutoExportBackup']);

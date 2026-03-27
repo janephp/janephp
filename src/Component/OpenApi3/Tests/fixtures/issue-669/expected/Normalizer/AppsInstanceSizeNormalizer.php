@@ -27,13 +27,16 @@ class AppsInstanceSizeNormalizer implements DenormalizerInterface, NormalizerInt
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\AppsInstanceSize();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\AppsInstanceSize();
         if (\array_key_exists('deprecation_intent', $data) && \is_int($data['deprecation_intent'])) {
             $data['deprecation_intent'] = (bool) $data['deprecation_intent'];
         }
@@ -42,9 +45,6 @@ class AppsInstanceSizeNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('single_instance_only', $data) && \is_int($data['single_instance_only'])) {
             $data['single_instance_only'] = (bool) $data['single_instance_only'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('bandwidth_allowance_gib', $data)) {
             $object->setBandwidthAllowanceGib($data['bandwidth_allowance_gib']);

@@ -27,13 +27,16 @@ class KafkaAdvancedConfigNormalizer implements DenormalizerInterface, Normalizer
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\KafkaAdvancedConfig();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\KafkaAdvancedConfig();
         if (\array_key_exists('log_cleaner_min_cleanable_ratio', $data) && \is_int($data['log_cleaner_min_cleanable_ratio'])) {
             $data['log_cleaner_min_cleanable_ratio'] = (double) $data['log_cleaner_min_cleanable_ratio'];
         }
@@ -48,9 +51,6 @@ class KafkaAdvancedConfigNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('schema_registry', $data) && \is_int($data['schema_registry'])) {
             $data['schema_registry'] = (bool) $data['schema_registry'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('compression_type', $data)) {
             $object->setCompressionType($data['compression_type']);

@@ -27,21 +27,21 @@ class PlanetAtmosphereItemNormalizer implements DenormalizerInterface, Normalize
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetAtmosphereItem();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetAtmosphereItem();
         if (\array_key_exists('percentage', $data) && \is_int($data['percentage'])) {
             $data['percentage'] = (double) $data['percentage'];
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PlanetAtmosphereItemConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('compound', $data)) {
             $object->setCompound($data['compound']);

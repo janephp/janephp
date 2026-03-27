@@ -27,21 +27,21 @@ class ApiPromptChunkNormalizer implements DenormalizerInterface, NormalizerInter
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\ApiPromptChunk();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\ApiPromptChunk();
         if (\array_key_exists('chunk_usage_pct', $data) && \is_int($data['chunk_usage_pct'])) {
             $data['chunk_usage_pct'] = (double) $data['chunk_usage_pct'];
         }
         if (\array_key_exists('chunk_used', $data) && \is_int($data['chunk_used'])) {
             $data['chunk_used'] = (bool) $data['chunk_used'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('chunk_usage_pct', $data)) {
             $object->setChunkUsagePct($data['chunk_usage_pct']);

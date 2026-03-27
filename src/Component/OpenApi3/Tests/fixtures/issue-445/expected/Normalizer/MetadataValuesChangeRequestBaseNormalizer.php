@@ -27,11 +27,9 @@ class MetadataValuesChangeRequestBaseNormalizer implements DenormalizerInterface
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (array_key_exists('kind', $data) and 'ContentFieldsBatchUpdateFilterRequest' === $data['kind']) {
-            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ContentFieldsBatchUpdateFilterRequest', $format, $context);
-        }
-        if (array_key_exists('kind', $data) and 'ContentFieldsBatchUpdateRequest' === $data['kind']) {
-            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ContentFieldsBatchUpdateRequest', $format, $context);
+        $object = new \PicturePark\API\Model\MetadataValuesChangeRequestBase();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -39,15 +37,17 @@ class MetadataValuesChangeRequestBaseNormalizer implements DenormalizerInterface
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\MetadataValuesChangeRequestBase();
+        if (array_key_exists('kind', $data) and 'ContentFieldsBatchUpdateFilterRequest' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ContentFieldsBatchUpdateFilterRequest', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'ContentFieldsBatchUpdateRequest' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ContentFieldsBatchUpdateRequest', $format, $context);
+        }
         if (\array_key_exists('allowMissingDependencies', $data) && \is_int($data['allowMissingDependencies'])) {
             $data['allowMissingDependencies'] = (bool) $data['allowMissingDependencies'];
         }
         if (\array_key_exists('notifyProgress', $data) && \is_int($data['notifyProgress'])) {
             $data['notifyProgress'] = (bool) $data['notifyProgress'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('changeCommands', $data)) {
             $values = [];

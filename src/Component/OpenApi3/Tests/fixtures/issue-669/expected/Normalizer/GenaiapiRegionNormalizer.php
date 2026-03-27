@@ -27,21 +27,21 @@ class GenaiapiRegionNormalizer implements DenormalizerInterface, NormalizerInter
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\GenaiapiRegion();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\GenaiapiRegion();
         if (\array_key_exists('serves_batch', $data) && \is_int($data['serves_batch'])) {
             $data['serves_batch'] = (bool) $data['serves_batch'];
         }
         if (\array_key_exists('serves_inference', $data) && \is_int($data['serves_inference'])) {
             $data['serves_inference'] = (bool) $data['serves_inference'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('inference_url', $data)) {
             $object->setInferenceUrl($data['inference_url']);

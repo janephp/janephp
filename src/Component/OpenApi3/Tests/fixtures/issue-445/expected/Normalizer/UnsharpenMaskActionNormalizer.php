@@ -27,13 +27,16 @@ class UnsharpenMaskActionNormalizer implements DenormalizerInterface, Normalizer
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \PicturePark\API\Model\UnsharpenMaskAction();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\UnsharpenMaskAction();
         if (\array_key_exists('amount', $data) && \is_int($data['amount'])) {
             $data['amount'] = (double) $data['amount'];
         }
@@ -42,9 +45,6 @@ class UnsharpenMaskActionNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('threshold', $data) && \is_int($data['threshold'])) {
             $data['threshold'] = (double) $data['threshold'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);

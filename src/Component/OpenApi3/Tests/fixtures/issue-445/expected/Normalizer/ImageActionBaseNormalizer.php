@@ -27,6 +27,16 @@ class ImageActionBaseNormalizer implements DenormalizerInterface, NormalizerInte
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \PicturePark\API\Model\ImageActionBase();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
         if (array_key_exists('kind', $data) and 'AlphaHandlingAction' === $data['kind']) {
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\AlphaHandlingAction', $format, $context);
         }
@@ -38,16 +48,6 @@ class ImageActionBaseNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (array_key_exists('kind', $data) and 'WatermarkAction' === $data['kind']) {
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\WatermarkAction', $format, $context);
-        }
-        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
-        }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \PicturePark\API\Model\ImageActionBase();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);

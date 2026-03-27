@@ -27,13 +27,16 @@ class AccountSecurityProfileGetByIdResultNormalizer implements DenormalizerInter
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\AccountSecurityProfileGetByIdResult();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\AccountSecurityProfileGetByIdResult();
         if (\array_key_exists('attemptsLockEnabled', $data) && \is_int($data['attemptsLockEnabled'])) {
             $data['attemptsLockEnabled'] = (bool) $data['attemptsLockEnabled'];
         }
@@ -45,9 +48,6 @@ class AccountSecurityProfileGetByIdResultNormalizer implements DenormalizerInter
         }
         if (\array_key_exists('minimumPasswordLifetimeEnabled', $data) && \is_int($data['minimumPasswordLifetimeEnabled'])) {
             $data['minimumPasswordLifetimeEnabled'] = (bool) $data['minimumPasswordLifetimeEnabled'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

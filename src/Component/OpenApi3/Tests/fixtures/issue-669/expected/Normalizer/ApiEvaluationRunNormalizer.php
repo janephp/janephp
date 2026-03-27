@@ -27,21 +27,21 @@ class ApiEvaluationRunNormalizer implements DenormalizerInterface, NormalizerInt
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\ApiEvaluationRun();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\ApiEvaluationRun();
         if (\array_key_exists('agent_deleted', $data) && \is_int($data['agent_deleted'])) {
             $data['agent_deleted'] = (bool) $data['agent_deleted'];
         }
         if (\array_key_exists('pass_status', $data) && \is_int($data['pass_status'])) {
             $data['pass_status'] = (bool) $data['pass_status'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('agent_deleted', $data)) {
             $object->setAgentDeleted($data['agent_deleted']);

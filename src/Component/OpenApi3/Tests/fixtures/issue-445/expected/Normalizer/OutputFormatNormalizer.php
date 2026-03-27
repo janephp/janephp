@@ -27,13 +27,16 @@ class OutputFormatNormalizer implements DenormalizerInterface, NormalizerInterfa
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \PicturePark\API\Model\OutputFormat();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\OutputFormat();
         if (\array_key_exists('viewForAll', $data) && \is_int($data['viewForAll'])) {
             $data['viewForAll'] = (bool) $data['viewForAll'];
         }
@@ -51,9 +54,6 @@ class OutputFormatNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('temporary', $data) && \is_int($data['temporary'])) {
             $data['temporary'] = (bool) $data['temporary'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('sourceOutputFormats', $data) && $data['sourceOutputFormats'] !== null) {
             $object->setSourceOutputFormats($data['sourceOutputFormats']);

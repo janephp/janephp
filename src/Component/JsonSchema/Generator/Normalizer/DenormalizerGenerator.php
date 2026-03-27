@@ -56,6 +56,15 @@ trait DenormalizerGenerator
         $dataVariable = new Expr\Variable('data');
         $statements = [];
 
+        $statements[] = new Stmt\Expression(new Expr\Assign(
+            $objectVariable,
+            new Expr\New_(new Name\FullyQualified($modelFqdn)),
+        ));
+
+        $statements[] = new Stmt\If_(new Expr\BinaryOp\BooleanOr(new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('null')), $dataVariable), new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('false')), new Expr\FuncCall(new Name('\is_array'), [new Arg($dataVariable)]))), [
+            'stmts' => [new Stmt\Return_($objectVariable)],
+        ]);
+
         if ($this->useReference) {
             // In JSON Schema 2020-12, $ref can coexist with other keywords like type, properties, allOf, etc.
             // Only return a Reference when $ref is not accompanied by structural schema keywords.
@@ -94,10 +103,10 @@ trait DenormalizerGenerator
             );
         }
 
-        $statements[] = new Stmt\Expression(new Expr\Assign(
-            $objectVariable,
-            new Expr\New_(new Name\FullyQualified($modelFqdn)),
-        ));
+        $denormalizeMethodStatements = $this->denormalizeMethodStatements($classGuess, $context);
+        if (\count($denormalizeMethodStatements) > 0) {
+            array_push($statements, ...$denormalizeMethodStatements);
+        }
 
         foreach ($classGuess->getProperties() as $property) {
             if (Type::TYPE_FLOAT !== $property->getType()->getName()) {
@@ -139,16 +148,7 @@ trait DenormalizerGenerator
             ]]);
         }
 
-        $denormalizeMethodStatements = $this->denormalizeMethodStatements($classGuess, $context);
-        if (\count($denormalizeMethodStatements) > 0) {
-            array_unshift($statements, ...$denormalizeMethodStatements);
-        }
-
         $unset = \count($classGuess->getExtensionsType()) > 0;
-
-        $statements[] = new Stmt\If_(new Expr\BinaryOp\BooleanOr(new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('null')), $dataVariable), new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('false')), new Expr\FuncCall(new Name('\is_array'), [new Arg($dataVariable)]))), [
-            'stmts' => [new Stmt\Return_($objectVariable)],
-        ]);
 
         foreach ($classGuess->getProperties() as $property) {
             $propertyVar = new Expr\ArrayDimFetch($dataVariable, new Scalar\String_($property->getName()));

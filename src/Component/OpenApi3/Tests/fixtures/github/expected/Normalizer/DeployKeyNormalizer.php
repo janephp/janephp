@@ -27,13 +27,16 @@ class DeployKeyNormalizer implements DenormalizerInterface, NormalizerInterface,
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Github\Model\DeployKey();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Github\Model\DeployKey();
         if (\array_key_exists('verified', $data) && \is_int($data['verified'])) {
             $data['verified'] = (bool) $data['verified'];
         }
@@ -42,9 +45,6 @@ class DeployKeyNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\DeployKeyConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

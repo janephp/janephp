@@ -27,13 +27,16 @@ class ApiEvaluationMetricNormalizer implements DenormalizerInterface, Normalizer
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\ApiEvaluationMetric();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\ApiEvaluationMetric();
         if (\array_key_exists('range_max', $data) && \is_int($data['range_max'])) {
             $data['range_max'] = (double) $data['range_max'];
         }
@@ -45,9 +48,6 @@ class ApiEvaluationMetricNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('is_metric_goal', $data) && \is_int($data['is_metric_goal'])) {
             $data['is_metric_goal'] = (bool) $data['is_metric_goal'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('category', $data)) {
             $object->setCategory($data['category']);

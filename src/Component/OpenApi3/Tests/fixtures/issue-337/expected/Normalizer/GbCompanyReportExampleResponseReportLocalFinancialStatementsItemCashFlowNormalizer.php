@@ -27,13 +27,16 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlowNo
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow();
         if (\array_key_exists('netCashFlowFromOperations', $data) && \is_int($data['netCashFlowFromOperations'])) {
             $data['netCashFlowFromOperations'] = (double) $data['netCashFlowFromOperations'];
         }
@@ -45,9 +48,6 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlowNo
         }
         if (\array_key_exists('increaseInCash', $data) && \is_int($data['increaseInCash'])) {
             $data['increaseInCash'] = (double) $data['increaseInCash'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('netCashFlowFromOperations', $data)) {
             $object->setNetCashFlowFromOperations($data['netCashFlowFromOperations']);

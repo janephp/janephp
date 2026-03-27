@@ -27,11 +27,9 @@ class CdnPurgeJobBaseNormalizer implements DenormalizerInterface, NormalizerInte
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (array_key_exists('kind', $data) and 'CdnPurgeJobByTag' === $data['kind']) {
-            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\CdnPurgeJobByTag', $format, $context);
-        }
-        if (array_key_exists('kind', $data) and 'CdnPurgeJobByUri' === $data['kind']) {
-            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\CdnPurgeJobByUri', $format, $context);
+        $object = new \PicturePark\API\Model\CdnPurgeJobBase();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -39,12 +37,14 @@ class CdnPurgeJobBaseNormalizer implements DenormalizerInterface, NormalizerInte
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\CdnPurgeJobBase();
+        if (array_key_exists('kind', $data) and 'CdnPurgeJobByTag' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\CdnPurgeJobByTag', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'CdnPurgeJobByUri' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\CdnPurgeJobByUri', $format, $context);
+        }
         if (\array_key_exists('success', $data) && \is_int($data['success'])) {
             $data['success'] = (bool) $data['success'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('success', $data)) {
             $object->setSuccess($data['success']);

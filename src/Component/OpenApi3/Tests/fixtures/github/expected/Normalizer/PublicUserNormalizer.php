@@ -27,13 +27,16 @@ class PublicUserNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Github\Model\PublicUser();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Github\Model\PublicUser();
         if (\array_key_exists('site_admin', $data) && \is_int($data['site_admin'])) {
             $data['site_admin'] = (bool) $data['site_admin'];
         }
@@ -42,9 +45,6 @@ class PublicUserNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PublicUserConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('login', $data)) {
             $object->setLogin($data['login']);

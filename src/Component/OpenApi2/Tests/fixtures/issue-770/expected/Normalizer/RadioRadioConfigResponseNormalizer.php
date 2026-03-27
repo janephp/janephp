@@ -27,18 +27,18 @@ class RadioRadioConfigResponseNormalizer implements DenormalizerInterface, Norma
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\RadioRadioConfigResponse();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\RadioRadioConfigResponse();
         if (\array_key_exists('dual5gEnabled', $data) && \is_int($data['dual5gEnabled'])) {
             $data['dual5gEnabled'] = (bool) $data['dual5gEnabled'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('radio24g', $data)) {
             $object->setRadio24g($this->denormalizer->denormalize($data['radio24g'], \Jane\Component\OpenApi3\Tests\Expected\Model\RadioRadio24gResponse::class, 'json', $context));

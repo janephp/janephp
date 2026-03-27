@@ -27,6 +27,16 @@ class MessageNormalizer implements DenormalizerInterface, NormalizerInterface, D
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \PicturePark\API\Model\Message();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
         if (array_key_exists('kind', $data) and 'ConsoleMessage' === $data['kind']) {
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\ConsoleMessage', $format, $context);
         }
@@ -36,18 +46,8 @@ class MessageNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (array_key_exists('kind', $data) and 'LiveStreamMessage' === $data['kind']) {
             return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\LiveStreamMessage', $format, $context);
         }
-        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
-        }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \PicturePark\API\Model\Message();
         if (\array_key_exists('deduplicate', $data) && \is_int($data['deduplicate'])) {
             $data['deduplicate'] = (bool) $data['deduplicate'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);

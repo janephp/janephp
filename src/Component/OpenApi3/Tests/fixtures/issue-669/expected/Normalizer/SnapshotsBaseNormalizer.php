@@ -27,18 +27,18 @@ class SnapshotsBaseNormalizer implements DenormalizerInterface, NormalizerInterf
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\SnapshotsBase();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\SnapshotsBase();
         if (\array_key_exists('size_gigabytes', $data) && \is_int($data['size_gigabytes'])) {
             $data['size_gigabytes'] = (double) $data['size_gigabytes'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);

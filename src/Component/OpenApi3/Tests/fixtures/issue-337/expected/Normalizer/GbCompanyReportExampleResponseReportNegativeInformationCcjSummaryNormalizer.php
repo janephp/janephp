@@ -27,21 +27,21 @@ class GbCompanyReportExampleResponseReportNegativeInformationCcjSummaryNormalize
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportNegativeInformationCcjSummary();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \CreditSafe\API\Model\GbCompanyReportExampleResponseReportNegativeInformationCcjSummary();
         if (\array_key_exists('exactRegistered', $data) && \is_int($data['exactRegistered'])) {
             $data['exactRegistered'] = (double) $data['exactRegistered'];
         }
         if (\array_key_exists('possibleRegistered', $data) && \is_int($data['possibleRegistered'])) {
             $data['possibleRegistered'] = (double) $data['possibleRegistered'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('exactRegistered', $data)) {
             $object->setExactRegistered($data['exactRegistered']);

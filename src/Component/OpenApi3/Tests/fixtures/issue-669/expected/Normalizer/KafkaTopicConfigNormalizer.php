@@ -27,13 +27,16 @@ class KafkaTopicConfigNormalizer implements DenormalizerInterface, NormalizerInt
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\KafkaTopicConfig();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\KafkaTopicConfig();
         if (\array_key_exists('min_cleanable_dirty_ratio', $data) && \is_int($data['min_cleanable_dirty_ratio'])) {
             $data['min_cleanable_dirty_ratio'] = (double) $data['min_cleanable_dirty_ratio'];
         }
@@ -42,9 +45,6 @@ class KafkaTopicConfigNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('preallocate', $data) && \is_int($data['preallocate'])) {
             $data['preallocate'] = (bool) $data['preallocate'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('cleanup_policy', $data)) {
             $object->setCleanupPolicy($data['cleanup_policy']);

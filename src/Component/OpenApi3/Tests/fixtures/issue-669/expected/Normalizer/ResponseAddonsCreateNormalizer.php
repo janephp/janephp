@@ -27,15 +27,15 @@ class ResponseAddonsCreateNormalizer implements DenormalizerInterface, Normalize
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\ResponseAddonsCreate();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Jane\Generated\DigitalOcean\Model\ResponseAddonsCreate();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('resource', $data)) {
             $object->setResource($this->denormalizer->denormalize($data['resource'], \Jane\Generated\DigitalOcean\Model\AddonsResource::class, 'json', $context));

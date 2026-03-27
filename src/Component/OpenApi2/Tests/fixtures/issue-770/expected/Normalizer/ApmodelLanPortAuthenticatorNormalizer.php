@@ -27,21 +27,21 @@ class ApmodelLanPortAuthenticatorNormalizer implements DenormalizerInterface, No
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelLanPortAuthenticator();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelLanPortAuthenticator();
         if (\array_key_exists('disabledAccounting', $data) && \is_int($data['disabledAccounting'])) {
             $data['disabledAccounting'] = (bool) $data['disabledAccounting'];
         }
         if (\array_key_exists('macAuthByPassEnabled', $data) && \is_int($data['macAuthByPassEnabled'])) {
             $data['macAuthByPassEnabled'] = (bool) $data['macAuthByPassEnabled'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('authentication', $data)) {
             $object->setAuthentication($this->denormalizer->denormalize($data['authentication'], \Jane\Component\OpenApi3\Tests\Expected\Model\ApmodelAuthenticatorAAAServer::class, 'json', $context));

@@ -27,15 +27,15 @@ class PatchableEntityNormalizer implements DenormalizerInterface, NormalizerInte
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Gounlaf\JanephpBug\Model\PatchableEntity();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Gounlaf\JanephpBug\Model\PatchableEntity();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('nullable_property', $data) && $data['nullable_property'] !== null) {
             $object->setNullableProperty($data['nullable_property']);

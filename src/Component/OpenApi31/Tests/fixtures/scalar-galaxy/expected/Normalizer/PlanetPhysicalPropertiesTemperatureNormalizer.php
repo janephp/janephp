@@ -27,13 +27,16 @@ class PlanetPhysicalPropertiesTemperatureNormalizer implements DenormalizerInter
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetPhysicalPropertiesTemperature();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetPhysicalPropertiesTemperature();
         if (\array_key_exists('min', $data) && \is_int($data['min'])) {
             $data['min'] = (double) $data['min'];
         }
@@ -45,9 +48,6 @@ class PlanetPhysicalPropertiesTemperatureNormalizer implements DenormalizerInter
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PlanetPhysicalPropertiesTemperatureConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('min', $data)) {
             $object->setMin($data['min']);

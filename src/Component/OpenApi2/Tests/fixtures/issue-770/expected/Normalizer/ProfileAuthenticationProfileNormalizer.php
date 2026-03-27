@@ -27,13 +27,16 @@ class ProfileAuthenticationProfileNormalizer implements DenormalizerInterface, N
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileAuthenticationProfile();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileAuthenticationProfile();
         if (\array_key_exists('gppSuppportEnabled', $data) && \is_int($data['gppSuppportEnabled'])) {
             $data['gppSuppportEnabled'] = (bool) $data['gppSuppportEnabled'];
         }
@@ -42,9 +45,6 @@ class ProfileAuthenticationProfileNormalizer implements DenormalizerInterface, N
         }
         if (\array_key_exists('isContainDirectoryService', $data) && \is_int($data['isContainDirectoryService'])) {
             $data['isContainDirectoryService'] = (bool) $data['isContainDirectoryService'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

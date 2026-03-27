@@ -27,18 +27,18 @@ class ApiAgentLoggingConfigNormalizer implements DenormalizerInterface, Normaliz
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\ApiAgentLoggingConfig();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\ApiAgentLoggingConfig();
         if (\array_key_exists('insights_enabled', $data) && \is_int($data['insights_enabled'])) {
             $data['insights_enabled'] = (bool) $data['insights_enabled'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('galileo_project_id', $data)) {
             $object->setGalileoProjectId($data['galileo_project_id']);

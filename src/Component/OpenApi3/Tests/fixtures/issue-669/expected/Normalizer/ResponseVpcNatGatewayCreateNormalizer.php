@@ -27,15 +27,15 @@ class ResponseVpcNatGatewayCreateNormalizer implements DenormalizerInterface, No
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\ResponseVpcNatGatewayCreate();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Jane\Generated\DigitalOcean\Model\ResponseVpcNatGatewayCreate();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('vpc_nat_gateway', $data)) {
             $object->setVpcNatGateway($this->denormalizer->denormalize($data['vpc_nat_gateway'], \Jane\Generated\DigitalOcean\Model\VpcNatGatewayCreate::class, 'json', $context));

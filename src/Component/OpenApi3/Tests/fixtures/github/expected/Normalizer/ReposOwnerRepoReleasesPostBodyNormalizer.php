@@ -27,13 +27,16 @@ class ReposOwnerRepoReleasesPostBodyNormalizer implements DenormalizerInterface,
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Github\Model\ReposOwnerRepoReleasesPostBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Github\Model\ReposOwnerRepoReleasesPostBody();
         if (\array_key_exists('draft', $data) && \is_int($data['draft'])) {
             $data['draft'] = (bool) $data['draft'];
         }
@@ -42,9 +45,6 @@ class ReposOwnerRepoReleasesPostBodyNormalizer implements DenormalizerInterface,
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ReposOwnerRepoReleasesPostBodyConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('tag_name', $data)) {
             $object->setTagName($data['tag_name']);

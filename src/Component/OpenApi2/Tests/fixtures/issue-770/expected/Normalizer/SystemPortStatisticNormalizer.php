@@ -27,13 +27,16 @@ class SystemPortStatisticNormalizer implements DenormalizerInterface, Normalizer
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\SystemPortStatistic();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\SystemPortStatistic();
         if (\array_key_exists('rxBps', $data) && \is_int($data['rxBps'])) {
             $data['rxBps'] = (double) $data['rxBps'];
         }
@@ -69,9 +72,6 @@ class SystemPortStatisticNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('txPackets', $data) && \is_int($data['txPackets'])) {
             $data['txPackets'] = (double) $data['txPackets'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('rxBps', $data)) {
             $object->setRxBps($data['rxBps']);

@@ -27,13 +27,16 @@ class ExecIdStartPostBodyNormalizer implements DenormalizerInterface, Normalizer
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Docker\Api\Model\ExecIdStartPostBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Docker\Api\Model\ExecIdStartPostBody();
         if (\array_key_exists('Detach', $data) && \is_int($data['Detach'])) {
             $data['Detach'] = (bool) $data['Detach'];
         }
@@ -42,9 +45,6 @@ class ExecIdStartPostBodyNormalizer implements DenormalizerInterface, Normalizer
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ExecIdStartPostBodyConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('Detach', $data)) {
             $object->setDetach($data['Detach']);

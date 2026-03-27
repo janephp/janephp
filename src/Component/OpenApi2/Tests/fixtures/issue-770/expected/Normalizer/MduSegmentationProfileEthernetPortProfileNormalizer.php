@@ -27,21 +27,21 @@ class MduSegmentationProfileEthernetPortProfileNormalizer implements Denormalize
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileEthernetPortProfile();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\MduSegmentationProfileEthernetPortProfile();
         if (\array_key_exists('tunnelEnabled', $data) && \is_int($data['tunnelEnabled'])) {
             $data['tunnelEnabled'] = (bool) $data['tunnelEnabled'];
         }
         if (\array_key_exists('userSidePortEnabled', $data) && \is_int($data['userSidePortEnabled'])) {
             $data['userSidePortEnabled'] = (bool) $data['userSidePortEnabled'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

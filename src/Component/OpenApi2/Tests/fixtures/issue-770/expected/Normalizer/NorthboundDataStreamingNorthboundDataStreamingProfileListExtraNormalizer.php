@@ -27,21 +27,21 @@ class NorthboundDataStreamingNorthboundDataStreamingProfileListExtraNormalizer i
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\NorthboundDataStreamingNorthboundDataStreamingProfileListExtra();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\NorthboundDataStreamingNorthboundDataStreamingProfileListExtra();
         if (\array_key_exists('northboundDataStreamingEnabled', $data) && \is_int($data['northboundDataStreamingEnabled'])) {
             $data['northboundDataStreamingEnabled'] = (bool) $data['northboundDataStreamingEnabled'];
         }
         if (\array_key_exists('streamingByDomainZoneEnabled', $data) && \is_int($data['streamingByDomainZoneEnabled'])) {
             $data['streamingByDomainZoneEnabled'] = (bool) $data['streamingByDomainZoneEnabled'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('northboundDataStreamingEnabled', $data)) {
             $object->setNorthboundDataStreamingEnabled($data['northboundDataStreamingEnabled']);

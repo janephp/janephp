@@ -27,15 +27,15 @@ class ResponseUpdatedLoadBalancerNormalizer implements DenormalizerInterface, No
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\ResponseUpdatedLoadBalancer();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Jane\Generated\DigitalOcean\Model\ResponseUpdatedLoadBalancer();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('load_balancer', $data)) {
             $object->setLoadBalancer($this->denormalizer->denormalize($data['load_balancer'], \Jane\Generated\DigitalOcean\Model\LoadBalancer::class, 'json', $context));

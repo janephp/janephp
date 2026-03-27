@@ -27,18 +27,18 @@ class ResponseAppsValidateRollbackNormalizer implements DenormalizerInterface, N
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\ResponseAppsValidateRollback();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\ResponseAppsValidateRollback();
         if (\array_key_exists('valid', $data) && \is_int($data['valid'])) {
             $data['valid'] = (bool) $data['valid'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('valid', $data)) {
             $object->setValid($data['valid']);

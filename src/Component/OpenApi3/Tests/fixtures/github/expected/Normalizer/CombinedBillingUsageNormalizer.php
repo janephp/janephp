@@ -27,18 +27,18 @@ class CombinedBillingUsageNormalizer implements DenormalizerInterface, Normalize
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Github\Model\CombinedBillingUsage();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Github\Model\CombinedBillingUsage();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\CombinedBillingUsageConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('days_left_in_billing_cycle', $data)) {
             $object->setDaysLeftInBillingCycle($data['days_left_in_billing_cycle']);

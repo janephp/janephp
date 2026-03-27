@@ -27,21 +27,21 @@ class NumericRangeForAggregatorNormalizer implements DenormalizerInterface, Norm
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \PicturePark\API\Model\NumericRangeForAggregator();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\NumericRangeForAggregator();
         if (\array_key_exists('from', $data) && \is_int($data['from'])) {
             $data['from'] = (double) $data['from'];
         }
         if (\array_key_exists('to', $data) && \is_int($data['to'])) {
             $data['to'] = (double) $data['to'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
             $object->setNames($data['names']);

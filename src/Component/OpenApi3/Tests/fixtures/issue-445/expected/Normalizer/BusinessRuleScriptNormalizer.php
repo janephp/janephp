@@ -27,21 +27,21 @@ class BusinessRuleScriptNormalizer implements DenormalizerInterface, NormalizerI
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \PicturePark\API\Model\BusinessRuleScript();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\BusinessRuleScript();
         if (\array_key_exists('isEnabled', $data) && \is_int($data['isEnabled'])) {
             $data['isEnabled'] = (bool) $data['isEnabled'];
         }
         if (\array_key_exists('enableTracing', $data) && \is_int($data['enableTracing'])) {
             $data['enableTracing'] = (bool) $data['enableTracing'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);

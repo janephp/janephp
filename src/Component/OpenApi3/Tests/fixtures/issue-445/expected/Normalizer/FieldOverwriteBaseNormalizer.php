@@ -27,11 +27,9 @@ class FieldOverwriteBaseNormalizer implements DenormalizerInterface, NormalizerI
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (array_key_exists('kind', $data) and 'FieldOverwriteSingleTagbox' === $data['kind']) {
-            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\FieldOverwriteSingleTagbox', $format, $context);
-        }
-        if (array_key_exists('kind', $data) and 'FieldOverwriteMultiTagbox' === $data['kind']) {
-            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\FieldOverwriteMultiTagbox', $format, $context);
+        $object = new \PicturePark\API\Model\FieldOverwriteBase();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -39,15 +37,17 @@ class FieldOverwriteBaseNormalizer implements DenormalizerInterface, NormalizerI
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\FieldOverwriteBase();
+        if (array_key_exists('kind', $data) and 'FieldOverwriteSingleTagbox' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\FieldOverwriteSingleTagbox', $format, $context);
+        }
+        if (array_key_exists('kind', $data) and 'FieldOverwriteMultiTagbox' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\FieldOverwriteMultiTagbox', $format, $context);
+        }
         if (\array_key_exists('required', $data) && \is_int($data['required'])) {
             $data['required'] = (bool) $data['required'];
         }
         if (\array_key_exists('overwriteRequired', $data) && \is_int($data['overwriteRequired'])) {
             $data['overwriteRequired'] = (bool) $data['overwriteRequired'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);

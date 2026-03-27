@@ -27,21 +27,21 @@ class ApiOverviewNormalizer implements DenormalizerInterface, NormalizerInterfac
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Github\Model\ApiOverview();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Github\Model\ApiOverview();
         if (\array_key_exists('verifiable_password_authentication', $data) && \is_int($data['verifiable_password_authentication'])) {
             $data['verifiable_password_authentication'] = (bool) $data['verifiable_password_authentication'];
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\ApiOverviewConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('verifiable_password_authentication', $data)) {
             $object->setVerifiablePasswordAuthentication($data['verifiable_password_authentication']);

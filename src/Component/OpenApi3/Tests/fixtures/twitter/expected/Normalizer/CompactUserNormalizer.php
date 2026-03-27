@@ -27,21 +27,21 @@ class CompactUserNormalizer implements DenormalizerInterface, NormalizerInterfac
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\CompactUser();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\CompactUser();
         if (\array_key_exists('protected', $data) && \is_int($data['protected'])) {
             $data['protected'] = (bool) $data['protected'];
         }
         if (\array_key_exists('verified', $data) && \is_int($data['verified'])) {
             $data['verified'] = (bool) $data['verified'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('format', $data)) {
             $object->setFormat($data['format']);

@@ -27,13 +27,16 @@ class ClusterUpdateNormalizer implements DenormalizerInterface, NormalizerInterf
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\ClusterUpdate();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\ClusterUpdate();
         if (\array_key_exists('auto_upgrade', $data) && \is_int($data['auto_upgrade'])) {
             $data['auto_upgrade'] = (bool) $data['auto_upgrade'];
         }
@@ -42,9 +45,6 @@ class ClusterUpdateNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('ha', $data) && \is_int($data['ha'])) {
             $data['ha'] = (bool) $data['ha'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);

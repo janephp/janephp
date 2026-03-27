@@ -27,13 +27,16 @@ class UserSearchRequestNormalizer implements DenormalizerInterface, NormalizerIn
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \PicturePark\API\Model\UserSearchRequest();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\UserSearchRequest();
         if (\array_key_exists('includeServiceUser', $data) && \is_int($data['includeServiceUser'])) {
             $data['includeServiceUser'] = (bool) $data['includeServiceUser'];
         }
@@ -42,9 +45,6 @@ class UserSearchRequestNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('debugMode', $data) && \is_int($data['debugMode'])) {
             $data['debugMode'] = (bool) $data['debugMode'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
             $object->setSearchString($data['searchString']);

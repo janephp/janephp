@@ -27,13 +27,16 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Github\Model\PullRequestBaseRepo();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Github\Model\PullRequestBaseRepo();
         if (\array_key_exists('fork', $data) && \is_int($data['fork'])) {
             $data['fork'] = (bool) $data['fork'];
         }
@@ -72,9 +75,6 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\PullRequestBaseRepoConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('archive_url', $data)) {
             $object->setArchiveUrl($data['archive_url']);

@@ -27,13 +27,16 @@ class ImagesSearchGetResponse200ItemNormalizer implements DenormalizerInterface,
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Docker\Api\Model\ImagesSearchGetResponse200Item();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Docker\Api\Model\ImagesSearchGetResponse200Item();
         if (\array_key_exists('is_official', $data) && \is_int($data['is_official'])) {
             $data['is_official'] = (bool) $data['is_official'];
         }
@@ -42,9 +45,6 @@ class ImagesSearchGetResponse200ItemNormalizer implements DenormalizerInterface,
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ImagesSearchGetResponse200ItemConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);

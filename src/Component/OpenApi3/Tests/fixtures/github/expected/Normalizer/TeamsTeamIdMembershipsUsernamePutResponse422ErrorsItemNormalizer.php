@@ -27,18 +27,18 @@ class TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItemNormalizer implement
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Github\Model\TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItem();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Github\Model\TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItem();
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Github\Validator\TeamsTeamIdMembershipsUsernamePutResponse422ErrorsItemConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('code', $data)) {
             $object->setCode($data['code']);

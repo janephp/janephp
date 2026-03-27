@@ -27,21 +27,21 @@ class ValkeyAdvancedConfigNormalizer implements DenormalizerInterface, Normalize
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\ValkeyAdvancedConfig();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Generated\DigitalOcean\Model\ValkeyAdvancedConfig();
         if (\array_key_exists('valkey_ssl', $data) && \is_int($data['valkey_ssl'])) {
             $data['valkey_ssl'] = (bool) $data['valkey_ssl'];
         }
         if (\array_key_exists('frequent_snapshots', $data) && \is_int($data['frequent_snapshots'])) {
             $data['frequent_snapshots'] = (bool) $data['frequent_snapshots'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('valkey_maxmemory_policy', $data)) {
             $object->setValkeyMaxmemoryPolicy($data['valkey_maxmemory_policy']);

@@ -27,13 +27,16 @@ class SystemGatewayAdvancedNormalizer implements DenormalizerInterface, Normaliz
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\SystemGatewayAdvanced();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\SystemGatewayAdvanced();
         if (\array_key_exists('allowSessionOnAccountingFail', $data) && \is_int($data['allowSessionOnAccountingFail'])) {
             $data['allowSessionOnAccountingFail'] = (bool) $data['allowSessionOnAccountingFail'];
         }
@@ -51,9 +54,6 @@ class SystemGatewayAdvancedNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('taiInGtpV2', $data) && \is_int($data['taiInGtpV2'])) {
             $data['taiInGtpV2'] = (bool) $data['taiInGtpV2'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('allowSessionOnAccountingFail', $data)) {
             $object->setAllowSessionOnAccountingFail($data['allowSessionOnAccountingFail']);

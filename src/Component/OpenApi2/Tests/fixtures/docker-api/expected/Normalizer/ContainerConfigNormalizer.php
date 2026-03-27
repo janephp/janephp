@@ -27,13 +27,16 @@ class ContainerConfigNormalizer implements DenormalizerInterface, NormalizerInte
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Docker\Api\Model\ContainerConfig();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Docker\Api\Model\ContainerConfig();
         if (\array_key_exists('AttachStdin', $data) && \is_int($data['AttachStdin'])) {
             $data['AttachStdin'] = (bool) $data['AttachStdin'];
         }
@@ -60,9 +63,6 @@ class ContainerConfigNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ContainerConfigConstraint());
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('Hostname', $data)) {
             $object->setHostname($data['Hostname']);

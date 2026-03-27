@@ -27,15 +27,15 @@ class ApiCreateModelAPIKeyOutputNormalizer implements DenormalizerInterface, Nor
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Generated\DigitalOcean\Model\ApiCreateModelAPIKeyOutput();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Jane\Generated\DigitalOcean\Model\ApiCreateModelAPIKeyOutput();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('api_key_info', $data)) {
             $object->setApiKeyInfo($this->denormalizer->denormalize($data['api_key_info'], \Jane\Generated\DigitalOcean\Model\ApiModelAPIKeyInfo::class, 'json', $context));

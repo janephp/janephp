@@ -27,13 +27,16 @@ class SystemStatisticListItemDiskNormalizer implements DenormalizerInterface, No
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\SystemStatisticListItemDisk();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\SystemStatisticListItemDisk();
         if (\array_key_exists('total', $data) && \is_int($data['total'])) {
             $data['total'] = (double) $data['total'];
         }
@@ -45,9 +48,6 @@ class SystemStatisticListItemDiskNormalizer implements DenormalizerInterface, No
         }
         if (\array_key_exists('minFree', $data) && \is_int($data['minFree'])) {
             $data['minFree'] = (double) $data['minFree'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('total', $data)) {
             $object->setTotal($data['total']);

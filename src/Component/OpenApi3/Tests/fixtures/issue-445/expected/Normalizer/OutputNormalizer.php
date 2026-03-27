@@ -27,8 +27,9 @@ class OutputNormalizer implements DenormalizerInterface, NormalizerInterface, De
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (array_key_exists('kind', $data) and 'OutputDetail' === $data['kind']) {
-            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\OutputDetail', $format, $context);
+        $object = new \PicturePark\API\Model\Output();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -36,12 +37,11 @@ class OutputNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\Output();
+        if (array_key_exists('kind', $data) and 'OutputDetail' === $data['kind']) {
+            return $this->denormalizer->denormalize($data, 'PicturePark\API\Model\OutputDetail', $format, $context);
+        }
         if (\array_key_exists('dynamicRendering', $data) && \is_int($data['dynamicRendering'])) {
             $data['dynamicRendering'] = (bool) $data['dynamicRendering'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);

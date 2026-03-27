@@ -27,21 +27,21 @@ class ProfileUpdateRtlsProfileNormalizer implements DenormalizerInterface, Norma
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileUpdateRtlsProfile();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileUpdateRtlsProfile();
         if (\array_key_exists('ekahauEnabled', $data) && \is_int($data['ekahauEnabled'])) {
             $data['ekahauEnabled'] = (bool) $data['ekahauEnabled'];
         }
         if (\array_key_exists('stanleyEnabled', $data) && \is_int($data['stanleyEnabled'])) {
             $data['stanleyEnabled'] = (bool) $data['stanleyEnabled'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

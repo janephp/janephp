@@ -27,13 +27,16 @@ class PdfFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \PicturePark\API\Model\PdfFormat();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\PdfFormat();
         if (\array_key_exists('fastWebView', $data) && \is_int($data['fastWebView'])) {
             $data['fastWebView'] = (bool) $data['fastWebView'];
         }
@@ -42,9 +45,6 @@ class PdfFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (\array_key_exists('extractFullText', $data) && \is_int($data['extractFullText'])) {
             $data['extractFullText'] = (bool) $data['extractFullText'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);

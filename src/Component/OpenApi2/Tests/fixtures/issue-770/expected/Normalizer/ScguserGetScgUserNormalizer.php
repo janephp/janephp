@@ -27,13 +27,16 @@ class ScguserGetScgUserNormalizer implements DenormalizerInterface, NormalizerIn
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserGetScgUser();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ScguserGetScgUser();
         if (\array_key_exists('passwordComplexityEnabled', $data) && \is_int($data['passwordComplexityEnabled'])) {
             $data['passwordComplexityEnabled'] = (bool) $data['passwordComplexityEnabled'];
         }
@@ -42,9 +45,6 @@ class ScguserGetScgUserNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (\array_key_exists('credentialExpired', $data) && \is_int($data['credentialExpired'])) {
             $data['credentialExpired'] = (bool) $data['credentialExpired'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

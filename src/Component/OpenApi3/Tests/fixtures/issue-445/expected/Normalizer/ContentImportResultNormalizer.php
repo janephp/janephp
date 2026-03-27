@@ -27,18 +27,18 @@ class ContentImportResultNormalizer implements DenormalizerInterface, Normalizer
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \PicturePark\API\Model\ContentImportResult();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\ContentImportResult();
         if (\array_key_exists('succeeded', $data) && \is_int($data['succeeded'])) {
             $data['succeeded'] = (bool) $data['succeeded'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('fileTransferId', $data)) {
             $object->setFileTransferId($data['fileTransferId']);

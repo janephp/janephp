@@ -27,21 +27,21 @@ class ApQueryCreateApQueryIndoorMapXyNormalizer implements DenormalizerInterface
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryCreateApQueryIndoorMapXy();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ApQueryCreateApQueryIndoorMapXy();
         if (\array_key_exists('x', $data) && \is_int($data['x'])) {
             $data['x'] = (double) $data['x'];
         }
         if (\array_key_exists('y', $data) && \is_int($data['y'])) {
             $data['y'] = (double) $data['y'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('x', $data)) {
             $object->setX($data['x']);

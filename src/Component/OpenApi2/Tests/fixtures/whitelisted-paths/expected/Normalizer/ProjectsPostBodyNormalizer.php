@@ -27,13 +27,16 @@ class ProjectsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\OpenApi2\Tests\Expected\Model\ProjectsPostBody();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\OpenApi2\Tests\Expected\Model\ProjectsPostBody();
         if (\array_key_exists('hourly_rate', $data) && \is_int($data['hourly_rate'])) {
             $data['hourly_rate'] = (double) $data['hourly_rate'];
         }
@@ -69,9 +72,6 @@ class ProjectsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('cost_budget_include_expenses', $data) && \is_int($data['cost_budget_include_expenses'])) {
             $data['cost_budget_include_expenses'] = (bool) $data['cost_budget_include_expenses'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('client_id', $data)) {
             $object->setClientId($data['client_id']);

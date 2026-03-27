@@ -27,21 +27,21 @@ class ProfileDhcpRelayNoRelayTunnelNormalizer implements DenormalizerInterface, 
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDhcpRelayNoRelayTunnel();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\ProfileDhcpRelayNoRelayTunnel();
         if (\array_key_exists('dhcpRelayEnabled', $data) && \is_int($data['dhcpRelayEnabled'])) {
             $data['dhcpRelayEnabled'] = (bool) $data['dhcpRelayEnabled'];
         }
         if (\array_key_exists('relayBothEnabled', $data) && \is_int($data['relayBothEnabled'])) {
             $data['relayBothEnabled'] = (bool) $data['relayBothEnabled'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('dhcpRelayEnabled', $data)) {
             $object->setDhcpRelayEnabled($data['dhcpRelayEnabled']);

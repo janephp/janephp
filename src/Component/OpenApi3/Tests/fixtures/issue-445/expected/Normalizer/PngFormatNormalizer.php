@@ -27,13 +27,16 @@ class PngFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
+        $object = new \PicturePark\API\Model\PngFormat();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \PicturePark\API\Model\PngFormat();
         if (\array_key_exists('horizontalResolution', $data) && \is_int($data['horizontalResolution'])) {
             $data['horizontalResolution'] = (double) $data['horizontalResolution'];
         }
@@ -42,9 +45,6 @@ class PngFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (\array_key_exists('keepClippingPath', $data) && \is_int($data['keepClippingPath'])) {
             $data['keepClippingPath'] = (bool) $data['keepClippingPath'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
