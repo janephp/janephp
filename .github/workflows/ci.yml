@@ -81,8 +81,12 @@ jobs:
         run: composer global config --no-plugins allow-plugins.symfony/flex true
       - name: composer install
         run: composer update --prefer-dist --no-interaction --no-ansi
+      - name: install node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
       - name: install prism
-        run: curl -L https://raw.githack.com/stoplightio/prism/master/install | sh
+        run: yarn global add @stoplight/prism-cli
       - name: run OpenApi3 prism server
         run: nohup prism mock src/Component/OpenApi3/Tests/client/openapi.yaml -p 4010 &
       - name: run OpenApi2 prism server
@@ -106,8 +110,12 @@ jobs:
           extensions: mbstring, fileinfo, json, intl, dom
       - name: composer install
         run: composer update --prefer-lowest --prefer-stable
+      - name: install node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
       - name: install prism
-        run: curl -L https://raw.githack.com/stoplightio/prism/master/install | sh
+        run: yarn global add @stoplight/prism-cli
       - name: run OpenApi3 prism server
         run: nohup prism mock src/Component/OpenApi3/Tests/client/openapi.yaml -p 4010 &
       - name: run OpenApi2 prism server
