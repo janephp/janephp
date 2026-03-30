@@ -6,22 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [7.11.0] - 2026-03-30
 ### Added
 - [JsonSchema] [GH#918](https://github.com/janephp/janephp/pull/918) Add JSON Schema 2020-12 schema support
 - [OpenApi31] [GH#904](https://github.com/janephp/janephp/pull/904) Add OpenAPI 3.1 component
 - [OpenApi] [GH#930](https://github.com/janephp/janephp/pull/930) Add support for `float` in query string parameters
 - [Jane] [GH#932](https://github.com/janephp/janephp/pull/932) Handle `.php` files for Jane configuration files
 
-### Changed
-- [JsonSchema] [GH#933](https://github.com/janephp/janephp/pull/933) Fix denormalizers using `$data` before type checking it
-- [OpenApi] [GH#934](https://github.com/janephp/janephp/pull/934) Allow number query parameters to accept int or float
-
 ### Fixed
 - [OpenApi3] [GH#917](https://github.com/janephp/janephp/pull/917) Multipart/form-data requests failing with non-scalar properties (objects, arrays) by serializing them to JSON
 - [OpenApi3] [GH#921](https://github.com/janephp/janephp/pull/921) Fix lowercase class name suffix for inline properties in `allOf` schemas
 - [OpenApi] [GH#868](https://github.com/janephp/janephp/pull/868) Fix PHP 8.4 deprecation in generated Exception classes
 - [JsonSchema] [GH#929](https://github.com/janephp/janephp/pull/929) Remove deprecated usage of Email validator by generating `Email(mode: 'html5')`
-- [OpenApi] [GH#935](https://github.com/janephp/janephp/pull/935) Fix invalid PHP generation for path parameters with dashes
 
 ## [7.10.4] - 2026-01-26
 ### Added
@@ -852,7 +849,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.10.4...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.11.0...HEAD
+[7.11.0]: https://github.com/janephp/janephp/compare/v7.10.4...v7.11.0
 [7.10.4]: https://github.com/janephp/janephp/compare/v7.10.3...v7.10.4
 [7.10.3]: https://github.com/janephp/janephp/compare/v7.10.2...v7.10.3
 [7.10.2]: https://github.com/janephp/janephp/compare/v7.10.1...v7.10.2
