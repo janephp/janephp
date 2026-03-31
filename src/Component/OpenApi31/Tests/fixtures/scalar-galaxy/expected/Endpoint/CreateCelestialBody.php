@@ -4,6 +4,13 @@ namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
 
 class CreateCelestialBody extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
 {
+    /**
+     * @param mixed $requestBody
+     */
+    public function __construct($requestBody)
+    {
+        $this->body = $requestBody;
+    }
     use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
@@ -15,6 +22,9 @@ class CreateCelestialBody extends \Jane\Component\OpenApi31\Tests\Expected\Runti
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
+        if (isset($this->body)) {
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+        }
         return [[], null];
     }
     public function getExtraHeaders(): array

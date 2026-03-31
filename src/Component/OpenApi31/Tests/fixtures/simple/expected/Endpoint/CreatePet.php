@@ -4,6 +4,13 @@ namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
 
 class CreatePet extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
 {
+    /**
+     * @param \Jane\Component\OpenApi31\Tests\Expected\Model\Pet $requestBody
+     */
+    public function __construct(\Jane\Component\OpenApi31\Tests\Expected\Model\Pet $requestBody)
+    {
+        $this->body = $requestBody;
+    }
     use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
@@ -15,6 +22,9 @@ class CreatePet extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
+        if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Model\Pet) {
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+        }
         return [[], null];
     }
     public function getExtraHeaders(): array

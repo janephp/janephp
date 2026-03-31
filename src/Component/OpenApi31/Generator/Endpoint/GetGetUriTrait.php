@@ -27,7 +27,11 @@ trait GetGetUriTrait
     {
         $placeholders = $propertyNames = $types = [];
 
-        foreach ($operation->getParameters() as $parameter) {
+        foreach ($operation->getParameters() as $key => $parameter) {
+            if (\is_array($parameter) && isset($parameter['$ref'])) {
+                $parameter = new Reference($parameter['$ref'], $operation->getReference() . '/parameters/' . $key);
+            }
+
             if ($parameter instanceof Reference) {
                 $parameter = $guessClass->resolveParameter($parameter);
             }

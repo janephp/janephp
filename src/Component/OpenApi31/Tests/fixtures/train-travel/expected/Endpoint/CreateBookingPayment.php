@@ -4,13 +4,18 @@ namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
 
 class CreateBookingPayment extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
 {
+    protected $bookingId;
     protected $accept;
     /**
      * A payment is an attempt to pay for the booking, which will confirm the booking for the user and enable them to get their tickets.
+     * @param string $bookingId The ID of the booking to pay for.
+     * @param \Jane\Component\OpenApi31\Tests\Expected\Model\BookingPayment $requestBody
      * @param array $accept Accept content header application/json|application/problem+json|application/problem+xml
      */
-    public function __construct(array $accept = [])
+    public function __construct(string $bookingId, \Jane\Component\OpenApi31\Tests\Expected\Model\BookingPayment $requestBody, array $accept = [])
     {
+        $this->bookingId = $bookingId;
+        $this->body = $requestBody;
         $this->accept = $accept;
     }
     use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
@@ -20,10 +25,13 @@ class CreateBookingPayment extends \Jane\Component\OpenApi31\Tests\Expected\Runt
     }
     public function getUri(): string
     {
-        return '/bookings/{bookingId}/payment';
+        return str_replace(['{bookingId}'], [$this->bookingId], '/bookings/{bookingId}/payment');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
+        if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Model\BookingPayment) {
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+        }
         return [[], null];
     }
     public function getExtraHeaders(): array

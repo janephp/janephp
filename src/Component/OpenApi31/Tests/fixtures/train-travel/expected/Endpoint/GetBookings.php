@@ -7,10 +7,15 @@ class GetBookings extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clien
     protected $accept;
     /**
      * Returns a list of all trip bookings by the authenticated user.
+     * @param array{
+     *    "page"?: int, //The page number to return
+     *    "limit"?: int, //The number of items to return per page
+     * } $queryParameters
      * @param array $accept Accept content header application/json|application/xml|application/problem+json|application/problem+xml
      */
-    public function __construct(array $accept = [])
+    public function __construct(array $queryParameters = [], array $accept = [])
     {
+        $this->queryParameters = $queryParameters;
         $this->accept = $accept;
     }
     use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
@@ -32,6 +37,16 @@ class GetBookings extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clien
             return ['Accept' => ['application/json', 'application/xml', 'application/problem+json', 'application/problem+xml']];
         }
         return $this->accept;
+    }
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(['page', 'limit']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['page' => 1, 'limit' => 10]);
+        $optionsResolver->addAllowedTypes('page', ['int']);
+        $optionsResolver->addAllowedTypes('limit', ['int']);
+        return $optionsResolver;
     }
     /**
      * {@inheritdoc}

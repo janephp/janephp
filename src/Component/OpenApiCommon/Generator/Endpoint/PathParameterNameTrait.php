@@ -21,7 +21,7 @@ trait PathParameterNameTrait
     }
 
     /**
-     * @param string[] $propertyNames
+     * @param string[]          $propertyNames
      * @param array<int, mixed> $types
      *
      * @return ArrayItem[]

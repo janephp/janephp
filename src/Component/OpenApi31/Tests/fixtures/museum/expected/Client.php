@@ -6,6 +6,11 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Cli
 {
     /**
      * Get upcoming museum operating hours.
+     * @param array{
+     *    "startDate"?: string, //Starting date to retrieve future operating hours from. Defaults to today's date.
+     *    "page"?: int, //Page number to retrieve.
+     *    "limit"?: int, //Number of days per page.
+     * } $queryParameters
      * @param array $accept Accept content header application/json|application/problem+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\GetMuseumHoursBadRequestException
@@ -13,12 +18,18 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Cli
      *
      * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\Model\MuseumDailyHours[] : \Psr\Http\Message\ResponseInterface)
      */
-    public function getMuseumHours(string $fetch = self::FETCH_OBJECT, array $accept = [])
+    public function getMuseumHours(array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\GetMuseumHours($accept), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\GetMuseumHours($queryParameters, $accept), $fetch);
     }
     /**
      * Return a list of upcoming special events at the museum.
+     * @param array{
+     *    "startDate"?: string, //Starting date to retrieve future operating hours from. Defaults to today's date.
+     *    "endDate"?: string, //End of a date range to retrieve special events for. Defaults to 7 days after `startDate`.
+     *    "page"?: int, //Page number to retrieve.
+     *    "limit"?: int, //Number of days per page.
+     * } $queryParameters
      * @param array $accept Accept content header application/json|application/problem+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\ListSpecialEventsBadRequestException
@@ -26,12 +37,13 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Cli
      *
      * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEvent[] : \Psr\Http\Message\ResponseInterface)
      */
-    public function listSpecialEvents(string $fetch = self::FETCH_OBJECT, array $accept = [])
+    public function listSpecialEvents(array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\ListSpecialEvents($accept), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\ListSpecialEvents($queryParameters, $accept), $fetch);
     }
     /**
      * Creates a new special event for the museum.
+     * @param \Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEvent $requestBody
      * @param array $accept Accept content header application/json|application/problem+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\CreateSpecialEventBadRequestException
@@ -39,11 +51,13 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Cli
      *
      * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEvent : \Psr\Http\Message\ResponseInterface)
      */
-    public function createSpecialEvent(string $fetch = self::FETCH_OBJECT, array $accept = [])
+    public function createSpecialEvent(\Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEvent $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\CreateSpecialEvent($accept), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\CreateSpecialEvent($requestBody, $accept), $fetch);
     }
     /**
+     * Delete a special event from the collection. Allows museum to cancel planned events.
+     * @param string $eventId Identifier for a special event.
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\DeleteSpecialEventBadRequestException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\DeleteSpecialEventUnauthorizedException
@@ -51,12 +65,13 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Cli
      *
      * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
-    public function deleteSpecialEvent(string $fetch = self::FETCH_OBJECT)
+    public function deleteSpecialEvent(string $eventId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\DeleteSpecialEvent(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\DeleteSpecialEvent($eventId), $fetch);
     }
     /**
      * Get details about a special event.
+     * @param string $eventId Identifier for a special event.
      * @param array $accept Accept content header application/json|application/problem+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\GetSpecialEventBadRequestException
@@ -64,12 +79,14 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Cli
      *
      * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEvent : \Psr\Http\Message\ResponseInterface)
      */
-    public function getSpecialEvent(string $fetch = self::FETCH_OBJECT, array $accept = [])
+    public function getSpecialEvent(string $eventId, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\GetSpecialEvent($accept), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\GetSpecialEvent($eventId, $accept), $fetch);
     }
     /**
      * Update the details of a special event.
+     * @param string $eventId Identifier for a special event.
+     * @param \Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEventFields $requestBody
      * @param array $accept Accept content header application/json|application/problem+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\UpdateSpecialEventBadRequestException
@@ -77,12 +94,13 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Cli
      *
      * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEvent : \Psr\Http\Message\ResponseInterface)
      */
-    public function updateSpecialEvent(string $fetch = self::FETCH_OBJECT, array $accept = [])
+    public function updateSpecialEvent(string $eventId, \Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEventFields $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\UpdateSpecialEvent($accept), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\UpdateSpecialEvent($eventId, $requestBody, $accept), $fetch);
     }
     /**
      * Purchase museum tickets for general entry or special events.
+     * @param \Jane\Component\OpenApi31\Tests\Expected\Model\BuyMuseumTickets $requestBody
      * @param array $accept Accept content header application/json|application/problem+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\BuyMuseumTicketsBadRequestException
@@ -90,12 +108,13 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Cli
      *
      * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\Model\MuseumTicketsConfirmation : \Psr\Http\Message\ResponseInterface)
      */
-    public function buyMuseumTickets(string $fetch = self::FETCH_OBJECT, array $accept = [])
+    public function buyMuseumTickets(\Jane\Component\OpenApi31\Tests\Expected\Model\BuyMuseumTickets $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\BuyMuseumTickets($accept), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\BuyMuseumTickets($requestBody, $accept), $fetch);
     }
     /**
      * Return an image of your ticket with scannable QR code. Used for event entry.
+     * @param string $ticketId Identifier for a ticket to a museum event. Used to generate ticket image.
      * @param array $accept Accept content header image/png|application/problem+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\GetTicketCodeBadRequestException
@@ -103,9 +122,9 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Cli
      *
      * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
-    public function getTicketCode(string $fetch = self::FETCH_OBJECT, array $accept = [])
+    public function getTicketCode(string $ticketId, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\GetTicketCode($accept), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\GetTicketCode($ticketId, $accept), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {

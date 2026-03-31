@@ -4,13 +4,16 @@ namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
 
 class GetSpecialEvent extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
 {
+    protected $eventId;
     protected $accept;
     /**
      * Get details about a special event.
+     * @param string $eventId Identifier for a special event.
      * @param array $accept Accept content header application/json|application/problem+json
      */
-    public function __construct(array $accept = [])
+    public function __construct(string $eventId, array $accept = [])
     {
+        $this->eventId = $eventId;
         $this->accept = $accept;
     }
     use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
@@ -20,7 +23,7 @@ class GetSpecialEvent extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\C
     }
     public function getUri(): string
     {
-        return '/special-events/{eventId}';
+        return str_replace(['{eventId}'], [$this->eventId], '/special-events/{eventId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

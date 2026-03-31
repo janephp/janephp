@@ -7,10 +7,18 @@ class GetStations extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clien
     protected $accept;
     /**
      * Returns a paginated and searchable list of all train stations.
+     * @param array{
+     *    "page"?: int, //The page number to return
+     *    "limit"?: int, //The number of items to return per page
+     *    "coordinates"?: string, //The latitude and longitude of the user's location, to narrow down the search results to sites within a proximity of this location.
+     *    "search"?: string, //A search term to filter the list of stations by name or address.
+     *    "country"?: string, //Filter stations by country code
+     * } $queryParameters
      * @param array $accept Accept content header application/json|application/xml|application/problem+json|application/problem+xml
      */
-    public function __construct(array $accept = [])
+    public function __construct(array $queryParameters = [], array $accept = [])
     {
+        $this->queryParameters = $queryParameters;
         $this->accept = $accept;
     }
     use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
@@ -32,6 +40,19 @@ class GetStations extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clien
             return ['Accept' => ['application/json', 'application/xml', 'application/problem+json', 'application/problem+xml']];
         }
         return $this->accept;
+    }
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(['page', 'limit', 'coordinates', 'search', 'country']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['page' => 1, 'limit' => 10]);
+        $optionsResolver->addAllowedTypes('page', ['int']);
+        $optionsResolver->addAllowedTypes('limit', ['int']);
+        $optionsResolver->addAllowedTypes('coordinates', ['string']);
+        $optionsResolver->addAllowedTypes('search', ['string']);
+        $optionsResolver->addAllowedTypes('country', ['string']);
+        return $optionsResolver;
     }
     /**
      * {@inheritdoc}

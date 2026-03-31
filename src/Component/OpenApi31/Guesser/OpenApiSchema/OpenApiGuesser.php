@@ -229,6 +229,9 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
             return;
         }
 
+        $this->normalizePathItemParameters($pathItem, $reference);
+        $this->normalizeOperationInputs($operation, $reference);
+
         $securityScopes = $globalSecurityScopes;
         foreach ($operation->getSecurity() ?? [] as $securityItem) {
             foreach ($securityItem as $scope => $_) {
@@ -299,6 +302,69 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
     private function slugContentType($contentType): string
     {
         return ucfirst(str_replace('application', '', $this->slugger->slug($contentType, '')));
+    }
+
+    private function normalizePathItemParameters(PathItem $pathItem, string $reference): void
+    {
+        $parameters = $pathItem->getParameters();
+        if (!is_iterable($parameters)) {
+            return;
+        }
+
+        $normalizedParameters = [];
+        foreach ($parameters as $key => $parameter) {
+            $normalizedParameters[] = $this->coerceParameterValue($parameter, $reference . '/parameters/' . $key);
+        }
+
+        $pathItem->setParameters($normalizedParameters);
+    }
+
+    private function normalizeOperationInputs(Operation $operation, string $reference): void
+    {
+        $parameters = $operation->getParameters();
+        if (is_iterable($parameters)) {
+            $normalizedParameters = [];
+            foreach ($parameters as $key => $parameter) {
+                $normalizedParameters[] = $this->coerceParameterValue($parameter, $reference . '/parameters/' . $key);
+            }
+
+            $operation->setParameters($normalizedParameters);
+        }
+
+        $requestBody = $operation->getRequestBody();
+        if (\is_array($requestBody)) {
+            $operation->setRequestBody($this->coerceRequestBodyValue($requestBody, $reference . '/requestBody'));
+        }
+    }
+
+    private function coerceParameterValue(mixed $parameter, string $reference): mixed
+    {
+        if (!\is_array($parameter)) {
+            return $parameter;
+        }
+
+        if (isset($parameter['$ref'])) {
+            return new Reference($parameter['$ref'], $reference);
+        }
+
+        if (isset($parameter['name'], $parameter['in'])) {
+            return $this->denormalizer->denormalize($parameter, Parameter::class, 'json', ['document-origin' => $reference]);
+        }
+
+        return $parameter;
+    }
+
+    private function coerceRequestBodyValue(array $requestBody, string $reference): mixed
+    {
+        if (isset($requestBody['$ref'])) {
+            return new Reference($requestBody['$ref'], $reference);
+        }
+
+        if (isset($requestBody['content'])) {
+            return $this->denormalizer->denormalize($requestBody, RequestBody::class, 'json', ['document-origin' => $reference]);
+        }
+
+        return $requestBody;
     }
 
     private function getApplicationProblemJsonDefaultSchema(): JsonSchema

@@ -4,6 +4,14 @@ namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
 
 class ShowPetById extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
 {
+    protected $petId;
+    /**
+     * @param string $petId
+     */
+    public function __construct(string $petId)
+    {
+        $this->petId = $petId;
+    }
     use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
@@ -11,7 +19,7 @@ class ShowPetById extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clien
     }
     public function getUri(): string
     {
-        return '/pets/{petId}';
+        return str_replace(['{petId}'], [$this->petId], '/pets/{petId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

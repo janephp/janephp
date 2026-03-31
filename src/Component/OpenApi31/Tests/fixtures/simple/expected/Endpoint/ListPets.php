@@ -4,6 +4,15 @@ namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
 
 class ListPets extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
 {
+    /**
+     * @param array{
+     *    "limit"?: int,
+     * } $queryParameters
+     */
+    public function __construct(array $queryParameters = [])
+    {
+        $this->queryParameters = $queryParameters;
+    }
     use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
@@ -20,6 +29,15 @@ class ListPets extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\B
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
+    }
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(['limit']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('limit', ['int']);
+        return $optionsResolver;
     }
     /**
      * {@inheritdoc}

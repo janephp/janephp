@@ -4,13 +4,16 @@ namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
 
 class GetTicketCode extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
 {
+    protected $ticketId;
     protected $accept;
     /**
      * Return an image of your ticket with scannable QR code. Used for event entry.
+     * @param string $ticketId Identifier for a ticket to a museum event. Used to generate ticket image.
      * @param array $accept Accept content header image/png|application/problem+json
      */
-    public function __construct(array $accept = [])
+    public function __construct(string $ticketId, array $accept = [])
     {
+        $this->ticketId = $ticketId;
         $this->accept = $accept;
     }
     use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
@@ -20,7 +23,7 @@ class GetTicketCode extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Cli
     }
     public function getUri(): string
     {
-        return '/tickets/{ticketId}/qr';
+        return str_replace(['{ticketId}'], [$this->ticketId], '/tickets/{ticketId}/qr');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

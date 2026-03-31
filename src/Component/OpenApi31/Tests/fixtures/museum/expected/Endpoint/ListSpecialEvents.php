@@ -7,10 +7,17 @@ class ListSpecialEvents extends \Jane\Component\OpenApi31\Tests\Expected\Runtime
     protected $accept;
     /**
      * Return a list of upcoming special events at the museum.
+     * @param array{
+     *    "startDate"?: string, //Starting date to retrieve future operating hours from. Defaults to today's date.
+     *    "endDate"?: string, //End of a date range to retrieve special events for. Defaults to 7 days after `startDate`.
+     *    "page"?: int, //Page number to retrieve.
+     *    "limit"?: int, //Number of days per page.
+     * } $queryParameters
      * @param array $accept Accept content header application/json|application/problem+json
      */
-    public function __construct(array $accept = [])
+    public function __construct(array $queryParameters = [], array $accept = [])
     {
+        $this->queryParameters = $queryParameters;
         $this->accept = $accept;
     }
     use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
@@ -32,6 +39,18 @@ class ListSpecialEvents extends \Jane\Component\OpenApi31\Tests\Expected\Runtime
             return ['Accept' => ['application/json', 'application/problem+json']];
         }
         return $this->accept;
+    }
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(['startDate', 'endDate', 'page', 'limit']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['page' => 1, 'limit' => 10]);
+        $optionsResolver->addAllowedTypes('startDate', ['string']);
+        $optionsResolver->addAllowedTypes('endDate', ['string']);
+        $optionsResolver->addAllowedTypes('page', ['int']);
+        $optionsResolver->addAllowedTypes('limit', ['int']);
+        return $optionsResolver;
     }
     /**
      * {@inheritdoc}

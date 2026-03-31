@@ -34,6 +34,10 @@ trait GetConstructorTrait
         $contentTypes = $this->getContentTypes($operation, $guessClass, $context);
 
         foreach ($operation->getParameters() as $key => $parameter) {
+            if (\is_array($parameter) && isset($parameter['$ref'])) {
+                $parameter = new Reference($parameter['$ref'], $operation->getReference() . '/parameters/' . $key);
+            }
+
             if ($parameter instanceof Reference) {
                 $parameter = $guessClass->resolveParameter($parameter);
             }
