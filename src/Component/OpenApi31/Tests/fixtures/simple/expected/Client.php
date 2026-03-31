@@ -5,31 +5,36 @@ namespace Jane\Component\OpenApi31\Tests\Expected;
 class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Client
 {
     /**
+     * @param array{
+     *    "limit"?: int,
+     * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\Model\Pet[] : \Psr\Http\Message\ResponseInterface)
      */
-    public function listPets(string $fetch = self::FETCH_OBJECT)
+    public function listPets(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\ListPets(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\ListPets($queryParameters), $fetch);
     }
     /**
+     * @param \Jane\Component\OpenApi31\Tests\Expected\Model\Pet $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\Model\Pet : \Psr\Http\Message\ResponseInterface)
      */
-    public function createPet(string $fetch = self::FETCH_OBJECT)
+    public function createPet(\Jane\Component\OpenApi31\Tests\Expected\Model\Pet $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\CreatePet(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\CreatePet($requestBody), $fetch);
     }
     /**
+     * @param string $petId
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\Model\Pet : \Psr\Http\Message\ResponseInterface)
      */
-    public function showPetById(string $fetch = self::FETCH_OBJECT)
+    public function showPetById(string $petId, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\ShowPetById(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\ShowPetById($petId), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {

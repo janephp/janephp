@@ -4,13 +4,16 @@ namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
 
 class DeleteBooking extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
 {
+    protected $bookingId;
     protected $accept;
     /**
      * Deletes a booking, cancelling the hold on the trip.
+     * @param string $bookingId The ID of the booking to retrieve.
      * @param array $accept Accept content header application/problem+json|application/problem+xml
      */
-    public function __construct(array $accept = [])
+    public function __construct(string $bookingId, array $accept = [])
     {
+        $this->bookingId = $bookingId;
         $this->accept = $accept;
     }
     use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
@@ -20,7 +23,7 @@ class DeleteBooking extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Cli
     }
     public function getUri(): string
     {
-        return '/bookings/{bookingId}';
+        return str_replace(['{bookingId}'], [$this->bookingId], '/bookings/{bookingId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

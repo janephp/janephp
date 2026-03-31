@@ -7,10 +7,12 @@ class GetToken extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\B
     protected $accept;
     /**
      * Yeah, this is the boring security stuff. Just get your super secret token and move on.
+     * @param null|\Jane\Component\OpenApi31\Tests\Expected\Model\Credentials $requestBody
      * @param array $accept Accept content header application/json|application/xml
      */
-    public function __construct(array $accept = [])
+    public function __construct(?\Jane\Component\OpenApi31\Tests\Expected\Model\Credentials $requestBody = null, array $accept = [])
     {
+        $this->body = $requestBody;
         $this->accept = $accept;
     }
     use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
@@ -24,6 +26,12 @@ class GetToken extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\B
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
+        if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Model\Credentials) {
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+        }
+        if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Model\Credentials) {
+            return [['Content-Type' => ['application/xml']], $this->body];
+        }
         return [[], null];
     }
     public function getExtraHeaders(): array

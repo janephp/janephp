@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [7.11.1] - 2026-03-31
+### Fixed
+- [OpenApi31] [GH#938](https://github.com/janephp/janephp/pull/938) Wrong path/query parameters matching
+
 ## [7.11.0] - 2026-03-30
 ### Added
 - [JsonSchema] [GH#918](https://github.com/janephp/janephp/pull/918) Add JSON Schema 2020-12 schema support
@@ -849,7 +853,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.11.0...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.11.1...HEAD
+[7.11.1]: https://github.com/janephp/janephp/compare/v7.11.0...v7.11.1
 [7.11.0]: https://github.com/janephp/janephp/compare/v7.10.4...v7.11.0
 [7.10.4]: https://github.com/janephp/janephp/compare/v7.10.3...v7.10.4
 [7.10.3]: https://github.com/janephp/janephp/compare/v7.10.2...v7.10.3

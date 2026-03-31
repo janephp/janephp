@@ -7,10 +7,12 @@ class BuyMuseumTickets extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\
     protected $accept;
     /**
      * Purchase museum tickets for general entry or special events.
+     * @param \Jane\Component\OpenApi31\Tests\Expected\Model\BuyMuseumTickets $requestBody
      * @param array $accept Accept content header application/json|application/problem+json
      */
-    public function __construct(array $accept = [])
+    public function __construct(\Jane\Component\OpenApi31\Tests\Expected\Model\BuyMuseumTickets $requestBody, array $accept = [])
     {
+        $this->body = $requestBody;
         $this->accept = $accept;
     }
     use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
@@ -24,6 +26,9 @@ class BuyMuseumTickets extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
+        if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Model\BuyMuseumTickets) {
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+        }
         return [[], null];
     }
     public function getExtraHeaders(): array

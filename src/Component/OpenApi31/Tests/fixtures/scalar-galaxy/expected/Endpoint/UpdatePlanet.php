@@ -4,13 +4,18 @@ namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
 
 class UpdatePlanet extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
 {
+    protected $planetId;
     protected $accept;
     /**
      * Sometimes you make mistakes, that's fine. No worries, you can update all planets.
+     * @param int $planetId The ID of the planet to get
+     * @param null|\Jane\Component\OpenApi31\Tests\Expected\Model\Planet $requestBody
      * @param array $accept Accept content header application/json|application/xml
      */
-    public function __construct(array $accept = [])
+    public function __construct(int $planetId, ?\Jane\Component\OpenApi31\Tests\Expected\Model\Planet $requestBody = null, array $accept = [])
     {
+        $this->planetId = $planetId;
+        $this->body = $requestBody;
         $this->accept = $accept;
     }
     use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
@@ -20,10 +25,16 @@ class UpdatePlanet extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clie
     }
     public function getUri(): string
     {
-        return '/planets/{planetId}';
+        return str_replace(['{planetId}'], [$this->planetId], '/planets/{planetId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
+        if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Model\Planet) {
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+        }
+        if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Model\Planet) {
+            return [['Content-Type' => ['application/xml']], $this->body];
+        }
         return [[], null];
     }
     public function getExtraHeaders(): array

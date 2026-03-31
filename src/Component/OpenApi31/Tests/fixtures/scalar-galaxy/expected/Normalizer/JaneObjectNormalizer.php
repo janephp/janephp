@@ -56,6 +56,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Component\OpenApi31\Tests\Expected\Model\TooManyRequestsError::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\TooManyRequestsErrorNormalizer::class,
         
+        \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsPlanetIdImagePostBody::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\PlanetsPlanetIdImagePostBodyNormalizer::class,
+        
+        \Jane\Component\OpenApi31\Tests\Expected\Model\UserSignupPostBody::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\UserSignupPostBodyNormalizer::class,
+        
         \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
@@ -113,6 +117,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Component\OpenApi31\Tests\Expected\Model\Conflict::class => false,
             \Jane\Component\OpenApi31\Tests\Expected\Model\UnprocessableEntity::class => false,
             \Jane\Component\OpenApi31\Tests\Expected\Model\TooManyRequestsError::class => false,
+            \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsPlanetIdImagePostBody::class => false,
+            \Jane\Component\OpenApi31\Tests\Expected\Model\UserSignupPostBody::class => false,
             \Jane\Component\JsonSchemaRuntime\Reference::class => false,
         ];
     }

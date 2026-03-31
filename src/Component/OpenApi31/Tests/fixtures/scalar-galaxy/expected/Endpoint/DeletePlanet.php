@@ -4,13 +4,16 @@ namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
 
 class DeletePlanet extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
 {
+    protected $planetId;
     protected $accept;
     /**
      * This endpoint was used to delete planets. Unfortunately, that caused a lot of trouble for planets with life. So, this endpoint is now deprecated and should not be used anymore.
+     * @param int $planetId The ID of the planet to get
      * @param array $accept Accept content header application/json|application/xml
      */
-    public function __construct(array $accept = [])
+    public function __construct(int $planetId, array $accept = [])
     {
+        $this->planetId = $planetId;
         $this->accept = $accept;
     }
     use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
@@ -20,7 +23,7 @@ class DeletePlanet extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clie
     }
     public function getUri(): string
     {
-        return '/planets/{planetId}';
+        return str_replace(['{planetId}'], [$this->planetId], '/planets/{planetId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

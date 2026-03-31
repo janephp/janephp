@@ -4,13 +4,18 @@ namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
 
 class UpdateSpecialEvent extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
 {
+    protected $eventId;
     protected $accept;
     /**
      * Update the details of a special event.
+     * @param string $eventId Identifier for a special event.
+     * @param \Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEventFields $requestBody
      * @param array $accept Accept content header application/json|application/problem+json
      */
-    public function __construct(array $accept = [])
+    public function __construct(string $eventId, \Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEventFields $requestBody, array $accept = [])
     {
+        $this->eventId = $eventId;
+        $this->body = $requestBody;
         $this->accept = $accept;
     }
     use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
@@ -20,10 +25,13 @@ class UpdateSpecialEvent extends \Jane\Component\OpenApi31\Tests\Expected\Runtim
     }
     public function getUri(): string
     {
-        return '/special-events/{eventId}';
+        return str_replace(['{eventId}'], [$this->eventId], '/special-events/{eventId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
+        if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Model\SpecialEventFields) {
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+        }
         return [[], null];
     }
     public function getExtraHeaders(): array

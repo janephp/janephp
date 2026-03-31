@@ -7,10 +7,12 @@ class CreatePlanet extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clie
     protected $accept;
     /**
      * Time to play god and create a new planet. What do you think? Ah, don't think too much. What could go wrong anyway?
+     * @param null|\Jane\Component\OpenApi31\Tests\Expected\Model\Planet $requestBody
      * @param array $accept Accept content header application/json|application/xml
      */
-    public function __construct(array $accept = [])
+    public function __construct(?\Jane\Component\OpenApi31\Tests\Expected\Model\Planet $requestBody = null, array $accept = [])
     {
+        $this->body = $requestBody;
         $this->accept = $accept;
     }
     use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
@@ -24,6 +26,12 @@ class CreatePlanet extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clie
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
+        if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Model\Planet) {
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+        }
+        if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Model\Planet) {
+            return [['Content-Type' => ['application/xml']], $this->body];
+        }
         return [[], null];
     }
     public function getExtraHeaders(): array

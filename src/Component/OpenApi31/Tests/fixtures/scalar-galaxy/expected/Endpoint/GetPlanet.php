@@ -4,13 +4,16 @@ namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
 
 class GetPlanet extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
 {
+    protected $planetId;
     protected $accept;
     /**
      * You'll better learn a little bit more about the planets. It might come in handy once space travel is available for everyone.
+     * @param int $planetId The ID of the planet to get
      * @param array $accept Accept content header application/json|application/xml
      */
-    public function __construct(array $accept = [])
+    public function __construct(int $planetId, array $accept = [])
     {
+        $this->planetId = $planetId;
         $this->accept = $accept;
     }
     use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
@@ -20,7 +23,7 @@ class GetPlanet extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\
     }
     public function getUri(): string
     {
-        return '/planets/{planetId}';
+        return str_replace(['{planetId}'], [$this->planetId], '/planets/{planetId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

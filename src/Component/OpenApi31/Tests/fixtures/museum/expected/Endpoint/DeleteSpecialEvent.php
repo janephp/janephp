@@ -4,6 +4,15 @@ namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
 
 class DeleteSpecialEvent extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
 {
+    protected $eventId;
+    /**
+     * Delete a special event from the collection. Allows museum to cancel planned events.
+     * @param string $eventId Identifier for a special event.
+     */
+    public function __construct(string $eventId)
+    {
+        $this->eventId = $eventId;
+    }
     use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
@@ -11,7 +20,7 @@ class DeleteSpecialEvent extends \Jane\Component\OpenApi31\Tests\Expected\Runtim
     }
     public function getUri(): string
     {
-        return '/special-events/{eventId}';
+        return str_replace(['{eventId}'], [$this->eventId], '/special-events/{eventId}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {

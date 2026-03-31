@@ -7,10 +7,16 @@ class GetMuseumHours extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Cl
     protected $accept;
     /**
      * Get upcoming museum operating hours.
+     * @param array{
+     *    "startDate"?: string, //Starting date to retrieve future operating hours from. Defaults to today's date.
+     *    "page"?: int, //Page number to retrieve.
+     *    "limit"?: int, //Number of days per page.
+     * } $queryParameters
      * @param array $accept Accept content header application/json|application/problem+json
      */
-    public function __construct(array $accept = [])
+    public function __construct(array $queryParameters = [], array $accept = [])
     {
+        $this->queryParameters = $queryParameters;
         $this->accept = $accept;
     }
     use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
@@ -32,6 +38,17 @@ class GetMuseumHours extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Cl
             return ['Accept' => ['application/json', 'application/problem+json']];
         }
         return $this->accept;
+    }
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(['startDate', 'page', 'limit']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['page' => 1, 'limit' => 10]);
+        $optionsResolver->addAllowedTypes('startDate', ['string']);
+        $optionsResolver->addAllowedTypes('page', ['int']);
+        $optionsResolver->addAllowedTypes('limit', ['int']);
+        return $optionsResolver;
     }
     /**
      * {@inheritdoc}

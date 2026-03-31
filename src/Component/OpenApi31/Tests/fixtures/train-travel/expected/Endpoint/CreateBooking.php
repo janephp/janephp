@@ -7,10 +7,12 @@ class CreateBooking extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Cli
     protected $accept;
     /**
      * A booking is a temporary hold on a trip. It is not confirmed until the payment is processed.
+     * @param \Jane\Component\OpenApi31\Tests\Expected\Model\Booking $requestBody
      * @param array $accept Accept content header application/json|application/xml|application/problem+json|application/problem+xml
      */
-    public function __construct(array $accept = [])
+    public function __construct(\Jane\Component\OpenApi31\Tests\Expected\Model\Booking $requestBody, array $accept = [])
     {
+        $this->body = $requestBody;
         $this->accept = $accept;
     }
     use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
@@ -24,6 +26,12 @@ class CreateBooking extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Cli
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
+        if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Model\Booking) {
+            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+        }
+        if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Model\Booking) {
+            return [['Content-Type' => ['application/xml']], $this->body];
+        }
         return [[], null];
     }
     public function getExtraHeaders(): array

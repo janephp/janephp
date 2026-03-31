@@ -4,13 +4,18 @@ namespace Jane\Component\OpenApi31\Tests\Expected\Endpoint;
 
 class UploadImage extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Endpoint
 {
+    protected $planetId;
     protected $accept;
     /**
      * Got a crazy good photo of a planet? Share it with the world!
+     * @param int $planetId The ID of the planet to get
+     * @param null|\Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsPlanetIdImagePostBody $requestBody
      * @param array $accept Accept content header application/json|application/xml
      */
-    public function __construct(array $accept = [])
+    public function __construct(int $planetId, ?\Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsPlanetIdImagePostBody $requestBody = null, array $accept = [])
     {
+        $this->planetId = $planetId;
+        $this->body = $requestBody;
         $this->accept = $accept;
     }
     use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
@@ -20,10 +25,22 @@ class UploadImage extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clien
     }
     public function getUri(): string
     {
-        return '/planets/{planetId}/image';
+        return str_replace(['{planetId}'], [$this->planetId], '/planets/{planetId}/image');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
+        if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsPlanetIdImagePostBody) {
+            $bodyBuilder = new \Http\Message\MultipartStream\MultipartStreamBuilder($streamFactory);
+            $formParameters = $serializer->normalize($this->body, 'json');
+            foreach ($formParameters as $key => $value) {
+                $value = is_int($value) ? (string) $value : $value;
+                if (is_array($value)) {
+                    $value = $serializer->serialize($value, 'json');
+                }
+                $bodyBuilder->addResource($key, $value);
+            }
+            return [['Content-Type' => ['multipart/form-data; boundary="' . ($bodyBuilder->getBoundary() . '"')]], $bodyBuilder->build()];
+        }
         return [[], null];
     }
     public function getExtraHeaders(): array

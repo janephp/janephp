@@ -7,10 +7,15 @@ class GetAllData extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client
     protected $accept;
     /**
      * It's easy to say you know them all, but do you really? Retrieve all the planets and check whether you missed one.
+     * @param array{
+     *    "limit"?: int, //The number of items to return
+     *    "offset"?: int, //The number of items to skip before starting to collect the result set
+     * } $queryParameters
      * @param array $accept Accept content header application/json|application/xml
      */
-    public function __construct(array $accept = [])
+    public function __construct(array $queryParameters = [], array $accept = [])
     {
+        $this->queryParameters = $queryParameters;
         $this->accept = $accept;
     }
     use \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\EndpointTrait;
@@ -32,6 +37,16 @@ class GetAllData extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client
             return ['Accept' => ['application/json', 'application/xml']];
         }
         return $this->accept;
+    }
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(['limit', 'offset']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults(['limit' => 10, 'offset' => 0]);
+        $optionsResolver->addAllowedTypes('limit', ['int']);
+        $optionsResolver->addAllowedTypes('offset', ['int']);
+        return $optionsResolver;
     }
     /**
      * {@inheritdoc}
