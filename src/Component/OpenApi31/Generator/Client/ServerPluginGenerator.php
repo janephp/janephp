@@ -6,6 +6,7 @@ use Http\Client\Common\Plugin\AddHostPlugin;
 use Http\Client\Common\Plugin\AddPathPlugin;
 use Jane\Component\OpenApi31\JsonSchema\Model\OpenApi;
 use Jane\Component\OpenApiCommon\Generator\Client\ServerPluginGenerator as BaseServerPluginGenerator;
+use Jane\Component\OpenApi31\JsonSchema\Model\Server;
 
 trait ServerPluginGenerator
 {
@@ -17,7 +18,7 @@ trait ServerPluginGenerator
     protected function discoverServer($openApi): array
     {
         $servers = $openApi->getServers();
-        $server = $servers !== null && !empty($servers[0]) ? $servers[0] : null;
+        $server = $servers !== null && !empty($servers[0]) && $servers[0] instanceof Server ? $servers[0] : null;
 
         if (null !== $server) {
             $url = parse_url($server->getUrl());
