@@ -39,6 +39,7 @@ class GuesserFactory
         $chainGuesser->addGuesser(new AdditionalPropertiesGuesser(JsonSchema::class));
         $chainGuesser->addGuesser(new AllOfGuesser($denormalizer, $naming, JsonSchema::class));
         $chainGuesser->addGuesser(new AnyOfReferencefGuesser($denormalizer, $naming, JsonSchema::class));
+        $chainGuesser->addGuesser(new OneOfReferencefGuesser($denormalizer, $naming, JsonSchema::class));
         $chainGuesser->addGuesser(new ArrayGuesser(JsonSchema::class));
         $chainGuesser->addGuesser(new ItemsGuesser(JsonSchema::class));
         $chainGuesser->addGuesser(new SimpleTypeGuesser(JsonSchema::class));
