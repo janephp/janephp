@@ -1,0 +1,54 @@
+{
+    "openapi": "3.1.2",
+    "info": {
+        "title": "Test",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://api.example.com/v1",
+            "description": "Production server"
+        }
+    ],
+    "paths": {
+        "/proposal": {
+            "get": {
+                "operationId": "getProposal",
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProjectProposal"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ProjectProposal": {
+                "type": "object",
+                "properties": {
+                    "users": {
+                        "oneOf": [
+                            { "$ref": "#/components/schemas/User" },
+                            { "type": "null" }
+                        ]
+                    }
+                }
+            },
+            "User": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
