@@ -25,6 +25,7 @@ class ChainValidatorFactory
         $chainValidator->addValidator(new Array_\MaxItemsValidator());
         $chainValidator->addValidator(new Array_\MinItemsValidator());
         $chainValidator->addValidator(new Array_\UniqueItemsValidator());
+        $chainValidator->addValidator(new Array_\ItemsValidator($chainValidator));
         // Object
         $chainValidator->addValidator(new Object_\SubObjectValidator($denormalizer, $naming, $registry));
         $chainValidator->addValidator(new Object_\MaxPropertiesValidator());

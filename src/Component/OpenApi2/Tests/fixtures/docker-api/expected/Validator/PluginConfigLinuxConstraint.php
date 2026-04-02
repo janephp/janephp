@@ -6,6 +6,6 @@ class PluginConfigLinuxConstraint extends \Symfony\Component\Validator\Constrain
 {
     protected function getConstraints($options): array
     {
-        return [new \Symfony\Component\Validator\Constraints\Collection(fields: ['Capabilities' => new \Symfony\Component\Validator\Constraints\Required([new \Symfony\Component\Validator\Constraints\Type(type: ['array'])]), 'AllowAllDevices' => new \Symfony\Component\Validator\Constraints\Required([new \Symfony\Component\Validator\Constraints\Type(type: ['bool'])]), 'Devices' => new \Symfony\Component\Validator\Constraints\Required([new \Symfony\Component\Validator\Constraints\Type(type: ['array'])])], allowExtraFields: true)];
+        return [new \Symfony\Component\Validator\Constraints\Collection(fields: ['Capabilities' => new \Symfony\Component\Validator\Constraints\Required([new \Symfony\Component\Validator\Constraints\All(constraints: [new \Symfony\Component\Validator\Constraints\Type(type: ['string'])]), new \Symfony\Component\Validator\Constraints\Type(type: ['array'])]), 'AllowAllDevices' => new \Symfony\Component\Validator\Constraints\Required([new \Symfony\Component\Validator\Constraints\Type(type: ['bool'])]), 'Devices' => new \Symfony\Component\Validator\Constraints\Required([new \Symfony\Component\Validator\Constraints\Type(type: ['array'])])], allowExtraFields: true)];
     }
 }
