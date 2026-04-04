@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - [JsonSchema] [GH#941](https://github.com/janephp/janephp/pull/941) Mark properties nullable when `anyOf` includes `null`
 - [OpenApi31] [GH#942](https://github.com/janephp/janephp/pull/942) Handle `oneOf` with `$ref` and `null` for correct model types and denormalization
+- [OpenApi31] [GH#945](https://github.com/janephp/janephp/pull/945) Allow open api schemas in version 3.1.0
 
 ## [7.11.1] - 2026-03-31
 ### Fixed
