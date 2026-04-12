@@ -14,12 +14,7 @@ use Jane\Component\JsonSchema\Registry\Registry;
 
 class EnumGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuesserInterface
 {
-    private static array $jsonTypeToPhp = [
-        'string' => 'string',
-        'integer' => 'int',
-    ];
-
-    public function __construct(protected Naming $naming = new Naming())
+    public function __construct(private readonly Naming $naming = new Naming())
     {
     }
 
@@ -56,7 +51,7 @@ class EnumGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuesse
             $object,
             $reference,
             $this->naming->getClassName($name),
-            $this->getBackingType($object),
+            $this->getBackingType($object->getType()),
             $values,
             method_exists($object, 'getDeprecated') && ($object->getDeprecated() ?? false)
         );
@@ -91,9 +86,9 @@ class EnumGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuesse
         return JsonSchema::class;
     }
 
-    private function getBackingType(JsonSchema $object): string
+    private function getBackingType(string $type): string
     {
-        return match ($object->getType()) {
+        return match ($type) {
             'integer' => 'int',
             default => 'string',
         };

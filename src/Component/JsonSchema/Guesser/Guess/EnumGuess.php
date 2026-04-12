@@ -2,7 +2,7 @@
 
 namespace Jane\Component\JsonSchema\Guesser\Guess;
 
-class EnumGuess extends ClassGuess
+class EnumGuess extends ClassGuess implements NonObjectGuessInterface
 {
     /**
      * @param object        $object    Object link to the generation

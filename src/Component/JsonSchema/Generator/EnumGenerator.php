@@ -15,9 +15,8 @@ class EnumGenerator implements GeneratorInterface
 {
     public const FILE_TYPE_ENUM = 'enum';
 
-    public function __construct(
-        protected Naming $naming,
-    ) {
+    public function __construct(private readonly Naming $naming)
+    {
     }
 
     public function generate(Schema $schema, string $className, Context $context): void

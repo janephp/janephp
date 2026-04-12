@@ -3,7 +3,7 @@
 namespace Jane\Component\JsonSchema\Generator;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
-use Jane\Component\JsonSchema\Guesser\Guess\EnumGuess;
+use Jane\Component\JsonSchema\Guesser\Guess\NonObjectGuessInterface;
 use Jane\Component\JsonSchema\Guesser\Validator\ValidatorGuess;
 use Jane\Component\JsonSchema\Registry\Schema;
 use PhpParser\Modifiers;
@@ -31,7 +31,7 @@ class ValidatorGenerator implements GeneratorInterface
         $namespace = $schema->getNamespace() . '\\Validator';
 
         foreach ($schema->getClasses() as $class) {
-            if ($class instanceof EnumGuess) {
+            if ($class instanceof NonObjectGuessInterface) {
                 continue;
             }
 

@@ -12,7 +12,7 @@ use Jane\Component\JsonSchema\Generator\RuntimeGenerator;
 use Jane\Component\JsonSchema\Generator\ValidatorGenerator;
 use Jane\Component\JsonSchema\Guesser\ChainGuesser;
 use Jane\Component\JsonSchema\Guesser\JsonSchema\JsonSchemaGuesserFactory;
-use Jane\Component\JsonSchema\Guesser\Guess\EnumGuess;
+use Jane\Component\JsonSchema\Guesser\Guess\NonObjectGuessInterface;
 use Jane\Component\JsonSchema\Guesser\Validator\ChainValidatorFactory;
 use Jane\Component\JsonSchema\JsonSchema\Normalizer\JaneObjectNormalizer;
 use Jane\Component\JsonSchema\Registry\Registry;
@@ -55,7 +55,7 @@ class Jane extends ChainGenerator
 
         foreach ($registry->getSchemas() as $schema) {
             foreach ($schema->getClasses() as $class) {
-                if ($class instanceof EnumGuess) {
+                if ($class instanceof NonObjectGuessInterface) {
                     continue;
                 }
 
