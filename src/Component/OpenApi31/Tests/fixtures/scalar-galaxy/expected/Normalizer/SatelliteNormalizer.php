@@ -65,7 +65,7 @@ class SatelliteNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setDiameter($data['diameter']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->setType(\Jane\Component\OpenApi31\Tests\Expected\Model\SatelliteType::from($data['type']));
         }
         if (\array_key_exists('orbit', $data)) {
             $object->setOrbit($this->denormalizer->denormalize($data['orbit'], \Jane\Component\OpenApi31\Tests\Expected\Model\SatelliteOrbit::class, 'json', $context));
@@ -89,7 +89,7 @@ class SatelliteNormalizer implements DenormalizerInterface, NormalizerInterface,
             $dataArray['diameter'] = $data->getDiameter();
         }
         if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+            $dataArray['type'] = $data->getType()->value;
         }
         if ($data->isInitialized('orbit') && null !== $data->getOrbit()) {
             $dataArray['orbit'] = $this->normalizer->normalize($data->getOrbit(), 'json', $context);

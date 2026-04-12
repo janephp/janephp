@@ -31,7 +31,7 @@ class Satellite
      */
     protected $diameter;
     /**
-     * @var string
+     * @var SatelliteType
      */
     protected $type;
     /**
@@ -115,18 +115,18 @@ class Satellite
         return $this;
     }
     /**
-     * @return string
+     * @return SatelliteType
      */
-    public function getType(): string
+    public function getType(): SatelliteType
     {
         return $this->type;
     }
     /**
-     * @param string $type
+     * @param SatelliteType $type
      *
      * @return self
      */
-    public function setType(string $type): self
+    public function setType(SatelliteType $type): self
     {
         $this->initialized['type'] = true;
         $this->type = $type;

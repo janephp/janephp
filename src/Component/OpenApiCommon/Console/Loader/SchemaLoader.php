@@ -38,6 +38,7 @@ class SchemaLoader extends BaseSchemaLoader implements SchemaLoaderInterface
             'throw-unexpected-status-code',
             'custom-string-format-mapping',
             'include-null-value',
+            'enums-as-objects',
         ];
     }
 

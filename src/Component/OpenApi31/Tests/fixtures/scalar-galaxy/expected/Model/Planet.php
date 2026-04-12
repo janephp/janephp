@@ -25,7 +25,7 @@ class Planet
      */
     protected $description;
     /**
-     * @var string
+     * @var PlanetType
      */
     protected $type;
     /**
@@ -137,18 +137,18 @@ class Planet
         return $this;
     }
     /**
-     * @return string
+     * @return PlanetType
      */
-    public function getType(): string
+    public function getType(): PlanetType
     {
         return $this->type;
     }
     /**
-     * @param string $type
+     * @param PlanetType $type
      *
      * @return self
      */
-    public function setType(string $type): self
+    public function setType(PlanetType $type): self
     {
         $this->initialized['type'] = true;
         $this->type = $type;

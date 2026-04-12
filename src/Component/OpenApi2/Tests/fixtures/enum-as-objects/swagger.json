@@ -1,0 +1,63 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Enum Test API",
+        "version": "1.0.0"
+    },
+    "host": "localhost",
+    "basePath": "/",
+    "schemes": ["https"],
+    "paths": {
+        "/items": {
+            "get": {
+                "operationId": "getItems",
+                "summary": "Get items",
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Item"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Item": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "status": {
+                    "$ref": "#/definitions/ItemStatus"
+                },
+                "priority": {
+                    "$ref": "#/definitions/Priority"
+                }
+            }
+        },
+        "ItemStatus": {
+            "type": "string",
+            "enum": [
+                "pending",
+                "in_progress",
+                "completed",
+                "cancelled"
+            ]
+        },
+        "Priority": {
+            "type": "integer",
+            "enum": [1, 2, 3, 4, 5]
+        }
+    }
+}

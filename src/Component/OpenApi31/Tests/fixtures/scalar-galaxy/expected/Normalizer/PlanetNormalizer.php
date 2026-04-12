@@ -62,7 +62,7 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setDescription(null);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->setType(\Jane\Component\OpenApi31\Tests\Expected\Model\PlanetType::from($data['type']));
         }
         if (\array_key_exists('habitabilityIndex', $data)) {
             $object->setHabitabilityIndex($data['habitabilityIndex']);
@@ -134,7 +134,7 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['description'] = $value;
         }
         if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+            $dataArray['type'] = $data->getType()->value;
         }
         if ($data->isInitialized('habitabilityIndex') && null !== $data->getHabitabilityIndex()) {
             $dataArray['habitabilityIndex'] = $data->getHabitabilityIndex();

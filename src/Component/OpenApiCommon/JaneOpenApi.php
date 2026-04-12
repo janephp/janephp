@@ -6,6 +6,7 @@ use Jane\Component\JsonSchema\Generator\ChainGenerator;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Guesser\ChainGuesser;
+use Jane\Component\JsonSchema\Guesser\Guess\EnumGuess;
 use Jane\Component\JsonSchema\Guesser\Validator\ChainValidatorFactory;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\OpenApiCommon\Contracts\WhitelistFetchInterface;
@@ -71,6 +72,10 @@ abstract class JaneOpenApi extends ChainGenerator
 
         foreach ($schemas as $schema) {
             foreach ($schema->getClasses() as $class) {
+                if ($class instanceof EnumGuess) {
+                    continue;
+                }
+
                 $properties = $this->chainGuesser->guessProperties($class->getObject(), $schema->getRootName(), $class->getReference(), $registry);
 
                 $names = [];

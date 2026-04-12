@@ -1,0 +1,47 @@
+openapi: 3.0.3
+info:
+  title: Enum Test API
+  version: 1.0.0
+paths:
+  /items:
+    get:
+      operationId: getItems
+      summary: Get items
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+components:
+  schemas:
+    Item:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/ItemStatus'
+        priority:
+          $ref: '#/components/schemas/Priority'
+    ItemStatus:
+      type: string
+      enum:
+        - pending
+        - in_progress
+        - completed
+        - cancelled
+    Priority:
+      type: integer
+      enum:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5

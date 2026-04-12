@@ -4,6 +4,7 @@ namespace Jane\Component\JsonSchema\Generator;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Normalizer\DenormalizerGenerator;
+use Jane\Component\JsonSchema\Guesser\Guess\EnumGuess;
 use Jane\Component\JsonSchema\Generator\Normalizer\JaneObjectNormalizerGenerator;
 use Jane\Component\JsonSchema\Generator\Normalizer\NormalizerGenerator as NormalizerGeneratorTrait;
 use Jane\Component\JsonSchema\Registry\Schema;
@@ -62,6 +63,10 @@ class NormalizerGenerator implements GeneratorInterface
         $normalizers = [];
 
         foreach ($schema->getClasses() as $class) {
+            if ($class instanceof EnumGuess) {
+                continue;
+            }
+
             $modelFqdn = $schema->getNamespace() . '\\Model\\' . $class->getName();
 
             $methods = [];

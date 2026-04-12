@@ -154,6 +154,9 @@ Other options are available to customize the generated code:
 - `validation`: Will enable validation following JSON Schema validation specification. By default it is disabled. You
   can read more about it in the dedicated [Validation guide](../guides/validation.md).
 - `include-null-value`: Will enable a way to manage null values. By default it is enabled.
+- `enums-as-objects`: When enabled, schemas with `type: string` or `type: integer` that have an `enum` keyword will
+ be generated as native PHP backed enums instead of plain scalar types. The generated enum cases use PascalCase naming.
+ Properties referencing these schemas will be typed with the enum class. By default it is disabled.
 
 ## Using a generated Model
 

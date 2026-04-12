@@ -28,6 +28,7 @@ class ConfigLoader extends BaseConfigLoader implements ConfigLoaderInterface
             'endpoint-generator' => null,
             'custom-query-resolver' => [],
             'throw-unexpected-status-code' => false,
+            'enums-as-objects' => false,
         ]);
     }
 }

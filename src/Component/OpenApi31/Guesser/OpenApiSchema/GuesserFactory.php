@@ -14,6 +14,7 @@ use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\DateTimeGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\ItemsGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\MultipleGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\ReferenceGuesser;
+use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\EnumGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\SimpleTypeGuesser;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
@@ -27,8 +28,14 @@ class GuesserFactory
         $inputDateTimeFormat = $options['date-input-format'] ?? null;
         $datePreferInterface = $options['date-prefer-interface'] ?? null;
         $customStringFormatMapping = $options['custom-string-format-mapping'] ?? [];
+        $enumObjects = $options['enums-as-objects'] ?? false;
 
         $chainGuesser = new ChainGuesser();
+
+        if ($enumObjects) {
+            $chainGuesser->addGuesser(new EnumGuesser(JsonSchema::class, $naming));
+        }
+
         $chainGuesser->addGuesser(new SecurityGuesser());
         $chainGuesser->addGuesser(new CustomStringFormatGuesser(JsonSchema::class, $customStringFormatMapping));
         $chainGuesser->addGuesser(new DateGuesser(JsonSchema::class, $dateFormat, $datePreferInterface));
