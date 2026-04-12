@@ -67,7 +67,7 @@ class EnumGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuesse
      */
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
-        $backingType = $this->getBackingType($object);
+        $backingType = $this->getBackingType($object->getType());
 
         if ($registry->hasClass($reference) && null !== ($schema = $registry->getSchema($reference))) {
             return new EnumType(
