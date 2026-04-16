@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [7.11.2] - 2026-04-16
 ### Added
 - [JsonSchema] [GH#920](https://github.com/janephp/janephp/pull/920) Add validation for array items via `All` constraint using `ChainValidator` delegation
 
@@ -859,7 +861,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.11.1...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.11.2...HEAD
+[7.11.2]: https://github.com/janephp/janephp/compare/v7.11.1...v7.11.2
 [7.11.1]: https://github.com/janephp/janephp/compare/v7.11.0...v7.11.1
 [7.11.0]: https://github.com/janephp/janephp/compare/v7.10.4...v7.11.0
 [7.10.4]: https://github.com/janephp/janephp/compare/v7.10.3...v7.10.4
