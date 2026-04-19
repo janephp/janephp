@@ -61,10 +61,10 @@ trait GetConstructorTrait
             }
 
             if ($parameter instanceof Parameter && EndpointGenerator::IN_QUERY === $parameter->getIn()) {
-                $queryParamsDoc[] = $nonBodyParameterGenerator->generateOptionDocParameter($parameter);
+                $queryParamsDoc[] = $nonBodyParameterGenerator->generateOptionDocParameter($parameter, $context);
             }
             if ($parameter instanceof Parameter && EndpointGenerator::IN_HEADER === $parameter->getIn()) {
-                $headerParamsDoc[] = $nonBodyParameterGenerator->generateOptionDocParameter($parameter);
+                $headerParamsDoc[] = $nonBodyParameterGenerator->generateOptionDocParameter($parameter, $context);
             }
         }
 

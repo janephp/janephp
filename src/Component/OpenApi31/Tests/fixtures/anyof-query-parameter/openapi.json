@@ -1,0 +1,89 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "AnyOf Ref Parameter Test",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://api.example.com/v1"
+        }
+    ],
+    "paths": {
+        "/domains": {
+            "get": {
+                "operationId": "listDomains",
+                "parameters": [
+                    {
+                        "name": "dnssec_signing",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "anyOf": [
+                                { "$ref": "#/components/schemas/DnssecSigningStatus" },
+                                { "type": "null" }
+                            ],
+                            "title": "Dnssec Signing"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "anyOf": [
+                                { "$ref": "#/components/schemas/DomainStatus" },
+                                { "type": "null" }
+                            ],
+                            "title": "Status"
+                        }
+                    },
+                    {
+                        "name": "name__in",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "anyOf": [
+                                { "type": "string" },
+                                { "type": "null" }
+                            ],
+                            "title": "Name  In"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list of domains",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "DnssecSigningStatus": {
+                "type": "object",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "DomainStatus": {
+                "type": "string",
+                "enum": ["active", "inactive", "suspended"],
+                "title": "Domain Status"
+            }
+        }
+    }
+}

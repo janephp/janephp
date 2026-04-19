@@ -51,7 +51,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
             return $methodParameter;
         }
 
-        $types = $this->convertParameterType($parameter->getSchema());
+        $types = $this->convertParameterType($parameter->getSchema(), $context);
 
         if (\count($types) === 1) {
             $methodParameter->type = new Node\Name($types[0]);
@@ -142,18 +142,18 @@ class NonBodyParameterGenerator extends ParameterGenerator
         $type = 'mixed';
 
         if ($parameter->getSchema() && (null === $parameter->getSchema()->getAnyOf() || \count($parameter->getSchema()->getAnyOf()) === 0)) {
-            $type = implode('|', $this->convertParameterType($parameter->getSchema()));
+            $type = implode('|', $this->convertParameterType($parameter->getSchema(), $context));
         }
 
         return rtrim(\sprintf(' * @param %s $%s %s', $type, $this->getInflector()->camelize($parameter->getName()), $parameter->getDescription() ?: ''));
     }
 
-    public function generateOptionDocParameter(Parameter $parameter): string
+    public function generateOptionDocParameter(Parameter $parameter, ?Context $context = null): string
     {
         $type = 'mixed';
 
         if ($parameter->getSchema() instanceof Schema) {
-            $type = implode('|', $this->convertParameterType($parameter->getSchema()));
+            $type = implode('|', $this->convertParameterType($parameter->getSchema(), $context));
         }
 
         $description = implode("\n", array_map(rtrim(...), explode("\n", $parameter->getDescription() ?: '')));
@@ -184,9 +184,14 @@ class NonBodyParameterGenerator extends ParameterGenerator
         return $expr;
     }
 
-    private function convertParameterType(Schema $schema): array
+    private function convertParameterType(Schema $schema, ?Context $context = null): array
     {
         $type = $schema->getType();
+
+        if (null === $type && null !== $schema->getAnyOf()) {
+            return $this->convertAnyOfTypes($schema->getAnyOf(), $context);
+        }
+
         $additionalProperties = $schema->getAdditionalProperties();
 
         if (null === $type && null !== $schema->getEnum() && \count($schema->getEnum()) > 0) {
@@ -217,5 +222,58 @@ class NonBodyParameterGenerator extends ParameterGenerator
         ];
 
         return $convertArray[$type];
+    }
+
+    /**
+     * @param array<Schema|Reference> $anyOf
+     *
+     * @return string[]
+     */
+    private function convertAnyOfTypes(array $anyOf, ?Context $context): array
+    {
+        $schemas = [];
+
+        foreach ($anyOf as $anyOfSchema) {
+            if ($anyOfSchema instanceof Reference) {
+                $schemas = array_merge($schemas, $this->convertReferenceType($anyOfSchema, $context));
+
+                continue;
+            }
+
+            if (!$anyOfSchema instanceof Schema) {
+                continue;
+            }
+
+            if ($anyOfSchema->getType() === 'null') {
+                continue;
+            }
+
+            $schemas = array_merge($schemas, $this->convertParameterType($anyOfSchema, $context));
+        }
+
+        return $schemas;
+    }
+
+    /**
+     * @return string[]
+     */
+    private function convertReferenceType(Reference $reference, ?Context $context): array
+    {
+        if (null === $context) {
+            return [];
+        }
+
+        $resolvedSchema = $reference;
+        $classGuess = $this->guessClass->guessClass($resolvedSchema, '', $context->getRegistry());
+
+        if (null !== $classGuess) {
+            return ['\\' . $context->getRegistry()->getSchema($classGuess->getReference())->getNamespace() . '\\Model\\' . $classGuess->getName()];
+        }
+
+        if ($resolvedSchema instanceof Schema && $resolvedSchema->getType() !== 'null') {
+            return $this->convertParameterType($resolvedSchema, $context);
+        }
+
+        return [];
     }
 }
