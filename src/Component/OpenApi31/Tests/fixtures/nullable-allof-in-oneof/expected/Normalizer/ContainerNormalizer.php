@@ -11,24 +11,20 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class ContainerNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Jane\Component\OpenApi31\Tests\Expected\Model\Container::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return \is_object($data) && \get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\Container::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\Container::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\Container();
@@ -46,47 +42,47 @@ class ContainerNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (\array_key_exists('iconOneOf', $data) && $data['iconOneOf'] !== null) {
             $value = $data['iconOneOf'];
-            if (\is_array($data['iconOneOf'])) {
+            if (is_array($data['iconOneOf'])) {
                 $value = $this->denormalizer->denormalize($data['iconOneOf'], \Jane\Component\OpenApi31\Tests\Expected\Model\Image::class, 'json', $context);
-            } elseif (null === $data['iconOneOf']) {
+            } elseif (is_null($data['iconOneOf'])) {
                 $value = $data['iconOneOf'];
             }
             $object->setIconOneOf($value);
-        } elseif (\array_key_exists('iconOneOf', $data) && $data['iconOneOf'] === null) {
+        }
+        elseif (\array_key_exists('iconOneOf', $data) && $data['iconOneOf'] === null) {
             $object->setIconOneOf(null);
         }
         if (\array_key_exists('iconAnyOf', $data) && $data['iconAnyOf'] !== null) {
             $value_1 = $data['iconAnyOf'];
-            if (\is_array($data['iconAnyOf'])) {
+            if (is_array($data['iconAnyOf'])) {
                 $value_1 = $this->denormalizer->denormalize($data['iconAnyOf'], \Jane\Component\OpenApi31\Tests\Expected\Model\Image::class, 'json', $context);
-            } elseif (null === $data['iconAnyOf']) {
+            } elseif (is_null($data['iconAnyOf'])) {
                 $value_1 = $data['iconAnyOf'];
             }
             $object->setIconAnyOf($value_1);
-        } elseif (\array_key_exists('iconAnyOf', $data) && $data['iconAnyOf'] === null) {
+        }
+        elseif (\array_key_exists('iconAnyOf', $data) && $data['iconAnyOf'] === null) {
             $object->setIconAnyOf(null);
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
         if ($data->isInitialized('iconOneOf')) {
             $value = $data->getIconOneOf();
-            if (\is_object($data->getIconOneOf())) {
+            if (is_object($data->getIconOneOf())) {
                 $value = $this->normalizer->normalize($data->getIconOneOf(), 'json', $context);
-            } elseif (null === $data->getIconOneOf()) {
+            } elseif (is_null($data->getIconOneOf())) {
                 $value = $data->getIconOneOf();
             }
             $dataArray['iconOneOf'] = $value;
         }
         if ($data->isInitialized('iconAnyOf')) {
             $value_1 = $data->getIconAnyOf();
-            if (\is_object($data->getIconAnyOf())) {
+            if (is_object($data->getIconAnyOf())) {
                 $value_1 = $this->normalizer->normalize($data->getIconAnyOf(), 'json', $context);
-            } elseif (null === $data->getIconAnyOf()) {
+            } elseif (is_null($data->getIconAnyOf())) {
                 $value_1 = $data->getIconAnyOf();
             }
             $dataArray['iconAnyOf'] = $value_1;
@@ -94,10 +90,8 @@ class ContainerNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\ContainerConstraint());
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Jane\Component\OpenApi31\Tests\Expected\Model\Container::class => false];

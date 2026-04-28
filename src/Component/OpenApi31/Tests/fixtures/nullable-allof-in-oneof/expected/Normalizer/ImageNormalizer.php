@@ -11,24 +11,20 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Jane\Component\OpenApi31\Tests\Expected\Model\Image::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return \is_object($data) && \get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\Image::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\Image::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\Image();
@@ -47,10 +43,8 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
@@ -60,10 +54,8 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\ImageConstraint());
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Jane\Component\OpenApi31\Tests\Expected\Model\Image::class => false];
