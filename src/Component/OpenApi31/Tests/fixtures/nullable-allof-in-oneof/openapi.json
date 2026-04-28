@@ -1,0 +1,71 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Test",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/items": {
+            "get": {
+                "operationId": "getItem",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Container"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Container": {
+                "type": "object",
+                "properties": {
+                    "iconOneOf": {
+                        "oneOf": [
+                            {
+                                "allOf": [
+                                    {
+                                        "$ref": "#/components/schemas/Image"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "iconAnyOf": {
+                        "anyOf": [
+                            {
+                                "allOf": [
+                                    {
+                                        "$ref": "#/components/schemas/Image"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    }
+                }
+            },
+            "Image": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
