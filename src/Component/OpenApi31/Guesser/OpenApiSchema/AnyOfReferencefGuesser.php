@@ -32,7 +32,20 @@ class AnyOfReferencefGuesser implements ChainGuesserAwareInterface, GuesserInter
 
     public function supportObject($object): bool
     {
-        return $object instanceof JsonSchema && \is_array($object->getAnyOf()) && $object->getAnyOf()[0] instanceof Reference;
+        if (!($object instanceof JsonSchema) || !\is_array($object->getAnyOf()) || [] === $object->getAnyOf()) {
+            return false;
+        }
+
+        foreach ($object->getAnyOf() as $anyOf) {
+            if ($anyOf instanceof Reference) {
+                return true;
+            }
+            if ($anyOf instanceof JsonSchema && \is_array($anyOf->getAllOf()) && [] !== $anyOf->getAllOf()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public function guessType($object, string $name, string $reference, Registry $registry): Type
@@ -66,7 +79,11 @@ class AnyOfReferencefGuesser implements ChainGuesserAwareInterface, GuesserInter
 
                     $anyOfSchema = $this->resolve($anyOfSchema, $this->schemaClass);
                 }
-                if (null !== $anyOfSchema->getType()) {
+                $hasContent = null !== $anyOfSchema->getType()
+                    || (\is_array($anyOfSchema->getAllOf()) && [] !== $anyOfSchema->getAllOf())
+                    || (\is_array($anyOfSchema->getAnyOf()) && [] !== $anyOfSchema->getAnyOf());
+
+                if ($hasContent) {
                     $anyOfType = $this->chainGuesser->guessType($anyOfSchema, $name, $anyOfReference, $registry);
                     if ($supportsDiscriminator && $anyOf instanceof Reference) {
                         $objectRef = '#' . $anyOf->getMergedUri()->getFragment();
