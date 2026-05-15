@@ -23,7 +23,7 @@ class CustomStringFormatGuesser implements GuesserInterface, TypeGuesserInterfac
     {
         $class = $this->getSchemaClass();
 
-        return ($object instanceof $class) && 'string' === $object->getType() && \array_key_exists(
+        return ($object instanceof $class) && 'string' === $object->getType() && $object->getFormat() !== null && \array_key_exists(
             $object->getFormat(),
             $this->mapping
         );
