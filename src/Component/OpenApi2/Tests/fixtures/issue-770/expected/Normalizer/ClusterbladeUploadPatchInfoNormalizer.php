@@ -38,7 +38,7 @@ class ClusterbladeUploadPatchInfoNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('fileSize', $data) && \is_int($data['fileSize'])) {
-            $data['fileSize'] = (double) $data['fileSize'];
+            $data['fileSize'] = (float) $data['fileSize'];
         }
         if (\array_key_exists('fileName', $data)) {
             $object->setFileName($data['fileName']);

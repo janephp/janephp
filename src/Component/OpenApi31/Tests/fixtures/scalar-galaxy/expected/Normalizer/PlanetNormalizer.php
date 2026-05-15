@@ -38,7 +38,7 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('habitabilityIndex', $data) && \is_int($data['habitabilityIndex'])) {
-            $data['habitabilityIndex'] = (double) $data['habitabilityIndex'];
+            $data['habitabilityIndex'] = (float) $data['habitabilityIndex'];
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PlanetConstraint());

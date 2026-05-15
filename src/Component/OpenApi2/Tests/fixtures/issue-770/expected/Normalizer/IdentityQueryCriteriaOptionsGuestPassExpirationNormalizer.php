@@ -38,13 +38,13 @@ class IdentityQueryCriteriaOptionsGuestPassExpirationNormalizer implements Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('start', $data) && \is_int($data['start'])) {
-            $data['start'] = (double) $data['start'];
+            $data['start'] = (float) $data['start'];
         }
         if (\array_key_exists('end', $data) && \is_int($data['end'])) {
-            $data['end'] = (double) $data['end'];
+            $data['end'] = (float) $data['end'];
         }
         if (\array_key_exists('interval', $data) && \is_int($data['interval'])) {
-            $data['interval'] = (double) $data['interval'];
+            $data['interval'] = (float) $data['interval'];
         }
         if (\array_key_exists('start', $data)) {
             $object->setStart($data['start']);

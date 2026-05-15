@@ -38,16 +38,16 @@ class DpskDpskQueryListListItemNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('ttl', $data) && \is_int($data['ttl'])) {
-            $data['ttl'] = (double) $data['ttl'];
+            $data['ttl'] = (float) $data['ttl'];
         }
         if (\array_key_exists('expirationStartTime', $data) && \is_int($data['expirationStartTime'])) {
-            $data['expirationStartTime'] = (double) $data['expirationStartTime'];
+            $data['expirationStartTime'] = (float) $data['expirationStartTime'];
         }
         if (\array_key_exists('expirationTime', $data) && \is_int($data['expirationTime'])) {
-            $data['expirationTime'] = (double) $data['expirationTime'];
+            $data['expirationTime'] = (float) $data['expirationTime'];
         }
         if (\array_key_exists('createDateTime', $data) && \is_int($data['createDateTime'])) {
-            $data['createDateTime'] = (double) $data['createDateTime'];
+            $data['createDateTime'] = (float) $data['createDateTime'];
         }
         if (\array_key_exists('group', $data) && \is_int($data['group'])) {
             $data['group'] = (bool) $data['group'];

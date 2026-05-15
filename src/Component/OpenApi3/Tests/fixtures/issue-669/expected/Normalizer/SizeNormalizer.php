@@ -38,13 +38,13 @@ class SizeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('transfer', $data) && \is_int($data['transfer'])) {
-            $data['transfer'] = (double) $data['transfer'];
+            $data['transfer'] = (float) $data['transfer'];
         }
         if (\array_key_exists('price_monthly', $data) && \is_int($data['price_monthly'])) {
-            $data['price_monthly'] = (double) $data['price_monthly'];
+            $data['price_monthly'] = (float) $data['price_monthly'];
         }
         if (\array_key_exists('price_hourly', $data) && \is_int($data['price_hourly'])) {
-            $data['price_hourly'] = (double) $data['price_hourly'];
+            $data['price_hourly'] = (float) $data['price_hourly'];
         }
         if (\array_key_exists('available', $data) && \is_int($data['available'])) {
             $data['available'] = (bool) $data['available'];

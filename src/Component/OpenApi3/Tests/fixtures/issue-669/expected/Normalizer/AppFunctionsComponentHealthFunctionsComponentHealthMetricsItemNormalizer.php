@@ -38,7 +38,7 @@ class AppFunctionsComponentHealthFunctionsComponentHealthMetricsItemNormalizer i
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('metric_value', $data) && \is_int($data['metric_value'])) {
-            $data['metric_value'] = (double) $data['metric_value'];
+            $data['metric_value'] = (float) $data['metric_value'];
         }
         if (\array_key_exists('metric_label', $data)) {
             $object->setMetricLabel($data['metric_label']);

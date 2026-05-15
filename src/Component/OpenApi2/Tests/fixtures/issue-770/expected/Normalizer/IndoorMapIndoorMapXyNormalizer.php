@@ -38,10 +38,10 @@ class IndoorMapIndoorMapXyNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('x', $data) && \is_int($data['x'])) {
-            $data['x'] = (double) $data['x'];
+            $data['x'] = (float) $data['x'];
         }
         if (\array_key_exists('y', $data) && \is_int($data['y'])) {
-            $data['y'] = (double) $data['y'];
+            $data['y'] = (float) $data['y'];
         }
         if (\array_key_exists('x', $data)) {
             $object->setX($data['x']);

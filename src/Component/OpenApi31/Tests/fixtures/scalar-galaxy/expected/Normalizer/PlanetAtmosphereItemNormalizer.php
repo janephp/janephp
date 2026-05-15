@@ -38,7 +38,7 @@ class PlanetAtmosphereItemNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('percentage', $data) && \is_int($data['percentage'])) {
-            $data['percentage'] = (double) $data['percentage'];
+            $data['percentage'] = (float) $data['percentage'];
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PlanetAtmosphereItemConstraint());

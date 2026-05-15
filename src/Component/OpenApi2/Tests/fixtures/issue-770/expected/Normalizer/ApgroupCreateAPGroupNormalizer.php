@@ -38,10 +38,10 @@ class ApgroupCreateAPGroupNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('latitude', $data) && \is_int($data['latitude'])) {
-            $data['latitude'] = (double) $data['latitude'];
+            $data['latitude'] = (float) $data['latitude'];
         }
         if (\array_key_exists('longitude', $data) && \is_int($data['longitude'])) {
-            $data['longitude'] = (double) $data['longitude'];
+            $data['longitude'] = (float) $data['longitude'];
         }
         if (\array_key_exists('directedMulticastFromWiredClientEnabled', $data) && \is_int($data['directedMulticastFromWiredClientEnabled'])) {
             $data['directedMulticastFromWiredClientEnabled'] = (bool) $data['directedMulticastFromWiredClientEnabled'];

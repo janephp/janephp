@@ -38,7 +38,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemNormalizer impl
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('numberOfWeeks', $data) && \is_int($data['numberOfWeeks'])) {
-            $data['numberOfWeeks'] = (double) $data['numberOfWeeks'];
+            $data['numberOfWeeks'] = (float) $data['numberOfWeeks'];
         }
         if (\array_key_exists('consolidatedAccounts', $data) && \is_int($data['consolidatedAccounts'])) {
             $data['consolidatedAccounts'] = (bool) $data['consolidatedAccounts'];

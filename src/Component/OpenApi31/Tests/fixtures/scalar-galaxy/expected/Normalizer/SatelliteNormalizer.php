@@ -38,7 +38,7 @@ class SatelliteNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('diameter', $data) && \is_int($data['diameter'])) {
-            $data['diameter'] = (double) $data['diameter'];
+            $data['diameter'] = (float) $data['diameter'];
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\SatelliteConstraint());

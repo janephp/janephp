@@ -38,10 +38,10 @@ class NumericRangeForAggregatorNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('from', $data) && \is_int($data['from'])) {
-            $data['from'] = (double) $data['from'];
+            $data['from'] = (float) $data['from'];
         }
         if (\array_key_exists('to', $data) && \is_int($data['to'])) {
-            $data['to'] = (double) $data['to'];
+            $data['to'] = (float) $data['to'];
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
             $object->setNames($data['names']);

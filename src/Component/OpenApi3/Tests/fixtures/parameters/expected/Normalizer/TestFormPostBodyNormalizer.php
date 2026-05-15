@@ -38,7 +38,7 @@ class TestFormPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('testFloat', $data) && \is_int($data['testFloat'])) {
-            $data['testFloat'] = (double) $data['testFloat'];
+            $data['testFloat'] = (float) $data['testFloat'];
         }
         if (\array_key_exists('testString', $data)) {
             $object->setTestString($data['testString']);

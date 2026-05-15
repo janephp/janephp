@@ -38,7 +38,7 @@ class GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationIt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('year', $data) && \is_int($data['year'])) {
-            $data['year'] = (double) $data['year'];
+            $data['year'] = (float) $data['year'];
         }
         if (\array_key_exists('year', $data)) {
             $object->setYear($data['year']);

@@ -38,10 +38,10 @@ class GbCompanyReportExampleResponseReportNegativeInformationCcjSummaryNormalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('exactRegistered', $data) && \is_int($data['exactRegistered'])) {
-            $data['exactRegistered'] = (double) $data['exactRegistered'];
+            $data['exactRegistered'] = (float) $data['exactRegistered'];
         }
         if (\array_key_exists('possibleRegistered', $data) && \is_int($data['possibleRegistered'])) {
-            $data['possibleRegistered'] = (double) $data['possibleRegistered'];
+            $data['possibleRegistered'] = (float) $data['possibleRegistered'];
         }
         if (\array_key_exists('exactRegistered', $data)) {
             $object->setExactRegistered($data['exactRegistered']);

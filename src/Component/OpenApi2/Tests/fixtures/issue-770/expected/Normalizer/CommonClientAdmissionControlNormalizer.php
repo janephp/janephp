@@ -38,7 +38,7 @@ class CommonClientAdmissionControlNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('minClientThroughputMbps', $data) && \is_int($data['minClientThroughputMbps'])) {
-            $data['minClientThroughputMbps'] = (double) $data['minClientThroughputMbps'];
+            $data['minClientThroughputMbps'] = (float) $data['minClientThroughputMbps'];
         }
         if (\array_key_exists('maxRadioLoadPercent', $data)) {
             $object->setMaxRadioLoadPercent($data['maxRadioLoadPercent']);

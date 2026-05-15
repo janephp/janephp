@@ -38,40 +38,40 @@ class SystemPortStatisticNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('rxBps', $data) && \is_int($data['rxBps'])) {
-            $data['rxBps'] = (double) $data['rxBps'];
+            $data['rxBps'] = (float) $data['rxBps'];
         }
         if (\array_key_exists('rxBpsMax', $data) && \is_int($data['rxBpsMax'])) {
-            $data['rxBpsMax'] = (double) $data['rxBpsMax'];
+            $data['rxBpsMax'] = (float) $data['rxBpsMax'];
         }
         if (\array_key_exists('rxBpsMin', $data) && \is_int($data['rxBpsMin'])) {
-            $data['rxBpsMin'] = (double) $data['rxBpsMin'];
+            $data['rxBpsMin'] = (float) $data['rxBpsMin'];
         }
         if (\array_key_exists('rxBytes', $data) && \is_int($data['rxBytes'])) {
-            $data['rxBytes'] = (double) $data['rxBytes'];
+            $data['rxBytes'] = (float) $data['rxBytes'];
         }
         if (\array_key_exists('rxDropped', $data) && \is_int($data['rxDropped'])) {
-            $data['rxDropped'] = (double) $data['rxDropped'];
+            $data['rxDropped'] = (float) $data['rxDropped'];
         }
         if (\array_key_exists('rxPackets', $data) && \is_int($data['rxPackets'])) {
-            $data['rxPackets'] = (double) $data['rxPackets'];
+            $data['rxPackets'] = (float) $data['rxPackets'];
         }
         if (\array_key_exists('txBps', $data) && \is_int($data['txBps'])) {
-            $data['txBps'] = (double) $data['txBps'];
+            $data['txBps'] = (float) $data['txBps'];
         }
         if (\array_key_exists('txBpsMax', $data) && \is_int($data['txBpsMax'])) {
-            $data['txBpsMax'] = (double) $data['txBpsMax'];
+            $data['txBpsMax'] = (float) $data['txBpsMax'];
         }
         if (\array_key_exists('txBpsMin', $data) && \is_int($data['txBpsMin'])) {
-            $data['txBpsMin'] = (double) $data['txBpsMin'];
+            $data['txBpsMin'] = (float) $data['txBpsMin'];
         }
         if (\array_key_exists('txBytes', $data) && \is_int($data['txBytes'])) {
-            $data['txBytes'] = (double) $data['txBytes'];
+            $data['txBytes'] = (float) $data['txBytes'];
         }
         if (\array_key_exists('txDropped', $data) && \is_int($data['txDropped'])) {
-            $data['txDropped'] = (double) $data['txDropped'];
+            $data['txDropped'] = (float) $data['txDropped'];
         }
         if (\array_key_exists('txPackets', $data) && \is_int($data['txPackets'])) {
-            $data['txPackets'] = (double) $data['txPackets'];
+            $data['txPackets'] = (float) $data['txPackets'];
         }
         if (\array_key_exists('rxBps', $data)) {
             $object->setRxBps($data['rxBps']);

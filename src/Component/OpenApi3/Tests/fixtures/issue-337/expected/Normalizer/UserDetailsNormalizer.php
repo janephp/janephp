@@ -38,13 +38,13 @@ class UserDetailsNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('csCustomerId', $data) && \is_int($data['csCustomerId'])) {
-            $data['csCustomerId'] = (double) $data['csCustomerId'];
+            $data['csCustomerId'] = (float) $data['csCustomerId'];
         }
         if (\array_key_exists('csUserId', $data) && \is_int($data['csUserId'])) {
-            $data['csUserId'] = (double) $data['csUserId'];
+            $data['csUserId'] = (float) $data['csUserId'];
         }
         if (\array_key_exists('userId', $data) && \is_int($data['userId'])) {
-            $data['userId'] = (double) $data['userId'];
+            $data['userId'] = (float) $data['userId'];
         }
         if (\array_key_exists('isAutoTracker', $data) && \is_int($data['isAutoTracker'])) {
             $data['isAutoTracker'] = (bool) $data['isAutoTracker'];

@@ -38,7 +38,7 @@ class AppAlertSpecNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('value', $data) && \is_int($data['value'])) {
-            $data['value'] = (double) $data['value'];
+            $data['value'] = (float) $data['value'];
         }
         if (\array_key_exists('disabled', $data) && \is_int($data['disabled'])) {
             $data['disabled'] = (bool) $data['disabled'];

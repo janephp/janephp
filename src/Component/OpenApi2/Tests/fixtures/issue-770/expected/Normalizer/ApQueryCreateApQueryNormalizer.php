@@ -38,7 +38,7 @@ class ApQueryCreateApQueryNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('connectionFailure', $data) && \is_int($data['connectionFailure'])) {
-            $data['connectionFailure'] = (double) $data['connectionFailure'];
+            $data['connectionFailure'] = (float) $data['connectionFailure'];
         }
         if (\array_key_exists('configOverride', $data) && \is_int($data['configOverride'])) {
             $data['configOverride'] = (bool) $data['configOverride'];

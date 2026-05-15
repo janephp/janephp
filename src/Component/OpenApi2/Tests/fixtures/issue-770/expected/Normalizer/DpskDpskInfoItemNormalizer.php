@@ -38,7 +38,7 @@ class DpskDpskInfoItemNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('creationDateTime', $data) && \is_int($data['creationDateTime'])) {
-            $data['creationDateTime'] = (double) $data['creationDateTime'];
+            $data['creationDateTime'] = (float) $data['creationDateTime'];
         }
         if (\array_key_exists('groupDpsk', $data) && \is_int($data['groupDpsk'])) {
             $data['groupDpsk'] = (bool) $data['groupDpsk'];

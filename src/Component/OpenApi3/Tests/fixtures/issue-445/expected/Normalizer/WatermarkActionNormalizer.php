@@ -38,13 +38,13 @@ class WatermarkActionNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('opacity', $data) && \is_int($data['opacity'])) {
-            $data['opacity'] = (double) $data['opacity'];
+            $data['opacity'] = (float) $data['opacity'];
         }
         if (\array_key_exists('widthRatio', $data) && \is_int($data['widthRatio'])) {
-            $data['widthRatio'] = (double) $data['widthRatio'];
+            $data['widthRatio'] = (float) $data['widthRatio'];
         }
         if (\array_key_exists('heightRatio', $data) && \is_int($data['heightRatio'])) {
-            $data['heightRatio'] = (double) $data['heightRatio'];
+            $data['heightRatio'] = (float) $data['heightRatio'];
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);

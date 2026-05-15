@@ -38,7 +38,7 @@ class RegionStateNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('thirty_day_uptime_percentage', $data) && \is_int($data['thirty_day_uptime_percentage'])) {
-            $data['thirty_day_uptime_percentage'] = (double) $data['thirty_day_uptime_percentage'];
+            $data['thirty_day_uptime_percentage'] = (float) $data['thirty_day_uptime_percentage'];
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);

@@ -38,13 +38,13 @@ class NotificationEventNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('eventId', $data) && \is_int($data['eventId'])) {
-            $data['eventId'] = (double) $data['eventId'];
+            $data['eventId'] = (float) $data['eventId'];
         }
         if (\array_key_exists('notificationEventId', $data) && \is_int($data['notificationEventId'])) {
-            $data['notificationEventId'] = (double) $data['notificationEventId'];
+            $data['notificationEventId'] = (float) $data['notificationEventId'];
         }
         if (\array_key_exists('ruleCode', $data) && \is_int($data['ruleCode'])) {
-            $data['ruleCode'] = (double) $data['ruleCode'];
+            $data['ruleCode'] = (float) $data['ruleCode'];
         }
         if (\array_key_exists('company', $data)) {
             $object->setCompany($this->denormalizer->denormalize($data['company'], \CreditSafe\API\Model\Company::class, 'json', $context));

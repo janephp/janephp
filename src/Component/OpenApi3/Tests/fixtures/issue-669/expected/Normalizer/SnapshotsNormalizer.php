@@ -38,7 +38,7 @@ class SnapshotsNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('size_gigabytes', $data) && \is_int($data['size_gigabytes'])) {
-            $data['size_gigabytes'] = (double) $data['size_gigabytes'];
+            $data['size_gigabytes'] = (float) $data['size_gigabytes'];
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

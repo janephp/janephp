@@ -38,7 +38,7 @@ class KafkaTopicConfigNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('min_cleanable_dirty_ratio', $data) && \is_int($data['min_cleanable_dirty_ratio'])) {
-            $data['min_cleanable_dirty_ratio'] = (double) $data['min_cleanable_dirty_ratio'];
+            $data['min_cleanable_dirty_ratio'] = (float) $data['min_cleanable_dirty_ratio'];
         }
         if (\array_key_exists('message_down_conversion_enable', $data) && \is_int($data['message_down_conversion_enable'])) {
             $data['message_down_conversion_enable'] = (bool) $data['message_down_conversion_enable'];

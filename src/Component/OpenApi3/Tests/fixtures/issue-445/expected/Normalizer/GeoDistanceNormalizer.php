@@ -38,7 +38,7 @@ class GeoDistanceNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('distance', $data) && \is_int($data['distance'])) {
-            $data['distance'] = (double) $data['distance'];
+            $data['distance'] = (float) $data['distance'];
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
             $object->setNames($data['names']);

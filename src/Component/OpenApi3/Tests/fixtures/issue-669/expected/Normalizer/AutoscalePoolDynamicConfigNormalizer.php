@@ -38,10 +38,10 @@ class AutoscalePoolDynamicConfigNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('target_cpu_utilization', $data) && \is_int($data['target_cpu_utilization'])) {
-            $data['target_cpu_utilization'] = (double) $data['target_cpu_utilization'];
+            $data['target_cpu_utilization'] = (float) $data['target_cpu_utilization'];
         }
         if (\array_key_exists('target_memory_utilization', $data) && \is_int($data['target_memory_utilization'])) {
-            $data['target_memory_utilization'] = (double) $data['target_memory_utilization'];
+            $data['target_memory_utilization'] = (float) $data['target_memory_utilization'];
         }
         if (\array_key_exists('min_instances', $data)) {
             $object->setMinInstances($data['min_instances']);

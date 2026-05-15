@@ -38,7 +38,7 @@ class TripNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('price', $data) && \is_int($data['price'])) {
-            $data['price'] = (double) $data['price'];
+            $data['price'] = (float) $data['price'];
         }
         if (\array_key_exists('bicycles_allowed', $data) && \is_int($data['bicycles_allowed'])) {
             $data['bicycles_allowed'] = (bool) $data['bicycles_allowed'];

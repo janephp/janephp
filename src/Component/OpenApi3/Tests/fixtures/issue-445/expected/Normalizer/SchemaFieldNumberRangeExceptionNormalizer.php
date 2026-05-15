@@ -38,10 +38,10 @@ class SchemaFieldNumberRangeExceptionNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('minValue', $data) && \is_int($data['minValue'])) {
-            $data['minValue'] = (double) $data['minValue'];
+            $data['minValue'] = (float) $data['minValue'];
         }
         if (\array_key_exists('maxValue', $data) && \is_int($data['maxValue'])) {
-            $data['maxValue'] = (double) $data['maxValue'];
+            $data['maxValue'] = (float) $data['maxValue'];
         }
         if (\array_key_exists('traceLevel', $data)) {
             $object->setTraceLevel($data['traceLevel']);

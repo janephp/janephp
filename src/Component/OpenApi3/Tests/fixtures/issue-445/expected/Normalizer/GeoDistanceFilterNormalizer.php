@@ -38,7 +38,7 @@ class GeoDistanceFilterNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('distance', $data) && \is_int($data['distance'])) {
-            $data['distance'] = (double) $data['distance'];
+            $data['distance'] = (float) $data['distance'];
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);

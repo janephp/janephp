@@ -38,7 +38,7 @@ class AdministrationClusterBackupSummaryNormalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('filesize', $data) && \is_int($data['filesize'])) {
-            $data['filesize'] = (double) $data['filesize'];
+            $data['filesize'] = (float) $data['filesize'];
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

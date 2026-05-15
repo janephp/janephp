@@ -38,7 +38,7 @@ class ServiceSpecUpdateConfigNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('MaxFailureRatio', $data) && \is_int($data['MaxFailureRatio'])) {
-            $data['MaxFailureRatio'] = (double) $data['MaxFailureRatio'];
+            $data['MaxFailureRatio'] = (float) $data['MaxFailureRatio'];
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Docker\Api\Validator\ServiceSpecUpdateConfigConstraint());

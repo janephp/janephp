@@ -38,7 +38,7 @@ class SpecialEventFieldsNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('price', $data) && \is_int($data['price'])) {
-            $data['price'] = (double) $data['price'];
+            $data['price'] = (float) $data['price'];
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\SpecialEventFieldsConstraint());

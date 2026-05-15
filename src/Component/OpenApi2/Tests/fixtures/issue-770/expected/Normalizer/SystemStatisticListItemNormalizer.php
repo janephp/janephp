@@ -38,7 +38,7 @@ class SystemStatisticListItemNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('timestamp', $data) && \is_int($data['timestamp'])) {
-            $data['timestamp'] = (double) $data['timestamp'];
+            $data['timestamp'] = (float) $data['timestamp'];
         }
         if (\array_key_exists('timestamp', $data)) {
             $object->setTimestamp($data['timestamp']);

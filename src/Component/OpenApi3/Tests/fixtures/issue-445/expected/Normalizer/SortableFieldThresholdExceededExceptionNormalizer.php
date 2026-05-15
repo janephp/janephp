@@ -38,7 +38,7 @@ class SortableFieldThresholdExceededExceptionNormalizer implements DenormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('sortableFieldCount', $data) && \is_int($data['sortableFieldCount'])) {
-            $data['sortableFieldCount'] = (double) $data['sortableFieldCount'];
+            $data['sortableFieldCount'] = (float) $data['sortableFieldCount'];
         }
         if (\array_key_exists('traceLevel', $data)) {
             $object->setTraceLevel($data['traceLevel']);

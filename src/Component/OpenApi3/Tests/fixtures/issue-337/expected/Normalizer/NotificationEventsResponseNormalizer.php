@@ -38,7 +38,7 @@ class NotificationEventsResponseNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('totalCount', $data) && \is_int($data['totalCount'])) {
-            $data['totalCount'] = (double) $data['totalCount'];
+            $data['totalCount'] = (float) $data['totalCount'];
         }
         if (\array_key_exists('totalCount', $data)) {
             $object->setTotalCount($data['totalCount']);

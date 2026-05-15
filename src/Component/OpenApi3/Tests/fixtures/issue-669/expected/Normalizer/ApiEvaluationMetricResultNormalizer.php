@@ -38,7 +38,7 @@ class ApiEvaluationMetricResultNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('number_value', $data) && \is_int($data['number_value'])) {
-            $data['number_value'] = (double) $data['number_value'];
+            $data['number_value'] = (float) $data['number_value'];
         }
         if (\array_key_exists('error_description', $data)) {
             $object->setErrorDescription($data['error_description']);

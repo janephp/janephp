@@ -38,7 +38,7 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemAdditionalDataNormaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('gearing', $data) && \is_int($data['gearing'])) {
-            $data['gearing'] = (double) $data['gearing'];
+            $data['gearing'] = (float) $data['gearing'];
         }
         if (\array_key_exists('occupation', $data)) {
             $object->setOccupation($data['occupation']);

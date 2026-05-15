@@ -39,13 +39,13 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         $object = new \Jane\Component\OpenApi3\JsonSchema\Model\Schema();
         if (\array_key_exists('multipleOf', $data) && \is_int($data['multipleOf'])) {
-            $data['multipleOf'] = (double) $data['multipleOf'];
+            $data['multipleOf'] = (float) $data['multipleOf'];
         }
         if (\array_key_exists('maximum', $data) && \is_int($data['maximum'])) {
-            $data['maximum'] = (double) $data['maximum'];
+            $data['maximum'] = (float) $data['maximum'];
         }
         if (\array_key_exists('minimum', $data) && \is_int($data['minimum'])) {
-            $data['minimum'] = (double) $data['minimum'];
+            $data['minimum'] = (float) $data['minimum'];
         }
         if (null === $data || false === \is_array($data)) {
             return $object;

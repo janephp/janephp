@@ -38,7 +38,7 @@ class OpensearchLogsinkNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('timeout', $data) && \is_int($data['timeout'])) {
-            $data['timeout'] = (double) $data['timeout'];
+            $data['timeout'] = (float) $data['timeout'];
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);

@@ -38,7 +38,7 @@ class OutputDataVideoNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('durationInSeconds', $data) && \is_int($data['durationInSeconds'])) {
-            $data['durationInSeconds'] = (double) $data['durationInSeconds'];
+            $data['durationInSeconds'] = (float) $data['durationInSeconds'];
         }
         if (\array_key_exists('fileExtension', $data) && $data['fileExtension'] !== null) {
             $object->setFileExtension($data['fileExtension']);

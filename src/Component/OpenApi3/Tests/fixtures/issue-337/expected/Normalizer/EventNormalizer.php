@@ -38,13 +38,13 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('eventId', $data) && \is_int($data['eventId'])) {
-            $data['eventId'] = (double) $data['eventId'];
+            $data['eventId'] = (float) $data['eventId'];
         }
         if (\array_key_exists('companyId', $data) && \is_int($data['companyId'])) {
-            $data['companyId'] = (double) $data['companyId'];
+            $data['companyId'] = (float) $data['companyId'];
         }
         if (\array_key_exists('portfolioId', $data) && \is_int($data['portfolioId'])) {
-            $data['portfolioId'] = (double) $data['portfolioId'];
+            $data['portfolioId'] = (float) $data['portfolioId'];
         }
         if (\array_key_exists('eventId', $data)) {
             $object->setEventId($data['eventId']);

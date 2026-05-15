@@ -38,7 +38,7 @@ class AdministrationBackupFileNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('createdOn', $data) && \is_int($data['createdOn'])) {
-            $data['createdOn'] = (double) $data['createdOn'];
+            $data['createdOn'] = (float) $data['createdOn'];
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

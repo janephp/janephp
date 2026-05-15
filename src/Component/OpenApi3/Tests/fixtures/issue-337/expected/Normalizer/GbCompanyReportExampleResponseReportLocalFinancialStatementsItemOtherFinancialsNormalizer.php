@@ -38,16 +38,16 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('bankOverdraftAndLTL', $data) && \is_int($data['bankOverdraftAndLTL'])) {
-            $data['bankOverdraftAndLTL'] = (double) $data['bankOverdraftAndLTL'];
+            $data['bankOverdraftAndLTL'] = (float) $data['bankOverdraftAndLTL'];
         }
         if (\array_key_exists('workingCapital', $data) && \is_int($data['workingCapital'])) {
-            $data['workingCapital'] = (double) $data['workingCapital'];
+            $data['workingCapital'] = (float) $data['workingCapital'];
         }
         if (\array_key_exists('capitalEmployed', $data) && \is_int($data['capitalEmployed'])) {
-            $data['capitalEmployed'] = (double) $data['capitalEmployed'];
+            $data['capitalEmployed'] = (float) $data['capitalEmployed'];
         }
         if (\array_key_exists('netWorth', $data) && \is_int($data['netWorth'])) {
-            $data['netWorth'] = (double) $data['netWorth'];
+            $data['netWorth'] = (float) $data['netWorth'];
         }
         if (\array_key_exists('contingentLiabilities', $data) && \is_int($data['contingentLiabilities'])) {
             $data['contingentLiabilities'] = (bool) $data['contingentLiabilities'];

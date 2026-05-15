@@ -38,7 +38,7 @@ class IndoorMapScaleNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('distance', $data) && \is_int($data['distance'])) {
-            $data['distance'] = (double) $data['distance'];
+            $data['distance'] = (float) $data['distance'];
         }
         if (\array_key_exists('a', $data)) {
             $object->setA($this->denormalizer->denormalize($data['a'], \Jane\Component\OpenApi3\Tests\Expected\Model\IndoorMapIndoorMapXy::class, 'json', $context));

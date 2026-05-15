@@ -38,16 +38,16 @@ class PagingNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('size', $data) && \is_int($data['size'])) {
-            $data['size'] = (double) $data['size'];
+            $data['size'] = (float) $data['size'];
         }
         if (\array_key_exists('prev', $data) && \is_int($data['prev'])) {
-            $data['prev'] = (double) $data['prev'];
+            $data['prev'] = (float) $data['prev'];
         }
         if (\array_key_exists('next', $data) && \is_int($data['next'])) {
-            $data['next'] = (double) $data['next'];
+            $data['next'] = (float) $data['next'];
         }
         if (\array_key_exists('last', $data) && \is_int($data['last'])) {
-            $data['last'] = (double) $data['last'];
+            $data['last'] = (float) $data['last'];
         }
         if (\array_key_exists('size', $data)) {
             $object->setSize($data['size']);

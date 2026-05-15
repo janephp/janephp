@@ -38,10 +38,10 @@ class ApiUpdateAgentInputPublicNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('temperature', $data) && \is_int($data['temperature'])) {
-            $data['temperature'] = (double) $data['temperature'];
+            $data['temperature'] = (float) $data['temperature'];
         }
         if (\array_key_exists('top_p', $data) && \is_int($data['top_p'])) {
-            $data['top_p'] = (double) $data['top_p'];
+            $data['top_p'] = (float) $data['top_p'];
         }
         if (\array_key_exists('agent_log_insights_enabled', $data) && \is_int($data['agent_log_insights_enabled'])) {
             $data['agent_log_insights_enabled'] = (bool) $data['agent_log_insights_enabled'];

@@ -38,10 +38,10 @@ class AppComponentHealthNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('cpu_usage_percent', $data) && \is_int($data['cpu_usage_percent'])) {
-            $data['cpu_usage_percent'] = (double) $data['cpu_usage_percent'];
+            $data['cpu_usage_percent'] = (float) $data['cpu_usage_percent'];
         }
         if (\array_key_exists('memory_usage_percent', $data) && \is_int($data['memory_usage_percent'])) {
-            $data['memory_usage_percent'] = (double) $data['memory_usage_percent'];
+            $data['memory_usage_percent'] = (float) $data['memory_usage_percent'];
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);

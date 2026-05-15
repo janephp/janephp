@@ -38,7 +38,7 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('portfolioId', $data) && \is_int($data['portfolioId'])) {
-            $data['portfolioId'] = (double) $data['portfolioId'];
+            $data['portfolioId'] = (float) $data['portfolioId'];
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

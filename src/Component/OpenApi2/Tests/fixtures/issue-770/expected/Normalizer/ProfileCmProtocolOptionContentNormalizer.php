@@ -38,10 +38,10 @@ class ProfileCmProtocolOptionContentNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('cmpDhcpOpt43Subcode', $data) && \is_int($data['cmpDhcpOpt43Subcode'])) {
-            $data['cmpDhcpOpt43Subcode'] = (double) $data['cmpDhcpOpt43Subcode'];
+            $data['cmpDhcpOpt43Subcode'] = (float) $data['cmpDhcpOpt43Subcode'];
         }
         if (\array_key_exists('cmpDhcpOpt43SubcodeRecipient', $data) && \is_int($data['cmpDhcpOpt43SubcodeRecipient'])) {
-            $data['cmpDhcpOpt43SubcodeRecipient'] = (double) $data['cmpDhcpOpt43SubcodeRecipient'];
+            $data['cmpDhcpOpt43SubcodeRecipient'] = (float) $data['cmpDhcpOpt43SubcodeRecipient'];
         }
         if (\array_key_exists('cmpDhcpOpt43Subcode', $data)) {
             $object->setCmpDhcpOpt43Subcode($data['cmpDhcpOpt43Subcode']);

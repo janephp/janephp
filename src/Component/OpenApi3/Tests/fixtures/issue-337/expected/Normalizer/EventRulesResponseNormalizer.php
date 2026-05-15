@@ -38,10 +38,10 @@ class EventRulesResponseNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('ruleCode', $data) && \is_int($data['ruleCode'])) {
-            $data['ruleCode'] = (double) $data['ruleCode'];
+            $data['ruleCode'] = (float) $data['ruleCode'];
         }
         if (\array_key_exists('ruleType', $data) && \is_int($data['ruleType'])) {
-            $data['ruleType'] = (double) $data['ruleType'];
+            $data['ruleType'] = (float) $data['ruleType'];
         }
         if (\array_key_exists('isActive', $data) && \is_int($data['isActive'])) {
             $data['isActive'] = (bool) $data['isActive'];

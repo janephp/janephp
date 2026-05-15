@@ -38,10 +38,10 @@ class MysqlAdvancedConfigNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('long_query_time', $data) && \is_int($data['long_query_time'])) {
-            $data['long_query_time'] = (double) $data['long_query_time'];
+            $data['long_query_time'] = (float) $data['long_query_time'];
         }
         if (\array_key_exists('binlog_retention_period', $data) && \is_int($data['binlog_retention_period'])) {
-            $data['binlog_retention_period'] = (double) $data['binlog_retention_period'];
+            $data['binlog_retention_period'] = (float) $data['binlog_retention_period'];
         }
         if (\array_key_exists('innodb_print_all_deadlocks', $data) && \is_int($data['innodb_print_all_deadlocks'])) {
             $data['innodb_print_all_deadlocks'] = (bool) $data['innodb_print_all_deadlocks'];

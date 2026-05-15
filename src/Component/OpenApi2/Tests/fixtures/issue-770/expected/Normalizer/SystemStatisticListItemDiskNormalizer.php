@@ -38,16 +38,16 @@ class SystemStatisticListItemDiskNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('total', $data) && \is_int($data['total'])) {
-            $data['total'] = (double) $data['total'];
+            $data['total'] = (float) $data['total'];
         }
         if (\array_key_exists('free', $data) && \is_int($data['free'])) {
-            $data['free'] = (double) $data['free'];
+            $data['free'] = (float) $data['free'];
         }
         if (\array_key_exists('maxFree', $data) && \is_int($data['maxFree'])) {
-            $data['maxFree'] = (double) $data['maxFree'];
+            $data['maxFree'] = (float) $data['maxFree'];
         }
         if (\array_key_exists('minFree', $data) && \is_int($data['minFree'])) {
-            $data['minFree'] = (double) $data['minFree'];
+            $data['minFree'] = (float) $data['minFree'];
         }
         if (\array_key_exists('total', $data)) {
             $object->setTotal($data['total']);

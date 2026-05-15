@@ -38,16 +38,16 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlowNo
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('netCashFlowFromOperations', $data) && \is_int($data['netCashFlowFromOperations'])) {
-            $data['netCashFlowFromOperations'] = (double) $data['netCashFlowFromOperations'];
+            $data['netCashFlowFromOperations'] = (float) $data['netCashFlowFromOperations'];
         }
         if (\array_key_exists('netCashFlowBeforeFinancing', $data) && \is_int($data['netCashFlowBeforeFinancing'])) {
-            $data['netCashFlowBeforeFinancing'] = (double) $data['netCashFlowBeforeFinancing'];
+            $data['netCashFlowBeforeFinancing'] = (float) $data['netCashFlowBeforeFinancing'];
         }
         if (\array_key_exists('netCashFlowFromFinancing', $data) && \is_int($data['netCashFlowFromFinancing'])) {
-            $data['netCashFlowFromFinancing'] = (double) $data['netCashFlowFromFinancing'];
+            $data['netCashFlowFromFinancing'] = (float) $data['netCashFlowFromFinancing'];
         }
         if (\array_key_exists('increaseInCash', $data) && \is_int($data['increaseInCash'])) {
-            $data['increaseInCash'] = (double) $data['increaseInCash'];
+            $data['increaseInCash'] = (float) $data['increaseInCash'];
         }
         if (\array_key_exists('netCashFlowFromOperations', $data)) {
             $object->setNetCashFlowFromOperations($data['netCashFlowFromOperations']);

@@ -38,7 +38,7 @@ class IndexedFieldThresholdExceededExceptionNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('indexedFieldCount', $data) && \is_int($data['indexedFieldCount'])) {
-            $data['indexedFieldCount'] = (double) $data['indexedFieldCount'];
+            $data['indexedFieldCount'] = (float) $data['indexedFieldCount'];
         }
         if (\array_key_exists('traceLevel', $data)) {
             $object->setTraceLevel($data['traceLevel']);

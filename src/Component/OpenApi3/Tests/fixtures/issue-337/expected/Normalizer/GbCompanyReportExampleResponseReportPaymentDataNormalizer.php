@@ -38,73 +38,73 @@ class GbCompanyReportExampleResponseReportPaymentDataNormalizer implements Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('paymentsOnFile', $data) && \is_int($data['paymentsOnFile'])) {
-            $data['paymentsOnFile'] = (double) $data['paymentsOnFile'];
+            $data['paymentsOnFile'] = (float) $data['paymentsOnFile'];
         }
         if (\array_key_exists('paymentsOnTime', $data) && \is_int($data['paymentsOnTime'])) {
-            $data['paymentsOnTime'] = (double) $data['paymentsOnTime'];
+            $data['paymentsOnTime'] = (float) $data['paymentsOnTime'];
         }
         if (\array_key_exists('paymentsPaidLate', $data) && \is_int($data['paymentsPaidLate'])) {
-            $data['paymentsPaidLate'] = (double) $data['paymentsPaidLate'];
+            $data['paymentsPaidLate'] = (float) $data['paymentsPaidLate'];
         }
         if (\array_key_exists('paymentsSentLegal', $data) && \is_int($data['paymentsSentLegal'])) {
-            $data['paymentsSentLegal'] = (double) $data['paymentsSentLegal'];
+            $data['paymentsSentLegal'] = (float) $data['paymentsSentLegal'];
         }
         if (\array_key_exists('paymentsStillOwingLate', $data) && \is_int($data['paymentsStillOwingLate'])) {
-            $data['paymentsStillOwingLate'] = (double) $data['paymentsStillOwingLate'];
+            $data['paymentsStillOwingLate'] = (float) $data['paymentsStillOwingLate'];
         }
         if (\array_key_exists('paymentsPaid0to30Days', $data) && \is_int($data['paymentsPaid0to30Days'])) {
-            $data['paymentsPaid0to30Days'] = (double) $data['paymentsPaid0to30Days'];
+            $data['paymentsPaid0to30Days'] = (float) $data['paymentsPaid0to30Days'];
         }
         if (\array_key_exists('highestInvoiceValueOutstandingLate', $data) && \is_int($data['highestInvoiceValueOutstandingLate'])) {
-            $data['highestInvoiceValueOutstandingLate'] = (double) $data['highestInvoiceValueOutstandingLate'];
+            $data['highestInvoiceValueOutstandingLate'] = (float) $data['highestInvoiceValueOutstandingLate'];
         }
         if (\array_key_exists('paymentsPaid90DaysplusLate', $data) && \is_int($data['paymentsPaid90DaysplusLate'])) {
-            $data['paymentsPaid90DaysplusLate'] = (double) $data['paymentsPaid90DaysplusLate'];
+            $data['paymentsPaid90DaysplusLate'] = (float) $data['paymentsPaid90DaysplusLate'];
         }
         if (\array_key_exists('totalBalanceStillOwingLate', $data) && \is_int($data['totalBalanceStillOwingLate'])) {
-            $data['totalBalanceStillOwingLate'] = (double) $data['totalBalanceStillOwingLate'];
+            $data['totalBalanceStillOwingLate'] = (float) $data['totalBalanceStillOwingLate'];
         }
         if (\array_key_exists('dbt', $data) && \is_int($data['dbt'])) {
-            $data['dbt'] = (double) $data['dbt'];
+            $data['dbt'] = (float) $data['dbt'];
         }
         if (\array_key_exists('paymentsPaid61to90Days', $data) && \is_int($data['paymentsPaid61to90Days'])) {
-            $data['paymentsPaid61to90Days'] = (double) $data['paymentsPaid61to90Days'];
+            $data['paymentsPaid61to90Days'] = (float) $data['paymentsPaid61to90Days'];
         }
         if (\array_key_exists('totalBalanceStillOwing', $data) && \is_int($data['totalBalanceStillOwing'])) {
-            $data['totalBalanceStillOwing'] = (double) $data['totalBalanceStillOwing'];
+            $data['totalBalanceStillOwing'] = (float) $data['totalBalanceStillOwing'];
         }
         if (\array_key_exists('payments31to60DaysLate', $data) && \is_int($data['payments31to60DaysLate'])) {
-            $data['payments31to60DaysLate'] = (double) $data['payments31to60DaysLate'];
+            $data['payments31to60DaysLate'] = (float) $data['payments31to60DaysLate'];
         }
         if (\array_key_exists('payments61to90DaysLate', $data) && \is_int($data['payments61to90DaysLate'])) {
-            $data['payments61to90DaysLate'] = (double) $data['payments61to90DaysLate'];
+            $data['payments61to90DaysLate'] = (float) $data['payments61to90DaysLate'];
         }
         if (\array_key_exists('highestInvoiceValueOutstanding', $data) && \is_int($data['highestInvoiceValueOutstanding'])) {
-            $data['highestInvoiceValueOutstanding'] = (double) $data['highestInvoiceValueOutstanding'];
+            $data['highestInvoiceValueOutstanding'] = (float) $data['highestInvoiceValueOutstanding'];
         }
         if (\array_key_exists('paymentsStillOwing', $data) && \is_int($data['paymentsStillOwing'])) {
-            $data['paymentsStillOwing'] = (double) $data['paymentsStillOwing'];
+            $data['paymentsStillOwing'] = (float) $data['paymentsStillOwing'];
         }
         if (\array_key_exists('paymentsWithinTerms', $data) && \is_int($data['paymentsWithinTerms'])) {
-            $data['paymentsWithinTerms'] = (double) $data['paymentsWithinTerms'];
+            $data['paymentsWithinTerms'] = (float) $data['paymentsWithinTerms'];
         }
         if (\array_key_exists('payments0to30Dayslate', $data) && \is_int($data['payments0to30Dayslate'])) {
-            $data['payments0to30Dayslate'] = (double) $data['payments0to30Dayslate'];
+            $data['payments0to30Dayslate'] = (float) $data['payments0to30Dayslate'];
         }
         if (\array_key_exists('averageInvoiceValue', $data) && \is_int($data['averageInvoiceValue'])) {
-            $data['averageInvoiceValue'] = (double) $data['averageInvoiceValue'];
+            $data['averageInvoiceValue'] = (float) $data['averageInvoiceValue'];
         }
         if (\array_key_exists('paymentsPaid31to60Days', $data) && \is_int($data['paymentsPaid31to60Days'])) {
-            $data['paymentsPaid31to60Days'] = (double) $data['paymentsPaid31to60Days'];
+            $data['paymentsPaid31to60Days'] = (float) $data['paymentsPaid31to60Days'];
         }
         if (\array_key_exists('paymentsPaid90Daysplus', $data) && \is_int($data['paymentsPaid90Daysplus'])) {
-            $data['paymentsPaid90Daysplus'] = (double) $data['paymentsPaid90Daysplus'];
+            $data['paymentsPaid90Daysplus'] = (float) $data['paymentsPaid90Daysplus'];
         }
         if (\array_key_exists('totalInvoiceValues', $data) && \is_int($data['totalInvoiceValues'])) {
-            $data['totalInvoiceValues'] = (double) $data['totalInvoiceValues'];
+            $data['totalInvoiceValues'] = (float) $data['totalInvoiceValues'];
         }
         if (\array_key_exists('industryDBT', $data) && \is_int($data['industryDBT'])) {
-            $data['industryDBT'] = (double) $data['industryDBT'];
+            $data['industryDBT'] = (float) $data['industryDBT'];
         }
         if (\array_key_exists('paymentsOnFile', $data)) {
             $object->setPaymentsOnFile($data['paymentsOnFile']);

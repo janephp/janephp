@@ -38,28 +38,28 @@ class ProfileAdvancedOptionContentNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('dhcpOpt43Subcode', $data) && \is_int($data['dhcpOpt43Subcode'])) {
-            $data['dhcpOpt43Subcode'] = (double) $data['dhcpOpt43Subcode'];
+            $data['dhcpOpt43Subcode'] = (float) $data['dhcpOpt43Subcode'];
         }
         if (\array_key_exists('retryLimit', $data) && \is_int($data['retryLimit'])) {
-            $data['retryLimit'] = (double) $data['retryLimit'];
+            $data['retryLimit'] = (float) $data['retryLimit'];
         }
         if (\array_key_exists('replayWindow', $data) && \is_int($data['replayWindow'])) {
-            $data['replayWindow'] = (double) $data['replayWindow'];
+            $data['replayWindow'] = (float) $data['replayWindow'];
         }
         if (\array_key_exists('dpdDelay', $data) && \is_int($data['dpdDelay'])) {
-            $data['dpdDelay'] = (double) $data['dpdDelay'];
+            $data['dpdDelay'] = (float) $data['dpdDelay'];
         }
         if (\array_key_exists('keepAliveIntval', $data) && \is_int($data['keepAliveIntval'])) {
-            $data['keepAliveIntval'] = (double) $data['keepAliveIntval'];
+            $data['keepAliveIntval'] = (float) $data['keepAliveIntval'];
         }
         if (\array_key_exists('failoverRetryPeriod', $data) && \is_int($data['failoverRetryPeriod'])) {
-            $data['failoverRetryPeriod'] = (double) $data['failoverRetryPeriod'];
+            $data['failoverRetryPeriod'] = (float) $data['failoverRetryPeriod'];
         }
         if (\array_key_exists('failoverRetryInterval', $data) && \is_int($data['failoverRetryInterval'])) {
-            $data['failoverRetryInterval'] = (double) $data['failoverRetryInterval'];
+            $data['failoverRetryInterval'] = (float) $data['failoverRetryInterval'];
         }
         if (\array_key_exists('failoverPrimaryCheckInterval', $data) && \is_int($data['failoverPrimaryCheckInterval'])) {
-            $data['failoverPrimaryCheckInterval'] = (double) $data['failoverPrimaryCheckInterval'];
+            $data['failoverPrimaryCheckInterval'] = (float) $data['failoverPrimaryCheckInterval'];
         }
         if (\array_key_exists('dhcpOpt43Subcode', $data)) {
             $object->setDhcpOpt43Subcode($data['dhcpOpt43Subcode']);

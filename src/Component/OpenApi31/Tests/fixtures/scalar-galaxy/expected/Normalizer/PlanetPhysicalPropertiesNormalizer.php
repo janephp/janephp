@@ -38,13 +38,13 @@ class PlanetPhysicalPropertiesNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('mass', $data) && \is_int($data['mass'])) {
-            $data['mass'] = (double) $data['mass'];
+            $data['mass'] = (float) $data['mass'];
         }
         if (\array_key_exists('radius', $data) && \is_int($data['radius'])) {
-            $data['radius'] = (double) $data['radius'];
+            $data['radius'] = (float) $data['radius'];
         }
         if (\array_key_exists('gravity', $data) && \is_int($data['gravity'])) {
-            $data['gravity'] = (double) $data['gravity'];
+            $data['gravity'] = (float) $data['gravity'];
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PlanetPhysicalPropertiesConstraint());

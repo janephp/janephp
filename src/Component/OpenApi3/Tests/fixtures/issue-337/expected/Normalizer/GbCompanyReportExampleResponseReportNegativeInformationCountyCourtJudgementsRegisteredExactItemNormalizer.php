@@ -38,7 +38,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('ccjAmount', $data) && \is_int($data['ccjAmount'])) {
-            $data['ccjAmount'] = (double) $data['ccjAmount'];
+            $data['ccjAmount'] = (float) $data['ccjAmount'];
         }
         if (\array_key_exists('ccjDate', $data)) {
             $object->setCcjDate($data['ccjDate']);

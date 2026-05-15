@@ -38,16 +38,16 @@ class PostgresAdvancedConfigNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('autovacuum_vacuum_scale_factor', $data) && \is_int($data['autovacuum_vacuum_scale_factor'])) {
-            $data['autovacuum_vacuum_scale_factor'] = (double) $data['autovacuum_vacuum_scale_factor'];
+            $data['autovacuum_vacuum_scale_factor'] = (float) $data['autovacuum_vacuum_scale_factor'];
         }
         if (\array_key_exists('autovacuum_analyze_scale_factor', $data) && \is_int($data['autovacuum_analyze_scale_factor'])) {
-            $data['autovacuum_analyze_scale_factor'] = (double) $data['autovacuum_analyze_scale_factor'];
+            $data['autovacuum_analyze_scale_factor'] = (float) $data['autovacuum_analyze_scale_factor'];
         }
         if (\array_key_exists('bgwriter_lru_multiplier', $data) && \is_int($data['bgwriter_lru_multiplier'])) {
-            $data['bgwriter_lru_multiplier'] = (double) $data['bgwriter_lru_multiplier'];
+            $data['bgwriter_lru_multiplier'] = (float) $data['bgwriter_lru_multiplier'];
         }
         if (\array_key_exists('shared_buffers_percentage', $data) && \is_int($data['shared_buffers_percentage'])) {
-            $data['shared_buffers_percentage'] = (double) $data['shared_buffers_percentage'];
+            $data['shared_buffers_percentage'] = (float) $data['shared_buffers_percentage'];
         }
         if (\array_key_exists('jit', $data) && \is_int($data['jit'])) {
             $data['jit'] = (bool) $data['jit'];
