@@ -29,7 +29,7 @@ class ItemsValidator implements ValidatorInterface
         $type = $object->getType();
         $isArray = \is_array($type) ? \in_array('array', $type) : 'array' === $type;
 
-        return $isArray && null !== $object->getItems() && $this->checkObject($object->getItems());
+        return $isArray && \is_object($object->getItems()) && $this->checkObject($object->getItems());
     }
 
     /**

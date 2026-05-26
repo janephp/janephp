@@ -109,6 +109,14 @@ class ModelFooooooo
      */
     protected $foo;
     /**
+     * @var list<mixed>
+     */
+    protected $arrayEmptyItems;
+    /**
+     * @var list<mixed>
+     */
+    protected $arrayBoolItems;
+    /**
      * @return string
      */
     public function getEnumString(): string
@@ -538,6 +546,42 @@ class ModelFooooooo
     {
         $this->initialized['foo'] = true;
         $this->foo = $foo;
+        return $this;
+    }
+    /**
+     * @return list<mixed>
+     */
+    public function getArrayEmptyItems(): array
+    {
+        return $this->arrayEmptyItems;
+    }
+    /**
+     * @param list<mixed> $arrayEmptyItems
+     *
+     * @return self
+     */
+    public function setArrayEmptyItems(array $arrayEmptyItems): self
+    {
+        $this->initialized['arrayEmptyItems'] = true;
+        $this->arrayEmptyItems = $arrayEmptyItems;
+        return $this;
+    }
+    /**
+     * @return list<mixed>
+     */
+    public function getArrayBoolItems(): array
+    {
+        return $this->arrayBoolItems;
+    }
+    /**
+     * @param list<mixed> $arrayBoolItems
+     *
+     * @return self
+     */
+    public function setArrayBoolItems(array $arrayBoolItems): self
+    {
+        $this->initialized['arrayBoolItems'] = true;
+        $this->arrayBoolItems = $arrayBoolItems;
         return $this;
     }
 }

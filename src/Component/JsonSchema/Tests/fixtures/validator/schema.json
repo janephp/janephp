@@ -112,6 +112,14 @@
         },
         "foo": {
             "$ref": "#/definitions/FooFooFoo"
+        },
+        "arrayEmptyItems": {
+            "type": "array",
+            "items": {}
+        },
+        "arrayBoolItems": {
+            "type": "array",
+            "items": true
         }
     },
     "definitions": {
