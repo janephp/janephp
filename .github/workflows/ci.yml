@@ -84,7 +84,7 @@ jobs:
       - name: install node
         uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
       - name: install prism
         run: yarn global add @stoplight/prism-cli
       - name: run OpenApi3 prism server
@@ -113,7 +113,7 @@ jobs:
       - name: install node
         uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
       - name: install prism
         run: yarn global add @stoplight/prism-cli
       - name: run OpenApi3 prism server
