@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Validator;
+namespace Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Validator;
 
-class FilePostBodyConstraint extends \Symfony\Component\Validator\Constraints\Compound
+class FileDepositPostBodyConstraint extends \Symfony\Component\Validator\Constraints\Compound
 {
     protected function getConstraints($options): array
     {

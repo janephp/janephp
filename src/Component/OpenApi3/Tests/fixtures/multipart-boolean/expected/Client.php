@@ -1,18 +1,18 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected;
+namespace Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean;
 
-class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Client
+class Client extends \Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Runtime\Client\Client
 {
     /**
-     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\FilePostBody $requestBody
+     * @param null|\Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Model\FileDepositPostBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
-    public function postFile(?\Jane\Component\OpenApi3\Tests\Expected\Model\FilePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    public function postFileDeposit(?\Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Model\FileDepositPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\PostFile($requestBody), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Endpoint\PostFileDeposit($requestBody), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
@@ -26,7 +26,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\Expected\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }

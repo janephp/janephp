@@ -1,8 +1,8 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Model;
+namespace Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Model;
 
-class FilePostBody extends \ArrayObject
+class FileDepositPostBody extends \ArrayObject
 {
     /**
      * @var array

@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Normalizer;
+namespace Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Normalizer;
 
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,9 +18,9 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\FilePostBody::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\FilePostBodyNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Model\FileDepositPostBody::class => \Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Normalizer\FileDepositPostBodyNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
@@ -58,7 +58,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         return [
             
-            \Jane\Component\OpenApi3\Tests\Expected\Model\FilePostBody::class => false,
+            \Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Model\FileDepositPostBody::class => false,
             \Jane\Component\JsonSchemaRuntime\Reference::class => false,
         ];
     }
