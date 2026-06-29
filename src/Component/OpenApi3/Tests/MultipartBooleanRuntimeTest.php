@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  */
 class MultipartBooleanRuntimeTest extends TestCase
 {
-    private const FIXTURE_DIR = __DIR__ . '/fixtures/issue-737';
+    private const FIXTURE_DIR = __DIR__ . '/fixtures/multipart-boolean-runtime';
 
     public function testMultipartBooleanValuesAreEncodedAsStringLiterals(): void
     {
