@@ -82,7 +82,7 @@ abstract class BaseEndpoint implements Endpoint
             is_string($value) => $this->encodeStringValue($key, $value, $allowReserved),
             is_float($value) => $this->encodeStringValue($key, (string) $value, $allowReserved),
             is_array($value) => $this->encodeArrayValue($key, $value, $allowReserved),
-            default => throw new InvalidArgumentException(sprintf('Query value for key %s must be either int|string|float|array|bool, %s given', $key, gettype($value))),
+            default => throw new \InvalidArgumentException(sprintf('Query value for key %s must be either int|string|float|array|bool, %s given', $key, gettype($value))),
         };
     }
     private function encodeIntValue(string $queryParamName, int $value, bool $allowReserved): string

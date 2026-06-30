@@ -35,7 +35,7 @@ function qa_phpstan(bool $generateBaseline = false): void
         $params[] = '--generate-baseline';
     }
 
-    phpstan($params, '1.12.23');
+    phpstan($params, '2.2.2');
 }
 
 #[AsTask('install', namespace: 'doc', description: 'Install tool for documentation (need poetry)')]
