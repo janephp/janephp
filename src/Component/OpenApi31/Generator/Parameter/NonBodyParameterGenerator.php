@@ -145,7 +145,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
             $type = implode('|', $this->convertParameterType($schema));
         }
 
-        return rtrim(\sprintf(' * @param %s $%s %s', $type, $this->getInflector()->camelize($parameter->getName()), $parameter->getDescription() ?: ''));
+        return rtrim(\sprintf(' * @param %s $%s %s', $type, str_replace('*/', '*\\/', $this->getInflector()->camelize($parameter->getName())), str_replace('*/', '*\\/', $parameter->getDescription() ?: '')));
     }
 
     public function generateOptionDocParameter(Parameter $parameter): string
@@ -157,12 +157,12 @@ class NonBodyParameterGenerator extends ParameterGenerator
             $type = implode('|', $this->convertParameterType($schema));
         }
 
-        $description = implode("\n", array_map(rtrim(...), explode("\n", $parameter->getDescription() ?: '')));
+        $description = implode("\n", array_map(fn (string $line): string => str_replace('*/', '*\\/', rtrim($line)), explode("\n", $parameter->getDescription() ?: '')));
 
         return rtrim(
             \sprintf(
                 ' *    "%s"%s: %s%s',
-                $parameter->getName(),
+                str_replace('*/', '*\\/', $parameter->getName()),
                 $parameter->getRequired() ? '' : '?',
                 $type,
                 $description !== '' ? ', //' . $description : ','
