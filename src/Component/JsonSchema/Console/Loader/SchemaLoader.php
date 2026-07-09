@@ -43,6 +43,8 @@ class SchemaLoader implements SchemaLoaderInterface
             'custom-string-format-mapping',
             'validation',
             'include-null-value',
+            'allow-external-refs',
+            'external-ref-allowed-hosts',
         ];
     }
 

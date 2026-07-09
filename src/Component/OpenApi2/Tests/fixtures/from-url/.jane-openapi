@@ -5,4 +5,5 @@ return [
     'namespace' => 'Jane\Component\OpenApi2\Tests\Expected',
     'directory' => __DIR__ . '/generated',
     'use-fixer' => false,
+    'allow-external-refs' => true,
 ];

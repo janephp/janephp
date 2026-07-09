@@ -77,6 +77,8 @@ class ConfigLoader implements ConfigLoaderInterface
             'custom-string-format-mapping' => [],
             'validation' => false,
             'include-null-value' => true,
+            'allow-external-refs' => false,
+            'external-ref-allowed-hosts' => [],
         ];
     }
 }
