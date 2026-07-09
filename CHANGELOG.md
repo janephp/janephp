@@ -7,9 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [7.12.0] - 2026-07-09
+
 ### Fixed
 - [OpenApi] [GHSA-xwcw-j52r-34x4](https://github.com/janephp/janephp/security/advisories/GHSA-xwcw-j52r-34x4) [GHSA-x9xr-53qx-9qcf](https://github.com/janephp/janephp/security/advisories/GHSA-x9xr-53qx-9qcf) [GHSA-q8v2-3j4h-xg2p](https://github.com/janephp/janephp/security/advisories/GHSA-q8v2-3j4h-xg2p) Sanitize `*/` in generated PHPDoc comments to prevent instantiation RCE via PHPDoc breakout
 - [Jane] [GHSA-c3cj-3p6p-j822](https://github.com/janephp/janephp/security/advisories/GHSA-c3cj-3p6p-j822) Validate `$ref` resolution to prevent SSRF, LFI, and path traversal at code-generation time. External HTTP/HTTPS references are now disabled by default; enable them via `allow-external-refs` in your Jane configuration.
+- [OpenApi] [GH#958](https://github.com/janephp/janephp/pull/958) Fix missing InvalidArgumentException import in generated BaseEndpoint
 
 ## [7.11.2] - 2026-04-16
 ### Added
@@ -865,7 +868,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.11.2...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.12.0...HEAD
+[7.12.0]: https://github.com/janephp/janephp/compare/v7.11.2...v7.12.0
 [7.11.2]: https://github.com/janephp/janephp/compare/v7.11.1...v7.11.2
 [7.11.1]: https://github.com/janephp/janephp/compare/v7.11.0...v7.11.1
 [7.11.0]: https://github.com/janephp/janephp/compare/v7.10.4...v7.11.0
