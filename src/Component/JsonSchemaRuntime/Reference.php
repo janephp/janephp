@@ -19,6 +19,9 @@ class Reference
     private static array $pointerCache = [];
     private static array $arrayCache = [];
 
+    private static bool $allowExternalRefs = false;
+    private static array $allowedExternalHosts = [];
+
     private string|array|null $resolved = null;
     private Http $referenceUri;
     private Http $originUri;
@@ -39,6 +42,22 @@ class Reference
         $this->referenceUri = method_exists(Http::class, 'new') ? Http::new($reference) : Http::createFromString($reference);
         $this->originUri = method_exists(Http::class, 'new') ? Http::new($origin) : Http::createFromString($origin);
         $this->mergedUri = method_exists(Http::class, 'fromComponents') ? Http::fromComponents($mergedParts) : Http::createFromComponents($mergedParts);
+    }
+
+    public static function allowExternalRefs(bool $allow = true): void
+    {
+        self::$allowExternalRefs = $allow;
+    }
+
+    public static function setAllowedExternalHosts(array $hosts): void
+    {
+        self::$allowedExternalHosts = $hosts;
+    }
+
+    public static function resetConfig(): void
+    {
+        self::$allowExternalRefs = false;
+        self::$allowedExternalHosts = [];
     }
 
     /**
@@ -68,6 +87,8 @@ class Reference
     {
         $fragment = (string) $this->mergedUri->withFragment('');
         $reference = \sprintf('%s_%s', $fragment, $this->mergedUri->getFragment());
+
+        $this->validateReference($fragment);
 
         if (!\array_key_exists($fragment, self::$fileCache)) {
             $contents = file_get_contents($fragment);
@@ -125,6 +146,110 @@ class Reference
     public function getOriginUri(): UriInterface
     {
         return $this->originUri;
+    }
+
+    private function validateReference(string $fragment): void
+    {
+        $scheme = $this->mergedUri->getScheme();
+
+        $allowedSchemes = ['', 'http', 'https', 'file'];
+        if (!\in_array($scheme, $allowedSchemes, true)) {
+            throw new \RuntimeException(\sprintf('Reference scheme "%s" is not allowed. Allowed schemes: http, https, file (or local path without scheme).', $scheme));
+        }
+
+        if ('' === $scheme || 'file' === $scheme) {
+            $this->validateLocalPath($fragment);
+        }
+
+        if (\in_array($scheme, ['http', 'https'], true)) {
+            $this->validateRemoteRef();
+        }
+    }
+
+    private function validateLocalPath(string $fragment): void
+    {
+        $originPath = $this->originUri->getPath();
+
+        if ('' === $originPath || '/' === $originPath) {
+            return;
+        }
+
+        $basePath = @realpath(\dirname($originPath));
+
+        if (false === $basePath) {
+            $basePath = \dirname($originPath);
+        }
+
+        $basePath = rtrim($basePath, '/\\');
+
+        $path = $fragment;
+        if (str_starts_with($path, 'file://')) {
+            $path = substr($path, 7);
+        }
+
+        if (!str_starts_with($path, '/') && !preg_match('#^[a-zA-Z]:/#', $path)) {
+            $path = $basePath . '/' . $path;
+        }
+
+        $normalized = @realpath($path);
+        if (false === $normalized) {
+            $normalized = $this->normalizePath($path);
+        }
+
+        if ('' === $normalized || !str_starts_with($normalized, $basePath)) {
+            throw new \RuntimeException(\sprintf('Local reference "%s" resolves outside the allowed directory "%s". Path traversal is not allowed.', $fragment, $basePath));
+        }
+    }
+
+    private function validateRemoteRef(): void
+    {
+        if (!self::$allowExternalRefs) {
+            throw new \RuntimeException('External (HTTP/HTTPS) references are not allowed. Set "allow-external-refs" to true in your Jane configuration to enable them, or use "external-ref-allowed-hosts" to restrict to specific hosts.');
+        }
+
+        if ([] !== self::$allowedExternalHosts) {
+            $host = $this->mergedUri->getHost();
+            $allowed = false;
+
+            foreach (self::$allowedExternalHosts as $allowedHost) {
+                if ($host === $allowedHost || str_ends_with($host, '.' . $allowedHost)) {
+                    $allowed = true;
+                    break;
+                }
+            }
+
+            if (!$allowed) {
+                throw new \RuntimeException(\sprintf('Remote reference host "%s" is not allowed. Must be one of: %s.', $host, implode(', ', self::$allowedExternalHosts)));
+            }
+        }
+    }
+
+    private function normalizePath(string $path): string
+    {
+        $parts = explode('/', str_replace('\\', '/', $path));
+        $resolved = [];
+
+        foreach ($parts as $part) {
+            if ('.' === $part || '' === $part) {
+                continue;
+            }
+
+            if ('..' === $part) {
+                if ([] !== $resolved) {
+                    array_pop($resolved);
+                }
+                continue;
+            }
+
+            $resolved[] = $part;
+        }
+
+        $prefix = '';
+        if (str_starts_with($path, '/')) {
+            $prefix = '/';
+        }
+
+        return $prefix . implode('/', $resolved);
     }
 
     /**

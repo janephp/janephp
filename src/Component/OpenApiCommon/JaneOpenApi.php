@@ -8,6 +8,7 @@ use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Guesser\ChainGuesser;
 use Jane\Component\JsonSchema\Guesser\Validator\ChainValidatorFactory;
 use Jane\Component\JsonSchema\Registry\Registry;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApiCommon\Contracts\WhitelistFetchInterface;
 use Jane\Component\OpenApiCommon\Guesser\Guess\ClassGuess;
 use Jane\Component\OpenApiCommon\Guesser\Guess\ParentClass;
@@ -154,6 +155,14 @@ abstract class JaneOpenApi extends ChainGenerator
 
     public static function build(array $options = [])
     {
+        Reference::resetConfig();
+        if ($options['allow-external-refs'] ?? false) {
+            Reference::allowExternalRefs(true);
+        }
+        if (!empty($options['external-ref-allowed-hosts'] ?? [])) {
+            Reference::setAllowedExternalHosts($options['external-ref-allowed-hosts']);
+        }
+
         $instance = static::create($options);
 
         /** @var DenormalizerInterface $denormalizer */

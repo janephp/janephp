@@ -15,6 +15,7 @@ use Jane\Component\JsonSchema\Guesser\Validator\ChainValidatorFactory;
 use Jane\Component\JsonSchema\JsonSchema\Normalizer\JaneObjectNormalizer;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchema\Registry\Schema;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use PhpParser\ParserFactory;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
@@ -83,6 +84,14 @@ class Jane extends ChainGenerator
 
     public static function build(array $options = []): self
     {
+        Reference::resetConfig();
+        if ($options['allow-external-refs'] ?? false) {
+            Reference::allowExternalRefs(true);
+        }
+        if (!empty($options['external-ref-allowed-hosts'] ?? [])) {
+            Reference::setAllowedExternalHosts($options['external-ref-allowed-hosts']);
+        }
+
         $serializer = self::buildSerializer();
         $chainGuesser = JsonSchemaGuesserFactory::create($serializer, $options);
         $naming = new Naming();
