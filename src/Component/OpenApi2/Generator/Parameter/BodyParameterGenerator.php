@@ -58,7 +58,7 @@ class BodyParameterGenerator extends ParameterGenerator
             [$class] = $guessedType;
         }
 
-        return rtrim(\sprintf(' * @param %s $%s %s', implode('|', $class), $this->getInflector()->camelize($parameter->getName()), $parameter->getDescription() ?: ''));
+        return rtrim(\sprintf(' * @param %s $%s %s', implode('|', $class), str_replace('*/', '*\\/', $this->getInflector()->camelize($parameter->getName())), str_replace('*/', '*\\/', $parameter->getDescription() ?: '')));
     }
 
     /**

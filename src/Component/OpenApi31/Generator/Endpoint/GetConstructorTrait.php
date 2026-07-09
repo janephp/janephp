@@ -117,7 +117,7 @@ trait GetConstructorTrait
         $methodParamsDoc = ['/**'];
         if ($operation->getOperation()->getDescription()) {
             foreach (explode("\n", $operation->getOperation()->getDescription()) as $line) {
-                $methodParamsDoc[] = rtrim(' * ' . $line);
+                $methodParamsDoc[] = rtrim(' * ' . str_replace('*/', '*\\/', $line));
             }
         }
         $methodParamsDoc[] = implode("\n", $methodDocumentations);

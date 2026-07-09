@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Security
+- [OpenApi] [GHSA-xwcw-j52r-34x4](https://github.com/janephp/janephp/security/advisories/GHSA-xwcw-j52r-34x4) [GHSA-x9xr-53qx-9qcf](https://github.com/janephp/janephp/security/advisories/GHSA-x9xr-53qx-9qcf) [GHSA-q8v2-3j4h-xg2p](https://github.com/janephp/janephp/security/advisories/GHSA-q8v2-3j4h-xg2p) Sanitize `*/` in generated PHPDoc comments to prevent instantiation RCE via PHPDoc breakout
 
 ## [7.11.2] - 2026-04-16
 ### Added

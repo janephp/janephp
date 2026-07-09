@@ -104,7 +104,7 @@ trait GetterSetterGenerator
     {
         $description = ['/**'];
         if ($property->getDescription()) {
-            foreach (array_map(rtrim(...), explode("\n", $property->getDescription())) as $line) {
+            foreach (array_map(fn (string $line): string => str_replace('*/', '*\\/', rtrim($line)), explode("\n", $property->getDescription())) as $line) {
                 $description[] = ' * ' . $line;
             }
             $description[] = ' *';
@@ -127,7 +127,7 @@ trait GetterSetterGenerator
     {
         $description = ['/**'];
         if ($property->getDescription()) {
-            $description[] = ' * ' . $property->getDescription();
+            $description[] = ' * ' . str_replace('*/', '*\\/', $property->getDescription());
             $description[] = ' *';
         }
 
