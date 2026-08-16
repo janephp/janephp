@@ -1,0 +1,75 @@
+{
+    "openapi": "3.1.2",
+    "info": {
+        "title": "Test",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://api.example.com/v1",
+            "description": "Production server"
+        }
+    ],
+    "paths": {
+        "/proposal": {
+            "get": {
+                "operationId": "getProposal",
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProjectProposal"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ProjectProposal": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": ["string", "null"]
+                    },
+                    "ecoScore": {
+                        "oneOf": [
+                            { "$ref": "#/components/schemas/GlobalEcoScore" },
+                            { "type": "null" }
+                        ]
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "ecoScore"
+                ]
+            },
+            "GlobalEcoScore": {
+                "type": "object",
+                "properties": {
+                    "emission_factors": {
+                        "type": ["array", "null"],
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "tracingId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "tracingId",
+                    "emission_factors"
+                ]
+            }
+        }
+    }
+}
