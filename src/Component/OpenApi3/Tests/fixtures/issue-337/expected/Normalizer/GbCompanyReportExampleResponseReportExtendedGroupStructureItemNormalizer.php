@@ -38,7 +38,7 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItemNormalizer i
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('level', $data) && \is_int($data['level'])) {
-            $data['level'] = (double) $data['level'];
+            $data['level'] = (float) $data['level'];
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

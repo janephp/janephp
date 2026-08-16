@@ -38,10 +38,10 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageSummaryNo
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('outstanding', $data) && \is_int($data['outstanding'])) {
-            $data['outstanding'] = (double) $data['outstanding'];
+            $data['outstanding'] = (float) $data['outstanding'];
         }
         if (\array_key_exists('satisfied', $data) && \is_int($data['satisfied'])) {
-            $data['satisfied'] = (double) $data['satisfied'];
+            $data['satisfied'] = (float) $data['satisfied'];
         }
         if (\array_key_exists('outstanding', $data)) {
             $object->setOutstanding($data['outstanding']);

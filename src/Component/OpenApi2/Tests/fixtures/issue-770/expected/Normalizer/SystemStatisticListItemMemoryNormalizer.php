@@ -38,13 +38,13 @@ class SystemStatisticListItemMemoryNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('percent', $data) && \is_int($data['percent'])) {
-            $data['percent'] = (double) $data['percent'];
+            $data['percent'] = (float) $data['percent'];
         }
         if (\array_key_exists('maxPercent', $data) && \is_int($data['maxPercent'])) {
-            $data['maxPercent'] = (double) $data['maxPercent'];
+            $data['maxPercent'] = (float) $data['maxPercent'];
         }
         if (\array_key_exists('minPercent', $data) && \is_int($data['minPercent'])) {
-            $data['minPercent'] = (double) $data['minPercent'];
+            $data['minPercent'] = (float) $data['minPercent'];
         }
         if (\array_key_exists('percent', $data)) {
             $object->setPercent($data['percent']);

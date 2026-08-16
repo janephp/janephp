@@ -38,7 +38,7 @@ class ApiChunkingOptionsNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('semantic_threshold', $data) && \is_int($data['semantic_threshold'])) {
-            $data['semantic_threshold'] = (double) $data['semantic_threshold'];
+            $data['semantic_threshold'] = (float) $data['semantic_threshold'];
         }
         if (\array_key_exists('child_chunk_size', $data)) {
             $object->setChildChunkSize($data['child_chunk_size']);

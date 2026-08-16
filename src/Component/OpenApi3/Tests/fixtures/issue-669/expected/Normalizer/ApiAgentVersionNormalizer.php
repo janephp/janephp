@@ -38,10 +38,10 @@ class ApiAgentVersionNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('temperature', $data) && \is_int($data['temperature'])) {
-            $data['temperature'] = (double) $data['temperature'];
+            $data['temperature'] = (float) $data['temperature'];
         }
         if (\array_key_exists('top_p', $data) && \is_int($data['top_p'])) {
-            $data['top_p'] = (double) $data['top_p'];
+            $data['top_p'] = (float) $data['top_p'];
         }
         if (\array_key_exists('can_rollback', $data) && \is_int($data['can_rollback'])) {
             $data['can_rollback'] = (bool) $data['can_rollback'];

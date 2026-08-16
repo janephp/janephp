@@ -119,7 +119,7 @@ trait DenormalizerGenerator
             $arrayElement = new Expr\ArrayDimFetch($dataVariable, new Scalar\String_($property->getName()));
             $intCondition = new Expr\FuncCall(new Name('\is_int'), [$arrayElement]);
             $condition = new Expr\BinaryOp\BooleanAnd($baseCondition, $intCondition);
-            $castFloat = new Stmt\Expression(new Expr\Assign($arrayElement, new Expr\Cast\Double($arrayElement)));
+            $castFloat = new Stmt\Expression(new Expr\Assign($arrayElement, new Expr\Cast\Double($arrayElement, ['kind' => Expr\Cast\Double::KIND_FLOAT])));
             $statements[] = new Stmt\If_($condition, ['stmts' => [$castFloat]]);
         }
         foreach ($classGuess->getProperties() as $property) {

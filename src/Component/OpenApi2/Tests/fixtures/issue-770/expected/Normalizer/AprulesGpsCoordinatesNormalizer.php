@@ -38,13 +38,13 @@ class AprulesGpsCoordinatesNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('latitude', $data) && \is_int($data['latitude'])) {
-            $data['latitude'] = (double) $data['latitude'];
+            $data['latitude'] = (float) $data['latitude'];
         }
         if (\array_key_exists('longitude', $data) && \is_int($data['longitude'])) {
-            $data['longitude'] = (double) $data['longitude'];
+            $data['longitude'] = (float) $data['longitude'];
         }
         if (\array_key_exists('distance', $data) && \is_int($data['distance'])) {
-            $data['distance'] = (double) $data['distance'];
+            $data['distance'] = (float) $data['distance'];
         }
         if (\array_key_exists('latitude', $data)) {
             $object->setLatitude($data['latitude']);

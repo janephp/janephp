@@ -38,7 +38,7 @@ class ProfileReturnDPGroupDpGroupListWithPriorityItemNormalizer implements Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('priority', $data) && \is_int($data['priority'])) {
-            $data['priority'] = (double) $data['priority'];
+            $data['priority'] = (float) $data['priority'];
         }
         if (\array_key_exists('priority', $data)) {
             $object->setPriority($data['priority']);

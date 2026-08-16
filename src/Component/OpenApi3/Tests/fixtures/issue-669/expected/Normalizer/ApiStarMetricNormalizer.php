@@ -38,7 +38,7 @@ class ApiStarMetricNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('success_threshold', $data) && \is_int($data['success_threshold'])) {
-            $data['success_threshold'] = (double) $data['success_threshold'];
+            $data['success_threshold'] = (float) $data['success_threshold'];
         }
         if (\array_key_exists('metric_uuid', $data)) {
             $object->setMetricUuid($data['metric_uuid']);

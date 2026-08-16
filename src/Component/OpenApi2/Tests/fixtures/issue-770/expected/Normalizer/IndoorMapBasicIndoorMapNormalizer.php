@@ -38,10 +38,10 @@ class IndoorMapBasicIndoorMapNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('latitude', $data) && \is_int($data['latitude'])) {
-            $data['latitude'] = (double) $data['latitude'];
+            $data['latitude'] = (float) $data['latitude'];
         }
         if (\array_key_exists('longitude', $data) && \is_int($data['longitude'])) {
-            $data['longitude'] = (double) $data['longitude'];
+            $data['longitude'] = (float) $data['longitude'];
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

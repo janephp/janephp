@@ -38,10 +38,10 @@ class ProfileCreateFirewallProfileNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('uplinkRateLimitingMbps', $data) && \is_int($data['uplinkRateLimitingMbps'])) {
-            $data['uplinkRateLimitingMbps'] = (double) $data['uplinkRateLimitingMbps'];
+            $data['uplinkRateLimitingMbps'] = (float) $data['uplinkRateLimitingMbps'];
         }
         if (\array_key_exists('downlinkRateLimitingMbps', $data) && \is_int($data['downlinkRateLimitingMbps'])) {
-            $data['downlinkRateLimitingMbps'] = (double) $data['downlinkRateLimitingMbps'];
+            $data['downlinkRateLimitingMbps'] = (float) $data['downlinkRateLimitingMbps'];
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);

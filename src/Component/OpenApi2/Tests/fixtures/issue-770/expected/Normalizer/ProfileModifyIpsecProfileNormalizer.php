@@ -38,10 +38,10 @@ class ProfileModifyIpsecProfileNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('ikeRekeyTime', $data) && \is_int($data['ikeRekeyTime'])) {
-            $data['ikeRekeyTime'] = (double) $data['ikeRekeyTime'];
+            $data['ikeRekeyTime'] = (float) $data['ikeRekeyTime'];
         }
         if (\array_key_exists('espRekeyTime', $data) && \is_int($data['espRekeyTime'])) {
-            $data['espRekeyTime'] = (double) $data['espRekeyTime'];
+            $data['espRekeyTime'] = (float) $data['espRekeyTime'];
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

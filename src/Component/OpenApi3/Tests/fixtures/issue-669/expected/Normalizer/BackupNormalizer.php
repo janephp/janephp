@@ -38,7 +38,7 @@ class BackupNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('size_gigabytes', $data) && \is_int($data['size_gigabytes'])) {
-            $data['size_gigabytes'] = (double) $data['size_gigabytes'];
+            $data['size_gigabytes'] = (float) $data['size_gigabytes'];
         }
         if (\array_key_exists('incremental', $data) && \is_int($data['incremental'])) {
             $data['incremental'] = (bool) $data['incremental'];

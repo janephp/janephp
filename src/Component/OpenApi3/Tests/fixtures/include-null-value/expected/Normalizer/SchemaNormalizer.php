@@ -38,7 +38,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('floatProperty', $data) && \is_int($data['floatProperty'])) {
-            $data['floatProperty'] = (double) $data['floatProperty'];
+            $data['floatProperty'] = (float) $data['floatProperty'];
         }
         if (\array_key_exists('attribute1', $data)) {
             $object->setAttribute1($data['attribute1']);

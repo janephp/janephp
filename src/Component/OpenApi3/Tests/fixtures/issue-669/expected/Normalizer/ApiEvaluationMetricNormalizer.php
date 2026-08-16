@@ -38,10 +38,10 @@ class ApiEvaluationMetricNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('range_max', $data) && \is_int($data['range_max'])) {
-            $data['range_max'] = (double) $data['range_max'];
+            $data['range_max'] = (float) $data['range_max'];
         }
         if (\array_key_exists('range_min', $data) && \is_int($data['range_min'])) {
-            $data['range_min'] = (double) $data['range_min'];
+            $data['range_min'] = (float) $data['range_min'];
         }
         if (\array_key_exists('inverted', $data) && \is_int($data['inverted'])) {
             $data['inverted'] = (bool) $data['inverted'];
