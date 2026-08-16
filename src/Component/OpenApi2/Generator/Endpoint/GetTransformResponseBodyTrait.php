@@ -148,7 +148,9 @@ EOD
 
         $returnStmt = new Stmt\Return_($serializeStmt);
 
-        if ((int) $status >= 400) {
+        /** @var Registry $registry */
+        $registry = $context->getRegistry();
+        if ((int) $status >= 400 && $registry->getGenerateErrorExceptions()) {
             $exceptionName = $this->exceptionGenerator->generate(
                 $name,
                 (int) $status,
