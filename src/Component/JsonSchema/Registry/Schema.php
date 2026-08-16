@@ -93,9 +93,10 @@ class Schema implements SchemaInterface
     public function findPropertyClass(string $sourceObject, string $propertyObject): ?array
     {
         $referencePart = \sprintf('%s/properties/%s', $sourceObject, $propertyObject);
+        $referencePartPattern = '#(^|/)' . preg_quote($referencePart, '#') . '($|/)#';
 
         foreach ($this->classes as $class) {
-            if (str_contains($class->getReference(), $referencePart)) {
+            if (preg_match($referencePartPattern, $class->getReference()) === 1) {
                 return [$class, $class->getReference()];
             }
         }
