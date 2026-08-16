@@ -8,6 +8,19 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class ChainValidatorFactory
 {
+    /** @var list<ValidatorInterface> */
+    private static array $customValidators = [];
+
+    public static function addValidator(ValidatorInterface $validator): void
+    {
+        self::$customValidators[] = $validator;
+    }
+
+    public static function resetCustomValidators(): void
+    {
+        self::$customValidators = [];
+    }
+
     public static function create(Naming $naming, Registry $registry, DenormalizerInterface $denormalizer): ValidatorInterface
     {
         $chainValidator = new ChainValidator();
@@ -36,6 +49,12 @@ class ChainValidatorFactory
         $chainValidator->addValidator(new Format\IPv4Validator());
         $chainValidator->addValidator(new Format\IPv6Validator());
         $chainValidator->addValidator(new Format\UuidValidator());
+
+        // Custom validators emit their constraints before the generic Type/NotNull fallbacks below
+        foreach (self::$customValidators as $validator) {
+            $chainValidator->addValidator($validator);
+        }
+
         // Others
         $chainValidator->addValidator(new Any\TypeValidator());
         $chainValidator->addValidator(new Any\EnumValidator());

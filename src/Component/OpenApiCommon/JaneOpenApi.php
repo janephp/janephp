@@ -163,6 +163,11 @@ abstract class JaneOpenApi extends ChainGenerator
             Reference::setAllowedExternalHosts($options['external-ref-allowed-hosts']);
         }
 
+        ChainValidatorFactory::resetCustomValidators();
+        foreach ($options['validators'] ?? [] as $validator) {
+            ChainValidatorFactory::addValidator($validator);
+        }
+
         $instance = static::create($options);
 
         /** @var DenormalizerInterface $denormalizer */

@@ -1,0 +1,12 @@
+{
+    "type": "object",
+    "properties": {
+        "amount": {
+            "type": "string",
+            "format": "decimal-two"
+        },
+        "comment": {
+            "type": "string"
+        }
+    }
+}

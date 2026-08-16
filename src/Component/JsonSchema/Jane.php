@@ -92,6 +92,11 @@ class Jane extends ChainGenerator
             Reference::setAllowedExternalHosts($options['external-ref-allowed-hosts']);
         }
 
+        ChainValidatorFactory::resetCustomValidators();
+        foreach ($options['validators'] ?? [] as $validator) {
+            ChainValidatorFactory::addValidator($validator);
+        }
+
         $serializer = self::buildSerializer();
         $chainGuesser = JsonSchemaGuesserFactory::create($serializer, $options);
         $naming = new Naming();

@@ -1,0 +1,67 @@
+<?php
+
+use Jane\Component\JsonSchema\Guesser\Validator\ValidatorGuess;
+use Jane\Component\JsonSchema\Guesser\Validator\ValidatorInterface;
+use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
+use Symfony\Component\Validator\Constraints\Choice;
+use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
+use Symfony\Component\Validator\Constraints\LessThanOrEqual;
+use Symfony\Component\Validator\Constraints\Regex;
+
+return [
+    'openapi-file' => __DIR__ . '/openapi.json',
+    'namespace' => 'Jane\Component\OpenApi31\Tests\Expected',
+    'directory' => __DIR__ . '/generated',
+    'validation' => true,
+    'validators' => [
+        // A format validator: a custom string format gets a Regex constraint.
+        new class implements ValidatorInterface {
+            public function supports($object): bool
+            {
+                return $object instanceof JsonSchema && 'decimal-two' === $object->getFormat();
+            }
+
+            public function guess($object, string $name, $guess): void
+            {
+                $guess->addValidatorGuess(new ValidatorGuess(Regex::class, [
+                    'pattern' => '#^\d+\.\d{2}$#',
+                    'message' => 'This value is not a valid decimal with two fraction digits.',
+                ]));
+            }
+        },
+        // A validator with constructor dependencies: the allowed values are injected, which is why
+        // the option takes ValidatorInterface instances and not class names.
+        new class(['EUR', 'USD', 'GBP']) implements ValidatorInterface {
+            public function __construct(
+                private readonly array $allowedCodes,
+            ) {
+            }
+
+            public function supports($object): bool
+            {
+                return $object instanceof JsonSchema && 'currency-code' === $object->getFormat();
+            }
+
+            public function guess($object, string $name, $guess): void
+            {
+                $guess->addValidatorGuess(new ValidatorGuess(Choice::class, [
+                    'choices' => $this->allowedCodes,
+                    'message' => 'This value is not a supported currency code.',
+                ]));
+            }
+        },
+        // A validator emitting several constraints from one guess: a numeric format becomes a range.
+        new class implements ValidatorInterface {
+            public function supports($object): bool
+            {
+                return $object instanceof JsonSchema && 'percentage' === $object->getFormat();
+            }
+
+            public function guess($object, string $name, $guess): void
+            {
+                $guess->addValidatorGuess(new ValidatorGuess(GreaterThanOrEqual::class, ['value' => 0.0]));
+                $guess->addValidatorGuess(new ValidatorGuess(LessThanOrEqual::class, ['value' => 100.0]));
+            }
+        },
+    ],
+];
