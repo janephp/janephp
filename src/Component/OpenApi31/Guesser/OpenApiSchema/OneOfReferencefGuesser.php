@@ -36,12 +36,18 @@ class OneOfReferencefGuesser implements ChainGuesserAwareInterface, GuesserInter
             return false;
         }
 
+        if ($object->getOneOf()[0] instanceof Reference) {
+            return true;
+        }
+
         foreach ($object->getOneOf() as $oneOf) {
-            if ($oneOf instanceof Reference) {
-                return true;
+            if (!$oneOf instanceof JsonSchema || !\is_array($oneOf->getAllOf())) {
+                continue;
             }
-            if ($oneOf instanceof JsonSchema && \is_array($oneOf->getAllOf()) && [] !== $oneOf->getAllOf()) {
-                return true;
+            foreach ($oneOf->getAllOf() as $allOf) {
+                if ($allOf instanceof Reference) {
+                    return true;
+                }
             }
         }
 
