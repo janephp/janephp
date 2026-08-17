@@ -38,10 +38,10 @@ class PortalserviceConnectionCapabilityNormalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('protocolNumber', $data) && \is_int($data['protocolNumber'])) {
-            $data['protocolNumber'] = (double) $data['protocolNumber'];
+            $data['protocolNumber'] = (float) $data['protocolNumber'];
         }
         if (\array_key_exists('portNumber', $data) && \is_int($data['portNumber'])) {
-            $data['portNumber'] = (double) $data['portNumber'];
+            $data['portNumber'] = (float) $data['portNumber'];
         }
         if (\array_key_exists('protocolName', $data)) {
             $object->setProtocolName($data['protocolName']);

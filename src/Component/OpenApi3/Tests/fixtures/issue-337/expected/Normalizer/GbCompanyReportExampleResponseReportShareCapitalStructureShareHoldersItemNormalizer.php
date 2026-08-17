@@ -38,10 +38,10 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItemN
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('totalNumberOfSharesOwned', $data) && \is_int($data['totalNumberOfSharesOwned'])) {
-            $data['totalNumberOfSharesOwned'] = (double) $data['totalNumberOfSharesOwned'];
+            $data['totalNumberOfSharesOwned'] = (float) $data['totalNumberOfSharesOwned'];
         }
         if (\array_key_exists('percentSharesHeld', $data) && \is_int($data['percentSharesHeld'])) {
-            $data['percentSharesHeld'] = (double) $data['percentSharesHeld'];
+            $data['percentSharesHeld'] = (float) $data['percentSharesHeld'];
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);

@@ -38,7 +38,7 @@ class AppsListInstanceSizesResponseNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('discount_percent', $data) && \is_int($data['discount_percent'])) {
-            $data['discount_percent'] = (double) $data['discount_percent'];
+            $data['discount_percent'] = (float) $data['discount_percent'];
         }
         if (\array_key_exists('discount_percent', $data)) {
             $object->setDiscountPercent($data['discount_percent']);

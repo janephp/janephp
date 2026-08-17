@@ -38,13 +38,13 @@ class UnsharpenMaskActionNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('amount', $data) && \is_int($data['amount'])) {
-            $data['amount'] = (double) $data['amount'];
+            $data['amount'] = (float) $data['amount'];
         }
         if (\array_key_exists('radius', $data) && \is_int($data['radius'])) {
-            $data['radius'] = (double) $data['radius'];
+            $data['radius'] = (float) $data['radius'];
         }
         if (\array_key_exists('threshold', $data) && \is_int($data['threshold'])) {
-            $data['threshold'] = (double) $data['threshold'];
+            $data['threshold'] = (float) $data['threshold'];
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);

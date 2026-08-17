@@ -153,6 +153,9 @@ Other options are available to customize the generated code:
  that forces them to be present during denormalization. By default it is disabled.
 - `validation`: Will enable validation following JSON Schema validation specification. By default it is disabled. You
   can read more about it in the dedicated [Validation guide](../guides/validation.md).
+- `validators`: An array of `Jane\Component\JsonSchema\Guesser\Validator\ValidatorInterface` instances to register
+  additional validators during generation. Only meaningful when `validation` is enabled. See the
+  [Custom validators](../guides/validation.md#custom-validators) section of the Validation guide.
 - `include-null-value`: Will enable a way to manage null values. By default it is enabled.
 
 ## Using a generated Model

@@ -38,7 +38,7 @@ class ApiPromptChunkNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('chunk_usage_pct', $data) && \is_int($data['chunk_usage_pct'])) {
-            $data['chunk_usage_pct'] = (double) $data['chunk_usage_pct'];
+            $data['chunk_usage_pct'] = (float) $data['chunk_usage_pct'];
         }
         if (\array_key_exists('chunk_used', $data) && \is_int($data['chunk_used'])) {
             $data['chunk_used'] = (bool) $data['chunk_used'];

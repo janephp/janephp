@@ -38,7 +38,7 @@ class FieldDictionaryArrayNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('boost', $data) && \is_int($data['boost'])) {
-            $data['boost'] = (double) $data['boost'];
+            $data['boost'] = (float) $data['boost'];
         }
         if (\array_key_exists('required', $data) && \is_int($data['required'])) {
             $data['required'] = (bool) $data['required'];

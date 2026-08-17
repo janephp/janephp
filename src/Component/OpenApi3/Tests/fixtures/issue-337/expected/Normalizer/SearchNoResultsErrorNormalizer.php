@@ -38,7 +38,7 @@ class SearchNoResultsErrorNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('totalSize', $data) && \is_int($data['totalSize'])) {
-            $data['totalSize'] = (double) $data['totalSize'];
+            $data['totalSize'] = (float) $data['totalSize'];
         }
         if (\array_key_exists('totalSize', $data)) {
             $object->setTotalSize($data['totalSize']);

@@ -38,7 +38,7 @@ class BookingPaymentNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('amount', $data) && \is_int($data['amount'])) {
-            $data['amount'] = (double) $data['amount'];
+            $data['amount'] = (float) $data['amount'];
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\BookingPaymentConstraint());

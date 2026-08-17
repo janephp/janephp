@@ -58,10 +58,11 @@ class CustomObjectType extends Type
         $conditionStatement = parent::createConditionStatement($input);
 
         foreach ($this->discriminants as $key => $values) {
-            $issetCondition = new Expr\FuncCall(
-                new Name('isset'),
+            $existsCondition = new Expr\FuncCall(
+                new Name('\array_key_exists'),
                 [
-                    new Arg(new Expr\ArrayDimFetch($input, new Scalar\String_($key))),
+                    new Arg(new Scalar\String_($key)),
+                    new Arg($input),
                 ]
             );
 
@@ -87,9 +88,9 @@ class CustomObjectType extends Type
             }
 
             if (null !== $logicalOr) {
-                $conditionStatement = new Expr\BinaryOp\LogicalAnd($conditionStatement, new Expr\BinaryOp\LogicalAnd($issetCondition, $logicalOr));
+                $conditionStatement = new Expr\BinaryOp\LogicalAnd($conditionStatement, new Expr\BinaryOp\LogicalAnd($existsCondition, $logicalOr));
             } else {
-                $conditionStatement = new Expr\BinaryOp\LogicalAnd($conditionStatement, $issetCondition);
+                $conditionStatement = new Expr\BinaryOp\LogicalAnd($conditionStatement, $existsCondition);
             }
         }
 

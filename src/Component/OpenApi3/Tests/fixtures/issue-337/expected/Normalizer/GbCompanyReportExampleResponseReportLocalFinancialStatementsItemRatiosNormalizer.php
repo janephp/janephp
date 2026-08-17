@@ -38,46 +38,46 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemRatiosNorm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('preTaxProfitMargin', $data) && \is_int($data['preTaxProfitMargin'])) {
-            $data['preTaxProfitMargin'] = (double) $data['preTaxProfitMargin'];
+            $data['preTaxProfitMargin'] = (float) $data['preTaxProfitMargin'];
         }
         if (\array_key_exists('returnOnCapitalEmployed', $data) && \is_int($data['returnOnCapitalEmployed'])) {
-            $data['returnOnCapitalEmployed'] = (double) $data['returnOnCapitalEmployed'];
+            $data['returnOnCapitalEmployed'] = (float) $data['returnOnCapitalEmployed'];
         }
         if (\array_key_exists('returnOnTotalAssetsEmployed', $data) && \is_int($data['returnOnTotalAssetsEmployed'])) {
-            $data['returnOnTotalAssetsEmployed'] = (double) $data['returnOnTotalAssetsEmployed'];
+            $data['returnOnTotalAssetsEmployed'] = (float) $data['returnOnTotalAssetsEmployed'];
         }
         if (\array_key_exists('returnOnNetAssetsEmployed', $data) && \is_int($data['returnOnNetAssetsEmployed'])) {
-            $data['returnOnNetAssetsEmployed'] = (double) $data['returnOnNetAssetsEmployed'];
+            $data['returnOnNetAssetsEmployed'] = (float) $data['returnOnNetAssetsEmployed'];
         }
         if (\array_key_exists('salesOrNetWorkingCapital', $data) && \is_int($data['salesOrNetWorkingCapital'])) {
-            $data['salesOrNetWorkingCapital'] = (double) $data['salesOrNetWorkingCapital'];
+            $data['salesOrNetWorkingCapital'] = (float) $data['salesOrNetWorkingCapital'];
         }
         if (\array_key_exists('stocKTurnoverRatio', $data) && \is_int($data['stocKTurnoverRatio'])) {
-            $data['stocKTurnoverRatio'] = (double) $data['stocKTurnoverRatio'];
+            $data['stocKTurnoverRatio'] = (float) $data['stocKTurnoverRatio'];
         }
         if (\array_key_exists('debtorDays', $data) && \is_int($data['debtorDays'])) {
-            $data['debtorDays'] = (double) $data['debtorDays'];
+            $data['debtorDays'] = (float) $data['debtorDays'];
         }
         if (\array_key_exists('creditorDays', $data) && \is_int($data['creditorDays'])) {
-            $data['creditorDays'] = (double) $data['creditorDays'];
+            $data['creditorDays'] = (float) $data['creditorDays'];
         }
         if (\array_key_exists('currentRatio', $data) && \is_int($data['currentRatio'])) {
-            $data['currentRatio'] = (double) $data['currentRatio'];
+            $data['currentRatio'] = (float) $data['currentRatio'];
         }
         if (\array_key_exists('liquidityRatioOrAcidTest', $data) && \is_int($data['liquidityRatioOrAcidTest'])) {
-            $data['liquidityRatioOrAcidTest'] = (double) $data['liquidityRatioOrAcidTest'];
+            $data['liquidityRatioOrAcidTest'] = (float) $data['liquidityRatioOrAcidTest'];
         }
         if (\array_key_exists('currentDebtRatio', $data) && \is_int($data['currentDebtRatio'])) {
-            $data['currentDebtRatio'] = (double) $data['currentDebtRatio'];
+            $data['currentDebtRatio'] = (float) $data['currentDebtRatio'];
         }
         if (\array_key_exists('gearing', $data) && \is_int($data['gearing'])) {
-            $data['gearing'] = (double) $data['gearing'];
+            $data['gearing'] = (float) $data['gearing'];
         }
         if (\array_key_exists('equityInPercentage', $data) && \is_int($data['equityInPercentage'])) {
-            $data['equityInPercentage'] = (double) $data['equityInPercentage'];
+            $data['equityInPercentage'] = (float) $data['equityInPercentage'];
         }
         if (\array_key_exists('totalDebtRatio', $data) && \is_int($data['totalDebtRatio'])) {
-            $data['totalDebtRatio'] = (double) $data['totalDebtRatio'];
+            $data['totalDebtRatio'] = (float) $data['totalDebtRatio'];
         }
         if (\array_key_exists('preTaxProfitMargin', $data)) {
             $object->setPreTaxProfitMargin($data['preTaxProfitMargin']);

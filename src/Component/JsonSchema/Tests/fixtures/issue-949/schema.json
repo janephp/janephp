@@ -1,0 +1,47 @@
+{
+    "id": "ProjectProposal",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "name": {
+            "type": ["string", "null"]
+        },
+        "ecoScore": {
+            "oneOf": [
+                {
+                    "$ref": "#/definitions/GlobalEcoScore"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        }
+    },
+    "required": [
+        "id",
+        "name",
+        "ecoScore"
+    ],
+    "definitions": {
+        "GlobalEcoScore": {
+            "type": "object",
+            "properties": {
+                "emission_factors": {
+                    "type": ["array", "null"],
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "tracingId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "tracingId",
+                "emission_factors"
+            ]
+        }
+    }
+}

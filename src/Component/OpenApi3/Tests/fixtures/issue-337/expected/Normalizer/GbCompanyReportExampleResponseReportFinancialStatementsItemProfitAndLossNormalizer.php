@@ -38,49 +38,49 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLossNo
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('revenue', $data) && \is_int($data['revenue'])) {
-            $data['revenue'] = (double) $data['revenue'];
+            $data['revenue'] = (float) $data['revenue'];
         }
         if (\array_key_exists('operatingCosts', $data) && \is_int($data['operatingCosts'])) {
-            $data['operatingCosts'] = (double) $data['operatingCosts'];
+            $data['operatingCosts'] = (float) $data['operatingCosts'];
         }
         if (\array_key_exists('operatingProfit', $data) && \is_int($data['operatingProfit'])) {
-            $data['operatingProfit'] = (double) $data['operatingProfit'];
+            $data['operatingProfit'] = (float) $data['operatingProfit'];
         }
         if (\array_key_exists('wagesAndSalaries', $data) && \is_int($data['wagesAndSalaries'])) {
-            $data['wagesAndSalaries'] = (double) $data['wagesAndSalaries'];
+            $data['wagesAndSalaries'] = (float) $data['wagesAndSalaries'];
         }
         if (\array_key_exists('pensionCosts', $data) && \is_int($data['pensionCosts'])) {
-            $data['pensionCosts'] = (double) $data['pensionCosts'];
+            $data['pensionCosts'] = (float) $data['pensionCosts'];
         }
         if (\array_key_exists('depreciation', $data) && \is_int($data['depreciation'])) {
-            $data['depreciation'] = (double) $data['depreciation'];
+            $data['depreciation'] = (float) $data['depreciation'];
         }
         if (\array_key_exists('amortisation', $data) && \is_int($data['amortisation'])) {
-            $data['amortisation'] = (double) $data['amortisation'];
+            $data['amortisation'] = (float) $data['amortisation'];
         }
         if (\array_key_exists('financialExpenses', $data) && \is_int($data['financialExpenses'])) {
-            $data['financialExpenses'] = (double) $data['financialExpenses'];
+            $data['financialExpenses'] = (float) $data['financialExpenses'];
         }
         if (\array_key_exists('profitBeforeTax', $data) && \is_int($data['profitBeforeTax'])) {
-            $data['profitBeforeTax'] = (double) $data['profitBeforeTax'];
+            $data['profitBeforeTax'] = (float) $data['profitBeforeTax'];
         }
         if (\array_key_exists('tax', $data) && \is_int($data['tax'])) {
-            $data['tax'] = (double) $data['tax'];
+            $data['tax'] = (float) $data['tax'];
         }
         if (\array_key_exists('profitAfterTax', $data) && \is_int($data['profitAfterTax'])) {
-            $data['profitAfterTax'] = (double) $data['profitAfterTax'];
+            $data['profitAfterTax'] = (float) $data['profitAfterTax'];
         }
         if (\array_key_exists('dividends', $data) && \is_int($data['dividends'])) {
-            $data['dividends'] = (double) $data['dividends'];
+            $data['dividends'] = (float) $data['dividends'];
         }
         if (\array_key_exists('minorityInterests', $data) && \is_int($data['minorityInterests'])) {
-            $data['minorityInterests'] = (double) $data['minorityInterests'];
+            $data['minorityInterests'] = (float) $data['minorityInterests'];
         }
         if (\array_key_exists('otherAppropriations', $data) && \is_int($data['otherAppropriations'])) {
-            $data['otherAppropriations'] = (double) $data['otherAppropriations'];
+            $data['otherAppropriations'] = (float) $data['otherAppropriations'];
         }
         if (\array_key_exists('retainedProfit', $data) && \is_int($data['retainedProfit'])) {
-            $data['retainedProfit'] = (double) $data['retainedProfit'];
+            $data['retainedProfit'] = (float) $data['retainedProfit'];
         }
         if (\array_key_exists('revenue', $data)) {
             $object->setRevenue($data['revenue']);

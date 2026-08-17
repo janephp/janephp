@@ -38,7 +38,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('companyValue', $data) && \is_int($data['companyValue'])) {
-            $data['companyValue'] = (double) $data['companyValue'];
+            $data['companyValue'] = (float) $data['companyValue'];
         }
         if (\array_key_exists('date', $data)) {
             $object->setDate($data['date']);

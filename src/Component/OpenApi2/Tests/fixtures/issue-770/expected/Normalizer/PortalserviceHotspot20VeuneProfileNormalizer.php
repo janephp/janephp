@@ -38,10 +38,10 @@ class PortalserviceHotspot20VeuneProfileNormalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('downlinkSpeedInKbps', $data) && \is_int($data['downlinkSpeedInKbps'])) {
-            $data['downlinkSpeedInKbps'] = (double) $data['downlinkSpeedInKbps'];
+            $data['downlinkSpeedInKbps'] = (float) $data['downlinkSpeedInKbps'];
         }
         if (\array_key_exists('uplinkSpeedInKbps', $data) && \is_int($data['uplinkSpeedInKbps'])) {
-            $data['uplinkSpeedInKbps'] = (double) $data['uplinkSpeedInKbps'];
+            $data['uplinkSpeedInKbps'] = (float) $data['uplinkSpeedInKbps'];
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

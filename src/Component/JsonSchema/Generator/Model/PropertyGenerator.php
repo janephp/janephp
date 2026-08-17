@@ -51,7 +51,7 @@ trait PropertyGenerator
 
         $description = ['/**'];
         if ($property->getDescription()) {
-            foreach (array_map(rtrim(...), explode("\n", $property->getDescription())) as $line) {
+            foreach (array_map(fn (string $line): string => str_replace('*/', '*\\/', rtrim($line)), explode("\n", $property->getDescription())) as $line) {
                 $description[] = ' * ' . $line;
             }
             $description[] = ' *';

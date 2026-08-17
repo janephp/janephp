@@ -38,7 +38,7 @@ class ClusterAutoscalerConfigurationNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('scale_down_utilization_threshold', $data) && \is_int($data['scale_down_utilization_threshold'])) {
-            $data['scale_down_utilization_threshold'] = (double) $data['scale_down_utilization_threshold'];
+            $data['scale_down_utilization_threshold'] = (float) $data['scale_down_utilization_threshold'];
         }
         if (\array_key_exists('scale_down_utilization_threshold', $data)) {
             $object->setScaleDownUtilizationThreshold($data['scale_down_utilization_threshold']);

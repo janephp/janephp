@@ -38,16 +38,16 @@ class VideoStreamNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('durationInSeconds', $data) && \is_int($data['durationInSeconds'])) {
-            $data['durationInSeconds'] = (double) $data['durationInSeconds'];
+            $data['durationInSeconds'] = (float) $data['durationInSeconds'];
         }
         if (\array_key_exists('frameRate', $data) && \is_int($data['frameRate'])) {
-            $data['frameRate'] = (double) $data['frameRate'];
+            $data['frameRate'] = (float) $data['frameRate'];
         }
         if (\array_key_exists('pixelAspectRatio', $data) && \is_int($data['pixelAspectRatio'])) {
-            $data['pixelAspectRatio'] = (double) $data['pixelAspectRatio'];
+            $data['pixelAspectRatio'] = (float) $data['pixelAspectRatio'];
         }
         if (\array_key_exists('rotation', $data) && \is_int($data['rotation'])) {
-            $data['rotation'] = (double) $data['rotation'];
+            $data['rotation'] = (float) $data['rotation'];
         }
         if (\array_key_exists('bitRate', $data) && $data['bitRate'] !== null) {
             $object->setBitRate($data['bitRate']);

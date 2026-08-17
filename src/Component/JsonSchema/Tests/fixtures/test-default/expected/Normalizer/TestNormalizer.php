@@ -38,7 +38,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('float', $data) && \is_int($data['float'])) {
-            $data['float'] = (double) $data['float'];
+            $data['float'] = (float) $data['float'];
         }
         if (\array_key_exists('bool', $data) && \is_int($data['bool'])) {
             $data['bool'] = (bool) $data['bool'];

@@ -157,7 +157,10 @@ Other options are available to customize the generated code:
 - `skip-required-fields`: If your model has required fields, this option allows you to skip the required behavior
  that forces them to be present during denormalization. By default it is disabled
 - `validation`: Will enable validation following JSON Schema validation specification. By default it is disabled. You
- can read more about it on the dedicated guide: [Validation guide](../guides/validation.md).
+  can read more about it on the dedicated guide: [Validation guide](../guides/validation.md).
+- `validators`: An array of `Jane\Component\JsonSchema\Guesser\Validator\ValidatorInterface` instances to register
+  additional validators during generation. Only meaningful when `validation` is enabled. See the
+  [Custom validators](../guides/validation.md#custom-validators) section of the Validation guide.
 - `include-null-value`: Will enable a way to manage null values. By default it is enabled.
 - `whitelisted-paths`: This option allows you to generate only needed endpoints and related models. Be carefull,
  that option will filter models used by whitelisted endpoints and generate model & normalizer only for them. Here is
@@ -211,6 +214,10 @@ There are many ways to use it. You can either use the `__type` key to specify a 
  given type (`bool`, `int`, `string`, ...) and give it your class that contains the custom normalizer by
  extending the generated runtime `CustomQueryResolver` class. You can also filter the usage of your custom
  normalizer by giving the exact path, method and parameter name where you want to apply it.
+- `generate-error-exceptions`: Will generate a dedicated exception class for every declared error response (status >= 400)
+ and throw it with the deserialized typed error model. When disabled, declared error responses are denormalized into
+ their typed model and returned like any other response. Undeclared statuses remain governed by
+ `throw-unexpected-status-code`. By default, it's enabled.
 - `throw-unexpected-status-code`: Will return a `UnexpectedStatusCodeException` if nothing has been matched during
  the transformation of the Endpoint body (including described exceptions). By default, it's disabled.
 - `custom-string-format-mapping`: This option allows you to specify in which class a string property will be

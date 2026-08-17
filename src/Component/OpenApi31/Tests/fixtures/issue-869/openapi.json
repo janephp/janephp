@@ -1,0 +1,46 @@
+{
+    "openapi": "3.1.2",
+    "info": {
+        "title": "Test",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://api.example.com/v1",
+            "description": "Production server"
+        }
+    ],
+    "paths": {
+        "/message": {
+            "get": {
+                "operationId": "getMessage",
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Message"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Message": {
+                "type": "object",
+                "properties": {
+                    "subject": {
+                        "type": "string"
+                    },
+                    "body": {
+                        "type": ["string", "null"]
+                    }
+                }
+            }
+        }
+    }
+}

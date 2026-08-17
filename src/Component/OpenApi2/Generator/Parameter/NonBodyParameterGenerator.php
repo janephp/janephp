@@ -114,7 +114,8 @@ class NonBodyParameterGenerator extends ParameterGenerator
         $type = implode('|', $this->convertParameterType($parameter));
         $description = array_map(rtrim(...), explode("\n", $parameter->getDescription() ?: ''));
 
-        $param = [rtrim(\sprintf(' * @param %s $%s %s', $type, $this->getInflector()->camelize($parameter->getName()), array_shift($description)))];
+        $description = array_map(fn (string $line): string => str_replace('*/', '*\\/', $line), $description);
+        $param = [rtrim(\sprintf(' * @param %s $%s %s', $type, str_replace('*/', '*\\/', $this->getInflector()->camelize($parameter->getName())), array_shift($description)))];
         foreach ($description as $line) {
             $param[] = \sprintf(' * %s', $line);
         }
@@ -127,9 +128,9 @@ class NonBodyParameterGenerator extends ParameterGenerator
         $type = implode('|', $this->convertParameterType($parameter));
         $description = array_map(rtrim(...), explode("\n", $parameter->getDescription() ?: ''));
 
-        $var = [rtrim(\sprintf(' *     @var %s $%s %s', $type, $parameter->getName(), array_shift($description)))];
+        $var = [rtrim(\sprintf(' *     @var %s $%s %s', $type, str_replace('*/', '*\\/', $parameter->getName()), str_replace('*/', '*\\/', array_shift($description))))];
         foreach ($description as $line) {
-            $var[] = \sprintf(' *     %s', $line);
+            $var[] = \sprintf(' *     %s', str_replace('*/', '*\\/', $line));
         }
 
         return implode("\n", $var);

@@ -38,10 +38,10 @@ class WlanCreateStandard80211WlanNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('firewallUplinkRateLimitingMbps', $data) && \is_int($data['firewallUplinkRateLimitingMbps'])) {
-            $data['firewallUplinkRateLimitingMbps'] = (double) $data['firewallUplinkRateLimitingMbps'];
+            $data['firewallUplinkRateLimitingMbps'] = (float) $data['firewallUplinkRateLimitingMbps'];
         }
         if (\array_key_exists('firewallDownlinkRateLimitingMbps', $data) && \is_int($data['firewallDownlinkRateLimitingMbps'])) {
-            $data['firewallDownlinkRateLimitingMbps'] = (double) $data['firewallDownlinkRateLimitingMbps'];
+            $data['firewallDownlinkRateLimitingMbps'] = (float) $data['firewallDownlinkRateLimitingMbps'];
         }
         if (\array_key_exists('caleaEnabled', $data) && \is_int($data['caleaEnabled'])) {
             $data['caleaEnabled'] = (bool) $data['caleaEnabled'];

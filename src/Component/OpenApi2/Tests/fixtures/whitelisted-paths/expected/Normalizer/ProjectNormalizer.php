@@ -38,19 +38,19 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('hourly_rate', $data) && \is_int($data['hourly_rate'])) {
-            $data['hourly_rate'] = (double) $data['hourly_rate'];
+            $data['hourly_rate'] = (float) $data['hourly_rate'];
         }
         if (\array_key_exists('budget', $data) && \is_int($data['budget'])) {
-            $data['budget'] = (double) $data['budget'];
+            $data['budget'] = (float) $data['budget'];
         }
         if (\array_key_exists('over_budget_notification_percentage', $data) && \is_int($data['over_budget_notification_percentage'])) {
-            $data['over_budget_notification_percentage'] = (double) $data['over_budget_notification_percentage'];
+            $data['over_budget_notification_percentage'] = (float) $data['over_budget_notification_percentage'];
         }
         if (\array_key_exists('cost_budget', $data) && \is_int($data['cost_budget'])) {
-            $data['cost_budget'] = (double) $data['cost_budget'];
+            $data['cost_budget'] = (float) $data['cost_budget'];
         }
         if (\array_key_exists('fee', $data) && \is_int($data['fee'])) {
-            $data['fee'] = (double) $data['fee'];
+            $data['fee'] = (float) $data['fee'];
         }
         if (\array_key_exists('is_active', $data) && \is_int($data['is_active'])) {
             $data['is_active'] = (bool) $data['is_active'];
