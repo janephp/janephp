@@ -211,6 +211,10 @@ There are many ways to use it. You can either use the `__type` key to specify a 
  given type (`bool`, `int`, `string`, ...) and give it your class that contains the custom normalizer by
  extending the generated runtime `CustomQueryResolver` class. You can also filter the usage of your custom
  normalizer by giving the exact path, method and parameter name where you want to apply it.
+- `generate-error-exceptions`: Will generate a dedicated exception class for every declared error response (status >= 400)
+ and throw it with the deserialized typed error model. When disabled, declared error responses are denormalized into
+ their typed model and returned like any other response. Undeclared statuses remain governed by
+ `throw-unexpected-status-code`. By default, it's enabled.
 - `throw-unexpected-status-code`: Will return a `UnexpectedStatusCodeException` if nothing has been matched during
  the transformation of the Endpoint body (including described exceptions). By default, it's disabled.
 - `custom-string-format-mapping`: This option allows you to specify in which class a string property will be
