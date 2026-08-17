@@ -1,0 +1,43 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "API Test",
+        "version": "1.0"
+    },
+    "paths": {
+        "/FileDeposit": {
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "fichier": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "valid": {
+                                        "type": "boolean"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "description",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
