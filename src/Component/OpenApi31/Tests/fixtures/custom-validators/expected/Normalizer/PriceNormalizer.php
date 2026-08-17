@@ -38,7 +38,7 @@ class PriceNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('discount', $data) && \is_int($data['discount'])) {
-            $data['discount'] = (double) $data['discount'];
+            $data['discount'] = (float) $data['discount'];
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PriceConstraint());
