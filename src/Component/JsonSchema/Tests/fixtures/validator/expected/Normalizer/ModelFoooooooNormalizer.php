@@ -132,6 +132,20 @@ class ModelFoooooooNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('foo', $data)) {
             $object->setFoo($this->denormalizer->denormalize($data['foo'], \Jane\JsonSchema\Tests\Expected\Model\FooFooFoo::class, 'json', $context));
         }
+        if (\array_key_exists('arrayEmptyItems', $data)) {
+            $values_4 = [];
+            foreach ($data['arrayEmptyItems'] as $value_5) {
+                $values_4[] = $value_5;
+            }
+            $object->setArrayEmptyItems($values_4);
+        }
+        if (\array_key_exists('arrayBoolItems', $data)) {
+            $values_5 = [];
+            foreach ($data['arrayBoolItems'] as $value_6) {
+                $values_5[] = $value_6;
+            }
+            $object->setArrayBoolItems($values_5);
+        }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
@@ -224,6 +238,20 @@ class ModelFoooooooNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if ($data->isInitialized('foo') && null !== $data->getFoo()) {
             $dataArray['foo'] = $this->normalizer->normalize($data->getFoo(), 'json', $context);
+        }
+        if ($data->isInitialized('arrayEmptyItems') && null !== $data->getArrayEmptyItems()) {
+            $values_4 = [];
+            foreach ($data->getArrayEmptyItems() as $value_5) {
+                $values_4[] = $value_5;
+            }
+            $dataArray['arrayEmptyItems'] = $values_4;
+        }
+        if ($data->isInitialized('arrayBoolItems') && null !== $data->getArrayBoolItems()) {
+            $values_5 = [];
+            foreach ($data->getArrayBoolItems() as $value_6) {
+                $values_5[] = $value_6;
+            }
+            $dataArray['arrayBoolItems'] = $values_5;
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\JsonSchema\Tests\Expected\Validator\ModelFoooooooConstraint());
