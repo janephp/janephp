@@ -30,97 +30,98 @@ class ValidatorGenerator implements GeneratorInterface
         $namespace = $schema->getNamespace() . '\\Validator';
 
         foreach ($schema->getClasses() as $class) {
-            if ($class->hasValidatorGuesses()) {
-                $className = $this->naming->getConstraintName($class->getName());
-                $collectionItemsConstraints = [];
-                $collectionItems = [];
+            // The Constraint class is always generated, even without any validator guess: normalizers and
+            // parent Compound constraints reference it unconditionally, so skipping it would leave a
+            // reference to a class that does not exist, fataling at runtime.
+            $className = $this->naming->getConstraintName($class->getName());
+            $collectionItemsConstraints = [];
+            $collectionItems = [];
 
-                foreach ($class->getPropertyValidatorGuesses() as $name => $propertyGuesses) {
-                    $constraints = [];
-                    foreach ($propertyGuesses as $propertyGuess) {
-                        $constraints[] = new Expr\ArrayItem($this->generateConstraint($propertyGuess));
-                    }
-
-                    $collectionItemsConstraints[$name] = $constraints;
+            foreach ($class->getPropertyValidatorGuesses() as $name => $propertyGuesses) {
+                $constraints = [];
+                foreach ($propertyGuesses as $propertyGuess) {
+                    $constraints[] = new Expr\ArrayItem($this->generateConstraint($propertyGuess));
                 }
 
-                $optionsVariable = new Expr\Variable('options');
+                $collectionItemsConstraints[$name] = $constraints;
+            }
 
-                $constraintsItems = [];
-                /** @var ValidatorGuess $classGuess */
-                foreach ($class->getValidatorGuesses() as $classGuess) {
-                    if ($classGuess->getSubProperty() === null) {
-                        $constraintsItems[] = new Expr\ArrayItem($this->generateConstraint($classGuess));
-                    } else {
-                        $localNamespace = $namespace;
-                        if (null !== $classGuess->getClassReference()) {
-                            foreach ($registry->getSchemas() as $localSchema) {
-                                if (null !== $localSchema->getClass($classGuess->getClassReference())) {
-                                    $localNamespace = $localSchema->getNamespace() . '\\Validator';
-                                }
+            $optionsVariable = new Expr\Variable('options');
+
+            $constraintsItems = [];
+            /** @var ValidatorGuess $classGuess */
+            foreach ($class->getValidatorGuesses() as $classGuess) {
+                if ($classGuess->getSubProperty() === null) {
+                    $constraintsItems[] = new Expr\ArrayItem($this->generateConstraint($classGuess));
+                } else {
+                    $localNamespace = $namespace;
+                    if (null !== $classGuess->getClassReference()) {
+                        foreach ($registry->getSchemas() as $localSchema) {
+                            if (null !== $localSchema->getClass($classGuess->getClassReference())) {
+                                $localNamespace = $localSchema->getNamespace() . '\\Validator';
                             }
                         }
-
-                        $classGuess->setConstraintClass(\sprintf('%s\%s', $localNamespace, $classGuess->getConstraintClass()));
-
-                        if (!\array_key_exists($classGuess->getSubProperty(), $collectionItemsConstraints)) {
-                            $collectionItemsConstraints[$classGuess->getSubProperty()] = [$this->generateConstraint($classGuess)];
-                        } else {
-                            $collectionItemsConstraints[$classGuess->getSubProperty()] = array_merge($collectionItemsConstraints[$classGuess->getSubProperty()], [$this->generateConstraint($classGuess)]);
-                        }
                     }
-                }
 
-                foreach ($collectionItemsConstraints as $name => $constraints) {
-                    $collectionClass = $class->isRequired($name) ? Required::class : Optional::class;
-                    $collectionItems[] = new Expr\ArrayItem(new Expr\New_(new Node\Name\FullyQualified($collectionClass), [
-                        new Node\Arg(new Expr\Array_($constraints)),
-                    ]), new Scalar\String_($name));
-                }
+                    $classGuess->setConstraintClass(\sprintf('%s\%s', $localNamespace, $classGuess->getConstraintClass()));
 
-                if (\count($collectionItems) > 0) {
-                    $allowExtraFields = $class->getObject()->getAdditionalProperties();
-                    if (null === $allowExtraFields || $allowExtraFields) {
-                        $allowExtraFields = 'true';
+                    if (!\array_key_exists($classGuess->getSubProperty(), $collectionItemsConstraints)) {
+                        $collectionItemsConstraints[$classGuess->getSubProperty()] = [$this->generateConstraint($classGuess)];
                     } else {
-                        $allowExtraFields = 'false';
+                        $collectionItemsConstraints[$classGuess->getSubProperty()] = array_merge($collectionItemsConstraints[$classGuess->getSubProperty()], [$this->generateConstraint($classGuess)]);
                     }
+                }
+            }
 
-                    $constraintsItems[] = new Expr\ArrayItem(new Expr\New_(new Node\Name\FullyQualified(Collection::class), [
-                        new Node\Arg(
-                            new Expr\Array_($collectionItems),
-                            name: new Node\Identifier('fields'),
-                        ),
-                        new Node\Arg(
-                            new Expr\ConstFetch(new Node\Name($allowExtraFields)),
-                            name: new Node\Identifier('allowExtraFields'),
-                        ),
-                    ]));
+            foreach ($collectionItemsConstraints as $name => $constraints) {
+                $collectionClass = $class->isRequired($name) ? Required::class : Optional::class;
+                $collectionItems[] = new Expr\ArrayItem(new Expr\New_(new Node\Name\FullyQualified($collectionClass), [
+                    new Node\Arg(new Expr\Array_($constraints)),
+                ]), new Scalar\String_($name));
+            }
+
+            if (\count($collectionItems) > 0) {
+                $allowExtraFields = $class->getObject()->getAdditionalProperties();
+                if (null === $allowExtraFields || $allowExtraFields) {
+                    $allowExtraFields = 'true';
+                } else {
+                    $allowExtraFields = 'false';
                 }
 
-                $class = new Node\Stmt\Class_(
-                    $className,
-                    [
-                        'stmts' => [
-                            new Node\Stmt\ClassMethod(
-                                'getConstraints',
-                                [
-                                    'flags' => Modifiers::PROTECTED,
-                                    'params' => [new Node\Param($optionsVariable)],
-                                    'stmts' => [
-                                        new Node\Stmt\Return_(new Expr\Array_($constraintsItems)),
-                                    ],
-                                    'returnType' => new Node\Identifier('array'),
-                                ]
-                            ),
-                        ],
-                        'extends' => new Node\Name('\\Symfony\\Component\\Validator\\Constraints\\Compound'),
-                    ]
-                );
-
-                $namespaceStmt = new Node\Stmt\Namespace_(new Node\Name($namespace), [$class]);
-                $schema->addFile(new File($schema->getDirectory() . '/Validator/' . $className . '.php', $namespaceStmt, self::FILE_TYPE_VALIDATOR));
+                $constraintsItems[] = new Expr\ArrayItem(new Expr\New_(new Node\Name\FullyQualified(Collection::class), [
+                    new Node\Arg(
+                        new Expr\Array_($collectionItems),
+                        name: new Node\Identifier('fields'),
+                    ),
+                    new Node\Arg(
+                        new Expr\ConstFetch(new Node\Name($allowExtraFields)),
+                        name: new Node\Identifier('allowExtraFields'),
+                    ),
+                ]));
             }
+
+            $class = new Node\Stmt\Class_(
+                $className,
+                [
+                    'stmts' => [
+                        new Node\Stmt\ClassMethod(
+                            'getConstraints',
+                            [
+                                'flags' => Modifiers::PROTECTED,
+                                'params' => [new Node\Param($optionsVariable)],
+                                'stmts' => [
+                                    new Node\Stmt\Return_(new Expr\Array_($constraintsItems)),
+                                ],
+                                'returnType' => new Node\Identifier('array'),
+                            ]
+                        ),
+                    ],
+                    'extends' => new Node\Name('\\Symfony\\Component\\Validator\\Constraints\\Compound'),
+                ]
+            );
+
+            $namespaceStmt = new Node\Stmt\Namespace_(new Node\Name($namespace), [$class]);
+            $schema->addFile(new File($schema->getDirectory() . '/Validator/' . $className . '.php', $namespaceStmt, self::FILE_TYPE_VALIDATOR));
         }
     }
 
