@@ -6,8 +6,29 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- [JsonSchema] [GH#971](https://github.com/janephp/janephp/pull/971) Allow registering additional validators via configuration
+- [OpenApi] [GH#975](https://github.com/janephp/janephp/pull/975) [GH#978](https://github.com/janephp/janephp/pull/978) Make error response exception generation optional (via configuration)
+
 ### Fixed
+- [Jane] [GH#952](https://github.com/janephp/janephp/pull/952) Fix PHP 8.5 deprecation warnings
+- [Jane] [GH#977](https://github.com/janephp/janephp/pull/977) Add `jane-php/open-api-3-1` to composer replace list
+- [JsonSchema] [GH#933](https://github.com/janephp/janephp/pull/933) Fix Denormalizers using `$data` before typechecking
+- [JsonSchema] [GH#943](https://github.com/janephp/janephp/pull/943) Fix array items validation follow-up
+- [JsonSchema] [GH#953](https://github.com/janephp/janephp/pull/953) Skip array items validation for non-object items schemas
+- [JsonSchema] [GH#957](https://github.com/janephp/janephp/pull/957) Support nullable required properties
+- [JsonSchema] [GH#964](https://github.com/janephp/janephp/pull/964) TypeValidator never supports union types due to misplaced parenthesis
+- [JsonSchema] [GH#967](https://github.com/janephp/janephp/pull/967) Match property class by reference segment, not substring
+- [JsonSchema] [GH#969](https://github.com/janephp/janephp/pull/969) Always generate the Constraint class so references never dangle
+- [JsonSchema] [GH#973](https://github.com/janephp/janephp/pull/973) Emit `(float)` cast instead of deprecated `(double)`
+- [OpenApi] [GH#934](https://github.com/janephp/janephp/pull/934) Allow number query parameters to accept int or float
 - [OpenApi3] Encode boolean multipart/form-data request values as `'true'`/`'false'` strings in generated endpoints
+- [OpenApi3] [GH#935](https://github.com/janephp/janephp/pull/935) Fix invalid PHP generation for path parameters with dashes
+- [OpenApi31] [GH#951](https://github.com/janephp/janephp/pull/951) Support allOf-wrapped refs in oneOf/anyOf guessers
+- [OpenApi31] [GH#980](https://github.com/janephp/janephp/pull/980) Scope oneOf/anyOf supportObject to allOf-wrapped refs
+
+### Removed
+- [Jane] [GH#931](https://github.com/janephp/janephp/pull/931) Remove all `ext-json` from composer.json
 
 ## [7.12.0] - 2026-07-09
 ### Fixed
