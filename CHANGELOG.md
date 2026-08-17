@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [7.13.0] - 2026-08-17
 ### Added
 - [JsonSchema] [GH#971](https://github.com/janephp/janephp/pull/971) Allow registering additional validators via configuration
 - [OpenApi] [GH#975](https://github.com/janephp/janephp/pull/975) [GH#978](https://github.com/janephp/janephp/pull/978) Make error response exception generation optional (via configuration)
@@ -890,7 +892,8 @@ See :
 * https://github.com/janephp/jane/releases
 * https://github.com/janephp/openapi/releases
 
-[Unreleased]: https://github.com/janephp/janephp/compare/v7.12.0...HEAD
+[Unreleased]: https://github.com/janephp/janephp/compare/v7.13.0...HEAD
+[7.13.0]: https://github.com/janephp/janephp/compare/v7.12.0...v7.13.0
 [7.12.0]: https://github.com/janephp/janephp/compare/v7.11.2...v7.12.0
 [7.11.2]: https://github.com/janephp/janephp/compare/v7.11.1...v7.11.2
 [7.11.1]: https://github.com/janephp/janephp/compare/v7.11.0...v7.11.1
