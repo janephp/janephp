@@ -38,10 +38,10 @@ class WlanWlanAdvancedNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('uplinkRate', $data) && \is_int($data['uplinkRate'])) {
-            $data['uplinkRate'] = (double) $data['uplinkRate'];
+            $data['uplinkRate'] = (float) $data['uplinkRate'];
         }
         if (\array_key_exists('downlinkRate', $data) && \is_int($data['downlinkRate'])) {
-            $data['downlinkRate'] = (double) $data['downlinkRate'];
+            $data['downlinkRate'] = (float) $data['downlinkRate'];
         }
         if (\array_key_exists('clientIsolationEnabled', $data) && \is_int($data['clientIsolationEnabled'])) {
             $data['clientIsolationEnabled'] = (bool) $data['clientIsolationEnabled'];

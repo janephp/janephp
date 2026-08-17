@@ -38,7 +38,7 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureNormalizer implem
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('numberOfSharesIssued', $data) && \is_int($data['numberOfSharesIssued'])) {
-            $data['numberOfSharesIssued'] = (double) $data['numberOfSharesIssued'];
+            $data['numberOfSharesIssued'] = (float) $data['numberOfSharesIssued'];
         }
         if (\array_key_exists('issuedShareCapital', $data)) {
             $object->setIssuedShareCapital($this->denormalizer->denormalize($data['issuedShareCapital'], \CreditSafe\API\Model\GbCompanyReportExampleResponseReportShareCapitalStructureIssuedShareCapital::class, 'json', $context));

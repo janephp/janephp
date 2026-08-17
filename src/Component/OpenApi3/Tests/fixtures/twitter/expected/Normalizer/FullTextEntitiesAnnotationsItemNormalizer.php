@@ -38,7 +38,7 @@ class FullTextEntitiesAnnotationsItemNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('probability', $data) && \is_int($data['probability'])) {
-            $data['probability'] = (double) $data['probability'];
+            $data['probability'] = (float) $data['probability'];
         }
         if (\array_key_exists('start', $data)) {
             $object->setStart($data['start']);

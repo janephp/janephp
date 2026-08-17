@@ -38,7 +38,7 @@ class FieldIndexingInfoNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('boost', $data) && \is_int($data['boost'])) {
-            $data['boost'] = (double) $data['boost'];
+            $data['boost'] = (float) $data['boost'];
         }
         if (\array_key_exists('index', $data) && \is_int($data['index'])) {
             $data['index'] = (bool) $data['index'];

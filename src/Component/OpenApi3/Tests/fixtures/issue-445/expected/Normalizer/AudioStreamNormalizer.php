@@ -38,7 +38,7 @@ class AudioStreamNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('durationInSeconds', $data) && \is_int($data['durationInSeconds'])) {
-            $data['durationInSeconds'] = (double) $data['durationInSeconds'];
+            $data['durationInSeconds'] = (float) $data['durationInSeconds'];
         }
         if (\array_key_exists('bitRate', $data) && $data['bitRate'] !== null) {
             $object->setBitRate($data['bitRate']);

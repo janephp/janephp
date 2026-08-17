@@ -38,7 +38,7 @@ class KafkaAdvancedConfigNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('log_cleaner_min_cleanable_ratio', $data) && \is_int($data['log_cleaner_min_cleanable_ratio'])) {
-            $data['log_cleaner_min_cleanable_ratio'] = (double) $data['log_cleaner_min_cleanable_ratio'];
+            $data['log_cleaner_min_cleanable_ratio'] = (float) $data['log_cleaner_min_cleanable_ratio'];
         }
         if (\array_key_exists('log_message_downconversion_enable', $data) && \is_int($data['log_message_downconversion_enable'])) {
             $data['log_message_downconversion_enable'] = (bool) $data['log_message_downconversion_enable'];

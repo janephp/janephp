@@ -38,10 +38,10 @@ class CurrentUtilizationNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('memory', $data) && \is_int($data['memory'])) {
-            $data['memory'] = (double) $data['memory'];
+            $data['memory'] = (float) $data['memory'];
         }
         if (\array_key_exists('cpu', $data) && \is_int($data['cpu'])) {
-            $data['cpu'] = (double) $data['cpu'];
+            $data['cpu'] = (float) $data['cpu'];
         }
         if (\array_key_exists('memory', $data)) {
             $object->setMemory($data['memory']);

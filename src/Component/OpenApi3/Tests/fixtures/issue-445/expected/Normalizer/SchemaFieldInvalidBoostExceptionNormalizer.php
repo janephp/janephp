@@ -38,7 +38,7 @@ class SchemaFieldInvalidBoostExceptionNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('boost', $data) && \is_int($data['boost'])) {
-            $data['boost'] = (double) $data['boost'];
+            $data['boost'] = (float) $data['boost'];
         }
         if (\array_key_exists('traceLevel', $data)) {
             $object->setTraceLevel($data['traceLevel']);

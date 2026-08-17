@@ -38,10 +38,10 @@ class EpsMetadataNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('widthInPoints', $data) && \is_int($data['widthInPoints'])) {
-            $data['widthInPoints'] = (double) $data['widthInPoints'];
+            $data['widthInPoints'] = (float) $data['widthInPoints'];
         }
         if (\array_key_exists('heightInPoints', $data) && \is_int($data['heightInPoints'])) {
-            $data['heightInPoints'] = (double) $data['heightInPoints'];
+            $data['heightInPoints'] = (float) $data['heightInPoints'];
         }
         if (\array_key_exists('isRasterized', $data) && \is_int($data['isRasterized'])) {
             $data['isRasterized'] = (bool) $data['isRasterized'];

@@ -38,10 +38,10 @@ class JpegFormatNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('horizontalResolution', $data) && \is_int($data['horizontalResolution'])) {
-            $data['horizontalResolution'] = (double) $data['horizontalResolution'];
+            $data['horizontalResolution'] = (float) $data['horizontalResolution'];
         }
         if (\array_key_exists('verticalResolution', $data) && \is_int($data['verticalResolution'])) {
-            $data['verticalResolution'] = (double) $data['verticalResolution'];
+            $data['verticalResolution'] = (float) $data['verticalResolution'];
         }
         if (\array_key_exists('keepClippingPath', $data) && \is_int($data['keepClippingPath'])) {
             $data['keepClippingPath'] = (bool) $data['keepClippingPath'];

@@ -38,13 +38,13 @@ class FieldDecimalNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('minimum', $data) && \is_int($data['minimum'])) {
-            $data['minimum'] = (double) $data['minimum'];
+            $data['minimum'] = (float) $data['minimum'];
         }
         if (\array_key_exists('maximum', $data) && \is_int($data['maximum'])) {
-            $data['maximum'] = (double) $data['maximum'];
+            $data['maximum'] = (float) $data['maximum'];
         }
         if (\array_key_exists('boost', $data) && \is_int($data['boost'])) {
-            $data['boost'] = (double) $data['boost'];
+            $data['boost'] = (float) $data['boost'];
         }
         if (\array_key_exists('required', $data) && \is_int($data['required'])) {
             $data['required'] = (bool) $data['required'];

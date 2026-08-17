@@ -38,10 +38,10 @@ class DevicePolicyDevicePolicyRuleNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('uplink', $data) && \is_int($data['uplink'])) {
-            $data['uplink'] = (double) $data['uplink'];
+            $data['uplink'] = (float) $data['uplink'];
         }
         if (\array_key_exists('downlink', $data) && \is_int($data['downlink'])) {
-            $data['downlink'] = (double) $data['downlink'];
+            $data['downlink'] = (float) $data['downlink'];
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);

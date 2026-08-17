@@ -38,13 +38,13 @@ class PlanetPhysicalPropertiesTemperatureNormalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('min', $data) && \is_int($data['min'])) {
-            $data['min'] = (double) $data['min'];
+            $data['min'] = (float) $data['min'];
         }
         if (\array_key_exists('max', $data) && \is_int($data['max'])) {
-            $data['max'] = (double) $data['max'];
+            $data['max'] = (float) $data['max'];
         }
         if (\array_key_exists('average', $data) && \is_int($data['average'])) {
-            $data['average'] = (double) $data['average'];
+            $data['average'] = (float) $data['average'];
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PlanetPhysicalPropertiesTemperatureConstraint());
