@@ -1,0 +1,56 @@
+{
+    "openapi": "3.1.2",
+    "info": {
+        "title": "Test",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://api.example.com/v1",
+            "description": "Production server"
+        }
+    ],
+    "paths": {
+        "/order": {
+            "get": {
+                "operationId": "getOrder",
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Order"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Order": {
+                "type": "object",
+                "properties": {
+                    "product_data": {
+                        "type": "object",
+                        "properties": {
+                            "title": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "product": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
