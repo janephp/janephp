@@ -198,3 +198,103 @@ public function denormalize(mixed $data, string $type, string $format = null, ar
 This allows the validation to be done without having anything else than
 the configuration to do. Also you can use the Validator out of Jane
 normalization by doing exactly the same as in the Normalizer.
+
+## Custom validators
+
+Sometimes the built-in validators are not enough for your specific
+schemas. Since Jane, you can register additional validators through the
+`validators` configuration option.
+
+The `validators` option takes an array of
+`Jane\Component\JsonSchema\Guesser\Validator\ValidatorInterface`
+**instances** (not class names), which lets you inject constructor
+dependencies (like allowed values, configuration, or services).
+
+```php
+<?php
+
+return [
+    'json-schema-file' => __DIR__ . '/price.json',
+    'root-class' => 'Price',
+    'namespace' => 'App\Generated',
+    'directory' => __DIR__ . '/generated',
+    'validation' => true,
+    'validators' => [
+        new class implements ValidatorInterface {
+            public function supports($object): bool
+            {
+                return $object instanceof JsonSchema && 'decimal-two' === $object->getFormat();
+            }
+
+            public function guess($object, string $name, $guess): void
+            {
+                $guess->addValidatorGuess(new ValidatorGuess(Regex::class, [
+                    'pattern' => '#^\d+\.\d{2}$#',
+                    'message' => 'This value is not a valid decimal with two fraction digits.',
+                ]));
+            }
+        },
+    ],
+];
+```
+
+As you can see, each validator implements `ValidatorInterface` with two
+methods:
+
+- `supports($object)` returns whether this validator applies to the
+  given schema object (for example a `JsonSchema` with a specific
+  `format`).
+- `guess($object, string $name, $guess)` emits the Symfony validation
+  constraints for the guessed property, using
+  `$guess->addValidatorGuess(new ValidatorGuess(ConstraintClass::class, [
+  ...options ]))`.
+
+Because the option takes instances, you can build validators with
+constructor dependencies. For example a validator that restricts a
+custom string format to a fixed list of allowed codes:
+
+```php
+new class(['EUR', 'USD', 'GBP']) implements ValidatorInterface {
+    public function __construct(
+        private readonly array $allowedCodes,
+    ) {
+    }
+
+    public function supports($object): bool
+    {
+        return $object instanceof JsonSchema && 'currency-code' === $object->getFormat();
+    }
+
+    public function guess($object, string $name, $guess): void
+    {
+        $guess->addValidatorGuess(new ValidatorGuess(Choice::class, [
+            'choices' => $this->allowedCodes,
+            'message' => 'This value is not a supported currency code.',
+        ]));
+    }
+},
+```
+
+A single `guess()` can also emit several constraints. For instance a
+custom numeric format that becomes a range:
+
+```php
+new class implements ValidatorInterface {
+    public function supports($object): bool
+    {
+        return $object instanceof JsonSchema && 'percentage' === $object->getFormat();
+    }
+
+    public function guess($object, string $name, $guess): void
+    {
+        $guess->addValidatorGuess(new ValidatorGuess(GreaterThanOrEqual::class, ['value' => 0.0]));
+        $guess->addValidatorGuess(new ValidatorGuess(LessThanOrEqual::class, ['value' => 100.0]));
+    }
+},
+```
+
+Note that custom validators are checked **before** the generic `Type`
+and `NotNull` fallback validators, so they take precedence for the
+schemas they `supports()`. The `validators` option is only meaningful
+when `validation` is enabled, and it works for both JSON Schema and
+OpenAPI generation.
