@@ -31,6 +31,7 @@ class SchemaLoader extends BaseSchemaLoader implements SchemaLoaderInterface
             'skip-null-values',
             'skip-required-fields',
             'validation',
+            'validators',
             'version',
             'whitelisted-paths',
             'endpoint-generator',

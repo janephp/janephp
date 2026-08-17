@@ -1,0 +1,30 @@
+<?php
+
+use Jane\Component\JsonSchema\Guesser\Validator\ValidatorGuess;
+use Jane\Component\JsonSchema\Guesser\Validator\ValidatorInterface;
+use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
+use Symfony\Component\Validator\Constraints\Regex;
+
+return [
+    'json-schema-file' => __DIR__ . '/schema.json',
+    'root-class' => 'Price',
+    'namespace' => 'Jane\JsonSchema\Tests\Expected',
+    'directory' => __DIR__ . '/generated',
+    'validation' => true,
+    'validators' => [
+        new class implements ValidatorInterface {
+            public function supports($object): bool
+            {
+                return $object instanceof JsonSchema && 'decimal-two' === $object->getFormat();
+            }
+
+            public function guess($object, string $name, $guess): void
+            {
+                $guess->addValidatorGuess(new ValidatorGuess(Regex::class, [
+                    'pattern' => '#^\d+\.\d{2}$#',
+                    'message' => 'This value is not a valid decimal with two fraction digits.',
+                ]));
+            }
+        },
+    ],
+];
