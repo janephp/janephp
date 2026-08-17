@@ -117,7 +117,7 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
             ],
         ];
 
-        if (!isset($convertArray[$type]) || !isset($convertArray[$type][$format])) {
+        if ($type === null || !isset($convertArray[$type]) || !isset($convertArray[$type][$format])) {
             return [self::PHP_TYPE_MIXED];
         }
 
@@ -169,7 +169,7 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
             ],
         ];
 
-        if (!isset($convertArray[$type]) || !isset($convertArray[$type][$format])) {
+        if ($type === null || !isset($convertArray[$type]) || !isset($convertArray[$type][$format])) {
             return new Expr\FuncCall(new Name('isset'), [$inputArg]);
         }
 
