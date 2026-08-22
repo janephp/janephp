@@ -4,6 +4,7 @@ namespace Jane\Component\JsonSchema\Console\Command;
 
 use Jane\Component\JsonSchema\Console\Loader\ConfigLoaderInterface;
 use Jane\Component\JsonSchema\Console\Loader\SchemaLoaderInterface;
+use Jane\Component\JsonSchema\Exception\JaneExceptionInterface;
 use Jane\Component\JsonSchema\Jane;
 use Jane\Component\JsonSchema\Printer;
 use Jane\Component\JsonSchema\Registry\Registry;
@@ -12,6 +13,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 
 class GenerateCommand extends Command
 {
@@ -30,6 +32,18 @@ class GenerateCommand extends Command
     }
 
     public function execute(InputInterface $input, OutputInterface $output): int
+    {
+        try {
+            return $this->executeGeneration($input, $output);
+        } catch (JaneExceptionInterface $exception) {
+            $io = new SymfonyStyle($input, $output);
+            $io->error($exception->getMessage());
+
+            return Command::FAILURE;
+        }
+    }
+
+    protected function executeGeneration(InputInterface $input, OutputInterface $output): int
     {
         $options = $this->configLoader->load($input->getOption('config-file'));
         $registries = $this->registries($options);

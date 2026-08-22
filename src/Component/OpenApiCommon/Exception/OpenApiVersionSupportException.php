@@ -2,6 +2,8 @@
 
 namespace Jane\Component\OpenApiCommon\Exception;
 
-class OpenApiVersionSupportException extends \BadMethodCallException
+use Jane\Component\JsonSchema\Exception\JaneExceptionInterface;
+
+class OpenApiVersionSupportException extends \BadMethodCallException implements JaneExceptionInterface
 {
 }
