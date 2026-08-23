@@ -1,0 +1,114 @@
+{
+  "openapi" : "3.1.2",
+  "info" : {
+    "title" : "ipnoos",
+    "version" : "1.0"
+  },
+  "servers" : [ {
+    "url" : "https://server/ipnoos/v1"
+  } ],
+  "security" : [ {
+    "bearerAuth" : [ ]
+  } ],
+  "paths" : {
+    "/members/{selector}" : {
+      "get" : {
+        "operationId" : "getMemberBySelector",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json;schema=member-details" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MemberDetails"
+                }
+              }
+            },
+            "description" : "La fiche de l'adhérent"
+          },
+          "default" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/RequestError"
+                }
+              }
+            },
+            "description" : "Erreur"
+          }
+        },
+        "summary" : "Obtenir la fiche d'un adhérent",
+        "tags" : [ "members" ]
+      },
+      "parameters" : [ {
+        "explode" : false,
+        "in" : "path",
+        "name" : "selector",
+        "required" : true,
+        "schema" : {
+          "title" : "MemberSelector",
+          "type" : "string"
+        },
+        "style" : "simple"
+      } ]
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "RequestError" : {
+        "properties" : {
+          "reason" : {
+            "type" : "string"
+          }
+        },
+        "title" : "RequestError"
+      },
+      "MemberDetails" : {
+        "allOf" : [ {
+          "properties" : {
+            "id" : {
+              "format" : "int64",
+              "type" : "integer"
+            },
+            "firstname" : {
+              "type" : "string"
+            },
+            "lastname" : {
+              "type" : "string"
+            },
+            "surname" : {
+              "type" : "string"
+            }
+          },
+          "title" : "MemberIdentity",
+          "x-class-extra-annotation" : "@com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)"
+        }, {
+          "properties" : {
+            "description" : {
+              "type" : "string"
+            },
+            "email" : {
+              "type" : "string"
+            },
+            "role" : {
+              "enum" : [ "MEMBER", "WRITER", "EDITOR", "ADMIN" ],
+              "title" : "MemberRole",
+              "type" : "string"
+            },
+            "surname" : {
+              "type" : "string"
+            }
+          }
+        } ],
+        "title" : "MemberDetails",
+        "x-class-extra-annotation" : "@com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)"
+      }
+    },
+    "securitySchemes" : {
+      "bearerAuth" : {
+        "bearerFormat" : "JWT",
+        "scheme" : "bearer",
+        "type" : "http"
+      }
+    }
+  }
+}

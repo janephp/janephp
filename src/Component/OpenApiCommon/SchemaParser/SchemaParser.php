@@ -2,6 +2,7 @@
 
 namespace Jane\Component\OpenApiCommon\SchemaParser;
 
+use Jane\Component\JsonSchema\Exception\InvalidSchemaException;
 use Jane\Component\OpenApiCommon\Exception\CouldNotParseException;
 use Jane\Component\OpenApiCommon\Exception\OpenApiVersionSupportException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -29,6 +30,12 @@ abstract class SchemaParser
 
             try {
                 return static::$parsed[$openApiSpecPath] = $this->deserialize($openApiSpecContents, $openApiSpecPath);
+            } catch (InvalidSchemaException $exception) {
+                // Structural violations do not depend on the serialization format,
+                // retrying as YAML would only report the same problem again.
+                throw $exception;
+            } catch (\TypeError $exception) {
+                throw new CouldNotParseException(\sprintf('Could not parse schema "%s": "%s"', $openApiSpecPath, $exception->getMessage()));
             } catch (\Exception $exception) {
                 $jsonException = $exception;
             }
@@ -40,6 +47,10 @@ abstract class SchemaParser
                 );
 
                 return static::$parsed[$openApiSpecPath] = $this->denormalize($content, $openApiSpecPath);
+            } catch (InvalidSchemaException $exception) {
+                throw $exception;
+            } catch (\TypeError $exception) {
+                throw new CouldNotParseException(\sprintf('Could not parse schema "%s": "%s"', $openApiSpecPath, $exception->getMessage()));
             } catch (YamlException $yamlException) {
                 throw new CouldNotParseException(\sprintf("Could not parse schema in JSON nor YAML format:\n- JSON error: \"%s\"\n- YAML error: \"%s\"\n", $jsonException->getMessage(), $yamlException->getMessage()));
             }
@@ -57,10 +68,29 @@ abstract class SchemaParser
 
     abstract protected function validSchema($openApiSpecData): bool;
 
+    /**
+     * Checks the raw decoded document for features unsupported by the target
+     * OpenAPI version, returning one human readable error per violation.
+     *
+     * @param array<mixed> $openApiSpecData
+     *
+     * @return array<string>
+     */
+    protected function validateSchema(array $openApiSpecData): array
+    {
+        return [];
+    }
+
     protected function denormalize($openApiSpecData, $openApiSpecPath)
     {
         if (!$this->validSchema($openApiSpecData)) {
             throw new OpenApiVersionSupportException(\sprintf('Only OpenAPI v%s specifications and up are supported, use an external tool to convert your api files', static::OPEN_API_VERSION_MAJOR));
+        }
+
+        $errors = $this->validateSchema($openApiSpecData);
+
+        if ([] !== $errors) {
+            throw new InvalidSchemaException($errors);
         }
 
         return $this->denormalizer->denormalize(

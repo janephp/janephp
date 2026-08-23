@@ -2,6 +2,8 @@
 
 namespace Jane\Component\OpenApiCommon\Exception;
 
-class CouldNotParseException extends \LogicException
+use Jane\Component\JsonSchema\Exception\JaneExceptionInterface;
+
+class CouldNotParseException extends \LogicException implements JaneExceptionInterface
 {
 }
