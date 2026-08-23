@@ -42,7 +42,11 @@ final class OpenApiGenerateCommand extends Command
         }
 
         $inputArray = new ArrayInput(['--config-file' => $configFile], $this->generateCommand->getDefinition());
-        $this->generateCommand->execute($inputArray, $output);
+        $returnCode = $this->generateCommand->execute($inputArray, $output);
+
+        if (Command::SUCCESS !== $returnCode) {
+            return $returnCode;
+        }
 
         $sfStyle = new SymfonyStyle($input, $output);
         $sfStyle->success('Generation done.');

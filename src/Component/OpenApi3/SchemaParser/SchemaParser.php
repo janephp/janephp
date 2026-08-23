@@ -18,4 +18,14 @@ class SchemaParser extends CommonSchemaParser
     {
         return \is_array($openApiSpecData) && \array_key_exists('openapi', $openApiSpecData) && version_compare($openApiSpecData['openapi'], '3.0.0', '>=') && version_compare($openApiSpecData['openapi'], '3.1.0', '<');
     }
+
+    /**
+     * @param array<mixed> $openApiSpecData
+     *
+     * @return array<string>
+     */
+    protected function validateSchema(array $openApiSpecData): array
+    {
+        return TypeArrayValidator::validate($openApiSpecData);
+    }
 }

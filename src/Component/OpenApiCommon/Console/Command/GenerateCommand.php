@@ -31,7 +31,7 @@ class GenerateCommand extends BaseGenerateCommand
         $this->addOption('config-file', 'c', InputOption::VALUE_REQUIRED, 'File to use for Jane OpenAPI configuration', '.jane-openapi');
     }
 
-    public function execute(InputInterface $input, OutputInterface $output): int
+    protected function executeGeneration(InputInterface $input, OutputInterface $output): int
     {
         $options = $this->configLoader->load($input->getOption('config-file'));
         $registries = $this->registries($options);
