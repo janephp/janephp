@@ -20,6 +20,10 @@ class JsonSchemaGuesserFactory
         $inputDateTimeFormat = isset($options['date-input-format']) ? $options['date-input-format'] : null;
         $datePreferInterface = isset($options['date-prefer-interface']) ? $options['date-prefer-interface'] : null;
 
+        if ($options['enums-as-objects'] ?? false) {
+            $chainGuesser->addGuesser(new EnumGuesser($naming));
+        }
+
         $chainGuesser->addGuesser(new DateGuesser($dateFormat, $datePreferInterface));
         $chainGuesser->addGuesser(new DateTimeGuesser($outputDateTimeFormat, $inputDateTimeFormat, $datePreferInterface));
         $chainGuesser->addGuesser(new SimpleTypeGuesser());

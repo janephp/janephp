@@ -1,0 +1,9 @@
+<?php
+
+return [
+    'openapi-file' => __DIR__ . '/openapi.json',
+    'namespace' => 'Jane\Component\OpenApi31\Tests\EnumAsObjects',
+    'directory' => __DIR__ . '/generated',
+    'validation' => true,
+    'enums-as-objects' => true,
+];

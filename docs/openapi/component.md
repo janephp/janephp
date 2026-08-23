@@ -162,6 +162,7 @@ Other options are available to customize the generated code:
   additional validators during generation. Only meaningful when `validation` is enabled. See the
   [Custom validators](../guides/validation.md#custom-validators) section of the Validation guide.
 - `include-null-value`: Will enable a way to manage null values. By default it is enabled.
+- `enums-as-objects`: When enabled, schemas with `type: string` or `type: integer` and an `enum` will be generated as native PHP backed enums instead of plain scalar types, and properties referencing these schemas will be typed with the enum class. Disabled by default.
 - `whitelisted-paths`: This option allows you to generate only needed endpoints and related models. Be carefull,
  that option will filter models used by whitelisted endpoints and generate model & normalizer only for them. Here is
  some examples about how to use it:

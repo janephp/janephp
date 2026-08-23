@@ -2,6 +2,7 @@
 
 namespace Jane\Component\OpenApi2;
 
+use Jane\Component\JsonSchema\Generator\EnumGenerator;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Generator\ValidatorGenerator;
 use Jane\Component\OpenApi2\Generator\EndpointGenerator;
@@ -45,6 +46,9 @@ class JaneOpenApi extends CommonJaneOpenApi
         yield new RuntimeGenerator($naming, $parser);
         if ($options['validation'] ?? false) {
             yield new ValidatorGenerator($naming);
+        }
+        if ($options['enums-as-objects'] ?? false) {
+            yield new EnumGenerator();
         }
     }
 }
