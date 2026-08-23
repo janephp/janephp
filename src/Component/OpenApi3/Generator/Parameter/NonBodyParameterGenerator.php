@@ -40,19 +40,20 @@ class NonBodyParameterGenerator extends ParameterGenerator
         $name = $this->getInflector()->camelize($parameter->getName());
         $methodParameter = new Node\Param(new Expr\Variable($name));
 
-        if (!$parameter->getSchema()) {
+        $schema = $parameter->getSchema();
+        if (!$schema instanceof Schema) {
             return $methodParameter;
         }
 
-        if (!$parameter->getRequired() || null !== $parameter->getSchema()->getDefault()) {
-            $methodParameter->default = $this->getDefaultAsExpr($parameter);
+        if (!$parameter->getRequired() || null !== $schema->getDefault()) {
+            $methodParameter->default = $this->getDefaultAsExpr($schema);
         }
 
-        if (null !== $parameter->getSchema()->getAnyOf() && \count($parameter->getSchema()->getAnyOf()) > 0) {
+        if (null !== $schema->getAnyOf() && \count($schema->getAnyOf()) > 0) {
             return $methodParameter;
         }
 
-        $types = $this->convertParameterType($parameter->getSchema());
+        $types = $this->convertParameterType($schema);
 
         if (\count($types) === 1) {
             $methodParameter->type = new Node\Name($types[0]);
@@ -112,7 +113,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
             }
 
             if (!$parameter->getRequired() && null !== $schema && null !== $schema->getDefault()) {
-                $defaults[] = new Expr\ArrayItem($this->getDefaultAsExpr($parameter), new Scalar\String_($parameterName));
+                $defaults[] = new Expr\ArrayItem($this->getDefaultAsExpr($schema), new Scalar\String_($parameterName));
             }
 
             if (null !== $matchGenericResolver) {
@@ -141,9 +142,10 @@ class NonBodyParameterGenerator extends ParameterGenerator
     public function generateMethodDocParameter($parameter, Context $context, string $reference): string
     {
         $type = 'mixed';
+        $schema = $parameter->getSchema();
 
-        if ($parameter->getSchema() && (null === $parameter->getSchema()->getAnyOf() || \count($parameter->getSchema()->getAnyOf()) === 0)) {
-            $type = implode('|', $this->convertParameterType($parameter->getSchema()));
+        if ($schema instanceof Schema && (null === $schema->getAnyOf() || \count($schema->getAnyOf()) === 0)) {
+            $type = implode('|', $this->convertParameterType($schema));
         }
 
         return rtrim(\sprintf(' * @param %s $%s %s', $type, str_replace('*/', '*\\/', $this->getInflector()->camelize($parameter->getName())), str_replace('*/', '*\\/', $parameter->getDescription() ?: '')));
@@ -173,10 +175,10 @@ class NonBodyParameterGenerator extends ParameterGenerator
     /**
      * Generate a default value as an Expr.
      */
-    private function getDefaultAsExpr(Parameter $parameter): Expr
+    private function getDefaultAsExpr(Schema $schema): Expr
     {
         /** @var Expr|Stmt\Expression $expr */
-        $expr = $this->parser->parse('<?php ' . var_export($parameter->getSchema()->getDefault(), true) . ';')[0];
+        $expr = $this->parser->parse('<?php ' . var_export($schema->getDefault(), true) . ';')[0];
 
         if ($expr instanceof Stmt\Expression) {
             return $expr->expr;
