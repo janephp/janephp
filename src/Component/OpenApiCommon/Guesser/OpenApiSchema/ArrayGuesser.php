@@ -12,6 +12,12 @@ class ArrayGuesser extends BaseArrayGuesser
     {
         $class = $this->getSchemaClass();
 
-        return ($object instanceof $class) && 'array' === $object->getType();
+        if (!($object instanceof $class)) {
+            return false;
+        }
+
+        $type = $object->getType();
+
+        return \is_array($type) ? \in_array('array', $type, true) : 'array' === $type;
     }
 }

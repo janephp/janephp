@@ -1,0 +1,45 @@
+openapi: 3.1.0
+info:
+    title: Issue 946
+    version: 1.0.0
+paths:
+    /my/api/endpoint/:
+        get:
+            operationId: listEntities
+            responses:
+                '200':
+                    description: lorem ipsum
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: object
+                                    properties:
+                                        id:
+                                            type: string
+                                            format: uuid
+    /my/api/endpoint/{id}:
+        get:
+            operationId: getEntity
+            parameters:
+                -
+                    name: id
+                    in: path
+                    required: true
+                    schema:
+                        type: string
+                        format: uuid
+            responses:
+                '200':
+                    description: lorem ipsum
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    id:
+                                        type: string
+                                        format: uuid
+                                    someField:
+                                        type: string

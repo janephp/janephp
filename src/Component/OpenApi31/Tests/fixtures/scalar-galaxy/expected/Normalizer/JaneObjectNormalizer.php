@@ -56,6 +56,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Component\OpenApi31\Tests\Expected\Model\TooManyRequestsError::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\TooManyRequestsErrorNormalizer::class,
         
+        \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsGetJsonResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\PlanetsGetJsonResponse200Normalizer::class,
+        
+        \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsGetXmlResponse200::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\PlanetsGetXmlResponse200Normalizer::class,
+        
         \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsPlanetIdImagePostBody::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\PlanetsPlanetIdImagePostBodyNormalizer::class,
         
         \Jane\Component\OpenApi31\Tests\Expected\Model\UserSignupPostBody::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\UserSignupPostBodyNormalizer::class,
@@ -117,6 +121,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Component\OpenApi31\Tests\Expected\Model\Conflict::class => false,
             \Jane\Component\OpenApi31\Tests\Expected\Model\UnprocessableEntity::class => false,
             \Jane\Component\OpenApi31\Tests\Expected\Model\TooManyRequestsError::class => false,
+            \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsGetJsonResponse200::class => false,
+            \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsGetXmlResponse200::class => false,
             \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsPlanetIdImagePostBody::class => false,
             \Jane\Component\OpenApi31\Tests\Expected\Model\UserSignupPostBody::class => false,
             \Jane\Component\JsonSchemaRuntime\Reference::class => false,

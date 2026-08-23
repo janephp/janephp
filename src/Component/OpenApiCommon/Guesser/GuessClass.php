@@ -23,13 +23,17 @@ class GuessClass
             [$reference, $schema] = $this->resolve($schema, $this->schemaClass);
         }
 
-        if ($schema instanceof $this->schemaClass && 'array' === $schema->getType()) {
-            $array = true;
-            $reference .= '/items';
-            $items = $schema->getItems();
+        if ($schema instanceof $this->schemaClass) {
+            $type = $schema->getType();
 
-            if ($items instanceof Reference) {
-                [$reference] = $this->resolve($items, $this->schemaClass);
+            if (\is_array($type) ? \in_array('array', $type, true) : 'array' === $type) {
+                $array = true;
+                $reference .= '/items';
+                $items = $schema->getItems();
+
+                if ($items instanceof Reference) {
+                    [$reference] = $this->resolve($items, $this->schemaClass);
+                }
             }
         }
 

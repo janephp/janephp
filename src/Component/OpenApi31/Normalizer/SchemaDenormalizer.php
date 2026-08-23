@@ -8,6 +8,8 @@ use Jane\Component\OpenApi31\JsonSchema\Model\Components;
 use Jane\Component\OpenApi31\JsonSchema\Model\Header;
 use Jane\Component\OpenApi31\JsonSchema\Model\MediaType;
 use Jane\Component\OpenApi31\JsonSchema\Model\Parameter;
+use Jane\Component\OpenApi31\JsonSchema\Model\Response;
+use Jane\Component\OpenApi31\JsonSchema\Model\Responses;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -21,6 +23,7 @@ class SchemaDenormalizer implements DenormalizerInterface, DenormalizerAwareInte
         Parameter::class,
         Header::class,
         Components::class,
+        Responses::class,
     ];
 
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
@@ -34,7 +37,12 @@ class SchemaDenormalizer implements DenormalizerInterface, DenormalizerAwareInte
 
         if ($type === Components::class && \is_array($data)) {
             $data = $this->denormalizeComponentsSchemas($data, $format, $context);
+            $data = $this->denormalizeComponentsResponses($data, $format, $context);
             $data = $this->denormalizeComponentsSecuritySchemas($data, $format, $context);
+        }
+
+        if ($type === Responses::class && \is_array($data)) {
+            $data = $this->denormalizeResponsesEntries($data, $format, $context);
         }
 
         if (\in_array($type, [MediaType::class, Parameter::class, Header::class], true) && \is_array($data) && \array_key_exists('schema', $data)) {
@@ -51,6 +59,7 @@ class SchemaDenormalizer implements DenormalizerInterface, DenormalizerAwareInte
             Parameter::class => false,
             Header::class => false,
             Components::class => false,
+            Responses::class => false,
         ];
     }
 
@@ -90,6 +99,59 @@ class SchemaDenormalizer implements DenormalizerInterface, DenormalizerAwareInte
         }
 
         return $data;
+    }
+
+    private function denormalizeResponsesEntries(array $data, ?string $format, array $context): array
+    {
+        foreach ($data as $key => $responseData) {
+            $isResponseKey = 'default' === $key || 1 === preg_match('/^[1-5](?:[0-9]{2}|XX)$/', (string) $key);
+
+            if ($isResponseKey && \is_array($responseData)) {
+                $data[$key] = $this->denormalizeResponseEntry($responseData, $format, $context);
+            }
+        }
+
+        return $data;
+    }
+
+    private function denormalizeResponseEntry(array $responseData, ?string $format, array $context): mixed
+    {
+        if (isset($responseData['$ref'])) {
+            return new Reference($responseData['$ref'], $context['document-origin'] ?? '');
+        }
+
+        if (!isset($responseData['description']) && !isset($responseData['content']) && !isset($responseData['headers'])) {
+            return $responseData;
+        }
+
+        return $this->denormalizer->denormalize(
+            $responseData,
+            Response::class,
+            $format,
+            $this->withoutDenormalizerPass($context)
+        );
+    }
+
+    private function denormalizeComponentsResponses(array $data, ?string $format, array $context): array
+    {
+        if (!isset($data['responses']) || !\is_array($data['responses'])) {
+            return $data;
+        }
+
+        foreach ($data['responses'] as $key => $responseData) {
+            if (\is_array($responseData)) {
+                $data['responses'][$key] = $this->denormalizeResponseEntry($responseData, $format, $context);
+            }
+        }
+
+        return $data;
+    }
+
+    private function withoutDenormalizerPass(array $context): array
+    {
+        unset($context['jane_schema_denormalizer_pass']);
+
+        return $context;
     }
 
     private function denormalizeComponentsSecuritySchemas(array $data, ?string $format, array $context): array

@@ -2,11 +2,13 @@
 
 namespace Jane\Component\OpenApiCommon\Naming;
 
+use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema as OA31JsonSchema;
 use Jane\Component\JsonSchema\Tools\InflectorTrait;
 use Jane\Component\OpenApi2\JsonSchema\Model\Response as OA2Response;
 use Jane\Component\OpenApi2\JsonSchema\Model\Schema as OA2Schema;
 use Jane\Component\OpenApi3\JsonSchema\Model\Response as OA3Response;
 use Jane\Component\OpenApi3\JsonSchema\Model\Schema as OA3Schema;
+use Jane\Component\OpenApi31\JsonSchema\Model\Response as OA31Response;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 
 class OperationUrlNaming implements OperationNamingInterface
@@ -35,6 +37,17 @@ class OperationUrlNaming implements OperationNamingInterface
 
                 if ($firstContent->getSchema() instanceof OA3Schema && 'array' === $firstContent->getSchema()->getType()) {
                     $shouldSingularize = false;
+                }
+            }
+            if (class_exists(OA31Response::class) && $response instanceof OA31Response && $response->getContent()) {
+                $firstContent = (new \ArrayIterator(iterator_to_array($response->getContent())))->current();
+
+                if (null !== $firstContent && $firstContent->getSchema() instanceof OA31JsonSchema) {
+                    $schemaType = $firstContent->getSchema()->getType();
+
+                    if (\is_array($schemaType) ? \in_array('array', $schemaType, true) : 'array' === $schemaType) {
+                        $shouldSingularize = false;
+                    }
                 }
             }
         }
