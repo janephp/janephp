@@ -9,6 +9,7 @@ use Jane\Component\OpenApi31\Generator\RequestBodyContent\JsonBodyContentGenerat
 use Jane\Component\OpenApi31\Guesser\GuessClass;
 use Jane\Component\OpenApi31\JsonSchema\Model\Response;
 use Jane\Component\OpenApi31\JsonSchema\Normalizer\ResponseNormalizer;
+use Jane\Component\OpenApiCommon\Generator\ContentType;
 use Jane\Component\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\Component\OpenApiCommon\Registry\Registry;
@@ -203,7 +204,9 @@ EOD
         $statements = [];
 
         foreach ($response->getContent() as $contentType => $content) {
-            if (\in_array($contentType, JsonBodyContentGenerator::JSON_TYPES) || str_ends_with($contentType, '+json')) {
+            $baseContentType = ContentType::withoutParameters($contentType);
+
+            if (\in_array($baseContentType, JsonBodyContentGenerator::JSON_TYPES) || str_ends_with($baseContentType, '+json')) {
                 [$returnType, $throwType, $returnStatement] = $this->createContentDenormalizationStatement(
                     $name,
                     $status,
@@ -231,7 +234,7 @@ EOD
                                     new Expr\Variable('contentType'),
                                 ]),
                             ),
-                            new Node\Arg(new Scalar\String_(strtolower($contentType))),
+                            new Node\Arg(new Scalar\String_($baseContentType)),
                         ]),
                         new Expr\ConstFetch(new Name('false'))
                     ),

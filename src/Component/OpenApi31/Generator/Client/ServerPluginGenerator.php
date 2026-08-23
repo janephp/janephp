@@ -5,8 +5,8 @@ namespace Jane\Component\OpenApi31\Generator\Client;
 use Http\Client\Common\Plugin\AddHostPlugin;
 use Http\Client\Common\Plugin\AddPathPlugin;
 use Jane\Component\OpenApi31\JsonSchema\Model\OpenApi;
-use Jane\Component\OpenApiCommon\Generator\Client\ServerPluginGenerator as BaseServerPluginGenerator;
 use Jane\Component\OpenApi31\JsonSchema\Model\Server;
+use Jane\Component\OpenApiCommon\Generator\Client\ServerPluginGenerator as BaseServerPluginGenerator;
 
 trait ServerPluginGenerator
 {

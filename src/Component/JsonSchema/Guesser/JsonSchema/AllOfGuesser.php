@@ -38,7 +38,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
             if ($allOf instanceof Reference) {
                 $allOf = $this->resolve($allOf, $this->getSchemaClass());
             }
-            if ('object' === $allOf->getType()) {
+            if ($this->isObjectSchema($allOf)) {
                 $hasSubObject = true;
                 break;
             }
@@ -89,6 +89,17 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
                 }
             }
         }
+    }
+
+    private function isObjectSchema($schema): bool
+    {
+        $type = $schema->getType();
+
+        if (\is_array($type)) {
+            return \in_array('object', $type, true);
+        }
+
+        return 'object' === $type || (null === $type && null !== $schema->getProperties());
     }
 
     public function guessType($object, string $name, string $reference, Registry $registry): Type
