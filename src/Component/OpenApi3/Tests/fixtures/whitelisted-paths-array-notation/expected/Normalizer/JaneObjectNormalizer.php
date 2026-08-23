@@ -18,6 +18,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
+        \Jane\OpenApi3\Tests\Expected\Model\Error::class => \Jane\OpenApi3\Tests\Expected\Normalizer\ErrorNormalizer::class,
+        
         \Jane\OpenApi3\Tests\Expected\Model\Expansions::class => \Jane\OpenApi3\Tests\Expected\Normalizer\ExpansionsNormalizer::class,
         
         \Jane\OpenApi3\Tests\Expected\Model\TweetLookupResponse::class => \Jane\OpenApi3\Tests\Expected\Normalizer\TweetLookupResponseNormalizer::class,
@@ -64,6 +66,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         return [
             
+            \Jane\OpenApi3\Tests\Expected\Model\Error::class => false,
             \Jane\OpenApi3\Tests\Expected\Model\Expansions::class => false,
             \Jane\OpenApi3\Tests\Expected\Model\TweetLookupResponse::class => false,
             \Jane\OpenApi3\Tests\Expected\Model\Poll::class => false,

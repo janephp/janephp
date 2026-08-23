@@ -7,6 +7,7 @@ use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi31\JsonSchema\Model\MediaType;
 use Jane\Component\OpenApi31\JsonSchema\Model\RequestBody;
 use Jane\Component\OpenApi31\JsonSchema\Model\Response;
+use Jane\Component\OpenApi31\JsonSchema\Model\Responses;
 use Jane\Component\OpenApiCommon\Contracts\WhitelistFetchInterface;
 use Jane\Component\OpenApiCommon\Generator\ContentType;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
@@ -62,38 +63,48 @@ class WhitelistedSchema implements WhitelistFetchInterface
             }
         }
 
-        /** @var Response[]|null $responses */
+        /** @var Responses|null $responses */
         $responses = $operationGuess->getOperation()->getResponses();
         if (null !== $responses && \count($responses) > 0) {
             foreach ($responses as $response) {
-                if ($response instanceof Reference) {
-                    [$_, $response] = $this->guessClass->resolve($response, Response::class);
-                }
-                if (!($response instanceof Response)) {
-                    continue;
-                }
+                $this->addResponseRelations($operationGuess, $baseOperation, $response, $registry);
+            }
 
-                if (null === $response->getContent()) {
-                    $schema = null;
-                    $classGuess = $this->guessClass->guessClass($schema, $operationGuess->getReference(), $registry);
+            $defaultResponse = $responses->getDefault();
+            if (null !== $defaultResponse) {
+                $this->addResponseRelations($operationGuess, $baseOperation, $defaultResponse, $registry);
+            }
+        }
+    }
+
+    private function addResponseRelations(OperationGuess $operationGuess, string $baseOperation, mixed $response, Registry $registry): void
+    {
+        if ($response instanceof Reference) {
+            [$_, $response] = $this->guessClass->resolve($response, Response::class);
+        }
+        if (!($response instanceof Response)) {
+            return;
+        }
+
+        if (null === $response->getContent()) {
+            $schema = null;
+            $classGuess = $this->guessClass->guessClass($schema, $operationGuess->getReference(), $registry);
+            if (null !== $classGuess) {
+                $this->schema->addOperationRelation($baseOperation, $classGuess->getName());
+            }
+        }
+
+        if (null !== $response->getContent() && is_iterable($response->getContent())) {
+            /** @var MediaType $content */
+            foreach ($response->getContent() as $contentType => $content) {
+                $baseContentType = ContentType::withoutParameters($contentType);
+
+                if ('application/json' === $baseContentType || str_ends_with($baseContentType, '+json')) {
+                    $contentReference = $operationGuess->getReference() . '/content/' . $contentType . '/schema';
+                    $schema = $content->getSchema();
+                    $classGuess = $this->guessClass->guessClass($schema, $contentReference, $registry);
                     if (null !== $classGuess) {
                         $this->schema->addOperationRelation($baseOperation, $classGuess->getName());
-                    }
-                }
-
-                if (null !== $response->getContent() && is_iterable($response->getContent())) {
-                    /** @var MediaType $content */
-                    foreach ($response->getContent() as $contentType => $content) {
-                        $baseContentType = ContentType::withoutParameters($contentType);
-
-                        if ('application/json' === $baseContentType || str_ends_with($baseContentType, '+json')) {
-                            $contentReference = $operationGuess->getReference() . '/content/' . $contentType . '/schema';
-                            $schema = $content->getSchema();
-                            $classGuess = $this->guessClass->guessClass($schema, $contentReference, $registry);
-                            if (null !== $classGuess) {
-                                $this->schema->addOperationRelation($baseOperation, $classGuess->getName());
-                            }
-                        }
                     }
                 }
             }
