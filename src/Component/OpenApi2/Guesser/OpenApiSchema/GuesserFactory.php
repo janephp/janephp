@@ -10,6 +10,7 @@ use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\AllOfGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\ArrayGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\DateGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\DateTimeGuesser;
+use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\EnumGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\ItemsGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\MultipleGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\ReferenceGuesser;
@@ -27,6 +28,9 @@ class GuesserFactory
         $datePreferInterface = $options['date-prefer-interface'] ?? null;
 
         $chainGuesser = new ChainGuesser();
+        if ($options['enums-as-objects'] ?? false) {
+            $chainGuesser->addGuesser(new EnumGuesser(Schema::class, $naming));
+        }
         $chainGuesser->addGuesser(new SecurityGuesser());
         $chainGuesser->addGuesser(new DateGuesser(Schema::class, $dateFormat, $datePreferInterface));
         $chainGuesser->addGuesser(new DateTimeGuesser(Schema::class, $outputDateTimeFormat, $inputDateTimeFormat, $datePreferInterface));

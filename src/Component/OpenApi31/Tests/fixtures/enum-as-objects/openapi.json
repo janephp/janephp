@@ -1,0 +1,65 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Enum As Objects",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/items": {
+            "get": {
+                "operationId": "getItems",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Item"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Item": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/ItemStatus"
+                    },
+                    "priority": {
+                        "$ref": "#/components/schemas/Priority"
+                    }
+                },
+                "required": [
+                    "status",
+                    "priority"
+                ]
+            },
+            "ItemStatus": {
+                "type": "string",
+                "description": "The status of an item",
+                "enum": [
+                    "available",
+                    "out-of-stock",
+                    "reserved",
+                    "new-york",
+                    "NewYork"
+                ]
+            },
+            "Priority": {
+                "type": "integer",
+                "description": "The priority level of an item",
+                "enum": [
+                    1,
+                    2,
+                    3
+                ]
+            }
+        }
+    }
+}

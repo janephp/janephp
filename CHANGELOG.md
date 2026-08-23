@@ -6,7 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- [JsonSchema] [GH#865](https://github.com/janephp/janephp/issues/865) New `enums-as-objects` option to generate native PHP backed enums for schemas with an `enum` keyword (`string` / `integer` types)
+
 ### Fixed
+- [OpenApi] [GH#963](https://github.com/janephp/janephp/issues/963) Support JSON content types with parameters (e.g. `application/json;schema=...`) when generating response transformations and operation/model relations
+- [OpenApi] [GH#963](https://github.com/janephp/janephp/issues/963) Generate models for `allOf` schemas whose members omit an explicit `type: object`
 - [OpenApi31] [GH#946](https://github.com/janephp/janephp/issues/946) Generate response models and correct `transformResponseBody` return types for inline response schemas (array responses are typed as `Model[]` again)
 - [OpenApi31] Keep endpoint names plural for operations returning an array response
 - [OpenApi] Support union types (e.g. `type: ["array", "null"]`) when detecting array schemas

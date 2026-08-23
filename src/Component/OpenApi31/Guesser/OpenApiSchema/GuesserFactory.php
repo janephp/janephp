@@ -11,6 +11,7 @@ use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\ArrayGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\CustomStringFormatGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\DateGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\DateTimeGuesser;
+use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\EnumGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\ItemsGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\MultipleGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\ReferenceGuesser;
@@ -29,6 +30,9 @@ class GuesserFactory
         $customStringFormatMapping = $options['custom-string-format-mapping'] ?? [];
 
         $chainGuesser = new ChainGuesser();
+        if ($options['enums-as-objects'] ?? false) {
+            $chainGuesser->addGuesser(new EnumGuesser(JsonSchema::class, $naming));
+        }
         $chainGuesser->addGuesser(new SecurityGuesser());
         $chainGuesser->addGuesser(new CustomStringFormatGuesser(JsonSchema::class, $customStringFormatMapping));
         $chainGuesser->addGuesser(new DateGuesser(JsonSchema::class, $dateFormat, $datePreferInterface));
