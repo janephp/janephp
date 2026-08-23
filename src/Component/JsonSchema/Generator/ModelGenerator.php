@@ -7,6 +7,7 @@ use Jane\Component\JsonSchema\Generator\Model\ClassGenerator;
 use Jane\Component\JsonSchema\Generator\Model\GetterSetterGenerator;
 use Jane\Component\JsonSchema\Generator\Model\PropertyGenerator;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
+use Jane\Component\JsonSchema\Guesser\Guess\NonObjectGuessInterface;
 use Jane\Component\JsonSchema\Guesser\Guess\Property;
 use Jane\Component\JsonSchema\Registry\Schema;
 use PhpParser\Node\Name;
@@ -51,6 +52,10 @@ class ModelGenerator implements GeneratorInterface
         $namespace = $schema->getNamespace() . '\\Model';
 
         foreach ($schema->getClasses() as $class) {
+            if ($class instanceof NonObjectGuessInterface) {
+                continue;
+            }
+
             $properties = [];
             $methods = [];
 

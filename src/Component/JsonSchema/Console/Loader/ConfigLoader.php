@@ -78,6 +78,7 @@ class ConfigLoader implements ConfigLoaderInterface
             'validation' => false,
             'validators' => [],
             'include-null-value' => true,
+            'enums-as-objects' => false,
             'allow-external-refs' => false,
             'external-ref-allowed-hosts' => [],
         ];

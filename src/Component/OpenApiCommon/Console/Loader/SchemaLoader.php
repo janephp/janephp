@@ -40,6 +40,7 @@ class SchemaLoader extends BaseSchemaLoader implements SchemaLoaderInterface
             'generate-error-exceptions',
             'custom-string-format-mapping',
             'include-null-value',
+            'enums-as-objects',
             'allow-external-refs',
             'external-ref-allowed-hosts',
         ];

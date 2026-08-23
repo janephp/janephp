@@ -4,12 +4,14 @@ namespace Jane\Component\JsonSchema;
 
 use Jane\Component\JsonSchema\Generator\ChainGenerator;
 use Jane\Component\JsonSchema\Generator\Context\Context;
+use Jane\Component\JsonSchema\Generator\EnumGenerator;
 use Jane\Component\JsonSchema\Generator\ModelGenerator;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Generator\NormalizerGenerator;
 use Jane\Component\JsonSchema\Generator\RuntimeGenerator;
 use Jane\Component\JsonSchema\Generator\ValidatorGenerator;
 use Jane\Component\JsonSchema\Guesser\ChainGuesser;
+use Jane\Component\JsonSchema\Guesser\Guess\NonObjectGuessInterface;
 use Jane\Component\JsonSchema\Guesser\JsonSchema\JsonSchemaGuesserFactory;
 use Jane\Component\JsonSchema\Guesser\Validator\ChainValidatorFactory;
 use Jane\Component\JsonSchema\JsonSchema\Normalizer\JaneObjectNormalizer;
@@ -54,6 +56,10 @@ class Jane extends ChainGenerator
 
         foreach ($registry->getSchemas() as $schema) {
             foreach ($schema->getClasses() as $class) {
+                if ($class instanceof NonObjectGuessInterface) {
+                    continue;
+                }
+
                 $properties = $this->chainGuesser->guessProperties($class->getObject(), $schema->getRootName(), $class->getReference(), $registry);
 
                 $names = [];
@@ -108,6 +114,9 @@ class Jane extends ChainGenerator
         $self->addGenerator(new RuntimeGenerator($naming, $parser));
         if ($options['validation'] ?? false) {
             $self->addGenerator(new ValidatorGenerator($naming));
+        }
+        if ($options['enums-as-objects'] ?? false) {
+            $self->addGenerator(new EnumGenerator());
         }
 
         return $self;
