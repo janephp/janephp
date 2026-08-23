@@ -43,6 +43,10 @@ class ListItemGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implement
         $optionsResolver->addAllowedTypes('resolveBehaviors', ['array', 'null']);
         return $optionsResolver;
     }
+    protected function getQueryStyles(): array
+    {
+        return ['resolveBehaviors' => ['style' => 'form', 'explode' => true]];
+    }
     /**
      * {@inheritdoc}
      *

@@ -40,6 +40,10 @@ class XmpMappingGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint imp
         $optionsResolver->addAllowedTypes('ids', ['array', 'null']);
         return $optionsResolver;
     }
+    protected function getQueryStyles(): array
+    {
+        return ['ids' => ['style' => 'form', 'explode' => true]];
+    }
     /**
      * {@inheritdoc}
      *

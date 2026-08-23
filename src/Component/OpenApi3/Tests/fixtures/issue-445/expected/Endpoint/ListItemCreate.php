@@ -53,6 +53,10 @@ class ListItemCreate extends \PicturePark\API\Runtime\Client\BaseEndpoint implem
         $optionsResolver->addAllowedTypes('waitSearchDocCreation', ['bool']);
         return $optionsResolver;
     }
+    protected function getQueryStyles(): array
+    {
+        return ['resolveBehaviors' => ['style' => 'form', 'explode' => true]];
+    }
     /**
      * {@inheritdoc}
      *

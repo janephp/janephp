@@ -50,6 +50,10 @@ class MigrationsGetStatusForAuthenticatedUser extends \Github\Runtime\Client\Bas
         $optionsResolver->addAllowedTypes('exclude', ['array']);
         return $optionsResolver;
     }
+    protected function getQueryStyles(): array
+    {
+        return ['exclude' => ['style' => 'form', 'explode' => true]];
+    }
     /**
      * {@inheritdoc}
      *

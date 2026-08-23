@@ -43,6 +43,10 @@ class ContentGet extends \PicturePark\API\Runtime\Client\BaseEndpoint implements
         $optionsResolver->addAllowedTypes('resolveBehaviors', ['array', 'null']);
         return $optionsResolver;
     }
+    protected function getQueryStyles(): array
+    {
+        return ['resolveBehaviors' => ['style' => 'form', 'explode' => true]];
+    }
     /**
      * {@inheritdoc}
      *

@@ -66,6 +66,10 @@ class ApiBooksGetCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoin
         $optionsResolver->addAllowedTypes('author', ['string']);
         return $optionsResolver;
     }
+    protected function getQueryStyles(): array
+    {
+        return ['page' => ['style' => 'form', 'explode' => false], 'itemsPerPage' => ['style' => 'form', 'explode' => false], 'archived' => ['style' => 'form', 'explode' => false], 'order[id]' => ['style' => 'form', 'explode' => false], 'order[title]' => ['style' => 'form', 'explode' => false], 'order[author]' => ['style' => 'form', 'explode' => false], 'order[isbn]' => ['style' => 'form', 'explode' => false], 'order[publicationDate]' => ['style' => 'form', 'explode' => false], 'properties' => ['style' => 'form', 'explode' => true], 'title' => ['style' => 'form', 'explode' => false], 'author' => ['style' => 'form', 'explode' => false]];
+    }
     /**
      * {@inheritdoc}
      *

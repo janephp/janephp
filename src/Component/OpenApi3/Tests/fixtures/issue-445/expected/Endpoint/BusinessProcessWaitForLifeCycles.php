@@ -45,6 +45,10 @@ class BusinessProcessWaitForLifeCycles extends \PicturePark\API\Runtime\Client\B
         $optionsResolver->addAllowedTypes('timeout', ['string', 'null']);
         return $optionsResolver;
     }
+    protected function getQueryStyles(): array
+    {
+        return ['lifeCycles' => ['style' => 'form', 'explode' => true]];
+    }
     /**
      * {@inheritdoc}
      *

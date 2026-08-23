@@ -68,6 +68,10 @@ class TweetsRecentSearch extends \Jane\Component\OpenApi3\Tests\Expected\Runtime
         $optionsResolver->addAllowedTypes('expansions', ['array']);
         return $optionsResolver;
     }
+    protected function getQueryStyles(): array
+    {
+        return ['expansions' => ['style' => 'form', 'explode' => false]];
+    }
     /**
      * {@inheritdoc}
      *

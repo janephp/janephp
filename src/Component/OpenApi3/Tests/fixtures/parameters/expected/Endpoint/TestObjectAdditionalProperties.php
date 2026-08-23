@@ -2,16 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
 
-class TestQueryParameters extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class TestObjectAdditionalProperties extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
 {
     /**
      * @param array{
-     *    "testString"?: string,
-     *    "testInteger"?: int,
-     *    "testFloat"?: int,
-     *    "testArray"?: array,
-     *    "testRequired": string,
-     *    "testDefault"?: string,
+     *    "search": array,
      * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
@@ -25,7 +20,7 @@ class TestQueryParameters extends \Jane\Component\OpenApi3\Tests\Expected\Runtim
     }
     public function getUri(): string
     {
-        return '/test-query';
+        return '/test-object-additional-properties';
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
@@ -34,20 +29,15 @@ class TestQueryParameters extends \Jane\Component\OpenApi3\Tests\Expected\Runtim
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['testString', 'testInteger', 'testFloat', 'testArray', 'testRequired', 'testDefault']);
-        $optionsResolver->setRequired(['testRequired']);
-        $optionsResolver->setDefaults(['testDefault' => 'test']);
-        $optionsResolver->addAllowedTypes('testString', ['string']);
-        $optionsResolver->addAllowedTypes('testInteger', ['int']);
-        $optionsResolver->addAllowedTypes('testFloat', ['int']);
-        $optionsResolver->addAllowedTypes('testArray', ['array']);
-        $optionsResolver->addAllowedTypes('testRequired', ['string']);
-        $optionsResolver->addAllowedTypes('testDefault', ['string']);
+        $optionsResolver->setDefined(['search']);
+        $optionsResolver->setRequired(['search']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('search', ['array']);
         return $optionsResolver;
     }
     protected function getQueryStyles(): array
     {
-        return ['testArray' => ['style' => 'form', 'explode' => true]];
+        return ['search' => ['style' => 'form', 'explode' => true]];
     }
     /**
      * {@inheritdoc}

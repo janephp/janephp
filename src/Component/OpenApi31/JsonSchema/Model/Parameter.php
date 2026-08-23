@@ -41,6 +41,18 @@ class Parameter
      * @var array<string, MediaType>|null
      */
     protected $content;
+    /**
+     * @var string|null
+     */
+    protected $style;
+    /**
+     * @var bool|null
+     */
+    protected $explode;
+    /**
+     * @var bool|null
+     */
+    protected $allowReserved = false;
 
     public function getName(): ?string
     {
@@ -135,6 +147,45 @@ class Parameter
     {
         $this->initialized['content'] = true;
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getStyle(): ?string
+    {
+        return $this->style;
+    }
+
+    public function setStyle(?string $style): self
+    {
+        $this->initialized['style'] = true;
+        $this->style = $style;
+
+        return $this;
+    }
+
+    public function getExplode(): ?bool
+    {
+        return $this->explode;
+    }
+
+    public function setExplode(?bool $explode): self
+    {
+        $this->initialized['explode'] = true;
+        $this->explode = $explode;
+
+        return $this;
+    }
+
+    public function getAllowReserved(): ?bool
+    {
+        return $this->allowReserved;
+    }
+
+    public function setAllowReserved(?bool $allowReserved): self
+    {
+        $this->initialized['allowReserved'] = true;
+        $this->allowReserved = $allowReserved;
 
         return $this;
     }

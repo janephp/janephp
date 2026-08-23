@@ -45,6 +45,10 @@ class BusinessProcessWaitForStates extends \PicturePark\API\Runtime\Client\BaseE
         $optionsResolver->addAllowedTypes('timeout', ['string', 'null']);
         return $optionsResolver;
     }
+    protected function getQueryStyles(): array
+    {
+        return ['states' => ['style' => 'form', 'explode' => true]];
+    }
     /**
      * {@inheritdoc}
      *

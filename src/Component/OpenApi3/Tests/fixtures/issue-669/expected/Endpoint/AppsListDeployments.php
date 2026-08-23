@@ -54,6 +54,10 @@ class AppsListDeployments extends \Jane\Generated\DigitalOcean\Runtime\Client\Ba
         $optionsResolver->addAllowedTypes('deployment_types', ['array']);
         return $optionsResolver;
     }
+    protected function getQueryStyles(): array
+    {
+        return ['deployment_types' => ['style' => 'form', 'explode' => true]];
+    }
     /**
      * {@inheritdoc}
      *

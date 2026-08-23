@@ -35,6 +35,10 @@ class TestObjectQuery extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Cl
         $optionsResolver->addAllowedTypes('filter', ['array']);
         return $optionsResolver;
     }
+    protected function getQueryStyles(): array
+    {
+        return ['filter' => ['style' => 'deepObject', 'explode' => true]];
+    }
     /**
      * {@inheritdoc}
      *

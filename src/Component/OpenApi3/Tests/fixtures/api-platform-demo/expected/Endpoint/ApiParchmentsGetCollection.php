@@ -46,6 +46,10 @@ class ApiParchmentsGetCollection extends \ApiPlatform\Demo\Runtime\Client\BaseEn
         $optionsResolver->addAllowedTypes('page', ['int']);
         return $optionsResolver;
     }
+    protected function getQueryStyles(): array
+    {
+        return ['page' => ['style' => 'form', 'explode' => false]];
+    }
     /**
      * {@inheritdoc}
      *

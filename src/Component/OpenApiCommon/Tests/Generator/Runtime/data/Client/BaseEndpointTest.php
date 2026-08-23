@@ -34,6 +34,113 @@ final class BaseEndpointTest extends TestCase
         yield 'array' => [['queryParam' => ['te?st', 'tes*&']], ['queryParam'], 'queryParam%5B0%5D=te?st&queryParam%5B1%5D=tes*&'];
     }
 
+    public static function styledQueryParamsProvider(): iterable
+    {
+        $form = ['style' => 'form'];
+        yield 'form exploded object drops parent key' => [
+            ['search' => ['name' => 'john', 'country' => 'SE']],
+            ['search' => ['style' => 'form', 'explode' => true]],
+            'name=john&country=SE',
+        ];
+        yield 'form exploded array repeats parameter name' => [
+            ['param' => ['a', 'b']],
+            ['param' => ['style' => 'form', 'explode' => true]],
+            'param=a&param=b',
+        ];
+        yield 'form exploded object with nested array uses bracket notation' => [
+            ['search' => ['name' => 'john', 'tags' => ['a', 'b']]],
+            ['search' => ['style' => 'form', 'explode' => true]],
+            'name=john&tags%5B0%5D=a&tags%5B1%5D=b',
+        ];
+        yield 'form exploded object with nested object uses bracket notation' => [
+            ['search' => ['name' => 'john', 'address' => ['city' => 'NY']]],
+            ['search' => ['style' => 'form', 'explode' => true]],
+            'name=john&address%5Bcity%5D=NY',
+        ];
+        yield 'form exploded array of objects uses bracket notation' => [
+            ['points' => [['x' => 1], ['x' => 2]]],
+            ['points' => ['style' => 'form', 'explode' => true]],
+            'points%5B0%5D%5Bx%5D=1&points%5B1%5D%5Bx%5D=2',
+        ];
+        yield 'form non exploded array is comma separated' => [
+            ['color' => ['blue', 'black']],
+            ['color' => ['style' => 'form', 'explode' => false]],
+            'color=blue,black',
+        ];
+        yield 'form non exploded object interleaves keys and values' => [
+            ['color' => ['R' => '100', 'G' => '200']],
+            ['color' => ['style' => 'form', 'explode' => false]],
+            'color=R,100,G,200',
+        ];
+        yield 'space delimited array' => [
+            ['color' => ['blue', 'black']],
+            ['color' => ['style' => 'spaceDelimited', 'explode' => false]],
+            'color=blue%20black',
+        ];
+        yield 'pipe delimited array' => [
+            ['color' => ['blue', 'black']],
+            ['color' => ['style' => 'pipeDelimited', 'explode' => false]],
+            'color=blue|black',
+        ];
+        yield 'deep object flat' => [
+            ['filter' => ['from' => 'a', 'to' => 'b']],
+            ['filter' => ['style' => 'deepObject', 'explode' => true]],
+            'filter%5Bfrom%5D=a&filter%5Bto%5D=b',
+        ];
+        yield 'deep object nested' => [
+            ['filter' => ['range' => ['from' => 'a']]],
+            ['filter' => ['style' => 'deepObject', 'explode' => true]],
+            'filter%5Brange%5D%5Bfrom%5D=a',
+        ];
+        yield 'null value is omitted' => [
+            ['search' => null, 'other' => 'kept'],
+            ['search' => ['style' => 'form', 'explode' => true]],
+            'other=kept',
+        ];
+        yield 'empty object is omitted' => [
+            ['search' => []],
+            ['search' => ['style' => 'form', 'explode' => true]],
+            '',
+        ];
+        yield 'exploded scalar values are encoded' => [
+            ['search' => ['name' => 'jo hn?']],
+            ['search' => ['style' => 'form', 'explode' => true]],
+            'name=jo%20hn%3F',
+        ];
+    }
+
+    public static function styledQueryParamsWithAllowingReservedCharactersProvider(): iterable
+    {
+        yield 'form exploded reserved characters' => [
+            ['search' => ['name' => 'jo?hn&']],
+            ['search'],
+            ['search' => ['style' => 'form', 'explode' => true]],
+            'name=jo?hn&',
+        ];
+        yield 'pipe delimited reserved characters' => [
+            ['color' => ['bl|ue', 'bla*ck']],
+            ['color'],
+            ['color' => ['style' => 'pipeDelimited', 'explode' => false]],
+            'color=bl|ue|bla*ck',
+        ];
+    }
+
+    public static function invalidStyledQueryParamsProvider(): iterable
+    {
+        yield 'nested value with space delimited style' => [
+            ['color' => [['nested']]],
+            ['color' => ['style' => 'spaceDelimited']],
+        ];
+        yield 'nested value with form non exploded style' => [
+            ['color' => [['nested']]],
+            ['color' => ['style' => 'form', 'explode' => false]],
+        ];
+        yield 'unknown style' => [
+            ['color' => ['blue']],
+            ['color' => ['style' => 'matrix']],
+        ];
+    }
+
     /**
      * @dataProvider queryParamsProvider
      */
@@ -241,15 +348,52 @@ final class BaseEndpointTest extends TestCase
         $endpoint->getHeaders();
     }
 
-    private function getEndpoint(array $queryParams, array $allowReserved = []): object
+    /**
+     * @dataProvider styledQueryParamsProvider
+     */
+    public function testStyledQueryParamsWillBeProperlyEncoded(array $queryParams, array $styles, string $expectedQueryString): void
     {
-        return new class($queryParams, $allowReserved) extends \BaseEndpoint {
-            private array $allowReserved;
+        $endpoint = $this->getEndpoint($queryParams, [], $styles);
 
-            public function __construct(array $queryParams, array $allowReserved)
+        self::assertEquals($expectedQueryString, $endpoint->getQueryString());
+    }
+
+    /**
+     * @dataProvider styledQueryParamsWithAllowingReservedCharactersProvider
+     */
+    public function testStyledQueryParamsWillBeProperlyEncodedWithReservedCharacters(
+        array $queryParams,
+        array $allowedQueryParams,
+        array $styles,
+        string $expectedQueryString,
+    ): void {
+        $endpoint = $this->getEndpoint($queryParams, $allowedQueryParams, $styles);
+
+        self::assertEquals($expectedQueryString, $endpoint->getQueryString());
+    }
+
+    /**
+     * @dataProvider invalidStyledQueryParamsProvider
+     */
+    public function testInvalidStyledQueryParamsThrowException(array $queryParams, array $styles): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+
+        $endpoint = $this->getEndpoint($queryParams, [], $styles);
+        $endpoint->getQueryString();
+    }
+
+    private function getEndpoint(array $queryParams, array $allowReserved = [], array $queryStyles = []): object
+    {
+        return new class($queryParams, $allowReserved, $queryStyles) extends \BaseEndpoint {
+            private array $allowReserved;
+            private array $queryStyles;
+
+            public function __construct(array $queryParams, array $allowReserved, array $queryStyles)
             {
                 $this->queryParameters = $queryParams;
                 $this->allowReserved = $allowReserved;
+                $this->queryStyles = $queryStyles;
             }
 
             public function getMethod(): string
@@ -299,6 +443,11 @@ final class BaseEndpointTest extends TestCase
             protected function getQueryAllowReserved(): array
             {
                 return $this->allowReserved;
+            }
+
+            protected function getQueryStyles(): array
+            {
+                return $this->queryStyles;
             }
         };
     }

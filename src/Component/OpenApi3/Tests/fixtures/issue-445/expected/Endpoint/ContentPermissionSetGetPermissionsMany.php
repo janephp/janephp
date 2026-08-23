@@ -40,6 +40,10 @@ class ContentPermissionSetGetPermissionsMany extends \PicturePark\API\Runtime\Cl
         $optionsResolver->addAllowedTypes('ids', ['array', 'null']);
         return $optionsResolver;
     }
+    protected function getQueryStyles(): array
+    {
+        return ['ids' => ['style' => 'form', 'explode' => true]];
+    }
     /**
      * {@inheritdoc}
      *

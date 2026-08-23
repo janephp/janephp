@@ -44,6 +44,12 @@ class ParameterNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (\array_key_exists('deprecated', $data) && \is_int($data['deprecated'])) {
             $data['deprecated'] = (bool) $data['deprecated'];
         }
+        if (\array_key_exists('explode', $data) && \is_int($data['explode'])) {
+            $data['explode'] = (bool) $data['explode'];
+        }
+        if (\array_key_exists('allowReserved', $data) && \is_int($data['allowReserved'])) {
+            $data['allowReserved'] = (bool) $data['allowReserved'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -86,6 +92,21 @@ class ParameterNormalizer implements DenormalizerInterface, NormalizerInterface,
         } elseif (\array_key_exists('content', $data) && $data['content'] === null) {
             $object->setContent(null);
         }
+        if (\array_key_exists('style', $data) && $data['style'] !== null) {
+            $object->setStyle($data['style']);
+        } elseif (\array_key_exists('style', $data) && $data['style'] === null) {
+            $object->setStyle(null);
+        }
+        if (\array_key_exists('explode', $data) && $data['explode'] !== null) {
+            $object->setExplode($data['explode']);
+        } elseif (\array_key_exists('explode', $data) && $data['explode'] === null) {
+            $object->setExplode(null);
+        }
+        if (\array_key_exists('allowReserved', $data) && $data['allowReserved'] !== null) {
+            $object->setAllowReserved($data['allowReserved']);
+        } elseif (\array_key_exists('allowReserved', $data) && $data['allowReserved'] === null) {
+            $object->setAllowReserved(null);
+        }
 
         return $object;
     }
@@ -113,6 +134,15 @@ class ParameterNormalizer implements DenormalizerInterface, NormalizerInterface,
                 $values[$key] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['content'] = $values;
+        }
+        if ($data->isInitialized('style') && null !== $data->getStyle()) {
+            $dataArray['style'] = $data->getStyle();
+        }
+        if ($data->isInitialized('explode') && null !== $data->getExplode()) {
+            $dataArray['explode'] = $data->getExplode();
+        }
+        if ($data->isInitialized('allowReserved') && null !== $data->getAllowReserved()) {
+            $dataArray['allowReserved'] = $data->getAllowReserved();
         }
 
         return $dataArray;

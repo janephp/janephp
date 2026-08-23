@@ -56,6 +56,10 @@ class FindTweetsById extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Cli
         $optionsResolver->addAllowedTypes('expansions', ['array']);
         return $optionsResolver;
     }
+    protected function getQueryStyles(): array
+    {
+        return ['ids' => ['style' => 'form', 'explode' => false], 'expansions' => ['style' => 'form', 'explode' => false]];
+    }
     /**
      * {@inheritdoc}
      *

@@ -225,6 +225,33 @@ There are many ways to use it. You can either use the `__type` key to specify a 
  deserialized according to it's format option. It can be used to customize a date-time field, or to add non supported
 formats. More details in the dedicated section.
 
+## Query parameter serialization (OpenAPI 3.x)
+
+For `query` parameters, Jane reads the OpenAPI [`style`](https://spec.openapis.org/oas/v3.0.3#style-values) and
+`explode` fields and generates a `getQueryStyles()` method in each affected Endpoint class. The runtime then
+serializes values accordingly:
+
+| Style | `explode: true` | `explode: false` |
+|-------|-----------------|------------------|
+| `form` (default) | objects: each property becomes a top level pair (`?name=john&country=SE`); arrays repeat the parameter name (`?param=a&param=b`) | values joined with `,` (`?color=blue,black`; objects interleave keys and values: `?color=R,100,G,200`) |
+| `spaceDelimited` | like `form` exploded | values joined with a space (`?color=blue%20black`) |
+| `pipeDelimited` | like `form` exploded | values joined with `\|` (`?color=blue\|black`) |
+| `deepObject` | bracket notation at every level (`?filter[from]=a&filter[range][to]=b`) | not applicable |
+
+When neither `style` nor `explode` is set, OpenAPI defaults apply (`form` for query parameters, `explode: true`
+when style is `form`). These defaults are only materialized for parameters whose schema is an `object` or an
+`array`: scalar parameters keep their historical encoding.
+
+Additional rules:
+
+- Nesting beyond the first level uses PHP bracket notation with explicit indices, e.g.
+  `?search[address][city]=NY` or `?tags[0]=a&tags[1]=b`. The OpenAPI specification does not define deeper
+  nesting, so this is Jane's convention.
+- `spaceDelimited`, `pipeDelimited` and non-exploded `form` only support flat values; providing nested
+  arrays/objects throws an `\InvalidArgumentException` when building the query string.
+- Parameters declaring a `content` field are serialized from their content and ignore `style` / `explode`,
+  as specified by OpenAPI.
+
 ## Using a generated client
 
 Generating a client will produce same classes as the [JSON Schema](../json_schema/component.md) library:
