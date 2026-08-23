@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- [OpenApi31] [GH#946](https://github.com/janephp/janephp/issues/946) Generate response models and correct `transformResponseBody` return types for inline response schemas (array responses are typed as `Model[]` again)
+- [OpenApi31] Keep endpoint names plural for operations returning an array response
+- [OpenApi] Support union types (e.g. `type: ["array", "null"]`) when detecting array schemas
 
 ## [7.13.0] - 2026-08-17
 ### Added

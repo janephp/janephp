@@ -13,7 +13,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Cli
      * @param array $accept Accept content header application/json|application/xml
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsGetJsonResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function getAllData(array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {

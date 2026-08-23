@@ -17,6 +17,7 @@ use Jane\Component\OpenApi31\JsonSchema\Model\Parameter;
 use Jane\Component\OpenApi31\JsonSchema\Model\PathItem;
 use Jane\Component\OpenApi31\JsonSchema\Model\RequestBody;
 use Jane\Component\OpenApi31\JsonSchema\Model\Response;
+use Jane\Component\OpenApi31\JsonSchema\Normalizer\ResponseNormalizer;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\Component\OpenApiCommon\Naming\ChainOperationNaming;
 use Jane\Component\OpenApiCommon\Naming\OperationIdNaming;
@@ -71,6 +72,10 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
 
         if ($object->getComponents() instanceof Components && is_iterable($object->getComponents()->getResponses())) {
             foreach ($object->getComponents()->getResponses() as $responseName => $response) {
+                if (\is_array($response)) {
+                    $response = $this->denormalizeResponseData($response, $reference . '/components/responses/' . $responseName);
+                }
+
                 if ($response instanceof Response && is_iterable($response->getContent())) {
                     foreach ($response->getContent() as $contentType => $content) {
                         if ($contentType === 'application/problem+json' && $content->getSchema() === null) {
@@ -282,6 +287,10 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
 
         if (is_iterable($operation->getResponses())) {
             foreach ($operation->getResponses() as $status => $response) {
+                if (\is_array($response)) {
+                    $response = $this->denormalizeResponseData($response, $reference . '/responses/' . $status);
+                }
+
                 if ($response instanceof Response && $response->getContent()) {
                     $contentCount = \count($response->getContent());
                     foreach ($response->getContent() as $contentType => $content) {
@@ -302,6 +311,25 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
     private function slugContentType($contentType): string
     {
         return ucfirst(str_replace('application', '', $this->slugger->slug($contentType, '')));
+    }
+
+    private function denormalizeResponseData(array $responseData, string $reference): mixed
+    {
+        if (isset($responseData['$ref'])) {
+            $origin = strstr($reference, '#', true) ?: $reference;
+
+            return new Reference($responseData['$ref'], $origin);
+        }
+
+        $normalizer = new ResponseNormalizer();
+        $normalizer->setDenormalizer($this->denormalizer);
+
+        return $normalizer->denormalize(
+            $responseData,
+            Response::class,
+            'json',
+            ['document-origin' => strstr($reference, '#', true) ?: $reference]
+        );
     }
 
     private function normalizePathItemParameters(PathItem $pathItem, string $reference): void

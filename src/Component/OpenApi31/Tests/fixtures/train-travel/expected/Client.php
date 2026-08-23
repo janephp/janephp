@@ -21,7 +21,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Cli
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\GetStationsTooManyRequestsException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\GetStationsInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\Model\StationsGetJsonResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function getStations(array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -47,7 +47,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Cli
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\GetTripsTooManyRequestsException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\GetTripsInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\Model\TripsGetJsonResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function getTrips(array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -67,7 +67,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Cli
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\GetBookingsTooManyRequestsException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\GetBookingsInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\Model\BookingsGetJsonResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function getBookings(array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -85,7 +85,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Cli
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\CreateBookingTooManyRequestsException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\CreateBookingInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\Model\BookingsPostJsonResponse201 : \Psr\Http\Message\ResponseInterface)
      */
     public function createBooking(\Jane\Component\OpenApi31\Tests\Expected\Model\Booking $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -121,7 +121,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Cli
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\GetBookingTooManyRequestsException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\GetBookingInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\Model\BookingsBookingIdGetJsonResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function getBooking(string $bookingId, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -139,7 +139,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Cli
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\CreateBookingPaymentTooManyRequestsException
      * @throws \Jane\Component\OpenApi31\Tests\Expected\Exception\CreateBookingPaymentInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\Model\BookingsBookingIdPaymentPostResponse200 : \Psr\Http\Message\ResponseInterface)
      */
     public function createBookingPayment(string $bookingId, \Jane\Component\OpenApi31\Tests\Expected\Model\BookingPayment $requestBody, string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
