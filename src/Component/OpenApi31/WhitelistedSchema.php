@@ -8,6 +8,7 @@ use Jane\Component\OpenApi31\JsonSchema\Model\MediaType;
 use Jane\Component\OpenApi31\JsonSchema\Model\RequestBody;
 use Jane\Component\OpenApi31\JsonSchema\Model\Response;
 use Jane\Component\OpenApiCommon\Contracts\WhitelistFetchInterface;
+use Jane\Component\OpenApiCommon\Generator\ContentType;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\Component\OpenApiCommon\Guesser\GuessClass;
 use Jane\Component\OpenApiCommon\Naming\ChainOperationNaming;
@@ -47,7 +48,9 @@ class WhitelistedSchema implements WhitelistFetchInterface
             if (null !== $requestBody->getContent() && is_iterable($requestBody->getContent())) {
                 /** @var MediaType $content */
                 foreach ($requestBody->getContent() as $contentType => $content) {
-                    if (\in_array($contentType, ['application/json', 'application/x-www-form-urlencoded'], true) || str_ends_with($contentType, '+json')) {
+                    $baseContentType = ContentType::withoutParameters($contentType);
+
+                    if (\in_array($baseContentType, ['application/json', 'application/x-www-form-urlencoded'], true) || str_ends_with($baseContentType, '+json')) {
                         $contentReference = $operationGuess->getReference() . '/content/' . $contentType . '/schema';
                         $schema = $content->getSchema();
                         $classGuess = $this->guessClass->guessClass($schema, $contentReference, $registry);
@@ -81,7 +84,9 @@ class WhitelistedSchema implements WhitelistFetchInterface
                 if (null !== $response->getContent() && is_iterable($response->getContent())) {
                     /** @var MediaType $content */
                     foreach ($response->getContent() as $contentType => $content) {
-                        if ('application/json' === $contentType || str_ends_with($contentType, '+json')) {
+                        $baseContentType = ContentType::withoutParameters($contentType);
+
+                        if ('application/json' === $baseContentType || str_ends_with($baseContentType, '+json')) {
                             $contentReference = $operationGuess->getReference() . '/content/' . $contentType . '/schema';
                             $schema = $content->getSchema();
                             $classGuess = $this->guessClass->guessClass($schema, $contentReference, $registry);
