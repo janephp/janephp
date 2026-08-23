@@ -56,10 +56,6 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [
-            
-            \Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => false,
-            \Jane\Component\JsonSchema\Tests\Expected\Model\TestFoo::class => false,
-        ];
+        return array_combine(array_keys($this->normalizers), array_fill(0, count($this->normalizers), false));
     }
 }

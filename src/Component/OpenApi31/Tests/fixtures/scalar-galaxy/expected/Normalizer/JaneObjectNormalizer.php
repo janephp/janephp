@@ -100,32 +100,6 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [
-            
-            \Jane\Component\OpenApi31\Tests\Expected\Model\User::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\Credentials::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\Token::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\Planet::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetPhysicalProperties::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetPhysicalPropertiesTemperature::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetAtmosphereItem::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\Satellite::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\SatelliteOrbit::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\PaginatedResource::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\PaginatedResourceMeta::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\ImageUploadedMessage::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\BadRequestError::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\ForbiddenError::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\NotFoundError::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\UnauthorizedError::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\Conflict::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\UnprocessableEntity::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\TooManyRequestsError::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsGetJsonResponse200::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsGetXmlResponse200::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsPlanetIdImagePostBody::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\UserSignupPostBody::class => false,
-            \Jane\Component\JsonSchemaRuntime\Reference::class => false,
-        ];
+        return array_combine(array_keys($this->normalizers), array_fill(0, count($this->normalizers), false));
     }
 }

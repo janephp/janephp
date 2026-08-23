@@ -112,38 +112,6 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [
-            
-            \Jane\Component\OpenApi31\Tests\Expected\Model\Station::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\LinksSelf::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\LinksDestination::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\LinksOrigin::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\LinksPagination::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\Problem::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\Trip::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\Booking::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\WrapperCollection::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\BookingPayment::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\LinksBooking::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\StationsGetJsonResponse200::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\StationsGetJsonResponse200Links::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\StationsGetXmlResponse200::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\StationsGetXmlResponse200Links::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\TripsGetJsonResponse200::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\TripsGetJsonResponse200DataItem::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\TripsGetJsonResponse200Links::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\TripsGetXmlResponse200::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\TripsGetXmlResponse200Links::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\BookingsGetJsonResponse200::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\BookingsGetJsonResponse200Links::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\BookingsGetXmlResponse200::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\BookingsGetXmlResponse200Links::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\BookingsPostJsonResponse201::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\BookingsPostXmlResponse201::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\BookingsBookingIdGetJsonResponse200::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\BookingsBookingIdGetXmlResponse200::class => false,
-            \Jane\Component\OpenApi31\Tests\Expected\Model\BookingsBookingIdPaymentPostResponse200::class => false,
-            \Jane\Component\JsonSchemaRuntime\Reference::class => false,
-        ];
+        return array_combine(array_keys($this->normalizers), array_fill(0, count($this->normalizers), false));
     }
 }
