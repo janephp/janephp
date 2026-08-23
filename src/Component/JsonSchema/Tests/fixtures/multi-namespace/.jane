@@ -3,6 +3,11 @@
 return [
     'mapping' => [
         // Order of schema matters for naming
+        __DIR__ . '/schema3.json' => [
+            'root-class' => 'Test',
+            'namespace' => 'Jane\Component\JsonSchema\Tests\Expected\Schema3',
+            'directory' => __DIR__ . '/generated/Schema3',
+        ],
         __DIR__ . '/schema2.json' => [
             'root-class' => 'Test',
             'namespace' => 'Jane\Component\JsonSchema\Tests\Expected\Schema2',

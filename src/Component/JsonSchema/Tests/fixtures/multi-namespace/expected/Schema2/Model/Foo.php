@@ -17,6 +17,10 @@ class Foo
      */
     protected $foo;
     /**
+     * @var \Jane\Component\JsonSchema\Tests\Expected\Schema3\Model\Bar
+     */
+    protected $bar;
+    /**
      * @return string
      */
     public function getFoo(): string
@@ -32,6 +36,24 @@ class Foo
     {
         $this->initialized['foo'] = true;
         $this->foo = $foo;
+        return $this;
+    }
+    /**
+     * @return \Jane\Component\JsonSchema\Tests\Expected\Schema3\Model\Bar
+     */
+    public function getBar(): \Jane\Component\JsonSchema\Tests\Expected\Schema3\Model\Bar
+    {
+        return $this->bar;
+    }
+    /**
+     * @param \Jane\Component\JsonSchema\Tests\Expected\Schema3\Model\Bar $bar
+     *
+     * @return self
+     */
+    public function setBar(\Jane\Component\JsonSchema\Tests\Expected\Schema3\Model\Bar $bar): self
+    {
+        $this->initialized['bar'] = true;
+        $this->bar = $bar;
         return $this;
     }
 }
