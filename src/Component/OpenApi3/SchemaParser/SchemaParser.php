@@ -26,6 +26,9 @@ class SchemaParser extends CommonSchemaParser
      */
     protected function validateSchema(array $openApiSpecData): array
     {
-        return TypeArrayValidator::validate($openApiSpecData);
+        return array_merge(
+            TypeArrayValidator::validate($openApiSpecData),
+            NonBodyParameterTypeValidator::validate($openApiSpecData)
+        );
     }
 }

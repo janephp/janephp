@@ -57,3 +57,32 @@ Depending on your situation, either generate with the matching package
 (`nullable: true`, or a `oneOf` with a `'null'` entry). See the
 [Nullability guide](nullable.md) for the correct syntax per spec version.
 
+### Unsupported `type` for non-body parameters
+
+Query, header, path and cookie parameters map their `schema.type` to a PHP
+type. In a 3.0.x document only `string`, `number`, `boolean`, `integer`,
+`array`, `object` and `file` are accepted: anything else — or a parameter
+schema with neither `type` nor `enum` — stops generation with the offending
+location instead of crashing midway:
+
+```yaml
+# Rejected by jane-php/open-api-3:
+paths:
+  /pets:
+    get:
+      parameters:
+        - name: since
+          in: query
+          schema:
+            type: 'null'
+```
+
+```text
+Unsupported feature(s) found in your schema:
+`type` "null" is not supported for non-body parameters, expected one of "string", "number", "boolean", "integer", "array", "object" or "file" at "/paths/~1pets/get/parameters/0/schema/type".
+```
+
+Object-typed parameters (e.g. `deepObject` style) and schemas relying on an
+`enum` alone remain fully supported.
+
+

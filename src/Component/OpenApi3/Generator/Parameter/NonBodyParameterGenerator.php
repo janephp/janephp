@@ -2,6 +2,7 @@
 
 namespace Jane\Component\OpenApi3\Generator\Parameter;
 
+use Jane\Component\JsonSchema\Exception\InvalidSchemaException;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi3\Guesser\GuessClass;
@@ -215,6 +216,15 @@ class NonBodyParameterGenerator extends ParameterGenerator
             'object' => ['array'],
             'file' => ['string', 'resource', '\\' . StreamInterface::class],
         ];
+
+        if (!isset($convertArray[$type])) {
+            $message = \sprintf(
+                'Unsupported `type` %s for non-body parameter: expected one of "string", "number", "boolean", "integer", "array", "object" or "file".',
+                null === $type ? 'missing' : \sprintf('"%s"', $type)
+            );
+
+            throw new InvalidSchemaException([$message]);
+        }
 
         return $convertArray[$type];
     }
