@@ -2,6 +2,8 @@
 
 namespace Jane\Component\JsonSchema\Generator;
 
+use Jane\Component\JsonSchema\Exception\GenerationFailedException;
+use Jane\Component\JsonSchema\Exception\JaneExceptionInterface;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Registry\Registry;
 
@@ -25,7 +27,13 @@ abstract class ChainGenerator
             $context->setCurrentSchema($schema);
 
             foreach ($this->generators as $generator) {
-                $generator->generate($schema, $schema->getRootName(), $context);
+                try {
+                    $generator->generate($schema, $schema->getRootName(), $context);
+                } catch (JaneExceptionInterface $exception) {
+                    throw $exception;
+                } catch (\Throwable $exception) {
+                    throw new GenerationFailedException($context->getCurrentSchema()->getOrigin(), $exception);
+                }
             }
         }
     }

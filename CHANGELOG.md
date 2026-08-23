@@ -10,13 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [JsonSchema] [GH#865](https://github.com/janephp/janephp/issues/865) New `enums-as-objects` option to generate native PHP backed enums for schemas with an `enum` keyword (`string` / `integer` types)
 - [OpenApi3] [GH#771](https://github.com/janephp/janephp/issues/771) Report clean generation errors for non-body parameters using an unsupported `schema.type` (or no `type`/`enum`) instead of crashing
 
-
 ### Fixed
 - [OpenApi] [GH#963](https://github.com/janephp/janephp/issues/963) Support JSON content types with parameters (e.g. `application/json;schema=...`) when generating response transformations and operation/model relations
 - [OpenApi] [GH#963](https://github.com/janephp/janephp/issues/963) Generate models for `allOf` schemas whose members omit an explicit `type: object`
 - [OpenApi31] [GH#946](https://github.com/janephp/janephp/issues/946) Generate response models and correct `transformResponseBody` return types for inline response schemas (array responses are typed as `Model[]` again)
 - [OpenApi31] Keep endpoint names plural for operations returning an array response
 - [OpenApi] Support union types (e.g. `type: ["array", "null"]`) when detecting array schemas
+- [OpenApi3] [GH#803](https://github.com/janephp/janephp/issues/803) Fix fatal error when a non-required query/header parameter references a schema defining a `default` (the default is now applied to the generated options resolver)
+- [Jane] Wrap unexpected generation-phase errors in a clean `GenerationFailedException` instead of letting raw PHP errors reach the console
 
 ## [7.13.0] - 2026-08-17
 ### Added

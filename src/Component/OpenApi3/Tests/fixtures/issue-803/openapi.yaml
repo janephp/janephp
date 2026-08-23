@@ -1,0 +1,61 @@
+openapi: 3.0.2
+info:
+  title: Test
+  version: 0.0.0
+servers:
+  - url: https://example.com/rest/v1
+paths:
+  /files:
+    get:
+      operationId: getFiles
+      summary: List all files
+      description: |
+        Foo bar
+      tags:
+        - Files
+      parameters:
+        - $ref: '#/components/parameters/fileMode'
+        - $ref: '#/components/parameters/fileSort'
+      responses:
+        '200':
+          $ref: '#/components/responses/FileList'
+components:
+  parameters:
+    fileMode:
+      in: query
+      name: mode
+      required: false
+      description: "File listing mode"
+      schema:
+        $ref: "#/components/schemas/mode"
+    fileSort:
+      in: header
+      name: X-Sort-Order
+      required: false
+      description: "Sort order"
+      schema:
+        $ref: "#/components/schemas/sortOrder"
+  schemas:
+    file:
+      type: object
+      properties:
+        id:
+          type: string
+          description: File identifier
+    mode:
+      type: string
+      default: auto
+      description: File listing mode
+    sortOrder:
+      type: string
+      default: asc
+      description: Sort order
+  responses:
+    FileList:
+      description: Return the list of files.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/file'
