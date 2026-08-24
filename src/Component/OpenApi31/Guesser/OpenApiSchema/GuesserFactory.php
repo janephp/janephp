@@ -8,6 +8,7 @@ use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\AdditionalPropertiesGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\AllOfGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\ArrayGuesser;
+use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\BinaryStringFormatGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\CustomStringFormatGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\DateGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\DateTimeGuesser;
@@ -37,6 +38,7 @@ class GuesserFactory
         $chainGuesser->addGuesser(new CustomStringFormatGuesser(JsonSchema::class, $customStringFormatMapping));
         $chainGuesser->addGuesser(new DateGuesser(JsonSchema::class, $dateFormat, $datePreferInterface));
         $chainGuesser->addGuesser(new DateTimeGuesser(JsonSchema::class, $outputDateTimeFormat, $inputDateTimeFormat, $datePreferInterface));
+        $chainGuesser->addGuesser(new BinaryStringFormatGuesser(JsonSchema::class));
         $chainGuesser->addGuesser(new ReferenceGuesser($denormalizer, JsonSchema::class));
         $chainGuesser->addGuesser(new OpenApiGuesser($denormalizer));
         $chainGuesser->addGuesser(new SchemaGuesser($denormalizer, $naming));

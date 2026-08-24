@@ -13,7 +13,7 @@ class FilePostBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var string
+     * @var string|resource|\Psr\Http\Message\StreamInterface
      */
     protected $fichier;
     /**
@@ -21,18 +21,18 @@ class FilePostBody extends \ArrayObject
      */
     protected $item;
     /**
-     * @return string
+     * @return string|resource|\Psr\Http\Message\StreamInterface
      */
-    public function getFichier(): string
+    public function getFichier()
     {
         return $this->fichier;
     }
     /**
-     * @param string $fichier
+     * @param string|resource|\Psr\Http\Message\StreamInterface $fichier
      *
      * @return self
      */
-    public function setFichier(string $fichier): self
+    public function setFichier($fichier): self
     {
         $this->initialized['fichier'] = true;
         $this->fichier = $fichier;

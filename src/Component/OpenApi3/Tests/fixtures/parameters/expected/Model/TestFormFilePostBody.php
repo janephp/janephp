@@ -13,22 +13,22 @@ class TestFormFilePostBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var string
+     * @var string|resource|\Psr\Http\Message\StreamInterface
      */
     protected $testFile;
     /**
-     * @return string
+     * @return string|resource|\Psr\Http\Message\StreamInterface
      */
-    public function getTestFile(): string
+    public function getTestFile()
     {
         return $this->testFile;
     }
     /**
-     * @param string $testFile
+     * @param string|resource|\Psr\Http\Message\StreamInterface $testFile
      *
      * @return self
      */
-    public function setTestFile(string $testFile): self
+    public function setTestFile($testFile): self
     {
         $this->initialized['testFile'] = true;
         $this->testFile = $testFile;
