@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [JsonSchema] [GH#865](https://github.com/janephp/janephp/issues/865) New `enums-as-objects` option to generate native PHP backed enums for schemas with an `enum` keyword (`string` / `integer` types)
 - [OpenApi3] [GH#771](https://github.com/janephp/janephp/issues/771) Report clean generation errors for non-body parameters using an unsupported `schema.type` (or no `type`/`enum`) instead of crashing
 
+### Changed
+- **BC-breaking** [OpenApi] [GH#789](https://github.com/janephp/janephp/issues/789) The host / base path plugins built from the specification (`AddHostPlugin`, `AddPathPlugin`) are now also applied around a caller-provided PSR-18 client in the generated `Client::create()`: your client may now be wrapped in a `PluginClient` carrying the specification's server URL, so server URLs containing a path (e.g. `https://server.localhost/api/v3`) work with custom clients. Generated clients whose specification declares a server URL accept a fourth `bool $applyServerPlugins = true` argument to opt out and keep using your client as-is.
+
 ### Fixed
 <<<<<<< HEAD
 - [OpenApi] [GH#763](https://github.com/janephp/janephp/issues/763) Generate models referenced by the `default` response when using `whitelisted-paths` (the default response is not part of the iterated status codes, so its models were filtered out)

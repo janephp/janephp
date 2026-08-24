@@ -1195,19 +1195,21 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
     {
         return $this->executeEndpoint(new \CreditSafe\API\Endpoint\CustomReportParameters($country, $queryParameters, $headerParameters), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
+    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
     {
+        $plugins = [];
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
-            $plugins = [];
+        }
+        if ($applyServerPlugins) {
             $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('https://connect.creditsafe.com/v1');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
-            if (count($additionalPlugins) > 0) {
-                $plugins = array_merge($plugins, $additionalPlugins);
-            }
-            $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         }
+        if (count($additionalPlugins) > 0) {
+            $plugins = array_merge($plugins, $additionalPlugins);
+        }
+        $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
         $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \CreditSafe\API\Normalizer\JaneObjectNormalizer()];
