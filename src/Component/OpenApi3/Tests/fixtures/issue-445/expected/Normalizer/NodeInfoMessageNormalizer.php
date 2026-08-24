@@ -46,6 +46,7 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
+            unset($data['id']);
         }
         if (\array_key_exists('retries', $data)) {
             $object->setRetries($data['retries']);
@@ -69,6 +70,7 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('nodeId', $data) && $data['nodeId'] === null) {
             $object->setNodeId(null);
+            unset($data['nodeId']);
         }
         if (\array_key_exists('hostName', $data) && $data['hostName'] !== null) {
             $object->setHostName($data['hostName']);
@@ -76,9 +78,14 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('hostName', $data) && $data['hostName'] === null) {
             $object->setHostName(null);
+            unset($data['hostName']);
         }
         if (\array_key_exists('lastResponseTime', $data)) {
-            $object->setLastResponseTime(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastResponseTime']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastResponseTime']);
+            if (false === $date) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['lastResponseTime'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setLastResponseTime($date);
             unset($data['lastResponseTime']);
         }
         if (\array_key_exists('serviceName', $data) && $data['serviceName'] !== null) {
@@ -87,6 +94,7 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('serviceName', $data) && $data['serviceName'] === null) {
             $object->setServiceName(null);
+            unset($data['serviceName']);
         }
         if (\array_key_exists('fileVersion', $data) && $data['fileVersion'] !== null) {
             $object->setFileVersion($data['fileVersion']);
@@ -94,6 +102,7 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('fileVersion', $data) && $data['fileVersion'] === null) {
             $object->setFileVersion(null);
+            unset($data['fileVersion']);
         }
         if (\array_key_exists('productVersion', $data) && $data['productVersion'] !== null) {
             $object->setProductVersion($data['productVersion']);
@@ -101,6 +110,7 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('productVersion', $data) && $data['productVersion'] === null) {
             $object->setProductVersion(null);
+            unset($data['productVersion']);
         }
         if (\array_key_exists('release', $data) && $data['release'] !== null) {
             $object->setRelease($data['release']);
@@ -108,6 +118,7 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('release', $data) && $data['release'] === null) {
             $object->setRelease(null);
+            unset($data['release']);
         }
         if (\array_key_exists('logLevel', $data) && $data['logLevel'] !== null) {
             $object->setLogLevel($data['logLevel']);
@@ -115,6 +126,7 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('logLevel', $data) && $data['logLevel'] === null) {
             $object->setLogLevel(null);
+            unset($data['logLevel']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

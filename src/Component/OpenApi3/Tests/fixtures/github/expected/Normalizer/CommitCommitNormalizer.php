@@ -50,6 +50,7 @@ class CommitCommitNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('author', $data) && $data['author'] === null) {
             $object->setAuthor(null);
+            unset($data['author']);
         }
         if (\array_key_exists('committer', $data) && $data['committer'] !== null) {
             $object->setCommitter($this->denormalizer->denormalize($data['committer'], \Github\Model\CommitCommitCommitter::class, 'json', $context));
@@ -57,6 +58,7 @@ class CommitCommitNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('committer', $data) && $data['committer'] === null) {
             $object->setCommitter(null);
+            unset($data['committer']);
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);

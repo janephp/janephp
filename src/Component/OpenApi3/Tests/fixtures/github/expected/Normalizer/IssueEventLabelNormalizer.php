@@ -46,6 +46,7 @@ class IssueEventLabelNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('name', $data) && $data['name'] === null) {
             $object->setName(null);
+            unset($data['name']);
         }
         if (\array_key_exists('color', $data) && $data['color'] !== null) {
             $object->setColor($data['color']);
@@ -53,6 +54,7 @@ class IssueEventLabelNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('color', $data) && $data['color'] === null) {
             $object->setColor(null);
+            unset($data['color']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

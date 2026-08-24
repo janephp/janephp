@@ -89,6 +89,7 @@ class MarketplaceListingPlanNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('unit_name', $data) && $data['unit_name'] === null) {
             $object->setUnitName(null);
+            unset($data['unit_name']);
         }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);

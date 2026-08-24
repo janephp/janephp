@@ -46,7 +46,11 @@ class ApiWorkspaceNormalizer implements DenormalizerInterface, NormalizerInterfa
             unset($data['agents']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date);
             unset($data['created_at']);
         }
         if (\array_key_exists('created_by', $data)) {
@@ -58,7 +62,11 @@ class ApiWorkspaceNormalizer implements DenormalizerInterface, NormalizerInterfa
             unset($data['created_by_email']);
         }
         if (\array_key_exists('deleted_at', $data)) {
-            $object->setDeletedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['deleted_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['deleted_at']);
+            if (false === $date_1) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['deleted_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setDeletedAt($date_1);
             unset($data['deleted_at']);
         }
         if (\array_key_exists('description', $data)) {
@@ -78,7 +86,11 @@ class ApiWorkspaceNormalizer implements DenormalizerInterface, NormalizerInterfa
             unset($data['name']);
         }
         if (\array_key_exists('updated_at', $data)) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
+            if (false === $date_2) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUpdatedAt($date_2);
             unset($data['updated_at']);
         }
         if (\array_key_exists('uuid', $data)) {

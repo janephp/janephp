@@ -38,11 +38,19 @@ class ApiEvaluationTestCaseNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('archived_at', $data)) {
-            $object->setArchivedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['archived_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['archived_at']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['archived_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setArchivedAt($date);
             unset($data['archived_at']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date_1) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date_1);
             unset($data['created_at']);
         }
         if (\array_key_exists('created_by_user_email', $data)) {
@@ -98,7 +106,11 @@ class ApiEvaluationTestCaseNormalizer implements DenormalizerInterface, Normaliz
             unset($data['total_runs']);
         }
         if (\array_key_exists('updated_at', $data)) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
+            if (false === $date_2) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUpdatedAt($date_2);
             unset($data['updated_at']);
         }
         if (\array_key_exists('updated_by_user_email', $data)) {

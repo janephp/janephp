@@ -53,7 +53,11 @@ class SimpleCommitNormalizer implements DenormalizerInterface, NormalizerInterfa
             unset($data['message']);
         }
         if (\array_key_exists('timestamp', $data)) {
-            $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setTimestamp($date);
             unset($data['timestamp']);
         }
         if (\array_key_exists('author', $data) && $data['author'] !== null) {
@@ -62,6 +66,7 @@ class SimpleCommitNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('author', $data) && $data['author'] === null) {
             $object->setAuthor(null);
+            unset($data['author']);
         }
         if (\array_key_exists('committer', $data) && $data['committer'] !== null) {
             $object->setCommitter($this->denormalizer->denormalize($data['committer'], \Github\Model\SimpleCommitCommitter::class, 'json', $context));
@@ -69,6 +74,7 @@ class SimpleCommitNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('committer', $data) && $data['committer'] === null) {
             $object->setCommitter(null);
+            unset($data['committer']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

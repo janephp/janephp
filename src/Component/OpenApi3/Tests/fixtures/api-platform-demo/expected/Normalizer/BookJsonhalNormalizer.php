@@ -47,6 +47,7 @@ class BookJsonhalNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
+            unset($data['id']);
         }
         if (\array_key_exists('isbn', $data) && $data['isbn'] !== null) {
             $object->setIsbn($data['isbn']);
@@ -54,6 +55,7 @@ class BookJsonhalNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('isbn', $data) && $data['isbn'] === null) {
             $object->setIsbn(null);
+            unset($data['isbn']);
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
@@ -68,7 +70,11 @@ class BookJsonhalNormalizer implements DenormalizerInterface, NormalizerInterfac
             unset($data['author']);
         }
         if (\array_key_exists('publicationDate', $data)) {
-            $object->setPublicationDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['publicationDate']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['publicationDate']);
+            if (false === $date) {
+                throw new \ApiPlatform\Demo\Runtime\Normalizer\InvalidDateException($data['publicationDate'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setPublicationDate($date);
             unset($data['publicationDate']);
         }
         if (\array_key_exists('reviews', $data)) {
@@ -85,13 +91,19 @@ class BookJsonhalNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('cover', $data) && $data['cover'] === null) {
             $object->setCover(null);
+            unset($data['cover']);
         }
         if (\array_key_exists('archivedAt', $data) && $data['archivedAt'] !== null) {
-            $object->setArchivedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['archivedAt']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['archivedAt']);
+            if (false === $date_1) {
+                throw new \ApiPlatform\Demo\Runtime\Normalizer\InvalidDateException($data['archivedAt'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setArchivedAt($date_1);
             unset($data['archivedAt']);
         }
         elseif (\array_key_exists('archivedAt', $data) && $data['archivedAt'] === null) {
             $object->setArchivedAt(null);
+            unset($data['archivedAt']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

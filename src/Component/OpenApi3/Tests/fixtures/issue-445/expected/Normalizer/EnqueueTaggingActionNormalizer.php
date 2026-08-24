@@ -43,6 +43,7 @@ class EnqueueTaggingActionNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
+            unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -54,6 +55,7 @@ class EnqueueTaggingActionNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('options', $data) && $data['options'] === null) {
             $object->setOptions(null);
+            unset($data['options']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

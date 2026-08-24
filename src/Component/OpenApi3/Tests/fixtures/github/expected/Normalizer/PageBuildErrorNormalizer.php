@@ -46,6 +46,7 @@ class PageBuildErrorNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('message', $data) && $data['message'] === null) {
             $object->setMessage(null);
+            unset($data['message']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

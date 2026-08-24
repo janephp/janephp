@@ -67,6 +67,7 @@ class ShareDataBasicNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('languageCode', $data) && $data['languageCode'] === null) {
             $object->setLanguageCode(null);
+            unset($data['languageCode']);
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

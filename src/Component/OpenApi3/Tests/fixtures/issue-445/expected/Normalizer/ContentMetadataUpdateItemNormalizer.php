@@ -47,6 +47,7 @@ class ContentMetadataUpdateItemNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
             $object->setLayerSchemaIds(null);
+            unset($data['layerSchemaIds']);
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
             $values_1 = new \PicturePark\API\Runtime\JsonObject();
@@ -58,6 +59,7 @@ class ContentMetadataUpdateItemNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('content', $data) && $data['content'] === null) {
             $object->setContent(null);
+            unset($data['content']);
         }
         if (\array_key_exists('metadata', $data) && $data['metadata'] !== null) {
             $values_2 = new \PicturePark\API\Runtime\JsonObject();
@@ -69,6 +71,7 @@ class ContentMetadataUpdateItemNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('metadata', $data) && $data['metadata'] === null) {
             $object->setMetadata(null);
+            unset($data['metadata']);
         }
         if (\array_key_exists('layerSchemasUpdateOptions', $data)) {
             $object->setLayerSchemasUpdateOptions($data['layerSchemasUpdateOptions']);

@@ -38,7 +38,11 @@ class ApiIndexedDataSourceNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('completed_at', $data)) {
-            $object->setCompletedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['completed_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['completed_at']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['completed_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCompletedAt($date);
             unset($data['completed_at']);
         }
         if (\array_key_exists('data_source_uuid', $data)) {
@@ -74,7 +78,11 @@ class ApiIndexedDataSourceNormalizer implements DenormalizerInterface, Normalize
             unset($data['skipped_item_count']);
         }
         if (\array_key_exists('started_at', $data)) {
-            $object->setStartedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['started_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['started_at']);
+            if (false === $date_1) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['started_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setStartedAt($date_1);
             unset($data['started_at']);
         }
         if (\array_key_exists('status', $data)) {

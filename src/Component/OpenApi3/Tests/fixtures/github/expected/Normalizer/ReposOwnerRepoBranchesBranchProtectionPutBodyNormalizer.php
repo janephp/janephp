@@ -58,6 +58,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyNormalizer implements Denorma
         }
         elseif (\array_key_exists('required_status_checks', $data) && $data['required_status_checks'] === null) {
             $object->setRequiredStatusChecks(null);
+            unset($data['required_status_checks']);
         }
         if (\array_key_exists('enforce_admins', $data) && $data['enforce_admins'] !== null) {
             $object->setEnforceAdmins($data['enforce_admins']);
@@ -65,6 +66,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyNormalizer implements Denorma
         }
         elseif (\array_key_exists('enforce_admins', $data) && $data['enforce_admins'] === null) {
             $object->setEnforceAdmins(null);
+            unset($data['enforce_admins']);
         }
         if (\array_key_exists('required_pull_request_reviews', $data) && $data['required_pull_request_reviews'] !== null) {
             $object->setRequiredPullRequestReviews($this->denormalizer->denormalize($data['required_pull_request_reviews'], \Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviews::class, 'json', $context));
@@ -72,6 +74,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyNormalizer implements Denorma
         }
         elseif (\array_key_exists('required_pull_request_reviews', $data) && $data['required_pull_request_reviews'] === null) {
             $object->setRequiredPullRequestReviews(null);
+            unset($data['required_pull_request_reviews']);
         }
         if (\array_key_exists('restrictions', $data) && $data['restrictions'] !== null) {
             $object->setRestrictions($this->denormalizer->denormalize($data['restrictions'], \Github\Model\ReposOwnerRepoBranchesBranchProtectionPutBodyRestrictions::class, 'json', $context));
@@ -79,6 +82,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyNormalizer implements Denorma
         }
         elseif (\array_key_exists('restrictions', $data) && $data['restrictions'] === null) {
             $object->setRestrictions(null);
+            unset($data['restrictions']);
         }
         if (\array_key_exists('required_linear_history', $data)) {
             $object->setRequiredLinearHistory($data['required_linear_history']);
@@ -90,6 +94,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyNormalizer implements Denorma
         }
         elseif (\array_key_exists('allow_force_pushes', $data) && $data['allow_force_pushes'] === null) {
             $object->setAllowForcePushes(null);
+            unset($data['allow_force_pushes']);
         }
         if (\array_key_exists('allow_deletions', $data)) {
             $object->setAllowDeletions($data['allow_deletions']);

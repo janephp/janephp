@@ -41,7 +41,11 @@ class HealthcheckResultNormalizer implements DenormalizerInterface, NormalizerIn
             $this->validate($data, new \Docker\Api\Validator\HealthcheckResultConstraint());
         }
         if (\array_key_exists('Start', $data)) {
-            $object->setStart(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['Start']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['Start']);
+            if (false === $date) {
+                throw new \Docker\Api\Runtime\Normalizer\InvalidDateException($data['Start'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setStart($date);
         }
         if (\array_key_exists('End', $data)) {
             $object->setEnd($data['End']);

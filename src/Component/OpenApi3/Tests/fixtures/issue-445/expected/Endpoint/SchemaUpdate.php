@@ -33,7 +33,7 @@ class SchemaUpdate extends \PicturePark\API\Runtime\Client\BaseEndpoint implemen
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \PicturePark\API\Model\SchemaUpdateRequest) {
-            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+            return [['Content-Type' => ['application/json']], \PicturePark\API\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
         }
         return [[], null];
     }

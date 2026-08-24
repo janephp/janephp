@@ -42,11 +42,19 @@ class ClusterlintResultsNormalizer implements DenormalizerInterface, NormalizerI
             unset($data['run_id']);
         }
         if (\array_key_exists('requested_at', $data)) {
-            $object->setRequestedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['requested_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['requested_at']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['requested_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setRequestedAt($date);
             unset($data['requested_at']);
         }
         if (\array_key_exists('completed_at', $data)) {
-            $object->setCompletedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['completed_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['completed_at']);
+            if (false === $date_1) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['completed_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCompletedAt($date_1);
             unset($data['completed_at']);
         }
         if (\array_key_exists('diagnostics', $data)) {

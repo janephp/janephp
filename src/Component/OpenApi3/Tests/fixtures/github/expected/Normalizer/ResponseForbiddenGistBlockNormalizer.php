@@ -54,6 +54,7 @@ class ResponseForbiddenGistBlockNormalizer implements DenormalizerInterface, Nor
         }
         elseif (\array_key_exists('html_url', $data) && $data['html_url'] === null) {
             $object->setHtmlUrl(null);
+            unset($data['html_url']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

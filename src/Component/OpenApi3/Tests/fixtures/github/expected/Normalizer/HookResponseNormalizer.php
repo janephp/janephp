@@ -46,6 +46,7 @@ class HookResponseNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('code', $data) && $data['code'] === null) {
             $object->setCode(null);
+            unset($data['code']);
         }
         if (\array_key_exists('status', $data) && $data['status'] !== null) {
             $object->setStatus($data['status']);
@@ -53,6 +54,7 @@ class HookResponseNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('status', $data) && $data['status'] === null) {
             $object->setStatus(null);
+            unset($data['status']);
         }
         if (\array_key_exists('message', $data) && $data['message'] !== null) {
             $object->setMessage($data['message']);
@@ -60,6 +62,7 @@ class HookResponseNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('message', $data) && $data['message'] === null) {
             $object->setMessage(null);
+            unset($data['message']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

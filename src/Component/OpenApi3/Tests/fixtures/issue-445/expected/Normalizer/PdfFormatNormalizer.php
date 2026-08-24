@@ -68,6 +68,7 @@ class PdfFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
             $object->setExtension(null);
+            unset($data['extension']);
         }
         if (\array_key_exists('extractFullText', $data)) {
             $object->setExtractFullText($data['extractFullText']);

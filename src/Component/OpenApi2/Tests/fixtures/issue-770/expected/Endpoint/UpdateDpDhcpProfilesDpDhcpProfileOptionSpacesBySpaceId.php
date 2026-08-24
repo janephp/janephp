@@ -32,7 +32,7 @@ class UpdateDpDhcpProfilesDpDhcpProfileOptionSpacesBySpaceId extends \Jane\Compo
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return $this->getSerializedBody($serializer);
+        return $this->getSerializedObjectBody($serializer);
     }
     public function getExtraHeaders(): array
     {

@@ -54,13 +54,18 @@ class GistCommitNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
+            unset($data['user']);
         }
         if (\array_key_exists('change_status', $data)) {
             $object->setChangeStatus($this->denormalizer->denormalize($data['change_status'], \Github\Model\GistCommitChangeStatus::class, 'json', $context));
             unset($data['change_status']);
         }
         if (\array_key_exists('committed_at', $data)) {
-            $object->setCommittedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['committed_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['committed_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['committed_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCommittedAt($date);
             unset($data['committed_at']);
         }
         foreach ($data as $key => $value) {

@@ -70,42 +70,63 @@ abstract class JaneOpenApi extends ChainGenerator
         }
 
         $chainValidator = ChainValidatorFactory::create($this->naming, $registry, $this->serializer);
+        $checkWhitelistedPaths = \count($registry->getWhitelistedPaths() ?? []) > 0;
 
         foreach ($schemas as $schema) {
+            /** @var array<string, \RuntimeException> Guessing failures indexed by class reference */
+            $guessingFailures = [];
+
             foreach ($schema->getClasses() as $class) {
                 if ($class instanceof NonObjectGuessInterface) {
                     continue;
                 }
 
-                $properties = $this->chainGuesser->guessProperties($class->getObject(), $schema->getRootName(), $class->getReference(), $registry);
+                try {
+                    $properties = $this->chainGuesser->guessProperties($class->getObject(), $schema->getRootName(), $class->getReference(), $registry);
 
-                $names = [];
-                foreach ($properties as $property) {
-                    $deduplicatedName = $this->naming->getDeduplicatedName($property->getName(), $names);
+                    $names = [];
+                    foreach ($properties as $property) {
+                        $deduplicatedName = $this->naming->getDeduplicatedName($property->getName(), $names);
 
-                    $property->setAccessorName($deduplicatedName);
-                    $property->setPhpName($this->naming->getPropertyName($deduplicatedName));
+                        $property->setAccessorName($deduplicatedName);
+                        $property->setPhpName($this->naming->getPropertyName($deduplicatedName));
 
-                    $property->setType($this->chainGuesser->guessType($property->getObject(), $property->getName(), $property->getReference(), $registry));
+                        $property->setType($this->chainGuesser->guessType($property->getObject(), $property->getName(), $property->getReference(), $registry));
+                    }
+
+                    $class->setProperties($properties);
+                    $schema->addClassRelations($class);
+
+                    $extensionsTypes = [];
+                    foreach ($class->getExtensionsObject() as $pattern => $extensionData) {
+                        $extensionsTypes[$pattern] = $this->chainGuesser->guessType($extensionData['object'], $class->getName(), $extensionData['reference'], $registry);
+                    }
+                    $class->setExtensionsType($extensionsTypes);
+
+                    $chainValidator->guess($class->getObject(), $class->getName(), $class);
+                } catch (\RuntimeException $exception) {
+                    if (!$checkWhitelistedPaths) {
+                        throw $exception;
+                    }
+
+                    // the class might be pruned by the whitelist filtering, so the failure is deferred until we know if it is needed
+                    $guessingFailures[$class->getReference()] = $exception;
                 }
-
-                $class->setProperties($properties);
-                $schema->addClassRelations($class);
-
-                $extensionsTypes = [];
-                foreach ($class->getExtensionsObject() as $pattern => $extensionData) {
-                    $extensionsTypes[$pattern] = $this->chainGuesser->guessType($extensionData['object'], $class->getName(), $extensionData['reference'], $registry);
-                }
-                $class->setExtensionsType($extensionsTypes);
-
-                $chainValidator->guess($class->getObject(), $class->getName(), $class);
             }
 
             $this->hydrateDiscriminatedClasses($schema, $registry);
 
             // when we have a whitelist, we want to have only needed models to be generated
-            if (\count($registry->getWhitelistedPaths() ?? []) > 0) {
+            if ($checkWhitelistedPaths) {
                 $this->whitelistFetch($schema, $registry);
+
+                // a deferred guessing failure only matters if the class survived the whitelist filtering,
+                // meaning it is needed by one of the whitelisted operations
+                foreach ($guessingFailures as $reference => $exception) {
+                    if (null !== $schema->getClass($reference)) {
+                        throw $exception;
+                    }
+                }
             }
         }
 
@@ -169,6 +190,11 @@ abstract class JaneOpenApi extends ChainGenerator
         }
 
         ChainValidatorFactory::resetCustomValidators();
+        ChainValidatorFactory::setDateFormats(
+            $options['full-date-format'] ?? 'Y-m-d',
+            $options['date-format'] ?? \DateTimeInterface::RFC3339,
+            $options['date-input-format'] ?? null,
+        );
         foreach ($options['validators'] ?? [] as $validator) {
             ChainValidatorFactory::addValidator($validator);
         }

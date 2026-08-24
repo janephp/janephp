@@ -43,6 +43,7 @@ class ContentRelationItemAssignedConditionNormalizer implements DenormalizerInte
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
+            unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -54,6 +55,7 @@ class ContentRelationItemAssignedConditionNormalizer implements DenormalizerInte
         }
         elseif (\array_key_exists('contentId', $data) && $data['contentId'] === null) {
             $object->setContentId(null);
+            unset($data['contentId']);
         }
         if (\array_key_exists('fieldPath', $data) && $data['fieldPath'] !== null) {
             $object->setFieldPath($data['fieldPath']);
@@ -61,6 +63,7 @@ class ContentRelationItemAssignedConditionNormalizer implements DenormalizerInte
         }
         elseif (\array_key_exists('fieldPath', $data) && $data['fieldPath'] === null) {
             $object->setFieldPath(null);
+            unset($data['fieldPath']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

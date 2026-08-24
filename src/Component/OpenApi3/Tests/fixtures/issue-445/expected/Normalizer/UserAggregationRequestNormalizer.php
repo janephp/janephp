@@ -49,6 +49,7 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
             $object->setSearchString(null);
+            unset($data['searchString']);
         }
         if (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] !== null) {
             $values = [];
@@ -60,6 +61,7 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] === null) {
             $object->setSearchBehaviors(null);
+            unset($data['searchBehaviors']);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $object->setFilter($data['filter']);
@@ -67,6 +69,7 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
+            unset($data['filter']);
         }
         if (\array_key_exists('lifeCycleFilter', $data)) {
             $object->setLifeCycleFilter($data['lifeCycleFilter']);
@@ -82,6 +85,7 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('userRightsFilter', $data) && $data['userRightsFilter'] === null) {
             $object->setUserRightsFilter(null);
+            unset($data['userRightsFilter']);
         }
         if (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] !== null) {
             $values_2 = [];
@@ -93,6 +97,7 @@ class UserAggregationRequestNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] === null) {
             $object->setAggregationFilters(null);
+            unset($data['aggregationFilters']);
         }
         if (\array_key_exists('includeServiceUser', $data)) {
             $object->setIncludeServiceUser($data['includeServiceUser']);

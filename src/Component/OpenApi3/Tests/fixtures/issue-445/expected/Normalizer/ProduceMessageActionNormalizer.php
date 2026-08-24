@@ -43,6 +43,7 @@ class ProduceMessageActionNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
+            unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);

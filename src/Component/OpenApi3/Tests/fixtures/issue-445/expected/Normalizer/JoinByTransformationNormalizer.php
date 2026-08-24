@@ -43,6 +43,7 @@ class JoinByTransformationNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
+            unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -54,6 +55,7 @@ class JoinByTransformationNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('separator', $data) && $data['separator'] === null) {
             $object->setSeparator(null);
+            unset($data['separator']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

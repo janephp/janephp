@@ -78,6 +78,7 @@ class IssueSearchResultItemMilestoneNormalizer implements DenormalizerInterface,
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+            unset($data['description']);
         }
         if (\array_key_exists('creator', $data) && $data['creator'] !== null) {
             $object->setCreator($this->denormalizer->denormalize($data['creator'], \Github\Model\MilestoneCreator::class, 'json', $context));
@@ -85,6 +86,7 @@ class IssueSearchResultItemMilestoneNormalizer implements DenormalizerInterface,
         }
         elseif (\array_key_exists('creator', $data) && $data['creator'] === null) {
             $object->setCreator(null);
+            unset($data['creator']);
         }
         if (\array_key_exists('open_issues', $data)) {
             $object->setOpenIssues($data['open_issues']);
@@ -95,26 +97,44 @@ class IssueSearchResultItemMilestoneNormalizer implements DenormalizerInterface,
             unset($data['closed_issues']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date);
             unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
+            if (false === $date_1) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUpdatedAt($date_1);
             unset($data['updated_at']);
         }
         if (\array_key_exists('closed_at', $data) && $data['closed_at'] !== null) {
-            $object->setClosedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['closed_at']));
+            $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['closed_at']);
+            if (false === $date_2) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['closed_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setClosedAt($date_2);
             unset($data['closed_at']);
         }
         elseif (\array_key_exists('closed_at', $data) && $data['closed_at'] === null) {
             $object->setClosedAt(null);
+            unset($data['closed_at']);
         }
         if (\array_key_exists('due_on', $data) && $data['due_on'] !== null) {
-            $object->setDueOn(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['due_on']));
+            $date_3 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['due_on']);
+            if (false === $date_3) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['due_on'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setDueOn($date_3);
             unset($data['due_on']);
         }
         elseif (\array_key_exists('due_on', $data) && $data['due_on'] === null) {
             $object->setDueOn(null);
+            unset($data['due_on']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

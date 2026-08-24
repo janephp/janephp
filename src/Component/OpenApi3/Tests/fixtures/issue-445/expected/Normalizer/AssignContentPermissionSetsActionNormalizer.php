@@ -46,6 +46,7 @@ class AssignContentPermissionSetsActionNormalizer implements DenormalizerInterfa
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
+            unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -57,6 +58,7 @@ class AssignContentPermissionSetsActionNormalizer implements DenormalizerInterfa
         }
         elseif (\array_key_exists('permissionSetIds', $data) && $data['permissionSetIds'] === null) {
             $object->setPermissionSetIds(null);
+            unset($data['permissionSetIds']);
         }
         if (\array_key_exists('replace', $data)) {
             $object->setReplace($data['replace']);

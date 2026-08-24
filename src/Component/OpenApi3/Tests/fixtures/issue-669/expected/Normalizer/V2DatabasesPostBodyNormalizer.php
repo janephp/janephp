@@ -74,7 +74,11 @@ class V2DatabasesPostBodyNormalizer implements DenormalizerInterface, Normalizer
             unset($data['status']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date);
             unset($data['created_at']);
         }
         if (\array_key_exists('private_network_uuid', $data)) {
@@ -91,6 +95,7 @@ class V2DatabasesPostBodyNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
             $object->setTags(null);
+            unset($data['tags']);
         }
         if (\array_key_exists('db_names', $data) && $data['db_names'] !== null) {
             $values_1 = [];
@@ -102,6 +107,7 @@ class V2DatabasesPostBodyNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('db_names', $data) && $data['db_names'] === null) {
             $object->setDbNames(null);
+            unset($data['db_names']);
         }
         if (\array_key_exists('ui_connection', $data)) {
             $object->setUiConnection($this->denormalizer->denormalize($data['ui_connection'], \Jane\Generated\DigitalOcean\Model\DatabaseClusterUiConnection::class, 'json', $context));
@@ -137,6 +143,7 @@ class V2DatabasesPostBodyNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('users', $data) && $data['users'] === null) {
             $object->setUsers(null);
+            unset($data['users']);
         }
         if (\array_key_exists('maintenance_window', $data)) {
             $object->setMaintenanceWindow($this->denormalizer->denormalize($data['maintenance_window'], \Jane\Generated\DigitalOcean\Model\DatabaseClusterMaintenanceWindow::class, 'json', $context));

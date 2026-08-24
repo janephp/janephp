@@ -43,6 +43,7 @@ class NotConditionNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
+            unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -54,6 +55,7 @@ class NotConditionNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('condition', $data) && $data['condition'] === null) {
             $object->setCondition(null);
+            unset($data['condition']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

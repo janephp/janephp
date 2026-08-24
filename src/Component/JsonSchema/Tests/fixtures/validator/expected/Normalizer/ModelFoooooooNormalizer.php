@@ -129,6 +129,30 @@ class ModelFoooooooNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('uuidFormat', $data)) {
             $object->setUuidFormat($data['uuidFormat']);
         }
+        if (\array_key_exists('dateFormat', $data)) {
+            $date = \DateTime::createFromFormat('Y-m-d', $data['dateFormat']);
+            if (false === $date) {
+                throw new \Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['dateFormat'], 'Y-m-d');
+            }
+            $object->setDateFormat($date->setTime(0, 0, 0));
+        }
+        if (\array_key_exists('dateNullableFormat', $data) && $data['dateNullableFormat'] !== null) {
+            $date_1 = \DateTime::createFromFormat('Y-m-d', $data['dateNullableFormat']);
+            if (false === $date_1) {
+                throw new \Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['dateNullableFormat'], 'Y-m-d');
+            }
+            $object->setDateNullableFormat($date_1->setTime(0, 0, 0));
+        }
+        elseif (\array_key_exists('dateNullableFormat', $data) && $data['dateNullableFormat'] === null) {
+            $object->setDateNullableFormat(null);
+        }
+        if (\array_key_exists('dateTimeFormat', $data)) {
+            $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateTimeFormat']);
+            if (false === $date_2) {
+                throw new \Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['dateTimeFormat'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setDateTimeFormat($date_2);
+        }
         if (\array_key_exists('foo', $data)) {
             $object->setFoo($this->denormalizer->denormalize($data['foo'], \Jane\JsonSchema\Tests\Expected\Model\FooFooFoo::class, 'json', $context));
         }
@@ -235,6 +259,15 @@ class ModelFoooooooNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if ($data->isInitialized('uuidFormat') && null !== $data->getUuidFormat()) {
             $dataArray['uuidFormat'] = $data->getUuidFormat();
+        }
+        if ($data->isInitialized('dateFormat') && null !== $data->getDateFormat()) {
+            $dataArray['dateFormat'] = $data->getDateFormat()->format('Y-m-d');
+        }
+        if ($data->isInitialized('dateNullableFormat') && null !== $data->getDateNullableFormat()) {
+            $dataArray['dateNullableFormat'] = $data->getDateNullableFormat()?->format('Y-m-d');
+        }
+        if ($data->isInitialized('dateTimeFormat') && null !== $data->getDateTimeFormat()) {
+            $dataArray['dateTimeFormat'] = $data->getDateTimeFormat()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('foo') && null !== $data->getFoo()) {
             $dataArray['foo'] = $data->getFoo() === null ? null : new \Jane\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getFoo(), 'json', $context));

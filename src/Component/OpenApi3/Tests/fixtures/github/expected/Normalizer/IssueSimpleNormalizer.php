@@ -97,6 +97,7 @@ class IssueSimpleNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
+            unset($data['user']);
         }
         if (\array_key_exists('labels', $data)) {
             $values = [];
@@ -112,6 +113,7 @@ class IssueSimpleNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('assignee', $data) && $data['assignee'] === null) {
             $object->setAssignee(null);
+            unset($data['assignee']);
         }
         if (\array_key_exists('assignees', $data) && $data['assignees'] !== null) {
             $values_1 = [];
@@ -123,6 +125,7 @@ class IssueSimpleNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('assignees', $data) && $data['assignees'] === null) {
             $object->setAssignees(null);
+            unset($data['assignees']);
         }
         if (\array_key_exists('milestone', $data) && $data['milestone'] !== null) {
             $object->setMilestone($this->denormalizer->denormalize($data['milestone'], \Github\Model\IssueSimpleMilestone::class, 'json', $context));
@@ -130,6 +133,7 @@ class IssueSimpleNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('milestone', $data) && $data['milestone'] === null) {
             $object->setMilestone(null);
+            unset($data['milestone']);
         }
         if (\array_key_exists('locked', $data)) {
             $object->setLocked($data['locked']);
@@ -141,6 +145,7 @@ class IssueSimpleNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('active_lock_reason', $data) && $data['active_lock_reason'] === null) {
             $object->setActiveLockReason(null);
+            unset($data['active_lock_reason']);
         }
         if (\array_key_exists('comments', $data)) {
             $object->setComments($data['comments']);
@@ -151,18 +156,31 @@ class IssueSimpleNormalizer implements DenormalizerInterface, NormalizerInterfac
             unset($data['pull_request']);
         }
         if (\array_key_exists('closed_at', $data) && $data['closed_at'] !== null) {
-            $object->setClosedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['closed_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['closed_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['closed_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setClosedAt($date);
             unset($data['closed_at']);
         }
         elseif (\array_key_exists('closed_at', $data) && $data['closed_at'] === null) {
             $object->setClosedAt(null);
+            unset($data['closed_at']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date_1) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date_1);
             unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
+            if (false === $date_2) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUpdatedAt($date_2);
             unset($data['updated_at']);
         }
         if (\array_key_exists('author_association', $data)) {
@@ -191,6 +209,7 @@ class IssueSimpleNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('performed_via_github_app', $data) && $data['performed_via_github_app'] === null) {
             $object->setPerformedViaGithubApp(null);
+            unset($data['performed_via_github_app']);
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

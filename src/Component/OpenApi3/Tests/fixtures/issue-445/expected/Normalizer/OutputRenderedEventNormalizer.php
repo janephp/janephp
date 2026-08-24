@@ -38,7 +38,11 @@ class OutputRenderedEventNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('timestamp', $data)) {
-            $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']);
+            if (false === $date) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setTimestamp($date);
             unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
@@ -51,6 +55,7 @@ class OutputRenderedEventNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('outputId', $data) && $data['outputId'] === null) {
             $object->setOutputId(null);
+            unset($data['outputId']);
         }
         if (\array_key_exists('contentId', $data) && $data['contentId'] !== null) {
             $object->setContentId($data['contentId']);
@@ -58,6 +63,7 @@ class OutputRenderedEventNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('contentId', $data) && $data['contentId'] === null) {
             $object->setContentId(null);
+            unset($data['contentId']);
         }
         if (\array_key_exists('outputFormatId', $data) && $data['outputFormatId'] !== null) {
             $object->setOutputFormatId($data['outputFormatId']);
@@ -65,6 +71,7 @@ class OutputRenderedEventNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('outputFormatId', $data) && $data['outputFormatId'] === null) {
             $object->setOutputFormatId(null);
+            unset($data['outputFormatId']);
         }
         if (\array_key_exists('renderingState', $data)) {
             $object->setRenderingState($data['renderingState']);

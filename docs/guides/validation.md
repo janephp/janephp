@@ -10,6 +10,12 @@ At the moment Jane supports most of the specification except for
 `minContains` and `maxContains` for the Array constraints. And for
 `dependentRequired` in the Object constraints.
 
+Properties declared with `type: string` and a `format: date` or
+`format: date-time` also get their format validated (with the Symfony
+`Date` / `DateTime` constraints). The expected format mirrors the
+`full-date-format`, `date-format` and `date-input-format`
+configuration options.
+
 ## Usage
 
 For this example we will take the following JSON Schema as our base

@@ -47,6 +47,7 @@ class ServiceProviderDeleteExceptionNormalizer implements DenormalizerInterface,
         }
         elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
             $object->setTraceId(null);
+            unset($data['traceId']);
         }
         if (\array_key_exists('traceJobId', $data) && $data['traceJobId'] !== null) {
             $object->setTraceJobId($data['traceJobId']);
@@ -54,6 +55,7 @@ class ServiceProviderDeleteExceptionNormalizer implements DenormalizerInterface,
         }
         elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
             $object->setTraceJobId(null);
+            unset($data['traceJobId']);
         }
         if (\array_key_exists('httpStatusCode', $data)) {
             $object->setHttpStatusCode($data['httpStatusCode']);
@@ -65,6 +67,7 @@ class ServiceProviderDeleteExceptionNormalizer implements DenormalizerInterface,
         }
         elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
             $object->setExceptionMessage(null);
+            unset($data['exceptionMessage']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -76,6 +79,7 @@ class ServiceProviderDeleteExceptionNormalizer implements DenormalizerInterface,
         }
         elseif (\array_key_exists('serviceProviderId', $data) && $data['serviceProviderId'] === null) {
             $object->setServiceProviderId(null);
+            unset($data['serviceProviderId']);
         }
         if (\array_key_exists('detailedErrorMessage', $data) && $data['detailedErrorMessage'] !== null) {
             $object->setDetailedErrorMessage($data['detailedErrorMessage']);
@@ -83,6 +87,7 @@ class ServiceProviderDeleteExceptionNormalizer implements DenormalizerInterface,
         }
         elseif (\array_key_exists('detailedErrorMessage', $data) && $data['detailedErrorMessage'] === null) {
             $object->setDetailedErrorMessage(null);
+            unset($data['detailedErrorMessage']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

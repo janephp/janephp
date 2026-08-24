@@ -47,6 +47,7 @@ class DateRangeAggregatorNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
+            unset($data['names']);
         }
         if (\array_key_exists('aggregators', $data) && $data['aggregators'] !== null) {
             $values = [];
@@ -58,6 +59,7 @@ class DateRangeAggregatorNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('aggregators', $data) && $data['aggregators'] === null) {
             $object->setAggregators(null);
+            unset($data['aggregators']);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $object->setFilter($data['filter']);
@@ -65,6 +67,7 @@ class DateRangeAggregatorNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
+            unset($data['filter']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);

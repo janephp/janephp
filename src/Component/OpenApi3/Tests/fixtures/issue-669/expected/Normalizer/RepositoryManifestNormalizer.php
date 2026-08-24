@@ -58,7 +58,11 @@ class RepositoryManifestNormalizer implements DenormalizerInterface, NormalizerI
             unset($data['size_bytes']);
         }
         if (\array_key_exists('updated_at', $data)) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUpdatedAt($date);
             unset($data['updated_at']);
         }
         if (\array_key_exists('tags', $data)) {

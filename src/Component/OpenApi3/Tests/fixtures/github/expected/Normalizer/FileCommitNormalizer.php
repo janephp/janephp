@@ -46,6 +46,7 @@ class FileCommitNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('content', $data) && $data['content'] === null) {
             $object->setContent(null);
+            unset($data['content']);
         }
         if (\array_key_exists('commit', $data)) {
             $object->setCommit($this->denormalizer->denormalize($data['commit'], \Github\Model\FileCommitCommit::class, 'json', $context));

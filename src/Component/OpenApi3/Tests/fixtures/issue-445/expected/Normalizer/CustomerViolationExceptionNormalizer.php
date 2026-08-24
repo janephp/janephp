@@ -47,6 +47,7 @@ class CustomerViolationExceptionNormalizer implements DenormalizerInterface, Nor
         }
         elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
             $object->setTraceId(null);
+            unset($data['traceId']);
         }
         if (\array_key_exists('traceJobId', $data) && $data['traceJobId'] !== null) {
             $object->setTraceJobId($data['traceJobId']);
@@ -54,6 +55,7 @@ class CustomerViolationExceptionNormalizer implements DenormalizerInterface, Nor
         }
         elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
             $object->setTraceJobId(null);
+            unset($data['traceJobId']);
         }
         if (\array_key_exists('httpStatusCode', $data)) {
             $object->setHttpStatusCode($data['httpStatusCode']);
@@ -65,6 +67,7 @@ class CustomerViolationExceptionNormalizer implements DenormalizerInterface, Nor
         }
         elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
             $object->setExceptionMessage(null);
+            unset($data['exceptionMessage']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -76,6 +79,7 @@ class CustomerViolationExceptionNormalizer implements DenormalizerInterface, Nor
         }
         elseif (\array_key_exists('expectedCustomerId', $data) && $data['expectedCustomerId'] === null) {
             $object->setExpectedCustomerId(null);
+            unset($data['expectedCustomerId']);
         }
         if (\array_key_exists('currentCustomerId', $data) && $data['currentCustomerId'] !== null) {
             $object->setCurrentCustomerId($data['currentCustomerId']);
@@ -83,6 +87,7 @@ class CustomerViolationExceptionNormalizer implements DenormalizerInterface, Nor
         }
         elseif (\array_key_exists('currentCustomerId', $data) && $data['currentCustomerId'] === null) {
             $object->setCurrentCustomerId(null);
+            unset($data['currentCustomerId']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

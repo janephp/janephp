@@ -55,6 +55,7 @@ class FieldOverwriteSingleTagboxNormalizer implements DenormalizerInterface, Nor
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
+            unset($data['id']);
         }
         if (\array_key_exists('required', $data)) {
             $object->setRequired($data['required']);
@@ -74,6 +75,7 @@ class FieldOverwriteSingleTagboxNormalizer implements DenormalizerInterface, Nor
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
+            unset($data['filter']);
         }
         if (\array_key_exists('overwriteFilter', $data)) {
             $object->setOverwriteFilter($data['overwriteFilter']);
@@ -85,6 +87,7 @@ class FieldOverwriteSingleTagboxNormalizer implements DenormalizerInterface, Nor
         }
         elseif (\array_key_exists('listItemCreateTemplate', $data) && $data['listItemCreateTemplate'] === null) {
             $object->setListItemCreateTemplate(null);
+            unset($data['listItemCreateTemplate']);
         }
         if (\array_key_exists('overwriteListItemCreateTemplate', $data)) {
             $object->setOverwriteListItemCreateTemplate($data['overwriteListItemCreateTemplate']);

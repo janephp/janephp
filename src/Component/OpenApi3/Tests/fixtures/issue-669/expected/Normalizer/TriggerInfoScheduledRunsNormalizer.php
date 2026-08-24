@@ -43,6 +43,7 @@ class TriggerInfoScheduledRunsNormalizer implements DenormalizerInterface, Norma
         }
         elseif (\array_key_exists('last_run_at', $data) && $data['last_run_at'] === null) {
             $object->setLastRunAt(null);
+            unset($data['last_run_at']);
         }
         if (\array_key_exists('next_run_at', $data) && $data['next_run_at'] !== null) {
             $object->setNextRunAt($data['next_run_at']);
@@ -50,6 +51,7 @@ class TriggerInfoScheduledRunsNormalizer implements DenormalizerInterface, Norma
         }
         elseif (\array_key_exists('next_run_at', $data) && $data['next_run_at'] === null) {
             $object->setNextRunAt(null);
+            unset($data['next_run_at']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

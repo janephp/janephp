@@ -45,7 +45,11 @@ class AuthenticationTokenNormalizer implements DenormalizerInterface, Normalizer
             unset($data['token']);
         }
         if (\array_key_exists('expires_at', $data)) {
-            $object->setExpiresAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['expires_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['expires_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['expires_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setExpiresAt($date);
             unset($data['expires_at']);
         }
         if (\array_key_exists('permissions', $data)) {
@@ -70,6 +74,7 @@ class AuthenticationTokenNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('single_file', $data) && $data['single_file'] === null) {
             $object->setSingleFile(null);
+            unset($data['single_file']);
         }
         if (\array_key_exists('repository_selection', $data)) {
             $object->setRepositorySelection($data['repository_selection']);

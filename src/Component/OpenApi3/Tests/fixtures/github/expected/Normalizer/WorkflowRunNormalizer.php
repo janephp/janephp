@@ -54,6 +54,7 @@ class WorkflowRunNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('head_branch', $data) && $data['head_branch'] === null) {
             $object->setHeadBranch(null);
+            unset($data['head_branch']);
         }
         if (\array_key_exists('head_sha', $data)) {
             $object->setHeadSha($data['head_sha']);
@@ -73,6 +74,7 @@ class WorkflowRunNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('status', $data) && $data['status'] === null) {
             $object->setStatus(null);
+            unset($data['status']);
         }
         if (\array_key_exists('conclusion', $data) && $data['conclusion'] !== null) {
             $object->setConclusion($data['conclusion']);
@@ -80,6 +82,7 @@ class WorkflowRunNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('conclusion', $data) && $data['conclusion'] === null) {
             $object->setConclusion(null);
+            unset($data['conclusion']);
         }
         if (\array_key_exists('workflow_id', $data)) {
             $object->setWorkflowId($data['workflow_id']);
@@ -103,20 +106,31 @@ class WorkflowRunNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('pull_requests', $data) && $data['pull_requests'] === null) {
             $object->setPullRequests(null);
+            unset($data['pull_requests']);
         }
         if (\array_key_exists('created_at', $data) && $data['created_at'] !== null) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date);
             unset($data['created_at']);
         }
         elseif (\array_key_exists('created_at', $data) && $data['created_at'] === null) {
             $object->setCreatedAt(null);
+            unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data) && $data['updated_at'] !== null) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
+            if (false === $date_1) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUpdatedAt($date_1);
             unset($data['updated_at']);
         }
         elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {
             $object->setUpdatedAt(null);
+            unset($data['updated_at']);
         }
         if (\array_key_exists('jobs_url', $data)) {
             $object->setJobsUrl($data['jobs_url']);

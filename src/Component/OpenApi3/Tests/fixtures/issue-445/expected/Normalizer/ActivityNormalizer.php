@@ -38,13 +38,21 @@ class ActivityNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('creationDate', $data) && $data['creationDate'] !== null) {
-            $object->setCreationDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['creationDate']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['creationDate']);
+            if (false === $date) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['creationDate'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreationDate($date);
         }
         elseif (\array_key_exists('creationDate', $data) && $data['creationDate'] === null) {
             $object->setCreationDate(null);
         }
         if (\array_key_exists('modificationDate', $data) && $data['modificationDate'] !== null) {
-            $object->setModificationDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['modificationDate']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['modificationDate']);
+            if (false === $date_1) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['modificationDate'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setModificationDate($date_1);
         }
         elseif (\array_key_exists('modificationDate', $data) && $data['modificationDate'] === null) {
             $object->setModificationDate(null);

@@ -30,7 +30,7 @@ class InteractionsSetRestrictionsForRepo extends \Github\Runtime\Client\BaseEndp
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \Github\Model\ReposOwnerRepoInteractionLimitsPutBody) {
-            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+            return [['Content-Type' => ['application/json']], \Github\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
         }
         return [[], null];
     }

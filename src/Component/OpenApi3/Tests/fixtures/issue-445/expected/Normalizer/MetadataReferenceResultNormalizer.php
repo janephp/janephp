@@ -62,6 +62,7 @@ class MetadataReferenceResultNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
             $object->setPageToken(null);
+            unset($data['pageToken']);
         }
         if (\array_key_exists('isReferencedByRestrictedItem', $data) && $data['isReferencedByRestrictedItem'] !== null) {
             $object->setIsReferencedByRestrictedItem($data['isReferencedByRestrictedItem']);
@@ -69,6 +70,7 @@ class MetadataReferenceResultNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('isReferencedByRestrictedItem', $data) && $data['isReferencedByRestrictedItem'] === null) {
             $object->setIsReferencedByRestrictedItem(null);
+            unset($data['isReferencedByRestrictedItem']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

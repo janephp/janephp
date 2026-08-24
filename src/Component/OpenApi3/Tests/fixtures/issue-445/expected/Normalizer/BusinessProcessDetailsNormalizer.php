@@ -57,6 +57,7 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('referenceId', $data) && $data['referenceId'] === null) {
             $object->setReferenceId(null);
+            unset($data['referenceId']);
         }
         if (\array_key_exists('referenceDocType', $data) && $data['referenceDocType'] !== null) {
             $object->setReferenceDocType($data['referenceDocType']);
@@ -64,6 +65,7 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('referenceDocType', $data) && $data['referenceDocType'] === null) {
             $object->setReferenceDocType(null);
+            unset($data['referenceDocType']);
         }
         if (\array_key_exists('supportsCancellation', $data)) {
             $object->setSupportsCancellation($data['supportsCancellation']);
@@ -78,11 +80,19 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
             unset($data['lifeCycle']);
         }
         if (\array_key_exists('startDate', $data)) {
-            $object->setStartDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['startDate']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['startDate']);
+            if (false === $date) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['startDate'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setStartDate($date);
             unset($data['startDate']);
         }
         if (\array_key_exists('endDate', $data)) {
-            $object->setEndDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['endDate']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['endDate']);
+            if (false === $date_1) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['endDate'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setEndDate($date_1);
             unset($data['endDate']);
         }
         if (\array_key_exists('finished', $data)) {
@@ -99,6 +109,7 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('stateHistory', $data) && $data['stateHistory'] === null) {
             $object->setStateHistory(null);
+            unset($data['stateHistory']);
         }
         if (\array_key_exists('currentState', $data) && $data['currentState'] !== null) {
             $object->setCurrentState($data['currentState']);
@@ -106,13 +117,19 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('currentState', $data) && $data['currentState'] === null) {
             $object->setCurrentState(null);
+            unset($data['currentState']);
         }
         if (\array_key_exists('lastReportedProgress', $data) && $data['lastReportedProgress'] !== null) {
-            $object->setLastReportedProgress(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastReportedProgress']));
+            $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastReportedProgress']);
+            if (false === $date_2) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['lastReportedProgress'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setLastReportedProgress($date_2);
             unset($data['lastReportedProgress']);
         }
         elseif (\array_key_exists('lastReportedProgress', $data) && $data['lastReportedProgress'] === null) {
             $object->setLastReportedProgress(null);
+            unset($data['lastReportedProgress']);
         }
         if (\array_key_exists('continuationBusinessProcessId', $data) && $data['continuationBusinessProcessId'] !== null) {
             $object->setContinuationBusinessProcessId($data['continuationBusinessProcessId']);
@@ -120,6 +137,7 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('continuationBusinessProcessId', $data) && $data['continuationBusinessProcessId'] === null) {
             $object->setContinuationBusinessProcessId(null);
+            unset($data['continuationBusinessProcessId']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -131,6 +149,7 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('details', $data) && $data['details'] === null) {
             $object->setDetails(null);
+            unset($data['details']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

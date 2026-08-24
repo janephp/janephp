@@ -49,6 +49,7 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
             $object->setSearchString(null);
+            unset($data['searchString']);
         }
         if (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] !== null) {
             $values = [];
@@ -60,6 +61,7 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] === null) {
             $object->setSearchBehaviors(null);
+            unset($data['searchBehaviors']);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $object->setFilter($data['filter']);
@@ -67,6 +69,7 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
+            unset($data['filter']);
         }
         if (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] !== null) {
             $values_1 = [];
@@ -78,6 +81,7 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] === null) {
             $object->setAggregationFilters(null);
+            unset($data['aggregationFilters']);
         }
         if (\array_key_exists('includeAllSchemaChildren', $data)) {
             $object->setIncludeAllSchemaChildren($data['includeAllSchemaChildren']);
@@ -97,6 +101,7 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('schemaIds', $data) && $data['schemaIds'] === null) {
             $object->setSchemaIds(null);
+            unset($data['schemaIds']);
         }
         if (\array_key_exists('searchLanguages', $data) && $data['searchLanguages'] !== null) {
             $values_3 = [];
@@ -108,6 +113,7 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('searchLanguages', $data) && $data['searchLanguages'] === null) {
             $object->setSearchLanguages(null);
+            unset($data['searchLanguages']);
         }
         if (\array_key_exists('lifeCycleFilter', $data)) {
             $object->setLifeCycleFilter($data['lifeCycleFilter']);
@@ -123,6 +129,7 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('sort', $data) && $data['sort'] === null) {
             $object->setSort(null);
+            unset($data['sort']);
         }
         if (\array_key_exists('limit', $data)) {
             $object->setLimit($data['limit']);
@@ -134,6 +141,7 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
             $object->setPageToken(null);
+            unset($data['pageToken']);
         }
         if (\array_key_exists('debugMode', $data)) {
             $object->setDebugMode($data['debugMode']);
@@ -149,6 +157,7 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('resolveBehaviors', $data) && $data['resolveBehaviors'] === null) {
             $object->setResolveBehaviors(null);
+            unset($data['resolveBehaviors']);
         }
         if (\array_key_exists('aggregators', $data) && $data['aggregators'] !== null) {
             $values_6 = [];
@@ -160,6 +169,7 @@ class ListItemSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('aggregators', $data) && $data['aggregators'] === null) {
             $object->setAggregators(null);
+            unset($data['aggregators']);
         }
         foreach ($data as $key => $value_7) {
             if (preg_match('/.*/', (string) $key)) {

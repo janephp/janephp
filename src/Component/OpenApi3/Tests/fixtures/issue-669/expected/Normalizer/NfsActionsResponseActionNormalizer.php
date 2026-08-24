@@ -50,7 +50,11 @@ class NfsActionsResponseActionNormalizer implements DenormalizerInterface, Norma
             unset($data['resource_type']);
         }
         if (\array_key_exists('started_at', $data)) {
-            $object->setStartedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['started_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['started_at']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['started_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setStartedAt($date);
             unset($data['started_at']);
         }
         if (\array_key_exists('status', $data)) {

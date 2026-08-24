@@ -47,6 +47,7 @@ class DocumentVersionNotFoundExceptionNormalizer implements DenormalizerInterfac
         }
         elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
             $object->setTraceId(null);
+            unset($data['traceId']);
         }
         if (\array_key_exists('traceJobId', $data) && $data['traceJobId'] !== null) {
             $object->setTraceJobId($data['traceJobId']);
@@ -54,6 +55,7 @@ class DocumentVersionNotFoundExceptionNormalizer implements DenormalizerInterfac
         }
         elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
             $object->setTraceJobId(null);
+            unset($data['traceJobId']);
         }
         if (\array_key_exists('httpStatusCode', $data)) {
             $object->setHttpStatusCode($data['httpStatusCode']);
@@ -65,6 +67,7 @@ class DocumentVersionNotFoundExceptionNormalizer implements DenormalizerInterfac
         }
         elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
             $object->setExceptionMessage(null);
+            unset($data['exceptionMessage']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -76,6 +79,7 @@ class DocumentVersionNotFoundExceptionNormalizer implements DenormalizerInterfac
         }
         elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
             $object->setCustomerId(null);
+            unset($data['customerId']);
         }
         if (\array_key_exists('customerAlias', $data) && $data['customerAlias'] !== null) {
             $object->setCustomerAlias($data['customerAlias']);
@@ -83,6 +87,7 @@ class DocumentVersionNotFoundExceptionNormalizer implements DenormalizerInterfac
         }
         elseif (\array_key_exists('customerAlias', $data) && $data['customerAlias'] === null) {
             $object->setCustomerAlias(null);
+            unset($data['customerAlias']);
         }
         if (\array_key_exists('userId', $data) && $data['userId'] !== null) {
             $object->setUserId($data['userId']);
@@ -90,6 +95,7 @@ class DocumentVersionNotFoundExceptionNormalizer implements DenormalizerInterfac
         }
         elseif (\array_key_exists('userId', $data) && $data['userId'] === null) {
             $object->setUserId(null);
+            unset($data['userId']);
         }
         if (\array_key_exists('reference', $data) && $data['reference'] !== null) {
             $object->setReference($data['reference']);
@@ -97,6 +103,7 @@ class DocumentVersionNotFoundExceptionNormalizer implements DenormalizerInterfac
         }
         elseif (\array_key_exists('reference', $data) && $data['reference'] === null) {
             $object->setReference(null);
+            unset($data['reference']);
         }
         if (\array_key_exists('documentType', $data) && $data['documentType'] !== null) {
             $object->setDocumentType($data['documentType']);
@@ -104,6 +111,7 @@ class DocumentVersionNotFoundExceptionNormalizer implements DenormalizerInterfac
         }
         elseif (\array_key_exists('documentType', $data) && $data['documentType'] === null) {
             $object->setDocumentType(null);
+            unset($data['documentType']);
         }
         if (\array_key_exists('documentId', $data) && $data['documentId'] !== null) {
             $object->setDocumentId($data['documentId']);
@@ -111,6 +119,7 @@ class DocumentVersionNotFoundExceptionNormalizer implements DenormalizerInterfac
         }
         elseif (\array_key_exists('documentId', $data) && $data['documentId'] === null) {
             $object->setDocumentId(null);
+            unset($data['documentId']);
         }
         if (\array_key_exists('documentVersion', $data) && $data['documentVersion'] !== null) {
             $object->setDocumentVersion($data['documentVersion']);
@@ -118,6 +127,7 @@ class DocumentVersionNotFoundExceptionNormalizer implements DenormalizerInterfac
         }
         elseif (\array_key_exists('documentVersion', $data) && $data['documentVersion'] === null) {
             $object->setDocumentVersion(null);
+            unset($data['documentVersion']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -53,7 +53,11 @@ class LiveStreamNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setScopeType(null);
         }
         if (\array_key_exists('timestamp', $data)) {
-            $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']);
+            if (false === $date) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setTimestamp($date);
         }
         if (\array_key_exists('traceJob', $data) && $data['traceJob'] !== null) {
             $object->setTraceJob($data['traceJob']);

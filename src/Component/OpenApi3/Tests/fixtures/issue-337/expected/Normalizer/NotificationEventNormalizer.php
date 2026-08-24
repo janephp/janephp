@@ -55,7 +55,11 @@ class NotificationEventNormalizer implements DenormalizerInterface, NormalizerIn
             unset($data['eventId']);
         }
         if (\array_key_exists('eventDate', $data)) {
-            $object->setEventDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['eventDate']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['eventDate']);
+            if (false === $date) {
+                throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['eventDate'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setEventDate($date);
             unset($data['eventDate']);
         }
         if (\array_key_exists('newValue', $data)) {

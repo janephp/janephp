@@ -46,7 +46,11 @@ class V2FirewallsFirewallIdPutBodyNormalizer implements DenormalizerInterface, N
             unset($data['status']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date);
             unset($data['created_at']);
         }
         if (\array_key_exists('pending_changes', $data)) {
@@ -71,6 +75,7 @@ class V2FirewallsFirewallIdPutBodyNormalizer implements DenormalizerInterface, N
         }
         elseif (\array_key_exists('droplet_ids', $data) && $data['droplet_ids'] === null) {
             $object->setDropletIds(null);
+            unset($data['droplet_ids']);
         }
         if (\array_key_exists('tags', $data)) {
             $values_2 = [];
@@ -90,6 +95,7 @@ class V2FirewallsFirewallIdPutBodyNormalizer implements DenormalizerInterface, N
         }
         elseif (\array_key_exists('inbound_rules', $data) && $data['inbound_rules'] === null) {
             $object->setInboundRules(null);
+            unset($data['inbound_rules']);
         }
         if (\array_key_exists('outbound_rules', $data) && $data['outbound_rules'] !== null) {
             $values_4 = [];
@@ -101,6 +107,7 @@ class V2FirewallsFirewallIdPutBodyNormalizer implements DenormalizerInterface, N
         }
         elseif (\array_key_exists('outbound_rules', $data) && $data['outbound_rules'] === null) {
             $object->setOutboundRules(null);
+            unset($data['outbound_rules']);
         }
         foreach ($data as $key => $value_5) {
             if (preg_match('/.*/', (string) $key)) {

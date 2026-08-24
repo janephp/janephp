@@ -58,6 +58,7 @@ class CheckAnnotationNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('start_column', $data) && $data['start_column'] === null) {
             $object->setStartColumn(null);
+            unset($data['start_column']);
         }
         if (\array_key_exists('end_column', $data) && $data['end_column'] !== null) {
             $object->setEndColumn($data['end_column']);
@@ -65,6 +66,7 @@ class CheckAnnotationNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('end_column', $data) && $data['end_column'] === null) {
             $object->setEndColumn(null);
+            unset($data['end_column']);
         }
         if (\array_key_exists('annotation_level', $data) && $data['annotation_level'] !== null) {
             $object->setAnnotationLevel($data['annotation_level']);
@@ -72,6 +74,7 @@ class CheckAnnotationNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('annotation_level', $data) && $data['annotation_level'] === null) {
             $object->setAnnotationLevel(null);
+            unset($data['annotation_level']);
         }
         if (\array_key_exists('title', $data) && $data['title'] !== null) {
             $object->setTitle($data['title']);
@@ -79,6 +82,7 @@ class CheckAnnotationNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('title', $data) && $data['title'] === null) {
             $object->setTitle(null);
+            unset($data['title']);
         }
         if (\array_key_exists('message', $data) && $data['message'] !== null) {
             $object->setMessage($data['message']);
@@ -86,6 +90,7 @@ class CheckAnnotationNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('message', $data) && $data['message'] === null) {
             $object->setMessage(null);
+            unset($data['message']);
         }
         if (\array_key_exists('raw_details', $data) && $data['raw_details'] !== null) {
             $object->setRawDetails($data['raw_details']);
@@ -93,6 +98,7 @@ class CheckAnnotationNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('raw_details', $data) && $data['raw_details'] === null) {
             $object->setRawDetails(null);
+            unset($data['raw_details']);
         }
         if (\array_key_exists('blob_href', $data)) {
             $object->setBlobHref($data['blob_href']);

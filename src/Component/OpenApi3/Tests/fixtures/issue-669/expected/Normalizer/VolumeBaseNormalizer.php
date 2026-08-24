@@ -51,6 +51,7 @@ class VolumeBaseNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('droplet_ids', $data) && $data['droplet_ids'] === null) {
             $object->setDropletIds(null);
+            unset($data['droplet_ids']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
@@ -78,6 +79,7 @@ class VolumeBaseNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
             $object->setTags(null);
+            unset($data['tags']);
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

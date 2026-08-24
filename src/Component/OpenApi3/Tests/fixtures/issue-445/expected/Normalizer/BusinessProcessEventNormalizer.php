@@ -38,7 +38,11 @@ class BusinessProcessEventNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('timestamp', $data)) {
-            $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']);
+            if (false === $date) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setTimestamp($date);
             unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
@@ -51,6 +55,7 @@ class BusinessProcessEventNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('businessProcessId', $data) && $data['businessProcessId'] === null) {
             $object->setBusinessProcessId(null);
+            unset($data['businessProcessId']);
         }
         if (\array_key_exists('lifeCycle', $data) && $data['lifeCycle'] !== null) {
             $object->setLifeCycle($data['lifeCycle']);
@@ -58,6 +63,7 @@ class BusinessProcessEventNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('lifeCycle', $data) && $data['lifeCycle'] === null) {
             $object->setLifeCycle(null);
+            unset($data['lifeCycle']);
         }
         if (\array_key_exists('state', $data) && $data['state'] !== null) {
             $object->setState($data['state']);
@@ -65,6 +71,7 @@ class BusinessProcessEventNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('state', $data) && $data['state'] === null) {
             $object->setState(null);
+            unset($data['state']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

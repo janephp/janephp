@@ -58,6 +58,7 @@ class ReposOwnerRepoGitTreesPostBodyTreeItemNormalizer implements DenormalizerIn
         }
         elseif (\array_key_exists('sha', $data) && $data['sha'] === null) {
             $object->setSha(null);
+            unset($data['sha']);
         }
         if (\array_key_exists('content', $data)) {
             $object->setContent($data['content']);

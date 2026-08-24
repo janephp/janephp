@@ -65,7 +65,11 @@ class OutputNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setDetail(null);
         }
         if (\array_key_exists('backupTimestamp', $data) && $data['backupTimestamp'] !== null) {
-            $object->setBackupTimestamp(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['backupTimestamp']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['backupTimestamp']);
+            if (false === $date) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['backupTimestamp'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setBackupTimestamp($date);
         }
         elseif (\array_key_exists('backupTimestamp', $data) && $data['backupTimestamp'] === null) {
             $object->setBackupTimestamp(null);

@@ -57,6 +57,7 @@ class LicenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         elseif (\array_key_exists('spdx_id', $data) && $data['spdx_id'] === null) {
             $object->setSpdxId(null);
+            unset($data['spdx_id']);
         }
         if (\array_key_exists('url', $data) && $data['url'] !== null) {
             $object->setUrl($data['url']);
@@ -64,6 +65,7 @@ class LicenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         elseif (\array_key_exists('url', $data) && $data['url'] === null) {
             $object->setUrl(null);
+            unset($data['url']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);

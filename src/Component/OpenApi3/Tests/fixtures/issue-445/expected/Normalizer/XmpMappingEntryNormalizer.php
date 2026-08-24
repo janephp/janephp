@@ -66,6 +66,7 @@ class XmpMappingEntryNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('configuration', $data) && $data['configuration'] === null) {
             $object->setConfiguration(null);
+            unset($data['configuration']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

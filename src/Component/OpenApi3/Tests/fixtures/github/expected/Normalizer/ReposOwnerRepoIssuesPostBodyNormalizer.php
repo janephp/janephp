@@ -54,6 +54,7 @@ class ReposOwnerRepoIssuesPostBodyNormalizer implements DenormalizerInterface, N
         }
         elseif (\array_key_exists('assignee', $data) && $data['assignee'] === null) {
             $object->setAssignee(null);
+            unset($data['assignee']);
         }
         if (\array_key_exists('milestone', $data) && $data['milestone'] !== null) {
             $object->setMilestone($data['milestone']);
@@ -61,6 +62,7 @@ class ReposOwnerRepoIssuesPostBodyNormalizer implements DenormalizerInterface, N
         }
         elseif (\array_key_exists('milestone', $data) && $data['milestone'] === null) {
             $object->setMilestone(null);
+            unset($data['milestone']);
         }
         if (\array_key_exists('labels', $data)) {
             $values = [];

@@ -105,6 +105,18 @@ class ModelFooooooo
      */
     protected $uuidFormat;
     /**
+     * @var \DateTime
+     */
+    protected $dateFormat;
+    /**
+     * @var \DateTime|null
+     */
+    protected $dateNullableFormat;
+    /**
+     * @var \DateTime
+     */
+    protected $dateTimeFormat;
+    /**
      * @var FooFooFoo
      */
     protected $foo;
@@ -528,6 +540,60 @@ class ModelFooooooo
     {
         $this->initialized['uuidFormat'] = true;
         $this->uuidFormat = $uuidFormat;
+        return $this;
+    }
+    /**
+     * @return \DateTime
+     */
+    public function getDateFormat(): \DateTime
+    {
+        return $this->dateFormat;
+    }
+    /**
+     * @param \DateTime $dateFormat
+     *
+     * @return self
+     */
+    public function setDateFormat(\DateTime $dateFormat): self
+    {
+        $this->initialized['dateFormat'] = true;
+        $this->dateFormat = $dateFormat;
+        return $this;
+    }
+    /**
+     * @return \DateTime|null
+     */
+    public function getDateNullableFormat(): ?\DateTime
+    {
+        return $this->dateNullableFormat;
+    }
+    /**
+     * @param \DateTime|null $dateNullableFormat
+     *
+     * @return self
+     */
+    public function setDateNullableFormat(?\DateTime $dateNullableFormat): self
+    {
+        $this->initialized['dateNullableFormat'] = true;
+        $this->dateNullableFormat = $dateNullableFormat;
+        return $this;
+    }
+    /**
+     * @return \DateTime
+     */
+    public function getDateTimeFormat(): \DateTime
+    {
+        return $this->dateTimeFormat;
+    }
+    /**
+     * @param \DateTime $dateTimeFormat
+     *
+     * @return self
+     */
+    public function setDateTimeFormat(\DateTime $dateTimeFormat): self
+    {
+        $this->initialized['dateTimeFormat'] = true;
+        $this->dateTimeFormat = $dateTimeFormat;
         return $this;
     }
     /**

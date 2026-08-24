@@ -59,6 +59,7 @@ class DomainRecordNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('priority', $data) && $data['priority'] === null) {
             $object->setPriority(null);
+            unset($data['priority']);
         }
         if (\array_key_exists('port', $data) && $data['port'] !== null) {
             $object->setPort($data['port']);
@@ -66,6 +67,7 @@ class DomainRecordNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('port', $data) && $data['port'] === null) {
             $object->setPort(null);
+            unset($data['port']);
         }
         if (\array_key_exists('ttl', $data)) {
             $object->setTtl($data['ttl']);
@@ -77,6 +79,7 @@ class DomainRecordNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('weight', $data) && $data['weight'] === null) {
             $object->setWeight(null);
+            unset($data['weight']);
         }
         if (\array_key_exists('flags', $data) && $data['flags'] !== null) {
             $object->setFlags($data['flags']);
@@ -84,6 +87,7 @@ class DomainRecordNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('flags', $data) && $data['flags'] === null) {
             $object->setFlags(null);
+            unset($data['flags']);
         }
         if (\array_key_exists('tag', $data) && $data['tag'] !== null) {
             $object->setTag($data['tag']);
@@ -91,6 +95,7 @@ class DomainRecordNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('tag', $data) && $data['tag'] === null) {
             $object->setTag(null);
+            unset($data['tag']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

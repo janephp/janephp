@@ -110,6 +110,7 @@ class GpgKeySubkeysItemNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('expires_at', $data) && $data['expires_at'] === null) {
             $object->setExpiresAt(null);
+            unset($data['expires_at']);
         }
         if (\array_key_exists('raw_key', $data) && $data['raw_key'] !== null) {
             $object->setRawKey($data['raw_key']);
@@ -117,6 +118,7 @@ class GpgKeySubkeysItemNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('raw_key', $data) && $data['raw_key'] === null) {
             $object->setRawKey(null);
+            unset($data['raw_key']);
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

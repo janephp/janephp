@@ -58,6 +58,7 @@ class IssueCommentPerformedViaGithubAppNormalizer implements DenormalizerInterfa
         }
         elseif (\array_key_exists('owner', $data) && $data['owner'] === null) {
             $object->setOwner(null);
+            unset($data['owner']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
@@ -69,6 +70,7 @@ class IssueCommentPerformedViaGithubAppNormalizer implements DenormalizerInterfa
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+            unset($data['description']);
         }
         if (\array_key_exists('external_url', $data)) {
             $object->setExternalUrl($data['external_url']);
@@ -79,11 +81,19 @@ class IssueCommentPerformedViaGithubAppNormalizer implements DenormalizerInterfa
             unset($data['html_url']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date);
             unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
+            if (false === $date_1) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUpdatedAt($date_1);
             unset($data['updated_at']);
         }
         if (\array_key_exists('permissions', $data)) {

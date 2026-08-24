@@ -62,6 +62,7 @@ class PullRequestSimpleHeadNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
+            unset($data['user']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

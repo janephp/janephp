@@ -62,6 +62,7 @@ class BlobNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         elseif (\array_key_exists('size', $data) && $data['size'] === null) {
             $object->setSize(null);
+            unset($data['size']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);

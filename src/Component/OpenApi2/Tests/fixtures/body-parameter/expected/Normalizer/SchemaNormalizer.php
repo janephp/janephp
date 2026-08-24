@@ -44,7 +44,11 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setStringProperty($data['stringProperty']);
         }
         if (\array_key_exists('dateProperty', $data)) {
-            $object->setDateProperty(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateProperty']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateProperty']);
+            if (false === $date) {
+                throw new \Jane\Component\OpenApi2\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['dateProperty'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setDateProperty($date);
         }
         if (\array_key_exists('integerProperty', $data)) {
             $object->setIntegerProperty($data['integerProperty']);

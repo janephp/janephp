@@ -61,6 +61,7 @@ class OutputFormatNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('sourceOutputFormats', $data) && $data['sourceOutputFormats'] === null) {
             $object->setSourceOutputFormats(null);
+            unset($data['sourceOutputFormats']);
         }
         if (\array_key_exists('format', $data) && $data['format'] !== null) {
             $object->setFormat($data['format']);
@@ -68,6 +69,7 @@ class OutputFormatNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('format', $data) && $data['format'] === null) {
             $object->setFormat(null);
+            unset($data['format']);
         }
         if (\array_key_exists('names', $data)) {
             $object->setNames($data['names']);
@@ -83,6 +85,7 @@ class OutputFormatNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('downloadFileNamePatterns', $data) && $data['downloadFileNamePatterns'] === null) {
             $object->setDownloadFileNamePatterns(null);
+            unset($data['downloadFileNamePatterns']);
         }
         if (\array_key_exists('viewForAll', $data)) {
             $object->setViewForAll($data['viewForAll']);
@@ -98,6 +101,7 @@ class OutputFormatNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
+            unset($data['id']);
         }
         if (\array_key_exists('system', $data)) {
             $object->setSystem($data['system']);

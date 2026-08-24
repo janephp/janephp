@@ -46,6 +46,7 @@ class ContentFileLinksNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('git', $data) && $data['git'] === null) {
             $object->setGit(null);
+            unset($data['git']);
         }
         if (\array_key_exists('html', $data) && $data['html'] !== null) {
             $object->setHtml($data['html']);
@@ -53,6 +54,7 @@ class ContentFileLinksNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('html', $data) && $data['html'] === null) {
             $object->setHtml(null);
+            unset($data['html']);
         }
         if (\array_key_exists('self', $data)) {
             $object->setSelf($data['self']);

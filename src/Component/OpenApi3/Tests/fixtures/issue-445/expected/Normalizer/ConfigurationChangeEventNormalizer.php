@@ -38,7 +38,11 @@ class ConfigurationChangeEventNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('timestamp', $data)) {
-            $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']);
+            if (false === $date) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setTimestamp($date);
             unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
@@ -51,6 +55,7 @@ class ConfigurationChangeEventNormalizer implements DenormalizerInterface, Norma
         }
         elseif (\array_key_exists('documentType', $data) && $data['documentType'] === null) {
             $object->setDocumentType(null);
+            unset($data['documentType']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -43,6 +43,7 @@ class UnassignTagboxItemsActionNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
+            unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -54,6 +55,7 @@ class UnassignTagboxItemsActionNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('path', $data) && $data['path'] === null) {
             $object->setPath(null);
+            unset($data['path']);
         }
         if (\array_key_exists('fieldId', $data) && $data['fieldId'] !== null) {
             $object->setFieldId($data['fieldId']);
@@ -61,6 +63,7 @@ class UnassignTagboxItemsActionNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('fieldId', $data) && $data['fieldId'] === null) {
             $object->setFieldId(null);
+            unset($data['fieldId']);
         }
         if (\array_key_exists('refIds', $data) && $data['refIds'] !== null) {
             $object->setRefIds($data['refIds']);
@@ -68,6 +71,7 @@ class UnassignTagboxItemsActionNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('refIds', $data) && $data['refIds'] === null) {
             $object->setRefIds(null);
+            unset($data['refIds']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

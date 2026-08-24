@@ -51,6 +51,7 @@ class VolumeFullNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('droplet_ids', $data) && $data['droplet_ids'] === null) {
             $object->setDropletIds(null);
+            unset($data['droplet_ids']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
@@ -78,6 +79,7 @@ class VolumeFullNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
             $object->setTags(null);
+            unset($data['tags']);
         }
         if (\array_key_exists('region', $data)) {
             $object->setRegion($this->denormalizer->denormalize($data['region'], \Jane\Generated\DigitalOcean\Model\VolumeFullRegion::class, 'json', $context));

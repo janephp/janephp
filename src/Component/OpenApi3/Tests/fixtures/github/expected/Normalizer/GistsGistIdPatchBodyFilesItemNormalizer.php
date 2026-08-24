@@ -50,6 +50,7 @@ class GistsGistIdPatchBodyFilesItemNormalizer implements DenormalizerInterface, 
         }
         elseif (\array_key_exists('filename', $data) && $data['filename'] === null) {
             $object->setFilename(null);
+            unset($data['filename']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

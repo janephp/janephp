@@ -53,6 +53,7 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         elseif (\array_key_exists('type', $data) && $data['type'] === null) {
             $object->setType(null);
+            unset($data['type']);
         }
         if (\array_key_exists('actor', $data)) {
             $object->setActor($this->denormalizer->denormalize($data['actor'], \Github\Model\Actor::class, 'json', $context));
@@ -75,11 +76,16 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             unset($data['public']);
         }
         if (\array_key_exists('created_at', $data) && $data['created_at'] !== null) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date);
             unset($data['created_at']);
         }
         elseif (\array_key_exists('created_at', $data) && $data['created_at'] === null) {
             $object->setCreatedAt(null);
+            unset($data['created_at']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

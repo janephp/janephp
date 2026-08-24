@@ -70,6 +70,7 @@ class ContentTreeNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('git_url', $data) && $data['git_url'] === null) {
             $object->setGitUrl(null);
+            unset($data['git_url']);
         }
         if (\array_key_exists('html_url', $data) && $data['html_url'] !== null) {
             $object->setHtmlUrl($data['html_url']);
@@ -77,6 +78,7 @@ class ContentTreeNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('html_url', $data) && $data['html_url'] === null) {
             $object->setHtmlUrl(null);
+            unset($data['html_url']);
         }
         if (\array_key_exists('download_url', $data) && $data['download_url'] !== null) {
             $object->setDownloadUrl($data['download_url']);
@@ -84,6 +86,7 @@ class ContentTreeNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('download_url', $data) && $data['download_url'] === null) {
             $object->setDownloadUrl(null);
+            unset($data['download_url']);
         }
         if (\array_key_exists('entries', $data)) {
             $values = [];

@@ -108,6 +108,10 @@ abstract class BaseEndpoint implements Endpoint
     {
         return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
     }
+    protected function getSerializedObjectBody(SerializerInterface $serializer): array
+    {
+        return [['Content-Type' => ['application/json']], JsonPayload::encode($serializer, $this->body)];
+    }
     private function encodeValue(string $key, mixed $value, bool $allowReserved): string
     {
         return match (true) {

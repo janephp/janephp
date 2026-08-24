@@ -50,11 +50,19 @@ class ApiResourceUsageNormalizer implements DenormalizerInterface, NormalizerInt
             unset($data['resource_uuid']);
         }
         if (\array_key_exists('start', $data)) {
-            $object->setStart(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['start']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['start']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['start'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setStart($date);
             unset($data['start']);
         }
         if (\array_key_exists('stop', $data)) {
-            $object->setStop(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['stop']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['stop']);
+            if (false === $date_1) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['stop'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setStop($date_1);
             unset($data['stop']);
         }
         foreach ($data as $key => $value_1) {

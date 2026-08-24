@@ -50,6 +50,7 @@ class MetadataReferencesPagingRequestNormalizer implements DenormalizerInterface
         }
         elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
             $object->setPageToken(null);
+            unset($data['pageToken']);
         }
         if (\array_key_exists('fetchReferencedByRestrictedItem', $data)) {
             $object->setFetchReferencedByRestrictedItem($data['fetchReferencedByRestrictedItem']);

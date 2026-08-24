@@ -54,7 +54,11 @@ class ByoipPrefixResourceNormalizer implements DenormalizerInterface, Normalizer
             unset($data['resource']);
         }
         if (\array_key_exists('assigned_at', $data)) {
-            $object->setAssignedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['assigned_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['assigned_at']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['assigned_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setAssignedAt($date);
             unset($data['assigned_at']);
         }
         foreach ($data as $key => $value) {

@@ -45,11 +45,19 @@ class ScimUserMetaNormalizer implements DenormalizerInterface, NormalizerInterfa
             unset($data['resourceType']);
         }
         if (\array_key_exists('created', $data)) {
-            $object->setCreated(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['created'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreated($date);
             unset($data['created']);
         }
         if (\array_key_exists('lastModified', $data)) {
-            $object->setLastModified(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastModified']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastModified']);
+            if (false === $date_1) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['lastModified'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setLastModified($date_1);
             unset($data['lastModified']);
         }
         if (\array_key_exists('location', $data)) {

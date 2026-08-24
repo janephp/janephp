@@ -46,6 +46,7 @@ class OutputDataAudioNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('fileExtension', $data) && $data['fileExtension'] === null) {
             $object->setFileExtension(null);
+            unset($data['fileExtension']);
         }
         if (\array_key_exists('filePath', $data) && $data['filePath'] !== null) {
             $object->setFilePath($data['filePath']);
@@ -53,6 +54,7 @@ class OutputDataAudioNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('filePath', $data) && $data['filePath'] === null) {
             $object->setFilePath(null);
+            unset($data['filePath']);
         }
         if (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] !== null) {
             $object->setFileSizeInBytes($data['fileSizeInBytes']);
@@ -60,6 +62,7 @@ class OutputDataAudioNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] === null) {
             $object->setFileSizeInBytes(null);
+            unset($data['fileSizeInBytes']);
         }
         if (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] !== null) {
             $object->setSha1Hash($data['sha1Hash']);
@@ -67,6 +70,7 @@ class OutputDataAudioNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] === null) {
             $object->setSha1Hash(null);
+            unset($data['sha1Hash']);
         }
         if (\array_key_exists('originalFileName', $data) && $data['originalFileName'] !== null) {
             $object->setOriginalFileName($data['originalFileName']);
@@ -74,6 +78,7 @@ class OutputDataAudioNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('originalFileName', $data) && $data['originalFileName'] === null) {
             $object->setOriginalFileName(null);
+            unset($data['originalFileName']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -85,6 +90,7 @@ class OutputDataAudioNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('durationInSeconds', $data) && $data['durationInSeconds'] === null) {
             $object->setDurationInSeconds(null);
+            unset($data['durationInSeconds']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
