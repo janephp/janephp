@@ -78,7 +78,11 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setAtmosphere($values);
         }
         if (\array_key_exists('discoveredAt', $data)) {
-            $object->setDiscoveredAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['discoveredAt']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['discoveredAt']);
+            if (false === $date) {
+                throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['discoveredAt'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setDiscoveredAt($date);
         }
         if (\array_key_exists('image', $data) && $data['image'] !== null) {
             $value_2 = $data['image'];
@@ -110,7 +114,11 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setTags($values_2);
         }
         if (\array_key_exists('lastUpdated', $data)) {
-            $object->setLastUpdated(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastUpdated']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastUpdated']);
+            if (false === $date_1) {
+                throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['lastUpdated'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setLastUpdated($date_1);
         }
         if (\array_key_exists('successCallbackUrl', $data)) {
             $object->setSuccessCallbackUrl($data['successCallbackUrl']);

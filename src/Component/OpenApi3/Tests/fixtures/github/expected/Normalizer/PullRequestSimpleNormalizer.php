@@ -116,6 +116,7 @@ class PullRequestSimpleNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
+            unset($data['user']);
         }
         if (\array_key_exists('body', $data) && $data['body'] !== null) {
             $object->setBody($data['body']);
@@ -123,6 +124,7 @@ class PullRequestSimpleNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('body', $data) && $data['body'] === null) {
             $object->setBody(null);
+            unset($data['body']);
         }
         if (\array_key_exists('labels', $data)) {
             $values = [];
@@ -138,6 +140,7 @@ class PullRequestSimpleNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('milestone', $data) && $data['milestone'] === null) {
             $object->setMilestone(null);
+            unset($data['milestone']);
         }
         if (\array_key_exists('active_lock_reason', $data) && $data['active_lock_reason'] !== null) {
             $object->setActiveLockReason($data['active_lock_reason']);
@@ -145,28 +148,47 @@ class PullRequestSimpleNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('active_lock_reason', $data) && $data['active_lock_reason'] === null) {
             $object->setActiveLockReason(null);
+            unset($data['active_lock_reason']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date);
             unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
+            if (false === $date_1) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUpdatedAt($date_1);
             unset($data['updated_at']);
         }
         if (\array_key_exists('closed_at', $data) && $data['closed_at'] !== null) {
-            $object->setClosedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['closed_at']));
+            $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['closed_at']);
+            if (false === $date_2) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['closed_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setClosedAt($date_2);
             unset($data['closed_at']);
         }
         elseif (\array_key_exists('closed_at', $data) && $data['closed_at'] === null) {
             $object->setClosedAt(null);
+            unset($data['closed_at']);
         }
         if (\array_key_exists('merged_at', $data) && $data['merged_at'] !== null) {
-            $object->setMergedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['merged_at']));
+            $date_3 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['merged_at']);
+            if (false === $date_3) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['merged_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setMergedAt($date_3);
             unset($data['merged_at']);
         }
         elseif (\array_key_exists('merged_at', $data) && $data['merged_at'] === null) {
             $object->setMergedAt(null);
+            unset($data['merged_at']);
         }
         if (\array_key_exists('merge_commit_sha', $data) && $data['merge_commit_sha'] !== null) {
             $object->setMergeCommitSha($data['merge_commit_sha']);
@@ -174,6 +196,7 @@ class PullRequestSimpleNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('merge_commit_sha', $data) && $data['merge_commit_sha'] === null) {
             $object->setMergeCommitSha(null);
+            unset($data['merge_commit_sha']);
         }
         if (\array_key_exists('assignee', $data) && $data['assignee'] !== null) {
             $object->setAssignee($this->denormalizer->denormalize($data['assignee'], \Github\Model\PullRequestSimpleAssignee::class, 'json', $context));
@@ -181,6 +204,7 @@ class PullRequestSimpleNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('assignee', $data) && $data['assignee'] === null) {
             $object->setAssignee(null);
+            unset($data['assignee']);
         }
         if (\array_key_exists('assignees', $data) && $data['assignees'] !== null) {
             $values_1 = [];
@@ -192,6 +216,7 @@ class PullRequestSimpleNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('assignees', $data) && $data['assignees'] === null) {
             $object->setAssignees(null);
+            unset($data['assignees']);
         }
         if (\array_key_exists('requested_reviewers', $data) && $data['requested_reviewers'] !== null) {
             $values_2 = [];
@@ -203,6 +228,7 @@ class PullRequestSimpleNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('requested_reviewers', $data) && $data['requested_reviewers'] === null) {
             $object->setRequestedReviewers(null);
+            unset($data['requested_reviewers']);
         }
         if (\array_key_exists('requested_teams', $data) && $data['requested_teams'] !== null) {
             $values_3 = [];
@@ -214,6 +240,7 @@ class PullRequestSimpleNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('requested_teams', $data) && $data['requested_teams'] === null) {
             $object->setRequestedTeams(null);
+            unset($data['requested_teams']);
         }
         if (\array_key_exists('head', $data)) {
             $object->setHead($this->denormalizer->denormalize($data['head'], \Github\Model\PullRequestSimpleHead::class, 'json', $context));

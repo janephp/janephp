@@ -43,6 +43,7 @@ class ReviewReviewReadNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
+            unset($data['id']);
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
@@ -58,6 +59,7 @@ class ReviewReviewReadNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('letter', $data) && $data['letter'] === null) {
             $object->setLetter(null);
+            unset($data['letter']);
         }
         if (\array_key_exists('book', $data)) {
             $object->setBook($this->denormalizer->denormalize($data['book'], \ApiPlatform\Demo\Model\BookReviewRead::class, 'json', $context));
@@ -69,13 +71,19 @@ class ReviewReviewReadNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('author', $data) && $data['author'] === null) {
             $object->setAuthor(null);
+            unset($data['author']);
         }
         if (\array_key_exists('publicationDate', $data) && $data['publicationDate'] !== null) {
-            $object->setPublicationDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['publicationDate']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['publicationDate']);
+            if (false === $date) {
+                throw new \ApiPlatform\Demo\Runtime\Normalizer\InvalidDateException($data['publicationDate'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setPublicationDate($date);
             unset($data['publicationDate']);
         }
         elseif (\array_key_exists('publicationDate', $data) && $data['publicationDate'] === null) {
             $object->setPublicationDate(null);
+            unset($data['publicationDate']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

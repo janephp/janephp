@@ -47,6 +47,7 @@ class AacAudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
             $object->setExtension(null);
+            unset($data['extension']);
         }
         if (\array_key_exists('profile', $data)) {
             $object->setProfile($data['profile']);
@@ -62,6 +63,7 @@ class AacAudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('bitrate', $data) && $data['bitrate'] === null) {
             $object->setBitrate(null);
+            unset($data['bitrate']);
         }
         if (\array_key_exists('variableBitRate', $data) && $data['variableBitRate'] !== null) {
             $object->setVariableBitRate($data['variableBitRate']);
@@ -69,6 +71,7 @@ class AacAudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('variableBitRate', $data) && $data['variableBitRate'] === null) {
             $object->setVariableBitRate(null);
+            unset($data['variableBitRate']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

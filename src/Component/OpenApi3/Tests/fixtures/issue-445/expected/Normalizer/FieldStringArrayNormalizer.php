@@ -68,6 +68,7 @@ class FieldStringArrayNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('indexId', $data) && $data['indexId'] === null) {
             $object->setIndexId(null);
+            unset($data['indexId']);
         }
         if (\array_key_exists('fieldNamespace', $data) && $data['fieldNamespace'] !== null) {
             $object->setFieldNamespace($data['fieldNamespace']);
@@ -75,6 +76,7 @@ class FieldStringArrayNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('fieldNamespace', $data) && $data['fieldNamespace'] === null) {
             $object->setFieldNamespace(null);
+            unset($data['fieldNamespace']);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
             $object->setNames($data['names']);
@@ -82,6 +84,7 @@ class FieldStringArrayNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
+            unset($data['names']);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
             $object->setDescriptions($data['descriptions']);
@@ -89,6 +92,7 @@ class FieldStringArrayNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
             $object->setDescriptions(null);
+            unset($data['descriptions']);
         }
         if (\array_key_exists('required', $data)) {
             $object->setRequired($data['required']);
@@ -120,6 +124,7 @@ class FieldStringArrayNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('template', $data) && $data['template'] === null) {
             $object->setTemplate(null);
+            unset($data['template']);
         }
         if (\array_key_exists('pattern', $data) && $data['pattern'] !== null) {
             $object->setPattern($data['pattern']);
@@ -127,6 +132,7 @@ class FieldStringArrayNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('pattern', $data) && $data['pattern'] === null) {
             $object->setPattern(null);
+            unset($data['pattern']);
         }
         if (\array_key_exists('minimumLength', $data) && $data['minimumLength'] !== null) {
             $object->setMinimumLength($data['minimumLength']);
@@ -134,6 +140,7 @@ class FieldStringArrayNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('minimumLength', $data) && $data['minimumLength'] === null) {
             $object->setMinimumLength(null);
+            unset($data['minimumLength']);
         }
         if (\array_key_exists('maximumLength', $data) && $data['maximumLength'] !== null) {
             $object->setMaximumLength($data['maximumLength']);
@@ -141,6 +148,7 @@ class FieldStringArrayNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('maximumLength', $data) && $data['maximumLength'] === null) {
             $object->setMaximumLength(null);
+            unset($data['maximumLength']);
         }
         if (\array_key_exists('indexAnalyzers', $data) && $data['indexAnalyzers'] !== null) {
             $values = [];
@@ -152,6 +160,7 @@ class FieldStringArrayNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('indexAnalyzers', $data) && $data['indexAnalyzers'] === null) {
             $object->setIndexAnalyzers(null);
+            unset($data['indexAnalyzers']);
         }
         if (\array_key_exists('simpleSearchAnalyzers', $data) && $data['simpleSearchAnalyzers'] !== null) {
             $values_1 = [];
@@ -163,6 +172,7 @@ class FieldStringArrayNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('simpleSearchAnalyzers', $data) && $data['simpleSearchAnalyzers'] === null) {
             $object->setSimpleSearchAnalyzers(null);
+            unset($data['simpleSearchAnalyzers']);
         }
         if (\array_key_exists('multiLine', $data)) {
             $object->setMultiLine($data['multiLine']);
@@ -178,6 +188,7 @@ class FieldStringArrayNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('grantedValues', $data) && $data['grantedValues'] === null) {
             $object->setGrantedValues(null);
+            unset($data['grantedValues']);
         }
         if (\array_key_exists('boost', $data)) {
             $object->setBoost($data['boost']);
@@ -189,6 +200,7 @@ class FieldStringArrayNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('maximumItems', $data) && $data['maximumItems'] === null) {
             $object->setMaximumItems(null);
+            unset($data['maximumItems']);
         }
         if (\array_key_exists('minimumItems', $data) && $data['minimumItems'] !== null) {
             $object->setMinimumItems($data['minimumItems']);
@@ -196,6 +208,7 @@ class FieldStringArrayNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('minimumItems', $data) && $data['minimumItems'] === null) {
             $object->setMinimumItems(null);
+            unset($data['minimumItems']);
         }
         foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {

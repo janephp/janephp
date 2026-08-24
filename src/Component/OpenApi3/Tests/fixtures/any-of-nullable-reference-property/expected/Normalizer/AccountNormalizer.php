@@ -59,6 +59,7 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         elseif (\array_key_exists('countryOfBirth', $data) && $data['countryOfBirth'] === null) {
             $object->setCountryOfBirth(null);
+            unset($data['countryOfBirth']);
         }
         if (\array_key_exists('country', $data)) {
             $object->setCountry($this->denormalizer->denormalize($data['country'], \Jane\Component\OpenApi3\Tests\Expected\Model\Country::class, 'json', $context));
@@ -80,6 +81,7 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         elseif (\array_key_exists('nationality', $data) && $data['nationality'] === null) {
             $object->setNationality(null);
+            unset($data['nationality']);
         }
         foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {

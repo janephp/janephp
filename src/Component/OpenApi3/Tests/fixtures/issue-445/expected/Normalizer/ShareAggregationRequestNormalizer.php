@@ -43,6 +43,7 @@ class ShareAggregationRequestNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
             $object->setSearchString(null);
+            unset($data['searchString']);
         }
         if (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] !== null) {
             $values = [];
@@ -54,6 +55,7 @@ class ShareAggregationRequestNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] === null) {
             $object->setSearchBehaviors(null);
+            unset($data['searchBehaviors']);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $object->setFilter($data['filter']);
@@ -61,6 +63,7 @@ class ShareAggregationRequestNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
+            unset($data['filter']);
         }
         if (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] !== null) {
             $values_1 = [];
@@ -72,6 +75,7 @@ class ShareAggregationRequestNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] === null) {
             $object->setAggregationFilters(null);
+            unset($data['aggregationFilters']);
         }
         if (\array_key_exists('aggregators', $data)) {
             $values_2 = [];

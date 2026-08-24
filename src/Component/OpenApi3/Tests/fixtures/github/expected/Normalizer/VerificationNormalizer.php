@@ -57,6 +57,7 @@ class VerificationNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('payload', $data) && $data['payload'] === null) {
             $object->setPayload(null);
+            unset($data['payload']);
         }
         if (\array_key_exists('signature', $data) && $data['signature'] !== null) {
             $object->setSignature($data['signature']);
@@ -64,6 +65,7 @@ class VerificationNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('signature', $data) && $data['signature'] === null) {
             $object->setSignature(null);
+            unset($data['signature']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

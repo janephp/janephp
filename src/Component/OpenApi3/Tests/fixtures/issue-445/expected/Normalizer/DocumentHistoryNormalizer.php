@@ -56,7 +56,11 @@ class DocumentHistoryNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setDocumentType(null);
         }
         if (\array_key_exists('documentDate', $data)) {
-            $object->setDocumentDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['documentDate']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['documentDate']);
+            if (false === $date) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['documentDate'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setDocumentDate($date);
         }
         if (\array_key_exists('document', $data) && $data['document'] !== null) {
             $object->setDocument($data['document']);
@@ -65,7 +69,11 @@ class DocumentHistoryNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setDocument(null);
         }
         if (\array_key_exists('timestamp', $data)) {
-            $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']);
+            if (false === $date_1) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setTimestamp($date_1);
         }
         if (\array_key_exists('audit', $data) && $data['audit'] !== null) {
             $object->setAudit($data['audit']);

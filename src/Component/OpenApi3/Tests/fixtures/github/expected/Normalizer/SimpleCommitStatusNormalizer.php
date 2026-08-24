@@ -49,6 +49,7 @@ class SimpleCommitStatusNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+            unset($data['description']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
@@ -76,6 +77,7 @@ class SimpleCommitStatusNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('required', $data) && $data['required'] === null) {
             $object->setRequired(null);
+            unset($data['required']);
         }
         if (\array_key_exists('avatar_url', $data) && $data['avatar_url'] !== null) {
             $object->setAvatarUrl($data['avatar_url']);
@@ -83,17 +85,26 @@ class SimpleCommitStatusNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('avatar_url', $data) && $data['avatar_url'] === null) {
             $object->setAvatarUrl(null);
+            unset($data['avatar_url']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
             unset($data['url']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date);
             unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
+            if (false === $date_1) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUpdatedAt($date_1);
             unset($data['updated_at']);
         }
         foreach ($data as $key => $value) {

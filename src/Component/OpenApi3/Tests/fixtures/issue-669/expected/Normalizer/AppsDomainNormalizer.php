@@ -69,7 +69,11 @@ class AppsDomainNormalizer implements DenormalizerInterface, NormalizerInterface
             unset($data['rotate_validation_records']);
         }
         if (\array_key_exists('certificate_expires_at', $data)) {
-            $object->setCertificateExpiresAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['certificate_expires_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['certificate_expires_at']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['certificate_expires_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCertificateExpiresAt($date);
             unset($data['certificate_expires_at']);
         }
         foreach ($data as $key => $value_1) {

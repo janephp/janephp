@@ -43,6 +43,7 @@ class AssignLayerActionNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
+            unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -54,6 +55,7 @@ class AssignLayerActionNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('layerId', $data) && $data['layerId'] === null) {
             $object->setLayerId(null);
+            unset($data['layerId']);
         }
         if (\array_key_exists('defaultValues', $data) && $data['defaultValues'] !== null) {
             $values = new \PicturePark\API\Runtime\JsonObject();
@@ -65,6 +67,7 @@ class AssignLayerActionNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('defaultValues', $data) && $data['defaultValues'] === null) {
             $object->setDefaultValues(null);
+            unset($data['defaultValues']);
         }
         foreach ($data as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {

@@ -46,6 +46,7 @@ class ReposOwnerRepoPagesPutBodyNormalizer implements DenormalizerInterface, Nor
         }
         elseif (\array_key_exists('cname', $data) && $data['cname'] === null) {
             $object->setCname(null);
+            unset($data['cname']);
         }
         if (\array_key_exists('source', $data)) {
             $object->setSource($data['source']);

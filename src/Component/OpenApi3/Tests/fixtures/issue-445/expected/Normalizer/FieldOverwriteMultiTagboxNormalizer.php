@@ -61,6 +61,7 @@ class FieldOverwriteMultiTagboxNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
+            unset($data['id']);
         }
         if (\array_key_exists('required', $data)) {
             $object->setRequired($data['required']);
@@ -80,6 +81,7 @@ class FieldOverwriteMultiTagboxNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
+            unset($data['filter']);
         }
         if (\array_key_exists('overwriteFilter', $data)) {
             $object->setOverwriteFilter($data['overwriteFilter']);
@@ -91,6 +93,7 @@ class FieldOverwriteMultiTagboxNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('listItemCreateTemplate', $data) && $data['listItemCreateTemplate'] === null) {
             $object->setListItemCreateTemplate(null);
+            unset($data['listItemCreateTemplate']);
         }
         if (\array_key_exists('overwriteListItemCreateTemplate', $data)) {
             $object->setOverwriteListItemCreateTemplate($data['overwriteListItemCreateTemplate']);
@@ -102,6 +105,7 @@ class FieldOverwriteMultiTagboxNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('maximumItems', $data) && $data['maximumItems'] === null) {
             $object->setMaximumItems(null);
+            unset($data['maximumItems']);
         }
         if (\array_key_exists('overwriteMaximumItems', $data)) {
             $object->setOverwriteMaximumItems($data['overwriteMaximumItems']);
@@ -113,6 +117,7 @@ class FieldOverwriteMultiTagboxNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('minimumItems', $data) && $data['minimumItems'] === null) {
             $object->setMinimumItems(null);
+            unset($data['minimumItems']);
         }
         if (\array_key_exists('overwriteMinimumItems', $data)) {
             $object->setOverwriteMinimumItems($data['overwriteMinimumItems']);

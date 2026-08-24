@@ -31,17 +31,7 @@ class MinLengthValidator implements ValidatorInterface
             'minMessage' => 'This value is too short. It should have {{ limit }} characters or more.',
         ]));
         if ($object->getMinLength() > 0) {
-            $nullable = false;
-
-            if (\get_class($object) === JsonSchema::class) {
-                $nullable = \is_array($object->getType()) ? \in_array('null', $object->getType()) : 'null' === $object->getType();
-            }
-            if (\get_class($object) === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\Schema') {
-                $nullable = $object->offsetExists('x-nullable') && \is_bool($object->offsetGet('x-nullable')) && $object->offsetGet('x-nullable');
-            }
-            if (\get_class($object) === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Schema') {
-                $nullable = method_exists($object, 'getNullable') && $object->getNullable() ?? false;
-            }
+            $nullable = $this->isNullable($object);
 
             $options = [];
             if ($nullable === true) {

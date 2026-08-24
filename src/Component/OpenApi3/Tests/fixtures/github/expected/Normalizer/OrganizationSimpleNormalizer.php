@@ -90,6 +90,7 @@ class OrganizationSimpleNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+            unset($data['description']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

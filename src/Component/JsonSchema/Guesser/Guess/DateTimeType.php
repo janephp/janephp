@@ -7,6 +7,7 @@ use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
+use PhpParser\Node\Stmt;
 
 /**
  * Represent a DateTime type.
@@ -44,6 +45,33 @@ class DateTimeType extends ObjectType
     protected function createDenormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
         return $this->generateParseExpression($input);
+    }
+
+    public function createDenormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
+    {
+        if (empty($this->inputFormat)) {
+            return parent::createDenormalizationStatement($context, $input, $normalizerFromObject);
+        }
+
+        // \DateTime::createFromFormat returns false on failure, report it with a clean
+        // exception instead of letting it reach the typed setter
+        $output = new Expr\Variable($context->getUniqueVariableName('date'));
+        $statements = [
+            new Stmt\Expression(new Expr\Assign($output, $this->generateParseExpression($input))),
+            new Stmt\If_(new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('false')), $output), [
+                'stmts' => [
+                    new Stmt\Expression(new Expr\Throw_(new Expr\New_(
+                        new Name\FullyQualified(\sprintf('%s\\Runtime\\Normalizer\\InvalidDateException', $context->getCurrentSchema()->getNamespace())),
+                        [
+                            new Arg($input),
+                            new Arg(new Scalar\String_($this->inputFormat)),
+                        ]
+                    ))),
+                ],
+            ]),
+        ];
+
+        return [$statements, $output];
     }
 
     protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr

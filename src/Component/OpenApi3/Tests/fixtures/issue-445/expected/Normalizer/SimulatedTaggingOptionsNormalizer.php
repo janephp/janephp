@@ -43,6 +43,7 @@ class SimulatedTaggingOptionsNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('tagOutputFormatId', $data) && $data['tagOutputFormatId'] === null) {
             $object->setTagOutputFormatId(null);
+            unset($data['tagOutputFormatId']);
         }
         if (\array_key_exists('keywordLookupCacheName', $data) && $data['keywordLookupCacheName'] !== null) {
             $object->setKeywordLookupCacheName($data['keywordLookupCacheName']);
@@ -50,6 +51,7 @@ class SimulatedTaggingOptionsNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('keywordLookupCacheName', $data) && $data['keywordLookupCacheName'] === null) {
             $object->setKeywordLookupCacheName(null);
+            unset($data['keywordLookupCacheName']);
         }
         if (\array_key_exists('taggingLayerId', $data) && $data['taggingLayerId'] !== null) {
             $object->setTaggingLayerId($data['taggingLayerId']);
@@ -57,6 +59,7 @@ class SimulatedTaggingOptionsNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('taggingLayerId', $data) && $data['taggingLayerId'] === null) {
             $object->setTaggingLayerId(null);
+            unset($data['taggingLayerId']);
         }
         if (\array_key_exists('foundTagsFieldId', $data) && $data['foundTagsFieldId'] !== null) {
             $object->setFoundTagsFieldId($data['foundTagsFieldId']);
@@ -64,6 +67,7 @@ class SimulatedTaggingOptionsNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('foundTagsFieldId', $data) && $data['foundTagsFieldId'] === null) {
             $object->setFoundTagsFieldId(null);
+            unset($data['foundTagsFieldId']);
         }
         if (\array_key_exists('missingKeywordsFieldId', $data) && $data['missingKeywordsFieldId'] !== null) {
             $object->setMissingKeywordsFieldId($data['missingKeywordsFieldId']);
@@ -71,6 +75,7 @@ class SimulatedTaggingOptionsNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('missingKeywordsFieldId', $data) && $data['missingKeywordsFieldId'] === null) {
             $object->setMissingKeywordsFieldId(null);
+            unset($data['missingKeywordsFieldId']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -82,6 +87,7 @@ class SimulatedTaggingOptionsNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('numberOfKeywords', $data) && $data['numberOfKeywords'] === null) {
             $object->setNumberOfKeywords(null);
+            unset($data['numberOfKeywords']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

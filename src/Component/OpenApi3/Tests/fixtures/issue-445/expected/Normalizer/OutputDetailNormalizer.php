@@ -46,6 +46,7 @@ class OutputDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
+            unset($data['id']);
         }
         if (\array_key_exists('outputFormatId', $data)) {
             $object->setOutputFormatId($data['outputFormatId']);
@@ -65,13 +66,19 @@ class OutputDetailNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('detail', $data) && $data['detail'] === null) {
             $object->setDetail(null);
+            unset($data['detail']);
         }
         if (\array_key_exists('backupTimestamp', $data) && $data['backupTimestamp'] !== null) {
-            $object->setBackupTimestamp(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['backupTimestamp']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['backupTimestamp']);
+            if (false === $date) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['backupTimestamp'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setBackupTimestamp($date);
             unset($data['backupTimestamp']);
         }
         elseif (\array_key_exists('backupTimestamp', $data) && $data['backupTimestamp'] === null) {
             $object->setBackupTimestamp(null);
+            unset($data['backupTimestamp']);
         }
         if (\array_key_exists('attemptsLeft', $data)) {
             $object->setAttemptsLeft($data['attemptsLeft']);

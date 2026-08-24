@@ -101,6 +101,7 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('owner', $data) && $data['owner'] === null) {
             $object->setOwner(null);
+            unset($data['owner']);
         }
         if (\array_key_exists('private', $data)) {
             $object->setPrivate($data['private']);
@@ -116,6 +117,7 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+            unset($data['description']);
         }
         if (\array_key_exists('fork', $data)) {
             $object->setFork($data['fork']);
@@ -126,15 +128,27 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
             unset($data['url']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date);
             unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
+            if (false === $date_1) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUpdatedAt($date_1);
             unset($data['updated_at']);
         }
         if (\array_key_exists('pushed_at', $data)) {
-            $object->setPushedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['pushed_at']));
+            $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['pushed_at']);
+            if (false === $date_2) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['pushed_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setPushedAt($date_2);
             unset($data['pushed_at']);
         }
         if (\array_key_exists('homepage', $data) && $data['homepage'] !== null) {
@@ -143,6 +157,7 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('homepage', $data) && $data['homepage'] === null) {
             $object->setHomepage(null);
+            unset($data['homepage']);
         }
         if (\array_key_exists('size', $data)) {
             $object->setSize($data['size']);
@@ -162,6 +177,7 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('language', $data) && $data['language'] === null) {
             $object->setLanguage(null);
+            unset($data['language']);
         }
         if (\array_key_exists('forks_count', $data)) {
             $object->setForksCount($data['forks_count']);
@@ -369,6 +385,7 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('mirror_url', $data) && $data['mirror_url'] === null) {
             $object->setMirrorUrl(null);
+            unset($data['mirror_url']);
         }
         if (\array_key_exists('has_issues', $data)) {
             $object->setHasIssues($data['has_issues']);
@@ -404,6 +421,7 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('license', $data) && $data['license'] === null) {
             $object->setLicense(null);
+            unset($data['license']);
         }
         if (\array_key_exists('permissions', $data)) {
             $object->setPermissions($this->denormalizer->denormalize($data['permissions'], \Github\Model\RepoSearchResultItemPermissions::class, 'json', $context));

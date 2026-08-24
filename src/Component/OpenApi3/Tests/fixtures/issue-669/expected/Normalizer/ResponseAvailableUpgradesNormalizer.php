@@ -47,6 +47,7 @@ class ResponseAvailableUpgradesNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('available_upgrade_versions', $data) && $data['available_upgrade_versions'] === null) {
             $object->setAvailableUpgradeVersions(null);
+            unset($data['available_upgrade_versions']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

@@ -47,6 +47,7 @@ class BookJsonhalBookReadNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
+            unset($data['id']);
         }
         if (\array_key_exists('isbn', $data) && $data['isbn'] !== null) {
             $object->setIsbn($data['isbn']);
@@ -54,6 +55,7 @@ class BookJsonhalBookReadNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('isbn', $data) && $data['isbn'] === null) {
             $object->setIsbn(null);
+            unset($data['isbn']);
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
@@ -68,7 +70,11 @@ class BookJsonhalBookReadNormalizer implements DenormalizerInterface, Normalizer
             unset($data['author']);
         }
         if (\array_key_exists('publicationDate', $data)) {
-            $object->setPublicationDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['publicationDate']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['publicationDate']);
+            if (false === $date) {
+                throw new \ApiPlatform\Demo\Runtime\Normalizer\InvalidDateException($data['publicationDate'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setPublicationDate($date);
             unset($data['publicationDate']);
         }
         if (\array_key_exists('reviews', $data)) {

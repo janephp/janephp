@@ -42,7 +42,11 @@ class StatusMessagesNormalizer implements DenormalizerInterface, NormalizerInter
             unset($data['message']);
         }
         if (\array_key_exists('timestamp', $data)) {
-            $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setTimestamp($date);
             unset($data['timestamp']);
         }
         foreach ($data as $key => $value) {

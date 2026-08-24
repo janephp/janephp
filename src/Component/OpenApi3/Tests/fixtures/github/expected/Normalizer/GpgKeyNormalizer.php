@@ -62,6 +62,7 @@ class GpgKeyNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('primary_key_id', $data) && $data['primary_key_id'] === null) {
             $object->setPrimaryKeyId(null);
+            unset($data['primary_key_id']);
         }
         if (\array_key_exists('key_id', $data)) {
             $object->setKeyId($data['key_id']);
@@ -104,15 +105,24 @@ class GpgKeyNormalizer implements DenormalizerInterface, NormalizerInterface, De
             unset($data['can_certify']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date);
             unset($data['created_at']);
         }
         if (\array_key_exists('expires_at', $data) && $data['expires_at'] !== null) {
-            $object->setExpiresAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['expires_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['expires_at']);
+            if (false === $date_1) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['expires_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setExpiresAt($date_1);
             unset($data['expires_at']);
         }
         elseif (\array_key_exists('expires_at', $data) && $data['expires_at'] === null) {
             $object->setExpiresAt(null);
+            unset($data['expires_at']);
         }
         if (\array_key_exists('raw_key', $data) && $data['raw_key'] !== null) {
             $object->setRawKey($data['raw_key']);
@@ -120,6 +130,7 @@ class GpgKeyNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('raw_key', $data) && $data['raw_key'] === null) {
             $object->setRawKey(null);
+            unset($data['raw_key']);
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

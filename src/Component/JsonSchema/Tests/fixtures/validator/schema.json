@@ -110,6 +110,18 @@
             "type": "string",
             "format": "uuid"
         },
+        "dateFormat": {
+            "type": "string",
+            "format": "date"
+        },
+        "dateNullableFormat": {
+            "type": ["string", "null"],
+            "format": "date"
+        },
+        "dateTimeFormat": {
+            "type": "string",
+            "format": "date-time"
+        },
         "foo": {
             "$ref": "#/definitions/FooFooFoo"
         },

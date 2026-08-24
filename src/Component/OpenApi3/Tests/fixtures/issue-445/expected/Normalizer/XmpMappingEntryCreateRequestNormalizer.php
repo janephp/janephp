@@ -66,6 +66,7 @@ class XmpMappingEntryCreateRequestNormalizer implements DenormalizerInterface, N
         }
         elseif (\array_key_exists('configuration', $data) && $data['configuration'] === null) {
             $object->setConfiguration(null);
+            unset($data['configuration']);
         }
         if (\array_key_exists('requestId', $data) && $data['requestId'] !== null) {
             $object->setRequestId($data['requestId']);
@@ -73,6 +74,7 @@ class XmpMappingEntryCreateRequestNormalizer implements DenormalizerInterface, N
         }
         elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
             $object->setRequestId(null);
+            unset($data['requestId']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -72,22 +72,32 @@ class ArtifactNormalizer implements DenormalizerInterface, NormalizerInterface, 
             unset($data['expired']);
         }
         if (\array_key_exists('created_at', $data) && $data['created_at'] !== null) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date);
             unset($data['created_at']);
         }
         elseif (\array_key_exists('created_at', $data) && $data['created_at'] === null) {
             $object->setCreatedAt(null);
+            unset($data['created_at']);
         }
         if (\array_key_exists('expires_at', $data)) {
             $object->setExpiresAt($data['expires_at']);
             unset($data['expires_at']);
         }
         if (\array_key_exists('updated_at', $data) && $data['updated_at'] !== null) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
+            if (false === $date_1) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUpdatedAt($date_1);
             unset($data['updated_at']);
         }
         elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {
             $object->setUpdatedAt(null);
+            unset($data['updated_at']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

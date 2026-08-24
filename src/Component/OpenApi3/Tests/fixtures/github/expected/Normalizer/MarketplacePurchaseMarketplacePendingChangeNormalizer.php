@@ -57,6 +57,7 @@ class MarketplacePurchaseMarketplacePendingChangeNormalizer implements Denormali
         }
         elseif (\array_key_exists('unit_count', $data) && $data['unit_count'] === null) {
             $object->setUnitCount(null);
+            unset($data['unit_count']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

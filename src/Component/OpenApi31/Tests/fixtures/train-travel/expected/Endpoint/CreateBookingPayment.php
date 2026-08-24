@@ -30,7 +30,7 @@ class CreateBookingPayment extends \Jane\Component\OpenApi31\Tests\Expected\Runt
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Model\BookingPayment) {
-            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+            return [['Content-Type' => ['application/json']], \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
         }
         return [[], null];
     }

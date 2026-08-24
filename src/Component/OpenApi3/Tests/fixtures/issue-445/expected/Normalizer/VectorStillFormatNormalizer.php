@@ -47,6 +47,7 @@ class VectorStillFormatNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
             $object->setExtension(null);
+            unset($data['extension']);
         }
         if (\array_key_exists('resizeAction', $data) && $data['resizeAction'] !== null) {
             $object->setResizeAction($data['resizeAction']);
@@ -54,6 +55,7 @@ class VectorStillFormatNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('resizeAction', $data) && $data['resizeAction'] === null) {
             $object->setResizeAction(null);
+            unset($data['resizeAction']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

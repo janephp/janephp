@@ -38,7 +38,11 @@ class ContentDownloadEventNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('timestamp', $data)) {
-            $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']);
+            if (false === $date) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timestamp'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setTimestamp($date);
             unset($data['timestamp']);
         }
         if (\array_key_exists('kind', $data)) {
@@ -55,6 +59,7 @@ class ContentDownloadEventNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('downloadInfos', $data) && $data['downloadInfos'] === null) {
             $object->setDownloadInfos(null);
+            unset($data['downloadInfos']);
         }
         if (\array_key_exists('fileSize', $data)) {
             $object->setFileSize($data['fileSize']);
@@ -66,6 +71,7 @@ class ContentDownloadEventNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('shareToken', $data) && $data['shareToken'] === null) {
             $object->setShareToken(null);
+            unset($data['shareToken']);
         }
         if (\array_key_exists('range', $data) && $data['range'] !== null) {
             $object->setRange($data['range']);
@@ -73,6 +79,7 @@ class ContentDownloadEventNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('range', $data) && $data['range'] === null) {
             $object->setRange(null);
+            unset($data['range']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

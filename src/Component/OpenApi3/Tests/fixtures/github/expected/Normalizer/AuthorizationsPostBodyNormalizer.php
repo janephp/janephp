@@ -50,6 +50,7 @@ class AuthorizationsPostBodyNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('scopes', $data) && $data['scopes'] === null) {
             $object->setScopes(null);
+            unset($data['scopes']);
         }
         if (\array_key_exists('note', $data)) {
             $object->setNote($data['note']);

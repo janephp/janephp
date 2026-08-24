@@ -30,16 +30,16 @@ class ApiReviewsIdPut extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint impl
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \ApiPlatform\Demo\Model\ReviewJsonldReviewWrite) {
-            return [['Content-Type' => ['application/ld+json']], $serializer->serialize($this->body, 'json')];
+            return [['Content-Type' => ['application/ld+json']], \ApiPlatform\Demo\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
         }
         if ($this->body instanceof \ApiPlatform\Demo\Model\ReviewJsonhalReviewWrite) {
-            return [['Content-Type' => ['application/hal+json']], $serializer->serialize($this->body, 'json')];
+            return [['Content-Type' => ['application/hal+json']], \ApiPlatform\Demo\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
         }
         if ($this->body instanceof \ApiPlatform\Demo\Model\ReviewReviewWrite) {
-            return [['Content-Type' => ['application/vnd.api+json']], $serializer->serialize($this->body, 'json')];
+            return [['Content-Type' => ['application/vnd.api+json']], \ApiPlatform\Demo\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
         }
         if ($this->body instanceof \ApiPlatform\Demo\Model\ReviewReviewWrite) {
-            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+            return [['Content-Type' => ['application/json']], \ApiPlatform\Demo\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
         }
         if ($this->body instanceof \ApiPlatform\Demo\Model\ReviewReviewWrite) {
             return [['Content-Type' => ['application/xml']], $this->body];

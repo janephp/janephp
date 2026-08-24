@@ -83,6 +83,7 @@ class ReposOwnerRepoDeploymentsPostBodyNormalizer implements DenormalizerInterfa
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+            unset($data['description']);
         }
         if (\array_key_exists('transient_environment', $data)) {
             $object->setTransientEnvironment($data['transient_environment']);

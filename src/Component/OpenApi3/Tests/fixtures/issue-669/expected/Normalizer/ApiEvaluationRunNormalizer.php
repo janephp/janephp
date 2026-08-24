@@ -88,7 +88,11 @@ class ApiEvaluationRunNormalizer implements DenormalizerInterface, NormalizerInt
             unset($data['evaluation_test_case_workspace_uuid']);
         }
         if (\array_key_exists('finished_at', $data)) {
-            $object->setFinishedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['finished_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['finished_at']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['finished_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setFinishedAt($date);
             unset($data['finished_at']);
         }
         if (\array_key_exists('pass_status', $data)) {
@@ -96,7 +100,11 @@ class ApiEvaluationRunNormalizer implements DenormalizerInterface, NormalizerInt
             unset($data['pass_status']);
         }
         if (\array_key_exists('queued_at', $data)) {
-            $object->setQueuedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['queued_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['queued_at']);
+            if (false === $date_1) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['queued_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setQueuedAt($date_1);
             unset($data['queued_at']);
         }
         if (\array_key_exists('run_level_metric_results', $data)) {
@@ -116,7 +124,11 @@ class ApiEvaluationRunNormalizer implements DenormalizerInterface, NormalizerInt
             unset($data['star_metric_result']);
         }
         if (\array_key_exists('started_at', $data)) {
-            $object->setStartedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['started_at']));
+            $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['started_at']);
+            if (false === $date_2) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['started_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setStartedAt($date_2);
             unset($data['started_at']);
         }
         if (\array_key_exists('status', $data)) {

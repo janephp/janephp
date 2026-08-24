@@ -47,6 +47,7 @@ class SchemaInUseFieldExceptionNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
             $object->setTraceId(null);
+            unset($data['traceId']);
         }
         if (\array_key_exists('traceJobId', $data) && $data['traceJobId'] !== null) {
             $object->setTraceJobId($data['traceJobId']);
@@ -54,6 +55,7 @@ class SchemaInUseFieldExceptionNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
             $object->setTraceJobId(null);
+            unset($data['traceJobId']);
         }
         if (\array_key_exists('httpStatusCode', $data)) {
             $object->setHttpStatusCode($data['httpStatusCode']);
@@ -65,6 +67,7 @@ class SchemaInUseFieldExceptionNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
             $object->setExceptionMessage(null);
+            unset($data['exceptionMessage']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -76,6 +79,7 @@ class SchemaInUseFieldExceptionNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
             $object->setCustomerId(null);
+            unset($data['customerId']);
         }
         if (\array_key_exists('customerAlias', $data) && $data['customerAlias'] !== null) {
             $object->setCustomerAlias($data['customerAlias']);
@@ -83,6 +87,7 @@ class SchemaInUseFieldExceptionNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('customerAlias', $data) && $data['customerAlias'] === null) {
             $object->setCustomerAlias(null);
+            unset($data['customerAlias']);
         }
         if (\array_key_exists('userId', $data) && $data['userId'] !== null) {
             $object->setUserId($data['userId']);
@@ -90,6 +95,7 @@ class SchemaInUseFieldExceptionNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('userId', $data) && $data['userId'] === null) {
             $object->setUserId(null);
+            unset($data['userId']);
         }
         if (\array_key_exists('schemaId', $data) && $data['schemaId'] !== null) {
             $object->setSchemaId($data['schemaId']);
@@ -97,6 +103,7 @@ class SchemaInUseFieldExceptionNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('schemaId', $data) && $data['schemaId'] === null) {
             $object->setSchemaId(null);
+            unset($data['schemaId']);
         }
         if (\array_key_exists('fieldNamespaces', $data) && $data['fieldNamespaces'] !== null) {
             $values = [];
@@ -108,6 +115,7 @@ class SchemaInUseFieldExceptionNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('fieldNamespaces', $data) && $data['fieldNamespaces'] === null) {
             $object->setFieldNamespaces(null);
+            unset($data['fieldNamespaces']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

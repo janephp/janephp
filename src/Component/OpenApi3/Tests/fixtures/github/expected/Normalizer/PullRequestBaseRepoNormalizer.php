@@ -126,6 +126,7 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+            unset($data['description']);
         }
         if (\array_key_exists('downloads_url', $data)) {
             $object->setDownloadsUrl($data['downloads_url']);
@@ -309,6 +310,7 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('homepage', $data) && $data['homepage'] === null) {
             $object->setHomepage(null);
+            unset($data['homepage']);
         }
         if (\array_key_exists('language', $data) && $data['language'] !== null) {
             $object->setLanguage($data['language']);
@@ -316,6 +318,7 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('language', $data) && $data['language'] === null) {
             $object->setLanguage(null);
+            unset($data['language']);
         }
         if (\array_key_exists('master_branch', $data)) {
             $object->setMasterBranch($data['master_branch']);
@@ -335,6 +338,7 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('mirror_url', $data) && $data['mirror_url'] === null) {
             $object->setMirrorUrl(null);
+            unset($data['mirror_url']);
         }
         if (\array_key_exists('open_issues', $data)) {
             $object->setOpenIssues($data['open_issues']);
@@ -370,9 +374,14 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('license', $data) && $data['license'] === null) {
             $object->setLicense(null);
+            unset($data['license']);
         }
         if (\array_key_exists('pushed_at', $data)) {
-            $object->setPushedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['pushed_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['pushed_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['pushed_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setPushedAt($date);
             unset($data['pushed_at']);
         }
         if (\array_key_exists('size', $data)) {
@@ -408,11 +417,19 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
             unset($data['watchers_count']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date_1) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date_1);
             unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
+            if (false === $date_2) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUpdatedAt($date_2);
             unset($data['updated_at']);
         }
         foreach ($data as $key => $value_1) {

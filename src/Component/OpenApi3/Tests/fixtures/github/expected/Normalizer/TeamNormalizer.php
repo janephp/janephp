@@ -62,6 +62,7 @@ class TeamNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+            unset($data['description']);
         }
         if (\array_key_exists('privacy', $data)) {
             $object->setPrivacy($data['privacy']);
@@ -93,6 +94,7 @@ class TeamNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         elseif (\array_key_exists('parent', $data) && $data['parent'] === null) {
             $object->setParent(null);
+            unset($data['parent']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

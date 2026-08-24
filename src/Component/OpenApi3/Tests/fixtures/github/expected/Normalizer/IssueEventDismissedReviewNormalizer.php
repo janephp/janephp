@@ -54,6 +54,7 @@ class IssueEventDismissedReviewNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('dismissal_message', $data) && $data['dismissal_message'] === null) {
             $object->setDismissalMessage(null);
+            unset($data['dismissal_message']);
         }
         if (\array_key_exists('dismissal_commit_id', $data) && $data['dismissal_commit_id'] !== null) {
             $object->setDismissalCommitId($data['dismissal_commit_id']);
@@ -61,6 +62,7 @@ class IssueEventDismissedReviewNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('dismissal_commit_id', $data) && $data['dismissal_commit_id'] === null) {
             $object->setDismissalCommitId(null);
+            unset($data['dismissal_commit_id']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -47,6 +47,7 @@ class VideoSpriteFormatNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('spriteResizeAction', $data) && $data['spriteResizeAction'] === null) {
             $object->setSpriteResizeAction(null);
+            unset($data['spriteResizeAction']);
         }
         if (\array_key_exists('maxNumberOfSprites', $data)) {
             $object->setMaxNumberOfSprites($data['maxNumberOfSprites']);
@@ -62,6 +63,7 @@ class VideoSpriteFormatNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
             $object->setExtension(null);
+            unset($data['extension']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

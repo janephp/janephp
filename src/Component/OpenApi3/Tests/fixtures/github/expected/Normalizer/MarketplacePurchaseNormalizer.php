@@ -66,6 +66,7 @@ class MarketplacePurchaseNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('marketplace_pending_change', $data) && $data['marketplace_pending_change'] === null) {
             $object->setMarketplacePendingChange(null);
+            unset($data['marketplace_pending_change']);
         }
         if (\array_key_exists('marketplace_purchase', $data)) {
             $object->setMarketplacePurchase($this->denormalizer->denormalize($data['marketplace_purchase'], \Github\Model\MarketplacePurchaseMarketplacePurchase::class, 'json', $context));

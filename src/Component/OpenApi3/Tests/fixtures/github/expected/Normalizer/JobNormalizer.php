@@ -70,6 +70,7 @@ class JobNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         elseif (\array_key_exists('html_url', $data) && $data['html_url'] === null) {
             $object->setHtmlUrl(null);
+            unset($data['html_url']);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
@@ -81,17 +82,27 @@ class JobNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         elseif (\array_key_exists('conclusion', $data) && $data['conclusion'] === null) {
             $object->setConclusion(null);
+            unset($data['conclusion']);
         }
         if (\array_key_exists('started_at', $data)) {
-            $object->setStartedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['started_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['started_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['started_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setStartedAt($date);
             unset($data['started_at']);
         }
         if (\array_key_exists('completed_at', $data) && $data['completed_at'] !== null) {
-            $object->setCompletedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['completed_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['completed_at']);
+            if (false === $date_1) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['completed_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCompletedAt($date_1);
             unset($data['completed_at']);
         }
         elseif (\array_key_exists('completed_at', $data) && $data['completed_at'] === null) {
             $object->setCompletedAt(null);
+            unset($data['completed_at']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);

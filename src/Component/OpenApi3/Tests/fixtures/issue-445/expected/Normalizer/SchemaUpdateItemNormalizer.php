@@ -46,6 +46,7 @@ class SchemaUpdateItemNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
+            unset($data['names']);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
             $object->setDescriptions($data['descriptions']);
@@ -53,6 +54,7 @@ class SchemaUpdateItemNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
             $object->setDescriptions(null);
+            unset($data['descriptions']);
         }
         if (\array_key_exists('displayPatterns', $data) && $data['displayPatterns'] !== null) {
             $values = [];
@@ -64,6 +66,7 @@ class SchemaUpdateItemNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('displayPatterns', $data) && $data['displayPatterns'] === null) {
             $object->setDisplayPatterns(null);
+            unset($data['displayPatterns']);
         }
         if (\array_key_exists('fields', $data) && $data['fields'] !== null) {
             $values_1 = [];
@@ -75,6 +78,7 @@ class SchemaUpdateItemNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('fields', $data) && $data['fields'] === null) {
             $object->setFields(null);
+            unset($data['fields']);
         }
         if (\array_key_exists('fieldsOverwrite', $data) && $data['fieldsOverwrite'] !== null) {
             $values_2 = [];
@@ -86,6 +90,7 @@ class SchemaUpdateItemNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('fieldsOverwrite', $data) && $data['fieldsOverwrite'] === null) {
             $object->setFieldsOverwrite(null);
+            unset($data['fieldsOverwrite']);
         }
         if (\array_key_exists('aggregations', $data) && $data['aggregations'] !== null) {
             $values_3 = [];
@@ -97,6 +102,7 @@ class SchemaUpdateItemNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('aggregations', $data) && $data['aggregations'] === null) {
             $object->setAggregations(null);
+            unset($data['aggregations']);
         }
         if (\array_key_exists('sort', $data) && $data['sort'] !== null) {
             $values_4 = [];
@@ -108,6 +114,7 @@ class SchemaUpdateItemNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('sort', $data) && $data['sort'] === null) {
             $object->setSort(null);
+            unset($data['sort']);
         }
         if (\array_key_exists('viewForAll', $data)) {
             $object->setViewForAll($data['viewForAll']);
@@ -123,6 +130,7 @@ class SchemaUpdateItemNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('schemaPermissionSetIds', $data) && $data['schemaPermissionSetIds'] === null) {
             $object->setSchemaPermissionSetIds(null);
+            unset($data['schemaPermissionSetIds']);
         }
         if (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] !== null) {
             $values_6 = [];
@@ -134,6 +142,7 @@ class SchemaUpdateItemNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
             $object->setLayerSchemaIds(null);
+            unset($data['layerSchemaIds']);
         }
         if (\array_key_exists('referencedInContentSchemaIds', $data) && $data['referencedInContentSchemaIds'] !== null) {
             $values_7 = [];
@@ -145,6 +154,7 @@ class SchemaUpdateItemNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('referencedInContentSchemaIds', $data) && $data['referencedInContentSchemaIds'] === null) {
             $object->setReferencedInContentSchemaIds(null);
+            unset($data['referencedInContentSchemaIds']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

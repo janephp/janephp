@@ -29,7 +29,7 @@ class AddRkszonesWlansStandard8021XByZoneId extends \Jane\Component\OpenApi3\Tes
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return $this->getSerializedBody($serializer);
+        return $this->getSerializedObjectBody($serializer);
     }
     public function getExtraHeaders(): array
     {

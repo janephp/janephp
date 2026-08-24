@@ -50,6 +50,7 @@ class PullRequestReviewCommentNormalizer implements DenormalizerInterface, Norma
         }
         elseif (\array_key_exists('pull_request_review_id', $data) && $data['pull_request_review_id'] === null) {
             $object->setPullRequestReviewId(null);
+            unset($data['pull_request_review_id']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
@@ -93,17 +94,26 @@ class PullRequestReviewCommentNormalizer implements DenormalizerInterface, Norma
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
+            unset($data['user']);
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
             unset($data['body']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date);
             unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
+            if (false === $date_1) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUpdatedAt($date_1);
             unset($data['updated_at']);
         }
         if (\array_key_exists('html_url', $data)) {
@@ -128,6 +138,7 @@ class PullRequestReviewCommentNormalizer implements DenormalizerInterface, Norma
         }
         elseif (\array_key_exists('start_line', $data) && $data['start_line'] === null) {
             $object->setStartLine(null);
+            unset($data['start_line']);
         }
         if (\array_key_exists('original_start_line', $data) && $data['original_start_line'] !== null) {
             $object->setOriginalStartLine($data['original_start_line']);
@@ -135,6 +146,7 @@ class PullRequestReviewCommentNormalizer implements DenormalizerInterface, Norma
         }
         elseif (\array_key_exists('original_start_line', $data) && $data['original_start_line'] === null) {
             $object->setOriginalStartLine(null);
+            unset($data['original_start_line']);
         }
         if (\array_key_exists('start_side', $data) && $data['start_side'] !== null) {
             $object->setStartSide($data['start_side']);
@@ -142,6 +154,7 @@ class PullRequestReviewCommentNormalizer implements DenormalizerInterface, Norma
         }
         elseif (\array_key_exists('start_side', $data) && $data['start_side'] === null) {
             $object->setStartSide(null);
+            unset($data['start_side']);
         }
         if (\array_key_exists('line', $data)) {
             $object->setLine($data['line']);

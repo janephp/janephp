@@ -53,6 +53,7 @@ class PageNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         elseif (\array_key_exists('status', $data) && $data['status'] === null) {
             $object->setStatus(null);
+            unset($data['status']);
         }
         if (\array_key_exists('cname', $data) && $data['cname'] !== null) {
             $object->setCname($data['cname']);
@@ -60,6 +61,7 @@ class PageNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         elseif (\array_key_exists('cname', $data) && $data['cname'] === null) {
             $object->setCname(null);
+            unset($data['cname']);
         }
         if (\array_key_exists('custom_404', $data)) {
             $object->setCustom404($data['custom_404']);

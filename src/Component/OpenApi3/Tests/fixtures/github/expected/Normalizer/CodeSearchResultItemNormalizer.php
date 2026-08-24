@@ -82,9 +82,14 @@ class CodeSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('language', $data) && $data['language'] === null) {
             $object->setLanguage(null);
+            unset($data['language']);
         }
         if (\array_key_exists('last_modified_at', $data)) {
-            $object->setLastModifiedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['last_modified_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['last_modified_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['last_modified_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setLastModifiedAt($date);
             unset($data['last_modified_at']);
         }
         if (\array_key_exists('line_numbers', $data)) {

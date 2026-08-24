@@ -54,6 +54,7 @@ class EventPayloadPagesItemNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('summary', $data) && $data['summary'] === null) {
             $object->setSummary(null);
+            unset($data['summary']);
         }
         if (\array_key_exists('action', $data)) {
             $object->setAction($data['action']);

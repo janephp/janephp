@@ -43,6 +43,7 @@ class ReviewBookReadNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
+            unset($data['id']);
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);

@@ -41,11 +41,16 @@ class IssueSimplePullRequestNormalizer implements DenormalizerInterface, Normali
             $this->validate($data, new \Github\Validator\IssueSimplePullRequestConstraint());
         }
         if (\array_key_exists('merged_at', $data) && $data['merged_at'] !== null) {
-            $object->setMergedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['merged_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['merged_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['merged_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setMergedAt($date);
             unset($data['merged_at']);
         }
         elseif (\array_key_exists('merged_at', $data) && $data['merged_at'] === null) {
             $object->setMergedAt(null);
+            unset($data['merged_at']);
         }
         if (\array_key_exists('diff_url', $data) && $data['diff_url'] !== null) {
             $object->setDiffUrl($data['diff_url']);
@@ -53,6 +58,7 @@ class IssueSimplePullRequestNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('diff_url', $data) && $data['diff_url'] === null) {
             $object->setDiffUrl(null);
+            unset($data['diff_url']);
         }
         if (\array_key_exists('html_url', $data) && $data['html_url'] !== null) {
             $object->setHtmlUrl($data['html_url']);
@@ -60,6 +66,7 @@ class IssueSimplePullRequestNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('html_url', $data) && $data['html_url'] === null) {
             $object->setHtmlUrl(null);
+            unset($data['html_url']);
         }
         if (\array_key_exists('patch_url', $data) && $data['patch_url'] !== null) {
             $object->setPatchUrl($data['patch_url']);
@@ -67,6 +74,7 @@ class IssueSimplePullRequestNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('patch_url', $data) && $data['patch_url'] === null) {
             $object->setPatchUrl(null);
+            unset($data['patch_url']);
         }
         if (\array_key_exists('url', $data) && $data['url'] !== null) {
             $object->setUrl($data['url']);
@@ -74,6 +82,7 @@ class IssueSimplePullRequestNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('url', $data) && $data['url'] === null) {
             $object->setUrl(null);
+            unset($data['url']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

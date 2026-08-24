@@ -58,6 +58,7 @@ class IssueEventForIssueNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('actor', $data) && $data['actor'] === null) {
             $object->setActor(null);
+            unset($data['actor']);
         }
         if (\array_key_exists('event', $data)) {
             $object->setEvent($data['event']);
@@ -69,6 +70,7 @@ class IssueEventForIssueNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('commit_id', $data) && $data['commit_id'] === null) {
             $object->setCommitId(null);
+            unset($data['commit_id']);
         }
         if (\array_key_exists('commit_url', $data) && $data['commit_url'] !== null) {
             $object->setCommitUrl($data['commit_url']);
@@ -76,6 +78,7 @@ class IssueEventForIssueNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('commit_url', $data) && $data['commit_url'] === null) {
             $object->setCommitUrl(null);
+            unset($data['commit_url']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt($data['created_at']);

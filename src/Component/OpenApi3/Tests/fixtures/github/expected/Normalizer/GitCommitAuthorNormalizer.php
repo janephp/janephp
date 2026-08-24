@@ -41,7 +41,11 @@ class GitCommitAuthorNormalizer implements DenormalizerInterface, NormalizerInte
             $this->validate($data, new \Github\Validator\GitCommitAuthorConstraint());
         }
         if (\array_key_exists('date', $data)) {
-            $object->setDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['date']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['date']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['date'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setDate($date);
             unset($data['date']);
         }
         if (\array_key_exists('email', $data)) {

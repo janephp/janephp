@@ -46,6 +46,7 @@ class CommitNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('url', $data) && $data['url'] === null) {
             $object->setUrl(null);
+            unset($data['url']);
         }
         if (\array_key_exists('sha', $data) && $data['sha'] !== null) {
             $object->setSha($data['sha']);
@@ -53,6 +54,7 @@ class CommitNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('sha', $data) && $data['sha'] === null) {
             $object->setSha(null);
+            unset($data['sha']);
         }
         if (\array_key_exists('node_id', $data)) {
             $object->setNodeId($data['node_id']);
@@ -76,6 +78,7 @@ class CommitNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('author', $data) && $data['author'] === null) {
             $object->setAuthor(null);
+            unset($data['author']);
         }
         if (\array_key_exists('committer', $data) && $data['committer'] !== null) {
             $object->setCommitter($this->denormalizer->denormalize($data['committer'], \Github\Model\CommitCommitter::class, 'json', $context));
@@ -83,6 +86,7 @@ class CommitNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('committer', $data) && $data['committer'] === null) {
             $object->setCommitter(null);
+            unset($data['committer']);
         }
         if (\array_key_exists('parents', $data)) {
             $values = [];

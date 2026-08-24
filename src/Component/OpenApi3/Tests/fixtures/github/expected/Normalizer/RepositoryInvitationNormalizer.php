@@ -54,6 +54,7 @@ class RepositoryInvitationNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('invitee', $data) && $data['invitee'] === null) {
             $object->setInvitee(null);
+            unset($data['invitee']);
         }
         if (\array_key_exists('inviter', $data) && $data['inviter'] !== null) {
             $object->setInviter($this->denormalizer->denormalize($data['inviter'], \Github\Model\RepositoryInvitationInviter::class, 'json', $context));
@@ -61,13 +62,18 @@ class RepositoryInvitationNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('inviter', $data) && $data['inviter'] === null) {
             $object->setInviter(null);
+            unset($data['inviter']);
         }
         if (\array_key_exists('permissions', $data)) {
             $object->setPermissions($data['permissions']);
             unset($data['permissions']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date);
             unset($data['created_at']);
         }
         if (\array_key_exists('url', $data)) {

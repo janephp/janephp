@@ -42,7 +42,11 @@ class DatabaseBackupNormalizer implements DenormalizerInterface, NormalizerInter
             unset($data['database_name']);
         }
         if (\array_key_exists('backup_created_at', $data)) {
-            $object->setBackupCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['backup_created_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['backup_created_at']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['backup_created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setBackupCreatedAt($date);
             unset($data['backup_created_at']);
         }
         foreach ($data as $key => $value) {

@@ -46,6 +46,7 @@ class CheckRunOutputNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('title', $data) && $data['title'] === null) {
             $object->setTitle(null);
+            unset($data['title']);
         }
         if (\array_key_exists('summary', $data) && $data['summary'] !== null) {
             $object->setSummary($data['summary']);
@@ -53,6 +54,7 @@ class CheckRunOutputNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('summary', $data) && $data['summary'] === null) {
             $object->setSummary(null);
+            unset($data['summary']);
         }
         if (\array_key_exists('text', $data) && $data['text'] !== null) {
             $object->setText($data['text']);
@@ -60,6 +62,7 @@ class CheckRunOutputNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('text', $data) && $data['text'] === null) {
             $object->setText(null);
+            unset($data['text']);
         }
         if (\array_key_exists('annotations_count', $data)) {
             $object->setAnnotationsCount($data['annotations_count']);

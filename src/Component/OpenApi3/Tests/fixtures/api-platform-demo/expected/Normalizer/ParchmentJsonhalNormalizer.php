@@ -47,6 +47,7 @@ class ParchmentJsonhalNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
+            unset($data['id']);
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);

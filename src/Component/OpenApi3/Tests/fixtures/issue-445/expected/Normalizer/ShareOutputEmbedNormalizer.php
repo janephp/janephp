@@ -54,6 +54,7 @@ class ShareOutputEmbedNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('viewUrl', $data) && $data['viewUrl'] === null) {
             $object->setViewUrl(null);
+            unset($data['viewUrl']);
         }
         if (\array_key_exists('downloadUrl', $data) && $data['downloadUrl'] !== null) {
             $object->setDownloadUrl($data['downloadUrl']);
@@ -61,6 +62,7 @@ class ShareOutputEmbedNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('downloadUrl', $data) && $data['downloadUrl'] === null) {
             $object->setDownloadUrl(null);
+            unset($data['downloadUrl']);
         }
         if (\array_key_exists('detail', $data) && $data['detail'] !== null) {
             $object->setDetail($data['detail']);
@@ -68,6 +70,7 @@ class ShareOutputEmbedNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('detail', $data) && $data['detail'] === null) {
             $object->setDetail(null);
+            unset($data['detail']);
         }
         if (\array_key_exists('dynamicRendering', $data)) {
             $object->setDynamicRendering($data['dynamicRendering']);
@@ -83,6 +86,7 @@ class ShareOutputEmbedNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('token', $data) && $data['token'] === null) {
             $object->setToken(null);
+            unset($data['token']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

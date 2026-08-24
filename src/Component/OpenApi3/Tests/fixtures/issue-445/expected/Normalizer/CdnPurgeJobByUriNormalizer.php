@@ -58,6 +58,7 @@ class CdnPurgeJobByUriNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('uri', $data) && $data['uri'] === null) {
             $object->setUri(null);
+            unset($data['uri']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

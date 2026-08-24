@@ -47,6 +47,7 @@ class AggregationFilterNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('aggregationName', $data) && $data['aggregationName'] === null) {
             $object->setAggregationName(null);
+            unset($data['aggregationName']);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $object->setFilter($data['filter']);
@@ -54,6 +55,7 @@ class AggregationFilterNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
+            unset($data['filter']);
         }
         if (\array_key_exists('temporaryAggregatorRequestId', $data) && $data['temporaryAggregatorRequestId'] !== null) {
             $object->setTemporaryAggregatorRequestId($data['temporaryAggregatorRequestId']);
@@ -61,6 +63,7 @@ class AggregationFilterNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('temporaryAggregatorRequestId', $data) && $data['temporaryAggregatorRequestId'] === null) {
             $object->setTemporaryAggregatorRequestId(null);
+            unset($data['temporaryAggregatorRequestId']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

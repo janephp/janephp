@@ -11,14 +11,35 @@ class ChainValidatorFactory
     /** @var list<ValidatorInterface> */
     private static array $customValidators = [];
 
+    private static string $fullDateFormat = 'Y-m-d';
+
+    private static string $dateTimeOutputFormat = \DateTimeInterface::RFC3339;
+
+    private static ?string $dateTimeInputFormat = null;
+
     public static function addValidator(ValidatorInterface $validator): void
     {
         self::$customValidators[] = $validator;
     }
 
+    /**
+     * Configure the date formats used by the built-in date & date-time format
+     * validators. Must mirror the `full-date-format`, `date-format` and
+     * `date-input-format` options given to the type guessers.
+     */
+    public static function setDateFormats(string $fullDateFormat, string $dateTimeOutputFormat, ?string $dateTimeInputFormat): void
+    {
+        self::$fullDateFormat = $fullDateFormat;
+        self::$dateTimeOutputFormat = $dateTimeOutputFormat;
+        self::$dateTimeInputFormat = $dateTimeInputFormat;
+    }
+
     public static function resetCustomValidators(): void
     {
         self::$customValidators = [];
+        self::$fullDateFormat = 'Y-m-d';
+        self::$dateTimeOutputFormat = \DateTimeInterface::RFC3339;
+        self::$dateTimeInputFormat = null;
     }
 
     public static function create(Naming $naming, Registry $registry, DenormalizerInterface $denormalizer): ValidatorInterface
@@ -44,6 +65,8 @@ class ChainValidatorFactory
         $chainValidator->addValidator(new Object_\MaxPropertiesValidator());
         $chainValidator->addValidator(new Object_\MinPropertiesValidator());
         // Format
+        $chainValidator->addValidator(new Format\DateValidator(self::$fullDateFormat));
+        $chainValidator->addValidator(new Format\DateTimeValidator(self::$dateTimeOutputFormat, self::$dateTimeInputFormat));
         $chainValidator->addValidator(new Format\EmailValidator());
         $chainValidator->addValidator(new Format\HostnameValidator());
         $chainValidator->addValidator(new Format\IPv4Validator());

@@ -49,6 +49,7 @@ class InverseListItemNamedCacheConfigurationNormalizer implements DenormalizerIn
         }
         elseif (\array_key_exists('name', $data) && $data['name'] === null) {
             $object->setName(null);
+            unset($data['name']);
         }
         if (\array_key_exists('caseSensitive', $data)) {
             $object->setCaseSensitive($data['caseSensitive']);
@@ -64,6 +65,7 @@ class InverseListItemNamedCacheConfigurationNormalizer implements DenormalizerIn
         }
         elseif (\array_key_exists('schemaId', $data) && $data['schemaId'] === null) {
             $object->setSchemaId(null);
+            unset($data['schemaId']);
         }
         if (\array_key_exists('valueField', $data) && $data['valueField'] !== null) {
             $object->setValueField($data['valueField']);
@@ -71,6 +73,7 @@ class InverseListItemNamedCacheConfigurationNormalizer implements DenormalizerIn
         }
         elseif (\array_key_exists('valueField', $data) && $data['valueField'] === null) {
             $object->setValueField(null);
+            unset($data['valueField']);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $object->setFilter($data['filter']);
@@ -78,6 +81,7 @@ class InverseListItemNamedCacheConfigurationNormalizer implements DenormalizerIn
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
+            unset($data['filter']);
         }
         if (\array_key_exists('includeAllSchemaChildren', $data)) {
             $object->setIncludeAllSchemaChildren($data['includeAllSchemaChildren']);

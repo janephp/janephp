@@ -46,6 +46,7 @@ class ContentSearchRequestNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
             $object->setSearchString(null);
+            unset($data['searchString']);
         }
         if (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] !== null) {
             $values = [];
@@ -57,6 +58,7 @@ class ContentSearchRequestNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] === null) {
             $object->setSearchBehaviors(null);
+            unset($data['searchBehaviors']);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $object->setFilter($data['filter']);
@@ -64,6 +66,7 @@ class ContentSearchRequestNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
+            unset($data['filter']);
         }
         if (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] !== null) {
             $values_1 = [];
@@ -75,6 +78,7 @@ class ContentSearchRequestNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] === null) {
             $object->setAggregationFilters(null);
+            unset($data['aggregationFilters']);
         }
         if (\array_key_exists('channelId', $data) && $data['channelId'] !== null) {
             $object->setChannelId($data['channelId']);
@@ -82,6 +86,7 @@ class ContentSearchRequestNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('channelId', $data) && $data['channelId'] === null) {
             $object->setChannelId(null);
+            unset($data['channelId']);
         }
         if (\array_key_exists('searchLanguages', $data) && $data['searchLanguages'] !== null) {
             $values_2 = [];
@@ -93,6 +98,7 @@ class ContentSearchRequestNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('searchLanguages', $data) && $data['searchLanguages'] === null) {
             $object->setSearchLanguages(null);
+            unset($data['searchLanguages']);
         }
         if (\array_key_exists('collectionId', $data) && $data['collectionId'] !== null) {
             $object->setCollectionId($data['collectionId']);
@@ -100,6 +106,7 @@ class ContentSearchRequestNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('collectionId', $data) && $data['collectionId'] === null) {
             $object->setCollectionId(null);
+            unset($data['collectionId']);
         }
         if (\array_key_exists('lifeCycleFilter', $data)) {
             $object->setLifeCycleFilter($data['lifeCycleFilter']);
@@ -123,6 +130,7 @@ class ContentSearchRequestNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('displayPatternIds', $data) && $data['displayPatternIds'] === null) {
             $object->setDisplayPatternIds(null);
+            unset($data['displayPatternIds']);
         }
         if (\array_key_exists('sort', $data) && $data['sort'] !== null) {
             $values_4 = [];
@@ -134,6 +142,7 @@ class ContentSearchRequestNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('sort', $data) && $data['sort'] === null) {
             $object->setSort(null);
+            unset($data['sort']);
         }
         if (\array_key_exists('limit', $data)) {
             $object->setLimit($data['limit']);
@@ -145,6 +154,7 @@ class ContentSearchRequestNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
             $object->setPageToken(null);
+            unset($data['pageToken']);
         }
         if (\array_key_exists('rightsFilter', $data) && $data['rightsFilter'] !== null) {
             $values_5 = [];
@@ -156,6 +166,7 @@ class ContentSearchRequestNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('rightsFilter', $data) && $data['rightsFilter'] === null) {
             $object->setRightsFilter(null);
+            unset($data['rightsFilter']);
         }
         if (\array_key_exists('rightsAggregations', $data) && $data['rightsAggregations'] !== null) {
             $values_6 = [];
@@ -167,6 +178,7 @@ class ContentSearchRequestNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('rightsAggregations', $data) && $data['rightsAggregations'] === null) {
             $object->setRightsAggregations(null);
+            unset($data['rightsAggregations']);
         }
         if (\array_key_exists('debugMode', $data)) {
             $object->setDebugMode($data['debugMode']);
@@ -182,6 +194,7 @@ class ContentSearchRequestNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('aggregators', $data) && $data['aggregators'] === null) {
             $object->setAggregators(null);
+            unset($data['aggregators']);
         }
         foreach ($data as $key => $value_8) {
             if (preg_match('/.*/', (string) $key)) {

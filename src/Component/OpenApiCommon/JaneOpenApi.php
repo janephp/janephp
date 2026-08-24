@@ -190,6 +190,11 @@ abstract class JaneOpenApi extends ChainGenerator
         }
 
         ChainValidatorFactory::resetCustomValidators();
+        ChainValidatorFactory::setDateFormats(
+            $options['full-date-format'] ?? 'Y-m-d',
+            $options['date-format'] ?? \DateTimeInterface::RFC3339,
+            $options['date-input-format'] ?? null,
+        );
         foreach ($options['validators'] ?? [] as $validator) {
             ChainValidatorFactory::addValidator($validator);
         }

@@ -38,10 +38,18 @@ class LiveStreamSearchRequestNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('from', $data)) {
-            $object->setFrom(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['from']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['from']);
+            if (false === $date) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['from'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setFrom($date);
         }
         if (\array_key_exists('to', $data)) {
-            $object->setTo(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['to']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['to']);
+            if (false === $date_1) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['to'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setTo($date_1);
         }
         if (\array_key_exists('scopeType', $data) && $data['scopeType'] !== null) {
             $object->setScopeType($data['scopeType']);

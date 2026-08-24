@@ -51,6 +51,7 @@ class SimpleAnalyzerNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('fieldSuffix', $data) && $data['fieldSuffix'] === null) {
             $object->setFieldSuffix(null);
+            unset($data['fieldSuffix']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -58,6 +58,7 @@ class SchemaPermissionSetDetailNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('userRolesRights', $data) && $data['userRolesRights'] === null) {
             $object->setUserRolesRights(null);
+            unset($data['userRolesRights']);
         }
         if (\array_key_exists('userRolesPermissionSetRights', $data) && $data['userRolesPermissionSetRights'] !== null) {
             $values_1 = [];
@@ -69,6 +70,7 @@ class SchemaPermissionSetDetailNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('userRolesPermissionSetRights', $data) && $data['userRolesPermissionSetRights'] === null) {
             $object->setUserRolesPermissionSetRights(null);
+            unset($data['userRolesPermissionSetRights']);
         }
         if (\array_key_exists('exclusive', $data)) {
             $object->setExclusive($data['exclusive']);
@@ -84,6 +86,7 @@ class SchemaPermissionSetDetailNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
             $object->setAudit(null);
+            unset($data['audit']);
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

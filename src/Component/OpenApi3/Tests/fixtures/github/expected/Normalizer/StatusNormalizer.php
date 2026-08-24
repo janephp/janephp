@@ -50,6 +50,7 @@ class StatusNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('avatar_url', $data) && $data['avatar_url'] === null) {
             $object->setAvatarUrl(null);
+            unset($data['avatar_url']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
@@ -89,6 +90,7 @@ class StatusNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('creator', $data) && $data['creator'] === null) {
             $object->setCreator(null);
+            unset($data['creator']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

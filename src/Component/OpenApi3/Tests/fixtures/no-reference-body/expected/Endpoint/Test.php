@@ -23,7 +23,7 @@ class Test extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEn
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \Jane\Component\OpenApi3\Tests\Expected\Model\TestPostBody) {
-            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+            return [['Content-Type' => ['application/json']], \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
         }
         return [[], null];
     }

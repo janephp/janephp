@@ -27,7 +27,7 @@ class CreateBooking extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Cli
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Model\Booking) {
-            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+            return [['Content-Type' => ['application/json']], \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
         }
         if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Model\Booking) {
             return [['Content-Type' => ['application/xml']], $this->body];

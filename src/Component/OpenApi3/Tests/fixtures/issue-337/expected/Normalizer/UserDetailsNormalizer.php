@@ -54,7 +54,11 @@ class UserDetailsNormalizer implements DenormalizerInterface, NormalizerInterfac
             unset($data['countryCode']);
         }
         if (\array_key_exists('createdDate', $data)) {
-            $object->setCreatedDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['createdDate']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['createdDate']);
+            if (false === $date) {
+                throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['createdDate'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedDate($date);
             unset($data['createdDate']);
         }
         if (\array_key_exists('csCustomerId', $data)) {
@@ -74,15 +78,27 @@ class UserDetailsNormalizer implements DenormalizerInterface, NormalizerInterfac
             unset($data['languageCode']);
         }
         if (\array_key_exists('lastAccessDate', $data)) {
-            $object->setLastAccessDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastAccessDate']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastAccessDate']);
+            if (false === $date_1) {
+                throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['lastAccessDate'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setLastAccessDate($date_1);
             unset($data['lastAccessDate']);
         }
         if (\array_key_exists('modifiedDate', $data)) {
-            $object->setModifiedDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['modifiedDate']));
+            $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['modifiedDate']);
+            if (false === $date_2) {
+                throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['modifiedDate'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setModifiedDate($date_2);
             unset($data['modifiedDate']);
         }
         if (\array_key_exists('contractEndDate', $data)) {
-            $object->setContractEndDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['contractEndDate']));
+            $date_3 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['contractEndDate']);
+            if (false === $date_3) {
+                throw new \CreditSafe\API\Runtime\Normalizer\InvalidDateException($data['contractEndDate'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setContractEndDate($date_3);
             unset($data['contractEndDate']);
         }
         if (\array_key_exists('userId', $data)) {

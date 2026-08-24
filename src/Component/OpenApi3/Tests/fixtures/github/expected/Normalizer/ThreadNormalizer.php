@@ -73,6 +73,7 @@ class ThreadNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('last_read_at', $data) && $data['last_read_at'] === null) {
             $object->setLastReadAt(null);
+            unset($data['last_read_at']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);

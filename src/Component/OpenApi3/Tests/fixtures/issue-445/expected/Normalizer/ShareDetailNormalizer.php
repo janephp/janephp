@@ -82,7 +82,11 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setData(null);
         }
         if (\array_key_exists('expirationDate', $data) && $data['expirationDate'] !== null) {
-            $object->setExpirationDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['expirationDate']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['expirationDate']);
+            if (false === $date) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['expirationDate'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setExpirationDate($date);
         }
         elseif (\array_key_exists('expirationDate', $data) && $data['expirationDate'] === null) {
             $object->setExpirationDate(null);

@@ -50,13 +50,19 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+            unset($data['description']);
         }
         if (\array_key_exists('expirationDate', $data) && $data['expirationDate'] !== null) {
-            $object->setExpirationDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['expirationDate']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['expirationDate']);
+            if (false === $date) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['expirationDate'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setExpirationDate($date);
             unset($data['expirationDate']);
         }
         elseif (\array_key_exists('expirationDate', $data) && $data['expirationDate'] === null) {
             $object->setExpirationDate(null);
+            unset($data['expirationDate']);
         }
         if (\array_key_exists('contents', $data)) {
             $values = [];
@@ -76,6 +82,7 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
             $object->setLayerSchemaIds(null);
+            unset($data['layerSchemaIds']);
         }
         if (\array_key_exists('outputAccess', $data)) {
             $object->setOutputAccess($data['outputAccess']);
@@ -95,6 +102,7 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('recipientEmails', $data) && $data['recipientEmails'] === null) {
             $object->setRecipientEmails(null);
+            unset($data['recipientEmails']);
         }
         if (\array_key_exists('languageCode', $data)) {
             $object->setLanguageCode($data['languageCode']);
