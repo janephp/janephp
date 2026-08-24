@@ -15,6 +15,7 @@ use Jane\Component\OpenApiCommon\Console\Loader\SchemaLoader;
 use Jane\Component\OpenApiRuntime\Client\Plugin\AuthenticationRegistry;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
@@ -35,8 +36,10 @@ class JaneOpenApiResourceTest extends TestCase
         // 1. Generate
         $command = new GenerateCommand(new ConfigLoader(), new SchemaLoader(), new OpenApiMatcher());
         $input = new ArrayInput(['--config-file' => $testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . '.jane-openapi'], $command->getDefinition());
-        $command->execute($input, new NullOutput());
+        $output = new BufferedOutput();
+        $exitCode = $command->execute($input, $output);
 
+        $this->assertSame(0, $exitCode, \sprintf('Generation failed for data set "%s": %s', $name, $output->fetch()));
         $this->fixCodeStyle($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'expected');
         $this->fixCodeStyle($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'generated');
 

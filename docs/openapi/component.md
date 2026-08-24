@@ -358,6 +358,18 @@ preprod and production environment.
 Jane OpenAPI will always try to use `https` if present in the scheme (or if there is no scheme). It will use the first scheme
 present if `https` is not present.
 
+Those plugins are also applied when you provide your own PSR-18 client to the static `create` method. If you do not want
+the host and/or base path of the specification to be applied around your client (for example because it is already fully
+configured with the correct base URL, or you manage the URL yourself through your own plugins), pass `false` as fourth
+argument:
+
+```php
+$apiClient = Vendor\Library\Generated\Client::create($myPsr18Client, [], [], false);
+```
+
+The parameter only exists on generated clients whose specification declares a server URL (OpenAPI 3 `servers`, OpenAPI 2
+`host` / `basePath`).
+
 ### Having custom plugins
 
 If you want to support more behavior such as authentication or other stuff that need a plugin, you can pass them

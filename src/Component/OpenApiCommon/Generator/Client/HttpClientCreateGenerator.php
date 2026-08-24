@@ -19,28 +19,72 @@ trait HttpClientCreateGenerator
     {
         /** @var OpenApi $openApi */
         $openApi = $context->getCurrentSchema()->getParsed();
-        $statements = [
-            new Stmt\Expression(new Expr\Assign(
-                new Expr\Variable('httpClient'),
-                new Expr\StaticCall(
-                    new Name\FullyQualified(Psr18ClientDiscovery::class),
-                    'find'
-                )
-            )),
-        ];
 
-        $needsServerPlugins = $this->needsServerPlugins($openApi);
-
-        $statements[] = new Stmt\Expression(new Expr\Assign(
-            new Expr\Variable('plugins'),
-            new Expr\Array_()
-        ));
-
-        if ($needsServerPlugins) {
-            $statements = array_merge($statements, $this->getServerPluginsStatements($openApi));
+        if (!$this->needsServerPlugins($openApi)) {
+            return [
+                new Stmt\If_(
+                    $this->createHttpClientNullCheck(),
+                    [
+                        'stmts' => [
+                            $this->createHttpClientDiscoveryStmt(),
+                            new Stmt\Expression(new Expr\Assign(
+                                new Expr\Variable('plugins'),
+                                new Expr\Array_()
+                            )),
+                            $this->createAdditionalPluginsMergeStmt(),
+                            $this->createPluginClientAssignStmt(),
+                        ],
+                    ]
+                ),
+            ];
         }
 
-        $statements[] = new Stmt\If_(
+        return [
+            new Stmt\Expression(new Expr\Assign(
+                new Expr\Variable('plugins'),
+                new Expr\Array_()
+            )),
+            new Stmt\If_(
+                $this->createHttpClientNullCheck(),
+                [
+                    'stmts' => [
+                        $this->createHttpClientDiscoveryStmt(),
+                    ],
+                ]
+            ),
+            new Stmt\If_(
+                new Expr\Variable('applyServerPlugins'),
+                [
+                    'stmts' => $this->getServerPluginsStatements($openApi),
+                ]
+            ),
+            $this->createAdditionalPluginsMergeStmt(),
+            $this->createPluginClientAssignStmt(),
+        ];
+    }
+
+    private function createHttpClientNullCheck(): Expr
+    {
+        return new Expr\BinaryOp\Identical(
+            new Expr\ConstFetch(new Name('null')),
+            new Expr\Variable('httpClient')
+        );
+    }
+
+    private function createHttpClientDiscoveryStmt(): Stmt\Expression
+    {
+        return new Stmt\Expression(new Expr\Assign(
+            new Expr\Variable('httpClient'),
+            new Expr\StaticCall(
+                new Name\FullyQualified(Psr18ClientDiscovery::class),
+                'find'
+            )
+        ));
+    }
+
+    private function createAdditionalPluginsMergeStmt(): Stmt\If_
+    {
+        return new Stmt\If_(
             new Expr\BinaryOp\Greater(
                 new Expr\FuncCall(new Name('count'), [new Node\Arg(new Expr\Variable('additionalPlugins'))]),
                 new Expr\ConstFetch(new Name('0'))
@@ -57,8 +101,11 @@ trait HttpClientCreateGenerator
                 ],
             ]
         );
+    }
 
-        $statements[] = new Stmt\Expression(new Expr\Assign(
+    private function createPluginClientAssignStmt(): Stmt\Expression
+    {
+        return new Stmt\Expression(new Expr\Assign(
             new Expr\Variable('httpClient'),
             new Expr\New_(
                 new Name\FullyQualified(PluginClient::class),
@@ -68,7 +115,5 @@ trait HttpClientCreateGenerator
                 ]
             )
         ));
-
-        return $statements;
     }
 }

@@ -44,17 +44,20 @@ trait ClientGenerator
             new Node\Param(new Expr\Variable('additionalNormalizers'), new Expr\Array_(), new Node\Identifier('array')),
         ];
 
+        if ($this->needsServerPlugins($context->getCurrentSchema()->getParsed())) {
+            $params[] = new Node\Param(
+                new Expr\Variable('applyServerPlugins'),
+                new Expr\ConstFetch(new Name('true')),
+                new Node\Identifier('bool')
+            );
+        }
+
         return new Stmt\ClassMethod(
             'create', [
                 'flags' => Modifiers::STATIC | Modifiers::PUBLIC,
                 'params' => $params,
                 'stmts' => [
-                    new Stmt\If_(
-                        new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('null')), new Expr\Variable('httpClient')),
-                        [
-                            'stmts' => $this->getHttpClientCreateExpr($context),
-                        ]
-                    ),
+                    ...$this->getHttpClientCreateExpr($context),
                     new Stmt\Expression(new Expr\Assign(
                         new Expr\Variable('requestFactory'),
                         new Expr\StaticCall(
