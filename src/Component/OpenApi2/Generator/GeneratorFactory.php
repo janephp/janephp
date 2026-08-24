@@ -10,6 +10,7 @@ use Jane\Component\OpenApiCommon\Generator\OperationGenerator;
 use Jane\Component\OpenApiCommon\Naming\ChainOperationNaming;
 use Jane\Component\OpenApiCommon\Naming\OperationIdNaming;
 use Jane\Component\OpenApiCommon\Naming\OperationUrlNaming;
+use Jane\Component\OpenApiCommon\Naming\UniqueOperationNaming;
 use PhpParser\ParserFactory;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
@@ -22,10 +23,10 @@ class GeneratorFactory
         $bodyParameter = new BodyParameterGenerator($parser, $serializer);
         $nonBodyParameter = new NonBodyParameterGenerator($parser);
         $exceptionGenerator = new ExceptionGenerator();
-        $operationNaming = new ChainOperationNaming([
+        $operationNaming = new UniqueOperationNaming(new ChainOperationNaming([
             new OperationIdNaming(),
             new OperationUrlNaming(),
-        ]);
+        ]));
 
         if (!class_exists($endpointGeneratorClass)) {
             throw new \InvalidArgumentException(\sprintf('Unknown generator class %s', $endpointGeneratorClass));
