@@ -95,6 +95,7 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('owner', $data) && $data['owner'] === null) {
             $object->setOwner(null);
+            unset($data['owner']);
         }
         if (\array_key_exists('private', $data)) {
             $object->setPrivate($data['private']);
@@ -110,6 +111,7 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+            unset($data['description']);
         }
         if (\array_key_exists('fork', $data)) {
             $object->setFork($data['fork']);
@@ -277,6 +279,7 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('mirror_url', $data) && $data['mirror_url'] === null) {
             $object->setMirrorUrl(null);
+            unset($data['mirror_url']);
         }
         if (\array_key_exists('hooks_url', $data)) {
             $object->setHooksUrl($data['hooks_url']);
@@ -292,6 +295,7 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('homepage', $data) && $data['homepage'] === null) {
             $object->setHomepage(null);
+            unset($data['homepage']);
         }
         if (\array_key_exists('language', $data) && $data['language'] !== null) {
             $object->setLanguage($data['language']);
@@ -299,6 +303,7 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('language', $data) && $data['language'] === null) {
             $object->setLanguage(null);
+            unset($data['language']);
         }
         if (\array_key_exists('forks_count', $data)) {
             $object->setForksCount($data['forks_count']);
@@ -374,6 +379,7 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('pushed_at', $data) && $data['pushed_at'] === null) {
             $object->setPushedAt(null);
+            unset($data['pushed_at']);
         }
         if (\array_key_exists('created_at', $data) && $data['created_at'] !== null) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
@@ -381,6 +387,7 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('created_at', $data) && $data['created_at'] === null) {
             $object->setCreatedAt(null);
+            unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data) && $data['updated_at'] !== null) {
             $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
@@ -388,6 +395,7 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {
             $object->setUpdatedAt(null);
+            unset($data['updated_at']);
         }
         if (\array_key_exists('permissions', $data)) {
             $object->setPermissions($this->denormalizer->denormalize($data['permissions'], \Github\Model\MinimalRepositoryPermissions::class, 'json', $context));
@@ -419,6 +427,7 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('license', $data) && $data['license'] === null) {
             $object->setLicense(null);
+            unset($data['license']);
         }
         if (\array_key_exists('forks', $data)) {
             $object->setForks($data['forks']);

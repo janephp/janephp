@@ -43,6 +43,7 @@ class TransferWebLinkNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('identifier', $data) && $data['identifier'] === null) {
             $object->setIdentifier(null);
+            unset($data['identifier']);
         }
         if (\array_key_exists('requestId', $data) && $data['requestId'] !== null) {
             $object->setRequestId($data['requestId']);
@@ -50,6 +51,7 @@ class TransferWebLinkNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
             $object->setRequestId(null);
+            unset($data['requestId']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
@@ -61,6 +63,7 @@ class TransferWebLinkNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('fileName', $data) && $data['fileName'] === null) {
             $object->setFileName(null);
+            unset($data['fileName']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

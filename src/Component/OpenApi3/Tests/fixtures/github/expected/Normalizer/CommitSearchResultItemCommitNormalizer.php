@@ -50,6 +50,7 @@ class CommitSearchResultItemCommitNormalizer implements DenormalizerInterface, N
         }
         elseif (\array_key_exists('committer', $data) && $data['committer'] === null) {
             $object->setCommitter(null);
+            unset($data['committer']);
         }
         if (\array_key_exists('comment_count', $data)) {
             $object->setCommentCount($data['comment_count']);

@@ -59,6 +59,7 @@ class UserRoleDetailNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
             $object->setAudit(null);
+            unset($data['audit']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

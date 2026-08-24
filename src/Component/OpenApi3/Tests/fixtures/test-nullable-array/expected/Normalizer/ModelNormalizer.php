@@ -43,6 +43,7 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         elseif (\array_key_exists('foo', $data) && $data['foo'] === null) {
             $object->setFoo(null);
+            unset($data['foo']);
         }
         if (\array_key_exists('bar', $data) && $data['bar'] !== null) {
             $values = [];
@@ -54,6 +55,7 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         elseif (\array_key_exists('bar', $data) && $data['bar'] === null) {
             $object->setBar(null);
+            unset($data['bar']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

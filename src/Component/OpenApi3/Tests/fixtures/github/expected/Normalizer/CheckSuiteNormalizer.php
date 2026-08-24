@@ -54,6 +54,7 @@ class CheckSuiteNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('head_branch', $data) && $data['head_branch'] === null) {
             $object->setHeadBranch(null);
+            unset($data['head_branch']);
         }
         if (\array_key_exists('head_sha', $data)) {
             $object->setHeadSha($data['head_sha']);
@@ -65,6 +66,7 @@ class CheckSuiteNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('status', $data) && $data['status'] === null) {
             $object->setStatus(null);
+            unset($data['status']);
         }
         if (\array_key_exists('conclusion', $data) && $data['conclusion'] !== null) {
             $object->setConclusion($data['conclusion']);
@@ -72,6 +74,7 @@ class CheckSuiteNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('conclusion', $data) && $data['conclusion'] === null) {
             $object->setConclusion(null);
+            unset($data['conclusion']);
         }
         if (\array_key_exists('url', $data) && $data['url'] !== null) {
             $object->setUrl($data['url']);
@@ -79,6 +82,7 @@ class CheckSuiteNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('url', $data) && $data['url'] === null) {
             $object->setUrl(null);
+            unset($data['url']);
         }
         if (\array_key_exists('before', $data) && $data['before'] !== null) {
             $object->setBefore($data['before']);
@@ -86,6 +90,7 @@ class CheckSuiteNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('before', $data) && $data['before'] === null) {
             $object->setBefore(null);
+            unset($data['before']);
         }
         if (\array_key_exists('after', $data) && $data['after'] !== null) {
             $object->setAfter($data['after']);
@@ -93,6 +98,7 @@ class CheckSuiteNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('after', $data) && $data['after'] === null) {
             $object->setAfter(null);
+            unset($data['after']);
         }
         if (\array_key_exists('pull_requests', $data) && $data['pull_requests'] !== null) {
             $values = [];
@@ -104,6 +110,7 @@ class CheckSuiteNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('pull_requests', $data) && $data['pull_requests'] === null) {
             $object->setPullRequests(null);
+            unset($data['pull_requests']);
         }
         if (\array_key_exists('app', $data) && $data['app'] !== null) {
             $object->setApp($this->denormalizer->denormalize($data['app'], \Github\Model\CheckSuiteApp::class, 'json', $context));
@@ -111,6 +118,7 @@ class CheckSuiteNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('app', $data) && $data['app'] === null) {
             $object->setApp(null);
+            unset($data['app']);
         }
         if (\array_key_exists('repository', $data)) {
             $object->setRepository($this->denormalizer->denormalize($data['repository'], \Github\Model\MinimalRepository::class, 'json', $context));
@@ -122,6 +130,7 @@ class CheckSuiteNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('created_at', $data) && $data['created_at'] === null) {
             $object->setCreatedAt(null);
+            unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data) && $data['updated_at'] !== null) {
             $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
@@ -129,6 +138,7 @@ class CheckSuiteNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {
             $object->setUpdatedAt(null);
+            unset($data['updated_at']);
         }
         if (\array_key_exists('head_commit', $data)) {
             $object->setHeadCommit($this->denormalizer->denormalize($data['head_commit'], \Github\Model\SimpleCommit::class, 'json', $context));

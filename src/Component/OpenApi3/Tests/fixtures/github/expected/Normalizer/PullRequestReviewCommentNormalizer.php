@@ -50,6 +50,7 @@ class PullRequestReviewCommentNormalizer implements DenormalizerInterface, Norma
         }
         elseif (\array_key_exists('pull_request_review_id', $data) && $data['pull_request_review_id'] === null) {
             $object->setPullRequestReviewId(null);
+            unset($data['pull_request_review_id']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
@@ -93,6 +94,7 @@ class PullRequestReviewCommentNormalizer implements DenormalizerInterface, Norma
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
+            unset($data['user']);
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
@@ -128,6 +130,7 @@ class PullRequestReviewCommentNormalizer implements DenormalizerInterface, Norma
         }
         elseif (\array_key_exists('start_line', $data) && $data['start_line'] === null) {
             $object->setStartLine(null);
+            unset($data['start_line']);
         }
         if (\array_key_exists('original_start_line', $data) && $data['original_start_line'] !== null) {
             $object->setOriginalStartLine($data['original_start_line']);
@@ -135,6 +138,7 @@ class PullRequestReviewCommentNormalizer implements DenormalizerInterface, Norma
         }
         elseif (\array_key_exists('original_start_line', $data) && $data['original_start_line'] === null) {
             $object->setOriginalStartLine(null);
+            unset($data['original_start_line']);
         }
         if (\array_key_exists('start_side', $data) && $data['start_side'] !== null) {
             $object->setStartSide($data['start_side']);
@@ -142,6 +146,7 @@ class PullRequestReviewCommentNormalizer implements DenormalizerInterface, Norma
         }
         elseif (\array_key_exists('start_side', $data) && $data['start_side'] === null) {
             $object->setStartSide(null);
+            unset($data['start_side']);
         }
         if (\array_key_exists('line', $data)) {
             $object->setLine($data['line']);

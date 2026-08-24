@@ -60,6 +60,7 @@ class RepositorySubscriptionNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('reason', $data) && $data['reason'] === null) {
             $object->setReason(null);
+            unset($data['reason']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));

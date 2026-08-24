@@ -59,6 +59,7 @@ class ActionNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('completed_at', $data) && $data['completed_at'] === null) {
             $object->setCompletedAt(null);
+            unset($data['completed_at']);
         }
         if (\array_key_exists('resource_id', $data) && $data['resource_id'] !== null) {
             $object->setResourceId($data['resource_id']);
@@ -66,6 +67,7 @@ class ActionNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('resource_id', $data) && $data['resource_id'] === null) {
             $object->setResourceId(null);
+            unset($data['resource_id']);
         }
         if (\array_key_exists('resource_type', $data)) {
             $object->setResourceType($data['resource_type']);
@@ -81,6 +83,7 @@ class ActionNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('region_slug', $data) && $data['region_slug'] === null) {
             $object->setRegionSlug(null);
+            unset($data['region_slug']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

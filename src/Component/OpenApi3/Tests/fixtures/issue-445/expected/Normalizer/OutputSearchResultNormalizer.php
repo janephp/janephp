@@ -59,6 +59,7 @@ class OutputSearchResultNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
             $object->setPageToken(null);
+            unset($data['pageToken']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

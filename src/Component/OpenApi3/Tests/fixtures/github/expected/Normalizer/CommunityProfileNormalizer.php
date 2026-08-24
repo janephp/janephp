@@ -50,6 +50,7 @@ class CommunityProfileNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+            unset($data['description']);
         }
         if (\array_key_exists('documentation', $data) && $data['documentation'] !== null) {
             $object->setDocumentation($data['documentation']);
@@ -57,6 +58,7 @@ class CommunityProfileNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('documentation', $data) && $data['documentation'] === null) {
             $object->setDocumentation(null);
+            unset($data['documentation']);
         }
         if (\array_key_exists('files', $data)) {
             $object->setFiles($this->denormalizer->denormalize($data['files'], \Github\Model\CommunityProfileFiles::class, 'json', $context));
@@ -68,6 +70,7 @@ class CommunityProfileNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {
             $object->setUpdatedAt(null);
+            unset($data['updated_at']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

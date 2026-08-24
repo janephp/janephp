@@ -60,6 +60,7 @@ class ThreadSubscriptionNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('reason', $data) && $data['reason'] === null) {
             $object->setReason(null);
+            unset($data['reason']);
         }
         if (\array_key_exists('created_at', $data) && $data['created_at'] !== null) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
@@ -67,6 +68,7 @@ class ThreadSubscriptionNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('created_at', $data) && $data['created_at'] === null) {
             $object->setCreatedAt(null);
+            unset($data['created_at']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);

@@ -126,6 +126,7 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+            unset($data['description']);
         }
         if (\array_key_exists('downloads_url', $data)) {
             $object->setDownloadsUrl($data['downloads_url']);
@@ -309,6 +310,7 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('homepage', $data) && $data['homepage'] === null) {
             $object->setHomepage(null);
+            unset($data['homepage']);
         }
         if (\array_key_exists('language', $data) && $data['language'] !== null) {
             $object->setLanguage($data['language']);
@@ -316,6 +318,7 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('language', $data) && $data['language'] === null) {
             $object->setLanguage(null);
+            unset($data['language']);
         }
         if (\array_key_exists('master_branch', $data)) {
             $object->setMasterBranch($data['master_branch']);
@@ -335,6 +338,7 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('mirror_url', $data) && $data['mirror_url'] === null) {
             $object->setMirrorUrl(null);
+            unset($data['mirror_url']);
         }
         if (\array_key_exists('open_issues', $data)) {
             $object->setOpenIssues($data['open_issues']);
@@ -370,6 +374,7 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('license', $data) && $data['license'] === null) {
             $object->setLicense(null);
+            unset($data['license']);
         }
         if (\array_key_exists('pushed_at', $data)) {
             $object->setPushedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['pushed_at']));

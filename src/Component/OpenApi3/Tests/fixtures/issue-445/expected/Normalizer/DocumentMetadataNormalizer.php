@@ -43,6 +43,7 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
+            unset($data['names']);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
             $object->setDescriptions($data['descriptions']);
@@ -50,6 +51,7 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
             $object->setDescriptions(null);
+            unset($data['descriptions']);
         }
         if (\array_key_exists('fileExtension', $data) && $data['fileExtension'] !== null) {
             $object->setFileExtension($data['fileExtension']);
@@ -57,6 +59,7 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('fileExtension', $data) && $data['fileExtension'] === null) {
             $object->setFileExtension(null);
+            unset($data['fileExtension']);
         }
         if (\array_key_exists('fileName', $data) && $data['fileName'] !== null) {
             $object->setFileName($data['fileName']);
@@ -64,6 +67,7 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('fileName', $data) && $data['fileName'] === null) {
             $object->setFileName(null);
+            unset($data['fileName']);
         }
         if (\array_key_exists('filePath', $data) && $data['filePath'] !== null) {
             $object->setFilePath($data['filePath']);
@@ -71,6 +75,7 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('filePath', $data) && $data['filePath'] === null) {
             $object->setFilePath(null);
+            unset($data['filePath']);
         }
         if (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] !== null) {
             $object->setFileSizeInBytes($data['fileSizeInBytes']);
@@ -78,6 +83,7 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] === null) {
             $object->setFileSizeInBytes(null);
+            unset($data['fileSizeInBytes']);
         }
         if (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] !== null) {
             $object->setSha1Hash($data['sha1Hash']);
@@ -85,6 +91,7 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] === null) {
             $object->setSha1Hash(null);
+            unset($data['sha1Hash']);
         }
         if (\array_key_exists('xmpMetadata', $data) && $data['xmpMetadata'] !== null) {
             $object->setXmpMetadata($data['xmpMetadata']);
@@ -92,6 +99,7 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('xmpMetadata', $data) && $data['xmpMetadata'] === null) {
             $object->setXmpMetadata(null);
+            unset($data['xmpMetadata']);
         }
         if (\array_key_exists('exifMetadata', $data) && $data['exifMetadata'] !== null) {
             $object->setExifMetadata($data['exifMetadata']);
@@ -99,6 +107,7 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('exifMetadata', $data) && $data['exifMetadata'] === null) {
             $object->setExifMetadata(null);
+            unset($data['exifMetadata']);
         }
         if (\array_key_exists('language', $data) && $data['language'] !== null) {
             $object->setLanguage($data['language']);
@@ -106,6 +115,7 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('language', $data) && $data['language'] === null) {
             $object->setLanguage(null);
+            unset($data['language']);
         }
         if (\array_key_exists('applicationName', $data) && $data['applicationName'] !== null) {
             $object->setApplicationName($data['applicationName']);
@@ -113,6 +123,7 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('applicationName', $data) && $data['applicationName'] === null) {
             $object->setApplicationName(null);
+            unset($data['applicationName']);
         }
         if (\array_key_exists('applicationVersion', $data) && $data['applicationVersion'] !== null) {
             $object->setApplicationVersion($data['applicationVersion']);
@@ -120,6 +131,7 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('applicationVersion', $data) && $data['applicationVersion'] === null) {
             $object->setApplicationVersion(null);
+            unset($data['applicationVersion']);
         }
         if (\array_key_exists('author', $data) && $data['author'] !== null) {
             $object->setAuthor($data['author']);
@@ -127,6 +139,7 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('author', $data) && $data['author'] === null) {
             $object->setAuthor(null);
+            unset($data['author']);
         }
         if (\array_key_exists('creator', $data) && $data['creator'] !== null) {
             $object->setCreator($data['creator']);
@@ -134,6 +147,7 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('creator', $data) && $data['creator'] === null) {
             $object->setCreator(null);
+            unset($data['creator']);
         }
         if (\array_key_exists('publisher', $data) && $data['publisher'] !== null) {
             $object->setPublisher($data['publisher']);
@@ -141,6 +155,7 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('publisher', $data) && $data['publisher'] === null) {
             $object->setPublisher(null);
+            unset($data['publisher']);
         }
         if (\array_key_exists('company', $data) && $data['company'] !== null) {
             $object->setCompany($data['company']);
@@ -148,6 +163,7 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('company', $data) && $data['company'] === null) {
             $object->setCompany(null);
+            unset($data['company']);
         }
         if (\array_key_exists('documentTitle', $data) && $data['documentTitle'] !== null) {
             $object->setDocumentTitle($data['documentTitle']);
@@ -155,6 +171,7 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('documentTitle', $data) && $data['documentTitle'] === null) {
             $object->setDocumentTitle(null);
+            unset($data['documentTitle']);
         }
         if (\array_key_exists('characterCount', $data)) {
             $object->setCharacterCount($data['characterCount']);
@@ -194,6 +211,7 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('titles', $data) && $data['titles'] === null) {
             $object->setTitles(null);
+            unset($data['titles']);
         }
         if (\array_key_exists('imageTitles', $data) && $data['imageTitles'] !== null) {
             $values_1 = [];
@@ -205,6 +223,7 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('imageTitles', $data) && $data['imageTitles'] === null) {
             $object->setImageTitles(null);
+            unset($data['imageTitles']);
         }
         if (\array_key_exists('epsInfo', $data) && $data['epsInfo'] !== null) {
             $object->setEpsInfo($data['epsInfo']);
@@ -212,6 +231,7 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('epsInfo', $data) && $data['epsInfo'] === null) {
             $object->setEpsInfo(null);
+            unset($data['epsInfo']);
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

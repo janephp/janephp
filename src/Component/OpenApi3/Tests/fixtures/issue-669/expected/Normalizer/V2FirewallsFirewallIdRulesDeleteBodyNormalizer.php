@@ -47,6 +47,7 @@ class V2FirewallsFirewallIdRulesDeleteBodyNormalizer implements DenormalizerInte
         }
         elseif (\array_key_exists('inbound_rules', $data) && $data['inbound_rules'] === null) {
             $object->setInboundRules(null);
+            unset($data['inbound_rules']);
         }
         if (\array_key_exists('outbound_rules', $data) && $data['outbound_rules'] !== null) {
             $values_1 = [];
@@ -58,6 +59,7 @@ class V2FirewallsFirewallIdRulesDeleteBodyNormalizer implements DenormalizerInte
         }
         elseif (\array_key_exists('outbound_rules', $data) && $data['outbound_rules'] === null) {
             $object->setOutboundRules(null);
+            unset($data['outbound_rules']);
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

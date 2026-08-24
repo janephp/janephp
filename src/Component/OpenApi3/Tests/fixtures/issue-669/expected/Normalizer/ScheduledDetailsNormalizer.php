@@ -47,6 +47,7 @@ class ScheduledDetailsNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('body', $data) && $data['body'] === null) {
             $object->setBody(null);
+            unset($data['body']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

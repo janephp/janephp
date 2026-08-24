@@ -46,6 +46,7 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
+            unset($data['names']);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
             $object->setDescriptions($data['descriptions']);
@@ -53,6 +54,7 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
             $object->setDescriptions(null);
+            unset($data['descriptions']);
         }
         if (\array_key_exists('fileExtension', $data) && $data['fileExtension'] !== null) {
             $object->setFileExtension($data['fileExtension']);
@@ -60,6 +62,7 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('fileExtension', $data) && $data['fileExtension'] === null) {
             $object->setFileExtension(null);
+            unset($data['fileExtension']);
         }
         if (\array_key_exists('fileName', $data) && $data['fileName'] !== null) {
             $object->setFileName($data['fileName']);
@@ -67,6 +70,7 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('fileName', $data) && $data['fileName'] === null) {
             $object->setFileName(null);
+            unset($data['fileName']);
         }
         if (\array_key_exists('filePath', $data) && $data['filePath'] !== null) {
             $object->setFilePath($data['filePath']);
@@ -74,6 +78,7 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('filePath', $data) && $data['filePath'] === null) {
             $object->setFilePath(null);
+            unset($data['filePath']);
         }
         if (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] !== null) {
             $object->setFileSizeInBytes($data['fileSizeInBytes']);
@@ -81,6 +86,7 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('fileSizeInBytes', $data) && $data['fileSizeInBytes'] === null) {
             $object->setFileSizeInBytes(null);
+            unset($data['fileSizeInBytes']);
         }
         if (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] !== null) {
             $object->setSha1Hash($data['sha1Hash']);
@@ -88,6 +94,7 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('sha1Hash', $data) && $data['sha1Hash'] === null) {
             $object->setSha1Hash(null);
+            unset($data['sha1Hash']);
         }
         if (\array_key_exists('xmpMetadata', $data) && $data['xmpMetadata'] !== null) {
             $object->setXmpMetadata($data['xmpMetadata']);
@@ -95,6 +102,7 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('xmpMetadata', $data) && $data['xmpMetadata'] === null) {
             $object->setXmpMetadata(null);
+            unset($data['xmpMetadata']);
         }
         if (\array_key_exists('exifMetadata', $data) && $data['exifMetadata'] !== null) {
             $object->setExifMetadata($data['exifMetadata']);
@@ -102,6 +110,7 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('exifMetadata', $data) && $data['exifMetadata'] === null) {
             $object->setExifMetadata(null);
+            unset($data['exifMetadata']);
         }
         if (\array_key_exists('language', $data) && $data['language'] !== null) {
             $object->setLanguage($data['language']);
@@ -109,6 +118,7 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('language', $data) && $data['language'] === null) {
             $object->setLanguage(null);
+            unset($data['language']);
         }
         if (\array_key_exists('width', $data)) {
             $object->setWidth($data['width']);
@@ -128,6 +138,7 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('format', $data) && $data['format'] === null) {
             $object->setFormat(null);
+            unset($data['format']);
         }
         if (\array_key_exists('codec', $data) && $data['codec'] !== null) {
             $object->setCodec($data['codec']);
@@ -135,6 +146,7 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('codec', $data) && $data['codec'] === null) {
             $object->setCodec(null);
+            unset($data['codec']);
         }
         if (\array_key_exists('overallBitrate', $data) && $data['overallBitrate'] !== null) {
             $object->setOverallBitrate($data['overallBitrate']);
@@ -142,6 +154,7 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('overallBitrate', $data) && $data['overallBitrate'] === null) {
             $object->setOverallBitrate(null);
+            unset($data['overallBitrate']);
         }
         if (\array_key_exists('videoStreams', $data) && $data['videoStreams'] !== null) {
             $values = [];
@@ -153,6 +166,7 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('videoStreams', $data) && $data['videoStreams'] === null) {
             $object->setVideoStreams(null);
+            unset($data['videoStreams']);
         }
         if (\array_key_exists('audioStreams', $data) && $data['audioStreams'] !== null) {
             $values_1 = [];
@@ -164,6 +178,7 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('audioStreams', $data) && $data['audioStreams'] === null) {
             $object->setAudioStreams(null);
+            unset($data['audioStreams']);
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

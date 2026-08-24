@@ -50,6 +50,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('attribute2', $data) && $data['attribute2'] === null) {
             $object->setAttribute2(null);
+            unset($data['attribute2']);
         }
         if (\array_key_exists('attribute3', $data)) {
             $object->setAttribute3($data['attribute3']);
@@ -61,6 +62,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('attribute4', $data) && $data['attribute4'] === null) {
             $object->setAttribute4(null);
+            unset($data['attribute4']);
         }
         if (\array_key_exists('stringProperty', $data)) {
             $object->setStringProperty($data['stringProperty']);
@@ -76,6 +78,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('dateNullableProperty', $data) && $data['dateNullableProperty'] === null) {
             $object->setDateNullableProperty(null);
+            unset($data['dateNullableProperty']);
         }
         if (\array_key_exists('integerProperty', $data)) {
             $object->setIntegerProperty($data['integerProperty']);

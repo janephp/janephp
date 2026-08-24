@@ -46,6 +46,7 @@ class AssignTagboxItemsActionNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
+            unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -57,6 +58,7 @@ class AssignTagboxItemsActionNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('path', $data) && $data['path'] === null) {
             $object->setPath(null);
+            unset($data['path']);
         }
         if (\array_key_exists('fieldId', $data) && $data['fieldId'] !== null) {
             $object->setFieldId($data['fieldId']);
@@ -64,6 +66,7 @@ class AssignTagboxItemsActionNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('fieldId', $data) && $data['fieldId'] === null) {
             $object->setFieldId(null);
+            unset($data['fieldId']);
         }
         if (\array_key_exists('refIds', $data) && $data['refIds'] !== null) {
             $object->setRefIds($data['refIds']);
@@ -71,6 +74,7 @@ class AssignTagboxItemsActionNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('refIds', $data) && $data['refIds'] === null) {
             $object->setRefIds(null);
+            unset($data['refIds']);
         }
         if (\array_key_exists('replace', $data)) {
             $object->setReplace($data['replace']);

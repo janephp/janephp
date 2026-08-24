@@ -63,6 +63,7 @@ class KafkaTopicPartitionNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('consumer_groups', $data) && $data['consumer_groups'] === null) {
             $object->setConsumerGroups(null);
+            unset($data['consumer_groups']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

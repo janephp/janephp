@@ -47,6 +47,7 @@ class AudioStillFormatNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
             $object->setExtension(null);
+            unset($data['extension']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -50,6 +50,7 @@ class OrganizationInvitationNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('login', $data) && $data['login'] === null) {
             $object->setLogin(null);
+            unset($data['login']);
         }
         if (\array_key_exists('email', $data) && $data['email'] !== null) {
             $object->setEmail($data['email']);
@@ -57,6 +58,7 @@ class OrganizationInvitationNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('email', $data) && $data['email'] === null) {
             $object->setEmail(null);
+            unset($data['email']);
         }
         if (\array_key_exists('role', $data)) {
             $object->setRole($data['role']);
@@ -72,6 +74,7 @@ class OrganizationInvitationNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('inviter', $data) && $data['inviter'] === null) {
             $object->setInviter(null);
+            unset($data['inviter']);
         }
         if (\array_key_exists('team_count', $data)) {
             $object->setTeamCount($data['team_count']);

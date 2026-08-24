@@ -50,6 +50,7 @@ class SearchResultTextMatchesItemNormalizer implements DenormalizerInterface, No
         }
         elseif (\array_key_exists('object_type', $data) && $data['object_type'] === null) {
             $object->setObjectType(null);
+            unset($data['object_type']);
         }
         if (\array_key_exists('property', $data)) {
             $object->setProperty($data['property']);

@@ -65,6 +65,7 @@ class CodeScanningAlertNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('tool', $data) && $data['tool'] === null) {
             $object->setTool(null);
+            unset($data['tool']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
@@ -80,6 +81,7 @@ class CodeScanningAlertNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('closed_by', $data) && $data['closed_by'] === null) {
             $object->setClosedBy(null);
+            unset($data['closed_by']);
         }
         if (\array_key_exists('closed_at', $data) && $data['closed_at'] !== null) {
             $object->setClosedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['closed_at']));
@@ -87,6 +89,7 @@ class CodeScanningAlertNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('closed_at', $data) && $data['closed_at'] === null) {
             $object->setClosedAt(null);
+            unset($data['closed_at']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
@@ -102,6 +105,7 @@ class CodeScanningAlertNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('closed_reason', $data) && $data['closed_reason'] === null) {
             $object->setClosedReason(null);
+            unset($data['closed_reason']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -61,6 +61,7 @@ class UserPatchBodyNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('twitter_username', $data) && $data['twitter_username'] === null) {
             $object->setTwitterUsername(null);
+            unset($data['twitter_username']);
         }
         if (\array_key_exists('company', $data)) {
             $object->setCompany($data['company']);

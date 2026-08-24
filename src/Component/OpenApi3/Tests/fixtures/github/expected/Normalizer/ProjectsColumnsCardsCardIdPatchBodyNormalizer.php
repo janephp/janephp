@@ -49,6 +49,7 @@ class ProjectsColumnsCardsCardIdPatchBodyNormalizer implements DenormalizerInter
         }
         elseif (\array_key_exists('note', $data) && $data['note'] === null) {
             $object->setNote(null);
+            unset($data['note']);
         }
         if (\array_key_exists('archived', $data)) {
             $object->setArchived($data['archived']);

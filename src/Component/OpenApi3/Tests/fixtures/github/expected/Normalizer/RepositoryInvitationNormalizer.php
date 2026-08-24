@@ -54,6 +54,7 @@ class RepositoryInvitationNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('invitee', $data) && $data['invitee'] === null) {
             $object->setInvitee(null);
+            unset($data['invitee']);
         }
         if (\array_key_exists('inviter', $data) && $data['inviter'] !== null) {
             $object->setInviter($this->denormalizer->denormalize($data['inviter'], \Github\Model\RepositoryInvitationInviter::class, 'json', $context));
@@ -61,6 +62,7 @@ class RepositoryInvitationNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('inviter', $data) && $data['inviter'] === null) {
             $object->setInviter(null);
+            unset($data['inviter']);
         }
         if (\array_key_exists('permissions', $data)) {
             $object->setPermissions($data['permissions']);

@@ -53,6 +53,7 @@ class UserMarketplacePurchaseNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('next_billing_date', $data) && $data['next_billing_date'] === null) {
             $object->setNextBillingDate(null);
+            unset($data['next_billing_date']);
         }
         if (\array_key_exists('unit_count', $data) && $data['unit_count'] !== null) {
             $object->setUnitCount($data['unit_count']);
@@ -60,6 +61,7 @@ class UserMarketplacePurchaseNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('unit_count', $data) && $data['unit_count'] === null) {
             $object->setUnitCount(null);
+            unset($data['unit_count']);
         }
         if (\array_key_exists('on_free_trial', $data)) {
             $object->setOnFreeTrial($data['on_free_trial']);
@@ -71,6 +73,7 @@ class UserMarketplacePurchaseNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('free_trial_ends_on', $data) && $data['free_trial_ends_on'] === null) {
             $object->setFreeTrialEndsOn(null);
+            unset($data['free_trial_ends_on']);
         }
         if (\array_key_exists('updated_at', $data) && $data['updated_at'] !== null) {
             $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
@@ -78,6 +81,7 @@ class UserMarketplacePurchaseNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {
             $object->setUpdatedAt(null);
+            unset($data['updated_at']);
         }
         if (\array_key_exists('account', $data)) {
             $object->setAccount($this->denormalizer->denormalize($data['account'], \Github\Model\MarketplaceAccount::class, 'json', $context));

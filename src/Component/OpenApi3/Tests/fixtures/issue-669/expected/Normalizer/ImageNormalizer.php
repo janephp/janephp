@@ -65,6 +65,7 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         elseif (\array_key_exists('slug', $data) && $data['slug'] === null) {
             $object->setSlug(null);
+            unset($data['slug']);
         }
         if (\array_key_exists('public', $data)) {
             $object->setPublic($data['public']);
@@ -88,6 +89,7 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         elseif (\array_key_exists('min_disk_size', $data) && $data['min_disk_size'] === null) {
             $object->setMinDiskSize(null);
+            unset($data['min_disk_size']);
         }
         if (\array_key_exists('size_gigabytes', $data) && $data['size_gigabytes'] !== null) {
             $object->setSizeGigabytes($data['size_gigabytes']);
@@ -95,6 +97,7 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         elseif (\array_key_exists('size_gigabytes', $data) && $data['size_gigabytes'] === null) {
             $object->setSizeGigabytes(null);
+            unset($data['size_gigabytes']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
@@ -110,6 +113,7 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
             $object->setTags(null);
+            unset($data['tags']);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);

@@ -55,6 +55,7 @@ class BusinessRuleFiredEventNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('details', $data) && $data['details'] === null) {
             $object->setDetails(null);
+            unset($data['details']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

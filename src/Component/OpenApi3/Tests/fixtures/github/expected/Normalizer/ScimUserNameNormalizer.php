@@ -46,6 +46,7 @@ class ScimUserNameNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('givenName', $data) && $data['givenName'] === null) {
             $object->setGivenName(null);
+            unset($data['givenName']);
         }
         if (\array_key_exists('familyName', $data) && $data['familyName'] !== null) {
             $object->setFamilyName($data['familyName']);
@@ -53,6 +54,7 @@ class ScimUserNameNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('familyName', $data) && $data['familyName'] === null) {
             $object->setFamilyName(null);
+            unset($data['familyName']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

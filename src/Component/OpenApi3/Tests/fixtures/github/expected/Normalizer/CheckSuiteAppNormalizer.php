@@ -58,6 +58,7 @@ class CheckSuiteAppNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('owner', $data) && $data['owner'] === null) {
             $object->setOwner(null);
+            unset($data['owner']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
@@ -69,6 +70,7 @@ class CheckSuiteAppNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+            unset($data['description']);
         }
         if (\array_key_exists('external_url', $data)) {
             $object->setExternalUrl($data['external_url']);

@@ -197,6 +197,7 @@ trait DenormalizerGenerator
                         $this->getNaming()->getPrefixedMethodName('set', $property->getAccessorName()),
                         [new Arg(new Expr\ConstFetch(new Name('null')))],
                     )),
+                    ...($unset ? [new Stmt\Unset_([$propertyVar])] : []),
                 ]);
             }
         }

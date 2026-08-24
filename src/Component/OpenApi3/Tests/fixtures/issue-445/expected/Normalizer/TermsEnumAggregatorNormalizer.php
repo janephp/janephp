@@ -47,6 +47,7 @@ class TermsEnumAggregatorNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
+            unset($data['names']);
         }
         if (\array_key_exists('aggregators', $data) && $data['aggregators'] !== null) {
             $values = [];
@@ -58,6 +59,7 @@ class TermsEnumAggregatorNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('aggregators', $data) && $data['aggregators'] === null) {
             $object->setAggregators(null);
+            unset($data['aggregators']);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
             $object->setFilter($data['filter']);
@@ -65,6 +67,7 @@ class TermsEnumAggregatorNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
+            unset($data['filter']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -80,6 +83,7 @@ class TermsEnumAggregatorNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('size', $data) && $data['size'] === null) {
             $object->setSize(null);
+            unset($data['size']);
         }
         if (\array_key_exists('includes', $data) && $data['includes'] !== null) {
             $values_1 = [];
@@ -91,6 +95,7 @@ class TermsEnumAggregatorNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('includes', $data) && $data['includes'] === null) {
             $object->setIncludes(null);
+            unset($data['includes']);
         }
         if (\array_key_exists('excludes', $data) && $data['excludes'] !== null) {
             $values_2 = [];
@@ -102,6 +107,7 @@ class TermsEnumAggregatorNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('excludes', $data) && $data['excludes'] === null) {
             $object->setExcludes(null);
+            unset($data['excludes']);
         }
         if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
             $object->setSearchString($data['searchString']);
@@ -109,6 +115,7 @@ class TermsEnumAggregatorNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
             $object->setSearchString(null);
+            unset($data['searchString']);
         }
         if (\array_key_exists('searchFields', $data) && $data['searchFields'] !== null) {
             $values_3 = [];
@@ -120,6 +127,7 @@ class TermsEnumAggregatorNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('searchFields', $data) && $data['searchFields'] === null) {
             $object->setSearchFields(null);
+            unset($data['searchFields']);
         }
         if (\array_key_exists('enumType', $data)) {
             $object->setEnumType($data['enumType']);

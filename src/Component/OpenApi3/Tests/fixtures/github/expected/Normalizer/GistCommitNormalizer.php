@@ -54,6 +54,7 @@ class GistCommitNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
+            unset($data['user']);
         }
         if (\array_key_exists('change_status', $data)) {
             $object->setChangeStatus($this->denormalizer->denormalize($data['change_status'], \Github\Model\GistCommitChangeStatus::class, 'json', $context));

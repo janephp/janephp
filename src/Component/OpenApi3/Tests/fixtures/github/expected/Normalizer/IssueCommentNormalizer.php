@@ -74,6 +74,7 @@ class IssueCommentNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
+            unset($data['user']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
@@ -97,6 +98,7 @@ class IssueCommentNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('performed_via_github_app', $data) && $data['performed_via_github_app'] === null) {
             $object->setPerformedViaGithubApp(null);
+            unset($data['performed_via_github_app']);
         }
         if (\array_key_exists('reactions', $data)) {
             $object->setReactions($this->denormalizer->denormalize($data['reactions'], \Github\Model\ReactionRollup::class, 'json', $context));

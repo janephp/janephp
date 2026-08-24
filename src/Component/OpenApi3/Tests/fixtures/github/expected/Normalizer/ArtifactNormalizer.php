@@ -77,6 +77,7 @@ class ArtifactNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         elseif (\array_key_exists('created_at', $data) && $data['created_at'] === null) {
             $object->setCreatedAt(null);
+            unset($data['created_at']);
         }
         if (\array_key_exists('expires_at', $data)) {
             $object->setExpiresAt($data['expires_at']);
@@ -88,6 +89,7 @@ class ArtifactNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {
             $object->setUpdatedAt(null);
+            unset($data['updated_at']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

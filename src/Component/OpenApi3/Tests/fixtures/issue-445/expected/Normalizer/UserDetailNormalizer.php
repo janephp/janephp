@@ -58,6 +58,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
+            unset($data['id']);
         }
         if (\array_key_exists('firstName', $data) && $data['firstName'] !== null) {
             $object->setFirstName($data['firstName']);
@@ -65,6 +66,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('firstName', $data) && $data['firstName'] === null) {
             $object->setFirstName(null);
+            unset($data['firstName']);
         }
         if (\array_key_exists('lastName', $data) && $data['lastName'] !== null) {
             $object->setLastName($data['lastName']);
@@ -72,6 +74,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('lastName', $data) && $data['lastName'] === null) {
             $object->setLastName(null);
+            unset($data['lastName']);
         }
         if (\array_key_exists('emailAddress', $data)) {
             $object->setEmailAddress($data['emailAddress']);
@@ -91,6 +94,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('userRoles', $data) && $data['userRoles'] === null) {
             $object->setUserRoles(null);
+            unset($data['userRoles']);
         }
         if (\array_key_exists('comment', $data) && $data['comment'] !== null) {
             $object->setComment($data['comment']);
@@ -98,6 +102,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('comment', $data) && $data['comment'] === null) {
             $object->setComment(null);
+            unset($data['comment']);
         }
         if (\array_key_exists('languageCode', $data) && $data['languageCode'] !== null) {
             $object->setLanguageCode($data['languageCode']);
@@ -105,6 +110,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('languageCode', $data) && $data['languageCode'] === null) {
             $object->setLanguageCode(null);
+            unset($data['languageCode']);
         }
         if (\array_key_exists('address', $data) && $data['address'] !== null) {
             $object->setAddress($data['address']);
@@ -112,6 +118,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('address', $data) && $data['address'] === null) {
             $object->setAddress(null);
+            unset($data['address']);
         }
         if (\array_key_exists('identityProviderId', $data) && $data['identityProviderId'] !== null) {
             $object->setIdentityProviderId($data['identityProviderId']);
@@ -119,6 +126,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('identityProviderId', $data) && $data['identityProviderId'] === null) {
             $object->setIdentityProviderId(null);
+            unset($data['identityProviderId']);
         }
         if (\array_key_exists('ownerTokens', $data) && $data['ownerTokens'] !== null) {
             $values_1 = [];
@@ -130,6 +138,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('ownerTokens', $data) && $data['ownerTokens'] === null) {
             $object->setOwnerTokens(null);
+            unset($data['ownerTokens']);
         }
         if (\array_key_exists('authorizationState', $data)) {
             $object->setAuthorizationState($data['authorizationState']);
@@ -161,6 +170,7 @@ class UserDetailNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
             $object->setAudit(null);
+            unset($data['audit']);
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

@@ -55,6 +55,7 @@ class UserRoleCreateRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
             $object->setRequestId(null);
+            unset($data['requestId']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

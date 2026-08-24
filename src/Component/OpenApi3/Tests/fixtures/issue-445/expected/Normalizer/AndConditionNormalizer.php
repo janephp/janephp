@@ -43,6 +43,7 @@ class AndConditionNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
+            unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -58,6 +59,7 @@ class AndConditionNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('conditions', $data) && $data['conditions'] === null) {
             $object->setConditions(null);
+            unset($data['conditions']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

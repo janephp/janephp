@@ -68,6 +68,7 @@ class UserSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('gravatar_id', $data) && $data['gravatar_id'] === null) {
             $object->setGravatarId(null);
+            unset($data['gravatar_id']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
@@ -151,6 +152,7 @@ class UserSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('name', $data) && $data['name'] === null) {
             $object->setName(null);
+            unset($data['name']);
         }
         if (\array_key_exists('bio', $data) && $data['bio'] !== null) {
             $object->setBio($data['bio']);
@@ -158,6 +160,7 @@ class UserSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('bio', $data) && $data['bio'] === null) {
             $object->setBio(null);
+            unset($data['bio']);
         }
         if (\array_key_exists('email', $data) && $data['email'] !== null) {
             $object->setEmail($data['email']);
@@ -165,6 +168,7 @@ class UserSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('email', $data) && $data['email'] === null) {
             $object->setEmail(null);
+            unset($data['email']);
         }
         if (\array_key_exists('location', $data) && $data['location'] !== null) {
             $object->setLocation($data['location']);
@@ -172,6 +176,7 @@ class UserSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('location', $data) && $data['location'] === null) {
             $object->setLocation(null);
+            unset($data['location']);
         }
         if (\array_key_exists('site_admin', $data)) {
             $object->setSiteAdmin($data['site_admin']);
@@ -183,6 +188,7 @@ class UserSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('hireable', $data) && $data['hireable'] === null) {
             $object->setHireable(null);
+            unset($data['hireable']);
         }
         if (\array_key_exists('text_matches', $data)) {
             $values = [];
@@ -198,6 +204,7 @@ class UserSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('blog', $data) && $data['blog'] === null) {
             $object->setBlog(null);
+            unset($data['blog']);
         }
         if (\array_key_exists('company', $data) && $data['company'] !== null) {
             $object->setCompany($data['company']);
@@ -205,6 +212,7 @@ class UserSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('company', $data) && $data['company'] === null) {
             $object->setCompany(null);
+            unset($data['company']);
         }
         if (\array_key_exists('suspended_at', $data) && $data['suspended_at'] !== null) {
             $object->setSuspendedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['suspended_at']));
@@ -212,6 +220,7 @@ class UserSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('suspended_at', $data) && $data['suspended_at'] === null) {
             $object->setSuspendedAt(null);
+            unset($data['suspended_at']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

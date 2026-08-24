@@ -50,6 +50,7 @@ class JobStepsItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('conclusion', $data) && $data['conclusion'] === null) {
             $object->setConclusion(null);
+            unset($data['conclusion']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
@@ -65,6 +66,7 @@ class JobStepsItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('started_at', $data) && $data['started_at'] === null) {
             $object->setStartedAt(null);
+            unset($data['started_at']);
         }
         if (\array_key_exists('completed_at', $data) && $data['completed_at'] !== null) {
             $object->setCompletedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['completed_at']));
@@ -72,6 +74,7 @@ class JobStepsItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('completed_at', $data) && $data['completed_at'] === null) {
             $object->setCompletedAt(null);
+            unset($data['completed_at']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

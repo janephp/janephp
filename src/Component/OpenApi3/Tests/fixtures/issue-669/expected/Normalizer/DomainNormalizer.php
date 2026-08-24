@@ -51,6 +51,7 @@ class DomainNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('ttl', $data) && $data['ttl'] === null) {
             $object->setTtl(null);
+            unset($data['ttl']);
         }
         if (\array_key_exists('zone_file', $data) && $data['zone_file'] !== null) {
             $object->setZoneFile($data['zone_file']);
@@ -58,6 +59,7 @@ class DomainNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('zone_file', $data) && $data['zone_file'] === null) {
             $object->setZoneFile(null);
+            unset($data['zone_file']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -59,6 +59,7 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('businessProcessId', $data) && $data['businessProcessId'] === null) {
             $object->setBusinessProcessId(null);
+            unset($data['businessProcessId']);
         }
         if (\array_key_exists('fileTransferCount', $data)) {
             $object->setFileTransferCount($data['fileTransferCount']);
@@ -70,6 +71,7 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('collectionId', $data) && $data['collectionId'] === null) {
             $object->setCollectionId(null);
+            unset($data['collectionId']);
         }
         if (\array_key_exists('audit', $data)) {
             $object->setAudit($data['audit']);
@@ -105,6 +107,7 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('lastDataExtractionProgressTimeStamp', $data) && $data['lastDataExtractionProgressTimeStamp'] === null) {
             $object->setLastDataExtractionProgressTimeStamp(null);
+            unset($data['lastDataExtractionProgressTimeStamp']);
         }
         if (\array_key_exists('lastFileUploadProgressTimeStamp', $data) && $data['lastFileUploadProgressTimeStamp'] !== null) {
             $object->setLastFileUploadProgressTimeStamp(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastFileUploadProgressTimeStamp']));
@@ -112,6 +115,7 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('lastFileUploadProgressTimeStamp', $data) && $data['lastFileUploadProgressTimeStamp'] === null) {
             $object->setLastFileUploadProgressTimeStamp(null);
+            unset($data['lastFileUploadProgressTimeStamp']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

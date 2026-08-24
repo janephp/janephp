@@ -57,6 +57,7 @@ class FileCommitCommitVerificationNormalizer implements DenormalizerInterface, N
         }
         elseif (\array_key_exists('signature', $data) && $data['signature'] === null) {
             $object->setSignature(null);
+            unset($data['signature']);
         }
         if (\array_key_exists('payload', $data) && $data['payload'] !== null) {
             $object->setPayload($data['payload']);
@@ -64,6 +65,7 @@ class FileCommitCommitVerificationNormalizer implements DenormalizerInterface, N
         }
         elseif (\array_key_exists('payload', $data) && $data['payload'] === null) {
             $object->setPayload(null);
+            unset($data['payload']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -56,6 +56,7 @@ class MigrationNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         elseif (\array_key_exists('owner', $data) && $data['owner'] === null) {
             $object->setOwner(null);
+            unset($data['owner']);
         }
         if (\array_key_exists('guid', $data)) {
             $object->setGuid($data['guid']);

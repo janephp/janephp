@@ -56,6 +56,7 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('display_name', $data) && $data['display_name'] === null) {
             $object->setDisplayName(null);
+            unset($data['display_name']);
         }
         if (\array_key_exists('short_description', $data) && $data['short_description'] !== null) {
             $object->setShortDescription($data['short_description']);
@@ -63,6 +64,7 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('short_description', $data) && $data['short_description'] === null) {
             $object->setShortDescription(null);
+            unset($data['short_description']);
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
@@ -70,6 +72,7 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+            unset($data['description']);
         }
         if (\array_key_exists('created_by', $data) && $data['created_by'] !== null) {
             $object->setCreatedBy($data['created_by']);
@@ -77,6 +80,7 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('created_by', $data) && $data['created_by'] === null) {
             $object->setCreatedBy(null);
+            unset($data['created_by']);
         }
         if (\array_key_exists('released', $data) && $data['released'] !== null) {
             $object->setReleased($data['released']);
@@ -84,6 +88,7 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('released', $data) && $data['released'] === null) {
             $object->setReleased(null);
+            unset($data['released']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
@@ -111,6 +116,7 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('repository_count', $data) && $data['repository_count'] === null) {
             $object->setRepositoryCount(null);
+            unset($data['repository_count']);
         }
         if (\array_key_exists('logo_url', $data) && $data['logo_url'] !== null) {
             $object->setLogoUrl($data['logo_url']);
@@ -118,6 +124,7 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('logo_url', $data) && $data['logo_url'] === null) {
             $object->setLogoUrl(null);
+            unset($data['logo_url']);
         }
         if (\array_key_exists('text_matches', $data)) {
             $values = [];
@@ -137,6 +144,7 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('related', $data) && $data['related'] === null) {
             $object->setRelated(null);
+            unset($data['related']);
         }
         if (\array_key_exists('aliases', $data) && $data['aliases'] !== null) {
             $values_2 = [];
@@ -148,6 +156,7 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('aliases', $data) && $data['aliases'] === null) {
             $object->setAliases(null);
+            unset($data['aliases']);
         }
         foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {

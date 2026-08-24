@@ -51,6 +51,7 @@ class AndFilterNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         elseif (\array_key_exists('filters', $data) && $data['filters'] === null) {
             $object->setFilters(null);
+            unset($data['filters']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

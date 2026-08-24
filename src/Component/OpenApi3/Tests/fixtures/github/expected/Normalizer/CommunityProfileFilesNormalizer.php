@@ -46,6 +46,7 @@ class CommunityProfileFilesNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('code_of_conduct', $data) && $data['code_of_conduct'] === null) {
             $object->setCodeOfConduct(null);
+            unset($data['code_of_conduct']);
         }
         if (\array_key_exists('license', $data) && $data['license'] !== null) {
             $object->setLicense($this->denormalizer->denormalize($data['license'], \Github\Model\CommunityProfileFilesLicense::class, 'json', $context));
@@ -53,6 +54,7 @@ class CommunityProfileFilesNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('license', $data) && $data['license'] === null) {
             $object->setLicense(null);
+            unset($data['license']);
         }
         if (\array_key_exists('contributing', $data) && $data['contributing'] !== null) {
             $object->setContributing($this->denormalizer->denormalize($data['contributing'], \Github\Model\CommunityProfileFilesContributing::class, 'json', $context));
@@ -60,6 +62,7 @@ class CommunityProfileFilesNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('contributing', $data) && $data['contributing'] === null) {
             $object->setContributing(null);
+            unset($data['contributing']);
         }
         if (\array_key_exists('readme', $data) && $data['readme'] !== null) {
             $object->setReadme($this->denormalizer->denormalize($data['readme'], \Github\Model\CommunityProfileFilesReadme::class, 'json', $context));
@@ -67,6 +70,7 @@ class CommunityProfileFilesNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('readme', $data) && $data['readme'] === null) {
             $object->setReadme(null);
+            unset($data['readme']);
         }
         if (\array_key_exists('issue_template', $data) && $data['issue_template'] !== null) {
             $object->setIssueTemplate($this->denormalizer->denormalize($data['issue_template'], \Github\Model\CommunityProfileFilesIssueTemplate::class, 'json', $context));
@@ -74,6 +78,7 @@ class CommunityProfileFilesNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('issue_template', $data) && $data['issue_template'] === null) {
             $object->setIssueTemplate(null);
+            unset($data['issue_template']);
         }
         if (\array_key_exists('pull_request_template', $data) && $data['pull_request_template'] !== null) {
             $object->setPullRequestTemplate($this->denormalizer->denormalize($data['pull_request_template'], \Github\Model\CommunityProfileFilesPullRequestTemplate::class, 'json', $context));
@@ -81,6 +86,7 @@ class CommunityProfileFilesNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('pull_request_template', $data) && $data['pull_request_template'] === null) {
             $object->setPullRequestTemplate(null);
+            unset($data['pull_request_template']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

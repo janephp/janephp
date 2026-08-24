@@ -51,6 +51,7 @@ class ContentPermissionSetUpdateRequestItemNormalizer implements DenormalizerInt
         }
         elseif (\array_key_exists('userRolesRights', $data) && $data['userRolesRights'] === null) {
             $object->setUserRolesRights(null);
+            unset($data['userRolesRights']);
         }
         if (\array_key_exists('userRolesPermissionSetRights', $data) && $data['userRolesPermissionSetRights'] !== null) {
             $values_1 = [];
@@ -62,6 +63,7 @@ class ContentPermissionSetUpdateRequestItemNormalizer implements DenormalizerInt
         }
         elseif (\array_key_exists('userRolesPermissionSetRights', $data) && $data['userRolesPermissionSetRights'] === null) {
             $object->setUserRolesPermissionSetRights(null);
+            unset($data['userRolesPermissionSetRights']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);

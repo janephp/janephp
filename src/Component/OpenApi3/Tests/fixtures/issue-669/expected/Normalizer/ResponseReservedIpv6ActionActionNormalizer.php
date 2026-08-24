@@ -59,6 +59,7 @@ class ResponseReservedIpv6ActionActionNormalizer implements DenormalizerInterfac
         }
         elseif (\array_key_exists('completed_at', $data) && $data['completed_at'] === null) {
             $object->setCompletedAt(null);
+            unset($data['completed_at']);
         }
         if (\array_key_exists('resource_id', $data)) {
             $object->setResourceId($data['resource_id']);

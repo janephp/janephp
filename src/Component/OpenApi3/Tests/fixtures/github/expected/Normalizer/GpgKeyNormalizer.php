@@ -62,6 +62,7 @@ class GpgKeyNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('primary_key_id', $data) && $data['primary_key_id'] === null) {
             $object->setPrimaryKeyId(null);
+            unset($data['primary_key_id']);
         }
         if (\array_key_exists('key_id', $data)) {
             $object->setKeyId($data['key_id']);
@@ -113,6 +114,7 @@ class GpgKeyNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('expires_at', $data) && $data['expires_at'] === null) {
             $object->setExpiresAt(null);
+            unset($data['expires_at']);
         }
         if (\array_key_exists('raw_key', $data) && $data['raw_key'] !== null) {
             $object->setRawKey($data['raw_key']);
@@ -120,6 +122,7 @@ class GpgKeyNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('raw_key', $data) && $data['raw_key'] === null) {
             $object->setRawKey(null);
+            unset($data['raw_key']);
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

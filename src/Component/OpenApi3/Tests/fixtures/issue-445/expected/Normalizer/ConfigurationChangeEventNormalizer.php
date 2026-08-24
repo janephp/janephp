@@ -51,6 +51,7 @@ class ConfigurationChangeEventNormalizer implements DenormalizerInterface, Norma
         }
         elseif (\array_key_exists('documentType', $data) && $data['documentType'] === null) {
             $object->setDocumentType(null);
+            unset($data['documentType']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -61,6 +61,7 @@ class ProjectCardNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('note', $data) && $data['note'] === null) {
             $object->setNote(null);
+            unset($data['note']);
         }
         if (\array_key_exists('creator', $data) && $data['creator'] !== null) {
             $object->setCreator($this->denormalizer->denormalize($data['creator'], \Github\Model\ProjectCardCreator::class, 'json', $context));
@@ -68,6 +69,7 @@ class ProjectCardNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('creator', $data) && $data['creator'] === null) {
             $object->setCreator(null);
+            unset($data['creator']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));

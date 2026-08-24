@@ -51,6 +51,7 @@ class ReviewReviewWriteNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('letter', $data) && $data['letter'] === null) {
             $object->setLetter(null);
+            unset($data['letter']);
         }
         if (\array_key_exists('book', $data)) {
             $object->setBook($data['book']);
@@ -62,6 +63,7 @@ class ReviewReviewWriteNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('author', $data) && $data['author'] === null) {
             $object->setAuthor(null);
+            unset($data['author']);
         }
         if (\array_key_exists('publicationDate', $data) && $data['publicationDate'] !== null) {
             $object->setPublicationDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['publicationDate']));
@@ -69,6 +71,7 @@ class ReviewReviewWriteNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('publicationDate', $data) && $data['publicationDate'] === null) {
             $object->setPublicationDate(null);
+            unset($data['publicationDate']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

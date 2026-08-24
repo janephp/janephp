@@ -71,6 +71,7 @@ class V2FirewallsPostBodyNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('droplet_ids', $data) && $data['droplet_ids'] === null) {
             $object->setDropletIds(null);
+            unset($data['droplet_ids']);
         }
         if (\array_key_exists('tags', $data)) {
             $values_2 = [];
@@ -90,6 +91,7 @@ class V2FirewallsPostBodyNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('inbound_rules', $data) && $data['inbound_rules'] === null) {
             $object->setInboundRules(null);
+            unset($data['inbound_rules']);
         }
         if (\array_key_exists('outbound_rules', $data) && $data['outbound_rules'] !== null) {
             $values_4 = [];
@@ -101,6 +103,7 @@ class V2FirewallsPostBodyNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('outbound_rules', $data) && $data['outbound_rules'] === null) {
             $object->setOutboundRules(null);
+            unset($data['outbound_rules']);
         }
         foreach ($data as $key => $value_5) {
             if (preg_match('/.*/', (string) $key)) {

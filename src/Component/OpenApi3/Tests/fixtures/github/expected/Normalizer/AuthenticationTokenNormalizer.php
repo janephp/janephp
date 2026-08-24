@@ -70,6 +70,7 @@ class AuthenticationTokenNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('single_file', $data) && $data['single_file'] === null) {
             $object->setSingleFile(null);
+            unset($data['single_file']);
         }
         if (\array_key_exists('repository_selection', $data)) {
             $object->setRepositorySelection($data['repository_selection']);

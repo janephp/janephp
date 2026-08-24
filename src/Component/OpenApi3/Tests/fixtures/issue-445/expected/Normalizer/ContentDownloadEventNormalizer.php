@@ -55,6 +55,7 @@ class ContentDownloadEventNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('downloadInfos', $data) && $data['downloadInfos'] === null) {
             $object->setDownloadInfos(null);
+            unset($data['downloadInfos']);
         }
         if (\array_key_exists('fileSize', $data)) {
             $object->setFileSize($data['fileSize']);
@@ -66,6 +67,7 @@ class ContentDownloadEventNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('shareToken', $data) && $data['shareToken'] === null) {
             $object->setShareToken(null);
+            unset($data['shareToken']);
         }
         if (\array_key_exists('range', $data) && $data['range'] !== null) {
             $object->setRange($data['range']);
@@ -73,6 +75,7 @@ class ContentDownloadEventNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('range', $data) && $data['range'] === null) {
             $object->setRange(null);
+            unset($data['range']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

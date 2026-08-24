@@ -62,6 +62,7 @@ class DeploymentStatusNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('creator', $data) && $data['creator'] === null) {
             $object->setCreator(null);
+            unset($data['creator']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
@@ -105,6 +106,7 @@ class DeploymentStatusNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('performed_via_github_app', $data) && $data['performed_via_github_app'] === null) {
             $object->setPerformedViaGithubApp(null);
+            unset($data['performed_via_github_app']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

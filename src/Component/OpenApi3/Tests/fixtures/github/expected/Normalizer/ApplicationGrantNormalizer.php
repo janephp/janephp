@@ -74,6 +74,7 @@ class ApplicationGrantNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
+            unset($data['user']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

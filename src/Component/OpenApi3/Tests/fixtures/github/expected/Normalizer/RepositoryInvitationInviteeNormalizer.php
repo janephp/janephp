@@ -65,6 +65,7 @@ class RepositoryInvitationInviteeNormalizer implements DenormalizerInterface, No
         }
         elseif (\array_key_exists('gravatar_id', $data) && $data['gravatar_id'] === null) {
             $object->setGravatarId(null);
+            unset($data['gravatar_id']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
