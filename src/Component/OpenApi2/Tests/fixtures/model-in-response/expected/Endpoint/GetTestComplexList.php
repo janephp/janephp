@@ -21,7 +21,7 @@ class GetTestComplexList extends \Jane\Component\OpenApi2\Tests\Expected\Runtime
      * {@inheritdoc}
      *
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Expected\Model\TestComplexListGetResponsedefault
+     * @return null|array|\Jane\Component\OpenApi2\Tests\Expected\Model\TestComplexListGetResponsedefault
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {

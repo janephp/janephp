@@ -8,7 +8,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\FilePostBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|string : \Psr\Http\Message\ResponseInterface)
      */
     public function postFile(?\Jane\Component\OpenApi3\Tests\Expected\Model\FilePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {

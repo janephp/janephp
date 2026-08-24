@@ -26,7 +26,7 @@ class SystemPingHead extends \Docker\Api\Runtime\Client\BaseEndpoint implements 
      *
      * @throws \Docker\Api\Exception\SystemPingHeadInternalServerErrorException
      *
-     * @return null
+     * @return null|string
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {

@@ -47,7 +47,7 @@ class ReposSetStatusCheckContexts extends \Github\Runtime\Client\BaseEndpoint im
      * @throws \Github\Exception\ReposSetStatusCheckContextsUnprocessableEntityException
      * @throws \Github\Exception\ReposSetStatusCheckContextsNotFoundException
      *
-     * @return null
+     * @return null|array
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {

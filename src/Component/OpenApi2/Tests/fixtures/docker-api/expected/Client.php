@@ -128,7 +128,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ContainerLogsNotFoundException
      * @throws \Docker\Api\Exception\ContainerLogsInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|string : \Psr\Http\Message\ResponseInterface)
      */
     public function containerLogs(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -976,7 +976,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\SystemPingInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|string : \Psr\Http\Message\ResponseInterface)
      */
     public function systemPing(string $fetch = self::FETCH_OBJECT)
     {
@@ -986,7 +986,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\SystemPingHeadInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|string : \Psr\Http\Message\ResponseInterface)
      */
     public function systemPingHead(string $fetch = self::FETCH_OBJECT)
     {
@@ -1108,7 +1108,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ImageGetInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|string : \Psr\Http\Message\ResponseInterface)
      */
     public function imageGet(string $name, string $fetch = self::FETCH_OBJECT)
     {
@@ -1132,7 +1132,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Docker\Api\Exception\ImageGetAllInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|string : \Psr\Http\Message\ResponseInterface)
      */
     public function imageGetAll(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1724,7 +1724,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\SwarmInitInternalServerErrorException
      * @throws \Docker\Api\Exception\SwarmInitServiceUnavailableException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|string : \Psr\Http\Message\ResponseInterface)
      */
     public function swarmInit(\Docker\Api\Model\SwarmInitPostBody $body, string $fetch = self::FETCH_OBJECT)
     {
@@ -1942,7 +1942,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\ServiceLogsInternalServerErrorException
      * @throws \Docker\Api\Exception\ServiceLogsServiceUnavailableException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|string : \Psr\Http\Message\ResponseInterface)
      */
     public function serviceLogs(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2010,7 +2010,7 @@ class Client extends \Docker\Api\Runtime\Client\Client
      * @throws \Docker\Api\Exception\TaskLogsInternalServerErrorException
      * @throws \Docker\Api\Exception\TaskLogsServiceUnavailableException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|string : \Psr\Http\Message\ResponseInterface)
      */
     public function taskLogs(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {

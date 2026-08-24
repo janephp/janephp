@@ -69,7 +69,7 @@ class TaskLogs extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
      * @throws \Docker\Api\Exception\TaskLogsInternalServerErrorException
      * @throws \Docker\Api\Exception\TaskLogsServiceUnavailableException
      *
-     * @return null
+     * @return null|string
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
