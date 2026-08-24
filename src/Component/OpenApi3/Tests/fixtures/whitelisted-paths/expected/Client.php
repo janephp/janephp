@@ -17,7 +17,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param array $accept Accept content header application/json|application/problem+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\TweetLookupResponse : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\TweetLookupResponse|\Jane\Component\OpenApi3\Tests\Expected\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function findTweetsById(array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {
@@ -32,7 +32,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param array $accept Accept content header application/json|application/problem+json
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi3\Tests\Expected\Model\Error : \Psr\Http\Message\ResponseInterface)
      */
     public function addOrDeleteRules($requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
     {

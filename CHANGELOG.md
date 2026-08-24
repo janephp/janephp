@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [OpenApi3] [GH#771](https://github.com/janephp/janephp/issues/771) Report clean generation errors for non-body parameters using an unsupported `schema.type` (or no `type`/`enum`) instead of crashing
 
 ### Fixed
+- [OpenApi] [GH#763](https://github.com/janephp/janephp/issues/763) Generate models referenced by the `default` response when using `whitelisted-paths` (the default response is not part of the iterated status codes, so its models were filtered out)
 - [JsonSchema] [GH#585](https://github.com/janephp/janephp/issues/585) Reference normalizers of models from other mapped schemas (transitively) used by a schema's models in its generated `JaneObjectNormalizer`, so multi-namespace mappings no longer fail at runtime with "no supporting normalizer found"
 - [OpenApi] [GH#963](https://github.com/janephp/janephp/issues/963) Support JSON content types with parameters (e.g. `application/json;schema=...`) when generating response transformations and operation/model relations
 - [OpenApi] [GH#963](https://github.com/janephp/janephp/issues/963) Generate models for `allOf` schemas whose members omit an explicit `type: object`
