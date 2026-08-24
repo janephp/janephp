@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [OpenApi] Support union types (e.g. `type: ["array", "null"]`) when detecting array schemas
 - [OpenApi3] [GH#803](https://github.com/janephp/janephp/issues/803) Fix fatal error when a non-required query/header parameter references a schema defining a `default` (the default is now applied to the generated options resolver)
 - [Jane] Wrap unexpected generation-phase errors in a clean `GenerationFailedException` instead of letting raw PHP errors reach the console
+- [OpenApi] [GH#831](https://github.com/janephp/janephp/issues/831) Take PHP reserved words into account when generating endpoint class names: an operation whose `operationId` is a reserved word (e.g. `list`) now generates a valid `Endpoint\_List` class instead of the unparseable `class List`. Client method names keep the original operationId (reserved words are valid PHP method names)
 
 ## [7.13.0] - 2026-08-17
 ### Added
