@@ -1,0 +1,23 @@
+openapi: 3.0.3
+info:
+  title: 'Issue 823'
+  version: 1.0.0
+paths:
+  /api/user:
+    get:
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+  /api/users:
+    get:
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
