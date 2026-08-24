@@ -185,8 +185,10 @@ return [
 There is many ways to use it, first you atleast need a regex defining which endpoint is whitelisted. This endpoint
 can be either a string or in an array. If you don't provide any HTTP method, we will just accept any methods, but
 you can provide either a string or array as second argument to specify which method you accept.
-- `endpoint-generator`: Generator Class which can specify custom endpoint interface & corresponding trait (this class
- should extends `\Jane\Component\OpenApi3\Generator\EndpointGenerator`)
+- `endpoint-generator`: Generator which can specify custom endpoint interface & corresponding trait. It accepts either
+ a class name (this class should extend `\Jane\Component\OpenApi3\Generator\EndpointGenerator`) or a ready-made
+ instance implementing `\Jane\Component\OpenApiCommon\Generator\EndpointGeneratorInterface`, so you can build it
+ yourself with the dependencies of your choice
 - `custom-query-resolver`: This option allows you to customize the query parameter normalizer for each of the API
  endpoint with a userland callback. Here is all possible combinations::
 ```php
