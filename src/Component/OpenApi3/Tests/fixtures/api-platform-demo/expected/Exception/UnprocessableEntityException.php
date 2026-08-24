@@ -2,7 +2,7 @@
 
 namespace ApiPlatform\Demo\Exception;
 
-class UnprocessableEntityException extends \RuntimeException implements ClientException
+abstract class UnprocessableEntityException extends \RuntimeException implements ClientException
 {
     public function __construct(string $message)
     {

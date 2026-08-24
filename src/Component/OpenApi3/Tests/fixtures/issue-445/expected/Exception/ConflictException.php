@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class ConflictException extends \RuntimeException implements ClientException
+abstract class ConflictException extends \RuntimeException implements ClientException
 {
     public function __construct(string $message)
     {

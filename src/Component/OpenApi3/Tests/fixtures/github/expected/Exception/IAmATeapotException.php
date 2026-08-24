@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class IAmATeapotException extends \RuntimeException implements ClientException
+abstract class IAmATeapotException extends \RuntimeException implements ClientException
 {
     public function __construct(string $message)
     {

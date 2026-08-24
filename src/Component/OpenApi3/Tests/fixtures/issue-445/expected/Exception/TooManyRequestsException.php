@@ -2,7 +2,7 @@
 
 namespace PicturePark\API\Exception;
 
-class TooManyRequestsException extends \RuntimeException implements ClientException
+abstract class TooManyRequestsException extends \RuntimeException implements ClientException
 {
     public function __construct(string $message)
     {
