@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Exception;
+namespace Jane\Component\OpenApi3\Tests\BadResponse\Exception;
 
 class UnexpectedStatusCodeException extends \RuntimeException implements ClientException
 {

@@ -72,7 +72,7 @@ trait GetTransformResponseBodyTrait
         if ($registry->getThrowUnexpectedStatusCode()) {
             $exceptionGenerator->createBaseExceptions($context);
 
-            $throwType = '\\' . $context->getCurrentSchema()->getNamespace() . '\\Exception\\UnexpectedStatusCodeException';
+            $throwType = '\\' . $context->getCurrentSchema()->getNamespace() . '\\Exception\\BadResponseException';
             $throwTypes[] = $throwType;
             $outputStatements = array_merge(
                 $outputStatements,
@@ -83,6 +83,7 @@ trait GetTransformResponseBodyTrait
                             [
                                 new Arg(new Expr\Variable('status')),
                                 new Arg(new Expr\Variable('body')),
+                                new Arg(new Expr\Variable('response')),
                             ]
                         )
                     )),

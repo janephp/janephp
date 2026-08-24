@@ -293,7 +293,6 @@ EOD
                             new Name('ClientException'),
                         ],
                         'extends' => new Name('\\RuntimeException'),
-                        'flags' => Modifiers::FINAL,
                         'stmts' => [
                             new Stmt\ClassMethod('__construct', [
                                 'flags' => Modifiers::PUBLIC,
@@ -314,6 +313,63 @@ EOD
             ]);
 
             $schema->addFile(new File($schema->getDirectory() . '/Exception/UnexpectedStatusCodeException.php', $unexpectedStatusCodeException, 'Exception'));
+
+            $badResponseException = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Exception'), [
+                new Stmt\Class_(
+                    'BadResponseException',
+                    [
+                        'extends' => new Name('UnexpectedStatusCodeException'),
+                        'stmts' => [
+                            new Stmt\Property(Modifiers::PRIVATE, [
+                                new Stmt\PropertyProperty('response'),
+                            ], ['comments' => [new Doc(<<<EOD
+/**
+ * @var \Psr\Http\Message\ResponseInterface|null
+ */
+EOD
+                            )]]),
+                            new Stmt\ClassMethod('__construct', [
+                                'flags' => Modifiers::PUBLIC,
+                                'params' => [
+                                    new Param(new Expr\Variable('status')),
+                                    new Param(new Expr\Variable('message'), new Scalar\String_('')),
+                                    new Param(
+                                        new Expr\Variable('response'),
+                                        new Expr\ConstFetch(new Name('null')),
+                                        new Node\NullableType(new Name('\\Psr\\Http\\Message\\ResponseInterface'))
+                                    ),
+                                ],
+                                'stmts' => [
+                                    new Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
+                                        new Node\Arg(new Expr\Variable('status')),
+                                        new Node\Arg(new Expr\Variable('message')),
+                                    ])),
+                                    new Stmt\Expression(new Expr\Assign(
+                                        new Expr\PropertyFetch(
+                                            new Expr\Variable('this'),
+                                            'response'
+                                        ), new Expr\Variable('response')
+                                    )),
+                                ],
+                            ]),
+                            new Stmt\ClassMethod('getResponse', [
+                                'flags' => Modifiers::PUBLIC,
+                                'stmts' => [
+                                    new Stmt\Return_(
+                                        new Expr\PropertyFetch(
+                                            new Expr\Variable('this'),
+                                            'response'
+                                        )
+                                    ),
+                                ],
+                                'returnType' => new Name('?\\Psr\\Http\\Message\\ResponseInterface'),
+                            ]),
+                        ],
+                    ]
+                ),
+            ]);
+
+            $schema->addFile(new File($schema->getDirectory() . '/Exception/BadResponseException.php', $badResponseException, 'Exception'));
         }
     }
 

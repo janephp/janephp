@@ -36,7 +36,7 @@ class PostFoo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Bas
      *
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PostFooBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PostFooInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UnexpectedStatusCodeException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\BadResponseException
      *
      * @return null
      */
@@ -53,7 +53,7 @@ class PostFoo extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Bas
         if (is_null($contentType) === false && (500 === $status && mb_strpos(strtolower($contentType), 'application/problem+json') !== false)) {
             throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\PostFooInternalServerErrorException($serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\Expected\Model\ResponseProblemDetailsResponse500', 'json'), $response);
         }
-        throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\UnexpectedStatusCodeException($status, $body);
+        throw new \Jane\Component\OpenApi3\Tests\Expected\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {
