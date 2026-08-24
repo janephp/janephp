@@ -1,0 +1,32 @@
+openapi: 3.0.0
+info:
+  title: 'All of nullable reference property'
+  version: ''
+paths:
+  /bar:
+    get:
+      operationId: get_bar
+      responses:
+        200:
+          description: 'Root resource'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Root'
+        404:
+          description: 'Resource not found'
+
+components:
+  schemas:
+    Root:
+      type: object
+      properties:
+        foo:
+          allOf:
+            - $ref: '#/components/schemas/Bar'
+            - nullable: true
+    Bar:
+      type: object
+      properties:
+        baz:
+          type: string
