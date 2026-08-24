@@ -41,27 +41,21 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $object->setDate((new \DateTime($data['date']))->getTimezone()->getName() == 'Z' ? (new \DateTime($data['date']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['date']));
         }
         if (\array_key_exists('dateOrNull', $data) && $data['dateOrNull'] !== null) {
-            $value = $data['dateOrNull'];
-            if (is_string($data['dateOrNull']) and false !== ((new \DateTime($data['dateOrNull']))->getTimezone()->getName() == 'Z' ? (new \DateTime($data['dateOrNull']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNull']))) {
-                $value = (new \DateTime($data['dateOrNull']))->getTimezone()->getName() == 'Z' ? (new \DateTime($data['dateOrNull']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNull']);
-            } elseif (is_null($data['dateOrNull'])) {
-                $value = $data['dateOrNull'];
-            }
-            $object->setDateOrNull($value);
+            $object->setDateOrNull((new \DateTime($data['dateOrNull']))->getTimezone()->getName() == 'Z' ? (new \DateTime($data['dateOrNull']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNull']));
         }
         elseif (\array_key_exists('dateOrNull', $data) && $data['dateOrNull'] === null) {
             $object->setDateOrNull(null);
         }
         if (\array_key_exists('dateOrNullOrInt', $data) && $data['dateOrNullOrInt'] !== null) {
-            $value_1 = $data['dateOrNullOrInt'];
+            $value = $data['dateOrNullOrInt'];
             if (is_string($data['dateOrNullOrInt']) and false !== ((new \DateTime($data['dateOrNullOrInt']))->getTimezone()->getName() == 'Z' ? (new \DateTime($data['dateOrNullOrInt']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNullOrInt']))) {
-                $value_1 = (new \DateTime($data['dateOrNullOrInt']))->getTimezone()->getName() == 'Z' ? (new \DateTime($data['dateOrNullOrInt']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNullOrInt']);
+                $value = (new \DateTime($data['dateOrNullOrInt']))->getTimezone()->getName() == 'Z' ? (new \DateTime($data['dateOrNullOrInt']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNullOrInt']);
             } elseif (is_null($data['dateOrNullOrInt'])) {
-                $value_1 = $data['dateOrNullOrInt'];
+                $value = $data['dateOrNullOrInt'];
             } elseif (is_int($data['dateOrNullOrInt'])) {
-                $value_1 = $data['dateOrNullOrInt'];
+                $value = $data['dateOrNullOrInt'];
             }
-            $object->setDateOrNullOrInt($value_1);
+            $object->setDateOrNullOrInt($value);
         }
         elseif (\array_key_exists('dateOrNullOrInt', $data) && $data['dateOrNullOrInt'] === null) {
             $object->setDateOrNullOrInt(null);
@@ -72,27 +66,21 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     {
         $dataArray = [];
         if ($data->isInitialized('date') && null !== $data->getDate()) {
-            $dataArray['date'] = $data->getDate()?->format('Y-m-d\TH:i:sP');
+            $dataArray['date'] = $data->getDate()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('dateOrNull')) {
-            $value = $data->getDateOrNull();
-            if (is_object($data->getDateOrNull())) {
-                $value = $data->getDateOrNull()->format('Y-m-d\TH:i:sP');
-            } elseif (is_null($data->getDateOrNull())) {
-                $value = $data->getDateOrNull();
-            }
-            $dataArray['dateOrNull'] = $value;
+            $dataArray['dateOrNull'] = $data->getDateOrNull()?->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('dateOrNullOrInt')) {
-            $value_1 = $data->getDateOrNullOrInt();
+            $value = $data->getDateOrNullOrInt();
             if (is_object($data->getDateOrNullOrInt())) {
-                $value_1 = $data->getDateOrNullOrInt()?->format('Y-m-d\TH:i:sP');
+                $value = $data->getDateOrNullOrInt()->format('Y-m-d\TH:i:sP');
             } elseif (is_null($data->getDateOrNullOrInt())) {
-                $value_1 = $data->getDateOrNullOrInt();
+                $value = $data->getDateOrNullOrInt();
             } elseif (is_int($data->getDateOrNullOrInt())) {
-                $value_1 = $data->getDateOrNullOrInt();
+                $value = $data->getDateOrNullOrInt();
             }
-            $dataArray['dateOrNullOrInt'] = $value_1;
+            $dataArray['dateOrNullOrInt'] = $value;
         }
         return $dataArray;
     }

@@ -67,7 +67,7 @@ class ImageUploadedMessageNormalizer implements DenormalizerInterface, Normalize
             $dataArray['imageUrl'] = $data->getImageUrl();
         }
         if ($data->isInitialized('uploadedAt') && null !== $data->getUploadedAt()) {
-            $dataArray['uploadedAt'] = $data->getUploadedAt()?->format('Y-m-d\TH:i:sP');
+            $dataArray['uploadedAt'] = $data->getUploadedAt()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('fileSize') && null !== $data->getFileSize()) {
             $dataArray['fileSize'] = $data->getFileSize();

@@ -25,7 +25,24 @@ class DateGuesser implements GuesserInterface, TypeGuesserInterface
     {
         $class = $this->getSchemaClass();
 
-        return ($object instanceof $class) && 'string' === $object->getType() && 'date' === $object->getFormat();
+        if (!($object instanceof $class)) {
+            return false;
+        }
+
+        return $this->supportsType($object->getType()) && 'date' === $object->getFormat();
+    }
+
+    private function supportsType(mixed $type): bool
+    {
+        if (\is_string($type)) {
+            return 'string' === $type;
+        }
+
+        if (!\is_array($type)) {
+            return false;
+        }
+
+        return ['string'] === array_values(array_diff($type, ['null']));
     }
 
     public function guessType($object, string $name, string $reference, Registry $registry): Type

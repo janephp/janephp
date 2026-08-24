@@ -79,7 +79,7 @@ class SpecialEventFieldsNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('dates') && null !== $data->getDates()) {
             $values = [];
             foreach ($data->getDates() as $value) {
-                $values[] = $value?->format('Y-m-d');
+                $values[] = $value->format('Y-m-d');
             }
             $dataArray['dates'] = $values;
         }

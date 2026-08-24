@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [JsonSchema] [GH#585](https://github.com/janephp/janephp/issues/585) Reference normalizers of models from other mapped schemas (transitively) used by a schema's models in its generated `JaneObjectNormalizer`, so multi-namespace mappings no longer fail at runtime with "no supporting normalizer found"
 - [OpenApi] [GH#963](https://github.com/janephp/janephp/issues/963) Support JSON content types with parameters (e.g. `application/json;schema=...`) when generating response transformations and operation/model relations
 - [OpenApi] [GH#963](https://github.com/janephp/janephp/issues/963) Generate models for `allOf` schemas whose members omit an explicit `type: object`
+- [OpenApi31] [GH#848](https://github.com/janephp/janephp/issues/848) Support nullable dates and datetimes expressed as `type: ["string", "null"]` with a `format: date` / `date-time` (OAS 3.1 style), generating the same null-safe normalization code as OpenAPI 3.0's `nullable: true`
 - [OpenApi31] [GH#946](https://github.com/janephp/janephp/issues/946) Generate response models and correct `transformResponseBody` return types for inline response schemas (array responses are typed as `Model[]` again)
 - [OpenApi31] Keep endpoint names plural for operations returning an array response
 - [OpenApi] Support union types (e.g. `type: ["array", "null"]`) when detecting array schemas

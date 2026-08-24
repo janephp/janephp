@@ -94,10 +94,10 @@ class TripsGetJsonResponse200DataItemNormalizer implements DenormalizerInterface
             $dataArray['destination'] = $data->getDestination();
         }
         if ($data->isInitialized('departureTime') && null !== $data->getDepartureTime()) {
-            $dataArray['departure_time'] = $data->getDepartureTime()?->format('Y-m-d\TH:i:sP');
+            $dataArray['departure_time'] = $data->getDepartureTime()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('arrivalTime') && null !== $data->getArrivalTime()) {
-            $dataArray['arrival_time'] = $data->getArrivalTime()?->format('Y-m-d\TH:i:sP');
+            $dataArray['arrival_time'] = $data->getArrivalTime()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('operator') && null !== $data->getOperator()) {
             $dataArray['operator'] = $data->getOperator();
