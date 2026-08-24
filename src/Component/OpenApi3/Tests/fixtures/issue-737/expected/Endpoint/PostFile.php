@@ -45,7 +45,7 @@ class PostFile extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Ba
      * {@inheritdoc}
      *
      *
-     * @return null
+     * @return null|string
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {

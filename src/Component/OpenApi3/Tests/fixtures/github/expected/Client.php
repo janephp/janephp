@@ -238,7 +238,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposRemoveStatusCheckContextsNotFoundException
      * @throws \Github\Exception\ReposRemoveStatusCheckContextsUnprocessableEntityException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|array : \Psr\Http\Message\ResponseInterface)
      */
     public function reposRemoveStatusCheckContexts(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -252,7 +252,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Github\Exception\ReposGetAllStatusCheckContextsNotFoundException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|array : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetAllStatusCheckContexts(string $owner, string $repo, string $branch, string $fetch = self::FETCH_OBJECT)
     {
@@ -269,7 +269,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposAddStatusCheckContextsForbiddenException
      * @throws \Github\Exception\ReposAddStatusCheckContextsNotFoundException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|array : \Psr\Http\Message\ResponseInterface)
      */
     public function reposAddStatusCheckContexts(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -285,7 +285,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\ReposSetStatusCheckContextsUnprocessableEntityException
      * @throws \Github\Exception\ReposSetStatusCheckContextsNotFoundException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|array : \Psr\Http\Message\ResponseInterface)
      */
     public function reposSetStatusCheckContexts(string $owner, string $repo, string $branch, ?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -1576,7 +1576,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|array : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetPunchCardStats(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -2376,7 +2376,7 @@ class Client extends \Github\Runtime\Client\Client
      * @param string $repo
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|array : \Psr\Http\Message\ResponseInterface)
      */
     public function reposGetCodeFrequencyStats(string $owner, string $repo, string $fetch = self::FETCH_OBJECT)
     {
@@ -5716,7 +5716,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersListEmailsForAuthenticatedForbiddenException
      * @throws \Github\Exception\UsersListEmailsForAuthenticatedUnauthorizedException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|array : \Psr\Http\Message\ResponseInterface)
      */
     public function usersListEmailsForAuthenticated(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -5731,7 +5731,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersAddEmailForAuthenticatedForbiddenException
      * @throws \Github\Exception\UsersAddEmailForAuthenticatedUnauthorizedException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|array : \Psr\Http\Message\ResponseInterface)
      */
     public function usersAddEmailForAuthenticated($requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -5834,7 +5834,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersListPublicEmailsForAuthenticatedForbiddenException
      * @throws \Github\Exception\UsersListPublicEmailsForAuthenticatedUnauthorizedException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|array : \Psr\Http\Message\ResponseInterface)
      */
     public function usersListPublicEmailsForAuthenticated(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -6020,7 +6020,7 @@ class Client extends \Github\Runtime\Client\Client
      * @throws \Github\Exception\UsersSetPrimaryEmailVisibilityForAuthenticatedUnauthorizedException
      * @throws \Github\Exception\UsersSetPrimaryEmailVisibilityForAuthenticatedUnprocessableEntityException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|array : \Psr\Http\Message\ResponseInterface)
      */
     public function usersSetPrimaryEmailVisibilityForAuthenticated(?\Github\Model\UserEmailVisibilityPatchBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
@@ -10712,7 +10712,7 @@ class Client extends \Github\Runtime\Client\Client
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|array : \Psr\Http\Message\ResponseInterface)
      */
     public function gitignoreGetAllTemplates(string $fetch = self::FETCH_OBJECT)
     {

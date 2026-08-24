@@ -50,7 +50,7 @@ class FindToolPing extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Clien
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindToolPingForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindToolPingInternalServerErrorException
      *
-     * @return null
+     * @return null|string
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {

@@ -35,7 +35,7 @@ class SwarmInit extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Dock
      * @throws \Docker\Api\Exception\SwarmInitInternalServerErrorException
      * @throws \Docker\Api\Exception\SwarmInitServiceUnavailableException
      *
-     * @return null
+     * @return null|string
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {

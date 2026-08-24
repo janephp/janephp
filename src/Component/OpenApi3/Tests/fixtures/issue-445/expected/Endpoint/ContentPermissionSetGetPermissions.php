@@ -41,7 +41,7 @@ class ContentPermissionSetGetPermissions extends \PicturePark\API\Runtime\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsInternalServerErrorException
      *
-     * @return null
+     * @return null|array
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {

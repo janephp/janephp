@@ -25,7 +25,7 @@ class GitignoreGetAllTemplates extends \Github\Runtime\Client\BaseEndpoint imple
      * {@inheritdoc}
      *
      *
-     * @return null
+     * @return null|array
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {

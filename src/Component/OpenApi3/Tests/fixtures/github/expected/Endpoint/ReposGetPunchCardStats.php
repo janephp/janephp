@@ -43,7 +43,7 @@ class ReposGetPunchCardStats extends \Github\Runtime\Client\BaseEndpoint impleme
      * {@inheritdoc}
      *
      *
-     * @return null
+     * @return null|array
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {

@@ -594,7 +594,7 @@ class Client extends \CreditSafe\API\Runtime\Client\Client
      * @throws \CreditSafe\API\Exception\ListCountriesOfMonitoredCompaniesForbiddenException
      * @throws \CreditSafe\API\Exception\ListCountriesOfMonitoredCompaniesNotFoundException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|array : \Psr\Http\Message\ResponseInterface)
      */
     public function listCountriesOfMonitoredCompanies(string $portfolioId, array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {

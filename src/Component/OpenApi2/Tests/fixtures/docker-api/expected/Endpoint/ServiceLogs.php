@@ -69,7 +69,7 @@ class ServiceLogs extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Do
      * @throws \Docker\Api\Exception\ServiceLogsInternalServerErrorException
      * @throws \Docker\Api\Exception\ServiceLogsServiceUnavailableException
      *
-     * @return null
+     * @return null|string
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {

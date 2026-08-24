@@ -49,7 +49,7 @@ class UsersListPublicEmailsForAuthenticated extends \Github\Runtime\Client\BaseE
      * @throws \Github\Exception\UsersListPublicEmailsForAuthenticatedForbiddenException
      * @throws \Github\Exception\UsersListPublicEmailsForAuthenticatedUnauthorizedException
      *
-     * @return null
+     * @return null|array
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {

@@ -41,7 +41,7 @@ class MimeTypeGeneratedValidDocBlock extends \Jane\Component\OpenApi3\Tests\Expe
      * {@inheritdoc}
      *
      *
-     * @return null
+     * @return null|string
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {

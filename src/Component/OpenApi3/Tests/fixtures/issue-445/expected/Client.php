@@ -464,7 +464,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsTooManyRequestsException
      * @throws \PicturePark\API\Exception\ContentPermissionSetGetPermissionsInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|array : \Psr\Http\Message\ResponseInterface)
      */
     public function contentPermissionSetGetPermissions(string $id, string $fetch = self::FETCH_OBJECT)
     {
@@ -1410,7 +1410,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\IdentityProviderGetSynchronizableAttributesTooManyRequestsException
      * @throws \PicturePark\API\Exception\IdentityProviderGetSynchronizableAttributesInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|array : \Psr\Http\Message\ResponseInterface)
      */
     public function identityProviderGetSynchronizableAttributes(string $fetch = self::FETCH_OBJECT)
     {
@@ -2341,7 +2341,7 @@ class Client extends \PicturePark\API\Runtime\Client\Client
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|array : \Psr\Http\Message\ResponseInterface)
      */
     public function schemaPermissionSetGetPermissions(string $id, string $fetch = self::FETCH_OBJECT)
     {

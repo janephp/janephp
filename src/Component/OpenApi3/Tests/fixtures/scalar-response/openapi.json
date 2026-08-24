@@ -1,0 +1,153 @@
+{
+    "openapi": "3.0.4",
+    "info": {
+        "title": "Scalar response types",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/integer": {
+            "get": {
+                "operationId": "getInteger",
+                "responses": {
+                    "200": {
+                        "description": "An integer value",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/string": {
+            "get": {
+                "operationId": "getString",
+                "responses": {
+                    "200": {
+                        "description": "A string value",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/boolean": {
+            "get": {
+                "operationId": "getBoolean",
+                "responses": {
+                    "200": {
+                        "description": "A boolean value",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/number-float": {
+            "get": {
+                "operationId": "getNumberFloat",
+                "responses": {
+                    "200": {
+                        "description": "A float value",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "number",
+                                    "format": "float"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/number-plain": {
+            "get": {
+                "operationId": "getNumberPlain",
+                "responses": {
+                    "200": {
+                        "description": "A number value without format",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/enum-without-type": {
+            "get": {
+                "operationId": "getEnumWithoutType",
+                "responses": {
+                    "200": {
+                        "description": "An enum value without explicit type",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "enum": [
+                                        "foo",
+                                        "bar"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/array-of-integers": {
+            "get": {
+                "operationId": "getArrayOfIntegers",
+                "responses": {
+                    "200": {
+                        "description": "An array of integers",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/nullable-integer": {
+            "get": {
+                "operationId": "getNullableInteger",
+                "responses": {
+                    "200": {
+                        "description": "A nullable integer value",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "integer",
+                                    "nullable": true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

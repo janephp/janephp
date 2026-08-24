@@ -58,7 +58,7 @@ class ImageGet extends \Docker\Api\Runtime\Client\BaseEndpoint implements \Docke
      *
      * @throws \Docker\Api\Exception\ImageGetInternalServerErrorException
      *
-     * @return null
+     * @return null|string
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {

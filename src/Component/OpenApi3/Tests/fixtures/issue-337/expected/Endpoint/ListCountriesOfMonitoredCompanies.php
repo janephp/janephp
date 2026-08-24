@@ -51,7 +51,7 @@ class ListCountriesOfMonitoredCompanies extends \CreditSafe\API\Runtime\Client\B
      * @throws \CreditSafe\API\Exception\ListCountriesOfMonitoredCompaniesForbiddenException
      * @throws \CreditSafe\API\Exception\ListCountriesOfMonitoredCompaniesNotFoundException
      *
-     * @return null
+     * @return null|array
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {

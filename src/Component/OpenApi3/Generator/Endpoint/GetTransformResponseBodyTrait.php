@@ -11,6 +11,7 @@ use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
 use Jane\Component\OpenApi3\JsonSchema\Normalizer\ResponseNormalizer;
 use Jane\Component\OpenApiCommon\Generator\ContentType;
 use Jane\Component\OpenApiCommon\Generator\ExceptionGenerator;
+use Jane\Component\OpenApiCommon\Generator\Traits\OpenApiNumberTypeResolverTrait;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\Component\OpenApiCommon\Registry\Registry;
 use PhpParser\Comment\Doc;
@@ -24,6 +25,8 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 trait GetTransformResponseBodyTrait
 {
+    use OpenApiNumberTypeResolverTrait;
+
     public function getTransformResponseBody(OperationGuess $operation, string $endpointName, GuessClass $guessClass, ExceptionGenerator $exceptionGenerator, Context $context): array
     {
         $outputStatements = [
@@ -314,6 +317,12 @@ EOD
             $serializeStmt = new Expr\FuncCall(new Name('json_decode'), [
                 new Node\Arg(new Expr\Variable('body')),
             ]);
+
+            $scalarReturnType = $this->convertResponseType($schema);
+
+            if (null !== $scalarReturnType) {
+                $returnType = $scalarReturnType;
+            }
         }
 
         $contentStatement = new Stmt\Return_($serializeStmt);
@@ -339,5 +348,30 @@ EOD
         }
 
         return [$returnType, $throwType, $contentStatement];
+    }
+
+    private function convertResponseType(Schema $schema): ?string
+    {
+        $type = $schema->getType();
+
+        if (null === $type && null !== $schema->getEnum() && \count($schema->getEnum()) > 0) {
+            $type = 'string';
+        }
+
+        return match ($type) {
+            'string' => 'string',
+            'number' => $this->isNumberFloat(
+                $schema->getFormat(),
+                $schema->getDefault(),
+                $schema->getMinimum(),
+                $schema->getMaximum(),
+                $schema->getMultipleOf(),
+                $schema->getEnum()
+            ) ? 'float' : 'int',
+            'boolean' => 'bool',
+            'integer' => 'int',
+            'array' => 'array',
+            default => null,
+        };
     }
 }

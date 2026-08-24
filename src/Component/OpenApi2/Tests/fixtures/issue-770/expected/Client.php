@@ -17433,7 +17433,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindToolTraceRouteForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindToolTraceRouteInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|string : \Psr\Http\Message\ResponseInterface)
      */
     public function findToolTraceRoute(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -17483,7 +17483,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindToolPingForbiddenException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\FindToolPingInternalServerErrorException
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|string : \Psr\Http\Message\ResponseInterface)
      */
     public function findToolPing(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {

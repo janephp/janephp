@@ -41,7 +41,7 @@ class ReposGetAllStatusCheckContexts extends \Github\Runtime\Client\BaseEndpoint
      *
      * @throws \Github\Exception\ReposGetAllStatusCheckContextsNotFoundException
      *
-     * @return null
+     * @return null|array
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {

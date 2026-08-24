@@ -41,7 +41,7 @@ class SchemaPermissionSetGetPermissions extends \PicturePark\API\Runtime\Client\
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsTooManyRequestsException
      * @throws \PicturePark\API\Exception\SchemaPermissionSetGetPermissionsInternalServerErrorException
      *
-     * @return null
+     * @return null|array
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {

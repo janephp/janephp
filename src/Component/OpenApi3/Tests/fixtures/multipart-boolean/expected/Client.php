@@ -8,7 +8,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Run
      * @param null|\Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Model\FileDepositPostBody $requestBody
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|string : \Psr\Http\Message\ResponseInterface)
      */
     public function postFileDeposit(?\Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Model\FileDepositPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {

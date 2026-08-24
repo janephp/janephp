@@ -40,7 +40,7 @@ class UsersSetPrimaryEmailVisibilityForAuthenticated extends \Github\Runtime\Cli
      * @throws \Github\Exception\UsersSetPrimaryEmailVisibilityForAuthenticatedUnauthorizedException
      * @throws \Github\Exception\UsersSetPrimaryEmailVisibilityForAuthenticatedUnprocessableEntityException
      *
-     * @return null
+     * @return null|array
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
