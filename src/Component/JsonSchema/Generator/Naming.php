@@ -71,10 +71,13 @@ class Naming
 
     public function getClassName(string $name): string
     {
-        $name = $this->cleaning($name, true);
+        return $this->fixReservedClassName($this->cleaning($name, true));
+    }
 
+    public function fixReservedClassName(string $name): string
+    {
         if (preg_match(self::BAD_CLASS_NAME_REGEX, $name)) {
-            $name = '_' . $name;
+            return '_' . $name;
         }
 
         return $name;

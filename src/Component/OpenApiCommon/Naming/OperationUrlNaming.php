@@ -2,6 +2,7 @@
 
 namespace Jane\Component\OpenApiCommon\Naming;
 
+use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema as OA31JsonSchema;
 use Jane\Component\JsonSchema\Tools\InflectorTrait;
 use Jane\Component\OpenApi2\JsonSchema\Model\Response as OA2Response;
@@ -19,6 +20,13 @@ class OperationUrlNaming implements OperationNamingInterface
         '.php',
         '.asp',
     ];
+
+    private Naming $naming;
+
+    public function __construct()
+    {
+        $this->naming = new Naming();
+    }
 
     protected function getUniqueName(OperationGuess $operation): string
     {
@@ -97,6 +105,6 @@ class OperationUrlNaming implements OperationNamingInterface
 
     public function getEndpointName(OperationGuess $operation): string
     {
-        return $this->getInflector()->classify($this->getUniqueName($operation));
+        return $this->naming->fixReservedClassName($this->getInflector()->classify($this->getUniqueName($operation)));
     }
 }
