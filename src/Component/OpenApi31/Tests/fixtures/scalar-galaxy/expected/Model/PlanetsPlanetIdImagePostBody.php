@@ -15,26 +15,26 @@ class PlanetsPlanetIdImagePostBody
     /**
      * The image file to upload
      *
-     * @var string
+     * @var string|resource|\Psr\Http\Message\StreamInterface
      */
     protected $image;
     /**
      * The image file to upload
      *
-     * @return string
+     * @return string|resource|\Psr\Http\Message\StreamInterface
      */
-    public function getImage(): string
+    public function getImage()
     {
         return $this->image;
     }
     /**
      * The image file to upload
      *
-     * @param string $image
+     * @param string|resource|\Psr\Http\Message\StreamInterface $image
      *
      * @return self
      */
-    public function setImage(string $image): self
+    public function setImage($image): self
     {
         $this->initialized['image'] = true;
         $this->image = $image;

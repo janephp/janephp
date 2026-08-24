@@ -8,6 +8,14 @@ class SimpleTypeGuesser extends BaseSimpleTypeGuesser
 {
     use SchemaClassTrait;
 
+    /** @var array<string, array<string>> */
+    protected array $excludeFormat = [
+        'string' => [
+            'date-time',
+            'binary',
+        ],
+    ];
+
     public function __construct(string $schemaClass, ?array $typesSupported = null)
     {
         $this->schemaClass = $schemaClass;
