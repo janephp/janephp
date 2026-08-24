@@ -43,7 +43,7 @@ class OperationUrlNaming implements OperationNamingInterface
             if (class_exists(OA3Response::class) && $response instanceof OA3Response && $response->getContent()) {
                 $firstContent = (new \ArrayIterator(iterator_to_array($response->getContent())))->current();
 
-                if ($firstContent->getSchema() instanceof OA3Schema && 'array' === $firstContent->getSchema()->getType()) {
+                if (null !== $firstContent && $firstContent->getSchema() instanceof OA3Schema && 'array' === $firstContent->getSchema()->getType()) {
                     $shouldSingularize = false;
                 }
             }
