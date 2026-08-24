@@ -13,4 +13,7 @@ parameters:
 			- src/Component/*/Tests/generated/*
 			- src/Component/*/Tests/Validation/*
 			- src/Component/*/Tests/client/generated/*
-	ignoreErrors: []
+	ignoreErrors:
+		-
+			message: '#^Instantiated class Jane\\Component\\OpenApi3\\Tests\\Issue764(Validation)?Expected\\Normalizer\\[A-Za-z0-9]+ not found\.$#'
+			path: src/Component/OpenApi3/Tests/Issue764RegressionTest.php

@@ -47,6 +47,7 @@ class TestBodyNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         elseif (\array_key_exists('items', $data) && $data['items'] === null) {
             $object->setItems(null);
+            unset($data['items']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

@@ -43,6 +43,7 @@ class RootNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         elseif (\array_key_exists('foo', $data) && $data['foo'] === null) {
             $object->setFoo(null);
+            unset($data['foo']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
