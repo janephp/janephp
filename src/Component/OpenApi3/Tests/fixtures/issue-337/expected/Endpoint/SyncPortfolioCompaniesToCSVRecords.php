@@ -31,7 +31,7 @@ class SyncPortfolioCompaniesToCSVRecords extends \CreditSafe\API\Runtime\Client\
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSyncPostBody) {
-            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+            return [['Content-Type' => ['application/json']], \CreditSafe\API\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
         }
         return [[], null];
     }

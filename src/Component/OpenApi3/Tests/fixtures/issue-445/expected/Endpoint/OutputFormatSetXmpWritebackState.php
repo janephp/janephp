@@ -28,7 +28,7 @@ class OutputFormatSetXmpWritebackState extends \PicturePark\API\Runtime\Client\B
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \PicturePark\API\Model\OutputFormatSetXmpWritebackStateRequest) {
-            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+            return [['Content-Type' => ['application/json']], \PicturePark\API\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
         }
         return [[], null];
     }

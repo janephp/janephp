@@ -19,6 +19,7 @@ trait GetGetBodyTrait
     public function getGetBody(OperationGuess $operation, Context $context): Stmt\ClassMethod
     {
         $hasBody = $isSerializableBody = $isFormBody = $hasFileInForm = false;
+        $isObjectBody = false;
         $consumes = \is_array($operation->getOperation()->getConsumes()) ? $operation->getOperation()->getConsumes() : [$operation->getOperation()->getConsumes()];
 
         foreach ($operation->getParameters() as $key => $parameter) {
@@ -26,7 +27,8 @@ trait GetGetBodyTrait
                 $hasBody = true;
 
                 $schema = $parameter->getSchema();
-                $classGuess = $this->guessClass->guessClass($schema, $operation->getReference() . '/parameters/' . $key, $context->getRegistry());
+                $array = false;
+                $classGuess = $this->guessClass->guessClass($schema, $operation->getReference() . '/parameters/' . $key, $context->getRegistry(), $array);
 
                 if (\in_array('application/json', $consumes, true)) {
                     $isSerializableBody = true;
@@ -34,6 +36,9 @@ trait GetGetBodyTrait
 
                 if (null !== $classGuess) {
                     $isSerializableBody = true;
+                    // A named-object payload normalized to an empty PHP array must be sent as a JSON object
+                    // ('{}'), not as an empty JSON array ('[]') (@see https://github.com/janephp/janephp/issues/680).
+                    $isObjectBody = !$array;
                 }
             }
 
@@ -59,7 +64,7 @@ trait GetGetBodyTrait
             $method->stmts = [
                 new Stmt\Return_(new Expr\MethodCall(
                     new Expr\Variable('this'),
-                    'getSerializedBody',
+                    $isObjectBody ? 'getSerializedObjectBody' : 'getSerializedBody',
                     [
                         new Arg(new Expr\Variable('serializer')),
                     ]

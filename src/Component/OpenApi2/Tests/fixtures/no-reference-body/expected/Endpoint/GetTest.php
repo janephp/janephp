@@ -22,7 +22,7 @@ class GetTest extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Bas
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return $this->getSerializedBody($serializer);
+        return $this->getSerializedObjectBody($serializer);
     }
     /**
      * {@inheritdoc}

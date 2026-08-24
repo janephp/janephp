@@ -35,7 +35,7 @@ class PartialUpdateRkszonesWlangroupsMembersByMemberId extends \Jane\Component\O
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return $this->getSerializedBody($serializer);
+        return $this->getSerializedObjectBody($serializer);
     }
     public function getExtraHeaders(): array
     {
