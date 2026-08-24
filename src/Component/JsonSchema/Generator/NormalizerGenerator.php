@@ -11,11 +11,13 @@ use Jane\Component\JsonSchema\Guesser\Guess\NonObjectGuessInterface;
 use Jane\Component\JsonSchema\Registry\Schema;
 use PhpParser\Comment;
 use PhpParser\Modifiers;
+use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
 use PhpParser\Node\NullableType;
 use PhpParser\Node\Param;
+use PhpParser\Node\Scalar\LNumber;
 use PhpParser\Node\Stmt;
 use PhpParser\Parser;
 
@@ -160,7 +162,7 @@ class NormalizerGenerator implements GeneratorInterface
         $methods[] = $this->createBaseNormalizerDenormalizeMethod();
         $methods[] = $this->createBaseNormalizerGetNormalizer();
         $methods[] = $this->createBaseNormalizerInitNormalizerMethod();
-        $methods[] = $this->createProxyGetSupportedTypesMethod(array_keys($normalizers));
+        $methods[] = $this->createProxyGetSupportedTypesMethod($propertyName);
 
         if ($this->useCacheableSupportsMethod) {
             $methods[] = $this->createHasCacheableSupportsMethod();
@@ -217,37 +219,30 @@ class NormalizerGenerator implements GeneratorInterface
     }
 
     /**
-     * Create a method to return the supported type.
+     * Create a method to return the supported types, derived from the normalizers map.
      *
-     * @param string[] $modelsFqdn Fully Qualified name of the models class denormalized
-     *
-     * @return Stmt\ClassMethod
+     * @param string $propertyName Name of the property containing the normalizers map
      */
-    protected function createProxyGetSupportedTypesMethod(array $modelsFqdn)
+    protected function createProxyGetSupportedTypesMethod(string $propertyName): Stmt\ClassMethod
     {
-        $arrayItems = [];
-        foreach ($modelsFqdn as $modelFqdn) {
-            $arrayItems[] = new Expr\ArrayItem(
-                new Expr\ConstFetch(new Name('false')), // we don't want proxy Normalizer to be cached, never
-                new Expr\ClassConstFetch(
-                    new Name\FullyQualified($modelFqdn),
-                    new Identifier('class')
-                ),
-            );
-        }
-
-        if (isset($arrayItems[0]) && $arrayItems[0] instanceof Expr\ArrayItem) {
-            // force the array to be dumped multiline by adding a comment
-            $arrayItems[0]->setAttribute('comments', [new Comment('')]);
-        }
-
         return new Stmt\ClassMethod('getSupportedTypes', [
             'flags' => Modifiers::PUBLIC,
             'returnType' => new Identifier('array'),
             'params' => [
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new NullableType(new Identifier('string'))),
             ],
-            'stmts' => [new Stmt\Return_(new Expr\Array_($arrayItems))],
+            'stmts' => [new Stmt\Return_(new Expr\FuncCall(new Name('array_combine'), [
+                new Arg(new Expr\FuncCall(new Name('array_keys'), [
+                    new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), $propertyName)),
+                ])),
+                new Arg(new Expr\FuncCall(new Name('array_fill'), [
+                    new Arg(new LNumber(0)),
+                    new Arg(new Expr\FuncCall(new Name('count'), [
+                        new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), $propertyName)),
+                    ])),
+                    new Arg(new Expr\ConstFetch(new Name('false'))),
+                ])),
+            ]))],
         ]);
     }
 }

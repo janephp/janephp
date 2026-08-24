@@ -72,18 +72,6 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [
-            
-            \Jane\Component\OpenApi2\Tests\Expected\Model\EmptySpace::class => false,
-            \Jane\Component\OpenApi2\Tests\Expected\Model\Schema::class => false,
-            \Jane\Component\OpenApi2\Tests\Expected\Model\SchemaObjectProperty::class => false,
-            \Jane\Component\OpenApi2\Tests\Expected\Model\Error::class => false,
-            \Jane\Component\OpenApi2\Tests\Expected\Model\TestIdGetResponse200::class => false,
-            \Jane\Component\OpenApi2\Tests\Expected\Model\TestComplexListGetResponse200Item0::class => false,
-            \Jane\Component\OpenApi2\Tests\Expected\Model\TestComplexListGetResponse200Item1::class => false,
-            \Jane\Component\OpenApi2\Tests\Expected\Model\TestComplexListGetResponse200Item2::class => false,
-            \Jane\Component\OpenApi2\Tests\Expected\Model\TestComplexListGetResponsedefault::class => false,
-            \Jane\Component\JsonSchemaRuntime\Reference::class => false,
-        ];
+        return array_combine(array_keys($this->normalizers), array_fill(0, count($this->normalizers), false));
     }
 }
