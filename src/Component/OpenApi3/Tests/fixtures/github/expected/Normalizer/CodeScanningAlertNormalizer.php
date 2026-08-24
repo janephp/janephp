@@ -68,7 +68,11 @@ class CodeScanningAlertNormalizer implements DenormalizerInterface, NormalizerIn
             unset($data['tool']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date);
             unset($data['created_at']);
         }
         if (\array_key_exists('open', $data)) {
@@ -84,7 +88,11 @@ class CodeScanningAlertNormalizer implements DenormalizerInterface, NormalizerIn
             unset($data['closed_by']);
         }
         if (\array_key_exists('closed_at', $data) && $data['closed_at'] !== null) {
-            $object->setClosedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['closed_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['closed_at']);
+            if (false === $date_1) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['closed_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setClosedAt($date_1);
             unset($data['closed_at']);
         }
         elseif (\array_key_exists('closed_at', $data) && $data['closed_at'] === null) {

@@ -70,7 +70,11 @@ class ReviewJsonhalReviewWriteNormalizer implements DenormalizerInterface, Norma
             unset($data['author']);
         }
         if (\array_key_exists('publicationDate', $data) && $data['publicationDate'] !== null) {
-            $object->setPublicationDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['publicationDate']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['publicationDate']);
+            if (false === $date) {
+                throw new \ApiPlatform\Demo\Runtime\Normalizer\InvalidDateException($data['publicationDate'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setPublicationDate($date);
             unset($data['publicationDate']);
         }
         elseif (\array_key_exists('publicationDate', $data) && $data['publicationDate'] === null) {

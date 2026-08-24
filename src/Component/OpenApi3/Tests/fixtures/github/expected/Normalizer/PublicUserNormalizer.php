@@ -164,16 +164,28 @@ class PublicUserNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setFollowing($data['following']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date);
         }
         if (\array_key_exists('updated_at', $data)) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
+            if (false === $date_1) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUpdatedAt($date_1);
         }
         if (\array_key_exists('plan', $data)) {
             $object->setPlan($this->denormalizer->denormalize($data['plan'], \Github\Model\PublicUserPlan::class, 'json', $context));
         }
         if (\array_key_exists('suspended_at', $data) && $data['suspended_at'] !== null) {
-            $object->setSuspendedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['suspended_at']));
+            $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['suspended_at']);
+            if (false === $date_2) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['suspended_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setSuspendedAt($date_2);
         }
         elseif (\array_key_exists('suspended_at', $data) && $data['suspended_at'] === null) {
             $object->setSuspendedAt(null);

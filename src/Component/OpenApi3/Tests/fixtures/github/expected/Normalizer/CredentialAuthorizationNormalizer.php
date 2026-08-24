@@ -57,7 +57,11 @@ class CredentialAuthorizationNormalizer implements DenormalizerInterface, Normal
             unset($data['token_last_eight']);
         }
         if (\array_key_exists('credential_authorized_at', $data)) {
-            $object->setCredentialAuthorizedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['credential_authorized_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['credential_authorized_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['credential_authorized_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCredentialAuthorizedAt($date);
             unset($data['credential_authorized_at']);
         }
         if (\array_key_exists('scopes', $data)) {
@@ -73,7 +77,11 @@ class CredentialAuthorizationNormalizer implements DenormalizerInterface, Normal
             unset($data['fingerprint']);
         }
         if (\array_key_exists('credential_accessed_at', $data) && $data['credential_accessed_at'] !== null) {
-            $object->setCredentialAccessedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['credential_accessed_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['credential_accessed_at']);
+            if (false === $date_1) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['credential_accessed_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCredentialAccessedAt($date_1);
             unset($data['credential_accessed_at']);
         }
         elseif (\array_key_exists('credential_accessed_at', $data) && $data['credential_accessed_at'] === null) {

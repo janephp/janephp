@@ -59,10 +59,18 @@ class TripNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $object->setDestination($data['destination']);
         }
         if (\array_key_exists('departure_time', $data)) {
-            $object->setDepartureTime(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['departure_time']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['departure_time']);
+            if (false === $date) {
+                throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['departure_time'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setDepartureTime($date);
         }
         if (\array_key_exists('arrival_time', $data)) {
-            $object->setArrivalTime(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['arrival_time']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['arrival_time']);
+            if (false === $date_1) {
+                throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['arrival_time'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setArrivalTime($date_1);
         }
         if (\array_key_exists('operator', $data)) {
             $object->setOperator($data['operator']);

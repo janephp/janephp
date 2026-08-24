@@ -151,15 +151,27 @@ class PullRequestSimpleNormalizer implements DenormalizerInterface, NormalizerIn
             unset($data['active_lock_reason']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date);
             unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
+            if (false === $date_1) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUpdatedAt($date_1);
             unset($data['updated_at']);
         }
         if (\array_key_exists('closed_at', $data) && $data['closed_at'] !== null) {
-            $object->setClosedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['closed_at']));
+            $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['closed_at']);
+            if (false === $date_2) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['closed_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setClosedAt($date_2);
             unset($data['closed_at']);
         }
         elseif (\array_key_exists('closed_at', $data) && $data['closed_at'] === null) {
@@ -167,7 +179,11 @@ class PullRequestSimpleNormalizer implements DenormalizerInterface, NormalizerIn
             unset($data['closed_at']);
         }
         if (\array_key_exists('merged_at', $data) && $data['merged_at'] !== null) {
-            $object->setMergedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['merged_at']));
+            $date_3 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['merged_at']);
+            if (false === $date_3) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['merged_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setMergedAt($date_3);
             unset($data['merged_at']);
         }
         elseif (\array_key_exists('merged_at', $data) && $data['merged_at'] === null) {

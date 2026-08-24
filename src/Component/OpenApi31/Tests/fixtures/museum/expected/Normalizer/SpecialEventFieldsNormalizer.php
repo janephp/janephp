@@ -55,7 +55,11 @@ class SpecialEventFieldsNormalizer implements DenormalizerInterface, NormalizerI
         if (\array_key_exists('dates', $data)) {
             $values = [];
             foreach ($data['dates'] as $value) {
-                $values[] = \DateTime::createFromFormat('Y-m-d', $value)->setTime(0, 0, 0);
+                $date = \DateTime::createFromFormat('Y-m-d', $value);
+                if (false === $date) {
+                    throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($value, 'Y-m-d');
+                }
+                $values[] = $date->setTime(0, 0, 0);
             }
             $object->setDates($values);
         }

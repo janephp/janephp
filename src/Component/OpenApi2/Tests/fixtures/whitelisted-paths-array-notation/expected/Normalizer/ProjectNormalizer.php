@@ -116,7 +116,11 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setOverBudgetNotificationPercentage($data['over_budget_notification_percentage']);
         }
         if (\array_key_exists('over_budget_notification_date', $data)) {
-            $object->setOverBudgetNotificationDate(\DateTime::createFromFormat('Y-m-d', $data['over_budget_notification_date'])->setTime(0, 0, 0));
+            $date = \DateTime::createFromFormat('Y-m-d', $data['over_budget_notification_date']);
+            if (false === $date) {
+                throw new \Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['over_budget_notification_date'], 'Y-m-d');
+            }
+            $object->setOverBudgetNotificationDate($date->setTime(0, 0, 0));
         }
         if (\array_key_exists('show_budget_to_all', $data)) {
             $object->setShowBudgetToAll($data['show_budget_to_all']);
@@ -134,16 +138,32 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setNotes($data['notes']);
         }
         if (\array_key_exists('starts_on', $data)) {
-            $object->setStartsOn(\DateTime::createFromFormat('Y-m-d', $data['starts_on'])->setTime(0, 0, 0));
+            $date_1 = \DateTime::createFromFormat('Y-m-d', $data['starts_on']);
+            if (false === $date_1) {
+                throw new \Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['starts_on'], 'Y-m-d');
+            }
+            $object->setStartsOn($date_1->setTime(0, 0, 0));
         }
         if (\array_key_exists('ends_on', $data)) {
-            $object->setEndsOn(\DateTime::createFromFormat('Y-m-d', $data['ends_on'])->setTime(0, 0, 0));
+            $date_2 = \DateTime::createFromFormat('Y-m-d', $data['ends_on']);
+            if (false === $date_2) {
+                throw new \Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['ends_on'], 'Y-m-d');
+            }
+            $object->setEndsOn($date_2->setTime(0, 0, 0));
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date_3 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date_3) {
+                throw new \Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date_3);
         }
         if (\array_key_exists('updated_at', $data)) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            $date_4 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
+            if (false === $date_4) {
+                throw new \Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUpdatedAt($date_4);
         }
         return $object;
     }

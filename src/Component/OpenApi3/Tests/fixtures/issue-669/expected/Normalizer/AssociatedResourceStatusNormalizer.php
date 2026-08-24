@@ -46,7 +46,11 @@ class AssociatedResourceStatusNormalizer implements DenormalizerInterface, Norma
             unset($data['resources']);
         }
         if (\array_key_exists('completed_at', $data)) {
-            $object->setCompletedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['completed_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['completed_at']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['completed_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCompletedAt($date);
             unset($data['completed_at']);
         }
         if (\array_key_exists('failures', $data)) {

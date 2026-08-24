@@ -102,7 +102,11 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
             unset($data['itemsCancelled']);
         }
         if (\array_key_exists('lastDataExtractionProgressTimeStamp', $data) && $data['lastDataExtractionProgressTimeStamp'] !== null) {
-            $object->setLastDataExtractionProgressTimeStamp(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastDataExtractionProgressTimeStamp']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastDataExtractionProgressTimeStamp']);
+            if (false === $date) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['lastDataExtractionProgressTimeStamp'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setLastDataExtractionProgressTimeStamp($date);
             unset($data['lastDataExtractionProgressTimeStamp']);
         }
         elseif (\array_key_exists('lastDataExtractionProgressTimeStamp', $data) && $data['lastDataExtractionProgressTimeStamp'] === null) {
@@ -110,7 +114,11 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
             unset($data['lastDataExtractionProgressTimeStamp']);
         }
         if (\array_key_exists('lastFileUploadProgressTimeStamp', $data) && $data['lastFileUploadProgressTimeStamp'] !== null) {
-            $object->setLastFileUploadProgressTimeStamp(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastFileUploadProgressTimeStamp']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastFileUploadProgressTimeStamp']);
+            if (false === $date_1) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['lastFileUploadProgressTimeStamp'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setLastFileUploadProgressTimeStamp($date_1);
             unset($data['lastFileUploadProgressTimeStamp']);
         }
         elseif (\array_key_exists('lastFileUploadProgressTimeStamp', $data) && $data['lastFileUploadProgressTimeStamp'] === null) {

@@ -128,10 +128,18 @@ class ProjectsPostBodyNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setNotes($data['notes']);
         }
         if (\array_key_exists('starts_on', $data)) {
-            $object->setStartsOn(\DateTime::createFromFormat('Y-m-d', $data['starts_on'])->setTime(0, 0, 0));
+            $date = \DateTime::createFromFormat('Y-m-d', $data['starts_on']);
+            if (false === $date) {
+                throw new \Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['starts_on'], 'Y-m-d');
+            }
+            $object->setStartsOn($date->setTime(0, 0, 0));
         }
         if (\array_key_exists('ends_on', $data)) {
-            $object->setEndsOn(\DateTime::createFromFormat('Y-m-d', $data['ends_on'])->setTime(0, 0, 0));
+            $date_1 = \DateTime::createFromFormat('Y-m-d', $data['ends_on']);
+            if (false === $date_1) {
+                throw new \Jane\OpenApi2\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['ends_on'], 'Y-m-d');
+            }
+            $object->setEndsOn($date_1->setTime(0, 0, 0));
         }
         return $object;
     }

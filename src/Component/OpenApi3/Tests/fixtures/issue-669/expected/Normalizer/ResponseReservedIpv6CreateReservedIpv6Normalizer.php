@@ -46,7 +46,11 @@ class ResponseReservedIpv6CreateReservedIpv6Normalizer implements DenormalizerIn
             unset($data['region_slug']);
         }
         if (\array_key_exists('reserved_at', $data)) {
-            $object->setReservedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['reserved_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['reserved_at']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['reserved_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setReservedAt($date);
             unset($data['reserved_at']);
         }
         foreach ($data as $key => $value) {

@@ -41,7 +41,11 @@ class ApiScheduledIndexingInfoNormalizer implements DenormalizerInterface, Norma
             $data['is_active'] = (bool) $data['is_active'];
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date);
             unset($data['created_at']);
         }
         if (\array_key_exists('days', $data)) {
@@ -53,7 +57,11 @@ class ApiScheduledIndexingInfoNormalizer implements DenormalizerInterface, Norma
             unset($data['days']);
         }
         if (\array_key_exists('deleted_at', $data)) {
-            $object->setDeletedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['deleted_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['deleted_at']);
+            if (false === $date_1) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['deleted_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setDeletedAt($date_1);
             unset($data['deleted_at']);
         }
         if (\array_key_exists('is_active', $data)) {
@@ -65,11 +73,19 @@ class ApiScheduledIndexingInfoNormalizer implements DenormalizerInterface, Norma
             unset($data['knowledge_base_uuid']);
         }
         if (\array_key_exists('last_ran_at', $data)) {
-            $object->setLastRanAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['last_ran_at']));
+            $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['last_ran_at']);
+            if (false === $date_2) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['last_ran_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setLastRanAt($date_2);
             unset($data['last_ran_at']);
         }
         if (\array_key_exists('next_run_at', $data)) {
-            $object->setNextRunAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['next_run_at']));
+            $date_3 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['next_run_at']);
+            if (false === $date_3) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['next_run_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setNextRunAt($date_3);
             unset($data['next_run_at']);
         }
         if (\array_key_exists('time', $data)) {
@@ -77,7 +93,11 @@ class ApiScheduledIndexingInfoNormalizer implements DenormalizerInterface, Norma
             unset($data['time']);
         }
         if (\array_key_exists('updated_at', $data)) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            $date_4 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
+            if (false === $date_4) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUpdatedAt($date_4);
             unset($data['updated_at']);
         }
         if (\array_key_exists('uuid', $data)) {

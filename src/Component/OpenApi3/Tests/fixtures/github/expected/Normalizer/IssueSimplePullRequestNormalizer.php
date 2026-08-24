@@ -41,7 +41,11 @@ class IssueSimplePullRequestNormalizer implements DenormalizerInterface, Normali
             $this->validate($data, new \Github\Validator\IssueSimplePullRequestConstraint());
         }
         if (\array_key_exists('merged_at', $data) && $data['merged_at'] !== null) {
-            $object->setMergedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['merged_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['merged_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['merged_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setMergedAt($date);
             unset($data['merged_at']);
         }
         elseif (\array_key_exists('merged_at', $data) && $data['merged_at'] === null) {

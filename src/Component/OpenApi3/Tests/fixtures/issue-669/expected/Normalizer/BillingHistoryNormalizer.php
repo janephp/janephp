@@ -54,7 +54,11 @@ class BillingHistoryNormalizer implements DenormalizerInterface, NormalizerInter
             unset($data['invoice_uuid']);
         }
         if (\array_key_exists('date', $data)) {
-            $object->setDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['date']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['date']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['date'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setDate($date);
             unset($data['date']);
         }
         if (\array_key_exists('type', $data)) {

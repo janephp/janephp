@@ -50,7 +50,11 @@ class BalanceNormalizer implements DenormalizerInterface, NormalizerInterface, D
             unset($data['month_to_date_usage']);
         }
         if (\array_key_exists('generated_at', $data)) {
-            $object->setGeneratedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['generated_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['generated_at']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['generated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setGeneratedAt($date);
             unset($data['generated_at']);
         }
         foreach ($data as $key => $value) {

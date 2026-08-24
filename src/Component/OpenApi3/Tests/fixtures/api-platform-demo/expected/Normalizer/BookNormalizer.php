@@ -66,7 +66,11 @@ class BookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             unset($data['author']);
         }
         if (\array_key_exists('publicationDate', $data)) {
-            $object->setPublicationDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['publicationDate']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['publicationDate']);
+            if (false === $date) {
+                throw new \ApiPlatform\Demo\Runtime\Normalizer\InvalidDateException($data['publicationDate'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setPublicationDate($date);
             unset($data['publicationDate']);
         }
         if (\array_key_exists('reviews', $data)) {
@@ -86,7 +90,11 @@ class BookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             unset($data['cover']);
         }
         if (\array_key_exists('archivedAt', $data) && $data['archivedAt'] !== null) {
-            $object->setArchivedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['archivedAt']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['archivedAt']);
+            if (false === $date_1) {
+                throw new \ApiPlatform\Demo\Runtime\Normalizer\InvalidDateException($data['archivedAt'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setArchivedAt($date_1);
             unset($data['archivedAt']);
         }
         elseif (\array_key_exists('archivedAt', $data) && $data['archivedAt'] === null) {

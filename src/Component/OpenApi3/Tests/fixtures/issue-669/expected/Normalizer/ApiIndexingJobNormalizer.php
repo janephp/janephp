@@ -45,7 +45,11 @@ class ApiIndexingJobNormalizer implements DenormalizerInterface, NormalizerInter
             unset($data['completed_datasources']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date);
             unset($data['created_at']);
         }
         if (\array_key_exists('data_source_jobs', $data)) {
@@ -65,7 +69,11 @@ class ApiIndexingJobNormalizer implements DenormalizerInterface, NormalizerInter
             unset($data['data_source_uuids']);
         }
         if (\array_key_exists('finished_at', $data)) {
-            $object->setFinishedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['finished_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['finished_at']);
+            if (false === $date_1) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['finished_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setFinishedAt($date_1);
             unset($data['finished_at']);
         }
         if (\array_key_exists('is_report_available', $data)) {
@@ -81,7 +89,11 @@ class ApiIndexingJobNormalizer implements DenormalizerInterface, NormalizerInter
             unset($data['phase']);
         }
         if (\array_key_exists('started_at', $data)) {
-            $object->setStartedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['started_at']));
+            $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['started_at']);
+            if (false === $date_2) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['started_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setStartedAt($date_2);
             unset($data['started_at']);
         }
         if (\array_key_exists('status', $data)) {
@@ -101,7 +113,11 @@ class ApiIndexingJobNormalizer implements DenormalizerInterface, NormalizerInter
             unset($data['total_tokens']);
         }
         if (\array_key_exists('updated_at', $data)) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            $date_3 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
+            if (false === $date_3) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUpdatedAt($date_3);
             unset($data['updated_at']);
         }
         if (\array_key_exists('uuid', $data)) {

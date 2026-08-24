@@ -38,7 +38,11 @@ class UserAuditHistoryNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('modificationDate', $data)) {
-            $object->setModificationDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['modificationDate']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['modificationDate']);
+            if (false === $date) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['modificationDate'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setModificationDate($date);
         }
         if (\array_key_exists('modifiedByUser', $data) && $data['modifiedByUser'] !== null) {
             $object->setModifiedByUser($data['modifiedByUser']);

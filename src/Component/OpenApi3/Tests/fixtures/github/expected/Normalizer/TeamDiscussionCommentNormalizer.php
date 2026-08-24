@@ -61,11 +61,19 @@ class TeamDiscussionCommentNormalizer implements DenormalizerInterface, Normaliz
             unset($data['body_version']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date);
             unset($data['created_at']);
         }
         if (\array_key_exists('last_edited_at', $data) && $data['last_edited_at'] !== null) {
-            $object->setLastEditedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['last_edited_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['last_edited_at']);
+            if (false === $date_1) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['last_edited_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setLastEditedAt($date_1);
             unset($data['last_edited_at']);
         }
         elseif (\array_key_exists('last_edited_at', $data) && $data['last_edited_at'] === null) {
@@ -89,7 +97,11 @@ class TeamDiscussionCommentNormalizer implements DenormalizerInterface, Normaliz
             unset($data['number']);
         }
         if (\array_key_exists('updated_at', $data)) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
+            if (false === $date_2) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUpdatedAt($date_2);
             unset($data['updated_at']);
         }
         if (\array_key_exists('url', $data)) {

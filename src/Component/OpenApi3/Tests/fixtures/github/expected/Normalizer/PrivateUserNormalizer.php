@@ -209,11 +209,19 @@ class PrivateUserNormalizer implements DenormalizerInterface, NormalizerInterfac
             unset($data['following']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date);
             unset($data['created_at']);
         }
         if (\array_key_exists('updated_at', $data)) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
+            if (false === $date_1) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUpdatedAt($date_1);
             unset($data['updated_at']);
         }
         if (\array_key_exists('private_gists', $data)) {
@@ -245,7 +253,11 @@ class PrivateUserNormalizer implements DenormalizerInterface, NormalizerInterfac
             unset($data['plan']);
         }
         if (\array_key_exists('suspended_at', $data) && $data['suspended_at'] !== null) {
-            $object->setSuspendedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['suspended_at']));
+            $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['suspended_at']);
+            if (false === $date_2) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['suspended_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setSuspendedAt($date_2);
             unset($data['suspended_at']);
         }
         elseif (\array_key_exists('suspended_at', $data) && $data['suspended_at'] === null) {

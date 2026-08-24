@@ -50,7 +50,11 @@ class ShareEmbedCreateRequestNormalizer implements DenormalizerInterface, Normal
             unset($data['description']);
         }
         if (\array_key_exists('expirationDate', $data) && $data['expirationDate'] !== null) {
-            $object->setExpirationDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['expirationDate']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['expirationDate']);
+            if (false === $date) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['expirationDate'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setExpirationDate($date);
             unset($data['expirationDate']);
         }
         elseif (\array_key_exists('expirationDate', $data) && $data['expirationDate'] === null) {

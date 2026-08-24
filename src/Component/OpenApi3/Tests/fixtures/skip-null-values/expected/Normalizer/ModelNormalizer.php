@@ -50,7 +50,11 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             unset($data['bar']);
         }
         if (\array_key_exists('date', $data) && $data['date'] !== null) {
-            $object->setDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['date']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['date']);
+            if (false === $date) {
+                throw new \Jane\Component\OpenApi3\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['date'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setDate($date);
             unset($data['date']);
         }
         elseif (\array_key_exists('date', $data) && $data['date'] === null) {

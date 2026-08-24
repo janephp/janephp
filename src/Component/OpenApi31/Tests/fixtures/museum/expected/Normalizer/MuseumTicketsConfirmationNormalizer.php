@@ -44,7 +44,11 @@ class MuseumTicketsConfirmationNormalizer implements DenormalizerInterface, Norm
             $object->setTicketId($data['ticketId']);
         }
         if (\array_key_exists('ticketDate', $data)) {
-            $object->setTicketDate(\DateTime::createFromFormat('Y-m-d', $data['ticketDate'])->setTime(0, 0, 0));
+            $date = \DateTime::createFromFormat('Y-m-d', $data['ticketDate']);
+            if (false === $date) {
+                throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['ticketDate'], 'Y-m-d');
+            }
+            $object->setTicketDate($date->setTime(0, 0, 0));
         }
         if (\array_key_exists('ticketType', $data)) {
             $object->setTicketType($data['ticketType']);

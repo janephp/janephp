@@ -77,7 +77,11 @@ class PullRequestReviewNormalizer implements DenormalizerInterface, NormalizerIn
             unset($data['_links']);
         }
         if (\array_key_exists('submitted_at', $data)) {
-            $object->setSubmittedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['submitted_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['submitted_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['submitted_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setSubmittedAt($date);
             unset($data['submitted_at']);
         }
         if (\array_key_exists('commit_id', $data)) {

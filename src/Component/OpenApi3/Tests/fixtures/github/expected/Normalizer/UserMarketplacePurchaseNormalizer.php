@@ -48,7 +48,11 @@ class UserMarketplacePurchaseNormalizer implements DenormalizerInterface, Normal
             unset($data['billing_cycle']);
         }
         if (\array_key_exists('next_billing_date', $data) && $data['next_billing_date'] !== null) {
-            $object->setNextBillingDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['next_billing_date']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['next_billing_date']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['next_billing_date'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setNextBillingDate($date);
             unset($data['next_billing_date']);
         }
         elseif (\array_key_exists('next_billing_date', $data) && $data['next_billing_date'] === null) {
@@ -68,7 +72,11 @@ class UserMarketplacePurchaseNormalizer implements DenormalizerInterface, Normal
             unset($data['on_free_trial']);
         }
         if (\array_key_exists('free_trial_ends_on', $data) && $data['free_trial_ends_on'] !== null) {
-            $object->setFreeTrialEndsOn(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['free_trial_ends_on']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['free_trial_ends_on']);
+            if (false === $date_1) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['free_trial_ends_on'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setFreeTrialEndsOn($date_1);
             unset($data['free_trial_ends_on']);
         }
         elseif (\array_key_exists('free_trial_ends_on', $data) && $data['free_trial_ends_on'] === null) {
@@ -76,7 +84,11 @@ class UserMarketplacePurchaseNormalizer implements DenormalizerInterface, Normal
             unset($data['free_trial_ends_on']);
         }
         if (\array_key_exists('updated_at', $data) && $data['updated_at'] !== null) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
+            if (false === $date_2) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUpdatedAt($date_2);
             unset($data['updated_at']);
         }
         elseif (\array_key_exists('updated_at', $data) && $data['updated_at'] === null) {

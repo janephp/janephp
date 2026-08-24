@@ -41,19 +41,31 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\EventConstraint());
         }
         if (\array_key_exists('eventDate', $data) && $data['eventDate'] !== null) {
-            $object->setEventDate(\DateTime::createFromFormat('Y-m-d', $data['eventDate'])->setTime(0, 0, 0));
+            $date = \DateTime::createFromFormat('Y-m-d', $data['eventDate']);
+            if (false === $date) {
+                throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['eventDate'], 'Y-m-d');
+            }
+            $object->setEventDate($date->setTime(0, 0, 0));
         }
         elseif (\array_key_exists('eventDate', $data) && $data['eventDate'] === null) {
             $object->setEventDate(null);
         }
         if (\array_key_exists('createdAt', $data) && $data['createdAt'] !== null) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['createdAt']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['createdAt']);
+            if (false === $date_1) {
+                throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['createdAt'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date_1);
         }
         elseif (\array_key_exists('createdAt', $data) && $data['createdAt'] === null) {
             $object->setCreatedAt(null);
         }
         if (\array_key_exists('updatedAt', $data)) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updatedAt']));
+            $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updatedAt']);
+            if (false === $date_2) {
+                throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['updatedAt'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUpdatedAt($date_2);
         }
         if (\array_key_exists('plainDate', $data) && $data['plainDate'] !== null) {
             $value = $data['plainDate'];

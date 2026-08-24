@@ -38,10 +38,18 @@ class UserAuditNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('creationDate', $data)) {
-            $object->setCreationDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['creationDate']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['creationDate']);
+            if (false === $date) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['creationDate'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreationDate($date);
         }
         if (\array_key_exists('modificationDate', $data)) {
-            $object->setModificationDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['modificationDate']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['modificationDate']);
+            if (false === $date_1) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['modificationDate'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setModificationDate($date_1);
         }
         if (\array_key_exists('createdByUser', $data) && $data['createdByUser'] !== null) {
             $object->setCreatedByUser($data['createdByUser']);
