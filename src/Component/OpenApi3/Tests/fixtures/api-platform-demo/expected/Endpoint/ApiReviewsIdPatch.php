@@ -30,10 +30,10 @@ class ApiReviewsIdPatch extends \ApiPlatform\Demo\Runtime\Client\BaseEndpoint im
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \ApiPlatform\Demo\Model\ReviewReviewWrite) {
-            return [['Content-Type' => ['application/merge-patch+json']], $serializer->serialize($this->body, 'json')];
+            return [['Content-Type' => ['application/merge-patch+json']], \ApiPlatform\Demo\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
         }
         if ($this->body instanceof \ApiPlatform\Demo\Model\ReviewReviewWrite) {
-            return [['Content-Type' => ['application/vnd.api+json']], $serializer->serialize($this->body, 'json')];
+            return [['Content-Type' => ['application/vnd.api+json']], \ApiPlatform\Demo\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
         }
         return [[], null];
     }

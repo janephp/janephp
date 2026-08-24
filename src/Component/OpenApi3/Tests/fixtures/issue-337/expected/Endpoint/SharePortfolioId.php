@@ -31,7 +31,7 @@ class SharePortfolioId extends \CreditSafe\API\Runtime\Client\BaseEndpoint imple
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \CreditSafe\API\Model\MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBody) {
-            return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
+            return [['Content-Type' => ['application/json']], \CreditSafe\API\Runtime\Client\JsonPayload::encode($serializer, $this->body)];
         }
         return [[], null];
     }

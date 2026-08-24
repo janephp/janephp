@@ -6,6 +6,7 @@ use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\OpenApi31\JsonSchema\Model\MediaType;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
 
@@ -22,6 +23,33 @@ class JsonBodyContentGenerator extends AbstractBodyContentGenerator
 
     public function getSerializeStatements(MediaType $content, string $contentType, string $reference, Context $context): array
     {
+        $bodyExpr = new Expr\PropertyFetch(new Expr\Variable('this'), 'body');
+        $serializeExpr = new Expr\MethodCall(
+            new Expr\Variable('serializer'),
+            'serialize',
+            [
+                new Arg($bodyExpr),
+                new Arg(new Scalar\String_('json')),
+            ]
+        );
+
+        $array = false;
+        $schema = $content->getSchema();
+        $classGuess = $this->guessClass->guessClass($schema, $reference . '/schema', $context->getRegistry(), $array);
+
+        // A named-object payload normalized to an empty PHP array must be sent as a JSON object ('{}'),
+        // not as an empty JSON array ('[]') (@see https://github.com/janephp/janephp/issues/680).
+        if (null !== $classGuess && !$array) {
+            $serializeExpr = new Expr\StaticCall(
+                new Name\FullyQualified(\sprintf('%s\\Runtime\\Client\\JsonPayload', $context->getCurrentSchema()->getNamespace())),
+                'encode',
+                [
+                    new Arg(new Expr\Variable('serializer')),
+                    new Arg($bodyExpr),
+                ]
+            );
+        }
+
         return [new Stmt\Return_(new Expr\Array_([
             new Expr\Array_([
                 new Expr\ArrayItem(
@@ -29,14 +57,7 @@ class JsonBodyContentGenerator extends AbstractBodyContentGenerator
                     new Scalar\String_('Content-Type')
                 ),
             ]),
-            new Expr\MethodCall(
-                new Expr\Variable('serializer'),
-                'serialize',
-                [
-                    new Arg(new Expr\PropertyFetch(new Expr\Variable('this'), 'body')),
-                    new Arg(new Scalar\String_('json')),
-                ]
-            ),
+            $serializeExpr,
         ]))];
     }
 }

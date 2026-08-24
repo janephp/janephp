@@ -26,7 +26,7 @@ class AddSciSciProfile extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\C
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return $this->getSerializedBody($serializer);
+        return $this->getSerializedObjectBody($serializer);
     }
     public function getExtraHeaders(): array
     {
