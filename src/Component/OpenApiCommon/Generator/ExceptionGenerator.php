@@ -332,6 +332,7 @@ EOD
             new Stmt\Class_(
                 $highLevelExceptionName,
                 [
+                    'flags' => Modifiers::ABSTRACT,
                     'extends' => new Name('\\RuntimeException'),
                     'implements' => [new Name($code >= 500 ? 'ServerException' : 'ClientException')],
                     'stmts' => [

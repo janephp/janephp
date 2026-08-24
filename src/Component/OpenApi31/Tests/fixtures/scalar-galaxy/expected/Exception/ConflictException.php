@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Exception;
 
-class ConflictException extends \RuntimeException implements ClientException
+abstract class ConflictException extends \RuntimeException implements ClientException
 {
     public function __construct(string $message)
     {

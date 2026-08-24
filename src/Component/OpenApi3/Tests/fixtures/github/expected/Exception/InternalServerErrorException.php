@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class InternalServerErrorException extends \RuntimeException implements ServerException
+abstract class InternalServerErrorException extends \RuntimeException implements ServerException
 {
     public function __construct(string $message)
     {

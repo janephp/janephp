@@ -2,7 +2,7 @@
 
 namespace Gounlaf\JanephpBug\Exception;
 
-class NotFoundException extends \RuntimeException implements ClientException
+abstract class NotFoundException extends \RuntimeException implements ClientException
 {
     public function __construct(string $message)
     {

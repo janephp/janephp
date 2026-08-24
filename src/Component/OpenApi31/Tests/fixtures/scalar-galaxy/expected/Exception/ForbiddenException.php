@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Exception;
 
-class ForbiddenException extends \RuntimeException implements ClientException
+abstract class ForbiddenException extends \RuntimeException implements ClientException
 {
     public function __construct(string $message)
     {

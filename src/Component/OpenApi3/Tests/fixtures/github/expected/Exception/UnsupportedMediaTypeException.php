@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class UnsupportedMediaTypeException extends \RuntimeException implements ClientException
+abstract class UnsupportedMediaTypeException extends \RuntimeException implements ClientException
 {
     public function __construct(string $message)
     {

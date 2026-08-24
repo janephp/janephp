@@ -2,7 +2,7 @@
 
 namespace CreditSafe\API\Exception;
 
-class UnauthorizedException extends \RuntimeException implements ClientException
+abstract class UnauthorizedException extends \RuntimeException implements ClientException
 {
     public function __construct(string $message)
     {

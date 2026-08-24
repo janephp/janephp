@@ -2,7 +2,7 @@
 
 namespace Github\Exception;
 
-class GoneException extends \RuntimeException implements ClientException
+abstract class GoneException extends \RuntimeException implements ClientException
 {
     public function __construct(string $message)
     {
