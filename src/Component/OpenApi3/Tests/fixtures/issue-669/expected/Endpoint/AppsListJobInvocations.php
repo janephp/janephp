@@ -49,6 +49,10 @@ class AppsListJobInvocations extends \Jane\Generated\DigitalOcean\Runtime\Client
         $optionsResolver->addAllowedTypes('per_page', ['int']);
         return $optionsResolver;
     }
+    protected function getQueryStyles(): array
+    {
+        return ['job_names' => ['style' => 'form', 'explode' => true]];
+    }
     /**
      * {@inheritdoc}
      *

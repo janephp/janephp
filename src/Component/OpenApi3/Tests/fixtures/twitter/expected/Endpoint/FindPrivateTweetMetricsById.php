@@ -46,6 +46,10 @@ class FindPrivateTweetMetricsById extends \Jane\Component\OpenApi3\Tests\Expecte
         $optionsResolver->addAllowedTypes('ids', ['array']);
         return $optionsResolver;
     }
+    protected function getQueryStyles(): array
+    {
+        return ['ids' => ['style' => 'form', 'explode' => false]];
+    }
     /**
      * {@inheritdoc}
      *

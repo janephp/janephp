@@ -11,6 +11,7 @@ use Jane\Component\OpenApi31\Generator\Endpoint\GetGetBodyTrait;
 use Jane\Component\OpenApi31\Generator\Endpoint\GetGetExtraHeadersTrait;
 use Jane\Component\OpenApi31\Generator\Endpoint\GetGetOptionsResolverTrait;
 use Jane\Component\OpenApi31\Generator\Endpoint\GetGetQueryAllowReservedTrait;
+use Jane\Component\OpenApi31\Generator\Endpoint\GetGetQueryStylesTrait;
 use Jane\Component\OpenApi31\Generator\Endpoint\GetGetUriTrait;
 use Jane\Component\OpenApi31\Generator\Endpoint\GetTransformResponseBodyTrait;
 use Jane\Component\OpenApi31\Generator\Parameter\NonBodyParameterGenerator;
@@ -35,6 +36,7 @@ class EndpointGenerator implements EndpointGeneratorInterface
     use GetGetMethodTrait;
     use GetGetOptionsResolverTrait;
     use GetGetQueryAllowReservedTrait;
+    use GetGetQueryStylesTrait;
     use GetGetUriTrait;
     use GetTransformResponseBodyTrait;
     use OptionResolverNormalizationTrait;
@@ -79,6 +81,7 @@ class EndpointGenerator implements EndpointGeneratorInterface
         $queryResolverMethod = $this->getOptionsResolverMethod($operation, self::IN_QUERY, 'getQueryOptionsResolver', $this->guessClass, $this->nonBodyParameterGenerator, $operationCustomQueryResolver, $genericCustomQueryResolver);
         $headerResolverMethod = $this->getOptionsResolverMethod($operation, self::IN_HEADER, 'getHeadersOptionsResolver', $this->guessClass, $this->nonBodyParameterGenerator);
         $queryAllowReservedMethod = $this->getQueryAllowReservedMethod($operation, 'getQueryAllowReserved', $this->guessClass);
+        $queryStylesMethod = $this->getQueryStylesMethod($operation, 'getQueryStyles', $this->guessClass);
 
         if ($extraHeadersMethod) {
             $class->stmts[] = $extraHeadersMethod;
@@ -94,6 +97,10 @@ class EndpointGenerator implements EndpointGeneratorInterface
 
         if ($queryAllowReservedMethod) {
             $class->stmts[] = $queryAllowReservedMethod;
+        }
+
+        if ($queryStylesMethod) {
+            $class->stmts[] = $queryStylesMethod;
         }
 
         $class->stmts[] = $transformBodyMethod;

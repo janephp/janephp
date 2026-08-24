@@ -57,6 +57,10 @@ class ApiBooksBookIdreviewsGetCollection extends \ApiPlatform\Demo\Runtime\Clien
         $optionsResolver->addAllowedTypes('book', ['array']);
         return $optionsResolver;
     }
+    protected function getQueryStyles(): array
+    {
+        return ['page' => ['style' => 'form', 'explode' => false], 'order[id]' => ['style' => 'form', 'explode' => false], 'order[publicationDate]' => ['style' => 'form', 'explode' => false], 'book' => ['style' => 'form', 'explode' => true]];
+    }
     /**
      * {@inheritdoc}
      *

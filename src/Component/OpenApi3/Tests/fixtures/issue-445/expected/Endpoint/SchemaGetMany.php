@@ -41,6 +41,10 @@ class SchemaGetMany extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
         $optionsResolver->addAllowedTypes('ids', ['array', 'null']);
         return $optionsResolver;
     }
+    protected function getQueryStyles(): array
+    {
+        return ['ids' => ['style' => 'form', 'explode' => true]];
+    }
     /**
      * {@inheritdoc}
      *

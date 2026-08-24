@@ -54,6 +54,10 @@ class GenaiListModels extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEn
         $optionsResolver->addAllowedTypes('per_page', ['int']);
         return $optionsResolver;
     }
+    protected function getQueryStyles(): array
+    {
+        return ['usecases' => ['style' => 'form', 'explode' => true]];
+    }
     /**
      * {@inheritdoc}
      *

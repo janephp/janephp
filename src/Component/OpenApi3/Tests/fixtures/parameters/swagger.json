@@ -377,6 +377,70 @@
                     }
                 }
             }
+        },
+        "/test-object-additional-properties": {
+            "get": {
+                "tags": [
+                    "example"
+                ],
+                "operationId": "testObjectAdditionalProperties",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "no error"
+                    }
+                }
+            }
+        },
+        "/test-form-explode-query": {
+            "get": {
+                "tags": [
+                    "example"
+                ],
+                "operationId": "testFormExplodeQuery",
+                "parameters": [
+                    {
+                        "name": "columns",
+                        "in": "query",
+                        "style": "form",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "properties[]",
+                        "in": "query",
+                        "style": "form",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "no error"
+                    }
+                }
+            }
         }
     },
     "info": {

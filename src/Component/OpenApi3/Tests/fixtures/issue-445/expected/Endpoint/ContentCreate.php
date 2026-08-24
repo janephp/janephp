@@ -53,6 +53,10 @@ class ContentCreate extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
         $optionsResolver->addAllowedTypes('waitSearchDocCreation', ['bool']);
         return $optionsResolver;
     }
+    protected function getQueryStyles(): array
+    {
+        return ['resolveBehaviors' => ['style' => 'form', 'explode' => true]];
+    }
     /**
      * {@inheritdoc}
      *

@@ -124,7 +124,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
     }
     /**
      * @param array{
-     *    "input": string,
+     *    "input": array,
      * } $queryParameters
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -145,6 +145,31 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
     public function testObjectQuery(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestObjectQuery($queryParameters), $fetch);
+    }
+    /**
+     * @param array{
+     *    "search": array,
+     * } $queryParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
+    public function testObjectAdditionalProperties(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestObjectAdditionalProperties($queryParameters), $fetch);
+    }
+    /**
+     * @param array{
+     *    "columns"?: array,
+     *    "properties[]"?: array,
+     * } $queryParameters
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
+    public function testFormExplodeQuery(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestFormExplodeQuery($queryParameters), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {

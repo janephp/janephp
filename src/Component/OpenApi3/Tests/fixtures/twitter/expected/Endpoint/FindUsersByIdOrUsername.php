@@ -58,6 +58,10 @@ class FindUsersByIdOrUsername extends \Jane\Component\OpenApi3\Tests\Expected\Ru
         $optionsResolver->addAllowedTypes('expansions', ['array']);
         return $optionsResolver;
     }
+    protected function getQueryStyles(): array
+    {
+        return ['ids' => ['style' => 'form', 'explode' => false], 'usernames' => ['style' => 'form', 'explode' => false], 'expansions' => ['style' => 'form', 'explode' => false]];
+    }
     /**
      * {@inheritdoc}
      *

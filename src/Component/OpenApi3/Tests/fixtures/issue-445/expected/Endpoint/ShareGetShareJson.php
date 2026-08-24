@@ -44,6 +44,10 @@ class ShareGetShareJson extends \PicturePark\API\Runtime\Client\BaseEndpoint imp
         $optionsResolver->addAllowedTypes('resolveBehaviors', ['array', 'null']);
         return $optionsResolver;
     }
+    protected function getQueryStyles(): array
+    {
+        return ['resolveBehaviors' => ['style' => 'form', 'explode' => true]];
+    }
     /**
      * {@inheritdoc}
      *

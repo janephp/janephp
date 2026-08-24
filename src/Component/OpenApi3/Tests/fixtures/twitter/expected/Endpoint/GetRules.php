@@ -46,6 +46,10 @@ class GetRules extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Ba
         $optionsResolver->addAllowedTypes('ids', ['array']);
         return $optionsResolver;
     }
+    protected function getQueryStyles(): array
+    {
+        return ['ids' => ['style' => 'form', 'explode' => true]];
+    }
     /**
      * {@inheritdoc}
      *

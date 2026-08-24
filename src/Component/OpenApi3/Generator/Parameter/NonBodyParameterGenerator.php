@@ -190,16 +190,9 @@ class NonBodyParameterGenerator extends ParameterGenerator
     private function convertParameterType(Schema $schema): array
     {
         $type = $schema->getType();
-        $additionalProperties = $schema->getAdditionalProperties();
 
         if (null === $type && null !== $schema->getEnum() && \count($schema->getEnum()) > 0) {
             $type = 'string';
-        }
-
-        if ($additionalProperties instanceof Schema
-            && 'object' === $type
-            && 'string' === $additionalProperties->getType()) {
-            return ['string'];
         }
 
         $convertArray = [
