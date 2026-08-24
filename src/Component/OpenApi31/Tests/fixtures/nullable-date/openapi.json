@@ -1,0 +1,51 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Nullable date API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/events": {
+            "get": {
+                "operationId": "getEvents",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Event"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Event": {
+                "type": "object",
+                "required": ["createdAt"],
+                "properties": {
+                    "eventDate": {
+                        "type": ["string", "null"],
+                        "format": "date"
+                    },
+                    "createdAt": {
+                        "type": ["string", "null"],
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "plainDate": {
+                        "type": ["string", "null"]
+                    }
+                }
+            }
+        }
+    }
+}

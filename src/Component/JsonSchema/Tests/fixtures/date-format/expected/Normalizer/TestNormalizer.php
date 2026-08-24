@@ -41,27 +41,21 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $object->setDate(\DateTime::createFromFormat('d.m.Y', $data['date'])->setTime(0, 0, 0));
         }
         if (\array_key_exists('dateOrNull', $data) && $data['dateOrNull'] !== null) {
-            $value = $data['dateOrNull'];
-            if (is_string($data['dateOrNull']) and false !== \DateTime::createFromFormat('d.m.Y', $data['dateOrNull'])->setTime(0, 0, 0)) {
-                $value = \DateTime::createFromFormat('d.m.Y', $data['dateOrNull'])->setTime(0, 0, 0);
-            } elseif (is_null($data['dateOrNull'])) {
-                $value = $data['dateOrNull'];
-            }
-            $object->setDateOrNull($value);
+            $object->setDateOrNull(\DateTime::createFromFormat('d.m.Y', $data['dateOrNull'])->setTime(0, 0, 0));
         }
         elseif (\array_key_exists('dateOrNull', $data) && $data['dateOrNull'] === null) {
             $object->setDateOrNull(null);
         }
         if (\array_key_exists('dateOrNullOrInt', $data) && $data['dateOrNullOrInt'] !== null) {
-            $value_1 = $data['dateOrNullOrInt'];
+            $value = $data['dateOrNullOrInt'];
             if (is_string($data['dateOrNullOrInt']) and false !== \DateTime::createFromFormat('d.m.Y', $data['dateOrNullOrInt'])->setTime(0, 0, 0)) {
-                $value_1 = \DateTime::createFromFormat('d.m.Y', $data['dateOrNullOrInt'])->setTime(0, 0, 0);
+                $value = \DateTime::createFromFormat('d.m.Y', $data['dateOrNullOrInt'])->setTime(0, 0, 0);
             } elseif (is_null($data['dateOrNullOrInt'])) {
-                $value_1 = $data['dateOrNullOrInt'];
+                $value = $data['dateOrNullOrInt'];
             } elseif (is_int($data['dateOrNullOrInt'])) {
-                $value_1 = $data['dateOrNullOrInt'];
+                $value = $data['dateOrNullOrInt'];
             }
-            $object->setDateOrNullOrInt($value_1);
+            $object->setDateOrNullOrInt($value);
         }
         elseif (\array_key_exists('dateOrNullOrInt', $data) && $data['dateOrNullOrInt'] === null) {
             $object->setDateOrNullOrInt(null);
@@ -72,27 +66,21 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     {
         $dataArray = [];
         if ($data->isInitialized('date') && null !== $data->getDate()) {
-            $dataArray['date'] = $data->getDate()?->format('d.m.Y');
+            $dataArray['date'] = $data->getDate()->format('d.m.Y');
         }
         if ($data->isInitialized('dateOrNull')) {
-            $value = $data->getDateOrNull();
-            if (is_object($data->getDateOrNull())) {
-                $value = $data->getDateOrNull()->format('d.m.Y');
-            } elseif (is_null($data->getDateOrNull())) {
-                $value = $data->getDateOrNull();
-            }
-            $dataArray['dateOrNull'] = $value;
+            $dataArray['dateOrNull'] = $data->getDateOrNull()?->format('d.m.Y');
         }
         if ($data->isInitialized('dateOrNullOrInt')) {
-            $value_1 = $data->getDateOrNullOrInt();
+            $value = $data->getDateOrNullOrInt();
             if (is_object($data->getDateOrNullOrInt())) {
-                $value_1 = $data->getDateOrNullOrInt()?->format('d.m.Y');
+                $value = $data->getDateOrNullOrInt()->format('d.m.Y');
             } elseif (is_null($data->getDateOrNullOrInt())) {
-                $value_1 = $data->getDateOrNullOrInt();
+                $value = $data->getDateOrNullOrInt();
             } elseif (is_int($data->getDateOrNullOrInt())) {
-                $value_1 = $data->getDateOrNullOrInt();
+                $value = $data->getDateOrNullOrInt();
             }
-            $dataArray['dateOrNullOrInt'] = $value_1;
+            $dataArray['dateOrNullOrInt'] = $value;
         }
         return $dataArray;
     }

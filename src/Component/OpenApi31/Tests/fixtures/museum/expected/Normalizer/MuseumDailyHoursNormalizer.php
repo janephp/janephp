@@ -54,7 +54,7 @@ class MuseumDailyHoursNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['date'] = $data->getDate()?->format('Y-m-d');
+        $dataArray['date'] = $data->getDate()->format('Y-m-d');
         $dataArray['timeOpen'] = $data->getTimeOpen();
         $dataArray['timeClose'] = $data->getTimeClose();
         if (!($context['skip_validation'] ?? false)) {

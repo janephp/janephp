@@ -66,7 +66,7 @@ class BuyMuseumTicketsNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('ticketId') && null !== $data->getTicketId()) {
             $dataArray['ticketId'] = $data->getTicketId();
         }
-        $dataArray['ticketDate'] = $data->getTicketDate()?->format('Y-m-d');
+        $dataArray['ticketDate'] = $data->getTicketDate()->format('Y-m-d');
         $dataArray['ticketType'] = $data->getTicketType();
         if ($data->isInitialized('eventId') && null !== $data->getEventId()) {
             $dataArray['eventId'] = $data->getEventId();

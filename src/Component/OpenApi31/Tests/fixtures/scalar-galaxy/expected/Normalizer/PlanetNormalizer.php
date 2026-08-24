@@ -150,7 +150,7 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['atmosphere'] = $values;
         }
         if ($data->isInitialized('discoveredAt') && null !== $data->getDiscoveredAt()) {
-            $dataArray['discoveredAt'] = $data->getDiscoveredAt()?->format('Y-m-d\TH:i:sP');
+            $dataArray['discoveredAt'] = $data->getDiscoveredAt()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('image')) {
             $value_2 = $data->getImage();
