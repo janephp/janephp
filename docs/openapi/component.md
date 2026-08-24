@@ -222,8 +222,10 @@ There are many ways to use it. You can either use the `__type` key to specify a 
  and throw it with the deserialized typed error model. When disabled, declared error responses are denormalized into
  their typed model and returned like any other response. Undeclared statuses remain governed by
  `throw-unexpected-status-code`. By default, it's enabled.
-- `throw-unexpected-status-code`: Will return a `UnexpectedStatusCodeException` if nothing has been matched during
- the transformation of the Endpoint body (including described exceptions). By default, it's disabled.
+- `throw-unexpected-status-code`: Will throw a `BadResponseException` if nothing has been matched during
+ the transformation of the Endpoint body (including described exceptions). This exception extends
+ `UnexpectedStatusCodeException` and exposes the original PSR-7 response through its `getResponse()` method.
+ By default, it's disabled.
 - `custom-string-format-mapping`: This option allows you to specify in which class a string property will be
  deserialized according to it's format option. It can be used to customize a date-time field, or to add non supported
 formats. More details in the dedicated section.

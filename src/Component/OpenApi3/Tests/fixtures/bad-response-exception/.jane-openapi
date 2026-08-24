@@ -1,0 +1,8 @@
+<?php
+
+return [
+    'openapi-file' => __DIR__ . '/openapi.json',
+    'namespace' => 'Jane\Component\OpenApi3\Tests\BadResponse',
+    'directory' => __DIR__ . '/generated',
+    'throw-unexpected-status-code' => true,
+];

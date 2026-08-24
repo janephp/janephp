@@ -1,17 +1,17 @@
 <?php
 
-namespace Jane\Component\OpenApi2\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\BadResponse\Endpoint;
 
-class TestNoTag extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Endpoint
+class GetFoo extends \Jane\Component\OpenApi3\Tests\BadResponse\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\BadResponse\Runtime\Client\Endpoint
 {
-    use \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\BadResponse\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
     }
     public function getUri(): string
     {
-        return '/test-exception';
+        return '/foo';
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
@@ -20,7 +20,7 @@ class TestNoTag extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\B
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi2\Tests\Expected\Exception\BadResponseException
+     * @throws \Jane\Component\OpenApi3\Tests\BadResponse\Exception\BadResponseException
      *
      * @return null
      */
@@ -31,7 +31,7 @@ class TestNoTag extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\B
         if (200 === $status) {
             return null;
         }
-        throw new \Jane\Component\OpenApi2\Tests\Expected\Exception\BadResponseException($status, $body, $response);
+        throw new \Jane\Component\OpenApi3\Tests\BadResponse\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

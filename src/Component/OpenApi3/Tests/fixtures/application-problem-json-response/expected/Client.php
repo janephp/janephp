@@ -9,7 +9,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PostFooBadRequestException
      * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\PostFooInternalServerErrorException
-     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\UnexpectedStatusCodeException
+     * @throws \Jane\Component\OpenApi3\Tests\Expected\Exception\BadResponseException
      *
      * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
