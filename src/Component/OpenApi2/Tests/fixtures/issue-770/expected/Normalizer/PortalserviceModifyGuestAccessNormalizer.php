@@ -125,16 +125,16 @@ class PortalserviceModifyGuestAccessNormalizer implements DenormalizerInterface,
             $dataArray['description'] = $data->getDescription();
         }
         if ($data->isInitialized('portalCustomization') && null !== $data->getPortalCustomization()) {
-            $dataArray['portalCustomization'] = $this->normalizer->normalize($data->getPortalCustomization(), 'json', $context);
+            $dataArray['portalCustomization'] = $data->getPortalCustomization() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPortalCustomization(), 'json', $context));
         }
         if ($data->isInitialized('redirect') && null !== $data->getRedirect()) {
-            $dataArray['redirect'] = $this->normalizer->normalize($data->getRedirect(), 'json', $context);
+            $dataArray['redirect'] = $data->getRedirect() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getRedirect(), 'json', $context));
         }
         if ($data->isInitialized('smsGateway') && null !== $data->getSmsGateway()) {
-            $dataArray['smsGateway'] = $this->normalizer->normalize($data->getSmsGateway(), 'json', $context);
+            $dataArray['smsGateway'] = $data->getSmsGateway() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSmsGateway(), 'json', $context));
         }
         if ($data->isInitialized('userSession') && null !== $data->getUserSession()) {
-            $dataArray['userSession'] = $this->normalizer->normalize($data->getUserSession(), 'json', $context);
+            $dataArray['userSession'] = $data->getUserSession() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUserSession(), 'json', $context));
         }
         if ($data->isInitialized('selfRegistration') && null !== $data->getSelfRegistration()) {
             $dataArray['selfRegistration'] = $data->getSelfRegistration();

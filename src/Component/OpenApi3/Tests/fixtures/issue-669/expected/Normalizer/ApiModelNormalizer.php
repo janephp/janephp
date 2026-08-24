@@ -76,7 +76,7 @@ class ApiModelNormalizer implements DenormalizerInterface, NormalizerInterface, 
             unset($data['kb_min_chunk_size']);
         }
         if (\array_key_exists('metadata', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data['metadata'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -134,7 +134,7 @@ class ApiModelNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $dataArray = [];
         if ($data->isInitialized('agreement') && null !== $data->getAgreement()) {
-            $dataArray['agreement'] = $this->normalizer->normalize($data->getAgreement(), 'json', $context);
+            $dataArray['agreement'] = $data->getAgreement() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAgreement(), 'json', $context));
         }
         if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
             $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
@@ -158,7 +158,7 @@ class ApiModelNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $dataArray['kb_min_chunk_size'] = $data->getKbMinChunkSize();
         }
         if ($data->isInitialized('metadata') && null !== $data->getMetadata()) {
-            $values = [];
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data->getMetadata() as $key => $value) {
                 $values[$key] = $value;
             }
@@ -193,7 +193,7 @@ class ApiModelNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $dataArray['uuid'] = $data->getUuid();
         }
         if ($data->isInitialized('version') && null !== $data->getVersion()) {
-            $dataArray['version'] = $this->normalizer->normalize($data->getVersion(), 'json', $context);
+            $dataArray['version'] = $data->getVersion() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getVersion(), 'json', $context));
         }
         foreach ($data as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {

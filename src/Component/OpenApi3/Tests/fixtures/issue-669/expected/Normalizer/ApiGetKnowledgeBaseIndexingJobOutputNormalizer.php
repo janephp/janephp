@@ -52,7 +52,7 @@ class ApiGetKnowledgeBaseIndexingJobOutputNormalizer implements DenormalizerInte
     {
         $dataArray = [];
         if ($data->isInitialized('job') && null !== $data->getJob()) {
-            $dataArray['job'] = $this->normalizer->normalize($data->getJob(), 'json', $context);
+            $dataArray['job'] = $data->getJob() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getJob(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

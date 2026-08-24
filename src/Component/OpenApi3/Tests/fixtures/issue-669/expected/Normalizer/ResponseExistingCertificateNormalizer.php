@@ -52,7 +52,7 @@ class ResponseExistingCertificateNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if ($data->isInitialized('certificate') && null !== $data->getCertificate()) {
-            $dataArray['certificate'] = $this->normalizer->normalize($data->getCertificate(), 'json', $context);
+            $dataArray['certificate'] = $data->getCertificate() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getCertificate(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -113,36 +113,36 @@ class ShareDetailNormalizer implements DenormalizerInterface, NormalizerInterfac
         $dataArray = [];
         $dataArray['id'] = $data->getId();
         $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description')) {
+        if ($data->isInitialized('description') && null !== $data->getDescription()) {
             $dataArray['description'] = $data->getDescription();
         }
         $dataArray['creator'] = $data->getCreator();
         $dataArray['audit'] = $data->getAudit();
         $values = [];
         foreach ($data->getContentSelections() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['contentSelections'] = $values;
-        if ($data->isInitialized('layerSchemaIds')) {
+        if ($data->isInitialized('layerSchemaIds') && null !== $data->getLayerSchemaIds()) {
             $values_1 = [];
             foreach ($data->getLayerSchemaIds() as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['layerSchemaIds'] = $values_1;
         }
-        if ($data->isInitialized('data')) {
+        if ($data->isInitialized('data') && null !== $data->getData()) {
             $dataArray['data'] = $data->getData();
         }
-        if ($data->isInitialized('expirationDate')) {
+        if ($data->isInitialized('expirationDate') && null !== $data->getExpirationDate()) {
             $dataArray['expirationDate'] = $data->getExpirationDate()?->format('Y-m-d\TH:i:sP');
         }
         $dataArray['expired'] = $data->getExpired();
         $dataArray['outputAccess'] = $data->getOutputAccess();
         $dataArray['shareType'] = $data->getShareType();
-        if ($data->isInitialized('schemas')) {
+        if ($data->isInitialized('schemas') && null !== $data->getSchemas()) {
             $values_2 = [];
             foreach ($data->getSchemas() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['schemas'] = $values_2;
         }

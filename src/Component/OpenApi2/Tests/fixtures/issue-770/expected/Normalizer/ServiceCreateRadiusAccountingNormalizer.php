@@ -127,18 +127,18 @@ class ServiceCreateRadiusAccountingNormalizer implements DenormalizerInterface, 
         if ($data->isInitialized('description') && null !== $data->getDescription()) {
             $dataArray['description'] = $data->getDescription();
         }
-        $dataArray['primary'] = $this->normalizer->normalize($data->getPrimary(), 'json', $context);
+        $dataArray['primary'] = $data->getPrimary() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPrimary(), 'json', $context));
         if ($data->isInitialized('secondary') && null !== $data->getSecondary()) {
-            $dataArray['secondary'] = $this->normalizer->normalize($data->getSecondary(), 'json', $context);
+            $dataArray['secondary'] = $data->getSecondary() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSecondary(), 'json', $context));
         }
         if ($data->isInitialized('healthCheckPolicy') && null !== $data->getHealthCheckPolicy()) {
-            $dataArray['healthCheckPolicy'] = $this->normalizer->normalize($data->getHealthCheckPolicy(), 'json', $context);
+            $dataArray['healthCheckPolicy'] = $data->getHealthCheckPolicy() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getHealthCheckPolicy(), 'json', $context));
         }
         if ($data->isInitialized('rateLimiting') && null !== $data->getRateLimiting()) {
-            $dataArray['rateLimiting'] = $this->normalizer->normalize($data->getRateLimiting(), 'json', $context);
+            $dataArray['rateLimiting'] = $data->getRateLimiting() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getRateLimiting(), 'json', $context));
         }
         if ($data->isInitialized('standbyPrimary') && null !== $data->getStandbyPrimary()) {
-            $dataArray['standbyPrimary'] = $this->normalizer->normalize($data->getStandbyPrimary(), 'json', $context);
+            $dataArray['standbyPrimary'] = $data->getStandbyPrimary() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getStandbyPrimary(), 'json', $context));
         }
         if ($data->isInitialized('standbyServerEnabled') && null !== $data->getStandbyServerEnabled()) {
             $dataArray['standbyServerEnabled'] = $data->getStandbyServerEnabled();

@@ -54,10 +54,10 @@ class ContentReferencesRequestNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('references')) {
+        if ($data->isInitialized('references') && null !== $data->getReferences()) {
             $dataArray['references'] = $data->getReferences();
         }
-        if ($data->isInitialized('shares')) {
+        if ($data->isInitialized('shares') && null !== $data->getShares()) {
             $dataArray['shares'] = $data->getShares();
         }
         return $dataArray;

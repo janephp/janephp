@@ -63,7 +63,7 @@ class V2VolumesVolumeIdSnapshotsPostBodyNormalizer implements DenormalizerInterf
     {
         $dataArray = [];
         $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('tags')) {
+        if ($data->isInitialized('tags') && null !== $data->getTags()) {
             $values = [];
             foreach ($data->getTags() as $value) {
                 $values[] = $value;

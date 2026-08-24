@@ -110,23 +110,23 @@ class ChannelNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $dataArray['id'] = $data->getId();
         $dataArray['sortOrder'] = $data->getSortOrder();
         $dataArray['searchIndexId'] = $data->getSearchIndexId();
-        if ($data->isInitialized('filter')) {
+        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
             $dataArray['filter'] = $data->getFilter();
         }
         $dataArray['names'] = $data->getNames();
         $values = [];
         foreach ($data->getSort() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['sort'] = $values;
         $values_1 = [];
         foreach ($data->getSortFields() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['sortFields'] = $values_1;
         $values_2 = [];
         foreach ($data->getAggregations() as $value_2) {
-            $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+            $values_2[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
         }
         $dataArray['aggregations'] = $values_2;
         $values_3 = [];

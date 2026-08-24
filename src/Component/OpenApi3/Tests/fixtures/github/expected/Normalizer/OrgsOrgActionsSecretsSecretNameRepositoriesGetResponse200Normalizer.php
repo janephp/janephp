@@ -68,7 +68,7 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Normalizer implem
         if ($data->isInitialized('repositories') && null !== $data->getRepositories()) {
             $values = [];
             foreach ($data->getRepositories() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['repositories'] = $values;
         }

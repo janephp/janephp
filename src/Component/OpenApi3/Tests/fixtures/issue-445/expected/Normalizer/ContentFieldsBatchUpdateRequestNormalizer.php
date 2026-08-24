@@ -83,7 +83,7 @@ class ContentFieldsBatchUpdateRequestNormalizer implements DenormalizerInterface
         $dataArray = [];
         $values = [];
         foreach ($data->getChangeCommands() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['changeCommands'] = $values;
         $dataArray['allowMissingDependencies'] = $data->getAllowMissingDependencies();

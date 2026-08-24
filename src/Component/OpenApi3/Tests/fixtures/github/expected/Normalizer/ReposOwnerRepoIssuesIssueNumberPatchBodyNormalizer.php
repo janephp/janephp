@@ -101,7 +101,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBodyNormalizer implements Denormalizer
         if ($data->isInitialized('state') && null !== $data->getState()) {
             $dataArray['state'] = $data->getState();
         }
-        if ($data->isInitialized('milestone')) {
+        if ($data->isInitialized('milestone') && null !== $data->getMilestone()) {
             $dataArray['milestone'] = $data->getMilestone();
         }
         if ($data->isInitialized('labels') && null !== $data->getLabels()) {

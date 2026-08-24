@@ -52,7 +52,7 @@ class ResponseDropletBackupPolicyNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if ($data->isInitialized('policy') && null !== $data->getPolicy()) {
-            $dataArray['policy'] = $this->normalizer->normalize($data->getPolicy(), 'json', $context);
+            $dataArray['policy'] = $data->getPolicy() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getPolicy(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

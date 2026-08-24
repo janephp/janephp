@@ -74,7 +74,7 @@ class PollNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         $dataArray['id'] = $data->getId();
         $values = [];
         foreach ($data->getOptions() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Jane\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['options'] = $values;
         $dataArray['voting_status'] = $data->getVotingStatus();

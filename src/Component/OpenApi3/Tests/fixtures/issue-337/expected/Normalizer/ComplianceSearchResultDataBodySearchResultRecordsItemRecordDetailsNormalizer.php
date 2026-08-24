@@ -133,7 +133,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsNormaliz
         if ($data->isInitialized('iDs') && null !== $data->getIDs()) {
             $values = [];
             foreach ($data->getIDs() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['iDs'] = $values;
         }
@@ -141,10 +141,10 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsNormaliz
             $dataArray['lastUpdatedDate'] = $data->getLastUpdatedDate();
         }
         if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $this->normalizer->normalize($data->getName(), 'json', $context);
+            $dataArray['name'] = $data->getName() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getName(), 'json', $context));
         }
         if ($data->isInitialized('recordState') && null !== $data->getRecordState()) {
-            $dataArray['recordState'] = $this->normalizer->normalize($data->getRecordState(), 'json', $context);
+            $dataArray['recordState'] = $data->getRecordState() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getRecordState(), 'json', $context));
         }
         if ($data->isInitialized('searchDate') && null !== $data->getSearchDate()) {
             $dataArray['searchDate'] = $data->getSearchDate();

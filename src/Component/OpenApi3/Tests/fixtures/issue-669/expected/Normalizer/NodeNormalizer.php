@@ -78,7 +78,7 @@ class NodeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $dataArray['name'] = $data->getName();
         }
         if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $this->normalizer->normalize($data->getStatus(), 'json', $context);
+            $dataArray['status'] = $data->getStatus() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getStatus(), 'json', $context));
         }
         if ($data->isInitialized('dropletId') && null !== $data->getDropletId()) {
             $dataArray['droplet_id'] = $data->getDropletId();

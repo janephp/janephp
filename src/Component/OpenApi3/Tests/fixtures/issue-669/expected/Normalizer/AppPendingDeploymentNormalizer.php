@@ -142,14 +142,14 @@ class AppPendingDeploymentNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('jobs') && null !== $data->getJobs()) {
             $values = [];
             foreach ($data->getJobs() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['jobs'] = $values;
         }
         if ($data->isInitialized('functions') && null !== $data->getFunctions()) {
             $values_1 = [];
             foreach ($data->getFunctions() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['functions'] = $values_1;
         }
@@ -160,22 +160,22 @@ class AppPendingDeploymentNormalizer implements DenormalizerInterface, Normalize
             $dataArray['phase_last_updated_at'] = $data->getPhaseLastUpdatedAt()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('progress') && null !== $data->getProgress()) {
-            $dataArray['progress'] = $this->normalizer->normalize($data->getProgress(), 'json', $context);
+            $dataArray['progress'] = $data->getProgress() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getProgress(), 'json', $context));
         }
         if ($data->isInitialized('services') && null !== $data->getServices()) {
             $values_2 = [];
             foreach ($data->getServices() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['services'] = $values_2;
         }
         if ($data->isInitialized('spec') && null !== $data->getSpec()) {
-            $dataArray['spec'] = $this->normalizer->normalize($data->getSpec(), 'json', $context);
+            $dataArray['spec'] = $data->getSpec() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSpec(), 'json', $context));
         }
         if ($data->isInitialized('staticSites') && null !== $data->getStaticSites()) {
             $values_3 = [];
             foreach ($data->getStaticSites() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['static_sites'] = $values_3;
         }
@@ -185,7 +185,7 @@ class AppPendingDeploymentNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('workers') && null !== $data->getWorkers()) {
             $values_4 = [];
             foreach ($data->getWorkers() as $value_4) {
-                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[] = $value_4 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['workers'] = $values_4;
         }

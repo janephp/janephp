@@ -30,3 +30,12 @@ If you are new to the codebase, we highly recommend starting here to understand 
 
 * **[Architecture & Internals](internals.md)**
   *Learn about the Loader, Schema, Generator, and Printer workflow.*
+
+## 📐 Architecture Decisions
+
+Some behaviors of the generators are the result of deliberate, sometimes
+hard-won decisions. They are recorded so future contributors can understand
+*why* the code is shaped this way before touching it:
+
+* **[Architecture Decision Records](adrs/index.md)**
+  *Why generated payloads use `JsonObject`, how pre-generation schema validation works, and more.*

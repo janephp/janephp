@@ -103,7 +103,7 @@ class MduSegmentationProfileDistributionSwitchObjNormalizer implements Denormali
         if ($data->isInitialized('siteSecondaryList') && null !== $data->getSiteSecondaryList()) {
             $values = [];
             foreach ($data->getSiteSecondaryList() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['siteSecondaryList'] = $values;
         }

@@ -194,16 +194,16 @@ class FieldTranslatedStringNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('indexId')) {
+        if ($data->isInitialized('indexId') && null !== $data->getIndexId()) {
             $dataArray['indexId'] = $data->getIndexId();
         }
-        if ($data->isInitialized('fieldNamespace')) {
+        if ($data->isInitialized('fieldNamespace') && null !== $data->getFieldNamespace()) {
             $dataArray['fieldNamespace'] = $data->getFieldNamespace();
         }
-        if ($data->isInitialized('names')) {
+        if ($data->isInitialized('names') && null !== $data->getNames()) {
             $dataArray['names'] = $data->getNames();
         }
-        if ($data->isInitialized('descriptions')) {
+        if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
             $dataArray['descriptions'] = $data->getDescriptions();
         }
         $dataArray['required'] = $data->getRequired();
@@ -212,40 +212,40 @@ class FieldTranslatedStringNormalizer implements DenormalizerInterface, Normaliz
         $dataArray['simpleSearch'] = $data->getSimpleSearch();
         $dataArray['sortable'] = $data->getSortable();
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('pattern')) {
+        if ($data->isInitialized('pattern') && null !== $data->getPattern()) {
             $dataArray['pattern'] = $data->getPattern();
         }
-        if ($data->isInitialized('minimumLength')) {
+        if ($data->isInitialized('minimumLength') && null !== $data->getMinimumLength()) {
             $dataArray['minimumLength'] = $data->getMinimumLength();
         }
-        if ($data->isInitialized('maximumLength')) {
+        if ($data->isInitialized('maximumLength') && null !== $data->getMaximumLength()) {
             $dataArray['maximumLength'] = $data->getMaximumLength();
         }
-        if ($data->isInitialized('indexAnalyzers')) {
+        if ($data->isInitialized('indexAnalyzers') && null !== $data->getIndexAnalyzers()) {
             $values = [];
             foreach ($data->getIndexAnalyzers() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['indexAnalyzers'] = $values;
         }
-        if ($data->isInitialized('simpleSearchAnalyzers')) {
+        if ($data->isInitialized('simpleSearchAnalyzers') && null !== $data->getSimpleSearchAnalyzers()) {
             $values_1 = [];
             foreach ($data->getSimpleSearchAnalyzers() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['simpleSearchAnalyzers'] = $values_1;
         }
         if ($data->isInitialized('multiLine') && null !== $data->getMultiLine()) {
             $dataArray['multiLine'] = $data->getMultiLine();
         }
-        if ($data->isInitialized('requiredMetadataLanguages')) {
+        if ($data->isInitialized('requiredMetadataLanguages') && null !== $data->getRequiredMetadataLanguages()) {
             $values_2 = [];
             foreach ($data->getRequiredMetadataLanguages() as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['requiredMetadataLanguages'] = $values_2;
         }
-        if ($data->isInitialized('template')) {
+        if ($data->isInitialized('template') && null !== $data->getTemplate()) {
             $dataArray['template'] = $data->getTemplate();
         }
         if ($data->isInitialized('boost') && null !== $data->getBoost()) {

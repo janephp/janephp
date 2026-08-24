@@ -52,7 +52,7 @@ class ResponseDefaultProjectNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if ($data->isInitialized('project') && null !== $data->getProject()) {
-            $dataArray['project'] = $this->normalizer->normalize($data->getProject(), 'json', $context);
+            $dataArray['project'] = $data->getProject() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getProject(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

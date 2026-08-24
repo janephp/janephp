@@ -76,7 +76,7 @@ class ProfileDhcpRelayNoRelayTunnelNormalizer implements DenormalizerInterface, 
             $dataArray['relayBothEnabled'] = $data->getRelayBothEnabled();
         }
         if ($data->isInitialized('dhcpOption82') && null !== $data->getDhcpOption82()) {
-            $dataArray['dhcpOption82'] = $this->normalizer->normalize($data->getDhcpOption82(), 'json', $context);
+            $dataArray['dhcpOption82'] = $data->getDhcpOption82() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getDhcpOption82(), 'json', $context));
         }
         return $dataArray;
     }

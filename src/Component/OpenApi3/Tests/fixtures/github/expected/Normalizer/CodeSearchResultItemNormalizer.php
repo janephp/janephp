@@ -119,12 +119,12 @@ class CodeSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         $dataArray['url'] = $data->getUrl();
         $dataArray['git_url'] = $data->getGitUrl();
         $dataArray['html_url'] = $data->getHtmlUrl();
-        $dataArray['repository'] = $this->normalizer->normalize($data->getRepository(), 'json', $context);
+        $dataArray['repository'] = $data->getRepository() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRepository(), 'json', $context));
         $dataArray['score'] = $data->getScore();
         if ($data->isInitialized('fileSize') && null !== $data->getFileSize()) {
             $dataArray['file_size'] = $data->getFileSize();
         }
-        if ($data->isInitialized('language')) {
+        if ($data->isInitialized('language') && null !== $data->getLanguage()) {
             $dataArray['language'] = $data->getLanguage();
         }
         if ($data->isInitialized('lastModifiedAt') && null !== $data->getLastModifiedAt()) {
@@ -140,7 +140,7 @@ class CodeSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('textMatches') && null !== $data->getTextMatches()) {
             $values_1 = [];
             foreach ($data->getTextMatches() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['text_matches'] = $values_1;
         }

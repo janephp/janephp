@@ -103,42 +103,42 @@ class BusinessRuleTraceLogNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id')) {
+        if ($data->isInitialized('id') && null !== $data->getId()) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('documentId')) {
+        if ($data->isInitialized('documentId') && null !== $data->getDocumentId()) {
             $dataArray['documentId'] = $data->getDocumentId();
         }
         $dataArray['documentType'] = $data->getDocumentType();
-        if ($data->isInitialized('ruleIds')) {
+        if ($data->isInitialized('ruleIds') && null !== $data->getRuleIds()) {
             $values = [];
             foreach ($data->getRuleIds() as $value) {
                 $values[] = $value;
             }
             $dataArray['ruleIds'] = $values;
         }
-        if ($data->isInitialized('rules')) {
+        if ($data->isInitialized('rules') && null !== $data->getRules()) {
             $values_1 = [];
             foreach ($data->getRules() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['rules'] = $values_1;
         }
-        if ($data->isInitialized('validationErrors')) {
+        if ($data->isInitialized('validationErrors') && null !== $data->getValidationErrors()) {
             $values_2 = [];
             foreach ($data->getValidationErrors() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['validationErrors'] = $values_2;
         }
-        if ($data->isInitialized('generalErrors')) {
+        if ($data->isInitialized('generalErrors') && null !== $data->getGeneralErrors()) {
             $values_3 = [];
             foreach ($data->getGeneralErrors() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['generalErrors'] = $values_3;
         }
-        if ($data->isInitialized('audit')) {
+        if ($data->isInitialized('audit') && null !== $data->getAudit()) {
             $dataArray['audit'] = $data->getAudit();
         }
         return $dataArray;

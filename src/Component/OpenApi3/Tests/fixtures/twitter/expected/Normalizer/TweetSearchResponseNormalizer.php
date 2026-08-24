@@ -79,7 +79,7 @@ class TweetSearchResponseNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['data'] = $values;
         }
         if ($data->isInitialized('includes') && null !== $data->getIncludes()) {
-            $dataArray['includes'] = $this->normalizer->normalize($data->getIncludes(), 'json', $context);
+            $dataArray['includes'] = $data->getIncludes() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIncludes(), 'json', $context));
         }
         if ($data->isInitialized('errors') && null !== $data->getErrors()) {
             $values_1 = [];
@@ -89,7 +89,7 @@ class TweetSearchResponseNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['errors'] = $values_1;
         }
         if ($data->isInitialized('meta') && null !== $data->getMeta()) {
-            $dataArray['meta'] = $this->normalizer->normalize($data->getMeta(), 'json', $context);
+            $dataArray['meta'] = $data->getMeta() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getMeta(), 'json', $context));
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

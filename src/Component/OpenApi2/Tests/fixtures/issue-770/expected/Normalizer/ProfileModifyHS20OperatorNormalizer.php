@@ -107,12 +107,12 @@ class ProfileModifyHS20OperatorNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('friendlyNames') && null !== $data->getFriendlyNames()) {
             $values_1 = [];
             foreach ($data->getFriendlyNames() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['friendlyNames'] = $values_1;
         }
         if ($data->isInitialized('certificate') && null !== $data->getCertificate()) {
-            $dataArray['certificate'] = $this->normalizer->normalize($data->getCertificate(), 'json', $context);
+            $dataArray['certificate'] = $data->getCertificate() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCertificate(), 'json', $context));
         }
         if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
             $dataArray['domainId'] = $data->getDomainId();
@@ -120,19 +120,19 @@ class ProfileModifyHS20OperatorNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('adviceOfCharges') && null !== $data->getAdviceOfCharges()) {
             $values_2 = [];
             foreach ($data->getAdviceOfCharges() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['adviceOfCharges'] = $values_2;
         }
         if ($data->isInitialized('operatorIcons') && null !== $data->getOperatorIcons()) {
             $values_3 = [];
             foreach ($data->getOperatorIcons() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['operatorIcons'] = $values_3;
         }
         if ($data->isInitialized('termsConditions') && null !== $data->getTermsConditions()) {
-            $dataArray['termsConditions'] = $this->normalizer->normalize($data->getTermsConditions(), 'json', $context);
+            $dataArray['termsConditions'] = $data->getTermsConditions() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getTermsConditions(), 'json', $context));
         }
         return $dataArray;
     }

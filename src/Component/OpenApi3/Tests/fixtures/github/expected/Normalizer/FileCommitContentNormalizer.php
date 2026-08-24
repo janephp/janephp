@@ -118,7 +118,7 @@ class FileCommitContentNormalizer implements DenormalizerInterface, NormalizerIn
             $dataArray['type'] = $data->getType();
         }
         if ($data->isInitialized('links') && null !== $data->getLinks()) {
-            $dataArray['_links'] = $this->normalizer->normalize($data->getLinks(), 'json', $context);
+            $dataArray['_links'] = $data->getLinks() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -112,14 +112,14 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         if ($data->isInitialized('history') && null !== $data->getHistory()) {
             $values_1 = [];
             foreach ($data->getHistory() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['history'] = $values_1;
         }
         if ($data->isInitialized('matchStates') && null !== $data->getMatchStates()) {
             $values_2 = [];
             foreach ($data->getMatchStates() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['matchStates'] = $values_2;
         }

@@ -66,10 +66,10 @@ class ContentManyReferencesRequestNormalizer implements DenormalizerInterface, N
             $values[] = $value;
         }
         $dataArray['contentIds'] = $values;
-        if ($data->isInitialized('references')) {
+        if ($data->isInitialized('references') && null !== $data->getReferences()) {
             $dataArray['references'] = $data->getReferences();
         }
-        if ($data->isInitialized('shares')) {
+        if ($data->isInitialized('shares') && null !== $data->getShares()) {
             $dataArray['shares'] = $data->getShares();
         }
         return $dataArray;

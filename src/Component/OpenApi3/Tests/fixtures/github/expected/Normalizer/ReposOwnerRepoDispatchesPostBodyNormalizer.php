@@ -45,7 +45,7 @@ class ReposOwnerRepoDispatchesPostBodyNormalizer implements DenormalizerInterfac
             unset($data['event_type']);
         }
         if (\array_key_exists('client_payload', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Github\Runtime\JsonObject();
             foreach ($data['client_payload'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -66,7 +66,7 @@ class ReposOwnerRepoDispatchesPostBodyNormalizer implements DenormalizerInterfac
             $dataArray['event_type'] = $data->getEventType();
         }
         if ($data->isInitialized('clientPayload') && null !== $data->getClientPayload()) {
-            $values = [];
+            $values = new \Github\Runtime\JsonObject();
             foreach ($data->getClientPayload() as $key => $value) {
                 $values[$key] = $value;
             }

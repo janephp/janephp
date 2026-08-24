@@ -108,7 +108,7 @@ class ApiKnowledgeBaseDataSourceNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if ($data->isInitialized('awsDataSource') && null !== $data->getAwsDataSource()) {
-            $dataArray['aws_data_source'] = $this->normalizer->normalize($data->getAwsDataSource(), 'json', $context);
+            $dataArray['aws_data_source'] = $data->getAwsDataSource() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAwsDataSource(), 'json', $context));
         }
         if ($data->isInitialized('bucketName') && null !== $data->getBucketName()) {
             $dataArray['bucket_name'] = $data->getBucketName();
@@ -117,31 +117,31 @@ class ApiKnowledgeBaseDataSourceNormalizer implements DenormalizerInterface, Nor
             $dataArray['chunking_algorithm'] = $data->getChunkingAlgorithm();
         }
         if ($data->isInitialized('chunkingOptions') && null !== $data->getChunkingOptions()) {
-            $dataArray['chunking_options'] = $this->normalizer->normalize($data->getChunkingOptions(), 'json', $context);
+            $dataArray['chunking_options'] = $data->getChunkingOptions() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getChunkingOptions(), 'json', $context));
         }
         if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
             $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('dropboxDataSource') && null !== $data->getDropboxDataSource()) {
-            $dataArray['dropbox_data_source'] = $this->normalizer->normalize($data->getDropboxDataSource(), 'json', $context);
+            $dataArray['dropbox_data_source'] = $data->getDropboxDataSource() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDropboxDataSource(), 'json', $context));
         }
         if ($data->isInitialized('fileUploadDataSource') && null !== $data->getFileUploadDataSource()) {
-            $dataArray['file_upload_data_source'] = $this->normalizer->normalize($data->getFileUploadDataSource(), 'json', $context);
+            $dataArray['file_upload_data_source'] = $data->getFileUploadDataSource() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getFileUploadDataSource(), 'json', $context));
         }
         if ($data->isInitialized('googleDriveDataSource') && null !== $data->getGoogleDriveDataSource()) {
-            $dataArray['google_drive_data_source'] = $this->normalizer->normalize($data->getGoogleDriveDataSource(), 'json', $context);
+            $dataArray['google_drive_data_source'] = $data->getGoogleDriveDataSource() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getGoogleDriveDataSource(), 'json', $context));
         }
         if ($data->isInitialized('itemPath') && null !== $data->getItemPath()) {
             $dataArray['item_path'] = $data->getItemPath();
         }
         if ($data->isInitialized('lastDatasourceIndexingJob') && null !== $data->getLastDatasourceIndexingJob()) {
-            $dataArray['last_datasource_indexing_job'] = $this->normalizer->normalize($data->getLastDatasourceIndexingJob(), 'json', $context);
+            $dataArray['last_datasource_indexing_job'] = $data->getLastDatasourceIndexingJob() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLastDatasourceIndexingJob(), 'json', $context));
         }
         if ($data->isInitialized('region') && null !== $data->getRegion()) {
             $dataArray['region'] = $data->getRegion();
         }
         if ($data->isInitialized('spacesDataSource') && null !== $data->getSpacesDataSource()) {
-            $dataArray['spaces_data_source'] = $this->normalizer->normalize($data->getSpacesDataSource(), 'json', $context);
+            $dataArray['spaces_data_source'] = $data->getSpacesDataSource() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSpacesDataSource(), 'json', $context));
         }
         if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
             $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
@@ -150,7 +150,7 @@ class ApiKnowledgeBaseDataSourceNormalizer implements DenormalizerInterface, Nor
             $dataArray['uuid'] = $data->getUuid();
         }
         if ($data->isInitialized('webCrawlerDataSource') && null !== $data->getWebCrawlerDataSource()) {
-            $dataArray['web_crawler_data_source'] = $this->normalizer->normalize($data->getWebCrawlerDataSource(), 'json', $context);
+            $dataArray['web_crawler_data_source'] = $data->getWebCrawlerDataSource() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getWebCrawlerDataSource(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

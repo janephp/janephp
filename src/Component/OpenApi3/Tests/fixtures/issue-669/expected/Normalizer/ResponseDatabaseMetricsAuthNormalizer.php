@@ -52,7 +52,7 @@ class ResponseDatabaseMetricsAuthNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if ($data->isInitialized('credentials') && null !== $data->getCredentials()) {
-            $dataArray['credentials'] = $this->normalizer->normalize($data->getCredentials(), 'json', $context);
+            $dataArray['credentials'] = $data->getCredentials() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getCredentials(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -74,14 +74,14 @@ class SystemSystemSettingsNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('apNumberLimitSettingsOfDomain') && null !== $data->getApNumberLimitSettingsOfDomain()) {
             $values = [];
             foreach ($data->getApNumberLimitSettingsOfDomain() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['apNumberLimitSettingsOfDomain'] = $values;
         }
         if ($data->isInitialized('apNumberLimitSettingsOfZone') && null !== $data->getApNumberLimitSettingsOfZone()) {
             $values_1 = [];
             foreach ($data->getApNumberLimitSettingsOfZone() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['apNumberLimitSettingsOfZone'] = $values_1;
         }

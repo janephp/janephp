@@ -134,16 +134,16 @@ class PortalserviceHotspotNormalizer implements DenormalizerInterface, Normalize
             $dataArray['backupPortalUrl'] = $data->getBackupPortalUrl();
         }
         if ($data->isInitialized('location') && null !== $data->getLocation()) {
-            $dataArray['location'] = $this->normalizer->normalize($data->getLocation(), 'json', $context);
+            $dataArray['location'] = $data->getLocation() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getLocation(), 'json', $context));
         }
         if ($data->isInitialized('redirect') && null !== $data->getRedirect()) {
-            $dataArray['redirect'] = $this->normalizer->normalize($data->getRedirect(), 'json', $context);
+            $dataArray['redirect'] = $data->getRedirect() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getRedirect(), 'json', $context));
         }
         if ($data->isInitialized('portalCustomization') && null !== $data->getPortalCustomization()) {
-            $dataArray['portalCustomization'] = $this->normalizer->normalize($data->getPortalCustomization(), 'json', $context);
+            $dataArray['portalCustomization'] = $data->getPortalCustomization() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPortalCustomization(), 'json', $context));
         }
         if ($data->isInitialized('userSession') && null !== $data->getUserSession()) {
-            $dataArray['userSession'] = $this->normalizer->normalize($data->getUserSession(), 'json', $context);
+            $dataArray['userSession'] = $data->getUserSession() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUserSession(), 'json', $context));
         }
         if ($data->isInitialized('walledGardens') && null !== $data->getWalledGardens()) {
             $values = [];

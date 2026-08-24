@@ -64,11 +64,11 @@ class BaseResultOfListItemNormalizer implements DenormalizerInterface, Normalize
         $dataArray['totalResults'] = $data->getTotalResults();
         $values = [];
         foreach ($data->getResults() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['results'] = $values;
         $dataArray['elapsedMilliseconds'] = $data->getElapsedMilliseconds();
-        if ($data->isInitialized('pageToken')) {
+        if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
             $dataArray['pageToken'] = $data->getPageToken();
         }
         return $dataArray;

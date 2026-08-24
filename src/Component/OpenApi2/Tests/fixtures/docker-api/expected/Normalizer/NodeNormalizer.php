@@ -76,7 +76,7 @@ class NodeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $dataArray['ID'] = $data->getID();
         }
         if ($data->isInitialized('version') && null !== $data->getVersion()) {
-            $dataArray['Version'] = $this->normalizer->normalize($data->getVersion(), 'json', $context);
+            $dataArray['Version'] = $data->getVersion() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getVersion(), 'json', $context));
         }
         if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
             $dataArray['CreatedAt'] = $data->getCreatedAt();
@@ -85,16 +85,16 @@ class NodeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $dataArray['UpdatedAt'] = $data->getUpdatedAt();
         }
         if ($data->isInitialized('spec') && null !== $data->getSpec()) {
-            $dataArray['Spec'] = $this->normalizer->normalize($data->getSpec(), 'json', $context);
+            $dataArray['Spec'] = $data->getSpec() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getSpec(), 'json', $context));
         }
         if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['Description'] = $this->normalizer->normalize($data->getDescription(), 'json', $context);
+            $dataArray['Description'] = $data->getDescription() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getDescription(), 'json', $context));
         }
         if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['Status'] = $this->normalizer->normalize($data->getStatus(), 'json', $context);
+            $dataArray['Status'] = $data->getStatus() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getStatus(), 'json', $context));
         }
-        if ($data->isInitialized('managerStatus')) {
-            $dataArray['ManagerStatus'] = $this->normalizer->normalize($data->getManagerStatus(), 'json', $context);
+        if ($data->isInitialized('managerStatus') && null !== $data->getManagerStatus()) {
+            $dataArray['ManagerStatus'] = $data->getManagerStatus() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getManagerStatus(), 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\NodeConstraint());

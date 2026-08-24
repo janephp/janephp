@@ -96,17 +96,17 @@ class BranchRestrictionPolicyNormalizer implements DenormalizerInterface, Normal
         $dataArray['apps_url'] = $data->getAppsUrl();
         $values = [];
         foreach ($data->getUsers() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['users'] = $values;
         $values_1 = [];
         foreach ($data->getTeams() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = $value_1 === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['teams'] = $values_1;
         $values_2 = [];
         foreach ($data->getApps() as $value_2) {
-            $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+            $values_2[] = $value_2 === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
         }
         $dataArray['apps'] = $values_2;
         foreach ($data as $key => $value_3) {

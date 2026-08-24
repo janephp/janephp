@@ -180,28 +180,28 @@ class ApiAgentVersionNormalizer implements DenormalizerInterface, NormalizerInte
         if ($data->isInitialized('attachedChildAgents') && null !== $data->getAttachedChildAgents()) {
             $values = [];
             foreach ($data->getAttachedChildAgents() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['attached_child_agents'] = $values;
         }
         if ($data->isInitialized('attachedFunctions') && null !== $data->getAttachedFunctions()) {
             $values_1 = [];
             foreach ($data->getAttachedFunctions() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['attached_functions'] = $values_1;
         }
         if ($data->isInitialized('attachedGuardrails') && null !== $data->getAttachedGuardrails()) {
             $values_2 = [];
             foreach ($data->getAttachedGuardrails() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['attached_guardrails'] = $values_2;
         }
         if ($data->isInitialized('attachedKnowledgebases') && null !== $data->getAttachedKnowledgebases()) {
             $values_3 = [];
             foreach ($data->getAttachedKnowledgebases() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['attached_knowledgebases'] = $values_3;
         }

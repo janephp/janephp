@@ -83,21 +83,21 @@ class NetworkNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setIngress($data['Ingress']);
         }
         if (\array_key_exists('Containers', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Containers'] as $key => $value) {
                 $values[$key] = $this->denormalizer->denormalize($value, \Docker\Api\Model\NetworkContainer::class, 'json', $context);
             }
             $object->setContainers($values);
         }
         if (\array_key_exists('Options', $data)) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Options'] as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
             $object->setOptions($values_1);
         }
         if (\array_key_exists('Labels', $data)) {
-            $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_2 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Labels'] as $key_2 => $value_2) {
                 $values_2[$key_2] = $value_2;
             }
@@ -127,7 +127,7 @@ class NetworkNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $dataArray['EnableIPv6'] = $data->getEnableIPv6();
         }
         if ($data->isInitialized('iPAM') && null !== $data->getIPAM()) {
-            $dataArray['IPAM'] = $this->normalizer->normalize($data->getIPAM(), 'json', $context);
+            $dataArray['IPAM'] = $data->getIPAM() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getIPAM(), 'json', $context));
         }
         if ($data->isInitialized('internal') && null !== $data->getInternal()) {
             $dataArray['Internal'] = $data->getInternal();
@@ -139,21 +139,21 @@ class NetworkNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $dataArray['Ingress'] = $data->getIngress();
         }
         if ($data->isInitialized('containers') && null !== $data->getContainers()) {
-            $values = [];
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getContainers() as $key => $value) {
-                $values[$key] = $this->normalizer->normalize($value, 'json', $context);
+                $values[$key] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['Containers'] = $values;
         }
         if ($data->isInitialized('options') && null !== $data->getOptions()) {
-            $values_1 = [];
+            $values_1 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getOptions() as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
             $dataArray['Options'] = $values_1;
         }
         if ($data->isInitialized('labels') && null !== $data->getLabels()) {
-            $values_2 = [];
+            $values_2 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getLabels() as $key_2 => $value_2) {
                 $values_2[$key_2] = $value_2;
             }

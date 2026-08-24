@@ -45,7 +45,7 @@ class ArrayType extends Type
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));
         $statements = [
             // $values = [];
-            new Stmt\Expression(new Expr\Assign($valuesVar, $this->createArrayValueStatement())),
+            new Stmt\Expression(new Expr\Assign($valuesVar, $this->createArrayValueStatement($context))),
         ];
 
         $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
@@ -80,7 +80,7 @@ class ArrayType extends Type
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));
         $statements = [
             // $values = [];
-            new Stmt\Expression(new Expr\Assign($valuesVar, $this->createNormalizationArrayValueStatement())),
+            new Stmt\Expression(new Expr\Assign($valuesVar, $this->createNormalizationArrayValueStatement($context))),
         ];
 
         $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
@@ -105,12 +105,12 @@ class ArrayType extends Type
         return new Node\Identifier('array');
     }
 
-    protected function createArrayValueStatement(): Expr
+    protected function createArrayValueStatement(Context $context): Expr
     {
         return new Expr\Array_();
     }
 
-    protected function createNormalizationArrayValueStatement(): Expr
+    protected function createNormalizationArrayValueStatement(Context $context): Expr
     {
         return new Expr\Array_();
     }

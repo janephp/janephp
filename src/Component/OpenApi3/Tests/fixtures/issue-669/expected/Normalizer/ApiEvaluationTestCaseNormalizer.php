@@ -136,7 +136,7 @@ class ApiEvaluationTestCaseNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['created_by_user_id'] = $data->getCreatedByUserId();
         }
         if ($data->isInitialized('dataset') && null !== $data->getDataset()) {
-            $dataArray['dataset'] = $this->normalizer->normalize($data->getDataset(), 'json', $context);
+            $dataArray['dataset'] = $data->getDataset() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDataset(), 'json', $context));
         }
         if ($data->isInitialized('datasetName') && null !== $data->getDatasetName()) {
             $dataArray['dataset_name'] = $data->getDatasetName();
@@ -153,7 +153,7 @@ class ApiEvaluationTestCaseNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('metrics') && null !== $data->getMetrics()) {
             $values = [];
             foreach ($data->getMetrics() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['metrics'] = $values;
         }
@@ -161,7 +161,7 @@ class ApiEvaluationTestCaseNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['name'] = $data->getName();
         }
         if ($data->isInitialized('starMetric') && null !== $data->getStarMetric()) {
-            $dataArray['star_metric'] = $this->normalizer->normalize($data->getStarMetric(), 'json', $context);
+            $dataArray['star_metric'] = $data->getStarMetric() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getStarMetric(), 'json', $context));
         }
         if ($data->isInitialized('testCaseUuid') && null !== $data->getTestCaseUuid()) {
             $dataArray['test_case_uuid'] = $data->getTestCaseUuid();

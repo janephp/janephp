@@ -126,7 +126,7 @@ class ContentFileNormalizer implements DenormalizerInterface, NormalizerInterfac
         $dataArray['git_url'] = $data->getGitUrl();
         $dataArray['html_url'] = $data->getHtmlUrl();
         $dataArray['download_url'] = $data->getDownloadUrl();
-        $dataArray['_links'] = $this->normalizer->normalize($data->getLinks(), 'json', $context);
+        $dataArray['_links'] = $data->getLinks() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
         if ($data->isInitialized('target') && null !== $data->getTarget()) {
             $dataArray['target'] = $data->getTarget();
         }

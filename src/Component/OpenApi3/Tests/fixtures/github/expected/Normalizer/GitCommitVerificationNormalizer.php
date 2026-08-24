@@ -81,10 +81,10 @@ class GitCommitVerificationNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('reason') && null !== $data->getReason()) {
             $dataArray['reason'] = $data->getReason();
         }
-        if ($data->isInitialized('signature')) {
+        if ($data->isInitialized('signature') && null !== $data->getSignature()) {
             $dataArray['signature'] = $data->getSignature();
         }
-        if ($data->isInitialized('payload')) {
+        if ($data->isInitialized('payload') && null !== $data->getPayload()) {
             $dataArray['payload'] = $data->getPayload();
         }
         foreach ($data as $key => $value) {

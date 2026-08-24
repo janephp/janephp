@@ -81,7 +81,7 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->setBrokenRelationTargetIds(null);
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
-            $values_4 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_4 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['content'] as $key => $value_4) {
                 $values_4[$key] = $value_4;
             }
@@ -91,7 +91,7 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->setContent(null);
         }
         if (\array_key_exists('metadata', $data) && $data['metadata'] !== null) {
-            $values_5 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_5 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['metadata'] as $key_1 => $value_5) {
                 $values_5[$key_1] = $value_5;
             }
@@ -172,83 +172,83 @@ class ContentDetailNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         $dataArray['contentSchemaId'] = $data->getContentSchemaId();
-        if ($data->isInitialized('layerSchemaIds')) {
+        if ($data->isInitialized('layerSchemaIds') && null !== $data->getLayerSchemaIds()) {
             $values = [];
             foreach ($data->getLayerSchemaIds() as $value) {
                 $values[] = $value;
             }
             $dataArray['layerSchemaIds'] = $values;
         }
-        if ($data->isInitialized('brokenReferenceIds')) {
+        if ($data->isInitialized('brokenReferenceIds') && null !== $data->getBrokenReferenceIds()) {
             $values_1 = [];
             foreach ($data->getBrokenReferenceIds() as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['brokenReferenceIds'] = $values_1;
         }
-        if ($data->isInitialized('brokenIndirectReferenceIds')) {
+        if ($data->isInitialized('brokenIndirectReferenceIds') && null !== $data->getBrokenIndirectReferenceIds()) {
             $values_2 = [];
             foreach ($data->getBrokenIndirectReferenceIds() as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['brokenIndirectReferenceIds'] = $values_2;
         }
-        if ($data->isInitialized('brokenRelationTargetIds')) {
+        if ($data->isInitialized('brokenRelationTargetIds') && null !== $data->getBrokenRelationTargetIds()) {
             $values_3 = [];
             foreach ($data->getBrokenRelationTargetIds() as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['brokenRelationTargetIds'] = $values_3;
         }
-        if ($data->isInitialized('content')) {
-            $values_4 = [];
+        if ($data->isInitialized('content') && null !== $data->getContent()) {
+            $values_4 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data->getContent() as $key => $value_4) {
                 $values_4[$key] = $value_4;
             }
             $dataArray['content'] = $values_4;
         }
-        if ($data->isInitialized('metadata')) {
-            $values_5 = [];
+        if ($data->isInitialized('metadata') && null !== $data->getMetadata()) {
+            $values_5 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data->getMetadata() as $key_1 => $value_5) {
                 $values_5[$key_1] = $value_5;
             }
             $dataArray['metadata'] = $values_5;
         }
         $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('contentPermissionSetIds')) {
+        if ($data->isInitialized('contentPermissionSetIds') && null !== $data->getContentPermissionSetIds()) {
             $values_6 = [];
             foreach ($data->getContentPermissionSetIds() as $value_6) {
                 $values_6[] = $value_6;
             }
             $dataArray['contentPermissionSetIds'] = $values_6;
         }
-        if ($data->isInitialized('outputs')) {
+        if ($data->isInitialized('outputs') && null !== $data->getOutputs()) {
             $values_7 = [];
             foreach ($data->getOutputs() as $value_7) {
-                $values_7[] = $this->normalizer->normalize($value_7, 'json', $context);
+                $values_7[] = $value_7 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_7, 'json', $context));
             }
             $dataArray['outputs'] = $values_7;
         }
-        if ($data->isInitialized('audit')) {
+        if ($data->isInitialized('audit') && null !== $data->getAudit()) {
             $dataArray['audit'] = $data->getAudit();
         }
         $dataArray['ownerTokenId'] = $data->getOwnerTokenId();
-        if ($data->isInitialized('owner')) {
+        if ($data->isInitialized('owner') && null !== $data->getOwner()) {
             $dataArray['owner'] = $data->getOwner();
         }
         $dataArray['contentType'] = $data->getContentType();
-        if ($data->isInitialized('displayValues')) {
+        if ($data->isInitialized('displayValues') && null !== $data->getDisplayValues()) {
             $dataArray['displayValues'] = $data->getDisplayValues();
         }
         $dataArray['lifeCycle'] = $data->getLifeCycle();
-        if ($data->isInitialized('contentRights')) {
+        if ($data->isInitialized('contentRights') && null !== $data->getContentRights()) {
             $values_8 = [];
             foreach ($data->getContentRights() as $value_8) {
                 $values_8[] = $value_8;
             }
             $dataArray['contentRights'] = $values_8;
         }
-        if ($data->isInitialized('activity')) {
+        if ($data->isInitialized('activity') && null !== $data->getActivity()) {
             $dataArray['activity'] = $data->getActivity();
         }
         return $dataArray;

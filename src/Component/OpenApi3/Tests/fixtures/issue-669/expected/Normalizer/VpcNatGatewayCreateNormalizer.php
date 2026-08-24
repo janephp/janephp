@@ -89,7 +89,7 @@ class VpcNatGatewayCreateNormalizer implements DenormalizerInterface, Normalizer
         $dataArray['size'] = $data->getSize();
         $values = [];
         foreach ($data->getVpcs() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['vpcs'] = $values;
         if ($data->isInitialized('udpTimeoutSeconds') && null !== $data->getUdpTimeoutSeconds()) {

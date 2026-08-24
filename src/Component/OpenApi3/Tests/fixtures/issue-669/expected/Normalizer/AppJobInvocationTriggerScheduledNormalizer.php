@@ -52,7 +52,7 @@ class AppJobInvocationTriggerScheduledNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         if ($data->isInitialized('schedule') && null !== $data->getSchedule()) {
-            $dataArray['schedule'] = $this->normalizer->normalize($data->getSchedule(), 'json', $context);
+            $dataArray['schedule'] = $data->getSchedule() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSchedule(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -92,7 +92,7 @@ class CompactUserFieldsNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray['protected'] = $data->getProtected();
         $dataArray['verified'] = $data->getVerified();
         if ($data->isInitialized('withheld') && null !== $data->getWithheld()) {
-            $dataArray['withheld'] = $this->normalizer->normalize($data->getWithheld(), 'json', $context);
+            $dataArray['withheld'] = $data->getWithheld() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getWithheld(), 'json', $context));
         }
         if ($data->isInitialized('profileImageUrl') && null !== $data->getProfileImageUrl()) {
             $dataArray['profile_image_url'] = $data->getProfileImageUrl();

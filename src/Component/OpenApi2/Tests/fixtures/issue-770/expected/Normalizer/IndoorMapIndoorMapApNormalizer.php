@@ -52,7 +52,7 @@ class IndoorMapIndoorMapApNormalizer implements DenormalizerInterface, Normalize
             $dataArray['mac'] = $data->getMac();
         }
         if ($data->isInitialized('indoorMapXy') && null !== $data->getIndoorMapXy()) {
-            $dataArray['indoorMapXy'] = $this->normalizer->normalize($data->getIndoorMapXy(), 'json', $context);
+            $dataArray['indoorMapXy'] = $data->getIndoorMapXy() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIndoorMapXy(), 'json', $context));
         }
         return $dataArray;
     }

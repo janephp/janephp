@@ -300,7 +300,7 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('email') && null !== $data->getEmail()) {
             $dataArray['email'] = $data->getEmail();
         }
-        if ($data->isInitialized('twitterUsername')) {
+        if ($data->isInitialized('twitterUsername') && null !== $data->getTwitterUsername()) {
             $dataArray['twitter_username'] = $data->getTwitterUsername();
         }
         if ($data->isInitialized('isVerified') && null !== $data->getIsVerified()) {
@@ -321,28 +321,28 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('ownedPrivateRepos') && null !== $data->getOwnedPrivateRepos()) {
             $dataArray['owned_private_repos'] = $data->getOwnedPrivateRepos();
         }
-        if ($data->isInitialized('privateGists')) {
+        if ($data->isInitialized('privateGists') && null !== $data->getPrivateGists()) {
             $dataArray['private_gists'] = $data->getPrivateGists();
         }
-        if ($data->isInitialized('diskUsage')) {
+        if ($data->isInitialized('diskUsage') && null !== $data->getDiskUsage()) {
             $dataArray['disk_usage'] = $data->getDiskUsage();
         }
-        if ($data->isInitialized('collaborators')) {
+        if ($data->isInitialized('collaborators') && null !== $data->getCollaborators()) {
             $dataArray['collaborators'] = $data->getCollaborators();
         }
-        if ($data->isInitialized('billingEmail')) {
+        if ($data->isInitialized('billingEmail') && null !== $data->getBillingEmail()) {
             $dataArray['billing_email'] = $data->getBillingEmail();
         }
         if ($data->isInitialized('plan') && null !== $data->getPlan()) {
-            $dataArray['plan'] = $this->normalizer->normalize($data->getPlan(), 'json', $context);
+            $dataArray['plan'] = $data->getPlan() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPlan(), 'json', $context));
         }
-        if ($data->isInitialized('defaultRepositoryPermission')) {
+        if ($data->isInitialized('defaultRepositoryPermission') && null !== $data->getDefaultRepositoryPermission()) {
             $dataArray['default_repository_permission'] = $data->getDefaultRepositoryPermission();
         }
-        if ($data->isInitialized('membersCanCreateRepositories')) {
+        if ($data->isInitialized('membersCanCreateRepositories') && null !== $data->getMembersCanCreateRepositories()) {
             $dataArray['members_can_create_repositories'] = $data->getMembersCanCreateRepositories();
         }
-        if ($data->isInitialized('twoFactorRequirementEnabled')) {
+        if ($data->isInitialized('twoFactorRequirementEnabled') && null !== $data->getTwoFactorRequirementEnabled()) {
             $dataArray['two_factor_requirement_enabled'] = $data->getTwoFactorRequirementEnabled();
         }
         if ($data->isInitialized('membersAllowedRepositoryCreationType') && null !== $data->getMembersAllowedRepositoryCreationType()) {

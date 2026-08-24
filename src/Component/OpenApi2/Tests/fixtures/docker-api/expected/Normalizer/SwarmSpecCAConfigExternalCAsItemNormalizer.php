@@ -47,7 +47,7 @@ class SwarmSpecCAConfigExternalCAsItemNormalizer implements DenormalizerInterfac
             $object->setURL($data['URL']);
         }
         if (\array_key_exists('Options', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Options'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -68,7 +68,7 @@ class SwarmSpecCAConfigExternalCAsItemNormalizer implements DenormalizerInterfac
             $dataArray['URL'] = $data->getURL();
         }
         if ($data->isInitialized('options') && null !== $data->getOptions()) {
-            $values = [];
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getOptions() as $key => $value) {
                 $values[$key] = $value;
             }

@@ -113,10 +113,10 @@ class DatabaseReplicaNormalizer implements DenormalizerInterface, NormalizerInte
             $dataArray['private_network_uuid'] = $data->getPrivateNetworkUuid();
         }
         if ($data->isInitialized('connection') && null !== $data->getConnection()) {
-            $dataArray['connection'] = $this->normalizer->normalize($data->getConnection(), 'json', $context);
+            $dataArray['connection'] = $data->getConnection() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getConnection(), 'json', $context));
         }
         if ($data->isInitialized('privateConnection') && null !== $data->getPrivateConnection()) {
-            $dataArray['private_connection'] = $this->normalizer->normalize($data->getPrivateConnection(), 'json', $context);
+            $dataArray['private_connection'] = $data->getPrivateConnection() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getPrivateConnection(), 'json', $context));
         }
         if ($data->isInitialized('storageSizeMib') && null !== $data->getStorageSizeMib()) {
             $dataArray['storage_size_mib'] = $data->getStorageSizeMib();

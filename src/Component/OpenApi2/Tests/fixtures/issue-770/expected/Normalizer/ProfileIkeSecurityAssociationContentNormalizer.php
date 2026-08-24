@@ -58,7 +58,7 @@ class ProfileIkeSecurityAssociationContentNormalizer implements DenormalizerInte
         if ($data->isInitialized('ikeProposals') && null !== $data->getIkeProposals()) {
             $values = [];
             foreach ($data->getIkeProposals() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['ikeProposals'] = $values;
         }

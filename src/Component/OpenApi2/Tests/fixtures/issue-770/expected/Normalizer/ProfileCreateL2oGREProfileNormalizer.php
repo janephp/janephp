@@ -67,9 +67,9 @@ class ProfileCreateL2oGREProfileNormalizer implements DenormalizerInterface, Nor
         if ($data->isInitialized('description') && null !== $data->getDescription()) {
             $dataArray['description'] = $data->getDescription();
         }
-        $dataArray['coreNetworkGateway'] = $this->normalizer->normalize($data->getCoreNetworkGateway(), 'json', $context);
+        $dataArray['coreNetworkGateway'] = $data->getCoreNetworkGateway() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCoreNetworkGateway(), 'json', $context));
         if ($data->isInitialized('dhcpRelay') && null !== $data->getDhcpRelay()) {
-            $dataArray['dhcpRelay'] = $this->normalizer->normalize($data->getDhcpRelay(), 'json', $context);
+            $dataArray['dhcpRelay'] = $data->getDhcpRelay() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getDhcpRelay(), 'json', $context));
         }
         if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
             $dataArray['domainId'] = $data->getDomainId();

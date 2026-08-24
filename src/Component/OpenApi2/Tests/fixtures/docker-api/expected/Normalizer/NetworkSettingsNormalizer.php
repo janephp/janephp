@@ -59,7 +59,7 @@ class NetworkSettingsNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setLinkLocalIPv6PrefixLen($data['LinkLocalIPv6PrefixLen']);
         }
         if (\array_key_exists('Ports', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Ports'] as $key => $value) {
                 $values_1 = [];
                 foreach ($value as $value_1) {
@@ -117,7 +117,7 @@ class NetworkSettingsNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setMacAddress($data['MacAddress']);
         }
         if (\array_key_exists('Networks', $data)) {
-            $values_4 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_4 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Networks'] as $key_1 => $value_4) {
                 $values_4[$key_1] = $this->denormalizer->denormalize($value_4, \Docker\Api\Model\EndpointSettings::class, 'json', $context);
             }
@@ -144,11 +144,11 @@ class NetworkSettingsNormalizer implements DenormalizerInterface, NormalizerInte
             $dataArray['LinkLocalIPv6PrefixLen'] = $data->getLinkLocalIPv6PrefixLen();
         }
         if ($data->isInitialized('ports') && null !== $data->getPorts()) {
-            $values = [];
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getPorts() as $key => $value) {
                 $values_1 = [];
                 foreach ($value as $value_1) {
-                    $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                    $values_1[] = $value_1 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
                 }
                 $values[$key] = $values_1;
             }
@@ -157,17 +157,17 @@ class NetworkSettingsNormalizer implements DenormalizerInterface, NormalizerInte
         if ($data->isInitialized('sandboxKey') && null !== $data->getSandboxKey()) {
             $dataArray['SandboxKey'] = $data->getSandboxKey();
         }
-        if ($data->isInitialized('secondaryIPAddresses')) {
+        if ($data->isInitialized('secondaryIPAddresses') && null !== $data->getSecondaryIPAddresses()) {
             $values_2 = [];
             foreach ($data->getSecondaryIPAddresses() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['SecondaryIPAddresses'] = $values_2;
         }
-        if ($data->isInitialized('secondaryIPv6Addresses')) {
+        if ($data->isInitialized('secondaryIPv6Addresses') && null !== $data->getSecondaryIPv6Addresses()) {
             $values_3 = [];
             foreach ($data->getSecondaryIPv6Addresses() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['SecondaryIPv6Addresses'] = $values_3;
         }
@@ -196,9 +196,9 @@ class NetworkSettingsNormalizer implements DenormalizerInterface, NormalizerInte
             $dataArray['MacAddress'] = $data->getMacAddress();
         }
         if ($data->isInitialized('networks') && null !== $data->getNetworks()) {
-            $values_4 = [];
+            $values_4 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getNetworks() as $key_1 => $value_4) {
-                $values_4[$key_1] = $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[$key_1] = $value_4 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['Networks'] = $values_4;
         }

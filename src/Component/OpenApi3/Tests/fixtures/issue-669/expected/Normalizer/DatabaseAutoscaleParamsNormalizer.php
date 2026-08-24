@@ -52,7 +52,7 @@ class DatabaseAutoscaleParamsNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if ($data->isInitialized('storage') && null !== $data->getStorage()) {
-            $dataArray['storage'] = $this->normalizer->normalize($data->getStorage(), 'json', $context);
+            $dataArray['storage'] = $data->getStorage() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getStorage(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

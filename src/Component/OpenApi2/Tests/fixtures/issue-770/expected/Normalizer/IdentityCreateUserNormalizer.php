@@ -126,7 +126,7 @@ class IdentityCreateUserNormalizer implements DenormalizerInterface, NormalizerI
             $dataArray['domainId'] = $data->getDomainId();
         }
         if ($data->isInitialized('subscriberPackage') && null !== $data->getSubscriberPackage()) {
-            $dataArray['subscriberPackage'] = $this->normalizer->normalize($data->getSubscriberPackage(), 'json', $context);
+            $dataArray['subscriberPackage'] = $data->getSubscriberPackage() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSubscriberPackage(), 'json', $context));
         }
         return $dataArray;
     }

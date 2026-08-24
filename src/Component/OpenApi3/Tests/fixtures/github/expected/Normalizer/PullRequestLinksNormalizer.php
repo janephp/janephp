@@ -82,14 +82,14 @@ class PullRequestLinksNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['comments'] = $this->normalizer->normalize($data->getComments(), 'json', $context);
-        $dataArray['commits'] = $this->normalizer->normalize($data->getCommits(), 'json', $context);
-        $dataArray['statuses'] = $this->normalizer->normalize($data->getStatuses(), 'json', $context);
-        $dataArray['html'] = $this->normalizer->normalize($data->getHtml(), 'json', $context);
-        $dataArray['issue'] = $this->normalizer->normalize($data->getIssue(), 'json', $context);
-        $dataArray['review_comments'] = $this->normalizer->normalize($data->getReviewComments(), 'json', $context);
-        $dataArray['review_comment'] = $this->normalizer->normalize($data->getReviewComment(), 'json', $context);
-        $dataArray['self'] = $this->normalizer->normalize($data->getSelf(), 'json', $context);
+        $dataArray['comments'] = $data->getComments() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getComments(), 'json', $context));
+        $dataArray['commits'] = $data->getCommits() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCommits(), 'json', $context));
+        $dataArray['statuses'] = $data->getStatuses() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getStatuses(), 'json', $context));
+        $dataArray['html'] = $data->getHtml() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getHtml(), 'json', $context));
+        $dataArray['issue'] = $data->getIssue() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getIssue(), 'json', $context));
+        $dataArray['review_comments'] = $data->getReviewComments() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getReviewComments(), 'json', $context));
+        $dataArray['review_comment'] = $data->getReviewComment() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getReviewComment(), 'json', $context));
+        $dataArray['self'] = $data->getSelf() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getSelf(), 'json', $context));
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

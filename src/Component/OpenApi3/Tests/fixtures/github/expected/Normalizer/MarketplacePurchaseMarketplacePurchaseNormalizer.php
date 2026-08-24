@@ -100,26 +100,26 @@ class MarketplacePurchaseMarketplacePurchaseNormalizer implements DenormalizerIn
         if ($data->isInitialized('billingCycle') && null !== $data->getBillingCycle()) {
             $dataArray['billing_cycle'] = $data->getBillingCycle();
         }
-        if ($data->isInitialized('nextBillingDate')) {
+        if ($data->isInitialized('nextBillingDate') && null !== $data->getNextBillingDate()) {
             $dataArray['next_billing_date'] = $data->getNextBillingDate();
         }
         if ($data->isInitialized('isInstalled') && null !== $data->getIsInstalled()) {
             $dataArray['is_installed'] = $data->getIsInstalled();
         }
-        if ($data->isInitialized('unitCount')) {
+        if ($data->isInitialized('unitCount') && null !== $data->getUnitCount()) {
             $dataArray['unit_count'] = $data->getUnitCount();
         }
         if ($data->isInitialized('onFreeTrial') && null !== $data->getOnFreeTrial()) {
             $dataArray['on_free_trial'] = $data->getOnFreeTrial();
         }
-        if ($data->isInitialized('freeTrialEndsOn')) {
+        if ($data->isInitialized('freeTrialEndsOn') && null !== $data->getFreeTrialEndsOn()) {
             $dataArray['free_trial_ends_on'] = $data->getFreeTrialEndsOn();
         }
         if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
             $dataArray['updated_at'] = $data->getUpdatedAt();
         }
         if ($data->isInitialized('plan') && null !== $data->getPlan()) {
-            $dataArray['plan'] = $this->normalizer->normalize($data->getPlan(), 'json', $context);
+            $dataArray['plan'] = $data->getPlan() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPlan(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -451,7 +451,7 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         $dataArray['node_id'] = $data->getNodeId();
         $dataArray['name'] = $data->getName();
         $dataArray['full_name'] = $data->getFullName();
-        $dataArray['owner'] = $this->normalizer->normalize($data->getOwner(), 'json', $context);
+        $dataArray['owner'] = $data->getOwner() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getOwner(), 'json', $context));
         $dataArray['private'] = $data->getPrivate();
         $dataArray['html_url'] = $data->getHtmlUrl();
         $dataArray['description'] = $data->getDescription();
@@ -530,14 +530,14 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         $dataArray['has_downloads'] = $data->getHasDownloads();
         $dataArray['archived'] = $data->getArchived();
         $dataArray['disabled'] = $data->getDisabled();
-        $dataArray['license'] = $this->normalizer->normalize($data->getLicense(), 'json', $context);
+        $dataArray['license'] = $data->getLicense() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getLicense(), 'json', $context));
         if ($data->isInitialized('permissions') && null !== $data->getPermissions()) {
-            $dataArray['permissions'] = $this->normalizer->normalize($data->getPermissions(), 'json', $context);
+            $dataArray['permissions'] = $data->getPermissions() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPermissions(), 'json', $context));
         }
         if ($data->isInitialized('textMatches') && null !== $data->getTextMatches()) {
             $values_1 = [];
             foreach ($data->getTextMatches() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['text_matches'] = $values_1;
         }

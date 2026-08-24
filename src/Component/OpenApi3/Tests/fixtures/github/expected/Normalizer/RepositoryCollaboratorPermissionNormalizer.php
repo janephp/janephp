@@ -62,7 +62,7 @@ class RepositoryCollaboratorPermissionNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         $dataArray['permission'] = $data->getPermission();
-        $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
+        $dataArray['user'] = $data->getUser() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getUser(), 'json', $context));
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

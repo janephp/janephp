@@ -106,49 +106,49 @@ class OptionsVersionAvailabilityNormalizer implements DenormalizerInterface, Nor
         if ($data->isInitialized('kafka') && null !== $data->getKafka()) {
             $values = [];
             foreach ($data->getKafka() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['kafka'] = $values;
         }
         if ($data->isInitialized('pg') && null !== $data->getPg()) {
             $values_1 = [];
             foreach ($data->getPg() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['pg'] = $values_1;
         }
         if ($data->isInitialized('mysql') && null !== $data->getMysql()) {
             $values_2 = [];
             foreach ($data->getMysql() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['mysql'] = $values_2;
         }
         if ($data->isInitialized('redis') && null !== $data->getRedis()) {
             $values_3 = [];
             foreach ($data->getRedis() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['redis'] = $values_3;
         }
         if ($data->isInitialized('valkey') && null !== $data->getValkey()) {
             $values_4 = [];
             foreach ($data->getValkey() as $value_4) {
-                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[] = $value_4 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['valkey'] = $values_4;
         }
         if ($data->isInitialized('mongodb') && null !== $data->getMongodb()) {
             $values_5 = [];
             foreach ($data->getMongodb() as $value_5) {
-                $values_5[] = $this->normalizer->normalize($value_5, 'json', $context);
+                $values_5[] = $value_5 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
             }
             $dataArray['mongodb'] = $values_5;
         }
         if ($data->isInitialized('opensearch') && null !== $data->getOpensearch()) {
             $values_6 = [];
             foreach ($data->getOpensearch() as $value_6) {
-                $values_6[] = $this->normalizer->normalize($value_6, 'json', $context);
+                $values_6[] = $value_6 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_6, 'json', $context));
             }
             $dataArray['opensearch'] = $values_6;
         }

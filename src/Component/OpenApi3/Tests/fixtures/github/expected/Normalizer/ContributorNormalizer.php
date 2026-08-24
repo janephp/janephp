@@ -152,7 +152,7 @@ class ContributorNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('avatarUrl') && null !== $data->getAvatarUrl()) {
             $dataArray['avatar_url'] = $data->getAvatarUrl();
         }
-        if ($data->isInitialized('gravatarId')) {
+        if ($data->isInitialized('gravatarId') && null !== $data->getGravatarId()) {
             $dataArray['gravatar_id'] = $data->getGravatarId();
         }
         if ($data->isInitialized('url') && null !== $data->getUrl()) {

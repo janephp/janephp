@@ -57,7 +57,7 @@ class ReportPeriodNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('from')) {
+        if ($data->isInitialized('from') && null !== $data->getFrom()) {
             $value = $data->getFrom();
             if (is_string($data->getFrom())) {
                 $value = $data->getFrom();

@@ -103,8 +103,8 @@ class UserMarketplacePurchaseNormalizer implements DenormalizerInterface, Normal
         $dataArray['on_free_trial'] = $data->getOnFreeTrial();
         $dataArray['free_trial_ends_on'] = $data->getFreeTrialEndsOn()?->format('Y-m-d\TH:i:sP');
         $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['account'] = $this->normalizer->normalize($data->getAccount(), 'json', $context);
-        $dataArray['plan'] = $this->normalizer->normalize($data->getPlan(), 'json', $context);
+        $dataArray['account'] = $data->getAccount() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getAccount(), 'json', $context));
+        $dataArray['plan'] = $data->getPlan() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPlan(), 'json', $context));
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

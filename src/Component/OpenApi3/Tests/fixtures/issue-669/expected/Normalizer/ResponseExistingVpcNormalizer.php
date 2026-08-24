@@ -38,7 +38,7 @@ class ResponseExistingVpcNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('vpc', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data['vpc'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -56,7 +56,7 @@ class ResponseExistingVpcNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if ($data->isInitialized('vpc') && null !== $data->getVpc()) {
-            $values = [];
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data->getVpc() as $key => $value) {
                 $values[$key] = $value;
             }

@@ -38,7 +38,7 @@ class ListItemUpdateItemNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['content'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -66,8 +66,8 @@ class ListItemUpdateItemNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('content')) {
-            $values = [];
+        if ($data->isInitialized('content') && null !== $data->getContent()) {
+            $values = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data->getContent() as $key => $value) {
                 $values[$key] = $value;
             }

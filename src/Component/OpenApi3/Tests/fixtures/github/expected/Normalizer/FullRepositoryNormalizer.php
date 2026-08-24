@@ -490,7 +490,7 @@ class FullRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray['node_id'] = $data->getNodeId();
         $dataArray['name'] = $data->getName();
         $dataArray['full_name'] = $data->getFullName();
-        $dataArray['owner'] = $this->normalizer->normalize($data->getOwner(), 'json', $context);
+        $dataArray['owner'] = $data->getOwner() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getOwner(), 'json', $context));
         $dataArray['private'] = $data->getPrivate();
         $dataArray['html_url'] = $data->getHtmlUrl();
         $dataArray['description'] = $data->getDescription();
@@ -569,15 +569,15 @@ class FullRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('permissions') && null !== $data->getPermissions()) {
-            $dataArray['permissions'] = $this->normalizer->normalize($data->getPermissions(), 'json', $context);
+            $dataArray['permissions'] = $data->getPermissions() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPermissions(), 'json', $context));
         }
         if ($data->isInitialized('allowRebaseMerge') && null !== $data->getAllowRebaseMerge()) {
             $dataArray['allow_rebase_merge'] = $data->getAllowRebaseMerge();
         }
-        if ($data->isInitialized('templateRepository')) {
-            $dataArray['template_repository'] = $this->normalizer->normalize($data->getTemplateRepository(), 'json', $context);
+        if ($data->isInitialized('templateRepository') && null !== $data->getTemplateRepository()) {
+            $dataArray['template_repository'] = $data->getTemplateRepository() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getTemplateRepository(), 'json', $context));
         }
-        if ($data->isInitialized('tempCloneToken')) {
+        if ($data->isInitialized('tempCloneToken') && null !== $data->getTempCloneToken()) {
             $dataArray['temp_clone_token'] = $data->getTempCloneToken();
         }
         if ($data->isInitialized('allowSquashMerge') && null !== $data->getAllowSquashMerge()) {
@@ -591,15 +591,15 @@ class FullRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
         }
         $dataArray['subscribers_count'] = $data->getSubscribersCount();
         $dataArray['network_count'] = $data->getNetworkCount();
-        $dataArray['license'] = $this->normalizer->normalize($data->getLicense(), 'json', $context);
-        if ($data->isInitialized('organization')) {
-            $dataArray['organization'] = $this->normalizer->normalize($data->getOrganization(), 'json', $context);
+        $dataArray['license'] = $data->getLicense() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getLicense(), 'json', $context));
+        if ($data->isInitialized('organization') && null !== $data->getOrganization()) {
+            $dataArray['organization'] = $data->getOrganization() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getOrganization(), 'json', $context));
         }
         if ($data->isInitialized('parent') && null !== $data->getParent()) {
-            $dataArray['parent'] = $this->normalizer->normalize($data->getParent(), 'json', $context);
+            $dataArray['parent'] = $data->getParent() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getParent(), 'json', $context));
         }
         if ($data->isInitialized('source') && null !== $data->getSource()) {
-            $dataArray['source'] = $this->normalizer->normalize($data->getSource(), 'json', $context);
+            $dataArray['source'] = $data->getSource() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getSource(), 'json', $context));
         }
         $dataArray['forks'] = $data->getForks();
         if ($data->isInitialized('masterBranch') && null !== $data->getMasterBranch()) {

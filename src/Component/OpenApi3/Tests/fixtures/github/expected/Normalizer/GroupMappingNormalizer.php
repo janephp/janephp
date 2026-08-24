@@ -81,7 +81,7 @@ class GroupMappingNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($data->isInitialized('groups') && null !== $data->getGroups()) {
             $values = [];
             foreach ($data->getGroups() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['groups'] = $values;
         }

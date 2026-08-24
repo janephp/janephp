@@ -102,7 +102,7 @@ class IssueSearchResultItemLabelsItemNormalizer implements DenormalizerInterface
         if ($data->isInitialized('default') && null !== $data->getDefault()) {
             $dataArray['default'] = $data->getDefault();
         }
-        if ($data->isInitialized('description')) {
+        if ($data->isInitialized('description') && null !== $data->getDescription()) {
             $dataArray['description'] = $data->getDescription();
         }
         foreach ($data as $key => $value) {

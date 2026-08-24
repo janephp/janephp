@@ -82,7 +82,7 @@ class ZoneScheduleUpgradeTaskConfigNormalizer implements DenormalizerInterface, 
         if ($data->isInitialized('zoneList') && null !== $data->getZoneList()) {
             $values = [];
             foreach ($data->getZoneList() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['zoneList'] = $values;
         }

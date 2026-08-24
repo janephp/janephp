@@ -93,7 +93,7 @@ class ApiCreateKnowledgeBaseInputPublicNormalizer implements DenormalizerInterfa
         if ($data->isInitialized('datasources') && null !== $data->getDatasources()) {
             $values = [];
             foreach ($data->getDatasources() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['datasources'] = $values;
         }

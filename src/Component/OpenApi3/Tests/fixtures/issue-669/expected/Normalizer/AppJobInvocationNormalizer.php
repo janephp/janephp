@@ -92,7 +92,7 @@ class AppJobInvocationNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['phase'] = $data->getPhase();
         }
         if ($data->isInitialized('trigger') && null !== $data->getTrigger()) {
-            $dataArray['trigger'] = $this->normalizer->normalize($data->getTrigger(), 'json', $context);
+            $dataArray['trigger'] = $data->getTrigger() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getTrigger(), 'json', $context));
         }
         if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
             $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');

@@ -98,7 +98,7 @@ class ApiWorkspaceNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($data->isInitialized('agents') && null !== $data->getAgents()) {
             $values = [];
             foreach ($data->getAgents() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['agents'] = $values;
         }
@@ -120,7 +120,7 @@ class ApiWorkspaceNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($data->isInitialized('evaluationTestCases') && null !== $data->getEvaluationTestCases()) {
             $values_1 = [];
             foreach ($data->getEvaluationTestCases() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['evaluation_test_cases'] = $values_1;
         }

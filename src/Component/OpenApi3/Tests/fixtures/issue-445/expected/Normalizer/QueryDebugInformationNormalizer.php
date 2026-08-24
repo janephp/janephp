@@ -66,16 +66,16 @@ class QueryDebugInformationNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('general')) {
+        if ($data->isInitialized('general') && null !== $data->getGeneral()) {
             $dataArray['general'] = $data->getGeneral();
         }
-        if ($data->isInitialized('auditTrail')) {
+        if ($data->isInitialized('auditTrail') && null !== $data->getAuditTrail()) {
             $dataArray['auditTrail'] = $data->getAuditTrail();
         }
-        if ($data->isInitialized('request')) {
+        if ($data->isInitialized('request') && null !== $data->getRequest()) {
             $dataArray['request'] = $data->getRequest();
         }
-        if ($data->isInitialized('response')) {
+        if ($data->isInitialized('response') && null !== $data->getResponse()) {
             $dataArray['response'] = $data->getResponse();
         }
         return $dataArray;

@@ -52,7 +52,7 @@ class CommonRbacMetadataNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('rbacMetadata') && null !== $data->getRbacMetadata()) {
             $values = [];
             foreach ($data->getRbacMetadata() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['rbacMetadata'] = $values;
         }

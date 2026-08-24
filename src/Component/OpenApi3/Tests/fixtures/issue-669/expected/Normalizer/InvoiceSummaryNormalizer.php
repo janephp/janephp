@@ -111,7 +111,7 @@ class InvoiceSummaryNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['user_name'] = $data->getUserName();
         }
         if ($data->isInitialized('userBillingAddress') && null !== $data->getUserBillingAddress()) {
-            $dataArray['user_billing_address'] = $this->normalizer->normalize($data->getUserBillingAddress(), 'json', $context);
+            $dataArray['user_billing_address'] = $data->getUserBillingAddress() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getUserBillingAddress(), 'json', $context));
         }
         if ($data->isInitialized('userCompany') && null !== $data->getUserCompany()) {
             $dataArray['user_company'] = $data->getUserCompany();
@@ -120,16 +120,16 @@ class InvoiceSummaryNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['user_email'] = $data->getUserEmail();
         }
         if ($data->isInitialized('productCharges') && null !== $data->getProductCharges()) {
-            $dataArray['product_charges'] = $this->normalizer->normalize($data->getProductCharges(), 'json', $context);
+            $dataArray['product_charges'] = $data->getProductCharges() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getProductCharges(), 'json', $context));
         }
         if ($data->isInitialized('overages') && null !== $data->getOverages()) {
-            $dataArray['overages'] = $this->normalizer->normalize($data->getOverages(), 'json', $context);
+            $dataArray['overages'] = $data->getOverages() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getOverages(), 'json', $context));
         }
         if ($data->isInitialized('taxes') && null !== $data->getTaxes()) {
-            $dataArray['taxes'] = $this->normalizer->normalize($data->getTaxes(), 'json', $context);
+            $dataArray['taxes'] = $data->getTaxes() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getTaxes(), 'json', $context));
         }
         if ($data->isInitialized('creditsAndAdjustments') && null !== $data->getCreditsAndAdjustments()) {
-            $dataArray['credits_and_adjustments'] = $this->normalizer->normalize($data->getCreditsAndAdjustments(), 'json', $context);
+            $dataArray['credits_and_adjustments'] = $data->getCreditsAndAdjustments() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getCreditsAndAdjustments(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

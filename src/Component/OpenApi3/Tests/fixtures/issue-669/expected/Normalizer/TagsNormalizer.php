@@ -42,7 +42,7 @@ class TagsNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             unset($data['name']);
         }
         if (\array_key_exists('resources', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data['resources'] as $key => $value) {
                 $values[$key] = $value;
             }

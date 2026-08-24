@@ -65,7 +65,7 @@ class CompliancePreDefinedSearchesNormalizer implements DenormalizerInterface, N
         if ($data->isInitialized('predefinedSearches') && null !== $data->getPredefinedSearches()) {
             $values = [];
             foreach ($data->getPredefinedSearches() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['predefinedSearches'] = $values;
         }

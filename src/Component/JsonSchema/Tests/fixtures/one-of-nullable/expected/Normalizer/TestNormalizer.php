@@ -54,12 +54,12 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id')) {
+        if ($data->isInitialized('id') && null !== $data->getId()) {
             $value = $data->getId();
             if (is_null($data->getId())) {
                 $value = $data->getId();
             } elseif (is_object($data->getId())) {
-                $value = $this->normalizer->normalize($data->getId(), 'json', $context);
+                $value = $data->getId() === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getId(), 'json', $context));
             }
             $dataArray['id'] = $value;
         }

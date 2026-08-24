@@ -55,7 +55,7 @@ class ZoneLoadBalancingNormalizer implements DenormalizerInterface, NormalizerIn
             $dataArray['loadBalancingMethod'] = $data->getLoadBalancingMethod();
         }
         if ($data->isInitialized('bandBalancing') && null !== $data->getBandBalancing()) {
-            $dataArray['bandBalancing'] = $this->normalizer->normalize($data->getBandBalancing(), 'json', $context);
+            $dataArray['bandBalancing'] = $data->getBandBalancing() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getBandBalancing(), 'json', $context));
         }
         if ($data->isInitialized('steeringMode') && null !== $data->getSteeringMode()) {
             $dataArray['steeringMode'] = $data->getSteeringMode();

@@ -79,7 +79,7 @@ class ProjectProposalNormalizer implements DenormalizerInterface, NormalizerInte
         $dataArray['name'] = $value;
         $value_1 = $data->getEcoScore();
         if (is_object($data->getEcoScore())) {
-            $value_1 = $this->normalizer->normalize($data->getEcoScore(), 'json', $context);
+            $value_1 = $data->getEcoScore() === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getEcoScore(), 'json', $context));
         } elseif (is_null($data->getEcoScore())) {
             $value_1 = $data->getEcoScore();
         }

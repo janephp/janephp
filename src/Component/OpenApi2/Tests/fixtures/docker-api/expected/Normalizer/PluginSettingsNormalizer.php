@@ -75,7 +75,7 @@ class PluginSettingsNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray = [];
         $values = [];
         foreach ($data->getMounts() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['Mounts'] = $values;
         $values_1 = [];
@@ -90,7 +90,7 @@ class PluginSettingsNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray['Args'] = $values_2;
         $values_3 = [];
         foreach ($data->getDevices() as $value_3) {
-            $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+            $values_3[] = $value_3 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
         }
         $dataArray['Devices'] = $values_3;
         if (!($context['skip_validation'] ?? false)) {

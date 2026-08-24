@@ -125,51 +125,51 @@ class ChannelCreateRequestNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id')) {
+        if ($data->isInitialized('id') && null !== $data->getId()) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('sort')) {
+        if ($data->isInitialized('sort') && null !== $data->getSort()) {
             $values = [];
             foreach ($data->getSort() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['sort'] = $values;
         }
         $dataArray['sortOrder'] = $data->getSortOrder();
         $values_1 = [];
         foreach ($data->getSortFields() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['sortFields'] = $values_1;
         $dataArray['names'] = $data->getNames();
-        if ($data->isInitialized('searchIndexId')) {
+        if ($data->isInitialized('searchIndexId') && null !== $data->getSearchIndexId()) {
             $dataArray['searchIndexId'] = $data->getSearchIndexId();
         }
-        if ($data->isInitialized('grantedUserRoleIds')) {
+        if ($data->isInitialized('grantedUserRoleIds') && null !== $data->getGrantedUserRoleIds()) {
             $values_2 = [];
             foreach ($data->getGrantedUserRoleIds() as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['grantedUserRoleIds'] = $values_2;
         }
-        if ($data->isInitialized('aggregations')) {
+        if ($data->isInitialized('aggregations') && null !== $data->getAggregations()) {
             $values_3 = [];
             foreach ($data->getAggregations() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['aggregations'] = $values_3;
         }
-        if ($data->isInitialized('filter')) {
+        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
             $dataArray['filter'] = $data->getFilter();
         }
-        if ($data->isInitialized('extendedSimpleSearchFields')) {
+        if ($data->isInitialized('extendedSimpleSearchFields') && null !== $data->getExtendedSimpleSearchFields()) {
             $values_4 = [];
             foreach ($data->getExtendedSimpleSearchFields() as $value_4) {
                 $values_4[] = $value_4;
             }
             $dataArray['extendedSimpleSearchFields'] = $values_4;
         }
-        if ($data->isInitialized('missingResultsDisplayPatterns')) {
+        if ($data->isInitialized('missingResultsDisplayPatterns') && null !== $data->getMissingResultsDisplayPatterns()) {
             $dataArray['missingResultsDisplayPatterns'] = $data->getMissingResultsDisplayPatterns();
         }
         $dataArray['viewForAll'] = $data->getViewForAll();

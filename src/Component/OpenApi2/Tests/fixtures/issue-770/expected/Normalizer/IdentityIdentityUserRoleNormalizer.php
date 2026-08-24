@@ -100,19 +100,19 @@ class IdentityIdentityUserRoleNormalizer implements DenormalizerInterface, Norma
             $dataArray['description'] = $data->getDescription();
         }
         if ($data->isInitialized('userTrafficProfile') && null !== $data->getUserTrafficProfile()) {
-            $dataArray['userTrafficProfile'] = $this->normalizer->normalize($data->getUserTrafficProfile(), 'json', $context);
+            $dataArray['userTrafficProfile'] = $data->getUserTrafficProfile() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUserTrafficProfile(), 'json', $context));
         }
         if ($data->isInitialized('firewallProfileId') && null !== $data->getFirewallProfileId()) {
             $dataArray['firewallProfileId'] = $data->getFirewallProfileId();
         }
         if ($data->isInitialized('maxDevices') && null !== $data->getMaxDevices()) {
-            $dataArray['maxDevices'] = $this->normalizer->normalize($data->getMaxDevices(), 'json', $context);
+            $dataArray['maxDevices'] = $data->getMaxDevices() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getMaxDevices(), 'json', $context));
         }
         if ($data->isInitialized('vlanId') && null !== $data->getVlanId()) {
             $dataArray['vlanId'] = $data->getVlanId();
         }
         if ($data->isInitialized('vlanPooling') && null !== $data->getVlanPooling()) {
-            $dataArray['vlanPooling'] = $this->normalizer->normalize($data->getVlanPooling(), 'json', $context);
+            $dataArray['vlanPooling'] = $data->getVlanPooling() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getVlanPooling(), 'json', $context));
         }
         if ($data->isInitialized('createDateTime') && null !== $data->getCreateDateTime()) {
             $dataArray['createDateTime'] = $data->getCreateDateTime();
@@ -136,7 +136,7 @@ class IdentityIdentityUserRoleNormalizer implements DenormalizerInterface, Norma
             $dataArray['timeSchedulePolicy'] = $data->getTimeSchedulePolicy();
         }
         if ($data->isInitialized('timeScheduleList') && null !== $data->getTimeScheduleList()) {
-            $dataArray['timeScheduleList'] = $this->normalizer->normalize($data->getTimeScheduleList(), 'json', $context);
+            $dataArray['timeScheduleList'] = $data->getTimeScheduleList() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getTimeScheduleList(), 'json', $context));
         }
         return $dataArray;
     }

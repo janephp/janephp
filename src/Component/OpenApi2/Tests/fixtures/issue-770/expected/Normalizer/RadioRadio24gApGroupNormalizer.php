@@ -99,7 +99,7 @@ class RadioRadio24gApGroupNormalizer implements DenormalizerInterface, Normalize
             $dataArray['protectionMode'] = $data->getProtectionMode();
         }
         if ($data->isInitialized('autoChannelSelection') && null !== $data->getAutoChannelSelection()) {
-            $dataArray['autoChannelSelection'] = $this->normalizer->normalize($data->getAutoChannelSelection(), 'json', $context);
+            $dataArray['autoChannelSelection'] = $data->getAutoChannelSelection() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAutoChannelSelection(), 'json', $context));
         }
         return $dataArray;
     }

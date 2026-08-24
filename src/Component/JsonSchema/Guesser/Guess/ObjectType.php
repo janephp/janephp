@@ -50,11 +50,17 @@ class ObjectType extends Type
             $normalizerVar = new Expr\Variable('normalizer');
         }
 
-        return new Expr\MethodCall($normalizerVar, 'normalize', [
-            new Arg($input),
-            new Arg(new Scalar\String_('json')),
-            new Arg(new Expr\Variable('context')),
-        ]);
+        return new Expr\Ternary(
+            new Expr\BinaryOp\Identical($input, new Expr\ConstFetch(new Name('null'))),
+            new Expr\ConstFetch(new Name('null')),
+            new Expr\New_(new FullyQualified(\sprintf('%s\\Runtime\\JsonObject', $context->getCurrentSchema()->getNamespace())), [
+                new Arg(new Expr\MethodCall($normalizerVar, 'normalize', [
+                    new Arg($input),
+                    new Arg(new Scalar\String_('json')),
+                    new Arg(new Expr\Variable('context')),
+                ])),
+            ], [])
+        );
     }
 
     public function createConditionStatement(Expr $input): Expr

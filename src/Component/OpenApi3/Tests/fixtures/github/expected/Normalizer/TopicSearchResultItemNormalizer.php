@@ -170,30 +170,30 @@ class TopicSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         $dataArray['featured'] = $data->getFeatured();
         $dataArray['curated'] = $data->getCurated();
         $dataArray['score'] = $data->getScore();
-        if ($data->isInitialized('repositoryCount')) {
+        if ($data->isInitialized('repositoryCount') && null !== $data->getRepositoryCount()) {
             $dataArray['repository_count'] = $data->getRepositoryCount();
         }
-        if ($data->isInitialized('logoUrl')) {
+        if ($data->isInitialized('logoUrl') && null !== $data->getLogoUrl()) {
             $dataArray['logo_url'] = $data->getLogoUrl();
         }
         if ($data->isInitialized('textMatches') && null !== $data->getTextMatches()) {
             $values = [];
             foreach ($data->getTextMatches() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['text_matches'] = $values;
         }
-        if ($data->isInitialized('related')) {
+        if ($data->isInitialized('related') && null !== $data->getRelated()) {
             $values_1 = [];
             foreach ($data->getRelated() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['related'] = $values_1;
         }
-        if ($data->isInitialized('aliases')) {
+        if ($data->isInitialized('aliases') && null !== $data->getAliases()) {
             $values_2 = [];
             foreach ($data->getAliases() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['aliases'] = $values_2;
         }

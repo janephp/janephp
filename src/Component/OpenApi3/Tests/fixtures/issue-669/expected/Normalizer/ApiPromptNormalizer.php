@@ -102,7 +102,7 @@ class ApiPromptNormalizer implements DenormalizerInterface, NormalizerInterface,
         if ($data->isInitialized('evaluationTraceSpans') && null !== $data->getEvaluationTraceSpans()) {
             $values = [];
             foreach ($data->getEvaluationTraceSpans() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['evaluation_trace_spans'] = $values;
         }
@@ -124,7 +124,7 @@ class ApiPromptNormalizer implements DenormalizerInterface, NormalizerInterface,
         if ($data->isInitialized('promptChunks') && null !== $data->getPromptChunks()) {
             $values_1 = [];
             foreach ($data->getPromptChunks() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['prompt_chunks'] = $values_1;
         }
@@ -134,7 +134,7 @@ class ApiPromptNormalizer implements DenormalizerInterface, NormalizerInterface,
         if ($data->isInitialized('promptLevelMetricResults') && null !== $data->getPromptLevelMetricResults()) {
             $values_2 = [];
             foreach ($data->getPromptLevelMetricResults() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['prompt_level_metric_results'] = $values_2;
         }

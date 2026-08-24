@@ -47,14 +47,14 @@ class VolumesCreatePostBodyNormalizer implements DenormalizerInterface, Normaliz
             $object->setDriver($data['Driver']);
         }
         if (\array_key_exists('DriverOpts', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['DriverOpts'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setDriverOpts($values);
         }
         if (\array_key_exists('Labels', $data)) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Labels'] as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
@@ -72,14 +72,14 @@ class VolumesCreatePostBodyNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['Driver'] = $data->getDriver();
         }
         if ($data->isInitialized('driverOpts') && null !== $data->getDriverOpts()) {
-            $values = [];
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getDriverOpts() as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['DriverOpts'] = $values;
         }
         if ($data->isInitialized('labels') && null !== $data->getLabels()) {
-            $values_1 = [];
+            $values_1 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getLabels() as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }

@@ -68,7 +68,7 @@ class CustomerChangeEventNormalizer implements DenormalizerInterface, Normalizer
         $dataArray = [];
         $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('documentType')) {
+        if ($data->isInitialized('documentType') && null !== $data->getDocumentType()) {
             $dataArray['documentType'] = $data->getDocumentType();
         }
         if ($data->isInitialized('lifeCycle') && null !== $data->getLifeCycle()) {

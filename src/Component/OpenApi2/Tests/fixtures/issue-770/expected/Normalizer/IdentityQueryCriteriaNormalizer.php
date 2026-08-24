@@ -95,7 +95,7 @@ class IdentityQueryCriteriaNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('filters') && null !== $data->getFilters()) {
             $values = [];
             foreach ($data->getFilters() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['filters'] = $values;
         }
@@ -106,10 +106,10 @@ class IdentityQueryCriteriaNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['extraNotFilters'] = $data->getExtraNotFilters();
         }
         if ($data->isInitialized('options') && null !== $data->getOptions()) {
-            $dataArray['options'] = $this->normalizer->normalize($data->getOptions(), 'json', $context);
+            $dataArray['options'] = $data->getOptions() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getOptions(), 'json', $context));
         }
         if ($data->isInitialized('extraTimeRange') && null !== $data->getExtraTimeRange()) {
-            $dataArray['extraTimeRange'] = $this->normalizer->normalize($data->getExtraTimeRange(), 'json', $context);
+            $dataArray['extraTimeRange'] = $data->getExtraTimeRange() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getExtraTimeRange(), 'json', $context));
         }
         if ($data->isInitialized('fullTextSearch') && null !== $data->getFullTextSearch()) {
             $dataArray['fullTextSearch'] = $data->getFullTextSearch();
@@ -122,7 +122,7 @@ class IdentityQueryCriteriaNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['attributes'] = $values_1;
         }
         if ($data->isInitialized('sortInfo') && null !== $data->getSortInfo()) {
-            $dataArray['sortInfo'] = $this->normalizer->normalize($data->getSortInfo(), 'json', $context);
+            $dataArray['sortInfo'] = $data->getSortInfo() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSortInfo(), 'json', $context));
         }
         if ($data->isInitialized('page') && null !== $data->getPage()) {
             $dataArray['page'] = $data->getPage();

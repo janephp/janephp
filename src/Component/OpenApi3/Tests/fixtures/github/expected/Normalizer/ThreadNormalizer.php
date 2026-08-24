@@ -96,10 +96,10 @@ class ThreadNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['id'] = $data->getId();
         }
         if ($data->isInitialized('repository') && null !== $data->getRepository()) {
-            $dataArray['repository'] = $this->normalizer->normalize($data->getRepository(), 'json', $context);
+            $dataArray['repository'] = $data->getRepository() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRepository(), 'json', $context));
         }
         if ($data->isInitialized('subject') && null !== $data->getSubject()) {
-            $dataArray['subject'] = $this->normalizer->normalize($data->getSubject(), 'json', $context);
+            $dataArray['subject'] = $data->getSubject() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getSubject(), 'json', $context));
         }
         if ($data->isInitialized('reason') && null !== $data->getReason()) {
             $dataArray['reason'] = $data->getReason();
@@ -110,7 +110,7 @@ class ThreadNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
             $dataArray['updated_at'] = $data->getUpdatedAt();
         }
-        if ($data->isInitialized('lastReadAt')) {
+        if ($data->isInitialized('lastReadAt') && null !== $data->getLastReadAt()) {
             $dataArray['last_read_at'] = $data->getLastReadAt();
         }
         if ($data->isInitialized('url') && null !== $data->getUrl()) {

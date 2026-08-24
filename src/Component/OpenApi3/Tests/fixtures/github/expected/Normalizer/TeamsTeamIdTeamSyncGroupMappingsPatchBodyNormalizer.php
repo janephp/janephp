@@ -64,7 +64,7 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyNormalizer implements Denormalize
         $dataArray = [];
         $values = [];
         foreach ($data->getGroups() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['groups'] = $values;
         if ($data->isInitialized('syncedAt') && null !== $data->getSyncedAt()) {

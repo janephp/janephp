@@ -61,7 +61,7 @@ class KubernetesNodePoolUpdateNormalizer implements DenormalizerInterface, Norma
             unset($data['tags']);
         }
         if (\array_key_exists('labels', $data) && $data['labels'] !== null) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data['labels'] as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
@@ -122,8 +122,8 @@ class KubernetesNodePoolUpdateNormalizer implements DenormalizerInterface, Norma
             }
             $dataArray['tags'] = $values;
         }
-        if ($data->isInitialized('labels')) {
-            $values_1 = [];
+        if ($data->isInitialized('labels') && null !== $data->getLabels()) {
+            $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data->getLabels() as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
@@ -132,7 +132,7 @@ class KubernetesNodePoolUpdateNormalizer implements DenormalizerInterface, Norma
         if ($data->isInitialized('taints') && null !== $data->getTaints()) {
             $values_2 = [];
             foreach ($data->getTaints() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['taints'] = $values_2;
         }

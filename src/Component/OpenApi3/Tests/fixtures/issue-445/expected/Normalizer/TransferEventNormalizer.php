@@ -68,7 +68,7 @@ class TransferEventNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray = [];
         $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('transferId')) {
+        if ($data->isInitialized('transferId') && null !== $data->getTransferId()) {
             $dataArray['transferId'] = $data->getTransferId();
         }
         if ($data->isInitialized('state') && null !== $data->getState()) {

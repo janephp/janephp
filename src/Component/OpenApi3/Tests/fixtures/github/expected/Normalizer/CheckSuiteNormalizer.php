@@ -163,14 +163,14 @@ class CheckSuiteNormalizer implements DenormalizerInterface, NormalizerInterface
         $dataArray['after'] = $data->getAfter();
         $values = [];
         foreach ($data->getPullRequests() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['pull_requests'] = $values;
-        $dataArray['app'] = $this->normalizer->normalize($data->getApp(), 'json', $context);
-        $dataArray['repository'] = $this->normalizer->normalize($data->getRepository(), 'json', $context);
+        $dataArray['app'] = $data->getApp() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getApp(), 'json', $context));
+        $dataArray['repository'] = $data->getRepository() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRepository(), 'json', $context));
         $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
         $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['head_commit'] = $this->normalizer->normalize($data->getHeadCommit(), 'json', $context);
+        $dataArray['head_commit'] = $data->getHeadCommit() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getHeadCommit(), 'json', $context));
         $dataArray['latest_check_runs_count'] = $data->getLatestCheckRunsCount();
         $dataArray['check_runs_url'] = $data->getCheckRunsUrl();
         foreach ($data as $key => $value_1) {

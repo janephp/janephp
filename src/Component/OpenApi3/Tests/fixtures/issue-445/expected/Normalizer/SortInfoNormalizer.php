@@ -51,7 +51,7 @@ class SortInfoNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('field')) {
+        if ($data->isInitialized('field') && null !== $data->getField()) {
             $dataArray['field'] = $data->getField();
         }
         $dataArray['direction'] = $data->getDirection();

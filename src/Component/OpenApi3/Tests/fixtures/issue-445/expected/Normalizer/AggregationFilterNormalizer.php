@@ -73,13 +73,13 @@ class AggregationFilterNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('aggregationName')) {
+        if ($data->isInitialized('aggregationName') && null !== $data->getAggregationName()) {
             $dataArray['aggregationName'] = $data->getAggregationName();
         }
-        if ($data->isInitialized('filter')) {
+        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
             $dataArray['filter'] = $data->getFilter();
         }
-        if ($data->isInitialized('temporaryAggregatorRequestId')) {
+        if ($data->isInitialized('temporaryAggregatorRequestId') && null !== $data->getTemporaryAggregatorRequestId()) {
             $dataArray['temporaryAggregatorRequestId'] = $data->getTemporaryAggregatorRequestId();
         }
         foreach ($data as $key => $value) {

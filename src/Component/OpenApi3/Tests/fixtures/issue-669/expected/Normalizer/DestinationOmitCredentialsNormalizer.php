@@ -73,7 +73,7 @@ class DestinationOmitCredentialsNormalizer implements DenormalizerInterface, Nor
             $dataArray['type'] = $data->getType();
         }
         if ($data->isInitialized('config') && null !== $data->getConfig()) {
-            $dataArray['config'] = $this->normalizer->normalize($data->getConfig(), 'json', $context);
+            $dataArray['config'] = $data->getConfig() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getConfig(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

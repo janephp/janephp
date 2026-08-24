@@ -63,7 +63,7 @@ class ReviewJsonhalBookReadNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if ($data->isInitialized('links') && null !== $data->getLinks()) {
-            $dataArray['_links'] = $this->normalizer->normalize($data->getLinks(), 'json', $context);
+            $dataArray['_links'] = $data->getLinks() === null ? null : new \ApiPlatform\Demo\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
         }
         $dataArray['body'] = $data->getBody();
         foreach ($data as $key => $value) {

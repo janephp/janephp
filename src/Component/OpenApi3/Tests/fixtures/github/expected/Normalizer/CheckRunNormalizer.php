@@ -149,10 +149,10 @@ class CheckRunNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $dataArray['conclusion'] = $data->getConclusion();
         $dataArray['started_at'] = $data->getStartedAt()?->format('Y-m-d\TH:i:sP');
         $dataArray['completed_at'] = $data->getCompletedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['output'] = $this->normalizer->normalize($data->getOutput(), 'json', $context);
+        $dataArray['output'] = $data->getOutput() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getOutput(), 'json', $context));
         $dataArray['name'] = $data->getName();
-        $dataArray['check_suite'] = $this->normalizer->normalize($data->getCheckSuite(), 'json', $context);
-        $dataArray['app'] = $this->normalizer->normalize($data->getApp(), 'json', $context);
+        $dataArray['check_suite'] = $data->getCheckSuite() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCheckSuite(), 'json', $context));
+        $dataArray['app'] = $data->getApp() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getApp(), 'json', $context));
         $dataArray['pull_requests'] = $data->getPullRequests();
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

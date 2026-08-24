@@ -118,7 +118,7 @@ class DpProfileDpNatProfilePoolBONormalizer implements DenormalizerInterface, No
         if ($data->isInitialized('privateQinqVlanRange') && null !== $data->getPrivateQinqVlanRange()) {
             $values_1 = [];
             foreach ($data->getPrivateQinqVlanRange() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['privateQinqVlanRange'] = $values_1;
         }

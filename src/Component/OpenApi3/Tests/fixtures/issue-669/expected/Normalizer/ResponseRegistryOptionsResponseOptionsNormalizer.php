@@ -73,7 +73,7 @@ class ResponseRegistryOptionsResponseOptionsNormalizer implements DenormalizerIn
         if ($data->isInitialized('subscriptionTiers') && null !== $data->getSubscriptionTiers()) {
             $values_1 = [];
             foreach ($data->getSubscriptionTiers() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['subscription_tiers'] = $values_1;
         }

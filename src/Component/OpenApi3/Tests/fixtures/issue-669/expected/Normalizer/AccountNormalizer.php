@@ -97,7 +97,7 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $dataArray['status'] = $data->getStatus();
         $dataArray['status_message'] = $data->getStatusMessage();
         if ($data->isInitialized('team') && null !== $data->getTeam()) {
-            $dataArray['team'] = $this->normalizer->normalize($data->getTeam(), 'json', $context);
+            $dataArray['team'] = $data->getTeam() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getTeam(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

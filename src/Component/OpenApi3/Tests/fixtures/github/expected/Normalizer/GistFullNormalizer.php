@@ -79,7 +79,7 @@ class GistFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
             unset($data['html_url']);
         }
         if (\array_key_exists('files', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Github\Runtime\JsonObject();
             foreach ($data['files'] as $key => $value) {
                 $values[$key] = $this->denormalizer->denormalize($value, \Github\Model\GistSimpleFilesItem::class, 'json', $context);
             }
@@ -189,9 +189,9 @@ class GistFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $dataArray['html_url'] = $data->getHtmlUrl();
         }
         if ($data->isInitialized('files') && null !== $data->getFiles()) {
-            $values = [];
+            $values = new \Github\Runtime\JsonObject();
             foreach ($data->getFiles() as $key => $value) {
-                $values[$key] = $this->normalizer->normalize($value, 'json', $context);
+                $values[$key] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['files'] = $values;
         }
@@ -204,20 +204,20 @@ class GistFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
             $dataArray['updated_at'] = $data->getUpdatedAt();
         }
-        if ($data->isInitialized('description')) {
+        if ($data->isInitialized('description') && null !== $data->getDescription()) {
             $dataArray['description'] = $data->getDescription();
         }
         if ($data->isInitialized('comments') && null !== $data->getComments()) {
             $dataArray['comments'] = $data->getComments();
         }
-        if ($data->isInitialized('user')) {
+        if ($data->isInitialized('user') && null !== $data->getUser()) {
             $dataArray['user'] = $data->getUser();
         }
         if ($data->isInitialized('commentsUrl') && null !== $data->getCommentsUrl()) {
             $dataArray['comments_url'] = $data->getCommentsUrl();
         }
-        if ($data->isInitialized('owner')) {
-            $dataArray['owner'] = $this->normalizer->normalize($data->getOwner(), 'json', $context);
+        if ($data->isInitialized('owner') && null !== $data->getOwner()) {
+            $dataArray['owner'] = $data->getOwner() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getOwner(), 'json', $context));
         }
         if ($data->isInitialized('truncated') && null !== $data->getTruncated()) {
             $dataArray['truncated'] = $data->getTruncated();
@@ -225,19 +225,19 @@ class GistFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if ($data->isInitialized('forks') && null !== $data->getForks()) {
             $values_1 = [];
             foreach ($data->getForks() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['forks'] = $values_1;
         }
         if ($data->isInitialized('history') && null !== $data->getHistory()) {
             $values_2 = [];
             foreach ($data->getHistory() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['history'] = $values_2;
         }
-        if ($data->isInitialized('forkOf')) {
-            $dataArray['fork_of'] = $this->normalizer->normalize($data->getForkOf(), 'json', $context);
+        if ($data->isInitialized('forkOf') && null !== $data->getForkOf()) {
+            $dataArray['fork_of'] = $data->getForkOf() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getForkOf(), 'json', $context));
         }
         foreach ($data as $key_1 => $value_3) {
             if (preg_match('/.*/', (string) $key_1)) {

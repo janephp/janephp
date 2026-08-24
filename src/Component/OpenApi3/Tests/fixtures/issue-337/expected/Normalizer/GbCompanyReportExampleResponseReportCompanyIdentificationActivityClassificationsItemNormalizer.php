@@ -65,7 +65,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationActivityClassific
         if ($data->isInitialized('activities') && null !== $data->getActivities()) {
             $values = [];
             foreach ($data->getActivities() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['activities'] = $values;
         }

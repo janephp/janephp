@@ -51,7 +51,7 @@ class NetworkAttachmentConfigNormalizer implements DenormalizerInterface, Normal
             $object->setAliases($values);
         }
         if (\array_key_exists('DriverOpts', $data)) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['DriverOpts'] as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
@@ -73,7 +73,7 @@ class NetworkAttachmentConfigNormalizer implements DenormalizerInterface, Normal
             $dataArray['Aliases'] = $values;
         }
         if ($data->isInitialized('driverOpts') && null !== $data->getDriverOpts()) {
-            $values_1 = [];
+            $values_1 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getDriverOpts() as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }

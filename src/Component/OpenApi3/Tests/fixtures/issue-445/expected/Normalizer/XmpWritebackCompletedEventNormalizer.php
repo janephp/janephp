@@ -64,7 +64,7 @@ class XmpWritebackCompletedEventNormalizer implements DenormalizerInterface, Nor
         $dataArray = [];
         $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('outputDocId')) {
+        if ($data->isInitialized('outputDocId') && null !== $data->getOutputDocId()) {
             $dataArray['outputDocId'] = $data->getOutputDocId();
         }
         foreach ($data as $key => $value) {

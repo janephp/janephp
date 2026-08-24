@@ -81,14 +81,14 @@ class CommitSearchResultItemCommitNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['author'] = $this->normalizer->normalize($data->getAuthor(), 'json', $context);
-        $dataArray['committer'] = $this->normalizer->normalize($data->getCommitter(), 'json', $context);
+        $dataArray['author'] = $data->getAuthor() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getAuthor(), 'json', $context));
+        $dataArray['committer'] = $data->getCommitter() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCommitter(), 'json', $context));
         $dataArray['comment_count'] = $data->getCommentCount();
         $dataArray['message'] = $data->getMessage();
-        $dataArray['tree'] = $this->normalizer->normalize($data->getTree(), 'json', $context);
+        $dataArray['tree'] = $data->getTree() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getTree(), 'json', $context));
         $dataArray['url'] = $data->getUrl();
         if ($data->isInitialized('verification') && null !== $data->getVerification()) {
-            $dataArray['verification'] = $this->normalizer->normalize($data->getVerification(), 'json', $context);
+            $dataArray['verification'] = $data->getVerification() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getVerification(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

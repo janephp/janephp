@@ -134,7 +134,7 @@ class TeamDiscussionNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['author'] = $this->normalizer->normalize($data->getAuthor(), 'json', $context);
+        $dataArray['author'] = $data->getAuthor() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getAuthor(), 'json', $context));
         $dataArray['body'] = $data->getBody();
         $dataArray['body_html'] = $data->getBodyHtml();
         $dataArray['body_version'] = $data->getBodyVersion();
@@ -152,7 +152,7 @@ class TeamDiscussionNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['url'] = $data->getUrl();
         if ($data->isInitialized('reactions') && null !== $data->getReactions()) {
-            $dataArray['reactions'] = $this->normalizer->normalize($data->getReactions(), 'json', $context);
+            $dataArray['reactions'] = $data->getReactions() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getReactions(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

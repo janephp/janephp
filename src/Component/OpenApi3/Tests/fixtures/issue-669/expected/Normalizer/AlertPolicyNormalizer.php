@@ -101,7 +101,7 @@ class AlertPolicyNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['alerts'] = $this->normalizer->normalize($data->getAlerts(), 'json', $context);
+        $dataArray['alerts'] = $data->getAlerts() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAlerts(), 'json', $context));
         $dataArray['compare'] = $data->getCompare();
         $dataArray['description'] = $data->getDescription();
         $dataArray['enabled'] = $data->getEnabled();

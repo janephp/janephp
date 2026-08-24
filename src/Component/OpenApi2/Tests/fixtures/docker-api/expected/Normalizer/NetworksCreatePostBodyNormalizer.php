@@ -80,14 +80,14 @@ class NetworksCreatePostBodyNormalizer implements DenormalizerInterface, Normali
             $object->setEnableIPv6($data['EnableIPv6']);
         }
         if (\array_key_exists('Options', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Options'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setOptions($values);
         }
         if (\array_key_exists('Labels', $data)) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Labels'] as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
@@ -115,20 +115,20 @@ class NetworksCreatePostBodyNormalizer implements DenormalizerInterface, Normali
             $dataArray['Ingress'] = $data->getIngress();
         }
         if ($data->isInitialized('iPAM') && null !== $data->getIPAM()) {
-            $dataArray['IPAM'] = $this->normalizer->normalize($data->getIPAM(), 'json', $context);
+            $dataArray['IPAM'] = $data->getIPAM() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getIPAM(), 'json', $context));
         }
         if ($data->isInitialized('enableIPv6') && null !== $data->getEnableIPv6()) {
             $dataArray['EnableIPv6'] = $data->getEnableIPv6();
         }
         if ($data->isInitialized('options') && null !== $data->getOptions()) {
-            $values = [];
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getOptions() as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['Options'] = $values;
         }
         if ($data->isInitialized('labels') && null !== $data->getLabels()) {
-            $values_1 = [];
+            $values_1 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getLabels() as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }

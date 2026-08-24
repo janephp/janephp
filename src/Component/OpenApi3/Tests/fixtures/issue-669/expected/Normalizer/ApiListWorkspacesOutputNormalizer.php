@@ -58,7 +58,7 @@ class ApiListWorkspacesOutputNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('workspaces') && null !== $data->getWorkspaces()) {
             $values = [];
             foreach ($data->getWorkspaces() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['workspaces'] = $values;
         }

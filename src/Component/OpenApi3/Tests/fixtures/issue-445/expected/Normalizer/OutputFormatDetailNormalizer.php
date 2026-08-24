@@ -132,17 +132,17 @@ class OutputFormatDetailNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('sourceOutputFormats')) {
+        if ($data->isInitialized('sourceOutputFormats') && null !== $data->getSourceOutputFormats()) {
             $dataArray['sourceOutputFormats'] = $data->getSourceOutputFormats();
         }
-        if ($data->isInitialized('format')) {
+        if ($data->isInitialized('format') && null !== $data->getFormat()) {
             $dataArray['format'] = $data->getFormat();
         }
         $dataArray['names'] = $data->getNames();
         if ($data->isInitialized('retentionTime') && null !== $data->getRetentionTime()) {
             $dataArray['retentionTime'] = $data->getRetentionTime();
         }
-        if ($data->isInitialized('downloadFileNamePatterns')) {
+        if ($data->isInitialized('downloadFileNamePatterns') && null !== $data->getDownloadFileNamePatterns()) {
             $dataArray['downloadFileNamePatterns'] = $data->getDownloadFileNamePatterns();
         }
         if ($data->isInitialized('viewForAll') && null !== $data->getViewForAll()) {
@@ -151,7 +151,7 @@ class OutputFormatDetailNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('enableXmpWriteback') && null !== $data->getEnableXmpWriteback()) {
             $dataArray['enableXmpWriteback'] = $data->getEnableXmpWriteback();
         }
-        if ($data->isInitialized('id')) {
+        if ($data->isInitialized('id') && null !== $data->getId()) {
             $dataArray['id'] = $data->getId();
         }
         if ($data->isInitialized('system') && null !== $data->getSystem()) {
@@ -166,7 +166,7 @@ class OutputFormatDetailNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('temporary') && null !== $data->getTemporary()) {
             $dataArray['temporary'] = $data->getTemporary();
         }
-        if ($data->isInitialized('audit')) {
+        if ($data->isInitialized('audit') && null !== $data->getAudit()) {
             $dataArray['audit'] = $data->getAudit();
         }
         foreach ($data as $key => $value) {

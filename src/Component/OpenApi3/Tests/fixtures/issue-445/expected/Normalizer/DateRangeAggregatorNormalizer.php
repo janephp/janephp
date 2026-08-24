@@ -93,24 +93,24 @@ class DateRangeAggregatorNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('names')) {
+        if ($data->isInitialized('names') && null !== $data->getNames()) {
             $dataArray['names'] = $data->getNames();
         }
-        if ($data->isInitialized('aggregators')) {
+        if ($data->isInitialized('aggregators') && null !== $data->getAggregators()) {
             $values = [];
             foreach ($data->getAggregators() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['aggregators'] = $values;
         }
-        if ($data->isInitialized('filter')) {
+        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
             $dataArray['filter'] = $data->getFilter();
         }
         $dataArray['kind'] = $data->getKind();
         $dataArray['field'] = $data->getField();
         $values_1 = [];
         foreach ($data->getRanges() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['ranges'] = $values_1;
         foreach ($data as $key => $value_2) {

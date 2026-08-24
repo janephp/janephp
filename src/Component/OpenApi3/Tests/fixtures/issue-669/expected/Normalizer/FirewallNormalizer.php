@@ -115,7 +115,7 @@ class FirewallNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('dropletIds')) {
+        if ($data->isInitialized('dropletIds') && null !== $data->getDropletIds()) {
             $values = [];
             foreach ($data->getDropletIds() as $value) {
                 $values[] = $value;
@@ -129,17 +129,17 @@ class FirewallNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $dataArray['tags'] = $values_1;
         }
-        if ($data->isInitialized('inboundRules')) {
+        if ($data->isInitialized('inboundRules') && null !== $data->getInboundRules()) {
             $values_2 = [];
             foreach ($data->getInboundRules() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['inbound_rules'] = $values_2;
         }
-        if ($data->isInitialized('outboundRules')) {
+        if ($data->isInitialized('outboundRules') && null !== $data->getOutboundRules()) {
             $values_3 = [];
             foreach ($data->getOutboundRules() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['outbound_rules'] = $values_3;
         }

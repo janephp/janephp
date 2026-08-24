@@ -99,7 +99,7 @@ class BookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('isbn')) {
+        if ($data->isInitialized('isbn') && null !== $data->getIsbn()) {
             $dataArray['isbn'] = $data->getIsbn();
         }
         $dataArray['title'] = $data->getTitle();
@@ -113,10 +113,10 @@ class BookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             }
             $dataArray['reviews'] = $values;
         }
-        if ($data->isInitialized('cover')) {
+        if ($data->isInitialized('cover') && null !== $data->getCover()) {
             $dataArray['cover'] = $data->getCover();
         }
-        if ($data->isInitialized('archivedAt')) {
+        if ($data->isInitialized('archivedAt') && null !== $data->getArchivedAt()) {
             $dataArray['archivedAt'] = $data->getArchivedAt()?->format('Y-m-d\TH:i:sP');
         }
         foreach ($data as $key => $value_1) {

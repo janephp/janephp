@@ -62,7 +62,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistNormalizer i
         if ($data->isInitialized('matches') && null !== $data->getMatches()) {
             $values = [];
             foreach ($data->getMatches() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['matches'] = $values;
         }

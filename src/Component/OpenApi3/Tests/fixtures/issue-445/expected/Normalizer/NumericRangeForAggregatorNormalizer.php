@@ -66,13 +66,13 @@ class NumericRangeForAggregatorNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('names')) {
+        if ($data->isInitialized('names') && null !== $data->getNames()) {
             $dataArray['names'] = $data->getNames();
         }
-        if ($data->isInitialized('from')) {
+        if ($data->isInitialized('from') && null !== $data->getFrom()) {
             $dataArray['from'] = $data->getFrom();
         }
-        if ($data->isInitialized('to')) {
+        if ($data->isInitialized('to') && null !== $data->getTo()) {
             $dataArray['to'] = $data->getTo();
         }
         return $dataArray;

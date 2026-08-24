@@ -100,22 +100,22 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemNormalizer implements 
             $dataArray['status'] = $data->getStatus();
         }
         if ($data->isInitialized('position') && null !== $data->getPosition()) {
-            $dataArray['position'] = $this->normalizer->normalize($data->getPosition(), 'json', $context);
+            $dataArray['position'] = $data->getPosition() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getPosition(), 'json', $context));
         }
         if ($data->isInitialized('companyRegistrationDate') && null !== $data->getCompanyRegistrationDate()) {
             $dataArray['companyRegistrationDate'] = $data->getCompanyRegistrationDate();
         }
         if ($data->isInitialized('netWorth') && null !== $data->getNetWorth()) {
-            $dataArray['netWorth'] = $this->normalizer->normalize($data->getNetWorth(), 'json', $context);
+            $dataArray['netWorth'] = $data->getNetWorth() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getNetWorth(), 'json', $context));
         }
         if ($data->isInitialized('legalCount') && null !== $data->getLegalCount()) {
             $dataArray['legalCount'] = $data->getLegalCount();
         }
         if ($data->isInitialized('creditScore') && null !== $data->getCreditScore()) {
-            $dataArray['creditScore'] = $this->normalizer->normalize($data->getCreditScore(), 'json', $context);
+            $dataArray['creditScore'] = $data->getCreditScore() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getCreditScore(), 'json', $context));
         }
         if ($data->isInitialized('additionalData') && null !== $data->getAdditionalData()) {
-            $dataArray['additionalData'] = $this->normalizer->normalize($data->getAdditionalData(), 'json', $context);
+            $dataArray['additionalData'] = $data->getAdditionalData() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getAdditionalData(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

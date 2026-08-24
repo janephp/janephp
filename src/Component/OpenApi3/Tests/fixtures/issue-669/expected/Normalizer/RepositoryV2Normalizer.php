@@ -74,7 +74,7 @@ class RepositoryV2Normalizer implements DenormalizerInterface, NormalizerInterfa
             $dataArray['name'] = $data->getName();
         }
         if ($data->isInitialized('latestManifest') && null !== $data->getLatestManifest()) {
-            $dataArray['latest_manifest'] = $this->normalizer->normalize($data->getLatestManifest(), 'json', $context);
+            $dataArray['latest_manifest'] = $data->getLatestManifest() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLatestManifest(), 'json', $context));
         }
         if ($data->isInitialized('tagCount') && null !== $data->getTagCount()) {
             $dataArray['tag_count'] = $data->getTagCount();

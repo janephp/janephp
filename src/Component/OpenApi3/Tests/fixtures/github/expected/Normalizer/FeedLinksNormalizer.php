@@ -86,27 +86,27 @@ class FeedLinksNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['timeline'] = $this->normalizer->normalize($data->getTimeline(), 'json', $context);
-        $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
+        $dataArray['timeline'] = $data->getTimeline() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getTimeline(), 'json', $context));
+        $dataArray['user'] = $data->getUser() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getUser(), 'json', $context));
         if ($data->isInitialized('securityAdvisories') && null !== $data->getSecurityAdvisories()) {
-            $dataArray['security_advisories'] = $this->normalizer->normalize($data->getSecurityAdvisories(), 'json', $context);
+            $dataArray['security_advisories'] = $data->getSecurityAdvisories() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getSecurityAdvisories(), 'json', $context));
         }
         if ($data->isInitialized('currentUser') && null !== $data->getCurrentUser()) {
-            $dataArray['current_user'] = $this->normalizer->normalize($data->getCurrentUser(), 'json', $context);
+            $dataArray['current_user'] = $data->getCurrentUser() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCurrentUser(), 'json', $context));
         }
         if ($data->isInitialized('currentUserPublic') && null !== $data->getCurrentUserPublic()) {
-            $dataArray['current_user_public'] = $this->normalizer->normalize($data->getCurrentUserPublic(), 'json', $context);
+            $dataArray['current_user_public'] = $data->getCurrentUserPublic() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCurrentUserPublic(), 'json', $context));
         }
         if ($data->isInitialized('currentUserActor') && null !== $data->getCurrentUserActor()) {
-            $dataArray['current_user_actor'] = $this->normalizer->normalize($data->getCurrentUserActor(), 'json', $context);
+            $dataArray['current_user_actor'] = $data->getCurrentUserActor() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCurrentUserActor(), 'json', $context));
         }
         if ($data->isInitialized('currentUserOrganization') && null !== $data->getCurrentUserOrganization()) {
-            $dataArray['current_user_organization'] = $this->normalizer->normalize($data->getCurrentUserOrganization(), 'json', $context);
+            $dataArray['current_user_organization'] = $data->getCurrentUserOrganization() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCurrentUserOrganization(), 'json', $context));
         }
         if ($data->isInitialized('currentUserOrganizations') && null !== $data->getCurrentUserOrganizations()) {
             $values = [];
             foreach ($data->getCurrentUserOrganizations() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['current_user_organizations'] = $values;
         }

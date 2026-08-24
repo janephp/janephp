@@ -114,13 +114,13 @@ class HookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $values[] = $value;
         }
         $dataArray['events'] = $values;
-        $dataArray['config'] = $this->normalizer->normalize($data->getConfig(), 'json', $context);
+        $dataArray['config'] = $data->getConfig() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getConfig(), 'json', $context));
         $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['url'] = $data->getUrl();
         $dataArray['test_url'] = $data->getTestUrl();
         $dataArray['ping_url'] = $data->getPingUrl();
-        $dataArray['last_response'] = $this->normalizer->normalize($data->getLastResponse(), 'json', $context);
+        $dataArray['last_response'] = $data->getLastResponse() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getLastResponse(), 'json', $context));
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

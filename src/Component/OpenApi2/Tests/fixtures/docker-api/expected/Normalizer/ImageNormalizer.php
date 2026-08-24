@@ -130,12 +130,12 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $dataArray['Created'] = $data->getCreated();
         $dataArray['Container'] = $data->getContainer();
         if ($data->isInitialized('containerConfig') && null !== $data->getContainerConfig()) {
-            $dataArray['ContainerConfig'] = $this->normalizer->normalize($data->getContainerConfig(), 'json', $context);
+            $dataArray['ContainerConfig'] = $data->getContainerConfig() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getContainerConfig(), 'json', $context));
         }
         $dataArray['DockerVersion'] = $data->getDockerVersion();
         $dataArray['Author'] = $data->getAuthor();
         if ($data->isInitialized('config') && null !== $data->getConfig()) {
-            $dataArray['Config'] = $this->normalizer->normalize($data->getConfig(), 'json', $context);
+            $dataArray['Config'] = $data->getConfig() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getConfig(), 'json', $context));
         }
         $dataArray['Architecture'] = $data->getArchitecture();
         $dataArray['Os'] = $data->getOs();
@@ -144,10 +144,10 @@ class ImageNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         $dataArray['Size'] = $data->getSize();
         $dataArray['VirtualSize'] = $data->getVirtualSize();
-        $dataArray['GraphDriver'] = $this->normalizer->normalize($data->getGraphDriver(), 'json', $context);
-        $dataArray['RootFS'] = $this->normalizer->normalize($data->getRootFS(), 'json', $context);
+        $dataArray['GraphDriver'] = $data->getGraphDriver() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getGraphDriver(), 'json', $context));
+        $dataArray['RootFS'] = $data->getRootFS() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getRootFS(), 'json', $context));
         if ($data->isInitialized('metadata') && null !== $data->getMetadata()) {
-            $dataArray['Metadata'] = $this->normalizer->normalize($data->getMetadata(), 'json', $context);
+            $dataArray['Metadata'] = $data->getMetadata() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getMetadata(), 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ImageConstraint());

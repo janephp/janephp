@@ -141,14 +141,14 @@ class TeamFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $dataArray['permission'] = $data->getPermission();
         $dataArray['members_url'] = $data->getMembersUrl();
         $dataArray['repositories_url'] = $data->getRepositoriesUrl();
-        if ($data->isInitialized('parent')) {
-            $dataArray['parent'] = $this->normalizer->normalize($data->getParent(), 'json', $context);
+        if ($data->isInitialized('parent') && null !== $data->getParent()) {
+            $dataArray['parent'] = $data->getParent() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getParent(), 'json', $context));
         }
         $dataArray['members_count'] = $data->getMembersCount();
         $dataArray['repos_count'] = $data->getReposCount();
         $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
-        $dataArray['organization'] = $this->normalizer->normalize($data->getOrganization(), 'json', $context);
+        $dataArray['organization'] = $data->getOrganization() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getOrganization(), 'json', $context));
         if ($data->isInitialized('ldapDn') && null !== $data->getLdapDn()) {
             $dataArray['ldap_dn'] = $data->getLdapDn();
         }

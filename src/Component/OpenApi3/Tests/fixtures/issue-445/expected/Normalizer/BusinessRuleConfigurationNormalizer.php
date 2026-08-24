@@ -69,17 +69,17 @@ class BusinessRuleConfigurationNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         $dataArray['disableRuleEngine'] = $data->getDisableRuleEngine();
-        if ($data->isInitialized('rules')) {
+        if ($data->isInitialized('rules') && null !== $data->getRules()) {
             $values = [];
             foreach ($data->getRules() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['rules'] = $values;
         }
-        if ($data->isInitialized('caches')) {
+        if ($data->isInitialized('caches') && null !== $data->getCaches()) {
             $values_1 = [];
             foreach ($data->getCaches() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['caches'] = $values_1;
         }

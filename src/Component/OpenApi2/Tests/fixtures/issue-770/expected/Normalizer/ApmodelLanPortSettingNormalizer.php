@@ -78,7 +78,7 @@ class ApmodelLanPortSettingNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['members'] = $data->getMembers();
         }
         if ($data->isInitialized('ethPortProfile') && null !== $data->getEthPortProfile()) {
-            $dataArray['ethPortProfile'] = $this->normalizer->normalize($data->getEthPortProfile(), 'json', $context);
+            $dataArray['ethPortProfile'] = $data->getEthPortProfile() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getEthPortProfile(), 'json', $context));
         }
         return $dataArray;
     }

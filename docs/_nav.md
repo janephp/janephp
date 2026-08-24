@@ -16,3 +16,4 @@
     - [Breaking changes](contributing/breaking_changes.md)
     - [Tests](contributing/tests.md)
     - [How the library works](contributing/internals.md)
+    - [Architecture decisions](contributing/adrs/index.md)

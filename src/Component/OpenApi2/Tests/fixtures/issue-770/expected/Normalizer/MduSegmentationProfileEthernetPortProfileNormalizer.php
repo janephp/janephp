@@ -148,13 +148,13 @@ class MduSegmentationProfileEthernetPortProfileNormalizer implements Denormalize
             $dataArray['userSidePortDownlinkLimit'] = $data->getUserSidePortDownlinkLimit();
         }
         if ($data->isInitialized('n8021X') && null !== $data->get8021X()) {
-            $dataArray['_8021X'] = $this->normalizer->normalize($data->get8021X(), 'json', $context);
+            $dataArray['_8021X'] = $data->get8021X() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->get8021X(), 'json', $context));
         }
         if ($data->isInitialized('tunnelProfile') && null !== $data->getTunnelProfile()) {
-            $dataArray['tunnelProfile'] = $this->normalizer->normalize($data->getTunnelProfile(), 'json', $context);
+            $dataArray['tunnelProfile'] = $data->getTunnelProfile() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getTunnelProfile(), 'json', $context));
         }
         if ($data->isInitialized('ipsecProfile') && null !== $data->getIpsecProfile()) {
-            $dataArray['ipsecProfile'] = $this->normalizer->normalize($data->getIpsecProfile(), 'json', $context);
+            $dataArray['ipsecProfile'] = $data->getIpsecProfile() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIpsecProfile(), 'json', $context));
         }
         return $dataArray;
     }

@@ -52,7 +52,7 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemCreditScoreNormalizer 
     {
         $dataArray = [];
         if ($data->isInitialized('currentCreditRating') && null !== $data->getCurrentCreditRating()) {
-            $dataArray['currentCreditRating'] = $this->normalizer->normalize($data->getCurrentCreditRating(), 'json', $context);
+            $dataArray['currentCreditRating'] = $data->getCurrentCreditRating() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getCurrentCreditRating(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

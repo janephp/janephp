@@ -54,10 +54,10 @@ class IdpClaimToUserAttributeMappingNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('claimType')) {
+        if ($data->isInitialized('claimType') && null !== $data->getClaimType()) {
             $dataArray['claimType'] = $data->getClaimType();
         }
-        if ($data->isInitialized('userAttributePath')) {
+        if ($data->isInitialized('userAttributePath') && null !== $data->getUserAttributePath()) {
             $dataArray['userAttributePath'] = $data->getUserAttributePath();
         }
         return $dataArray;

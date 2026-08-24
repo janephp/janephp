@@ -46,7 +46,7 @@ class AdministrationApPatchStatusNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if ($data->isInitialized('clusterOperationProgress') && null !== $data->getClusterOperationProgress()) {
-            $dataArray['clusterOperationProgress'] = $this->normalizer->normalize($data->getClusterOperationProgress(), 'json', $context);
+            $dataArray['clusterOperationProgress'] = $data->getClusterOperationProgress() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getClusterOperationProgress(), 'json', $context));
         }
         return $dataArray;
     }

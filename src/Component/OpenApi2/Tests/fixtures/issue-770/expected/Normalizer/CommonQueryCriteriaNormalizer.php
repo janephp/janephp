@@ -101,10 +101,10 @@ class CommonQueryCriteriaNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['options'] = $data->getOptions();
         }
         if ($data->isInitialized('extraTimeRange') && null !== $data->getExtraTimeRange()) {
-            $dataArray['extraTimeRange'] = $this->normalizer->normalize($data->getExtraTimeRange(), 'json', $context);
+            $dataArray['extraTimeRange'] = $data->getExtraTimeRange() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getExtraTimeRange(), 'json', $context));
         }
         if ($data->isInitialized('fullTextSearch') && null !== $data->getFullTextSearch()) {
-            $dataArray['fullTextSearch'] = $this->normalizer->normalize($data->getFullTextSearch(), 'json', $context);
+            $dataArray['fullTextSearch'] = $data->getFullTextSearch() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getFullTextSearch(), 'json', $context));
         }
         if ($data->isInitialized('attributes') && null !== $data->getAttributes()) {
             $values = [];
@@ -114,7 +114,7 @@ class CommonQueryCriteriaNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['attributes'] = $values;
         }
         if ($data->isInitialized('sortInfo') && null !== $data->getSortInfo()) {
-            $dataArray['sortInfo'] = $this->normalizer->normalize($data->getSortInfo(), 'json', $context);
+            $dataArray['sortInfo'] = $data->getSortInfo() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSortInfo(), 'json', $context));
         }
         if ($data->isInitialized('page') && null !== $data->getPage()) {
             $dataArray['page'] = $data->getPage();

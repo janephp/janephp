@@ -64,16 +64,16 @@ class AppIngressSpecRuleNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if ($data->isInitialized('match') && null !== $data->getMatch()) {
-            $dataArray['match'] = $this->normalizer->normalize($data->getMatch(), 'json', $context);
+            $dataArray['match'] = $data->getMatch() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMatch(), 'json', $context));
         }
         if ($data->isInitialized('cors') && null !== $data->getCors()) {
-            $dataArray['cors'] = $this->normalizer->normalize($data->getCors(), 'json', $context);
+            $dataArray['cors'] = $data->getCors() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getCors(), 'json', $context));
         }
         if ($data->isInitialized('component') && null !== $data->getComponent()) {
-            $dataArray['component'] = $this->normalizer->normalize($data->getComponent(), 'json', $context);
+            $dataArray['component'] = $data->getComponent() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getComponent(), 'json', $context));
         }
         if ($data->isInitialized('redirect') && null !== $data->getRedirect()) {
-            $dataArray['redirect'] = $this->normalizer->normalize($data->getRedirect(), 'json', $context);
+            $dataArray['redirect'] = $data->getRedirect() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getRedirect(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -86,7 +86,7 @@ class ClusterInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['ID'] = $data->getID();
         }
         if ($data->isInitialized('version') && null !== $data->getVersion()) {
-            $dataArray['Version'] = $this->normalizer->normalize($data->getVersion(), 'json', $context);
+            $dataArray['Version'] = $data->getVersion() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getVersion(), 'json', $context));
         }
         if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
             $dataArray['CreatedAt'] = $data->getCreatedAt();
@@ -95,10 +95,10 @@ class ClusterInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['UpdatedAt'] = $data->getUpdatedAt();
         }
         if ($data->isInitialized('spec') && null !== $data->getSpec()) {
-            $dataArray['Spec'] = $this->normalizer->normalize($data->getSpec(), 'json', $context);
+            $dataArray['Spec'] = $data->getSpec() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getSpec(), 'json', $context));
         }
         if ($data->isInitialized('tLSInfo') && null !== $data->getTLSInfo()) {
-            $dataArray['TLSInfo'] = $this->normalizer->normalize($data->getTLSInfo(), 'json', $context);
+            $dataArray['TLSInfo'] = $data->getTLSInfo() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getTLSInfo(), 'json', $context));
         }
         if ($data->isInitialized('rootRotationInProgress') && null !== $data->getRootRotationInProgress()) {
             $dataArray['RootRotationInProgress'] = $data->getRootRotationInProgress();

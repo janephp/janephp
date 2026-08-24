@@ -56,7 +56,7 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
             $object->setImage($data['Image']);
         }
         if (\array_key_exists('Labels', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Labels'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -161,7 +161,7 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
             $object->setInit(null);
         }
         if (\array_key_exists('Sysctls', $data)) {
-            $values_9 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_9 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Sysctls'] as $key_1 => $value_9) {
                 $values_9[$key_1] = $value_9;
             }
@@ -197,7 +197,7 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['Image'] = $data->getImage();
         }
         if ($data->isInitialized('labels') && null !== $data->getLabels()) {
-            $values = [];
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getLabels() as $key => $value) {
                 $values[$key] = $value;
             }
@@ -241,7 +241,7 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['Groups'] = $values_4;
         }
         if ($data->isInitialized('privileges') && null !== $data->getPrivileges()) {
-            $dataArray['Privileges'] = $this->normalizer->normalize($data->getPrivileges(), 'json', $context);
+            $dataArray['Privileges'] = $data->getPrivileges() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getPrivileges(), 'json', $context));
         }
         if ($data->isInitialized('tTY') && null !== $data->getTTY()) {
             $dataArray['TTY'] = $data->getTTY();
@@ -255,7 +255,7 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('mounts') && null !== $data->getMounts()) {
             $values_5 = [];
             foreach ($data->getMounts() as $value_5) {
-                $values_5[] = $this->normalizer->normalize($value_5, 'json', $context);
+                $values_5[] = $value_5 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
             }
             $dataArray['Mounts'] = $values_5;
         }
@@ -266,7 +266,7 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['StopGracePeriod'] = $data->getStopGracePeriod();
         }
         if ($data->isInitialized('healthCheck') && null !== $data->getHealthCheck()) {
-            $dataArray['HealthCheck'] = $this->normalizer->normalize($data->getHealthCheck(), 'json', $context);
+            $dataArray['HealthCheck'] = $data->getHealthCheck() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getHealthCheck(), 'json', $context));
         }
         if ($data->isInitialized('hosts') && null !== $data->getHosts()) {
             $values_6 = [];
@@ -276,30 +276,30 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['Hosts'] = $values_6;
         }
         if ($data->isInitialized('dNSConfig') && null !== $data->getDNSConfig()) {
-            $dataArray['DNSConfig'] = $this->normalizer->normalize($data->getDNSConfig(), 'json', $context);
+            $dataArray['DNSConfig'] = $data->getDNSConfig() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getDNSConfig(), 'json', $context));
         }
         if ($data->isInitialized('secrets') && null !== $data->getSecrets()) {
             $values_7 = [];
             foreach ($data->getSecrets() as $value_7) {
-                $values_7[] = $this->normalizer->normalize($value_7, 'json', $context);
+                $values_7[] = $value_7 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_7, 'json', $context));
             }
             $dataArray['Secrets'] = $values_7;
         }
         if ($data->isInitialized('configs') && null !== $data->getConfigs()) {
             $values_8 = [];
             foreach ($data->getConfigs() as $value_8) {
-                $values_8[] = $this->normalizer->normalize($value_8, 'json', $context);
+                $values_8[] = $value_8 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_8, 'json', $context));
             }
             $dataArray['Configs'] = $values_8;
         }
         if ($data->isInitialized('isolation') && null !== $data->getIsolation()) {
             $dataArray['Isolation'] = $data->getIsolation();
         }
-        if ($data->isInitialized('init')) {
+        if ($data->isInitialized('init') && null !== $data->getInit()) {
             $dataArray['Init'] = $data->getInit();
         }
         if ($data->isInitialized('sysctls') && null !== $data->getSysctls()) {
-            $values_9 = [];
+            $values_9 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getSysctls() as $key_1 => $value_9) {
                 $values_9[$key_1] = $value_9;
             }
@@ -322,7 +322,7 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('ulimits') && null !== $data->getUlimits()) {
             $values_12 = [];
             foreach ($data->getUlimits() as $value_12) {
-                $values_12[] = $this->normalizer->normalize($value_12, 'json', $context);
+                $values_12[] = $value_12 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_12, 'json', $context));
             }
             $dataArray['Ulimits'] = $values_12;
         }

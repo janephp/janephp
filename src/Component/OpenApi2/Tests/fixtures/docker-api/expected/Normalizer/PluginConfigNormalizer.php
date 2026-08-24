@@ -116,7 +116,7 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $dataArray['Description'] = $data->getDescription();
         $dataArray['Documentation'] = $data->getDocumentation();
-        $dataArray['Interface'] = $this->normalizer->normalize($data->getInterface(), 'json', $context);
+        $dataArray['Interface'] = $data->getInterface() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getInterface(), 'json', $context));
         $values = [];
         foreach ($data->getEntrypoint() as $value) {
             $values[] = $value;
@@ -124,26 +124,26 @@ class PluginConfigNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['Entrypoint'] = $values;
         $dataArray['WorkDir'] = $data->getWorkDir();
         if ($data->isInitialized('user') && null !== $data->getUser()) {
-            $dataArray['User'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
+            $dataArray['User'] = $data->getUser() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getUser(), 'json', $context));
         }
-        $dataArray['Network'] = $this->normalizer->normalize($data->getNetwork(), 'json', $context);
-        $dataArray['Linux'] = $this->normalizer->normalize($data->getLinux(), 'json', $context);
+        $dataArray['Network'] = $data->getNetwork() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getNetwork(), 'json', $context));
+        $dataArray['Linux'] = $data->getLinux() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getLinux(), 'json', $context));
         $dataArray['PropagatedMount'] = $data->getPropagatedMount();
         $dataArray['IpcHost'] = $data->getIpcHost();
         $dataArray['PidHost'] = $data->getPidHost();
         $values_1 = [];
         foreach ($data->getMounts() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = $value_1 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['Mounts'] = $values_1;
         $values_2 = [];
         foreach ($data->getEnv() as $value_2) {
-            $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+            $values_2[] = $value_2 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
         }
         $dataArray['Env'] = $values_2;
-        $dataArray['Args'] = $this->normalizer->normalize($data->getArgs(), 'json', $context);
+        $dataArray['Args'] = $data->getArgs() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getArgs(), 'json', $context));
         if ($data->isInitialized('rootfs') && null !== $data->getRootfs()) {
-            $dataArray['rootfs'] = $this->normalizer->normalize($data->getRootfs(), 'json', $context);
+            $dataArray['rootfs'] = $data->getRootfs() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getRootfs(), 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\PluginConfigConstraint());

@@ -38,7 +38,7 @@ class InvalidRequestProblemErrorsItemNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('parameters', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject();
             foreach ($data['parameters'] as $key => $value) {
                 $values_1 = [];
                 foreach ($value as $value_1) {
@@ -64,7 +64,7 @@ class InvalidRequestProblemErrorsItemNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         if ($data->isInitialized('parameters') && null !== $data->getParameters()) {
-            $values = [];
+            $values = new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject();
             foreach ($data->getParameters() as $key => $value) {
                 $values_1 = [];
                 foreach ($value as $value_1) {

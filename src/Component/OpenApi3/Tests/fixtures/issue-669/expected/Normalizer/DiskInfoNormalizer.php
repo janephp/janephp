@@ -59,7 +59,7 @@ class DiskInfoNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $dataArray['type'] = $data->getType();
         }
         if ($data->isInitialized('size') && null !== $data->getSize()) {
-            $dataArray['size'] = $this->normalizer->normalize($data->getSize(), 'json', $context);
+            $dataArray['size'] = $data->getSize() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSize(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

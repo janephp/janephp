@@ -72,14 +72,14 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('eventDate')) {
+        if ($data->isInitialized('eventDate') && null !== $data->getEventDate()) {
             $dataArray['eventDate'] = $data->getEventDate()?->format('Y-m-d');
         }
         $dataArray['createdAt'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
             $dataArray['updatedAt'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('plainDate')) {
+        if ($data->isInitialized('plainDate') && null !== $data->getPlainDate()) {
             $value = $data->getPlainDate();
             if (is_string($data->getPlainDate())) {
                 $value = $data->getPlainDate();

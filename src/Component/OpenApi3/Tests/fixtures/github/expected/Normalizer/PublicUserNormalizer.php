@@ -223,7 +223,7 @@ class PublicUserNormalizer implements DenormalizerInterface, NormalizerInterface
         $dataArray['email'] = $data->getEmail();
         $dataArray['hireable'] = $data->getHireable();
         $dataArray['bio'] = $data->getBio();
-        if ($data->isInitialized('twitterUsername')) {
+        if ($data->isInitialized('twitterUsername') && null !== $data->getTwitterUsername()) {
             $dataArray['twitter_username'] = $data->getTwitterUsername();
         }
         $dataArray['public_repos'] = $data->getPublicRepos();
@@ -233,9 +233,9 @@ class PublicUserNormalizer implements DenormalizerInterface, NormalizerInterface
         $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('plan') && null !== $data->getPlan()) {
-            $dataArray['plan'] = $this->normalizer->normalize($data->getPlan(), 'json', $context);
+            $dataArray['plan'] = $data->getPlan() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPlan(), 'json', $context));
         }
-        if ($data->isInitialized('suspendedAt')) {
+        if ($data->isInitialized('suspendedAt') && null !== $data->getSuspendedAt()) {
             $dataArray['suspended_at'] = $data->getSuspendedAt()?->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('privateGists') && null !== $data->getPrivateGists()) {

@@ -71,7 +71,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemNormalizer implements
             $dataArray['record'] = $data->getRecord();
         }
         if ($data->isInitialized('recordDetails') && null !== $data->getRecordDetails()) {
-            $dataArray['recordDetails'] = $this->normalizer->normalize($data->getRecordDetails(), 'json', $context);
+            $dataArray['recordDetails'] = $data->getRecordDetails() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getRecordDetails(), 'json', $context));
         }
         if ($data->isInitialized('resultID') && null !== $data->getResultID()) {
             $dataArray['resultID'] = $data->getResultID();
@@ -80,7 +80,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemNormalizer implements
             $dataArray['runID'] = $data->getRunID();
         }
         if ($data->isInitialized('watchlist') && null !== $data->getWatchlist()) {
-            $dataArray['watchlist'] = $this->normalizer->normalize($data->getWatchlist(), 'json', $context);
+            $dataArray['watchlist'] = $data->getWatchlist() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getWatchlist(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

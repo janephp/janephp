@@ -82,19 +82,19 @@ class TagsResourcesNormalizer implements DenormalizerInterface, NormalizerInterf
             $dataArray['last_tagged_uri'] = $data->getLastTaggedUri();
         }
         if ($data->isInitialized('droplets') && null !== $data->getDroplets()) {
-            $dataArray['droplets'] = $this->normalizer->normalize($data->getDroplets(), 'json', $context);
+            $dataArray['droplets'] = $data->getDroplets() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDroplets(), 'json', $context));
         }
         if ($data->isInitialized('imgages') && null !== $data->getImgages()) {
-            $dataArray['imgages'] = $this->normalizer->normalize($data->getImgages(), 'json', $context);
+            $dataArray['imgages'] = $data->getImgages() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getImgages(), 'json', $context));
         }
         if ($data->isInitialized('volumes') && null !== $data->getVolumes()) {
-            $dataArray['volumes'] = $this->normalizer->normalize($data->getVolumes(), 'json', $context);
+            $dataArray['volumes'] = $data->getVolumes() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getVolumes(), 'json', $context));
         }
         if ($data->isInitialized('volumeSnapshots') && null !== $data->getVolumeSnapshots()) {
-            $dataArray['volume_snapshots'] = $this->normalizer->normalize($data->getVolumeSnapshots(), 'json', $context);
+            $dataArray['volume_snapshots'] = $data->getVolumeSnapshots() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getVolumeSnapshots(), 'json', $context));
         }
         if ($data->isInitialized('databases') && null !== $data->getDatabases()) {
-            $dataArray['databases'] = $this->normalizer->normalize($data->getDatabases(), 'json', $context);
+            $dataArray['databases'] = $data->getDatabases() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDatabases(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

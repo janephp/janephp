@@ -44,7 +44,7 @@ class DriverNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setName($data['Name']);
         }
         if (\array_key_exists('Options', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Options'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -57,7 +57,7 @@ class DriverNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $dataArray = [];
         $dataArray['Name'] = $data->getName();
         if ($data->isInitialized('options') && null !== $data->getOptions()) {
-            $values = [];
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getOptions() as $key => $value) {
                 $values[$key] = $value;
             }

@@ -58,7 +58,7 @@ class ResponseMonitoringListDestinationsNormalizer implements DenormalizerInterf
         if ($data->isInitialized('destinations') && null !== $data->getDestinations()) {
             $values = [];
             foreach ($data->getDestinations() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['destinations'] = $values;
         }

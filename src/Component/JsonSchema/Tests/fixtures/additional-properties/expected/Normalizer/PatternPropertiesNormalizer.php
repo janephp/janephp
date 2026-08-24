@@ -62,7 +62,7 @@ class PatternPropertiesNormalizer implements DenormalizerInterface, NormalizerIn
                 $dataArray[$key] = $value;
             }
             if (preg_match('/xxxx-.*/', (string) $key)) {
-                $dataArray[$key] = $this->normalizer->normalize($value, 'json', $context);
+                $dataArray[$key] = $value === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
         }
         return $dataArray;

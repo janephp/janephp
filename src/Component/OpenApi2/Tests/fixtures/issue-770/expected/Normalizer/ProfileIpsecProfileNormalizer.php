@@ -139,10 +139,10 @@ class ProfileIpsecProfileNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['preSharedKey'] = $data->getPreSharedKey();
         }
         if ($data->isInitialized('ikeSecurityAssociation') && null !== $data->getIkeSecurityAssociation()) {
-            $dataArray['ikeSecurityAssociation'] = $this->normalizer->normalize($data->getIkeSecurityAssociation(), 'json', $context);
+            $dataArray['ikeSecurityAssociation'] = $data->getIkeSecurityAssociation() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIkeSecurityAssociation(), 'json', $context));
         }
         if ($data->isInitialized('espSecurityAssociation') && null !== $data->getEspSecurityAssociation()) {
-            $dataArray['espSecurityAssociation'] = $this->normalizer->normalize($data->getEspSecurityAssociation(), 'json', $context);
+            $dataArray['espSecurityAssociation'] = $data->getEspSecurityAssociation() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getEspSecurityAssociation(), 'json', $context));
         }
         if ($data->isInitialized('ikeRekeyTime') && null !== $data->getIkeRekeyTime()) {
             $dataArray['ikeRekeyTime'] = $data->getIkeRekeyTime();
@@ -157,10 +157,10 @@ class ProfileIpsecProfileNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['espRekeyTimeUnit'] = $data->getEspRekeyTimeUnit();
         }
         if ($data->isInitialized('cmProtocolOption') && null !== $data->getCmProtocolOption()) {
-            $dataArray['cmProtocolOption'] = $this->normalizer->normalize($data->getCmProtocolOption(), 'json', $context);
+            $dataArray['cmProtocolOption'] = $data->getCmProtocolOption() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCmProtocolOption(), 'json', $context));
         }
         if ($data->isInitialized('advancedOption') && null !== $data->getAdvancedOption()) {
-            $dataArray['advancedOption'] = $this->normalizer->normalize($data->getAdvancedOption(), 'json', $context);
+            $dataArray['advancedOption'] = $data->getAdvancedOption() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAdvancedOption(), 'json', $context));
         }
         if ($data->isInitialized('ipMode') && null !== $data->getIpMode()) {
             $dataArray['ipMode'] = $data->getIpMode();

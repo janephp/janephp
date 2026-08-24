@@ -56,7 +56,7 @@ class AssignLayerActionNormalizer implements DenormalizerInterface, NormalizerIn
             $object->setLayerId(null);
         }
         if (\array_key_exists('defaultValues', $data) && $data['defaultValues'] !== null) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['defaultValues'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -76,15 +76,15 @@ class AssignLayerActionNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId')) {
+        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
             $dataArray['traceRefId'] = $data->getTraceRefId();
         }
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('layerId')) {
+        if ($data->isInitialized('layerId') && null !== $data->getLayerId()) {
             $dataArray['layerId'] = $data->getLayerId();
         }
-        if ($data->isInitialized('defaultValues')) {
-            $values = [];
+        if ($data->isInitialized('defaultValues') && null !== $data->getDefaultValues()) {
+            $values = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data->getDefaultValues() as $key => $value) {
                 $values[$key] = $value;
             }

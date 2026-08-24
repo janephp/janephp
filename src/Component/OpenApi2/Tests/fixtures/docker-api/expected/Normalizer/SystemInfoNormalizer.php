@@ -252,7 +252,7 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setClusterAdvertise($data['ClusterAdvertise']);
         }
         if (\array_key_exists('Runtimes', $data)) {
-            $values_4 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_4 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Runtimes'] as $key => $value_4) {
                 $values_4[$key] = $this->denormalizer->denormalize($value_4, \Docker\Api\Model\Runtime::class, 'json', $context);
             }
@@ -347,7 +347,7 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['DockerRootDir'] = $data->getDockerRootDir();
         }
         if ($data->isInitialized('plugins') && null !== $data->getPlugins()) {
-            $dataArray['Plugins'] = $this->normalizer->normalize($data->getPlugins(), 'json', $context);
+            $dataArray['Plugins'] = $data->getPlugins() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getPlugins(), 'json', $context));
         }
         if ($data->isInitialized('memoryLimit') && null !== $data->getMemoryLimit()) {
             $dataArray['MemoryLimit'] = $data->getMemoryLimit();
@@ -433,13 +433,13 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('indexServerAddress') && null !== $data->getIndexServerAddress()) {
             $dataArray['IndexServerAddress'] = $data->getIndexServerAddress();
         }
-        if ($data->isInitialized('registryConfig')) {
-            $dataArray['RegistryConfig'] = $this->normalizer->normalize($data->getRegistryConfig(), 'json', $context);
+        if ($data->isInitialized('registryConfig') && null !== $data->getRegistryConfig()) {
+            $dataArray['RegistryConfig'] = $data->getRegistryConfig() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getRegistryConfig(), 'json', $context));
         }
         if ($data->isInitialized('genericResources') && null !== $data->getGenericResources()) {
             $values_2 = [];
             foreach ($data->getGenericResources() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['GenericResources'] = $values_2;
         }
@@ -475,9 +475,9 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['ClusterAdvertise'] = $data->getClusterAdvertise();
         }
         if ($data->isInitialized('runtimes') && null !== $data->getRuntimes()) {
-            $values_4 = [];
+            $values_4 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getRuntimes() as $key => $value_4) {
-                $values_4[$key] = $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[$key] = $value_4 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['Runtimes'] = $values_4;
         }
@@ -485,7 +485,7 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['DefaultRuntime'] = $data->getDefaultRuntime();
         }
         if ($data->isInitialized('swarm') && null !== $data->getSwarm()) {
-            $dataArray['Swarm'] = $this->normalizer->normalize($data->getSwarm(), 'json', $context);
+            $dataArray['Swarm'] = $data->getSwarm() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getSwarm(), 'json', $context));
         }
         if ($data->isInitialized('liveRestoreEnabled') && null !== $data->getLiveRestoreEnabled()) {
             $dataArray['LiveRestoreEnabled'] = $data->getLiveRestoreEnabled();
@@ -497,13 +497,13 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['InitBinary'] = $data->getInitBinary();
         }
         if ($data->isInitialized('containerdCommit') && null !== $data->getContainerdCommit()) {
-            $dataArray['ContainerdCommit'] = $this->normalizer->normalize($data->getContainerdCommit(), 'json', $context);
+            $dataArray['ContainerdCommit'] = $data->getContainerdCommit() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getContainerdCommit(), 'json', $context));
         }
         if ($data->isInitialized('runcCommit') && null !== $data->getRuncCommit()) {
-            $dataArray['RuncCommit'] = $this->normalizer->normalize($data->getRuncCommit(), 'json', $context);
+            $dataArray['RuncCommit'] = $data->getRuncCommit() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getRuncCommit(), 'json', $context));
         }
         if ($data->isInitialized('initCommit') && null !== $data->getInitCommit()) {
-            $dataArray['InitCommit'] = $this->normalizer->normalize($data->getInitCommit(), 'json', $context);
+            $dataArray['InitCommit'] = $data->getInitCommit() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getInitCommit(), 'json', $context));
         }
         if ($data->isInitialized('securityOptions') && null !== $data->getSecurityOptions()) {
             $values_5 = [];
@@ -518,7 +518,7 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('defaultAddressPools') && null !== $data->getDefaultAddressPools()) {
             $values_6 = [];
             foreach ($data->getDefaultAddressPools() as $value_6) {
-                $values_6[] = $this->normalizer->normalize($value_6, 'json', $context);
+                $values_6[] = $value_6 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_6, 'json', $context));
             }
             $dataArray['DefaultAddressPools'] = $values_6;
         }

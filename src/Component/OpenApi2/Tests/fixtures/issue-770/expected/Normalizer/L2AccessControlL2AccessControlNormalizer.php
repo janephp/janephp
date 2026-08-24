@@ -117,7 +117,7 @@ class L2AccessControlL2AccessControlNormalizer implements DenormalizerInterface,
         if ($data->isInitialized('rules') && null !== $data->getRules()) {
             $values = [];
             foreach ($data->getRules() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['rules'] = $values;
         }
@@ -127,14 +127,14 @@ class L2AccessControlL2AccessControlNormalizer implements DenormalizerInterface,
         if ($data->isInitialized('etherTypes') && null !== $data->getEtherTypes()) {
             $values_1 = [];
             foreach ($data->getEtherTypes() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['etherTypes'] = $values_1;
         }
         if ($data->isInitialized('userDefinedEtherTypes') && null !== $data->getUserDefinedEtherTypes()) {
             $values_2 = [];
             foreach ($data->getUserDefinedEtherTypes() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['userDefinedEtherTypes'] = $values_2;
         }

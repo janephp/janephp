@@ -57,10 +57,10 @@ class ProjectProposalNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('users')) {
+        if ($data->isInitialized('users') && null !== $data->getUsers()) {
             $value = $data->getUsers();
             if (is_object($data->getUsers())) {
-                $value = $this->normalizer->normalize($data->getUsers(), 'json', $context);
+                $value = $data->getUsers() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUsers(), 'json', $context));
             } elseif (is_null($data->getUsers())) {
                 $value = $data->getUsers();
             }

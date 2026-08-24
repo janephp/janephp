@@ -49,7 +49,7 @@ class AaaModifyGroupAttrIdentityUserRoleMappingNormalizer implements Denormalize
     {
         $dataArray = [];
         $dataArray['groupAttr'] = $data->getGroupAttr();
-        $dataArray['userRole'] = $this->normalizer->normalize($data->getUserRole(), 'json', $context);
+        $dataArray['userRole'] = $data->getUserRole() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUserRole(), 'json', $context));
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -60,9 +60,9 @@ class TweetMetricsNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         $dataArray['tweet_id'] = $data->getTweetId();
-        $dataArray['tweet'] = $this->normalizer->normalize($data->getTweet(), 'json', $context);
+        $dataArray['tweet'] = $data->getTweet() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getTweet(), 'json', $context));
         if ($data->isInitialized('video') && null !== $data->getVideo()) {
-            $dataArray['video'] = $this->normalizer->normalize($data->getVideo(), 'json', $context);
+            $dataArray['video'] = $data->getVideo() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getVideo(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

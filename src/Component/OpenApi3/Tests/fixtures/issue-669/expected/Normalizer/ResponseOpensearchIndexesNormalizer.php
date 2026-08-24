@@ -40,7 +40,7 @@ class ResponseOpensearchIndexesNormalizer implements DenormalizerInterface, Norm
         if (\array_key_exists('indexes', $data)) {
             $values = [];
             foreach ($data['indexes'] as $value) {
-                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
                 foreach ($value as $key => $value_1) {
                     $values_1[$key] = $value_1;
                 }
@@ -62,7 +62,7 @@ class ResponseOpensearchIndexesNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('indexes') && null !== $data->getIndexes()) {
             $values = [];
             foreach ($data->getIndexes() as $value) {
-                $values_1 = [];
+                $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
                 foreach ($value as $key => $value_1) {
                     $values_1[$key] = $value_1;
                 }

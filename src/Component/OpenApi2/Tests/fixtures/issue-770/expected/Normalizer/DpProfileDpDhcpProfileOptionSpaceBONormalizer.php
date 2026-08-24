@@ -67,7 +67,7 @@ class DpProfileDpDhcpProfileOptionSpaceBONormalizer implements DenormalizerInter
         if ($data->isInitialized('options') && null !== $data->getOptions()) {
             $values = [];
             foreach ($data->getOptions() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['options'] = $values;
         }

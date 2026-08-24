@@ -52,7 +52,7 @@ class ResponseNamespaceCreatedNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if ($data->isInitialized('namespace') && null !== $data->getNamespace()) {
-            $dataArray['namespace'] = $this->normalizer->normalize($data->getNamespace(), 'json', $context);
+            $dataArray['namespace'] = $data->getNamespace() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getNamespace(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

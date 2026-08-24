@@ -59,10 +59,10 @@ class CheckSuitePreferenceNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if ($data->isInitialized('preferences') && null !== $data->getPreferences()) {
-            $dataArray['preferences'] = $this->normalizer->normalize($data->getPreferences(), 'json', $context);
+            $dataArray['preferences'] = $data->getPreferences() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPreferences(), 'json', $context));
         }
         if ($data->isInitialized('repository') && null !== $data->getRepository()) {
-            $dataArray['repository'] = $this->normalizer->normalize($data->getRepository(), 'json', $context);
+            $dataArray['repository'] = $data->getRepository() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRepository(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

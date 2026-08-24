@@ -68,7 +68,7 @@ class ReposOwnerRepoActionsArtifactsGetResponse200Normalizer implements Denormal
         if ($data->isInitialized('artifacts') && null !== $data->getArtifacts()) {
             $values = [];
             foreach ($data->getArtifacts() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['artifacts'] = $values;
         }

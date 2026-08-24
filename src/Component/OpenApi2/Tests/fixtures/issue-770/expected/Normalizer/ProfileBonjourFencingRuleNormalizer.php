@@ -71,7 +71,7 @@ class ProfileBonjourFencingRuleNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('deviceMacList') && null !== $data->getDeviceMacList()) {
             $values = [];
             foreach ($data->getDeviceMacList() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['deviceMacList'] = $values;
         }

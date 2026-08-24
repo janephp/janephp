@@ -119,7 +119,7 @@ class PartnerAttachmentNormalizer implements DenormalizerInterface, NormalizerIn
             $dataArray['vpc_ids'] = $values;
         }
         if ($data->isInitialized('bgp') && null !== $data->getBgp()) {
-            $dataArray['bgp'] = $this->normalizer->normalize($data->getBgp(), 'json', $context);
+            $dataArray['bgp'] = $data->getBgp() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getBgp(), 'json', $context));
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

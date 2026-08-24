@@ -139,19 +139,19 @@ class AppStaticSiteSpecNormalizer implements DenormalizerInterface, NormalizerIn
             $dataArray['name'] = $data->getName();
         }
         if ($data->isInitialized('git') && null !== $data->getGit()) {
-            $dataArray['git'] = $this->normalizer->normalize($data->getGit(), 'json', $context);
+            $dataArray['git'] = $data->getGit() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getGit(), 'json', $context));
         }
         if ($data->isInitialized('github') && null !== $data->getGithub()) {
-            $dataArray['github'] = $this->normalizer->normalize($data->getGithub(), 'json', $context);
+            $dataArray['github'] = $data->getGithub() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getGithub(), 'json', $context));
         }
         if ($data->isInitialized('gitlab') && null !== $data->getGitlab()) {
-            $dataArray['gitlab'] = $this->normalizer->normalize($data->getGitlab(), 'json', $context);
+            $dataArray['gitlab'] = $data->getGitlab() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getGitlab(), 'json', $context));
         }
         if ($data->isInitialized('bitbucket') && null !== $data->getBitbucket()) {
-            $dataArray['bitbucket'] = $this->normalizer->normalize($data->getBitbucket(), 'json', $context);
+            $dataArray['bitbucket'] = $data->getBitbucket() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getBitbucket(), 'json', $context));
         }
         if ($data->isInitialized('image') && null !== $data->getImage()) {
-            $dataArray['image'] = $this->normalizer->normalize($data->getImage(), 'json', $context);
+            $dataArray['image'] = $data->getImage() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getImage(), 'json', $context));
         }
         if ($data->isInitialized('dockerfilePath') && null !== $data->getDockerfilePath()) {
             $dataArray['dockerfile_path'] = $data->getDockerfilePath();
@@ -168,7 +168,7 @@ class AppStaticSiteSpecNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('envs') && null !== $data->getEnvs()) {
             $values = [];
             foreach ($data->getEnvs() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['envs'] = $values;
         }
@@ -178,7 +178,7 @@ class AppStaticSiteSpecNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('logDestinations') && null !== $data->getLogDestinations()) {
             $values_1 = [];
             foreach ($data->getLogDestinations() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['log_destinations'] = $values_1;
         }
@@ -195,12 +195,12 @@ class AppStaticSiteSpecNormalizer implements DenormalizerInterface, NormalizerIn
             $dataArray['output_dir'] = $data->getOutputDir();
         }
         if ($data->isInitialized('cors') && null !== $data->getCors()) {
-            $dataArray['cors'] = $this->normalizer->normalize($data->getCors(), 'json', $context);
+            $dataArray['cors'] = $data->getCors() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getCors(), 'json', $context));
         }
         if ($data->isInitialized('routes') && null !== $data->getRoutes()) {
             $values_2 = [];
             foreach ($data->getRoutes() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['routes'] = $values_2;
         }

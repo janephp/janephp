@@ -59,7 +59,7 @@ class StarredRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         $dataArray['starred_at'] = $data->getStarredAt()->format('Y-m-d\TH:i:sP');
-        $dataArray['repo'] = $this->normalizer->normalize($data->getRepo(), 'json', $context);
+        $dataArray['repo'] = $data->getRepo() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRepo(), 'json', $context));
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

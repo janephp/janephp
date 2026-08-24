@@ -50,7 +50,7 @@ class CertificateServiceCertificateNormalizer implements DenormalizerInterface, 
         $dataArray = [];
         $dataArray['service'] = $data->getService();
         if ($data->isInitialized('certificate') && null !== $data->getCertificate()) {
-            $dataArray['certificate'] = $this->normalizer->normalize($data->getCertificate(), 'json', $context);
+            $dataArray['certificate'] = $data->getCertificate() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCertificate(), 'json', $context));
         }
         return $dataArray;
     }

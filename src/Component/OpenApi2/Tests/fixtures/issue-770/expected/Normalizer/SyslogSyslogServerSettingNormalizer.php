@@ -109,10 +109,10 @@ class SyslogSyslogServerSettingNormalizer implements DenormalizerInterface, Norm
             $dataArray['forwardUEEventsMsgFormatType'] = $data->getForwardUEEventsMsgFormatType();
         }
         if ($data->isInitialized('primaryServer') && null !== $data->getPrimaryServer()) {
-            $dataArray['primaryServer'] = $this->normalizer->normalize($data->getPrimaryServer(), 'json', $context);
+            $dataArray['primaryServer'] = $data->getPrimaryServer() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPrimaryServer(), 'json', $context));
         }
         if ($data->isInitialized('secondaryServer') && null !== $data->getSecondaryServer()) {
-            $dataArray['secondaryServer'] = $this->normalizer->normalize($data->getSecondaryServer(), 'json', $context);
+            $dataArray['secondaryServer'] = $data->getSecondaryServer() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSecondaryServer(), 'json', $context));
         }
         if ($data->isInitialized('eventFilter') && null !== $data->getEventFilter()) {
             $dataArray['eventFilter'] = $data->getEventFilter();
@@ -121,7 +121,7 @@ class SyslogSyslogServerSettingNormalizer implements DenormalizerInterface, Norm
             $dataArray['eventFilterSeverity'] = $data->getEventFilterSeverity();
         }
         if ($data->isInitialized('priority') && null !== $data->getPriority()) {
-            $dataArray['priority'] = $this->normalizer->normalize($data->getPriority(), 'json', $context);
+            $dataArray['priority'] = $data->getPriority() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPriority(), 'json', $context));
         }
         return $dataArray;
     }

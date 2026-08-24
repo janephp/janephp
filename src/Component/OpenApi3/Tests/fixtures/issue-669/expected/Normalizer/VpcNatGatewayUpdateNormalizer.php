@@ -80,7 +80,7 @@ class VpcNatGatewayUpdateNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('vpcs') && null !== $data->getVpcs()) {
             $values = [];
             foreach ($data->getVpcs() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['vpcs'] = $values;
         }

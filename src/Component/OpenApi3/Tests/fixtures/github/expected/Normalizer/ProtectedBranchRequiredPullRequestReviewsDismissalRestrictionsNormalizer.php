@@ -83,12 +83,12 @@ class ProtectedBranchRequiredPullRequestReviewsDismissalRestrictionsNormalizer i
         $dataArray['teams_url'] = $data->getTeamsUrl();
         $values = [];
         foreach ($data->getUsers() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['users'] = $values;
         $values_1 = [];
         foreach ($data->getTeams() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = $value_1 === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['teams'] = $values_1;
         foreach ($data as $key => $value_2) {

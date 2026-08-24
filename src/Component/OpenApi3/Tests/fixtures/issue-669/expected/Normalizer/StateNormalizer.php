@@ -56,10 +56,10 @@ class StateNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     {
         $dataArray = [];
         if ($data->isInitialized('regions') && null !== $data->getRegions()) {
-            $dataArray['regions'] = $this->normalizer->normalize($data->getRegions(), 'json', $context);
+            $dataArray['regions'] = $data->getRegions() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getRegions(), 'json', $context));
         }
         if ($data->isInitialized('previousOutage') && null !== $data->getPreviousOutage()) {
-            $dataArray['previous_outage'] = $this->normalizer->normalize($data->getPreviousOutage(), 'json', $context);
+            $dataArray['previous_outage'] = $data->getPreviousOutage() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getPreviousOutage(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

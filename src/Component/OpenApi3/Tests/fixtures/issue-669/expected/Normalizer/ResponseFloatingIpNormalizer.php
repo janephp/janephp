@@ -52,7 +52,7 @@ class ResponseFloatingIpNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if ($data->isInitialized('floatingIp') && null !== $data->getFloatingIp()) {
-            $dataArray['floating_ip'] = $this->normalizer->normalize($data->getFloatingIp(), 'json', $context);
+            $dataArray['floating_ip'] = $data->getFloatingIp() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getFloatingIp(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

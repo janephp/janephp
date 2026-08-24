@@ -58,7 +58,7 @@ class ApiGetChildrenOutputNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('children') && null !== $data->getChildren()) {
             $values = [];
             foreach ($data->getChildren() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['children'] = $values;
         }

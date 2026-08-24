@@ -52,7 +52,7 @@ class AdministrationLicensesSummaryNormalizer implements DenormalizerInterface, 
             $dataArray['licenseTypeDescription'] = $data->getLicenseTypeDescription();
         }
         if ($data->isInitialized('capacityControlLicenseCount') && null !== $data->getCapacityControlLicenseCount()) {
-            $dataArray['capacityControlLicenseCount'] = $this->normalizer->normalize($data->getCapacityControlLicenseCount(), 'json', $context);
+            $dataArray['capacityControlLicenseCount'] = $data->getCapacityControlLicenseCount() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCapacityControlLicenseCount(), 'json', $context));
         }
         return $dataArray;
     }

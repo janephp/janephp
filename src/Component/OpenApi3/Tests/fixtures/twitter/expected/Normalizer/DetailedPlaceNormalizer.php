@@ -104,7 +104,7 @@ class DetailedPlaceNormalizer implements DenormalizerInterface, NormalizerInterf
             $dataArray['contained_within'] = $values;
         }
         if ($data->isInitialized('geo') && null !== $data->getGeo()) {
-            $dataArray['geo'] = $this->normalizer->normalize($data->getGeo(), 'json', $context);
+            $dataArray['geo'] = $data->getGeo() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getGeo(), 'json', $context));
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

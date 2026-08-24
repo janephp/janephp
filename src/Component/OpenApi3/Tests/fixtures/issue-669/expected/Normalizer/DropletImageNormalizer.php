@@ -138,7 +138,7 @@ class DropletImageNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($data->isInitialized('distribution') && null !== $data->getDistribution()) {
             $dataArray['distribution'] = $data->getDistribution();
         }
-        if ($data->isInitialized('slug')) {
+        if ($data->isInitialized('slug') && null !== $data->getSlug()) {
             $dataArray['slug'] = $data->getSlug();
         }
         if ($data->isInitialized('public') && null !== $data->getPublic()) {
@@ -154,16 +154,16 @@ class DropletImageNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
             $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('minDiskSize')) {
+        if ($data->isInitialized('minDiskSize') && null !== $data->getMinDiskSize()) {
             $dataArray['min_disk_size'] = $data->getMinDiskSize();
         }
-        if ($data->isInitialized('sizeGigabytes')) {
+        if ($data->isInitialized('sizeGigabytes') && null !== $data->getSizeGigabytes()) {
             $dataArray['size_gigabytes'] = $data->getSizeGigabytes();
         }
         if ($data->isInitialized('description') && null !== $data->getDescription()) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('tags')) {
+        if ($data->isInitialized('tags') && null !== $data->getTags()) {
             $values_1 = [];
             foreach ($data->getTags() as $value_1) {
                 $values_1[] = $value_1;

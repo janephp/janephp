@@ -177,14 +177,14 @@ class DropletNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('diskInfo') && null !== $data->getDiskInfo()) {
             $values = [];
             foreach ($data->getDiskInfo() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['disk_info'] = $values;
         }
         $dataArray['locked'] = $data->getLocked();
         $dataArray['status'] = $data->getStatus();
-        if ($data->isInitialized('kernel')) {
-            $dataArray['kernel'] = $this->normalizer->normalize($data->getKernel(), 'json', $context);
+        if ($data->isInitialized('kernel') && null !== $data->getKernel()) {
+            $dataArray['kernel'] = $data->getKernel() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getKernel(), 'json', $context));
         }
         $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $values_1 = [];
@@ -197,22 +197,22 @@ class DropletNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $values_2[] = $value_2;
         }
         $dataArray['backup_ids'] = $values_2;
-        $dataArray['next_backup_window'] = $this->normalizer->normalize($data->getNextBackupWindow(), 'json', $context);
+        $dataArray['next_backup_window'] = $data->getNextBackupWindow() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getNextBackupWindow(), 'json', $context));
         $values_3 = [];
         foreach ($data->getSnapshotIds() as $value_3) {
             $values_3[] = $value_3;
         }
         $dataArray['snapshot_ids'] = $values_3;
-        $dataArray['image'] = $this->normalizer->normalize($data->getImage(), 'json', $context);
+        $dataArray['image'] = $data->getImage() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getImage(), 'json', $context));
         $values_4 = [];
         foreach ($data->getVolumeIds() as $value_4) {
             $values_4[] = $value_4;
         }
         $dataArray['volume_ids'] = $values_4;
-        $dataArray['size'] = $this->normalizer->normalize($data->getSize(), 'json', $context);
+        $dataArray['size'] = $data->getSize() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSize(), 'json', $context));
         $dataArray['size_slug'] = $data->getSizeSlug();
-        $dataArray['networks'] = $this->normalizer->normalize($data->getNetworks(), 'json', $context);
-        $dataArray['region'] = $this->normalizer->normalize($data->getRegion(), 'json', $context);
+        $dataArray['networks'] = $data->getNetworks() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getNetworks(), 'json', $context));
+        $dataArray['region'] = $data->getRegion() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getRegion(), 'json', $context));
         $values_5 = [];
         foreach ($data->getTags() as $value_5) {
             $values_5[] = $value_5;
@@ -222,7 +222,7 @@ class DropletNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $dataArray['vpc_uuid'] = $data->getVpcUuid();
         }
         if ($data->isInitialized('gpuInfo') && null !== $data->getGpuInfo()) {
-            $dataArray['gpu_info'] = $this->normalizer->normalize($data->getGpuInfo(), 'json', $context);
+            $dataArray['gpu_info'] = $data->getGpuInfo() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getGpuInfo(), 'json', $context));
         }
         foreach ($data as $key => $value_6) {
             if (preg_match('/.*/', (string) $key)) {

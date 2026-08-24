@@ -58,7 +58,7 @@ class ResponseAddonsGetAppMetadataNormalizer implements DenormalizerInterface, N
         if ($data->isInitialized('metadata') && null !== $data->getMetadata()) {
             $values = [];
             foreach ($data->getMetadata() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['metadata'] = $values;
         }

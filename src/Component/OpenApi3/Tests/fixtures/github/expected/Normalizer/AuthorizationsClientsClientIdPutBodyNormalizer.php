@@ -78,7 +78,7 @@ class AuthorizationsClientsClientIdPutBodyNormalizer implements DenormalizerInte
     {
         $dataArray = [];
         $dataArray['client_secret'] = $data->getClientSecret();
-        if ($data->isInitialized('scopes')) {
+        if ($data->isInitialized('scopes') && null !== $data->getScopes()) {
             $values = [];
             foreach ($data->getScopes() as $value) {
                 $values[] = $value;

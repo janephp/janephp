@@ -62,7 +62,7 @@ class AppMetricsBandwidthUsageNormalizer implements DenormalizerInterface, Norma
         if ($data->isInitialized('appBandwidthUsage') && null !== $data->getAppBandwidthUsage()) {
             $values = [];
             foreach ($data->getAppBandwidthUsage() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['app_bandwidth_usage'] = $values;
         }

@@ -72,14 +72,14 @@ class TransferWebLinkNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('identifier')) {
+        if ($data->isInitialized('identifier') && null !== $data->getIdentifier()) {
             $dataArray['identifier'] = $data->getIdentifier();
         }
-        if ($data->isInitialized('requestId')) {
+        if ($data->isInitialized('requestId') && null !== $data->getRequestId()) {
             $dataArray['requestId'] = $data->getRequestId();
         }
         $dataArray['url'] = $data->getUrl();
-        if ($data->isInitialized('fileName')) {
+        if ($data->isInitialized('fileName') && null !== $data->getFileName()) {
             $dataArray['fileName'] = $data->getFileName();
         }
         foreach ($data as $key => $value) {

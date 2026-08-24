@@ -85,7 +85,7 @@ class BookBookReadNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('isbn')) {
+        if ($data->isInitialized('isbn') && null !== $data->getIsbn()) {
             $dataArray['isbn'] = $data->getIsbn();
         }
         $dataArray['title'] = $data->getTitle();
@@ -95,7 +95,7 @@ class BookBookReadNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($data->isInitialized('reviews') && null !== $data->getReviews()) {
             $values = [];
             foreach ($data->getReviews() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \ApiPlatform\Demo\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['reviews'] = $values;
         }

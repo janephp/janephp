@@ -55,7 +55,7 @@ class TaskSpecContainerSpecSecretsItemNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         if ($data->isInitialized('file') && null !== $data->getFile()) {
-            $dataArray['File'] = $this->normalizer->normalize($data->getFile(), 'json', $context);
+            $dataArray['File'] = $data->getFile() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getFile(), 'json', $context));
         }
         if ($data->isInitialized('secretID') && null !== $data->getSecretID()) {
             $dataArray['SecretID'] = $data->getSecretID();

@@ -86,20 +86,20 @@ class ContentDownloadEventNormalizer implements DenormalizerInterface, Normalize
         $dataArray = [];
         $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('downloadInfos')) {
+        if ($data->isInitialized('downloadInfos') && null !== $data->getDownloadInfos()) {
             $values = [];
             foreach ($data->getDownloadInfos() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['downloadInfos'] = $values;
         }
         if ($data->isInitialized('fileSize') && null !== $data->getFileSize()) {
             $dataArray['fileSize'] = $data->getFileSize();
         }
-        if ($data->isInitialized('shareToken')) {
+        if ($data->isInitialized('shareToken') && null !== $data->getShareToken()) {
             $dataArray['shareToken'] = $data->getShareToken();
         }
-        if ($data->isInitialized('range')) {
+        if ($data->isInitialized('range') && null !== $data->getRange()) {
             $dataArray['range'] = $data->getRange();
         }
         foreach ($data as $key => $value_1) {

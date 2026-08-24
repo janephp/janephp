@@ -52,7 +52,7 @@ class ServiceJobStatusNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if ($data->isInitialized('jobIteration') && null !== $data->getJobIteration()) {
-            $dataArray['JobIteration'] = $this->normalizer->normalize($data->getJobIteration(), 'json', $context);
+            $dataArray['JobIteration'] = $data->getJobIteration() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getJobIteration(), 'json', $context));
         }
         if ($data->isInitialized('lastExecution') && null !== $data->getLastExecution()) {
             $dataArray['LastExecution'] = $data->getLastExecution();

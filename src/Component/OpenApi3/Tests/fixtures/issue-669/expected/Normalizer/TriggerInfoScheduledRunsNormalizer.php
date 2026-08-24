@@ -61,10 +61,10 @@ class TriggerInfoScheduledRunsNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('lastRunAt')) {
+        if ($data->isInitialized('lastRunAt') && null !== $data->getLastRunAt()) {
             $dataArray['last_run_at'] = $data->getLastRunAt();
         }
-        if ($data->isInitialized('nextRunAt')) {
+        if ($data->isInitialized('nextRunAt') && null !== $data->getNextRunAt()) {
             $dataArray['next_run_at'] = $data->getNextRunAt();
         }
         foreach ($data as $key => $value) {

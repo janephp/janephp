@@ -70,13 +70,13 @@ class CreateFreshInvestigationRequestNormalizer implements DenormalizerInterface
             $dataArray['consent'] = $data->getConsent();
         }
         if ($data->isInitialized('contactInfo') && null !== $data->getContactInfo()) {
-            $dataArray['contactInfo'] = $this->normalizer->normalize($data->getContactInfo(), 'json', $context);
+            $dataArray['contactInfo'] = $data->getContactInfo() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getContactInfo(), 'json', $context));
         }
         if ($data->isInitialized('chargeReference') && null !== $data->getChargeReference()) {
             $dataArray['chargeReference'] = $data->getChargeReference();
         }
         if ($data->isInitialized('searchCriteria') && null !== $data->getSearchCriteria()) {
-            $dataArray['searchCriteria'] = $this->normalizer->normalize($data->getSearchCriteria(), 'json', $context);
+            $dataArray['searchCriteria'] = $data->getSearchCriteria() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getSearchCriteria(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

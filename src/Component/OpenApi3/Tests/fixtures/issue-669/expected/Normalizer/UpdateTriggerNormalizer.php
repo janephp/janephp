@@ -62,7 +62,7 @@ class UpdateTriggerNormalizer implements DenormalizerInterface, NormalizerInterf
             $dataArray['is_enabled'] = $data->getIsEnabled();
         }
         if ($data->isInitialized('scheduledDetails') && null !== $data->getScheduledDetails()) {
-            $dataArray['scheduled_details'] = $this->normalizer->normalize($data->getScheduledDetails(), 'json', $context);
+            $dataArray['scheduled_details'] = $data->getScheduledDetails() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getScheduledDetails(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

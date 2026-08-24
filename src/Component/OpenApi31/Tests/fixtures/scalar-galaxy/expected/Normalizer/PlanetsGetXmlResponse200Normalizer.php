@@ -58,12 +58,12 @@ class PlanetsGetXmlResponse200Normalizer implements DenormalizerInterface, Norma
         if ($data->isInitialized('data') && null !== $data->getData()) {
             $values = [];
             foreach ($data->getData() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['data'] = $values;
         }
         if ($data->isInitialized('meta') && null !== $data->getMeta()) {
-            $dataArray['meta'] = $this->normalizer->normalize($data->getMeta(), 'json', $context);
+            $dataArray['meta'] = $data->getMeta() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getMeta(), 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PlanetsGetXmlResponse200Constraint());

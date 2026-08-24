@@ -177,12 +177,12 @@ class ApiAgentPublicNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if ($data->isInitialized('chatbot') && null !== $data->getChatbot()) {
-            $dataArray['chatbot'] = $this->normalizer->normalize($data->getChatbot(), 'json', $context);
+            $dataArray['chatbot'] = $data->getChatbot() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getChatbot(), 'json', $context));
         }
         if ($data->isInitialized('chatbotIdentifiers') && null !== $data->getChatbotIdentifiers()) {
             $values = [];
             foreach ($data->getChatbotIdentifiers() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['chatbot_identifiers'] = $values;
         }
@@ -190,7 +190,7 @@ class ApiAgentPublicNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('deployment') && null !== $data->getDeployment()) {
-            $dataArray['deployment'] = $this->normalizer->normalize($data->getDeployment(), 'json', $context);
+            $dataArray['deployment'] = $data->getDeployment() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDeployment(), 'json', $context));
         }
         if ($data->isInitialized('description') && null !== $data->getDescription()) {
             $dataArray['description'] = $data->getDescription();
@@ -208,7 +208,7 @@ class ApiAgentPublicNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['max_tokens'] = $data->getMaxTokens();
         }
         if ($data->isInitialized('model') && null !== $data->getModel()) {
-            $dataArray['model'] = $this->normalizer->normalize($data->getModel(), 'json', $context);
+            $dataArray['model'] = $data->getModel() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getModel(), 'json', $context));
         }
         if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();
@@ -248,7 +248,7 @@ class ApiAgentPublicNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['temperature'] = $data->getTemperature();
         }
         if ($data->isInitialized('template') && null !== $data->getTemplate()) {
-            $dataArray['template'] = $this->normalizer->normalize($data->getTemplate(), 'json', $context);
+            $dataArray['template'] = $data->getTemplate() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getTemplate(), 'json', $context));
         }
         if ($data->isInitialized('topP') && null !== $data->getTopP()) {
             $dataArray['top_p'] = $data->getTopP();

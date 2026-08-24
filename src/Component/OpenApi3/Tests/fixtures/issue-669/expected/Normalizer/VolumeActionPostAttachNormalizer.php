@@ -75,7 +75,7 @@ class VolumeActionPostAttachNormalizer implements DenormalizerInterface, Normali
             $dataArray['region'] = $data->getRegion();
         }
         $dataArray['droplet_id'] = $data->getDropletId();
-        if ($data->isInitialized('tags')) {
+        if ($data->isInitialized('tags') && null !== $data->getTags()) {
             $values = [];
             foreach ($data->getTags() as $value) {
                 $values[] = $value;

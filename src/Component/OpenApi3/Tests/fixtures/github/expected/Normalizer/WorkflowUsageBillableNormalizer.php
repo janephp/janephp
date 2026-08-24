@@ -63,13 +63,13 @@ class WorkflowUsageBillableNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if ($data->isInitialized('uBUNTU') && null !== $data->getUBUNTU()) {
-            $dataArray['UBUNTU'] = $this->normalizer->normalize($data->getUBUNTU(), 'json', $context);
+            $dataArray['UBUNTU'] = $data->getUBUNTU() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getUBUNTU(), 'json', $context));
         }
         if ($data->isInitialized('mACOS') && null !== $data->getMACOS()) {
-            $dataArray['MACOS'] = $this->normalizer->normalize($data->getMACOS(), 'json', $context);
+            $dataArray['MACOS'] = $data->getMACOS() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getMACOS(), 'json', $context));
         }
         if ($data->isInitialized('wINDOWS') && null !== $data->getWINDOWS()) {
-            $dataArray['WINDOWS'] = $this->normalizer->normalize($data->getWINDOWS(), 'json', $context);
+            $dataArray['WINDOWS'] = $data->getWINDOWS() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getWINDOWS(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

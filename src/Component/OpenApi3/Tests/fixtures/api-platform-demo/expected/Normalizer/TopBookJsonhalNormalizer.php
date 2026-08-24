@@ -76,7 +76,7 @@ class TopBookJsonhalNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if ($data->isInitialized('links') && null !== $data->getLinks()) {
-            $dataArray['_links'] = $this->normalizer->normalize($data->getLinks(), 'json', $context);
+            $dataArray['_links'] = $data->getLinks() === null ? null : new \ApiPlatform\Demo\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
         }
         if ($data->isInitialized('id') && null !== $data->getId()) {
             $dataArray['id'] = $data->getId();

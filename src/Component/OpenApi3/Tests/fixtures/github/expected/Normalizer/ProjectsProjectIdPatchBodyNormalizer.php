@@ -79,7 +79,7 @@ class ProjectsProjectIdPatchBodyNormalizer implements DenormalizerInterface, Nor
         if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('body')) {
+        if ($data->isInitialized('body') && null !== $data->getBody()) {
             $dataArray['body'] = $data->getBody();
         }
         if ($data->isInitialized('state') && null !== $data->getState()) {

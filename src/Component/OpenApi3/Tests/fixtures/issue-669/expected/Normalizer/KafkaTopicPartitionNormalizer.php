@@ -86,10 +86,10 @@ class KafkaTopicPartitionNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('earliestOffset') && null !== $data->getEarliestOffset()) {
             $dataArray['earliest_offset'] = $data->getEarliestOffset();
         }
-        if ($data->isInitialized('consumerGroups')) {
+        if ($data->isInitialized('consumerGroups') && null !== $data->getConsumerGroups()) {
             $values = [];
             foreach ($data->getConsumerGroups() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['consumer_groups'] = $values;
         }

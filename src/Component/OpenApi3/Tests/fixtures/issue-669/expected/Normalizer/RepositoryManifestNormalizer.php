@@ -115,7 +115,7 @@ class RepositoryManifestNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('blobs') && null !== $data->getBlobs()) {
             $values_1 = [];
             foreach ($data->getBlobs() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['blobs'] = $values_1;
         }

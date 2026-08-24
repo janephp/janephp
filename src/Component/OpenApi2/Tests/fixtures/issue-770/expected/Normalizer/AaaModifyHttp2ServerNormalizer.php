@@ -102,7 +102,7 @@ class AaaModifyHttp2ServerNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('mappings') && null !== $data->getMappings()) {
             $values = [];
             foreach ($data->getMappings() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['mappings'] = $values;
         }

@@ -100,19 +100,19 @@ class FieldOverwriteSingleTagboxNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id')) {
+        if ($data->isInitialized('id') && null !== $data->getId()) {
             $dataArray['id'] = $data->getId();
         }
         $dataArray['required'] = $data->getRequired();
         $dataArray['overwriteRequired'] = $data->getOverwriteRequired();
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('filter')) {
+        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
             $dataArray['filter'] = $data->getFilter();
         }
         if ($data->isInitialized('overwriteFilter') && null !== $data->getOverwriteFilter()) {
             $dataArray['overwriteFilter'] = $data->getOverwriteFilter();
         }
-        if ($data->isInitialized('listItemCreateTemplate')) {
+        if ($data->isInitialized('listItemCreateTemplate') && null !== $data->getListItemCreateTemplate()) {
             $dataArray['listItemCreateTemplate'] = $data->getListItemCreateTemplate();
         }
         if ($data->isInitialized('overwriteListItemCreateTemplate') && null !== $data->getOverwriteListItemCreateTemplate()) {

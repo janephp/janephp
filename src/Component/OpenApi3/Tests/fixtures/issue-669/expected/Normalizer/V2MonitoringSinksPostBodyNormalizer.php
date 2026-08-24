@@ -65,7 +65,7 @@ class V2MonitoringSinksPostBodyNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('resources') && null !== $data->getResources()) {
             $values = [];
             foreach ($data->getResources() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['resources'] = $values;
         }

@@ -57,7 +57,7 @@ class TagsResourceNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray = [];
         $values = [];
         foreach ($data->getResources() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['resources'] = $values;
         foreach ($data as $key => $value_1) {

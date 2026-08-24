@@ -58,7 +58,7 @@ class ResponseGarbageCollectionsNormalizer implements DenormalizerInterface, Nor
         if ($data->isInitialized('garbageCollections') && null !== $data->getGarbageCollections()) {
             $values = [];
             foreach ($data->getGarbageCollections() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['garbage_collections'] = $values;
         }

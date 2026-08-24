@@ -79,7 +79,7 @@ class BaseGistNormalizer implements DenormalizerInterface, NormalizerInterface, 
             unset($data['html_url']);
         }
         if (\array_key_exists('files', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Github\Runtime\JsonObject();
             foreach ($data['files'] as $key => $value) {
                 $values[$key] = $this->denormalizer->denormalize($value, \Github\Model\BaseGistFilesItem::class, 'json', $context);
             }
@@ -165,9 +165,9 @@ class BaseGistNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $dataArray['git_pull_url'] = $data->getGitPullUrl();
         $dataArray['git_push_url'] = $data->getGitPushUrl();
         $dataArray['html_url'] = $data->getHtmlUrl();
-        $values = [];
+        $values = new \Github\Runtime\JsonObject();
         foreach ($data->getFiles() as $key => $value) {
-            $values[$key] = $this->normalizer->normalize($value, 'json', $context);
+            $values[$key] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['files'] = $values;
         $dataArray['public'] = $data->getPublic();
@@ -175,10 +175,10 @@ class BaseGistNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['description'] = $data->getDescription();
         $dataArray['comments'] = $data->getComments();
-        $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
+        $dataArray['user'] = $data->getUser() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getUser(), 'json', $context));
         $dataArray['comments_url'] = $data->getCommentsUrl();
-        if ($data->isInitialized('owner')) {
-            $dataArray['owner'] = $this->normalizer->normalize($data->getOwner(), 'json', $context);
+        if ($data->isInitialized('owner') && null !== $data->getOwner()) {
+            $dataArray['owner'] = $data->getOwner() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getOwner(), 'json', $context));
         }
         if ($data->isInitialized('truncated') && null !== $data->getTruncated()) {
             $dataArray['truncated'] = $data->getTruncated();

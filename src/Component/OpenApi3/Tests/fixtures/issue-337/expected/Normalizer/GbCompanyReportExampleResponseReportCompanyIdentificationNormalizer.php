@@ -68,19 +68,19 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationNormalizer implem
     {
         $dataArray = [];
         if ($data->isInitialized('basicInformation') && null !== $data->getBasicInformation()) {
-            $dataArray['basicInformation'] = $this->normalizer->normalize($data->getBasicInformation(), 'json', $context);
+            $dataArray['basicInformation'] = $data->getBasicInformation() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getBasicInformation(), 'json', $context));
         }
         if ($data->isInitialized('activityClassifications') && null !== $data->getActivityClassifications()) {
             $values = [];
             foreach ($data->getActivityClassifications() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['activityClassifications'] = $values;
         }
         if ($data->isInitialized('previousNames') && null !== $data->getPreviousNames()) {
             $values_1 = [];
             foreach ($data->getPreviousNames() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['previousNames'] = $values_1;
         }

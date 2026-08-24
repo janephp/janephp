@@ -38,7 +38,7 @@ class ResponsePutFirewallResponseNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('firewall', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data['firewall'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -56,7 +56,7 @@ class ResponsePutFirewallResponseNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if ($data->isInitialized('firewall') && null !== $data->getFirewall()) {
-            $values = [];
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data->getFirewall() as $key => $value) {
                 $values[$key] = $value;
             }

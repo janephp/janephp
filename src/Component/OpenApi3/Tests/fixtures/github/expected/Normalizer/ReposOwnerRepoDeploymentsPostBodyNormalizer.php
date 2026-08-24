@@ -126,7 +126,7 @@ class ReposOwnerRepoDeploymentsPostBodyNormalizer implements DenormalizerInterfa
         if ($data->isInitialized('environment') && null !== $data->getEnvironment()) {
             $dataArray['environment'] = $data->getEnvironment();
         }
-        if ($data->isInitialized('description')) {
+        if ($data->isInitialized('description') && null !== $data->getDescription()) {
             $dataArray['description'] = $data->getDescription();
         }
         if ($data->isInitialized('transientEnvironment') && null !== $data->getTransientEnvironment()) {

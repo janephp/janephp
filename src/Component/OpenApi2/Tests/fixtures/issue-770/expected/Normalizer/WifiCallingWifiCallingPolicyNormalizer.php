@@ -106,7 +106,7 @@ class WifiCallingWifiCallingPolicyNormalizer implements DenormalizerInterface, N
         if ($data->isInitialized('epdgs') && null !== $data->getEpdgs()) {
             $values = [];
             foreach ($data->getEpdgs() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['epdgs'] = $values;
         }

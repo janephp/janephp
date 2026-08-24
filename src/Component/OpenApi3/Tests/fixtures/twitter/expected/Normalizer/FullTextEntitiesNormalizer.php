@@ -90,35 +90,35 @@ class FullTextEntitiesNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('urls') && null !== $data->getUrls()) {
             $values = [];
             foreach ($data->getUrls() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['urls'] = $values;
         }
         if ($data->isInitialized('hashtags') && null !== $data->getHashtags()) {
             $values_1 = [];
             foreach ($data->getHashtags() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['hashtags'] = $values_1;
         }
         if ($data->isInitialized('mentions') && null !== $data->getMentions()) {
             $values_2 = [];
             foreach ($data->getMentions() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['mentions'] = $values_2;
         }
         if ($data->isInitialized('cashtags') && null !== $data->getCashtags()) {
             $values_3 = [];
             foreach ($data->getCashtags() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['cashtags'] = $values_3;
         }
         if ($data->isInitialized('annotations') && null !== $data->getAnnotations()) {
             $values_4 = [];
             foreach ($data->getAnnotations() as $value_4) {
-                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[] = $value_4 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['annotations'] = $values_4;
         }

@@ -127,11 +127,11 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray['name'] = $data->getName();
         $dataArray['state'] = $data->getState();
         $dataArray['transferType'] = $data->getTransferType();
-        if ($data->isInitialized('businessProcessId')) {
+        if ($data->isInitialized('businessProcessId') && null !== $data->getBusinessProcessId()) {
             $dataArray['businessProcessId'] = $data->getBusinessProcessId();
         }
         $dataArray['fileTransferCount'] = $data->getFileTransferCount();
-        if ($data->isInitialized('collectionId')) {
+        if ($data->isInitialized('collectionId') && null !== $data->getCollectionId()) {
             $dataArray['collectionId'] = $data->getCollectionId();
         }
         $dataArray['audit'] = $data->getAudit();
@@ -153,10 +153,10 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('itemsCancelled') && null !== $data->getItemsCancelled()) {
             $dataArray['itemsCancelled'] = $data->getItemsCancelled();
         }
-        if ($data->isInitialized('lastDataExtractionProgressTimeStamp')) {
+        if ($data->isInitialized('lastDataExtractionProgressTimeStamp') && null !== $data->getLastDataExtractionProgressTimeStamp()) {
             $dataArray['lastDataExtractionProgressTimeStamp'] = $data->getLastDataExtractionProgressTimeStamp()?->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('lastFileUploadProgressTimeStamp')) {
+        if ($data->isInitialized('lastFileUploadProgressTimeStamp') && null !== $data->getLastFileUploadProgressTimeStamp()) {
             $dataArray['lastFileUploadProgressTimeStamp'] = $data->getLastFileUploadProgressTimeStamp()?->format('Y-m-d\TH:i:sP');
         }
         foreach ($data as $key => $value) {

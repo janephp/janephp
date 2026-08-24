@@ -64,16 +64,16 @@ class NodeDescriptionNormalizer implements DenormalizerInterface, NormalizerInte
             $dataArray['Hostname'] = $data->getHostname();
         }
         if ($data->isInitialized('platform') && null !== $data->getPlatform()) {
-            $dataArray['Platform'] = $this->normalizer->normalize($data->getPlatform(), 'json', $context);
+            $dataArray['Platform'] = $data->getPlatform() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getPlatform(), 'json', $context));
         }
         if ($data->isInitialized('resources') && null !== $data->getResources()) {
-            $dataArray['Resources'] = $this->normalizer->normalize($data->getResources(), 'json', $context);
+            $dataArray['Resources'] = $data->getResources() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getResources(), 'json', $context));
         }
         if ($data->isInitialized('engine') && null !== $data->getEngine()) {
-            $dataArray['Engine'] = $this->normalizer->normalize($data->getEngine(), 'json', $context);
+            $dataArray['Engine'] = $data->getEngine() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getEngine(), 'json', $context));
         }
         if ($data->isInitialized('tLSInfo') && null !== $data->getTLSInfo()) {
-            $dataArray['TLSInfo'] = $this->normalizer->normalize($data->getTLSInfo(), 'json', $context);
+            $dataArray['TLSInfo'] = $data->getTLSInfo() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getTLSInfo(), 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\NodeDescriptionConstraint());

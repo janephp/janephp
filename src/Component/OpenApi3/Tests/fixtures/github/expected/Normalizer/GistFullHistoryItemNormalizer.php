@@ -79,11 +79,11 @@ class GistFullHistoryItemNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('version') && null !== $data->getVersion()) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('user')) {
-            $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
+        if ($data->isInitialized('user') && null !== $data->getUser()) {
+            $dataArray['user'] = $data->getUser() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getUser(), 'json', $context));
         }
         if ($data->isInitialized('changeStatus') && null !== $data->getChangeStatus()) {
-            $dataArray['change_status'] = $this->normalizer->normalize($data->getChangeStatus(), 'json', $context);
+            $dataArray['change_status'] = $data->getChangeStatus() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getChangeStatus(), 'json', $context));
         }
         if ($data->isInitialized('committedAt') && null !== $data->getCommittedAt()) {
             $dataArray['committed_at'] = $data->getCommittedAt();

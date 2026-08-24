@@ -68,7 +68,7 @@ class ProblemDetailsNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setInstance(null);
         }
         if (\array_key_exists('extensions', $data) && $data['extensions'] !== null) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['extensions'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -82,23 +82,23 @@ class ProblemDetailsNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('type')) {
+        if ($data->isInitialized('type') && null !== $data->getType()) {
             $dataArray['type'] = $data->getType();
         }
-        if ($data->isInitialized('title')) {
+        if ($data->isInitialized('title') && null !== $data->getTitle()) {
             $dataArray['title'] = $data->getTitle();
         }
-        if ($data->isInitialized('status')) {
+        if ($data->isInitialized('status') && null !== $data->getStatus()) {
             $dataArray['status'] = $data->getStatus();
         }
-        if ($data->isInitialized('detail')) {
+        if ($data->isInitialized('detail') && null !== $data->getDetail()) {
             $dataArray['detail'] = $data->getDetail();
         }
-        if ($data->isInitialized('instance')) {
+        if ($data->isInitialized('instance') && null !== $data->getInstance()) {
             $dataArray['instance'] = $data->getInstance();
         }
-        if ($data->isInitialized('extensions')) {
-            $values = [];
+        if ($data->isInitialized('extensions') && null !== $data->getExtensions()) {
+            $values = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data->getExtensions() as $key => $value) {
                 $values[$key] = $value;
             }

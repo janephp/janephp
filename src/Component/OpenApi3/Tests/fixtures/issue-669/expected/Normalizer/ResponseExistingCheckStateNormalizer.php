@@ -52,7 +52,7 @@ class ResponseExistingCheckStateNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if ($data->isInitialized('state') && null !== $data->getState()) {
-            $dataArray['state'] = $this->normalizer->normalize($data->getState(), 'json', $context);
+            $dataArray['state'] = $data->getState() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getState(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

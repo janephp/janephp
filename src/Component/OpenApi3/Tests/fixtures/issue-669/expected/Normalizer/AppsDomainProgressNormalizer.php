@@ -40,7 +40,7 @@ class AppsDomainProgressNormalizer implements DenormalizerInterface, NormalizerI
         if (\array_key_exists('steps', $data)) {
             $values = [];
             foreach ($data['steps'] as $value) {
-                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
                 foreach ($value as $key => $value_1) {
                     $values_1[$key] = $value_1;
                 }
@@ -62,7 +62,7 @@ class AppsDomainProgressNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('steps') && null !== $data->getSteps()) {
             $values = [];
             foreach ($data->getSteps() as $value) {
-                $values_1 = [];
+                $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
                 foreach ($value as $key => $value_1) {
                     $values_1[$key] = $value_1;
                 }

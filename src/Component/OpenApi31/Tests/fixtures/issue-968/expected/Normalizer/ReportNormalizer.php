@@ -51,8 +51,8 @@ class ReportNormalizer implements DenormalizerInterface, NormalizerInterface, De
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('period')) {
-            $dataArray['period'] = $this->normalizer->normalize($data->getPeriod(), 'json', $context);
+        if ($data->isInitialized('period') && null !== $data->getPeriod()) {
+            $dataArray['period'] = $data->getPeriod() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPeriod(), 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\ReportConstraint());

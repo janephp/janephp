@@ -93,12 +93,12 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $dataArray = [];
         $dataArray['id'] = $data->getId();
         $dataArray['type'] = $data->getType();
-        $dataArray['actor'] = $this->normalizer->normalize($data->getActor(), 'json', $context);
-        $dataArray['repo'] = $this->normalizer->normalize($data->getRepo(), 'json', $context);
+        $dataArray['actor'] = $data->getActor() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getActor(), 'json', $context));
+        $dataArray['repo'] = $data->getRepo() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRepo(), 'json', $context));
         if ($data->isInitialized('org') && null !== $data->getOrg()) {
-            $dataArray['org'] = $this->normalizer->normalize($data->getOrg(), 'json', $context);
+            $dataArray['org'] = $data->getOrg() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getOrg(), 'json', $context));
         }
-        $dataArray['payload'] = $this->normalizer->normalize($data->getPayload(), 'json', $context);
+        $dataArray['payload'] = $data->getPayload() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPayload(), 'json', $context));
         $dataArray['public'] = $data->getPublic();
         $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
         foreach ($data as $key => $value) {

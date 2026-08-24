@@ -97,24 +97,24 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('lastname') && null !== $data->getLastname()) {
             $dataArray['lastname'] = $data->getLastname();
         }
-        if ($data->isInitialized('countryOfBirth')) {
+        if ($data->isInitialized('countryOfBirth') && null !== $data->getCountryOfBirth()) {
             $value = $data->getCountryOfBirth();
             if (is_object($data->getCountryOfBirth())) {
-                $value = $this->normalizer->normalize($data->getCountryOfBirth(), 'json', $context);
+                $value = $data->getCountryOfBirth() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCountryOfBirth(), 'json', $context));
             }
             $dataArray['countryOfBirth'] = $value;
         }
         if ($data->isInitialized('country') && null !== $data->getCountry()) {
-            $dataArray['country'] = $this->normalizer->normalize($data->getCountry(), 'json', $context);
+            $dataArray['country'] = $data->getCountry() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCountry(), 'json', $context));
         }
-        if ($data->isInitialized('nationality')) {
+        if ($data->isInitialized('nationality') && null !== $data->getNationality()) {
             $value_1 = $data->getNationality();
             if (is_object($data->getNationality())) {
-                $value_1 = $this->normalizer->normalize($data->getNationality(), 'json', $context);
+                $value_1 = $data->getNationality() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getNationality(), 'json', $context));
             } elseif (is_array($data->getNationality())) {
                 $values = [];
                 foreach ($data->getNationality() as $value_2) {
-                    $values[] = $this->normalizer->normalize($value_2, 'json', $context);
+                    $values[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
                 }
                 $value_1 = $values;
             }

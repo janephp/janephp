@@ -53,14 +53,14 @@ class VolumeNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setCreatedAt($data['CreatedAt']);
         }
         if (\array_key_exists('Status', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Status'] as $key => $value) {
                 $values[$key] = $value;
             }
             $object->setStatus($values);
         }
         if (\array_key_exists('Labels', $data)) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Labels'] as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
@@ -70,7 +70,7 @@ class VolumeNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setScope($data['Scope']);
         }
         if (\array_key_exists('Options', $data)) {
-            $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_2 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Options'] as $key_2 => $value_2) {
                 $values_2[$key_2] = $value_2;
             }
@@ -94,25 +94,25 @@ class VolumeNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['CreatedAt'] = $data->getCreatedAt();
         }
         if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $values = [];
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getStatus() as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['Status'] = $values;
         }
-        $values_1 = [];
+        $values_1 = new \Docker\Api\Runtime\JsonObject();
         foreach ($data->getLabels() as $key_1 => $value_1) {
             $values_1[$key_1] = $value_1;
         }
         $dataArray['Labels'] = $values_1;
         $dataArray['Scope'] = $data->getScope();
-        $values_2 = [];
+        $values_2 = new \Docker\Api\Runtime\JsonObject();
         foreach ($data->getOptions() as $key_2 => $value_2) {
             $values_2[$key_2] = $value_2;
         }
         $dataArray['Options'] = $values_2;
-        if ($data->isInitialized('usageData')) {
-            $dataArray['UsageData'] = $this->normalizer->normalize($data->getUsageData(), 'json', $context);
+        if ($data->isInitialized('usageData') && null !== $data->getUsageData()) {
+            $dataArray['UsageData'] = $data->getUsageData() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getUsageData(), 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\VolumeConstraint());

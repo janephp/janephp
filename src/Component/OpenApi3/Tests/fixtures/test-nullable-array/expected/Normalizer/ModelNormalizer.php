@@ -65,10 +65,10 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('foo')) {
+        if ($data->isInitialized('foo') && null !== $data->getFoo()) {
             $dataArray['foo'] = $data->getFoo();
         }
-        if ($data->isInitialized('bar')) {
+        if ($data->isInitialized('bar') && null !== $data->getBar()) {
             $values = [];
             foreach ($data->getBar() as $value) {
                 $values[] = $value;

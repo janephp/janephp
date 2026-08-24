@@ -61,7 +61,7 @@ class RuntimeNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('path') && null !== $data->getPath()) {
             $dataArray['path'] = $data->getPath();
         }
-        if ($data->isInitialized('runtimeArgs')) {
+        if ($data->isInitialized('runtimeArgs') && null !== $data->getRuntimeArgs()) {
             $values = [];
             foreach ($data->getRuntimeArgs() as $value) {
                 $values[] = $value;

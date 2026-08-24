@@ -44,7 +44,7 @@ class ConfigSpecNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setName($data['Name']);
         }
         if (\array_key_exists('Labels', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Labels'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -65,7 +65,7 @@ class ConfigSpecNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['Name'] = $data->getName();
         }
         if ($data->isInitialized('labels') && null !== $data->getLabels()) {
-            $values = [];
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getLabels() as $key => $value) {
                 $values[$key] = $value;
             }
@@ -75,7 +75,7 @@ class ConfigSpecNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['Data'] = $data->getData();
         }
         if ($data->isInitialized('templating') && null !== $data->getTemplating()) {
-            $dataArray['Templating'] = $this->normalizer->normalize($data->getTemplating(), 'json', $context);
+            $dataArray['Templating'] = $data->getTemplating() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getTemplating(), 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ConfigSpecConstraint());

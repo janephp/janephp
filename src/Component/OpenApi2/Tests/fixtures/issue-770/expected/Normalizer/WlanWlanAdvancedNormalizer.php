@@ -452,7 +452,7 @@ class WlanWlanAdvancedNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['clientIsolationAutoVrrpEnabled'] = $data->getClientIsolationAutoVrrpEnabled();
         }
         if ($data->isInitialized('clientIsolationWhitelist') && null !== $data->getClientIsolationWhitelist()) {
-            $dataArray['clientIsolationWhitelist'] = $this->normalizer->normalize($data->getClientIsolationWhitelist(), 'json', $context);
+            $dataArray['clientIsolationWhitelist'] = $data->getClientIsolationWhitelist() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getClientIsolationWhitelist(), 'json', $context));
         }
         if ($data->isInitialized('priority') && null !== $data->getPriority()) {
             $dataArray['priority'] = $data->getPriority();
@@ -687,7 +687,7 @@ class WlanWlanAdvancedNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['oceApChannelReportEnabled'] = $data->getOceApChannelReportEnabled();
         }
         if ($data->isInitialized('fils') && null !== $data->getFils()) {
-            $dataArray['fils'] = $this->normalizer->normalize($data->getFils(), 'json', $context);
+            $dataArray['fils'] = $data->getFils() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getFils(), 'json', $context));
         }
         if ($data->isInitialized('dhcp82SubOptRadiusFormat') && null !== $data->getDhcp82SubOptRadiusFormat()) {
             $dataArray['dhcp82SubOptRadiusFormat'] = $data->getDhcp82SubOptRadiusFormat();
@@ -699,7 +699,7 @@ class WlanWlanAdvancedNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['vlanNameProfileId'] = $data->getVlanNameProfileId();
         }
         if ($data->isInitialized('userRoleAccess') && null !== $data->getUserRoleAccess()) {
-            $dataArray['userRoleAccess'] = $this->normalizer->normalize($data->getUserRoleAccess(), 'json', $context);
+            $dataArray['userRoleAccess'] = $data->getUserRoleAccess() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUserRoleAccess(), 'json', $context));
         }
         return $dataArray;
     }

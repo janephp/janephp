@@ -58,7 +58,7 @@ class ResponseAddonsGetAppNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('apps') && null !== $data->getApps()) {
             $values = [];
             foreach ($data->getApps() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['apps'] = $values;
         }

@@ -58,7 +58,7 @@ class ApCloudOnBoardingSyncResultFailApsNormalizer implements DenormalizerInterf
         if ($data->isInitialized('aps') && null !== $data->getAps()) {
             $values = [];
             foreach ($data->getAps() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['aps'] = $values;
         }

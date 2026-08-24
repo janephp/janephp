@@ -172,7 +172,7 @@ class ScguserGetScgUserNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('sshPublicKeys') && null !== $data->getSshPublicKeys()) {
             $values = [];
             foreach ($data->getSshPublicKeys() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['sshPublicKeys'] = $values;
         }

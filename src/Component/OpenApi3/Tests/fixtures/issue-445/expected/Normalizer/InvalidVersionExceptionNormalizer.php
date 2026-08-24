@@ -104,26 +104,26 @@ class InvalidVersionExceptionNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('traceLevel') && null !== $data->getTraceLevel()) {
             $dataArray['traceLevel'] = $data->getTraceLevel();
         }
-        if ($data->isInitialized('traceId')) {
+        if ($data->isInitialized('traceId') && null !== $data->getTraceId()) {
             $dataArray['traceId'] = $data->getTraceId();
         }
-        if ($data->isInitialized('traceJobId')) {
+        if ($data->isInitialized('traceJobId') && null !== $data->getTraceJobId()) {
             $dataArray['traceJobId'] = $data->getTraceJobId();
         }
         if ($data->isInitialized('httpStatusCode') && null !== $data->getHttpStatusCode()) {
             $dataArray['httpStatusCode'] = $data->getHttpStatusCode();
         }
-        if ($data->isInitialized('exceptionMessage')) {
+        if ($data->isInitialized('exceptionMessage') && null !== $data->getExceptionMessage()) {
             $dataArray['exceptionMessage'] = $data->getExceptionMessage();
         }
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('component')) {
+        if ($data->isInitialized('component') && null !== $data->getComponent()) {
             $dataArray['component'] = $data->getComponent();
         }
-        if ($data->isInitialized('version')) {
+        if ($data->isInitialized('version') && null !== $data->getVersion()) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('expectedVersion')) {
+        if ($data->isInitialized('expectedVersion') && null !== $data->getExpectedVersion()) {
             $dataArray['expectedVersion'] = $data->getExpectedVersion();
         }
         foreach ($data as $key => $value) {

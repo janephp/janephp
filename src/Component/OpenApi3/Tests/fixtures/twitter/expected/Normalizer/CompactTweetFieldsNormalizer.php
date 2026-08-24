@@ -93,15 +93,15 @@ class CompactTweetFieldsNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('referencedTweets') && null !== $data->getReferencedTweets()) {
             $values = [];
             foreach ($data->getReferencedTweets() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['referenced_tweets'] = $values;
         }
         if ($data->isInitialized('attachments') && null !== $data->getAttachments()) {
-            $dataArray['attachments'] = $this->normalizer->normalize($data->getAttachments(), 'json', $context);
+            $dataArray['attachments'] = $data->getAttachments() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAttachments(), 'json', $context));
         }
         if ($data->isInitialized('withheld') && null !== $data->getWithheld()) {
-            $dataArray['withheld'] = $this->normalizer->normalize($data->getWithheld(), 'json', $context);
+            $dataArray['withheld'] = $data->getWithheld() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getWithheld(), 'json', $context));
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

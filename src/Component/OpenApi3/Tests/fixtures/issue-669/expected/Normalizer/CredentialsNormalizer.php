@@ -83,10 +83,10 @@ class CredentialsNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('certificateAuthorityData') && null !== $data->getCertificateAuthorityData()) {
             $dataArray['certificate_authority_data'] = $data->getCertificateAuthorityData();
         }
-        if ($data->isInitialized('clientCertificateData')) {
+        if ($data->isInitialized('clientCertificateData') && null !== $data->getClientCertificateData()) {
             $dataArray['client_certificate_data'] = $data->getClientCertificateData();
         }
-        if ($data->isInitialized('clientKeyData')) {
+        if ($data->isInitialized('clientKeyData') && null !== $data->getClientKeyData()) {
             $dataArray['client_key_data'] = $data->getClientKeyData();
         }
         if ($data->isInitialized('token') && null !== $data->getToken()) {

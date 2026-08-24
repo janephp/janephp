@@ -65,7 +65,7 @@ class ListCompanyImagesNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('data') && null !== $data->getData()) {
             $values = [];
             foreach ($data->getData() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['data'] = $values;
         }

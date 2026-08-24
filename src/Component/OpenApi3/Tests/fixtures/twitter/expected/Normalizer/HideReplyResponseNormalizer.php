@@ -52,7 +52,7 @@ class HideReplyResponseNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if ($data->isInitialized('data') && null !== $data->getData()) {
-            $dataArray['data'] = $this->normalizer->normalize($data->getData(), 'json', $context);
+            $dataArray['data'] = $data->getData() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getData(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

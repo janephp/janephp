@@ -55,10 +55,10 @@ class TestGetBodyNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['foo'] = $data->getFoo();
         }
         if ($data->isInitialized('bar') && null !== $data->getBar()) {
-            $dataArray['Bar'] = $this->normalizer->normalize($data->getBar(), 'json', $context);
+            $dataArray['Bar'] = $data->getBar() === null ? null : new \Jane\Component\OpenApi2\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getBar(), 'json', $context));
         }
         if ($data->isInitialized('baz') && null !== $data->getBaz()) {
-            $dataArray['Baz'] = $this->normalizer->normalize($data->getBaz(), 'json', $context);
+            $dataArray['Baz'] = $data->getBaz() === null ? null : new \Jane\Component\OpenApi2\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getBaz(), 'json', $context));
         }
         return $dataArray;
     }

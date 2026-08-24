@@ -65,7 +65,7 @@ class PeopleSearchSuccessResultNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('directors') && null !== $data->getDirectors()) {
             $values = [];
             foreach ($data->getDirectors() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['directors'] = $values;
         }

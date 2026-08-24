@@ -71,14 +71,14 @@ class ProfileUpdatePrecedenceProfileNormalizer implements DenormalizerInterface,
         if ($data->isInitialized('vlanPrecedence') && null !== $data->getVlanPrecedence()) {
             $values = [];
             foreach ($data->getVlanPrecedence() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['vlanPrecedence'] = $values;
         }
         if ($data->isInitialized('rateLimitingPrecedence') && null !== $data->getRateLimitingPrecedence()) {
             $values_1 = [];
             foreach ($data->getRateLimitingPrecedence() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['rateLimitingPrecedence'] = $values_1;
         }

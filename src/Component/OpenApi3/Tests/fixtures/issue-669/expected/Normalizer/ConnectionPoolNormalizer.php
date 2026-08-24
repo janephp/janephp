@@ -91,16 +91,16 @@ class ConnectionPoolNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['user'] = $data->getUser();
         }
         if ($data->isInitialized('connection') && null !== $data->getConnection()) {
-            $dataArray['connection'] = $this->normalizer->normalize($data->getConnection(), 'json', $context);
+            $dataArray['connection'] = $data->getConnection() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getConnection(), 'json', $context));
         }
         if ($data->isInitialized('privateConnection') && null !== $data->getPrivateConnection()) {
-            $dataArray['private_connection'] = $this->normalizer->normalize($data->getPrivateConnection(), 'json', $context);
+            $dataArray['private_connection'] = $data->getPrivateConnection() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getPrivateConnection(), 'json', $context));
         }
         if ($data->isInitialized('standbyConnection') && null !== $data->getStandbyConnection()) {
-            $dataArray['standby_connection'] = $this->normalizer->normalize($data->getStandbyConnection(), 'json', $context);
+            $dataArray['standby_connection'] = $data->getStandbyConnection() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getStandbyConnection(), 'json', $context));
         }
         if ($data->isInitialized('standbyPrivateConnection') && null !== $data->getStandbyPrivateConnection()) {
-            $dataArray['standby_private_connection'] = $this->normalizer->normalize($data->getStandbyPrivateConnection(), 'json', $context);
+            $dataArray['standby_private_connection'] = $data->getStandbyPrivateConnection() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getStandbyPrivateConnection(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

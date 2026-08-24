@@ -69,16 +69,16 @@ class MduSegmentationProfileUpdateMduSegmentationProfileNormalizer implements De
         $dataArray['name'] = $data->getName();
         $values = [];
         foreach ($data->getDpInfoList() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['dpInfoList'] = $values;
         $values_1 = [];
         foreach ($data->getApGroupInfoList() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['apGroupInfoList'] = $values_1;
         if ($data->isInitialized('networkSegmentationSwitchInfo') && null !== $data->getNetworkSegmentationSwitchInfo()) {
-            $dataArray['networkSegmentationSwitchInfo'] = $this->normalizer->normalize($data->getNetworkSegmentationSwitchInfo(), 'json', $context);
+            $dataArray['networkSegmentationSwitchInfo'] = $data->getNetworkSegmentationSwitchInfo() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getNetworkSegmentationSwitchInfo(), 'json', $context));
         }
         return $dataArray;
     }

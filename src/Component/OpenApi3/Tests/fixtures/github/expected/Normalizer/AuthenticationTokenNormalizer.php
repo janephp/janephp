@@ -49,7 +49,7 @@ class AuthenticationTokenNormalizer implements DenormalizerInterface, Normalizer
             unset($data['expires_at']);
         }
         if (\array_key_exists('permissions', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Github\Runtime\JsonObject();
             foreach ($data['permissions'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -88,7 +88,7 @@ class AuthenticationTokenNormalizer implements DenormalizerInterface, Normalizer
         $dataArray['token'] = $data->getToken();
         $dataArray['expires_at'] = $data->getExpiresAt()->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('permissions') && null !== $data->getPermissions()) {
-            $values = [];
+            $values = new \Github\Runtime\JsonObject();
             foreach ($data->getPermissions() as $key => $value) {
                 $values[$key] = $value;
             }
@@ -97,11 +97,11 @@ class AuthenticationTokenNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('repositories') && null !== $data->getRepositories()) {
             $values_1 = [];
             foreach ($data->getRepositories() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['repositories'] = $values_1;
         }
-        if ($data->isInitialized('singleFile')) {
+        if ($data->isInitialized('singleFile') && null !== $data->getSingleFile()) {
             $dataArray['single_file'] = $data->getSingleFile();
         }
         if ($data->isInitialized('repositorySelection') && null !== $data->getRepositorySelection()) {

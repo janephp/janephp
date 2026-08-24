@@ -64,7 +64,7 @@ class ClusterRedundancyActiveClusterNormalizer implements DenormalizerInterface,
         if ($data->isInitialized('managementEntryList') && null !== $data->getManagementEntryList()) {
             $values = [];
             foreach ($data->getManagementEntryList() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['managementEntryList'] = $values;
         }

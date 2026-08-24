@@ -52,7 +52,7 @@ class ApiCreateAgentOutputNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if ($data->isInitialized('agent') && null !== $data->getAgent()) {
-            $dataArray['agent'] = $this->normalizer->normalize($data->getAgent(), 'json', $context);
+            $dataArray['agent'] = $data->getAgent() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAgent(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

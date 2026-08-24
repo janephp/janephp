@@ -55,7 +55,7 @@ class TopicSearchResultItemRelatedItemNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         if ($data->isInitialized('topicRelation') && null !== $data->getTopicRelation()) {
-            $dataArray['topic_relation'] = $this->normalizer->normalize($data->getTopicRelation(), 'json', $context);
+            $dataArray['topic_relation'] = $data->getTopicRelation() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getTopicRelation(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

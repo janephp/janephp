@@ -110,7 +110,7 @@ class ApiModelPublicNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if ($data->isInitialized('agreement') && null !== $data->getAgreement()) {
-            $dataArray['agreement'] = $this->normalizer->normalize($data->getAgreement(), 'json', $context);
+            $dataArray['agreement'] = $data->getAgreement() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAgreement(), 'json', $context));
         }
         if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
             $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
@@ -149,7 +149,7 @@ class ApiModelPublicNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['uuid'] = $data->getUuid();
         }
         if ($data->isInitialized('version') && null !== $data->getVersion()) {
-            $dataArray['version'] = $this->normalizer->normalize($data->getVersion(), 'json', $context);
+            $dataArray['version'] = $data->getVersion() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getVersion(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

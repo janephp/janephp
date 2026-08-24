@@ -185,7 +185,7 @@ class WorkflowRunNormalizer implements DenormalizerInterface, NormalizerInterfac
         $dataArray['html_url'] = $data->getHtmlUrl();
         $values = [];
         foreach ($data->getPullRequests() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['pull_requests'] = $values;
         $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
@@ -197,9 +197,9 @@ class WorkflowRunNormalizer implements DenormalizerInterface, NormalizerInterfac
         $dataArray['cancel_url'] = $data->getCancelUrl();
         $dataArray['rerun_url'] = $data->getRerunUrl();
         $dataArray['workflow_url'] = $data->getWorkflowUrl();
-        $dataArray['head_commit'] = $this->normalizer->normalize($data->getHeadCommit(), 'json', $context);
-        $dataArray['repository'] = $this->normalizer->normalize($data->getRepository(), 'json', $context);
-        $dataArray['head_repository'] = $this->normalizer->normalize($data->getHeadRepository(), 'json', $context);
+        $dataArray['head_commit'] = $data->getHeadCommit() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getHeadCommit(), 'json', $context));
+        $dataArray['repository'] = $data->getRepository() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRepository(), 'json', $context));
+        $dataArray['head_repository'] = $data->getHeadRepository() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getHeadRepository(), 'json', $context));
         if ($data->isInitialized('headRepositoryId') && null !== $data->getHeadRepositoryId()) {
             $dataArray['head_repository_id'] = $data->getHeadRepositoryId();
         }

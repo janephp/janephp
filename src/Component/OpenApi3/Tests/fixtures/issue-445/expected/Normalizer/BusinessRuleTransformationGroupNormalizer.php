@@ -74,24 +74,24 @@ class BusinessRuleTransformationGroupNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('inputs')) {
+        if ($data->isInitialized('inputs') && null !== $data->getInputs()) {
             $values = [];
             foreach ($data->getInputs() as $value) {
                 $values[] = $value;
             }
             $dataArray['inputs'] = $values;
         }
-        if ($data->isInitialized('transformations')) {
+        if ($data->isInitialized('transformations') && null !== $data->getTransformations()) {
             $values_1 = [];
             foreach ($data->getTransformations() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['transformations'] = $values_1;
         }
-        if ($data->isInitialized('storeIn')) {
+        if ($data->isInitialized('storeIn') && null !== $data->getStoreIn()) {
             $dataArray['storeIn'] = $data->getStoreIn();
         }
-        if ($data->isInitialized('traceRefId')) {
+        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
             $dataArray['traceRefId'] = $data->getTraceRefId();
         }
         return $dataArray;

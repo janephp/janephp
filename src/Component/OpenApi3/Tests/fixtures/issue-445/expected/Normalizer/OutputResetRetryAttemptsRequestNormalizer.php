@@ -88,28 +88,28 @@ class OutputResetRetryAttemptsRequestNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('outputIds')) {
+        if ($data->isInitialized('outputIds') && null !== $data->getOutputIds()) {
             $values = [];
             foreach ($data->getOutputIds() as $value) {
                 $values[] = $value;
             }
             $dataArray['outputIds'] = $values;
         }
-        if ($data->isInitialized('contentIds')) {
+        if ($data->isInitialized('contentIds') && null !== $data->getContentIds()) {
             $values_1 = [];
             foreach ($data->getContentIds() as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['contentIds'] = $values_1;
         }
-        if ($data->isInitialized('fileExtensions')) {
+        if ($data->isInitialized('fileExtensions') && null !== $data->getFileExtensions()) {
             $values_2 = [];
             foreach ($data->getFileExtensions() as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['fileExtensions'] = $values_2;
         }
-        if ($data->isInitialized('outputFormatIds')) {
+        if ($data->isInitialized('outputFormatIds') && null !== $data->getOutputFormatIds()) {
             $values_3 = [];
             foreach ($data->getOutputFormatIds() as $value_3) {
                 $values_3[] = $value_3;

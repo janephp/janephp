@@ -67,7 +67,7 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureNormalizer implem
     {
         $dataArray = [];
         if ($data->isInitialized('issuedShareCapital') && null !== $data->getIssuedShareCapital()) {
-            $dataArray['issuedShareCapital'] = $this->normalizer->normalize($data->getIssuedShareCapital(), 'json', $context);
+            $dataArray['issuedShareCapital'] = $data->getIssuedShareCapital() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getIssuedShareCapital(), 'json', $context));
         }
         if ($data->isInitialized('numberOfSharesIssued') && null !== $data->getNumberOfSharesIssued()) {
             $dataArray['numberOfSharesIssued'] = $data->getNumberOfSharesIssued();
@@ -75,7 +75,7 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureNormalizer implem
         if ($data->isInitialized('shareHolders') && null !== $data->getShareHolders()) {
             $values = [];
             foreach ($data->getShareHolders() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['shareHolders'] = $values;
         }

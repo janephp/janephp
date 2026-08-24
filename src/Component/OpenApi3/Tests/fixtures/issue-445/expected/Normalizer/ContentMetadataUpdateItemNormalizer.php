@@ -49,7 +49,7 @@ class ContentMetadataUpdateItemNormalizer implements DenormalizerInterface, Norm
             $object->setLayerSchemaIds(null);
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['content'] as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
@@ -60,7 +60,7 @@ class ContentMetadataUpdateItemNormalizer implements DenormalizerInterface, Norm
             $object->setContent(null);
         }
         if (\array_key_exists('metadata', $data) && $data['metadata'] !== null) {
-            $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_2 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['metadata'] as $key_1 => $value_2) {
                 $values_2[$key_1] = $value_2;
             }
@@ -96,22 +96,22 @@ class ContentMetadataUpdateItemNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('layerSchemaIds')) {
+        if ($data->isInitialized('layerSchemaIds') && null !== $data->getLayerSchemaIds()) {
             $values = [];
             foreach ($data->getLayerSchemaIds() as $value) {
                 $values[] = $value;
             }
             $dataArray['layerSchemaIds'] = $values;
         }
-        if ($data->isInitialized('content')) {
-            $values_1 = [];
+        if ($data->isInitialized('content') && null !== $data->getContent()) {
+            $values_1 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data->getContent() as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $dataArray['content'] = $values_1;
         }
-        if ($data->isInitialized('metadata')) {
-            $values_2 = [];
+        if ($data->isInitialized('metadata') && null !== $data->getMetadata()) {
+            $values_2 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data->getMetadata() as $key_1 => $value_2) {
                 $values_2[$key_1] = $value_2;
             }

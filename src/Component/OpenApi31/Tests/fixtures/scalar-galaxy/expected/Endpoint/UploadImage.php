@@ -34,8 +34,8 @@ class UploadImage extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clien
             $formParameters = $serializer->normalize($this->body, 'json');
             foreach ($formParameters as $key => $value) {
                 $value = is_int($value) ? (string) $value : $value;
-                if (is_array($value)) {
-                    $value = $serializer->serialize($value, 'json');
+                if (is_array($value) || $value instanceof \stdClass) {
+                    $value = $serializer->serialize((array) $value, 'json');
                 }
                 $bodyBuilder->addResource($key, $value);
             }

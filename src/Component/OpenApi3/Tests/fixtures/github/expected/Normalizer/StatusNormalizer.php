@@ -103,7 +103,7 @@ class StatusNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if ($data->isInitialized('url') && null !== $data->getUrl()) {
             $dataArray['url'] = $data->getUrl();
         }
-        if ($data->isInitialized('avatarUrl')) {
+        if ($data->isInitialized('avatarUrl') && null !== $data->getAvatarUrl()) {
             $dataArray['avatar_url'] = $data->getAvatarUrl();
         }
         if ($data->isInitialized('id') && null !== $data->getId()) {
@@ -130,8 +130,8 @@ class StatusNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
             $dataArray['updated_at'] = $data->getUpdatedAt();
         }
-        if ($data->isInitialized('creator')) {
-            $dataArray['creator'] = $this->normalizer->normalize($data->getCreator(), 'json', $context);
+        if ($data->isInitialized('creator') && null !== $data->getCreator()) {
+            $dataArray['creator'] = $data->getCreator() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCreator(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

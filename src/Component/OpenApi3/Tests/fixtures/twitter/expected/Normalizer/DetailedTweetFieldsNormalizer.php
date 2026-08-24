@@ -74,11 +74,11 @@ class DetailedTweetFieldsNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['stats'] = $this->normalizer->normalize($data->getStats(), 'json', $context);
+        $dataArray['stats'] = $data->getStats() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getStats(), 'json', $context));
         if ($data->isInitialized('contextAnnotation') && null !== $data->getContextAnnotation()) {
             $values = [];
             foreach ($data->getContextAnnotation() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['context_annotation'] = $values;
         }

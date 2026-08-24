@@ -125,17 +125,17 @@ class OutputFormatNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('sourceOutputFormats')) {
+        if ($data->isInitialized('sourceOutputFormats') && null !== $data->getSourceOutputFormats()) {
             $dataArray['sourceOutputFormats'] = $data->getSourceOutputFormats();
         }
-        if ($data->isInitialized('format')) {
+        if ($data->isInitialized('format') && null !== $data->getFormat()) {
             $dataArray['format'] = $data->getFormat();
         }
         $dataArray['names'] = $data->getNames();
         if ($data->isInitialized('retentionTime') && null !== $data->getRetentionTime()) {
             $dataArray['retentionTime'] = $data->getRetentionTime();
         }
-        if ($data->isInitialized('downloadFileNamePatterns')) {
+        if ($data->isInitialized('downloadFileNamePatterns') && null !== $data->getDownloadFileNamePatterns()) {
             $dataArray['downloadFileNamePatterns'] = $data->getDownloadFileNamePatterns();
         }
         if ($data->isInitialized('viewForAll') && null !== $data->getViewForAll()) {
@@ -144,7 +144,7 @@ class OutputFormatNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($data->isInitialized('enableXmpWriteback') && null !== $data->getEnableXmpWriteback()) {
             $dataArray['enableXmpWriteback'] = $data->getEnableXmpWriteback();
         }
-        if ($data->isInitialized('id')) {
+        if ($data->isInitialized('id') && null !== $data->getId()) {
             $dataArray['id'] = $data->getId();
         }
         if ($data->isInitialized('system') && null !== $data->getSystem()) {

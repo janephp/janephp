@@ -107,12 +107,12 @@ class PullRequestReviewNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray = [];
         $dataArray['id'] = $data->getId();
         $dataArray['node_id'] = $data->getNodeId();
-        $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
+        $dataArray['user'] = $data->getUser() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getUser(), 'json', $context));
         $dataArray['body'] = $data->getBody();
         $dataArray['state'] = $data->getState();
         $dataArray['html_url'] = $data->getHtmlUrl();
         $dataArray['pull_request_url'] = $data->getPullRequestUrl();
-        $dataArray['_links'] = $this->normalizer->normalize($data->getLinks(), 'json', $context);
+        $dataArray['_links'] = $data->getLinks() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
         if ($data->isInitialized('submittedAt') && null !== $data->getSubmittedAt()) {
             $dataArray['submitted_at'] = $data->getSubmittedAt()->format('Y-m-d\TH:i:sP');
         }

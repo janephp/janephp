@@ -80,22 +80,22 @@ class TaskSpecNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $dataArray = [];
         if ($data->isInitialized('pluginSpec') && null !== $data->getPluginSpec()) {
-            $dataArray['PluginSpec'] = $this->normalizer->normalize($data->getPluginSpec(), 'json', $context);
+            $dataArray['PluginSpec'] = $data->getPluginSpec() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getPluginSpec(), 'json', $context));
         }
         if ($data->isInitialized('containerSpec') && null !== $data->getContainerSpec()) {
-            $dataArray['ContainerSpec'] = $this->normalizer->normalize($data->getContainerSpec(), 'json', $context);
+            $dataArray['ContainerSpec'] = $data->getContainerSpec() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getContainerSpec(), 'json', $context));
         }
         if ($data->isInitialized('networkAttachmentSpec') && null !== $data->getNetworkAttachmentSpec()) {
-            $dataArray['NetworkAttachmentSpec'] = $this->normalizer->normalize($data->getNetworkAttachmentSpec(), 'json', $context);
+            $dataArray['NetworkAttachmentSpec'] = $data->getNetworkAttachmentSpec() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getNetworkAttachmentSpec(), 'json', $context));
         }
         if ($data->isInitialized('resources') && null !== $data->getResources()) {
-            $dataArray['Resources'] = $this->normalizer->normalize($data->getResources(), 'json', $context);
+            $dataArray['Resources'] = $data->getResources() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getResources(), 'json', $context));
         }
         if ($data->isInitialized('restartPolicy') && null !== $data->getRestartPolicy()) {
-            $dataArray['RestartPolicy'] = $this->normalizer->normalize($data->getRestartPolicy(), 'json', $context);
+            $dataArray['RestartPolicy'] = $data->getRestartPolicy() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getRestartPolicy(), 'json', $context));
         }
         if ($data->isInitialized('placement') && null !== $data->getPlacement()) {
-            $dataArray['Placement'] = $this->normalizer->normalize($data->getPlacement(), 'json', $context);
+            $dataArray['Placement'] = $data->getPlacement() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getPlacement(), 'json', $context));
         }
         if ($data->isInitialized('forceUpdate') && null !== $data->getForceUpdate()) {
             $dataArray['ForceUpdate'] = $data->getForceUpdate();
@@ -106,12 +106,12 @@ class TaskSpecNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if ($data->isInitialized('networks') && null !== $data->getNetworks()) {
             $values = [];
             foreach ($data->getNetworks() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['Networks'] = $values;
         }
         if ($data->isInitialized('logDriver') && null !== $data->getLogDriver()) {
-            $dataArray['LogDriver'] = $this->normalizer->normalize($data->getLogDriver(), 'json', $context);
+            $dataArray['LogDriver'] = $data->getLogDriver() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getLogDriver(), 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskSpecConstraint());

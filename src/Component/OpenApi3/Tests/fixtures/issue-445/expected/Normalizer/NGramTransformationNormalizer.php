@@ -73,7 +73,7 @@ class NGramTransformationNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId')) {
+        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
             $dataArray['traceRefId'] = $data->getTraceRefId();
         }
         $dataArray['kind'] = $data->getKind();
@@ -83,7 +83,7 @@ class NGramTransformationNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('minWordLength') && null !== $data->getMinWordLength()) {
             $dataArray['minWordLength'] = $data->getMinWordLength();
         }
-        if ($data->isInitialized('maxWordLength')) {
+        if ($data->isInitialized('maxWordLength') && null !== $data->getMaxWordLength()) {
             $dataArray['maxWordLength'] = $data->getMaxWordLength();
         }
         foreach ($data as $key => $value) {

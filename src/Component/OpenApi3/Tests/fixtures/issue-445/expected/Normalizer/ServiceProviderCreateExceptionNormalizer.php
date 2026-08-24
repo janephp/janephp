@@ -97,23 +97,23 @@ class ServiceProviderCreateExceptionNormalizer implements DenormalizerInterface,
         if ($data->isInitialized('traceLevel') && null !== $data->getTraceLevel()) {
             $dataArray['traceLevel'] = $data->getTraceLevel();
         }
-        if ($data->isInitialized('traceId')) {
+        if ($data->isInitialized('traceId') && null !== $data->getTraceId()) {
             $dataArray['traceId'] = $data->getTraceId();
         }
-        if ($data->isInitialized('traceJobId')) {
+        if ($data->isInitialized('traceJobId') && null !== $data->getTraceJobId()) {
             $dataArray['traceJobId'] = $data->getTraceJobId();
         }
         if ($data->isInitialized('httpStatusCode') && null !== $data->getHttpStatusCode()) {
             $dataArray['httpStatusCode'] = $data->getHttpStatusCode();
         }
-        if ($data->isInitialized('exceptionMessage')) {
+        if ($data->isInitialized('exceptionMessage') && null !== $data->getExceptionMessage()) {
             $dataArray['exceptionMessage'] = $data->getExceptionMessage();
         }
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('externalId')) {
+        if ($data->isInitialized('externalId') && null !== $data->getExternalId()) {
             $dataArray['externalId'] = $data->getExternalId();
         }
-        if ($data->isInitialized('detailErrorMessage')) {
+        if ($data->isInitialized('detailErrorMessage') && null !== $data->getDetailErrorMessage()) {
             $dataArray['detailErrorMessage'] = $data->getDetailErrorMessage();
         }
         foreach ($data as $key => $value) {

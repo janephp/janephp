@@ -79,24 +79,24 @@ class UserCreateRequestNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('firstName')) {
+        if ($data->isInitialized('firstName') && null !== $data->getFirstName()) {
             $dataArray['firstName'] = $data->getFirstName();
         }
-        if ($data->isInitialized('lastName')) {
+        if ($data->isInitialized('lastName') && null !== $data->getLastName()) {
             $dataArray['lastName'] = $data->getLastName();
         }
         $dataArray['emailAddress'] = $data->getEmailAddress();
-        if ($data->isInitialized('languageCode')) {
+        if ($data->isInitialized('languageCode') && null !== $data->getLanguageCode()) {
             $dataArray['languageCode'] = $data->getLanguageCode();
         }
-        if ($data->isInitialized('userRoleIds')) {
+        if ($data->isInitialized('userRoleIds') && null !== $data->getUserRoleIds()) {
             $values = [];
             foreach ($data->getUserRoleIds() as $value) {
                 $values[] = $value;
             }
             $dataArray['userRoleIds'] = $values;
         }
-        if ($data->isInitialized('address')) {
+        if ($data->isInitialized('address') && null !== $data->getAddress()) {
             $dataArray['address'] = $data->getAddress();
         }
         return $dataArray;

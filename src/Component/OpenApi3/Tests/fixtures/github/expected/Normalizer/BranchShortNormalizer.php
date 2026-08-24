@@ -69,7 +69,7 @@ class BranchShortNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['name'] = $data->getName();
         }
         if ($data->isInitialized('commit') && null !== $data->getCommit()) {
-            $dataArray['commit'] = $this->normalizer->normalize($data->getCommit(), 'json', $context);
+            $dataArray['commit'] = $data->getCommit() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCommit(), 'json', $context));
         }
         if ($data->isInitialized('protected') && null !== $data->getProtected()) {
             $dataArray['protected'] = $data->getProtected();

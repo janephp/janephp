@@ -107,7 +107,7 @@ class ZoneSnmpUserNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($data->isInitialized('notificationTarget') && null !== $data->getNotificationTarget()) {
             $values = [];
             foreach ($data->getNotificationTarget() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['notificationTarget'] = $values;
         }

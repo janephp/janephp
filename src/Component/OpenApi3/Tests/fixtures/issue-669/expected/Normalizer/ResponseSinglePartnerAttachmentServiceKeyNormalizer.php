@@ -38,7 +38,7 @@ class ResponseSinglePartnerAttachmentServiceKeyNormalizer implements Denormalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('service_key', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data['service_key'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -56,7 +56,7 @@ class ResponseSinglePartnerAttachmentServiceKeyNormalizer implements Denormalize
     {
         $dataArray = [];
         if ($data->isInitialized('serviceKey') && null !== $data->getServiceKey()) {
-            $values = [];
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data->getServiceKey() as $key => $value) {
                 $values[$key] = $value;
             }

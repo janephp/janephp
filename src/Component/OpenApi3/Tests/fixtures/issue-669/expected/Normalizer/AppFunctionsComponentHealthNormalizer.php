@@ -65,7 +65,7 @@ class AppFunctionsComponentHealthNormalizer implements DenormalizerInterface, No
         if ($data->isInitialized('functionsComponentHealthMetrics') && null !== $data->getFunctionsComponentHealthMetrics()) {
             $values = [];
             foreach ($data->getFunctionsComponentHealthMetrics() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['functions_component_health_metrics'] = $values;
         }

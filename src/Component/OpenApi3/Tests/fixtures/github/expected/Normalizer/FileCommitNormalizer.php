@@ -61,11 +61,11 @@ class FileCommitNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('content')) {
-            $dataArray['content'] = $this->normalizer->normalize($data->getContent(), 'json', $context);
+        if ($data->isInitialized('content') && null !== $data->getContent()) {
+            $dataArray['content'] = $data->getContent() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getContent(), 'json', $context));
         }
         if ($data->isInitialized('commit') && null !== $data->getCommit()) {
-            $dataArray['commit'] = $this->normalizer->normalize($data->getCommit(), 'json', $context);
+            $dataArray['commit'] = $data->getCommit() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCommit(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

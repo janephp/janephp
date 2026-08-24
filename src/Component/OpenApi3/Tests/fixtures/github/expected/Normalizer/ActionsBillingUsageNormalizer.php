@@ -76,7 +76,7 @@ class ActionsBillingUsageNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['included_minutes'] = $data->getIncludedMinutes();
         }
         if ($data->isInitialized('minutesUsedBreakdown') && null !== $data->getMinutesUsedBreakdown()) {
-            $dataArray['minutes_used_breakdown'] = $this->normalizer->normalize($data->getMinutesUsedBreakdown(), 'json', $context);
+            $dataArray['minutes_used_breakdown'] = $data->getMinutesUsedBreakdown() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getMinutesUsedBreakdown(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

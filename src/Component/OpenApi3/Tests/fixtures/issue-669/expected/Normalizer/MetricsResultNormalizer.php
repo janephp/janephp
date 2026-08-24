@@ -38,7 +38,7 @@ class MetricsResultNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('metric', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data['metric'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -67,7 +67,7 @@ class MetricsResultNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
+        $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
         foreach ($data->getMetric() as $key => $value) {
             $values[$key] = $value;
         }

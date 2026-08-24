@@ -161,48 +161,48 @@ class IssueEventNormalizer implements DenormalizerInterface, NormalizerInterface
         $dataArray['id'] = $data->getId();
         $dataArray['node_id'] = $data->getNodeId();
         $dataArray['url'] = $data->getUrl();
-        $dataArray['actor'] = $this->normalizer->normalize($data->getActor(), 'json', $context);
+        $dataArray['actor'] = $data->getActor() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getActor(), 'json', $context));
         $dataArray['event'] = $data->getEvent();
         $dataArray['commit_id'] = $data->getCommitId();
         $dataArray['commit_url'] = $data->getCommitUrl();
         $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('issue') && null !== $data->getIssue()) {
-            $dataArray['issue'] = $this->normalizer->normalize($data->getIssue(), 'json', $context);
+            $dataArray['issue'] = $data->getIssue() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getIssue(), 'json', $context));
         }
         if ($data->isInitialized('label') && null !== $data->getLabel()) {
-            $dataArray['label'] = $this->normalizer->normalize($data->getLabel(), 'json', $context);
+            $dataArray['label'] = $data->getLabel() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getLabel(), 'json', $context));
         }
-        if ($data->isInitialized('assignee')) {
-            $dataArray['assignee'] = $this->normalizer->normalize($data->getAssignee(), 'json', $context);
+        if ($data->isInitialized('assignee') && null !== $data->getAssignee()) {
+            $dataArray['assignee'] = $data->getAssignee() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getAssignee(), 'json', $context));
         }
-        if ($data->isInitialized('assigner')) {
-            $dataArray['assigner'] = $this->normalizer->normalize($data->getAssigner(), 'json', $context);
+        if ($data->isInitialized('assigner') && null !== $data->getAssigner()) {
+            $dataArray['assigner'] = $data->getAssigner() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getAssigner(), 'json', $context));
         }
-        if ($data->isInitialized('reviewRequester')) {
-            $dataArray['review_requester'] = $this->normalizer->normalize($data->getReviewRequester(), 'json', $context);
+        if ($data->isInitialized('reviewRequester') && null !== $data->getReviewRequester()) {
+            $dataArray['review_requester'] = $data->getReviewRequester() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getReviewRequester(), 'json', $context));
         }
-        if ($data->isInitialized('requestedReviewer')) {
-            $dataArray['requested_reviewer'] = $this->normalizer->normalize($data->getRequestedReviewer(), 'json', $context);
+        if ($data->isInitialized('requestedReviewer') && null !== $data->getRequestedReviewer()) {
+            $dataArray['requested_reviewer'] = $data->getRequestedReviewer() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRequestedReviewer(), 'json', $context));
         }
         if ($data->isInitialized('requestedTeam') && null !== $data->getRequestedTeam()) {
-            $dataArray['requested_team'] = $this->normalizer->normalize($data->getRequestedTeam(), 'json', $context);
+            $dataArray['requested_team'] = $data->getRequestedTeam() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRequestedTeam(), 'json', $context));
         }
         if ($data->isInitialized('dismissedReview') && null !== $data->getDismissedReview()) {
-            $dataArray['dismissed_review'] = $this->normalizer->normalize($data->getDismissedReview(), 'json', $context);
+            $dataArray['dismissed_review'] = $data->getDismissedReview() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getDismissedReview(), 'json', $context));
         }
         if ($data->isInitialized('milestone') && null !== $data->getMilestone()) {
-            $dataArray['milestone'] = $this->normalizer->normalize($data->getMilestone(), 'json', $context);
+            $dataArray['milestone'] = $data->getMilestone() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getMilestone(), 'json', $context));
         }
         if ($data->isInitialized('projectCard') && null !== $data->getProjectCard()) {
-            $dataArray['project_card'] = $this->normalizer->normalize($data->getProjectCard(), 'json', $context);
+            $dataArray['project_card'] = $data->getProjectCard() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getProjectCard(), 'json', $context));
         }
         if ($data->isInitialized('rename') && null !== $data->getRename()) {
-            $dataArray['rename'] = $this->normalizer->normalize($data->getRename(), 'json', $context);
+            $dataArray['rename'] = $data->getRename() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRename(), 'json', $context));
         }
         if ($data->isInitialized('authorAssociation') && null !== $data->getAuthorAssociation()) {
             $dataArray['author_association'] = $data->getAuthorAssociation();
         }
-        if ($data->isInitialized('lockReason')) {
+        if ($data->isInitialized('lockReason') && null !== $data->getLockReason()) {
             $dataArray['lock_reason'] = $data->getLockReason();
         }
         foreach ($data as $key => $value) {

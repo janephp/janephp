@@ -58,8 +58,8 @@ class RateLimitOverviewNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['resources'] = $this->normalizer->normalize($data->getResources(), 'json', $context);
-        $dataArray['rate'] = $this->normalizer->normalize($data->getRate(), 'json', $context);
+        $dataArray['resources'] = $data->getResources() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getResources(), 'json', $context));
+        $dataArray['rate'] = $data->getRate() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRate(), 'json', $context));
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

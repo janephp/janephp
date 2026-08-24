@@ -58,12 +58,12 @@ class DocumentNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('attributes')) {
+        if ($data->isInitialized('attributes') && null !== $data->getAttributes()) {
             $value = $data->getAttributes();
             if (is_array($data->getAttributes())) {
                 $values = [];
                 foreach ($data->getAttributes() as $value_1) {
-                    $values[] = $this->normalizer->normalize($value_1, 'json', $context);
+                    $values[] = $value_1 === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
                 }
                 $value = $values;
             } elseif (is_null($data->getAttributes())) {

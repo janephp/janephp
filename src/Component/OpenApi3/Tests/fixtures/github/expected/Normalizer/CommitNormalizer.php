@@ -119,21 +119,21 @@ class CommitNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $dataArray['node_id'] = $data->getNodeId();
         $dataArray['html_url'] = $data->getHtmlUrl();
         $dataArray['comments_url'] = $data->getCommentsUrl();
-        $dataArray['commit'] = $this->normalizer->normalize($data->getCommit(), 'json', $context);
-        $dataArray['author'] = $this->normalizer->normalize($data->getAuthor(), 'json', $context);
-        $dataArray['committer'] = $this->normalizer->normalize($data->getCommitter(), 'json', $context);
+        $dataArray['commit'] = $data->getCommit() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCommit(), 'json', $context));
+        $dataArray['author'] = $data->getAuthor() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getAuthor(), 'json', $context));
+        $dataArray['committer'] = $data->getCommitter() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCommitter(), 'json', $context));
         $values = [];
         foreach ($data->getParents() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['parents'] = $values;
         if ($data->isInitialized('stats') && null !== $data->getStats()) {
-            $dataArray['stats'] = $this->normalizer->normalize($data->getStats(), 'json', $context);
+            $dataArray['stats'] = $data->getStats() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getStats(), 'json', $context));
         }
         if ($data->isInitialized('files') && null !== $data->getFiles()) {
             $values_1 = [];
             foreach ($data->getFiles() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['files'] = $values_1;
         }

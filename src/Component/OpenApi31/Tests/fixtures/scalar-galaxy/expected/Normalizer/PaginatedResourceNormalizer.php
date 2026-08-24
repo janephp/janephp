@@ -49,7 +49,7 @@ class PaginatedResourceNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if ($data->isInitialized('meta') && null !== $data->getMeta()) {
-            $dataArray['meta'] = $this->normalizer->normalize($data->getMeta(), 'json', $context);
+            $dataArray['meta'] = $data->getMeta() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getMeta(), 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PaginatedResourceConstraint());

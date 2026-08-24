@@ -73,10 +73,10 @@ class DhcpMsgStatsDhcpMsgStatsNormalizer implements DenormalizerInterface, Norma
             $dataArray['apMac'] = $data->getApMac();
         }
         if ($data->isInitialized('dhcpMsgRecvdStats') && null !== $data->getDhcpMsgRecvdStats()) {
-            $dataArray['dhcpMsgRecvdStats'] = $this->normalizer->normalize($data->getDhcpMsgRecvdStats(), 'json', $context);
+            $dataArray['dhcpMsgRecvdStats'] = $data->getDhcpMsgRecvdStats() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getDhcpMsgRecvdStats(), 'json', $context));
         }
         if ($data->isInitialized('dhcpMsgSentStats') && null !== $data->getDhcpMsgSentStats()) {
-            $dataArray['dhcpMsgSentStats'] = $this->normalizer->normalize($data->getDhcpMsgSentStats(), 'json', $context);
+            $dataArray['dhcpMsgSentStats'] = $data->getDhcpMsgSentStats() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getDhcpMsgSentStats(), 'json', $context));
         }
         return $dataArray;
     }

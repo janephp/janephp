@@ -46,7 +46,7 @@ class IPAMNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (\array_key_exists('Config', $data)) {
             $values = [];
             foreach ($data['Config'] as $value) {
-                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                $values_1 = new \Docker\Api\Runtime\JsonObject();
                 foreach ($value as $key => $value_1) {
                     $values_1[$key] = $value_1;
                 }
@@ -55,7 +55,7 @@ class IPAMNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $object->setConfig($values);
         }
         if (\array_key_exists('Options', $data)) {
-            $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_2 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Options'] as $key_1 => $value_2) {
                 $values_2[$key_1] = $value_2;
             }
@@ -72,7 +72,7 @@ class IPAMNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if ($data->isInitialized('config') && null !== $data->getConfig()) {
             $values = [];
             foreach ($data->getConfig() as $value) {
-                $values_1 = [];
+                $values_1 = new \Docker\Api\Runtime\JsonObject();
                 foreach ($value as $key => $value_1) {
                     $values_1[$key] = $value_1;
                 }
@@ -81,7 +81,7 @@ class IPAMNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $dataArray['Config'] = $values;
         }
         if ($data->isInitialized('options') && null !== $data->getOptions()) {
-            $values_2 = [];
+            $values_2 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getOptions() as $key_1 => $value_2) {
                 $values_2[$key_1] = $value_2;
             }

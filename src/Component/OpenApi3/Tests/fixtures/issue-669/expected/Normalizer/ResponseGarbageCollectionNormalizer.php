@@ -52,7 +52,7 @@ class ResponseGarbageCollectionNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if ($data->isInitialized('garbageCollection') && null !== $data->getGarbageCollection()) {
-            $dataArray['garbage_collection'] = $this->normalizer->normalize($data->getGarbageCollection(), 'json', $context);
+            $dataArray['garbage_collection'] = $data->getGarbageCollection() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getGarbageCollection(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

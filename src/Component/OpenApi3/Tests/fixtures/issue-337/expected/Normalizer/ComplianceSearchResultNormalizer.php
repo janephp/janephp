@@ -52,7 +52,7 @@ class ComplianceSearchResultNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if ($data->isInitialized('data') && null !== $data->getData()) {
-            $dataArray['data'] = $this->normalizer->normalize($data->getData(), 'json', $context);
+            $dataArray['data'] = $data->getData() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getData(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

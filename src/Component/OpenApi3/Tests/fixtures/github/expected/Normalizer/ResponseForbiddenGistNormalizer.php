@@ -63,7 +63,7 @@ class ResponseForbiddenGistNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if ($data->isInitialized('block') && null !== $data->getBlock()) {
-            $dataArray['block'] = $this->normalizer->normalize($data->getBlock(), 'json', $context);
+            $dataArray['block'] = $data->getBlock() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getBlock(), 'json', $context));
         }
         if ($data->isInitialized('message') && null !== $data->getMessage()) {
             $dataArray['message'] = $data->getMessage();

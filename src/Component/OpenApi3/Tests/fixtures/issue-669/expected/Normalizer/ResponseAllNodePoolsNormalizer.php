@@ -40,7 +40,7 @@ class ResponseAllNodePoolsNormalizer implements DenormalizerInterface, Normalize
         if (\array_key_exists('node_pools', $data)) {
             $values = [];
             foreach ($data['node_pools'] as $value) {
-                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
                 foreach ($value as $key => $value_1) {
                     $values_1[$key] = $value_1;
                 }
@@ -62,7 +62,7 @@ class ResponseAllNodePoolsNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('nodePools') && null !== $data->getNodePools()) {
             $values = [];
             foreach ($data->getNodePools() as $value) {
-                $values_1 = [];
+                $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
                 foreach ($value as $key => $value_1) {
                     $values_1[$key] = $value_1;
                 }

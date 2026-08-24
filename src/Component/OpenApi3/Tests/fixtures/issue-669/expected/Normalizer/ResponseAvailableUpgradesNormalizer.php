@@ -58,10 +58,10 @@ class ResponseAvailableUpgradesNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('availableUpgradeVersions')) {
+        if ($data->isInitialized('availableUpgradeVersions') && null !== $data->getAvailableUpgradeVersions()) {
             $values = [];
             foreach ($data->getAvailableUpgradeVersions() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['available_upgrade_versions'] = $values;
         }

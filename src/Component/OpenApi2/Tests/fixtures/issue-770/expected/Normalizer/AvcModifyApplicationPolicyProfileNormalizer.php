@@ -76,7 +76,7 @@ class AvcModifyApplicationPolicyProfileNormalizer implements DenormalizerInterfa
         if ($data->isInitialized('applicationRules') && null !== $data->getApplicationRules()) {
             $values = [];
             foreach ($data->getApplicationRules() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['applicationRules'] = $values;
         }

@@ -69,17 +69,17 @@ class V2FirewallsFirewallIdRulesDeleteBodyNormalizer implements DenormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('inboundRules')) {
+        if ($data->isInitialized('inboundRules') && null !== $data->getInboundRules()) {
             $values = [];
             foreach ($data->getInboundRules() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['inbound_rules'] = $values;
         }
-        if ($data->isInitialized('outboundRules')) {
+        if ($data->isInitialized('outboundRules') && null !== $data->getOutboundRules()) {
             $values_1 = [];
             foreach ($data->getOutboundRules() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['outbound_rules'] = $values_1;
         }

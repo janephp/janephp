@@ -35,13 +35,16 @@ class FormBodyContentGenerator extends AbstractBodyContentGenerator
                             )
                         )),
                         new Stmt\If_(
-                            new Expr\FuncCall(new Name('is_array'), [new Arg(new Expr\Variable('value'))]),
+                            new Expr\BinaryOp\BooleanOr(
+                                new Expr\FuncCall(new Name('is_array'), [new Arg(new Expr\Variable('value'))]),
+                                new Expr\Instanceof_(new Expr\Variable('value'), new Name('\stdClass'))
+                            ),
                             [
                                 'stmts' => [
                                     new Stmt\Expression(new Expr\Assign(
                                         new Expr\Variable('value'),
                                         new Expr\MethodCall(new Expr\Variable('serializer'), 'serialize', [
-                                            new Arg(new Expr\Variable('value')),
+                                            new Arg(new Expr\Cast\Array_(new Expr\Variable('value'))),
                                             new Arg(new Scalar\String_('json')),
                                         ])
                                     )),

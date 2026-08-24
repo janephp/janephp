@@ -169,17 +169,17 @@ class ReleaseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $dataArray['tag_name'] = $data->getTagName();
         $dataArray['target_commitish'] = $data->getTargetCommitish();
         $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('body')) {
+        if ($data->isInitialized('body') && null !== $data->getBody()) {
             $dataArray['body'] = $data->getBody();
         }
         $dataArray['draft'] = $data->getDraft();
         $dataArray['prerelease'] = $data->getPrerelease();
         $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['published_at'] = $data->getPublishedAt()?->format('Y-m-d\TH:i:sP');
-        $dataArray['author'] = $this->normalizer->normalize($data->getAuthor(), 'json', $context);
+        $dataArray['author'] = $data->getAuthor() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getAuthor(), 'json', $context));
         $values = [];
         foreach ($data->getAssets() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['assets'] = $values;
         if ($data->isInitialized('bodyHtml') && null !== $data->getBodyHtml()) {

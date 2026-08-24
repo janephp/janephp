@@ -133,28 +133,28 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('colorProfile')) {
+        if ($data->isInitialized('colorProfile') && null !== $data->getColorProfile()) {
             $dataArray['colorProfile'] = $data->getColorProfile();
         }
         if ($data->isInitialized('colorTransformationIntent') && null !== $data->getColorTransformationIntent()) {
             $dataArray['colorTransformationIntent'] = $data->getColorTransformationIntent();
         }
-        if ($data->isInitialized('horizontalResolution')) {
+        if ($data->isInitialized('horizontalResolution') && null !== $data->getHorizontalResolution()) {
             $dataArray['horizontalResolution'] = $data->getHorizontalResolution();
         }
-        if ($data->isInitialized('verticalResolution')) {
+        if ($data->isInitialized('verticalResolution') && null !== $data->getVerticalResolution()) {
             $dataArray['verticalResolution'] = $data->getVerticalResolution();
         }
         if ($data->isInitialized('keepClippingPath') && null !== $data->getKeepClippingPath()) {
             $dataArray['keepClippingPath'] = $data->getKeepClippingPath();
         }
-        if ($data->isInitialized('resizeAction')) {
+        if ($data->isInitialized('resizeAction') && null !== $data->getResizeAction()) {
             $dataArray['resizeAction'] = $data->getResizeAction();
         }
-        if ($data->isInitialized('actions')) {
+        if ($data->isInitialized('actions') && null !== $data->getActions()) {
             $values = [];
             foreach ($data->getActions() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['actions'] = $values;
         }
@@ -167,7 +167,7 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('includeUnspecifiedTiffExtraChannels') && null !== $data->getIncludeUnspecifiedTiffExtraChannels()) {
             $dataArray['includeUnspecifiedTiffExtraChannels'] = $data->getIncludeUnspecifiedTiffExtraChannels();
         }
-        if ($data->isInitialized('extension')) {
+        if ($data->isInitialized('extension') && null !== $data->getExtension()) {
             $dataArray['extension'] = $data->getExtension();
         }
         foreach ($data as $key => $value_1) {

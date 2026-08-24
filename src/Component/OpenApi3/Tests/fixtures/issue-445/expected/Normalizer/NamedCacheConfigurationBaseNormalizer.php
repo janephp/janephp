@@ -75,7 +75,7 @@ class NamedCacheConfigurationBaseNormalizer implements DenormalizerInterface, No
         if (null !== $data->getKind() and 'InverseListItemNamedCacheConfiguration' === $data->getKind()) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if ($data->isInitialized('name')) {
+        if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();
         }
         $dataArray['caseSensitive'] = $data->getCaseSensitive();

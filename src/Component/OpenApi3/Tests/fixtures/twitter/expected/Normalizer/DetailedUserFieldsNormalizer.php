@@ -52,7 +52,7 @@ class DetailedUserFieldsNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if ($data->isInitialized('stats') && null !== $data->getStats()) {
-            $dataArray['stats'] = $this->normalizer->normalize($data->getStats(), 'json', $context);
+            $dataArray['stats'] = $data->getStats() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getStats(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

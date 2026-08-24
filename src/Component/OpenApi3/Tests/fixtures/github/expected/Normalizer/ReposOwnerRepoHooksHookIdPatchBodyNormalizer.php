@@ -86,7 +86,7 @@ class ReposOwnerRepoHooksHookIdPatchBodyNormalizer implements DenormalizerInterf
     {
         $dataArray = [];
         if ($data->isInitialized('config') && null !== $data->getConfig()) {
-            $dataArray['config'] = $this->normalizer->normalize($data->getConfig(), 'json', $context);
+            $dataArray['config'] = $data->getConfig() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getConfig(), 'json', $context));
         }
         if ($data->isInitialized('events') && null !== $data->getEvents()) {
             $values = [];

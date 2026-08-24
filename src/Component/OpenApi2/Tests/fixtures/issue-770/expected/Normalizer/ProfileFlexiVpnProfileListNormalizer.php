@@ -91,7 +91,7 @@ class ProfileFlexiVpnProfileListNormalizer implements DenormalizerInterface, Nor
         if ($data->isInitialized('list') && null !== $data->getList()) {
             $values = [];
             foreach ($data->getList() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['list'] = $values;
         }

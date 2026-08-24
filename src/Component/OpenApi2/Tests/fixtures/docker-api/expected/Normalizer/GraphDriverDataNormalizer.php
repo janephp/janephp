@@ -44,7 +44,7 @@ class GraphDriverDataNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setName($data['Name']);
         }
         if (\array_key_exists('Data', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Data'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -56,7 +56,7 @@ class GraphDriverDataNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         $dataArray['Name'] = $data->getName();
-        $values = [];
+        $values = new \Docker\Api\Runtime\JsonObject();
         foreach ($data->getData() as $key => $value) {
             $values[$key] = $value;
         }

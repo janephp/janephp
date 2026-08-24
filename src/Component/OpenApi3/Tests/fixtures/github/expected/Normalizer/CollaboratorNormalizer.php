@@ -151,7 +151,7 @@ class CollaboratorNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['type'] = $data->getType();
         $dataArray['site_admin'] = $data->getSiteAdmin();
         if ($data->isInitialized('permissions') && null !== $data->getPermissions()) {
-            $dataArray['permissions'] = $this->normalizer->normalize($data->getPermissions(), 'json', $context);
+            $dataArray['permissions'] = $data->getPermissions() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPermissions(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

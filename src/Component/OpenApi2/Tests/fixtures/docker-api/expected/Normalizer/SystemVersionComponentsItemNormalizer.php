@@ -59,7 +59,7 @@ class SystemVersionComponentsItemNormalizer implements DenormalizerInterface, No
         $dataArray = [];
         $dataArray['Name'] = $data->getName();
         $dataArray['Version'] = $data->getVersion();
-        if ($data->isInitialized('details')) {
+        if ($data->isInitialized('details') && null !== $data->getDetails()) {
             $dataArray['Details'] = $data->getDetails();
         }
         if (!($context['skip_validation'] ?? false)) {

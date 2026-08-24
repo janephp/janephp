@@ -66,7 +66,7 @@ class TweetMetricsResponseNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('data') && null !== $data->getData()) {
             $values = [];
             foreach ($data->getData() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['data'] = $values;
         }

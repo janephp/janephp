@@ -56,10 +56,10 @@ class Endpoint2GetResponseNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if ($data->isInitialized('field2') && null !== $data->getField2()) {
-            $dataArray['field-2'] = $this->normalizer->normalize($data->getField2(), 'json', $context);
+            $dataArray['field-2'] = $data->getField2() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getField2(), 'json', $context));
         }
         if ($data->isInitialized('field2Bis') && null !== $data->getField2Bis()) {
-            $dataArray['field-2-bis'] = $this->normalizer->normalize($data->getField2Bis(), 'json', $context);
+            $dataArray['field-2-bis'] = $data->getField2Bis() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getField2Bis(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -58,7 +58,7 @@ class DefaultUserFieldsEntitiesUrlNormalizer implements DenormalizerInterface, N
         if ($data->isInitialized('urls') && null !== $data->getUrls()) {
             $values = [];
             foreach ($data->getUrls() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['urls'] = $values;
         }

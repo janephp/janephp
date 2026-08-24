@@ -76,7 +76,7 @@ class SatelliteNormalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $dataArray = [];
         $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description')) {
+        if ($data->isInitialized('description') && null !== $data->getDescription()) {
             $value = $data->getDescription();
             if (is_string($data->getDescription())) {
                 $value = $data->getDescription();
@@ -92,7 +92,7 @@ class SatelliteNormalizer implements DenormalizerInterface, NormalizerInterface,
             $dataArray['type'] = $data->getType();
         }
         if ($data->isInitialized('orbit') && null !== $data->getOrbit()) {
-            $dataArray['orbit'] = $this->normalizer->normalize($data->getOrbit(), 'json', $context);
+            $dataArray['orbit'] = $data->getOrbit() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getOrbit(), 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\SatelliteConstraint());

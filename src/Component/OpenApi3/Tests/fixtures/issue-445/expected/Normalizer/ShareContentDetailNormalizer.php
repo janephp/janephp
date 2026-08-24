@@ -51,14 +51,14 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
             $object->setLayerSchemaIds(null);
         }
         if (\array_key_exists('content', $data)) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['content'] as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $object->setContent($values_1);
         }
         if (\array_key_exists('metadata', $data) && $data['metadata'] !== null) {
-            $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_2 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['metadata'] as $key_1 => $value_2) {
                 $values_2[$key_1] = $value_2;
             }
@@ -95,20 +95,20 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         $dataArray['contentSchemaId'] = $data->getContentSchemaId();
-        if ($data->isInitialized('layerSchemaIds')) {
+        if ($data->isInitialized('layerSchemaIds') && null !== $data->getLayerSchemaIds()) {
             $values = [];
             foreach ($data->getLayerSchemaIds() as $value) {
                 $values[] = $value;
             }
             $dataArray['layerSchemaIds'] = $values;
         }
-        $values_1 = [];
+        $values_1 = new \PicturePark\API\Runtime\JsonObject();
         foreach ($data->getContent() as $key => $value_1) {
             $values_1[$key] = $value_1;
         }
         $dataArray['content'] = $values_1;
-        if ($data->isInitialized('metadata')) {
-            $values_2 = [];
+        if ($data->isInitialized('metadata') && null !== $data->getMetadata()) {
+            $values_2 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data->getMetadata() as $key_1 => $value_2) {
                 $values_2[$key_1] = $value_2;
             }
@@ -117,12 +117,12 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
         $dataArray['id'] = $data->getId();
         $values_3 = [];
         foreach ($data->getOutputs() as $value_3) {
-            $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+            $values_3[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
         }
         $dataArray['outputs'] = $values_3;
         $dataArray['contentType'] = $data->getContentType();
         $dataArray['displayValues'] = $data->getDisplayValues();
-        if ($data->isInitialized('iconUrl')) {
+        if ($data->isInitialized('iconUrl') && null !== $data->getIconUrl()) {
             $dataArray['iconUrl'] = $data->getIconUrl();
         }
         return $dataArray;

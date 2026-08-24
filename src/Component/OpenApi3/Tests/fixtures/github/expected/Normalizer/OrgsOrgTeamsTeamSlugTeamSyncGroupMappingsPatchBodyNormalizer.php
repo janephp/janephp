@@ -60,7 +60,7 @@ class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyNormalizer implements De
         $dataArray = [];
         $values = [];
         foreach ($data->getGroups() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['groups'] = $values;
         foreach ($data as $key => $value_1) {

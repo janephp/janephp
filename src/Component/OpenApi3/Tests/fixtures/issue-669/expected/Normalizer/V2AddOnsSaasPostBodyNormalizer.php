@@ -80,7 +80,7 @@ class V2AddOnsSaasPostBodyNormalizer implements DenormalizerInterface, Normalize
         $dataArray['name'] = $data->getName();
         $values = [];
         foreach ($data->getMetadata() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['metadata'] = $values;
         if ($data->isInitialized('linkedDropletId') && null !== $data->getLinkedDropletId()) {

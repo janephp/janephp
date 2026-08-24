@@ -52,7 +52,7 @@ class ResponseLogsinkNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if ($data->isInitialized('sink') && null !== $data->getSink()) {
-            $dataArray['sink'] = $this->normalizer->normalize($data->getSink(), 'json', $context);
+            $dataArray['sink'] = $data->getSink() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSink(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

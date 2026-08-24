@@ -6,6 +6,7 @@ use Jane\Component\JsonSchema\Generator\Context\Context;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
+use PhpParser\Node\Name\FullyQualified;
 use PhpParser\Node\Stmt;
 
 class PatternMultipleType extends Type
@@ -46,7 +47,7 @@ class PatternMultipleType extends Type
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));
         $statements = [
             // $values = [];
-            new Stmt\Expression(new Expr\Assign($valuesVar, $this->createArrayValueStatement())),
+            new Stmt\Expression(new Expr\Assign($valuesVar, $this->createArrayValueStatement($context))),
         ];
 
         $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
@@ -87,7 +88,7 @@ class PatternMultipleType extends Type
         $valuesVar = new Expr\Variable($context->getUniqueVariableName('values'));
         $statements = [
             // $values = [];
-            new Stmt\Expression(new Expr\Assign($valuesVar, $this->createNormalizationArrayValueStatement())),
+            new Stmt\Expression(new Expr\Assign($valuesVar, $this->createNormalizationArrayValueStatement($context))),
         ];
 
         $loopValueVar = new Expr\Variable($context->getUniqueVariableName('value'));
@@ -123,17 +124,19 @@ class PatternMultipleType extends Type
         return [$statements, $valuesVar];
     }
 
-    protected function createArrayValueStatement(): Expr
+    protected function createArrayValueStatement(Context $context): Expr
     {
-        return new Expr\New_(new Name('\ArrayObject'), [
-            new Expr\Array_(),
-            new Expr\ClassConstFetch(new Name('\ArrayObject'), 'ARRAY_AS_PROPS'),
-        ]);
+        return $this->createJsonObjectStatement($context);
     }
 
-    protected function createNormalizationArrayValueStatement(): Expr
+    protected function createNormalizationArrayValueStatement(Context $context): Expr
     {
-        return new Expr\Array_();
+        return $this->createJsonObjectStatement($context);
+    }
+
+    private function createJsonObjectStatement(Context $context): Expr
+    {
+        return new Expr\New_(new FullyQualified(\sprintf('%s\\Runtime\\JsonObject', $context->getCurrentSchema()->getNamespace())));
     }
 
     protected function createLoopKeyStatement(Context $context): Expr

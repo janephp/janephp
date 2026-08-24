@@ -52,7 +52,7 @@ class ResponseReservedIpv6ActionNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if ($data->isInitialized('action') && null !== $data->getAction()) {
-            $dataArray['action'] = $this->normalizer->normalize($data->getAction(), 'json', $context);
+            $dataArray['action'] = $data->getAction() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAction(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

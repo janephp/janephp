@@ -58,7 +58,7 @@ class AppAlertProgressNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('steps') && null !== $data->getSteps()) {
             $values = [];
             foreach ($data->getSteps() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['steps'] = $values;
         }

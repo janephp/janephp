@@ -68,7 +68,7 @@ class AppsDeploymentProgressStepNormalizer implements DenormalizerInterface, Nor
         if (\array_key_exists('steps', $data)) {
             $values = [];
             foreach ($data['steps'] as $value) {
-                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
                 foreach ($value as $key => $value_1) {
                     $values_1[$key] = $value_1;
                 }
@@ -100,7 +100,7 @@ class AppsDeploymentProgressStepNormalizer implements DenormalizerInterface, Nor
             $dataArray['name'] = $data->getName();
         }
         if ($data->isInitialized('reason') && null !== $data->getReason()) {
-            $dataArray['reason'] = $this->normalizer->normalize($data->getReason(), 'json', $context);
+            $dataArray['reason'] = $data->getReason() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getReason(), 'json', $context));
         }
         if ($data->isInitialized('startedAt') && null !== $data->getStartedAt()) {
             $dataArray['started_at'] = $data->getStartedAt()->format('Y-m-d\TH:i:sP');
@@ -111,7 +111,7 @@ class AppsDeploymentProgressStepNormalizer implements DenormalizerInterface, Nor
         if ($data->isInitialized('steps') && null !== $data->getSteps()) {
             $values = [];
             foreach ($data->getSteps() as $value) {
-                $values_1 = [];
+                $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
                 foreach ($value as $key => $value_1) {
                     $values_1[$key] = $value_1;
                 }

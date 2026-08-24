@@ -61,10 +61,10 @@ class ZoneCustomizedTimeZoneNormalizer implements DenormalizerInterface, Normali
         $dataArray['gmtOffset'] = $data->getGmtOffset();
         $dataArray['gmtOffsetMinute'] = $data->getGmtOffsetMinute();
         if ($data->isInitialized('start') && null !== $data->getStart()) {
-            $dataArray['start'] = $this->normalizer->normalize($data->getStart(), 'json', $context);
+            $dataArray['start'] = $data->getStart() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getStart(), 'json', $context));
         }
         if ($data->isInitialized('end') && null !== $data->getEnd()) {
-            $dataArray['end'] = $this->normalizer->normalize($data->getEnd(), 'json', $context);
+            $dataArray['end'] = $data->getEnd() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getEnd(), 'json', $context));
         }
         return $dataArray;
     }

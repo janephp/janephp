@@ -67,7 +67,7 @@ class SingleTweetLookupResponseNormalizer implements DenormalizerInterface, Norm
             $dataArray['data'] = $data->getData();
         }
         if ($data->isInitialized('includes') && null !== $data->getIncludes()) {
-            $dataArray['includes'] = $this->normalizer->normalize($data->getIncludes(), 'json', $context);
+            $dataArray['includes'] = $data->getIncludes() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIncludes(), 'json', $context));
         }
         if ($data->isInitialized('errors') && null !== $data->getErrors()) {
             $values = [];

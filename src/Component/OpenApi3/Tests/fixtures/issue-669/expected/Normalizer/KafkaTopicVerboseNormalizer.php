@@ -83,12 +83,12 @@ class KafkaTopicVerboseNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('partitions') && null !== $data->getPartitions()) {
             $values = [];
             foreach ($data->getPartitions() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['partitions'] = $values;
         }
         if ($data->isInitialized('config') && null !== $data->getConfig()) {
-            $dataArray['config'] = $this->normalizer->normalize($data->getConfig(), 'json', $context);
+            $dataArray['config'] = $data->getConfig() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getConfig(), 'json', $context));
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

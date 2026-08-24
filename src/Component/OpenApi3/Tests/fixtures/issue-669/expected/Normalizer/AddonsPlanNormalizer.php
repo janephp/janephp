@@ -137,7 +137,7 @@ class AddonsPlanNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('features') && null !== $data->getFeatures()) {
             $values = [];
             foreach ($data->getFeatures() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['features'] = $values;
         }
@@ -149,7 +149,7 @@ class AddonsPlanNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('dimensions') && null !== $data->getDimensions()) {
             $values_1 = [];
             foreach ($data->getDimensions() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['dimensions'] = $values_1;
         }

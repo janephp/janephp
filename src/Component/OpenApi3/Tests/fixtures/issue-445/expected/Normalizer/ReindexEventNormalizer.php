@@ -68,7 +68,7 @@ class ReindexEventNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray = [];
         $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('indexId')) {
+        if ($data->isInitialized('indexId') && null !== $data->getIndexId()) {
             $dataArray['indexId'] = $data->getIndexId();
         }
         if ($data->isInitialized('state') && null !== $data->getState()) {

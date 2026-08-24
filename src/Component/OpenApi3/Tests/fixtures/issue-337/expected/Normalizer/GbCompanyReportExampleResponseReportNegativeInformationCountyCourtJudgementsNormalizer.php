@@ -52,7 +52,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
     {
         $dataArray = [];
         if ($data->isInitialized('registered') && null !== $data->getRegistered()) {
-            $dataArray['registered'] = $this->normalizer->normalize($data->getRegistered(), 'json', $context);
+            $dataArray['registered'] = $data->getRegistered() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getRegistered(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

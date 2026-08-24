@@ -65,7 +65,7 @@ class DeviceRequestNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->setCapabilities($values_1);
         }
         if (\array_key_exists('Options', $data)) {
-            $values_3 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_3 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Options'] as $key => $value_3) {
                 $values_3[$key] = $value_3;
             }
@@ -101,7 +101,7 @@ class DeviceRequestNormalizer implements DenormalizerInterface, NormalizerInterf
             $dataArray['Capabilities'] = $values_1;
         }
         if ($data->isInitialized('options') && null !== $data->getOptions()) {
-            $values_3 = [];
+            $values_3 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getOptions() as $key => $value_3) {
                 $values_3[$key] = $value_3;
             }

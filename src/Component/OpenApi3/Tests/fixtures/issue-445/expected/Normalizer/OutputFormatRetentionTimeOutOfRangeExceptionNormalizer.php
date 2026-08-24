@@ -139,41 +139,41 @@ class OutputFormatRetentionTimeOutOfRangeExceptionNormalizer implements Denormal
         if ($data->isInitialized('traceLevel') && null !== $data->getTraceLevel()) {
             $dataArray['traceLevel'] = $data->getTraceLevel();
         }
-        if ($data->isInitialized('traceId')) {
+        if ($data->isInitialized('traceId') && null !== $data->getTraceId()) {
             $dataArray['traceId'] = $data->getTraceId();
         }
-        if ($data->isInitialized('traceJobId')) {
+        if ($data->isInitialized('traceJobId') && null !== $data->getTraceJobId()) {
             $dataArray['traceJobId'] = $data->getTraceJobId();
         }
         if ($data->isInitialized('httpStatusCode') && null !== $data->getHttpStatusCode()) {
             $dataArray['httpStatusCode'] = $data->getHttpStatusCode();
         }
-        if ($data->isInitialized('exceptionMessage')) {
+        if ($data->isInitialized('exceptionMessage') && null !== $data->getExceptionMessage()) {
             $dataArray['exceptionMessage'] = $data->getExceptionMessage();
         }
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('customerId')) {
+        if ($data->isInitialized('customerId') && null !== $data->getCustomerId()) {
             $dataArray['customerId'] = $data->getCustomerId();
         }
-        if ($data->isInitialized('customerAlias')) {
+        if ($data->isInitialized('customerAlias') && null !== $data->getCustomerAlias()) {
             $dataArray['customerAlias'] = $data->getCustomerAlias();
         }
-        if ($data->isInitialized('userId')) {
+        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
             $dataArray['userId'] = $data->getUserId();
         }
-        if ($data->isInitialized('argumentName')) {
+        if ($data->isInitialized('argumentName') && null !== $data->getArgumentName()) {
             $dataArray['argumentName'] = $data->getArgumentName();
         }
-        if ($data->isInitialized('argumentValue')) {
+        if ($data->isInitialized('argumentValue') && null !== $data->getArgumentValue()) {
             $dataArray['argumentValue'] = $data->getArgumentValue();
         }
-        if ($data->isInitialized('minAcceptableValue')) {
+        if ($data->isInitialized('minAcceptableValue') && null !== $data->getMinAcceptableValue()) {
             $dataArray['minAcceptableValue'] = $data->getMinAcceptableValue();
         }
-        if ($data->isInitialized('maxAcceptableValue')) {
+        if ($data->isInitialized('maxAcceptableValue') && null !== $data->getMaxAcceptableValue()) {
             $dataArray['maxAcceptableValue'] = $data->getMaxAcceptableValue();
         }
-        if ($data->isInitialized('outputFormatId')) {
+        if ($data->isInitialized('outputFormatId') && null !== $data->getOutputFormatId()) {
             $dataArray['outputFormatId'] = $data->getOutputFormatId();
         }
         foreach ($data as $key => $value) {

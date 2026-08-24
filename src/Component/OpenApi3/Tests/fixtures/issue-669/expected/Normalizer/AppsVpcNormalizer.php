@@ -65,7 +65,7 @@ class AppsVpcNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('egressIps') && null !== $data->getEgressIps()) {
             $values = [];
             foreach ($data->getEgressIps() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['egress_ips'] = $values;
         }

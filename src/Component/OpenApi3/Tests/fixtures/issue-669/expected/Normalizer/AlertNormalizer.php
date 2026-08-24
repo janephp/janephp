@@ -88,7 +88,7 @@ class AlertNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $dataArray['comparison'] = $data->getComparison();
         }
         if ($data->isInitialized('notifications') && null !== $data->getNotifications()) {
-            $dataArray['notifications'] = $this->normalizer->normalize($data->getNotifications(), 'json', $context);
+            $dataArray['notifications'] = $data->getNotifications() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getNotifications(), 'json', $context));
         }
         if ($data->isInitialized('period') && null !== $data->getPeriod()) {
             $dataArray['period'] = $data->getPeriod();

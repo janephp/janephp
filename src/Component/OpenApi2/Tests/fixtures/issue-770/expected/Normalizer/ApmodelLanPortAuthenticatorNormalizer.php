@@ -61,13 +61,13 @@ class ApmodelLanPortAuthenticatorNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if ($data->isInitialized('authentication') && null !== $data->getAuthentication()) {
-            $dataArray['authentication'] = $this->normalizer->normalize($data->getAuthentication(), 'json', $context);
+            $dataArray['authentication'] = $data->getAuthentication() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAuthentication(), 'json', $context));
         }
         if ($data->isInitialized('disabledAccounting') && null !== $data->getDisabledAccounting()) {
             $dataArray['disabledAccounting'] = $data->getDisabledAccounting();
         }
         if ($data->isInitialized('accounting') && null !== $data->getAccounting()) {
-            $dataArray['accounting'] = $this->normalizer->normalize($data->getAccounting(), 'json', $context);
+            $dataArray['accounting'] = $data->getAccounting() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAccounting(), 'json', $context));
         }
         $dataArray['macAuthByPassEnabled'] = $data->getMacAuthByPassEnabled();
         return $dataArray;

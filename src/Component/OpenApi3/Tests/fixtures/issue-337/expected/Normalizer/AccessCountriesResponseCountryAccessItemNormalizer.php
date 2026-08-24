@@ -106,49 +106,49 @@ class AccessCountriesResponseCountryAccessItemNormalizer implements Denormalizer
         if ($data->isInitialized('creditsafeConnectOnlineReports') && null !== $data->getCreditsafeConnectOnlineReports()) {
             $values = [];
             foreach ($data->getCreditsafeConnectOnlineReports() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['creditsafeConnectOnlineReports'] = $values;
         }
         if ($data->isInitialized('creditsafeConnectOfflineReports') && null !== $data->getCreditsafeConnectOfflineReports()) {
             $values_1 = [];
             foreach ($data->getCreditsafeConnectOfflineReports() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['creditsafeConnectOfflineReports'] = $values_1;
         }
         if ($data->isInitialized('creditsafeConnectMonitoring') && null !== $data->getCreditsafeConnectMonitoring()) {
             $values_2 = [];
             foreach ($data->getCreditsafeConnectMonitoring() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['creditsafeConnectMonitoring'] = $values_2;
         }
         if ($data->isInitialized('creditsafeConnectDirectorReports') && null !== $data->getCreditsafeConnectDirectorReports()) {
             $values_3 = [];
             foreach ($data->getCreditsafeConnectDirectorReports() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['creditsafeConnectDirectorReports'] = $values_3;
         }
         if ($data->isInitialized('creditsafeConnectImageDocuments') && null !== $data->getCreditsafeConnectImageDocuments()) {
             $values_4 = [];
             foreach ($data->getCreditsafeConnectImageDocuments() as $value_4) {
-                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[] = $value_4 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['creditsafeConnectImageDocuments'] = $values_4;
         }
         if ($data->isInitialized('creditsafeConnectBankValidation') && null !== $data->getCreditsafeConnectBankValidation()) {
             $values_5 = [];
             foreach ($data->getCreditsafeConnectBankValidation() as $value_5) {
-                $values_5[] = $this->normalizer->normalize($value_5, 'json', $context);
+                $values_5[] = $value_5 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
             }
             $dataArray['creditsafeConnectBankValidation'] = $values_5;
         }
         if ($data->isInitialized('creditsafeConnectBankVerification') && null !== $data->getCreditsafeConnectBankVerification()) {
             $values_6 = [];
             foreach ($data->getCreditsafeConnectBankVerification() as $value_6) {
-                $values_6[] = $this->normalizer->normalize($value_6, 'json', $context);
+                $values_6[] = $value_6 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_6, 'json', $context));
             }
             $dataArray['creditsafeConnectBankVerification'] = $values_6;
         }

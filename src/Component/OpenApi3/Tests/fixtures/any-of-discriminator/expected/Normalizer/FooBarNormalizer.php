@@ -60,9 +60,9 @@ class FooBarNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if ($data->isInitialized('what') && null !== $data->getWhat()) {
             $value = $data->getWhat();
             if (is_object($data->getWhat())) {
-                $value = $this->normalizer->normalize($data->getWhat(), 'json', $context);
+                $value = $data->getWhat() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getWhat(), 'json', $context));
             } elseif (is_object($data->getWhat())) {
-                $value = $this->normalizer->normalize($data->getWhat(), 'json', $context);
+                $value = $data->getWhat() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getWhat(), 'json', $context));
             }
             $dataArray['what'] = $value;
         }

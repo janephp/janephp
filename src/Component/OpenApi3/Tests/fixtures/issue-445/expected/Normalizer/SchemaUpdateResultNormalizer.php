@@ -48,7 +48,7 @@ class SchemaUpdateResultNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('schema')) {
+        if ($data->isInitialized('schema') && null !== $data->getSchema()) {
             $dataArray['schema'] = $data->getSchema();
         }
         return $dataArray;

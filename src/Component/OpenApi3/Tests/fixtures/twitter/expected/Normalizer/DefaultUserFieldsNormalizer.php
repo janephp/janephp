@@ -77,7 +77,7 @@ class DefaultUserFieldsNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray['url'] = $data->getUrl();
         $dataArray['description'] = $data->getDescription();
         if ($data->isInitialized('entities') && null !== $data->getEntities()) {
-            $dataArray['entities'] = $this->normalizer->normalize($data->getEntities(), 'json', $context);
+            $dataArray['entities'] = $data->getEntities() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getEntities(), 'json', $context));
         }
         if ($data->isInitialized('mostRecentTweetId') && null !== $data->getMostRecentTweetId()) {
             $dataArray['most_recent_tweet_id'] = $data->getMostRecentTweetId();

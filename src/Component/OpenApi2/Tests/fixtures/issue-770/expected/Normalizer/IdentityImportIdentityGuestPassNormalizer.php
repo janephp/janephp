@@ -69,18 +69,18 @@ class IdentityImportIdentityGuestPassNormalizer implements DenormalizerInterface
         if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
             $dataArray['domainId'] = $data->getDomainId();
         }
-        $dataArray['wlan'] = $this->normalizer->normalize($data->getWlan(), 'json', $context);
-        $dataArray['zone'] = $this->normalizer->normalize($data->getZone(), 'json', $context);
-        $dataArray['passValidFor'] = $this->normalizer->normalize($data->getPassValidFor(), 'json', $context);
+        $dataArray['wlan'] = $data->getWlan() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getWlan(), 'json', $context));
+        $dataArray['zone'] = $data->getZone() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getZone(), 'json', $context));
+        $dataArray['passValidFor'] = $data->getPassValidFor() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPassValidFor(), 'json', $context));
         if ($data->isInitialized('passEffectSince') && null !== $data->getPassEffectSince()) {
             $dataArray['passEffectSince'] = $data->getPassEffectSince();
         }
         if ($data->isInitialized('passUseDays') && null !== $data->getPassUseDays()) {
             $dataArray['passUseDays'] = $data->getPassUseDays();
         }
-        $dataArray['maxDevices'] = $this->normalizer->normalize($data->getMaxDevices(), 'json', $context);
+        $dataArray['maxDevices'] = $data->getMaxDevices() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getMaxDevices(), 'json', $context));
         if ($data->isInitialized('sessionDuration') && null !== $data->getSessionDuration()) {
-            $dataArray['sessionDuration'] = $this->normalizer->normalize($data->getSessionDuration(), 'json', $context);
+            $dataArray['sessionDuration'] = $data->getSessionDuration() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSessionDuration(), 'json', $context));
         }
         return $dataArray;
     }

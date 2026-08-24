@@ -58,7 +58,7 @@ class VpcNatGatewayGetEgressesNormalizer implements DenormalizerInterface, Norma
         if ($data->isInitialized('publicGateways') && null !== $data->getPublicGateways()) {
             $values = [];
             foreach ($data->getPublicGateways() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['public_gateways'] = $values;
         }

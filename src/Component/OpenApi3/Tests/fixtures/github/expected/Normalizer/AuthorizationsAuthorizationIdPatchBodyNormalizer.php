@@ -89,7 +89,7 @@ class AuthorizationsAuthorizationIdPatchBodyNormalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('scopes')) {
+        if ($data->isInitialized('scopes') && null !== $data->getScopes()) {
             $values = [];
             foreach ($data->getScopes() as $value) {
                 $values[] = $value;

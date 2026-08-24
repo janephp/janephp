@@ -57,7 +57,7 @@ class DropletActionChangeBackupPolicyNormalizer implements DenormalizerInterface
         $dataArray = [];
         $dataArray['type'] = $data->getType();
         if ($data->isInitialized('backupPolicy') && null !== $data->getBackupPolicy()) {
-            $dataArray['backup_policy'] = $this->normalizer->normalize($data->getBackupPolicy(), 'json', $context);
+            $dataArray['backup_policy'] = $data->getBackupPolicy() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getBackupPolicy(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

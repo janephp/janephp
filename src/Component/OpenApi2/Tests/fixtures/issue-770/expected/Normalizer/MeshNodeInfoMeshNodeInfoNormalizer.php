@@ -145,7 +145,7 @@ class MeshNodeInfoMeshNodeInfoNormalizer implements DenormalizerInterface, Norma
         if ($data->isInitialized('helperZoneInfo') && null !== $data->getHelperZoneInfo()) {
             $values = [];
             foreach ($data->getHelperZoneInfo() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['helperZoneInfo'] = $values;
         }

@@ -82,15 +82,15 @@ class AvcSignaturePackageNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('binariesInfo') && null !== $data->getBinariesInfo()) {
             $values = [];
             foreach ($data->getBinariesInfo() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['binariesInfo'] = $values;
         }
         if ($data->isInitialized('checkLatestInstallableSettings') && null !== $data->getCheckLatestInstallableSettings()) {
-            $dataArray['checkLatestInstallableSettings'] = $this->normalizer->normalize($data->getCheckLatestInstallableSettings(), 'json', $context);
+            $dataArray['checkLatestInstallableSettings'] = $data->getCheckLatestInstallableSettings() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCheckLatestInstallableSettings(), 'json', $context));
         }
         if ($data->isInitialized('latestInstallable') && null !== $data->getLatestInstallable()) {
-            $dataArray['latestInstallable'] = $this->normalizer->normalize($data->getLatestInstallable(), 'json', $context);
+            $dataArray['latestInstallable'] = $data->getLatestInstallable() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getLatestInstallable(), 'json', $context));
         }
         return $dataArray;
     }

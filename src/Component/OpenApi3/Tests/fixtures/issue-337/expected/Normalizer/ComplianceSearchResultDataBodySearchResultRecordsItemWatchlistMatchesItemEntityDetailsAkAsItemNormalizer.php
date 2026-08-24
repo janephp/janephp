@@ -70,7 +70,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
             $dataArray['id'] = $data->getId();
         }
         if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $this->normalizer->normalize($data->getName(), 'json', $context);
+            $dataArray['name'] = $data->getName() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getName(), 'json', $context));
         }
         if ($data->isInitialized('type') && null !== $data->getType()) {
             $dataArray['type'] = $data->getType();

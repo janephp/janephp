@@ -80,19 +80,19 @@ class UserSettingsNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($data->isInitialized('opensearchAcl') && null !== $data->getOpensearchAcl()) {
             $values = [];
             foreach ($data->getOpensearchAcl() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['opensearch_acl'] = $values;
         }
         if ($data->isInitialized('acl') && null !== $data->getAcl()) {
             $values_1 = [];
             foreach ($data->getAcl() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['acl'] = $values_1;
         }
         if ($data->isInitialized('mongoUserSettings') && null !== $data->getMongoUserSettings()) {
-            $dataArray['mongo_user_settings'] = $this->normalizer->normalize($data->getMongoUserSettings(), 'json', $context);
+            $dataArray['mongo_user_settings'] = $data->getMongoUserSettings() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMongoUserSettings(), 'json', $context));
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

@@ -65,7 +65,7 @@ class ProfileCreateBridgeProfileNormalizer implements DenormalizerInterface, Nor
             $dataArray['description'] = $data->getDescription();
         }
         if ($data->isInitialized('dhcpRelay') && null !== $data->getDhcpRelay()) {
-            $dataArray['dhcpRelay'] = $this->normalizer->normalize($data->getDhcpRelay(), 'json', $context);
+            $dataArray['dhcpRelay'] = $data->getDhcpRelay() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getDhcpRelay(), 'json', $context));
         }
         if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
             $dataArray['domainId'] = $data->getDomainId();

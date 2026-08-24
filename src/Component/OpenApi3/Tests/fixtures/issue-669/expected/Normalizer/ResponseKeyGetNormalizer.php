@@ -58,7 +58,7 @@ class ResponseKeyGetNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('keys') && null !== $data->getKeys()) {
             $values = [];
             foreach ($data->getKeys() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['keys'] = $values;
         }

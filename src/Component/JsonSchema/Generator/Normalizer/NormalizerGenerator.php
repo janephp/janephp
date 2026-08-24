@@ -120,7 +120,10 @@ trait NormalizerGenerator
                 if (!$property->isRequired()) {
                     if ($property->isNullable()) {
                         $statements[] = new Stmt\If_(
-                            new Expr\MethodCall($objectVariable, 'isInitialized', [new Arg(new Scalar\String_($property->getPhpName()))]),
+                            new Expr\BinaryOp\BooleanAnd(
+                                new Expr\MethodCall($objectVariable, 'isInitialized', [new Arg(new Scalar\String_($property->getPhpName()))]),
+                                new Expr\BinaryOp\NotIdentical(new Expr\ConstFetch(new Name('null')), $propertyVar)
+                            ),
                             ['stmts' => $normalizationStatements]
                         );
                     } else {

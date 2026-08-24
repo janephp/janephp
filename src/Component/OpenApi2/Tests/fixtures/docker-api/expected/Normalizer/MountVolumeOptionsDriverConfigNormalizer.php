@@ -44,7 +44,7 @@ class MountVolumeOptionsDriverConfigNormalizer implements DenormalizerInterface,
             $object->setName($data['Name']);
         }
         if (\array_key_exists('Options', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Options'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -59,7 +59,7 @@ class MountVolumeOptionsDriverConfigNormalizer implements DenormalizerInterface,
             $dataArray['Name'] = $data->getName();
         }
         if ($data->isInitialized('options') && null !== $data->getOptions()) {
-            $values = [];
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getOptions() as $key => $value) {
                 $values[$key] = $value;
             }

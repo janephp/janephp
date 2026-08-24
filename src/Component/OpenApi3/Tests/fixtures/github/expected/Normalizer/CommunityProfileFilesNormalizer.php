@@ -92,12 +92,12 @@ class CommunityProfileFilesNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['code_of_conduct'] = $this->normalizer->normalize($data->getCodeOfConduct(), 'json', $context);
-        $dataArray['license'] = $this->normalizer->normalize($data->getLicense(), 'json', $context);
-        $dataArray['contributing'] = $this->normalizer->normalize($data->getContributing(), 'json', $context);
-        $dataArray['readme'] = $this->normalizer->normalize($data->getReadme(), 'json', $context);
-        $dataArray['issue_template'] = $this->normalizer->normalize($data->getIssueTemplate(), 'json', $context);
-        $dataArray['pull_request_template'] = $this->normalizer->normalize($data->getPullRequestTemplate(), 'json', $context);
+        $dataArray['code_of_conduct'] = $data->getCodeOfConduct() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCodeOfConduct(), 'json', $context));
+        $dataArray['license'] = $data->getLicense() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getLicense(), 'json', $context));
+        $dataArray['contributing'] = $data->getContributing() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getContributing(), 'json', $context));
+        $dataArray['readme'] = $data->getReadme() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getReadme(), 'json', $context));
+        $dataArray['issue_template'] = $data->getIssueTemplate() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getIssueTemplate(), 'json', $context));
+        $dataArray['pull_request_template'] = $data->getPullRequestTemplate() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPullRequestTemplate(), 'json', $context));
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

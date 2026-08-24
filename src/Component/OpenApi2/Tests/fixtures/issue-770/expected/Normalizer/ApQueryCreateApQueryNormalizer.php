@@ -860,7 +860,7 @@ class ApQueryCreateApQueryNormalizer implements DenormalizerInterface, Normalize
             $dataArray['latency6G'] = $data->getLatency6G();
         }
         if ($data->isInitialized('indoorMapXy') && null !== $data->getIndoorMapXy()) {
-            $dataArray['indoorMapXy'] = $this->normalizer->normalize($data->getIndoorMapXy(), 'json', $context);
+            $dataArray['indoorMapXy'] = $data->getIndoorMapXy() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIndoorMapXy(), 'json', $context));
         }
         if ($data->isInitialized('apGroupId') && null !== $data->getApGroupId()) {
             $dataArray['apGroupId'] = $data->getApGroupId();
@@ -1108,7 +1108,7 @@ class ApQueryCreateApQueryNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('cellularGpsHistory') && null !== $data->getCellularGpsHistory()) {
             $values = [];
             foreach ($data->getCellularGpsHistory() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['cellularGpsHistory'] = $values;
         }

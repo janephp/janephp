@@ -80,7 +80,7 @@ class SearchResultTextMatchesItemNormalizer implements DenormalizerInterface, No
         if ($data->isInitialized('objectUrl') && null !== $data->getObjectUrl()) {
             $dataArray['object_url'] = $data->getObjectUrl();
         }
-        if ($data->isInitialized('objectType')) {
+        if ($data->isInitialized('objectType') && null !== $data->getObjectType()) {
             $dataArray['object_type'] = $data->getObjectType();
         }
         if ($data->isInitialized('property') && null !== $data->getProperty()) {
@@ -92,7 +92,7 @@ class SearchResultTextMatchesItemNormalizer implements DenormalizerInterface, No
         if ($data->isInitialized('matches') && null !== $data->getMatches()) {
             $values = [];
             foreach ($data->getMatches() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['matches'] = $values;
         }

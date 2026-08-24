@@ -49,7 +49,7 @@ class IdentityPackageConfigurationNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if ($data->isInitialized('subscriberPackage') && null !== $data->getSubscriberPackage()) {
-            $dataArray['subscriberPackage'] = $this->normalizer->normalize($data->getSubscriberPackage(), 'json', $context);
+            $dataArray['subscriberPackage'] = $data->getSubscriberPackage() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSubscriberPackage(), 'json', $context));
         }
         if ($data->isInitialized('packageExpiration') && null !== $data->getPackageExpiration()) {
             $dataArray['packageExpiration'] = $data->getPackageExpiration();

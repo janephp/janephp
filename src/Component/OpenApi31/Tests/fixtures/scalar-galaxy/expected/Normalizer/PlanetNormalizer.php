@@ -124,7 +124,7 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
     {
         $dataArray = [];
         $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('description')) {
+        if ($data->isInitialized('description') && null !== $data->getDescription()) {
             $value = $data->getDescription();
             if (is_string($data->getDescription())) {
                 $value = $data->getDescription();
@@ -140,19 +140,19 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['habitabilityIndex'] = $data->getHabitabilityIndex();
         }
         if ($data->isInitialized('physicalProperties') && null !== $data->getPhysicalProperties()) {
-            $dataArray['physicalProperties'] = $this->normalizer->normalize($data->getPhysicalProperties(), 'json', $context);
+            $dataArray['physicalProperties'] = $data->getPhysicalProperties() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPhysicalProperties(), 'json', $context));
         }
         if ($data->isInitialized('atmosphere') && null !== $data->getAtmosphere()) {
             $values = [];
             foreach ($data->getAtmosphere() as $value_1) {
-                $values[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values[] = $value_1 === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['atmosphere'] = $values;
         }
         if ($data->isInitialized('discoveredAt') && null !== $data->getDiscoveredAt()) {
             $dataArray['discoveredAt'] = $data->getDiscoveredAt()->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('image')) {
+        if ($data->isInitialized('image') && null !== $data->getImage()) {
             $value_2 = $data->getImage();
             if (is_string($data->getImage())) {
                 $value_2 = $data->getImage();
@@ -164,12 +164,12 @@ class PlanetNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if ($data->isInitialized('satellites') && null !== $data->getSatellites()) {
             $values_1 = [];
             foreach ($data->getSatellites() as $value_3) {
-                $values_1[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_1[] = $value_3 === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['satellites'] = $values_1;
         }
         if ($data->isInitialized('creator') && null !== $data->getCreator()) {
-            $dataArray['creator'] = $this->normalizer->normalize($data->getCreator(), 'json', $context);
+            $dataArray['creator'] = $data->getCreator() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCreator(), 'json', $context));
         }
         if ($data->isInitialized('tags') && null !== $data->getTags()) {
             $values_2 = [];

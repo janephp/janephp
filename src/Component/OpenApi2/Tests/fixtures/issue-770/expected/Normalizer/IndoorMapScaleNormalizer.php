@@ -58,10 +58,10 @@ class IndoorMapScaleNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if ($data->isInitialized('a') && null !== $data->getA()) {
-            $dataArray['a'] = $this->normalizer->normalize($data->getA(), 'json', $context);
+            $dataArray['a'] = $data->getA() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getA(), 'json', $context));
         }
         if ($data->isInitialized('b') && null !== $data->getB()) {
-            $dataArray['b'] = $this->normalizer->normalize($data->getB(), 'json', $context);
+            $dataArray['b'] = $data->getB() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getB(), 'json', $context));
         }
         if ($data->isInitialized('distance') && null !== $data->getDistance()) {
             $dataArray['distance'] = $data->getDistance();

@@ -67,7 +67,7 @@ class HealthNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if ($data->isInitialized('log') && null !== $data->getLog()) {
             $values = [];
             foreach ($data->getLog() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['Log'] = $values;
         }

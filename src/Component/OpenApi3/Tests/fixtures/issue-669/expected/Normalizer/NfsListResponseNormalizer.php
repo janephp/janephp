@@ -58,7 +58,7 @@ class NfsListResponseNormalizer implements DenormalizerInterface, NormalizerInte
         if ($data->isInitialized('shares') && null !== $data->getShares()) {
             $values = [];
             foreach ($data->getShares() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['shares'] = $values;
         }
