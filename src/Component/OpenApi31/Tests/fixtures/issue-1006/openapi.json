@@ -1,0 +1,71 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Issue 1006 - $ref with sibling keys keeps the referenced type",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/widgets": {
+            "post": {
+                "operationId": "createWidget",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Widget"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Widget"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Widget": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "settings": {
+                        "type": "object",
+                        "$ref": "#/components/schemas/WidgetSettings"
+                    },
+                    "plain": {
+                        "$ref": "#/components/schemas/WidgetSettings"
+                    }
+                }
+            },
+            "WidgetSettings": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "color"
+                ],
+                "properties": {
+                    "color": {
+                        "type": "string"
+                    },
+                    "size": {
+                        "type": "integer"
+                    }
+                }
+            }
+        }
+    }
+}
