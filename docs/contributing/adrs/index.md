@@ -20,6 +20,9 @@ Each record follows a lightweight ADR format:
 | ------ | ----- | ------ |
 | [0001](0001-json-object-for-complex-objects.md) | Use `JsonObject` for complex objects & maps in generated payloads | Accepted |
 | [0002](0002-pre-generation-schema-validation.md) | Validate schemas before generation for clean errors | Accepted |
+| [0003](0003-no-arrayobject.md) | No `\ArrayObject` — dedicated value objects & `iterable` hints | Accepted |
+| [0004](0004-fixtures-are-immutable.md) | Test fixtures are immutable — regenerate, never hand-edit | Accepted |
+| [0005](0005-php-floor.md) | Stay within the PHP `^8.1` floor | Accepted |
 
 ## Adding a new record
 

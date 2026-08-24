@@ -8,6 +8,7 @@ This file gives coding agents the minimum project context needed to work safely 
 - Main language: PHP (minimum version `^8.1`).
 - Autoload root namespace: `Jane\\` mapped to `src/`.
 - Key docs: `README.md`, `CONTRIBUTING.md`, `CHANGELOG.md`.
+- Conventions & decisions: `docs/contributing/adrs/` — read the relevant records before touching generators, fixtures, or runtime data. Do not relitigate decisions recorded there (e.g. no `\ArrayObject` usage, fixtures immutability, PHP `^8.1` floor).
 
 ## Repository Layout
 
