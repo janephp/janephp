@@ -53,7 +53,11 @@ class ApiAgentLoggingConfigNormalizer implements DenormalizerInterface, Normaliz
             unset($data['insights_enabled']);
         }
         if (\array_key_exists('insights_enabled_at', $data)) {
-            $object->setInsightsEnabledAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['insights_enabled_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['insights_enabled_at']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['insights_enabled_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setInsightsEnabledAt($date);
             unset($data['insights_enabled_at']);
         }
         if (\array_key_exists('log_stream_id', $data)) {

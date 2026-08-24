@@ -38,10 +38,18 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('date', $data)) {
-            $object->setDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['date']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['date']);
+            if (false === $date) {
+                throw new \Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['date'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setDate($date);
         }
         if (\array_key_exists('dateOrNull', $data) && $data['dateOrNull'] !== null) {
-            $object->setDateOrNull(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateOrNull']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateOrNull']);
+            if (false === $date_1) {
+                throw new \Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['dateOrNull'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setDateOrNull($date_1);
         }
         elseif (\array_key_exists('dateOrNull', $data) && $data['dateOrNull'] === null) {
             $object->setDateOrNull(null);
@@ -49,7 +57,11 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (\array_key_exists('dateOrNullOrInt', $data) && $data['dateOrNullOrInt'] !== null) {
             $value = $data['dateOrNullOrInt'];
             if (is_string($data['dateOrNullOrInt']) and false !== \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateOrNullOrInt'])) {
-                $value = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateOrNullOrInt']);
+                $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateOrNullOrInt']);
+                if (false === $date_2) {
+                    throw new \Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['dateOrNullOrInt'], 'Y-m-d\TH:i:sP');
+                }
+                $value = $date_2;
             } elseif (is_null($data['dateOrNullOrInt'])) {
                 $value = $data['dateOrNullOrInt'];
             } elseif (is_int($data['dateOrNullOrInt'])) {

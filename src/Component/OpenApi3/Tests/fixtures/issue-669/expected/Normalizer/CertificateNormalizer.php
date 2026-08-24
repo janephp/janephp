@@ -46,7 +46,11 @@ class CertificateNormalizer implements DenormalizerInterface, NormalizerInterfac
             unset($data['name']);
         }
         if (\array_key_exists('not_after', $data)) {
-            $object->setNotAfter(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['not_after']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['not_after']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['not_after'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setNotAfter($date);
             unset($data['not_after']);
         }
         if (\array_key_exists('sha1_fingerprint', $data)) {
@@ -54,7 +58,11 @@ class CertificateNormalizer implements DenormalizerInterface, NormalizerInterfac
             unset($data['sha1_fingerprint']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date_1) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date_1);
             unset($data['created_at']);
         }
         if (\array_key_exists('dns_names', $data)) {

@@ -41,7 +41,11 @@ class MuseumDailyHoursNormalizer implements DenormalizerInterface, NormalizerInt
             $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\MuseumDailyHoursConstraint());
         }
         if (\array_key_exists('date', $data)) {
-            $object->setDate(\DateTime::createFromFormat('Y-m-d', $data['date'])->setTime(0, 0, 0));
+            $date = \DateTime::createFromFormat('Y-m-d', $data['date']);
+            if (false === $date) {
+                throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['date'], 'Y-m-d');
+            }
+            $object->setDate($date->setTime(0, 0, 0));
         }
         if (\array_key_exists('timeOpen', $data)) {
             $object->setTimeOpen($data['timeOpen']);

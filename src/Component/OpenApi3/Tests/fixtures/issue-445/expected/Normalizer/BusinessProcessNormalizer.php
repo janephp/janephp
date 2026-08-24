@@ -74,10 +74,18 @@ class BusinessProcessNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setLifeCycle($data['lifeCycle']);
         }
         if (\array_key_exists('startDate', $data)) {
-            $object->setStartDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['startDate']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['startDate']);
+            if (false === $date) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['startDate'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setStartDate($date);
         }
         if (\array_key_exists('endDate', $data)) {
-            $object->setEndDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['endDate']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['endDate']);
+            if (false === $date_1) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['endDate'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setEndDate($date_1);
         }
         if (\array_key_exists('finished', $data)) {
             $object->setFinished($data['finished']);
@@ -99,7 +107,11 @@ class BusinessProcessNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setCurrentState(null);
         }
         if (\array_key_exists('lastReportedProgress', $data) && $data['lastReportedProgress'] !== null) {
-            $object->setLastReportedProgress(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastReportedProgress']));
+            $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastReportedProgress']);
+            if (false === $date_2) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['lastReportedProgress'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setLastReportedProgress($date_2);
         }
         elseif (\array_key_exists('lastReportedProgress', $data) && $data['lastReportedProgress'] === null) {
             $object->setLastReportedProgress(null);

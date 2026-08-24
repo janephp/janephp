@@ -46,7 +46,11 @@ class AppPendingDeploymentNormalizer implements DenormalizerInterface, Normalize
             unset($data['cloned_from']);
         }
         if (\array_key_exists('created_at', $data)) {
-            $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedAt($date);
             unset($data['created_at']);
         }
         if (\array_key_exists('id', $data)) {
@@ -74,7 +78,11 @@ class AppPendingDeploymentNormalizer implements DenormalizerInterface, Normalize
             unset($data['phase']);
         }
         if (\array_key_exists('phase_last_updated_at', $data)) {
-            $object->setPhaseLastUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['phase_last_updated_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['phase_last_updated_at']);
+            if (false === $date_1) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['phase_last_updated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setPhaseLastUpdatedAt($date_1);
             unset($data['phase_last_updated_at']);
         }
         if (\array_key_exists('progress', $data)) {
@@ -106,7 +114,11 @@ class AppPendingDeploymentNormalizer implements DenormalizerInterface, Normalize
             unset($data['tier_slug']);
         }
         if (\array_key_exists('updated_at', $data)) {
-            $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
+            $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']);
+            if (false === $date_2) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['updated_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUpdatedAt($date_2);
             unset($data['updated_at']);
         }
         if (\array_key_exists('workers', $data)) {

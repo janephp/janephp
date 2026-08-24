@@ -78,7 +78,11 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setHostName(null);
         }
         if (\array_key_exists('lastResponseTime', $data)) {
-            $object->setLastResponseTime(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastResponseTime']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['lastResponseTime']);
+            if (false === $date) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['lastResponseTime'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setLastResponseTime($date);
             unset($data['lastResponseTime']);
         }
         if (\array_key_exists('serviceName', $data) && $data['serviceName'] !== null) {

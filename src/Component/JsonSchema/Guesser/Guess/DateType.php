@@ -7,6 +7,7 @@ use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
+use PhpParser\Node\Stmt;
 
 /**
  * Represent a Date type.
@@ -53,6 +54,48 @@ class DateType extends ObjectType
             ]);
     }
 
+    public function createDenormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
+    {
+        // \DateTime::createFromFormat returns false on failure, report it with a clean
+        // exception instead of letting it reach the typed setter, and only call
+        // setTime() on a verified \DateTime instance
+        $output = new Expr\Variable($context->getUniqueVariableName('date'));
+        $statements = [
+            new Stmt\Expression(new Expr\Assign(
+                $output,
+                new Expr\StaticCall(
+                    new Name('\DateTime'),
+                    'createFromFormat',
+                    [
+                        new Arg(new Scalar\String_($this->format)),
+                        new Arg($input),
+                    ]
+                )
+            )),
+            new Stmt\If_(new Expr\BinaryOp\Identical(new Expr\ConstFetch(new Name('false')), $output), [
+                'stmts' => [
+                    new Stmt\Expression(new Expr\Throw_(new Expr\New_(
+                        new Name\FullyQualified(\sprintf('%s\\Runtime\\Normalizer\\InvalidDateException', $context->getCurrentSchema()->getNamespace())),
+                        [
+                            new Arg($input),
+                            new Arg(new Scalar\String_($this->format)),
+                        ]
+                    ))),
+                ],
+            ]),
+        ];
+
+        return [$statements, new Expr\MethodCall(
+            $output,
+            'setTime',
+            [
+                new Arg(new Scalar\LNumber(0)),
+                new Arg(new Scalar\LNumber(0)),
+                new Arg(new Scalar\LNumber(0)),
+            ]),
+        ];
+    }
+
     protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
         if ($this->isNullable($this->object)) {
@@ -76,21 +119,14 @@ class DateType extends ObjectType
             ]),
             new Expr\BinaryOp\NotIdentical(
                 new Expr\ConstFetch(new Name('false')),
-                new Expr\MethodCall(
-                    new Expr\StaticCall(
-                        new Name('\DateTime'),
-                        'createFromFormat',
-                        [
-                            new Arg(new Scalar\String_($this->format)),
-                            new Arg($input),
-                        ]
-                    ),
-                    'setTime',
+                new Expr\StaticCall(
+                    new Name('\DateTime'),
+                    'createFromFormat',
                     [
-                        new Arg(new Scalar\LNumber(0)),
-                        new Arg(new Scalar\LNumber(0)),
-                        new Arg(new Scalar\LNumber(0)),
-                    ])
+                        new Arg(new Scalar\String_($this->format)),
+                        new Arg($input),
+                    ]
+                )
             )
         );
     }

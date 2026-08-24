@@ -42,7 +42,11 @@ class BillingDataPointNormalizer implements DenormalizerInterface, NormalizerInt
             unset($data['usage_team_urn']);
         }
         if (\array_key_exists('start_date', $data)) {
-            $object->setStartDate(\DateTime::createFromFormat('Y-m-d', $data['start_date'])->setTime(0, 0, 0));
+            $date = \DateTime::createFromFormat('Y-m-d', $data['start_date']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['start_date'], 'Y-m-d');
+            }
+            $object->setStartDate($date->setTime(0, 0, 0));
             unset($data['start_date']);
         }
         if (\array_key_exists('total_amount', $data)) {

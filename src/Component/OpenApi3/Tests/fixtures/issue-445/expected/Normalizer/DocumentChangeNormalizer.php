@@ -59,7 +59,11 @@ class DocumentChangeNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setAction(null);
         }
         if (\array_key_exists('timeStamp', $data)) {
-            $object->setTimeStamp(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timeStamp']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timeStamp']);
+            if (false === $date) {
+                throw new \PicturePark\API\Runtime\Normalizer\InvalidDateException($data['timeStamp'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setTimeStamp($date);
         }
         return $object;
     }

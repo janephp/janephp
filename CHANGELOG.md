@@ -11,9 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [Docs] New [Architecture Decision Records](docs/contributing/adrs/index.md) documenting key generator/runtime decisions
 - [JsonSchema] [GH#865](https://github.com/janephp/janephp/issues/865) New `enums-as-objects` option to generate native PHP backed enums for schemas with an `enum` keyword (`string` / `integer` types)
 - [OpenApi3] [GH#771](https://github.com/janephp/janephp/issues/771) Report clean generation errors for non-body parameters using an unsupported `schema.type` (or no `type`/`enum`) instead of crashing
+- [JsonSchema] [GH#752](https://github.com/janephp/janephp/issues/752) Validate `format: date` / `format: date-time` string properties when the `validation` option is enabled (Symfony `Date` / `DateTime` constraints, honoring the `full-date-format`, `date-format` and `date-input-format` options)
 
 ### Changed
 - **BC-breaking** [OpenApi] [GH#789](https://github.com/janephp/janephp/issues/789) The host / base path plugins built from the specification (`AddHostPlugin`, `AddPathPlugin`) are now also applied around a caller-provided PSR-18 client in the generated `Client::create()`: your client may now be wrapped in a `PluginClient` carrying the specification's server URL, so server URLs containing a path (e.g. `https://server.localhost/api/v3`) work with custom clients. Generated clients whose specification declares a server URL accept a fourth `bool $applyServerPlugins = true` argument to opt out and keep using your client as-is.
+- [OpenApi] [GH#752](https://github.com/janephp/janephp/issues/752) Denormalizing an invalid date / date-time value now throws a dedicated `<Namespace>\Runtime\Normalizer\InvalidDateException` with the offending value and expected format, instead of failing with a raw `TypeError` on the model setter. A latent fatal (`setTime()` called on `false`) in multi-typed date properties was fixed at the same time
 
 ### Fixed
 <<<<<<< HEAD

@@ -42,7 +42,11 @@ class AppsDeploymentProgressStepNormalizer implements DenormalizerInterface, Nor
             unset($data['component_name']);
         }
         if (\array_key_exists('ended_at', $data)) {
-            $object->setEndedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['ended_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['ended_at']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['ended_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setEndedAt($date);
             unset($data['ended_at']);
         }
         if (\array_key_exists('message_base', $data)) {
@@ -58,7 +62,11 @@ class AppsDeploymentProgressStepNormalizer implements DenormalizerInterface, Nor
             unset($data['reason']);
         }
         if (\array_key_exists('started_at', $data)) {
-            $object->setStartedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['started_at']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['started_at']);
+            if (false === $date_1) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['started_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setStartedAt($date_1);
             unset($data['started_at']);
         }
         if (\array_key_exists('status', $data)) {

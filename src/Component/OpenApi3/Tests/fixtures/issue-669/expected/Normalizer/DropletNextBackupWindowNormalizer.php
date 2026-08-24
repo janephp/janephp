@@ -38,11 +38,19 @@ class DropletNextBackupWindowNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('start', $data)) {
-            $object->setStart(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['start']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['start']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['start'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setStart($date);
             unset($data['start']);
         }
         if (\array_key_exists('end', $data)) {
-            $object->setEnd(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['end']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['end']);
+            if (false === $date_1) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['end'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setEnd($date_1);
             unset($data['end']);
         }
         foreach ($data as $key => $value) {

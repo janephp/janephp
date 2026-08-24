@@ -44,7 +44,11 @@ class NotificationsPutBodyNormalizer implements DenormalizerInterface, Normalize
             $this->validate($data, new \Github\Validator\NotificationsPutBodyConstraint());
         }
         if (\array_key_exists('last_read_at', $data)) {
-            $object->setLastReadAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['last_read_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['last_read_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['last_read_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setLastReadAt($date);
             unset($data['last_read_at']);
         }
         if (\array_key_exists('read', $data)) {

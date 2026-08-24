@@ -41,7 +41,11 @@ class StarredRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
             $this->validate($data, new \Github\Validator\StarredRepositoryConstraint());
         }
         if (\array_key_exists('starred_at', $data)) {
-            $object->setStarredAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['starred_at']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['starred_at']);
+            if (false === $date) {
+                throw new \Github\Runtime\Normalizer\InvalidDateException($data['starred_at'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setStarredAt($date);
             unset($data['starred_at']);
         }
         if (\array_key_exists('repo', $data)) {

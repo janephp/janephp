@@ -54,7 +54,11 @@ class OpensearchIndexNormalizer implements DenormalizerInterface, NormalizerInte
             unset($data['size']);
         }
         if (\array_key_exists('created_time', $data)) {
-            $object->setCreatedTime(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_time']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_time']);
+            if (false === $date) {
+                throw new \Jane\Generated\DigitalOcean\Runtime\Normalizer\InvalidDateException($data['created_time'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setCreatedTime($date);
             unset($data['created_time']);
         }
         if (\array_key_exists('status', $data)) {

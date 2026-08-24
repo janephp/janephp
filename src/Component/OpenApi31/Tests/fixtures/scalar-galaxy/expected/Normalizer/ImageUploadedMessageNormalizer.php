@@ -47,7 +47,11 @@ class ImageUploadedMessageNormalizer implements DenormalizerInterface, Normalize
             $object->setImageUrl($data['imageUrl']);
         }
         if (\array_key_exists('uploadedAt', $data)) {
-            $object->setUploadedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['uploadedAt']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['uploadedAt']);
+            if (false === $date) {
+                throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['uploadedAt'], 'Y-m-d\TH:i:sP');
+            }
+            $object->setUploadedAt($date);
         }
         if (\array_key_exists('fileSize', $data)) {
             $object->setFileSize($data['fileSize']);

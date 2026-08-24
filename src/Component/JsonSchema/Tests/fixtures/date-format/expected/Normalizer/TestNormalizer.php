@@ -38,18 +38,30 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('date', $data)) {
-            $object->setDate(\DateTime::createFromFormat('d.m.Y', $data['date'])->setTime(0, 0, 0));
+            $date = \DateTime::createFromFormat('d.m.Y', $data['date']);
+            if (false === $date) {
+                throw new \Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['date'], 'd.m.Y');
+            }
+            $object->setDate($date->setTime(0, 0, 0));
         }
         if (\array_key_exists('dateOrNull', $data) && $data['dateOrNull'] !== null) {
-            $object->setDateOrNull(\DateTime::createFromFormat('d.m.Y', $data['dateOrNull'])->setTime(0, 0, 0));
+            $date_1 = \DateTime::createFromFormat('d.m.Y', $data['dateOrNull']);
+            if (false === $date_1) {
+                throw new \Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['dateOrNull'], 'd.m.Y');
+            }
+            $object->setDateOrNull($date_1->setTime(0, 0, 0));
         }
         elseif (\array_key_exists('dateOrNull', $data) && $data['dateOrNull'] === null) {
             $object->setDateOrNull(null);
         }
         if (\array_key_exists('dateOrNullOrInt', $data) && $data['dateOrNullOrInt'] !== null) {
             $value = $data['dateOrNullOrInt'];
-            if (is_string($data['dateOrNullOrInt']) and false !== \DateTime::createFromFormat('d.m.Y', $data['dateOrNullOrInt'])->setTime(0, 0, 0)) {
-                $value = \DateTime::createFromFormat('d.m.Y', $data['dateOrNullOrInt'])->setTime(0, 0, 0);
+            if (is_string($data['dateOrNullOrInt']) and false !== \DateTime::createFromFormat('d.m.Y', $data['dateOrNullOrInt'])) {
+                $date_2 = \DateTime::createFromFormat('d.m.Y', $data['dateOrNullOrInt']);
+                if (false === $date_2) {
+                    throw new \Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['dateOrNullOrInt'], 'd.m.Y');
+                }
+                $value = $date_2->setTime(0, 0, 0);
             } elseif (is_null($data['dateOrNullOrInt'])) {
                 $value = $data['dateOrNullOrInt'];
             } elseif (is_int($data['dateOrNullOrInt'])) {
