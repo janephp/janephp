@@ -164,8 +164,11 @@ Other options are available to customize the generated code:
 - `include-null-value`: Will enable a way to manage null values. By default it is enabled.
 - `enums-as-objects`: When enabled, schemas with `type: string` or `type: integer` and an `enum` will be generated as native PHP backed enums instead of plain scalar types, and properties referencing these schemas will be typed with the enum class. Disabled by default.
 - `whitelisted-paths`: This option allows you to generate only needed endpoints and related models. Be carefull,
- that option will filter models used by whitelisted endpoints and generate model & normalizer only for them. Here is
- some examples about how to use it:
+  that option will filter models used by whitelisted endpoints and generate model & normalizer only for them.
+  Models that are not reachable from any whitelisted endpoint are skipped entirely: an invalid schema referenced
+  only by non-whitelisted endpoints will not make the generation fail (errors in models used by whitelisted
+  endpoints are still reported). Here is
+  some examples about how to use it:
 
 ```php
 return [
