@@ -6,6 +6,7 @@ namespace Jane\Component\OpenApiCommon\Tests\Generator\Runtime\data\Client;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
+use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\SerializerInterface;
 
@@ -55,6 +56,189 @@ final class BaseEndpointTest extends TestCase
         $endpoint = $this->getEndpoint($queryParams, $allowedQueryParams);
 
         self::assertEquals($expectedQueryString, $endpoint->getQueryString());
+    }
+
+    /**
+     * @dataProvider headerParamsProvider
+     */
+    public function testHeaderParamsWillBeResolvedCaseInsensitively(array $headerParams, array $expectedHeaders): void
+    {
+        $endpoint = new class($headerParams) extends \BaseEndpoint {
+            public function __construct(array $headerParameters)
+            {
+                $this->headerParameters = $headerParameters;
+            }
+
+            public function getMethod(): string
+            {
+                return 'GET';
+            }
+
+            public function getBody(SerializerInterface $serializer, $streamFactory = null): array
+            {
+                return [[], null];
+            }
+
+            public function getUri(): string
+            {
+                return '/test';
+            }
+
+            public function getAuthenticationScopes(): array
+            {
+                return [];
+            }
+
+            protected function transformResponseBody(
+                ResponseInterface $response,
+                SerializerInterface $serializer,
+                ?string $contentType = null,
+            ) {
+                return null;
+            }
+
+            public function parseResponse(
+                ResponseInterface $response,
+                SerializerInterface $serializer,
+                string $fetchMode = \Client::FETCH_OBJECT,
+            ) {
+                return $response;
+            }
+
+            protected function getHeadersOptionsResolver(): OptionsResolver
+            {
+                return (new OptionsResolver())
+                    ->setDefined(['X-USER-ID'])
+                    ->setRequired([])
+                    ->setDefaults([])
+                    ->addAllowedTypes('X-USER-ID', ['string']);
+            }
+        };
+
+        self::assertEquals($expectedHeaders, $endpoint->getHeaders());
+    }
+
+    public static function headerParamsProvider(): iterable
+    {
+        yield 'same case as definition' => [['X-USER-ID' => '11'], ['X-USER-ID' => '11']];
+        yield 'lowercase input' => [['x-user-id' => '11'], ['X-USER-ID' => '11']];
+        yield 'mixed case input' => [['X-User-Id' => '11'], ['X-USER-ID' => '11']];
+        yield 'no header parameter' => [[], []];
+    }
+
+    public function testRequiredHeaderParamCanBePassedWithADifferentCase(): void
+    {
+        $endpoint = new class(['x-user-id' => '11']) extends \BaseEndpoint {
+            public function __construct(array $headerParameters)
+            {
+                $this->headerParameters = $headerParameters;
+            }
+
+            public function getMethod(): string
+            {
+                return 'GET';
+            }
+
+            public function getBody(SerializerInterface $serializer, $streamFactory = null): array
+            {
+                return [[], null];
+            }
+
+            public function getUri(): string
+            {
+                return '/test';
+            }
+
+            public function getAuthenticationScopes(): array
+            {
+                return [];
+            }
+
+            protected function transformResponseBody(
+                ResponseInterface $response,
+                SerializerInterface $serializer,
+                ?string $contentType = null,
+            ) {
+                return null;
+            }
+
+            public function parseResponse(
+                ResponseInterface $response,
+                SerializerInterface $serializer,
+                string $fetchMode = \Client::FETCH_OBJECT,
+            ) {
+                return $response;
+            }
+
+            protected function getHeadersOptionsResolver(): OptionsResolver
+            {
+                return (new OptionsResolver())
+                    ->setDefined(['X-USER-ID'])
+                    ->setRequired(['X-USER-ID'])
+                    ->setDefaults([])
+                    ->addAllowedTypes('X-USER-ID', ['string']);
+            }
+        };
+
+        self::assertEquals(['X-USER-ID' => '11'], $endpoint->getHeaders());
+    }
+
+    public function testUnknownHeaderParamStillThrowsAnException(): void
+    {
+        $endpoint = new class(['unknown-header' => '11']) extends \BaseEndpoint {
+            public function __construct(array $headerParameters)
+            {
+                $this->headerParameters = $headerParameters;
+            }
+
+            public function getMethod(): string
+            {
+                return 'GET';
+            }
+
+            public function getBody(SerializerInterface $serializer, $streamFactory = null): array
+            {
+                return [[], null];
+            }
+
+            public function getUri(): string
+            {
+                return '/test';
+            }
+
+            public function getAuthenticationScopes(): array
+            {
+                return [];
+            }
+
+            protected function transformResponseBody(
+                ResponseInterface $response,
+                SerializerInterface $serializer,
+                ?string $contentType = null,
+            ) {
+                return null;
+            }
+
+            public function parseResponse(
+                ResponseInterface $response,
+                SerializerInterface $serializer,
+                string $fetchMode = \Client::FETCH_OBJECT,
+            ) {
+                return $response;
+            }
+
+            protected function getHeadersOptionsResolver(): OptionsResolver
+            {
+                return (new OptionsResolver())
+                    ->setDefined(['X-USER-ID'])
+                    ->setRequired([])
+                    ->setDefaults([])
+                    ->addAllowedTypes('X-USER-ID', ['string']);
+            }
+        };
+
+        $this->expectException(UndefinedOptionsException::class);
+        $endpoint->getHeaders();
     }
 
     private function getEndpoint(array $queryParams, array $allowReserved = []): object

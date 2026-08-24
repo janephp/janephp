@@ -37,7 +37,19 @@ abstract class BaseEndpoint implements Endpoint
     }
     public function getHeaders(array $baseHeaders = []): array
     {
-        return array_merge($this->getExtraHeaders(), $baseHeaders, $this->getHeadersOptionsResolver()->resolve($this->headerParameters));
+        $headersResolver = $this->getHeadersOptionsResolver();
+        $definedOptions = $headersResolver->getDefinedOptions();
+        $headerParameters = [];
+        foreach ($this->headerParameters as $name => $value) {
+            foreach ($definedOptions as $definedOption) {
+                if (strcasecmp((string) $name, $definedOption) === 0) {
+                    $name = $definedOption;
+                    break;
+                }
+            }
+            $headerParameters[$name] = $value;
+        }
+        return array_merge($this->getExtraHeaders(), $baseHeaders, $headersResolver->resolve($headerParameters));
     }
     protected function getQueryOptionsResolver(): OptionsResolver
     {
