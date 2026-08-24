@@ -73,7 +73,7 @@ class MonitoringPortfoliosPortfolioIdPatchBodyNormalizer implements Denormalizer
         if ($data->isInitialized('emails') && null !== $data->getEmails()) {
             $values = [];
             foreach ($data->getEmails() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['emails'] = $values;
         }

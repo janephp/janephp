@@ -52,13 +52,13 @@ class BazNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             $dataArray['foo'] = $data->getFoo();
         }
         if ($data->isInitialized('bar') && null !== $data->getBar()) {
-            $dataArray['Bar'] = $this->normalizer->normalize($data->getBar(), 'json', $context);
+            $dataArray['Bar'] = $data->getBar() === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getBar(), 'json', $context));
         }
         if ($data->isInitialized('baz') && null !== $data->getBaz()) {
-            $dataArray['Baz'] = $this->normalizer->normalize($data->getBaz(), 'json', $context);
+            $dataArray['Baz'] = $data->getBaz() === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getBaz(), 'json', $context));
         }
         if ($data->isInitialized('inlineProperty') && null !== $data->getInlineProperty()) {
-            $dataArray['inlineProperty'] = $this->normalizer->normalize($data->getInlineProperty(), 'json', $context);
+            $dataArray['inlineProperty'] = $data->getInlineProperty() === null ? null : new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getInlineProperty(), 'json', $context));
         }
         return $dataArray;
     }

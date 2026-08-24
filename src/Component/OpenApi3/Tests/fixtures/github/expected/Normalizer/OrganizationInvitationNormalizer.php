@@ -102,10 +102,10 @@ class OrganizationInvitationNormalizer implements DenormalizerInterface, Normali
         if ($data->isInitialized('id') && null !== $data->getId()) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('login')) {
+        if ($data->isInitialized('login') && null !== $data->getLogin()) {
             $dataArray['login'] = $data->getLogin();
         }
-        if ($data->isInitialized('email')) {
+        if ($data->isInitialized('email') && null !== $data->getEmail()) {
             $dataArray['email'] = $data->getEmail();
         }
         if ($data->isInitialized('role') && null !== $data->getRole()) {
@@ -114,8 +114,8 @@ class OrganizationInvitationNormalizer implements DenormalizerInterface, Normali
         if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
             $dataArray['created_at'] = $data->getCreatedAt();
         }
-        if ($data->isInitialized('inviter')) {
-            $dataArray['inviter'] = $this->normalizer->normalize($data->getInviter(), 'json', $context);
+        if ($data->isInitialized('inviter') && null !== $data->getInviter()) {
+            $dataArray['inviter'] = $data->getInviter() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getInviter(), 'json', $context));
         }
         if ($data->isInitialized('teamCount') && null !== $data->getTeamCount()) {
             $dataArray['team_count'] = $data->getTeamCount();

@@ -75,7 +75,7 @@ class TweetLookupResponseNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['data'] = $values;
         }
         if ($data->isInitialized('includes') && null !== $data->getIncludes()) {
-            $dataArray['includes'] = $this->normalizer->normalize($data->getIncludes(), 'json', $context);
+            $dataArray['includes'] = $data->getIncludes() === null ? null : new \Jane\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIncludes(), 'json', $context));
         }
         if ($data->isInitialized('errors') && null !== $data->getErrors()) {
             $values_1 = [];

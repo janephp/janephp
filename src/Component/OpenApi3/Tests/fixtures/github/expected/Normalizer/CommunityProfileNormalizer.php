@@ -82,7 +82,7 @@ class CommunityProfileNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray['health_percentage'] = $data->getHealthPercentage();
         $dataArray['description'] = $data->getDescription();
         $dataArray['documentation'] = $data->getDocumentation();
-        $dataArray['files'] = $this->normalizer->normalize($data->getFiles(), 'json', $context);
+        $dataArray['files'] = $data->getFiles() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getFiles(), 'json', $context));
         $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

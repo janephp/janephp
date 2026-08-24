@@ -52,7 +52,7 @@ class ResponseDomainRecordNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if ($data->isInitialized('domainRecord') && null !== $data->getDomainRecord()) {
-            $dataArray['domain_record'] = $this->normalizer->normalize($data->getDomainRecord(), 'json', $context);
+            $dataArray['domain_record'] = $data->getDomainRecord() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDomainRecord(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

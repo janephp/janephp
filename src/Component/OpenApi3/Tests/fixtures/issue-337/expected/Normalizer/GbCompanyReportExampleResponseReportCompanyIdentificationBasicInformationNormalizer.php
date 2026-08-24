@@ -99,16 +99,16 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationN
             $dataArray['companyRegistrationDate'] = $data->getCompanyRegistrationDate();
         }
         if ($data->isInitialized('legalForm') && null !== $data->getLegalForm()) {
-            $dataArray['legalForm'] = $this->normalizer->normalize($data->getLegalForm(), 'json', $context);
+            $dataArray['legalForm'] = $data->getLegalForm() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getLegalForm(), 'json', $context));
         }
         if ($data->isInitialized('companyStatus') && null !== $data->getCompanyStatus()) {
-            $dataArray['companyStatus'] = $this->normalizer->normalize($data->getCompanyStatus(), 'json', $context);
+            $dataArray['companyStatus'] = $data->getCompanyStatus() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getCompanyStatus(), 'json', $context));
         }
         if ($data->isInitialized('principalActivity') && null !== $data->getPrincipalActivity()) {
-            $dataArray['principalActivity'] = $this->normalizer->normalize($data->getPrincipalActivity(), 'json', $context);
+            $dataArray['principalActivity'] = $data->getPrincipalActivity() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getPrincipalActivity(), 'json', $context));
         }
         if ($data->isInitialized('contactAddress') && null !== $data->getContactAddress()) {
-            $dataArray['contactAddress'] = $this->normalizer->normalize($data->getContactAddress(), 'json', $context);
+            $dataArray['contactAddress'] = $data->getContactAddress() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getContactAddress(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

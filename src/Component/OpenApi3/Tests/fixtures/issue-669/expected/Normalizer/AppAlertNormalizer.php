@@ -87,7 +87,7 @@ class AppAlertNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $dataArray['component_name'] = $data->getComponentName();
         }
         if ($data->isInitialized('spec') && null !== $data->getSpec()) {
-            $dataArray['spec'] = $this->normalizer->normalize($data->getSpec(), 'json', $context);
+            $dataArray['spec'] = $data->getSpec() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSpec(), 'json', $context));
         }
         if ($data->isInitialized('emails') && null !== $data->getEmails()) {
             $values = [];
@@ -99,7 +99,7 @@ class AppAlertNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if ($data->isInitialized('slackWebhooks') && null !== $data->getSlackWebhooks()) {
             $values_1 = [];
             foreach ($data->getSlackWebhooks() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['slack_webhooks'] = $values_1;
         }
@@ -107,7 +107,7 @@ class AppAlertNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $dataArray['phase'] = $data->getPhase();
         }
         if ($data->isInitialized('progress') && null !== $data->getProgress()) {
-            $dataArray['progress'] = $this->normalizer->normalize($data->getProgress(), 'json', $context);
+            $dataArray['progress'] = $data->getProgress() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getProgress(), 'json', $context));
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

@@ -140,42 +140,42 @@ class SchemaFieldAnalyzerInvalidExceptionNormalizer implements DenormalizerInter
         if ($data->isInitialized('traceLevel') && null !== $data->getTraceLevel()) {
             $dataArray['traceLevel'] = $data->getTraceLevel();
         }
-        if ($data->isInitialized('traceId')) {
+        if ($data->isInitialized('traceId') && null !== $data->getTraceId()) {
             $dataArray['traceId'] = $data->getTraceId();
         }
-        if ($data->isInitialized('traceJobId')) {
+        if ($data->isInitialized('traceJobId') && null !== $data->getTraceJobId()) {
             $dataArray['traceJobId'] = $data->getTraceJobId();
         }
         if ($data->isInitialized('httpStatusCode') && null !== $data->getHttpStatusCode()) {
             $dataArray['httpStatusCode'] = $data->getHttpStatusCode();
         }
-        if ($data->isInitialized('exceptionMessage')) {
+        if ($data->isInitialized('exceptionMessage') && null !== $data->getExceptionMessage()) {
             $dataArray['exceptionMessage'] = $data->getExceptionMessage();
         }
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('customerId')) {
+        if ($data->isInitialized('customerId') && null !== $data->getCustomerId()) {
             $dataArray['customerId'] = $data->getCustomerId();
         }
-        if ($data->isInitialized('customerAlias')) {
+        if ($data->isInitialized('customerAlias') && null !== $data->getCustomerAlias()) {
             $dataArray['customerAlias'] = $data->getCustomerAlias();
         }
-        if ($data->isInitialized('userId')) {
+        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
             $dataArray['userId'] = $data->getUserId();
         }
-        if ($data->isInitialized('fieldId')) {
+        if ($data->isInitialized('fieldId') && null !== $data->getFieldId()) {
             $dataArray['fieldId'] = $data->getFieldId();
         }
-        if ($data->isInitialized('schemaId')) {
+        if ($data->isInitialized('schemaId') && null !== $data->getSchemaId()) {
             $dataArray['schemaId'] = $data->getSchemaId();
         }
-        if ($data->isInitialized('analyzers')) {
+        if ($data->isInitialized('analyzers') && null !== $data->getAnalyzers()) {
             $values = [];
             foreach ($data->getAnalyzers() as $value) {
                 $values[] = $value;
             }
             $dataArray['analyzers'] = $values;
         }
-        if ($data->isInitialized('allowedAnalyzers')) {
+        if ($data->isInitialized('allowedAnalyzers') && null !== $data->getAllowedAnalyzers()) {
             $values_1 = [];
             foreach ($data->getAllowedAnalyzers() as $value_1) {
                 $values_1[] = $value_1;

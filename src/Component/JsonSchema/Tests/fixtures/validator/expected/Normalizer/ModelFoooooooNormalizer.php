@@ -237,7 +237,7 @@ class ModelFoooooooNormalizer implements DenormalizerInterface, NormalizerInterf
             $dataArray['uuidFormat'] = $data->getUuidFormat();
         }
         if ($data->isInitialized('foo') && null !== $data->getFoo()) {
-            $dataArray['foo'] = $this->normalizer->normalize($data->getFoo(), 'json', $context);
+            $dataArray['foo'] = $data->getFoo() === null ? null : new \Jane\JsonSchema\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getFoo(), 'json', $context));
         }
         if ($data->isInitialized('arrayEmptyItems') && null !== $data->getArrayEmptyItems()) {
             $values_4 = [];

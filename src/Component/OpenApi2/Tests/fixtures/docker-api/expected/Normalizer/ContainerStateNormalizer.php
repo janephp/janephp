@@ -130,7 +130,7 @@ class ContainerStateNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['FinishedAt'] = $data->getFinishedAt();
         }
         if ($data->isInitialized('health') && null !== $data->getHealth()) {
-            $dataArray['Health'] = $this->normalizer->normalize($data->getHealth(), 'json', $context);
+            $dataArray['Health'] = $data->getHealth() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getHealth(), 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ContainerStateConstraint());

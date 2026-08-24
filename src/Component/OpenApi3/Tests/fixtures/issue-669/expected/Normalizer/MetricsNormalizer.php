@@ -55,7 +55,7 @@ class MetricsNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['data'] = $this->normalizer->normalize($data->getData(), 'json', $context);
+        $dataArray['data'] = $data->getData() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getData(), 'json', $context));
         $dataArray['status'] = $data->getStatus();
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -72,7 +72,7 @@ class ProjectsNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $dataArray = [];
         $values = [];
         foreach ($data->getProjects() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Jane\OpenApi2\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['projects'] = $values;
         $dataArray['per_page'] = $data->getPerPage();
@@ -81,7 +81,7 @@ class ProjectsNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $dataArray['next_page'] = $data->getNextPage();
         $dataArray['previous_page'] = $data->getPreviousPage();
         $dataArray['page'] = $data->getPage();
-        $dataArray['links'] = $this->normalizer->normalize($data->getLinks(), 'json', $context);
+        $dataArray['links'] = $data->getLinks() === null ? null : new \Jane\OpenApi2\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -105,16 +105,16 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemNormalizer impl
             $dataArray['consolidatedAccounts'] = $data->getConsolidatedAccounts();
         }
         if ($data->isInitialized('profitAndLoss') && null !== $data->getProfitAndLoss()) {
-            $dataArray['profitAndLoss'] = $this->normalizer->normalize($data->getProfitAndLoss(), 'json', $context);
+            $dataArray['profitAndLoss'] = $data->getProfitAndLoss() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getProfitAndLoss(), 'json', $context));
         }
         if ($data->isInitialized('balanceSheet') && null !== $data->getBalanceSheet()) {
-            $dataArray['balanceSheet'] = $this->normalizer->normalize($data->getBalanceSheet(), 'json', $context);
+            $dataArray['balanceSheet'] = $data->getBalanceSheet() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getBalanceSheet(), 'json', $context));
         }
         if ($data->isInitialized('otherFinancials') && null !== $data->getOtherFinancials()) {
-            $dataArray['otherFinancials'] = $this->normalizer->normalize($data->getOtherFinancials(), 'json', $context);
+            $dataArray['otherFinancials'] = $data->getOtherFinancials() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getOtherFinancials(), 'json', $context));
         }
         if ($data->isInitialized('ratios') && null !== $data->getRatios()) {
-            $dataArray['ratios'] = $this->normalizer->normalize($data->getRatios(), 'json', $context);
+            $dataArray['ratios'] = $data->getRatios() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getRatios(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

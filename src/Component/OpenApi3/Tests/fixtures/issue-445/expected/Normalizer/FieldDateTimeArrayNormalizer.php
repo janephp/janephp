@@ -154,16 +154,16 @@ class FieldDateTimeArrayNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('indexId')) {
+        if ($data->isInitialized('indexId') && null !== $data->getIndexId()) {
             $dataArray['indexId'] = $data->getIndexId();
         }
-        if ($data->isInitialized('fieldNamespace')) {
+        if ($data->isInitialized('fieldNamespace') && null !== $data->getFieldNamespace()) {
             $dataArray['fieldNamespace'] = $data->getFieldNamespace();
         }
-        if ($data->isInitialized('names')) {
+        if ($data->isInitialized('names') && null !== $data->getNames()) {
             $dataArray['names'] = $data->getNames();
         }
-        if ($data->isInitialized('descriptions')) {
+        if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
             $dataArray['descriptions'] = $data->getDescriptions();
         }
         $dataArray['required'] = $data->getRequired();
@@ -172,7 +172,7 @@ class FieldDateTimeArrayNormalizer implements DenormalizerInterface, NormalizerI
         $dataArray['simpleSearch'] = $data->getSimpleSearch();
         $dataArray['sortable'] = $data->getSortable();
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('format')) {
+        if ($data->isInitialized('format') && null !== $data->getFormat()) {
             $dataArray['format'] = $data->getFormat();
         }
         if ($data->isInitialized('boost') && null !== $data->getBoost()) {
@@ -181,10 +181,10 @@ class FieldDateTimeArrayNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('initializeOnItemCreation') && null !== $data->getInitializeOnItemCreation()) {
             $dataArray['initializeOnItemCreation'] = $data->getInitializeOnItemCreation();
         }
-        if ($data->isInitialized('maximumItems')) {
+        if ($data->isInitialized('maximumItems') && null !== $data->getMaximumItems()) {
             $dataArray['maximumItems'] = $data->getMaximumItems();
         }
-        if ($data->isInitialized('minimumItems')) {
+        if ($data->isInitialized('minimumItems') && null !== $data->getMinimumItems()) {
             $dataArray['minimumItems'] = $data->getMinimumItems();
         }
         foreach ($data as $key => $value) {

@@ -13,18 +13,18 @@ class Foo
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var string|object|null[]
+     * @var string|mixed
      */
     protected $foo;
     /**
-     * @return string|object|null[]
+     * @return string|mixed
      */
     public function getFoo()
     {
         return $this->foo;
     }
     /**
-     * @param string|object|null[] $foo
+     * @param string|mixed $foo
      *
      * @return self
      */

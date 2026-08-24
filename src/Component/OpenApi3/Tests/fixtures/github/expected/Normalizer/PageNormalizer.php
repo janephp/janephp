@@ -91,7 +91,7 @@ class PageNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $dataArray['html_url'] = $data->getHtmlUrl();
         }
         if ($data->isInitialized('source') && null !== $data->getSource()) {
-            $dataArray['source'] = $this->normalizer->normalize($data->getSource(), 'json', $context);
+            $dataArray['source'] = $data->getSource() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getSource(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

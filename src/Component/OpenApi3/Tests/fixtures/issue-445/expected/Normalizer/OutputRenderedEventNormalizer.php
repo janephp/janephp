@@ -82,13 +82,13 @@ class OutputRenderedEventNormalizer implements DenormalizerInterface, Normalizer
         $dataArray = [];
         $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('outputId')) {
+        if ($data->isInitialized('outputId') && null !== $data->getOutputId()) {
             $dataArray['outputId'] = $data->getOutputId();
         }
-        if ($data->isInitialized('contentId')) {
+        if ($data->isInitialized('contentId') && null !== $data->getContentId()) {
             $dataArray['contentId'] = $data->getContentId();
         }
-        if ($data->isInitialized('outputFormatId')) {
+        if ($data->isInitialized('outputFormatId') && null !== $data->getOutputFormatId()) {
             $dataArray['outputFormatId'] = $data->getOutputFormatId();
         }
         if ($data->isInitialized('renderingState') && null !== $data->getRenderingState()) {

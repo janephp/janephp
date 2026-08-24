@@ -434,13 +434,13 @@ class PostgresAdvancedConfigNormalizer implements DenormalizerInterface, Normali
             $dataArray['shared_buffers_percentage'] = $data->getSharedBuffersPercentage();
         }
         if ($data->isInitialized('pgbouncer') && null !== $data->getPgbouncer()) {
-            $dataArray['pgbouncer'] = $this->normalizer->normalize($data->getPgbouncer(), 'json', $context);
+            $dataArray['pgbouncer'] = $data->getPgbouncer() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getPgbouncer(), 'json', $context));
         }
         if ($data->isInitialized('workMem') && null !== $data->getWorkMem()) {
             $dataArray['work_mem'] = $data->getWorkMem();
         }
         if ($data->isInitialized('timescaledb') && null !== $data->getTimescaledb()) {
-            $dataArray['timescaledb'] = $this->normalizer->normalize($data->getTimescaledb(), 'json', $context);
+            $dataArray['timescaledb'] = $data->getTimescaledb() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getTimescaledb(), 'json', $context));
         }
         if ($data->isInitialized('synchronousReplication') && null !== $data->getSynchronousReplication()) {
             $dataArray['synchronous_replication'] = $data->getSynchronousReplication();

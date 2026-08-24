@@ -164,60 +164,60 @@ class AppSpecNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('domains') && null !== $data->getDomains()) {
             $values = [];
             foreach ($data->getDomains() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['domains'] = $values;
         }
         if ($data->isInitialized('services') && null !== $data->getServices()) {
             $values_1 = [];
             foreach ($data->getServices() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['services'] = $values_1;
         }
         if ($data->isInitialized('staticSites') && null !== $data->getStaticSites()) {
             $values_2 = [];
             foreach ($data->getStaticSites() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['static_sites'] = $values_2;
         }
         if ($data->isInitialized('jobs') && null !== $data->getJobs()) {
             $values_3 = [];
             foreach ($data->getJobs() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['jobs'] = $values_3;
         }
         if ($data->isInitialized('workers') && null !== $data->getWorkers()) {
             $values_4 = [];
             foreach ($data->getWorkers() as $value_4) {
-                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[] = $value_4 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['workers'] = $values_4;
         }
         if ($data->isInitialized('functions') && null !== $data->getFunctions()) {
             $values_5 = [];
             foreach ($data->getFunctions() as $value_5) {
-                $values_5[] = $this->normalizer->normalize($value_5, 'json', $context);
+                $values_5[] = $value_5 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
             }
             $dataArray['functions'] = $values_5;
         }
         if ($data->isInitialized('databases') && null !== $data->getDatabases()) {
             $values_6 = [];
             foreach ($data->getDatabases() as $value_6) {
-                $values_6[] = $this->normalizer->normalize($value_6, 'json', $context);
+                $values_6[] = $value_6 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_6, 'json', $context));
             }
             $dataArray['databases'] = $values_6;
         }
         if ($data->isInitialized('ingress') && null !== $data->getIngress()) {
-            $dataArray['ingress'] = $this->normalizer->normalize($data->getIngress(), 'json', $context);
+            $dataArray['ingress'] = $data->getIngress() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getIngress(), 'json', $context));
         }
         if ($data->isInitialized('egress') && null !== $data->getEgress()) {
-            $dataArray['egress'] = $this->normalizer->normalize($data->getEgress(), 'json', $context);
+            $dataArray['egress'] = $data->getEgress() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getEgress(), 'json', $context));
         }
         if ($data->isInitialized('maintenance') && null !== $data->getMaintenance()) {
-            $dataArray['maintenance'] = $this->normalizer->normalize($data->getMaintenance(), 'json', $context);
+            $dataArray['maintenance'] = $data->getMaintenance() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMaintenance(), 'json', $context));
         }
         foreach ($data as $key => $value_7) {
             if (preg_match('/.*/', (string) $key)) {

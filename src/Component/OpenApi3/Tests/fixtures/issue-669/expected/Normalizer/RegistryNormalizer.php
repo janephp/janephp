@@ -78,7 +78,7 @@ class RegistryNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $dataArray['region'] = $data->getRegion();
         }
         if ($data->isInitialized('subscription') && null !== $data->getSubscription()) {
-            $dataArray['subscription'] = $this->normalizer->normalize($data->getSubscription(), 'json', $context);
+            $dataArray['subscription'] = $data->getSubscription() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSubscription(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

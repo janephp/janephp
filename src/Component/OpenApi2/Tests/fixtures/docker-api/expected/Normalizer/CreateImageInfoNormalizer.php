@@ -73,7 +73,7 @@ class CreateImageInfoNormalizer implements DenormalizerInterface, NormalizerInte
             $dataArray['progress'] = $data->getProgress();
         }
         if ($data->isInitialized('progressDetail') && null !== $data->getProgressDetail()) {
-            $dataArray['progressDetail'] = $this->normalizer->normalize($data->getProgressDetail(), 'json', $context);
+            $dataArray['progressDetail'] = $data->getProgressDetail() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getProgressDetail(), 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\CreateImageInfoConstraint());

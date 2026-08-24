@@ -144,7 +144,7 @@ class SystemIPsecUpdateNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('ikeProposals') && null !== $data->getIkeProposals()) {
             $values = [];
             foreach ($data->getIkeProposals() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['ikeProposals'] = $values;
         }
@@ -160,7 +160,7 @@ class SystemIPsecUpdateNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('espProposals') && null !== $data->getEspProposals()) {
             $values_1 = [];
             foreach ($data->getEspProposals() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['espProposals'] = $values_1;
         }

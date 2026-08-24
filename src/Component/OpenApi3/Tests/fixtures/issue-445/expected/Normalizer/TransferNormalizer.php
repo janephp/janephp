@@ -73,11 +73,11 @@ class TransferNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $dataArray['name'] = $data->getName();
         $dataArray['state'] = $data->getState();
         $dataArray['transferType'] = $data->getTransferType();
-        if ($data->isInitialized('businessProcessId')) {
+        if ($data->isInitialized('businessProcessId') && null !== $data->getBusinessProcessId()) {
             $dataArray['businessProcessId'] = $data->getBusinessProcessId();
         }
         $dataArray['fileTransferCount'] = $data->getFileTransferCount();
-        if ($data->isInitialized('collectionId')) {
+        if ($data->isInitialized('collectionId') && null !== $data->getCollectionId()) {
             $dataArray['collectionId'] = $data->getCollectionId();
         }
         return $dataArray;

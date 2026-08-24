@@ -68,10 +68,10 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if ($data->isInitialized('date') && null !== $data->getDate()) {
             $dataArray['date'] = $data->getDate()->format('d.m.Y');
         }
-        if ($data->isInitialized('dateOrNull')) {
+        if ($data->isInitialized('dateOrNull') && null !== $data->getDateOrNull()) {
             $dataArray['dateOrNull'] = $data->getDateOrNull()?->format('d.m.Y');
         }
-        if ($data->isInitialized('dateOrNullOrInt')) {
+        if ($data->isInitialized('dateOrNullOrInt') && null !== $data->getDateOrNullOrInt()) {
             $value = $data->getDateOrNullOrInt();
             if (is_object($data->getDateOrNullOrInt())) {
                 $value = $data->getDateOrNullOrInt()->format('d.m.Y');

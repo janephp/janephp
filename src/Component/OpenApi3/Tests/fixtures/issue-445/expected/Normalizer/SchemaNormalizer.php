@@ -99,23 +99,23 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
     {
         $dataArray = [];
         $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('parentSchemaId')) {
+        if ($data->isInitialized('parentSchemaId') && null !== $data->getParentSchemaId()) {
             $dataArray['parentSchemaId'] = $data->getParentSchemaId();
         }
-        if ($data->isInitialized('types')) {
+        if ($data->isInitialized('types') && null !== $data->getTypes()) {
             $values = [];
             foreach ($data->getTypes() as $value) {
                 $values[] = $value;
             }
             $dataArray['types'] = $values;
         }
-        if ($data->isInitialized('names')) {
+        if ($data->isInitialized('names') && null !== $data->getNames()) {
             $dataArray['names'] = $data->getNames();
         }
-        if ($data->isInitialized('descriptions')) {
+        if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
             $dataArray['descriptions'] = $data->getDescriptions();
         }
-        if ($data->isInitialized('layerSchemaIds')) {
+        if ($data->isInitialized('layerSchemaIds') && null !== $data->getLayerSchemaIds()) {
             $values_1 = [];
             foreach ($data->getLayerSchemaIds() as $value_1) {
                 $values_1[] = $value_1;

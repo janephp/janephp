@@ -38,7 +38,7 @@ class ResponseNodePoolCreateNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('node_pool', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data['node_pool'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -56,7 +56,7 @@ class ResponseNodePoolCreateNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if ($data->isInitialized('nodePool') && null !== $data->getNodePool()) {
-            $values = [];
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data->getNodePool() as $key => $value) {
                 $values[$key] = $value;
             }

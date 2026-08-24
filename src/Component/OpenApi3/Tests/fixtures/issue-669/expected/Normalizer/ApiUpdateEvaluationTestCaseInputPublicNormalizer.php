@@ -78,13 +78,13 @@ class ApiUpdateEvaluationTestCaseInputPublicNormalizer implements DenormalizerIn
             $dataArray['description'] = $data->getDescription();
         }
         if ($data->isInitialized('metrics') && null !== $data->getMetrics()) {
-            $dataArray['metrics'] = $this->normalizer->normalize($data->getMetrics(), 'json', $context);
+            $dataArray['metrics'] = $data->getMetrics() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMetrics(), 'json', $context));
         }
         if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();
         }
         if ($data->isInitialized('starMetric') && null !== $data->getStarMetric()) {
-            $dataArray['star_metric'] = $this->normalizer->normalize($data->getStarMetric(), 'json', $context);
+            $dataArray['star_metric'] = $data->getStarMetric() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getStarMetric(), 'json', $context));
         }
         if ($data->isInitialized('testCaseUuid') && null !== $data->getTestCaseUuid()) {
             $dataArray['test_case_uuid'] = $data->getTestCaseUuid();

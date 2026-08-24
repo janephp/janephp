@@ -478,12 +478,12 @@ class RepositoryNormalizer implements DenormalizerInterface, NormalizerInterface
         $dataArray['node_id'] = $data->getNodeId();
         $dataArray['name'] = $data->getName();
         $dataArray['full_name'] = $data->getFullName();
-        $dataArray['license'] = $this->normalizer->normalize($data->getLicense(), 'json', $context);
+        $dataArray['license'] = $data->getLicense() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getLicense(), 'json', $context));
         $dataArray['forks'] = $data->getForks();
         if ($data->isInitialized('permissions') && null !== $data->getPermissions()) {
-            $dataArray['permissions'] = $this->normalizer->normalize($data->getPermissions(), 'json', $context);
+            $dataArray['permissions'] = $data->getPermissions() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPermissions(), 'json', $context));
         }
-        $dataArray['owner'] = $this->normalizer->normalize($data->getOwner(), 'json', $context);
+        $dataArray['owner'] = $data->getOwner() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getOwner(), 'json', $context));
         $dataArray['private'] = $data->getPrivate();
         $dataArray['html_url'] = $data->getHtmlUrl();
         $dataArray['description'] = $data->getDescription();
@@ -564,8 +564,8 @@ class RepositoryNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('allowRebaseMerge') && null !== $data->getAllowRebaseMerge()) {
             $dataArray['allow_rebase_merge'] = $data->getAllowRebaseMerge();
         }
-        if ($data->isInitialized('templateRepository')) {
-            $dataArray['template_repository'] = $this->normalizer->normalize($data->getTemplateRepository(), 'json', $context);
+        if ($data->isInitialized('templateRepository') && null !== $data->getTemplateRepository()) {
+            $dataArray['template_repository'] = $data->getTemplateRepository() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getTemplateRepository(), 'json', $context));
         }
         if ($data->isInitialized('tempCloneToken') && null !== $data->getTempCloneToken()) {
             $dataArray['temp_clone_token'] = $data->getTempCloneToken();

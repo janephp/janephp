@@ -52,7 +52,7 @@ class NfsCreateResponseNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if ($data->isInitialized('share') && null !== $data->getShare()) {
-            $dataArray['share'] = $this->normalizer->normalize($data->getShare(), 'json', $context);
+            $dataArray['share'] = $data->getShare() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getShare(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

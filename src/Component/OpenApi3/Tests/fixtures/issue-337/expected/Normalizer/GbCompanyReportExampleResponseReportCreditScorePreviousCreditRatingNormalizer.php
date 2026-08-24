@@ -74,10 +74,10 @@ class GbCompanyReportExampleResponseReportCreditScorePreviousCreditRatingNormali
             $dataArray['commonDescription'] = $data->getCommonDescription();
         }
         if ($data->isInitialized('creditLimit') && null !== $data->getCreditLimit()) {
-            $dataArray['creditLimit'] = $this->normalizer->normalize($data->getCreditLimit(), 'json', $context);
+            $dataArray['creditLimit'] = $data->getCreditLimit() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getCreditLimit(), 'json', $context));
         }
         if ($data->isInitialized('providerValue') && null !== $data->getProviderValue()) {
-            $dataArray['providerValue'] = $this->normalizer->normalize($data->getProviderValue(), 'json', $context);
+            $dataArray['providerValue'] = $data->getProviderValue() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getProviderValue(), 'json', $context));
         }
         if ($data->isInitialized('providerDescription') && null !== $data->getProviderDescription()) {
             $dataArray['providerDescription'] = $data->getProviderDescription();

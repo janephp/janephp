@@ -82,14 +82,14 @@ class ReviewReviewWriteNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray = [];
         $dataArray['body'] = $data->getBody();
         $dataArray['rating'] = $data->getRating();
-        if ($data->isInitialized('letter')) {
+        if ($data->isInitialized('letter') && null !== $data->getLetter()) {
             $dataArray['letter'] = $data->getLetter();
         }
         $dataArray['book'] = $data->getBook();
-        if ($data->isInitialized('author')) {
+        if ($data->isInitialized('author') && null !== $data->getAuthor()) {
             $dataArray['author'] = $data->getAuthor();
         }
-        if ($data->isInitialized('publicationDate')) {
+        if ($data->isInitialized('publicationDate') && null !== $data->getPublicationDate()) {
             $dataArray['publicationDate'] = $data->getPublicationDate()?->format('Y-m-d\TH:i:sP');
         }
         foreach ($data as $key => $value) {

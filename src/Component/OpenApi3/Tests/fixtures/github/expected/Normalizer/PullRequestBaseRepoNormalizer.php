@@ -459,7 +459,7 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         $dataArray['milestones_url'] = $data->getMilestonesUrl();
         $dataArray['name'] = $data->getName();
         $dataArray['notifications_url'] = $data->getNotificationsUrl();
-        $dataArray['owner'] = $this->normalizer->normalize($data->getOwner(), 'json', $context);
+        $dataArray['owner'] = $data->getOwner() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getOwner(), 'json', $context));
         $dataArray['private'] = $data->getPrivate();
         $dataArray['pulls_url'] = $data->getPullsUrl();
         $dataArray['releases_url'] = $data->getReleasesUrl();
@@ -492,7 +492,7 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         $dataArray['open_issues'] = $data->getOpenIssues();
         $dataArray['open_issues_count'] = $data->getOpenIssuesCount();
         if ($data->isInitialized('permissions') && null !== $data->getPermissions()) {
-            $dataArray['permissions'] = $this->normalizer->normalize($data->getPermissions(), 'json', $context);
+            $dataArray['permissions'] = $data->getPermissions() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPermissions(), 'json', $context));
         }
         if ($data->isInitialized('tempCloneToken') && null !== $data->getTempCloneToken()) {
             $dataArray['temp_clone_token'] = $data->getTempCloneToken();
@@ -506,7 +506,7 @@ class PullRequestBaseRepoNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('allowRebaseMerge') && null !== $data->getAllowRebaseMerge()) {
             $dataArray['allow_rebase_merge'] = $data->getAllowRebaseMerge();
         }
-        $dataArray['license'] = $this->normalizer->normalize($data->getLicense(), 'json', $context);
+        $dataArray['license'] = $data->getLicense() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getLicense(), 'json', $context));
         $dataArray['pushed_at'] = $data->getPushedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['size'] = $data->getSize();
         $dataArray['ssh_url'] = $data->getSshUrl();

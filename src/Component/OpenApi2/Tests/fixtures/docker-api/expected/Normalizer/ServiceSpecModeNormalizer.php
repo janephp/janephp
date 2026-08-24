@@ -58,13 +58,13 @@ class ServiceSpecModeNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if ($data->isInitialized('replicated') && null !== $data->getReplicated()) {
-            $dataArray['Replicated'] = $this->normalizer->normalize($data->getReplicated(), 'json', $context);
+            $dataArray['Replicated'] = $data->getReplicated() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getReplicated(), 'json', $context));
         }
         if ($data->isInitialized('global') && null !== $data->getGlobal()) {
             $dataArray['Global'] = $data->getGlobal();
         }
         if ($data->isInitialized('replicatedJob') && null !== $data->getReplicatedJob()) {
-            $dataArray['ReplicatedJob'] = $this->normalizer->normalize($data->getReplicatedJob(), 'json', $context);
+            $dataArray['ReplicatedJob'] = $data->getReplicatedJob() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getReplicatedJob(), 'json', $context));
         }
         if ($data->isInitialized('globalJob') && null !== $data->getGlobalJob()) {
             $dataArray['GlobalJob'] = $data->getGlobalJob();

@@ -38,7 +38,7 @@ class ResponseSinglePartnerAttachmentBgpAuthKeyNormalizer implements Denormalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('bgp_auth_key', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data['bgp_auth_key'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -56,7 +56,7 @@ class ResponseSinglePartnerAttachmentBgpAuthKeyNormalizer implements Denormalize
     {
         $dataArray = [];
         if ($data->isInitialized('bgpAuthKey') && null !== $data->getBgpAuthKey()) {
-            $values = [];
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data->getBgpAuthKey() as $key => $value) {
                 $values[$key] = $value;
             }

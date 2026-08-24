@@ -63,19 +63,19 @@ class ServiceEndpointNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if ($data->isInitialized('spec') && null !== $data->getSpec()) {
-            $dataArray['Spec'] = $this->normalizer->normalize($data->getSpec(), 'json', $context);
+            $dataArray['Spec'] = $data->getSpec() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getSpec(), 'json', $context));
         }
         if ($data->isInitialized('ports') && null !== $data->getPorts()) {
             $values = [];
             foreach ($data->getPorts() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['Ports'] = $values;
         }
         if ($data->isInitialized('virtualIPs') && null !== $data->getVirtualIPs()) {
             $values_1 = [];
             foreach ($data->getVirtualIPs() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['VirtualIPs'] = $values_1;
         }

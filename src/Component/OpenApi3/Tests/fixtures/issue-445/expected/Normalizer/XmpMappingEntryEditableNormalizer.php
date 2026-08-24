@@ -71,7 +71,7 @@ class XmpMappingEntryEditableNormalizer implements DenormalizerInterface, Normal
         $dataArray['stopProcessing'] = $data->getStopProcessing();
         $dataArray['xmpPath'] = $data->getXmpPath();
         $dataArray['metadataPath'] = $data->getMetadataPath();
-        if ($data->isInitialized('configuration')) {
+        if ($data->isInitialized('configuration') && null !== $data->getConfiguration()) {
             $dataArray['configuration'] = $data->getConfiguration();
         }
         return $dataArray;

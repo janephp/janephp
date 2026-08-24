@@ -116,21 +116,21 @@ class CommitSearchResultItemNormalizer implements DenormalizerInterface, Normali
         $dataArray['sha'] = $data->getSha();
         $dataArray['html_url'] = $data->getHtmlUrl();
         $dataArray['comments_url'] = $data->getCommentsUrl();
-        $dataArray['commit'] = $this->normalizer->normalize($data->getCommit(), 'json', $context);
-        $dataArray['author'] = $this->normalizer->normalize($data->getAuthor(), 'json', $context);
-        $dataArray['committer'] = $this->normalizer->normalize($data->getCommitter(), 'json', $context);
+        $dataArray['commit'] = $data->getCommit() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCommit(), 'json', $context));
+        $dataArray['author'] = $data->getAuthor() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getAuthor(), 'json', $context));
+        $dataArray['committer'] = $data->getCommitter() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCommitter(), 'json', $context));
         $values = [];
         foreach ($data->getParents() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['parents'] = $values;
-        $dataArray['repository'] = $this->normalizer->normalize($data->getRepository(), 'json', $context);
+        $dataArray['repository'] = $data->getRepository() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRepository(), 'json', $context));
         $dataArray['score'] = $data->getScore();
         $dataArray['node_id'] = $data->getNodeId();
         if ($data->isInitialized('textMatches') && null !== $data->getTextMatches()) {
             $values_1 = [];
             foreach ($data->getTextMatches() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['text_matches'] = $values_1;
         }

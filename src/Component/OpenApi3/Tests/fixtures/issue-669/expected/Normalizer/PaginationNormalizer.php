@@ -52,7 +52,7 @@ class PaginationNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         if ($data->isInitialized('links') && null !== $data->getLinks()) {
-            $dataArray['links'] = $this->normalizer->normalize($data->getLinks(), 'json', $context);
+            $dataArray['links'] = $data->getLinks() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

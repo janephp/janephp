@@ -75,20 +75,20 @@ class GbPeopleReportReponseReportNormalizer implements DenormalizerInterface, No
             $dataArray['directorId'] = $data->getDirectorId();
         }
         if ($data->isInitialized('directorSummary') && null !== $data->getDirectorSummary()) {
-            $dataArray['directorSummary'] = $this->normalizer->normalize($data->getDirectorSummary(), 'json', $context);
+            $dataArray['directorSummary'] = $data->getDirectorSummary() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getDirectorSummary(), 'json', $context));
         }
         if ($data->isInitialized('directorDetails') && null !== $data->getDirectorDetails()) {
-            $dataArray['directorDetails'] = $this->normalizer->normalize($data->getDirectorDetails(), 'json', $context);
+            $dataArray['directorDetails'] = $data->getDirectorDetails() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getDirectorDetails(), 'json', $context));
         }
         if ($data->isInitialized('otherAddresses') && null !== $data->getOtherAddresses()) {
             $values = [];
             foreach ($data->getOtherAddresses() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['otherAddresses'] = $values;
         }
         if ($data->isInitialized('directorships') && null !== $data->getDirectorships()) {
-            $dataArray['directorships'] = $this->normalizer->normalize($data->getDirectorships(), 'json', $context);
+            $dataArray['directorships'] = $data->getDirectorships() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getDirectorships(), 'json', $context));
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

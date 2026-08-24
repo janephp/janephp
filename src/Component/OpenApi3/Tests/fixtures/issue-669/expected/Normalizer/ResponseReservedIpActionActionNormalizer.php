@@ -108,19 +108,19 @@ class ResponseReservedIpActionActionNormalizer implements DenormalizerInterface,
         if ($data->isInitialized('startedAt') && null !== $data->getStartedAt()) {
             $dataArray['started_at'] = $data->getStartedAt()->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('completedAt')) {
+        if ($data->isInitialized('completedAt') && null !== $data->getCompletedAt()) {
             $dataArray['completed_at'] = $data->getCompletedAt()?->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('resourceId')) {
+        if ($data->isInitialized('resourceId') && null !== $data->getResourceId()) {
             $dataArray['resource_id'] = $data->getResourceId();
         }
         if ($data->isInitialized('resourceType') && null !== $data->getResourceType()) {
             $dataArray['resource_type'] = $data->getResourceType();
         }
         if ($data->isInitialized('region') && null !== $data->getRegion()) {
-            $dataArray['region'] = $this->normalizer->normalize($data->getRegion(), 'json', $context);
+            $dataArray['region'] = $data->getRegion() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getRegion(), 'json', $context));
         }
-        if ($data->isInitialized('regionSlug')) {
+        if ($data->isInitialized('regionSlug') && null !== $data->getRegionSlug()) {
             $dataArray['region_slug'] = $data->getRegionSlug();
         }
         if ($data->isInitialized('projectId') && null !== $data->getProjectId()) {

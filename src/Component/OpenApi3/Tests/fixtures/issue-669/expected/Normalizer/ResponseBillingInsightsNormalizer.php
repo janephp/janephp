@@ -69,7 +69,7 @@ class ResponseBillingInsightsNormalizer implements DenormalizerInterface, Normal
         $dataArray = [];
         $values = [];
         foreach ($data->getDataPoints() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['data_points'] = $values;
         $dataArray['total_items'] = $data->getTotalItems();

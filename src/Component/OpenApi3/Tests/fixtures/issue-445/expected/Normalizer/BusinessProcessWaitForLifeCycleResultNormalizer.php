@@ -51,7 +51,7 @@ class BusinessProcessWaitForLifeCycleResultNormalizer implements DenormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('lifeCycleHit')) {
+        if ($data->isInitialized('lifeCycleHit') && null !== $data->getLifeCycleHit()) {
             $dataArray['lifeCycleHit'] = $data->getLifeCycleHit();
         }
         $dataArray['businessProcess'] = $data->getBusinessProcess();

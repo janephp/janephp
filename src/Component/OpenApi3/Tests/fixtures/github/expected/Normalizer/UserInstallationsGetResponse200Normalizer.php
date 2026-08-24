@@ -68,7 +68,7 @@ class UserInstallationsGetResponse200Normalizer implements DenormalizerInterface
         if ($data->isInitialized('installations') && null !== $data->getInstallations()) {
             $values = [];
             foreach ($data->getInstallations() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['installations'] = $values;
         }

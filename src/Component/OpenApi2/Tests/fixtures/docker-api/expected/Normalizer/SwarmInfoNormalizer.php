@@ -106,21 +106,21 @@ class SwarmInfoNormalizer implements DenormalizerInterface, NormalizerInterface,
         if ($data->isInitialized('error') && null !== $data->getError()) {
             $dataArray['Error'] = $data->getError();
         }
-        if ($data->isInitialized('remoteManagers')) {
+        if ($data->isInitialized('remoteManagers') && null !== $data->getRemoteManagers()) {
             $values = [];
             foreach ($data->getRemoteManagers() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['RemoteManagers'] = $values;
         }
-        if ($data->isInitialized('nodes')) {
+        if ($data->isInitialized('nodes') && null !== $data->getNodes()) {
             $dataArray['Nodes'] = $data->getNodes();
         }
-        if ($data->isInitialized('managers')) {
+        if ($data->isInitialized('managers') && null !== $data->getManagers()) {
             $dataArray['Managers'] = $data->getManagers();
         }
-        if ($data->isInitialized('cluster')) {
-            $dataArray['Cluster'] = $this->normalizer->normalize($data->getCluster(), 'json', $context);
+        if ($data->isInitialized('cluster') && null !== $data->getCluster()) {
+            $dataArray['Cluster'] = $data->getCluster() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getCluster(), 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SwarmInfoConstraint());

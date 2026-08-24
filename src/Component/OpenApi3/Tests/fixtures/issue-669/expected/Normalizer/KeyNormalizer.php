@@ -73,7 +73,7 @@ class KeyNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if ($data->isInitialized('grants') && null !== $data->getGrants()) {
             $values = [];
             foreach ($data->getGrants() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['grants'] = $values;
         }

@@ -82,7 +82,7 @@ class RogueclientRogueInfoNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('detectedByAP') && null !== $data->getDetectedByAP()) {
             $values = [];
             foreach ($data->getDetectedByAP() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['detectedByAP'] = $values;
         }

@@ -54,10 +54,10 @@ class ContentReferencesResultNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('metadataReferences')) {
+        if ($data->isInitialized('metadataReferences') && null !== $data->getMetadataReferences()) {
             $dataArray['metadataReferences'] = $data->getMetadataReferences();
         }
-        if ($data->isInitialized('shareReferences')) {
+        if ($data->isInitialized('shareReferences') && null !== $data->getShareReferences()) {
             $dataArray['shareReferences'] = $data->getShareReferences();
         }
         return $dataArray;

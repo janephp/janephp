@@ -79,7 +79,7 @@ class ClusterlintResultsNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('diagnostics') && null !== $data->getDiagnostics()) {
             $values = [];
             foreach ($data->getDiagnostics() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['diagnostics'] = $values;
         }

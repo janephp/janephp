@@ -72,7 +72,7 @@ class InvoiceSummaryProductChargesNormalizer implements DenormalizerInterface, N
         if ($data->isInitialized('items') && null !== $data->getItems()) {
             $values = [];
             foreach ($data->getItems() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['items'] = $values;
         }

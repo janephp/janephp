@@ -85,15 +85,15 @@ class ProfileCreateUserTrafficProfileNormalizer implements DenormalizerInterface
         }
         $dataArray['defaultAction'] = $data->getDefaultAction();
         if ($data->isInitialized('uplinkRateLimiting') && null !== $data->getUplinkRateLimiting()) {
-            $dataArray['uplinkRateLimiting'] = $this->normalizer->normalize($data->getUplinkRateLimiting(), 'json', $context);
+            $dataArray['uplinkRateLimiting'] = $data->getUplinkRateLimiting() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUplinkRateLimiting(), 'json', $context));
         }
         if ($data->isInitialized('downlinkRateLimiting') && null !== $data->getDownlinkRateLimiting()) {
-            $dataArray['downlinkRateLimiting'] = $this->normalizer->normalize($data->getDownlinkRateLimiting(), 'json', $context);
+            $dataArray['downlinkRateLimiting'] = $data->getDownlinkRateLimiting() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getDownlinkRateLimiting(), 'json', $context));
         }
         if ($data->isInitialized('ipAclRules') && null !== $data->getIpAclRules()) {
             $values = [];
             foreach ($data->getIpAclRules() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['ipAclRules'] = $values;
         }

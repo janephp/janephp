@@ -52,7 +52,7 @@ class ApiUpdateKnowledgeBaseOutputNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if ($data->isInitialized('knowledgeBase') && null !== $data->getKnowledgeBase()) {
-            $dataArray['knowledge_base'] = $this->normalizer->normalize($data->getKnowledgeBase(), 'json', $context);
+            $dataArray['knowledge_base'] = $data->getKnowledgeBase() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getKnowledgeBase(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

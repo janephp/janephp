@@ -93,13 +93,13 @@ class RadioRadio24gZoneNormalizer implements DenormalizerInterface, NormalizerIn
             $dataArray['channelRange'] = $values;
         }
         if ($data->isInitialized('backgroundScanning') && null !== $data->getBackgroundScanning()) {
-            $dataArray['backgroundScanning'] = $this->normalizer->normalize($data->getBackgroundScanning(), 'json', $context);
+            $dataArray['backgroundScanning'] = $data->getBackgroundScanning() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getBackgroundScanning(), 'json', $context));
         }
         if ($data->isInitialized('protectionMode') && null !== $data->getProtectionMode()) {
             $dataArray['protectionMode'] = $data->getProtectionMode();
         }
         if ($data->isInitialized('autoChannelSelection') && null !== $data->getAutoChannelSelection()) {
-            $dataArray['autoChannelSelection'] = $this->normalizer->normalize($data->getAutoChannelSelection(), 'json', $context);
+            $dataArray['autoChannelSelection'] = $data->getAutoChannelSelection() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAutoChannelSelection(), 'json', $context));
         }
         return $dataArray;
     }

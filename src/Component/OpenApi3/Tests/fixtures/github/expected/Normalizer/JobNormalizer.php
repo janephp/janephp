@@ -134,7 +134,7 @@ class JobNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if ($data->isInitialized('steps') && null !== $data->getSteps()) {
             $values = [];
             foreach ($data->getSteps() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['steps'] = $values;
         }

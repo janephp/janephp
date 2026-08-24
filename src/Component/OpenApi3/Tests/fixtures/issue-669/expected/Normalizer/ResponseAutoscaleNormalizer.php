@@ -52,7 +52,7 @@ class ResponseAutoscaleNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if ($data->isInitialized('autoscale') && null !== $data->getAutoscale()) {
-            $dataArray['autoscale'] = $this->normalizer->normalize($data->getAutoscale(), 'json', $context);
+            $dataArray['autoscale'] = $data->getAutoscale() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAutoscale(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

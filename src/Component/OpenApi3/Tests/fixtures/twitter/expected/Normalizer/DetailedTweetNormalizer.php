@@ -135,27 +135,27 @@ class DetailedTweetNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('referencedTweets') && null !== $data->getReferencedTweets()) {
             $values = [];
             foreach ($data->getReferencedTweets() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['referenced_tweets'] = $values;
         }
         if ($data->isInitialized('attachments') && null !== $data->getAttachments()) {
-            $dataArray['attachments'] = $this->normalizer->normalize($data->getAttachments(), 'json', $context);
+            $dataArray['attachments'] = $data->getAttachments() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAttachments(), 'json', $context));
         }
         if ($data->isInitialized('withheld') && null !== $data->getWithheld()) {
-            $dataArray['withheld'] = $this->normalizer->normalize($data->getWithheld(), 'json', $context);
+            $dataArray['withheld'] = $data->getWithheld() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getWithheld(), 'json', $context));
         }
         if ($data->isInitialized('geo') && null !== $data->getGeo()) {
-            $dataArray['geo'] = $this->normalizer->normalize($data->getGeo(), 'json', $context);
+            $dataArray['geo'] = $data->getGeo() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getGeo(), 'json', $context));
         }
         if ($data->isInitialized('entities') && null !== $data->getEntities()) {
-            $dataArray['entities'] = $this->normalizer->normalize($data->getEntities(), 'json', $context);
+            $dataArray['entities'] = $data->getEntities() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getEntities(), 'json', $context));
         }
-        $dataArray['stats'] = $this->normalizer->normalize($data->getStats(), 'json', $context);
+        $dataArray['stats'] = $data->getStats() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getStats(), 'json', $context));
         if ($data->isInitialized('contextAnnotation') && null !== $data->getContextAnnotation()) {
             $values_1 = [];
             foreach ($data->getContextAnnotation() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['context_annotation'] = $values_1;
         }

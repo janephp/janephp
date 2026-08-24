@@ -73,7 +73,7 @@ class ImageSummaryNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setVirtualSize($data['VirtualSize']);
         }
         if (\array_key_exists('Labels', $data)) {
-            $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_2 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Labels'] as $key => $value_2) {
                 $values_2[$key] = $value_2;
             }
@@ -103,7 +103,7 @@ class ImageSummaryNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['Size'] = $data->getSize();
         $dataArray['SharedSize'] = $data->getSharedSize();
         $dataArray['VirtualSize'] = $data->getVirtualSize();
-        $values_2 = [];
+        $values_2 = new \Docker\Api\Runtime\JsonObject();
         foreach ($data->getLabels() as $key => $value_2) {
             $values_2[$key] = $value_2;
         }

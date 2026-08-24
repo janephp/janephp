@@ -46,7 +46,7 @@ class AutoscalePoolNormalizer implements DenormalizerInterface, NormalizerInterf
             unset($data['name']);
         }
         if (\array_key_exists('config', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data['config'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -89,14 +89,14 @@ class AutoscalePoolNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray = [];
         $dataArray['id'] = $data->getId();
         $dataArray['name'] = $data->getName();
-        $values = [];
+        $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
         foreach ($data->getConfig() as $key => $value) {
             $values[$key] = $value;
         }
         $dataArray['config'] = $values;
-        $dataArray['droplet_template'] = $this->normalizer->normalize($data->getDropletTemplate(), 'json', $context);
+        $dataArray['droplet_template'] = $data->getDropletTemplate() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDropletTemplate(), 'json', $context));
         if ($data->isInitialized('currentUtilization') && null !== $data->getCurrentUtilization()) {
-            $dataArray['current_utilization'] = $this->normalizer->normalize($data->getCurrentUtilization(), 'json', $context);
+            $dataArray['current_utilization'] = $data->getCurrentUtilization() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getCurrentUtilization(), 'json', $context));
         }
         $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');

@@ -52,7 +52,7 @@ class ApiGetOpenAIAPIKeyOutputNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if ($data->isInitialized('apiKeyInfo') && null !== $data->getApiKeyInfo()) {
-            $dataArray['api_key_info'] = $this->normalizer->normalize($data->getApiKeyInfo(), 'json', $context);
+            $dataArray['api_key_info'] = $data->getApiKeyInfo() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getApiKeyInfo(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

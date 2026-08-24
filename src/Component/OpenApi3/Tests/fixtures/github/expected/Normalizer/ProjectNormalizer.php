@@ -137,7 +137,7 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $dataArray['body'] = $data->getBody();
         $dataArray['number'] = $data->getNumber();
         $dataArray['state'] = $data->getState();
-        $dataArray['creator'] = $this->normalizer->normalize($data->getCreator(), 'json', $context);
+        $dataArray['creator'] = $data->getCreator() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCreator(), 'json', $context));
         $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('organizationPermission') && null !== $data->getOrganizationPermission()) {
@@ -150,7 +150,7 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $dataArray['cards_url'] = $data->getCardsUrl();
         }
         if ($data->isInitialized('permissions') && null !== $data->getPermissions()) {
-            $dataArray['permissions'] = $this->normalizer->normalize($data->getPermissions(), 'json', $context);
+            $dataArray['permissions'] = $data->getPermissions() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPermissions(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

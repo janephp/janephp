@@ -42,7 +42,7 @@ class RulesResponseMetadataNormalizer implements DenormalizerInterface, Normaliz
             unset($data['sent']);
         }
         if (\array_key_exists('summary', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject();
             foreach ($data['summary'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -61,7 +61,7 @@ class RulesResponseMetadataNormalizer implements DenormalizerInterface, Normaliz
         $dataArray = [];
         $dataArray['sent'] = $data->getSent();
         if ($data->isInitialized('summary') && null !== $data->getSummary()) {
-            $values = [];
+            $values = new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject();
             foreach ($data->getSummary() as $key => $value) {
                 $values[$key] = $value;
             }

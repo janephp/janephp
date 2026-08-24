@@ -112,7 +112,7 @@ class BranchRestrictionPolicyAppsItemNormalizer implements DenormalizerInterface
             $dataArray['node_id'] = $data->getNodeId();
         }
         if ($data->isInitialized('owner') && null !== $data->getOwner()) {
-            $dataArray['owner'] = $this->normalizer->normalize($data->getOwner(), 'json', $context);
+            $dataArray['owner'] = $data->getOwner() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getOwner(), 'json', $context));
         }
         if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();
@@ -133,7 +133,7 @@ class BranchRestrictionPolicyAppsItemNormalizer implements DenormalizerInterface
             $dataArray['updated_at'] = $data->getUpdatedAt();
         }
         if ($data->isInitialized('permissions') && null !== $data->getPermissions()) {
-            $dataArray['permissions'] = $this->normalizer->normalize($data->getPermissions(), 'json', $context);
+            $dataArray['permissions'] = $data->getPermissions() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPermissions(), 'json', $context));
         }
         if ($data->isInitialized('events') && null !== $data->getEvents()) {
             $values = [];

@@ -48,7 +48,7 @@ class ImportTransferRequestNormalizer implements DenormalizerInterface, Normaliz
             $object->setLayerSchemaIds(null);
         }
         if (\array_key_exists('metadata', $data) && $data['metadata'] !== null) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['metadata'] as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
@@ -72,21 +72,21 @@ class ImportTransferRequestNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('layerSchemaIds')) {
+        if ($data->isInitialized('layerSchemaIds') && null !== $data->getLayerSchemaIds()) {
             $values = [];
             foreach ($data->getLayerSchemaIds() as $value) {
                 $values[] = $value;
             }
             $dataArray['layerSchemaIds'] = $values;
         }
-        if ($data->isInitialized('metadata')) {
-            $values_1 = [];
+        if ($data->isInitialized('metadata') && null !== $data->getMetadata()) {
+            $values_1 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data->getMetadata() as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $dataArray['metadata'] = $values_1;
         }
-        if ($data->isInitialized('contentPermissionSetIds')) {
+        if ($data->isInitialized('contentPermissionSetIds') && null !== $data->getContentPermissionSetIds()) {
             $values_2 = [];
             foreach ($data->getContentPermissionSetIds() as $value_2) {
                 $values_2[] = $value_2;

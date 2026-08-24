@@ -113,7 +113,7 @@ class ContentSubmoduleNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray['git_url'] = $data->getGitUrl();
         $dataArray['html_url'] = $data->getHtmlUrl();
         $dataArray['download_url'] = $data->getDownloadUrl();
-        $dataArray['_links'] = $this->normalizer->normalize($data->getLinks(), 'json', $context);
+        $dataArray['_links'] = $data->getLinks() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

@@ -45,7 +45,7 @@ class GistsGistIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
             unset($data['description']);
         }
         if (\array_key_exists('files', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Github\Runtime\JsonObject();
             foreach ($data['files'] as $key => $value) {
                 $values[$key] = $this->denormalizer->denormalize($value, \Github\Model\GistsGistIdPatchBodyFilesItem::class, 'json', $context);
             }
@@ -66,9 +66,9 @@ class GistsGistIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
             $dataArray['description'] = $data->getDescription();
         }
         if ($data->isInitialized('files') && null !== $data->getFiles()) {
-            $values = [];
+            $values = new \Github\Runtime\JsonObject();
             foreach ($data->getFiles() as $key => $value) {
-                $values[$key] = $this->normalizer->normalize($value, 'json', $context);
+                $values[$key] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['files'] = $values;
         }

@@ -175,34 +175,34 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('names')) {
+        if ($data->isInitialized('names') && null !== $data->getNames()) {
             $dataArray['names'] = $data->getNames();
         }
-        if ($data->isInitialized('descriptions')) {
+        if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
             $dataArray['descriptions'] = $data->getDescriptions();
         }
-        if ($data->isInitialized('fileExtension')) {
+        if ($data->isInitialized('fileExtension') && null !== $data->getFileExtension()) {
             $dataArray['fileExtension'] = $data->getFileExtension();
         }
-        if ($data->isInitialized('fileName')) {
+        if ($data->isInitialized('fileName') && null !== $data->getFileName()) {
             $dataArray['fileName'] = $data->getFileName();
         }
-        if ($data->isInitialized('filePath')) {
+        if ($data->isInitialized('filePath') && null !== $data->getFilePath()) {
             $dataArray['filePath'] = $data->getFilePath();
         }
-        if ($data->isInitialized('fileSizeInBytes')) {
+        if ($data->isInitialized('fileSizeInBytes') && null !== $data->getFileSizeInBytes()) {
             $dataArray['fileSizeInBytes'] = $data->getFileSizeInBytes();
         }
-        if ($data->isInitialized('sha1Hash')) {
+        if ($data->isInitialized('sha1Hash') && null !== $data->getSha1Hash()) {
             $dataArray['sha1Hash'] = $data->getSha1Hash();
         }
-        if ($data->isInitialized('xmpMetadata')) {
+        if ($data->isInitialized('xmpMetadata') && null !== $data->getXmpMetadata()) {
             $dataArray['xmpMetadata'] = $data->getXmpMetadata();
         }
-        if ($data->isInitialized('exifMetadata')) {
+        if ($data->isInitialized('exifMetadata') && null !== $data->getExifMetadata()) {
             $dataArray['exifMetadata'] = $data->getExifMetadata();
         }
-        if ($data->isInitialized('language')) {
+        if ($data->isInitialized('language') && null !== $data->getLanguage()) {
             $dataArray['language'] = $data->getLanguage();
         }
         if ($data->isInitialized('width') && null !== $data->getWidth()) {
@@ -214,26 +214,26 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('durationInSeconds') && null !== $data->getDurationInSeconds()) {
             $dataArray['durationInSeconds'] = $data->getDurationInSeconds();
         }
-        if ($data->isInitialized('format')) {
+        if ($data->isInitialized('format') && null !== $data->getFormat()) {
             $dataArray['format'] = $data->getFormat();
         }
-        if ($data->isInitialized('codec')) {
+        if ($data->isInitialized('codec') && null !== $data->getCodec()) {
             $dataArray['codec'] = $data->getCodec();
         }
-        if ($data->isInitialized('overallBitrate')) {
+        if ($data->isInitialized('overallBitrate') && null !== $data->getOverallBitrate()) {
             $dataArray['overallBitrate'] = $data->getOverallBitrate();
         }
-        if ($data->isInitialized('videoStreams')) {
+        if ($data->isInitialized('videoStreams') && null !== $data->getVideoStreams()) {
             $values = [];
             foreach ($data->getVideoStreams() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['videoStreams'] = $values;
         }
-        if ($data->isInitialized('audioStreams')) {
+        if ($data->isInitialized('audioStreams') && null !== $data->getAudioStreams()) {
             $values_1 = [];
             foreach ($data->getAudioStreams() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['audioStreams'] = $values_1;
         }

@@ -66,7 +66,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $object->setArray(null);
         }
         if (\array_key_exists('object', $data) && $data['object'] !== null) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject();
             foreach ($data['object'] as $key => $value_2) {
                 $values_1[$key] = $value_2;
             }
@@ -80,10 +80,10 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('onlyNull')) {
+        if ($data->isInitialized('onlyNull') && null !== $data->getOnlyNull()) {
             $dataArray['onlyNull'] = $data->getOnlyNull();
         }
-        if ($data->isInitialized('nullOrString')) {
+        if ($data->isInitialized('nullOrString') && null !== $data->getNullOrString()) {
             $value = $data->getNullOrString();
             if (is_string($data->getNullOrString())) {
                 $value = $data->getNullOrString();
@@ -100,7 +100,7 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $dataArray['array'] = $values;
         }
         if ($data->isInitialized('object') && null !== $data->getObject()) {
-            $values_1 = [];
+            $values_1 = new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject();
             foreach ($data->getObject() as $key => $value_2) {
                 $values_1[$key] = $value_2;
             }

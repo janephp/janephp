@@ -85,18 +85,18 @@ class ReviewJsonhalReviewWriteNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if ($data->isInitialized('links') && null !== $data->getLinks()) {
-            $dataArray['_links'] = $this->normalizer->normalize($data->getLinks(), 'json', $context);
+            $dataArray['_links'] = $data->getLinks() === null ? null : new \ApiPlatform\Demo\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
         }
         $dataArray['body'] = $data->getBody();
         $dataArray['rating'] = $data->getRating();
-        if ($data->isInitialized('letter')) {
+        if ($data->isInitialized('letter') && null !== $data->getLetter()) {
             $dataArray['letter'] = $data->getLetter();
         }
         $dataArray['book'] = $data->getBook();
-        if ($data->isInitialized('author')) {
+        if ($data->isInitialized('author') && null !== $data->getAuthor()) {
             $dataArray['author'] = $data->getAuthor();
         }
-        if ($data->isInitialized('publicationDate')) {
+        if ($data->isInitialized('publicationDate') && null !== $data->getPublicationDate()) {
             $dataArray['publicationDate'] = $data->getPublicationDate()?->format('Y-m-d\TH:i:sP');
         }
         foreach ($data as $key => $value) {

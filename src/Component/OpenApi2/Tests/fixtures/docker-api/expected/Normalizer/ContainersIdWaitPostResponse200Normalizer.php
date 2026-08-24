@@ -53,7 +53,7 @@ class ContainersIdWaitPostResponse200Normalizer implements DenormalizerInterface
         $dataArray = [];
         $dataArray['StatusCode'] = $data->getStatusCode();
         if ($data->isInitialized('error') && null !== $data->getError()) {
-            $dataArray['Error'] = $this->normalizer->normalize($data->getError(), 'json', $context);
+            $dataArray['Error'] = $data->getError() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getError(), 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ContainersIdWaitPostResponse200Constraint());

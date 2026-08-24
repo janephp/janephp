@@ -69,11 +69,11 @@ class ContributorActivityNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['author'] = $this->normalizer->normalize($data->getAuthor(), 'json', $context);
+        $dataArray['author'] = $data->getAuthor() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getAuthor(), 'json', $context));
         $dataArray['total'] = $data->getTotal();
         $values = [];
         foreach ($data->getWeeks() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['weeks'] = $values;
         foreach ($data as $key => $value_1) {

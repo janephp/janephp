@@ -76,25 +76,25 @@ class OptionsOptionsNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if ($data->isInitialized('kafka') && null !== $data->getKafka()) {
-            $dataArray['kafka'] = $this->normalizer->normalize($data->getKafka(), 'json', $context);
+            $dataArray['kafka'] = $data->getKafka() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getKafka(), 'json', $context));
         }
         if ($data->isInitialized('mongodb') && null !== $data->getMongodb()) {
-            $dataArray['mongodb'] = $this->normalizer->normalize($data->getMongodb(), 'json', $context);
+            $dataArray['mongodb'] = $data->getMongodb() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMongodb(), 'json', $context));
         }
         if ($data->isInitialized('pg') && null !== $data->getPg()) {
-            $dataArray['pg'] = $this->normalizer->normalize($data->getPg(), 'json', $context);
+            $dataArray['pg'] = $data->getPg() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getPg(), 'json', $context));
         }
         if ($data->isInitialized('mysql') && null !== $data->getMysql()) {
-            $dataArray['mysql'] = $this->normalizer->normalize($data->getMysql(), 'json', $context);
+            $dataArray['mysql'] = $data->getMysql() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMysql(), 'json', $context));
         }
         if ($data->isInitialized('redis') && null !== $data->getRedis()) {
-            $dataArray['redis'] = $this->normalizer->normalize($data->getRedis(), 'json', $context);
+            $dataArray['redis'] = $data->getRedis() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getRedis(), 'json', $context));
         }
         if ($data->isInitialized('valkey') && null !== $data->getValkey()) {
-            $dataArray['valkey'] = $this->normalizer->normalize($data->getValkey(), 'json', $context);
+            $dataArray['valkey'] = $data->getValkey() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getValkey(), 'json', $context));
         }
         if ($data->isInitialized('opensearch') && null !== $data->getOpensearch()) {
-            $dataArray['opensearch'] = $this->normalizer->normalize($data->getOpensearch(), 'json', $context);
+            $dataArray['opensearch'] = $data->getOpensearch() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getOpensearch(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

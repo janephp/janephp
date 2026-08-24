@@ -112,7 +112,7 @@ class IdentityQueryCriteriaOptionsNormalizer implements DenormalizerInterface, N
             $dataArray['globalFilterId'] = $data->getGlobalFilterId();
         }
         if ($data->isInitialized('localUserAuditTime') && null !== $data->getLocalUserAuditTime()) {
-            $dataArray['localUser_auditTime'] = $this->normalizer->normalize($data->getLocalUserAuditTime(), 'json', $context);
+            $dataArray['localUser_auditTime'] = $data->getLocalUserAuditTime() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getLocalUserAuditTime(), 'json', $context));
         }
         if ($data->isInitialized('localUserFirstName') && null !== $data->getLocalUserFirstName()) {
             $dataArray['localUser_firstName'] = $data->getLocalUserFirstName();
@@ -145,7 +145,7 @@ class IdentityQueryCriteriaOptionsNormalizer implements DenormalizerInterface, N
             $dataArray['guestPass_displayName'] = $data->getGuestPassDisplayName();
         }
         if ($data->isInitialized('guestPassExpiration') && null !== $data->getGuestPassExpiration()) {
-            $dataArray['guestPass_expiration'] = $this->normalizer->normalize($data->getGuestPassExpiration(), 'json', $context);
+            $dataArray['guestPass_expiration'] = $data->getGuestPassExpiration() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getGuestPassExpiration(), 'json', $context));
         }
         if ($data->isInitialized('guestPassWlan') && null !== $data->getGuestPassWlan()) {
             $dataArray['guestPass_wlan'] = $data->getGuestPassWlan();

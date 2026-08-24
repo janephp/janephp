@@ -52,7 +52,7 @@ class AppComponentInstanceBaseAutoscalingMetricsNormalizer implements Denormaliz
     {
         $dataArray = [];
         if ($data->isInitialized('cpu') && null !== $data->getCpu()) {
-            $dataArray['cpu'] = $this->normalizer->normalize($data->getCpu(), 'json', $context);
+            $dataArray['cpu'] = $data->getCpu() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getCpu(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

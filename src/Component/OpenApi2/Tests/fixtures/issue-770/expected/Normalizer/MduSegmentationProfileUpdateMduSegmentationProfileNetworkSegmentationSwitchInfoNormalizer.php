@@ -79,14 +79,14 @@ class MduSegmentationProfileUpdateMduSegmentationProfileNetworkSegmentationSwitc
         if ($data->isInitialized('distributionSwitches') && null !== $data->getDistributionSwitches()) {
             $values_1 = [];
             foreach ($data->getDistributionSwitches() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['distributionSwitches'] = $values_1;
         }
         if ($data->isInitialized('accessSwitches') && null !== $data->getAccessSwitches()) {
             $values_2 = [];
             foreach ($data->getAccessSwitches() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['accessSwitches'] = $values_2;
         }

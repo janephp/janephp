@@ -88,7 +88,7 @@ class ScimUserListNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['startIndex'] = $data->getStartIndex();
         $values_1 = [];
         foreach ($data->getResources() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = $value_1 === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['Resources'] = $values_1;
         foreach ($data as $key => $value_2) {

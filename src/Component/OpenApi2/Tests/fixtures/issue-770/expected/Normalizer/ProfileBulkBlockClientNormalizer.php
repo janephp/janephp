@@ -55,7 +55,7 @@ class ProfileBulkBlockClientNormalizer implements DenormalizerInterface, Normali
         if ($data->isInitialized('blockClientList') && null !== $data->getBlockClientList()) {
             $values = [];
             foreach ($data->getBlockClientList() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['blockClientList'] = $values;
         }

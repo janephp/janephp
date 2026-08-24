@@ -129,7 +129,7 @@ class GbPeopleReportReponseReportDirectorDetailsNormalizer implements Denormaliz
             $dataArray['surname'] = $data->getSurname();
         }
         if ($data->isInitialized('address') && null !== $data->getAddress()) {
-            $dataArray['address'] = $this->normalizer->normalize($data->getAddress(), 'json', $context);
+            $dataArray['address'] = $data->getAddress() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getAddress(), 'json', $context));
         }
         if ($data->isInitialized('gender') && null !== $data->getGender()) {
             $dataArray['gender'] = $data->getGender();
@@ -146,12 +146,12 @@ class GbPeopleReportReponseReportDirectorDetailsNormalizer implements Denormaliz
         if ($data->isInitialized('positions') && null !== $data->getPositions()) {
             $values = [];
             foreach ($data->getPositions() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['positions'] = $values;
         }
         if ($data->isInitialized('additionalData') && null !== $data->getAdditionalData()) {
-            $dataArray['additionalData'] = $this->normalizer->normalize($data->getAdditionalData(), 'json', $context);
+            $dataArray['additionalData'] = $data->getAdditionalData() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getAdditionalData(), 'json', $context));
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

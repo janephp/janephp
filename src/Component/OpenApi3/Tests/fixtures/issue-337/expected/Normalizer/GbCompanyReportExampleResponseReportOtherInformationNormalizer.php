@@ -66,14 +66,14 @@ class GbCompanyReportExampleResponseReportOtherInformationNormalizer implements 
         if ($data->isInitialized('advisors') && null !== $data->getAdvisors()) {
             $values = [];
             foreach ($data->getAdvisors() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['advisors'] = $values;
         }
         if ($data->isInitialized('employeesInformation') && null !== $data->getEmployeesInformation()) {
             $values_1 = [];
             foreach ($data->getEmployeesInformation() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['employeesInformation'] = $values_1;
         }

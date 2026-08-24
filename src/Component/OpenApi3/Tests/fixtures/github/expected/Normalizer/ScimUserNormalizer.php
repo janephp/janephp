@@ -127,28 +127,28 @@ class ScimUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $dataArray['id'] = $data->getId();
         $dataArray['externalId'] = $data->getExternalId();
         $dataArray['userName'] = $data->getUserName();
-        $dataArray['name'] = $this->normalizer->normalize($data->getName(), 'json', $context);
+        $dataArray['name'] = $data->getName() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getName(), 'json', $context));
         $values_1 = [];
         foreach ($data->getEmails() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = $value_1 === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['emails'] = $values_1;
         $dataArray['active'] = $data->getActive();
-        $dataArray['meta'] = $this->normalizer->normalize($data->getMeta(), 'json', $context);
+        $dataArray['meta'] = $data->getMeta() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getMeta(), 'json', $context));
         if ($data->isInitialized('organizationId') && null !== $data->getOrganizationId()) {
             $dataArray['organization_id'] = $data->getOrganizationId();
         }
         if ($data->isInitialized('operations') && null !== $data->getOperations()) {
             $values_2 = [];
             foreach ($data->getOperations() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['operations'] = $values_2;
         }
         if ($data->isInitialized('groups') && null !== $data->getGroups()) {
             $values_3 = [];
             foreach ($data->getGroups() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['groups'] = $values_3;
         }

@@ -106,36 +106,36 @@ class ListItemSearchAndAggregationBaseRequestNormalizer implements DenormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('searchString')) {
+        if ($data->isInitialized('searchString') && null !== $data->getSearchString()) {
             $dataArray['searchString'] = $data->getSearchString();
         }
-        if ($data->isInitialized('searchBehaviors')) {
+        if ($data->isInitialized('searchBehaviors') && null !== $data->getSearchBehaviors()) {
             $values = [];
             foreach ($data->getSearchBehaviors() as $value) {
                 $values[] = $value;
             }
             $dataArray['searchBehaviors'] = $values;
         }
-        if ($data->isInitialized('filter')) {
+        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
             $dataArray['filter'] = $data->getFilter();
         }
-        if ($data->isInitialized('aggregationFilters')) {
+        if ($data->isInitialized('aggregationFilters') && null !== $data->getAggregationFilters()) {
             $values_1 = [];
             foreach ($data->getAggregationFilters() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['aggregationFilters'] = $values_1;
         }
         $dataArray['includeAllSchemaChildren'] = $data->getIncludeAllSchemaChildren();
         $dataArray['brokenDependenciesFilter'] = $data->getBrokenDependenciesFilter();
-        if ($data->isInitialized('schemaIds')) {
+        if ($data->isInitialized('schemaIds') && null !== $data->getSchemaIds()) {
             $values_2 = [];
             foreach ($data->getSchemaIds() as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['schemaIds'] = $values_2;
         }
-        if ($data->isInitialized('searchLanguages')) {
+        if ($data->isInitialized('searchLanguages') && null !== $data->getSearchLanguages()) {
             $values_3 = [];
             foreach ($data->getSearchLanguages() as $value_3) {
                 $values_3[] = $value_3;

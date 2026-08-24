@@ -52,7 +52,7 @@ class ReviewJsonhalReviewReadLinksNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         if ($data->isInitialized('self') && null !== $data->getSelf()) {
-            $dataArray['self'] = $this->normalizer->normalize($data->getSelf(), 'json', $context);
+            $dataArray['self'] = $data->getSelf() === null ? null : new \ApiPlatform\Demo\Runtime\JsonObject($this->normalizer->normalize($data->getSelf(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

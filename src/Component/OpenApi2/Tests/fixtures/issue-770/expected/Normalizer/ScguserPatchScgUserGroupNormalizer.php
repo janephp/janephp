@@ -126,21 +126,21 @@ class ScguserPatchScgUserGroupNormalizer implements DenormalizerInterface, Norma
         if ($data->isInitialized('permissions') && null !== $data->getPermissions()) {
             $values = [];
             foreach ($data->getPermissions() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['permissions'] = $values;
         }
         if ($data->isInitialized('resourceGroups') && null !== $data->getResourceGroups()) {
             $values_1 = [];
             foreach ($data->getResourceGroups() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['resourceGroups'] = $values_1;
         }
         if ($data->isInitialized('users') && null !== $data->getUsers()) {
             $values_2 = [];
             foreach ($data->getUsers() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['users'] = $values_2;
         }

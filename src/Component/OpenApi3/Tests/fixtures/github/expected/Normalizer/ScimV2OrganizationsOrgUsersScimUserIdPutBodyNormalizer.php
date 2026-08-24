@@ -121,10 +121,10 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyNormalizer implements Denormal
             $dataArray['active'] = $data->getActive();
         }
         $dataArray['userName'] = $data->getUserName();
-        $dataArray['name'] = $this->normalizer->normalize($data->getName(), 'json', $context);
+        $dataArray['name'] = $data->getName() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getName(), 'json', $context));
         $values_2 = [];
         foreach ($data->getEmails() as $value_2) {
-            $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+            $values_2[] = $value_2 === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
         }
         $dataArray['emails'] = $values_2;
         foreach ($data as $key => $value_3) {

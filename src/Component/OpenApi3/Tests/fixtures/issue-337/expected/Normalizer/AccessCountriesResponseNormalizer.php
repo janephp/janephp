@@ -65,7 +65,7 @@ class AccessCountriesResponseNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('countryAccess') && null !== $data->getCountryAccess()) {
             $values = [];
             foreach ($data->getCountryAccess() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['countryAccess'] = $values;
         }

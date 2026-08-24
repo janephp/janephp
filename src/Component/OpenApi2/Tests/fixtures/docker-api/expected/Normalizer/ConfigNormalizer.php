@@ -64,7 +64,7 @@ class ConfigNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['ID'] = $data->getID();
         }
         if ($data->isInitialized('version') && null !== $data->getVersion()) {
-            $dataArray['Version'] = $this->normalizer->normalize($data->getVersion(), 'json', $context);
+            $dataArray['Version'] = $data->getVersion() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getVersion(), 'json', $context));
         }
         if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
             $dataArray['CreatedAt'] = $data->getCreatedAt();
@@ -73,7 +73,7 @@ class ConfigNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['UpdatedAt'] = $data->getUpdatedAt();
         }
         if ($data->isInitialized('spec') && null !== $data->getSpec()) {
-            $dataArray['Spec'] = $this->normalizer->normalize($data->getSpec(), 'json', $context);
+            $dataArray['Spec'] = $data->getSpec() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getSpec(), 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ConfigConstraint());

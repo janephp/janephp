@@ -95,29 +95,29 @@ class ContentFilterRequestNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('channelId')) {
+        if ($data->isInitialized('channelId') && null !== $data->getChannelId()) {
             $dataArray['channelId'] = $data->getChannelId();
         }
-        if ($data->isInitialized('searchLanguages')) {
+        if ($data->isInitialized('searchLanguages') && null !== $data->getSearchLanguages()) {
             $values = [];
             foreach ($data->getSearchLanguages() as $value) {
                 $values[] = $value;
             }
             $dataArray['searchLanguages'] = $values;
         }
-        if ($data->isInitialized('searchString')) {
+        if ($data->isInitialized('searchString') && null !== $data->getSearchString()) {
             $dataArray['searchString'] = $data->getSearchString();
         }
         $dataArray['searchType'] = $data->getSearchType();
-        if ($data->isInitialized('collectionId')) {
+        if ($data->isInitialized('collectionId') && null !== $data->getCollectionId()) {
             $dataArray['collectionId'] = $data->getCollectionId();
         }
-        if ($data->isInitialized('filter')) {
+        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
             $dataArray['filter'] = $data->getFilter();
         }
         $dataArray['lifeCycleFilter'] = $data->getLifeCycleFilter();
         $dataArray['brokenDependenciesFilter'] = $data->getBrokenDependenciesFilter();
-        if ($data->isInitialized('rightsFilter')) {
+        if ($data->isInitialized('rightsFilter') && null !== $data->getRightsFilter()) {
             $values_1 = [];
             foreach ($data->getRightsFilter() as $value_1) {
                 $values_1[] = $value_1;

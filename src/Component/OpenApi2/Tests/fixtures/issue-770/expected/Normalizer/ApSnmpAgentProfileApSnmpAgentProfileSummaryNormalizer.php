@@ -83,14 +83,14 @@ class ApSnmpAgentProfileApSnmpAgentProfileSummaryNormalizer implements Denormali
         if ($data->isInitialized('snmpV2Agent') && null !== $data->getSnmpV2Agent()) {
             $values = [];
             foreach ($data->getSnmpV2Agent() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['snmpV2Agent'] = $values;
         }
         if ($data->isInitialized('snmpV3Agent') && null !== $data->getSnmpV3Agent()) {
             $values_1 = [];
             foreach ($data->getSnmpV3Agent() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['snmpV3Agent'] = $values_1;
         }

@@ -58,7 +58,7 @@ class LayersChangedConditionNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId')) {
+        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
             $dataArray['traceRefId'] = $data->getTraceRefId();
         }
         $dataArray['kind'] = $data->getKind();

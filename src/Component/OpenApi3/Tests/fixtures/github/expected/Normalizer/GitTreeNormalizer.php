@@ -78,7 +78,7 @@ class GitTreeNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $dataArray['truncated'] = $data->getTruncated();
         $values = [];
         foreach ($data->getTree() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['tree'] = $values;
         foreach ($data as $key => $value_1) {

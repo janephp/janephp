@@ -62,7 +62,7 @@ class ComplianceSearchResultDataBodySearchResultNormalizer implements Denormaliz
         if ($data->isInitialized('records') && null !== $data->getRecords()) {
             $values = [];
             foreach ($data->getRecords() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['records'] = $values;
         }

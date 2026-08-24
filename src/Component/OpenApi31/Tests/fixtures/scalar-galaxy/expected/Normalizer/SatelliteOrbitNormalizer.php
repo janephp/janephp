@@ -61,7 +61,7 @@ class SatelliteOrbitNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         if ($data->isInitialized('planet') && null !== $data->getPlanet()) {
-            $dataArray['planet'] = $this->normalizer->normalize($data->getPlanet(), 'json', $context);
+            $dataArray['planet'] = $data->getPlanet() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPlanet(), 'json', $context));
         }
         if ($data->isInitialized('orbitalPeriod') && null !== $data->getOrbitalPeriod()) {
             $dataArray['orbitalPeriod'] = $data->getOrbitalPeriod();

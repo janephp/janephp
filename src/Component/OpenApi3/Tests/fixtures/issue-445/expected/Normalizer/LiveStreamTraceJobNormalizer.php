@@ -66,16 +66,16 @@ class LiveStreamTraceJobNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceJobId')) {
+        if ($data->isInitialized('traceJobId') && null !== $data->getTraceJobId()) {
             $dataArray['traceJobId'] = $data->getTraceJobId();
         }
-        if ($data->isInitialized('ipAddress')) {
+        if ($data->isInitialized('ipAddress') && null !== $data->getIpAddress()) {
             $dataArray['ipAddress'] = $data->getIpAddress();
         }
-        if ($data->isInitialized('userId')) {
+        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
             $dataArray['userId'] = $data->getUserId();
         }
-        if ($data->isInitialized('apiClientId')) {
+        if ($data->isInitialized('apiClientId') && null !== $data->getApiClientId()) {
             $dataArray['apiClientId'] = $data->getApiClientId();
         }
         return $dataArray;

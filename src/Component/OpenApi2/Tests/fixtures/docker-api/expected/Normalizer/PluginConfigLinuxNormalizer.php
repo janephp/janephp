@@ -73,7 +73,7 @@ class PluginConfigLinuxNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray['AllowAllDevices'] = $data->getAllowAllDevices();
         $values_1 = [];
         foreach ($data->getDevices() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = $value_1 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['Devices'] = $values_1;
         if (!($context['skip_validation'] ?? false)) {

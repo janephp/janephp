@@ -74,7 +74,7 @@ class OrgsOrgHooksPostBodyNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         $dataArray['name'] = $data->getName();
-        $dataArray['config'] = $this->normalizer->normalize($data->getConfig(), 'json', $context);
+        $dataArray['config'] = $data->getConfig() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getConfig(), 'json', $context));
         if ($data->isInitialized('events') && null !== $data->getEvents()) {
             $values = [];
             foreach ($data->getEvents() as $value) {

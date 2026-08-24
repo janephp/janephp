@@ -44,7 +44,7 @@ class SecretsCreatePostBodyNormalizer implements DenormalizerInterface, Normaliz
             $object->setName($data['Name']);
         }
         if (\array_key_exists('Labels', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Labels'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -68,7 +68,7 @@ class SecretsCreatePostBodyNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['Name'] = $data->getName();
         }
         if ($data->isInitialized('labels') && null !== $data->getLabels()) {
-            $values = [];
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getLabels() as $key => $value) {
                 $values[$key] = $value;
             }
@@ -78,10 +78,10 @@ class SecretsCreatePostBodyNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['Data'] = $data->getData();
         }
         if ($data->isInitialized('driver') && null !== $data->getDriver()) {
-            $dataArray['Driver'] = $this->normalizer->normalize($data->getDriver(), 'json', $context);
+            $dataArray['Driver'] = $data->getDriver() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getDriver(), 'json', $context));
         }
         if ($data->isInitialized('templating') && null !== $data->getTemplating()) {
-            $dataArray['Templating'] = $this->normalizer->normalize($data->getTemplating(), 'json', $context);
+            $dataArray['Templating'] = $data->getTemplating() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getTemplating(), 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SecretsCreatePostBodyConstraint());

@@ -68,7 +68,7 @@ class BusinessProcessNotificationUpdateRequestNormalizer implements Denormalizer
         $dataArray = [];
         $dataArray['title'] = $data->getTitle();
         $dataArray['message'] = $data->getMessage();
-        if ($data->isInitialized('navigationLink')) {
+        if ($data->isInitialized('navigationLink') && null !== $data->getNavigationLink()) {
             $dataArray['navigationLink'] = $data->getNavigationLink();
         }
         $dataArray['eventType'] = $data->getEventType();

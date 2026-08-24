@@ -85,10 +85,10 @@ class OrgMembershipNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray['state'] = $data->getState();
         $dataArray['role'] = $data->getRole();
         $dataArray['organization_url'] = $data->getOrganizationUrl();
-        $dataArray['organization'] = $this->normalizer->normalize($data->getOrganization(), 'json', $context);
-        $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
+        $dataArray['organization'] = $data->getOrganization() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getOrganization(), 'json', $context));
+        $dataArray['user'] = $data->getUser() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getUser(), 'json', $context));
         if ($data->isInitialized('permissions') && null !== $data->getPermissions()) {
-            $dataArray['permissions'] = $this->normalizer->normalize($data->getPermissions(), 'json', $context);
+            $dataArray['permissions'] = $data->getPermissions() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPermissions(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

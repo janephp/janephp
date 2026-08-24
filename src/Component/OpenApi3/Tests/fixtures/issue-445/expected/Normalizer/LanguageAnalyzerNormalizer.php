@@ -66,7 +66,7 @@ class LanguageAnalyzerNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('type') && null !== $data->getType()) {
             $dataArray['type'] = $data->getType();
         }
-        if ($data->isInitialized('fieldSuffix')) {
+        if ($data->isInitialized('fieldSuffix') && null !== $data->getFieldSuffix()) {
             $dataArray['fieldSuffix'] = $data->getFieldSuffix();
         }
         foreach ($data as $key => $value) {

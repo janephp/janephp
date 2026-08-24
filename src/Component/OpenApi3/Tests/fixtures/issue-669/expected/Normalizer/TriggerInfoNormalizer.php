@@ -108,10 +108,10 @@ class TriggerInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['updated_at'] = $data->getUpdatedAt();
         }
         if ($data->isInitialized('scheduledDetails') && null !== $data->getScheduledDetails()) {
-            $dataArray['scheduled_details'] = $this->normalizer->normalize($data->getScheduledDetails(), 'json', $context);
+            $dataArray['scheduled_details'] = $data->getScheduledDetails() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getScheduledDetails(), 'json', $context));
         }
         if ($data->isInitialized('scheduledRuns') && null !== $data->getScheduledRuns()) {
-            $dataArray['scheduled_runs'] = $this->normalizer->normalize($data->getScheduledRuns(), 'json', $context);
+            $dataArray['scheduled_runs'] = $data->getScheduledRuns() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getScheduledRuns(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

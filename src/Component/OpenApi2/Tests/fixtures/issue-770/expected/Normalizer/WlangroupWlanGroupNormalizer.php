@@ -92,7 +92,7 @@ class WlangroupWlanGroupNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('members') && null !== $data->getMembers()) {
             $values = [];
             foreach ($data->getMembers() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['members'] = $values;
         }

@@ -163,55 +163,55 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('names')) {
+        if ($data->isInitialized('names') && null !== $data->getNames()) {
             $dataArray['names'] = $data->getNames();
         }
-        if ($data->isInitialized('descriptions')) {
+        if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
             $dataArray['descriptions'] = $data->getDescriptions();
         }
-        if ($data->isInitialized('fileExtension')) {
+        if ($data->isInitialized('fileExtension') && null !== $data->getFileExtension()) {
             $dataArray['fileExtension'] = $data->getFileExtension();
         }
-        if ($data->isInitialized('fileName')) {
+        if ($data->isInitialized('fileName') && null !== $data->getFileName()) {
             $dataArray['fileName'] = $data->getFileName();
         }
-        if ($data->isInitialized('filePath')) {
+        if ($data->isInitialized('filePath') && null !== $data->getFilePath()) {
             $dataArray['filePath'] = $data->getFilePath();
         }
-        if ($data->isInitialized('fileSizeInBytes')) {
+        if ($data->isInitialized('fileSizeInBytes') && null !== $data->getFileSizeInBytes()) {
             $dataArray['fileSizeInBytes'] = $data->getFileSizeInBytes();
         }
-        if ($data->isInitialized('sha1Hash')) {
+        if ($data->isInitialized('sha1Hash') && null !== $data->getSha1Hash()) {
             $dataArray['sha1Hash'] = $data->getSha1Hash();
         }
-        if ($data->isInitialized('xmpMetadata')) {
+        if ($data->isInitialized('xmpMetadata') && null !== $data->getXmpMetadata()) {
             $dataArray['xmpMetadata'] = $data->getXmpMetadata();
         }
-        if ($data->isInitialized('exifMetadata')) {
+        if ($data->isInitialized('exifMetadata') && null !== $data->getExifMetadata()) {
             $dataArray['exifMetadata'] = $data->getExifMetadata();
         }
-        if ($data->isInitialized('language')) {
+        if ($data->isInitialized('language') && null !== $data->getLanguage()) {
             $dataArray['language'] = $data->getLanguage();
         }
-        if ($data->isInitialized('author')) {
+        if ($data->isInitialized('author') && null !== $data->getAuthor()) {
             $dataArray['author'] = $data->getAuthor();
         }
-        if ($data->isInitialized('creator')) {
+        if ($data->isInitialized('creator') && null !== $data->getCreator()) {
             $dataArray['creator'] = $data->getCreator();
         }
-        if ($data->isInitialized('publisher')) {
+        if ($data->isInitialized('publisher') && null !== $data->getPublisher()) {
             $dataArray['publisher'] = $data->getPublisher();
         }
-        if ($data->isInitialized('company')) {
+        if ($data->isInitialized('company') && null !== $data->getCompany()) {
             $dataArray['company'] = $data->getCompany();
         }
-        if ($data->isInitialized('title')) {
+        if ($data->isInitialized('title') && null !== $data->getTitle()) {
             $dataArray['title'] = $data->getTitle();
         }
         if ($data->isInitialized('pageCount') && null !== $data->getPageCount()) {
             $dataArray['pageCount'] = $data->getPageCount();
         }
-        if ($data->isInitialized('epsInfo')) {
+        if ($data->isInitialized('epsInfo') && null !== $data->getEpsInfo()) {
             $dataArray['epsInfo'] = $data->getEpsInfo();
         }
         foreach ($data as $key => $value) {

@@ -114,7 +114,7 @@ class VolumesExt4Normalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('sizeGigabytes') && null !== $data->getSizeGigabytes()) {
             $dataArray['size_gigabytes'] = $data->getSizeGigabytes();
         }
-        if ($data->isInitialized('tags')) {
+        if ($data->isInitialized('tags') && null !== $data->getTags()) {
             $values = [];
             foreach ($data->getTags() as $value) {
                 $values[] = $value;

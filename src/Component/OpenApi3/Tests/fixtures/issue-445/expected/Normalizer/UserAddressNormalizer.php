@@ -90,28 +90,28 @@ class UserAddressNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('company')) {
+        if ($data->isInitialized('company') && null !== $data->getCompany()) {
             $dataArray['company'] = $data->getCompany();
         }
-        if ($data->isInitialized('department')) {
+        if ($data->isInitialized('department') && null !== $data->getDepartment()) {
             $dataArray['department'] = $data->getDepartment();
         }
-        if ($data->isInitialized('address')) {
+        if ($data->isInitialized('address') && null !== $data->getAddress()) {
             $dataArray['address'] = $data->getAddress();
         }
-        if ($data->isInitialized('alternativeAddress')) {
+        if ($data->isInitialized('alternativeAddress') && null !== $data->getAlternativeAddress()) {
             $dataArray['alternativeAddress'] = $data->getAlternativeAddress();
         }
-        if ($data->isInitialized('zip')) {
+        if ($data->isInitialized('zip') && null !== $data->getZip()) {
             $dataArray['zip'] = $data->getZip();
         }
-        if ($data->isInitialized('city')) {
+        if ($data->isInitialized('city') && null !== $data->getCity()) {
             $dataArray['city'] = $data->getCity();
         }
-        if ($data->isInitialized('phone')) {
+        if ($data->isInitialized('phone') && null !== $data->getPhone()) {
             $dataArray['phone'] = $data->getPhone();
         }
-        if ($data->isInitialized('countryCode')) {
+        if ($data->isInitialized('countryCode') && null !== $data->getCountryCode()) {
             $dataArray['countryCode'] = $data->getCountryCode();
         }
         return $dataArray;

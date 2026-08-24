@@ -72,18 +72,18 @@ class MetadataErrorNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('errorType')) {
+        if ($data->isInitialized('errorType') && null !== $data->getErrorType()) {
             $dataArray['errorType'] = $data->getErrorType();
         }
         $dataArray['lineNumber'] = $data->getLineNumber();
         $dataArray['linePosition'] = $data->getLinePosition();
-        if ($data->isInitialized('path')) {
+        if ($data->isInitialized('path') && null !== $data->getPath()) {
             $dataArray['path'] = $data->getPath();
         }
-        if ($data->isInitialized('message')) {
+        if ($data->isInitialized('message') && null !== $data->getMessage()) {
             $dataArray['message'] = $data->getMessage();
         }
-        if ($data->isInitialized('schemaId')) {
+        if ($data->isInitialized('schemaId') && null !== $data->getSchemaId()) {
             $dataArray['schemaId'] = $data->getSchemaId();
         }
         return $dataArray;

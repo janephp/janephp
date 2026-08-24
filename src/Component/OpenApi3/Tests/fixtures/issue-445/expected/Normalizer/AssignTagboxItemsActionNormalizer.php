@@ -86,17 +86,17 @@ class AssignTagboxItemsActionNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId')) {
+        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
             $dataArray['traceRefId'] = $data->getTraceRefId();
         }
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('path')) {
+        if ($data->isInitialized('path') && null !== $data->getPath()) {
             $dataArray['path'] = $data->getPath();
         }
-        if ($data->isInitialized('fieldId')) {
+        if ($data->isInitialized('fieldId') && null !== $data->getFieldId()) {
             $dataArray['fieldId'] = $data->getFieldId();
         }
-        if ($data->isInitialized('refIds')) {
+        if ($data->isInitialized('refIds') && null !== $data->getRefIds()) {
             $dataArray['refIds'] = $data->getRefIds();
         }
         if ($data->isInitialized('replace') && null !== $data->getReplace()) {

@@ -68,19 +68,19 @@ class TopBooksGetHaljsonResponse200LinksNormalizer implements DenormalizerInterf
     {
         $dataArray = [];
         if ($data->isInitialized('self') && null !== $data->getSelf()) {
-            $dataArray['self'] = $this->normalizer->normalize($data->getSelf(), 'json', $context);
+            $dataArray['self'] = $data->getSelf() === null ? null : new \ApiPlatform\Demo\Runtime\JsonObject($this->normalizer->normalize($data->getSelf(), 'json', $context));
         }
         if ($data->isInitialized('first') && null !== $data->getFirst()) {
-            $dataArray['first'] = $this->normalizer->normalize($data->getFirst(), 'json', $context);
+            $dataArray['first'] = $data->getFirst() === null ? null : new \ApiPlatform\Demo\Runtime\JsonObject($this->normalizer->normalize($data->getFirst(), 'json', $context));
         }
         if ($data->isInitialized('last') && null !== $data->getLast()) {
-            $dataArray['last'] = $this->normalizer->normalize($data->getLast(), 'json', $context);
+            $dataArray['last'] = $data->getLast() === null ? null : new \ApiPlatform\Demo\Runtime\JsonObject($this->normalizer->normalize($data->getLast(), 'json', $context));
         }
         if ($data->isInitialized('next') && null !== $data->getNext()) {
-            $dataArray['next'] = $this->normalizer->normalize($data->getNext(), 'json', $context);
+            $dataArray['next'] = $data->getNext() === null ? null : new \ApiPlatform\Demo\Runtime\JsonObject($this->normalizer->normalize($data->getNext(), 'json', $context));
         }
         if ($data->isInitialized('previous') && null !== $data->getPrevious()) {
-            $dataArray['previous'] = $this->normalizer->normalize($data->getPrevious(), 'json', $context);
+            $dataArray['previous'] = $data->getPrevious() === null ? null : new \ApiPlatform\Demo\Runtime\JsonObject($this->normalizer->normalize($data->getPrevious(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

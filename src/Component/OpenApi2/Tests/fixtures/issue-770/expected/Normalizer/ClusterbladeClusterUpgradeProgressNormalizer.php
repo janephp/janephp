@@ -83,7 +83,7 @@ class ClusterbladeClusterUpgradeProgressNormalizer implements DenormalizerInterf
             $dataArray['overallProgress'] = $data->getOverallProgress();
         }
         if ($data->isInitialized('previousOperationRecord') && null !== $data->getPreviousOperationRecord()) {
-            $dataArray['previousOperationRecord'] = $this->normalizer->normalize($data->getPreviousOperationRecord(), 'json', $context);
+            $dataArray['previousOperationRecord'] = $data->getPreviousOperationRecord() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPreviousOperationRecord(), 'json', $context));
         }
         if ($data->isInitialized('isSelfBladeRebooting') && null !== $data->getIsSelfBladeRebooting()) {
             $dataArray['isSelfBladeRebooting'] = $data->getIsSelfBladeRebooting();
@@ -91,7 +91,7 @@ class ClusterbladeClusterUpgradeProgressNormalizer implements DenormalizerInterf
         if ($data->isInitialized('bladeProgresss') && null !== $data->getBladeProgresss()) {
             $values = [];
             foreach ($data->getBladeProgresss() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['bladeProgresss'] = $values;
         }

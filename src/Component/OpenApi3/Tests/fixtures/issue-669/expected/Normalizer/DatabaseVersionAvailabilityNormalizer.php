@@ -65,10 +65,10 @@ class DatabaseVersionAvailabilityNormalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('endOfLife')) {
+        if ($data->isInitialized('endOfLife') && null !== $data->getEndOfLife()) {
             $dataArray['end_of_life'] = $data->getEndOfLife();
         }
-        if ($data->isInitialized('endOfAvailability')) {
+        if ($data->isInitialized('endOfAvailability') && null !== $data->getEndOfAvailability()) {
             $dataArray['end_of_availability'] = $data->getEndOfAvailability();
         }
         if ($data->isInitialized('version') && null !== $data->getVersion()) {

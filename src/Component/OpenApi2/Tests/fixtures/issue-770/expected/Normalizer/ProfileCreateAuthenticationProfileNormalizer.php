@@ -91,12 +91,12 @@ class ProfileCreateAuthenticationProfileNormalizer implements DenormalizerInterf
             $dataArray['h20SuppportEnabled'] = $data->getH20SuppportEnabled();
         }
         if ($data->isInitialized('ttgCommonSetting') && null !== $data->getTtgCommonSetting()) {
-            $dataArray['ttgCommonSetting'] = $this->normalizer->normalize($data->getTtgCommonSetting(), 'json', $context);
+            $dataArray['ttgCommonSetting'] = $data->getTtgCommonSetting() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getTtgCommonSetting(), 'json', $context));
         }
         if ($data->isInitialized('realmMappings') && null !== $data->getRealmMappings()) {
             $values = [];
             foreach ($data->getRealmMappings() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['realmMappings'] = $values;
         }

@@ -60,7 +60,7 @@ class ContentNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setLayerSchemaIds(null);
         }
         if (\array_key_exists('displayValues', $data)) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['displayValues'] as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
@@ -107,39 +107,39 @@ class ContentNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('audit')) {
+        if ($data->isInitialized('audit') && null !== $data->getAudit()) {
             $dataArray['audit'] = $data->getAudit();
         }
         $dataArray['contentSchemaId'] = $data->getContentSchemaId();
         $dataArray['contentType'] = $data->getContentType();
-        if ($data->isInitialized('layerSchemaIds')) {
+        if ($data->isInitialized('layerSchemaIds') && null !== $data->getLayerSchemaIds()) {
             $values = [];
             foreach ($data->getLayerSchemaIds() as $value) {
                 $values[] = $value;
             }
             $dataArray['layerSchemaIds'] = $values;
         }
-        $values_1 = [];
+        $values_1 = new \PicturePark\API\Runtime\JsonObject();
         foreach ($data->getDisplayValues() as $key => $value_1) {
             $values_1[$key] = $value_1;
         }
         $dataArray['displayValues'] = $values_1;
         $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('brokenReferenceIds')) {
+        if ($data->isInitialized('brokenReferenceIds') && null !== $data->getBrokenReferenceIds()) {
             $values_2 = [];
             foreach ($data->getBrokenReferenceIds() as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['brokenReferenceIds'] = $values_2;
         }
-        if ($data->isInitialized('brokenIndirectReferenceIds')) {
+        if ($data->isInitialized('brokenIndirectReferenceIds') && null !== $data->getBrokenIndirectReferenceIds()) {
             $values_3 = [];
             foreach ($data->getBrokenIndirectReferenceIds() as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['brokenIndirectReferenceIds'] = $values_3;
         }
-        if ($data->isInitialized('brokenRelationTargetIds')) {
+        if ($data->isInitialized('brokenRelationTargetIds') && null !== $data->getBrokenRelationTargetIds()) {
             $values_4 = [];
             foreach ($data->getBrokenRelationTargetIds() as $value_4) {
                 $values_4[] = $value_4;

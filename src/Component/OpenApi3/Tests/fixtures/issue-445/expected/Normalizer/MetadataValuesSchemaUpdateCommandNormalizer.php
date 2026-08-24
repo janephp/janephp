@@ -46,7 +46,7 @@ class MetadataValuesSchemaUpdateCommandNormalizer implements DenormalizerInterfa
             unset($data['kind']);
         }
         if (\array_key_exists('value', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['value'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -65,7 +65,7 @@ class MetadataValuesSchemaUpdateCommandNormalizer implements DenormalizerInterfa
         $dataArray = [];
         $dataArray['schemaId'] = $data->getSchemaId();
         $dataArray['kind'] = $data->getKind();
-        $values = [];
+        $values = new \PicturePark\API\Runtime\JsonObject();
         foreach ($data->getValue() as $key => $value) {
             $values[$key] = $value;
         }

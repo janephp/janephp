@@ -82,7 +82,7 @@ class BookingsBookingIdGetXmlResponse200Normalizer implements DenormalizerInterf
             $dataArray['has_dog'] = $data->getHasDog();
         }
         if ($data->isInitialized('links') && null !== $data->getLinks()) {
-            $dataArray['links'] = $this->normalizer->normalize($data->getLinks(), 'json', $context);
+            $dataArray['links'] = $data->getLinks() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\BookingsBookingIdGetXmlResponse200Constraint());

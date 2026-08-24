@@ -65,7 +65,7 @@ class GbImageTypesResponseNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('availableTypes') && null !== $data->getAvailableTypes()) {
             $values = [];
             foreach ($data->getAvailableTypes() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['availableTypes'] = $values;
         }

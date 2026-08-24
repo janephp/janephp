@@ -46,7 +46,7 @@ class ApiStatisticsEventNormalizer implements DenormalizerInterface, NormalizerI
             unset($data['kind']);
         }
         if (\array_key_exists('requestsPerClient', $data) && $data['requestsPerClient'] !== null) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['requestsPerClient'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -68,8 +68,8 @@ class ApiStatisticsEventNormalizer implements DenormalizerInterface, NormalizerI
         $dataArray = [];
         $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('requestsPerClient')) {
-            $values = [];
+        if ($data->isInitialized('requestsPerClient') && null !== $data->getRequestsPerClient()) {
+            $values = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data->getRequestsPerClient() as $key => $value) {
                 $values[$key] = $value;
             }

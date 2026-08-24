@@ -71,7 +71,7 @@ class GistFullForksItemNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if ($data->isInitialized('user') && null !== $data->getUser()) {
-            $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
+            $dataArray['user'] = $data->getUser() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getUser(), 'json', $context));
         }
         if ($data->isInitialized('url') && null !== $data->getUrl()) {
             $dataArray['url'] = $data->getUrl();

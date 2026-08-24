@@ -76,7 +76,7 @@ class ReposOwnerRepoHooksPostBodyNormalizer implements DenormalizerInterface, No
         if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();
         }
-        $dataArray['config'] = $this->normalizer->normalize($data->getConfig(), 'json', $context);
+        $dataArray['config'] = $data->getConfig() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getConfig(), 'json', $context));
         if ($data->isInitialized('events') && null !== $data->getEvents()) {
             $values = [];
             foreach ($data->getEvents() as $value) {

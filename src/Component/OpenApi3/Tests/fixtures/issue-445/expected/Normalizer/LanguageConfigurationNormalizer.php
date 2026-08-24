@@ -68,21 +68,21 @@ class LanguageConfigurationNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('systemLanguages')) {
+        if ($data->isInitialized('systemLanguages') && null !== $data->getSystemLanguages()) {
             $values = [];
             foreach ($data->getSystemLanguages() as $value) {
                 $values[] = $value;
             }
             $dataArray['systemLanguages'] = $values;
         }
-        if ($data->isInitialized('metadataLanguages')) {
+        if ($data->isInitialized('metadataLanguages') && null !== $data->getMetadataLanguages()) {
             $values_1 = [];
             foreach ($data->getMetadataLanguages() as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['metadataLanguages'] = $values_1;
         }
-        if ($data->isInitialized('defaultLanguage')) {
+        if ($data->isInitialized('defaultLanguage') && null !== $data->getDefaultLanguage()) {
             $dataArray['defaultLanguage'] = $data->getDefaultLanguage();
         }
         return $dataArray;

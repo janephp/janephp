@@ -59,7 +59,7 @@ class WorkflowRunUsageNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if ($data->isInitialized('billable') && null !== $data->getBillable()) {
-            $dataArray['billable'] = $this->normalizer->normalize($data->getBillable(), 'json', $context);
+            $dataArray['billable'] = $data->getBillable() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getBillable(), 'json', $context));
         }
         if ($data->isInitialized('runDurationMs') && null !== $data->getRunDurationMs()) {
             $dataArray['run_duration_ms'] = $data->getRunDurationMs();

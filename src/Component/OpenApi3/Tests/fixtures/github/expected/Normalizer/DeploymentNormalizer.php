@@ -143,13 +143,13 @@ class DeploymentNormalizer implements DenormalizerInterface, NormalizerInterface
         $dataArray['sha'] = $data->getSha();
         $dataArray['ref'] = $data->getRef();
         $dataArray['task'] = $data->getTask();
-        $dataArray['payload'] = $this->normalizer->normalize($data->getPayload(), 'json', $context);
+        $dataArray['payload'] = $data->getPayload() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPayload(), 'json', $context));
         if ($data->isInitialized('originalEnvironment') && null !== $data->getOriginalEnvironment()) {
             $dataArray['original_environment'] = $data->getOriginalEnvironment();
         }
         $dataArray['environment'] = $data->getEnvironment();
         $dataArray['description'] = $data->getDescription();
-        $dataArray['creator'] = $this->normalizer->normalize($data->getCreator(), 'json', $context);
+        $dataArray['creator'] = $data->getCreator() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCreator(), 'json', $context));
         $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['statuses_url'] = $data->getStatusesUrl();
@@ -160,8 +160,8 @@ class DeploymentNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('productionEnvironment') && null !== $data->getProductionEnvironment()) {
             $dataArray['production_environment'] = $data->getProductionEnvironment();
         }
-        if ($data->isInitialized('performedViaGithubApp')) {
-            $dataArray['performed_via_github_app'] = $this->normalizer->normalize($data->getPerformedViaGithubApp(), 'json', $context);
+        if ($data->isInitialized('performedViaGithubApp') && null !== $data->getPerformedViaGithubApp()) {
+            $dataArray['performed_via_github_app'] = $data->getPerformedViaGithubApp() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPerformedViaGithubApp(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

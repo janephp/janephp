@@ -66,14 +66,14 @@ class ResponseReservedIpCreatedLinksNormalizer implements DenormalizerInterface,
         if ($data->isInitialized('droplets') && null !== $data->getDroplets()) {
             $values = [];
             foreach ($data->getDroplets() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['droplets'] = $values;
         }
         if ($data->isInitialized('actions') && null !== $data->getActions()) {
             $values_1 = [];
             foreach ($data->getActions() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['actions'] = $values_1;
         }

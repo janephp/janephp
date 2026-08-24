@@ -64,7 +64,7 @@ class WlanQueryApWlanBssidNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('wlanBssids') && null !== $data->getWlanBssids()) {
             $values = [];
             foreach ($data->getWlanBssids() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['wlanBssids'] = $values;
         }

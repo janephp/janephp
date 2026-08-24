@@ -126,35 +126,35 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id')) {
+        if ($data->isInitialized('id') && null !== $data->getId()) {
             $dataArray['id'] = $data->getId();
         }
         $dataArray['retries'] = $data->getRetries();
         $dataArray['priority'] = $data->getPriority();
         $dataArray['deduplicate'] = $data->getDeduplicate();
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('nodeId')) {
+        if ($data->isInitialized('nodeId') && null !== $data->getNodeId()) {
             $dataArray['nodeId'] = $data->getNodeId();
         }
-        if ($data->isInitialized('hostName')) {
+        if ($data->isInitialized('hostName') && null !== $data->getHostName()) {
             $dataArray['hostName'] = $data->getHostName();
         }
         if ($data->isInitialized('lastResponseTime') && null !== $data->getLastResponseTime()) {
             $dataArray['lastResponseTime'] = $data->getLastResponseTime()->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('serviceName')) {
+        if ($data->isInitialized('serviceName') && null !== $data->getServiceName()) {
             $dataArray['serviceName'] = $data->getServiceName();
         }
-        if ($data->isInitialized('fileVersion')) {
+        if ($data->isInitialized('fileVersion') && null !== $data->getFileVersion()) {
             $dataArray['fileVersion'] = $data->getFileVersion();
         }
-        if ($data->isInitialized('productVersion')) {
+        if ($data->isInitialized('productVersion') && null !== $data->getProductVersion()) {
             $dataArray['productVersion'] = $data->getProductVersion();
         }
-        if ($data->isInitialized('release')) {
+        if ($data->isInitialized('release') && null !== $data->getRelease()) {
             $dataArray['release'] = $data->getRelease();
         }
-        if ($data->isInitialized('logLevel')) {
+        if ($data->isInitialized('logLevel') && null !== $data->getLogLevel()) {
             $dataArray['logLevel'] = $data->getLogLevel();
         }
         foreach ($data as $key => $value) {

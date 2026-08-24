@@ -64,7 +64,7 @@ class PullRequestMinimalBaseNormalizer implements DenormalizerInterface, Normali
         $dataArray = [];
         $dataArray['ref'] = $data->getRef();
         $dataArray['sha'] = $data->getSha();
-        $dataArray['repo'] = $this->normalizer->normalize($data->getRepo(), 'json', $context);
+        $dataArray['repo'] = $data->getRepo() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRepo(), 'json', $context));
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

@@ -82,14 +82,14 @@ class MarketplacePurchaseMarketplacePendingChangeNormalizer implements Denormali
         if ($data->isInitialized('effectiveDate') && null !== $data->getEffectiveDate()) {
             $dataArray['effective_date'] = $data->getEffectiveDate();
         }
-        if ($data->isInitialized('unitCount')) {
+        if ($data->isInitialized('unitCount') && null !== $data->getUnitCount()) {
             $dataArray['unit_count'] = $data->getUnitCount();
         }
         if ($data->isInitialized('id') && null !== $data->getId()) {
             $dataArray['id'] = $data->getId();
         }
         if ($data->isInitialized('plan') && null !== $data->getPlan()) {
-            $dataArray['plan'] = $this->normalizer->normalize($data->getPlan(), 'json', $context);
+            $dataArray['plan'] = $data->getPlan() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPlan(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

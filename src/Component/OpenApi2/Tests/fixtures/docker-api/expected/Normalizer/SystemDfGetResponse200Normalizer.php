@@ -82,28 +82,28 @@ class SystemDfGetResponse200Normalizer implements DenormalizerInterface, Normali
         if ($data->isInitialized('images') && null !== $data->getImages()) {
             $values = [];
             foreach ($data->getImages() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['Images'] = $values;
         }
         if ($data->isInitialized('containers') && null !== $data->getContainers()) {
             $values_1 = [];
             foreach ($data->getContainers() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['Containers'] = $values_1;
         }
         if ($data->isInitialized('volumes') && null !== $data->getVolumes()) {
             $values_2 = [];
             foreach ($data->getVolumes() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['Volumes'] = $values_2;
         }
         if ($data->isInitialized('buildCache') && null !== $data->getBuildCache()) {
             $values_3 = [];
             foreach ($data->getBuildCache() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['BuildCache'] = $values_3;
         }

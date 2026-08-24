@@ -73,16 +73,16 @@ class AprulesModifyApRuleNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['provisionTag'] = $data->getProvisionTag();
         }
         if ($data->isInitialized('mobilityZone') && null !== $data->getMobilityZone()) {
-            $dataArray['mobilityZone'] = $this->normalizer->normalize($data->getMobilityZone(), 'json', $context);
+            $dataArray['mobilityZone'] = $data->getMobilityZone() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getMobilityZone(), 'json', $context));
         }
         if ($data->isInitialized('ipAddressRange') && null !== $data->getIpAddressRange()) {
-            $dataArray['ipAddressRange'] = $this->normalizer->normalize($data->getIpAddressRange(), 'json', $context);
+            $dataArray['ipAddressRange'] = $data->getIpAddressRange() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIpAddressRange(), 'json', $context));
         }
         if ($data->isInitialized('subnet') && null !== $data->getSubnet()) {
-            $dataArray['subnet'] = $this->normalizer->normalize($data->getSubnet(), 'json', $context);
+            $dataArray['subnet'] = $data->getSubnet() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSubnet(), 'json', $context));
         }
         if ($data->isInitialized('gpsCoordinates') && null !== $data->getGpsCoordinates()) {
-            $dataArray['gpsCoordinates'] = $this->normalizer->normalize($data->getGpsCoordinates(), 'json', $context);
+            $dataArray['gpsCoordinates'] = $data->getGpsCoordinates() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getGpsCoordinates(), 'json', $context));
         }
         return $dataArray;
     }

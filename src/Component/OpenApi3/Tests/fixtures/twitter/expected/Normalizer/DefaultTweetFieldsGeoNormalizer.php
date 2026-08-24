@@ -56,7 +56,7 @@ class DefaultTweetFieldsGeoNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if ($data->isInitialized('coordinates') && null !== $data->getCoordinates()) {
-            $dataArray['coordinates'] = $this->normalizer->normalize($data->getCoordinates(), 'json', $context);
+            $dataArray['coordinates'] = $data->getCoordinates() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCoordinates(), 'json', $context));
         }
         if ($data->isInitialized('placeId') && null !== $data->getPlaceId()) {
             $dataArray['place_id'] = $data->getPlaceId();

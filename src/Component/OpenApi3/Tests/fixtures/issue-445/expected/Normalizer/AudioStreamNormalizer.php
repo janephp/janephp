@@ -111,37 +111,37 @@ class AudioStreamNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('bitRate')) {
+        if ($data->isInitialized('bitRate') && null !== $data->getBitRate()) {
             $dataArray['bitRate'] = $data->getBitRate();
         }
-        if ($data->isInitialized('bitRateMode')) {
+        if ($data->isInitialized('bitRateMode') && null !== $data->getBitRateMode()) {
             $dataArray['bitRateMode'] = $data->getBitRateMode();
         }
-        if ($data->isInitialized('channels')) {
+        if ($data->isInitialized('channels') && null !== $data->getChannels()) {
             $dataArray['channels'] = $data->getChannels();
         }
-        if ($data->isInitialized('channelPositions')) {
+        if ($data->isInitialized('channelPositions') && null !== $data->getChannelPositions()) {
             $dataArray['channelPositions'] = $data->getChannelPositions();
         }
-        if ($data->isInitialized('codec')) {
+        if ($data->isInitialized('codec') && null !== $data->getCodec()) {
             $dataArray['codec'] = $data->getCodec();
         }
-        if ($data->isInitialized('durationInSeconds')) {
+        if ($data->isInitialized('durationInSeconds') && null !== $data->getDurationInSeconds()) {
             $dataArray['durationInSeconds'] = $data->getDurationInSeconds();
         }
-        if ($data->isInitialized('format')) {
+        if ($data->isInitialized('format') && null !== $data->getFormat()) {
             $dataArray['format'] = $data->getFormat();
         }
-        if ($data->isInitialized('language')) {
+        if ($data->isInitialized('language') && null !== $data->getLanguage()) {
             $dataArray['language'] = $data->getLanguage();
         }
-        if ($data->isInitialized('resolution')) {
+        if ($data->isInitialized('resolution') && null !== $data->getResolution()) {
             $dataArray['resolution'] = $data->getResolution();
         }
-        if ($data->isInitialized('samplingRate')) {
+        if ($data->isInitialized('samplingRate') && null !== $data->getSamplingRate()) {
             $dataArray['samplingRate'] = $data->getSamplingRate();
         }
-        if ($data->isInitialized('streamSize')) {
+        if ($data->isInitialized('streamSize') && null !== $data->getStreamSize()) {
             $dataArray['streamSize'] = $data->getStreamSize();
         }
         return $dataArray;

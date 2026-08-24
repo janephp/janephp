@@ -65,10 +65,10 @@ class TransferUploadFileNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('identifier')) {
+        if ($data->isInitialized('identifier') && null !== $data->getIdentifier()) {
             $dataArray['identifier'] = $data->getIdentifier();
         }
-        if ($data->isInitialized('requestId')) {
+        if ($data->isInitialized('requestId') && null !== $data->getRequestId()) {
             $dataArray['requestId'] = $data->getRequestId();
         }
         $dataArray['fileName'] = $data->getFileName();

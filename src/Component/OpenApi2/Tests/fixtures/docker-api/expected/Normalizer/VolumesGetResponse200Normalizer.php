@@ -61,7 +61,7 @@ class VolumesGetResponse200Normalizer implements DenormalizerInterface, Normaliz
         $dataArray = [];
         $values = [];
         foreach ($data->getVolumes() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['Volumes'] = $values;
         $values_1 = [];

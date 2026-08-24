@@ -96,7 +96,7 @@ class PullRequestLabelsItemNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('description')) {
+        if ($data->isInitialized('description') && null !== $data->getDescription()) {
             $dataArray['description'] = $data->getDescription();
         }
         if ($data->isInitialized('color') && null !== $data->getColor()) {

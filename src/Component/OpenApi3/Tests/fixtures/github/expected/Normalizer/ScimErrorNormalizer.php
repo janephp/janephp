@@ -90,19 +90,19 @@ class ScimErrorNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('message')) {
+        if ($data->isInitialized('message') && null !== $data->getMessage()) {
             $dataArray['message'] = $data->getMessage();
         }
-        if ($data->isInitialized('documentationUrl')) {
+        if ($data->isInitialized('documentationUrl') && null !== $data->getDocumentationUrl()) {
             $dataArray['documentation_url'] = $data->getDocumentationUrl();
         }
-        if ($data->isInitialized('detail')) {
+        if ($data->isInitialized('detail') && null !== $data->getDetail()) {
             $dataArray['detail'] = $data->getDetail();
         }
         if ($data->isInitialized('status') && null !== $data->getStatus()) {
             $dataArray['status'] = $data->getStatus();
         }
-        if ($data->isInitialized('scimType')) {
+        if ($data->isInitialized('scimType') && null !== $data->getScimType()) {
             $dataArray['scimType'] = $data->getScimType();
         }
         if ($data->isInitialized('schemas') && null !== $data->getSchemas()) {

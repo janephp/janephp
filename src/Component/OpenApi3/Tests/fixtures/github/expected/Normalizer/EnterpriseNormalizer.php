@@ -102,11 +102,11 @@ class EnterpriseNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('description')) {
+        if ($data->isInitialized('description') && null !== $data->getDescription()) {
             $dataArray['description'] = $data->getDescription();
         }
         $dataArray['html_url'] = $data->getHtmlUrl();
-        if ($data->isInitialized('websiteUrl')) {
+        if ($data->isInitialized('websiteUrl') && null !== $data->getWebsiteUrl()) {
             $dataArray['website_url'] = $data->getWebsiteUrl();
         }
         $dataArray['id'] = $data->getId();

@@ -98,7 +98,7 @@ class ApiModelProviderKeyInfoNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('models') && null !== $data->getModels()) {
             $values = [];
             foreach ($data->getModels() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['models'] = $values;
         }

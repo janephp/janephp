@@ -196,14 +196,14 @@ class LoadBalancerBaseNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $values = [];
         foreach ($data->getForwardingRules() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['forwarding_rules'] = $values;
         if ($data->isInitialized('healthCheck') && null !== $data->getHealthCheck()) {
-            $dataArray['health_check'] = $this->normalizer->normalize($data->getHealthCheck(), 'json', $context);
+            $dataArray['health_check'] = $data->getHealthCheck() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getHealthCheck(), 'json', $context));
         }
         if ($data->isInitialized('stickySessions') && null !== $data->getStickySessions()) {
-            $dataArray['sticky_sessions'] = $this->normalizer->normalize($data->getStickySessions(), 'json', $context);
+            $dataArray['sticky_sessions'] = $data->getStickySessions() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getStickySessions(), 'json', $context));
         }
         if ($data->isInitialized('redirectHttpToHttps') && null !== $data->getRedirectHttpToHttps()) {
             $dataArray['redirect_http_to_https'] = $data->getRedirectHttpToHttps();
@@ -224,7 +224,7 @@ class LoadBalancerBaseNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['disable_lets_encrypt_dns_records'] = $data->getDisableLetsEncryptDnsRecords();
         }
         if ($data->isInitialized('firewall') && null !== $data->getFirewall()) {
-            $dataArray['firewall'] = $this->normalizer->normalize($data->getFirewall(), 'json', $context);
+            $dataArray['firewall'] = $data->getFirewall() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getFirewall(), 'json', $context));
         }
         if ($data->isInitialized('network') && null !== $data->getNetwork()) {
             $dataArray['network'] = $data->getNetwork();
@@ -238,12 +238,12 @@ class LoadBalancerBaseNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('domains') && null !== $data->getDomains()) {
             $values_1 = [];
             foreach ($data->getDomains() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['domains'] = $values_1;
         }
         if ($data->isInitialized('glbSettings') && null !== $data->getGlbSettings()) {
-            $dataArray['glb_settings'] = $this->normalizer->normalize($data->getGlbSettings(), 'json', $context);
+            $dataArray['glb_settings'] = $data->getGlbSettings() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getGlbSettings(), 'json', $context));
         }
         if ($data->isInitialized('targetLoadBalancerIds') && null !== $data->getTargetLoadBalancerIds()) {
             $values_2 = [];

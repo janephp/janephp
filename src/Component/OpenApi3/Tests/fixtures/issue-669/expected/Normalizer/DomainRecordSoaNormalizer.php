@@ -109,22 +109,22 @@ class DomainRecordSoaNormalizer implements DenormalizerInterface, NormalizerInte
         if ($data->isInitialized('data') && null !== $data->getData()) {
             $dataArray['data'] = $data->getData();
         }
-        if ($data->isInitialized('priority')) {
+        if ($data->isInitialized('priority') && null !== $data->getPriority()) {
             $dataArray['priority'] = $data->getPriority();
         }
-        if ($data->isInitialized('port')) {
+        if ($data->isInitialized('port') && null !== $data->getPort()) {
             $dataArray['port'] = $data->getPort();
         }
         if ($data->isInitialized('ttl') && null !== $data->getTtl()) {
             $dataArray['ttl'] = $data->getTtl();
         }
-        if ($data->isInitialized('weight')) {
+        if ($data->isInitialized('weight') && null !== $data->getWeight()) {
             $dataArray['weight'] = $data->getWeight();
         }
-        if ($data->isInitialized('flags')) {
+        if ($data->isInitialized('flags') && null !== $data->getFlags()) {
             $dataArray['flags'] = $data->getFlags();
         }
-        if ($data->isInitialized('tag')) {
+        if ($data->isInitialized('tag') && null !== $data->getTag()) {
             $dataArray['tag'] = $data->getTag();
         }
         foreach ($data as $key => $value) {

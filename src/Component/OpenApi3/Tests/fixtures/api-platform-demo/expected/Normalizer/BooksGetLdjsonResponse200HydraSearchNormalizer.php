@@ -79,7 +79,7 @@ class BooksGetLdjsonResponse200HydraSearchNormalizer implements DenormalizerInte
         if ($data->isInitialized('hydraMapping') && null !== $data->getHydraMapping()) {
             $values = [];
             foreach ($data->getHydraMapping() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \ApiPlatform\Demo\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['hydra:mapping'] = $values;
         }

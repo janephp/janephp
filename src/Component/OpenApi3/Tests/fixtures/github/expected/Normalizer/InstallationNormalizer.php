@@ -150,9 +150,9 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['id'] = $data->getId();
         $value = $data->getAccount();
         if (is_object($data->getAccount())) {
-            $value = $this->normalizer->normalize($data->getAccount(), 'json', $context);
+            $value = $data->getAccount() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getAccount(), 'json', $context));
         } elseif (is_object($data->getAccount())) {
-            $value = $this->normalizer->normalize($data->getAccount(), 'json', $context);
+            $value = $data->getAccount() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getAccount(), 'json', $context));
         }
         $dataArray['account'] = $value;
         $dataArray['repository_selection'] = $data->getRepositorySelection();
@@ -162,7 +162,7 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['app_id'] = $data->getAppId();
         $dataArray['target_id'] = $data->getTargetId();
         $dataArray['target_type'] = $data->getTargetType();
-        $dataArray['permissions'] = $this->normalizer->normalize($data->getPermissions(), 'json', $context);
+        $dataArray['permissions'] = $data->getPermissions() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPermissions(), 'json', $context));
         $values = [];
         foreach ($data->getEvents() as $value_1) {
             $values[] = $value_1;
@@ -172,13 +172,13 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['single_file_name'] = $data->getSingleFileName();
         $dataArray['app_slug'] = $data->getAppSlug();
-        if ($data->isInitialized('suspendedBy')) {
-            $dataArray['suspended_by'] = $this->normalizer->normalize($data->getSuspendedBy(), 'json', $context);
+        if ($data->isInitialized('suspendedBy') && null !== $data->getSuspendedBy()) {
+            $dataArray['suspended_by'] = $data->getSuspendedBy() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getSuspendedBy(), 'json', $context));
         }
-        if ($data->isInitialized('suspendedAt')) {
+        if ($data->isInitialized('suspendedAt') && null !== $data->getSuspendedAt()) {
             $dataArray['suspended_at'] = $data->getSuspendedAt()?->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('contactEmail')) {
+        if ($data->isInitialized('contactEmail') && null !== $data->getContactEmail()) {
             $dataArray['contact_email'] = $data->getContactEmail();
         }
         foreach ($data as $key => $value_2) {

@@ -40,7 +40,7 @@ class ResponseAllVpcsNormalizer implements DenormalizerInterface, NormalizerInte
         if (\array_key_exists('vpcs', $data)) {
             $values = [];
             foreach ($data['vpcs'] as $value) {
-                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
                 foreach ($value as $key => $value_1) {
                     $values_1[$key] = $value_1;
                 }
@@ -70,7 +70,7 @@ class ResponseAllVpcsNormalizer implements DenormalizerInterface, NormalizerInte
         if ($data->isInitialized('vpcs') && null !== $data->getVpcs()) {
             $values = [];
             foreach ($data->getVpcs() as $value) {
-                $values_1 = [];
+                $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
                 foreach ($value as $key => $value_1) {
                     $values_1[$key] = $value_1;
                 }
@@ -79,9 +79,9 @@ class ResponseAllVpcsNormalizer implements DenormalizerInterface, NormalizerInte
             $dataArray['vpcs'] = $values;
         }
         if ($data->isInitialized('links') && null !== $data->getLinks()) {
-            $dataArray['links'] = $this->normalizer->normalize($data->getLinks(), 'json', $context);
+            $dataArray['links'] = $data->getLinks() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
         }
-        $dataArray['meta'] = $this->normalizer->normalize($data->getMeta(), 'json', $context);
+        $dataArray['meta'] = $data->getMeta() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMeta(), 'json', $context));
         foreach ($data as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_2;

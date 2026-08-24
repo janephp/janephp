@@ -127,7 +127,7 @@ class DetailedUserNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['protected'] = $data->getProtected();
         $dataArray['verified'] = $data->getVerified();
         if ($data->isInitialized('withheld') && null !== $data->getWithheld()) {
-            $dataArray['withheld'] = $this->normalizer->normalize($data->getWithheld(), 'json', $context);
+            $dataArray['withheld'] = $data->getWithheld() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getWithheld(), 'json', $context));
         }
         if ($data->isInitialized('profileImageUrl') && null !== $data->getProfileImageUrl()) {
             $dataArray['profile_image_url'] = $data->getProfileImageUrl();
@@ -138,7 +138,7 @@ class DetailedUserNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['url'] = $data->getUrl();
         $dataArray['description'] = $data->getDescription();
         if ($data->isInitialized('entities') && null !== $data->getEntities()) {
-            $dataArray['entities'] = $this->normalizer->normalize($data->getEntities(), 'json', $context);
+            $dataArray['entities'] = $data->getEntities() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getEntities(), 'json', $context));
         }
         if ($data->isInitialized('mostRecentTweetId') && null !== $data->getMostRecentTweetId()) {
             $dataArray['most_recent_tweet_id'] = $data->getMostRecentTweetId();
@@ -147,7 +147,7 @@ class DetailedUserNormalizer implements DenormalizerInterface, NormalizerInterfa
             $dataArray['pinned_tweet_id'] = $data->getPinnedTweetId();
         }
         if ($data->isInitialized('stats') && null !== $data->getStats()) {
-            $dataArray['stats'] = $this->normalizer->normalize($data->getStats(), 'json', $context);
+            $dataArray['stats'] = $data->getStats() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getStats(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

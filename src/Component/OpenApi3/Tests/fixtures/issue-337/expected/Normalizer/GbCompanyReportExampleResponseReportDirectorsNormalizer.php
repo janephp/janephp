@@ -66,14 +66,14 @@ class GbCompanyReportExampleResponseReportDirectorsNormalizer implements Denorma
         if ($data->isInitialized('currentDirectors') && null !== $data->getCurrentDirectors()) {
             $values = [];
             foreach ($data->getCurrentDirectors() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['currentDirectors'] = $values;
         }
         if ($data->isInitialized('previousDirectors') && null !== $data->getPreviousDirectors()) {
             $values_1 = [];
             foreach ($data->getPreviousDirectors() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['previousDirectors'] = $values_1;
         }

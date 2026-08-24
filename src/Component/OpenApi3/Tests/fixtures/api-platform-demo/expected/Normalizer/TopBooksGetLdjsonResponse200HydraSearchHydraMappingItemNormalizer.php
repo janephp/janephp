@@ -75,7 +75,7 @@ class TopBooksGetLdjsonResponse200HydraSearchHydraMappingItemNormalizer implemen
         if ($data->isInitialized('variable') && null !== $data->getVariable()) {
             $dataArray['variable'] = $data->getVariable();
         }
-        if ($data->isInitialized('property')) {
+        if ($data->isInitialized('property') && null !== $data->getProperty()) {
             $dataArray['property'] = $data->getProperty();
         }
         if ($data->isInitialized('required') && null !== $data->getRequired()) {

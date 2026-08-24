@@ -185,22 +185,22 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['tfvc_project'] = $data->getTfvcProject();
         }
         $dataArray['status'] = $data->getStatus();
-        if ($data->isInitialized('statusText')) {
+        if ($data->isInitialized('statusText') && null !== $data->getStatusText()) {
             $dataArray['status_text'] = $data->getStatusText();
         }
-        if ($data->isInitialized('failedStep')) {
+        if ($data->isInitialized('failedStep') && null !== $data->getFailedStep()) {
             $dataArray['failed_step'] = $data->getFailedStep();
         }
-        if ($data->isInitialized('errorMessage')) {
+        if ($data->isInitialized('errorMessage') && null !== $data->getErrorMessage()) {
             $dataArray['error_message'] = $data->getErrorMessage();
         }
-        if ($data->isInitialized('importPercent')) {
+        if ($data->isInitialized('importPercent') && null !== $data->getImportPercent()) {
             $dataArray['import_percent'] = $data->getImportPercent();
         }
-        if ($data->isInitialized('commitCount')) {
+        if ($data->isInitialized('commitCount') && null !== $data->getCommitCount()) {
             $dataArray['commit_count'] = $data->getCommitCount();
         }
-        if ($data->isInitialized('pushPercent')) {
+        if ($data->isInitialized('pushPercent') && null !== $data->getPushPercent()) {
             $dataArray['push_percent'] = $data->getPushPercent();
         }
         if ($data->isInitialized('hasLargeFiles') && null !== $data->getHasLargeFiles()) {
@@ -215,14 +215,14 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if ($data->isInitialized('projectChoices') && null !== $data->getProjectChoices()) {
             $values = [];
             foreach ($data->getProjectChoices() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['project_choices'] = $values;
         }
         if ($data->isInitialized('message') && null !== $data->getMessage()) {
             $dataArray['message'] = $data->getMessage();
         }
-        if ($data->isInitialized('authorsCount')) {
+        if ($data->isInitialized('authorsCount') && null !== $data->getAuthorsCount()) {
             $dataArray['authors_count'] = $data->getAuthorsCount();
         }
         $dataArray['url'] = $data->getUrl();

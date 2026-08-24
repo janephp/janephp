@@ -58,7 +58,7 @@ class ClusterbladeClusterOperationProgressNormalizer implements DenormalizerInte
             $dataArray['overallProgress'] = $data->getOverallProgress();
         }
         if ($data->isInitialized('previousOperationRecord') && null !== $data->getPreviousOperationRecord()) {
-            $dataArray['previousOperationRecord'] = $this->normalizer->normalize($data->getPreviousOperationRecord(), 'json', $context);
+            $dataArray['previousOperationRecord'] = $data->getPreviousOperationRecord() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPreviousOperationRecord(), 'json', $context));
         }
         return $dataArray;
     }

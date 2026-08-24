@@ -82,7 +82,7 @@ class GeofenceProfileGetGeofenceProfileNormalizer implements DenormalizerInterfa
         if ($data->isInitialized('locationList') && null !== $data->getLocationList()) {
             $values = [];
             foreach ($data->getLocationList() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['locationList'] = $values;
         }

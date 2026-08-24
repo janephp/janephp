@@ -89,15 +89,15 @@ class AppsDomainNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['phase'] = $data->getPhase();
         }
         if ($data->isInitialized('progress') && null !== $data->getProgress()) {
-            $dataArray['progress'] = $this->normalizer->normalize($data->getProgress(), 'json', $context);
+            $dataArray['progress'] = $data->getProgress() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getProgress(), 'json', $context));
         }
         if ($data->isInitialized('spec') && null !== $data->getSpec()) {
-            $dataArray['spec'] = $this->normalizer->normalize($data->getSpec(), 'json', $context);
+            $dataArray['spec'] = $data->getSpec() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getSpec(), 'json', $context));
         }
         if ($data->isInitialized('validations') && null !== $data->getValidations()) {
             $values = [];
             foreach ($data->getValidations() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['validations'] = $values;
         }

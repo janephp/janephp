@@ -70,7 +70,7 @@ class ViewTrafficNormalizer implements DenormalizerInterface, NormalizerInterfac
         $dataArray['uniques'] = $data->getUniques();
         $values = [];
         foreach ($data->getViews() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['views'] = $values;
         foreach ($data as $key => $value_1) {

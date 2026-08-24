@@ -62,7 +62,7 @@ class ZoneCreateBonjourGatewayPolicyNormalizer implements DenormalizerInterface,
         if ($data->isInitialized('bonjourPolicyRuleList') && null !== $data->getBonjourPolicyRuleList()) {
             $values = [];
             foreach ($data->getBonjourPolicyRuleList() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['bonjourPolicyRuleList'] = $values;
         }

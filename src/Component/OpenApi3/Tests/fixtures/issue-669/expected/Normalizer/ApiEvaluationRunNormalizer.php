@@ -194,7 +194,7 @@ class ApiEvaluationRunNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('runLevelMetricResults') && null !== $data->getRunLevelMetricResults()) {
             $values = [];
             foreach ($data->getRunLevelMetricResults() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['run_level_metric_results'] = $values;
         }
@@ -202,7 +202,7 @@ class ApiEvaluationRunNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['run_name'] = $data->getRunName();
         }
         if ($data->isInitialized('starMetricResult') && null !== $data->getStarMetricResult()) {
-            $dataArray['star_metric_result'] = $this->normalizer->normalize($data->getStarMetricResult(), 'json', $context);
+            $dataArray['star_metric_result'] = $data->getStarMetricResult() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getStarMetricResult(), 'json', $context));
         }
         if ($data->isInitialized('startedAt') && null !== $data->getStartedAt()) {
             $dataArray['started_at'] = $data->getStartedAt()->format('Y-m-d\TH:i:sP');

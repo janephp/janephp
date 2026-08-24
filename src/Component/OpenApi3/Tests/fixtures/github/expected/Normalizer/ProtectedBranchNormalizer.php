@@ -88,28 +88,28 @@ class ProtectedBranchNormalizer implements DenormalizerInterface, NormalizerInte
         $dataArray = [];
         $dataArray['url'] = $data->getUrl();
         if ($data->isInitialized('requiredStatusChecks') && null !== $data->getRequiredStatusChecks()) {
-            $dataArray['required_status_checks'] = $this->normalizer->normalize($data->getRequiredStatusChecks(), 'json', $context);
+            $dataArray['required_status_checks'] = $data->getRequiredStatusChecks() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRequiredStatusChecks(), 'json', $context));
         }
         if ($data->isInitialized('requiredPullRequestReviews') && null !== $data->getRequiredPullRequestReviews()) {
-            $dataArray['required_pull_request_reviews'] = $this->normalizer->normalize($data->getRequiredPullRequestReviews(), 'json', $context);
+            $dataArray['required_pull_request_reviews'] = $data->getRequiredPullRequestReviews() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRequiredPullRequestReviews(), 'json', $context));
         }
         if ($data->isInitialized('requiredSignatures') && null !== $data->getRequiredSignatures()) {
-            $dataArray['required_signatures'] = $this->normalizer->normalize($data->getRequiredSignatures(), 'json', $context);
+            $dataArray['required_signatures'] = $data->getRequiredSignatures() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRequiredSignatures(), 'json', $context));
         }
         if ($data->isInitialized('enforceAdmins') && null !== $data->getEnforceAdmins()) {
-            $dataArray['enforce_admins'] = $this->normalizer->normalize($data->getEnforceAdmins(), 'json', $context);
+            $dataArray['enforce_admins'] = $data->getEnforceAdmins() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getEnforceAdmins(), 'json', $context));
         }
         if ($data->isInitialized('requiredLinearHistory') && null !== $data->getRequiredLinearHistory()) {
-            $dataArray['required_linear_history'] = $this->normalizer->normalize($data->getRequiredLinearHistory(), 'json', $context);
+            $dataArray['required_linear_history'] = $data->getRequiredLinearHistory() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRequiredLinearHistory(), 'json', $context));
         }
         if ($data->isInitialized('allowForcePushes') && null !== $data->getAllowForcePushes()) {
-            $dataArray['allow_force_pushes'] = $this->normalizer->normalize($data->getAllowForcePushes(), 'json', $context);
+            $dataArray['allow_force_pushes'] = $data->getAllowForcePushes() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getAllowForcePushes(), 'json', $context));
         }
         if ($data->isInitialized('allowDeletions') && null !== $data->getAllowDeletions()) {
-            $dataArray['allow_deletions'] = $this->normalizer->normalize($data->getAllowDeletions(), 'json', $context);
+            $dataArray['allow_deletions'] = $data->getAllowDeletions() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getAllowDeletions(), 'json', $context));
         }
         if ($data->isInitialized('restrictions') && null !== $data->getRestrictions()) {
-            $dataArray['restrictions'] = $this->normalizer->normalize($data->getRestrictions(), 'json', $context);
+            $dataArray['restrictions'] = $data->getRestrictions() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRestrictions(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

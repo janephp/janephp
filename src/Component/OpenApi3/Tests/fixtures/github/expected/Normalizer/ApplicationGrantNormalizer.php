@@ -87,7 +87,7 @@ class ApplicationGrantNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray = [];
         $dataArray['id'] = $data->getId();
         $dataArray['url'] = $data->getUrl();
-        $dataArray['app'] = $this->normalizer->normalize($data->getApp(), 'json', $context);
+        $dataArray['app'] = $data->getApp() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getApp(), 'json', $context));
         $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $values = [];
@@ -95,8 +95,8 @@ class ApplicationGrantNormalizer implements DenormalizerInterface, NormalizerInt
             $values[] = $value;
         }
         $dataArray['scopes'] = $values;
-        if ($data->isInitialized('user')) {
-            $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
+        if ($data->isInitialized('user') && null !== $data->getUser()) {
+            $dataArray['user'] = $data->getUser() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getUser(), 'json', $context));
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

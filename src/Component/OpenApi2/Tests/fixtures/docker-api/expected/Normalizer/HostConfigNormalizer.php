@@ -213,7 +213,7 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setNetworkMode($data['NetworkMode']);
         }
         if (\array_key_exists('PortBindings', $data)) {
-            $values_10 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_10 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['PortBindings'] as $key => $value_10) {
                 $values_11 = [];
                 foreach ($value_10 as $value_11) {
@@ -334,14 +334,14 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setSecurityOpt($values_22);
         }
         if (\array_key_exists('StorageOpt', $data)) {
-            $values_23 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_23 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['StorageOpt'] as $key_1 => $value_23) {
                 $values_23[$key_1] = $value_23;
             }
             $object->setStorageOpt($values_23);
         }
         if (\array_key_exists('Tmpfs', $data)) {
-            $values_24 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_24 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Tmpfs'] as $key_2 => $value_24) {
                 $values_24[$key_2] = $value_24;
             }
@@ -357,7 +357,7 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setShmSize($data['ShmSize']);
         }
         if (\array_key_exists('Sysctls', $data)) {
-            $values_25 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_25 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Sysctls'] as $key_3 => $value_25) {
                 $values_25[$key_3] = $value_25;
             }
@@ -410,35 +410,35 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('blkioWeightDevice') && null !== $data->getBlkioWeightDevice()) {
             $values = [];
             foreach ($data->getBlkioWeightDevice() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['BlkioWeightDevice'] = $values;
         }
         if ($data->isInitialized('blkioDeviceReadBps') && null !== $data->getBlkioDeviceReadBps()) {
             $values_1 = [];
             foreach ($data->getBlkioDeviceReadBps() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['BlkioDeviceReadBps'] = $values_1;
         }
         if ($data->isInitialized('blkioDeviceWriteBps') && null !== $data->getBlkioDeviceWriteBps()) {
             $values_2 = [];
             foreach ($data->getBlkioDeviceWriteBps() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['BlkioDeviceWriteBps'] = $values_2;
         }
         if ($data->isInitialized('blkioDeviceReadIOps') && null !== $data->getBlkioDeviceReadIOps()) {
             $values_3 = [];
             foreach ($data->getBlkioDeviceReadIOps() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['BlkioDeviceReadIOps'] = $values_3;
         }
         if ($data->isInitialized('blkioDeviceWriteIOps') && null !== $data->getBlkioDeviceWriteIOps()) {
             $values_4 = [];
             foreach ($data->getBlkioDeviceWriteIOps() as $value_4) {
-                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[] = $value_4 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['BlkioDeviceWriteIOps'] = $values_4;
         }
@@ -463,7 +463,7 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('devices') && null !== $data->getDevices()) {
             $values_5 = [];
             foreach ($data->getDevices() as $value_5) {
-                $values_5[] = $this->normalizer->normalize($value_5, 'json', $context);
+                $values_5[] = $value_5 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
             }
             $dataArray['Devices'] = $values_5;
         }
@@ -477,7 +477,7 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('deviceRequests') && null !== $data->getDeviceRequests()) {
             $values_7 = [];
             foreach ($data->getDeviceRequests() as $value_7) {
-                $values_7[] = $this->normalizer->normalize($value_7, 'json', $context);
+                $values_7[] = $value_7 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_7, 'json', $context));
             }
             $dataArray['DeviceRequests'] = $values_7;
         }
@@ -502,16 +502,16 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('oomKillDisable') && null !== $data->getOomKillDisable()) {
             $dataArray['OomKillDisable'] = $data->getOomKillDisable();
         }
-        if ($data->isInitialized('init')) {
+        if ($data->isInitialized('init') && null !== $data->getInit()) {
             $dataArray['Init'] = $data->getInit();
         }
-        if ($data->isInitialized('pidsLimit')) {
+        if ($data->isInitialized('pidsLimit') && null !== $data->getPidsLimit()) {
             $dataArray['PidsLimit'] = $data->getPidsLimit();
         }
         if ($data->isInitialized('ulimits') && null !== $data->getUlimits()) {
             $values_8 = [];
             foreach ($data->getUlimits() as $value_8) {
-                $values_8[] = $this->normalizer->normalize($value_8, 'json', $context);
+                $values_8[] = $value_8 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_8, 'json', $context));
             }
             $dataArray['Ulimits'] = $values_8;
         }
@@ -538,24 +538,24 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['ContainerIDFile'] = $data->getContainerIDFile();
         }
         if ($data->isInitialized('logConfig') && null !== $data->getLogConfig()) {
-            $dataArray['LogConfig'] = $this->normalizer->normalize($data->getLogConfig(), 'json', $context);
+            $dataArray['LogConfig'] = $data->getLogConfig() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getLogConfig(), 'json', $context));
         }
         if ($data->isInitialized('networkMode') && null !== $data->getNetworkMode()) {
             $dataArray['NetworkMode'] = $data->getNetworkMode();
         }
         if ($data->isInitialized('portBindings') && null !== $data->getPortBindings()) {
-            $values_10 = [];
+            $values_10 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getPortBindings() as $key => $value_10) {
                 $values_11 = [];
                 foreach ($value_10 as $value_11) {
-                    $values_11[] = $this->normalizer->normalize($value_11, 'json', $context);
+                    $values_11[] = $value_11 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_11, 'json', $context));
                 }
                 $values_10[$key] = $values_11;
             }
             $dataArray['PortBindings'] = $values_10;
         }
         if ($data->isInitialized('restartPolicy') && null !== $data->getRestartPolicy()) {
-            $dataArray['RestartPolicy'] = $this->normalizer->normalize($data->getRestartPolicy(), 'json', $context);
+            $dataArray['RestartPolicy'] = $data->getRestartPolicy() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getRestartPolicy(), 'json', $context));
         }
         if ($data->isInitialized('autoRemove') && null !== $data->getAutoRemove()) {
             $dataArray['AutoRemove'] = $data->getAutoRemove();
@@ -573,7 +573,7 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('mounts') && null !== $data->getMounts()) {
             $values_13 = [];
             foreach ($data->getMounts() as $value_13) {
-                $values_13[] = $this->normalizer->normalize($value_13, 'json', $context);
+                $values_13[] = $value_13 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_13, 'json', $context));
             }
             $dataArray['Mounts'] = $values_13;
         }
@@ -665,14 +665,14 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['SecurityOpt'] = $values_22;
         }
         if ($data->isInitialized('storageOpt') && null !== $data->getStorageOpt()) {
-            $values_23 = [];
+            $values_23 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getStorageOpt() as $key_1 => $value_23) {
                 $values_23[$key_1] = $value_23;
             }
             $dataArray['StorageOpt'] = $values_23;
         }
         if ($data->isInitialized('tmpfs') && null !== $data->getTmpfs()) {
-            $values_24 = [];
+            $values_24 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getTmpfs() as $key_2 => $value_24) {
                 $values_24[$key_2] = $value_24;
             }
@@ -688,7 +688,7 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['ShmSize'] = $data->getShmSize();
         }
         if ($data->isInitialized('sysctls') && null !== $data->getSysctls()) {
-            $values_25 = [];
+            $values_25 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getSysctls() as $key_3 => $value_25) {
                 $values_25[$key_3] = $value_25;
             }

@@ -149,7 +149,7 @@ class DropletCreateNormalizer implements DenormalizerInterface, NormalizerInterf
             $dataArray['backups'] = $data->getBackups();
         }
         if ($data->isInitialized('backupPolicy') && null !== $data->getBackupPolicy()) {
-            $dataArray['backup_policy'] = $this->normalizer->normalize($data->getBackupPolicy(), 'json', $context);
+            $dataArray['backup_policy'] = $data->getBackupPolicy() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getBackupPolicy(), 'json', $context));
         }
         if ($data->isInitialized('ipv6') && null !== $data->getIpv6()) {
             $dataArray['ipv6'] = $data->getIpv6();
@@ -157,7 +157,7 @@ class DropletCreateNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('monitoring') && null !== $data->getMonitoring()) {
             $dataArray['monitoring'] = $data->getMonitoring();
         }
-        if ($data->isInitialized('tags')) {
+        if ($data->isInitialized('tags') && null !== $data->getTags()) {
             $values_1 = [];
             foreach ($data->getTags() as $value_1) {
                 $values_1[] = $value_1;

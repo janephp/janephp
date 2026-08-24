@@ -118,20 +118,20 @@ class PortalserviceHotspot20WlanProfileNormalizer implements DenormalizerInterfa
             $dataArray['description'] = $data->getDescription();
         }
         if ($data->isInitialized('operator') && null !== $data->getOperator()) {
-            $dataArray['operator'] = $this->normalizer->normalize($data->getOperator(), 'json', $context);
+            $dataArray['operator'] = $data->getOperator() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getOperator(), 'json', $context));
         }
         if ($data->isInitialized('identityProviders') && null !== $data->getIdentityProviders()) {
             $values = [];
             foreach ($data->getIdentityProviders() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['identityProviders'] = $values;
         }
         if ($data->isInitialized('defaultIdentityProvider') && null !== $data->getDefaultIdentityProvider()) {
-            $dataArray['defaultIdentityProvider'] = $this->normalizer->normalize($data->getDefaultIdentityProvider(), 'json', $context);
+            $dataArray['defaultIdentityProvider'] = $data->getDefaultIdentityProvider() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getDefaultIdentityProvider(), 'json', $context));
         }
         if ($data->isInitialized('signupSsid') && null !== $data->getSignupSsid()) {
-            $dataArray['signupSsid'] = $this->normalizer->normalize($data->getSignupSsid(), 'json', $context);
+            $dataArray['signupSsid'] = $data->getSignupSsid() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSignupSsid(), 'json', $context));
         }
         if ($data->isInitialized('internetOption') && null !== $data->getInternetOption()) {
             $dataArray['internetOption'] = $data->getInternetOption();
@@ -148,14 +148,14 @@ class PortalserviceHotspot20WlanProfileNormalizer implements DenormalizerInterfa
         if ($data->isInitialized('connectionCapabilities') && null !== $data->getConnectionCapabilities()) {
             $values_1 = [];
             foreach ($data->getConnectionCapabilities() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['connectionCapabilities'] = $values_1;
         }
         if ($data->isInitialized('customConnectionCapabilities') && null !== $data->getCustomConnectionCapabilities()) {
             $values_2 = [];
             foreach ($data->getCustomConnectionCapabilities() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['customConnectionCapabilities'] = $values_2;
         }

@@ -52,7 +52,7 @@ class ResponseAccountNormalizer implements DenormalizerInterface, NormalizerInte
     {
         $dataArray = [];
         if ($data->isInitialized('account') && null !== $data->getAccount()) {
-            $dataArray['account'] = $this->normalizer->normalize($data->getAccount(), 'json', $context);
+            $dataArray['account'] = $data->getAccount() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAccount(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

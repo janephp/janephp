@@ -58,7 +58,7 @@ class ResponseKafkaSchemasNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('subjects') && null !== $data->getSubjects()) {
             $values = [];
             foreach ($data->getSubjects() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['subjects'] = $values;
         }

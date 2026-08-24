@@ -93,17 +93,17 @@ class BusinessRuleNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $data->getKind() and 'BusinessRuleScript' === $data->getKind()) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if ($data->isInitialized('id')) {
+        if ($data->isInitialized('id') && null !== $data->getId()) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('triggerPoint')) {
+        if ($data->isInitialized('triggerPoint') && null !== $data->getTriggerPoint()) {
             $dataArray['triggerPoint'] = $data->getTriggerPoint();
         }
         $dataArray['isEnabled'] = $data->getIsEnabled();
-        if ($data->isInitialized('names')) {
+        if ($data->isInitialized('names') && null !== $data->getNames()) {
             $dataArray['names'] = $data->getNames();
         }
-        if ($data->isInitialized('description')) {
+        if ($data->isInitialized('description') && null !== $data->getDescription()) {
             $dataArray['description'] = $data->getDescription();
         }
         $dataArray['enableTracing'] = $data->getEnableTracing();

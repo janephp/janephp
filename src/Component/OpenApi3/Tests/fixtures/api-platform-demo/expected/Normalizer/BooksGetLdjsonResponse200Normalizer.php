@@ -69,17 +69,17 @@ class BooksGetLdjsonResponse200Normalizer implements DenormalizerInterface, Norm
         $dataArray = [];
         $values = [];
         foreach ($data->getHydraMember() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \ApiPlatform\Demo\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['hydra:member'] = $values;
         if ($data->isInitialized('hydraTotalItems') && null !== $data->getHydraTotalItems()) {
             $dataArray['hydra:totalItems'] = $data->getHydraTotalItems();
         }
         if ($data->isInitialized('hydraView') && null !== $data->getHydraView()) {
-            $dataArray['hydra:view'] = $this->normalizer->normalize($data->getHydraView(), 'json', $context);
+            $dataArray['hydra:view'] = $data->getHydraView() === null ? null : new \ApiPlatform\Demo\Runtime\JsonObject($this->normalizer->normalize($data->getHydraView(), 'json', $context));
         }
         if ($data->isInitialized('hydraSearch') && null !== $data->getHydraSearch()) {
-            $dataArray['hydra:search'] = $this->normalizer->normalize($data->getHydraSearch(), 'json', $context);
+            $dataArray['hydra:search'] = $data->getHydraSearch() === null ? null : new \ApiPlatform\Demo\Runtime\JsonObject($this->normalizer->normalize($data->getHydraSearch(), 'json', $context));
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

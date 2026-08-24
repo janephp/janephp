@@ -64,19 +64,19 @@ class RadioRadioConfigResponseApNormalizer implements DenormalizerInterface, Nor
     {
         $dataArray = [];
         if ($data->isInitialized('radio24g') && null !== $data->getRadio24g()) {
-            $dataArray['radio24g'] = $this->normalizer->normalize($data->getRadio24g(), 'json', $context);
+            $dataArray['radio24g'] = $data->getRadio24g() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getRadio24g(), 'json', $context));
         }
         if ($data->isInitialized('radio5g') && null !== $data->getRadio5g()) {
-            $dataArray['radio5g'] = $this->normalizer->normalize($data->getRadio5g(), 'json', $context);
+            $dataArray['radio5g'] = $data->getRadio5g() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getRadio5g(), 'json', $context));
         }
         if ($data->isInitialized('radio5gUpper') && null !== $data->getRadio5gUpper()) {
-            $dataArray['radio5gUpper'] = $this->normalizer->normalize($data->getRadio5gUpper(), 'json', $context);
+            $dataArray['radio5gUpper'] = $data->getRadio5gUpper() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getRadio5gUpper(), 'json', $context));
         }
         if ($data->isInitialized('radio5gLower') && null !== $data->getRadio5gLower()) {
-            $dataArray['radio5gLower'] = $this->normalizer->normalize($data->getRadio5gLower(), 'json', $context);
+            $dataArray['radio5gLower'] = $data->getRadio5gLower() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getRadio5gLower(), 'json', $context));
         }
         if ($data->isInitialized('radio6g') && null !== $data->getRadio6g()) {
-            $dataArray['radio6g'] = $this->normalizer->normalize($data->getRadio6g(), 'json', $context);
+            $dataArray['radio6g'] = $data->getRadio6g() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getRadio6g(), 'json', $context));
         }
         if ($data->isInitialized('dual5gEnabled') && null !== $data->getDual5gEnabled()) {
             $dataArray['dual5gEnabled'] = $data->getDual5gEnabled();

@@ -97,7 +97,7 @@ class UserPatchBodyNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('blog') && null !== $data->getBlog()) {
             $dataArray['blog'] = $data->getBlog();
         }
-        if ($data->isInitialized('twitterUsername')) {
+        if ($data->isInitialized('twitterUsername') && null !== $data->getTwitterUsername()) {
             $dataArray['twitter_username'] = $data->getTwitterUsername();
         }
         if ($data->isInitialized('company') && null !== $data->getCompany()) {

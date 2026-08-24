@@ -115,20 +115,20 @@ class CommitComparisonNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray['permalink_url'] = $data->getPermalinkUrl();
         $dataArray['diff_url'] = $data->getDiffUrl();
         $dataArray['patch_url'] = $data->getPatchUrl();
-        $dataArray['base_commit'] = $this->normalizer->normalize($data->getBaseCommit(), 'json', $context);
-        $dataArray['merge_base_commit'] = $this->normalizer->normalize($data->getMergeBaseCommit(), 'json', $context);
+        $dataArray['base_commit'] = $data->getBaseCommit() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getBaseCommit(), 'json', $context));
+        $dataArray['merge_base_commit'] = $data->getMergeBaseCommit() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getMergeBaseCommit(), 'json', $context));
         $dataArray['status'] = $data->getStatus();
         $dataArray['ahead_by'] = $data->getAheadBy();
         $dataArray['behind_by'] = $data->getBehindBy();
         $dataArray['total_commits'] = $data->getTotalCommits();
         $values = [];
         foreach ($data->getCommits() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['commits'] = $values;
         $values_1 = [];
         foreach ($data->getFiles() as $value_1) {
-            $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            $values_1[] = $value_1 === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['files'] = $values_1;
         foreach ($data as $key => $value_2) {

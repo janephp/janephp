@@ -52,7 +52,7 @@ class ResponseTagsExistingNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if ($data->isInitialized('tag') && null !== $data->getTag()) {
-            $dataArray['tag'] = $this->normalizer->normalize($data->getTag(), 'json', $context);
+            $dataArray['tag'] = $data->getTag() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getTag(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

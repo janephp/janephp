@@ -215,10 +215,10 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemN
             $dataArray['checkSum'] = $data->getCheckSum();
         }
         if ($data->isInitialized('conflicts') && null !== $data->getConflicts()) {
-            $dataArray['conflicts'] = $this->normalizer->normalize($data->getConflicts(), 'json', $context);
+            $dataArray['conflicts'] = $data->getConflicts() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getConflicts(), 'json', $context));
         }
         if ($data->isInitialized('entityDetails') && null !== $data->getEntityDetails()) {
-            $dataArray['entityDetails'] = $this->normalizer->normalize($data->getEntityDetails(), 'json', $context);
+            $dataArray['entityDetails'] = $data->getEntityDetails() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getEntityDetails(), 'json', $context));
         }
         if ($data->isInitialized('entityName') && null !== $data->getEntityName()) {
             $dataArray['entityName'] = $data->getEntityName();
@@ -233,7 +233,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemN
             $dataArray['falsePositive'] = $data->getFalsePositive();
         }
         if ($data->isInitialized('file') && null !== $data->getFile()) {
-            $dataArray['file'] = $this->normalizer->normalize($data->getFile(), 'json', $context);
+            $dataArray['file'] = $data->getFile() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getFile(), 'json', $context));
         }
         if ($data->isInitialized('gatewayOFACScreeningIndicatorMatch') && null !== $data->getGatewayOFACScreeningIndicatorMatch()) {
             $dataArray['gatewayOFACScreeningIndicatorMatch'] = $data->getGatewayOFACScreeningIndicatorMatch();

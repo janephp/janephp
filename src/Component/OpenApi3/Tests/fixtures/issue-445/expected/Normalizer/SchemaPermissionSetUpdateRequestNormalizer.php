@@ -74,17 +74,17 @@ class SchemaPermissionSetUpdateRequestNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         $dataArray['names'] = $data->getNames();
-        if ($data->isInitialized('userRolesRights')) {
+        if ($data->isInitialized('userRolesRights') && null !== $data->getUserRolesRights()) {
             $values = [];
             foreach ($data->getUserRolesRights() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['userRolesRights'] = $values;
         }
-        if ($data->isInitialized('userRolesPermissionSetRights')) {
+        if ($data->isInitialized('userRolesPermissionSetRights') && null !== $data->getUserRolesPermissionSetRights()) {
             $values_1 = [];
             foreach ($data->getUserRolesPermissionSetRights() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['userRolesPermissionSetRights'] = $values_1;
         }

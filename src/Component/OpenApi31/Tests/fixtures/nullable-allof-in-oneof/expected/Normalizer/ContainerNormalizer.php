@@ -69,19 +69,19 @@ class ContainerNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('iconOneOf')) {
+        if ($data->isInitialized('iconOneOf') && null !== $data->getIconOneOf()) {
             $value = $data->getIconOneOf();
             if (is_object($data->getIconOneOf())) {
-                $value = $this->normalizer->normalize($data->getIconOneOf(), 'json', $context);
+                $value = $data->getIconOneOf() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIconOneOf(), 'json', $context));
             } elseif (is_null($data->getIconOneOf())) {
                 $value = $data->getIconOneOf();
             }
             $dataArray['iconOneOf'] = $value;
         }
-        if ($data->isInitialized('iconAnyOf')) {
+        if ($data->isInitialized('iconAnyOf') && null !== $data->getIconAnyOf()) {
             $value_1 = $data->getIconAnyOf();
             if (is_object($data->getIconAnyOf())) {
-                $value_1 = $this->normalizer->normalize($data->getIconAnyOf(), 'json', $context);
+                $value_1 = $data->getIconAnyOf() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIconAnyOf(), 'json', $context));
             } elseif (is_null($data->getIconAnyOf())) {
                 $value_1 = $data->getIconAnyOf();
             }

@@ -68,12 +68,12 @@ class GbCompanyReportExampleResponseReportContactInformationNormalizer implement
     {
         $dataArray = [];
         if ($data->isInitialized('mainAddress') && null !== $data->getMainAddress()) {
-            $dataArray['mainAddress'] = $this->normalizer->normalize($data->getMainAddress(), 'json', $context);
+            $dataArray['mainAddress'] = $data->getMainAddress() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getMainAddress(), 'json', $context));
         }
         if ($data->isInitialized('otherAddresses') && null !== $data->getOtherAddresses()) {
             $values = [];
             foreach ($data->getOtherAddresses() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['otherAddresses'] = $values;
         }

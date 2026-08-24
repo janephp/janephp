@@ -73,7 +73,7 @@ class AppsAssignAppAlertDestinationsRequestNormalizer implements DenormalizerInt
         if ($data->isInitialized('slackWebhooks') && null !== $data->getSlackWebhooks()) {
             $values_1 = [];
             foreach ($data->getSlackWebhooks() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['slack_webhooks'] = $values_1;
         }

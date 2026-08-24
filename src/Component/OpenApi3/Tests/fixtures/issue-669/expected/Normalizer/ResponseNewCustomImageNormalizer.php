@@ -52,7 +52,7 @@ class ResponseNewCustomImageNormalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         if ($data->isInitialized('image') && null !== $data->getImage()) {
-            $dataArray['image'] = $this->normalizer->normalize($data->getImage(), 'json', $context);
+            $dataArray['image'] = $data->getImage() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getImage(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

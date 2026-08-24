@@ -58,7 +58,7 @@ class MonitoringPortfoliosPortfolioIdCompaniesClearPatchBodyNormalizer implement
         if ($data->isInitialized('companies') && null !== $data->getCompanies()) {
             $values = [];
             foreach ($data->getCompanies() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['companies'] = $values;
         }

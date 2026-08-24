@@ -93,7 +93,7 @@ class ImageNewCustomNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('region') && null !== $data->getRegion()) {
             $dataArray['region'] = $data->getRegion();
         }
-        if ($data->isInitialized('tags')) {
+        if ($data->isInitialized('tags') && null !== $data->getTags()) {
             $values = [];
             foreach ($data->getTags() as $value) {
                 $values[] = $value;

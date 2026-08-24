@@ -86,10 +86,10 @@ class BranchWithProtectionNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         $dataArray['name'] = $data->getName();
-        $dataArray['commit'] = $this->normalizer->normalize($data->getCommit(), 'json', $context);
-        $dataArray['_links'] = $this->normalizer->normalize($data->getLinks(), 'json', $context);
+        $dataArray['commit'] = $data->getCommit() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCommit(), 'json', $context));
+        $dataArray['_links'] = $data->getLinks() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
         $dataArray['protected'] = $data->getProtected();
-        $dataArray['protection'] = $this->normalizer->normalize($data->getProtection(), 'json', $context);
+        $dataArray['protection'] = $data->getProtection() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getProtection(), 'json', $context));
         $dataArray['protection_url'] = $data->getProtectionUrl();
         if ($data->isInitialized('pattern') && null !== $data->getPattern()) {
             $dataArray['pattern'] = $data->getPattern();

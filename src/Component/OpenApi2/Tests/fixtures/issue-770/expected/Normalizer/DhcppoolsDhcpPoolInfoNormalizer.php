@@ -106,7 +106,7 @@ class DhcppoolsDhcpPoolInfoNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['availableIpCount'] = $data->getAvailableIpCount();
         }
         if ($data->isInitialized('clientInfoList') && null !== $data->getClientInfoList()) {
-            $dataArray['clientInfoList'] = $this->normalizer->normalize($data->getClientInfoList(), 'json', $context);
+            $dataArray['clientInfoList'] = $data->getClientInfoList() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getClientInfoList(), 'json', $context));
         }
         return $dataArray;
     }

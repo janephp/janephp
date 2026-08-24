@@ -122,35 +122,35 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id')) {
+        if ($data->isInitialized('id') && null !== $data->getId()) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('triggerPoint')) {
+        if ($data->isInitialized('triggerPoint') && null !== $data->getTriggerPoint()) {
             $dataArray['triggerPoint'] = $data->getTriggerPoint();
         }
         $dataArray['isEnabled'] = $data->getIsEnabled();
-        if ($data->isInitialized('names')) {
+        if ($data->isInitialized('names') && null !== $data->getNames()) {
             $dataArray['names'] = $data->getNames();
         }
-        if ($data->isInitialized('description')) {
+        if ($data->isInitialized('description') && null !== $data->getDescription()) {
             $dataArray['description'] = $data->getDescription();
         }
         $dataArray['enableTracing'] = $data->getEnableTracing();
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('condition')) {
+        if ($data->isInitialized('condition') && null !== $data->getCondition()) {
             $dataArray['condition'] = $data->getCondition();
         }
-        if ($data->isInitialized('transformationGroups')) {
+        if ($data->isInitialized('transformationGroups') && null !== $data->getTransformationGroups()) {
             $values = [];
             foreach ($data->getTransformationGroups() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['transformationGroups'] = $values;
         }
-        if ($data->isInitialized('actions')) {
+        if ($data->isInitialized('actions') && null !== $data->getActions()) {
             $values_1 = [];
             foreach ($data->getActions() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['actions'] = $values_1;
         }

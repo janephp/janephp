@@ -58,7 +58,7 @@ class ApiLinkAgentFunctionInputPublicNormalizer implements DenormalizerInterface
             unset($data['function_name']);
         }
         if (\array_key_exists('input_schema', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data['input_schema'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -66,7 +66,7 @@ class ApiLinkAgentFunctionInputPublicNormalizer implements DenormalizerInterface
             unset($data['input_schema']);
         }
         if (\array_key_exists('output_schema', $data)) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data['output_schema'] as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
@@ -99,14 +99,14 @@ class ApiLinkAgentFunctionInputPublicNormalizer implements DenormalizerInterface
             $dataArray['function_name'] = $data->getFunctionName();
         }
         if ($data->isInitialized('inputSchema') && null !== $data->getInputSchema()) {
-            $values = [];
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data->getInputSchema() as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['input_schema'] = $values;
         }
         if ($data->isInitialized('outputSchema') && null !== $data->getOutputSchema()) {
-            $values_1 = [];
+            $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data->getOutputSchema() as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }

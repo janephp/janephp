@@ -102,7 +102,7 @@ class SwarmInitPostBodyNormalizer implements DenormalizerInterface, NormalizerIn
             $dataArray['SubnetSize'] = $data->getSubnetSize();
         }
         if ($data->isInitialized('spec') && null !== $data->getSpec()) {
-            $dataArray['Spec'] = $this->normalizer->normalize($data->getSpec(), 'json', $context);
+            $dataArray['Spec'] = $data->getSpec() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getSpec(), 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\SwarmInitPostBodyConstraint());

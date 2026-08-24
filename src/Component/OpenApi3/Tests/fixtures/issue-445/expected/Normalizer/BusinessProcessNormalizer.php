@@ -123,10 +123,10 @@ class BusinessProcessNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $dataArray['id'] = $data->getId();
         $dataArray['processDefinitionId'] = $data->getProcessDefinitionId();
-        if ($data->isInitialized('referenceId')) {
+        if ($data->isInitialized('referenceId') && null !== $data->getReferenceId()) {
             $dataArray['referenceId'] = $data->getReferenceId();
         }
-        if ($data->isInitialized('referenceDocType')) {
+        if ($data->isInitialized('referenceDocType') && null !== $data->getReferenceDocType()) {
             $dataArray['referenceDocType'] = $data->getReferenceDocType();
         }
         $dataArray['supportsCancellation'] = $data->getSupportsCancellation();
@@ -135,20 +135,20 @@ class BusinessProcessNormalizer implements DenormalizerInterface, NormalizerInte
         $dataArray['startDate'] = $data->getStartDate()->format('Y-m-d\TH:i:sP');
         $dataArray['endDate'] = $data->getEndDate()->format('Y-m-d\TH:i:sP');
         $dataArray['finished'] = $data->getFinished();
-        if ($data->isInitialized('stateHistory')) {
+        if ($data->isInitialized('stateHistory') && null !== $data->getStateHistory()) {
             $values = [];
             foreach ($data->getStateHistory() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['stateHistory'] = $values;
         }
-        if ($data->isInitialized('currentState')) {
+        if ($data->isInitialized('currentState') && null !== $data->getCurrentState()) {
             $dataArray['currentState'] = $data->getCurrentState();
         }
-        if ($data->isInitialized('lastReportedProgress')) {
+        if ($data->isInitialized('lastReportedProgress') && null !== $data->getLastReportedProgress()) {
             $dataArray['lastReportedProgress'] = $data->getLastReportedProgress()?->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('continuationBusinessProcessId')) {
+        if ($data->isInitialized('continuationBusinessProcessId') && null !== $data->getContinuationBusinessProcessId()) {
             $dataArray['continuationBusinessProcessId'] = $data->getContinuationBusinessProcessId();
         }
         $dataArray['kind'] = $data->getKind();

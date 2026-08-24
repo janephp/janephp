@@ -76,12 +76,12 @@ class AdministrationZdAPListNormalizer implements DenormalizerInterface, Normali
         if ($data->isInitialized('list') && null !== $data->getList()) {
             $values = [];
             foreach ($data->getList() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['list'] = $values;
         }
         if ($data->isInitialized('extra') && null !== $data->getExtra()) {
-            $dataArray['extra'] = $this->normalizer->normalize($data->getExtra(), 'json', $context);
+            $dataArray['extra'] = $data->getExtra() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getExtra(), 'json', $context));
         }
         return $dataArray;
     }

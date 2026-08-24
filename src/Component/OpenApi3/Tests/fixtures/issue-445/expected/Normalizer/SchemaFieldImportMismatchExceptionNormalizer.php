@@ -125,35 +125,35 @@ class SchemaFieldImportMismatchExceptionNormalizer implements DenormalizerInterf
         if ($data->isInitialized('traceLevel') && null !== $data->getTraceLevel()) {
             $dataArray['traceLevel'] = $data->getTraceLevel();
         }
-        if ($data->isInitialized('traceId')) {
+        if ($data->isInitialized('traceId') && null !== $data->getTraceId()) {
             $dataArray['traceId'] = $data->getTraceId();
         }
-        if ($data->isInitialized('traceJobId')) {
+        if ($data->isInitialized('traceJobId') && null !== $data->getTraceJobId()) {
             $dataArray['traceJobId'] = $data->getTraceJobId();
         }
         if ($data->isInitialized('httpStatusCode') && null !== $data->getHttpStatusCode()) {
             $dataArray['httpStatusCode'] = $data->getHttpStatusCode();
         }
-        if ($data->isInitialized('exceptionMessage')) {
+        if ($data->isInitialized('exceptionMessage') && null !== $data->getExceptionMessage()) {
             $dataArray['exceptionMessage'] = $data->getExceptionMessage();
         }
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('customerId')) {
+        if ($data->isInitialized('customerId') && null !== $data->getCustomerId()) {
             $dataArray['customerId'] = $data->getCustomerId();
         }
-        if ($data->isInitialized('customerAlias')) {
+        if ($data->isInitialized('customerAlias') && null !== $data->getCustomerAlias()) {
             $dataArray['customerAlias'] = $data->getCustomerAlias();
         }
-        if ($data->isInitialized('userId')) {
+        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
             $dataArray['userId'] = $data->getUserId();
         }
-        if ($data->isInitialized('schemaId')) {
+        if ($data->isInitialized('schemaId') && null !== $data->getSchemaId()) {
             $dataArray['schemaId'] = $data->getSchemaId();
         }
-        if ($data->isInitialized('importingFieldIds')) {
+        if ($data->isInitialized('importingFieldIds') && null !== $data->getImportingFieldIds()) {
             $dataArray['importingFieldIds'] = $data->getImportingFieldIds();
         }
-        if ($data->isInitialized('existingFieldIds')) {
+        if ($data->isInitialized('existingFieldIds') && null !== $data->getExistingFieldIds()) {
             $dataArray['existingFieldIds'] = $data->getExistingFieldIds();
         }
         foreach ($data as $key => $value) {

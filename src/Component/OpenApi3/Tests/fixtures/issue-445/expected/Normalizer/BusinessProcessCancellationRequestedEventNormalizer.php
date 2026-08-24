@@ -64,7 +64,7 @@ class BusinessProcessCancellationRequestedEventNormalizer implements Denormalize
         $dataArray = [];
         $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('businessProcessId')) {
+        if ($data->isInitialized('businessProcessId') && null !== $data->getBusinessProcessId()) {
             $dataArray['businessProcessId'] = $data->getBusinessProcessId();
         }
         foreach ($data as $key => $value) {

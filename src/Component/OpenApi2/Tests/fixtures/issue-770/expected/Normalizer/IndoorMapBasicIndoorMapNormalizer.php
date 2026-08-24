@@ -121,7 +121,7 @@ class IndoorMapBasicIndoorMapNormalizer implements DenormalizerInterface, Normal
             $dataArray['tenantId'] = $data->getTenantId();
         }
         if ($data->isInitialized('scale') && null !== $data->getScale()) {
-            $dataArray['scale'] = $this->normalizer->normalize($data->getScale(), 'json', $context);
+            $dataArray['scale'] = $data->getScale() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getScale(), 'json', $context));
         }
         if ($data->isInitialized('apGroupId') && null !== $data->getApGroupId()) {
             $dataArray['apGroupId'] = $data->getApGroupId();

@@ -106,21 +106,21 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         if ($data->isInitialized('additionalInfo') && null !== $data->getAdditionalInfo()) {
             $values = [];
             foreach ($data->getAdditionalInfo() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['additionalInfo'] = $values;
         }
         if ($data->isInitialized('addresses') && null !== $data->getAddresses()) {
             $values_1 = [];
             foreach ($data->getAddresses() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['addresses'] = $values_1;
         }
         if ($data->isInitialized('akAs') && null !== $data->getAkAs()) {
             $values_2 = [];
             foreach ($data->getAkAs() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['akAs'] = $values_2;
         }
@@ -136,7 +136,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         if ($data->isInitialized('iDs') && null !== $data->getIDs()) {
             $values_3 = [];
             foreach ($data->getIDs() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['iDs'] = $values_3;
         }
@@ -144,7 +144,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
             $dataArray['listReferenceNumber'] = $data->getListReferenceNumber();
         }
         if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $this->normalizer->normalize($data->getName(), 'json', $context);
+            $dataArray['name'] = $data->getName() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getName(), 'json', $context));
         }
         if ($data->isInitialized('reasonListed') && null !== $data->getReasonListed()) {
             $dataArray['reasonListed'] = $data->getReasonListed();

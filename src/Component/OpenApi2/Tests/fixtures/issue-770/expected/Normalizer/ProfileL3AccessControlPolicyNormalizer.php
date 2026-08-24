@@ -75,7 +75,7 @@ class ProfileL3AccessControlPolicyNormalizer implements DenormalizerInterface, N
         if ($data->isInitialized('l3AclRuleList') && null !== $data->getL3AclRuleList()) {
             $values = [];
             foreach ($data->getL3AclRuleList() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['l3AclRuleList'] = $values;
         }

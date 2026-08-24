@@ -62,7 +62,7 @@ class FilePostBodyNormalizer implements DenormalizerInterface, NormalizerInterfa
             $dataArray['fichier'] = $data->getFichier();
         }
         if ($data->isInitialized('item') && null !== $data->getItem()) {
-            $dataArray['item'] = $this->normalizer->normalize($data->getItem(), 'json', $context);
+            $dataArray['item'] = $data->getItem() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getItem(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

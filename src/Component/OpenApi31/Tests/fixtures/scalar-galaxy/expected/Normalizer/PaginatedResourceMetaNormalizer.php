@@ -75,7 +75,7 @@ class PaginatedResourceMetaNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('total') && null !== $data->getTotal()) {
             $dataArray['total'] = $data->getTotal();
         }
-        if ($data->isInitialized('next')) {
+        if ($data->isInitialized('next') && null !== $data->getNext()) {
             $value = $data->getNext();
             if (is_string($data->getNext())) {
                 $value = $data->getNext();

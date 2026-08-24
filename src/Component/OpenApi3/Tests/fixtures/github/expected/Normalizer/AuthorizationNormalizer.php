@@ -144,17 +144,17 @@ class AuthorizationNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray['token'] = $data->getToken();
         $dataArray['token_last_eight'] = $data->getTokenLastEight();
         $dataArray['hashed_token'] = $data->getHashedToken();
-        $dataArray['app'] = $this->normalizer->normalize($data->getApp(), 'json', $context);
+        $dataArray['app'] = $data->getApp() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getApp(), 'json', $context));
         $dataArray['note'] = $data->getNote();
         $dataArray['note_url'] = $data->getNoteUrl();
         $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['fingerprint'] = $data->getFingerprint();
-        if ($data->isInitialized('user')) {
-            $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
+        if ($data->isInitialized('user') && null !== $data->getUser()) {
+            $dataArray['user'] = $data->getUser() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getUser(), 'json', $context));
         }
-        if ($data->isInitialized('installation')) {
-            $dataArray['installation'] = $this->normalizer->normalize($data->getInstallation(), 'json', $context);
+        if ($data->isInitialized('installation') && null !== $data->getInstallation()) {
+            $dataArray['installation'] = $data->getInstallation() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getInstallation(), 'json', $context));
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

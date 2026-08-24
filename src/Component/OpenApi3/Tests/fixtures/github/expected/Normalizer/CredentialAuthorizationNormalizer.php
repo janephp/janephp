@@ -106,7 +106,7 @@ class CredentialAuthorizationNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('fingerprint') && null !== $data->getFingerprint()) {
             $dataArray['fingerprint'] = $data->getFingerprint();
         }
-        if ($data->isInitialized('credentialAccessedAt')) {
+        if ($data->isInitialized('credentialAccessedAt') && null !== $data->getCredentialAccessedAt()) {
             $dataArray['credential_accessed_at'] = $data->getCredentialAccessedAt()?->format('Y-m-d\TH:i:sP');
         }
         foreach ($data as $key => $value_1) {

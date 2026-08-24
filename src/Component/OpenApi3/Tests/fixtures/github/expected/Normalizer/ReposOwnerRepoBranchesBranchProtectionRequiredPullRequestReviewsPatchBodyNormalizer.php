@@ -73,7 +73,7 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyN
     {
         $dataArray = [];
         if ($data->isInitialized('dismissalRestrictions') && null !== $data->getDismissalRestrictions()) {
-            $dataArray['dismissal_restrictions'] = $this->normalizer->normalize($data->getDismissalRestrictions(), 'json', $context);
+            $dataArray['dismissal_restrictions'] = $data->getDismissalRestrictions() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getDismissalRestrictions(), 'json', $context));
         }
         if ($data->isInitialized('dismissStaleReviews') && null !== $data->getDismissStaleReviews()) {
             $dataArray['dismiss_stale_reviews'] = $data->getDismissStaleReviews();

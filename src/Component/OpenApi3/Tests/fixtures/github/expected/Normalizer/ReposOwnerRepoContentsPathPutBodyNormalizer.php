@@ -83,10 +83,10 @@ class ReposOwnerRepoContentsPathPutBodyNormalizer implements DenormalizerInterfa
             $dataArray['branch'] = $data->getBranch();
         }
         if ($data->isInitialized('committer') && null !== $data->getCommitter()) {
-            $dataArray['committer'] = $this->normalizer->normalize($data->getCommitter(), 'json', $context);
+            $dataArray['committer'] = $data->getCommitter() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCommitter(), 'json', $context));
         }
         if ($data->isInitialized('author') && null !== $data->getAuthor()) {
-            $dataArray['author'] = $this->normalizer->normalize($data->getAuthor(), 'json', $context);
+            $dataArray['author'] = $data->getAuthor() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getAuthor(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

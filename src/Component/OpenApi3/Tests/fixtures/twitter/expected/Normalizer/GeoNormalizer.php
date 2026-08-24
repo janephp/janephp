@@ -54,7 +54,7 @@ class GeoNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             unset($data['geometry']);
         }
         if (\array_key_exists('properties', $data)) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject();
             foreach ($data['properties'] as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
@@ -78,9 +78,9 @@ class GeoNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         $dataArray['bbox'] = $values;
         if ($data->isInitialized('geometry') && null !== $data->getGeometry()) {
-            $dataArray['geometry'] = $this->normalizer->normalize($data->getGeometry(), 'json', $context);
+            $dataArray['geometry'] = $data->getGeometry() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getGeometry(), 'json', $context));
         }
-        $values_1 = [];
+        $values_1 = new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject();
         foreach ($data->getProperties() as $key => $value_1) {
             $values_1[$key] = $value_1;
         }

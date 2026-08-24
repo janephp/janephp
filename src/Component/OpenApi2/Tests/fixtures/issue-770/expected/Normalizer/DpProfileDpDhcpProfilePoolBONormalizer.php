@@ -161,14 +161,14 @@ class DpProfileDpDhcpProfilePoolBONormalizer implements DenormalizerInterface, N
         if ($data->isInitialized('qinqVlanRanges') && null !== $data->getQinqVlanRanges()) {
             $values = [];
             foreach ($data->getQinqVlanRanges() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['qinqVlanRanges'] = $values;
         }
         if ($data->isInitialized('subOptionSpaces') && null !== $data->getSubOptionSpaces()) {
             $values_1 = [];
             foreach ($data->getSubOptionSpaces() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['subOptionSpaces'] = $values_1;
         }

@@ -38,7 +38,7 @@ class ResponseExistingCheckNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('check', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data['check'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -56,7 +56,7 @@ class ResponseExistingCheckNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         if ($data->isInitialized('check') && null !== $data->getCheck()) {
-            $values = [];
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data->getCheck() as $key => $value) {
                 $values[$key] = $value;
             }

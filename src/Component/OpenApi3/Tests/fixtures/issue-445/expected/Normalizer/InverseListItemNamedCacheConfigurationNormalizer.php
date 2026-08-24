@@ -93,18 +93,18 @@ class InverseListItemNamedCacheConfigurationNormalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name')) {
+        if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();
         }
         $dataArray['caseSensitive'] = $data->getCaseSensitive();
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('schemaId')) {
+        if ($data->isInitialized('schemaId') && null !== $data->getSchemaId()) {
             $dataArray['schemaId'] = $data->getSchemaId();
         }
-        if ($data->isInitialized('valueField')) {
+        if ($data->isInitialized('valueField') && null !== $data->getValueField()) {
             $dataArray['valueField'] = $data->getValueField();
         }
-        if ($data->isInitialized('filter')) {
+        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
             $dataArray['filter'] = $data->getFilter();
         }
         if ($data->isInitialized('includeAllSchemaChildren') && null !== $data->getIncludeAllSchemaChildren()) {

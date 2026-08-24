@@ -70,7 +70,7 @@ class ProfileModifyClientIsolationWhitelistNormalizer implements DenormalizerInt
         if ($data->isInitialized('whitelist') && null !== $data->getWhitelist()) {
             $values = [];
             foreach ($data->getWhitelist() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['whitelist'] = $values;
         }

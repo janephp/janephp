@@ -85,7 +85,7 @@ class InstallationTokenNormalizer implements DenormalizerInterface, NormalizerIn
             $dataArray['expires_at'] = $data->getExpiresAt();
         }
         if ($data->isInitialized('permissions') && null !== $data->getPermissions()) {
-            $dataArray['permissions'] = $this->normalizer->normalize($data->getPermissions(), 'json', $context);
+            $dataArray['permissions'] = $data->getPermissions() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPermissions(), 'json', $context));
         }
         if ($data->isInitialized('repositorySelection') && null !== $data->getRepositorySelection()) {
             $dataArray['repository_selection'] = $data->getRepositorySelection();
@@ -93,7 +93,7 @@ class InstallationTokenNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('repositories') && null !== $data->getRepositories()) {
             $values = [];
             foreach ($data->getRepositories() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['repositories'] = $values;
         }

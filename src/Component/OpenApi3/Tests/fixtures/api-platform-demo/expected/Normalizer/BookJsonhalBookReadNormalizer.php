@@ -90,9 +90,9 @@ class BookJsonhalBookReadNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         if ($data->isInitialized('links') && null !== $data->getLinks()) {
-            $dataArray['_links'] = $this->normalizer->normalize($data->getLinks(), 'json', $context);
+            $dataArray['_links'] = $data->getLinks() === null ? null : new \ApiPlatform\Demo\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
         }
-        if ($data->isInitialized('isbn')) {
+        if ($data->isInitialized('isbn') && null !== $data->getIsbn()) {
             $dataArray['isbn'] = $data->getIsbn();
         }
         $dataArray['title'] = $data->getTitle();
@@ -102,7 +102,7 @@ class BookJsonhalBookReadNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('reviews') && null !== $data->getReviews()) {
             $values = [];
             foreach ($data->getReviews() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \ApiPlatform\Demo\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['reviews'] = $values;
         }

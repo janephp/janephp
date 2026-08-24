@@ -62,7 +62,7 @@ class IndexFieldNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setType(null);
         }
         if (\array_key_exists('indexFields', $data) && $data['indexFields'] !== null) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['indexFields'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -72,7 +72,7 @@ class IndexFieldNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setIndexFields(null);
         }
         if (\array_key_exists('simpleSearchFields', $data) && $data['simpleSearchFields'] !== null) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['simpleSearchFields'] as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
@@ -104,24 +104,24 @@ class IndexFieldNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id')) {
+        if ($data->isInitialized('id') && null !== $data->getId()) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('fieldId')) {
+        if ($data->isInitialized('fieldId') && null !== $data->getFieldId()) {
             $dataArray['fieldId'] = $data->getFieldId();
         }
-        if ($data->isInitialized('type')) {
+        if ($data->isInitialized('type') && null !== $data->getType()) {
             $dataArray['type'] = $data->getType();
         }
-        if ($data->isInitialized('indexFields')) {
-            $values = [];
+        if ($data->isInitialized('indexFields') && null !== $data->getIndexFields()) {
+            $values = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data->getIndexFields() as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['indexFields'] = $values;
         }
-        if ($data->isInitialized('simpleSearchFields')) {
-            $values_1 = [];
+        if ($data->isInitialized('simpleSearchFields') && null !== $data->getSimpleSearchFields()) {
+            $values_1 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data->getSimpleSearchFields() as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
@@ -129,10 +129,10 @@ class IndexFieldNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         $dataArray['boost'] = $data->getBoost();
         $dataArray['ignoreForSearch'] = $data->getIgnoreForSearch();
-        if ($data->isInitialized('nestedPath')) {
+        if ($data->isInitialized('nestedPath') && null !== $data->getNestedPath()) {
             $dataArray['nestedPath'] = $data->getNestedPath();
         }
-        if ($data->isInitialized('sortField')) {
+        if ($data->isInitialized('sortField') && null !== $data->getSortField()) {
             $dataArray['sortField'] = $data->getSortField();
         }
         return $dataArray;

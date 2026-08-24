@@ -52,7 +52,7 @@ class KubernetesOptionsNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if ($data->isInitialized('options') && null !== $data->getOptions()) {
-            $dataArray['options'] = $this->normalizer->normalize($data->getOptions(), 'json', $context);
+            $dataArray['options'] = $data->getOptions() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getOptions(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

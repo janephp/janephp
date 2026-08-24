@@ -66,7 +66,7 @@ class MetadataReferencesPagingRequestNormalizer implements DenormalizerInterface
     {
         $dataArray = [];
         $dataArray['limit'] = $data->getLimit();
-        if ($data->isInitialized('pageToken')) {
+        if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
             $dataArray['pageToken'] = $data->getPageToken();
         }
         if ($data->isInitialized('fetchReferencedByRestrictedItem') && null !== $data->getFetchReferencedByRestrictedItem()) {

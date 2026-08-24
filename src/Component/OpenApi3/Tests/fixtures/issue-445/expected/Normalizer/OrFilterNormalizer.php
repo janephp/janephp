@@ -63,10 +63,10 @@ class OrFilterNormalizer implements DenormalizerInterface, NormalizerInterface, 
     {
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('filters')) {
+        if ($data->isInitialized('filters') && null !== $data->getFilters()) {
             $values = [];
             foreach ($data->getFilters() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['filters'] = $values;
         }

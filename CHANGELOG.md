@@ -7,12 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- [JsonSchema] New `<Namespace>\Runtime\JsonObject` runtime class shipped with every generated library, used to represent objects & maps in normalized payloads
+- [Docs] New [Architecture Decision Records](docs/contributing/adrs/index.md) documenting key generator/runtime decisions
 - [JsonSchema] [GH#865](https://github.com/janephp/janephp/issues/865) New `enums-as-objects` option to generate native PHP backed enums for schemas with an `enum` keyword (`string` / `integer` types)
 - [OpenApi3] [GH#771](https://github.com/janephp/janephp/issues/771) Report clean generation errors for non-body parameters using an unsupported `schema.type` (or no `type`/`enum`) instead of crashing
 
 ### Fixed
+<<<<<<< HEAD
 - [OpenApi] [GH#763](https://github.com/janephp/janephp/issues/763) Generate models referenced by the `default` response when using `whitelisted-paths` (the default response is not part of the iterated status codes, so its models were filtered out)
 - [JsonSchema] [GH#585](https://github.com/janephp/janephp/issues/585) Reference normalizers of models from other mapped schemas (transitively) used by a schema's models in its generated `JaneObjectNormalizer`, so multi-namespace mappings no longer fail at runtime with "no supporting normalizer found"
+||||||| parent of 936f6a735 (fix(json-schema): serialize empty objects and maps as JSON objects)
+=======
+- [JsonSchema] [GH#700](https://github.com/janephp/janephp/issues/700) [GH#680](https://github.com/janephp/janephp/issues/680) Empty objects and maps (`additionalProperties`, `patternProperties`, nested models) are now serialized as JSON objects (`{}`) instead of arrays (`[]`), and normalization/denormalization are symmetric. **Upgrade note:** map/object values in normalized payloads are now `JsonObject` instances instead of plain arrays or `\ArrayObject`; use `->toArray()` / `(array)` casts when post-processing raw payloads. Nullable properties explicitly set to `null` normalize to `null` (or are omitted with `skip-null-values`) instead of emitting an empty collection
+>>>>>>> 936f6a735 (fix(json-schema): serialize empty objects and maps as JSON objects)
 - [OpenApi] [GH#963](https://github.com/janephp/janephp/issues/963) Support JSON content types with parameters (e.g. `application/json;schema=...`) when generating response transformations and operation/model relations
 - [OpenApi] [GH#963](https://github.com/janephp/janephp/issues/963) Generate models for `allOf` schemas whose members omit an explicit `type: object`
 - [OpenApi31] [GH#848](https://github.com/janephp/janephp/issues/848) Support nullable dates and datetimes expressed as `type: ["string", "null"]` with a `format: date` / `date-time` (OAS 3.1 style), generating the same null-safe normalization code as OpenAPI 3.0's `nullable: true`

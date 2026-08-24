@@ -75,7 +75,7 @@ class FieldOverwriteBaseNormalizer implements DenormalizerInterface, NormalizerI
         if (null !== $data->getKind() and 'FieldOverwriteMultiTagbox' === $data->getKind()) {
             return $this->normalizer->normalize($data, $format, $context);
         }
-        if ($data->isInitialized('id')) {
+        if ($data->isInitialized('id') && null !== $data->getId()) {
             $dataArray['id'] = $data->getId();
         }
         $dataArray['required'] = $data->getRequired();

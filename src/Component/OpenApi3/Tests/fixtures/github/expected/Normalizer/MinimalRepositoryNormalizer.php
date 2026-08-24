@@ -446,7 +446,7 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray['node_id'] = $data->getNodeId();
         $dataArray['name'] = $data->getName();
         $dataArray['full_name'] = $data->getFullName();
-        $dataArray['owner'] = $this->normalizer->normalize($data->getOwner(), 'json', $context);
+        $dataArray['owner'] = $data->getOwner() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getOwner(), 'json', $context));
         $dataArray['private'] = $data->getPrivate();
         $dataArray['html_url'] = $data->getHtmlUrl();
         $dataArray['description'] = $data->getDescription();
@@ -496,17 +496,17 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('cloneUrl') && null !== $data->getCloneUrl()) {
             $dataArray['clone_url'] = $data->getCloneUrl();
         }
-        if ($data->isInitialized('mirrorUrl')) {
+        if ($data->isInitialized('mirrorUrl') && null !== $data->getMirrorUrl()) {
             $dataArray['mirror_url'] = $data->getMirrorUrl();
         }
         $dataArray['hooks_url'] = $data->getHooksUrl();
         if ($data->isInitialized('svnUrl') && null !== $data->getSvnUrl()) {
             $dataArray['svn_url'] = $data->getSvnUrl();
         }
-        if ($data->isInitialized('homepage')) {
+        if ($data->isInitialized('homepage') && null !== $data->getHomepage()) {
             $dataArray['homepage'] = $data->getHomepage();
         }
-        if ($data->isInitialized('language')) {
+        if ($data->isInitialized('language') && null !== $data->getLanguage()) {
             $dataArray['language'] = $data->getLanguage();
         }
         if ($data->isInitialized('forksCount') && null !== $data->getForksCount()) {
@@ -561,17 +561,17 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('visibility') && null !== $data->getVisibility()) {
             $dataArray['visibility'] = $data->getVisibility();
         }
-        if ($data->isInitialized('pushedAt')) {
+        if ($data->isInitialized('pushedAt') && null !== $data->getPushedAt()) {
             $dataArray['pushed_at'] = $data->getPushedAt()?->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('createdAt')) {
+        if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
             $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('updatedAt')) {
+        if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
             $dataArray['updated_at'] = $data->getUpdatedAt()?->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('permissions') && null !== $data->getPermissions()) {
-            $dataArray['permissions'] = $this->normalizer->normalize($data->getPermissions(), 'json', $context);
+            $dataArray['permissions'] = $data->getPermissions() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPermissions(), 'json', $context));
         }
         if ($data->isInitialized('templateRepository') && null !== $data->getTemplateRepository()) {
             $dataArray['template_repository'] = $data->getTemplateRepository();
@@ -588,8 +588,8 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('networkCount') && null !== $data->getNetworkCount()) {
             $dataArray['network_count'] = $data->getNetworkCount();
         }
-        if ($data->isInitialized('license')) {
-            $dataArray['license'] = $this->normalizer->normalize($data->getLicense(), 'json', $context);
+        if ($data->isInitialized('license') && null !== $data->getLicense()) {
+            $dataArray['license'] = $data->getLicense() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getLicense(), 'json', $context));
         }
         if ($data->isInitialized('forks') && null !== $data->getForks()) {
             $dataArray['forks'] = $data->getForks();

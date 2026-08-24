@@ -144,7 +144,7 @@ class TeamProjectNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('body')) {
+        if ($data->isInitialized('body') && null !== $data->getBody()) {
             $dataArray['body'] = $data->getBody();
         }
         if ($data->isInitialized('number') && null !== $data->getNumber()) {
@@ -153,8 +153,8 @@ class TeamProjectNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('state') && null !== $data->getState()) {
             $dataArray['state'] = $data->getState();
         }
-        if ($data->isInitialized('creator')) {
-            $dataArray['creator'] = $this->normalizer->normalize($data->getCreator(), 'json', $context);
+        if ($data->isInitialized('creator') && null !== $data->getCreator()) {
+            $dataArray['creator'] = $data->getCreator() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCreator(), 'json', $context));
         }
         if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
             $dataArray['created_at'] = $data->getCreatedAt();
@@ -169,7 +169,7 @@ class TeamProjectNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['private'] = $data->getPrivate();
         }
         if ($data->isInitialized('permissions') && null !== $data->getPermissions()) {
-            $dataArray['permissions'] = $this->normalizer->normalize($data->getPermissions(), 'json', $context);
+            $dataArray['permissions'] = $data->getPermissions() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPermissions(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -48,7 +48,7 @@ class UserDeleteRequestNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('ownerTokenTransferUserId')) {
+        if ($data->isInitialized('ownerTokenTransferUserId') && null !== $data->getOwnerTokenTransferUserId()) {
             $dataArray['ownerTokenTransferUserId'] = $data->getOwnerTokenTransferUserId();
         }
         return $dataArray;

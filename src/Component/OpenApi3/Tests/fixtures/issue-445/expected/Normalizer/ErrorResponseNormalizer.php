@@ -60,13 +60,13 @@ class ErrorResponseNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('exception')) {
+        if ($data->isInitialized('exception') && null !== $data->getException()) {
             $dataArray['exception'] = $data->getException();
         }
-        if ($data->isInitialized('traceId')) {
+        if ($data->isInitialized('traceId') && null !== $data->getTraceId()) {
             $dataArray['traceId'] = $data->getTraceId();
         }
-        if ($data->isInitialized('traceJobId')) {
+        if ($data->isInitialized('traceJobId') && null !== $data->getTraceJobId()) {
             $dataArray['traceJobId'] = $data->getTraceJobId();
         }
         return $dataArray;

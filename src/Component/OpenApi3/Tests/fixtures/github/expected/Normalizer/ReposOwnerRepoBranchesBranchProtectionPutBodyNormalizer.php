@@ -105,14 +105,14 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyNormalizer implements Denorma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['required_status_checks'] = $this->normalizer->normalize($data->getRequiredStatusChecks(), 'json', $context);
+        $dataArray['required_status_checks'] = $data->getRequiredStatusChecks() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRequiredStatusChecks(), 'json', $context));
         $dataArray['enforce_admins'] = $data->getEnforceAdmins();
-        $dataArray['required_pull_request_reviews'] = $this->normalizer->normalize($data->getRequiredPullRequestReviews(), 'json', $context);
-        $dataArray['restrictions'] = $this->normalizer->normalize($data->getRestrictions(), 'json', $context);
+        $dataArray['required_pull_request_reviews'] = $data->getRequiredPullRequestReviews() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRequiredPullRequestReviews(), 'json', $context));
+        $dataArray['restrictions'] = $data->getRestrictions() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRestrictions(), 'json', $context));
         if ($data->isInitialized('requiredLinearHistory') && null !== $data->getRequiredLinearHistory()) {
             $dataArray['required_linear_history'] = $data->getRequiredLinearHistory();
         }
-        if ($data->isInitialized('allowForcePushes')) {
+        if ($data->isInitialized('allowForcePushes') && null !== $data->getAllowForcePushes()) {
             $dataArray['allow_force_pushes'] = $data->getAllowForcePushes();
         }
         if ($data->isInitialized('allowDeletions') && null !== $data->getAllowDeletions()) {

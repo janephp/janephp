@@ -179,7 +179,7 @@ class ApgroupModifyAPGroupNormalizer implements DenormalizerInterface, Normalize
             $dataArray['locationAdditionalInfo'] = $data->getLocationAdditionalInfo();
         }
         if ($data->isInitialized('altitude') && null !== $data->getAltitude()) {
-            $dataArray['altitude'] = $this->normalizer->normalize($data->getAltitude(), 'json', $context);
+            $dataArray['altitude'] = $data->getAltitude() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAltitude(), 'json', $context));
         }
         if ($data->isInitialized('latitude') && null !== $data->getLatitude()) {
             $dataArray['latitude'] = $data->getLatitude();
@@ -188,31 +188,31 @@ class ApgroupModifyAPGroupNormalizer implements DenormalizerInterface, Normalize
             $dataArray['longitude'] = $data->getLongitude();
         }
         if ($data->isInitialized('locationBasedService') && null !== $data->getLocationBasedService()) {
-            $dataArray['locationBasedService'] = $this->normalizer->normalize($data->getLocationBasedService(), 'json', $context);
+            $dataArray['locationBasedService'] = $data->getLocationBasedService() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getLocationBasedService(), 'json', $context));
         }
         if ($data->isInitialized('clientAdmissionControl24') && null !== $data->getClientAdmissionControl24()) {
-            $dataArray['clientAdmissionControl24'] = $this->normalizer->normalize($data->getClientAdmissionControl24(), 'json', $context);
+            $dataArray['clientAdmissionControl24'] = $data->getClientAdmissionControl24() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getClientAdmissionControl24(), 'json', $context));
         }
         if ($data->isInitialized('clientAdmissionControl50') && null !== $data->getClientAdmissionControl50()) {
-            $dataArray['clientAdmissionControl50'] = $this->normalizer->normalize($data->getClientAdmissionControl50(), 'json', $context);
+            $dataArray['clientAdmissionControl50'] = $data->getClientAdmissionControl50() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getClientAdmissionControl50(), 'json', $context));
         }
         if ($data->isInitialized('snmpAgent') && null !== $data->getSnmpAgent()) {
-            $dataArray['snmpAgent'] = $this->normalizer->normalize($data->getSnmpAgent(), 'json', $context);
+            $dataArray['snmpAgent'] = $data->getSnmpAgent() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSnmpAgent(), 'json', $context));
         }
         if ($data->isInitialized('venueProfile') && null !== $data->getVenueProfile()) {
-            $dataArray['venueProfile'] = $this->normalizer->normalize($data->getVenueProfile(), 'json', $context);
+            $dataArray['venueProfile'] = $data->getVenueProfile() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getVenueProfile(), 'json', $context));
         }
         if ($data->isInitialized('channelEvaluationInterval') && null !== $data->getChannelEvaluationInterval()) {
             $dataArray['channelEvaluationInterval'] = $data->getChannelEvaluationInterval();
         }
         if ($data->isInitialized('apMgmtVlan') && null !== $data->getApMgmtVlan()) {
-            $dataArray['apMgmtVlan'] = $this->normalizer->normalize($data->getApMgmtVlan(), 'json', $context);
+            $dataArray['apMgmtVlan'] = $data->getApMgmtVlan() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getApMgmtVlan(), 'json', $context));
         }
         if ($data->isInitialized('awsVenue') && null !== $data->getAwsVenue()) {
             $dataArray['awsVenue'] = $data->getAwsVenue();
         }
         if ($data->isInitialized('recoverySsid') && null !== $data->getRecoverySsid()) {
-            $dataArray['recoverySsid'] = $this->normalizer->normalize($data->getRecoverySsid(), 'json', $context);
+            $dataArray['recoverySsid'] = $data->getRecoverySsid() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getRecoverySsid(), 'json', $context));
         }
         if ($data->isInitialized('rogueApReportThreshold') && null !== $data->getRogueApReportThreshold()) {
             $dataArray['rogueApReportThreshold'] = $data->getRogueApReportThreshold();
@@ -235,7 +235,7 @@ class ApgroupModifyAPGroupNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('lteBandLockChannels') && null !== $data->getLteBandLockChannels()) {
             $values = [];
             foreach ($data->getLteBandLockChannels() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['lteBandLockChannels'] = $values;
         }
@@ -261,7 +261,7 @@ class ApgroupModifyAPGroupNormalizer implements DenormalizerInterface, Normalize
             $dataArray['bssColoringEnable'] = $data->getBssColoringEnable();
         }
         if ($data->isInitialized('radioConfig') && null !== $data->getRadioConfig()) {
-            $dataArray['radioConfig'] = $this->normalizer->normalize($data->getRadioConfig(), 'json', $context);
+            $dataArray['radioConfig'] = $data->getRadioConfig() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getRadioConfig(), 'json', $context));
         }
         return $dataArray;
     }

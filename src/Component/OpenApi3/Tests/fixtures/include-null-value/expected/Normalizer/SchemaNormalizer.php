@@ -94,7 +94,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             unset($data['arrayProperty']);
         }
         if (\array_key_exists('mapProperty', $data)) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject();
             foreach ($data['mapProperty'] as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
@@ -150,17 +150,17 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['arrayProperty'] = $values;
         }
         if ($data->isInitialized('mapProperty')) {
-            $values_1 = [];
+            $values_1 = new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject();
             foreach ($data->getMapProperty() as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $dataArray['mapProperty'] = $values_1;
         }
         if ($data->isInitialized('objectProperty')) {
-            $dataArray['objectProperty'] = $this->normalizer->normalize($data->getObjectProperty(), 'json', $context);
+            $dataArray['objectProperty'] = $data->getObjectProperty() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getObjectProperty(), 'json', $context));
         }
         if ($data->isInitialized('objectRefProperty')) {
-            $dataArray['objectRefProperty'] = $this->normalizer->normalize($data->getObjectRefProperty(), 'json', $context);
+            $dataArray['objectRefProperty'] = $data->getObjectRefProperty() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getObjectRefProperty(), 'json', $context));
         }
         foreach ($data as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {

@@ -85,20 +85,20 @@ class DocumentHistorySearchRequestNormalizer implements DenormalizerInterface, N
         $dataArray['from'] = $data->getFrom()->format('Y-m-d\TH:i:sP');
         $dataArray['to'] = $data->getTo()->format('Y-m-d\TH:i:sP');
         $dataArray['limit'] = $data->getLimit();
-        if ($data->isInitialized('pageToken')) {
+        if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
             $dataArray['pageToken'] = $data->getPageToken();
         }
-        if ($data->isInitialized('documentId')) {
+        if ($data->isInitialized('documentId') && null !== $data->getDocumentId()) {
             $dataArray['documentId'] = $data->getDocumentId();
         }
         $dataArray['documentVersion'] = $data->getDocumentVersion();
-        if ($data->isInitialized('documentType')) {
+        if ($data->isInitialized('documentType') && null !== $data->getDocumentType()) {
             $dataArray['documentType'] = $data->getDocumentType();
         }
-        if ($data->isInitialized('sort')) {
+        if ($data->isInitialized('sort') && null !== $data->getSort()) {
             $values = [];
             foreach ($data->getSort() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['sort'] = $values;
         }

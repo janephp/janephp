@@ -38,7 +38,7 @@ class ResponseAllDropletBackupPoliciesNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('policies', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data['policies'] as $key => $value) {
                 $values[$key] = $this->denormalizer->denormalize($value, \Jane\Generated\DigitalOcean\Model\DropletBackupPolicyRecord::class, 'json', $context);
             }
@@ -64,16 +64,16 @@ class ResponseAllDropletBackupPoliciesNormalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         if ($data->isInitialized('policies') && null !== $data->getPolicies()) {
-            $values = [];
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data->getPolicies() as $key => $value) {
-                $values[$key] = $this->normalizer->normalize($value, 'json', $context);
+                $values[$key] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['policies'] = $values;
         }
         if ($data->isInitialized('links') && null !== $data->getLinks()) {
-            $dataArray['links'] = $this->normalizer->normalize($data->getLinks(), 'json', $context);
+            $dataArray['links'] = $data->getLinks() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
         }
-        $dataArray['meta'] = $this->normalizer->normalize($data->getMeta(), 'json', $context);
+        $dataArray['meta'] = $data->getMeta() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMeta(), 'json', $context));
         foreach ($data as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_1;

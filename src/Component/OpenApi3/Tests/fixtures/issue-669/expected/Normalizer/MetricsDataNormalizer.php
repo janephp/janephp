@@ -61,7 +61,7 @@ class MetricsDataNormalizer implements DenormalizerInterface, NormalizerInterfac
         $dataArray = [];
         $values = [];
         foreach ($data->getResult() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['result'] = $values;
         $dataArray['resultType'] = $data->getResultType();

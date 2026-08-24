@@ -66,16 +66,16 @@ class VersionInfoNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('fileVersion')) {
+        if ($data->isInitialized('fileVersion') && null !== $data->getFileVersion()) {
             $dataArray['fileVersion'] = $data->getFileVersion();
         }
-        if ($data->isInitialized('fileProductVersion')) {
+        if ($data->isInitialized('fileProductVersion') && null !== $data->getFileProductVersion()) {
             $dataArray['fileProductVersion'] = $data->getFileProductVersion();
         }
-        if ($data->isInitialized('contractVersion')) {
+        if ($data->isInitialized('contractVersion') && null !== $data->getContractVersion()) {
             $dataArray['contractVersion'] = $data->getContractVersion();
         }
-        if ($data->isInitialized('release')) {
+        if ($data->isInitialized('release') && null !== $data->getRelease()) {
             $dataArray['release'] = $data->getRelease();
         }
         return $dataArray;

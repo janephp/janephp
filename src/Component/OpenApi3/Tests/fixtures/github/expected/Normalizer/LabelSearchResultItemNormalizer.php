@@ -107,7 +107,7 @@ class LabelSearchResultItemNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('textMatches') && null !== $data->getTextMatches()) {
             $values = [];
             foreach ($data->getTextMatches() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['text_matches'] = $values;
         }

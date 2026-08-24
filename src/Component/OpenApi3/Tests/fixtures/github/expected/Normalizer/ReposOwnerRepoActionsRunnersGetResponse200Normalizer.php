@@ -68,7 +68,7 @@ class ReposOwnerRepoActionsRunnersGetResponse200Normalizer implements Denormaliz
         if ($data->isInitialized('runners') && null !== $data->getRunners()) {
             $values = [];
             foreach ($data->getRunners() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['runners'] = $values;
         }

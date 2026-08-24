@@ -330,15 +330,15 @@ class PullRequestNormalizer implements DenormalizerInterface, NormalizerInterfac
         $dataArray['state'] = $data->getState();
         $dataArray['locked'] = $data->getLocked();
         $dataArray['title'] = $data->getTitle();
-        $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
+        $dataArray['user'] = $data->getUser() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getUser(), 'json', $context));
         $dataArray['body'] = $data->getBody();
         $values = [];
         foreach ($data->getLabels() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['labels'] = $values;
-        $dataArray['milestone'] = $this->normalizer->normalize($data->getMilestone(), 'json', $context);
-        if ($data->isInitialized('activeLockReason')) {
+        $dataArray['milestone'] = $data->getMilestone() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getMilestone(), 'json', $context));
+        if ($data->isInitialized('activeLockReason') && null !== $data->getActiveLockReason()) {
             $dataArray['active_lock_reason'] = $data->getActiveLockReason();
         }
         $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
@@ -346,42 +346,42 @@ class PullRequestNormalizer implements DenormalizerInterface, NormalizerInterfac
         $dataArray['closed_at'] = $data->getClosedAt()?->format('Y-m-d\TH:i:sP');
         $dataArray['merged_at'] = $data->getMergedAt()?->format('Y-m-d\TH:i:sP');
         $dataArray['merge_commit_sha'] = $data->getMergeCommitSha();
-        $dataArray['assignee'] = $this->normalizer->normalize($data->getAssignee(), 'json', $context);
-        if ($data->isInitialized('assignees')) {
+        $dataArray['assignee'] = $data->getAssignee() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getAssignee(), 'json', $context));
+        if ($data->isInitialized('assignees') && null !== $data->getAssignees()) {
             $values_1 = [];
             foreach ($data->getAssignees() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['assignees'] = $values_1;
         }
-        if ($data->isInitialized('requestedReviewers')) {
+        if ($data->isInitialized('requestedReviewers') && null !== $data->getRequestedReviewers()) {
             $values_2 = [];
             foreach ($data->getRequestedReviewers() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['requested_reviewers'] = $values_2;
         }
-        if ($data->isInitialized('requestedTeams')) {
+        if ($data->isInitialized('requestedTeams') && null !== $data->getRequestedTeams()) {
             $values_3 = [];
             foreach ($data->getRequestedTeams() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['requested_teams'] = $values_3;
         }
-        $dataArray['head'] = $this->normalizer->normalize($data->getHead(), 'json', $context);
-        $dataArray['base'] = $this->normalizer->normalize($data->getBase(), 'json', $context);
-        $dataArray['_links'] = $this->normalizer->normalize($data->getLinks(), 'json', $context);
+        $dataArray['head'] = $data->getHead() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getHead(), 'json', $context));
+        $dataArray['base'] = $data->getBase() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getBase(), 'json', $context));
+        $dataArray['_links'] = $data->getLinks() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
         $dataArray['author_association'] = $data->getAuthorAssociation();
         if ($data->isInitialized('draft') && null !== $data->getDraft()) {
             $dataArray['draft'] = $data->getDraft();
         }
         $dataArray['merged'] = $data->getMerged();
         $dataArray['mergeable'] = $data->getMergeable();
-        if ($data->isInitialized('rebaseable')) {
+        if ($data->isInitialized('rebaseable') && null !== $data->getRebaseable()) {
             $dataArray['rebaseable'] = $data->getRebaseable();
         }
         $dataArray['mergeable_state'] = $data->getMergeableState();
-        $dataArray['merged_by'] = $this->normalizer->normalize($data->getMergedBy(), 'json', $context);
+        $dataArray['merged_by'] = $data->getMergedBy() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getMergedBy(), 'json', $context));
         $dataArray['comments'] = $data->getComments();
         $dataArray['review_comments'] = $data->getReviewComments();
         $dataArray['maintainer_can_modify'] = $data->getMaintainerCanModify();

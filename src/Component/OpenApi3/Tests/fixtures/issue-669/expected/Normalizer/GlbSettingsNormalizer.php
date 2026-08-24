@@ -50,7 +50,7 @@ class GlbSettingsNormalizer implements DenormalizerInterface, NormalizerInterfac
             unset($data['cdn']);
         }
         if (\array_key_exists('region_priorities', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data['region_priorities'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -78,10 +78,10 @@ class GlbSettingsNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['target_port'] = $data->getTargetPort();
         }
         if ($data->isInitialized('cdn') && null !== $data->getCdn()) {
-            $dataArray['cdn'] = $this->normalizer->normalize($data->getCdn(), 'json', $context);
+            $dataArray['cdn'] = $data->getCdn() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getCdn(), 'json', $context));
         }
         if ($data->isInitialized('regionPriorities') && null !== $data->getRegionPriorities()) {
-            $values = [];
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data->getRegionPriorities() as $key => $value) {
                 $values[$key] = $value;
             }

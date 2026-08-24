@@ -95,7 +95,7 @@ class AppsDeploymentProgressNormalizer implements DenormalizerInterface, Normali
         if ($data->isInitialized('steps') && null !== $data->getSteps()) {
             $values = [];
             foreach ($data->getSteps() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['steps'] = $values;
         }
@@ -105,7 +105,7 @@ class AppsDeploymentProgressNormalizer implements DenormalizerInterface, Normali
         if ($data->isInitialized('summarySteps') && null !== $data->getSummarySteps()) {
             $values_1 = [];
             foreach ($data->getSummarySteps() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['summary_steps'] = $values_1;
         }

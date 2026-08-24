@@ -128,31 +128,31 @@ class FieldOverwriteMultiTagboxNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id')) {
+        if ($data->isInitialized('id') && null !== $data->getId()) {
             $dataArray['id'] = $data->getId();
         }
         $dataArray['required'] = $data->getRequired();
         $dataArray['overwriteRequired'] = $data->getOverwriteRequired();
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('filter')) {
+        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
             $dataArray['filter'] = $data->getFilter();
         }
         if ($data->isInitialized('overwriteFilter') && null !== $data->getOverwriteFilter()) {
             $dataArray['overwriteFilter'] = $data->getOverwriteFilter();
         }
-        if ($data->isInitialized('listItemCreateTemplate')) {
+        if ($data->isInitialized('listItemCreateTemplate') && null !== $data->getListItemCreateTemplate()) {
             $dataArray['listItemCreateTemplate'] = $data->getListItemCreateTemplate();
         }
         if ($data->isInitialized('overwriteListItemCreateTemplate') && null !== $data->getOverwriteListItemCreateTemplate()) {
             $dataArray['overwriteListItemCreateTemplate'] = $data->getOverwriteListItemCreateTemplate();
         }
-        if ($data->isInitialized('maximumItems')) {
+        if ($data->isInitialized('maximumItems') && null !== $data->getMaximumItems()) {
             $dataArray['maximumItems'] = $data->getMaximumItems();
         }
         if ($data->isInitialized('overwriteMaximumItems') && null !== $data->getOverwriteMaximumItems()) {
             $dataArray['overwriteMaximumItems'] = $data->getOverwriteMaximumItems();
         }
-        if ($data->isInitialized('minimumItems')) {
+        if ($data->isInitialized('minimumItems') && null !== $data->getMinimumItems()) {
             $dataArray['minimumItems'] = $data->getMinimumItems();
         }
         if ($data->isInitialized('overwriteMinimumItems') && null !== $data->getOverwriteMinimumItems()) {

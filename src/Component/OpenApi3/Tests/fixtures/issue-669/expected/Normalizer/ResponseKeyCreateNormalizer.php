@@ -52,7 +52,7 @@ class ResponseKeyCreateNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         if ($data->isInitialized('key') && null !== $data->getKey()) {
-            $dataArray['key'] = $this->normalizer->normalize($data->getKey(), 'json', $context);
+            $dataArray['key'] = $data->getKey() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getKey(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

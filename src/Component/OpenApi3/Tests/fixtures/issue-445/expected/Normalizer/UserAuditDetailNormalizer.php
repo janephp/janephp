@@ -62,10 +62,10 @@ class UserAuditDetailNormalizer implements DenormalizerInterface, NormalizerInte
         $dataArray = [];
         $dataArray['creationDate'] = $data->getCreationDate()->format('Y-m-d\TH:i:sP');
         $dataArray['modificationDate'] = $data->getModificationDate()->format('Y-m-d\TH:i:sP');
-        if ($data->isInitialized('createdByUser')) {
+        if ($data->isInitialized('createdByUser') && null !== $data->getCreatedByUser()) {
             $dataArray['createdByUser'] = $data->getCreatedByUser();
         }
-        if ($data->isInitialized('modifiedByUser')) {
+        if ($data->isInitialized('modifiedByUser') && null !== $data->getModifiedByUser()) {
             $dataArray['modifiedByUser'] = $data->getModifiedByUser();
         }
         return $dataArray;

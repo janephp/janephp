@@ -84,8 +84,8 @@ class SimpleCommitNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['tree_id'] = $data->getTreeId();
         $dataArray['message'] = $data->getMessage();
         $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
-        $dataArray['author'] = $this->normalizer->normalize($data->getAuthor(), 'json', $context);
-        $dataArray['committer'] = $this->normalizer->normalize($data->getCommitter(), 'json', $context);
+        $dataArray['author'] = $data->getAuthor() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getAuthor(), 'json', $context));
+        $dataArray['committer'] = $data->getCommitter() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCommitter(), 'json', $context));
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

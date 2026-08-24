@@ -62,7 +62,7 @@ class UserProjectsPostBodyNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('body')) {
+        if ($data->isInitialized('body') && null !== $data->getBody()) {
             $dataArray['body'] = $data->getBody();
         }
         foreach ($data as $key => $value) {

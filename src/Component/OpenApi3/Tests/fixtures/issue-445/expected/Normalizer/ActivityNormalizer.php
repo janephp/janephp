@@ -54,10 +54,10 @@ class ActivityNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('creationDate')) {
+        if ($data->isInitialized('creationDate') && null !== $data->getCreationDate()) {
             $dataArray['creationDate'] = $data->getCreationDate()?->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('modificationDate')) {
+        if ($data->isInitialized('modificationDate') && null !== $data->getModificationDate()) {
             $dataArray['modificationDate'] = $data->getModificationDate()?->format('Y-m-d\TH:i:sP');
         }
         return $dataArray;

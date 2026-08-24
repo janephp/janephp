@@ -79,7 +79,7 @@ class OpensearchConfigNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['id'] = $data->getId();
         }
         if ($data->isInitialized('credentials') && null !== $data->getCredentials()) {
-            $dataArray['credentials'] = $this->normalizer->normalize($data->getCredentials(), 'json', $context);
+            $dataArray['credentials'] = $data->getCredentials() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getCredentials(), 'json', $context));
         }
         $dataArray['endpoint'] = $data->getEndpoint();
         if ($data->isInitialized('clusterUuid') && null !== $data->getClusterUuid()) {

@@ -89,17 +89,17 @@ class PortalserviceCreateHotspot20WlanProfileNormalizer implements DenormalizerI
         if ($data->isInitialized('description') && null !== $data->getDescription()) {
             $dataArray['description'] = $data->getDescription();
         }
-        $dataArray['operator'] = $this->normalizer->normalize($data->getOperator(), 'json', $context);
+        $dataArray['operator'] = $data->getOperator() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getOperator(), 'json', $context));
         if ($data->isInitialized('identityProviders') && null !== $data->getIdentityProviders()) {
             $values = [];
             foreach ($data->getIdentityProviders() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['identityProviders'] = $values;
         }
-        $dataArray['defaultIdentityProvider'] = $this->normalizer->normalize($data->getDefaultIdentityProvider(), 'json', $context);
+        $dataArray['defaultIdentityProvider'] = $data->getDefaultIdentityProvider() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getDefaultIdentityProvider(), 'json', $context));
         if ($data->isInitialized('signupSsid') && null !== $data->getSignupSsid()) {
-            $dataArray['signupSsid'] = $this->normalizer->normalize($data->getSignupSsid(), 'json', $context);
+            $dataArray['signupSsid'] = $data->getSignupSsid() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSignupSsid(), 'json', $context));
         }
         $dataArray['internetOption'] = $data->getInternetOption();
         $dataArray['accessNetworkType'] = $data->getAccessNetworkType();

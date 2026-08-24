@@ -74,10 +74,10 @@ class ZoneDiffServConfigurationNormalizer implements DenormalizerInterface, Norm
             $dataArray['description'] = $data->getDescription();
         }
         if ($data->isInitialized('uplinkDiffServ') && null !== $data->getUplinkDiffServ()) {
-            $dataArray['uplinkDiffServ'] = $this->normalizer->normalize($data->getUplinkDiffServ(), 'json', $context);
+            $dataArray['uplinkDiffServ'] = $data->getUplinkDiffServ() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUplinkDiffServ(), 'json', $context));
         }
         if ($data->isInitialized('downlinkDiffServ') && null !== $data->getDownlinkDiffServ()) {
-            $dataArray['downlinkDiffServ'] = $this->normalizer->normalize($data->getDownlinkDiffServ(), 'json', $context);
+            $dataArray['downlinkDiffServ'] = $data->getDownlinkDiffServ() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getDownlinkDiffServ(), 'json', $context));
         }
         if ($data->isInitialized('preservedList') && null !== $data->getPreservedList()) {
             $values = [];

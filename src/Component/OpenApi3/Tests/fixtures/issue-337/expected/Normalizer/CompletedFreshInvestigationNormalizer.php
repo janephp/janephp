@@ -95,7 +95,7 @@ class CompletedFreshInvestigationNormalizer implements DenormalizerInterface, No
             $dataArray['chargeReference'] = $data->getChargeReference();
         }
         if ($data->isInitialized('contactDetails') && null !== $data->getContactDetails()) {
-            $dataArray['contactDetails'] = $this->normalizer->normalize($data->getContactDetails(), 'json', $context);
+            $dataArray['contactDetails'] = $data->getContactDetails() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getContactDetails(), 'json', $context));
         }
         if ($data->isInitialized('creationDate') && null !== $data->getCreationDate()) {
             $dataArray['creationDate'] = $data->getCreationDate();
@@ -110,7 +110,7 @@ class CompletedFreshInvestigationNormalizer implements DenormalizerInterface, No
             $dataArray['reportDate'] = $data->getReportDate();
         }
         if ($data->isInitialized('searchCriteria') && null !== $data->getSearchCriteria()) {
-            $dataArray['searchCriteria'] = $this->normalizer->normalize($data->getSearchCriteria(), 'json', $context);
+            $dataArray['searchCriteria'] = $data->getSearchCriteria() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getSearchCriteria(), 'json', $context));
         }
         if ($data->isInitialized('sections') && null !== $data->getSections()) {
             $values = [];
@@ -120,7 +120,7 @@ class CompletedFreshInvestigationNormalizer implements DenormalizerInterface, No
             $dataArray['sections'] = $values;
         }
         if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $this->normalizer->normalize($data->getStatus(), 'json', $context);
+            $dataArray['status'] = $data->getStatus() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getStatus(), 'json', $context));
         }
         if ($data->isInitialized('transactionID') && null !== $data->getTransactionID()) {
             $dataArray['transactionID'] = $data->getTransactionID();

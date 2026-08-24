@@ -41,7 +41,7 @@ class AuthorizationInstallationNormalizer implements DenormalizerInterface, Norm
             $this->validate($data, new \Github\Validator\AuthorizationInstallationConstraint());
         }
         if (\array_key_exists('permissions', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Github\Runtime\JsonObject();
             foreach ($data['permissions'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -80,7 +80,7 @@ class AuthorizationInstallationNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
+        $values = new \Github\Runtime\JsonObject();
         foreach ($data->getPermissions() as $key => $value) {
             $values[$key] = $value;
         }
@@ -88,7 +88,7 @@ class AuthorizationInstallationNormalizer implements DenormalizerInterface, Norm
         $dataArray['repository_selection'] = $data->getRepositorySelection();
         $dataArray['single_file_name'] = $data->getSingleFileName();
         $dataArray['repositories_url'] = $data->getRepositoriesUrl();
-        $dataArray['account'] = $this->normalizer->normalize($data->getAccount(), 'json', $context);
+        $dataArray['account'] = $data->getAccount() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getAccount(), 'json', $context));
         foreach ($data as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_1;

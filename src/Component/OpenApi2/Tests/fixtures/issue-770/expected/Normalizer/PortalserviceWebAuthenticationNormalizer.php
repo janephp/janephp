@@ -82,13 +82,13 @@ class PortalserviceWebAuthenticationNormalizer implements DenormalizerInterface,
             $dataArray['portalLanguage'] = $data->getPortalLanguage();
         }
         if ($data->isInitialized('redirect') && null !== $data->getRedirect()) {
-            $dataArray['redirect'] = $this->normalizer->normalize($data->getRedirect(), 'json', $context);
+            $dataArray['redirect'] = $data->getRedirect() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getRedirect(), 'json', $context));
         }
         if ($data->isInitialized('userSession') && null !== $data->getUserSession()) {
-            $dataArray['userSession'] = $this->normalizer->normalize($data->getUserSession(), 'json', $context);
+            $dataArray['userSession'] = $data->getUserSession() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUserSession(), 'json', $context));
         }
         if ($data->isInitialized('webAuthenticationPortalCustomization') && null !== $data->getWebAuthenticationPortalCustomization()) {
-            $dataArray['webAuthenticationPortalCustomization'] = $this->normalizer->normalize($data->getWebAuthenticationPortalCustomization(), 'json', $context);
+            $dataArray['webAuthenticationPortalCustomization'] = $data->getWebAuthenticationPortalCustomization() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getWebAuthenticationPortalCustomization(), 'json', $context));
         }
         return $dataArray;
     }

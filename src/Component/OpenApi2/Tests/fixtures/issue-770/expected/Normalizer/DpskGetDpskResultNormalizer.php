@@ -58,7 +58,7 @@ class DpskGetDpskResultNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('dpskInfoList') && null !== $data->getDpskInfoList()) {
             $values = [];
             foreach ($data->getDpskInfoList() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['dpskInfoList'] = $values;
         }

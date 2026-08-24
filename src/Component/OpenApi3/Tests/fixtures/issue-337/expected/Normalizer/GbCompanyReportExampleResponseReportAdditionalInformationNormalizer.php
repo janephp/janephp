@@ -102,45 +102,45 @@ class GbCompanyReportExampleResponseReportAdditionalInformationNormalizer implem
         if ($data->isInitialized('companyHistory') && null !== $data->getCompanyHistory()) {
             $values = [];
             foreach ($data->getCompanyHistory() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['companyHistory'] = $values;
         }
         if ($data->isInitialized('mortgageSummary') && null !== $data->getMortgageSummary()) {
-            $dataArray['mortgageSummary'] = $this->normalizer->normalize($data->getMortgageSummary(), 'json', $context);
+            $dataArray['mortgageSummary'] = $data->getMortgageSummary() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getMortgageSummary(), 'json', $context));
         }
         if ($data->isInitialized('mortgageDetails') && null !== $data->getMortgageDetails()) {
             $values_1 = [];
             foreach ($data->getMortgageDetails() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['mortgageDetails'] = $values_1;
         }
         if ($data->isInitialized('commentaries') && null !== $data->getCommentaries()) {
             $values_2 = [];
             foreach ($data->getCommentaries() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['commentaries'] = $values_2;
         }
         if ($data->isInitialized('ratingHistory') && null !== $data->getRatingHistory()) {
             $values_3 = [];
             foreach ($data->getRatingHistory() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['ratingHistory'] = $values_3;
         }
         if ($data->isInitialized('creditLimitHistory') && null !== $data->getCreditLimitHistory()) {
             $values_4 = [];
             foreach ($data->getCreditLimitHistory() as $value_4) {
-                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[] = $value_4 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['creditLimitHistory'] = $values_4;
         }
         if ($data->isInitialized('badDebtDetails') && null !== $data->getBadDebtDetails()) {
             $values_5 = [];
             foreach ($data->getBadDebtDetails() as $value_5) {
-                $values_5[] = $this->normalizer->normalize($value_5, 'json', $context);
+                $values_5[] = $value_5 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
             }
             $dataArray['badDebtDetails'] = $values_5;
         }

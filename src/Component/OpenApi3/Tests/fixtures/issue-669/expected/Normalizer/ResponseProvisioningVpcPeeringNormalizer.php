@@ -38,7 +38,7 @@ class ResponseProvisioningVpcPeeringNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('vpc_peering', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data['vpc_peering'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -56,7 +56,7 @@ class ResponseProvisioningVpcPeeringNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         if ($data->isInitialized('vpcPeering') && null !== $data->getVpcPeering()) {
-            $values = [];
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data->getVpcPeering() as $key => $value) {
                 $values[$key] = $value;
             }

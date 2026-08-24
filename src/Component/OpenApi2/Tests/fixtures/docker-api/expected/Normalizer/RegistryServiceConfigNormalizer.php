@@ -62,7 +62,7 @@ class RegistryServiceConfigNormalizer implements DenormalizerInterface, Normaliz
             $object->setInsecureRegistryCIDRs($values_2);
         }
         if (\array_key_exists('IndexConfigs', $data)) {
-            $values_3 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_3 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['IndexConfigs'] as $key => $value_3) {
                 $values_3[$key] = $this->denormalizer->denormalize($value_3, \Docker\Api\Model\IndexInfo::class, 'json', $context);
             }
@@ -102,9 +102,9 @@ class RegistryServiceConfigNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['InsecureRegistryCIDRs'] = $values_2;
         }
         if ($data->isInitialized('indexConfigs') && null !== $data->getIndexConfigs()) {
-            $values_3 = [];
+            $values_3 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getIndexConfigs() as $key => $value_3) {
-                $values_3[$key] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[$key] = $value_3 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['IndexConfigs'] = $values_3;
         }

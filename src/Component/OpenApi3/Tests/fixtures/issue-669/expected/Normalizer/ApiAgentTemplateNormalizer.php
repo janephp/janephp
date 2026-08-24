@@ -146,7 +146,7 @@ class ApiAgentTemplateNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('guardrails') && null !== $data->getGuardrails()) {
             $values = [];
             foreach ($data->getGuardrails() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['guardrails'] = $values;
         }
@@ -159,7 +159,7 @@ class ApiAgentTemplateNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('knowledgeBases') && null !== $data->getKnowledgeBases()) {
             $values_1 = [];
             foreach ($data->getKnowledgeBases() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['knowledge_bases'] = $values_1;
         }
@@ -170,7 +170,7 @@ class ApiAgentTemplateNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['max_tokens'] = $data->getMaxTokens();
         }
         if ($data->isInitialized('model') && null !== $data->getModel()) {
-            $dataArray['model'] = $this->normalizer->normalize($data->getModel(), 'json', $context);
+            $dataArray['model'] = $data->getModel() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getModel(), 'json', $context));
         }
         if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();

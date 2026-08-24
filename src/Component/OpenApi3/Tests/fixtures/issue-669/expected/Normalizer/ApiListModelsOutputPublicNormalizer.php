@@ -64,15 +64,15 @@ class ApiListModelsOutputPublicNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if ($data->isInitialized('links') && null !== $data->getLinks()) {
-            $dataArray['links'] = $this->normalizer->normalize($data->getLinks(), 'json', $context);
+            $dataArray['links'] = $data->getLinks() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
         }
         if ($data->isInitialized('meta') && null !== $data->getMeta()) {
-            $dataArray['meta'] = $this->normalizer->normalize($data->getMeta(), 'json', $context);
+            $dataArray['meta'] = $data->getMeta() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMeta(), 'json', $context));
         }
         if ($data->isInitialized('models') && null !== $data->getModels()) {
             $values = [];
             foreach ($data->getModels() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['models'] = $values;
         }

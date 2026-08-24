@@ -77,7 +77,7 @@ class ShareNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     {
         $dataArray = [];
         $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('name')) {
+        if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();
         }
         $values = [];
@@ -86,7 +86,7 @@ class ShareNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         $dataArray['contentIds'] = $values;
         $dataArray['audit'] = $data->getAudit();
-        if ($data->isInitialized('expirationDate')) {
+        if ($data->isInitialized('expirationDate') && null !== $data->getExpirationDate()) {
             $dataArray['expirationDate'] = $data->getExpirationDate()?->format('Y-m-d\TH:i:sP');
         }
         $dataArray['shareType'] = $data->getShareType();

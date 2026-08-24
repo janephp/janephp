@@ -259,36 +259,36 @@ class UserSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('updatedAt') && null !== $data->getUpdatedAt()) {
             $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('name')) {
+        if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('bio')) {
+        if ($data->isInitialized('bio') && null !== $data->getBio()) {
             $dataArray['bio'] = $data->getBio();
         }
-        if ($data->isInitialized('email')) {
+        if ($data->isInitialized('email') && null !== $data->getEmail()) {
             $dataArray['email'] = $data->getEmail();
         }
-        if ($data->isInitialized('location')) {
+        if ($data->isInitialized('location') && null !== $data->getLocation()) {
             $dataArray['location'] = $data->getLocation();
         }
         $dataArray['site_admin'] = $data->getSiteAdmin();
-        if ($data->isInitialized('hireable')) {
+        if ($data->isInitialized('hireable') && null !== $data->getHireable()) {
             $dataArray['hireable'] = $data->getHireable();
         }
         if ($data->isInitialized('textMatches') && null !== $data->getTextMatches()) {
             $values = [];
             foreach ($data->getTextMatches() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['text_matches'] = $values;
         }
-        if ($data->isInitialized('blog')) {
+        if ($data->isInitialized('blog') && null !== $data->getBlog()) {
             $dataArray['blog'] = $data->getBlog();
         }
-        if ($data->isInitialized('company')) {
+        if ($data->isInitialized('company') && null !== $data->getCompany()) {
             $dataArray['company'] = $data->getCompany();
         }
-        if ($data->isInitialized('suspendedAt')) {
+        if ($data->isInitialized('suspendedAt') && null !== $data->getSuspendedAt()) {
             $dataArray['suspended_at'] = $data->getSuspendedAt()?->format('Y-m-d\TH:i:sP');
         }
         foreach ($data as $key => $value_1) {

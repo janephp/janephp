@@ -72,24 +72,24 @@ class SystemStatusNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('searchIndicesStatus')) {
+        if ($data->isInitialized('searchIndicesStatus') && null !== $data->getSearchIndicesStatus()) {
             $values = [];
             foreach ($data->getSearchIndicesStatus() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['searchIndicesStatus'] = $values;
         }
-        if ($data->isInitialized('displayValuesStatus')) {
+        if ($data->isInitialized('displayValuesStatus') && null !== $data->getDisplayValuesStatus()) {
             $values_1 = [];
             foreach ($data->getDisplayValuesStatus() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['displayValuesStatus'] = $values_1;
         }
-        if ($data->isInitialized('metadataStatus')) {
+        if ($data->isInitialized('metadataStatus') && null !== $data->getMetadataStatus()) {
             $values_2 = [];
             foreach ($data->getMetadataStatus() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['metadataStatus'] = $values_2;
         }

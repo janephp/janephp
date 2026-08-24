@@ -125,14 +125,14 @@ class CommonDhcpSiteConfigListRefNormalizer implements DenormalizerInterface, No
         if ($data->isInitialized('siteAps') && null !== $data->getSiteAps()) {
             $values = [];
             foreach ($data->getSiteAps() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['siteAps'] = $values;
         }
         if ($data->isInitialized('siteProfiles') && null !== $data->getSiteProfiles()) {
             $values_1 = [];
             foreach ($data->getSiteProfiles() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['siteProfiles'] = $values_1;
         }

@@ -52,7 +52,7 @@ class ZoneTimezoneSettingNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['systemTimezone'] = $data->getSystemTimezone();
         }
         if ($data->isInitialized('customizedTimezone') && null !== $data->getCustomizedTimezone()) {
-            $dataArray['customizedTimezone'] = $this->normalizer->normalize($data->getCustomizedTimezone(), 'json', $context);
+            $dataArray['customizedTimezone'] = $data->getCustomizedTimezone() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCustomizedTimezone(), 'json', $context));
         }
         return $dataArray;
     }

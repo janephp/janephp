@@ -68,7 +68,7 @@ class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Normalizer implements Denor
         if ($data->isInitialized('checkRuns') && null !== $data->getCheckRuns()) {
             $values = [];
             foreach ($data->getCheckRuns() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['check_runs'] = $values;
         }

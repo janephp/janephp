@@ -63,7 +63,7 @@ class MessageNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('subject') && null !== $data->getSubject()) {
             $dataArray['subject'] = $data->getSubject();
         }
-        if ($data->isInitialized('body')) {
+        if ($data->isInitialized('body') && null !== $data->getBody()) {
             $value = $data->getBody();
             if (is_string($data->getBody())) {
                 $value = $data->getBody();

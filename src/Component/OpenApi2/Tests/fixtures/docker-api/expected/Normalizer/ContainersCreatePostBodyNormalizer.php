@@ -83,7 +83,7 @@ class ContainersCreatePostBodyNormalizer implements DenormalizerInterface, Norma
             $object->setAttachStderr($data['AttachStderr']);
         }
         if (\array_key_exists('ExposedPorts', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['ExposedPorts'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -122,7 +122,7 @@ class ContainersCreatePostBodyNormalizer implements DenormalizerInterface, Norma
             $object->setImage($data['Image']);
         }
         if (\array_key_exists('Volumes', $data)) {
-            $values_3 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_3 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Volumes'] as $key_1 => $value_3) {
                 $values_3[$key_1] = $value_3;
             }
@@ -152,7 +152,7 @@ class ContainersCreatePostBodyNormalizer implements DenormalizerInterface, Norma
             $object->setOnBuild($values_5);
         }
         if (\array_key_exists('Labels', $data)) {
-            $values_6 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_6 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Labels'] as $key_2 => $value_6) {
                 $values_6[$key_2] = $value_6;
             }
@@ -201,7 +201,7 @@ class ContainersCreatePostBodyNormalizer implements DenormalizerInterface, Norma
             $dataArray['AttachStderr'] = $data->getAttachStderr();
         }
         if ($data->isInitialized('exposedPorts') && null !== $data->getExposedPorts()) {
-            $values = [];
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getExposedPorts() as $key => $value) {
                 $values[$key] = $value;
             }
@@ -231,7 +231,7 @@ class ContainersCreatePostBodyNormalizer implements DenormalizerInterface, Norma
             $dataArray['Cmd'] = $values_2;
         }
         if ($data->isInitialized('healthcheck') && null !== $data->getHealthcheck()) {
-            $dataArray['Healthcheck'] = $this->normalizer->normalize($data->getHealthcheck(), 'json', $context);
+            $dataArray['Healthcheck'] = $data->getHealthcheck() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getHealthcheck(), 'json', $context));
         }
         if ($data->isInitialized('argsEscaped') && null !== $data->getArgsEscaped()) {
             $dataArray['ArgsEscaped'] = $data->getArgsEscaped();
@@ -240,7 +240,7 @@ class ContainersCreatePostBodyNormalizer implements DenormalizerInterface, Norma
             $dataArray['Image'] = $data->getImage();
         }
         if ($data->isInitialized('volumes') && null !== $data->getVolumes()) {
-            $values_3 = [];
+            $values_3 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getVolumes() as $key_1 => $value_3) {
                 $values_3[$key_1] = $value_3;
             }
@@ -270,7 +270,7 @@ class ContainersCreatePostBodyNormalizer implements DenormalizerInterface, Norma
             $dataArray['OnBuild'] = $values_5;
         }
         if ($data->isInitialized('labels') && null !== $data->getLabels()) {
-            $values_6 = [];
+            $values_6 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getLabels() as $key_2 => $value_6) {
                 $values_6[$key_2] = $value_6;
             }
@@ -290,10 +290,10 @@ class ContainersCreatePostBodyNormalizer implements DenormalizerInterface, Norma
             $dataArray['Shell'] = $values_7;
         }
         if ($data->isInitialized('hostConfig') && null !== $data->getHostConfig()) {
-            $dataArray['HostConfig'] = $this->normalizer->normalize($data->getHostConfig(), 'json', $context);
+            $dataArray['HostConfig'] = $data->getHostConfig() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getHostConfig(), 'json', $context));
         }
         if ($data->isInitialized('networkingConfig') && null !== $data->getNetworkingConfig()) {
-            $dataArray['NetworkingConfig'] = $this->normalizer->normalize($data->getNetworkingConfig(), 'json', $context);
+            $dataArray['NetworkingConfig'] = $data->getNetworkingConfig() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getNetworkingConfig(), 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\ContainersCreatePostBodyConstraint());

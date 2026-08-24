@@ -56,7 +56,7 @@ class DisplayPatternNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray = [];
         $dataArray['templateEngine'] = $data->getTemplateEngine();
         $dataArray['displayPatternType'] = $data->getDisplayPatternType();
-        if ($data->isInitialized('templates')) {
+        if ($data->isInitialized('templates') && null !== $data->getTemplates()) {
             $dataArray['templates'] = $data->getTemplates();
         }
         return $dataArray;

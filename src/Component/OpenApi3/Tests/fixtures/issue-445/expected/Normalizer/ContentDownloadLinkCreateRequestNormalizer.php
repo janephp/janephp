@@ -57,7 +57,7 @@ class ContentDownloadLinkCreateRequestNormalizer implements DenormalizerInterfac
         $dataArray = [];
         $values = [];
         foreach ($data->getContents() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['contents'] = $values;
         $dataArray['notifyProgress'] = $data->getNotifyProgress();

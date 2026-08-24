@@ -64,13 +64,13 @@ class GbCompanyReportExampleResponseReportCreditScoreNormalizer implements Denor
     {
         $dataArray = [];
         if ($data->isInitialized('currentCreditRating') && null !== $data->getCurrentCreditRating()) {
-            $dataArray['currentCreditRating'] = $this->normalizer->normalize($data->getCurrentCreditRating(), 'json', $context);
+            $dataArray['currentCreditRating'] = $data->getCurrentCreditRating() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getCurrentCreditRating(), 'json', $context));
         }
         if ($data->isInitialized('currentContractLimit') && null !== $data->getCurrentContractLimit()) {
-            $dataArray['currentContractLimit'] = $this->normalizer->normalize($data->getCurrentContractLimit(), 'json', $context);
+            $dataArray['currentContractLimit'] = $data->getCurrentContractLimit() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getCurrentContractLimit(), 'json', $context));
         }
         if ($data->isInitialized('previousCreditRating') && null !== $data->getPreviousCreditRating()) {
-            $dataArray['previousCreditRating'] = $this->normalizer->normalize($data->getPreviousCreditRating(), 'json', $context);
+            $dataArray['previousCreditRating'] = $data->getPreviousCreditRating() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getPreviousCreditRating(), 'json', $context));
         }
         if ($data->isInitialized('latestRatingChangeDate') && null !== $data->getLatestRatingChangeDate()) {
             $dataArray['latestRatingChangeDate'] = $data->getLatestRatingChangeDate();

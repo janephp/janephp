@@ -55,7 +55,7 @@ class WorkflowUsageNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if ($data->isInitialized('billable') && null !== $data->getBillable()) {
-            $dataArray['billable'] = $this->normalizer->normalize($data->getBillable(), 'json', $context);
+            $dataArray['billable'] = $data->getBillable() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getBillable(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

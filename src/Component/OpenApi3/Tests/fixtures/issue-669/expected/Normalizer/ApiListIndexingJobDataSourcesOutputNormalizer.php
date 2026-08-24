@@ -58,7 +58,7 @@ class ApiListIndexingJobDataSourcesOutputNormalizer implements DenormalizerInter
         if ($data->isInitialized('indexedDataSources') && null !== $data->getIndexedDataSources()) {
             $values = [];
             foreach ($data->getIndexedDataSources() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['indexed_data_sources'] = $values;
         }

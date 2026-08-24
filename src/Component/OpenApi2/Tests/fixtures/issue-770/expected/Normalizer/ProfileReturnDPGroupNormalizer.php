@@ -114,7 +114,7 @@ class ProfileReturnDPGroupNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('dpGroupListWithPriority') && null !== $data->getDpGroupListWithPriority()) {
             $values_1 = [];
             foreach ($data->getDpGroupListWithPriority() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['dpGroupListWithPriority'] = $values_1;
         }

@@ -227,34 +227,34 @@ class IssueNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if ($data->isInitialized('body') && null !== $data->getBody()) {
             $dataArray['body'] = $data->getBody();
         }
-        $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
+        $dataArray['user'] = $data->getUser() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getUser(), 'json', $context));
         $values = [];
         foreach ($data->getLabels() as $value) {
             $values[] = $value;
         }
         $dataArray['labels'] = $values;
-        $dataArray['assignee'] = $this->normalizer->normalize($data->getAssignee(), 'json', $context);
-        if ($data->isInitialized('assignees')) {
+        $dataArray['assignee'] = $data->getAssignee() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getAssignee(), 'json', $context));
+        if ($data->isInitialized('assignees') && null !== $data->getAssignees()) {
             $values_1 = [];
             foreach ($data->getAssignees() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['assignees'] = $values_1;
         }
-        $dataArray['milestone'] = $this->normalizer->normalize($data->getMilestone(), 'json', $context);
+        $dataArray['milestone'] = $data->getMilestone() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getMilestone(), 'json', $context));
         $dataArray['locked'] = $data->getLocked();
-        if ($data->isInitialized('activeLockReason')) {
+        if ($data->isInitialized('activeLockReason') && null !== $data->getActiveLockReason()) {
             $dataArray['active_lock_reason'] = $data->getActiveLockReason();
         }
         $dataArray['comments'] = $data->getComments();
         if ($data->isInitialized('pullRequest') && null !== $data->getPullRequest()) {
-            $dataArray['pull_request'] = $this->normalizer->normalize($data->getPullRequest(), 'json', $context);
+            $dataArray['pull_request'] = $data->getPullRequest() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPullRequest(), 'json', $context));
         }
         $dataArray['closed_at'] = $data->getClosedAt()?->format('Y-m-d\TH:i:sP');
         $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
-        if ($data->isInitialized('closedBy')) {
-            $dataArray['closed_by'] = $this->normalizer->normalize($data->getClosedBy(), 'json', $context);
+        if ($data->isInitialized('closedBy') && null !== $data->getClosedBy()) {
+            $dataArray['closed_by'] = $data->getClosedBy() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getClosedBy(), 'json', $context));
         }
         if ($data->isInitialized('bodyHtml') && null !== $data->getBodyHtml()) {
             $dataArray['body_html'] = $data->getBodyHtml();
@@ -266,14 +266,14 @@ class IssueNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $dataArray['timeline_url'] = $data->getTimelineUrl();
         }
         if ($data->isInitialized('repository') && null !== $data->getRepository()) {
-            $dataArray['repository'] = $this->normalizer->normalize($data->getRepository(), 'json', $context);
+            $dataArray['repository'] = $data->getRepository() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRepository(), 'json', $context));
         }
-        if ($data->isInitialized('performedViaGithubApp')) {
-            $dataArray['performed_via_github_app'] = $this->normalizer->normalize($data->getPerformedViaGithubApp(), 'json', $context);
+        if ($data->isInitialized('performedViaGithubApp') && null !== $data->getPerformedViaGithubApp()) {
+            $dataArray['performed_via_github_app'] = $data->getPerformedViaGithubApp() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPerformedViaGithubApp(), 'json', $context));
         }
         $dataArray['author_association'] = $data->getAuthorAssociation();
         if ($data->isInitialized('reactions') && null !== $data->getReactions()) {
-            $dataArray['reactions'] = $this->normalizer->normalize($data->getReactions(), 'json', $context);
+            $dataArray['reactions'] = $data->getReactions() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getReactions(), 'json', $context));
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

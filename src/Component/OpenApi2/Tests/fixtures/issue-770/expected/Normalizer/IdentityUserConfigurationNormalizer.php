@@ -157,7 +157,7 @@ class IdentityUserConfigurationNormalizer implements DenormalizerInterface, Norm
             $dataArray['userName'] = $data->getUserName();
         }
         if ($data->isInitialized('subscriberPackage') && null !== $data->getSubscriberPackage()) {
-            $dataArray['subscriberPackage'] = $this->normalizer->normalize($data->getSubscriberPackage(), 'json', $context);
+            $dataArray['subscriberPackage'] = $data->getSubscriberPackage() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSubscriberPackage(), 'json', $context));
         }
         if ($data->isInitialized('isDisabled') && null !== $data->getIsDisabled()) {
             $dataArray['isDisabled'] = $data->getIsDisabled();
@@ -193,10 +193,10 @@ class IdentityUserConfigurationNormalizer implements DenormalizerInterface, Norm
             $dataArray['modifierUsername'] = $data->getModifierUsername();
         }
         if ($data->isInitialized('usernamePasswordCredentialsImplDto') && null !== $data->getUsernamePasswordCredentialsImplDto()) {
-            $dataArray['usernamePasswordCredentialsImplDto'] = $this->normalizer->normalize($data->getUsernamePasswordCredentialsImplDto(), 'json', $context);
+            $dataArray['usernamePasswordCredentialsImplDto'] = $data->getUsernamePasswordCredentialsImplDto() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getUsernamePasswordCredentialsImplDto(), 'json', $context));
         }
         if ($data->isInitialized('credentialsGuestPassDto') && null !== $data->getCredentialsGuestPassDto()) {
-            $dataArray['credentialsGuestPassDto'] = $this->normalizer->normalize($data->getCredentialsGuestPassDto(), 'json', $context);
+            $dataArray['credentialsGuestPassDto'] = $data->getCredentialsGuestPassDto() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getCredentialsGuestPassDto(), 'json', $context));
         }
         return $dataArray;
     }

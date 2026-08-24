@@ -101,14 +101,14 @@ class ClusterRedundancyClusterRedundancySettingsNormalizer implements Denormaliz
         if ($data->isInitialized('managementEntryList') && null !== $data->getManagementEntryList()) {
             $values = [];
             foreach ($data->getManagementEntryList() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['managementEntryList'] = $values;
         }
         if ($data->isInitialized('activeClusterList') && null !== $data->getActiveClusterList()) {
             $values_1 = [];
             foreach ($data->getActiveClusterList() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['activeClusterList'] = $values_1;
         }

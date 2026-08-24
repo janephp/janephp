@@ -74,14 +74,14 @@ class ListItemImportResultNormalizer implements DenormalizerInterface, Normalize
         $dataArray['importedListItemCount'] = $data->getImportedListItemCount();
         $dataArray['skippedListItemCount'] = $data->getSkippedListItemCount();
         $dataArray['totalListItemCount'] = $data->getTotalListItemCount();
-        if ($data->isInitialized('skippedListItemIds')) {
+        if ($data->isInitialized('skippedListItemIds') && null !== $data->getSkippedListItemIds()) {
             $values = [];
             foreach ($data->getSkippedListItemIds() as $value) {
                 $values[] = $value;
             }
             $dataArray['skippedListItemIds'] = $values;
         }
-        if ($data->isInitialized('importedListItemIds')) {
+        if ($data->isInitialized('importedListItemIds') && null !== $data->getImportedListItemIds()) {
             $values_1 = [];
             foreach ($data->getImportedListItemIds() as $value_1) {
                 $values_1[] = $value_1;

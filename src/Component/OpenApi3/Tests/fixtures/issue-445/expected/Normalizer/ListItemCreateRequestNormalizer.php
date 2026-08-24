@@ -41,7 +41,7 @@ class ListItemCreateRequestNormalizer implements DenormalizerInterface, Normaliz
             $object->setContentSchemaId($data['contentSchemaId']);
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['content'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -62,14 +62,14 @@ class ListItemCreateRequestNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         $dataArray['contentSchemaId'] = $data->getContentSchemaId();
-        if ($data->isInitialized('content')) {
-            $values = [];
+        if ($data->isInitialized('content') && null !== $data->getContent()) {
+            $values = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data->getContent() as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['content'] = $values;
         }
-        if ($data->isInitialized('requestId')) {
+        if ($data->isInitialized('requestId') && null !== $data->getRequestId()) {
             $dataArray['requestId'] = $data->getRequestId();
         }
         return $dataArray;

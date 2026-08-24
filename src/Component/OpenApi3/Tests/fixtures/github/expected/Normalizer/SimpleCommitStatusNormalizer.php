@@ -112,7 +112,7 @@ class SimpleCommitStatusNormalizer implements DenormalizerInterface, NormalizerI
         $dataArray['state'] = $data->getState();
         $dataArray['context'] = $data->getContext();
         $dataArray['target_url'] = $data->getTargetUrl();
-        if ($data->isInitialized('required')) {
+        if ($data->isInitialized('required') && null !== $data->getRequired()) {
             $dataArray['required'] = $data->getRequired();
         }
         $dataArray['avatar_url'] = $data->getAvatarUrl();

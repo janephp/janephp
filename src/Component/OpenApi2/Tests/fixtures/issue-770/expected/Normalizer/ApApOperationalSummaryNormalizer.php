@@ -208,7 +208,7 @@ class ApApOperationalSummaryNormalizer implements DenormalizerInterface, Normali
             $dataArray['locationAdditionalInfo'] = $data->getLocationAdditionalInfo();
         }
         if ($data->isInitialized('altitude') && null !== $data->getAltitude()) {
-            $dataArray['altitude'] = $this->normalizer->normalize($data->getAltitude(), 'json', $context);
+            $dataArray['altitude'] = $data->getAltitude() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAltitude(), 'json', $context));
         }
         if ($data->isInitialized('cpId') && null !== $data->getCpId()) {
             $dataArray['cpId'] = $data->getCpId();

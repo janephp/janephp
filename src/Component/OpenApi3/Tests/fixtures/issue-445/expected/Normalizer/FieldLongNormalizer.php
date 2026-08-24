@@ -153,16 +153,16 @@ class FieldLongNormalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $dataArray = [];
         $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('indexId')) {
+        if ($data->isInitialized('indexId') && null !== $data->getIndexId()) {
             $dataArray['indexId'] = $data->getIndexId();
         }
-        if ($data->isInitialized('fieldNamespace')) {
+        if ($data->isInitialized('fieldNamespace') && null !== $data->getFieldNamespace()) {
             $dataArray['fieldNamespace'] = $data->getFieldNamespace();
         }
-        if ($data->isInitialized('names')) {
+        if ($data->isInitialized('names') && null !== $data->getNames()) {
             $dataArray['names'] = $data->getNames();
         }
-        if ($data->isInitialized('descriptions')) {
+        if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
             $dataArray['descriptions'] = $data->getDescriptions();
         }
         $dataArray['required'] = $data->getRequired();
@@ -171,13 +171,13 @@ class FieldLongNormalizer implements DenormalizerInterface, NormalizerInterface,
         $dataArray['simpleSearch'] = $data->getSimpleSearch();
         $dataArray['sortable'] = $data->getSortable();
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('pattern')) {
+        if ($data->isInitialized('pattern') && null !== $data->getPattern()) {
             $dataArray['pattern'] = $data->getPattern();
         }
-        if ($data->isInitialized('minimum')) {
+        if ($data->isInitialized('minimum') && null !== $data->getMinimum()) {
             $dataArray['minimum'] = $data->getMinimum();
         }
-        if ($data->isInitialized('maximum')) {
+        if ($data->isInitialized('maximum') && null !== $data->getMaximum()) {
             $dataArray['maximum'] = $data->getMaximum();
         }
         if ($data->isInitialized('boost') && null !== $data->getBoost()) {

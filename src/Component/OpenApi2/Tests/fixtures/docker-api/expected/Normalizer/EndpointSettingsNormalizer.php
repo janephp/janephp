@@ -88,7 +88,7 @@ class EndpointSettingsNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setMacAddress($data['MacAddress']);
         }
         if (\array_key_exists('DriverOpts', $data) && $data['DriverOpts'] !== null) {
-            $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_2 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['DriverOpts'] as $key => $value_2) {
                 $values_2[$key] = $value_2;
             }
@@ -102,8 +102,8 @@ class EndpointSettingsNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('iPAMConfig')) {
-            $dataArray['IPAMConfig'] = $this->normalizer->normalize($data->getIPAMConfig(), 'json', $context);
+        if ($data->isInitialized('iPAMConfig') && null !== $data->getIPAMConfig()) {
+            $dataArray['IPAMConfig'] = $data->getIPAMConfig() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getIPAMConfig(), 'json', $context));
         }
         if ($data->isInitialized('links') && null !== $data->getLinks()) {
             $values = [];
@@ -146,8 +146,8 @@ class EndpointSettingsNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('macAddress') && null !== $data->getMacAddress()) {
             $dataArray['MacAddress'] = $data->getMacAddress();
         }
-        if ($data->isInitialized('driverOpts')) {
-            $values_2 = [];
+        if ($data->isInitialized('driverOpts') && null !== $data->getDriverOpts()) {
+            $values_2 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getDriverOpts() as $key => $value_2) {
                 $values_2[$key] = $value_2;
             }

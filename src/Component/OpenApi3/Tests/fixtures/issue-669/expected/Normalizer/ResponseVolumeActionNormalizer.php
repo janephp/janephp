@@ -38,7 +38,7 @@ class ResponseVolumeActionNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('action', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data['action'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -56,7 +56,7 @@ class ResponseVolumeActionNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if ($data->isInitialized('action') && null !== $data->getAction()) {
-            $values = [];
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data->getAction() as $key => $value) {
                 $values[$key] = $value;
             }

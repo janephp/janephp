@@ -99,10 +99,10 @@ class ListCompanyImagesDataItemNormalizer implements DenormalizerInterface, Norm
             $dataArray['imageId'] = $data->getImageId();
         }
         if ($data->isInitialized('company') && null !== $data->getCompany()) {
-            $dataArray['company'] = $this->normalizer->normalize($data->getCompany(), 'json', $context);
+            $dataArray['company'] = $data->getCompany() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getCompany(), 'json', $context));
         }
         if ($data->isInitialized('document') && null !== $data->getDocument()) {
-            $dataArray['document'] = $this->normalizer->normalize($data->getDocument(), 'json', $context);
+            $dataArray['document'] = $data->getDocument() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getDocument(), 'json', $context));
         }
         if ($data->isInitialized('format') && null !== $data->getFormat()) {
             $dataArray['format'] = $data->getFormat();
@@ -129,7 +129,7 @@ class ListCompanyImagesDataItemNormalizer implements DenormalizerInterface, Norm
             $dataArray['status'] = $data->getStatus();
         }
         if ($data->isInitialized('localProperties') && null !== $data->getLocalProperties()) {
-            $dataArray['localProperties'] = $this->normalizer->normalize($data->getLocalProperties(), 'json', $context);
+            $dataArray['localProperties'] = $data->getLocalProperties() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getLocalProperties(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

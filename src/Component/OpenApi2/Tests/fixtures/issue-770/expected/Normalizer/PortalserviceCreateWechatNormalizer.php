@@ -92,7 +92,7 @@ class PortalserviceCreateWechatNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('dnatPortMapping') && null !== $data->getDnatPortMapping()) {
             $values_1 = [];
             foreach ($data->getDnatPortMapping() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['dnatPortMapping'] = $values_1;
         }

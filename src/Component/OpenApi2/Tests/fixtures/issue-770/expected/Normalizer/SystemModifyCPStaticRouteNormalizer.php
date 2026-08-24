@@ -52,7 +52,7 @@ class SystemModifyCPStaticRouteNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('staticRoutes') && null !== $data->getStaticRoutes()) {
             $values = [];
             foreach ($data->getStaticRoutes() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['staticRoutes'] = $values;
         }

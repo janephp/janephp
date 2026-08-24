@@ -52,10 +52,10 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     {
         $dataArray = [];
         if ($data->isInitialized('productData') && null !== $data->getProductData()) {
-            $dataArray['product_data'] = $this->normalizer->normalize($data->getProductData(), 'json', $context);
+            $dataArray['product_data'] = $data->getProductData() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getProductData(), 'json', $context));
         }
         if ($data->isInitialized('product') && null !== $data->getProduct()) {
-            $dataArray['product'] = $this->normalizer->normalize($data->getProduct(), 'json', $context);
+            $dataArray['product'] = $data->getProduct() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getProduct(), 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\OrderConstraint());

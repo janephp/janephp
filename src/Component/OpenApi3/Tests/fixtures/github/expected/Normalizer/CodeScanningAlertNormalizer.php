@@ -125,7 +125,7 @@ class CodeScanningAlertNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('ruleDescription') && null !== $data->getRuleDescription()) {
             $dataArray['rule_description'] = $data->getRuleDescription();
         }
-        if ($data->isInitialized('tool')) {
+        if ($data->isInitialized('tool') && null !== $data->getTool()) {
             $dataArray['tool'] = $data->getTool();
         }
         if ($data->isInitialized('createdAt') && null !== $data->getCreatedAt()) {
@@ -134,10 +134,10 @@ class CodeScanningAlertNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('open') && null !== $data->getOpen()) {
             $dataArray['open'] = $data->getOpen();
         }
-        if ($data->isInitialized('closedBy')) {
-            $dataArray['closed_by'] = $this->normalizer->normalize($data->getClosedBy(), 'json', $context);
+        if ($data->isInitialized('closedBy') && null !== $data->getClosedBy()) {
+            $dataArray['closed_by'] = $data->getClosedBy() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getClosedBy(), 'json', $context));
         }
-        if ($data->isInitialized('closedAt')) {
+        if ($data->isInitialized('closedAt') && null !== $data->getClosedAt()) {
             $dataArray['closed_at'] = $data->getClosedAt()?->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('url') && null !== $data->getUrl()) {
@@ -146,7 +146,7 @@ class CodeScanningAlertNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('htmlUrl') && null !== $data->getHtmlUrl()) {
             $dataArray['html_url'] = $data->getHtmlUrl();
         }
-        if ($data->isInitialized('closedReason')) {
+        if ($data->isInitialized('closedReason') && null !== $data->getClosedReason()) {
             $dataArray['closed_reason'] = $data->getClosedReason();
         }
         foreach ($data as $key => $value) {

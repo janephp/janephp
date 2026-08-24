@@ -58,7 +58,7 @@ class ResponseListTriggersNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('triggers') && null !== $data->getTriggers()) {
             $values = [];
             foreach ($data->getTriggers() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['triggers'] = $values;
         }

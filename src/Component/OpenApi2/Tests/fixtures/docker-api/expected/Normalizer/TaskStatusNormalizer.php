@@ -73,7 +73,7 @@ class TaskStatusNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['Err'] = $data->getErr();
         }
         if ($data->isInitialized('containerStatus') && null !== $data->getContainerStatus()) {
-            $dataArray['ContainerStatus'] = $this->normalizer->normalize($data->getContainerStatus(), 'json', $context);
+            $dataArray['ContainerStatus'] = $data->getContainerStatus() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getContainerStatus(), 'json', $context));
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Docker\Api\Validator\TaskStatusConstraint());

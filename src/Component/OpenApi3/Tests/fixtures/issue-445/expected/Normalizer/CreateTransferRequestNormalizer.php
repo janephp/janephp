@@ -82,21 +82,21 @@ class CreateTransferRequestNormalizer implements DenormalizerInterface, Normaliz
         $dataArray = [];
         $dataArray['name'] = $data->getName();
         $dataArray['transferType'] = $data->getTransferType();
-        if ($data->isInitialized('files')) {
+        if ($data->isInitialized('files') && null !== $data->getFiles()) {
             $values = [];
             foreach ($data->getFiles() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['files'] = $values;
         }
-        if ($data->isInitialized('webLinks')) {
+        if ($data->isInitialized('webLinks') && null !== $data->getWebLinks()) {
             $values_1 = [];
             foreach ($data->getWebLinks() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['webLinks'] = $values_1;
         }
-        if ($data->isInitialized('collectionName')) {
+        if ($data->isInitialized('collectionName') && null !== $data->getCollectionName()) {
             $dataArray['collectionName'] = $data->getCollectionName();
         }
         $dataArray['createCollection'] = $data->getCreateCollection();

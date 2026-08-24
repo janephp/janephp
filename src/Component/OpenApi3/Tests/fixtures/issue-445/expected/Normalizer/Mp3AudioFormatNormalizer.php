@@ -73,13 +73,13 @@ class Mp3AudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
     {
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('extension')) {
+        if ($data->isInitialized('extension') && null !== $data->getExtension()) {
             $dataArray['extension'] = $data->getExtension();
         }
-        if ($data->isInitialized('bitrate')) {
+        if ($data->isInitialized('bitrate') && null !== $data->getBitrate()) {
             $dataArray['bitrate'] = $data->getBitrate();
         }
-        if ($data->isInitialized('quality')) {
+        if ($data->isInitialized('quality') && null !== $data->getQuality()) {
             $dataArray['quality'] = $data->getQuality();
         }
         foreach ($data as $key => $value) {

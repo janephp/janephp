@@ -72,7 +72,7 @@ class ApiAgentGuardrailNormalizer implements DenormalizerInterface, NormalizerIn
             unset($data['is_default']);
         }
         if (\array_key_exists('metadata', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data['metadata'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -131,7 +131,7 @@ class ApiAgentGuardrailNormalizer implements DenormalizerInterface, NormalizerIn
             $dataArray['is_default'] = $data->getIsDefault();
         }
         if ($data->isInitialized('metadata') && null !== $data->getMetadata()) {
-            $values = [];
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data->getMetadata() as $key => $value) {
                 $values[$key] = $value;
             }

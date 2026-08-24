@@ -96,7 +96,7 @@ class PartnerAttachmentWritableNormalizer implements DenormalizerInterface, Norm
             $dataArray['parent_uuid'] = $data->getParentUuid();
         }
         if ($data->isInitialized('bgp') && null !== $data->getBgp()) {
-            $dataArray['bgp'] = $this->normalizer->normalize($data->getBgp(), 'json', $context);
+            $dataArray['bgp'] = $data->getBgp() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getBgp(), 'json', $context));
         }
         if ($data->isInitialized('redundancyZone') && null !== $data->getRedundancyZone()) {
             $dataArray['redundancy_zone'] = $data->getRedundancyZone();

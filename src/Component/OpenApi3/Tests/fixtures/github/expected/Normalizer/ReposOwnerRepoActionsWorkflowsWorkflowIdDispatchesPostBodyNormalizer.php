@@ -45,7 +45,7 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyNormalizer imple
             unset($data['ref']);
         }
         if (\array_key_exists('inputs', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Github\Runtime\JsonObject();
             foreach ($data['inputs'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -64,7 +64,7 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyNormalizer imple
         $dataArray = [];
         $dataArray['ref'] = $data->getRef();
         if ($data->isInitialized('inputs') && null !== $data->getInputs()) {
-            $values = [];
+            $values = new \Github\Runtime\JsonObject();
             foreach ($data->getInputs() as $key => $value) {
                 $values[$key] = $value;
             }

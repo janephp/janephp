@@ -135,7 +135,7 @@ class IssueMilestoneNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray['state'] = $data->getState();
         $dataArray['title'] = $data->getTitle();
         $dataArray['description'] = $data->getDescription();
-        $dataArray['creator'] = $this->normalizer->normalize($data->getCreator(), 'json', $context);
+        $dataArray['creator'] = $data->getCreator() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCreator(), 'json', $context));
         $dataArray['open_issues'] = $data->getOpenIssues();
         $dataArray['closed_issues'] = $data->getClosedIssues();
         $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');

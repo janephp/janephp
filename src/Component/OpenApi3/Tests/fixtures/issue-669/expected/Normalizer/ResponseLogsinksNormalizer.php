@@ -58,7 +58,7 @@ class ResponseLogsinksNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('sinks') && null !== $data->getSinks()) {
             $values = [];
             foreach ($data->getSinks() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['sinks'] = $values;
         }

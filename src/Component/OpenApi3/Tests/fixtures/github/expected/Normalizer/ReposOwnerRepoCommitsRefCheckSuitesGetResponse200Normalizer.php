@@ -68,7 +68,7 @@ class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Normalizer implements Den
         if ($data->isInitialized('checkSuites') && null !== $data->getCheckSuites()) {
             $values = [];
             foreach ($data->getCheckSuites() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['check_suites'] = $values;
         }

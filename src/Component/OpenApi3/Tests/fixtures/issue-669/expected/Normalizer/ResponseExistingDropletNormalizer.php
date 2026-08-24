@@ -52,7 +52,7 @@ class ResponseExistingDropletNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if ($data->isInitialized('droplet') && null !== $data->getDroplet()) {
-            $dataArray['droplet'] = $this->normalizer->normalize($data->getDroplet(), 'json', $context);
+            $dataArray['droplet'] = $data->getDroplet() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDroplet(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

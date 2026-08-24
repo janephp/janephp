@@ -107,26 +107,26 @@ class FileCommitCommitNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['html_url'] = $data->getHtmlUrl();
         }
         if ($data->isInitialized('author') && null !== $data->getAuthor()) {
-            $dataArray['author'] = $this->normalizer->normalize($data->getAuthor(), 'json', $context);
+            $dataArray['author'] = $data->getAuthor() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getAuthor(), 'json', $context));
         }
         if ($data->isInitialized('committer') && null !== $data->getCommitter()) {
-            $dataArray['committer'] = $this->normalizer->normalize($data->getCommitter(), 'json', $context);
+            $dataArray['committer'] = $data->getCommitter() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCommitter(), 'json', $context));
         }
         if ($data->isInitialized('message') && null !== $data->getMessage()) {
             $dataArray['message'] = $data->getMessage();
         }
         if ($data->isInitialized('tree') && null !== $data->getTree()) {
-            $dataArray['tree'] = $this->normalizer->normalize($data->getTree(), 'json', $context);
+            $dataArray['tree'] = $data->getTree() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getTree(), 'json', $context));
         }
         if ($data->isInitialized('parents') && null !== $data->getParents()) {
             $values = [];
             foreach ($data->getParents() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['parents'] = $values;
         }
         if ($data->isInitialized('verification') && null !== $data->getVerification()) {
-            $dataArray['verification'] = $this->normalizer->normalize($data->getVerification(), 'json', $context);
+            $dataArray['verification'] = $data->getVerification() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getVerification(), 'json', $context));
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

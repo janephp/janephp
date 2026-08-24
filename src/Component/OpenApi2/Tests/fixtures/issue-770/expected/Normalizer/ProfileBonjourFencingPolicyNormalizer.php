@@ -98,13 +98,13 @@ class ProfileBonjourFencingPolicyNormalizer implements DenormalizerInterface, No
         }
         $values = [];
         foreach ($data->getBonjourFencingRuleList() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['bonjourFencingRuleList'] = $values;
         if ($data->isInitialized('bonjourFencingRuleMappingList') && null !== $data->getBonjourFencingRuleMappingList()) {
             $values_1 = [];
             foreach ($data->getBonjourFencingRuleMappingList() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['bonjourFencingRuleMappingList'] = $values_1;
         }

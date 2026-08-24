@@ -74,15 +74,15 @@ class EventPayloadNormalizer implements DenormalizerInterface, NormalizerInterfa
             $dataArray['action'] = $data->getAction();
         }
         if ($data->isInitialized('issue') && null !== $data->getIssue()) {
-            $dataArray['issue'] = $this->normalizer->normalize($data->getIssue(), 'json', $context);
+            $dataArray['issue'] = $data->getIssue() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getIssue(), 'json', $context));
         }
         if ($data->isInitialized('comment') && null !== $data->getComment()) {
-            $dataArray['comment'] = $this->normalizer->normalize($data->getComment(), 'json', $context);
+            $dataArray['comment'] = $data->getComment() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getComment(), 'json', $context));
         }
         if ($data->isInitialized('pages') && null !== $data->getPages()) {
             $values = [];
             foreach ($data->getPages() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['pages'] = $values;
         }

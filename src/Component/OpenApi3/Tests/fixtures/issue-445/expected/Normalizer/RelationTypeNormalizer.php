@@ -61,11 +61,11 @@ class RelationTypeNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('names')) {
+        if ($data->isInitialized('names') && null !== $data->getNames()) {
             $dataArray['names'] = $data->getNames();
         }
         $dataArray['targetDocType'] = $data->getTargetDocType();
-        if ($data->isInitialized('filter')) {
+        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
             $dataArray['filter'] = $data->getFilter();
         }
         return $dataArray;

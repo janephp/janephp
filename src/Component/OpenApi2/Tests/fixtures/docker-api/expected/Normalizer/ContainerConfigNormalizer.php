@@ -83,7 +83,7 @@ class ContainerConfigNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setAttachStderr($data['AttachStderr']);
         }
         if (\array_key_exists('ExposedPorts', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['ExposedPorts'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -122,7 +122,7 @@ class ContainerConfigNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setImage($data['Image']);
         }
         if (\array_key_exists('Volumes', $data)) {
-            $values_3 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_3 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Volumes'] as $key_1 => $value_3) {
                 $values_3[$key_1] = $value_3;
             }
@@ -152,7 +152,7 @@ class ContainerConfigNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setOnBuild($values_5);
         }
         if (\array_key_exists('Labels', $data)) {
-            $values_6 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_6 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Labels'] as $key_2 => $value_6) {
                 $values_6[$key_2] = $value_6;
             }
@@ -195,7 +195,7 @@ class ContainerConfigNormalizer implements DenormalizerInterface, NormalizerInte
             $dataArray['AttachStderr'] = $data->getAttachStderr();
         }
         if ($data->isInitialized('exposedPorts') && null !== $data->getExposedPorts()) {
-            $values = [];
+            $values = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getExposedPorts() as $key => $value) {
                 $values[$key] = $value;
             }
@@ -225,7 +225,7 @@ class ContainerConfigNormalizer implements DenormalizerInterface, NormalizerInte
             $dataArray['Cmd'] = $values_2;
         }
         if ($data->isInitialized('healthcheck') && null !== $data->getHealthcheck()) {
-            $dataArray['Healthcheck'] = $this->normalizer->normalize($data->getHealthcheck(), 'json', $context);
+            $dataArray['Healthcheck'] = $data->getHealthcheck() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getHealthcheck(), 'json', $context));
         }
         if ($data->isInitialized('argsEscaped') && null !== $data->getArgsEscaped()) {
             $dataArray['ArgsEscaped'] = $data->getArgsEscaped();
@@ -234,7 +234,7 @@ class ContainerConfigNormalizer implements DenormalizerInterface, NormalizerInte
             $dataArray['Image'] = $data->getImage();
         }
         if ($data->isInitialized('volumes') && null !== $data->getVolumes()) {
-            $values_3 = [];
+            $values_3 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getVolumes() as $key_1 => $value_3) {
                 $values_3[$key_1] = $value_3;
             }
@@ -264,7 +264,7 @@ class ContainerConfigNormalizer implements DenormalizerInterface, NormalizerInte
             $dataArray['OnBuild'] = $values_5;
         }
         if ($data->isInitialized('labels') && null !== $data->getLabels()) {
-            $values_6 = [];
+            $values_6 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getLabels() as $key_2 => $value_6) {
                 $values_6[$key_2] = $value_6;
             }

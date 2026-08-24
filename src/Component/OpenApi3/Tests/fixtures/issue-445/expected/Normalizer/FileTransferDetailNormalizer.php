@@ -105,23 +105,23 @@ class FileTransferDetailNormalizer implements DenormalizerInterface, NormalizerI
         $dataArray = [];
         $dataArray['id'] = $data->getId();
         $dataArray['name'] = $data->getName();
-        if ($data->isInitialized('identifier')) {
+        if ($data->isInitialized('identifier') && null !== $data->getIdentifier()) {
             $dataArray['identifier'] = $data->getIdentifier();
         }
         $dataArray['requestId'] = $data->getRequestId();
         $dataArray['transferId'] = $data->getTransferId();
         $dataArray['state'] = $data->getState();
-        if ($data->isInitialized('contentId')) {
+        if ($data->isInitialized('contentId') && null !== $data->getContentId()) {
             $dataArray['contentId'] = $data->getContentId();
         }
         $dataArray['audit'] = $data->getAudit();
-        if ($data->isInitialized('fileMetadata')) {
+        if ($data->isInitialized('fileMetadata') && null !== $data->getFileMetadata()) {
             $dataArray['fileMetadata'] = $data->getFileMetadata();
         }
-        if ($data->isInitialized('outputItems')) {
+        if ($data->isInitialized('outputItems') && null !== $data->getOutputItems()) {
             $values = [];
             foreach ($data->getOutputItems() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['outputItems'] = $values;
         }

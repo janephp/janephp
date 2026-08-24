@@ -92,10 +92,10 @@ class ReposOwnerRepoIssuesPostBodyNormalizer implements DenormalizerInterface, N
         if ($data->isInitialized('body') && null !== $data->getBody()) {
             $dataArray['body'] = $data->getBody();
         }
-        if ($data->isInitialized('assignee')) {
+        if ($data->isInitialized('assignee') && null !== $data->getAssignee()) {
             $dataArray['assignee'] = $data->getAssignee();
         }
-        if ($data->isInitialized('milestone')) {
+        if ($data->isInitialized('milestone') && null !== $data->getMilestone()) {
             $dataArray['milestone'] = $data->getMilestone();
         }
         if ($data->isInitialized('labels') && null !== $data->getLabels()) {

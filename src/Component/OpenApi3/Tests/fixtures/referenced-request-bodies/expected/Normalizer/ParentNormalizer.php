@@ -65,7 +65,7 @@ class ParentNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if ($data->isInitialized('child') && null !== $data->getChild()) {
             $values = [];
             foreach ($data->getChild() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['child'] = $values;
         }

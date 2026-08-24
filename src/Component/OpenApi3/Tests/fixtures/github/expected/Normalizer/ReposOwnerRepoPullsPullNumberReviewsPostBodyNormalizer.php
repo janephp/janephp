@@ -82,7 +82,7 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyNormalizer implements Denormal
         if ($data->isInitialized('comments') && null !== $data->getComments()) {
             $values = [];
             foreach ($data->getComments() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['comments'] = $values;
         }

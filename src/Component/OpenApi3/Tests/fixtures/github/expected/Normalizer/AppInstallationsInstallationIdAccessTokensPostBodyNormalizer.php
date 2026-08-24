@@ -85,7 +85,7 @@ class AppInstallationsInstallationIdAccessTokensPostBodyNormalizer implements De
             $dataArray['repository_ids'] = $values_1;
         }
         if ($data->isInitialized('permissions') && null !== $data->getPermissions()) {
-            $dataArray['permissions'] = $this->normalizer->normalize($data->getPermissions(), 'json', $context);
+            $dataArray['permissions'] = $data->getPermissions() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPermissions(), 'json', $context));
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

@@ -79,17 +79,17 @@ class MatchRegexConditionNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('traceRefId')) {
+        if ($data->isInitialized('traceRefId') && null !== $data->getTraceRefId()) {
             $dataArray['traceRefId'] = $data->getTraceRefId();
         }
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('fieldPath')) {
+        if ($data->isInitialized('fieldPath') && null !== $data->getFieldPath()) {
             $dataArray['fieldPath'] = $data->getFieldPath();
         }
-        if ($data->isInitialized('regex')) {
+        if ($data->isInitialized('regex') && null !== $data->getRegex()) {
             $dataArray['regex'] = $data->getRegex();
         }
-        if ($data->isInitialized('storeIn')) {
+        if ($data->isInitialized('storeIn') && null !== $data->getStoreIn()) {
             $dataArray['storeIn'] = $data->getStoreIn();
         }
         foreach ($data as $key => $value) {

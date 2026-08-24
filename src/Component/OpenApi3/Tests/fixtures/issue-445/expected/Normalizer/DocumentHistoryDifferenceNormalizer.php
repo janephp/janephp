@@ -60,12 +60,12 @@ class DocumentHistoryDifferenceNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('documentId')) {
+        if ($data->isInitialized('documentId') && null !== $data->getDocumentId()) {
             $dataArray['documentId'] = $data->getDocumentId();
         }
         $dataArray['oldDocumentVersion'] = $data->getOldDocumentVersion();
         $dataArray['newDocumentVersion'] = $data->getNewDocumentVersion();
-        if ($data->isInitialized('patch')) {
+        if ($data->isInitialized('patch') && null !== $data->getPatch()) {
             $dataArray['patch'] = $data->getPatch();
         }
         return $dataArray;

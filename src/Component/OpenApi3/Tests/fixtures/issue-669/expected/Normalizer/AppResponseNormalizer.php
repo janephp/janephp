@@ -52,7 +52,7 @@ class AppResponseNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $dataArray = [];
         if ($data->isInitialized('app') && null !== $data->getApp()) {
-            $dataArray['app'] = $this->normalizer->normalize($data->getApp(), 'json', $context);
+            $dataArray['app'] = $data->getApp() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getApp(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

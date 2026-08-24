@@ -130,16 +130,16 @@ class FieldSingleFieldsetNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('indexId')) {
+        if ($data->isInitialized('indexId') && null !== $data->getIndexId()) {
             $dataArray['indexId'] = $data->getIndexId();
         }
-        if ($data->isInitialized('fieldNamespace')) {
+        if ($data->isInitialized('fieldNamespace') && null !== $data->getFieldNamespace()) {
             $dataArray['fieldNamespace'] = $data->getFieldNamespace();
         }
-        if ($data->isInitialized('names')) {
+        if ($data->isInitialized('names') && null !== $data->getNames()) {
             $dataArray['names'] = $data->getNames();
         }
-        if ($data->isInitialized('descriptions')) {
+        if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
             $dataArray['descriptions'] = $data->getDescriptions();
         }
         $dataArray['required'] = $data->getRequired();
@@ -149,7 +149,7 @@ class FieldSingleFieldsetNormalizer implements DenormalizerInterface, Normalizer
         $dataArray['sortable'] = $data->getSortable();
         $dataArray['kind'] = $data->getKind();
         $dataArray['schemaId'] = $data->getSchemaId();
-        if ($data->isInitialized('schemaIndexingInfo')) {
+        if ($data->isInitialized('schemaIndexingInfo') && null !== $data->getSchemaIndexingInfo()) {
             $dataArray['schemaIndexingInfo'] = $data->getSchemaIndexingInfo();
         }
         foreach ($data as $key => $value) {

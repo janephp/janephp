@@ -66,14 +66,14 @@ class DocumentChangeNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('documentName')) {
+        if ($data->isInitialized('documentName') && null !== $data->getDocumentName()) {
             $dataArray['documentName'] = $data->getDocumentName();
         }
-        if ($data->isInitialized('documentId')) {
+        if ($data->isInitialized('documentId') && null !== $data->getDocumentId()) {
             $dataArray['documentId'] = $data->getDocumentId();
         }
         $dataArray['version'] = $data->getVersion();
-        if ($data->isInitialized('action')) {
+        if ($data->isInitialized('action') && null !== $data->getAction()) {
             $dataArray['action'] = $data->getAction();
         }
         $dataArray['timeStamp'] = $data->getTimeStamp()->format('Y-m-d\TH:i:sP');

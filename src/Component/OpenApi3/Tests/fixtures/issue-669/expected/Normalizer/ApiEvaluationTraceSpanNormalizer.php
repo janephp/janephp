@@ -42,7 +42,7 @@ class ApiEvaluationTraceSpanNormalizer implements DenormalizerInterface, Normali
             unset($data['created_at']);
         }
         if (\array_key_exists('input', $data)) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data['input'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -54,7 +54,7 @@ class ApiEvaluationTraceSpanNormalizer implements DenormalizerInterface, Normali
             unset($data['name']);
         }
         if (\array_key_exists('output', $data)) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data['output'] as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
@@ -95,7 +95,7 @@ class ApiEvaluationTraceSpanNormalizer implements DenormalizerInterface, Normali
             $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('input') && null !== $data->getInput()) {
-            $values = [];
+            $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data->getInput() as $key => $value) {
                 $values[$key] = $value;
             }
@@ -105,7 +105,7 @@ class ApiEvaluationTraceSpanNormalizer implements DenormalizerInterface, Normali
             $dataArray['name'] = $data->getName();
         }
         if ($data->isInitialized('output') && null !== $data->getOutput()) {
-            $values_1 = [];
+            $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
             foreach ($data->getOutput() as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
@@ -114,14 +114,14 @@ class ApiEvaluationTraceSpanNormalizer implements DenormalizerInterface, Normali
         if ($data->isInitialized('retrieverChunks') && null !== $data->getRetrieverChunks()) {
             $values_2 = [];
             foreach ($data->getRetrieverChunks() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['retriever_chunks'] = $values_2;
         }
         if ($data->isInitialized('spanLevelMetricResults') && null !== $data->getSpanLevelMetricResults()) {
             $values_3 = [];
             foreach ($data->getSpanLevelMetricResults() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['span_level_metric_results'] = $values_3;
         }

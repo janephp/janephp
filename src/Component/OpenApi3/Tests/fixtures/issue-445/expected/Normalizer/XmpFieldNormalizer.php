@@ -57,7 +57,7 @@ class XmpFieldNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('path')) {
+        if ($data->isInitialized('path') && null !== $data->getPath()) {
             $dataArray['path'] = $data->getPath();
         }
         $dataArray['isWritable'] = $data->getIsWritable();

@@ -71,7 +71,7 @@ class ErrorWithRootCausesNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         $dataArray['error'] = $data->getError();
-        if ($data->isInitialized('messages')) {
+        if ($data->isInitialized('messages') && null !== $data->getMessages()) {
             $values = [];
             foreach ($data->getMessages() as $value) {
                 $values[] = $value;

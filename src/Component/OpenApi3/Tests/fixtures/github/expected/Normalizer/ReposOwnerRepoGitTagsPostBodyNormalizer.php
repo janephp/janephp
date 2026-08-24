@@ -75,7 +75,7 @@ class ReposOwnerRepoGitTagsPostBodyNormalizer implements DenormalizerInterface, 
         $dataArray['object'] = $data->getObject();
         $dataArray['type'] = $data->getType();
         if ($data->isInitialized('tagger') && null !== $data->getTagger()) {
-            $dataArray['tagger'] = $this->normalizer->normalize($data->getTagger(), 'json', $context);
+            $dataArray['tagger'] = $data->getTagger() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getTagger(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

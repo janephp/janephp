@@ -88,7 +88,7 @@ class ApApLinemanSummaryListItemNormalizer implements DenormalizerInterface, Nor
             $dataArray['location'] = $data->getLocation();
         }
         if ($data->isInitialized('alarms') && null !== $data->getAlarms()) {
-            $dataArray['alarms'] = $this->normalizer->normalize($data->getAlarms(), 'json', $context);
+            $dataArray['alarms'] = $data->getAlarms() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getAlarms(), 'json', $context));
         }
         return $dataArray;
     }

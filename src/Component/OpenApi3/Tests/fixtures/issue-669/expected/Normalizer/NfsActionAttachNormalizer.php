@@ -62,7 +62,7 @@ class NfsActionAttachNormalizer implements DenormalizerInterface, NormalizerInte
         $dataArray['type'] = $data->getType();
         $dataArray['region'] = $data->getRegion();
         if ($data->isInitialized('params') && null !== $data->getParams()) {
-            $dataArray['params'] = $this->normalizer->normalize($data->getParams(), 'json', $context);
+            $dataArray['params'] = $data->getParams() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getParams(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

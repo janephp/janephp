@@ -65,7 +65,7 @@ class ListFreshInvestigationResponseNormalizer implements DenormalizerInterface,
         if ($data->isInitialized('orders') && null !== $data->getOrders()) {
             $values = [];
             foreach ($data->getOrders() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['orders'] = $values;
         }

@@ -122,40 +122,40 @@ class ProfileHs20ProviderNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('realms') && null !== $data->getRealms()) {
             $values = [];
             foreach ($data->getRealms() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['realms'] = $values;
         }
         if ($data->isInitialized('plmns') && null !== $data->getPlmns()) {
             $values_1 = [];
             foreach ($data->getPlmns() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['plmns'] = $values_1;
         }
         if ($data->isInitialized('homeOis') && null !== $data->getHomeOis()) {
             $values_2 = [];
             foreach ($data->getHomeOis() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['homeOis'] = $values_2;
         }
         if ($data->isInitialized('authentications') && null !== $data->getAuthentications()) {
             $values_3 = [];
             foreach ($data->getAuthentications() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['authentications'] = $values_3;
         }
         if ($data->isInitialized('accountings') && null !== $data->getAccountings()) {
             $values_4 = [];
             foreach ($data->getAccountings() as $value_4) {
-                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[] = $value_4 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['accountings'] = $values_4;
         }
         if ($data->isInitialized('osu') && null !== $data->getOsu()) {
-            $dataArray['osu'] = $this->normalizer->normalize($data->getOsu(), 'json', $context);
+            $dataArray['osu'] = $data->getOsu() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getOsu(), 'json', $context));
         }
         if ($data->isInitialized('domainId') && null !== $data->getDomainId()) {
             $dataArray['domainId'] = $data->getDomainId();

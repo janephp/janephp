@@ -74,21 +74,21 @@ class KubernetesOptionsOptionsNormalizer implements DenormalizerInterface, Norma
         if ($data->isInitialized('regions') && null !== $data->getRegions()) {
             $values = [];
             foreach ($data->getRegions() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['regions'] = $values;
         }
         if ($data->isInitialized('versions') && null !== $data->getVersions()) {
             $values_1 = [];
             foreach ($data->getVersions() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['versions'] = $values_1;
         }
         if ($data->isInitialized('sizes') && null !== $data->getSizes()) {
             $values_2 = [];
             foreach ($data->getSizes() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['sizes'] = $values_2;
         }

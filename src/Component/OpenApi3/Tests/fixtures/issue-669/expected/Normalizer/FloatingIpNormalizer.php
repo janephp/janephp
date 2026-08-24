@@ -74,7 +74,7 @@ class FloatingIpNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['ip'] = $data->getIp();
         }
         if ($data->isInitialized('region') && null !== $data->getRegion()) {
-            $dataArray['region'] = $this->normalizer->normalize($data->getRegion(), 'json', $context);
+            $dataArray['region'] = $data->getRegion() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getRegion(), 'json', $context));
         }
         if ($data->isInitialized('droplet') && null !== $data->getDroplet()) {
             $dataArray['droplet'] = $data->getDroplet();

@@ -75,7 +75,7 @@ class ProfileModifyRestrictedApAccessProfileNormalizer implements DenormalizerIn
         if ($data->isInitialized('blockedPortList') && null !== $data->getBlockedPortList()) {
             $values = [];
             foreach ($data->getBlockedPortList() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['blockedPortList'] = $values;
         }

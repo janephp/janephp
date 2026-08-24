@@ -129,38 +129,38 @@ class ReferenceUpdateExceptionNormalizer implements DenormalizerInterface, Norma
         if ($data->isInitialized('traceLevel') && null !== $data->getTraceLevel()) {
             $dataArray['traceLevel'] = $data->getTraceLevel();
         }
-        if ($data->isInitialized('traceId')) {
+        if ($data->isInitialized('traceId') && null !== $data->getTraceId()) {
             $dataArray['traceId'] = $data->getTraceId();
         }
-        if ($data->isInitialized('traceJobId')) {
+        if ($data->isInitialized('traceJobId') && null !== $data->getTraceJobId()) {
             $dataArray['traceJobId'] = $data->getTraceJobId();
         }
         if ($data->isInitialized('httpStatusCode') && null !== $data->getHttpStatusCode()) {
             $dataArray['httpStatusCode'] = $data->getHttpStatusCode();
         }
-        if ($data->isInitialized('exceptionMessage')) {
+        if ($data->isInitialized('exceptionMessage') && null !== $data->getExceptionMessage()) {
             $dataArray['exceptionMessage'] = $data->getExceptionMessage();
         }
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('customerId')) {
+        if ($data->isInitialized('customerId') && null !== $data->getCustomerId()) {
             $dataArray['customerId'] = $data->getCustomerId();
         }
-        if ($data->isInitialized('customerAlias')) {
+        if ($data->isInitialized('customerAlias') && null !== $data->getCustomerAlias()) {
             $dataArray['customerAlias'] = $data->getCustomerAlias();
         }
-        if ($data->isInitialized('userId')) {
+        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
             $dataArray['userId'] = $data->getUserId();
         }
-        if ($data->isInitialized('referenceItemId')) {
+        if ($data->isInitialized('referenceItemId') && null !== $data->getReferenceItemId()) {
             $dataArray['referenceItemId'] = $data->getReferenceItemId();
         }
-        if ($data->isInitialized('referenceType')) {
+        if ($data->isInitialized('referenceType') && null !== $data->getReferenceType()) {
             $dataArray['referenceType'] = $data->getReferenceType();
         }
-        if ($data->isInitialized('exceptions')) {
+        if ($data->isInitialized('exceptions') && null !== $data->getExceptions()) {
             $values = [];
             foreach ($data->getExceptions() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['exceptions'] = $values;
         }

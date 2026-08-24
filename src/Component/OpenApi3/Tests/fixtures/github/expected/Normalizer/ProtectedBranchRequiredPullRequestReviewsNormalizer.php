@@ -87,7 +87,7 @@ class ProtectedBranchRequiredPullRequestReviewsNormalizer implements Denormalize
             $dataArray['required_approving_review_count'] = $data->getRequiredApprovingReviewCount();
         }
         if ($data->isInitialized('dismissalRestrictions') && null !== $data->getDismissalRestrictions()) {
-            $dataArray['dismissal_restrictions'] = $this->normalizer->normalize($data->getDismissalRestrictions(), 'json', $context);
+            $dataArray['dismissal_restrictions'] = $data->getDismissalRestrictions() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getDismissalRestrictions(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

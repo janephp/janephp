@@ -108,7 +108,7 @@ class UrlEntityNormalizer implements DenormalizerInterface, NormalizerInterface,
         if ($data->isInitialized('images') && null !== $data->getImages()) {
             $values = [];
             foreach ($data->getImages() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['images'] = $values;
         }

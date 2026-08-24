@@ -52,7 +52,7 @@ class SystemControlPlaneInterfaceListNormalizer implements DenormalizerInterface
         if ($data->isInitialized('controlPlaneInterfaces') && null !== $data->getControlPlaneInterfaces()) {
             $values = [];
             foreach ($data->getControlPlaneInterfaces() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['controlPlaneInterfaces'] = $values;
         }

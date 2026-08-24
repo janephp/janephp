@@ -52,7 +52,7 @@ class ResponseUpdatedLoadBalancerNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         if ($data->isInitialized('loadBalancer') && null !== $data->getLoadBalancer()) {
-            $dataArray['load_balancer'] = $this->normalizer->normalize($data->getLoadBalancer(), 'json', $context);
+            $dataArray['load_balancer'] = $data->getLoadBalancer() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLoadBalancer(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -58,10 +58,10 @@ class InternalRecipientNormalizer implements DenormalizerInterface, NormalizerIn
     {
         $dataArray = [];
         $dataArray['recipient'] = $data->getRecipient();
-        if ($data->isInitialized('token')) {
+        if ($data->isInitialized('token') && null !== $data->getToken()) {
             $dataArray['token'] = $data->getToken();
         }
-        if ($data->isInitialized('url')) {
+        if ($data->isInitialized('url') && null !== $data->getUrl()) {
             $dataArray['url'] = $data->getUrl();
         }
         return $dataArray;

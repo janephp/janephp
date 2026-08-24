@@ -223,16 +223,16 @@ class FieldBaseNormalizer implements DenormalizerInterface, NormalizerInterface,
             return $this->normalizer->normalize($data, $format, $context);
         }
         $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('indexId')) {
+        if ($data->isInitialized('indexId') && null !== $data->getIndexId()) {
             $dataArray['indexId'] = $data->getIndexId();
         }
-        if ($data->isInitialized('fieldNamespace')) {
+        if ($data->isInitialized('fieldNamespace') && null !== $data->getFieldNamespace()) {
             $dataArray['fieldNamespace'] = $data->getFieldNamespace();
         }
-        if ($data->isInitialized('names')) {
+        if ($data->isInitialized('names') && null !== $data->getNames()) {
             $dataArray['names'] = $data->getNames();
         }
-        if ($data->isInitialized('descriptions')) {
+        if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
             $dataArray['descriptions'] = $data->getDescriptions();
         }
         $dataArray['required'] = $data->getRequired();

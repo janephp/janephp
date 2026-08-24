@@ -78,13 +78,13 @@ class V2DatabasesDatabaseClusterUuidLogsinkPostBodyNormalizer implements Denorma
         if ($data->isInitialized('config') && null !== $data->getConfig()) {
             $value = $data->getConfig();
             if (is_object($data->getConfig())) {
-                $value = $this->normalizer->normalize($data->getConfig(), 'json', $context);
+                $value = $data->getConfig() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getConfig(), 'json', $context));
             } elseif (is_object($data->getConfig())) {
-                $value = $this->normalizer->normalize($data->getConfig(), 'json', $context);
+                $value = $data->getConfig() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getConfig(), 'json', $context));
             } elseif (is_object($data->getConfig())) {
-                $value = $this->normalizer->normalize($data->getConfig(), 'json', $context);
+                $value = $data->getConfig() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getConfig(), 'json', $context));
             } elseif (is_object($data->getConfig())) {
-                $value = $this->normalizer->normalize($data->getConfig(), 'json', $context);
+                $value = $data->getConfig() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getConfig(), 'json', $context));
             }
             $dataArray['config'] = $value;
         }

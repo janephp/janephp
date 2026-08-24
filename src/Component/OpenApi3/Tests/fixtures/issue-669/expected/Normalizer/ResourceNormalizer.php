@@ -70,7 +70,7 @@ class ResourceNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $dataArray['assigned_at'] = $data->getAssignedAt()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('links') && null !== $data->getLinks()) {
-            $dataArray['links'] = $this->normalizer->normalize($data->getLinks(), 'json', $context);
+            $dataArray['links'] = $data->getLinks() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
         }
         if ($data->isInitialized('status') && null !== $data->getStatus()) {
             $dataArray['status'] = $data->getStatus();

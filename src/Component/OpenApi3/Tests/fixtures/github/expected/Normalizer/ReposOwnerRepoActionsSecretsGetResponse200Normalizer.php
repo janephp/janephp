@@ -68,7 +68,7 @@ class ReposOwnerRepoActionsSecretsGetResponse200Normalizer implements Denormaliz
         if ($data->isInitialized('secrets') && null !== $data->getSecrets()) {
             $values = [];
             foreach ($data->getSecrets() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['secrets'] = $values;
         }

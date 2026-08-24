@@ -74,7 +74,7 @@ class BusinessRuleTracedEvaluationNormalizer implements DenormalizerInterface, N
             $object->setActions(null);
         }
         if (\array_key_exists('variables', $data) && $data['variables'] !== null) {
-            $values_3 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_3 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data['variables'] as $key => $value_3) {
                 $values_3[$key] = $value_3;
             }
@@ -89,29 +89,29 @@ class BusinessRuleTracedEvaluationNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         $dataArray['conditionSatisfied'] = $data->getConditionSatisfied();
-        if ($data->isInitialized('conditions')) {
+        if ($data->isInitialized('conditions') && null !== $data->getConditions()) {
             $values = [];
             foreach ($data->getConditions() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['conditions'] = $values;
         }
-        if ($data->isInitialized('transformationGroups')) {
+        if ($data->isInitialized('transformationGroups') && null !== $data->getTransformationGroups()) {
             $values_1 = [];
             foreach ($data->getTransformationGroups() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['transformationGroups'] = $values_1;
         }
-        if ($data->isInitialized('actions')) {
+        if ($data->isInitialized('actions') && null !== $data->getActions()) {
             $values_2 = [];
             foreach ($data->getActions() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['actions'] = $values_2;
         }
-        if ($data->isInitialized('variables')) {
-            $values_3 = [];
+        if ($data->isInitialized('variables') && null !== $data->getVariables()) {
+            $values_3 = new \PicturePark\API\Runtime\JsonObject();
             foreach ($data->getVariables() as $key => $value_3) {
                 $values_3[$key] = $value_3;
             }

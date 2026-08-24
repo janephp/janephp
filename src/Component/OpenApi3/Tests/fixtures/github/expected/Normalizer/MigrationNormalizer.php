@@ -120,14 +120,14 @@ class MigrationNormalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $dataArray = [];
         $dataArray['id'] = $data->getId();
-        $dataArray['owner'] = $this->normalizer->normalize($data->getOwner(), 'json', $context);
+        $dataArray['owner'] = $data->getOwner() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getOwner(), 'json', $context));
         $dataArray['guid'] = $data->getGuid();
         $dataArray['state'] = $data->getState();
         $dataArray['lock_repositories'] = $data->getLockRepositories();
         $dataArray['exclude_attachments'] = $data->getExcludeAttachments();
         $values = [];
         foreach ($data->getRepositories() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = $value === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['repositories'] = $values;
         $dataArray['url'] = $data->getUrl();

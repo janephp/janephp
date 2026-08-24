@@ -85,7 +85,7 @@ class CreateFreshInvestigationRequestSearchCriteriaNormalizer implements Denorma
             $dataArray['telephoneNumber'] = $data->getTelephoneNumber();
         }
         if ($data->isInitialized('address') && null !== $data->getAddress()) {
-            $dataArray['address'] = $this->normalizer->normalize($data->getAddress(), 'json', $context);
+            $dataArray['address'] = $data->getAddress() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getAddress(), 'json', $context));
         }
         if ($data->isInitialized('regNo') && null !== $data->getRegNo()) {
             $dataArray['regNo'] = $data->getRegNo();

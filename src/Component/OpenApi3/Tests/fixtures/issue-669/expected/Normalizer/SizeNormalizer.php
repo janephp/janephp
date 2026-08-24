@@ -132,12 +132,12 @@ class SizeNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if ($data->isInitialized('diskInfo') && null !== $data->getDiskInfo()) {
             $values_1 = [];
             foreach ($data->getDiskInfo() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['disk_info'] = $values_1;
         }
         if ($data->isInitialized('gpuInfo') && null !== $data->getGpuInfo()) {
-            $dataArray['gpu_info'] = $this->normalizer->normalize($data->getGpuInfo(), 'json', $context);
+            $dataArray['gpu_info'] = $data->getGpuInfo() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getGpuInfo(), 'json', $context));
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

@@ -87,10 +87,10 @@ class GitTagNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $dataArray['sha'] = $data->getSha();
         $dataArray['url'] = $data->getUrl();
         $dataArray['message'] = $data->getMessage();
-        $dataArray['tagger'] = $this->normalizer->normalize($data->getTagger(), 'json', $context);
-        $dataArray['object'] = $this->normalizer->normalize($data->getObject(), 'json', $context);
+        $dataArray['tagger'] = $data->getTagger() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getTagger(), 'json', $context));
+        $dataArray['object'] = $data->getObject() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getObject(), 'json', $context));
         if ($data->isInitialized('verification') && null !== $data->getVerification()) {
-            $dataArray['verification'] = $this->normalizer->normalize($data->getVerification(), 'json', $context);
+            $dataArray['verification'] = $data->getVerification() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getVerification(), 'json', $context));
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

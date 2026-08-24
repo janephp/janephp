@@ -1,0 +1,31 @@
+# Architecture Decision Records
+
+This section records the significant technical decisions taken while developing
+Jane's generators and runtimes. When generation behavior looks non-obvious — or
+when you are about to change code touching one of these areas — read the
+relevant record first so we do not relitigate (or accidentally revert) a
+decision that was already made for good reasons.
+
+Each record follows a lightweight ADR format:
+
+- **Status**: where the decision stands (`Accepted`, `Deprecated`, `Superseded by ADR-XXXX`).
+- **Context**: the problem, constraints and forces at play.
+- **Decision**: what we decided and how it is implemented.
+- **Consequences**: what becomes easier, harder, or impossible because of it.
+- **Links**: issues, pull requests and related documentation.
+
+## Index
+
+| Record | Title | Status |
+| ------ | ----- | ------ |
+| [0001](0001-json-object-for-complex-objects.md) | Use `JsonObject` for complex objects & maps in generated payloads | Accepted |
+| [0002](0002-pre-generation-schema-validation.md) | Validate schemas before generation for clean errors | Accepted |
+
+## Adding a new record
+
+1. Copy an existing record as a template into `NNNN-short-title.md`, using the
+   next free number.
+2. Fill in Status / Context / Decision / Consequences / Links. Keep it factual:
+   record why the losing options lost, not only why the winner won.
+3. Add it to the index above and, if it changes user-facing behavior, to the
+   root `CHANGELOG.md`.

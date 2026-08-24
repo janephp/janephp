@@ -96,18 +96,18 @@ class ShareOutputEmbedNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray = [];
         $dataArray['contentId'] = $data->getContentId();
         $dataArray['outputFormatId'] = $data->getOutputFormatId();
-        if ($data->isInitialized('viewUrl')) {
+        if ($data->isInitialized('viewUrl') && null !== $data->getViewUrl()) {
             $dataArray['viewUrl'] = $data->getViewUrl();
         }
-        if ($data->isInitialized('downloadUrl')) {
+        if ($data->isInitialized('downloadUrl') && null !== $data->getDownloadUrl()) {
             $dataArray['downloadUrl'] = $data->getDownloadUrl();
         }
-        if ($data->isInitialized('detail')) {
+        if ($data->isInitialized('detail') && null !== $data->getDetail()) {
             $dataArray['detail'] = $data->getDetail();
         }
         $dataArray['dynamicRendering'] = $data->getDynamicRendering();
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('token')) {
+        if ($data->isInitialized('token') && null !== $data->getToken()) {
             $dataArray['token'] = $data->getToken();
         }
         foreach ($data as $key => $value) {

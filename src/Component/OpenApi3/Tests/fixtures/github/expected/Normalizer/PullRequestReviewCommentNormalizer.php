@@ -190,21 +190,21 @@ class PullRequestReviewCommentNormalizer implements DenormalizerInterface, Norma
         if ($data->isInitialized('inReplyToId') && null !== $data->getInReplyToId()) {
             $dataArray['in_reply_to_id'] = $data->getInReplyToId();
         }
-        $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
+        $dataArray['user'] = $data->getUser() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getUser(), 'json', $context));
         $dataArray['body'] = $data->getBody();
         $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['html_url'] = $data->getHtmlUrl();
         $dataArray['pull_request_url'] = $data->getPullRequestUrl();
         $dataArray['author_association'] = $data->getAuthorAssociation();
-        $dataArray['_links'] = $this->normalizer->normalize($data->getLinks(), 'json', $context);
-        if ($data->isInitialized('startLine')) {
+        $dataArray['_links'] = $data->getLinks() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
+        if ($data->isInitialized('startLine') && null !== $data->getStartLine()) {
             $dataArray['start_line'] = $data->getStartLine();
         }
-        if ($data->isInitialized('originalStartLine')) {
+        if ($data->isInitialized('originalStartLine') && null !== $data->getOriginalStartLine()) {
             $dataArray['original_start_line'] = $data->getOriginalStartLine();
         }
-        if ($data->isInitialized('startSide')) {
+        if ($data->isInitialized('startSide') && null !== $data->getStartSide()) {
             $dataArray['start_side'] = $data->getStartSide();
         }
         if ($data->isInitialized('line') && null !== $data->getLine()) {
@@ -217,7 +217,7 @@ class PullRequestReviewCommentNormalizer implements DenormalizerInterface, Norma
             $dataArray['side'] = $data->getSide();
         }
         if ($data->isInitialized('reactions') && null !== $data->getReactions()) {
-            $dataArray['reactions'] = $this->normalizer->normalize($data->getReactions(), 'json', $context);
+            $dataArray['reactions'] = $data->getReactions() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getReactions(), 'json', $context));
         }
         if ($data->isInitialized('bodyHtml') && null !== $data->getBodyHtml()) {
             $dataArray['body_html'] = $data->getBodyHtml();

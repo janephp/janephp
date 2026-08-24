@@ -83,7 +83,7 @@ class EventPayloadPagesItemNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('title') && null !== $data->getTitle()) {
             $dataArray['title'] = $data->getTitle();
         }
-        if ($data->isInitialized('summary')) {
+        if ($data->isInitialized('summary') && null !== $data->getSummary()) {
             $dataArray['summary'] = $data->getSummary();
         }
         if ($data->isInitialized('action') && null !== $data->getAction()) {

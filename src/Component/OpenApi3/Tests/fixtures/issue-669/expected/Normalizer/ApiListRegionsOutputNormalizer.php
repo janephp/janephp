@@ -58,7 +58,7 @@ class ApiListRegionsOutputNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('regions') && null !== $data->getRegions()) {
             $values = [];
             foreach ($data->getRegions() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['regions'] = $values;
         }

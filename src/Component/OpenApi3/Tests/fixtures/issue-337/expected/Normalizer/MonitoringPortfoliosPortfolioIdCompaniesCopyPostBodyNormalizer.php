@@ -73,7 +73,7 @@ class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBodyNormalizer implements 
         if ($data->isInitialized('companies') && null !== $data->getCompanies()) {
             $values_1 = [];
             foreach ($data->getCompanies() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['companies'] = $values_1;
         }

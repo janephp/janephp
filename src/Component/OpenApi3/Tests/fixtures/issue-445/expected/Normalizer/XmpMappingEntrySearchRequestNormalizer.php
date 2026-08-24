@@ -110,41 +110,41 @@ class XmpMappingEntrySearchRequestNormalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         $dataArray['debugMode'] = $data->getDebugMode();
-        if ($data->isInitialized('aggregationFilters')) {
+        if ($data->isInitialized('aggregationFilters') && null !== $data->getAggregationFilters()) {
             $values = [];
             foreach ($data->getAggregationFilters() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['aggregationFilters'] = $values;
         }
-        if ($data->isInitialized('aggregators')) {
+        if ($data->isInitialized('aggregators') && null !== $data->getAggregators()) {
             $values_1 = [];
             foreach ($data->getAggregators() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['aggregators'] = $values_1;
         }
-        if ($data->isInitialized('filter')) {
+        if ($data->isInitialized('filter') && null !== $data->getFilter()) {
             $dataArray['filter'] = $data->getFilter();
         }
         $dataArray['limit'] = $data->getLimit();
-        if ($data->isInitialized('pageToken')) {
+        if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
             $dataArray['pageToken'] = $data->getPageToken();
         }
-        if ($data->isInitialized('searchString')) {
+        if ($data->isInitialized('searchString') && null !== $data->getSearchString()) {
             $dataArray['searchString'] = $data->getSearchString();
         }
-        if ($data->isInitialized('searchBehaviors')) {
+        if ($data->isInitialized('searchBehaviors') && null !== $data->getSearchBehaviors()) {
             $values_2 = [];
             foreach ($data->getSearchBehaviors() as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['searchBehaviors'] = $values_2;
         }
-        if ($data->isInitialized('sort')) {
+        if ($data->isInitialized('sort') && null !== $data->getSort()) {
             $values_3 = [];
             foreach ($data->getSort() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['sort'] = $values_3;
         }

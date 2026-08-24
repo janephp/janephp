@@ -80,21 +80,21 @@ class SystemDataPlaneConfigurationNormalizer implements DenormalizerInterface, N
             $dataArray['interfaceMode'] = $data->getInterfaceMode();
         }
         if ($data->isInitialized('primaryInterface') && null !== $data->getPrimaryInterface()) {
-            $dataArray['primaryInterface'] = $this->normalizer->normalize($data->getPrimaryInterface(), 'json', $context);
+            $dataArray['primaryInterface'] = $data->getPrimaryInterface() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getPrimaryInterface(), 'json', $context));
         }
         if ($data->isInitialized('ipv6PrimaryInterface') && null !== $data->getIpv6PrimaryInterface()) {
-            $dataArray['ipv6PrimaryInterface'] = $this->normalizer->normalize($data->getIpv6PrimaryInterface(), 'json', $context);
+            $dataArray['ipv6PrimaryInterface'] = $data->getIpv6PrimaryInterface() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIpv6PrimaryInterface(), 'json', $context));
         }
         if ($data->isInitialized('ipv6SecondaryInterface') && null !== $data->getIpv6SecondaryInterface()) {
-            $dataArray['ipv6SecondaryInterface'] = $this->normalizer->normalize($data->getIpv6SecondaryInterface(), 'json', $context);
+            $dataArray['ipv6SecondaryInterface'] = $data->getIpv6SecondaryInterface() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIpv6SecondaryInterface(), 'json', $context));
         }
         if ($data->isInitialized('secondaryInterface') && null !== $data->getSecondaryInterface()) {
-            $dataArray['secondaryInterface'] = $this->normalizer->normalize($data->getSecondaryInterface(), 'json', $context);
+            $dataArray['secondaryInterface'] = $data->getSecondaryInterface() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSecondaryInterface(), 'json', $context));
         }
         if ($data->isInitialized('staticRoute') && null !== $data->getStaticRoute()) {
             $values = [];
             foreach ($data->getStaticRoute() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['staticRoute'] = $values;
         }

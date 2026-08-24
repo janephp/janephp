@@ -66,16 +66,16 @@ class CustomerAppNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('appId')) {
+        if ($data->isInitialized('appId') && null !== $data->getAppId()) {
             $dataArray['appId'] = $data->getAppId();
         }
-        if ($data->isInitialized('name')) {
+        if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('description')) {
+        if ($data->isInitialized('description') && null !== $data->getDescription()) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('icon')) {
+        if ($data->isInitialized('icon') && null !== $data->getIcon()) {
             $dataArray['icon'] = $data->getIcon();
         }
         return $dataArray;

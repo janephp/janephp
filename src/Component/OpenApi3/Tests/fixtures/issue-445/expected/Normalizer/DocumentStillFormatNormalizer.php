@@ -66,10 +66,10 @@ class DocumentStillFormatNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
-        if ($data->isInitialized('extension')) {
+        if ($data->isInitialized('extension') && null !== $data->getExtension()) {
             $dataArray['extension'] = $data->getExtension();
         }
-        if ($data->isInitialized('resizeAction')) {
+        if ($data->isInitialized('resizeAction') && null !== $data->getResizeAction()) {
             $dataArray['resizeAction'] = $data->getResizeAction();
         }
         foreach ($data as $key => $value) {

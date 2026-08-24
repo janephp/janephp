@@ -122,7 +122,7 @@ class ApiKnowledgeBaseNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['is_public'] = $data->getIsPublic();
         }
         if ($data->isInitialized('lastIndexingJob') && null !== $data->getLastIndexingJob()) {
-            $dataArray['last_indexing_job'] = $this->normalizer->normalize($data->getLastIndexingJob(), 'json', $context);
+            $dataArray['last_indexing_job'] = $data->getLastIndexingJob() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLastIndexingJob(), 'json', $context));
         }
         if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();

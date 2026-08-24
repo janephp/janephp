@@ -118,7 +118,7 @@ class ExpansionsNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('polls') && null !== $data->getPolls()) {
             $values_4 = [];
             foreach ($data->getPolls() as $value_4) {
-                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[] = $value_4 === null ? null : new \Jane\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['polls'] = $values_4;
         }

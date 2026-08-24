@@ -76,7 +76,7 @@ class ContainerSummaryNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setSizeRootFs($data['SizeRootFs']);
         }
         if (\array_key_exists('Labels', $data)) {
-            $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_2 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data['Labels'] as $key => $value_2) {
                 $values_2[$key] = $value_2;
             }
@@ -131,7 +131,7 @@ class ContainerSummaryNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('ports') && null !== $data->getPorts()) {
             $values_1 = [];
             foreach ($data->getPorts() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $value_1 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['Ports'] = $values_1;
         }
@@ -142,7 +142,7 @@ class ContainerSummaryNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['SizeRootFs'] = $data->getSizeRootFs();
         }
         if ($data->isInitialized('labels') && null !== $data->getLabels()) {
-            $values_2 = [];
+            $values_2 = new \Docker\Api\Runtime\JsonObject();
             foreach ($data->getLabels() as $key => $value_2) {
                 $values_2[$key] = $value_2;
             }
@@ -155,15 +155,15 @@ class ContainerSummaryNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['Status'] = $data->getStatus();
         }
         if ($data->isInitialized('hostConfig') && null !== $data->getHostConfig()) {
-            $dataArray['HostConfig'] = $this->normalizer->normalize($data->getHostConfig(), 'json', $context);
+            $dataArray['HostConfig'] = $data->getHostConfig() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getHostConfig(), 'json', $context));
         }
         if ($data->isInitialized('networkSettings') && null !== $data->getNetworkSettings()) {
-            $dataArray['NetworkSettings'] = $this->normalizer->normalize($data->getNetworkSettings(), 'json', $context);
+            $dataArray['NetworkSettings'] = $data->getNetworkSettings() === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($data->getNetworkSettings(), 'json', $context));
         }
         if ($data->isInitialized('mounts') && null !== $data->getMounts()) {
             $values_3 = [];
             foreach ($data->getMounts() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+                $values_3[] = $value_3 === null ? null : new \Docker\Api\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['Mounts'] = $values_3;
         }
