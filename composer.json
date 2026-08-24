@@ -78,6 +78,7 @@
     },
     "autoload-dev": {
         "classmap": [
+            "src/Component/JsonSchema/Tests/",
             "src/Component/OpenApi2/Tests/",
             "src/Component/OpenApi3/Tests/"
         ],

@@ -5,6 +5,9 @@
             "properties": {
                 "foo": {
                     "type": "string"
+                },
+                "bar": {
+                    "$ref": "schema3.json#/definitions/Bar"
                 }
             }
         }

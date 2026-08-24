@@ -120,12 +120,17 @@ class ObjectType extends Type
         return $this->className;
     }
 
-    private function getFqdn(bool $withRoot = true): string
+    public function getFqdn(bool $withRoot = true): string
     {
         if ($withRoot) {
             return '\\' . $this->namespace . '\\Model\\' . $this->className;
         }
 
         return $this->namespace . '\\Model\\' . $this->className;
+    }
+
+    public function getNamespace(): string
+    {
+        return $this->namespace;
     }
 }

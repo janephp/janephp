@@ -4,6 +4,7 @@ namespace Jane\Component\JsonSchema\Generator;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\Normalizer\DenormalizerGenerator;
+use Jane\Component\JsonSchema\Generator\Normalizer\ExternalNormalizersResolver;
 use Jane\Component\JsonSchema\Generator\Normalizer\JaneObjectNormalizerGenerator;
 use Jane\Component\JsonSchema\Generator\Normalizer\NormalizerGenerator as NormalizerGeneratorTrait;
 use Jane\Component\JsonSchema\Guesser\Guess\NonObjectGuessInterface;
@@ -107,6 +108,10 @@ class NormalizerGenerator implements GeneratorInterface
             $normalizers[$modelFqdn] = $schema->getNamespace() . '\\Normalizer\\' . $symfony7NormalizerClass->name;
             $schema->addFile(new File($schema->getDirectory() . '/Normalizer/' . $symfony7NormalizerClass->name . '.php', $namespace, self::FILE_TYPE_NORMALIZER));
         }
+
+        // Add normalizers of models from other schemas transitively used by this schema's models,
+        // so the generated JaneObjectNormalizer can handle them at runtime.
+        $normalizers += (new ExternalNormalizersResolver())->resolve($schema, $context->getRegistry());
 
         $schema->addFile(new File(
             $schema->getDirectory() . '/Normalizer/JaneObjectNormalizer.php',

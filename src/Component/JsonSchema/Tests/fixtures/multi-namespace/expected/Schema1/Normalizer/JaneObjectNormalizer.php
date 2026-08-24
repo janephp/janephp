@@ -19,6 +19,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     protected $normalizers = [
         
         \Jane\Component\JsonSchema\Tests\Expected\Schema1\Model\Test::class => \Jane\Component\JsonSchema\Tests\Expected\Schema1\Normalizer\TestNormalizer::class,
+        
+        \Jane\Component\JsonSchema\Tests\Expected\Schema2\Model\Foo::class => \Jane\Component\JsonSchema\Tests\Expected\Schema2\Normalizer\FooNormalizer::class,
+        
+        \Jane\Component\JsonSchema\Tests\Expected\Schema3\Model\Bar::class => \Jane\Component\JsonSchema\Tests\Expected\Schema3\Normalizer\BarNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
@@ -57,6 +61,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         return [
             
             \Jane\Component\JsonSchema\Tests\Expected\Schema1\Model\Test::class => false,
+            \Jane\Component\JsonSchema\Tests\Expected\Schema2\Model\Foo::class => false,
+            \Jane\Component\JsonSchema\Tests\Expected\Schema3\Model\Bar::class => false,
         ];
     }
 }
