@@ -155,6 +155,20 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
             }
         }
 
+        if (method_exists($property, 'getAllOf')) {
+            if (\count($allOf = ($property->getAllOf() ?? [])) > 0) {
+                $schemaClass = $this->getSchemaClass();
+                foreach ($allOf as $allOfProperty) {
+                    if (!($allOfProperty instanceof $schemaClass)) {
+                        continue;
+                    }
+                    if ($this->isPropertyNullable($allOfProperty)) {
+                        return true;
+                    }
+                }
+            }
+        }
+
         $type = $property->getType();
 
         return 'null' == $type || (\is_array($type) && \in_array('null', $type));

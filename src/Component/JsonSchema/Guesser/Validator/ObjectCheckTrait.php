@@ -16,4 +16,24 @@ trait ObjectCheckTrait
 
         return false;
     }
+
+    /**
+     * Whether the schema allows null values in addition to its other types.
+     */
+    public function isNullable(object $object): bool
+    {
+        if (\get_class($object) === JsonSchema::class) {
+            return \is_array($object->getType()) ? \in_array('null', $object->getType()) : 'null' === $object->getType();
+        }
+
+        if (\get_class($object) === 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\Schema') {
+            return $object->offsetExists('x-nullable') && \is_bool($object->offsetGet('x-nullable')) && $object->offsetGet('x-nullable');
+        }
+
+        if (\get_class($object) === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Schema') {
+            return method_exists($object, 'getNullable') && $object->getNullable() ?? false;
+        }
+
+        return false;
+    }
 }

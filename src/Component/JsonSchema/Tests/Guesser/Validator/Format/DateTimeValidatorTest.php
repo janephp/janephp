@@ -7,6 +7,7 @@ use Jane\Component\JsonSchema\Guesser\Validator\Format\DateTimeValidator;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class DateTimeValidatorTest extends TestCase
 {
@@ -51,9 +52,11 @@ class DateTimeValidatorTest extends TestCase
         (new DateTimeValidator(\DateTimeInterface::RFC3339))->guess(new JsonSchema(), 'updatedAt', $guess);
 
         $guesses = $guess->getValidatorGuesses();
-        self::assertCount(1, $guesses);
+        self::assertCount(2, $guesses);
         self::assertSame(DateTime::class, $guesses[0]->getConstraintClass());
         self::assertSame(['format' => \DateTimeInterface::RFC3339], $guesses[0]->getArguments());
+        self::assertSame(NotBlank::class, $guesses[1]->getConstraintClass());
+        self::assertSame([], $guesses[1]->getArguments());
     }
 
     public function testGuessPrefersInputFormatWhenProvided(): void
@@ -63,8 +66,10 @@ class DateTimeValidatorTest extends TestCase
         (new DateTimeValidator(\DateTimeInterface::RFC3339, 'd/m/Y H:i:s'))->guess(new JsonSchema(), 'updatedAt', $guess);
 
         $guesses = $guess->getValidatorGuesses();
-        self::assertCount(1, $guesses);
+        self::assertCount(2, $guesses);
         self::assertSame(DateTime::class, $guesses[0]->getConstraintClass());
         self::assertSame(['format' => 'd/m/Y H:i:s'], $guesses[0]->getArguments());
+        self::assertSame(NotBlank::class, $guesses[1]->getConstraintClass());
+        self::assertSame([], $guesses[1]->getArguments());
     }
 }

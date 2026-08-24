@@ -8,6 +8,7 @@ use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class DateValidatorTest extends TestCase
 {
@@ -52,9 +53,11 @@ class DateValidatorTest extends TestCase
         (new DateValidator('Y-m-d'))->guess(new JsonSchema(), 'ticketDate', $guess);
 
         $guesses = $guess->getValidatorGuesses();
-        self::assertCount(1, $guesses);
+        self::assertCount(2, $guesses);
         self::assertSame(Date::class, $guesses[0]->getConstraintClass());
         self::assertSame([], $guesses[0]->getArguments());
+        self::assertSame(NotBlank::class, $guesses[1]->getConstraintClass());
+        self::assertSame([], $guesses[1]->getArguments());
     }
 
     public function testGuessUsesDateTimeConstraintForCustomFormat(): void
@@ -64,8 +67,10 @@ class DateValidatorTest extends TestCase
         (new DateValidator('d.m.Y'))->guess(new JsonSchema(), 'ticketDate', $guess);
 
         $guesses = $guess->getValidatorGuesses();
-        self::assertCount(1, $guesses);
+        self::assertCount(2, $guesses);
         self::assertSame(DateTime::class, $guesses[0]->getConstraintClass());
         self::assertSame(['format' => 'd.m.Y'], $guesses[0]->getArguments());
+        self::assertSame(NotBlank::class, $guesses[1]->getConstraintClass());
+        self::assertSame([], $guesses[1]->getArguments());
     }
 }
