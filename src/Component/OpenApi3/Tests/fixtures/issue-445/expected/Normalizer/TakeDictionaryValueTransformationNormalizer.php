@@ -43,6 +43,7 @@ class TakeDictionaryValueTransformationNormalizer implements DenormalizerInterfa
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
+            unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -54,6 +55,7 @@ class TakeDictionaryValueTransformationNormalizer implements DenormalizerInterfa
         }
         elseif (\array_key_exists('key', $data) && $data['key'] === null) {
             $object->setKey(null);
+            unset($data['key']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -56,6 +56,7 @@ class MarketplacePurchaseMarketplacePurchaseNormalizer implements DenormalizerIn
         }
         elseif (\array_key_exists('next_billing_date', $data) && $data['next_billing_date'] === null) {
             $object->setNextBillingDate(null);
+            unset($data['next_billing_date']);
         }
         if (\array_key_exists('is_installed', $data)) {
             $object->setIsInstalled($data['is_installed']);
@@ -67,6 +68,7 @@ class MarketplacePurchaseMarketplacePurchaseNormalizer implements DenormalizerIn
         }
         elseif (\array_key_exists('unit_count', $data) && $data['unit_count'] === null) {
             $object->setUnitCount(null);
+            unset($data['unit_count']);
         }
         if (\array_key_exists('on_free_trial', $data)) {
             $object->setOnFreeTrial($data['on_free_trial']);
@@ -78,6 +80,7 @@ class MarketplacePurchaseMarketplacePurchaseNormalizer implements DenormalizerIn
         }
         elseif (\array_key_exists('free_trial_ends_on', $data) && $data['free_trial_ends_on'] === null) {
             $object->setFreeTrialEndsOn(null);
+            unset($data['free_trial_ends_on']);
         }
         if (\array_key_exists('updated_at', $data)) {
             $object->setUpdatedAt($data['updated_at']);

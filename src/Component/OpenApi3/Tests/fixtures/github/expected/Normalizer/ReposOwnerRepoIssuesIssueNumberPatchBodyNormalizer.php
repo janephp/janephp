@@ -62,6 +62,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchBodyNormalizer implements Denormalizer
         }
         elseif (\array_key_exists('milestone', $data) && $data['milestone'] === null) {
             $object->setMilestone(null);
+            unset($data['milestone']);
         }
         if (\array_key_exists('labels', $data)) {
             $values = [];

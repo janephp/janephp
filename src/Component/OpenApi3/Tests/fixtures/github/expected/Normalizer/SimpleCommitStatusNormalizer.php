@@ -49,6 +49,7 @@ class SimpleCommitStatusNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+            unset($data['description']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
@@ -76,6 +77,7 @@ class SimpleCommitStatusNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('required', $data) && $data['required'] === null) {
             $object->setRequired(null);
+            unset($data['required']);
         }
         if (\array_key_exists('avatar_url', $data) && $data['avatar_url'] !== null) {
             $object->setAvatarUrl($data['avatar_url']);
@@ -83,6 +85,7 @@ class SimpleCommitStatusNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('avatar_url', $data) && $data['avatar_url'] === null) {
             $object->setAvatarUrl(null);
+            unset($data['avatar_url']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);

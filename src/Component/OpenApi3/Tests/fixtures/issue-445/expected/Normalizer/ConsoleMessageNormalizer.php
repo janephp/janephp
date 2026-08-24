@@ -46,6 +46,7 @@ class ConsoleMessageNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
+            unset($data['id']);
         }
         if (\array_key_exists('retries', $data)) {
             $object->setRetries($data['retries']);
@@ -69,6 +70,7 @@ class ConsoleMessageNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('command', $data) && $data['command'] === null) {
             $object->setCommand(null);
+            unset($data['command']);
         }
         if (\array_key_exists('arguments', $data) && $data['arguments'] !== null) {
             $values = [];
@@ -80,6 +82,7 @@ class ConsoleMessageNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('arguments', $data) && $data['arguments'] === null) {
             $object->setArguments(null);
+            unset($data['arguments']);
         }
         if (\array_key_exists('targetQueue', $data) && $data['targetQueue'] !== null) {
             $object->setTargetQueue($data['targetQueue']);
@@ -87,6 +90,7 @@ class ConsoleMessageNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('targetQueue', $data) && $data['targetQueue'] === null) {
             $object->setTargetQueue(null);
+            unset($data['targetQueue']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

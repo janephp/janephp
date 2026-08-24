@@ -62,6 +62,7 @@ class ContentSearchResultNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
             $object->setPageToken(null);
+            unset($data['pageToken']);
         }
         if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
             $object->setSearchString($data['searchString']);
@@ -69,6 +70,7 @@ class ContentSearchResultNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
             $object->setSearchString(null);
+            unset($data['searchString']);
         }
         if (\array_key_exists('isSearchStringRewritten', $data)) {
             $object->setIsSearchStringRewritten($data['isSearchStringRewritten']);
@@ -84,6 +86,7 @@ class ContentSearchResultNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('queryDebugInformation', $data) && $data['queryDebugInformation'] === null) {
             $object->setQueryDebugInformation(null);
+            unset($data['queryDebugInformation']);
         }
         if (\array_key_exists('aggregationResults', $data) && $data['aggregationResults'] !== null) {
             $values_2 = [];
@@ -95,6 +98,7 @@ class ContentSearchResultNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('aggregationResults', $data) && $data['aggregationResults'] === null) {
             $object->setAggregationResults(null);
+            unset($data['aggregationResults']);
         }
         if (\array_key_exists('rightsAggregationsCounts', $data) && $data['rightsAggregationsCounts'] !== null) {
             $values_3 = [];
@@ -106,6 +110,7 @@ class ContentSearchResultNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('rightsAggregationsCounts', $data) && $data['rightsAggregationsCounts'] === null) {
             $object->setRightsAggregationsCounts(null);
+            unset($data['rightsAggregationsCounts']);
         }
         foreach ($data as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {

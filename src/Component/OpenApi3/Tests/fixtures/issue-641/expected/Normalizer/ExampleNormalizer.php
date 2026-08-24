@@ -46,6 +46,7 @@ class ExampleNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         elseif (\array_key_exists('property1', $data) && $data['property1'] === null) {
             $object->setProperty1(null);
+            unset($data['property1']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -51,6 +51,7 @@ class TransferEventNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('transferId', $data) && $data['transferId'] === null) {
             $object->setTransferId(null);
+            unset($data['transferId']);
         }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);

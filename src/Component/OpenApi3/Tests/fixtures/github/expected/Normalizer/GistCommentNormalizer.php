@@ -62,6 +62,7 @@ class GistCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
+            unset($data['user']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));

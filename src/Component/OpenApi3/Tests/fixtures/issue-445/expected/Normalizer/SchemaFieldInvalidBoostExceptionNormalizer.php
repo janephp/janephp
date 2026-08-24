@@ -50,6 +50,7 @@ class SchemaFieldInvalidBoostExceptionNormalizer implements DenormalizerInterfac
         }
         elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
             $object->setTraceId(null);
+            unset($data['traceId']);
         }
         if (\array_key_exists('traceJobId', $data) && $data['traceJobId'] !== null) {
             $object->setTraceJobId($data['traceJobId']);
@@ -57,6 +58,7 @@ class SchemaFieldInvalidBoostExceptionNormalizer implements DenormalizerInterfac
         }
         elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
             $object->setTraceJobId(null);
+            unset($data['traceJobId']);
         }
         if (\array_key_exists('httpStatusCode', $data)) {
             $object->setHttpStatusCode($data['httpStatusCode']);
@@ -68,6 +70,7 @@ class SchemaFieldInvalidBoostExceptionNormalizer implements DenormalizerInterfac
         }
         elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
             $object->setExceptionMessage(null);
+            unset($data['exceptionMessage']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -79,6 +82,7 @@ class SchemaFieldInvalidBoostExceptionNormalizer implements DenormalizerInterfac
         }
         elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
             $object->setCustomerId(null);
+            unset($data['customerId']);
         }
         if (\array_key_exists('customerAlias', $data) && $data['customerAlias'] !== null) {
             $object->setCustomerAlias($data['customerAlias']);
@@ -86,6 +90,7 @@ class SchemaFieldInvalidBoostExceptionNormalizer implements DenormalizerInterfac
         }
         elseif (\array_key_exists('customerAlias', $data) && $data['customerAlias'] === null) {
             $object->setCustomerAlias(null);
+            unset($data['customerAlias']);
         }
         if (\array_key_exists('userId', $data) && $data['userId'] !== null) {
             $object->setUserId($data['userId']);
@@ -93,6 +98,7 @@ class SchemaFieldInvalidBoostExceptionNormalizer implements DenormalizerInterfac
         }
         elseif (\array_key_exists('userId', $data) && $data['userId'] === null) {
             $object->setUserId(null);
+            unset($data['userId']);
         }
         if (\array_key_exists('fieldId', $data) && $data['fieldId'] !== null) {
             $object->setFieldId($data['fieldId']);
@@ -100,6 +106,7 @@ class SchemaFieldInvalidBoostExceptionNormalizer implements DenormalizerInterfac
         }
         elseif (\array_key_exists('fieldId', $data) && $data['fieldId'] === null) {
             $object->setFieldId(null);
+            unset($data['fieldId']);
         }
         if (\array_key_exists('schemaId', $data) && $data['schemaId'] !== null) {
             $object->setSchemaId($data['schemaId']);
@@ -107,6 +114,7 @@ class SchemaFieldInvalidBoostExceptionNormalizer implements DenormalizerInterfac
         }
         elseif (\array_key_exists('schemaId', $data) && $data['schemaId'] === null) {
             $object->setSchemaId(null);
+            unset($data['schemaId']);
         }
         if (\array_key_exists('boost', $data)) {
             $object->setBoost($data['boost']);
@@ -122,6 +130,7 @@ class SchemaFieldInvalidBoostExceptionNormalizer implements DenormalizerInterfac
         }
         elseif (\array_key_exists('allowedBoostValues', $data) && $data['allowedBoostValues'] === null) {
             $object->setAllowedBoostValues(null);
+            unset($data['allowedBoostValues']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

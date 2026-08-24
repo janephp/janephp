@@ -62,6 +62,7 @@ class SimpleCommitNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('author', $data) && $data['author'] === null) {
             $object->setAuthor(null);
+            unset($data['author']);
         }
         if (\array_key_exists('committer', $data) && $data['committer'] !== null) {
             $object->setCommitter($this->denormalizer->denormalize($data['committer'], \Github\Model\SimpleCommitCommitter::class, 'json', $context));
@@ -69,6 +70,7 @@ class SimpleCommitNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('committer', $data) && $data['committer'] === null) {
             $object->setCommitter(null);
+            unset($data['committer']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

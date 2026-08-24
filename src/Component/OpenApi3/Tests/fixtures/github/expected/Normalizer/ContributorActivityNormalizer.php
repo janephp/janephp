@@ -46,6 +46,7 @@ class ContributorActivityNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('author', $data) && $data['author'] === null) {
             $object->setAuthor(null);
+            unset($data['author']);
         }
         if (\array_key_exists('total', $data)) {
             $object->setTotal($data['total']);

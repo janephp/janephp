@@ -58,6 +58,7 @@ class AuthorizationNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('scopes', $data) && $data['scopes'] === null) {
             $object->setScopes(null);
+            unset($data['scopes']);
         }
         if (\array_key_exists('token', $data)) {
             $object->setToken($data['token']);
@@ -69,6 +70,7 @@ class AuthorizationNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('token_last_eight', $data) && $data['token_last_eight'] === null) {
             $object->setTokenLastEight(null);
+            unset($data['token_last_eight']);
         }
         if (\array_key_exists('hashed_token', $data) && $data['hashed_token'] !== null) {
             $object->setHashedToken($data['hashed_token']);
@@ -76,6 +78,7 @@ class AuthorizationNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('hashed_token', $data) && $data['hashed_token'] === null) {
             $object->setHashedToken(null);
+            unset($data['hashed_token']);
         }
         if (\array_key_exists('app', $data)) {
             $object->setApp($this->denormalizer->denormalize($data['app'], \Github\Model\AuthorizationApp::class, 'json', $context));
@@ -87,6 +90,7 @@ class AuthorizationNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('note', $data) && $data['note'] === null) {
             $object->setNote(null);
+            unset($data['note']);
         }
         if (\array_key_exists('note_url', $data) && $data['note_url'] !== null) {
             $object->setNoteUrl($data['note_url']);
@@ -94,6 +98,7 @@ class AuthorizationNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('note_url', $data) && $data['note_url'] === null) {
             $object->setNoteUrl(null);
+            unset($data['note_url']);
         }
         if (\array_key_exists('updated_at', $data)) {
             $object->setUpdatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updated_at']));
@@ -109,6 +114,7 @@ class AuthorizationNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('fingerprint', $data) && $data['fingerprint'] === null) {
             $object->setFingerprint(null);
+            unset($data['fingerprint']);
         }
         if (\array_key_exists('user', $data) && $data['user'] !== null) {
             $object->setUser($this->denormalizer->denormalize($data['user'], \Github\Model\AuthorizationUser::class, 'json', $context));
@@ -116,6 +122,7 @@ class AuthorizationNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
+            unset($data['user']);
         }
         if (\array_key_exists('installation', $data) && $data['installation'] !== null) {
             $object->setInstallation($this->denormalizer->denormalize($data['installation'], \Github\Model\AuthorizationInstallation::class, 'json', $context));
@@ -123,6 +130,7 @@ class AuthorizationNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('installation', $data) && $data['installation'] === null) {
             $object->setInstallation(null);
+            unset($data['installation']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

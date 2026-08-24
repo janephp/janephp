@@ -86,6 +86,7 @@ class SnapshotsNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
             $object->setTags(null);
+            unset($data['tags']);
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

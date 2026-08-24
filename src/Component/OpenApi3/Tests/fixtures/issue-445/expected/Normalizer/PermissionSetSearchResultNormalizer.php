@@ -62,6 +62,7 @@ class PermissionSetSearchResultNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('pageToken', $data) && $data['pageToken'] === null) {
             $object->setPageToken(null);
+            unset($data['pageToken']);
         }
         if (\array_key_exists('searchString', $data) && $data['searchString'] !== null) {
             $object->setSearchString($data['searchString']);
@@ -69,6 +70,7 @@ class PermissionSetSearchResultNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('searchString', $data) && $data['searchString'] === null) {
             $object->setSearchString(null);
+            unset($data['searchString']);
         }
         if (\array_key_exists('isSearchStringRewritten', $data)) {
             $object->setIsSearchStringRewritten($data['isSearchStringRewritten']);
@@ -84,6 +86,7 @@ class PermissionSetSearchResultNormalizer implements DenormalizerInterface, Norm
         }
         elseif (\array_key_exists('queryDebugInformation', $data) && $data['queryDebugInformation'] === null) {
             $object->setQueryDebugInformation(null);
+            unset($data['queryDebugInformation']);
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

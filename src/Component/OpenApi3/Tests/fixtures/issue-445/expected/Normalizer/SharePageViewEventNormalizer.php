@@ -51,6 +51,7 @@ class SharePageViewEventNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('shareToken', $data) && $data['shareToken'] === null) {
             $object->setShareToken(null);
+            unset($data['shareToken']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

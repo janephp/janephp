@@ -68,6 +68,7 @@ class ReleaseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         elseif (\array_key_exists('tarball_url', $data) && $data['tarball_url'] === null) {
             $object->setTarballUrl(null);
+            unset($data['tarball_url']);
         }
         if (\array_key_exists('zipball_url', $data) && $data['zipball_url'] !== null) {
             $object->setZipballUrl($data['zipball_url']);
@@ -75,6 +76,7 @@ class ReleaseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         elseif (\array_key_exists('zipball_url', $data) && $data['zipball_url'] === null) {
             $object->setZipballUrl(null);
+            unset($data['zipball_url']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
@@ -98,6 +100,7 @@ class ReleaseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         elseif (\array_key_exists('name', $data) && $data['name'] === null) {
             $object->setName(null);
+            unset($data['name']);
         }
         if (\array_key_exists('body', $data) && $data['body'] !== null) {
             $object->setBody($data['body']);
@@ -105,6 +108,7 @@ class ReleaseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         elseif (\array_key_exists('body', $data) && $data['body'] === null) {
             $object->setBody(null);
+            unset($data['body']);
         }
         if (\array_key_exists('draft', $data)) {
             $object->setDraft($data['draft']);
@@ -124,6 +128,7 @@ class ReleaseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         elseif (\array_key_exists('published_at', $data) && $data['published_at'] === null) {
             $object->setPublishedAt(null);
+            unset($data['published_at']);
         }
         if (\array_key_exists('author', $data) && $data['author'] !== null) {
             $object->setAuthor($this->denormalizer->denormalize($data['author'], \Github\Model\SimpleUser::class, 'json', $context));
@@ -131,6 +136,7 @@ class ReleaseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         elseif (\array_key_exists('author', $data) && $data['author'] === null) {
             $object->setAuthor(null);
+            unset($data['author']);
         }
         if (\array_key_exists('assets', $data)) {
             $values = [];

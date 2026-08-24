@@ -70,6 +70,7 @@ class TeamFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+            unset($data['description']);
         }
         if (\array_key_exists('privacy', $data)) {
             $object->setPrivacy($data['privacy']);
@@ -93,6 +94,7 @@ class TeamFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         elseif (\array_key_exists('parent', $data) && $data['parent'] === null) {
             $object->setParent(null);
+            unset($data['parent']);
         }
         if (\array_key_exists('members_count', $data)) {
             $object->setMembersCount($data['members_count']);

@@ -104,6 +104,7 @@ class BaseGistNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+            unset($data['description']);
         }
         if (\array_key_exists('comments', $data)) {
             $object->setComments($data['comments']);
@@ -115,6 +116,7 @@ class BaseGistNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
+            unset($data['user']);
         }
         if (\array_key_exists('comments_url', $data)) {
             $object->setCommentsUrl($data['comments_url']);
@@ -126,6 +128,7 @@ class BaseGistNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         elseif (\array_key_exists('owner', $data) && $data['owner'] === null) {
             $object->setOwner(null);
+            unset($data['owner']);
         }
         if (\array_key_exists('truncated', $data)) {
             $object->setTruncated($data['truncated']);

@@ -51,6 +51,7 @@ class FileTransferDetailNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('identifier', $data) && $data['identifier'] === null) {
             $object->setIdentifier(null);
+            unset($data['identifier']);
         }
         if (\array_key_exists('requestId', $data)) {
             $object->setRequestId($data['requestId']);
@@ -70,6 +71,7 @@ class FileTransferDetailNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('contentId', $data) && $data['contentId'] === null) {
             $object->setContentId(null);
+            unset($data['contentId']);
         }
         if (\array_key_exists('audit', $data)) {
             $object->setAudit($data['audit']);
@@ -81,6 +83,7 @@ class FileTransferDetailNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('fileMetadata', $data) && $data['fileMetadata'] === null) {
             $object->setFileMetadata(null);
+            unset($data['fileMetadata']);
         }
         if (\array_key_exists('outputItems', $data) && $data['outputItems'] !== null) {
             $values = [];
@@ -92,6 +95,7 @@ class FileTransferDetailNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('outputItems', $data) && $data['outputItems'] === null) {
             $object->setOutputItems(null);
+            unset($data['outputItems']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

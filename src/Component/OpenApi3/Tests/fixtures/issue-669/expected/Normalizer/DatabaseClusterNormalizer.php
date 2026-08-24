@@ -91,6 +91,7 @@ class DatabaseClusterNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
             $object->setTags(null);
+            unset($data['tags']);
         }
         if (\array_key_exists('db_names', $data) && $data['db_names'] !== null) {
             $values_1 = [];
@@ -102,6 +103,7 @@ class DatabaseClusterNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('db_names', $data) && $data['db_names'] === null) {
             $object->setDbNames(null);
+            unset($data['db_names']);
         }
         if (\array_key_exists('ui_connection', $data)) {
             $object->setUiConnection($this->denormalizer->denormalize($data['ui_connection'], \Jane\Generated\DigitalOcean\Model\DatabaseClusterUiConnection::class, 'json', $context));
@@ -137,6 +139,7 @@ class DatabaseClusterNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('users', $data) && $data['users'] === null) {
             $object->setUsers(null);
+            unset($data['users']);
         }
         if (\array_key_exists('maintenance_window', $data)) {
             $object->setMaintenanceWindow($this->denormalizer->denormalize($data['maintenance_window'], \Jane\Generated\DigitalOcean\Model\DatabaseClusterMaintenanceWindow::class, 'json', $context));

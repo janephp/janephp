@@ -58,6 +58,7 @@ class PageBuildNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         elseif (\array_key_exists('pusher', $data) && $data['pusher'] === null) {
             $object->setPusher(null);
+            unset($data['pusher']);
         }
         if (\array_key_exists('commit', $data)) {
             $object->setCommit($data['commit']);

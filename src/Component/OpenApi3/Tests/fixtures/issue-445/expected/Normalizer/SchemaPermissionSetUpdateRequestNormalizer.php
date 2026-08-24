@@ -51,6 +51,7 @@ class SchemaPermissionSetUpdateRequestNormalizer implements DenormalizerInterfac
         }
         elseif (\array_key_exists('userRolesRights', $data) && $data['userRolesRights'] === null) {
             $object->setUserRolesRights(null);
+            unset($data['userRolesRights']);
         }
         if (\array_key_exists('userRolesPermissionSetRights', $data) && $data['userRolesPermissionSetRights'] !== null) {
             $values_1 = [];
@@ -62,6 +63,7 @@ class SchemaPermissionSetUpdateRequestNormalizer implements DenormalizerInterfac
         }
         elseif (\array_key_exists('userRolesPermissionSetRights', $data) && $data['userRolesPermissionSetRights'] === null) {
             $object->setUserRolesPermissionSetRights(null);
+            unset($data['userRolesPermissionSetRights']);
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

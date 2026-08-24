@@ -65,6 +65,7 @@ class PullRequestLabelsItemNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+            unset($data['description']);
         }
         if (\array_key_exists('color', $data)) {
             $object->setColor($data['color']);

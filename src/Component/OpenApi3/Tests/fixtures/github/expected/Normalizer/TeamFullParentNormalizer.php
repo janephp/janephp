@@ -66,6 +66,7 @@ class TeamFullParentNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+            unset($data['description']);
         }
         if (\array_key_exists('permission', $data)) {
             $object->setPermission($data['permission']);

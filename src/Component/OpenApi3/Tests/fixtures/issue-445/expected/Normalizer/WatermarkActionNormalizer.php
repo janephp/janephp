@@ -56,6 +56,7 @@ class WatermarkActionNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('watermarkFilePath', $data) && $data['watermarkFilePath'] === null) {
             $object->setWatermarkFilePath(null);
+            unset($data['watermarkFilePath']);
         }
         if (\array_key_exists('marginLeft', $data) && $data['marginLeft'] !== null) {
             $object->setMarginLeft($data['marginLeft']);
@@ -63,6 +64,7 @@ class WatermarkActionNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('marginLeft', $data) && $data['marginLeft'] === null) {
             $object->setMarginLeft(null);
+            unset($data['marginLeft']);
         }
         if (\array_key_exists('marginTop', $data) && $data['marginTop'] !== null) {
             $object->setMarginTop($data['marginTop']);
@@ -70,6 +72,7 @@ class WatermarkActionNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('marginTop', $data) && $data['marginTop'] === null) {
             $object->setMarginTop(null);
+            unset($data['marginTop']);
         }
         if (\array_key_exists('marginRight', $data) && $data['marginRight'] !== null) {
             $object->setMarginRight($data['marginRight']);
@@ -77,6 +80,7 @@ class WatermarkActionNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('marginRight', $data) && $data['marginRight'] === null) {
             $object->setMarginRight(null);
+            unset($data['marginRight']);
         }
         if (\array_key_exists('marginBottom', $data) && $data['marginBottom'] !== null) {
             $object->setMarginBottom($data['marginBottom']);
@@ -84,6 +88,7 @@ class WatermarkActionNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('marginBottom', $data) && $data['marginBottom'] === null) {
             $object->setMarginBottom(null);
+            unset($data['marginBottom']);
         }
         if (\array_key_exists('opacity', $data)) {
             $object->setOpacity($data['opacity']);

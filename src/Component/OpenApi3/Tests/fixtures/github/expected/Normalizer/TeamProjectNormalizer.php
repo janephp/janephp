@@ -77,6 +77,7 @@ class TeamProjectNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('body', $data) && $data['body'] === null) {
             $object->setBody(null);
+            unset($data['body']);
         }
         if (\array_key_exists('number', $data)) {
             $object->setNumber($data['number']);
@@ -92,6 +93,7 @@ class TeamProjectNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('creator', $data) && $data['creator'] === null) {
             $object->setCreator(null);
+            unset($data['creator']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt($data['created_at']);

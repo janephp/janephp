@@ -66,6 +66,7 @@ class CommitCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('path', $data) && $data['path'] === null) {
             $object->setPath(null);
+            unset($data['path']);
         }
         if (\array_key_exists('position', $data) && $data['position'] !== null) {
             $object->setPosition($data['position']);
@@ -73,6 +74,7 @@ class CommitCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('position', $data) && $data['position'] === null) {
             $object->setPosition(null);
+            unset($data['position']);
         }
         if (\array_key_exists('line', $data) && $data['line'] !== null) {
             $object->setLine($data['line']);
@@ -80,6 +82,7 @@ class CommitCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('line', $data) && $data['line'] === null) {
             $object->setLine(null);
+            unset($data['line']);
         }
         if (\array_key_exists('commit_id', $data)) {
             $object->setCommitId($data['commit_id']);
@@ -91,6 +94,7 @@ class CommitCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
+            unset($data['user']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));

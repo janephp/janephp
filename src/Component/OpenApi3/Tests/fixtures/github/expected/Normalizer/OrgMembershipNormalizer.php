@@ -66,6 +66,7 @@ class OrgMembershipNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
+            unset($data['user']);
         }
         if (\array_key_exists('permissions', $data)) {
             $object->setPermissions($this->denormalizer->denormalize($data['permissions'], \Github\Model\OrgMembershipPermissions::class, 'json', $context));

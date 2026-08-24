@@ -47,6 +47,7 @@ class ListItemUpdateItemNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('content', $data) && $data['content'] === null) {
             $object->setContent(null);
+            unset($data['content']);
         }
         if (\array_key_exists('contentFieldsUpdateOptions', $data)) {
             $object->setContentFieldsUpdateOptions($data['contentFieldsUpdateOptions']);

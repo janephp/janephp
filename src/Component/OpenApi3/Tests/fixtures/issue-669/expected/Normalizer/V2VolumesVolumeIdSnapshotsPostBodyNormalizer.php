@@ -51,6 +51,7 @@ class V2VolumesVolumeIdSnapshotsPostBodyNormalizer implements DenormalizerInterf
         }
         elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
             $object->setTags(null);
+            unset($data['tags']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

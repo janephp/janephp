@@ -55,6 +55,7 @@ class BookJsonldNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId2(null);
+            unset($data['id']);
         }
         if (\array_key_exists('isbn', $data) && $data['isbn'] !== null) {
             $object->setIsbn($data['isbn']);
@@ -62,6 +63,7 @@ class BookJsonldNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('isbn', $data) && $data['isbn'] === null) {
             $object->setIsbn(null);
+            unset($data['isbn']);
         }
         if (\array_key_exists('title', $data)) {
             $object->setTitle($data['title']);
@@ -93,6 +95,7 @@ class BookJsonldNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('cover', $data) && $data['cover'] === null) {
             $object->setCover(null);
+            unset($data['cover']);
         }
         if (\array_key_exists('archivedAt', $data) && $data['archivedAt'] !== null) {
             $object->setArchivedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['archivedAt']));
@@ -100,6 +103,7 @@ class BookJsonldNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('archivedAt', $data) && $data['archivedAt'] === null) {
             $object->setArchivedAt(null);
+            unset($data['archivedAt']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

@@ -47,6 +47,7 @@ class BusinessProcessDetailsDataSchemaImportNormalizer implements DenormalizerIn
         }
         elseif (\array_key_exists('schemaImportResult', $data) && $data['schemaImportResult'] === null) {
             $object->setSchemaImportResult(null);
+            unset($data['schemaImportResult']);
         }
         if (\array_key_exists('listItemImportResult', $data) && $data['listItemImportResult'] !== null) {
             $object->setListItemImportResult($data['listItemImportResult']);
@@ -54,6 +55,7 @@ class BusinessProcessDetailsDataSchemaImportNormalizer implements DenormalizerIn
         }
         elseif (\array_key_exists('listItemImportResult', $data) && $data['listItemImportResult'] === null) {
             $object->setListItemImportResult(null);
+            unset($data['listItemImportResult']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

@@ -46,6 +46,7 @@ class ScimErrorNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         elseif (\array_key_exists('message', $data) && $data['message'] === null) {
             $object->setMessage(null);
+            unset($data['message']);
         }
         if (\array_key_exists('documentation_url', $data) && $data['documentation_url'] !== null) {
             $object->setDocumentationUrl($data['documentation_url']);
@@ -53,6 +54,7 @@ class ScimErrorNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         elseif (\array_key_exists('documentation_url', $data) && $data['documentation_url'] === null) {
             $object->setDocumentationUrl(null);
+            unset($data['documentation_url']);
         }
         if (\array_key_exists('detail', $data) && $data['detail'] !== null) {
             $object->setDetail($data['detail']);
@@ -60,6 +62,7 @@ class ScimErrorNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         elseif (\array_key_exists('detail', $data) && $data['detail'] === null) {
             $object->setDetail(null);
+            unset($data['detail']);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
@@ -71,6 +74,7 @@ class ScimErrorNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         elseif (\array_key_exists('scimType', $data) && $data['scimType'] === null) {
             $object->setScimType(null);
+            unset($data['scimType']);
         }
         if (\array_key_exists('schemas', $data)) {
             $values = [];

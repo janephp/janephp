@@ -56,6 +56,7 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('account', $data) && $data['account'] === null) {
             $object->setAccount(null);
+            unset($data['account']);
         }
         if (\array_key_exists('repository_selection', $data)) {
             $object->setRepositorySelection($data['repository_selection']);
@@ -111,6 +112,7 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('single_file_name', $data) && $data['single_file_name'] === null) {
             $object->setSingleFileName(null);
+            unset($data['single_file_name']);
         }
         if (\array_key_exists('app_slug', $data)) {
             $object->setAppSlug($data['app_slug']);
@@ -122,6 +124,7 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('suspended_by', $data) && $data['suspended_by'] === null) {
             $object->setSuspendedBy(null);
+            unset($data['suspended_by']);
         }
         if (\array_key_exists('suspended_at', $data) && $data['suspended_at'] !== null) {
             $object->setSuspendedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['suspended_at']));
@@ -129,6 +132,7 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('suspended_at', $data) && $data['suspended_at'] === null) {
             $object->setSuspendedAt(null);
+            unset($data['suspended_at']);
         }
         if (\array_key_exists('contact_email', $data) && $data['contact_email'] !== null) {
             $object->setContactEmail($data['contact_email']);
@@ -136,6 +140,7 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('contact_email', $data) && $data['contact_email'] === null) {
             $object->setContactEmail(null);
+            unset($data['contact_email']);
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

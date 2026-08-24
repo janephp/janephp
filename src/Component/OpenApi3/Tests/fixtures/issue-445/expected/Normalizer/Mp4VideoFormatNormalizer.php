@@ -47,6 +47,7 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('resizeAction', $data) && $data['resizeAction'] === null) {
             $object->setResizeAction(null);
+            unset($data['resizeAction']);
         }
         if (\array_key_exists('audioCodec', $data) && $data['audioCodec'] !== null) {
             $object->setAudioCodec($data['audioCodec']);
@@ -54,6 +55,7 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('audioCodec', $data) && $data['audioCodec'] === null) {
             $object->setAudioCodec(null);
+            unset($data['audioCodec']);
         }
         if (\array_key_exists('preset', $data)) {
             $object->setPreset($data['preset']);
@@ -65,6 +67,7 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
             $object->setExtension(null);
+            unset($data['extension']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

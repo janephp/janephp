@@ -47,6 +47,7 @@ class OutputFormatRetentionTimeOutOfRangeExceptionNormalizer implements Denormal
         }
         elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
             $object->setTraceId(null);
+            unset($data['traceId']);
         }
         if (\array_key_exists('traceJobId', $data) && $data['traceJobId'] !== null) {
             $object->setTraceJobId($data['traceJobId']);
@@ -54,6 +55,7 @@ class OutputFormatRetentionTimeOutOfRangeExceptionNormalizer implements Denormal
         }
         elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
             $object->setTraceJobId(null);
+            unset($data['traceJobId']);
         }
         if (\array_key_exists('httpStatusCode', $data)) {
             $object->setHttpStatusCode($data['httpStatusCode']);
@@ -65,6 +67,7 @@ class OutputFormatRetentionTimeOutOfRangeExceptionNormalizer implements Denormal
         }
         elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
             $object->setExceptionMessage(null);
+            unset($data['exceptionMessage']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -76,6 +79,7 @@ class OutputFormatRetentionTimeOutOfRangeExceptionNormalizer implements Denormal
         }
         elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
             $object->setCustomerId(null);
+            unset($data['customerId']);
         }
         if (\array_key_exists('customerAlias', $data) && $data['customerAlias'] !== null) {
             $object->setCustomerAlias($data['customerAlias']);
@@ -83,6 +87,7 @@ class OutputFormatRetentionTimeOutOfRangeExceptionNormalizer implements Denormal
         }
         elseif (\array_key_exists('customerAlias', $data) && $data['customerAlias'] === null) {
             $object->setCustomerAlias(null);
+            unset($data['customerAlias']);
         }
         if (\array_key_exists('userId', $data) && $data['userId'] !== null) {
             $object->setUserId($data['userId']);
@@ -90,6 +95,7 @@ class OutputFormatRetentionTimeOutOfRangeExceptionNormalizer implements Denormal
         }
         elseif (\array_key_exists('userId', $data) && $data['userId'] === null) {
             $object->setUserId(null);
+            unset($data['userId']);
         }
         if (\array_key_exists('argumentName', $data) && $data['argumentName'] !== null) {
             $object->setArgumentName($data['argumentName']);
@@ -97,6 +103,7 @@ class OutputFormatRetentionTimeOutOfRangeExceptionNormalizer implements Denormal
         }
         elseif (\array_key_exists('argumentName', $data) && $data['argumentName'] === null) {
             $object->setArgumentName(null);
+            unset($data['argumentName']);
         }
         if (\array_key_exists('argumentValue', $data) && $data['argumentValue'] !== null) {
             $object->setArgumentValue($data['argumentValue']);
@@ -104,6 +111,7 @@ class OutputFormatRetentionTimeOutOfRangeExceptionNormalizer implements Denormal
         }
         elseif (\array_key_exists('argumentValue', $data) && $data['argumentValue'] === null) {
             $object->setArgumentValue(null);
+            unset($data['argumentValue']);
         }
         if (\array_key_exists('minAcceptableValue', $data) && $data['minAcceptableValue'] !== null) {
             $object->setMinAcceptableValue($data['minAcceptableValue']);
@@ -111,6 +119,7 @@ class OutputFormatRetentionTimeOutOfRangeExceptionNormalizer implements Denormal
         }
         elseif (\array_key_exists('minAcceptableValue', $data) && $data['minAcceptableValue'] === null) {
             $object->setMinAcceptableValue(null);
+            unset($data['minAcceptableValue']);
         }
         if (\array_key_exists('maxAcceptableValue', $data) && $data['maxAcceptableValue'] !== null) {
             $object->setMaxAcceptableValue($data['maxAcceptableValue']);
@@ -118,6 +127,7 @@ class OutputFormatRetentionTimeOutOfRangeExceptionNormalizer implements Denormal
         }
         elseif (\array_key_exists('maxAcceptableValue', $data) && $data['maxAcceptableValue'] === null) {
             $object->setMaxAcceptableValue(null);
+            unset($data['maxAcceptableValue']);
         }
         if (\array_key_exists('outputFormatId', $data) && $data['outputFormatId'] !== null) {
             $object->setOutputFormatId($data['outputFormatId']);
@@ -125,6 +135,7 @@ class OutputFormatRetentionTimeOutOfRangeExceptionNormalizer implements Denormal
         }
         elseif (\array_key_exists('outputFormatId', $data) && $data['outputFormatId'] === null) {
             $object->setOutputFormatId(null);
+            unset($data['outputFormatId']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

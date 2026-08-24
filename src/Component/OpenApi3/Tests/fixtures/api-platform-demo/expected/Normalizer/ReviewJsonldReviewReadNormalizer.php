@@ -55,6 +55,7 @@ class ReviewJsonldReviewReadNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId2(null);
+            unset($data['id']);
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
@@ -70,6 +71,7 @@ class ReviewJsonldReviewReadNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('letter', $data) && $data['letter'] === null) {
             $object->setLetter(null);
+            unset($data['letter']);
         }
         if (\array_key_exists('book', $data)) {
             $object->setBook($this->denormalizer->denormalize($data['book'], \ApiPlatform\Demo\Model\BookJsonldReviewRead::class, 'json', $context));
@@ -81,6 +83,7 @@ class ReviewJsonldReviewReadNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('author', $data) && $data['author'] === null) {
             $object->setAuthor(null);
+            unset($data['author']);
         }
         if (\array_key_exists('publicationDate', $data) && $data['publicationDate'] !== null) {
             $object->setPublicationDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['publicationDate']));
@@ -88,6 +91,7 @@ class ReviewJsonldReviewReadNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('publicationDate', $data) && $data['publicationDate'] === null) {
             $object->setPublicationDate(null);
+            unset($data['publicationDate']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

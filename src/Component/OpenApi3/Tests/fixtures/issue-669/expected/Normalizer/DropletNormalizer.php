@@ -82,6 +82,7 @@ class DropletNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         elseif (\array_key_exists('kernel', $data) && $data['kernel'] === null) {
             $object->setKernel(null);
+            unset($data['kernel']);
         }
         if (\array_key_exists('created_at', $data)) {
             $object->setCreatedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['created_at']));

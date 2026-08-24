@@ -61,6 +61,7 @@ class ScimUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         elseif (\array_key_exists('externalId', $data) && $data['externalId'] === null) {
             $object->setExternalId(null);
+            unset($data['externalId']);
         }
         if (\array_key_exists('userName', $data) && $data['userName'] !== null) {
             $object->setUserName($data['userName']);
@@ -68,6 +69,7 @@ class ScimUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         elseif (\array_key_exists('userName', $data) && $data['userName'] === null) {
             $object->setUserName(null);
+            unset($data['userName']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($this->denormalizer->denormalize($data['name'], \Github\Model\ScimUserName::class, 'json', $context));

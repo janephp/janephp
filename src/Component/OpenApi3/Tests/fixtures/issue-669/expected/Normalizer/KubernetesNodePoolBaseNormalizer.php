@@ -70,6 +70,7 @@ class KubernetesNodePoolBaseNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('labels', $data) && $data['labels'] === null) {
             $object->setLabels(null);
+            unset($data['labels']);
         }
         if (\array_key_exists('taints', $data)) {
             $values_2 = [];

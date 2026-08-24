@@ -51,6 +51,7 @@ class CredentialsNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('client_certificate_data', $data) && $data['client_certificate_data'] === null) {
             $object->setClientCertificateData(null);
+            unset($data['client_certificate_data']);
         }
         if (\array_key_exists('client_key_data', $data) && $data['client_key_data'] !== null) {
             $object->setClientKeyData($data['client_key_data']);
@@ -58,6 +59,7 @@ class CredentialsNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('client_key_data', $data) && $data['client_key_data'] === null) {
             $object->setClientKeyData(null);
+            unset($data['client_key_data']);
         }
         if (\array_key_exists('token', $data)) {
             $object->setToken($data['token']);

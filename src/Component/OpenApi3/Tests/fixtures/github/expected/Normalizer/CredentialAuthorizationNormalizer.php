@@ -78,6 +78,7 @@ class CredentialAuthorizationNormalizer implements DenormalizerInterface, Normal
         }
         elseif (\array_key_exists('credential_accessed_at', $data) && $data['credential_accessed_at'] === null) {
             $object->setCredentialAccessedAt(null);
+            unset($data['credential_accessed_at']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

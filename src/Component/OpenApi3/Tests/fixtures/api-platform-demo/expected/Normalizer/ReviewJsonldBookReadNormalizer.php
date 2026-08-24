@@ -55,6 +55,7 @@ class ReviewJsonldBookReadNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId2(null);
+            unset($data['id']);
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);

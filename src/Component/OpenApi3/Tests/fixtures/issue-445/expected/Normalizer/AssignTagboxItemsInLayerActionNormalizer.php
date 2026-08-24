@@ -46,6 +46,7 @@ class AssignTagboxItemsInLayerActionNormalizer implements DenormalizerInterface,
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
+            unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -57,6 +58,7 @@ class AssignTagboxItemsInLayerActionNormalizer implements DenormalizerInterface,
         }
         elseif (\array_key_exists('namedCache', $data) && $data['namedCache'] === null) {
             $object->setNamedCache(null);
+            unset($data['namedCache']);
         }
         if (\array_key_exists('refIds', $data) && $data['refIds'] !== null) {
             $object->setRefIds($data['refIds']);
@@ -64,6 +66,7 @@ class AssignTagboxItemsInLayerActionNormalizer implements DenormalizerInterface,
         }
         elseif (\array_key_exists('refIds', $data) && $data['refIds'] === null) {
             $object->setRefIds(null);
+            unset($data['refIds']);
         }
         if (\array_key_exists('replace', $data)) {
             $object->setReplace($data['replace']);

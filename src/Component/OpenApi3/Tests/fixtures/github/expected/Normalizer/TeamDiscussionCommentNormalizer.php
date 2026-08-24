@@ -46,6 +46,7 @@ class TeamDiscussionCommentNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('author', $data) && $data['author'] === null) {
             $object->setAuthor(null);
+            unset($data['author']);
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);
@@ -69,6 +70,7 @@ class TeamDiscussionCommentNormalizer implements DenormalizerInterface, Normaliz
         }
         elseif (\array_key_exists('last_edited_at', $data) && $data['last_edited_at'] === null) {
             $object->setLastEditedAt(null);
+            unset($data['last_edited_at']);
         }
         if (\array_key_exists('discussion_url', $data)) {
             $object->setDiscussionUrl($data['discussion_url']);

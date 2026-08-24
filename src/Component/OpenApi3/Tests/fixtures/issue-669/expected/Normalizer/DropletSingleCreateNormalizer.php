@@ -102,6 +102,7 @@ class DropletSingleCreateNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
             $object->setTags(null);
+            unset($data['tags']);
         }
         if (\array_key_exists('user_data', $data)) {
             $object->setUserData($data['user_data']);

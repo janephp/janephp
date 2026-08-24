@@ -43,6 +43,7 @@ class TagboxItemUnassignedConditionNormalizer implements DenormalizerInterface, 
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
+            unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -54,6 +55,7 @@ class TagboxItemUnassignedConditionNormalizer implements DenormalizerInterface, 
         }
         elseif (\array_key_exists('fieldPath', $data) && $data['fieldPath'] === null) {
             $object->setFieldPath(null);
+            unset($data['fieldPath']);
         }
         if (\array_key_exists('refId', $data) && $data['refId'] !== null) {
             $object->setRefId($data['refId']);
@@ -61,6 +63,7 @@ class TagboxItemUnassignedConditionNormalizer implements DenormalizerInterface, 
         }
         elseif (\array_key_exists('refId', $data) && $data['refId'] === null) {
             $object->setRefId(null);
+            unset($data['refId']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

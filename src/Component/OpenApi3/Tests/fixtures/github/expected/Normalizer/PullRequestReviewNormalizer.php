@@ -54,6 +54,7 @@ class PullRequestReviewNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
+            unset($data['user']);
         }
         if (\array_key_exists('body', $data)) {
             $object->setBody($data['body']);

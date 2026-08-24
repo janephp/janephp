@@ -47,6 +47,7 @@ class ContentPermissionsUpdateItemNormalizer implements DenormalizerInterface, N
         }
         elseif (\array_key_exists('contentPermissionSetIds', $data) && $data['contentPermissionSetIds'] === null) {
             $object->setContentPermissionSetIds(null);
+            unset($data['contentPermissionSetIds']);
         }
         if (\array_key_exists('contentId', $data)) {
             $object->setContentId($data['contentId']);

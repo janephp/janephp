@@ -47,6 +47,7 @@ class Mp3AudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
             $object->setExtension(null);
+            unset($data['extension']);
         }
         if (\array_key_exists('bitrate', $data) && $data['bitrate'] !== null) {
             $object->setBitrate($data['bitrate']);
@@ -54,6 +55,7 @@ class Mp3AudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('bitrate', $data) && $data['bitrate'] === null) {
             $object->setBitrate(null);
+            unset($data['bitrate']);
         }
         if (\array_key_exists('quality', $data) && $data['quality'] !== null) {
             $object->setQuality($data['quality']);
@@ -61,6 +63,7 @@ class Mp3AudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('quality', $data) && $data['quality'] === null) {
             $object->setQuality(null);
+            unset($data['quality']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

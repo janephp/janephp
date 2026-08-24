@@ -107,6 +107,7 @@ class FullRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('owner', $data) && $data['owner'] === null) {
             $object->setOwner(null);
+            unset($data['owner']);
         }
         if (\array_key_exists('private', $data)) {
             $object->setPrivate($data['private']);
@@ -122,6 +123,7 @@ class FullRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+            unset($data['description']);
         }
         if (\array_key_exists('fork', $data)) {
             $object->setFork($data['fork']);
@@ -289,6 +291,7 @@ class FullRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('mirror_url', $data) && $data['mirror_url'] === null) {
             $object->setMirrorUrl(null);
+            unset($data['mirror_url']);
         }
         if (\array_key_exists('hooks_url', $data)) {
             $object->setHooksUrl($data['hooks_url']);
@@ -304,6 +307,7 @@ class FullRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('homepage', $data) && $data['homepage'] === null) {
             $object->setHomepage(null);
+            unset($data['homepage']);
         }
         if (\array_key_exists('language', $data) && $data['language'] !== null) {
             $object->setLanguage($data['language']);
@@ -311,6 +315,7 @@ class FullRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('language', $data) && $data['language'] === null) {
             $object->setLanguage(null);
+            unset($data['language']);
         }
         if (\array_key_exists('forks_count', $data)) {
             $object->setForksCount($data['forks_count']);
@@ -406,6 +411,7 @@ class FullRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('template_repository', $data) && $data['template_repository'] === null) {
             $object->setTemplateRepository(null);
+            unset($data['template_repository']);
         }
         if (\array_key_exists('temp_clone_token', $data) && $data['temp_clone_token'] !== null) {
             $object->setTempCloneToken($data['temp_clone_token']);
@@ -413,6 +419,7 @@ class FullRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('temp_clone_token', $data) && $data['temp_clone_token'] === null) {
             $object->setTempCloneToken(null);
+            unset($data['temp_clone_token']);
         }
         if (\array_key_exists('allow_squash_merge', $data)) {
             $object->setAllowSquashMerge($data['allow_squash_merge']);
@@ -440,6 +447,7 @@ class FullRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('license', $data) && $data['license'] === null) {
             $object->setLicense(null);
+            unset($data['license']);
         }
         if (\array_key_exists('organization', $data) && $data['organization'] !== null) {
             $object->setOrganization($this->denormalizer->denormalize($data['organization'], \Github\Model\FullRepositoryOrganization::class, 'json', $context));
@@ -447,6 +455,7 @@ class FullRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('organization', $data) && $data['organization'] === null) {
             $object->setOrganization(null);
+            unset($data['organization']);
         }
         if (\array_key_exists('parent', $data)) {
             $object->setParent($this->denormalizer->denormalize($data['parent'], \Github\Model\Repository::class, 'json', $context));

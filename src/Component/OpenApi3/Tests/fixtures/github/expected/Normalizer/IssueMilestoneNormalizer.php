@@ -78,6 +78,7 @@ class IssueMilestoneNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+            unset($data['description']);
         }
         if (\array_key_exists('creator', $data) && $data['creator'] !== null) {
             $object->setCreator($this->denormalizer->denormalize($data['creator'], \Github\Model\MilestoneCreator::class, 'json', $context));
@@ -85,6 +86,7 @@ class IssueMilestoneNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('creator', $data) && $data['creator'] === null) {
             $object->setCreator(null);
+            unset($data['creator']);
         }
         if (\array_key_exists('open_issues', $data)) {
             $object->setOpenIssues($data['open_issues']);
@@ -108,6 +110,7 @@ class IssueMilestoneNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('closed_at', $data) && $data['closed_at'] === null) {
             $object->setClosedAt(null);
+            unset($data['closed_at']);
         }
         if (\array_key_exists('due_on', $data) && $data['due_on'] !== null) {
             $object->setDueOn(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['due_on']));
@@ -115,6 +118,7 @@ class IssueMilestoneNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('due_on', $data) && $data['due_on'] === null) {
             $object->setDueOn(null);
+            unset($data['due_on']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

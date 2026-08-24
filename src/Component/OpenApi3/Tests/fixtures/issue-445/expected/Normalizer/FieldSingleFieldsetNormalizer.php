@@ -62,6 +62,7 @@ class FieldSingleFieldsetNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('indexId', $data) && $data['indexId'] === null) {
             $object->setIndexId(null);
+            unset($data['indexId']);
         }
         if (\array_key_exists('fieldNamespace', $data) && $data['fieldNamespace'] !== null) {
             $object->setFieldNamespace($data['fieldNamespace']);
@@ -69,6 +70,7 @@ class FieldSingleFieldsetNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('fieldNamespace', $data) && $data['fieldNamespace'] === null) {
             $object->setFieldNamespace(null);
+            unset($data['fieldNamespace']);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
             $object->setNames($data['names']);
@@ -76,6 +78,7 @@ class FieldSingleFieldsetNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
+            unset($data['names']);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
             $object->setDescriptions($data['descriptions']);
@@ -83,6 +86,7 @@ class FieldSingleFieldsetNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
             $object->setDescriptions(null);
+            unset($data['descriptions']);
         }
         if (\array_key_exists('required', $data)) {
             $object->setRequired($data['required']);
@@ -118,6 +122,7 @@ class FieldSingleFieldsetNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('schemaIndexingInfo', $data) && $data['schemaIndexingInfo'] === null) {
             $object->setSchemaIndexingInfo(null);
+            unset($data['schemaIndexingInfo']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

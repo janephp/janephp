@@ -54,6 +54,7 @@ class ParchmentsGetLdjsonResponse200HydraSearchHydraMappingItemNormalizer implem
         }
         elseif (\array_key_exists('property', $data) && $data['property'] === null) {
             $object->setProperty(null);
+            unset($data['property']);
         }
         if (\array_key_exists('required', $data)) {
             $object->setRequired($data['required']);

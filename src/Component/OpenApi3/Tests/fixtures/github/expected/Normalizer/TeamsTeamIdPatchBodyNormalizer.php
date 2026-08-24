@@ -62,6 +62,7 @@ class TeamsTeamIdPatchBodyNormalizer implements DenormalizerInterface, Normalize
         }
         elseif (\array_key_exists('parent_team_id', $data) && $data['parent_team_id'] === null) {
             $object->setParentTeamId(null);
+            unset($data['parent_team_id']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

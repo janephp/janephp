@@ -54,6 +54,7 @@ class ReactionNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         elseif (\array_key_exists('user', $data) && $data['user'] === null) {
             $object->setUser(null);
+            unset($data['user']);
         }
         if (\array_key_exists('content', $data)) {
             $object->setContent($data['content']);

@@ -58,6 +58,7 @@ class CheckRunNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         elseif (\array_key_exists('external_id', $data) && $data['external_id'] === null) {
             $object->setExternalId(null);
+            unset($data['external_id']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
@@ -69,6 +70,7 @@ class CheckRunNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         elseif (\array_key_exists('html_url', $data) && $data['html_url'] === null) {
             $object->setHtmlUrl(null);
+            unset($data['html_url']);
         }
         if (\array_key_exists('details_url', $data) && $data['details_url'] !== null) {
             $object->setDetailsUrl($data['details_url']);
@@ -76,6 +78,7 @@ class CheckRunNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         elseif (\array_key_exists('details_url', $data) && $data['details_url'] === null) {
             $object->setDetailsUrl(null);
+            unset($data['details_url']);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
@@ -87,6 +90,7 @@ class CheckRunNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         elseif (\array_key_exists('conclusion', $data) && $data['conclusion'] === null) {
             $object->setConclusion(null);
+            unset($data['conclusion']);
         }
         if (\array_key_exists('started_at', $data) && $data['started_at'] !== null) {
             $object->setStartedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['started_at']));
@@ -94,6 +98,7 @@ class CheckRunNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         elseif (\array_key_exists('started_at', $data) && $data['started_at'] === null) {
             $object->setStartedAt(null);
+            unset($data['started_at']);
         }
         if (\array_key_exists('completed_at', $data) && $data['completed_at'] !== null) {
             $object->setCompletedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['completed_at']));
@@ -101,6 +106,7 @@ class CheckRunNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         elseif (\array_key_exists('completed_at', $data) && $data['completed_at'] === null) {
             $object->setCompletedAt(null);
+            unset($data['completed_at']);
         }
         if (\array_key_exists('output', $data)) {
             $object->setOutput($this->denormalizer->denormalize($data['output'], \Github\Model\CheckRunOutput::class, 'json', $context));
@@ -116,6 +122,7 @@ class CheckRunNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         elseif (\array_key_exists('check_suite', $data) && $data['check_suite'] === null) {
             $object->setCheckSuite(null);
+            unset($data['check_suite']);
         }
         if (\array_key_exists('app', $data) && $data['app'] !== null) {
             $object->setApp($this->denormalizer->denormalize($data['app'], \Github\Model\CheckRunApp::class, 'json', $context));
@@ -123,6 +130,7 @@ class CheckRunNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         elseif (\array_key_exists('app', $data) && $data['app'] === null) {
             $object->setApp(null);
+            unset($data['app']);
         }
         if (\array_key_exists('pull_requests', $data)) {
             $object->setPullRequests($data['pull_requests']);

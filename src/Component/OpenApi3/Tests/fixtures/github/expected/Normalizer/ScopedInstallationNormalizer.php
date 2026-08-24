@@ -58,6 +58,7 @@ class ScopedInstallationNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('single_file_name', $data) && $data['single_file_name'] === null) {
             $object->setSingleFileName(null);
+            unset($data['single_file_name']);
         }
         if (\array_key_exists('repositories_url', $data)) {
             $object->setRepositoriesUrl($data['repositories_url']);
@@ -69,6 +70,7 @@ class ScopedInstallationNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('account', $data) && $data['account'] === null) {
             $object->setAccount(null);
+            unset($data['account']);
         }
         foreach ($data as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {

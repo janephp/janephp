@@ -69,6 +69,7 @@ class PullRequestHeadRepoOwnerNormalizer implements DenormalizerInterface, Norma
         }
         elseif (\array_key_exists('gravatar_id', $data) && $data['gravatar_id'] === null) {
             $object->setGravatarId(null);
+            unset($data['gravatar_id']);
         }
         if (\array_key_exists('html_url', $data)) {
             $object->setHtmlUrl($data['html_url']);

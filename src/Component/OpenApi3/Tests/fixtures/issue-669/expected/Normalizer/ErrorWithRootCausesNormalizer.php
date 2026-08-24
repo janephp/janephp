@@ -51,6 +51,7 @@ class ErrorWithRootCausesNormalizer implements DenormalizerInterface, Normalizer
         }
         elseif (\array_key_exists('messages', $data) && $data['messages'] === null) {
             $object->setMessages(null);
+            unset($data['messages']);
         }
         if (\array_key_exists('root_causes', $data)) {
             $values_1 = [];

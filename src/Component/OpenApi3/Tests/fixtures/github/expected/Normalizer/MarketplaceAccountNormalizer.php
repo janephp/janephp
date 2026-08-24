@@ -66,6 +66,7 @@ class MarketplaceAccountNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('email', $data) && $data['email'] === null) {
             $object->setEmail(null);
+            unset($data['email']);
         }
         if (\array_key_exists('organization_billing_email', $data) && $data['organization_billing_email'] !== null) {
             $object->setOrganizationBillingEmail($data['organization_billing_email']);
@@ -73,6 +74,7 @@ class MarketplaceAccountNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('organization_billing_email', $data) && $data['organization_billing_email'] === null) {
             $object->setOrganizationBillingEmail(null);
+            unset($data['organization_billing_email']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

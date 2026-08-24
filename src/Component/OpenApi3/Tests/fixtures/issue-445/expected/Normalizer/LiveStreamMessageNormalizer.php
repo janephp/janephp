@@ -46,6 +46,7 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
+            unset($data['id']);
         }
         if (\array_key_exists('retries', $data)) {
             $object->setRetries($data['retries']);
@@ -69,6 +70,7 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('customerId', $data) && $data['customerId'] === null) {
             $object->setCustomerId(null);
+            unset($data['customerId']);
         }
         if (\array_key_exists('customerAlias', $data) && $data['customerAlias'] !== null) {
             $object->setCustomerAlias($data['customerAlias']);
@@ -76,6 +78,7 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('customerAlias', $data) && $data['customerAlias'] === null) {
             $object->setCustomerAlias(null);
+            unset($data['customerAlias']);
         }
         if (\array_key_exists('timestamp', $data)) {
             $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['timestamp']));
@@ -87,6 +90,7 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('scope', $data) && $data['scope'] === null) {
             $object->setScope(null);
+            unset($data['scope']);
         }
         if (\array_key_exists('documentChange', $data) && $data['documentChange'] !== null) {
             $object->setDocumentChange($data['documentChange']);
@@ -94,6 +98,7 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('documentChange', $data) && $data['documentChange'] === null) {
             $object->setDocumentChange(null);
+            unset($data['documentChange']);
         }
         if (\array_key_exists('applicationEvent', $data) && $data['applicationEvent'] !== null) {
             $object->setApplicationEvent($data['applicationEvent']);
@@ -101,6 +106,7 @@ class LiveStreamMessageNormalizer implements DenormalizerInterface, NormalizerIn
         }
         elseif (\array_key_exists('applicationEvent', $data) && $data['applicationEvent'] === null) {
             $object->setApplicationEvent(null);
+            unset($data['applicationEvent']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

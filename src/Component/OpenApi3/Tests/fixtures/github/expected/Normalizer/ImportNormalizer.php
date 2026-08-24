@@ -49,6 +49,7 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('vcs', $data) && $data['vcs'] === null) {
             $object->setVcs(null);
+            unset($data['vcs']);
         }
         if (\array_key_exists('use_lfs', $data)) {
             $object->setUseLfs($data['use_lfs']);
@@ -76,6 +77,7 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('status_text', $data) && $data['status_text'] === null) {
             $object->setStatusText(null);
+            unset($data['status_text']);
         }
         if (\array_key_exists('failed_step', $data) && $data['failed_step'] !== null) {
             $object->setFailedStep($data['failed_step']);
@@ -83,6 +85,7 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('failed_step', $data) && $data['failed_step'] === null) {
             $object->setFailedStep(null);
+            unset($data['failed_step']);
         }
         if (\array_key_exists('error_message', $data) && $data['error_message'] !== null) {
             $object->setErrorMessage($data['error_message']);
@@ -90,6 +93,7 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('error_message', $data) && $data['error_message'] === null) {
             $object->setErrorMessage(null);
+            unset($data['error_message']);
         }
         if (\array_key_exists('import_percent', $data) && $data['import_percent'] !== null) {
             $object->setImportPercent($data['import_percent']);
@@ -97,6 +101,7 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('import_percent', $data) && $data['import_percent'] === null) {
             $object->setImportPercent(null);
+            unset($data['import_percent']);
         }
         if (\array_key_exists('commit_count', $data) && $data['commit_count'] !== null) {
             $object->setCommitCount($data['commit_count']);
@@ -104,6 +109,7 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('commit_count', $data) && $data['commit_count'] === null) {
             $object->setCommitCount(null);
+            unset($data['commit_count']);
         }
         if (\array_key_exists('push_percent', $data) && $data['push_percent'] !== null) {
             $object->setPushPercent($data['push_percent']);
@@ -111,6 +117,7 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('push_percent', $data) && $data['push_percent'] === null) {
             $object->setPushPercent(null);
+            unset($data['push_percent']);
         }
         if (\array_key_exists('has_large_files', $data)) {
             $object->setHasLargeFiles($data['has_large_files']);
@@ -142,6 +149,7 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         elseif (\array_key_exists('authors_count', $data) && $data['authors_count'] === null) {
             $object->setAuthorsCount(null);
+            unset($data['authors_count']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);

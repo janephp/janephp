@@ -47,6 +47,7 @@ class ElasticVersionUpdateExceptionNormalizer implements DenormalizerInterface, 
         }
         elseif (\array_key_exists('traceId', $data) && $data['traceId'] === null) {
             $object->setTraceId(null);
+            unset($data['traceId']);
         }
         if (\array_key_exists('traceJobId', $data) && $data['traceJobId'] !== null) {
             $object->setTraceJobId($data['traceJobId']);
@@ -54,6 +55,7 @@ class ElasticVersionUpdateExceptionNormalizer implements DenormalizerInterface, 
         }
         elseif (\array_key_exists('traceJobId', $data) && $data['traceJobId'] === null) {
             $object->setTraceJobId(null);
+            unset($data['traceJobId']);
         }
         if (\array_key_exists('httpStatusCode', $data)) {
             $object->setHttpStatusCode($data['httpStatusCode']);
@@ -65,6 +67,7 @@ class ElasticVersionUpdateExceptionNormalizer implements DenormalizerInterface, 
         }
         elseif (\array_key_exists('exceptionMessage', $data) && $data['exceptionMessage'] === null) {
             $object->setExceptionMessage(null);
+            unset($data['exceptionMessage']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -76,6 +79,7 @@ class ElasticVersionUpdateExceptionNormalizer implements DenormalizerInterface, 
         }
         elseif (\array_key_exists('expectedVersion', $data) && $data['expectedVersion'] === null) {
             $object->setExpectedVersion(null);
+            unset($data['expectedVersion']);
         }
         if (\array_key_exists('actualVersion', $data) && $data['actualVersion'] !== null) {
             $object->setActualVersion($data['actualVersion']);
@@ -83,6 +87,7 @@ class ElasticVersionUpdateExceptionNormalizer implements DenormalizerInterface, 
         }
         elseif (\array_key_exists('actualVersion', $data) && $data['actualVersion'] === null) {
             $object->setActualVersion(null);
+            unset($data['actualVersion']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

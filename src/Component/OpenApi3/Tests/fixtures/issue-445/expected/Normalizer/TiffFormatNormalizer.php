@@ -62,6 +62,7 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('colorProfile', $data) && $data['colorProfile'] === null) {
             $object->setColorProfile(null);
+            unset($data['colorProfile']);
         }
         if (\array_key_exists('colorTransformationIntent', $data)) {
             $object->setColorTransformationIntent($data['colorTransformationIntent']);
@@ -73,6 +74,7 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('horizontalResolution', $data) && $data['horizontalResolution'] === null) {
             $object->setHorizontalResolution(null);
+            unset($data['horizontalResolution']);
         }
         if (\array_key_exists('verticalResolution', $data) && $data['verticalResolution'] !== null) {
             $object->setVerticalResolution($data['verticalResolution']);
@@ -80,6 +82,7 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('verticalResolution', $data) && $data['verticalResolution'] === null) {
             $object->setVerticalResolution(null);
+            unset($data['verticalResolution']);
         }
         if (\array_key_exists('keepClippingPath', $data)) {
             $object->setKeepClippingPath($data['keepClippingPath']);
@@ -91,6 +94,7 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('resizeAction', $data) && $data['resizeAction'] === null) {
             $object->setResizeAction(null);
+            unset($data['resizeAction']);
         }
         if (\array_key_exists('actions', $data) && $data['actions'] !== null) {
             $values = [];
@@ -102,6 +106,7 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('actions', $data) && $data['actions'] === null) {
             $object->setActions(null);
+            unset($data['actions']);
         }
         if (\array_key_exists('alphaPremultiplied', $data)) {
             $object->setAlphaPremultiplied($data['alphaPremultiplied']);
@@ -121,6 +126,7 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
             $object->setExtension(null);
+            unset($data['extension']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

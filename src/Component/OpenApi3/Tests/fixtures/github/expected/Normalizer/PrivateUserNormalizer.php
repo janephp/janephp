@@ -74,6 +74,7 @@ class PrivateUserNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('gravatar_id', $data) && $data['gravatar_id'] === null) {
             $object->setGravatarId(null);
+            unset($data['gravatar_id']);
         }
         if (\array_key_exists('url', $data)) {
             $object->setUrl($data['url']);
@@ -133,6 +134,7 @@ class PrivateUserNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('name', $data) && $data['name'] === null) {
             $object->setName(null);
+            unset($data['name']);
         }
         if (\array_key_exists('company', $data) && $data['company'] !== null) {
             $object->setCompany($data['company']);
@@ -140,6 +142,7 @@ class PrivateUserNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('company', $data) && $data['company'] === null) {
             $object->setCompany(null);
+            unset($data['company']);
         }
         if (\array_key_exists('blog', $data) && $data['blog'] !== null) {
             $object->setBlog($data['blog']);
@@ -147,6 +150,7 @@ class PrivateUserNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('blog', $data) && $data['blog'] === null) {
             $object->setBlog(null);
+            unset($data['blog']);
         }
         if (\array_key_exists('location', $data) && $data['location'] !== null) {
             $object->setLocation($data['location']);
@@ -154,6 +158,7 @@ class PrivateUserNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('location', $data) && $data['location'] === null) {
             $object->setLocation(null);
+            unset($data['location']);
         }
         if (\array_key_exists('email', $data) && $data['email'] !== null) {
             $object->setEmail($data['email']);
@@ -161,6 +166,7 @@ class PrivateUserNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('email', $data) && $data['email'] === null) {
             $object->setEmail(null);
+            unset($data['email']);
         }
         if (\array_key_exists('hireable', $data) && $data['hireable'] !== null) {
             $object->setHireable($data['hireable']);
@@ -168,6 +174,7 @@ class PrivateUserNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('hireable', $data) && $data['hireable'] === null) {
             $object->setHireable(null);
+            unset($data['hireable']);
         }
         if (\array_key_exists('bio', $data) && $data['bio'] !== null) {
             $object->setBio($data['bio']);
@@ -175,6 +182,7 @@ class PrivateUserNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('bio', $data) && $data['bio'] === null) {
             $object->setBio(null);
+            unset($data['bio']);
         }
         if (\array_key_exists('twitter_username', $data) && $data['twitter_username'] !== null) {
             $object->setTwitterUsername($data['twitter_username']);
@@ -182,6 +190,7 @@ class PrivateUserNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('twitter_username', $data) && $data['twitter_username'] === null) {
             $object->setTwitterUsername(null);
+            unset($data['twitter_username']);
         }
         if (\array_key_exists('public_repos', $data)) {
             $object->setPublicRepos($data['public_repos']);
@@ -241,6 +250,7 @@ class PrivateUserNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         elseif (\array_key_exists('suspended_at', $data) && $data['suspended_at'] === null) {
             $object->setSuspendedAt(null);
+            unset($data['suspended_at']);
         }
         if (\array_key_exists('business_plus', $data)) {
             $object->setBusinessPlus($data['business_plus']);

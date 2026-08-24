@@ -51,6 +51,7 @@ class XmpWritebackCompletedEventNormalizer implements DenormalizerInterface, Nor
         }
         elseif (\array_key_exists('outputDocId', $data) && $data['outputDocId'] === null) {
             $object->setOutputDocId(null);
+            unset($data['outputDocId']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

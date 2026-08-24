@@ -47,6 +47,7 @@ class VideoStillFormatNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('extension', $data) && $data['extension'] === null) {
             $object->setExtension(null);
+            unset($data['extension']);
         }
         if (\array_key_exists('positionInSeconds', $data)) {
             $object->setPositionInSeconds($data['positionInSeconds']);

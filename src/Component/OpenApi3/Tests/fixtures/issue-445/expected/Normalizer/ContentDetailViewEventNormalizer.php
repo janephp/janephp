@@ -55,6 +55,7 @@ class ContentDetailViewEventNormalizer implements DenormalizerInterface, Normali
         }
         elseif (\array_key_exists('contentIds', $data) && $data['contentIds'] === null) {
             $object->setContentIds(null);
+            unset($data['contentIds']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

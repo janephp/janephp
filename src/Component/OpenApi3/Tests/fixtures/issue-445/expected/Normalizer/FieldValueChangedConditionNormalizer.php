@@ -43,6 +43,7 @@ class FieldValueChangedConditionNormalizer implements DenormalizerInterface, Nor
         }
         elseif (\array_key_exists('traceRefId', $data) && $data['traceRefId'] === null) {
             $object->setTraceRefId(null);
+            unset($data['traceRefId']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -54,6 +55,7 @@ class FieldValueChangedConditionNormalizer implements DenormalizerInterface, Nor
         }
         elseif (\array_key_exists('fieldPath', $data) && $data['fieldPath'] === null) {
             $object->setFieldPath(null);
+            unset($data['fieldPath']);
         }
         if (\array_key_exists('expectedValue', $data) && $data['expectedValue'] !== null) {
             $object->setExpectedValue($data['expectedValue']);
@@ -61,6 +63,7 @@ class FieldValueChangedConditionNormalizer implements DenormalizerInterface, Nor
         }
         elseif (\array_key_exists('expectedValue', $data) && $data['expectedValue'] === null) {
             $object->setExpectedValue(null);
+            unset($data['expectedValue']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

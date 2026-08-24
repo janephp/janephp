@@ -55,6 +55,7 @@ class ApiStatisticsEventNormalizer implements DenormalizerInterface, NormalizerI
         }
         elseif (\array_key_exists('requestsPerClient', $data) && $data['requestsPerClient'] === null) {
             $object->setRequestsPerClient(null);
+            unset($data['requestsPerClient']);
         }
         foreach ($data as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {

@@ -66,6 +66,7 @@ class ReleaseAssetNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('label', $data) && $data['label'] === null) {
             $object->setLabel(null);
+            unset($data['label']);
         }
         if (\array_key_exists('state', $data)) {
             $object->setState($data['state']);
@@ -97,6 +98,7 @@ class ReleaseAssetNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('uploader', $data) && $data['uploader'] === null) {
             $object->setUploader(null);
+            unset($data['uploader']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

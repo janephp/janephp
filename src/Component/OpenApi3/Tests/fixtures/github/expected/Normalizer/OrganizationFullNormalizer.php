@@ -114,6 +114,7 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+            unset($data['description']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
@@ -141,6 +142,7 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('twitter_username', $data) && $data['twitter_username'] === null) {
             $object->setTwitterUsername(null);
+            unset($data['twitter_username']);
         }
         if (\array_key_exists('is_verified', $data)) {
             $object->setIsVerified($data['is_verified']);
@@ -196,6 +198,7 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('private_gists', $data) && $data['private_gists'] === null) {
             $object->setPrivateGists(null);
+            unset($data['private_gists']);
         }
         if (\array_key_exists('disk_usage', $data) && $data['disk_usage'] !== null) {
             $object->setDiskUsage($data['disk_usage']);
@@ -203,6 +206,7 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('disk_usage', $data) && $data['disk_usage'] === null) {
             $object->setDiskUsage(null);
+            unset($data['disk_usage']);
         }
         if (\array_key_exists('collaborators', $data) && $data['collaborators'] !== null) {
             $object->setCollaborators($data['collaborators']);
@@ -210,6 +214,7 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('collaborators', $data) && $data['collaborators'] === null) {
             $object->setCollaborators(null);
+            unset($data['collaborators']);
         }
         if (\array_key_exists('billing_email', $data) && $data['billing_email'] !== null) {
             $object->setBillingEmail($data['billing_email']);
@@ -217,6 +222,7 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('billing_email', $data) && $data['billing_email'] === null) {
             $object->setBillingEmail(null);
+            unset($data['billing_email']);
         }
         if (\array_key_exists('plan', $data)) {
             $object->setPlan($this->denormalizer->denormalize($data['plan'], \Github\Model\OrganizationFullPlan::class, 'json', $context));
@@ -228,6 +234,7 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('default_repository_permission', $data) && $data['default_repository_permission'] === null) {
             $object->setDefaultRepositoryPermission(null);
+            unset($data['default_repository_permission']);
         }
         if (\array_key_exists('members_can_create_repositories', $data) && $data['members_can_create_repositories'] !== null) {
             $object->setMembersCanCreateRepositories($data['members_can_create_repositories']);
@@ -235,6 +242,7 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('members_can_create_repositories', $data) && $data['members_can_create_repositories'] === null) {
             $object->setMembersCanCreateRepositories(null);
+            unset($data['members_can_create_repositories']);
         }
         if (\array_key_exists('two_factor_requirement_enabled', $data) && $data['two_factor_requirement_enabled'] !== null) {
             $object->setTwoFactorRequirementEnabled($data['two_factor_requirement_enabled']);
@@ -242,6 +250,7 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
         }
         elseif (\array_key_exists('two_factor_requirement_enabled', $data) && $data['two_factor_requirement_enabled'] === null) {
             $object->setTwoFactorRequirementEnabled(null);
+            unset($data['two_factor_requirement_enabled']);
         }
         if (\array_key_exists('members_allowed_repository_creation_type', $data)) {
             $object->setMembersAllowedRepositoryCreationType($data['members_allowed_repository_creation_type']);
