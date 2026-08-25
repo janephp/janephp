@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- [OpenApi] [GH#838](https://github.com/janephp/janephp/issues/838) New `x-namespace` Specification Extension: declaring it on an operation moves its Endpoint (and inline request / response models) to a sub-namespace, declaring it on a schema moves its Model, Normalizer & Validator there. Artifacts without the attribute keep the flat layout
+- [OpenApi31] The internal 3.1 models now capture `x-*` specification extensions on the `Operation` object and on schemas, matching what OpenAPI 2.0 / 3.0 already preserved
 - [JsonSchema] New `<Namespace>\Runtime\JsonObject` runtime class shipped with every generated library, used to represent objects & maps in normalized payloads
 - [Docs] New [Architecture Decision Records](docs/contributing/adrs/index.md) documenting key generator/runtime decisions
 - [OpenApi] [GH#832](https://github.com/janephp/janephp/issues/832) New `operation-namings` option to customize client method names and endpoint class names through `Jane\Component\OpenApiCommon\Naming\OperationNamingInterface` instances. Providing an empty array (the default) keeps the built-in chain (`operationId` based naming with URL based fallback). As a side effect, an operation named exactly `'0'` is now consistently treated as a valid name by the naming chain instead of being skipped

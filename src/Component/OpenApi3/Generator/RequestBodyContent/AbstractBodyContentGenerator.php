@@ -7,6 +7,7 @@ use Jane\Component\OpenApi3\Generator\RequestBodyContentGeneratorInterface;
 use Jane\Component\OpenApi3\Guesser\GuessClass;
 use Jane\Component\OpenApi3\JsonSchema\Model\MediaType;
 use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
+use Jane\Component\OpenApiCommon\Naming\XNamespaceResolver;
 use PhpParser\Node;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
@@ -41,7 +42,7 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
             return [$types, $array];
         }
 
-        $class = $context->getRegistry()->getSchema($classGuess->getReference())->getNamespace() . '\\Model\\' . $classGuess->getName();
+        $class = $context->getRegistry()->getSchema($classGuess->getReference())->getNamespace() . '\\Model' . XNamespaceResolver::subNamespaceSuffix($classGuess) . '\\' . $classGuess->getName();
 
         if ($array) {
             $class .= '[]';
@@ -59,7 +60,7 @@ abstract class AbstractBodyContentGenerator implements RequestBodyContentGenerat
             return $this->typeToCondition($schema?->getType(), $schema?->getFormat(), new Expr\PropertyFetch(new Expr\Variable('this'), 'body'));
         }
 
-        $class = $context->getRegistry()->getSchema($classGuess->getReference())->getNamespace() . '\\Model\\' . $classGuess->getName();
+        $class = $context->getRegistry()->getSchema($classGuess->getReference())->getNamespace() . '\\Model' . XNamespaceResolver::subNamespaceSuffix($classGuess) . '\\' . $classGuess->getName();
 
         if ($array) {
             return new Expr\BinaryOp\LogicalAnd(

@@ -13,6 +13,7 @@ use Jane\Component\OpenApiCommon\Generator\ContentType;
 use Jane\Component\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\Component\OpenApiCommon\Generator\Traits\OpenApiNumberTypeResolverTrait;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
+use Jane\Component\OpenApiCommon\Naming\XNamespaceResolver;
 use Jane\Component\OpenApiCommon\Registry\Registry;
 use PhpParser\Comment\Doc;
 use PhpParser\Modifiers;
@@ -296,7 +297,7 @@ EOD
         $class = null;
 
         if (null !== $classGuess) {
-            $class = $context->getRegistry()->getSchema($classGuess->getReference())->getNamespace() . '\\Model\\' . $classGuess->getName();
+            $class = $context->getRegistry()->getSchema($classGuess->getReference())->getNamespace() . '\\Model' . XNamespaceResolver::subNamespaceSuffix($classGuess) . '\\' . $classGuess->getName();
 
             if ($array) {
                 $class .= '[]';

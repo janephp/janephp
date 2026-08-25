@@ -1,0 +1,79 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "x-namespace API",
+        "version": "1.0.0"
+    },
+    "host": "api.example.com",
+    "basePath": "/v1",
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/flat-items": {
+            "get": {
+                "operationId": "getFlatItems",
+                "responses": {
+                    "200": {
+                        "description": "A flat item",
+                        "schema": {
+                            "$ref": "#/definitions/FlatItem"
+                        }
+                    }
+                }
+            }
+        },
+        "/namespaced-report": {
+            "get": {
+                "operationId": "getNamespacedReport",
+                "x-namespace": "Admin\\Reports",
+                "responses": {
+                    "200": {
+                        "description": "An inline report model, namespaced by the operation extension",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "title": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tagged-items": {
+            "get": {
+                "operationId": "getTaggedItems",
+                "x-namespace": "Ops\\Monitoring",
+                "responses": {
+                    "200": {
+                        "description": "A schema declaring its own x-namespace keeps it",
+                        "schema": {
+                            "$ref": "#/definitions/TaggedItem"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "FlatItem": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "TaggedItem": {
+            "type": "object",
+            "x-namespace": "Catalog",
+            "properties": {
+                "label": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

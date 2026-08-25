@@ -28,7 +28,18 @@ class ModelGenerator extends BaseModelGenerator
         $extends = null;
         if ($class instanceof ClassGuess
             && $class->getParentClass() instanceof ParentClass) {
-            $extends = $this->getNaming()->getClassName($class->getParentClass()->getName());
+            $parentClass = $class->getParentClass();
+            $parentClassName = $this->getNaming()->getClassName($parentClass->getName());
+
+            if ($parentClass->getSubNamespace() === $class->getSubNamespace()) {
+                // same sub-namespace: the relative class name resolves to the parent
+                $extends = $parentClassName;
+            } elseif (null !== $parentClass->getModelNamespace()) {
+                // different sub-namespace: reference the parent by its fully qualified name
+                $extends = '\\' . $parentClass->getModelNamespace() . '\\' . $parentClassName;
+            } else {
+                $extends = $parentClassName;
+            }
         }
 
         return $this->createModel(

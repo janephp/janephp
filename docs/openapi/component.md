@@ -263,6 +263,54 @@ Additional rules:
 - Parameters declaring a `content` field are serialized from their content and ignore `style` / `explode`,
   as specified by OpenAPI.
 
+## Namespacing generated code with `x-namespace`
+
+By default, Jane generates every Endpoint in `Endpoint\`, every Model in `Model\`, ... With the OpenAPI
+[Specification Extensions](https://spec.openapis.org/oas/v3.1.0#specification-extensions) mechanism, you can opt-in
+to a sub-namespace per artifact by declaring an `x-namespace` attribute:
+
+- on an **operation**: its Endpoint class (and the Models generated for its inline request bodies / responses, see
+  below) moves to `Endpoint\<x-namespace>\`
+- on a **schema** (`components.schemas` entry in OpenAPI 3.x, `definitions` entry in OpenAPI 2): its Model,
+  Normalizer and Validator classes move to `Model\<x-namespace>\`, `Normalizer\<x-namespace>\`, ...
+
+```yaml
+paths:
+  /users:
+    get:
+      operationId: getUsers
+      x-namespace: Admin\Reports
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+components:
+  schemas:
+    User:
+      x-namespace: Directory
+      type: object
+```
+
+With this specification:
+
+- `Endpoint\Admin\Reports\GetUsers` is generated instead of `Endpoint\GetUsers`
+- `Model\Directory\User` (+ its normalizer / validator) is generated instead of `Model\User`
+
+Rules:
+
+- The value may contain several segments separated by `\` or `/`, e.g. `"Admin\Reports"` or `"Directory/Users"`.
+  Each segment is sanitized like class names (invalid characters removed, reserved words prefixed with `_`,
+  e.g. `"list"` becomes `_List`).
+- Artifacts without the attribute keep the flat layout: adding `x-namespace` only affects annotated artifacts.
+- Inline request body / response models of a namespaced operation inherit the operation's namespace, so they stay
+  next to their endpoint. A schema referenced by that operation which declares its own `x-namespace` always wins:
+  explicit attributes are never overridden.
+- Renaming or removing an `x-namespace` attribute after generation changes the FQCNs of the affected classes and is
+  therefore a BC break for consumers of your generated library.
+
 ## Using a generated client
 
 Generating a client will produce same classes as the [JSON Schema](../json_schema/component.md) library:

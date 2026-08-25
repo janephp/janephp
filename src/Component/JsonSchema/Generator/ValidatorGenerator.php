@@ -28,7 +28,6 @@ class ValidatorGenerator implements GeneratorInterface
     public function generate(Schema $schema, string $className, Context $context): void
     {
         $registry = $context->getRegistry();
-        $namespace = $schema->getNamespace() . '\\Validator';
 
         foreach ($schema->getClasses() as $class) {
             if ($class instanceof NonObjectGuessInterface) {
@@ -38,6 +37,8 @@ class ValidatorGenerator implements GeneratorInterface
             // The Constraint class is always generated, even without any validator guess: normalizers and
             // parent Compound constraints reference it unconditionally, so skipping it would leave a
             // reference to a class that does not exist, fataling at runtime.
+            $subNamespace = $class->getSubNamespace();
+            $namespace = $this->naming->getValidatorNamespace($schema->getNamespace(), $subNamespace);
             $className = $this->naming->getConstraintName($class->getName());
             $collectionItemsConstraints = [];
             $collectionItems = [];
@@ -62,8 +63,8 @@ class ValidatorGenerator implements GeneratorInterface
                     $localNamespace = $namespace;
                     if (null !== $classGuess->getClassReference()) {
                         foreach ($registry->getSchemas() as $localSchema) {
-                            if (null !== $localSchema->getClass($classGuess->getClassReference())) {
-                                $localNamespace = $localSchema->getNamespace() . '\\Validator';
+                            if (null !== ($referencedClass = $localSchema->getClass($classGuess->getClassReference()))) {
+                                $localNamespace = $this->naming->getValidatorNamespace($localSchema->getNamespace(), $referencedClass->getSubNamespace());
                             }
                         }
                     }
@@ -126,7 +127,7 @@ class ValidatorGenerator implements GeneratorInterface
             );
 
             $namespaceStmt = new Node\Stmt\Namespace_(new Node\Name($namespace), [$class]);
-            $schema->addFile(new File($schema->getDirectory() . '/Validator/' . $className . '.php', $namespaceStmt, self::FILE_TYPE_VALIDATOR));
+            $schema->addFile(new File($this->naming->getArtifactPath($schema->getDirectory(), 'Validator', $subNamespace) . '/' . $className . '.php', $namespaceStmt, self::FILE_TYPE_VALIDATOR));
         }
     }
 

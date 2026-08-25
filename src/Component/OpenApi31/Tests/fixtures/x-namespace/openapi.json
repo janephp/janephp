@@ -1,0 +1,93 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "x-namespace API",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://api.example.com/v1"
+        }
+    ],
+    "paths": {
+        "/flat-items": {
+            "get": {
+                "operationId": "getFlatItems",
+                "responses": {
+                    "200": {
+                        "description": "A flat item",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FlatItem"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/namespaced-report": {
+            "get": {
+                "operationId": "getNamespacedReport",
+                "x-namespace": "Admin\\Reports",
+                "responses": {
+                    "200": {
+                        "description": "An inline report model, namespaced by the operation extension",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "title": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tagged-items": {
+            "get": {
+                "operationId": "getTaggedItems",
+                "x-namespace": "Ops\\Monitoring",
+                "responses": {
+                    "200": {
+                        "description": "A schema declaring its own x-namespace keeps it",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TaggedItem"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "FlatItem": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "TaggedItem": {
+                "type": "object",
+                "x-namespace": "Catalog",
+                "properties": {
+                    "label": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

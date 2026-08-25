@@ -108,6 +108,54 @@ class Naming
         return \sprintf('%s\\%s', $this->getRuntimeNamespace($schemaNamespace, $namespace), $class);
     }
 
+    public function getModelNamespace(string $schemaNamespace, array $subNamespace = []): string
+    {
+        return $this->getNamespacedChild($schemaNamespace, 'Model', $subNamespace);
+    }
+
+    public function getNormalizerNamespace(string $schemaNamespace, array $subNamespace = []): string
+    {
+        return $this->getNamespacedChild($schemaNamespace, 'Normalizer', $subNamespace);
+    }
+
+    public function getValidatorNamespace(string $schemaNamespace, array $subNamespace = []): string
+    {
+        return $this->getNamespacedChild($schemaNamespace, 'Validator', $subNamespace);
+    }
+
+    public function getEndpointNamespace(string $schemaNamespace, array $subNamespace = []): string
+    {
+        return $this->getNamespacedChild($schemaNamespace, 'Endpoint', $subNamespace);
+    }
+
+    /**
+     * Base directory for generated artifacts of a given type, e.g. "<dir>/Model" or "<dir>/Model/Users".
+     *
+     * @param string[] $subNamespace Sanitized segments appended after the artifact directory
+     */
+    public function getArtifactPath(string $directory, string $artifact, array $subNamespace = []): string
+    {
+        $path = $directory . '/' . $artifact;
+        foreach ($subNamespace as $segment) {
+            $path .= '/' . $segment;
+        }
+
+        return $path;
+    }
+
+    /**
+     * @param string[] $subNamespace Sanitized segments appended after the child namespace, e.g. ['Users'] => "<ns>\Model\Users"
+     */
+    private function getNamespacedChild(string $schemaNamespace, string $child, array $subNamespace): string
+    {
+        $namespaceSuffix = '';
+        if (\count($subNamespace) > 0) {
+            $namespaceSuffix = '\\' . implode('\\', $subNamespace);
+        }
+
+        return $schemaNamespace . '\\' . $child . $namespaceSuffix;
+    }
+
     protected function cleaning(string $name, bool $class = false): string
     {
         if (preg_match('/\$/', $name)) {

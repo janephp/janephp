@@ -15,12 +15,14 @@ class ObjectType extends Type
 {
     /**
      * @param array<string, array<string>|null> $discriminants
+     * @param string[]                          $subNamespace  Sub-namespace segments of the model inside "Model"
      */
     public function __construct(
         object $object,
         private readonly string $className,
         private readonly string $namespace,
         private readonly array $discriminants = [],
+        private readonly array $subNamespace = [],
     ) {
         parent::__construct($object, 'object');
     }
@@ -126,17 +128,33 @@ class ObjectType extends Type
         return $this->className;
     }
 
+    /**
+     * @return string[]
+     */
+    public function getSubNamespace(): array
+    {
+        return $this->subNamespace;
+    }
+
     public function getFqdn(bool $withRoot = true): string
     {
         if ($withRoot) {
-            return '\\' . $this->namespace . '\\Model\\' . $this->className;
+            return '\\' . $this->getFqdn(false);
         }
 
-        return $this->namespace . '\\Model\\' . $this->className;
+        return $this->namespace . '\\Model' . $this->getSubNamespaceSuffix() . '\\' . $this->className;
     }
 
     public function getNamespace(): string
     {
         return $this->namespace;
+    }
+
+    /**
+     * @return string "\"-prefixed sub-namespace (e.g. "\Users"), empty string when the model uses the flat layout
+     */
+    private function getSubNamespaceSuffix(): string
+    {
+        return [] === $this->subNamespace ? '' : '\\' . implode('\\', $this->subNamespace);
     }
 }
