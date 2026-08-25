@@ -280,9 +280,25 @@ EOD
             ),
         ]);
 
+        $withResponseInterface = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Exception'), [
+            new Stmt\Interface_(
+                'WithResponseInterface',
+                [
+                    'stmts' => [
+                        new Stmt\ClassMethod('getResponse', [
+                            'flags' => Modifiers::PUBLIC,
+                            'stmts' => null,
+                            'returnType' => new Name('?\\Psr\\Http\\Message\\ResponseInterface'),
+                        ]),
+                    ],
+                ]
+            ),
+        ]);
+
         $schema->addFile(new File($schema->getDirectory() . '/Exception/ApiException.php', $apiException, 'Exception'));
         $schema->addFile(new File($schema->getDirectory() . '/Exception/ClientException.php', $clientException, 'Exception'));
         $schema->addFile(new File($schema->getDirectory() . '/Exception/ServerException.php', $serverException, 'Exception'));
+        $schema->addFile(new File($schema->getDirectory() . '/Exception/WithResponseInterface.php', $withResponseInterface, 'Exception'));
 
         if ($registry->getThrowUnexpectedStatusCode()) {
             $unexpectedStatusCodeException = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Exception'), [
@@ -291,34 +307,9 @@ EOD
                     [
                         'implements' => [
                             new Name('ClientException'),
+                            new Name('WithResponseInterface'),
                         ],
                         'extends' => new Name('\\RuntimeException'),
-                        'stmts' => [
-                            new Stmt\ClassMethod('__construct', [
-                                'flags' => Modifiers::PUBLIC,
-                                'params' => [
-                                    new Param(new Expr\Variable('status')),
-                                    new Param(new Expr\Variable('message'), new Scalar\String_('')),
-                                ],
-                                'stmts' => [
-                                    new Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
-                                        new Node\Arg(new Expr\Variable('message')),
-                                        new Node\Arg(new Expr\Variable('status')),
-                                    ])),
-                                ],
-                            ]),
-                        ],
-                    ]
-                ),
-            ]);
-
-            $schema->addFile(new File($schema->getDirectory() . '/Exception/UnexpectedStatusCodeException.php', $unexpectedStatusCodeException, 'Exception'));
-
-            $badResponseException = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Exception'), [
-                new Stmt\Class_(
-                    'BadResponseException',
-                    [
-                        'extends' => new Name('UnexpectedStatusCodeException'),
                         'stmts' => [
                             new Stmt\Property(Modifiers::PRIVATE, [
                                 new Stmt\PropertyProperty('response'),
@@ -341,8 +332,8 @@ EOD
                                 ],
                                 'stmts' => [
                                     new Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
-                                        new Node\Arg(new Expr\Variable('status')),
                                         new Node\Arg(new Expr\Variable('message')),
+                                        new Node\Arg(new Expr\Variable('status')),
                                     ])),
                                     new Stmt\Expression(new Expr\Assign(
                                         new Expr\PropertyFetch(
@@ -363,6 +354,38 @@ EOD
                                     ),
                                 ],
                                 'returnType' => new Name('?\\Psr\\Http\\Message\\ResponseInterface'),
+                            ]),
+                        ],
+                    ]
+                ),
+            ]);
+
+            $schema->addFile(new File($schema->getDirectory() . '/Exception/UnexpectedStatusCodeException.php', $unexpectedStatusCodeException, 'Exception'));
+
+            $badResponseException = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Exception'), [
+                new Stmt\Class_(
+                    'BadResponseException',
+                    [
+                        'extends' => new Name('UnexpectedStatusCodeException'),
+                        'stmts' => [
+                            new Stmt\ClassMethod('__construct', [
+                                'flags' => Modifiers::PUBLIC,
+                                'params' => [
+                                    new Param(new Expr\Variable('status')),
+                                    new Param(new Expr\Variable('message'), new Scalar\String_('')),
+                                    new Param(
+                                        new Expr\Variable('response'),
+                                        new Expr\ConstFetch(new Name('null')),
+                                        new Node\NullableType(new Name('\\Psr\\Http\\Message\\ResponseInterface'))
+                                    ),
+                                ],
+                                'stmts' => [
+                                    new Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
+                                        new Node\Arg(new Expr\Variable('status')),
+                                        new Node\Arg(new Expr\Variable('message')),
+                                        new Node\Arg(new Expr\Variable('response')),
+                                    ])),
+                                ],
                             ]),
                         ],
                     ]
@@ -390,7 +413,10 @@ EOD
                 [
                     'flags' => Modifiers::ABSTRACT,
                     'extends' => new Name('\\RuntimeException'),
-                    'implements' => [new Name($code >= 500 ? 'ServerException' : 'ClientException')],
+                    'implements' => [
+                        new Name($code >= 500 ? 'ServerException' : 'ClientException'),
+                        new Name('WithResponseInterface'),
+                    ],
                     'stmts' => [
                         new Stmt\ClassMethod('__construct', [
                             'flags' => Modifiers::PUBLIC,

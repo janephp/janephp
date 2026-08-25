@@ -2,7 +2,7 @@
 
 namespace Jane\Generated\DigitalOcean\Exception;
 
-abstract class ForbiddenException extends \RuntimeException implements ClientException
+abstract class ForbiddenException extends \RuntimeException implements ClientException, WithResponseInterface
 {
     public function __construct(string $message)
     {

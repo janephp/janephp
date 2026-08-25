@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Exception;
 
-abstract class UnauthorizedException extends \RuntimeException implements ClientException
+abstract class UnauthorizedException extends \RuntimeException implements ClientException, WithResponseInterface
 {
     public function __construct(string $message)
     {
