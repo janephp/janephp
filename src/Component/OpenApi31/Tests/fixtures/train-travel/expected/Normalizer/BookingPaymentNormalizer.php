@@ -45,18 +45,28 @@ class BookingPaymentNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('amount', $data)) {
             $object->setAmount($data['amount']);
+            unset($data['amount']);
         }
         if (\array_key_exists('currency', $data)) {
             $object->setCurrency($data['currency']);
+            unset($data['currency']);
         }
         if (\array_key_exists('source', $data)) {
             $object->setSource($data['source']);
+            unset($data['source']);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
+            unset($data['status']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -71,6 +81,11 @@ class BookingPaymentNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if ($data->isInitialized('source') && null !== $data->getSource()) {
             $dataArray['source'] = $data->getSource();
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\BookingPaymentConstraint());

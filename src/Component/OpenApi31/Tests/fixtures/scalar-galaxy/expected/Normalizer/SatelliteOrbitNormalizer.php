@@ -48,12 +48,20 @@ class SatelliteOrbitNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (\array_key_exists('planet', $data)) {
             $object->setPlanet($this->denormalizer->denormalize($data['planet'], \Jane\Component\OpenApi31\Tests\Expected\Model\Planet::class, 'json', $context));
+            unset($data['planet']);
         }
         if (\array_key_exists('orbitalPeriod', $data)) {
             $object->setOrbitalPeriod($data['orbitalPeriod']);
+            unset($data['orbitalPeriod']);
         }
         if (\array_key_exists('distance', $data)) {
             $object->setDistance($data['distance']);
+            unset($data['distance']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -68,6 +76,11 @@ class SatelliteOrbitNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if ($data->isInitialized('distance') && null !== $data->getDistance()) {
             $dataArray['distance'] = $data->getDistance();
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\SatelliteOrbitConstraint());

@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class Problem
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class Problem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class Problem
         $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'title' => ['title', 'getTitle', 'setTitle'], 'detail' => ['detail', 'getDetail', 'setDetail'], 'instance' => ['instance', 'getInstance', 'setInstance'], 'status' => ['status', 'getStatus', 'setStatus']];
     }
 }

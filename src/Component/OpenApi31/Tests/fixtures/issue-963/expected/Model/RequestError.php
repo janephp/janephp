@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class RequestError
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class RequestError implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class RequestError
         $this->initialized['reason'] = true;
         $this->reason = $reason;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['reason' => ['reason', 'getReason', 'setReason']];
     }
 }

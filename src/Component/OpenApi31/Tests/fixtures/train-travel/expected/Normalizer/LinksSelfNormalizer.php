@@ -42,6 +42,12 @@ class LinksSelfNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (\array_key_exists('self', $data)) {
             $object->setSelf($data['self']);
+            unset($data['self']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -50,6 +56,11 @@ class LinksSelfNormalizer implements DenormalizerInterface, NormalizerInterface,
         $dataArray = [];
         if ($data->isInitialized('self') && null !== $data->getSelf()) {
             $dataArray['self'] = $data->getSelf();
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\LinksSelfConstraint());

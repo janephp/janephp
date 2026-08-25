@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class Order
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class Order implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class Order
         $this->initialized['product'] = true;
         $this->product = $product;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['productData' => ['product_data', 'getProductData', 'setProductData'], 'product' => ['product', 'getProduct', 'setProduct']];
     }
 }

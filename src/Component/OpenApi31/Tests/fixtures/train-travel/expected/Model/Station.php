@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class Station
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class Station implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class Station
         $this->initialized['timezone'] = true;
         $this->timezone = $timezone;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'address' => ['address', 'getAddress', 'setAddress'], 'countryCode' => ['country_code', 'getCountryCode', 'setCountryCode'], 'timezone' => ['timezone', 'getTimezone', 'setTimezone']];
     }
 }

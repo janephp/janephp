@@ -39,6 +39,12 @@ class TaggedItemNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (\array_key_exists('label', $data)) {
             $object->setLabel($data['label']);
+            unset($data['label']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -47,6 +53,11 @@ class TaggedItemNormalizer implements DenormalizerInterface, NormalizerInterface
         $dataArray = [];
         if ($data->isInitialized('label') && null !== $data->getLabel()) {
             $dataArray['label'] = $data->getLabel();
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
         }
         return $dataArray;
     }

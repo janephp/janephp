@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class Price
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class Price implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class Price
         $this->initialized['comment'] = true;
         $this->comment = $comment;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['amount' => ['amount', 'getAmount', 'setAmount'], 'currency' => ['currency', 'getCurrency', 'setCurrency'], 'discount' => ['discount', 'getDiscount', 'setDiscount'], 'comment' => ['comment', 'getComment', 'setComment']];
     }
 }

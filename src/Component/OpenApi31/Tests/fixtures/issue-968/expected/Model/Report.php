@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class Report
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class Report implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class Report
         $this->initialized['period'] = true;
         $this->period = $period;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['period' => ['period', 'getPeriod', 'setPeriod']];
     }
 }

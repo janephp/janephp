@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model\Admin\Reports;
 
-class NamespacedReportGetResponse200
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class NamespacedReportGetResponse200 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class NamespacedReportGetResponse200
         $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['title' => ['title', 'getTitle', 'setTitle']];
     }
 }

@@ -42,9 +42,11 @@ class ImageUploadedMessageNormalizer implements DenormalizerInterface, Normalize
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         if (\array_key_exists('imageUrl', $data)) {
             $object->setImageUrl($data['imageUrl']);
+            unset($data['imageUrl']);
         }
         if (\array_key_exists('uploadedAt', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['uploadedAt']);
@@ -52,12 +54,20 @@ class ImageUploadedMessageNormalizer implements DenormalizerInterface, Normalize
                 throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['uploadedAt'], 'Y-m-d\TH:i:sP');
             }
             $object->setUploadedAt($date);
+            unset($data['uploadedAt']);
         }
         if (\array_key_exists('fileSize', $data)) {
             $object->setFileSize($data['fileSize']);
+            unset($data['fileSize']);
         }
         if (\array_key_exists('mimeType', $data)) {
             $object->setMimeType($data['mimeType']);
+            unset($data['mimeType']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -78,6 +88,11 @@ class ImageUploadedMessageNormalizer implements DenormalizerInterface, Normalize
         }
         if ($data->isInitialized('mimeType') && null !== $data->getMimeType()) {
             $dataArray['mimeType'] = $data->getMimeType();
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\ImageUploadedMessageConstraint());

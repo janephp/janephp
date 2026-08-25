@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class PaginatedResourceMeta
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class PaginatedResourceMeta implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class PaginatedResourceMeta
         $this->initialized['next'] = true;
         $this->next = $next;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['limit' => ['limit', 'getLimit', 'setLimit'], 'offset' => ['offset', 'getOffset', 'setOffset'], 'total' => ['total', 'getTotal', 'setTotal'], 'next' => ['next', 'getNext', 'setNext']];
     }
 }

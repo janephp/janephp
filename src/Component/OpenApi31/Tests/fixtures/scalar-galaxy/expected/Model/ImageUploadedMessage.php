@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class ImageUploadedMessage
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class ImageUploadedMessage implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -145,5 +148,9 @@ class ImageUploadedMessage
         $this->initialized['mimeType'] = true;
         $this->mimeType = $mimeType;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['message' => ['message', 'getMessage', 'setMessage'], 'imageUrl' => ['imageUrl', 'getImageUrl', 'setImageUrl'], 'uploadedAt' => ['uploadedAt', 'getUploadedAt', 'setUploadedAt'], 'fileSize' => ['fileSize', 'getFileSize', 'setFileSize'], 'mimeType' => ['mimeType', 'getMimeType', 'setMimeType']];
     }
 }

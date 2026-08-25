@@ -39,9 +39,16 @@ class MyApiEndpointIdGetResponse200Normalizer implements DenormalizerInterface, 
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('someField', $data)) {
             $object->setSomeField($data['someField']);
+            unset($data['someField']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -53,6 +60,11 @@ class MyApiEndpointIdGetResponse200Normalizer implements DenormalizerInterface, 
         }
         if ($data->isInitialized('someField') && null !== $data->getSomeField()) {
             $dataArray['someField'] = $data->getSomeField();
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
         }
         return $dataArray;
     }

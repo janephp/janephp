@@ -42,6 +42,12 @@ class PlanetsPlanetIdImagePostBodyNormalizer implements DenormalizerInterface, N
         }
         if (\array_key_exists('image', $data)) {
             $object->setImage($data['image']);
+            unset($data['image']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -50,6 +56,11 @@ class PlanetsPlanetIdImagePostBodyNormalizer implements DenormalizerInterface, N
         $dataArray = [];
         if ($data->isInitialized('image') && null !== $data->getImage()) {
             $dataArray['image'] = $data->getImage();
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PlanetsPlanetIdImagePostBodyConstraint());

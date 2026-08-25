@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class Satellite
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class Satellite implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -149,5 +152,9 @@ class Satellite
         $this->initialized['orbit'] = true;
         $this->orbit = $orbit;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'description' => ['description', 'getDescription', 'setDescription'], 'diameter' => ['diameter', 'getDiameter', 'setDiameter'], 'type' => ['type', 'getType', 'setType'], 'orbit' => ['orbit', 'getOrbit', 'setOrbit']];
     }
 }

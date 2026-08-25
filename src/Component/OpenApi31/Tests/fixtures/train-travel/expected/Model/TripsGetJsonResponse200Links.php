@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class TripsGetJsonResponse200Links
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class TripsGetJsonResponse200Links implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class TripsGetJsonResponse200Links
         $this->initialized['prev'] = true;
         $this->prev = $prev;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['self' => ['self', 'getSelf', 'setSelf'], 'next' => ['next', 'getNext', 'setNext'], 'prev' => ['prev', 'getPrev', 'setPrev']];
     }
 }

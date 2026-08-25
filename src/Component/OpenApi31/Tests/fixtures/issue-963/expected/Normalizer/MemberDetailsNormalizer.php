@@ -42,24 +42,36 @@ class MemberDetailsNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('firstname', $data)) {
             $object->setFirstname($data['firstname']);
+            unset($data['firstname']);
         }
         if (\array_key_exists('lastname', $data)) {
             $object->setLastname($data['lastname']);
+            unset($data['lastname']);
         }
         if (\array_key_exists('surname', $data)) {
             $object->setSurname($data['surname']);
+            unset($data['surname']);
         }
         if (\array_key_exists('description', $data)) {
             $object->setDescription($data['description']);
+            unset($data['description']);
         }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
+            unset($data['email']);
         }
         if (\array_key_exists('role', $data)) {
             $object->setRole($data['role']);
+            unset($data['role']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -86,6 +98,11 @@ class MemberDetailsNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if ($data->isInitialized('role') && null !== $data->getRole()) {
             $dataArray['role'] = $data->getRole();
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\MemberDetailsConstraint());

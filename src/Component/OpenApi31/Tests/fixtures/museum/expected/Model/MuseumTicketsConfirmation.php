@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class MuseumTicketsConfirmation
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class MuseumTicketsConfirmation implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -173,5 +176,9 @@ class MuseumTicketsConfirmation
         $this->initialized['confirmationCode'] = true;
         $this->confirmationCode = $confirmationCode;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['ticketId' => ['ticketId', 'getTicketId', 'setTicketId'], 'ticketDate' => ['ticketDate', 'getTicketDate', 'setTicketDate'], 'ticketType' => ['ticketType', 'getTicketType', 'setTicketType'], 'eventId' => ['eventId', 'getEventId', 'setEventId'], 'message' => ['message', 'getMessage', 'setMessage'], 'confirmationCode' => ['confirmationCode', 'getConfirmationCode', 'setConfirmationCode']];
     }
 }

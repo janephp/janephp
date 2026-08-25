@@ -46,9 +46,16 @@ class WrapperCollectionNormalizer implements DenormalizerInterface, NormalizerIn
                 $values[] = $value;
             }
             $object->setData($values);
+            unset($data['data']);
         }
         if (\array_key_exists('links', $data)) {
             $object->setLinks($data['links']);
+            unset($data['links']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -61,6 +68,11 @@ class WrapperCollectionNormalizer implements DenormalizerInterface, NormalizerIn
                 $values[] = $value;
             }
             $dataArray['data'] = $values;
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\WrapperCollectionConstraint());

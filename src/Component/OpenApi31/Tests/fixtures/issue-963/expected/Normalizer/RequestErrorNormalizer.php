@@ -42,6 +42,12 @@ class RequestErrorNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('reason', $data)) {
             $object->setReason($data['reason']);
+            unset($data['reason']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -50,6 +56,11 @@ class RequestErrorNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray = [];
         if ($data->isInitialized('reason') && null !== $data->getReason()) {
             $dataArray['reason'] = $data->getReason();
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\RequestErrorConstraint());

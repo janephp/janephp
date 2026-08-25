@@ -42,9 +42,16 @@ class ItemNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus(\Jane\Component\OpenApi31\Tests\EnumAsObjects\Model\ItemStatus::from($data['status']));
+            unset($data['status']);
         }
         if (\array_key_exists('priority', $data)) {
             $object->setPriority(\Jane\Component\OpenApi31\Tests\EnumAsObjects\Model\Priority::from($data['priority']));
+            unset($data['priority']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -53,6 +60,11 @@ class ItemNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         $dataArray = [];
         $dataArray['status'] = $data->getStatus()->value;
         $dataArray['priority'] = $data->getPriority()->value;
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\EnumAsObjects\Validator\ItemConstraint());
         }

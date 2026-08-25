@@ -48,9 +48,16 @@ class ReportPeriodNormalizer implements DenormalizerInterface, NormalizerInterfa
                 $value = $data['from'];
             }
             $object->setFrom($value);
+            unset($data['from']);
         }
         elseif (\array_key_exists('from', $data) && $data['from'] === null) {
             $object->setFrom(null);
+            unset($data['from']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -65,6 +72,11 @@ class ReportPeriodNormalizer implements DenormalizerInterface, NormalizerInterfa
                 $value = $data->getFrom();
             }
             $dataArray['from'] = $value;
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\ReportPeriodConstraint());

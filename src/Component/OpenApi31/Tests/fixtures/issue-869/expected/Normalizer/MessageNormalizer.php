@@ -42,6 +42,7 @@ class MessageNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('subject', $data)) {
             $object->setSubject($data['subject']);
+            unset($data['subject']);
         }
         if (\array_key_exists('body', $data) && $data['body'] !== null) {
             $value = $data['body'];
@@ -51,9 +52,16 @@ class MessageNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 $value = $data['body'];
             }
             $object->setBody($value);
+            unset($data['body']);
         }
         elseif (\array_key_exists('body', $data) && $data['body'] === null) {
             $object->setBody(null);
+            unset($data['body']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -71,6 +79,11 @@ class MessageNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 $value = $data->getBody();
             }
             $dataArray['body'] = $value;
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\MessageConstraint());

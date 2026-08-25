@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class MemberDetails
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class MemberDetails implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -165,5 +168,9 @@ class MemberDetails
         $this->initialized['role'] = true;
         $this->role = $role;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'firstname' => ['firstname', 'getFirstname', 'setFirstname'], 'lastname' => ['lastname', 'getLastname', 'setLastname'], 'surname' => ['surname', 'getSurname', 'setSurname'], 'description' => ['description', 'getDescription', 'setDescription'], 'email' => ['email', 'getEmail', 'setEmail'], 'role' => ['role', 'getRole', 'setRole']];
     }
 }

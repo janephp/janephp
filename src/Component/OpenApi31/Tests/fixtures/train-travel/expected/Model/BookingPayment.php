@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class BookingPayment
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class BookingPayment implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class BookingPayment
         $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'amount' => ['amount', 'getAmount', 'setAmount'], 'currency' => ['currency', 'getCurrency', 'setCurrency'], 'source' => ['source', 'getSource', 'setSource'], 'status' => ['status', 'getStatus', 'setStatus']];
     }
 }

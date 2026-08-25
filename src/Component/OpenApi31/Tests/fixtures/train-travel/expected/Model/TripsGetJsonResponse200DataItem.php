@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class TripsGetJsonResponse200DataItem
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class TripsGetJsonResponse200DataItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -285,5 +288,9 @@ class TripsGetJsonResponse200DataItem
         $this->initialized['self'] = true;
         $this->self = $self;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'origin' => ['origin', 'getOrigin', 'setOrigin'], 'destination' => ['destination', 'getDestination', 'setDestination'], 'departureTime' => ['departure_time', 'getDepartureTime', 'setDepartureTime'], 'arrivalTime' => ['arrival_time', 'getArrivalTime', 'setArrivalTime'], 'operator' => ['operator', 'getOperator', 'setOperator'], 'price' => ['price', 'getPrice', 'setPrice'], 'bicyclesAllowed' => ['bicycles_allowed', 'getBicyclesAllowed', 'setBicyclesAllowed'], 'dogsAllowed' => ['dogs_allowed', 'getDogsAllowed', 'setDogsAllowed'], 'self' => ['self', 'getSelf', 'setSelf']];
     }
 }

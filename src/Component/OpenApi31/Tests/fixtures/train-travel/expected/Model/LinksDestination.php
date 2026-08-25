@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class LinksDestination
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class LinksDestination implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class LinksDestination
         $this->initialized['self'] = true;
         $this->self = $self;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['self' => ['self', 'getSelf', 'setSelf']];
     }
 }

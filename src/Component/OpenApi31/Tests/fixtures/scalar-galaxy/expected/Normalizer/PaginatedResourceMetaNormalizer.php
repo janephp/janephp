@@ -42,12 +42,15 @@ class PaginatedResourceMetaNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('limit', $data)) {
             $object->setLimit($data['limit']);
+            unset($data['limit']);
         }
         if (\array_key_exists('offset', $data)) {
             $object->setOffset($data['offset']);
+            unset($data['offset']);
         }
         if (\array_key_exists('total', $data)) {
             $object->setTotal($data['total']);
+            unset($data['total']);
         }
         if (\array_key_exists('next', $data) && $data['next'] !== null) {
             $value = $data['next'];
@@ -57,9 +60,16 @@ class PaginatedResourceMetaNormalizer implements DenormalizerInterface, Normaliz
                 $value = $data['next'];
             }
             $object->setNext($value);
+            unset($data['next']);
         }
         elseif (\array_key_exists('next', $data) && $data['next'] === null) {
             $object->setNext(null);
+            unset($data['next']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -83,6 +93,11 @@ class PaginatedResourceMetaNormalizer implements DenormalizerInterface, Normaliz
                 $value = $data->getNext();
             }
             $dataArray['next'] = $value;
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PaginatedResourceMetaConstraint());
