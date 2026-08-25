@@ -37,7 +37,8 @@ class SchemaParser extends CommonSchemaParser
     {
         return array_merge(
             TypeArrayValidator::validate($openApiSpecData),
-            NonBodyParameterTypeValidator::validate($openApiSpecData)
+            NonBodyParameterTypeValidator::validate($openApiSpecData),
+            SecuritySchemeValidator::validate($openApiSpecData)
         );
     }
 }

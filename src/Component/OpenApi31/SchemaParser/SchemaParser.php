@@ -27,4 +27,14 @@ class SchemaParser extends CommonSchemaParser
 
         return parent::denormalize($openApiSpecData, $openApiSpecPath);
     }
+
+    /**
+     * @param array<mixed> $openApiSpecData
+     *
+     * @return array<string>
+     */
+    protected function validateSchema(array $openApiSpecData): array
+    {
+        return SecuritySchemeValidator::validate($openApiSpecData);
+    }
 }
