@@ -42,7 +42,11 @@ class BusinessProcessDetailsDataSchemaImportNormalizer implements DenormalizerIn
             unset($data['kind']);
         }
         if (\array_key_exists('schemaImportResult', $data) && $data['schemaImportResult'] !== null) {
-            $object->setSchemaImportResult($data['schemaImportResult']);
+            $value = $data['schemaImportResult'];
+            if (is_array($data['schemaImportResult']) and \array_key_exists('importedSchemaCount', $data['schemaImportResult']) and \array_key_exists('skippedSchemaCount', $data['schemaImportResult']) and \array_key_exists('totalSchemaCount', $data['schemaImportResult'])) {
+                $value = $this->denormalizer->denormalize($data['schemaImportResult'], \PicturePark\API\Model\SchemaImportResult::class, 'json', $context);
+            }
+            $object->setSchemaImportResult($value);
             unset($data['schemaImportResult']);
         }
         elseif (\array_key_exists('schemaImportResult', $data) && $data['schemaImportResult'] === null) {
@@ -50,16 +54,20 @@ class BusinessProcessDetailsDataSchemaImportNormalizer implements DenormalizerIn
             unset($data['schemaImportResult']);
         }
         if (\array_key_exists('listItemImportResult', $data) && $data['listItemImportResult'] !== null) {
-            $object->setListItemImportResult($data['listItemImportResult']);
+            $value_1 = $data['listItemImportResult'];
+            if (is_array($data['listItemImportResult']) and \array_key_exists('importedListItemCount', $data['listItemImportResult']) and \array_key_exists('skippedListItemCount', $data['listItemImportResult']) and \array_key_exists('totalListItemCount', $data['listItemImportResult'])) {
+                $value_1 = $this->denormalizer->denormalize($data['listItemImportResult'], \PicturePark\API\Model\ListItemImportResult::class, 'json', $context);
+            }
+            $object->setListItemImportResult($value_1);
             unset($data['listItemImportResult']);
         }
         elseif (\array_key_exists('listItemImportResult', $data) && $data['listItemImportResult'] === null) {
             $object->setListItemImportResult(null);
             unset($data['listItemImportResult']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_2;
             }
         }
         return $object;
@@ -69,14 +77,22 @@ class BusinessProcessDetailsDataSchemaImportNormalizer implements DenormalizerIn
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
         if ($data->isInitialized('schemaImportResult') && null !== $data->getSchemaImportResult()) {
-            $dataArray['schemaImportResult'] = $data->getSchemaImportResult();
+            $value = $data->getSchemaImportResult();
+            if (is_object($data->getSchemaImportResult())) {
+                $value = $data->getSchemaImportResult() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getSchemaImportResult(), 'json', $context));
+            }
+            $dataArray['schemaImportResult'] = $value;
         }
         if ($data->isInitialized('listItemImportResult') && null !== $data->getListItemImportResult()) {
-            $dataArray['listItemImportResult'] = $data->getListItemImportResult();
+            $value_1 = $data->getListItemImportResult();
+            if (is_object($data->getListItemImportResult())) {
+                $value_1 = $data->getListItemImportResult() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getListItemImportResult(), 'json', $context));
+            }
+            $dataArray['listItemImportResult'] = $value_1;
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_2;
             }
         }
         return $dataArray;

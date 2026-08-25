@@ -57,7 +57,11 @@ class ShareNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $object->setContentIds($values);
         }
         if (\array_key_exists('audit', $data)) {
-            $object->setAudit($data['audit']);
+            $value_1 = $data['audit'];
+            if (is_array($data['audit']) and \array_key_exists('creationDate', $data['audit']) and \array_key_exists('modificationDate', $data['audit'])) {
+                $value_1 = $this->denormalizer->denormalize($data['audit'], \PicturePark\API\Model\UserAudit::class, 'json', $context);
+            }
+            $object->setAudit($value_1);
         }
         if (\array_key_exists('expirationDate', $data) && $data['expirationDate'] !== null) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['expirationDate']);
@@ -70,7 +74,11 @@ class ShareNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $object->setExpirationDate(null);
         }
         if (\array_key_exists('shareType', $data)) {
-            $object->setShareType($data['shareType']);
+            $value_2 = $data['shareType'];
+            if (is_string($data['shareType'])) {
+                $value_2 = $data['shareType'];
+            }
+            $object->setShareType($value_2);
         }
         if (\array_key_exists('isReadOnly', $data)) {
             $object->setIsReadOnly($data['isReadOnly']);
@@ -89,11 +97,19 @@ class ShareNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $values[] = $value;
         }
         $dataArray['contentIds'] = $values;
-        $dataArray['audit'] = $data->getAudit();
+        $value_1 = $data->getAudit();
+        if (is_object($data->getAudit())) {
+            $value_1 = $data->getAudit() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getAudit(), 'json', $context));
+        }
+        $dataArray['audit'] = $value_1;
         if ($data->isInitialized('expirationDate') && null !== $data->getExpirationDate()) {
             $dataArray['expirationDate'] = $data->getExpirationDate()?->format('Y-m-d\TH:i:sP');
         }
-        $dataArray['shareType'] = $data->getShareType();
+        $value_2 = $data->getShareType();
+        if (is_string($data->getShareType())) {
+            $value_2 = $data->getShareType();
+        }
+        $dataArray['shareType'] = $value_2;
         $dataArray['isReadOnly'] = $data->getIsReadOnly();
         return $dataArray;
     }

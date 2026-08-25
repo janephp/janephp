@@ -42,12 +42,18 @@ class DropletActionRebuildNormalizer implements DenormalizerInterface, Normalize
             unset($data['type']);
         }
         if (\array_key_exists('image', $data)) {
-            $object->setImage($data['image']);
+            $value = $data['image'];
+            if (is_string($data['image'])) {
+                $value = $data['image'];
+            } elseif (is_int($data['image'])) {
+                $value = $data['image'];
+            }
+            $object->setImage($value);
             unset($data['image']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -57,11 +63,17 @@ class DropletActionRebuildNormalizer implements DenormalizerInterface, Normalize
         $dataArray = [];
         $dataArray['type'] = $data->getType();
         if ($data->isInitialized('image') && null !== $data->getImage()) {
-            $dataArray['image'] = $data->getImage();
+            $value = $data->getImage();
+            if (is_string($data->getImage())) {
+                $value = $data->getImage();
+            } elseif (is_int($data->getImage())) {
+                $value = $data->getImage();
+            }
+            $dataArray['image'] = $value;
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

@@ -49,12 +49,24 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItemNormalizer imp
             unset($data['path']);
         }
         if (\array_key_exists('value', $data)) {
-            $object->setValue($data['value']);
+            $value = $data['value'];
+            if (is_array($data['value'])) {
+                $value = $data['value'];
+            } elseif (is_array($data['value']) && $this->isOnlyNumericKeys($data['value'])) {
+                $values = [];
+                foreach ($data['value'] as $value_1) {
+                    $values[] = $value_1;
+                }
+                $value = $values;
+            } elseif (is_string($data['value'])) {
+                $value = $data['value'];
+            }
+            $object->setValue($value);
             unset($data['value']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_2;
             }
         }
         return $object;
@@ -67,11 +79,23 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItemNormalizer imp
             $dataArray['path'] = $data->getPath();
         }
         if ($data->isInitialized('value') && null !== $data->getValue()) {
-            $dataArray['value'] = $data->getValue();
+            $value = $data->getValue();
+            if (is_object($data->getValue())) {
+                $value = $data->getValue();
+            } elseif (is_array($data->getValue())) {
+                $values = [];
+                foreach ($data->getValue() as $value_1) {
+                    $values[] = $value_1;
+                }
+                $value = $values;
+            } elseif (is_string($data->getValue())) {
+                $value = $data->getValue();
+            }
+            $dataArray['value'] = $value;
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_2;
             }
         }
         if (!($context['skip_validation'] ?? false)) {

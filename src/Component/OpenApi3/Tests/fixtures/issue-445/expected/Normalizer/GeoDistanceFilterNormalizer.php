@@ -49,16 +49,20 @@ class GeoDistanceFilterNormalizer implements DenormalizerInterface, NormalizerIn
             unset($data['field']);
         }
         if (\array_key_exists('location', $data)) {
-            $object->setLocation($data['location']);
+            $value = $data['location'];
+            if (is_array($data['location'])) {
+                $value = $this->denormalizer->denormalize($data['location'], \PicturePark\API\Model\GeoLocation::class, 'json', $context);
+            }
+            $object->setLocation($value);
             unset($data['location']);
         }
         if (\array_key_exists('distance', $data)) {
             $object->setDistance($data['distance']);
             unset($data['distance']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -68,13 +72,17 @@ class GeoDistanceFilterNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
         $dataArray['field'] = $data->getField();
-        $dataArray['location'] = $data->getLocation();
+        $value = $data->getLocation();
+        if (is_object($data->getLocation())) {
+            $value = $data->getLocation() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getLocation(), 'json', $context));
+        }
+        $dataArray['location'] = $value;
         if ($data->isInitialized('distance') && null !== $data->getDistance()) {
             $dataArray['distance'] = $data->getDistance();
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

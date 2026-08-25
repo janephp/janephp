@@ -50,16 +50,20 @@ class VectorStillFormatNormalizer implements DenormalizerInterface, NormalizerIn
             unset($data['extension']);
         }
         if (\array_key_exists('resizeAction', $data) && $data['resizeAction'] !== null) {
-            $object->setResizeAction($data['resizeAction']);
+            $value = $data['resizeAction'];
+            if (is_array($data['resizeAction']) and \array_key_exists('width', $data['resizeAction']) and \array_key_exists('height', $data['resizeAction']) and \array_key_exists('resizeMode', $data['resizeAction'])) {
+                $value = $this->denormalizer->denormalize($data['resizeAction'], \PicturePark\API\Model\ResizeAction::class, 'json', $context);
+            }
+            $object->setResizeAction($value);
             unset($data['resizeAction']);
         }
         elseif (\array_key_exists('resizeAction', $data) && $data['resizeAction'] === null) {
             $object->setResizeAction(null);
             unset($data['resizeAction']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -72,11 +76,15 @@ class VectorStillFormatNormalizer implements DenormalizerInterface, NormalizerIn
             $dataArray['extension'] = $data->getExtension();
         }
         if ($data->isInitialized('resizeAction') && null !== $data->getResizeAction()) {
-            $dataArray['resizeAction'] = $data->getResizeAction();
+            $value = $data->getResizeAction();
+            if (is_object($data->getResizeAction())) {
+                $value = $data->getResizeAction() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getResizeAction(), 'json', $context));
+            }
+            $dataArray['resizeAction'] = $value;
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

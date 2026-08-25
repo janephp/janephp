@@ -44,7 +44,11 @@ class BusinessProcessCreateRequestNormalizer implements DenormalizerInterface, N
             $object->setSupportsCancellation($data['supportsCancellation']);
         }
         if (\array_key_exists('notification', $data) && $data['notification'] !== null) {
-            $object->setNotification($data['notification']);
+            $value = $data['notification'];
+            if (is_array($data['notification']) and \array_key_exists('title', $data['notification']) and \array_key_exists('message', $data['notification']) and \array_key_exists('eventType', $data['notification'])) {
+                $value = $this->denormalizer->denormalize($data['notification'], \PicturePark\API\Model\BusinessProcessNotificationUpdate::class, 'json', $context);
+            }
+            $object->setNotification($value);
         }
         elseif (\array_key_exists('notification', $data) && $data['notification'] === null) {
             $object->setNotification(null);
@@ -59,7 +63,11 @@ class BusinessProcessCreateRequestNormalizer implements DenormalizerInterface, N
         $dataArray = [];
         $dataArray['supportsCancellation'] = $data->getSupportsCancellation();
         if ($data->isInitialized('notification') && null !== $data->getNotification()) {
-            $dataArray['notification'] = $data->getNotification();
+            $value = $data->getNotification();
+            if (is_object($data->getNotification())) {
+                $value = $data->getNotification() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getNotification(), 'json', $context));
+            }
+            $dataArray['notification'] = $value;
         }
         $dataArray['initialState'] = $data->getInitialState();
         return $dataArray;

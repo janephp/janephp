@@ -73,7 +73,15 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
             unset($data['fieldNamespace']);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $object->setNames($data['names']);
+            $value = $data['names'];
+            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['names'] as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $object->setNames($value);
             unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
@@ -81,7 +89,15 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
             unset($data['names']);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
-            $object->setDescriptions($data['descriptions']);
+            $value_2 = $data['descriptions'];
+            if (is_array($data['descriptions']) && $this->isOnlyNumericKeys($data['descriptions'])) {
+                $values_1 = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['descriptions'] as $key_1 => $value_3) {
+                    $values_1[$key_1] = $value_3;
+                }
+                $value_2 = $values_1;
+            }
+            $object->setDescriptions($value_2);
             unset($data['descriptions']);
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
@@ -117,7 +133,11 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
             unset($data['schemaId']);
         }
         if (\array_key_exists('schemaIndexingInfo', $data) && $data['schemaIndexingInfo'] !== null) {
-            $object->setSchemaIndexingInfo($data['schemaIndexingInfo']);
+            $value_4 = $data['schemaIndexingInfo'];
+            if (is_array($data['schemaIndexingInfo'])) {
+                $value_4 = $this->denormalizer->denormalize($data['schemaIndexingInfo'], \PicturePark\API\Model\SchemaIndexingInfo::class, 'json', $context);
+            }
+            $object->setSchemaIndexingInfo($value_4);
             unset($data['schemaIndexingInfo']);
         }
         elseif (\array_key_exists('schemaIndexingInfo', $data) && $data['schemaIndexingInfo'] === null) {
@@ -141,7 +161,11 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
             unset($data['minimumItems']);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $object->setFilter($data['filter']);
+            $value_5 = $data['filter'];
+            if (is_array($data['filter']) and \array_key_exists('kind', $data['filter'])) {
+                $value_5 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
+            }
+            $object->setFilter($value_5);
             unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
@@ -157,12 +181,16 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
             unset($data['listItemCreateTemplate']);
         }
         if (\array_key_exists('viewModeDisplayPatternType', $data)) {
-            $object->setViewModeDisplayPatternType($data['viewModeDisplayPatternType']);
+            $value_6 = $data['viewModeDisplayPatternType'];
+            if (is_string($data['viewModeDisplayPatternType'])) {
+                $value_6 = $data['viewModeDisplayPatternType'];
+            }
+            $object->setViewModeDisplayPatternType($value_6);
             unset($data['viewModeDisplayPatternType']);
         }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+        foreach ($data as $key_2 => $value_7) {
+            if (preg_match('/.*/', (string) $key_2)) {
+                $object[$key_2] = $value_7;
             }
         }
         return $object;
@@ -178,10 +206,26 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['fieldNamespace'] = $data->getFieldNamespace();
         }
         if ($data->isInitialized('names') && null !== $data->getNames()) {
-            $dataArray['names'] = $data->getNames();
+            $value = $data->getNames();
+            if (is_object($data->getNames())) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data->getNames() as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $dataArray['names'] = $value;
         }
         if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
-            $dataArray['descriptions'] = $data->getDescriptions();
+            $value_2 = $data->getDescriptions();
+            if (is_object($data->getDescriptions())) {
+                $values_1 = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data->getDescriptions() as $key_1 => $value_3) {
+                    $values_1[$key_1] = $value_3;
+                }
+                $value_2 = $values_1;
+            }
+            $dataArray['descriptions'] = $value_2;
         }
         $dataArray['required'] = $data->getRequired();
         $dataArray['fixed'] = $data->getFixed();
@@ -191,7 +235,11 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray['kind'] = $data->getKind();
         $dataArray['schemaId'] = $data->getSchemaId();
         if ($data->isInitialized('schemaIndexingInfo') && null !== $data->getSchemaIndexingInfo()) {
-            $dataArray['schemaIndexingInfo'] = $data->getSchemaIndexingInfo();
+            $value_4 = $data->getSchemaIndexingInfo();
+            if (is_object($data->getSchemaIndexingInfo())) {
+                $value_4 = $data->getSchemaIndexingInfo() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getSchemaIndexingInfo(), 'json', $context));
+            }
+            $dataArray['schemaIndexingInfo'] = $value_4;
         }
         if ($data->isInitialized('maximumItems') && null !== $data->getMaximumItems()) {
             $dataArray['maximumItems'] = $data->getMaximumItems();
@@ -200,17 +248,25 @@ class FieldMultiTagboxNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['minimumItems'] = $data->getMinimumItems();
         }
         if ($data->isInitialized('filter') && null !== $data->getFilter()) {
-            $dataArray['filter'] = $data->getFilter();
+            $value_5 = $data->getFilter();
+            if (is_object($data->getFilter())) {
+                $value_5 = $data->getFilter() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+            }
+            $dataArray['filter'] = $value_5;
         }
         if ($data->isInitialized('listItemCreateTemplate') && null !== $data->getListItemCreateTemplate()) {
             $dataArray['listItemCreateTemplate'] = $data->getListItemCreateTemplate();
         }
         if ($data->isInitialized('viewModeDisplayPatternType') && null !== $data->getViewModeDisplayPatternType()) {
-            $dataArray['viewModeDisplayPatternType'] = $data->getViewModeDisplayPatternType();
+            $value_6 = $data->getViewModeDisplayPatternType();
+            if (is_string($data->getViewModeDisplayPatternType())) {
+                $value_6 = $data->getViewModeDisplayPatternType();
+            }
+            $dataArray['viewModeDisplayPatternType'] = $value_6;
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+        foreach ($data->additionalPropertyEntries() as $key_2 => $value_7) {
+            if (preg_match('/.*/', (string) $key_2)) {
+                $dataArray[$key_2] = $value_7;
             }
         }
         return $dataArray;

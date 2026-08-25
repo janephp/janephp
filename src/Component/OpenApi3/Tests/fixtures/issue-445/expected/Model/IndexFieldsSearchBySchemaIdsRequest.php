@@ -23,7 +23,7 @@ class IndexFieldsSearchBySchemaIdsRequest
      * AllDescendantsFieldsOnRootSchema: All indexed fields from descendant schemas of root ones will be returned. Schemas that are not root schemas will be ignored.
      * SchemaAndParentFieldsOnly: Indexed fields of the requested schema and its parents will be returned.
      *
-     * @var mixed
+     * @var string
      */
     protected $searchMode = 'AllDescendantsFieldsOnRootSchema';
     /**
@@ -53,9 +53,9 @@ class IndexFieldsSearchBySchemaIdsRequest
      * AllDescendantsFieldsOnRootSchema: All indexed fields from descendant schemas of root ones will be returned. Schemas that are not root schemas will be ignored.
      * SchemaAndParentFieldsOnly: Indexed fields of the requested schema and its parents will be returned.
      *
-     * @return mixed
+     * @return string
      */
-    public function getSearchMode()
+    public function getSearchMode(): string
     {
         return $this->searchMode;
     }
@@ -64,11 +64,11 @@ class IndexFieldsSearchBySchemaIdsRequest
     AllDescendantsFieldsOnRootSchema: All indexed fields from descendant schemas of root ones will be returned. Schemas that are not root schemas will be ignored.
     SchemaAndParentFieldsOnly: Indexed fields of the requested schema and its parents will be returned.
     *
-    * @param mixed $searchMode
+    * @param string $searchMode
     *
     * @return self
     */
-    public function setSearchMode($searchMode): self
+    public function setSearchMode(string $searchMode): self
     {
         $this->initialized['searchMode'] = true;
         $this->searchMode = $searchMode;

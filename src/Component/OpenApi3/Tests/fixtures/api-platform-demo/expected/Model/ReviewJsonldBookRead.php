@@ -16,7 +16,7 @@ class ReviewJsonldBookRead implements AdditionalPropertiesInterface
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var mixed
+     * @var string|object
      */
     protected $context;
     /**
@@ -38,14 +38,14 @@ class ReviewJsonldBookRead implements AdditionalPropertiesInterface
      */
     protected $body;
     /**
-     * @return mixed
+     * @return string|object
      */
     public function getContext()
     {
         return $this->context;
     }
     /**
-     * @param mixed $context
+     * @param string|object $context
      *
      * @return self
      */

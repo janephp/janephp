@@ -50,7 +50,11 @@ class XmpFieldNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setIsWritable($data['isWritable']);
         }
         if (\array_key_exists('dataType', $data)) {
-            $object->setDataType($data['dataType']);
+            $value = $data['dataType'];
+            if (is_string($data['dataType'])) {
+                $value = $data['dataType'];
+            }
+            $object->setDataType($value);
         }
         return $object;
     }
@@ -61,7 +65,11 @@ class XmpFieldNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $dataArray['path'] = $data->getPath();
         }
         $dataArray['isWritable'] = $data->getIsWritable();
-        $dataArray['dataType'] = $data->getDataType();
+        $value = $data->getDataType();
+        if (is_string($data->getDataType())) {
+            $value = $data->getDataType();
+        }
+        $dataArray['dataType'] = $value;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

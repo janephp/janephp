@@ -38,7 +38,15 @@ class SingleTweetLookupResponseNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('data', $data)) {
-            $object->setData($data['data']);
+            $value = $data['data'];
+            if (is_array($data['data']) and (isset($data['data']['format']) and $data['data']['format'] == 'compact')) {
+                $value = $this->denormalizer->denormalize($data['data'], \Jane\Component\OpenApi3\Tests\Expected\Model\CompactTweet::class, 'json', $context);
+            } elseif (is_array($data['data']) and (isset($data['data']['format']) and $data['data']['format'] == 'default')) {
+                $value = $this->denormalizer->denormalize($data['data'], \Jane\Component\OpenApi3\Tests\Expected\Model\DefaultTweet::class, 'json', $context);
+            } elseif (is_array($data['data']) and (isset($data['data']['format']) and $data['data']['format'] == 'detailed')) {
+                $value = $this->denormalizer->denormalize($data['data'], \Jane\Component\OpenApi3\Tests\Expected\Model\DetailedTweet::class, 'json', $context);
+            }
+            $object->setData($value);
             unset($data['data']);
         }
         if (\array_key_exists('includes', $data)) {
@@ -47,15 +55,43 @@ class SingleTweetLookupResponseNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('errors', $data)) {
             $values = [];
-            foreach ($data['errors'] as $value) {
-                $values[] = $value;
+            foreach ($data['errors'] as $value_1) {
+                $value_2 = $value_1;
+                if (is_array($value_1) and \array_key_exists('status', $value_1) and (isset($value_1['type']) and $value_1['type'] == 'about:blank')) {
+                    $value_2 = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\GenericProblem::class, 'json', $context);
+                } elseif (is_array($value_1) and (isset($value_1['type']) and $value_1['type'] == 'https://api.twitter.com/labs/1/problems/invalid-request')) {
+                    $value_2 = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\InvalidRequestProblem::class, 'json', $context);
+                } elseif (is_array($value_1) and (isset($value_1['type']) and $value_1['type'] == 'https://api.twitter.com/labs/1/problems/client-forbidden')) {
+                    $value_2 = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ClientForbiddenProblem::class, 'json', $context);
+                } elseif (is_array($value_1) and \array_key_exists('parameter', $value_1) and \array_key_exists('value', $value_1) and (\array_key_exists('resource_type', $value_1) and ($value_1['resource_type'] == 'user' or $value_1['resource_type'] == 'tweet')) and (isset($value_1['type']) and $value_1['type'] == 'https://api.twitter.com/labs/1/problems/resource-not-found')) {
+                    $value_2 = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ResourceNotFoundProblem::class, 'json', $context);
+                } elseif (is_array($value_1) and \array_key_exists('resource_id', $value_1) and (\array_key_exists('resource_type', $value_1) and $value_1['resource_type'] == 'tweet') and (\array_key_exists('section', $value_1) and ($value_1['section'] == 'data' or $value_1['section'] == 'includes')) and (isset($value_1['type']) and $value_1['type'] == 'https://api.twitter.com/labs/1/problems/not-authorized-for-resource')) {
+                    $value_2 = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ResourceUnauthorizedProblem::class, 'json', $context);
+                } elseif (is_array($value_1) and \array_key_exists('resource_id', $value_1) and (\array_key_exists('resource_type', $value_1) and $value_1['resource_type'] == 'tweet') and (\array_key_exists('section', $value_1) and ($value_1['section'] == 'data' or $value_1['section'] == 'includes')) and (isset($value_1['type']) and $value_1['type'] == 'https://api.twitter.com/labs/1/problems/disallowed-resource')) {
+                    $value_2 = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\DisallowedResourceProblem::class, 'json', $context);
+                } elseif (is_array($value_1) and (isset($value_1['type']) and $value_1['type'] == 'https://api.twitter.com/labs/1/problems/unsupported-authentication')) {
+                    $value_2 = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\UnsupportedAuthenticationProblem::class, 'json', $context);
+                } elseif (is_array($value_1) and (isset($value_1['type']) and $value_1['type'] == 'https://api.twitter.com/labs/1/problems/usage-capped')) {
+                    $value_2 = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\UsageCapExceededProblem::class, 'json', $context);
+                } elseif (is_array($value_1) and (isset($value_1['type']) and $value_1['type'] == 'https://api.twitter.com/labs/1/problems/streaming-connection')) {
+                    $value_2 = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ConnectionExceptionProblem::class, 'json', $context);
+                } elseif (is_array($value_1) and (isset($value_1['type']) and $value_1['type'] == 'https://api.twitter.com/labs/1/problems/client-disconnected')) {
+                    $value_2 = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\ClientDisconnectedProblem::class, 'json', $context);
+                } elseif (is_array($value_1) and (isset($value_1['type']) and $value_1['type'] == 'https://api.twitter.com/labs/1/problems/operational-disconnect')) {
+                    $value_2 = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\OperationalDisconnectProblem::class, 'json', $context);
+                } elseif (is_array($value_1) and (isset($value_1['type']) and $value_1['type'] == 'https://api.twitter.com/labs/1/problems/rule-cap')) {
+                    $value_2 = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\RulesCapProblem::class, 'json', $context);
+                } elseif (is_array($value_1) and (isset($value_1['type']) and $value_1['type'] == 'https://api.twitter.com/labs/1/problems/invalid-rules')) {
+                    $value_2 = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi3\Tests\Expected\Model\InvalidRuleProblem::class, 'json', $context);
+                }
+                $values[] = $value_2;
             }
             $object->setErrors($values);
             unset($data['errors']);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value_3;
             }
         }
         return $object;
@@ -64,21 +100,57 @@ class SingleTweetLookupResponseNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if ($data->isInitialized('data') && null !== $data->getData()) {
-            $dataArray['data'] = $data->getData();
+            $value = $data->getData();
+            if (is_object($data->getData())) {
+                $value = $data->getData() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getData(), 'json', $context));
+            } elseif (is_object($data->getData())) {
+                $value = $data->getData() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getData(), 'json', $context));
+            } elseif (is_object($data->getData())) {
+                $value = $data->getData() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getData(), 'json', $context));
+            }
+            $dataArray['data'] = $value;
         }
         if ($data->isInitialized('includes') && null !== $data->getIncludes()) {
             $dataArray['includes'] = $data->getIncludes() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getIncludes(), 'json', $context));
         }
         if ($data->isInitialized('errors') && null !== $data->getErrors()) {
             $values = [];
-            foreach ($data->getErrors() as $value) {
-                $values[] = $value;
+            foreach ($data->getErrors() as $value_1) {
+                $value_2 = $value_1;
+                if (is_object($value_1)) {
+                    $value_2 = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                } elseif (is_object($value_1)) {
+                    $value_2 = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                } elseif (is_object($value_1)) {
+                    $value_2 = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                } elseif (is_object($value_1)) {
+                    $value_2 = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                } elseif (is_object($value_1)) {
+                    $value_2 = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                } elseif (is_object($value_1)) {
+                    $value_2 = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                } elseif (is_object($value_1)) {
+                    $value_2 = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                } elseif (is_object($value_1)) {
+                    $value_2 = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                } elseif (is_object($value_1)) {
+                    $value_2 = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                } elseif (is_object($value_1)) {
+                    $value_2 = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                } elseif (is_object($value_1)) {
+                    $value_2 = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                } elseif (is_object($value_1)) {
+                    $value_2 = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                } elseif (is_object($value_1)) {
+                    $value_2 = $value_1 === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+                }
+                $values[] = $value_2;
             }
             $dataArray['errors'] = $values;
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+                $dataArray[$key] = $value_3;
             }
         }
         return $dataArray;

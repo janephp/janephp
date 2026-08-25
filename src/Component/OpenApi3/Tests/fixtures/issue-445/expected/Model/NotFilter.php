@@ -18,26 +18,26 @@ class NotFilter extends FilterBase implements AdditionalPropertiesInterface
     /**
      * The filter to be negated.
      *
-     * @var mixed
+     * @var FilterBase
      */
     protected $filter;
     /**
      * The filter to be negated.
      *
-     * @return mixed
+     * @return FilterBase
      */
-    public function getFilter()
+    public function getFilter(): FilterBase
     {
         return $this->filter;
     }
     /**
      * The filter to be negated.
      *
-     * @param mixed $filter
+     * @param FilterBase $filter
      *
      * @return self
      */
-    public function setFilter($filter): self
+    public function setFilter(FilterBase $filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;

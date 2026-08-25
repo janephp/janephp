@@ -21,7 +21,7 @@ class OutputFormatInfo
     /**
      * Output translations.
      *
-     * @var mixed
+     * @var array<string, string>
      */
     protected $names;
     /**
@@ -49,20 +49,20 @@ class OutputFormatInfo
     /**
      * Output translations.
      *
-     * @return mixed
+     * @return array<string, string>
      */
-    public function getNames()
+    public function getNames(): iterable
     {
         return $this->names;
     }
     /**
      * Output translations.
      *
-     * @param mixed $names
+     * @param array<string, string> $names
      *
      * @return self
      */
-    public function setNames($names): self
+    public function setNames(iterable $names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;

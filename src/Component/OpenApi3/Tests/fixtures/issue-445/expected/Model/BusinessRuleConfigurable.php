@@ -18,7 +18,7 @@ class BusinessRuleConfigurable extends BusinessRule implements AdditionalPropert
     /**
      * The condition that makes this rule trigger.
      *
-     * @var mixed|null
+     * @var BusinessRuleCondition|null
      */
     protected $condition;
     /**
@@ -36,20 +36,20 @@ class BusinessRuleConfigurable extends BusinessRule implements AdditionalPropert
     /**
      * The condition that makes this rule trigger.
      *
-     * @return mixed
+     * @return BusinessRuleCondition|null
      */
-    public function getCondition()
+    public function getCondition(): ?BusinessRuleCondition
     {
         return $this->condition;
     }
     /**
      * The condition that makes this rule trigger.
      *
-     * @param mixed $condition
+     * @param BusinessRuleCondition|null $condition
      *
      * @return self
      */
-    public function setCondition($condition): self
+    public function setCondition(?BusinessRuleCondition $condition): self
     {
         $this->initialized['condition'] = true;
         $this->condition = $condition;

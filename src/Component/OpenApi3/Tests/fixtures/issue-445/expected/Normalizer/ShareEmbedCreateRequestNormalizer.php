@@ -82,16 +82,20 @@ class ShareEmbedCreateRequestNormalizer implements DenormalizerInterface, Normal
             unset($data['layerSchemaIds']);
         }
         if (\array_key_exists('outputAccess', $data)) {
-            $object->setOutputAccess($data['outputAccess']);
+            $value_2 = $data['outputAccess'];
+            if (is_string($data['outputAccess'])) {
+                $value_2 = $data['outputAccess'];
+            }
+            $object->setOutputAccess($value_2);
             unset($data['outputAccess']);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
             unset($data['kind']);
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_2;
+                $object[$key] = $value_3;
             }
         }
         return $object;
@@ -118,11 +122,15 @@ class ShareEmbedCreateRequestNormalizer implements DenormalizerInterface, Normal
             }
             $dataArray['layerSchemaIds'] = $values_1;
         }
-        $dataArray['outputAccess'] = $data->getOutputAccess();
+        $value_2 = $data->getOutputAccess();
+        if (is_string($data->getOutputAccess())) {
+            $value_2 = $data->getOutputAccess();
+        }
+        $dataArray['outputAccess'] = $value_2;
         $dataArray['kind'] = $data->getKind();
-        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_2;
+                $dataArray[$key] = $value_3;
             }
         }
         return $dataArray;

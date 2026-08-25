@@ -30,13 +30,13 @@ class UserSearchRequest implements AdditionalPropertiesInterface
     /**
      * An optional search filter. Limits the document result set.
      *
-     * @var mixed|null
+     * @var FilterBase|null
      */
     protected $filter;
     /**
      * Return only users in certain life cycle state(s).
      *
-     * @var mixed
+     * @var string
      */
     protected $lifeCycleFilter;
     /**
@@ -146,20 +146,20 @@ class UserSearchRequest implements AdditionalPropertiesInterface
     /**
      * An optional search filter. Limits the document result set.
      *
-     * @return mixed
+     * @return FilterBase|null
      */
-    public function getFilter()
+    public function getFilter(): ?FilterBase
     {
         return $this->filter;
     }
     /**
      * An optional search filter. Limits the document result set.
      *
-     * @param mixed $filter
+     * @param FilterBase|null $filter
      *
      * @return self
      */
-    public function setFilter($filter): self
+    public function setFilter(?FilterBase $filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;
@@ -168,20 +168,20 @@ class UserSearchRequest implements AdditionalPropertiesInterface
     /**
      * Return only users in certain life cycle state(s).
      *
-     * @return mixed
+     * @return string
      */
-    public function getLifeCycleFilter()
+    public function getLifeCycleFilter(): string
     {
         return $this->lifeCycleFilter;
     }
     /**
      * Return only users in certain life cycle state(s).
      *
-     * @param mixed $lifeCycleFilter
+     * @param string $lifeCycleFilter
      *
      * @return self
      */
-    public function setLifeCycleFilter($lifeCycleFilter): self
+    public function setLifeCycleFilter(string $lifeCycleFilter): self
     {
         $this->initialized['lifeCycleFilter'] = true;
         $this->lifeCycleFilter = $lifeCycleFilter;

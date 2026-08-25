@@ -80,21 +80,29 @@ class UserProfileNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setLanguageCode(null);
         }
         if (\array_key_exists('address', $data) && $data['address'] !== null) {
-            $object->setAddress($data['address']);
+            $value = $data['address'];
+            if (is_array($data['address'])) {
+                $value = $this->denormalizer->denormalize($data['address'], \PicturePark\API\Model\UserAddress::class, 'json', $context);
+            }
+            $object->setAddress($value);
         }
         elseif (\array_key_exists('address', $data) && $data['address'] === null) {
             $object->setAddress(null);
         }
         if (\array_key_exists('authorizationState', $data)) {
-            $object->setAuthorizationState($data['authorizationState']);
+            $value_1 = $data['authorizationState'];
+            if (is_string($data['authorizationState'])) {
+                $value_1 = $data['authorizationState'];
+            }
+            $object->setAuthorizationState($value_1);
         }
         if (\array_key_exists('isLocked', $data)) {
             $object->setIsLocked($data['isLocked']);
         }
         if (\array_key_exists('userRights', $data) && $data['userRights'] !== null) {
             $values = [];
-            foreach ($data['userRights'] as $value) {
-                $values[] = $value;
+            foreach ($data['userRights'] as $value_2) {
+                $values[] = $value_2;
             }
             $object->setUserRights($values);
         }
@@ -103,8 +111,8 @@ class UserProfileNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (\array_key_exists('userRoleIds', $data) && $data['userRoleIds'] !== null) {
             $values_1 = [];
-            foreach ($data['userRoleIds'] as $value_1) {
-                $values_1[] = $value_1;
+            foreach ($data['userRoleIds'] as $value_3) {
+                $values_1[] = $value_3;
             }
             $object->setUserRoleIds($values_1);
         }
@@ -116,8 +124,8 @@ class UserProfileNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (\array_key_exists('systemUserRoles', $data) && $data['systemUserRoles'] !== null) {
             $values_2 = [];
-            foreach ($data['systemUserRoles'] as $value_2) {
-                $values_2[] = $value_2;
+            foreach ($data['systemUserRoles'] as $value_4) {
+                $values_2[] = $value_4;
             }
             $object->setSystemUserRoles($values_2);
         }
@@ -151,29 +159,37 @@ class UserProfileNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['languageCode'] = $data->getLanguageCode();
         }
         if ($data->isInitialized('address') && null !== $data->getAddress()) {
-            $dataArray['address'] = $data->getAddress();
+            $value = $data->getAddress();
+            if (is_object($data->getAddress())) {
+                $value = $data->getAddress() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getAddress(), 'json', $context));
+            }
+            $dataArray['address'] = $value;
         }
-        $dataArray['authorizationState'] = $data->getAuthorizationState();
+        $value_1 = $data->getAuthorizationState();
+        if (is_string($data->getAuthorizationState())) {
+            $value_1 = $data->getAuthorizationState();
+        }
+        $dataArray['authorizationState'] = $value_1;
         $dataArray['isLocked'] = $data->getIsLocked();
         if ($data->isInitialized('userRights') && null !== $data->getUserRights()) {
             $values = [];
-            foreach ($data->getUserRights() as $value) {
-                $values[] = $value;
+            foreach ($data->getUserRights() as $value_2) {
+                $values[] = $value_2;
             }
             $dataArray['userRights'] = $values;
         }
         if ($data->isInitialized('userRoleIds') && null !== $data->getUserRoleIds()) {
             $values_1 = [];
-            foreach ($data->getUserRoleIds() as $value_1) {
-                $values_1[] = $value_1;
+            foreach ($data->getUserRoleIds() as $value_3) {
+                $values_1[] = $value_3;
             }
             $dataArray['userRoleIds'] = $values_1;
         }
         $dataArray['termsConsentExpired'] = $data->getTermsConsentExpired();
         if ($data->isInitialized('systemUserRoles') && null !== $data->getSystemUserRoles()) {
             $values_2 = [];
-            foreach ($data->getSystemUserRoles() as $value_2) {
-                $values_2[] = $value_2;
+            foreach ($data->getSystemUserRoles() as $value_4) {
+                $values_2[] = $value_4;
             }
             $dataArray['systemUserRoles'] = $values_2;
         }

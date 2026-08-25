@@ -40,14 +40,22 @@ class ResponseAllRegistriesInfoNormalizer implements DenormalizerInterface, Norm
         if (\array_key_exists('registries', $data)) {
             $values = [];
             foreach ($data['registries'] as $value) {
-                $values[] = $value;
+                $value_1 = $value;
+                if (is_array($value) && $this->isOnlyNumericKeys($value)) {
+                    $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
+                    foreach ($value as $key => $value_2) {
+                        $values_1[$key] = $value_2;
+                    }
+                    $value_1 = $values_1;
+                }
+                $values[] = $value_1;
             }
             $object->setRegistries($values);
             unset($data['registries']);
         }
-        foreach ($data as $key => $value_1) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+        foreach ($data as $key_1 => $value_3) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $object[$key_1] = $value_3;
             }
         }
         return $object;
@@ -58,13 +66,21 @@ class ResponseAllRegistriesInfoNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('registries') && null !== $data->getRegistries()) {
             $values = [];
             foreach ($data->getRegistries() as $value) {
-                $values[] = $value;
+                $value_1 = $value;
+                if (is_object($value)) {
+                    $values_1 = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
+                    foreach ($value as $key => $value_2) {
+                        $values_1[$key] = $value_2;
+                    }
+                    $value_1 = $values_1;
+                }
+                $values[] = $value_1;
             }
             $dataArray['registries'] = $values;
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
-            if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+        foreach ($data->additionalPropertyEntries() as $key_1 => $value_3) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $dataArray[$key_1] = $value_3;
             }
         }
         return $dataArray;

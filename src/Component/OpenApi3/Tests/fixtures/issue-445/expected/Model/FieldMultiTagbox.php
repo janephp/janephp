@@ -24,7 +24,7 @@ class FieldMultiTagbox extends FieldBase implements AdditionalPropertiesInterfac
     /**
      * Indexing information of fields of the related schema identified by the SchemaId property
      *
-     * @var mixed|null
+     * @var SchemaIndexingInfo|null
      */
     protected $schemaIndexingInfo;
     /**
@@ -42,7 +42,7 @@ class FieldMultiTagbox extends FieldBase implements AdditionalPropertiesInterfac
     /**
      * An optional filter to limit the returned list items.
      *
-     * @var mixed|null
+     * @var FilterBase|null
      */
     protected $filter;
     /**
@@ -55,7 +55,7 @@ class FieldMultiTagbox extends FieldBase implements AdditionalPropertiesInterfac
      * Defines the display pattern type to be used (Name or List only) when showing a tagbox item in view mode. Defaults to "Name".
      * The information is only consumed by the client application. No actual logic is implemented in the backend.
      *
-     * @var mixed
+     * @var string
      */
     protected $viewModeDisplayPatternType = 'Name';
     /**
@@ -83,20 +83,20 @@ class FieldMultiTagbox extends FieldBase implements AdditionalPropertiesInterfac
     /**
      * Indexing information of fields of the related schema identified by the SchemaId property
      *
-     * @return mixed
+     * @return SchemaIndexingInfo|null
      */
-    public function getSchemaIndexingInfo()
+    public function getSchemaIndexingInfo(): ?SchemaIndexingInfo
     {
         return $this->schemaIndexingInfo;
     }
     /**
      * Indexing information of fields of the related schema identified by the SchemaId property
      *
-     * @param mixed $schemaIndexingInfo
+     * @param SchemaIndexingInfo|null $schemaIndexingInfo
      *
      * @return self
      */
-    public function setSchemaIndexingInfo($schemaIndexingInfo): self
+    public function setSchemaIndexingInfo(?SchemaIndexingInfo $schemaIndexingInfo): self
     {
         $this->initialized['schemaIndexingInfo'] = true;
         $this->schemaIndexingInfo = $schemaIndexingInfo;
@@ -149,20 +149,20 @@ class FieldMultiTagbox extends FieldBase implements AdditionalPropertiesInterfac
     /**
      * An optional filter to limit the returned list items.
      *
-     * @return mixed
+     * @return FilterBase|null
      */
-    public function getFilter()
+    public function getFilter(): ?FilterBase
     {
         return $this->filter;
     }
     /**
      * An optional filter to limit the returned list items.
      *
-     * @param mixed $filter
+     * @param FilterBase|null $filter
      *
      * @return self
      */
-    public function setFilter($filter): self
+    public function setFilter(?FilterBase $filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;
@@ -194,9 +194,9 @@ class FieldMultiTagbox extends FieldBase implements AdditionalPropertiesInterfac
      * Defines the display pattern type to be used (Name or List only) when showing a tagbox item in view mode. Defaults to "Name".
      * The information is only consumed by the client application. No actual logic is implemented in the backend.
      *
-     * @return mixed
+     * @return string
      */
-    public function getViewModeDisplayPatternType()
+    public function getViewModeDisplayPatternType(): string
     {
         return $this->viewModeDisplayPatternType;
     }
@@ -204,11 +204,11 @@ class FieldMultiTagbox extends FieldBase implements AdditionalPropertiesInterfac
     * Defines the display pattern type to be used (Name or List only) when showing a tagbox item in view mode. Defaults to "Name".
     The information is only consumed by the client application. No actual logic is implemented in the backend.
     *
-    * @param mixed $viewModeDisplayPatternType
+    * @param string $viewModeDisplayPatternType
     *
     * @return self
     */
-    public function setViewModeDisplayPatternType($viewModeDisplayPatternType): self
+    public function setViewModeDisplayPatternType(string $viewModeDisplayPatternType): self
     {
         $this->initialized['viewModeDisplayPatternType'] = true;
         $this->viewModeDisplayPatternType = $viewModeDisplayPatternType;

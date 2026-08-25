@@ -50,16 +50,20 @@ class EnqueueTaggingActionNormalizer implements DenormalizerInterface, Normalize
             unset($data['kind']);
         }
         if (\array_key_exists('options', $data) && $data['options'] !== null) {
-            $object->setOptions($data['options']);
+            $value = $data['options'];
+            if (is_array($data['options']) and \array_key_exists('kind', $data['options'])) {
+                $value = $this->denormalizer->denormalize($data['options'], \PicturePark\API\Model\TaggingOptionsBase::class, 'json', $context);
+            }
+            $object->setOptions($value);
             unset($data['options']);
         }
         elseif (\array_key_exists('options', $data) && $data['options'] === null) {
             $object->setOptions(null);
             unset($data['options']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -72,11 +76,15 @@ class EnqueueTaggingActionNormalizer implements DenormalizerInterface, Normalize
         }
         $dataArray['kind'] = $data->getKind();
         if ($data->isInitialized('options') && null !== $data->getOptions()) {
-            $dataArray['options'] = $data->getOptions();
+            $value = $data->getOptions();
+            if (is_object($data->getOptions())) {
+                $value = $data->getOptions() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getOptions(), 'json', $context));
+            }
+            $dataArray['options'] = $value;
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

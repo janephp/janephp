@@ -15,6 +15,7 @@ use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\DateTimeGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\EnumGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\ItemsGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\MultipleGuesser;
+use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\OneOfGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\ReferenceGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\SimpleTypeGuesser;
 use Jane\Component\OpenApiCommon\Naming\OperationNamingFactory;
@@ -47,6 +48,7 @@ class GuesserFactory
         $chainGuesser->addGuesser(new AdditionalPropertiesGuesser(Schema::class));
         $chainGuesser->addGuesser(new AllOfGuesser($denormalizer, $naming, Schema::class));
         $chainGuesser->addGuesser(new AnyOfReferencefGuesser($denormalizer, $naming, Schema::class));
+        $chainGuesser->addGuesser(new OneOfGuesser($denormalizer, Schema::class));
         $chainGuesser->addGuesser(new ArrayGuesser(Schema::class));
         $chainGuesser->addGuesser(new ItemsGuesser(Schema::class));
         $chainGuesser->addGuesser(new SimpleTypeGuesser(Schema::class));

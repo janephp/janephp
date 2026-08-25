@@ -102,7 +102,13 @@ class AppServiceSpecNormalizer implements DenormalizerInterface, NormalizerInter
             unset($data['instance_count']);
         }
         if (\array_key_exists('instance_size_slug', $data)) {
-            $object->setInstanceSizeSlug($data['instance_size_slug']);
+            $value_2 = $data['instance_size_slug'];
+            if (is_string($data['instance_size_slug'])) {
+                $value_2 = $data['instance_size_slug'];
+            } elseif (is_string($data['instance_size_slug'])) {
+                $value_2 = $data['instance_size_slug'];
+            }
+            $object->setInstanceSizeSlug($value_2);
             unset($data['instance_size_slug']);
         }
         if (\array_key_exists('autoscaling', $data)) {
@@ -131,16 +137,16 @@ class AppServiceSpecNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (\array_key_exists('internal_ports', $data)) {
             $values_2 = [];
-            foreach ($data['internal_ports'] as $value_2) {
-                $values_2[] = $value_2;
+            foreach ($data['internal_ports'] as $value_3) {
+                $values_2[] = $value_3;
             }
             $object->setInternalPorts($values_2);
             unset($data['internal_ports']);
         }
         if (\array_key_exists('routes', $data)) {
             $values_3 = [];
-            foreach ($data['routes'] as $value_3) {
-                $values_3[] = $this->denormalizer->denormalize($value_3, \Jane\Generated\DigitalOcean\Model\AppRouteSpec::class, 'json', $context);
+            foreach ($data['routes'] as $value_4) {
+                $values_3[] = $this->denormalizer->denormalize($value_4, \Jane\Generated\DigitalOcean\Model\AppRouteSpec::class, 'json', $context);
             }
             $object->setRoutes($values_3);
             unset($data['routes']);
@@ -149,9 +155,9 @@ class AppServiceSpecNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setTermination($this->denormalizer->denormalize($data['termination'], \Jane\Generated\DigitalOcean\Model\AppServiceSpecTermination::class, 'json', $context));
             unset($data['termination']);
         }
-        foreach ($data as $key => $value_4) {
+        foreach ($data as $key => $value_5) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_4;
+                $object[$key] = $value_5;
             }
         }
         return $object;
@@ -210,7 +216,13 @@ class AppServiceSpecNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['instance_count'] = $data->getInstanceCount();
         }
         if ($data->isInitialized('instanceSizeSlug') && null !== $data->getInstanceSizeSlug()) {
-            $dataArray['instance_size_slug'] = $data->getInstanceSizeSlug();
+            $value_2 = $data->getInstanceSizeSlug();
+            if (is_string($data->getInstanceSizeSlug())) {
+                $value_2 = $data->getInstanceSizeSlug();
+            } elseif (is_string($data->getInstanceSizeSlug())) {
+                $value_2 = $data->getInstanceSizeSlug();
+            }
+            $dataArray['instance_size_slug'] = $value_2;
         }
         if ($data->isInitialized('autoscaling') && null !== $data->getAutoscaling()) {
             $dataArray['autoscaling'] = $data->getAutoscaling() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAutoscaling(), 'json', $context));
@@ -232,24 +244,24 @@ class AppServiceSpecNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if ($data->isInitialized('internalPorts') && null !== $data->getInternalPorts()) {
             $values_2 = [];
-            foreach ($data->getInternalPorts() as $value_2) {
-                $values_2[] = $value_2;
+            foreach ($data->getInternalPorts() as $value_3) {
+                $values_2[] = $value_3;
             }
             $dataArray['internal_ports'] = $values_2;
         }
         if ($data->isInitialized('routes') && null !== $data->getRoutes()) {
             $values_3 = [];
-            foreach ($data->getRoutes() as $value_3) {
-                $values_3[] = $value_3 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+            foreach ($data->getRoutes() as $value_4) {
+                $values_3[] = $value_4 === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['routes'] = $values_3;
         }
         if ($data->isInitialized('termination') && null !== $data->getTermination()) {
             $dataArray['termination'] = $data->getTermination() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getTermination(), 'json', $context));
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value_4) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_5) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_4;
+                $dataArray[$key] = $value_5;
             }
         }
         return $dataArray;

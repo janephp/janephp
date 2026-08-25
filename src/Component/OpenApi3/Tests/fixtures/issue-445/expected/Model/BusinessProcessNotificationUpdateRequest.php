@@ -18,13 +18,13 @@ class BusinessProcessNotificationUpdateRequest implements AdditionalPropertiesIn
     /**
      * The title the message that is shown to the user should have.
      *
-     * @var mixed
+     * @var array<string, string>
      */
     protected $title;
     /**
      * The message shown to the user.
      *
-     * @var mixed
+     * @var array<string, string>
      */
     protected $message;
     /**
@@ -37,26 +37,26 @@ class BusinessProcessNotificationUpdateRequest implements AdditionalPropertiesIn
     /**
      * The event type of the notification.
      *
-     * @var mixed
+     * @var string
      */
     protected $eventType;
     /**
      * The title the message that is shown to the user should have.
      *
-     * @return mixed
+     * @return array<string, string>
      */
-    public function getTitle()
+    public function getTitle(): iterable
     {
         return $this->title;
     }
     /**
      * The title the message that is shown to the user should have.
      *
-     * @param mixed $title
+     * @param array<string, string> $title
      *
      * @return self
      */
-    public function setTitle($title): self
+    public function setTitle(iterable $title): self
     {
         $this->initialized['title'] = true;
         $this->title = $title;
@@ -65,20 +65,20 @@ class BusinessProcessNotificationUpdateRequest implements AdditionalPropertiesIn
     /**
      * The message shown to the user.
      *
-     * @return mixed
+     * @return array<string, string>
      */
-    public function getMessage()
+    public function getMessage(): iterable
     {
         return $this->message;
     }
     /**
      * The message shown to the user.
      *
-     * @param mixed $message
+     * @param array<string, string> $message
      *
      * @return self
      */
-    public function setMessage($message): self
+    public function setMessage(iterable $message): self
     {
         $this->initialized['message'] = true;
         $this->message = $message;
@@ -111,20 +111,20 @@ class BusinessProcessNotificationUpdateRequest implements AdditionalPropertiesIn
     /**
      * The event type of the notification.
      *
-     * @return mixed
+     * @return string
      */
-    public function getEventType()
+    public function getEventType(): string
     {
         return $this->eventType;
     }
     /**
      * The event type of the notification.
      *
-     * @param mixed $eventType
+     * @param string $eventType
      *
      * @return self
      */
-    public function setEventType($eventType): self
+    public function setEventType(string $eventType): self
     {
         $this->initialized['eventType'] = true;
         $this->eventType = $eventType;

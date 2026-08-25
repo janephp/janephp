@@ -76,7 +76,11 @@ class InverseListItemNamedCacheConfigurationNormalizer implements DenormalizerIn
             unset($data['valueField']);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $object->setFilter($data['filter']);
+            $value = $data['filter'];
+            if (is_array($data['filter']) and \array_key_exists('kind', $data['filter'])) {
+                $value = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
+            }
+            $object->setFilter($value);
             unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
@@ -87,9 +91,9 @@ class InverseListItemNamedCacheConfigurationNormalizer implements DenormalizerIn
             $object->setIncludeAllSchemaChildren($data['includeAllSchemaChildren']);
             unset($data['includeAllSchemaChildren']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -109,14 +113,18 @@ class InverseListItemNamedCacheConfigurationNormalizer implements DenormalizerIn
             $dataArray['valueField'] = $data->getValueField();
         }
         if ($data->isInitialized('filter') && null !== $data->getFilter()) {
-            $dataArray['filter'] = $data->getFilter();
+            $value = $data->getFilter();
+            if (is_object($data->getFilter())) {
+                $value = $data->getFilter() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+            }
+            $dataArray['filter'] = $value;
         }
         if ($data->isInitialized('includeAllSchemaChildren') && null !== $data->getIncludeAllSchemaChildren()) {
             $dataArray['includeAllSchemaChildren'] = $data->getIncludeAllSchemaChildren();
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

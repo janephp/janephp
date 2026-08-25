@@ -41,7 +41,11 @@ class XmpMappingEntryCreateRequestNormalizer implements DenormalizerInterface, N
             $data['stopProcessing'] = (bool) $data['stopProcessing'];
         }
         if (\array_key_exists('direction', $data)) {
-            $object->setDirection($data['direction']);
+            $value = $data['direction'];
+            if (is_string($data['direction'])) {
+                $value = $data['direction'];
+            }
+            $object->setDirection($value);
             unset($data['direction']);
         }
         if (\array_key_exists('priority', $data)) {
@@ -61,7 +65,11 @@ class XmpMappingEntryCreateRequestNormalizer implements DenormalizerInterface, N
             unset($data['metadataPath']);
         }
         if (\array_key_exists('configuration', $data) && $data['configuration'] !== null) {
-            $object->setConfiguration($data['configuration']);
+            $value_1 = $data['configuration'];
+            if (is_array($data['configuration']) and \array_key_exists('kind', $data['configuration'])) {
+                $value_1 = $this->denormalizer->denormalize($data['configuration'], \PicturePark\API\Model\XmpMappingEntryConfigurationBase::class, 'json', $context);
+            }
+            $object->setConfiguration($value_1);
             unset($data['configuration']);
         }
         elseif (\array_key_exists('configuration', $data) && $data['configuration'] === null) {
@@ -76,9 +84,9 @@ class XmpMappingEntryCreateRequestNormalizer implements DenormalizerInterface, N
             $object->setRequestId(null);
             unset($data['requestId']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_2;
             }
         }
         return $object;
@@ -86,20 +94,28 @@ class XmpMappingEntryCreateRequestNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['direction'] = $data->getDirection();
+        $value = $data->getDirection();
+        if (is_string($data->getDirection())) {
+            $value = $data->getDirection();
+        }
+        $dataArray['direction'] = $value;
         $dataArray['priority'] = $data->getPriority();
         $dataArray['stopProcessing'] = $data->getStopProcessing();
         $dataArray['xmpPath'] = $data->getXmpPath();
         $dataArray['metadataPath'] = $data->getMetadataPath();
         if ($data->isInitialized('configuration') && null !== $data->getConfiguration()) {
-            $dataArray['configuration'] = $data->getConfiguration();
+            $value_1 = $data->getConfiguration();
+            if (is_object($data->getConfiguration())) {
+                $value_1 = $data->getConfiguration() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getConfiguration(), 'json', $context));
+            }
+            $dataArray['configuration'] = $value_1;
         }
         if ($data->isInitialized('requestId') && null !== $data->getRequestId()) {
             $dataArray['requestId'] = $data->getRequestId();
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_2;
             }
         }
         return $dataArray;

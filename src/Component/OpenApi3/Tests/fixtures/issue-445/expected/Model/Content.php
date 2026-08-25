@@ -15,7 +15,7 @@ class Content
     /**
      * Audit information.
      *
-     * @var mixed|null
+     * @var UserAudit|null
      */
     protected $audit;
     /**
@@ -27,7 +27,7 @@ class Content
     /**
      * The content type of this content. All except Virtual are binary files.
      *
-     * @var mixed
+     * @var string
      */
     protected $contentType;
     /**
@@ -67,26 +67,26 @@ class Content
     /**
      * Life cycle of content
      *
-     * @var mixed
+     * @var string
      */
     protected $lifeCycle;
     /**
      * Audit information.
      *
-     * @return mixed
+     * @return UserAudit|null
      */
-    public function getAudit()
+    public function getAudit(): ?UserAudit
     {
         return $this->audit;
     }
     /**
      * Audit information.
      *
-     * @param mixed $audit
+     * @param UserAudit|null $audit
      *
      * @return self
      */
-    public function setAudit($audit): self
+    public function setAudit(?UserAudit $audit): self
     {
         $this->initialized['audit'] = true;
         $this->audit = $audit;
@@ -117,20 +117,20 @@ class Content
     /**
      * The content type of this content. All except Virtual are binary files.
      *
-     * @return mixed
+     * @return string
      */
-    public function getContentType()
+    public function getContentType(): string
     {
         return $this->contentType;
     }
     /**
      * The content type of this content. All except Virtual are binary files.
      *
-     * @param mixed $contentType
+     * @param string $contentType
      *
      * @return self
      */
-    public function setContentType($contentType): self
+    public function setContentType(string $contentType): self
     {
         $this->initialized['contentType'] = true;
         $this->contentType = $contentType;
@@ -267,20 +267,20 @@ class Content
     /**
      * Life cycle of content
      *
-     * @return mixed
+     * @return string
      */
-    public function getLifeCycle()
+    public function getLifeCycle(): string
     {
         return $this->lifeCycle;
     }
     /**
      * Life cycle of content
      *
-     * @param mixed $lifeCycle
+     * @param string $lifeCycle
      *
      * @return self
      */
-    public function setLifeCycle($lifeCycle): self
+    public function setLifeCycle(string $lifeCycle): self
     {
         $this->initialized['lifeCycle'] = true;
         $this->lifeCycle = $lifeCycle;

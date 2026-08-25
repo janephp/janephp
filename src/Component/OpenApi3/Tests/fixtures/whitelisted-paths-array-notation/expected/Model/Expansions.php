@@ -16,19 +16,19 @@ class Expansions implements AdditionalPropertiesInterface
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var list<mixed>
+     * @var list<CompactUser>|list<DefaultUser>|list<DetailedUser>
      */
     protected $users;
     /**
-     * @var list<mixed>
+     * @var list<CompactTweet>|list<DefaultTweet>|list<DetailedTweet>
      */
     protected $tweets;
     /**
-     * @var list<mixed>
+     * @var list<CompactPlace>|list<DefaultPlace>|list<DetailedPlace>
      */
     protected $places;
     /**
-     * @var list<mixed>
+     * @var list<Photo>|list<Video>|list<AnimatedGif>
      */
     protected $media;
     /**
@@ -36,14 +36,14 @@ class Expansions implements AdditionalPropertiesInterface
      */
     protected $polls;
     /**
-     * @return list<mixed>
+     * @return list<CompactUser>|list<DefaultUser>|list<DetailedUser>
      */
     public function getUsers(): array
     {
         return $this->users;
     }
     /**
-     * @param list<mixed> $users
+     * @param list<CompactUser>|list<DefaultUser>|list<DetailedUser> $users
      *
      * @return self
      */
@@ -54,14 +54,14 @@ class Expansions implements AdditionalPropertiesInterface
         return $this;
     }
     /**
-     * @return list<mixed>
+     * @return list<CompactTweet>|list<DefaultTweet>|list<DetailedTweet>
      */
     public function getTweets(): array
     {
         return $this->tweets;
     }
     /**
-     * @param list<mixed> $tweets
+     * @param list<CompactTweet>|list<DefaultTweet>|list<DetailedTweet> $tweets
      *
      * @return self
      */
@@ -72,14 +72,14 @@ class Expansions implements AdditionalPropertiesInterface
         return $this;
     }
     /**
-     * @return list<mixed>
+     * @return list<CompactPlace>|list<DefaultPlace>|list<DetailedPlace>
      */
     public function getPlaces(): array
     {
         return $this->places;
     }
     /**
-     * @param list<mixed> $places
+     * @param list<CompactPlace>|list<DefaultPlace>|list<DetailedPlace> $places
      *
      * @return self
      */
@@ -90,14 +90,14 @@ class Expansions implements AdditionalPropertiesInterface
         return $this;
     }
     /**
-     * @return list<mixed>
+     * @return list<Photo>|list<Video>|list<AnimatedGif>
      */
     public function getMedia(): array
     {
         return $this->media;
     }
     /**
-     * @param list<mixed> $media
+     * @param list<Photo>|list<Video>|list<AnimatedGif> $media
      *
      * @return self
      */

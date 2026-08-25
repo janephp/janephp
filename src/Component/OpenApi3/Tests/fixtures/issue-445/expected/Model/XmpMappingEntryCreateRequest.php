@@ -18,7 +18,7 @@ class XmpMappingEntryCreateRequest implements AdditionalPropertiesInterface
     /**
      * Direction of the mapping.
      *
-     * @var mixed
+     * @var string
      */
     protected $direction;
     /**
@@ -48,7 +48,7 @@ class XmpMappingEntryCreateRequest implements AdditionalPropertiesInterface
     /**
      * Optional additional configuration for the mapping.
      *
-     * @var mixed|null
+     * @var XmpMappingEntryConfigurationBase|null
      */
     protected $configuration;
     /**
@@ -62,20 +62,20 @@ class XmpMappingEntryCreateRequest implements AdditionalPropertiesInterface
     /**
      * Direction of the mapping.
      *
-     * @return mixed
+     * @return string
      */
-    public function getDirection()
+    public function getDirection(): string
     {
         return $this->direction;
     }
     /**
      * Direction of the mapping.
      *
-     * @param mixed $direction
+     * @param string $direction
      *
      * @return self
      */
-    public function setDirection($direction): self
+    public function setDirection(string $direction): self
     {
         $this->initialized['direction'] = true;
         $this->direction = $direction;
@@ -172,20 +172,20 @@ class XmpMappingEntryCreateRequest implements AdditionalPropertiesInterface
     /**
      * Optional additional configuration for the mapping.
      *
-     * @return mixed
+     * @return XmpMappingEntryConfigurationBase|null
      */
-    public function getConfiguration()
+    public function getConfiguration(): ?XmpMappingEntryConfigurationBase
     {
         return $this->configuration;
     }
     /**
      * Optional additional configuration for the mapping.
      *
-     * @param mixed $configuration
+     * @param XmpMappingEntryConfigurationBase|null $configuration
      *
      * @return self
      */
-    public function setConfiguration($configuration): self
+    public function setConfiguration(?XmpMappingEntryConfigurationBase $configuration): self
     {
         $this->initialized['configuration'] = true;
         $this->configuration = $configuration;

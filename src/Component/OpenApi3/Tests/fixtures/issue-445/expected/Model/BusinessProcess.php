@@ -45,13 +45,13 @@ class BusinessProcess
     /**
      * Scope of the business process.
      *
-     * @var mixed
+     * @var string
      */
     protected $businessProcessScope;
     /**
      * Current life cycle of the business process.
      *
-     * @var mixed
+     * @var string
      */
     protected $lifeCycle;
     /**
@@ -198,18 +198,18 @@ class BusinessProcess
     /**
      * Scope of the business process.
      *
-     * @return mixed
+     * @return string
      */
-    public function getBusinessProcessScope()
+    public function getBusinessProcessScope(): string
     {
         return $this->businessProcessScope;
     }
     /**
      * Scope of the business process.
      *
-     * @param mixed $businessProcessScope
+     * @param string $businessProcessScope
      */
-    public function setBusinessProcessScope($businessProcessScope)
+    public function setBusinessProcessScope(string $businessProcessScope)
     {
         $this->initialized['businessProcessScope'] = true;
         $this->businessProcessScope = $businessProcessScope;
@@ -217,18 +217,18 @@ class BusinessProcess
     /**
      * Current life cycle of the business process.
      *
-     * @return mixed
+     * @return string
      */
-    public function getLifeCycle()
+    public function getLifeCycle(): string
     {
         return $this->lifeCycle;
     }
     /**
      * Current life cycle of the business process.
      *
-     * @param mixed $lifeCycle
+     * @param string $lifeCycle
      */
-    public function setLifeCycle($lifeCycle)
+    public function setLifeCycle(string $lifeCycle)
     {
         $this->initialized['lifeCycle'] = true;
         $this->lifeCycle = $lifeCycle;

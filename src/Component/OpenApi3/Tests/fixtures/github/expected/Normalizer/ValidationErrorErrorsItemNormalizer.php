@@ -61,12 +61,24 @@ class ValidationErrorErrorsItemNormalizer implements DenormalizerInterface, Norm
             unset($data['index']);
         }
         if (\array_key_exists('value', $data)) {
-            $object->setValue($data['value']);
+            $value = $data['value'];
+            if (is_string($data['value'])) {
+                $value = $data['value'];
+            } elseif (is_int($data['value'])) {
+                $value = $data['value'];
+            } elseif (is_array($data['value']) && $this->isOnlyNumericKeys($data['value'])) {
+                $values = [];
+                foreach ($data['value'] as $value_1) {
+                    $values[] = $value_1;
+                }
+                $value = $values;
+            }
+            $object->setValue($value);
             unset($data['value']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_2;
             }
         }
         return $object;
@@ -88,11 +100,23 @@ class ValidationErrorErrorsItemNormalizer implements DenormalizerInterface, Norm
             $dataArray['index'] = $data->getIndex();
         }
         if ($data->isInitialized('value') && null !== $data->getValue()) {
-            $dataArray['value'] = $data->getValue();
+            $value = $data->getValue();
+            if (is_string($data->getValue())) {
+                $value = $data->getValue();
+            } elseif (is_int($data->getValue())) {
+                $value = $data->getValue();
+            } elseif (is_array($data->getValue())) {
+                $values = [];
+                foreach ($data->getValue() as $value_1) {
+                    $values[] = $value_1;
+                }
+                $value = $values;
+            }
+            $dataArray['value'] = $value;
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_2;
             }
         }
         if (!($context['skip_validation'] ?? false)) {

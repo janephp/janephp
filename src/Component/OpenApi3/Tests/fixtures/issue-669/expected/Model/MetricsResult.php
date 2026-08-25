@@ -24,7 +24,7 @@ class MetricsResult implements AdditionalPropertiesInterface
     /**
      * An array of values for the metric.
      *
-     * @var list<list<mixed>>
+     * @var list<list<int>|list<string>>
      */
     protected $values;
     /**
@@ -52,7 +52,7 @@ class MetricsResult implements AdditionalPropertiesInterface
     /**
      * An array of values for the metric.
      *
-     * @return list<list<mixed>>
+     * @return list<list<int>|list<string>>
      */
     public function getValues(): array
     {
@@ -61,7 +61,7 @@ class MetricsResult implements AdditionalPropertiesInterface
     /**
      * An array of values for the metric.
      *
-     * @param list<list<mixed>> $values
+     * @param list<list<int>|list<string>> $values
      *
      * @return self
      */

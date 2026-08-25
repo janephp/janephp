@@ -58,7 +58,11 @@ class BusinessProcessEventNormalizer implements DenormalizerInterface, Normalize
             unset($data['businessProcessId']);
         }
         if (\array_key_exists('lifeCycle', $data) && $data['lifeCycle'] !== null) {
-            $object->setLifeCycle($data['lifeCycle']);
+            $value = $data['lifeCycle'];
+            if (is_string($data['lifeCycle'])) {
+                $value = $data['lifeCycle'];
+            }
+            $object->setLifeCycle($value);
             unset($data['lifeCycle']);
         }
         elseif (\array_key_exists('lifeCycle', $data) && $data['lifeCycle'] === null) {
@@ -73,9 +77,9 @@ class BusinessProcessEventNormalizer implements DenormalizerInterface, Normalize
             $object->setState(null);
             unset($data['state']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -89,14 +93,18 @@ class BusinessProcessEventNormalizer implements DenormalizerInterface, Normalize
             $dataArray['businessProcessId'] = $data->getBusinessProcessId();
         }
         if ($data->isInitialized('lifeCycle') && null !== $data->getLifeCycle()) {
-            $dataArray['lifeCycle'] = $data->getLifeCycle();
+            $value = $data->getLifeCycle();
+            if (is_string($data->getLifeCycle())) {
+                $value = $data->getLifeCycle();
+            }
+            $dataArray['lifeCycle'] = $value;
         }
         if ($data->isInitialized('state') && null !== $data->getState()) {
             $dataArray['state'] = $data->getState();
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

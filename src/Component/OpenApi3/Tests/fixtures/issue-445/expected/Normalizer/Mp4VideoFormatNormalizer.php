@@ -42,7 +42,11 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
             unset($data['kind']);
         }
         if (\array_key_exists('resizeAction', $data) && $data['resizeAction'] !== null) {
-            $object->setResizeAction($data['resizeAction']);
+            $value = $data['resizeAction'];
+            if (is_array($data['resizeAction']) and \array_key_exists('width', $data['resizeAction']) and \array_key_exists('height', $data['resizeAction']) and \array_key_exists('resizeMode', $data['resizeAction'])) {
+                $value = $this->denormalizer->denormalize($data['resizeAction'], \PicturePark\API\Model\ResizeAction::class, 'json', $context);
+            }
+            $object->setResizeAction($value);
             unset($data['resizeAction']);
         }
         elseif (\array_key_exists('resizeAction', $data) && $data['resizeAction'] === null) {
@@ -50,7 +54,11 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
             unset($data['resizeAction']);
         }
         if (\array_key_exists('audioCodec', $data) && $data['audioCodec'] !== null) {
-            $object->setAudioCodec($data['audioCodec']);
+            $value_1 = $data['audioCodec'];
+            if (is_array($data['audioCodec'])) {
+                $value_1 = $this->denormalizer->denormalize($data['audioCodec'], \PicturePark\API\Model\AudioFormatBase::class, 'json', $context);
+            }
+            $object->setAudioCodec($value_1);
             unset($data['audioCodec']);
         }
         elseif (\array_key_exists('audioCodec', $data) && $data['audioCodec'] === null) {
@@ -58,7 +66,11 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
             unset($data['audioCodec']);
         }
         if (\array_key_exists('preset', $data)) {
-            $object->setPreset($data['preset']);
+            $value_2 = $data['preset'];
+            if (is_string($data['preset'])) {
+                $value_2 = $data['preset'];
+            }
+            $object->setPreset($value_2);
             unset($data['preset']);
         }
         if (\array_key_exists('extension', $data) && $data['extension'] !== null) {
@@ -69,9 +81,9 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setExtension(null);
             unset($data['extension']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_3;
             }
         }
         return $object;
@@ -81,20 +93,32 @@ class Mp4VideoFormatNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
         if ($data->isInitialized('resizeAction') && null !== $data->getResizeAction()) {
-            $dataArray['resizeAction'] = $data->getResizeAction();
+            $value = $data->getResizeAction();
+            if (is_object($data->getResizeAction())) {
+                $value = $data->getResizeAction() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getResizeAction(), 'json', $context));
+            }
+            $dataArray['resizeAction'] = $value;
         }
         if ($data->isInitialized('audioCodec') && null !== $data->getAudioCodec()) {
-            $dataArray['audioCodec'] = $data->getAudioCodec();
+            $value_1 = $data->getAudioCodec();
+            if (is_object($data->getAudioCodec())) {
+                $value_1 = $data->getAudioCodec() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getAudioCodec(), 'json', $context));
+            }
+            $dataArray['audioCodec'] = $value_1;
         }
         if ($data->isInitialized('preset') && null !== $data->getPreset()) {
-            $dataArray['preset'] = $data->getPreset();
+            $value_2 = $data->getPreset();
+            if (is_string($data->getPreset())) {
+                $value_2 = $data->getPreset();
+            }
+            $dataArray['preset'] = $value_2;
         }
         if ($data->isInitialized('extension') && null !== $data->getExtension()) {
             $dataArray['extension'] = $data->getExtension();
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_3;
             }
         }
         return $dataArray;

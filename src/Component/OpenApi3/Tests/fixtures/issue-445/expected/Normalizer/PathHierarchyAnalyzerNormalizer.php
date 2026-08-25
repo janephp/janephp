@@ -42,7 +42,11 @@ class PathHierarchyAnalyzerNormalizer implements DenormalizerInterface, Normaliz
             unset($data['kind']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $value = $data['type'];
+            if (is_string($data['type'])) {
+                $value = $data['type'];
+            }
+            $object->setType($value);
             unset($data['type']);
         }
         if (\array_key_exists('fieldSuffix', $data) && $data['fieldSuffix'] !== null) {
@@ -53,9 +57,9 @@ class PathHierarchyAnalyzerNormalizer implements DenormalizerInterface, Normaliz
             $object->setFieldSuffix(null);
             unset($data['fieldSuffix']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -65,14 +69,18 @@ class PathHierarchyAnalyzerNormalizer implements DenormalizerInterface, Normaliz
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
         if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+            $value = $data->getType();
+            if (is_string($data->getType())) {
+                $value = $data->getType();
+            }
+            $dataArray['type'] = $value;
         }
         if ($data->isInitialized('fieldSuffix') && null !== $data->getFieldSuffix()) {
             $dataArray['fieldSuffix'] = $data->getFieldSuffix();
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

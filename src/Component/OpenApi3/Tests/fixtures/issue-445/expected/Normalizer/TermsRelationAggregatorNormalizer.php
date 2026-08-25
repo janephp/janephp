@@ -42,7 +42,15 @@ class TermsRelationAggregatorNormalizer implements DenormalizerInterface, Normal
             unset($data['name']);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $object->setNames($data['names']);
+            $value = $data['names'];
+            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['names'] as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $object->setNames($value);
             unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
@@ -50,11 +58,11 @@ class TermsRelationAggregatorNormalizer implements DenormalizerInterface, Normal
             unset($data['names']);
         }
         if (\array_key_exists('aggregators', $data) && $data['aggregators'] !== null) {
-            $values = [];
-            foreach ($data['aggregators'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
+            $values_1 = [];
+            foreach ($data['aggregators'] as $value_2) {
+                $values_1[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
             }
-            $object->setAggregators($values);
+            $object->setAggregators($values_1);
             unset($data['aggregators']);
         }
         elseif (\array_key_exists('aggregators', $data) && $data['aggregators'] === null) {
@@ -62,7 +70,11 @@ class TermsRelationAggregatorNormalizer implements DenormalizerInterface, Normal
             unset($data['aggregators']);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $object->setFilter($data['filter']);
+            $value_3 = $data['filter'];
+            if (is_array($data['filter']) and \array_key_exists('kind', $data['filter'])) {
+                $value_3 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
+            }
+            $object->setFilter($value_3);
             unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
@@ -86,11 +98,11 @@ class TermsRelationAggregatorNormalizer implements DenormalizerInterface, Normal
             unset($data['size']);
         }
         if (\array_key_exists('includes', $data) && $data['includes'] !== null) {
-            $values_1 = [];
-            foreach ($data['includes'] as $value_1) {
-                $values_1[] = $value_1;
+            $values_2 = [];
+            foreach ($data['includes'] as $value_4) {
+                $values_2[] = $value_4;
             }
-            $object->setIncludes($values_1);
+            $object->setIncludes($values_2);
             unset($data['includes']);
         }
         elseif (\array_key_exists('includes', $data) && $data['includes'] === null) {
@@ -98,11 +110,11 @@ class TermsRelationAggregatorNormalizer implements DenormalizerInterface, Normal
             unset($data['includes']);
         }
         if (\array_key_exists('excludes', $data) && $data['excludes'] !== null) {
-            $values_2 = [];
-            foreach ($data['excludes'] as $value_2) {
-                $values_2[] = $value_2;
+            $values_3 = [];
+            foreach ($data['excludes'] as $value_5) {
+                $values_3[] = $value_5;
             }
-            $object->setExcludes($values_2);
+            $object->setExcludes($values_3);
             unset($data['excludes']);
         }
         elseif (\array_key_exists('excludes', $data) && $data['excludes'] === null) {
@@ -118,11 +130,11 @@ class TermsRelationAggregatorNormalizer implements DenormalizerInterface, Normal
             unset($data['searchString']);
         }
         if (\array_key_exists('searchFields', $data) && $data['searchFields'] !== null) {
-            $values_3 = [];
-            foreach ($data['searchFields'] as $value_3) {
-                $values_3[] = $value_3;
+            $values_4 = [];
+            foreach ($data['searchFields'] as $value_6) {
+                $values_4[] = $value_6;
             }
-            $object->setSearchFields($values_3);
+            $object->setSearchFields($values_4);
             unset($data['searchFields']);
         }
         elseif (\array_key_exists('searchFields', $data) && $data['searchFields'] === null) {
@@ -130,12 +142,16 @@ class TermsRelationAggregatorNormalizer implements DenormalizerInterface, Normal
             unset($data['searchFields']);
         }
         if (\array_key_exists('documentType', $data)) {
-            $object->setDocumentType($data['documentType']);
+            $value_7 = $data['documentType'];
+            if (is_string($data['documentType'])) {
+                $value_7 = $data['documentType'];
+            }
+            $object->setDocumentType($value_7);
             unset($data['documentType']);
         }
-        foreach ($data as $key => $value_4) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_4;
+        foreach ($data as $key_1 => $value_8) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $object[$key_1] = $value_8;
             }
         }
         return $object;
@@ -145,17 +161,29 @@ class TermsRelationAggregatorNormalizer implements DenormalizerInterface, Normal
         $dataArray = [];
         $dataArray['name'] = $data->getName();
         if ($data->isInitialized('names') && null !== $data->getNames()) {
-            $dataArray['names'] = $data->getNames();
+            $value = $data->getNames();
+            if (is_object($data->getNames())) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data->getNames() as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $dataArray['names'] = $value;
         }
         if ($data->isInitialized('aggregators') && null !== $data->getAggregators()) {
-            $values = [];
-            foreach ($data->getAggregators() as $value) {
-                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            $values_1 = [];
+            foreach ($data->getAggregators() as $value_2) {
+                $values_1[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
-            $dataArray['aggregators'] = $values;
+            $dataArray['aggregators'] = $values_1;
         }
         if ($data->isInitialized('filter') && null !== $data->getFilter()) {
-            $dataArray['filter'] = $data->getFilter();
+            $value_3 = $data->getFilter();
+            if (is_object($data->getFilter())) {
+                $value_3 = $data->getFilter() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+            }
+            $dataArray['filter'] = $value_3;
         }
         $dataArray['kind'] = $data->getKind();
         $dataArray['field'] = $data->getField();
@@ -163,35 +191,39 @@ class TermsRelationAggregatorNormalizer implements DenormalizerInterface, Normal
             $dataArray['size'] = $data->getSize();
         }
         if ($data->isInitialized('includes') && null !== $data->getIncludes()) {
-            $values_1 = [];
-            foreach ($data->getIncludes() as $value_1) {
-                $values_1[] = $value_1;
+            $values_2 = [];
+            foreach ($data->getIncludes() as $value_4) {
+                $values_2[] = $value_4;
             }
-            $dataArray['includes'] = $values_1;
+            $dataArray['includes'] = $values_2;
         }
         if ($data->isInitialized('excludes') && null !== $data->getExcludes()) {
-            $values_2 = [];
-            foreach ($data->getExcludes() as $value_2) {
-                $values_2[] = $value_2;
+            $values_3 = [];
+            foreach ($data->getExcludes() as $value_5) {
+                $values_3[] = $value_5;
             }
-            $dataArray['excludes'] = $values_2;
+            $dataArray['excludes'] = $values_3;
         }
         if ($data->isInitialized('searchString') && null !== $data->getSearchString()) {
             $dataArray['searchString'] = $data->getSearchString();
         }
         if ($data->isInitialized('searchFields') && null !== $data->getSearchFields()) {
-            $values_3 = [];
-            foreach ($data->getSearchFields() as $value_3) {
-                $values_3[] = $value_3;
+            $values_4 = [];
+            foreach ($data->getSearchFields() as $value_6) {
+                $values_4[] = $value_6;
             }
-            $dataArray['searchFields'] = $values_3;
+            $dataArray['searchFields'] = $values_4;
         }
         if ($data->isInitialized('documentType') && null !== $data->getDocumentType()) {
-            $dataArray['documentType'] = $data->getDocumentType();
+            $value_7 = $data->getDocumentType();
+            if (is_string($data->getDocumentType())) {
+                $value_7 = $data->getDocumentType();
+            }
+            $dataArray['documentType'] = $value_7;
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value_4) {
-            if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_4;
+        foreach ($data->additionalPropertyEntries() as $key_1 => $value_8) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $dataArray[$key_1] = $value_8;
             }
         }
         return $dataArray;

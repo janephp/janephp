@@ -24,7 +24,7 @@ class ParentFilter extends FilterBase implements AdditionalPropertiesInterface
     /**
      * The filter to be applied on the child document. All kinds of filters are accepted.
      *
-     * @var mixed
+     * @var FilterBase
      */
     protected $filter;
     /**
@@ -52,20 +52,20 @@ class ParentFilter extends FilterBase implements AdditionalPropertiesInterface
     /**
      * The filter to be applied on the child document. All kinds of filters are accepted.
      *
-     * @return mixed
+     * @return FilterBase
      */
-    public function getFilter()
+    public function getFilter(): FilterBase
     {
         return $this->filter;
     }
     /**
      * The filter to be applied on the child document. All kinds of filters are accepted.
      *
-     * @param mixed $filter
+     * @param FilterBase $filter
      *
      * @return self
      */
-    public function setFilter($filter): self
+    public function setFilter(FilterBase $filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;

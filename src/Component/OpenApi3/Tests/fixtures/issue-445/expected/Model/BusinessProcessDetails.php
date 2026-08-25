@@ -18,26 +18,26 @@ class BusinessProcessDetails extends BusinessProcess implements AdditionalProper
     /**
      * Details for the business process.
      *
-     * @var mixed|null
+     * @var BusinessProcessDetailsDataBase|null
      */
     protected $details;
     /**
      * Details for the business process.
      *
-     * @return mixed
+     * @return BusinessProcessDetailsDataBase|null
      */
-    public function getDetails()
+    public function getDetails(): ?BusinessProcessDetailsDataBase
     {
         return $this->details;
     }
     /**
      * Details for the business process.
      *
-     * @param mixed $details
+     * @param BusinessProcessDetailsDataBase|null $details
      *
      * @return self
      */
-    public function setDetails($details): self
+    public function setDetails(?BusinessProcessDetailsDataBase $details): self
     {
         $this->initialized['details'] = true;
         $this->details = $details;

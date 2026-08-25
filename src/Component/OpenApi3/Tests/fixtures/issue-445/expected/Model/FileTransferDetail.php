@@ -50,7 +50,7 @@ class FileTransferDetail implements AdditionalPropertiesInterface
     /**
      * State of file transfer.
      *
-     * @var mixed
+     * @var string
      */
     protected $state;
     /**
@@ -62,13 +62,13 @@ class FileTransferDetail implements AdditionalPropertiesInterface
     /**
      * Audit information.
      *
-     * @var mixed
+     * @var UserAudit
      */
     protected $audit;
     /**
      * Metadata extracted for file.
      *
-     * @var mixed|null
+     * @var FileMetadata|null
      */
     protected $fileMetadata;
     /**
@@ -194,20 +194,20 @@ class FileTransferDetail implements AdditionalPropertiesInterface
     /**
      * State of file transfer.
      *
-     * @return mixed
+     * @return string
      */
-    public function getState()
+    public function getState(): string
     {
         return $this->state;
     }
     /**
      * State of file transfer.
      *
-     * @param mixed $state
+     * @param string $state
      *
      * @return self
      */
-    public function setState($state): self
+    public function setState(string $state): self
     {
         $this->initialized['state'] = true;
         $this->state = $state;
@@ -238,20 +238,20 @@ class FileTransferDetail implements AdditionalPropertiesInterface
     /**
      * Audit information.
      *
-     * @return mixed
+     * @return UserAudit
      */
-    public function getAudit()
+    public function getAudit(): UserAudit
     {
         return $this->audit;
     }
     /**
      * Audit information.
      *
-     * @param mixed $audit
+     * @param UserAudit $audit
      *
      * @return self
      */
-    public function setAudit($audit): self
+    public function setAudit(UserAudit $audit): self
     {
         $this->initialized['audit'] = true;
         $this->audit = $audit;
@@ -260,20 +260,20 @@ class FileTransferDetail implements AdditionalPropertiesInterface
     /**
      * Metadata extracted for file.
      *
-     * @return mixed
+     * @return FileMetadata|null
      */
-    public function getFileMetadata()
+    public function getFileMetadata(): ?FileMetadata
     {
         return $this->fileMetadata;
     }
     /**
      * Metadata extracted for file.
      *
-     * @param mixed $fileMetadata
+     * @param FileMetadata|null $fileMetadata
      *
      * @return self
      */
-    public function setFileMetadata($fileMetadata): self
+    public function setFileMetadata(?FileMetadata $fileMetadata): self
     {
         $this->initialized['fileMetadata'] = true;
         $this->fileMetadata = $fileMetadata;

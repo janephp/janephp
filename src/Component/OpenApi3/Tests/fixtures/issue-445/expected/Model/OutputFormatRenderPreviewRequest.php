@@ -21,7 +21,7 @@ class OutputFormatRenderPreviewRequest
     /**
      * The format which should be rendered.
      *
-     * @var mixed|null
+     * @var OutputFormatRenderingSpecification|null
      */
     protected $outputFormat;
     /**
@@ -49,20 +49,20 @@ class OutputFormatRenderPreviewRequest
     /**
      * The format which should be rendered.
      *
-     * @return mixed
+     * @return OutputFormatRenderingSpecification|null
      */
-    public function getOutputFormat()
+    public function getOutputFormat(): ?OutputFormatRenderingSpecification
     {
         return $this->outputFormat;
     }
     /**
      * The format which should be rendered.
      *
-     * @param mixed $outputFormat
+     * @param OutputFormatRenderingSpecification|null $outputFormat
      *
      * @return self
      */
-    public function setOutputFormat($outputFormat): self
+    public function setOutputFormat(?OutputFormatRenderingSpecification $outputFormat): self
     {
         $this->initialized['outputFormat'] = true;
         $this->outputFormat = $outputFormat;

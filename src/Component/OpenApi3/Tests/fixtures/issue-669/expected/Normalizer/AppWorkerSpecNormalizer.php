@@ -102,7 +102,13 @@ class AppWorkerSpecNormalizer implements DenormalizerInterface, NormalizerInterf
             unset($data['instance_count']);
         }
         if (\array_key_exists('instance_size_slug', $data)) {
-            $object->setInstanceSizeSlug($data['instance_size_slug']);
+            $value_2 = $data['instance_size_slug'];
+            if (is_string($data['instance_size_slug'])) {
+                $value_2 = $data['instance_size_slug'];
+            } elseif (is_string($data['instance_size_slug'])) {
+                $value_2 = $data['instance_size_slug'];
+            }
+            $object->setInstanceSizeSlug($value_2);
             unset($data['instance_size_slug']);
         }
         if (\array_key_exists('autoscaling', $data)) {
@@ -117,9 +123,9 @@ class AppWorkerSpecNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->setLivenessHealthCheck($this->denormalizer->denormalize($data['liveness_health_check'], \Jane\Generated\DigitalOcean\Model\AppHealthCheckSpec::class, 'json', $context));
             unset($data['liveness_health_check']);
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_2;
+                $object[$key] = $value_3;
             }
         }
         return $object;
@@ -178,7 +184,13 @@ class AppWorkerSpecNormalizer implements DenormalizerInterface, NormalizerInterf
             $dataArray['instance_count'] = $data->getInstanceCount();
         }
         if ($data->isInitialized('instanceSizeSlug') && null !== $data->getInstanceSizeSlug()) {
-            $dataArray['instance_size_slug'] = $data->getInstanceSizeSlug();
+            $value_2 = $data->getInstanceSizeSlug();
+            if (is_string($data->getInstanceSizeSlug())) {
+                $value_2 = $data->getInstanceSizeSlug();
+            } elseif (is_string($data->getInstanceSizeSlug())) {
+                $value_2 = $data->getInstanceSizeSlug();
+            }
+            $dataArray['instance_size_slug'] = $value_2;
         }
         if ($data->isInitialized('autoscaling') && null !== $data->getAutoscaling()) {
             $dataArray['autoscaling'] = $data->getAutoscaling() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAutoscaling(), 'json', $context));
@@ -189,9 +201,9 @@ class AppWorkerSpecNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('livenessHealthCheck') && null !== $data->getLivenessHealthCheck()) {
             $dataArray['liveness_health_check'] = $data->getLivenessHealthCheck() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLivenessHealthCheck(), 'json', $context));
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_2;
+                $dataArray[$key] = $value_3;
             }
         }
         return $dataArray;

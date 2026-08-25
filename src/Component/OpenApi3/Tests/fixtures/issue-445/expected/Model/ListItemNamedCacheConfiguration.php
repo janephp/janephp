@@ -30,7 +30,7 @@ class ListItemNamedCacheConfiguration extends NamedCacheConfigurationBase implem
     /**
      * An optional filter to narrow down the cached list items
      *
-     * @var mixed|null
+     * @var FilterBase|null
      */
     protected $filter;
     /**
@@ -86,20 +86,20 @@ class ListItemNamedCacheConfiguration extends NamedCacheConfigurationBase implem
     /**
      * An optional filter to narrow down the cached list items
      *
-     * @return mixed
+     * @return FilterBase|null
      */
-    public function getFilter()
+    public function getFilter(): ?FilterBase
     {
         return $this->filter;
     }
     /**
      * An optional filter to narrow down the cached list items
      *
-     * @param mixed $filter
+     * @param FilterBase|null $filter
      *
      * @return self
      */
-    public function setFilter($filter): self
+    public function setFilter(?FilterBase $filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;

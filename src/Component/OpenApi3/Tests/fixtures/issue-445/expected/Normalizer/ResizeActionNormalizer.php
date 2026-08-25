@@ -44,7 +44,11 @@ class ResizeActionNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setHeight($data['height']);
         }
         if (\array_key_exists('resizeMode', $data)) {
-            $object->setResizeMode($data['resizeMode']);
+            $value = $data['resizeMode'];
+            if (is_string($data['resizeMode'])) {
+                $value = $data['resizeMode'];
+            }
+            $object->setResizeMode($value);
         }
         return $object;
     }
@@ -53,7 +57,11 @@ class ResizeActionNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray = [];
         $dataArray['width'] = $data->getWidth();
         $dataArray['height'] = $data->getHeight();
-        $dataArray['resizeMode'] = $data->getResizeMode();
+        $value = $data->getResizeMode();
+        if (is_string($data->getResizeMode())) {
+            $value = $data->getResizeMode();
+        }
+        $dataArray['resizeMode'] = $value;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

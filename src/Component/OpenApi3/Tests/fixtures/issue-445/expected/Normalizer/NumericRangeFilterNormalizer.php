@@ -46,12 +46,16 @@ class NumericRangeFilterNormalizer implements DenormalizerInterface, NormalizerI
             unset($data['field']);
         }
         if (\array_key_exists('range', $data)) {
-            $object->setRange($data['range']);
+            $value = $data['range'];
+            if (is_array($data['range'])) {
+                $value = $this->denormalizer->denormalize($data['range'], \PicturePark\API\Model\NumericRange::class, 'json', $context);
+            }
+            $object->setRange($value);
             unset($data['range']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -61,10 +65,14 @@ class NumericRangeFilterNormalizer implements DenormalizerInterface, NormalizerI
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
         $dataArray['field'] = $data->getField();
-        $dataArray['range'] = $data->getRange();
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
+        $value = $data->getRange();
+        if (is_object($data->getRange())) {
+            $value = $data->getRange() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getRange(), 'json', $context));
+        }
+        $dataArray['range'] = $value;
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

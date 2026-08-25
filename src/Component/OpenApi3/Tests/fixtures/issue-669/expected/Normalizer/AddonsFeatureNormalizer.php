@@ -54,7 +54,15 @@ class AddonsFeatureNormalizer implements DenormalizerInterface, NormalizerInterf
             unset($data['unit']);
         }
         if (\array_key_exists('value', $data)) {
-            $object->setValue($data['value']);
+            $value = $data['value'];
+            if (is_string($data['value'])) {
+                $value = $data['value'];
+            } elseif (is_bool($data['value'])) {
+                $value = $data['value'];
+            } elseif (is_string($data['value'])) {
+                $value = $data['value'];
+            }
+            $object->setValue($value);
             unset($data['value']);
         }
         if (\array_key_exists('created_at', $data)) {
@@ -73,9 +81,9 @@ class AddonsFeatureNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->setUpdatedAt($date_1);
             unset($data['updated_at']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -89,12 +97,20 @@ class AddonsFeatureNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('unit') && null !== $data->getUnit()) {
             $dataArray['unit'] = $data->getUnit();
         }
-        $dataArray['value'] = $data->getValue();
+        $value = $data->getValue();
+        if (is_string($data->getValue())) {
+            $value = $data->getValue();
+        } elseif (is_bool($data->getValue())) {
+            $value = $data->getValue();
+        } elseif (is_string($data->getValue())) {
+            $value = $data->getValue();
+        }
+        $dataArray['value'] = $value;
         $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

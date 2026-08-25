@@ -24,7 +24,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItem implements Ad
      */
     protected $path;
     /**
-     * @var mixed
+     * @var object|list<object>|string
      */
     protected $value;
     /**
@@ -64,14 +64,14 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItem implements Ad
         return $this;
     }
     /**
-     * @return mixed
+     * @return object|list<object>|string
      */
     public function getValue()
     {
         return $this->value;
     }
     /**
-     * @param mixed $value
+     * @param object|list<object>|string $value
      *
      * @return self
      */

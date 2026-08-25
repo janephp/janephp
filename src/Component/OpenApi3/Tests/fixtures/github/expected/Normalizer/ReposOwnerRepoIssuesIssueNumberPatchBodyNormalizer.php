@@ -67,22 +67,28 @@ class ReposOwnerRepoIssuesIssueNumberPatchBodyNormalizer implements Denormalizer
         if (\array_key_exists('labels', $data)) {
             $values = [];
             foreach ($data['labels'] as $value) {
-                $values[] = $value;
+                $value_1 = $value;
+                if (is_string($value)) {
+                    $value_1 = $value;
+                } elseif (is_array($value)) {
+                    $value_1 = $value;
+                }
+                $values[] = $value_1;
             }
             $object->setLabels($values);
             unset($data['labels']);
         }
         if (\array_key_exists('assignees', $data)) {
             $values_1 = [];
-            foreach ($data['assignees'] as $value_1) {
-                $values_1[] = $value_1;
+            foreach ($data['assignees'] as $value_2) {
+                $values_1[] = $value_2;
             }
             $object->setAssignees($values_1);
             unset($data['assignees']);
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_2;
+                $object[$key] = $value_3;
             }
         }
         return $object;
@@ -108,20 +114,26 @@ class ReposOwnerRepoIssuesIssueNumberPatchBodyNormalizer implements Denormalizer
         if ($data->isInitialized('labels') && null !== $data->getLabels()) {
             $values = [];
             foreach ($data->getLabels() as $value) {
-                $values[] = $value;
+                $value_1 = $value;
+                if (is_string($value)) {
+                    $value_1 = $value;
+                } elseif (is_object($value)) {
+                    $value_1 = $value;
+                }
+                $values[] = $value_1;
             }
             $dataArray['labels'] = $values;
         }
         if ($data->isInitialized('assignees') && null !== $data->getAssignees()) {
             $values_1 = [];
-            foreach ($data->getAssignees() as $value_1) {
-                $values_1[] = $value_1;
+            foreach ($data->getAssignees() as $value_2) {
+                $values_1[] = $value_2;
             }
             $dataArray['assignees'] = $values_1;
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_2;
+                $dataArray[$key] = $value_3;
             }
         }
         if (!($context['skip_validation'] ?? false)) {

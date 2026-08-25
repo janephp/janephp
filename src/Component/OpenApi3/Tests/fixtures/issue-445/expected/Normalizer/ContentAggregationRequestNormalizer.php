@@ -58,7 +58,11 @@ class ContentAggregationRequestNormalizer implements DenormalizerInterface, Norm
             unset($data['searchBehaviors']);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $object->setFilter($data['filter']);
+            $value_1 = $data['filter'];
+            if (is_array($data['filter']) and \array_key_exists('kind', $data['filter'])) {
+                $value_1 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
+            }
+            $object->setFilter($value_1);
             unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
@@ -67,8 +71,8 @@ class ContentAggregationRequestNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] !== null) {
             $values_1 = [];
-            foreach ($data['aggregationFilters'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\AggregationFilter::class, 'json', $context);
+            foreach ($data['aggregationFilters'] as $value_2) {
+                $values_1[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\AggregationFilter::class, 'json', $context);
             }
             $object->setAggregationFilters($values_1);
             unset($data['aggregationFilters']);
@@ -87,8 +91,8 @@ class ContentAggregationRequestNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('searchLanguages', $data) && $data['searchLanguages'] !== null) {
             $values_2 = [];
-            foreach ($data['searchLanguages'] as $value_2) {
-                $values_2[] = $value_2;
+            foreach ($data['searchLanguages'] as $value_3) {
+                $values_2[] = $value_3;
             }
             $object->setSearchLanguages($values_2);
             unset($data['searchLanguages']);
@@ -106,28 +110,40 @@ class ContentAggregationRequestNormalizer implements DenormalizerInterface, Norm
             unset($data['collectionId']);
         }
         if (\array_key_exists('lifeCycleFilter', $data)) {
-            $object->setLifeCycleFilter($data['lifeCycleFilter']);
+            $value_4 = $data['lifeCycleFilter'];
+            if (is_string($data['lifeCycleFilter'])) {
+                $value_4 = $data['lifeCycleFilter'];
+            }
+            $object->setLifeCycleFilter($value_4);
             unset($data['lifeCycleFilter']);
         }
         if (\array_key_exists('brokenDependenciesFilter', $data)) {
-            $object->setBrokenDependenciesFilter($data['brokenDependenciesFilter']);
+            $value_5 = $data['brokenDependenciesFilter'];
+            if (is_string($data['brokenDependenciesFilter'])) {
+                $value_5 = $data['brokenDependenciesFilter'];
+            }
+            $object->setBrokenDependenciesFilter($value_5);
             unset($data['brokenDependenciesFilter']);
         }
         if (\array_key_exists('searchType', $data)) {
-            $object->setSearchType($data['searchType']);
+            $value_6 = $data['searchType'];
+            if (is_string($data['searchType'])) {
+                $value_6 = $data['searchType'];
+            }
+            $object->setSearchType($value_6);
             unset($data['searchType']);
         }
         if (\array_key_exists('aggregators', $data)) {
             $values_3 = [];
-            foreach ($data['aggregators'] as $value_3) {
-                $values_3[] = $this->denormalizer->denormalize($value_3, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
+            foreach ($data['aggregators'] as $value_7) {
+                $values_3[] = $this->denormalizer->denormalize($value_7, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
             }
             $object->setAggregators($values_3);
             unset($data['aggregators']);
         }
-        foreach ($data as $key => $value_4) {
+        foreach ($data as $key => $value_8) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_4;
+                $object[$key] = $value_8;
             }
         }
         return $object;
@@ -146,12 +162,16 @@ class ContentAggregationRequestNormalizer implements DenormalizerInterface, Norm
             $dataArray['searchBehaviors'] = $values;
         }
         if ($data->isInitialized('filter') && null !== $data->getFilter()) {
-            $dataArray['filter'] = $data->getFilter();
+            $value_1 = $data->getFilter();
+            if (is_object($data->getFilter())) {
+                $value_1 = $data->getFilter() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+            }
+            $dataArray['filter'] = $value_1;
         }
         if ($data->isInitialized('aggregationFilters') && null !== $data->getAggregationFilters()) {
             $values_1 = [];
-            foreach ($data->getAggregationFilters() as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+            foreach ($data->getAggregationFilters() as $value_2) {
+                $values_1[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['aggregationFilters'] = $values_1;
         }
@@ -160,25 +180,37 @@ class ContentAggregationRequestNormalizer implements DenormalizerInterface, Norm
         }
         if ($data->isInitialized('searchLanguages') && null !== $data->getSearchLanguages()) {
             $values_2 = [];
-            foreach ($data->getSearchLanguages() as $value_2) {
-                $values_2[] = $value_2;
+            foreach ($data->getSearchLanguages() as $value_3) {
+                $values_2[] = $value_3;
             }
             $dataArray['searchLanguages'] = $values_2;
         }
         if ($data->isInitialized('collectionId') && null !== $data->getCollectionId()) {
             $dataArray['collectionId'] = $data->getCollectionId();
         }
-        $dataArray['lifeCycleFilter'] = $data->getLifeCycleFilter();
-        $dataArray['brokenDependenciesFilter'] = $data->getBrokenDependenciesFilter();
-        $dataArray['searchType'] = $data->getSearchType();
+        $value_4 = $data->getLifeCycleFilter();
+        if (is_string($data->getLifeCycleFilter())) {
+            $value_4 = $data->getLifeCycleFilter();
+        }
+        $dataArray['lifeCycleFilter'] = $value_4;
+        $value_5 = $data->getBrokenDependenciesFilter();
+        if (is_string($data->getBrokenDependenciesFilter())) {
+            $value_5 = $data->getBrokenDependenciesFilter();
+        }
+        $dataArray['brokenDependenciesFilter'] = $value_5;
+        $value_6 = $data->getSearchType();
+        if (is_string($data->getSearchType())) {
+            $value_6 = $data->getSearchType();
+        }
+        $dataArray['searchType'] = $value_6;
         $values_3 = [];
-        foreach ($data->getAggregators() as $value_3) {
-            $values_3[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+        foreach ($data->getAggregators() as $value_7) {
+            $values_3[] = $value_7 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_7, 'json', $context));
         }
         $dataArray['aggregators'] = $values_3;
-        foreach ($data->additionalPropertyEntries() as $key => $value_4) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_8) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_4;
+                $dataArray[$key] = $value_8;
             }
         }
         return $dataArray;

@@ -114,16 +114,20 @@ class BusinessProcessContinuationExceptionNormalizer implements DenormalizerInte
             unset($data['precedingBusinessProcessId']);
         }
         if (\array_key_exists('precedingBusinessProcessException', $data) && $data['precedingBusinessProcessException'] !== null) {
-            $object->setPrecedingBusinessProcessException($data['precedingBusinessProcessException']);
+            $value = $data['precedingBusinessProcessException'];
+            if (is_array($data['precedingBusinessProcessException'])) {
+                $value = $this->denormalizer->denormalize($data['precedingBusinessProcessException'], \PicturePark\API\Model\PictureparkException::class, 'json', $context);
+            }
+            $object->setPrecedingBusinessProcessException($value);
             unset($data['precedingBusinessProcessException']);
         }
         elseif (\array_key_exists('precedingBusinessProcessException', $data) && $data['precedingBusinessProcessException'] === null) {
             $object->setPrecedingBusinessProcessException(null);
             unset($data['precedingBusinessProcessException']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -163,11 +167,15 @@ class BusinessProcessContinuationExceptionNormalizer implements DenormalizerInte
             $dataArray['precedingBusinessProcessId'] = $data->getPrecedingBusinessProcessId();
         }
         if ($data->isInitialized('precedingBusinessProcessException') && null !== $data->getPrecedingBusinessProcessException()) {
-            $dataArray['precedingBusinessProcessException'] = $data->getPrecedingBusinessProcessException();
+            $value = $data->getPrecedingBusinessProcessException();
+            if (is_object($data->getPrecedingBusinessProcessException())) {
+                $value = $data->getPrecedingBusinessProcessException() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getPrecedingBusinessProcessException(), 'json', $context));
+            }
+            $dataArray['precedingBusinessProcessException'] = $value;
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

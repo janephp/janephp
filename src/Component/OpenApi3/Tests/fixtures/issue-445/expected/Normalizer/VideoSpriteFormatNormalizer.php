@@ -42,7 +42,11 @@ class VideoSpriteFormatNormalizer implements DenormalizerInterface, NormalizerIn
             unset($data['kind']);
         }
         if (\array_key_exists('spriteResizeAction', $data) && $data['spriteResizeAction'] !== null) {
-            $object->setSpriteResizeAction($data['spriteResizeAction']);
+            $value = $data['spriteResizeAction'];
+            if (is_array($data['spriteResizeAction']) and \array_key_exists('width', $data['spriteResizeAction']) and \array_key_exists('height', $data['spriteResizeAction']) and \array_key_exists('resizeMode', $data['spriteResizeAction'])) {
+                $value = $this->denormalizer->denormalize($data['spriteResizeAction'], \PicturePark\API\Model\ResizeAction::class, 'json', $context);
+            }
+            $object->setSpriteResizeAction($value);
             unset($data['spriteResizeAction']);
         }
         elseif (\array_key_exists('spriteResizeAction', $data) && $data['spriteResizeAction'] === null) {
@@ -65,9 +69,9 @@ class VideoSpriteFormatNormalizer implements DenormalizerInterface, NormalizerIn
             $object->setExtension(null);
             unset($data['extension']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -77,7 +81,11 @@ class VideoSpriteFormatNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
         if ($data->isInitialized('spriteResizeAction') && null !== $data->getSpriteResizeAction()) {
-            $dataArray['spriteResizeAction'] = $data->getSpriteResizeAction();
+            $value = $data->getSpriteResizeAction();
+            if (is_object($data->getSpriteResizeAction())) {
+                $value = $data->getSpriteResizeAction() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getSpriteResizeAction(), 'json', $context));
+            }
+            $dataArray['spriteResizeAction'] = $value;
         }
         if ($data->isInitialized('maxNumberOfSprites') && null !== $data->getMaxNumberOfSprites()) {
             $dataArray['maxNumberOfSprites'] = $data->getMaxNumberOfSprites();
@@ -88,9 +96,9 @@ class VideoSpriteFormatNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('extension') && null !== $data->getExtension()) {
             $dataArray['extension'] = $data->getExtension();
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

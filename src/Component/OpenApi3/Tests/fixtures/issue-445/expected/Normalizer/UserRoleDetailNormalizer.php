@@ -38,15 +38,23 @@ class UserRoleDetailNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('names', $data)) {
-            $object->setNames($data['names']);
+            $value = $data['names'];
+            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['names'] as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $object->setNames($value);
             unset($data['names']);
         }
         if (\array_key_exists('userRights', $data)) {
-            $values = [];
-            foreach ($data['userRights'] as $value) {
-                $values[] = $value;
+            $values_1 = [];
+            foreach ($data['userRights'] as $value_2) {
+                $values_1[] = $value_2;
             }
-            $object->setUserRights($values);
+            $object->setUserRights($values_1);
             unset($data['userRights']);
         }
         if (\array_key_exists('id', $data)) {
@@ -54,16 +62,20 @@ class UserRoleDetailNormalizer implements DenormalizerInterface, NormalizerInter
             unset($data['id']);
         }
         if (\array_key_exists('audit', $data) && $data['audit'] !== null) {
-            $object->setAudit($data['audit']);
+            $value_3 = $data['audit'];
+            if (is_array($data['audit']) and \array_key_exists('creationDate', $data['audit']) and \array_key_exists('modificationDate', $data['audit'])) {
+                $value_3 = $this->denormalizer->denormalize($data['audit'], \PicturePark\API\Model\UserAuditDetail::class, 'json', $context);
+            }
+            $object->setAudit($value_3);
             unset($data['audit']);
         }
         elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
             $object->setAudit(null);
             unset($data['audit']);
         }
-        foreach ($data as $key => $value_1) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+        foreach ($data as $key_1 => $value_4) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $object[$key_1] = $value_4;
             }
         }
         return $object;
@@ -71,19 +83,31 @@ class UserRoleDetailNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['names'] = $data->getNames();
-        $values = [];
-        foreach ($data->getUserRights() as $value) {
-            $values[] = $value;
+        $value = $data->getNames();
+        if (is_object($data->getNames())) {
+            $values = new \PicturePark\API\Runtime\JsonObject();
+            foreach ($data->getNames() as $key => $value_1) {
+                $values[$key] = $value_1;
+            }
+            $value = $values;
         }
-        $dataArray['userRights'] = $values;
+        $dataArray['names'] = $value;
+        $values_1 = [];
+        foreach ($data->getUserRights() as $value_2) {
+            $values_1[] = $value_2;
+        }
+        $dataArray['userRights'] = $values_1;
         $dataArray['id'] = $data->getId();
         if ($data->isInitialized('audit') && null !== $data->getAudit()) {
-            $dataArray['audit'] = $data->getAudit();
+            $value_3 = $data->getAudit();
+            if (is_object($data->getAudit())) {
+                $value_3 = $data->getAudit() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getAudit(), 'json', $context));
+            }
+            $dataArray['audit'] = $value_3;
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
-            if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+        foreach ($data->additionalPropertyEntries() as $key_1 => $value_4) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $dataArray[$key_1] = $value_4;
             }
         }
         return $dataArray;

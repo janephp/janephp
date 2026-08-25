@@ -44,7 +44,11 @@ class OutputFormatEditableNormalizer implements DenormalizerInterface, Normalize
             $data['enableXmpWriteback'] = (bool) $data['enableXmpWriteback'];
         }
         if (\array_key_exists('sourceOutputFormats', $data) && $data['sourceOutputFormats'] !== null) {
-            $object->setSourceOutputFormats($data['sourceOutputFormats']);
+            $value = $data['sourceOutputFormats'];
+            if (is_array($data['sourceOutputFormats'])) {
+                $value = $this->denormalizer->denormalize($data['sourceOutputFormats'], \PicturePark\API\Model\SourceOutputFormats::class, 'json', $context);
+            }
+            $object->setSourceOutputFormats($value);
             unset($data['sourceOutputFormats']);
         }
         elseif (\array_key_exists('sourceOutputFormats', $data) && $data['sourceOutputFormats'] === null) {
@@ -52,7 +56,11 @@ class OutputFormatEditableNormalizer implements DenormalizerInterface, Normalize
             unset($data['sourceOutputFormats']);
         }
         if (\array_key_exists('format', $data) && $data['format'] !== null) {
-            $object->setFormat($data['format']);
+            $value_1 = $data['format'];
+            if (is_array($data['format']) and \array_key_exists('kind', $data['format'])) {
+                $value_1 = $this->denormalizer->denormalize($data['format'], \PicturePark\API\Model\FormatBase::class, 'json', $context);
+            }
+            $object->setFormat($value_1);
             unset($data['format']);
         }
         elseif (\array_key_exists('format', $data) && $data['format'] === null) {
@@ -60,7 +68,15 @@ class OutputFormatEditableNormalizer implements DenormalizerInterface, Normalize
             unset($data['format']);
         }
         if (\array_key_exists('names', $data)) {
-            $object->setNames($data['names']);
+            $value_2 = $data['names'];
+            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['names'] as $key => $value_3) {
+                    $values[$key] = $value_3;
+                }
+                $value_2 = $values;
+            }
+            $object->setNames($value_2);
             unset($data['names']);
         }
         if (\array_key_exists('retentionTime', $data)) {
@@ -68,7 +84,15 @@ class OutputFormatEditableNormalizer implements DenormalizerInterface, Normalize
             unset($data['retentionTime']);
         }
         if (\array_key_exists('downloadFileNamePatterns', $data) && $data['downloadFileNamePatterns'] !== null) {
-            $object->setDownloadFileNamePatterns($data['downloadFileNamePatterns']);
+            $value_4 = $data['downloadFileNamePatterns'];
+            if (is_array($data['downloadFileNamePatterns']) && $this->isOnlyNumericKeys($data['downloadFileNamePatterns'])) {
+                $values_1 = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['downloadFileNamePatterns'] as $key_1 => $value_5) {
+                    $values_1[$key_1] = $value_5;
+                }
+                $value_4 = $values_1;
+            }
+            $object->setDownloadFileNamePatterns($value_4);
             unset($data['downloadFileNamePatterns']);
         }
         elseif (\array_key_exists('downloadFileNamePatterns', $data) && $data['downloadFileNamePatterns'] === null) {
@@ -83,9 +107,9 @@ class OutputFormatEditableNormalizer implements DenormalizerInterface, Normalize
             $object->setEnableXmpWriteback($data['enableXmpWriteback']);
             unset($data['enableXmpWriteback']);
         }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+        foreach ($data as $key_2 => $value_6) {
+            if (preg_match('/.*/', (string) $key_2)) {
+                $object[$key_2] = $value_6;
             }
         }
         return $object;
@@ -94,17 +118,41 @@ class OutputFormatEditableNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if ($data->isInitialized('sourceOutputFormats') && null !== $data->getSourceOutputFormats()) {
-            $dataArray['sourceOutputFormats'] = $data->getSourceOutputFormats();
+            $value = $data->getSourceOutputFormats();
+            if (is_object($data->getSourceOutputFormats())) {
+                $value = $data->getSourceOutputFormats() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getSourceOutputFormats(), 'json', $context));
+            }
+            $dataArray['sourceOutputFormats'] = $value;
         }
         if ($data->isInitialized('format') && null !== $data->getFormat()) {
-            $dataArray['format'] = $data->getFormat();
+            $value_1 = $data->getFormat();
+            if (is_object($data->getFormat())) {
+                $value_1 = $data->getFormat() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFormat(), 'json', $context));
+            }
+            $dataArray['format'] = $value_1;
         }
-        $dataArray['names'] = $data->getNames();
+        $value_2 = $data->getNames();
+        if (is_object($data->getNames())) {
+            $values = new \PicturePark\API\Runtime\JsonObject();
+            foreach ($data->getNames() as $key => $value_3) {
+                $values[$key] = $value_3;
+            }
+            $value_2 = $values;
+        }
+        $dataArray['names'] = $value_2;
         if ($data->isInitialized('retentionTime') && null !== $data->getRetentionTime()) {
             $dataArray['retentionTime'] = $data->getRetentionTime();
         }
         if ($data->isInitialized('downloadFileNamePatterns') && null !== $data->getDownloadFileNamePatterns()) {
-            $dataArray['downloadFileNamePatterns'] = $data->getDownloadFileNamePatterns();
+            $value_4 = $data->getDownloadFileNamePatterns();
+            if (is_object($data->getDownloadFileNamePatterns())) {
+                $values_1 = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data->getDownloadFileNamePatterns() as $key_1 => $value_5) {
+                    $values_1[$key_1] = $value_5;
+                }
+                $value_4 = $values_1;
+            }
+            $dataArray['downloadFileNamePatterns'] = $value_4;
         }
         if ($data->isInitialized('viewForAll') && null !== $data->getViewForAll()) {
             $dataArray['viewForAll'] = $data->getViewForAll();
@@ -112,9 +160,9 @@ class OutputFormatEditableNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('enableXmpWriteback') && null !== $data->getEnableXmpWriteback()) {
             $dataArray['enableXmpWriteback'] = $data->getEnableXmpWriteback();
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+        foreach ($data->additionalPropertyEntries() as $key_2 => $value_6) {
+            if (preg_match('/.*/', (string) $key_2)) {
+                $dataArray[$key_2] = $value_6;
             }
         }
         return $dataArray;

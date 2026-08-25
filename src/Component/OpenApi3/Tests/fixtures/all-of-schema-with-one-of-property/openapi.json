@@ -1,0 +1,117 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "AllOf Schema With OneOf Property API",
+        "version": "1.0.0"
+    },
+    "paths": {},
+    "components": {
+        "schemas": {
+            "Sales_RetrieveInvoicesRequest": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Sales_RetrieveSettlementRequestBase"
+                    }
+                ],
+                "properties": {
+                    "filter": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/Sales_InvoiceFilter"
+                            }
+                        ],
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Sales_RetrieveSettlementRequestBase": {
+                "required": [
+                    "discriminator"
+                ],
+                "type": "object",
+                "properties": {
+                    "discriminator": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "discriminator": {
+                    "propertyName": "discriminator",
+                    "mapping": {
+                        "Sales_RetrieveInvoicesRequest": "#/components/schemas/Sales_RetrieveInvoicesRequest"
+                    }
+                }
+            },
+            "Sales_InvoiceFilter": {
+                "type": "object",
+                "properties": {
+                    "invoiceIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "nullable": true
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "oneOf": [
+                                {
+                                    "$ref": "#/components/schemas/Link_LinkBase"
+                                },
+                                {
+                                    "$ref": "#/components/schemas/Link_InvoiceLink"
+                                }
+                            ]
+                        },
+                        "nullable": true
+                    },
+                    "includePositions": {
+                        "type": "boolean",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Link_InvoiceLink": {
+                "required": [
+                    "invoiceId"
+                ],
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/Link_LinkBase"
+                    }
+                ],
+                "properties": {
+                    "invoiceId": {
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Link_LinkBase": {
+                "required": [
+                    "discriminator"
+                ],
+                "type": "object",
+                "properties": {
+                    "discriminator": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false,
+                "discriminator": {
+                    "propertyName": "discriminator",
+                    "mapping": {
+                        "Link_InvoiceLink": "#/components/schemas/Link_InvoiceLink"
+                    }
+                }
+            }
+        }
+    }
+}

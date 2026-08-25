@@ -46,16 +46,24 @@ class GeoBoundingBoxFilterNormalizer implements DenormalizerInterface, Normalize
             unset($data['field']);
         }
         if (\array_key_exists('topLeft', $data)) {
-            $object->setTopLeft($data['topLeft']);
+            $value = $data['topLeft'];
+            if (is_array($data['topLeft'])) {
+                $value = $this->denormalizer->denormalize($data['topLeft'], \PicturePark\API\Model\GeoLocation::class, 'json', $context);
+            }
+            $object->setTopLeft($value);
             unset($data['topLeft']);
         }
         if (\array_key_exists('bottomRight', $data)) {
-            $object->setBottomRight($data['bottomRight']);
+            $value_1 = $data['bottomRight'];
+            if (is_array($data['bottomRight'])) {
+                $value_1 = $this->denormalizer->denormalize($data['bottomRight'], \PicturePark\API\Model\GeoLocation::class, 'json', $context);
+            }
+            $object->setBottomRight($value_1);
             unset($data['bottomRight']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_2;
             }
         }
         return $object;
@@ -65,11 +73,19 @@ class GeoBoundingBoxFilterNormalizer implements DenormalizerInterface, Normalize
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
         $dataArray['field'] = $data->getField();
-        $dataArray['topLeft'] = $data->getTopLeft();
-        $dataArray['bottomRight'] = $data->getBottomRight();
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
+        $value = $data->getTopLeft();
+        if (is_object($data->getTopLeft())) {
+            $value = $data->getTopLeft() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getTopLeft(), 'json', $context));
+        }
+        $dataArray['topLeft'] = $value;
+        $value_1 = $data->getBottomRight();
+        if (is_object($data->getBottomRight())) {
+            $value_1 = $data->getBottomRight() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getBottomRight(), 'json', $context));
+        }
+        $dataArray['bottomRight'] = $value_1;
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_2;
             }
         }
         return $dataArray;

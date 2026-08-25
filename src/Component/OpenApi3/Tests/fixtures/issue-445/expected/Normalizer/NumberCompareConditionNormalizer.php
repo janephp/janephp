@@ -61,16 +61,20 @@ class NumberCompareConditionNormalizer implements DenormalizerInterface, Normali
             unset($data['fieldPath']);
         }
         if (\array_key_exists('mode', $data)) {
-            $object->setMode($data['mode']);
+            $value = $data['mode'];
+            if (is_string($data['mode'])) {
+                $value = $data['mode'];
+            }
+            $object->setMode($value);
             unset($data['mode']);
         }
         if (\array_key_exists('value', $data)) {
             $object->setValue($data['value']);
             unset($data['value']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -86,14 +90,18 @@ class NumberCompareConditionNormalizer implements DenormalizerInterface, Normali
             $dataArray['fieldPath'] = $data->getFieldPath();
         }
         if ($data->isInitialized('mode') && null !== $data->getMode()) {
-            $dataArray['mode'] = $data->getMode();
+            $value = $data->getMode();
+            if (is_string($data->getMode())) {
+                $value = $data->getMode();
+            }
+            $dataArray['mode'] = $value;
         }
         if ($data->isInitialized('value') && null !== $data->getValue()) {
             $dataArray['value'] = $data->getValue();
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

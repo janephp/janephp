@@ -48,7 +48,11 @@ class ListItemUpdateRequestNormalizer implements DenormalizerInterface, Normaliz
             $object->setContent(null);
         }
         if (\array_key_exists('contentFieldsUpdateOptions', $data)) {
-            $object->setContentFieldsUpdateOptions($data['contentFieldsUpdateOptions']);
+            $value_1 = $data['contentFieldsUpdateOptions'];
+            if (is_string($data['contentFieldsUpdateOptions'])) {
+                $value_1 = $data['contentFieldsUpdateOptions'];
+            }
+            $object->setContentFieldsUpdateOptions($value_1);
         }
         return $object;
     }
@@ -62,7 +66,11 @@ class ListItemUpdateRequestNormalizer implements DenormalizerInterface, Normaliz
             }
             $dataArray['content'] = $values;
         }
-        $dataArray['contentFieldsUpdateOptions'] = $data->getContentFieldsUpdateOptions();
+        $value_1 = $data->getContentFieldsUpdateOptions();
+        if (is_string($data->getContentFieldsUpdateOptions())) {
+            $value_1 = $data->getContentFieldsUpdateOptions();
+        }
+        $dataArray['contentFieldsUpdateOptions'] = $value_1;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -60,13 +60,21 @@ class LiveStreamNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setTimestamp($date);
         }
         if (\array_key_exists('traceJob', $data) && $data['traceJob'] !== null) {
-            $object->setTraceJob($data['traceJob']);
+            $value = $data['traceJob'];
+            if (is_array($data['traceJob'])) {
+                $value = $this->denormalizer->denormalize($data['traceJob'], \PicturePark\API\Model\LiveStreamTraceJob::class, 'json', $context);
+            }
+            $object->setTraceJob($value);
         }
         elseif (\array_key_exists('traceJob', $data) && $data['traceJob'] === null) {
             $object->setTraceJob(null);
         }
         if (\array_key_exists('audit', $data) && $data['audit'] !== null) {
-            $object->setAudit($data['audit']);
+            $value_1 = $data['audit'];
+            if (is_array($data['audit']) and \array_key_exists('creationDate', $data['audit']) and \array_key_exists('modificationDate', $data['audit'])) {
+                $value_1 = $this->denormalizer->denormalize($data['audit'], \PicturePark\API\Model\UserAudit::class, 'json', $context);
+            }
+            $object->setAudit($value_1);
         }
         elseif (\array_key_exists('audit', $data) && $data['audit'] === null) {
             $object->setAudit(null);
@@ -85,10 +93,18 @@ class LiveStreamNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('traceJob') && null !== $data->getTraceJob()) {
-            $dataArray['traceJob'] = $data->getTraceJob();
+            $value = $data->getTraceJob();
+            if (is_object($data->getTraceJob())) {
+                $value = $data->getTraceJob() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getTraceJob(), 'json', $context));
+            }
+            $dataArray['traceJob'] = $value;
         }
         if ($data->isInitialized('audit') && null !== $data->getAudit()) {
-            $dataArray['audit'] = $data->getAudit();
+            $value_1 = $data->getAudit();
+            if (is_object($data->getAudit())) {
+                $value_1 = $data->getAudit() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getAudit(), 'json', $context));
+            }
+            $dataArray['audit'] = $value_1;
         }
         return $dataArray;
     }

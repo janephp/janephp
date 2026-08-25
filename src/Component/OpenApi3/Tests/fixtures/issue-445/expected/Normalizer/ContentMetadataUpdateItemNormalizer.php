@@ -74,24 +74,36 @@ class ContentMetadataUpdateItemNormalizer implements DenormalizerInterface, Norm
             unset($data['metadata']);
         }
         if (\array_key_exists('layerSchemasUpdateOptions', $data)) {
-            $object->setLayerSchemasUpdateOptions($data['layerSchemasUpdateOptions']);
+            $value_3 = $data['layerSchemasUpdateOptions'];
+            if (is_string($data['layerSchemasUpdateOptions'])) {
+                $value_3 = $data['layerSchemasUpdateOptions'];
+            }
+            $object->setLayerSchemasUpdateOptions($value_3);
             unset($data['layerSchemasUpdateOptions']);
         }
         if (\array_key_exists('layerFieldsUpdateOptions', $data)) {
-            $object->setLayerFieldsUpdateOptions($data['layerFieldsUpdateOptions']);
+            $value_4 = $data['layerFieldsUpdateOptions'];
+            if (is_string($data['layerFieldsUpdateOptions'])) {
+                $value_4 = $data['layerFieldsUpdateOptions'];
+            }
+            $object->setLayerFieldsUpdateOptions($value_4);
             unset($data['layerFieldsUpdateOptions']);
         }
         if (\array_key_exists('contentFieldsUpdateOptions', $data)) {
-            $object->setContentFieldsUpdateOptions($data['contentFieldsUpdateOptions']);
+            $value_5 = $data['contentFieldsUpdateOptions'];
+            if (is_string($data['contentFieldsUpdateOptions'])) {
+                $value_5 = $data['contentFieldsUpdateOptions'];
+            }
+            $object->setContentFieldsUpdateOptions($value_5);
             unset($data['contentFieldsUpdateOptions']);
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
             unset($data['id']);
         }
-        foreach ($data as $key_2 => $value_3) {
+        foreach ($data as $key_2 => $value_6) {
             if (preg_match('/.*/', (string) $key_2)) {
-                $object[$key_2] = $value_3;
+                $object[$key_2] = $value_6;
             }
         }
         return $object;
@@ -120,13 +132,25 @@ class ContentMetadataUpdateItemNormalizer implements DenormalizerInterface, Norm
             }
             $dataArray['metadata'] = $values_2;
         }
-        $dataArray['layerSchemasUpdateOptions'] = $data->getLayerSchemasUpdateOptions();
-        $dataArray['layerFieldsUpdateOptions'] = $data->getLayerFieldsUpdateOptions();
-        $dataArray['contentFieldsUpdateOptions'] = $data->getContentFieldsUpdateOptions();
+        $value_3 = $data->getLayerSchemasUpdateOptions();
+        if (is_string($data->getLayerSchemasUpdateOptions())) {
+            $value_3 = $data->getLayerSchemasUpdateOptions();
+        }
+        $dataArray['layerSchemasUpdateOptions'] = $value_3;
+        $value_4 = $data->getLayerFieldsUpdateOptions();
+        if (is_string($data->getLayerFieldsUpdateOptions())) {
+            $value_4 = $data->getLayerFieldsUpdateOptions();
+        }
+        $dataArray['layerFieldsUpdateOptions'] = $value_4;
+        $value_5 = $data->getContentFieldsUpdateOptions();
+        if (is_string($data->getContentFieldsUpdateOptions())) {
+            $value_5 = $data->getContentFieldsUpdateOptions();
+        }
+        $dataArray['contentFieldsUpdateOptions'] = $value_5;
         $dataArray['id'] = $data->getId();
-        foreach ($data->additionalPropertyEntries() as $key_2 => $value_3) {
+        foreach ($data->additionalPropertyEntries() as $key_2 => $value_6) {
             if (preg_match('/.*/', (string) $key_2)) {
-                $dataArray[$key_2] = $value_3;
+                $dataArray[$key_2] = $value_6;
             }
         }
         return $dataArray;

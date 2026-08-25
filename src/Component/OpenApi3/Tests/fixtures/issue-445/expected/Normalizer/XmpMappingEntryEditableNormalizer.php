@@ -41,7 +41,11 @@ class XmpMappingEntryEditableNormalizer implements DenormalizerInterface, Normal
             $data['stopProcessing'] = (bool) $data['stopProcessing'];
         }
         if (\array_key_exists('direction', $data)) {
-            $object->setDirection($data['direction']);
+            $value = $data['direction'];
+            if (is_string($data['direction'])) {
+                $value = $data['direction'];
+            }
+            $object->setDirection($value);
         }
         if (\array_key_exists('priority', $data)) {
             $object->setPriority($data['priority']);
@@ -56,7 +60,11 @@ class XmpMappingEntryEditableNormalizer implements DenormalizerInterface, Normal
             $object->setMetadataPath($data['metadataPath']);
         }
         if (\array_key_exists('configuration', $data) && $data['configuration'] !== null) {
-            $object->setConfiguration($data['configuration']);
+            $value_1 = $data['configuration'];
+            if (is_array($data['configuration']) and \array_key_exists('kind', $data['configuration'])) {
+                $value_1 = $this->denormalizer->denormalize($data['configuration'], \PicturePark\API\Model\XmpMappingEntryConfigurationBase::class, 'json', $context);
+            }
+            $object->setConfiguration($value_1);
         }
         elseif (\array_key_exists('configuration', $data) && $data['configuration'] === null) {
             $object->setConfiguration(null);
@@ -66,13 +74,21 @@ class XmpMappingEntryEditableNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['direction'] = $data->getDirection();
+        $value = $data->getDirection();
+        if (is_string($data->getDirection())) {
+            $value = $data->getDirection();
+        }
+        $dataArray['direction'] = $value;
         $dataArray['priority'] = $data->getPriority();
         $dataArray['stopProcessing'] = $data->getStopProcessing();
         $dataArray['xmpPath'] = $data->getXmpPath();
         $dataArray['metadataPath'] = $data->getMetadataPath();
         if ($data->isInitialized('configuration') && null !== $data->getConfiguration()) {
-            $dataArray['configuration'] = $data->getConfiguration();
+            $value_1 = $data->getConfiguration();
+            if (is_object($data->getConfiguration())) {
+                $value_1 = $data->getConfiguration() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getConfiguration(), 'json', $context));
+            }
+            $dataArray['configuration'] = $value_1;
         }
         return $dataArray;
     }

@@ -18,7 +18,7 @@ class SchemaPermissionSetCreateRequest implements AdditionalPropertiesInterface
     /**
      * Language specific permission set names.
      *
-     * @var mixed
+     * @var array<string, string>
      */
     protected $names;
     /**
@@ -50,20 +50,20 @@ class SchemaPermissionSetCreateRequest implements AdditionalPropertiesInterface
     /**
      * Language specific permission set names.
      *
-     * @return mixed
+     * @return array<string, string>
      */
-    public function getNames()
+    public function getNames(): iterable
     {
         return $this->names;
     }
     /**
      * Language specific permission set names.
      *
-     * @param mixed $names
+     * @param array<string, string> $names
      *
      * @return self
      */
-    public function setNames($names): self
+    public function setNames(iterable $names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;
