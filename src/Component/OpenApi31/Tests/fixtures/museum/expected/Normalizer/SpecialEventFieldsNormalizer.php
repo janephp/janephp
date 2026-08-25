@@ -45,12 +45,15 @@ class SpecialEventFieldsNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('location', $data)) {
             $object->setLocation($data['location']);
+            unset($data['location']);
         }
         if (\array_key_exists('eventDescription', $data)) {
             $object->setEventDescription($data['eventDescription']);
+            unset($data['eventDescription']);
         }
         if (\array_key_exists('dates', $data)) {
             $values = [];
@@ -62,9 +65,16 @@ class SpecialEventFieldsNormalizer implements DenormalizerInterface, NormalizerI
                 $values[] = $date->setTime(0, 0, 0);
             }
             $object->setDates($values);
+            unset($data['dates']);
         }
         if (\array_key_exists('price', $data)) {
             $object->setPrice($data['price']);
+            unset($data['price']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -89,6 +99,11 @@ class SpecialEventFieldsNormalizer implements DenormalizerInterface, NormalizerI
         }
         if ($data->isInitialized('price') && null !== $data->getPrice()) {
             $dataArray['price'] = $data->getPrice();
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\SpecialEventFieldsConstraint());

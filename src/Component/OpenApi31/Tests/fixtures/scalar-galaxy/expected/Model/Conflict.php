@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class Conflict
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class Conflict implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class Conflict
         $this->initialized['detail'] = true;
         $this->detail = $detail;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'title' => ['title', 'getTitle', 'setTitle'], 'status' => ['status', 'getStatus', 'setStatus'], 'detail' => ['detail', 'getDetail', 'setDetail']];
     }
 }

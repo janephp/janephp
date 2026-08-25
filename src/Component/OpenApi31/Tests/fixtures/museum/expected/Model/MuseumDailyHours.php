@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class MuseumDailyHours
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class MuseumDailyHours implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -89,5 +92,9 @@ class MuseumDailyHours
         $this->initialized['timeClose'] = true;
         $this->timeClose = $timeClose;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['date' => ['date', 'getDate', 'setDate'], 'timeOpen' => ['timeOpen', 'getTimeOpen', 'setTimeOpen'], 'timeClose' => ['timeClose', 'getTimeClose', 'setTimeClose']];
     }
 }

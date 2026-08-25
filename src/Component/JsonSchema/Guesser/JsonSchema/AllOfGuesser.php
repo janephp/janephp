@@ -48,11 +48,12 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
             if (!$registry->hasClass($reference)) {
                 $extensions = [];
 
-                if ($object->getAdditionalProperties()) {
+                $additionalProperties = $this->resolveAdditionalProperties($object);
+                if ($additionalProperties) {
                     $extensionObject = null;
 
-                    if (\is_object($object->getAdditionalProperties())) {
-                        $extensionObject = $object->getAdditionalProperties();
+                    if (\is_object($additionalProperties)) {
+                        $extensionObject = $additionalProperties;
                     }
 
                     $extensions['.*'] = [
@@ -182,6 +183,11 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     protected function getSchemaClass(): string
     {
         return JsonSchema::class;
+    }
+
+    protected function resolveAdditionalProperties($object)
+    {
+        return $object->getAdditionalProperties();
     }
 
     protected function createClassGuess($object, string $reference, string $name, array $extensions): ClassGuess

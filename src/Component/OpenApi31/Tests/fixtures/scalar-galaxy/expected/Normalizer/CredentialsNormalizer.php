@@ -42,9 +42,16 @@ class CredentialsNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
+            unset($data['email']);
         }
         if (\array_key_exists('password', $data)) {
             $object->setPassword($data['password']);
+            unset($data['password']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -53,6 +60,11 @@ class CredentialsNormalizer implements DenormalizerInterface, NormalizerInterfac
         $dataArray = [];
         $dataArray['email'] = $data->getEmail();
         $dataArray['password'] = $data->getPassword();
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\CredentialsConstraint());
         }

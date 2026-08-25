@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class BuyMuseumTickets
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class BuyMuseumTickets implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -145,5 +148,9 @@ class BuyMuseumTickets
         $this->initialized['eventId'] = true;
         $this->eventId = $eventId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['email' => ['email', 'getEmail', 'setEmail'], 'ticketId' => ['ticketId', 'getTicketId', 'setTicketId'], 'ticketDate' => ['ticketDate', 'getTicketDate', 'setTicketDate'], 'ticketType' => ['ticketType', 'getTicketType', 'setTicketType'], 'eventId' => ['eventId', 'getEventId', 'setEventId']];
     }
 }

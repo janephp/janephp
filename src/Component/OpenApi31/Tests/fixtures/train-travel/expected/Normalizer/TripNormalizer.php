@@ -51,12 +51,15 @@ class TripNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('origin', $data)) {
             $object->setOrigin($data['origin']);
+            unset($data['origin']);
         }
         if (\array_key_exists('destination', $data)) {
             $object->setDestination($data['destination']);
+            unset($data['destination']);
         }
         if (\array_key_exists('departure_time', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['departure_time']);
@@ -64,6 +67,7 @@ class TripNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
                 throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['departure_time'], 'Y-m-d\TH:i:sP');
             }
             $object->setDepartureTime($date);
+            unset($data['departure_time']);
         }
         if (\array_key_exists('arrival_time', $data)) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['arrival_time']);
@@ -71,18 +75,28 @@ class TripNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
                 throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['arrival_time'], 'Y-m-d\TH:i:sP');
             }
             $object->setArrivalTime($date_1);
+            unset($data['arrival_time']);
         }
         if (\array_key_exists('operator', $data)) {
             $object->setOperator($data['operator']);
+            unset($data['operator']);
         }
         if (\array_key_exists('price', $data)) {
             $object->setPrice($data['price']);
+            unset($data['price']);
         }
         if (\array_key_exists('bicycles_allowed', $data)) {
             $object->setBicyclesAllowed($data['bicycles_allowed']);
+            unset($data['bicycles_allowed']);
         }
         if (\array_key_exists('dogs_allowed', $data)) {
             $object->setDogsAllowed($data['dogs_allowed']);
+            unset($data['dogs_allowed']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -115,6 +129,11 @@ class TripNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if ($data->isInitialized('dogsAllowed') && null !== $data->getDogsAllowed()) {
             $dataArray['dogs_allowed'] = $data->getDogsAllowed();
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\TripConstraint());

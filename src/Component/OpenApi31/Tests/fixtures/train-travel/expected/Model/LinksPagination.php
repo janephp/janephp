@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class LinksPagination
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class LinksPagination implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class LinksPagination
         $this->initialized['prev'] = true;
         $this->prev = $prev;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['next' => ['next', 'getNext', 'setNext'], 'prev' => ['prev', 'getPrev', 'setPrev']];
     }
 }

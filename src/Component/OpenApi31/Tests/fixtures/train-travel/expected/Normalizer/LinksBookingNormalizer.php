@@ -42,6 +42,12 @@ class LinksBookingNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('booking', $data)) {
             $object->setBooking($data['booking']);
+            unset($data['booking']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -50,6 +56,11 @@ class LinksBookingNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray = [];
         if ($data->isInitialized('booking') && null !== $data->getBooking()) {
             $dataArray['booking'] = $data->getBooking();
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\LinksBookingConstraint());

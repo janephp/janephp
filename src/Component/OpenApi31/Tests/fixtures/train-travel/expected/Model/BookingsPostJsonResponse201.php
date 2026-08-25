@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class BookingsPostJsonResponse201
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class BookingsPostJsonResponse201 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -179,5 +182,9 @@ class BookingsPostJsonResponse201
         $this->initialized['links'] = true;
         $this->links = $links;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'tripId' => ['trip_id', 'getTripId', 'setTripId'], 'passengerName' => ['passenger_name', 'getPassengerName', 'setPassengerName'], 'hasBicycle' => ['has_bicycle', 'getHasBicycle', 'setHasBicycle'], 'hasDog' => ['has_dog', 'getHasDog', 'setHasDog'], 'links' => ['links', 'getLinks', 'setLinks']];
     }
 }

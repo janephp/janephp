@@ -46,12 +46,20 @@ class MuseumDailyHoursNormalizer implements DenormalizerInterface, NormalizerInt
                 throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['date'], 'Y-m-d');
             }
             $object->setDate($date->setTime(0, 0, 0));
+            unset($data['date']);
         }
         if (\array_key_exists('timeOpen', $data)) {
             $object->setTimeOpen($data['timeOpen']);
+            unset($data['timeOpen']);
         }
         if (\array_key_exists('timeClose', $data)) {
             $object->setTimeClose($data['timeClose']);
+            unset($data['timeClose']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,6 +69,11 @@ class MuseumDailyHoursNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray['date'] = $data->getDate()->format('Y-m-d');
         $dataArray['timeOpen'] = $data->getTimeOpen();
         $dataArray['timeClose'] = $data->getTimeClose();
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\MuseumDailyHoursConstraint());
         }

@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class ProjectProposal
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class ProjectProposal implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ProjectProposal
         $this->initialized['users'] = true;
         $this->users = $users;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['users' => ['users', 'getUsers', 'setUsers']];
     }
 }

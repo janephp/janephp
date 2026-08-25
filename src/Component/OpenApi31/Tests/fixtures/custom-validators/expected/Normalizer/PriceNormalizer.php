@@ -45,15 +45,24 @@ class PriceNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (\array_key_exists('amount', $data)) {
             $object->setAmount($data['amount']);
+            unset($data['amount']);
         }
         if (\array_key_exists('currency', $data)) {
             $object->setCurrency($data['currency']);
+            unset($data['currency']);
         }
         if (\array_key_exists('discount', $data)) {
             $object->setDiscount($data['discount']);
+            unset($data['discount']);
         }
         if (\array_key_exists('comment', $data)) {
             $object->setComment($data['comment']);
+            unset($data['comment']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -71,6 +80,11 @@ class PriceNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if ($data->isInitialized('comment') && null !== $data->getComment()) {
             $dataArray['comment'] = $data->getComment();
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PriceConstraint());

@@ -42,6 +42,7 @@ class MuseumTicketsConfirmationNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('ticketId', $data)) {
             $object->setTicketId($data['ticketId']);
+            unset($data['ticketId']);
         }
         if (\array_key_exists('ticketDate', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d', $data['ticketDate']);
@@ -49,18 +50,28 @@ class MuseumTicketsConfirmationNormalizer implements DenormalizerInterface, Norm
                 throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['ticketDate'], 'Y-m-d');
             }
             $object->setTicketDate($date->setTime(0, 0, 0));
+            unset($data['ticketDate']);
         }
         if (\array_key_exists('ticketType', $data)) {
             $object->setTicketType($data['ticketType']);
+            unset($data['ticketType']);
         }
         if (\array_key_exists('eventId', $data)) {
             $object->setEventId($data['eventId']);
+            unset($data['eventId']);
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         if (\array_key_exists('confirmationCode', $data)) {
             $object->setConfirmationCode($data['confirmationCode']);
+            unset($data['confirmationCode']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -77,6 +88,11 @@ class MuseumTicketsConfirmationNormalizer implements DenormalizerInterface, Norm
         }
         $dataArray['message'] = $data->getMessage();
         $dataArray['confirmationCode'] = $data->getConfirmationCode();
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
+        }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\MuseumTicketsConfirmationConstraint());
         }

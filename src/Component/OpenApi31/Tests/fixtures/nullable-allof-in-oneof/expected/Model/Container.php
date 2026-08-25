@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class Container
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class Container implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class Container
         $this->initialized['iconAnyOf'] = true;
         $this->iconAnyOf = $iconAnyOf;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['iconOneOf' => ['iconOneOf', 'getIconOneOf', 'setIconOneOf'], 'iconAnyOf' => ['iconAnyOf', 'getIconAnyOf', 'setIconAnyOf']];
     }
 }

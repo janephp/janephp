@@ -42,12 +42,20 @@ class TripsGetJsonResponse200LinksNormalizer implements DenormalizerInterface, N
         }
         if (\array_key_exists('self', $data)) {
             $object->setSelf($data['self']);
+            unset($data['self']);
         }
         if (\array_key_exists('next', $data)) {
             $object->setNext($data['next']);
+            unset($data['next']);
         }
         if (\array_key_exists('prev', $data)) {
             $object->setPrev($data['prev']);
+            unset($data['prev']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -62,6 +70,11 @@ class TripsGetJsonResponse200LinksNormalizer implements DenormalizerInterface, N
         }
         if ($data->isInitialized('prev') && null !== $data->getPrev()) {
             $dataArray['prev'] = $data->getPrev();
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\TripsGetJsonResponse200LinksConstraint());

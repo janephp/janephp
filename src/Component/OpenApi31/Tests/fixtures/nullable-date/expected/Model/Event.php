@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class Event
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class Event implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class Event
         $this->initialized['plainDate'] = true;
         $this->plainDate = $plainDate;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['eventDate' => ['eventDate', 'getEventDate', 'setEventDate'], 'createdAt' => ['createdAt', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updatedAt', 'getUpdatedAt', 'setUpdatedAt'], 'plainDate' => ['plainDate', 'getPlainDate', 'setPlainDate']];
     }
 }

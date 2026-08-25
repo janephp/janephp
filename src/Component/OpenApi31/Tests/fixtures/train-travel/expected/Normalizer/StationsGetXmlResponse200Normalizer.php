@@ -46,9 +46,16 @@ class StationsGetXmlResponse200Normalizer implements DenormalizerInterface, Norm
                 $values[] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi31\Tests\Expected\Model\Station::class, 'json', $context);
             }
             $object->setData($values);
+            unset($data['data']);
         }
         if (\array_key_exists('links', $data)) {
             $object->setLinks($this->denormalizer->denormalize($data['links'], \Jane\Component\OpenApi31\Tests\Expected\Model\StationsGetXmlResponse200Links::class, 'json', $context));
+            unset($data['links']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -64,6 +71,11 @@ class StationsGetXmlResponse200Normalizer implements DenormalizerInterface, Norm
         }
         if ($data->isInitialized('links') && null !== $data->getLinks()) {
             $dataArray['links'] = $data->getLinks() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\StationsGetXmlResponse200Constraint());

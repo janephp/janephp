@@ -42,18 +42,28 @@ class StationNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('address', $data)) {
             $object->setAddress($data['address']);
+            unset($data['address']);
         }
         if (\array_key_exists('country_code', $data)) {
             $object->setCountryCode($data['country_code']);
+            unset($data['country_code']);
         }
         if (\array_key_exists('timezone', $data)) {
             $object->setTimezone($data['timezone']);
+            unset($data['timezone']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -66,6 +76,11 @@ class StationNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $dataArray['country_code'] = $data->getCountryCode();
         if ($data->isInitialized('timezone') && null !== $data->getTimezone()) {
             $dataArray['timezone'] = $data->getTimezone();
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\StationConstraint());

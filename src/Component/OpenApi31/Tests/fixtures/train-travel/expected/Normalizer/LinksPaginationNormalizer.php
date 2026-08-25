@@ -42,9 +42,16 @@ class LinksPaginationNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('next', $data)) {
             $object->setNext($data['next']);
+            unset($data['next']);
         }
         if (\array_key_exists('prev', $data)) {
             $object->setPrev($data['prev']);
+            unset($data['prev']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -56,6 +63,11 @@ class LinksPaginationNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if ($data->isInitialized('prev') && null !== $data->getPrev()) {
             $dataArray['prev'] = $data->getPrev();
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\LinksPaginationConstraint());

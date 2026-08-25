@@ -48,9 +48,11 @@ class ContainerNormalizer implements DenormalizerInterface, NormalizerInterface,
                 $value = $data['iconOneOf'];
             }
             $object->setIconOneOf($value);
+            unset($data['iconOneOf']);
         }
         elseif (\array_key_exists('iconOneOf', $data) && $data['iconOneOf'] === null) {
             $object->setIconOneOf(null);
+            unset($data['iconOneOf']);
         }
         if (\array_key_exists('iconAnyOf', $data) && $data['iconAnyOf'] !== null) {
             $value_1 = $data['iconAnyOf'];
@@ -60,9 +62,16 @@ class ContainerNormalizer implements DenormalizerInterface, NormalizerInterface,
                 $value_1 = $data['iconAnyOf'];
             }
             $object->setIconAnyOf($value_1);
+            unset($data['iconAnyOf']);
         }
         elseif (\array_key_exists('iconAnyOf', $data) && $data['iconAnyOf'] === null) {
             $object->setIconAnyOf(null);
+            unset($data['iconAnyOf']);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -86,6 +95,11 @@ class ContainerNormalizer implements DenormalizerInterface, NormalizerInterface,
                 $value_1 = $data->getIconAnyOf();
             }
             $dataArray['iconAnyOf'] = $value_1;
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_2;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\ContainerConstraint());

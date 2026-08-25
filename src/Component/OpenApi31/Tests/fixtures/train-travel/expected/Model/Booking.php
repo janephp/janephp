@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class Booking
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class Booking implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class Booking
         $this->initialized['hasDog'] = true;
         $this->hasDog = $hasDog;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'tripId' => ['trip_id', 'getTripId', 'setTripId'], 'passengerName' => ['passenger_name', 'getPassengerName', 'setPassengerName'], 'hasBicycle' => ['has_bicycle', 'getHasBicycle', 'setHasBicycle'], 'hasDog' => ['has_dog', 'getHasDog', 'setHasDog']];
     }
 }

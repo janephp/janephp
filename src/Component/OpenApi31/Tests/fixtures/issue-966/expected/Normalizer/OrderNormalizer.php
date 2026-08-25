@@ -42,9 +42,16 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (\array_key_exists('product_data', $data)) {
             $object->setProductData($this->denormalizer->denormalize($data['product_data'], \Jane\Component\OpenApi31\Tests\Expected\Model\OrderProductData::class, 'json', $context));
+            unset($data['product_data']);
         }
         if (\array_key_exists('product', $data)) {
             $object->setProduct($this->denormalizer->denormalize($data['product'], \Jane\Component\OpenApi31\Tests\Expected\Model\OrderProduct::class, 'json', $context));
+            unset($data['product']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -56,6 +63,11 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if ($data->isInitialized('product') && null !== $data->getProduct()) {
             $dataArray['product'] = $data->getProduct() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getProduct(), 'json', $context));
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\OrderConstraint());

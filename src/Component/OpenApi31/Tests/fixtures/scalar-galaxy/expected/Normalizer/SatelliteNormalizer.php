@@ -45,9 +45,11 @@ class SatelliteNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $value = $data['description'];
@@ -57,18 +59,28 @@ class SatelliteNormalizer implements DenormalizerInterface, NormalizerInterface,
                 $value = $data['description'];
             }
             $object->setDescription($value);
+            unset($data['description']);
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
+            unset($data['description']);
         }
         if (\array_key_exists('diameter', $data)) {
             $object->setDiameter($data['diameter']);
+            unset($data['diameter']);
         }
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
+            unset($data['type']);
         }
         if (\array_key_exists('orbit', $data)) {
             $object->setOrbit($this->denormalizer->denormalize($data['orbit'], \Jane\Component\OpenApi31\Tests\Expected\Model\SatelliteOrbit::class, 'json', $context));
+            unset($data['orbit']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -93,6 +105,11 @@ class SatelliteNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if ($data->isInitialized('orbit') && null !== $data->getOrbit()) {
             $dataArray['orbit'] = $data->getOrbit() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getOrbit(), 'json', $context));
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\SatelliteConstraint());

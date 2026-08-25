@@ -42,9 +42,11 @@ class BuyMuseumTicketsNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
+            unset($data['email']);
         }
         if (\array_key_exists('ticketId', $data)) {
             $object->setTicketId($data['ticketId']);
+            unset($data['ticketId']);
         }
         if (\array_key_exists('ticketDate', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d', $data['ticketDate']);
@@ -52,12 +54,20 @@ class BuyMuseumTicketsNormalizer implements DenormalizerInterface, NormalizerInt
                 throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['ticketDate'], 'Y-m-d');
             }
             $object->setTicketDate($date->setTime(0, 0, 0));
+            unset($data['ticketDate']);
         }
         if (\array_key_exists('ticketType', $data)) {
             $object->setTicketType($data['ticketType']);
+            unset($data['ticketType']);
         }
         if (\array_key_exists('eventId', $data)) {
             $object->setEventId($data['eventId']);
+            unset($data['eventId']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -74,6 +84,11 @@ class BuyMuseumTicketsNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray['ticketType'] = $data->getTicketType();
         if ($data->isInitialized('eventId') && null !== $data->getEventId()) {
             $dataArray['eventId'] = $data->getEventId();
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\BuyMuseumTicketsConstraint());

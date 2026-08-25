@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class LinksBooking
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class LinksBooking implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class LinksBooking
         $this->initialized['booking'] = true;
         $this->booking = $booking;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['booking' => ['booking', 'getBooking', 'setBooking']];
     }
 }

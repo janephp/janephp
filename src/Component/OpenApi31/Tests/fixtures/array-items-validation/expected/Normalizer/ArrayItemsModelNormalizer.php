@@ -46,6 +46,7 @@ class ArrayItemsModelNormalizer implements DenormalizerInterface, NormalizerInte
                 $values[] = $value;
             }
             $object->setUuidArray($values);
+            unset($data['uuidArray']);
         }
         if (\array_key_exists('emailArray', $data)) {
             $values_1 = [];
@@ -53,6 +54,7 @@ class ArrayItemsModelNormalizer implements DenormalizerInterface, NormalizerInte
                 $values_1[] = $value_1;
             }
             $object->setEmailArray($values_1);
+            unset($data['emailArray']);
         }
         if (\array_key_exists('enumArray', $data)) {
             $values_2 = [];
@@ -60,6 +62,7 @@ class ArrayItemsModelNormalizer implements DenormalizerInterface, NormalizerInte
                 $values_2[] = $value_2;
             }
             $object->setEnumArray($values_2);
+            unset($data['enumArray']);
         }
         if (\array_key_exists('integerArray', $data)) {
             $values_3 = [];
@@ -67,6 +70,7 @@ class ArrayItemsModelNormalizer implements DenormalizerInterface, NormalizerInte
                 $values_3[] = $value_3;
             }
             $object->setIntegerArray($values_3);
+            unset($data['integerArray']);
         }
         if (\array_key_exists('constrainedStringArray', $data)) {
             $values_4 = [];
@@ -74,6 +78,12 @@ class ArrayItemsModelNormalizer implements DenormalizerInterface, NormalizerInte
                 $values_4[] = $value_4;
             }
             $object->setConstrainedStringArray($values_4);
+            unset($data['constrainedStringArray']);
+        }
+        foreach ($data as $key => $value_5) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_5;
+            }
         }
         return $object;
     }
@@ -114,6 +124,11 @@ class ArrayItemsModelNormalizer implements DenormalizerInterface, NormalizerInte
                 $values_4[] = $value_4;
             }
             $dataArray['constrainedStringArray'] = $values_4;
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value_5) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_5;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\ArrayItemsModelConstraint());

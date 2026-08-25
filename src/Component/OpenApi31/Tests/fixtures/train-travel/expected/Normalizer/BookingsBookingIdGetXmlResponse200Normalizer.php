@@ -48,21 +48,32 @@ class BookingsBookingIdGetXmlResponse200Normalizer implements DenormalizerInterf
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('trip_id', $data)) {
             $object->setTripId($data['trip_id']);
+            unset($data['trip_id']);
         }
         if (\array_key_exists('passenger_name', $data)) {
             $object->setPassengerName($data['passenger_name']);
+            unset($data['passenger_name']);
         }
         if (\array_key_exists('has_bicycle', $data)) {
             $object->setHasBicycle($data['has_bicycle']);
+            unset($data['has_bicycle']);
         }
         if (\array_key_exists('has_dog', $data)) {
             $object->setHasDog($data['has_dog']);
+            unset($data['has_dog']);
         }
         if (\array_key_exists('links', $data)) {
             $object->setLinks($this->denormalizer->denormalize($data['links'], \Jane\Component\OpenApi31\Tests\Expected\Model\LinksSelf::class, 'json', $context));
+            unset($data['links']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -83,6 +94,11 @@ class BookingsBookingIdGetXmlResponse200Normalizer implements DenormalizerInterf
         }
         if ($data->isInitialized('links') && null !== $data->getLinks()) {
             $dataArray['links'] = $data->getLinks() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\BookingsBookingIdGetXmlResponse200Constraint());

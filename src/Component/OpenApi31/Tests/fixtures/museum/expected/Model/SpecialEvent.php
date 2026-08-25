@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class SpecialEvent
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class SpecialEvent implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -179,5 +182,9 @@ class SpecialEvent
         $this->initialized['price'] = true;
         $this->price = $price;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['eventId' => ['eventId', 'getEventId', 'setEventId'], 'name' => ['name', 'getName', 'setName'], 'location' => ['location', 'getLocation', 'setLocation'], 'eventDescription' => ['eventDescription', 'getEventDescription', 'setEventDescription'], 'dates' => ['dates', 'getDates', 'setDates'], 'price' => ['price', 'getPrice', 'setPrice']];
     }
 }

@@ -46,9 +46,11 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
                 throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['eventDate'], 'Y-m-d');
             }
             $object->setEventDate($date->setTime(0, 0, 0));
+            unset($data['eventDate']);
         }
         elseif (\array_key_exists('eventDate', $data) && $data['eventDate'] === null) {
             $object->setEventDate(null);
+            unset($data['eventDate']);
         }
         if (\array_key_exists('createdAt', $data) && $data['createdAt'] !== null) {
             $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['createdAt']);
@@ -56,9 +58,11 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
                 throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['createdAt'], 'Y-m-d\TH:i:sP');
             }
             $object->setCreatedAt($date_1);
+            unset($data['createdAt']);
         }
         elseif (\array_key_exists('createdAt', $data) && $data['createdAt'] === null) {
             $object->setCreatedAt(null);
+            unset($data['createdAt']);
         }
         if (\array_key_exists('updatedAt', $data)) {
             $date_2 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['updatedAt']);
@@ -66,6 +70,7 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
                 throw new \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['updatedAt'], 'Y-m-d\TH:i:sP');
             }
             $object->setUpdatedAt($date_2);
+            unset($data['updatedAt']);
         }
         if (\array_key_exists('plainDate', $data) && $data['plainDate'] !== null) {
             $value = $data['plainDate'];
@@ -75,9 +80,16 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
                 $value = $data['plainDate'];
             }
             $object->setPlainDate($value);
+            unset($data['plainDate']);
         }
         elseif (\array_key_exists('plainDate', $data) && $data['plainDate'] === null) {
             $object->setPlainDate(null);
+            unset($data['plainDate']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -99,6 +111,11 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
                 $value = $data->getPlainDate();
             }
             $dataArray['plainDate'] = $value;
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\EventConstraint());

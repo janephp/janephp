@@ -48,9 +48,16 @@ class ProjectProposalNormalizer implements DenormalizerInterface, NormalizerInte
                 $value = $data['users'];
             }
             $object->setUsers($value);
+            unset($data['users']);
         }
         elseif (\array_key_exists('users', $data) && $data['users'] === null) {
             $object->setUsers(null);
+            unset($data['users']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -65,6 +72,11 @@ class ProjectProposalNormalizer implements DenormalizerInterface, NormalizerInte
                 $value = $data->getUsers();
             }
             $dataArray['users'] = $value;
+        }
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_1;
+            }
         }
         if (!($context['skip_validation'] ?? false)) {
             $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\ProjectProposalConstraint());
