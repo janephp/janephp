@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Validator;
 
-class TypedMapSchemaConstraint extends \Symfony\Component\Validator\Constraints\Compound
+class AbsentAdditionalPropertiesSchemaConstraint extends \Symfony\Component\Validator\Constraints\Compound
 {
     protected function getConstraints($options): array
     {

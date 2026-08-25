@@ -6,20 +6,19 @@ use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\AllOfGuesser as BaseAllOf
 
 class AllOfGuesser extends BaseAllOfGuesser
 {
-    protected function resolveAdditionalProperties($object)
+    protected function resolveAdditionalProperties($object, string $reference): array
     {
-        $additionalProperties = parent::resolveAdditionalProperties($object);
-
-        if (null !== $additionalProperties) {
-            return $additionalProperties;
+        if (null === $object->getAdditionalProperties()
+            && (!method_exists($object, 'getPatternProperties') || null === $object->getPatternProperties())
+        ) {
+            return [
+                '.*' => [
+                    'object' => null,
+                    'reference' => $reference . '/additionalProperties',
+                ],
+            ];
         }
 
-        // JSON Schema 2020-12 treats an absent additionalProperties as true, but a
-        // patternProperties-only schema must keep its pattern-specific extension typing
-        if (method_exists($object, 'getPatternProperties') && null !== $object->getPatternProperties()) {
-            return null;
-        }
-
-        return true;
+        return parent::resolveAdditionalProperties($object, $reference);
     }
 }

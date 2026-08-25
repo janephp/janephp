@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Issue1007\Validator;
+namespace Jane\Component\OpenApi31\Tests\Expected\Validator;
 
 class ExplicitOpenSchemaConstraint extends \Symfony\Component\Validator\Constraints\Compound
 {
