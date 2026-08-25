@@ -85,4 +85,33 @@ Unsupported feature(s) found in your schema:
 Object-typed parameters (e.g. `deepObject` style) and schemas relying on an
 `enum` alone remain fully supported.
 
+### Malformed `securitySchemes` entries
+
+`securitySchemes` (in OpenAPI 3.x) and `securityDefinitions` (in OpenAPI 2.0)
+are maps of name => scheme definition. Feeding them a bare scheme definition —
+for instance pasting the scheme object directly under `securitySchemes`:
+
+```yaml
+# Rejected by all jane-php/open-api-* components:
+components:
+  securitySchemes:
+    type: http
+    scheme: basic
+```
+
+used to be silently ignored: generation succeeded but produced no
+authentication classes. Such entries now stop generation with the offending
+location and the expected shape:
+
+```text
+Unsupported feature(s) found in your schema:
+Security scheme entry is not a valid Security Scheme Object (string given) at "/components/securitySchemes/type". `securitySchemes` must be a map of name => scheme definition, e.g. {"myAuth": {"type": "http", "scheme": "basic"}}.
+```
+
+Entries referencing an unknown scheme `type`, or missing the fields required by
+their type (`name` / `in` for `apiKey`, `scheme` for `http` in OpenAPI 3.0.x,
+`flows` for `oauth2`, ...), are rejected the same way. Scheme types that are
+valid but produce no authentication classes with Jane (`oauth2`,
+`openIdConnect`, ...) remain accepted.
+
 
