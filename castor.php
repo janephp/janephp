@@ -143,22 +143,63 @@ function doc_build_github_pages(): void
     run('git reset --hard gh-pages', context: $context);
 }
 
-#[AsTask('replace-all-expected-fixtures', namespace: 'jane', description: 'Will replace all expected fixtures by the current generated fixtures')]
-function replaceAllExpectedFixtures(): void
+#[AsTask('replace-all-expected-fixtures', namespace: 'jane', description: 'Will replace all expected fixtures by the current generated fixtures (optional component filter, e.g. OpenApi3)')]
+function replaceAllExpectedFixtures(?string $component = null): void
 {
     io()->title('Replacing all expected fixtures by the current generated fixtures');
 
-    run('./replace-all-expected-fixtures.sh');
+    run('./replace-all-expected-fixtures.sh' . (null !== $component ? ' ' . $component : ''));
 
     io()->success('Done');
 }
 
-#[AsTask('clear-all-generated-fixtures', namespace: 'jane', description: 'Will clear all generated fixtures')]
-function clearAllGeneratedFixtures(): void
+#[AsTask('clear-all-generated-fixtures', namespace: 'jane', description: 'Will clear all generated fixtures (optional component filter, e.g. OpenApi3)')]
+function clearAllGeneratedFixtures(?string $component = null): void
 {
     io()->title('Clearing all generated fixtures');
 
-    run('./clear-all-generated-files.sh');
+    run('./clear-all-generated-files.sh' . (null !== $component ? ' ' . $component : ''));
 
     io()->success('Done');
+}
+
+#[AsTask('snapshot-manifest', namespace: 'jane', description: '(Re)build the expected.manifest.json of a fixture from its freshly generated output, e.g. jane:snapshot-manifest OpenApi3 github')]
+function snapshotManifest(string $component, string $fixture): void
+{
+    $fixtureDir = sprintf('%s/src/Component/%s/Tests/fixtures/%s', __DIR__, $component, $fixture);
+    $generatedDir = $fixtureDir . '/generated';
+
+    if (!is_dir($generatedDir)) {
+        throw new RuntimeException(sprintf('No generated/ output in "%s". Run the tests first.', $generatedDir));
+    }
+
+    $files = [];
+    $iterator = new \RecursiveIteratorIterator(
+        new \RecursiveDirectoryIterator($generatedDir, \FilesystemIterator::SKIP_DOTS)
+    );
+
+    foreach ($iterator as $file) {
+        if (!$file->isFile()) {
+            continue;
+        }
+
+        $relativePathname = str_replace(\DIRECTORY_SEPARATOR, '/', substr($file->getPathname(), \strlen($generatedDir) + 1));
+
+        // Runtime files are verbatim template copies, asserted centrally by
+        // each component's runtime-boilerplate fixture: keep them out of manifests.
+        if (in_array('Runtime', explode('/', $relativePathname), true)) {
+            continue;
+        }
+
+        $files[$relativePathname] = hash_file('sha256', $file->getPathname());
+    }
+
+    ksort($files);
+
+    file_put_contents(
+        $fixtureDir . '/expected.manifest.json',
+        json_encode(['algorithm' => 'sha256', 'files' => $files], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . "\n"
+    );
+
+    io()->success(sprintf('Manifest written with %d entries', count($files)));
 }

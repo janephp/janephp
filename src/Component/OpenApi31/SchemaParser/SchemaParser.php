@@ -18,4 +18,23 @@ class SchemaParser extends CommonSchemaParser
     {
         return \is_array($openApiSpecData) && \array_key_exists('openapi', $openApiSpecData) && version_compare($openApiSpecData['openapi'], '3.1.0', '>=');
     }
+
+    protected function denormalize($openApiSpecData, $openApiSpecPath)
+    {
+        if (\is_array($openApiSpecData)) {
+            $openApiSpecData = ParameterNameResolver::resolve($openApiSpecData);
+        }
+
+        return parent::denormalize($openApiSpecData, $openApiSpecPath);
+    }
+
+    /**
+     * @param array<mixed> $openApiSpecData
+     *
+     * @return array<string>
+     */
+    protected function validateSchema(array $openApiSpecData): array
+    {
+        return SecuritySchemeValidator::validate($openApiSpecData);
+    }
 }

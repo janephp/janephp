@@ -1,0 +1,58 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Parameters map keys",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/orders/{order_id}": {
+            "parameters": {
+                "shared_limit": {
+                    "in": "query",
+                    "required": false,
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "description": "Rate limit shared across operations"
+                }
+            },
+            "get": {
+                "summary": "Get an Order",
+                "description": "Retrieve an Order",
+                "operationId": "getOrder",
+                "parameters": {
+                    "site": {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Order or cart ID"
+                    },
+                    "order_id": {
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Order or cart ID"
+                    },
+                    "explicit": {
+                        "name": "explicit_name",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Explicit name takes precedence over the key"
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The order"
+                    }
+                }
+            }
+        }
+    }
+}

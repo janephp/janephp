@@ -1,0 +1,11 @@
+<?php
+
+namespace Jane\Component\OpenApi31\Tests\Issue1006\Validator;
+
+class WidgetConstraint extends \Symfony\Component\Validator\Constraints\Compound
+{
+    protected function getConstraints($options): array
+    {
+        return [new \Symfony\Component\Validator\Constraints\NotNull(message: 'This value should not be null.'), new \Symfony\Component\Validator\Constraints\Collection(fields: ['name' => new \Symfony\Component\Validator\Constraints\Optional([new \Symfony\Component\Validator\Constraints\Type(type: ['string']), new \Symfony\Component\Validator\Constraints\NotNull(message: 'This value should not be null.')]), 'settings' => new \Symfony\Component\Validator\Constraints\Optional([new \Symfony\Component\Validator\Constraints\NotNull(message: 'This value should not be null.')]), 'plain' => new \Symfony\Component\Validator\Constraints\Optional([new \Symfony\Component\Validator\Constraints\NotNull(message: 'This value should not be null.'), new \Jane\Component\OpenApi31\Tests\Issue1006\Validator\WidgetSettingsConstraint()])], allowExtraFields: false)];
+    }
+}

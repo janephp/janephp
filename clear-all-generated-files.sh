@@ -1,6 +1,8 @@
 #!/bin/sh
 
-for D in src/Component/*/Tests/fixtures/*; do
+FILTER="${1:-*}"
+
+for D in src/Component/"${FILTER}"/Tests/fixtures/*; do
     if [ -d "${D}" ]; then
         rm -r "${D}/generated"
     fi
