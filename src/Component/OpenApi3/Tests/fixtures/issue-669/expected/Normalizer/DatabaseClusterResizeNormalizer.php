@@ -64,7 +64,7 @@ class DatabaseClusterResizeNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('storageSizeMib') && null !== $data->getStorageSizeMib()) {
             $dataArray['storage_size_mib'] = $data->getStorageSizeMib();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

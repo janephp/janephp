@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Deployment extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Deployment implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -443,5 +446,9 @@ class Deployment extends \ArrayObject
         $this->initialized['performedViaGithubApp'] = true;
         $this->performedViaGithubApp = $performedViaGithubApp;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'sha' => ['sha', 'getSha', 'setSha'], 'ref' => ['ref', 'getRef', 'setRef'], 'task' => ['task', 'getTask', 'setTask'], 'payload' => ['payload', 'getPayload', 'setPayload'], 'originalEnvironment' => ['original_environment', 'getOriginalEnvironment', 'setOriginalEnvironment'], 'environment' => ['environment', 'getEnvironment', 'setEnvironment'], 'description' => ['description', 'getDescription', 'setDescription'], 'creator' => ['creator', 'getCreator', 'setCreator'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'statusesUrl' => ['statuses_url', 'getStatusesUrl', 'setStatusesUrl'], 'repositoryUrl' => ['repository_url', 'getRepositoryUrl', 'setRepositoryUrl'], 'transientEnvironment' => ['transient_environment', 'getTransientEnvironment', 'setTransientEnvironment'], 'productionEnvironment' => ['production_environment', 'getProductionEnvironment', 'setProductionEnvironment'], 'performedViaGithubApp' => ['performed_via_github_app', 'getPerformedViaGithubApp', 'setPerformedViaGithubApp']];
     }
 }

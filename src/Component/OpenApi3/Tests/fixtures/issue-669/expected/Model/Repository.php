@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class Repository extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class Repository implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -117,5 +120,9 @@ class Repository extends \ArrayObject
         $this->initialized['tagCount'] = true;
         $this->tagCount = $tagCount;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['registryName' => ['registry_name', 'getRegistryName', 'setRegistryName'], 'name' => ['name', 'getName', 'setName'], 'latestTag' => ['latest_tag', 'getLatestTag', 'setLatestTag'], 'tagCount' => ['tag_count', 'getTagCount', 'setTagCount']];
     }
 }

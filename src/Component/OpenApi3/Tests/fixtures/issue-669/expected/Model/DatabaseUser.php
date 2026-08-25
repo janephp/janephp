@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DatabaseUser extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DatabaseUser implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -201,5 +204,9 @@ class DatabaseUser extends \ArrayObject
         $this->initialized['settings'] = true;
         $this->settings = $settings;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'role' => ['role', 'getRole', 'setRole'], 'password' => ['password', 'getPassword', 'setPassword'], 'accessCert' => ['access_cert', 'getAccessCert', 'setAccessCert'], 'accessKey' => ['access_key', 'getAccessKey', 'setAccessKey'], 'mysqlSettings' => ['mysql_settings', 'getMysqlSettings', 'setMysqlSettings'], 'settings' => ['settings', 'getSettings', 'setSettings']];
     }
 }

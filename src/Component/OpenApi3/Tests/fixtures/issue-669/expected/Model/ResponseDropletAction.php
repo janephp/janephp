@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseDropletAction extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseDropletAction implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseDropletAction extends \ArrayObject
         $this->initialized['action'] = true;
         $this->action = $action;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['action' => ['action', 'getAction', 'setAction']];
     }
 }

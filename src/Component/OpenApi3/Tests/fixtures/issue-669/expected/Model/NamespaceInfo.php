@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class NamespaceInfo extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class NamespaceInfo implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -238,5 +241,9 @@ class NamespaceInfo extends \ArrayObject
         $this->initialized['key'] = true;
         $this->key = $key;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['apiHost' => ['api_host', 'getApiHost', 'setApiHost'], 'namespace' => ['namespace', 'getNamespace', 'setNamespace'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'label' => ['label', 'getLabel', 'setLabel'], 'region' => ['region', 'getRegion', 'setRegion'], 'uuid' => ['uuid', 'getUuid', 'setUuid'], 'key' => ['key', 'getKey', 'setKey']];
     }
 }

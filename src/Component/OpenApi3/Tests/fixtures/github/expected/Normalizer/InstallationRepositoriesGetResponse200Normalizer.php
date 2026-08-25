@@ -79,7 +79,7 @@ class InstallationRepositoriesGetResponse200Normalizer implements DenormalizerIn
         if ($data->isInitialized('repositorySelection') && null !== $data->getRepositorySelection()) {
             $dataArray['repository_selection'] = $data->getRepositorySelection();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

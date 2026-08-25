@@ -65,7 +65,7 @@ class TeamMembershipNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray['url'] = $data->getUrl();
         $dataArray['role'] = $data->getRole();
         $dataArray['state'] = $data->getState();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

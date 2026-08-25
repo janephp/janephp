@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class OutputDataVideo extends OutputDataBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class OutputDataVideo extends OutputDataBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class OutputDataVideo extends OutputDataBase
         $this->initialized['sprites'] = true;
         $this->sprites = $sprites;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['durationInSeconds' => ['durationInSeconds', 'getDurationInSeconds', 'setDurationInSeconds'], 'width' => ['width', 'getWidth', 'setWidth'], 'height' => ['height', 'getHeight', 'setHeight'], 'sprites' => ['sprites', 'getSprites', 'setSprites']];
     }
 }

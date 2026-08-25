@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class XmpWritebackCompletedEvent extends ApplicationEvent
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class XmpWritebackCompletedEvent extends ApplicationEvent implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class XmpWritebackCompletedEvent extends ApplicationEvent
         $this->initialized['outputDocId'] = true;
         $this->outputDocId = $outputDocId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['outputDocId' => ['outputDocId', 'getOutputDocId', 'setOutputDocId']];
     }
 }

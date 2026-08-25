@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiCancelKnowledgeBaseIndexingJobOutput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiCancelKnowledgeBaseIndexingJobOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ApiCancelKnowledgeBaseIndexingJobOutput extends \ArrayObject
         $this->initialized['job'] = true;
         $this->job = $job;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['job' => ['job', 'getJob', 'setJob']];
     }
 }

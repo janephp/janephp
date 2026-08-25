@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiLinks extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiLinks implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ApiLinks extends \ArrayObject
         $this->initialized['pages'] = true;
         $this->pages = $pages;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['pages' => ['pages', 'getPages', 'setPages']];
     }
 }

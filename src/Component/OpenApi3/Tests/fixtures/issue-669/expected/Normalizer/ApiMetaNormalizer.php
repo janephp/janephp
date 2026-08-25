@@ -68,7 +68,7 @@ class ApiMetaNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('total') && null !== $data->getTotal()) {
             $dataArray['total'] = $data->getTotal();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

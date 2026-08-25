@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Tag extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Tag implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class Tag extends \ArrayObject
         $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'commit' => ['commit', 'getCommit', 'setCommit'], 'zipballUrl' => ['zipball_url', 'getZipballUrl', 'setZipballUrl'], 'tarballUrl' => ['tarball_url', 'getTarballUrl', 'setTarballUrl'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId']];
     }
 }

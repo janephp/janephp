@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DatabaseAutoscaleParamsStorage extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DatabaseAutoscaleParamsStorage implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class DatabaseAutoscaleParamsStorage extends \ArrayObject
         $this->initialized['incrementGib'] = true;
         $this->incrementGib = $incrementGib;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['enabled' => ['enabled', 'getEnabled', 'setEnabled'], 'thresholdPercent' => ['threshold_percent', 'getThresholdPercent', 'setThresholdPercent'], 'incrementGib' => ['increment_gib', 'getIncrementGib', 'setIncrementGib']];
     }
 }

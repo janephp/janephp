@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class MetadataValuesFieldRemoveCommand extends MetadataValuesChangeCommandBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class MetadataValuesFieldRemoveCommand extends MetadataValuesChangeCommandBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class MetadataValuesFieldRemoveCommand extends MetadataValuesChangeCommandBase
         $this->initialized['fieldPath'] = true;
         $this->fieldPath = $fieldPath;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['fieldPath' => ['fieldPath', 'getFieldPath', 'setFieldPath']];
     }
 }

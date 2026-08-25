@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppComponentInstanceBaseAutoscalingMetricsCpu extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppComponentInstanceBaseAutoscalingMetricsCpu implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class AppComponentInstanceBaseAutoscalingMetricsCpu extends \ArrayObject
         $this->initialized['percent'] = true;
         $this->percent = $percent;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['percent' => ['percent', 'getPercent', 'setPercent']];
     }
 }

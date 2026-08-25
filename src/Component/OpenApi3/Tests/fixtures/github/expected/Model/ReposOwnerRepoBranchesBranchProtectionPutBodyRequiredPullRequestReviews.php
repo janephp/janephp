@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviews extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviews implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredPullRequestReviews ex
         $this->initialized['requiredApprovingReviewCount'] = true;
         $this->requiredApprovingReviewCount = $requiredApprovingReviewCount;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['dismissalRestrictions' => ['dismissal_restrictions', 'getDismissalRestrictions', 'setDismissalRestrictions'], 'dismissStaleReviews' => ['dismiss_stale_reviews', 'getDismissStaleReviews', 'setDismissStaleReviews'], 'requireCodeOwnerReviews' => ['require_code_owner_reviews', 'getRequireCodeOwnerReviews', 'setRequireCodeOwnerReviews'], 'requiredApprovingReviewCount' => ['required_approving_review_count', 'getRequiredApprovingReviewCount', 'setRequiredApprovingReviewCount']];
     }
 }

@@ -65,7 +65,7 @@ class MaintenancePolicyNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('day') && null !== $data->getDay()) {
             $dataArray['day'] = $data->getDay();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

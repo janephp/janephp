@@ -82,7 +82,7 @@ class MongoAdvancedConfigNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('verbosity') && null !== $data->getVerbosity()) {
             $dataArray['verbosity'] = $data->getVerbosity();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

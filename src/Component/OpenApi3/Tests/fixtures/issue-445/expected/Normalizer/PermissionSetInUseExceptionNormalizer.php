@@ -150,7 +150,7 @@ class PermissionSetInUseExceptionNormalizer implements DenormalizerInterface, No
         if ($data->isInitialized('referenceCount') && null !== $data->getReferenceCount()) {
             $dataArray['referenceCount'] = $data->getReferenceCount();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -74,7 +74,7 @@ class FieldEmptyConditionNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('fieldPath') && null !== $data->getFieldPath()) {
             $dataArray['fieldPath'] = $data->getFieldPath();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

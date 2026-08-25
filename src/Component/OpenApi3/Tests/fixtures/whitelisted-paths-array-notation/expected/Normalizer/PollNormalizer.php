@@ -86,7 +86,7 @@ class PollNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if ($data->isInitialized('durationMinutes') && null !== $data->getDurationMinutes()) {
             $dataArray['duration_minutes'] = $data->getDurationMinutes();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

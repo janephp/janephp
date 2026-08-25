@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class SnapshotRetentionTimeTooShortException extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class SnapshotRetentionTimeTooShortException implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -253,5 +256,9 @@ class SnapshotRetentionTimeTooShortException extends \ArrayObject
         $this->initialized['minimumRetentionTime'] = true;
         $this->minimumRetentionTime = $minimumRetentionTime;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['traceLevel' => ['traceLevel', 'getTraceLevel', 'setTraceLevel'], 'traceId' => ['traceId', 'getTraceId', 'setTraceId'], 'traceJobId' => ['traceJobId', 'getTraceJobId', 'setTraceJobId'], 'httpStatusCode' => ['httpStatusCode', 'getHttpStatusCode', 'setHttpStatusCode'], 'exceptionMessage' => ['exceptionMessage', 'getExceptionMessage', 'setExceptionMessage'], 'kind' => ['kind', 'getKind', 'setKind'], 'customerId' => ['customerId', 'getCustomerId', 'setCustomerId'], 'customerAlias' => ['customerAlias', 'getCustomerAlias', 'setCustomerAlias'], 'userId' => ['userId', 'getUserId', 'setUserId'], 'snapshotRetentionTime' => ['snapshotRetentionTime', 'getSnapshotRetentionTime', 'setSnapshotRetentionTime'], 'minimumRetentionTime' => ['minimumRetentionTime', 'getMinimumRetentionTime', 'setMinimumRetentionTime']];
     }
 }

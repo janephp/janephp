@@ -91,7 +91,7 @@ class RegionNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $values_1[] = $value_1;
         }
         $dataArray['sizes'] = $values_1;
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

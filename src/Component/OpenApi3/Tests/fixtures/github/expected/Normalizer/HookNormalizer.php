@@ -129,7 +129,7 @@ class HookNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         $dataArray['test_url'] = $data->getTestUrl();
         $dataArray['ping_url'] = $data->getPingUrl();
         $dataArray['last_response'] = $data->getLastResponse() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getLastResponse(), 'json', $context));
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

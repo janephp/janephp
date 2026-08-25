@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class BankMatchVerify extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class BankMatchVerify implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -349,5 +352,9 @@ class BankMatchVerify extends \ArrayObject
         $this->initialized['vatText'] = true;
         $this->vatText = $vatText;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['companyNumber' => ['companyNumber', 'getCompanyNumber', 'setCompanyNumber'], 'accountNumber' => ['accountNumber', 'getAccountNumber', 'setAccountNumber'], 'iban' => ['iban', 'getIban', 'setIban'], 'ibanResult' => ['ibanResult', 'getIbanResult', 'setIbanResult'], 'ibanText' => ['ibanText', 'getIbanText', 'setIbanText'], 'logDate' => ['logDate', 'getLogDate', 'setLogDate'], 'safeNumber' => ['safeNumber', 'getSafeNumber', 'setSafeNumber'], 'scanResult' => ['scanResult', 'getScanResult', 'setScanResult'], 'scanText' => ['scanText', 'getScanText', 'setScanText'], 'sortCode' => ['sortCode', 'getSortCode', 'setSortCode'], 'statusResult' => ['statusResult', 'getStatusResult', 'setStatusResult'], 'statusText' => ['statusText', 'getStatusText', 'setStatusText'], 'vatResult' => ['vatResult', 'getVatResult', 'setVatResult'], 'vatText' => ['vatText', 'getVatText', 'setVatText']];
     }
 }

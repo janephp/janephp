@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class TagboxItemUnassignedCondition extends BusinessRuleCondition
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class TagboxItemUnassignedCondition extends BusinessRuleCondition implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class TagboxItemUnassignedCondition extends BusinessRuleCondition
         $this->initialized['refId'] = true;
         $this->refId = $refId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['fieldPath' => ['fieldPath', 'getFieldPath', 'setFieldPath'], 'refId' => ['refId', 'getRefId', 'setRefId']];
     }
 }

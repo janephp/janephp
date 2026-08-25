@@ -369,7 +369,7 @@ class OpensearchAdvancedConfigNormalizer implements DenormalizerInterface, Norma
         if ($data->isInitialized('keepIndexRefreshInterval') && null !== $data->getKeepIndexRefreshInterval()) {
             $dataArray['keep_index_refresh_interval'] = $data->getKeepIndexRefreshInterval();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

@@ -380,7 +380,7 @@ class ImageMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('uncompressedSizeInBytes') && null !== $data->getUncompressedSizeInBytes()) {
             $dataArray['uncompressedSizeInBytes'] = $data->getUncompressedSizeInBytes();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

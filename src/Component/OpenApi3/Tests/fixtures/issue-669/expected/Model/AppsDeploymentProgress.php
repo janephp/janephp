@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsDeploymentProgress extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsDeploymentProgress implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -165,5 +168,9 @@ class AppsDeploymentProgress extends \ArrayObject
         $this->initialized['totalSteps'] = true;
         $this->totalSteps = $totalSteps;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['errorSteps' => ['error_steps', 'getErrorSteps', 'setErrorSteps'], 'pendingSteps' => ['pending_steps', 'getPendingSteps', 'setPendingSteps'], 'runningSteps' => ['running_steps', 'getRunningSteps', 'setRunningSteps'], 'steps' => ['steps', 'getSteps', 'setSteps'], 'successSteps' => ['success_steps', 'getSuccessSteps', 'setSuccessSteps'], 'summarySteps' => ['summary_steps', 'getSummarySteps', 'setSummarySteps'], 'totalSteps' => ['total_steps', 'getTotalSteps', 'setTotalSteps']];
     }
 }

@@ -180,7 +180,7 @@ class OrgsOrgPatchBodyNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('blog') && null !== $data->getBlog()) {
             $dataArray['blog'] = $data->getBlog();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -60,7 +60,7 @@ class BranchWithProtectionLinksNormalizer implements DenormalizerInterface, Norm
         $dataArray = [];
         $dataArray['html'] = $data->getHtml();
         $dataArray['self'] = $data->getSelf();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class SearchReindexCompletedEvent extends ApplicationEvent
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class SearchReindexCompletedEvent extends ApplicationEvent implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class SearchReindexCompletedEvent extends ApplicationEvent
         $this->initialized['duration'] = true;
         $this->duration = $duration;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['searchIndex' => ['searchIndex', 'getSearchIndex', 'setSearchIndex'], 'items' => ['items', 'getItems', 'setItems'], 'duration' => ['duration', 'getDuration', 'setDuration']];
     }
 }

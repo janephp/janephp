@@ -61,7 +61,7 @@ class AppsGitSourceSpecNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('repoCloneUrl') && null !== $data->getRepoCloneUrl()) {
             $dataArray['repo_clone_url'] = $data->getRepoCloneUrl();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

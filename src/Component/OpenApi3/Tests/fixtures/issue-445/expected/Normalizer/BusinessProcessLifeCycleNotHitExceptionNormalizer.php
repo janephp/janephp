@@ -169,7 +169,7 @@ class BusinessProcessLifeCycleNotHitExceptionNormalizer implements DenormalizerI
         if ($data->isInitialized('actual') && null !== $data->getActual()) {
             $dataArray['actual'] = $data->getActual();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

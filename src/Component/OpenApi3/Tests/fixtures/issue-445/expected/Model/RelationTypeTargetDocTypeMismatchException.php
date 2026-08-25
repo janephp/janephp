@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class RelationTypeTargetDocTypeMismatchException extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class RelationTypeTargetDocTypeMismatchException implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -275,5 +278,9 @@ class RelationTypeTargetDocTypeMismatchException extends \ArrayObject
         $this->initialized['expectedTargetDocType'] = true;
         $this->expectedTargetDocType = $expectedTargetDocType;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['traceLevel' => ['traceLevel', 'getTraceLevel', 'setTraceLevel'], 'traceId' => ['traceId', 'getTraceId', 'setTraceId'], 'traceJobId' => ['traceJobId', 'getTraceJobId', 'setTraceJobId'], 'httpStatusCode' => ['httpStatusCode', 'getHttpStatusCode', 'setHttpStatusCode'], 'exceptionMessage' => ['exceptionMessage', 'getExceptionMessage', 'setExceptionMessage'], 'kind' => ['kind', 'getKind', 'setKind'], 'customerId' => ['customerId', 'getCustomerId', 'setCustomerId'], 'customerAlias' => ['customerAlias', 'getCustomerAlias', 'setCustomerAlias'], 'userId' => ['userId', 'getUserId', 'setUserId'], 'relationType' => ['relationType', 'getRelationType', 'setRelationType'], 'targetDocType' => ['targetDocType', 'getTargetDocType', 'setTargetDocType'], 'expectedTargetDocType' => ['expectedTargetDocType', 'getExpectedTargetDocType', 'setExpectedTargetDocType']];
     }
 }

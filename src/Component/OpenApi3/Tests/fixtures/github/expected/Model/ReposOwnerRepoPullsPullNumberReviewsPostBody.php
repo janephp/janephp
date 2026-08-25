@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPullsPullNumberReviewsPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoPullsPullNumberReviewsPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBody extends \ArrayObject
         $this->initialized['comments'] = true;
         $this->comments = $comments;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['commitId' => ['commit_id', 'getCommitId', 'setCommitId'], 'body' => ['body', 'getBody', 'setBody'], 'event' => ['event', 'getEvent', 'setEvent'], 'comments' => ['comments', 'getComments', 'setComments']];
     }
 }

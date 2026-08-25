@@ -192,7 +192,7 @@ class FieldMultiRelationNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('minimumItems') && null !== $data->getMinimumItems()) {
             $dataArray['minimumItems'] = $data->getMinimumItems();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

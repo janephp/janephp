@@ -191,7 +191,7 @@ class CheckSuiteNormalizer implements DenormalizerInterface, NormalizerInterface
         $dataArray['head_commit'] = $data->getHeadCommit() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getHeadCommit(), 'json', $context));
         $dataArray['latest_check_runs_count'] = $data->getLatestCheckRunsCount();
         $dataArray['check_runs_url'] = $data->getCheckRunsUrl();
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

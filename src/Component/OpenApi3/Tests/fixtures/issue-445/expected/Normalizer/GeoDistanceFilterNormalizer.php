@@ -72,7 +72,7 @@ class GeoDistanceFilterNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('distance') && null !== $data->getDistance()) {
             $dataArray['distance'] = $data->getDistance();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

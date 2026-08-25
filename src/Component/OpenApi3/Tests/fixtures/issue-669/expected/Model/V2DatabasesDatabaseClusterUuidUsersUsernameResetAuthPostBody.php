@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class V2DatabasesDatabaseClusterUuidUsersUsernameResetAuthPostBody extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class V2DatabasesDatabaseClusterUuidUsersUsernameResetAuthPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class V2DatabasesDatabaseClusterUuidUsersUsernameResetAuthPostBody extends \Arra
         $this->initialized['mysqlSettings'] = true;
         $this->mysqlSettings = $mysqlSettings;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['mysqlSettings' => ['mysql_settings', 'getMysqlSettings', 'setMysqlSettings']];
     }
 }

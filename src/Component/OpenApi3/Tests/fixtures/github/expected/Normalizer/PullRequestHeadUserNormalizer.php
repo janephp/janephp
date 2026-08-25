@@ -147,7 +147,7 @@ class PullRequestHeadUserNormalizer implements DenormalizerInterface, Normalizer
         $dataArray['subscriptions_url'] = $data->getSubscriptionsUrl();
         $dataArray['type'] = $data->getType();
         $dataArray['url'] = $data->getUrl();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

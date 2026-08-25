@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class MetadataReferenceResult extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class MetadataReferenceResult implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class MetadataReferenceResult extends \ArrayObject
         $this->initialized['isReferencedByRestrictedItem'] = true;
         $this->isReferencedByRestrictedItem = $isReferencedByRestrictedItem;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['totalResults' => ['totalResults', 'getTotalResults', 'setTotalResults'], 'results' => ['results', 'getResults', 'setResults'], 'elapsedMilliseconds' => ['elapsedMilliseconds', 'getElapsedMilliseconds', 'setElapsedMilliseconds'], 'pageToken' => ['pageToken', 'getPageToken', 'setPageToken'], 'isReferencedByRestrictedItem' => ['isReferencedByRestrictedItem', 'getIsReferencedByRestrictedItem', 'setIsReferencedByRestrictedItem']];
     }
 }

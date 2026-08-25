@@ -169,7 +169,7 @@ class NodeInfoMessageNormalizer implements DenormalizerInterface, NormalizerInte
         if ($data->isInitialized('logLevel') && null !== $data->getLogLevel()) {
             $dataArray['logLevel'] = $data->getLogLevel();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiAgentGuardrailVersion extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiAgentGuardrailVersion implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class ApiAgentGuardrailVersion extends \ArrayObject
         $this->initialized['uuid'] = true;
         $this->uuid = $uuid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['isDeleted' => ['is_deleted', 'getIsDeleted', 'setIsDeleted'], 'name' => ['name', 'getName', 'setName'], 'priority' => ['priority', 'getPriority', 'setPriority'], 'uuid' => ['uuid', 'getUuid', 'setUuid']];
     }
 }

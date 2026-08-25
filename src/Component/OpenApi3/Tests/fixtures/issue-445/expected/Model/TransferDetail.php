@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class TransferDetail extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class TransferDetail implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -459,5 +462,9 @@ class TransferDetail extends \ArrayObject
         $this->initialized['lastFileUploadProgressTimeStamp'] = true;
         $this->lastFileUploadProgressTimeStamp = $lastFileUploadProgressTimeStamp;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'state' => ['state', 'getState', 'setState'], 'transferType' => ['transferType', 'getTransferType', 'setTransferType'], 'businessProcessId' => ['businessProcessId', 'getBusinessProcessId', 'setBusinessProcessId'], 'fileTransferCount' => ['fileTransferCount', 'getFileTransferCount', 'setFileTransferCount'], 'collectionId' => ['collectionId', 'getCollectionId', 'setCollectionId'], 'audit' => ['audit', 'getAudit', 'setAudit'], 'itemProgress' => ['itemProgress', 'getItemProgress', 'setItemProgress'], 'itemCount' => ['itemCount', 'getItemCount', 'setItemCount'], 'fileUploadInProgressCount' => ['fileUploadInProgressCount', 'getFileUploadInProgressCount', 'setFileUploadInProgressCount'], 'dataExtractionInProgressCount' => ['dataExtractionInProgressCount', 'getDataExtractionInProgressCount', 'setDataExtractionInProgressCount'], 'itemsFailed' => ['itemsFailed', 'getItemsFailed', 'setItemsFailed'], 'itemsCancelled' => ['itemsCancelled', 'getItemsCancelled', 'setItemsCancelled'], 'lastDataExtractionProgressTimeStamp' => ['lastDataExtractionProgressTimeStamp', 'getLastDataExtractionProgressTimeStamp', 'setLastDataExtractionProgressTimeStamp'], 'lastFileUploadProgressTimeStamp' => ['lastFileUploadProgressTimeStamp', 'getLastFileUploadProgressTimeStamp', 'setLastFileUploadProgressTimeStamp']];
     }
 }

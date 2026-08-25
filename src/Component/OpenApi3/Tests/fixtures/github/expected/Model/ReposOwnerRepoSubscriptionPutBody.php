@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoSubscriptionPutBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoSubscriptionPutBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ReposOwnerRepoSubscriptionPutBody extends \ArrayObject
         $this->initialized['ignored'] = true;
         $this->ignored = $ignored;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['subscribed' => ['subscribed', 'getSubscribed', 'setSubscribed'], 'ignored' => ['ignored', 'getIgnored', 'setIgnored']];
     }
 }

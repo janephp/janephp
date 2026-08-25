@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrgsOrgMigrationsPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrgsOrgMigrationsPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -117,5 +120,9 @@ class OrgsOrgMigrationsPostBody extends \ArrayObject
         $this->initialized['exclude'] = true;
         $this->exclude = $exclude;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['repositories' => ['repositories', 'getRepositories', 'setRepositories'], 'lockRepositories' => ['lock_repositories', 'getLockRepositories', 'setLockRepositories'], 'excludeAttachments' => ['exclude_attachments', 'getExcludeAttachments', 'setExcludeAttachments'], 'exclude' => ['exclude', 'getExclude', 'setExclude']];
     }
 }

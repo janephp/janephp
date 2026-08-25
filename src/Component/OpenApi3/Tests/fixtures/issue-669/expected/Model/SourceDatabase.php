@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class SourceDatabase extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class SourceDatabase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -89,5 +92,9 @@ class SourceDatabase extends \ArrayObject
         $this->initialized['ignoreDbs'] = true;
         $this->ignoreDbs = $ignoreDbs;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['source' => ['source', 'getSource', 'setSource'], 'disableSsl' => ['disable_ssl', 'getDisableSsl', 'setDisableSsl'], 'ignoreDbs' => ['ignore_dbs', 'getIgnoreDbs', 'setIgnoreDbs']];
     }
 }

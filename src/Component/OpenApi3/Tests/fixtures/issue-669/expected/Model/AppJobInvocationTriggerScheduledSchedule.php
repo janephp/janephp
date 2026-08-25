@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppJobInvocationTriggerScheduledSchedule extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppJobInvocationTriggerScheduledSchedule implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class AppJobInvocationTriggerScheduledSchedule extends \ArrayObject
         $this->initialized['timeZone'] = true;
         $this->timeZone = $timeZone;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['cron' => ['cron', 'getCron', 'setCron'], 'timeZone' => ['time_zone', 'getTimeZone', 'setTimeZone']];
     }
 }

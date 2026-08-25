@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class PullRequestSimpleLabelsItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class PullRequestSimpleLabelsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -165,5 +168,9 @@ class PullRequestSimpleLabelsItem extends \ArrayObject
         $this->initialized['default'] = true;
         $this->default = $default;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'url' => ['url', 'getUrl', 'setUrl'], 'name' => ['name', 'getName', 'setName'], 'description' => ['description', 'getDescription', 'setDescription'], 'color' => ['color', 'getColor', 'setColor'], 'default' => ['default', 'getDefault', 'setDefault']];
     }
 }

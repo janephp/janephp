@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiEvaluationTraceSpan extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiEvaluationTraceSpan implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -207,5 +210,9 @@ class ApiEvaluationTraceSpan extends \ArrayObject
         $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'input' => ['input', 'getInput', 'setInput'], 'name' => ['name', 'getName', 'setName'], 'output' => ['output', 'getOutput', 'setOutput'], 'retrieverChunks' => ['retriever_chunks', 'getRetrieverChunks', 'setRetrieverChunks'], 'spanLevelMetricResults' => ['span_level_metric_results', 'getSpanLevelMetricResults', 'setSpanLevelMetricResults'], 'type' => ['type', 'getType', 'setType']];
     }
 }

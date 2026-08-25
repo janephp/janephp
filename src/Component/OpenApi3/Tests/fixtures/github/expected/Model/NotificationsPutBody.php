@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class NotificationsPutBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class NotificationsPutBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class NotificationsPutBody extends \ArrayObject
         $this->initialized['read'] = true;
         $this->read = $read;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['lastReadAt' => ['last_read_at', 'getLastReadAt', 'setLastReadAt'], 'read' => ['read', 'getRead', 'setRead']];
     }
 }

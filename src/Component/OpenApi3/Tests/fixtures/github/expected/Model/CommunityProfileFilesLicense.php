@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CommunityProfileFilesLicense extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CommunityProfileFilesLicense implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -143,5 +146,9 @@ class CommunityProfileFilesLicense extends \ArrayObject
         $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['key' => ['key', 'getKey', 'setKey'], 'name' => ['name', 'getName', 'setName'], 'url' => ['url', 'getUrl', 'setUrl'], 'spdxId' => ['spdx_id', 'getSpdxId', 'setSpdxId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl']];
     }
 }

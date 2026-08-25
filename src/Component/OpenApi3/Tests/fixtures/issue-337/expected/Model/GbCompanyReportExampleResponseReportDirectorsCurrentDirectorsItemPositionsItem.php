@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemPositionsItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemPositionsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class GbCompanyReportExampleResponseReportDirectorsCurrentDirectorsItemPositions
         $this->initialized['positionName'] = true;
         $this->positionName = $positionName;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['dateAppointed' => ['dateAppointed', 'getDateAppointed', 'setDateAppointed'], 'positionName' => ['positionName', 'getPositionName', 'setPositionName']];
     }
 }

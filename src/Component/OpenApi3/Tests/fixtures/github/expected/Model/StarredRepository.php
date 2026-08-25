@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class StarredRepository extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class StarredRepository implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -61,5 +64,9 @@ class StarredRepository extends \ArrayObject
         $this->initialized['repo'] = true;
         $this->repo = $repo;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['starredAt' => ['starred_at', 'getStarredAt', 'setStarredAt'], 'repo' => ['repo', 'getRepo', 'setRepo']];
     }
 }

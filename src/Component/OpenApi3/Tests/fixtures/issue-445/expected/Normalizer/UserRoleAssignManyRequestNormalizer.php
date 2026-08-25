@@ -78,7 +78,7 @@ class UserRoleAssignManyRequestNormalizer implements DenormalizerInterface, Norm
         }
         $dataArray['userRoleIds'] = $values_1;
         $dataArray['operation'] = $data->getOperation();
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

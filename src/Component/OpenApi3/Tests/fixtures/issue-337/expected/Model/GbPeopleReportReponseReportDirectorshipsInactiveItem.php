@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbPeopleReportReponseReportDirectorshipsInactiveItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbPeopleReportReponseReportDirectorshipsInactiveItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -231,5 +234,9 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItem extends \ArrayObject
         $this->initialized['additionalData'] = true;
         $this->additionalData = $additionalData;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['companyName' => ['companyName', 'getCompanyName', 'setCompanyName'], 'companyNumber' => ['companyNumber', 'getCompanyNumber', 'setCompanyNumber'], 'companyRegistrationNumber' => ['companyRegistrationNumber', 'getCompanyRegistrationNumber', 'setCompanyRegistrationNumber'], 'status' => ['status', 'getStatus', 'setStatus'], 'position' => ['position', 'getPosition', 'setPosition'], 'companyRegistrationDate' => ['companyRegistrationDate', 'getCompanyRegistrationDate', 'setCompanyRegistrationDate'], 'netWorth' => ['netWorth', 'getNetWorth', 'setNetWorth'], 'legalCount' => ['legalCount', 'getLegalCount', 'setLegalCount'], 'creditScore' => ['creditScore', 'getCreditScore', 'setCreditScore'], 'additionalData' => ['additionalData', 'getAdditionalData', 'setAdditionalData']];
     }
 }

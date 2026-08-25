@@ -2,11 +2,14 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
 /**
  * @deprecated
  */
-class Kernel extends \ArrayObject
+class Kernel implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -98,5 +101,9 @@ class Kernel extends \ArrayObject
         $this->initialized['version'] = true;
         $this->version = $version;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'version' => ['version', 'getVersion', 'setVersion']];
     }
 }

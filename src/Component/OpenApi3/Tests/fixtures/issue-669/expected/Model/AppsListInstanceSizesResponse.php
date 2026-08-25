@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsListInstanceSizesResponse extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsListInstanceSizesResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class AppsListInstanceSizesResponse extends \ArrayObject
         $this->initialized['instanceSizes'] = true;
         $this->instanceSizes = $instanceSizes;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['discountPercent' => ['discount_percent', 'getDiscountPercent', 'setDiscountPercent'], 'instanceSizes' => ['instance_sizes', 'getInstanceSizes', 'setInstanceSizes']];
     }
 }

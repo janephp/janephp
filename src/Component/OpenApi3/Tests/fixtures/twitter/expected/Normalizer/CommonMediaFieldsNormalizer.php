@@ -62,7 +62,7 @@ class CommonMediaFieldsNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray['media_key'] = $data->getMediaKey();
         $dataArray['height'] = $data->getHeight();
         $dataArray['width'] = $data->getWidth();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ScimUserOperationsItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ScimUserOperationsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class ScimUserOperationsItem extends \ArrayObject
         $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['op' => ['op', 'getOp', 'setOp'], 'path' => ['path', 'getPath', 'setPath'], 'value' => ['value', 'getValue', 'setValue']];
     }
 }

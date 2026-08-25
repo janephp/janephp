@@ -61,7 +61,7 @@ class ApiRollbackToAgentVersionInputPublicNormalizer implements DenormalizerInte
         if ($data->isInitialized('versionHash') && null !== $data->getVersionHash()) {
             $dataArray['version_hash'] = $data->getVersionHash();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

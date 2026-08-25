@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AddonsResource extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AddonsResource implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -347,5 +350,9 @@ class AddonsResource extends \ArrayObject
         $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['uuid' => ['uuid', 'getUuid', 'setUuid'], 'name' => ['name', 'getName', 'setName'], 'state' => ['state', 'getState', 'setState'], 'appName' => ['app_name', 'getAppName', 'setAppName'], 'appSlug' => ['app_slug', 'getAppSlug', 'setAppSlug'], 'planName' => ['plan_name', 'getPlanName', 'setPlanName'], 'planSlug' => ['plan_slug', 'getPlanSlug', 'setPlanSlug'], 'planPricePerMonth' => ['plan_price_per_month', 'getPlanPricePerMonth', 'setPlanPricePerMonth'], 'hasConfig' => ['has_config', 'getHasConfig', 'setHasConfig'], 'metadata' => ['metadata', 'getMetadata', 'setMetadata'], 'ssoUrl' => ['sso_url', 'getSsoUrl', 'setSsoUrl'], 'message' => ['message', 'getMessage', 'setMessage']];
     }
 }

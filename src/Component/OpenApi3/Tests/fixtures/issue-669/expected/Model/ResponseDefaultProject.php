@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseDefaultProject extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseDefaultProject implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseDefaultProject extends \ArrayObject
         $this->initialized['project'] = true;
         $this->project = $project;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['project' => ['project', 'getProject', 'setProject']];
     }
 }

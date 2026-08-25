@@ -61,7 +61,7 @@ class ApiAgentTemplateGuardrailNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('uuid') && null !== $data->getUuid()) {
             $dataArray['uuid'] = $data->getUuid();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

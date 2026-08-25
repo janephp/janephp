@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class PullRequestHeadRepoLicense extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class PullRequestHeadRepoLicense implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class PullRequestHeadRepoLicense extends \ArrayObject
         $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['key' => ['key', 'getKey', 'setKey'], 'name' => ['name', 'getName', 'setName'], 'url' => ['url', 'getUrl', 'setUrl'], 'spdxId' => ['spdx_id', 'getSpdxId', 'setSpdxId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId']];
     }
 }

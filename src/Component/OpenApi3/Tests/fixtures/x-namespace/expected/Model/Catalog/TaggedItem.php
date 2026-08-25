@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model\Catalog;
 
-class TaggedItem extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class TaggedItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class TaggedItem extends \ArrayObject
         $this->initialized['label'] = true;
         $this->label = $label;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['label' => ['label', 'getLabel', 'setLabel']];
     }
 }

@@ -69,7 +69,7 @@ class DatabaseAutoscaleParamsStorageNormalizer implements DenormalizerInterface,
         if ($data->isInitialized('incrementGib') && null !== $data->getIncrementGib()) {
             $dataArray['increment_gib'] = $data->getIncrementGib();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

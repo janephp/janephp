@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrgsOrgInvitationsPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrgsOrgInvitationsPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -132,5 +135,9 @@ class OrgsOrgInvitationsPostBody extends \ArrayObject
         $this->initialized['teamIds'] = true;
         $this->teamIds = $teamIds;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['inviteeId' => ['invitee_id', 'getInviteeId', 'setInviteeId'], 'email' => ['email', 'getEmail', 'setEmail'], 'role' => ['role', 'getRole', 'setRole'], 'teamIds' => ['team_ids', 'getTeamIds', 'setTeamIds']];
     }
 }

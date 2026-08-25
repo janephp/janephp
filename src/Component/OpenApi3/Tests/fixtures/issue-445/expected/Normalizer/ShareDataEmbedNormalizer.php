@@ -62,7 +62,7 @@ class ShareDataEmbedNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray['url'] = $data->getUrl();
         $dataArray['kind'] = $data->getKind();
         $dataArray['token'] = $data->getToken();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

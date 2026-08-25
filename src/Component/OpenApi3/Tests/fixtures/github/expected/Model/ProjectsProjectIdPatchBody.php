@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ProjectsProjectIdPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ProjectsProjectIdPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class ProjectsProjectIdPatchBody extends \ArrayObject
         $this->initialized['private'] = true;
         $this->private = $private;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'body' => ['body', 'getBody', 'setBody'], 'state' => ['state', 'getState', 'setState'], 'organizationPermission' => ['organization_permission', 'getOrganizationPermission', 'setOrganizationPermission'], 'private' => ['private', 'getPrivate', 'setPrivate']];
     }
 }

@@ -58,7 +58,7 @@ class RootNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if ($data->isInitialized('foo') && null !== $data->getFoo()) {
             $dataArray['foo'] = $data->getFoo() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getFoo(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

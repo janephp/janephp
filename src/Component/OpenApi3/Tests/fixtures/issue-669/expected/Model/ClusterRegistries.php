@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ClusterRegistries extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ClusterRegistries implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ClusterRegistries extends \ArrayObject
         $this->initialized['registries'] = true;
         $this->registries = $registries;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['clusterUuids' => ['cluster_uuids', 'getClusterUuids', 'setClusterUuids'], 'registries' => ['registries', 'getRegistries', 'setRegistries']];
     }
 }

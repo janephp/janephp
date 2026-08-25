@@ -61,7 +61,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationNormalizer implemen
         if ($data->isInitialized('countyCourtJudgements') && null !== $data->getCountyCourtJudgements()) {
             $dataArray['countyCourtJudgements'] = $data->getCountyCourtJudgements() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getCountyCourtJudgements(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

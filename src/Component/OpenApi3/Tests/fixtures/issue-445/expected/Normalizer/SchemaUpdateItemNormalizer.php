@@ -234,7 +234,7 @@ class SchemaUpdateItemNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['referencedInContentSchemaIds'] = $values_7;
         }
         $dataArray['id'] = $data->getId();
-        foreach ($data as $key => $value_8) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_8) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_8;
             }

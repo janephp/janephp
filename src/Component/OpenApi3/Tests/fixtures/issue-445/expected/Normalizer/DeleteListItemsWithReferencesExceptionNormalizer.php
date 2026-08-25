@@ -139,7 +139,7 @@ class DeleteListItemsWithReferencesExceptionNormalizer implements DenormalizerIn
         if ($data->isInitialized('numberOfReferences') && null !== $data->getNumberOfReferences()) {
             $dataArray['numberOfReferences'] = $data->getNumberOfReferences();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -78,7 +78,7 @@ class ActionsBillingUsageNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('minutesUsedBreakdown') && null !== $data->getMinutesUsedBreakdown()) {
             $dataArray['minutes_used_breakdown'] = $data->getMinutesUsedBreakdown() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getMinutesUsedBreakdown(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

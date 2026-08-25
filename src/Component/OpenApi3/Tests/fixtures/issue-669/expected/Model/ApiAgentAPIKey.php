@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiAgentAPIKey extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiAgentAPIKey implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ApiAgentAPIKey extends \ArrayObject
         $this->initialized['apiKey'] = true;
         $this->apiKey = $apiKey;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['apiKey' => ['api_key', 'getApiKey', 'setApiKey']];
     }
 }

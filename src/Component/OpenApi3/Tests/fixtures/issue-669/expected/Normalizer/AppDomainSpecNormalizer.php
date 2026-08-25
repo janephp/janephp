@@ -83,7 +83,7 @@ class AppDomainSpecNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('minimumTlsVersion') && null !== $data->getMinimumTlsVersion()) {
             $dataArray['minimum_tls_version'] = $data->getMinimumTlsVersion();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

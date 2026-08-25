@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class CompanySearchSuccessResult extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class CompanySearchSuccessResult implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class CompanySearchSuccessResult extends \ArrayObject
         $this->initialized['companies'] = true;
         $this->companies = $companies;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['totalSize' => ['totalSize', 'getTotalSize', 'setTotalSize'], 'companies' => ['companies', 'getCompanies', 'setCompanies']];
     }
 }

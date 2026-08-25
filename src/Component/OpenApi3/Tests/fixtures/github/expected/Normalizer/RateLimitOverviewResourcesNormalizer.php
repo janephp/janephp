@@ -81,7 +81,7 @@ class RateLimitOverviewResourcesNormalizer implements DenormalizerInterface, Nor
         if ($data->isInitialized('integrationManifest') && null !== $data->getIntegrationManifest()) {
             $dataArray['integration_manifest'] = $data->getIntegrationManifest() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getIntegrationManifest(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

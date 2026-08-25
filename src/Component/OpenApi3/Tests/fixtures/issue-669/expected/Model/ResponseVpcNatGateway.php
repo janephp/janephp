@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseVpcNatGateway extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseVpcNatGateway implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseVpcNatGateway extends \ArrayObject
         $this->initialized['vpcNatGateway'] = true;
         $this->vpcNatGateway = $vpcNatGateway;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['vpcNatGateway' => ['vpc_nat_gateway', 'getVpcNatGateway', 'setVpcNatGateway']];
     }
 }

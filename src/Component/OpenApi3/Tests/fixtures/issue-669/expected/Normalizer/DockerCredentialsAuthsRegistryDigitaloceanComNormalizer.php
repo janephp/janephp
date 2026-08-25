@@ -54,7 +54,7 @@ class DockerCredentialsAuthsRegistryDigitaloceanComNormalizer implements Denorma
         if ($data->isInitialized('auth') && null !== $data->getAuth()) {
             $dataArray['auth'] = $data->getAuth();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

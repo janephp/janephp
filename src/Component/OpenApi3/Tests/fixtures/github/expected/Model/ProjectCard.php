@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ProjectCard extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ProjectCard implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -265,5 +268,9 @@ class ProjectCard extends \ArrayObject
         $this->initialized['projectUrl'] = true;
         $this->projectUrl = $projectUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'note' => ['note', 'getNote', 'setNote'], 'creator' => ['creator', 'getCreator', 'setCreator'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'archived' => ['archived', 'getArchived', 'setArchived'], 'columnUrl' => ['column_url', 'getColumnUrl', 'setColumnUrl'], 'contentUrl' => ['content_url', 'getContentUrl', 'setContentUrl'], 'projectUrl' => ['project_url', 'getProjectUrl', 'setProjectUrl']];
     }
 }

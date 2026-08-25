@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseNewCustomImage extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseNewCustomImage implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseNewCustomImage extends \ArrayObject
         $this->initialized['image'] = true;
         $this->image = $image;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['image' => ['image', 'getImage', 'setImage']];
     }
 }

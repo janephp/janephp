@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class KubernetesNodePoolBase extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class KubernetesNodePoolBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -291,5 +294,9 @@ class KubernetesNodePoolBase extends \ArrayObject
         $this->initialized['nodes'] = true;
         $this->nodes = $nodes;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'count' => ['count', 'getCount', 'setCount'], 'tags' => ['tags', 'getTags', 'setTags'], 'labels' => ['labels', 'getLabels', 'setLabels'], 'taints' => ['taints', 'getTaints', 'setTaints'], 'autoScale' => ['auto_scale', 'getAutoScale', 'setAutoScale'], 'minNodes' => ['min_nodes', 'getMinNodes', 'setMinNodes'], 'maxNodes' => ['max_nodes', 'getMaxNodes', 'setMaxNodes'], 'nodes' => ['nodes', 'getNodes', 'setNodes']];
     }
 }

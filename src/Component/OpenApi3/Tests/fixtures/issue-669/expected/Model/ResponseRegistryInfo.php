@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseRegistryInfo extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseRegistryInfo implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseRegistryInfo extends \ArrayObject
         $this->initialized['registry'] = true;
         $this->registry = $registry;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['registry' => ['registry', 'getRegistry', 'setRegistry']];
     }
 }

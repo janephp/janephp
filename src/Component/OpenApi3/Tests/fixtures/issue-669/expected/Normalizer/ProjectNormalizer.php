@@ -113,7 +113,7 @@ class ProjectNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('isDefault') && null !== $data->getIsDefault()) {
             $dataArray['is_default'] = $data->getIsDefault();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

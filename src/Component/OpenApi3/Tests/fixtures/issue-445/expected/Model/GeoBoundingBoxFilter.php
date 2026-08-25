@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class GeoBoundingBoxFilter extends FilterBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class GeoBoundingBoxFilter extends FilterBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -98,5 +101,9 @@ class GeoBoundingBoxFilter extends FilterBase
         $this->initialized['bottomRight'] = true;
         $this->bottomRight = $bottomRight;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['field' => ['field', 'getField', 'setField'], 'topLeft' => ['topLeft', 'getTopLeft', 'setTopLeft'], 'bottomRight' => ['bottomRight', 'getBottomRight', 'setBottomRight']];
     }
 }

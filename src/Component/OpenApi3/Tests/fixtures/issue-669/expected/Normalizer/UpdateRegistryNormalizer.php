@@ -57,7 +57,7 @@ class UpdateRegistryNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('cancel') && null !== $data->getCancel()) {
             $dataArray['cancel'] = $data->getCancel();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

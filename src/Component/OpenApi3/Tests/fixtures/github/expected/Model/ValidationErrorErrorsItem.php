@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ValidationErrorErrorsItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ValidationErrorErrorsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -143,5 +146,9 @@ class ValidationErrorErrorsItem extends \ArrayObject
         $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['resource' => ['resource', 'getResource', 'setResource'], 'field' => ['field', 'getField', 'setField'], 'message' => ['message', 'getMessage', 'setMessage'], 'code' => ['code', 'getCode', 'setCode'], 'index' => ['index', 'getIndex', 'setIndex'], 'value' => ['value', 'getValue', 'setValue']];
     }
 }

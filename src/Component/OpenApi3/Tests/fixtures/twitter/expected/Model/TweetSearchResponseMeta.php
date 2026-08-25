@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class TweetSearchResponseMeta extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class TweetSearchResponseMeta implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class TweetSearchResponseMeta extends \ArrayObject
         $this->initialized['resultCount'] = true;
         $this->resultCount = $resultCount;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['newestId' => ['newest_id', 'getNewestId', 'setNewestId'], 'oldestId' => ['oldest_id', 'getOldestId', 'setOldestId'], 'nextToken' => ['next_token', 'getNextToken', 'setNextToken'], 'resultCount' => ['result_count', 'getResultCount', 'setResultCount']];
     }
 }

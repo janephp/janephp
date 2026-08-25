@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class LinkToFirstPage extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class LinkToFirstPage implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class LinkToFirstPage extends \ArrayObject
         $this->initialized['first'] = true;
         $this->first = $first;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['first' => ['first', 'getFirst', 'setFirst']];
     }
 }

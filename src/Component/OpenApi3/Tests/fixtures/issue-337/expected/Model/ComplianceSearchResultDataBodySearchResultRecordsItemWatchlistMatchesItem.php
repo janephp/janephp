@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -583,5 +586,9 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItem 
         $this->initialized['trueMatch'] = true;
         $this->trueMatch = $trueMatch;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['acceptListID' => ['acceptListID', 'getAcceptListID', 'setAcceptListID'], 'addedToAcceptList' => ['addedToAcceptList', 'getAddedToAcceptList', 'setAddedToAcceptList'], 'addressName' => ['addressName', 'getAddressName', 'setAddressName'], 'autoFalsePositive' => ['autoFalsePositive', 'getAutoFalsePositive', 'setAutoFalsePositive'], 'bestAddressIsPartial' => ['bestAddressIsPartial', 'getBestAddressIsPartial', 'setBestAddressIsPartial'], 'bestCountryScore' => ['bestCountryScore', 'getBestCountryScore', 'setBestCountryScore'], 'bestCountryType' => ['bestCountryType', 'getBestCountryType', 'setBestCountryType'], 'bestDOBIsPartial' => ['bestDOBIsPartial', 'getBestDOBIsPartial', 'setBestDOBIsPartial'], 'bestName' => ['bestName', 'getBestName', 'setBestName'], 'bestNameScore' => ['bestNameScore', 'getBestNameScore', 'setBestNameScore'], 'checkSum' => ['checkSum', 'getCheckSum', 'setCheckSum'], 'conflicts' => ['conflicts', 'getConflicts', 'setConflicts'], 'entityDetails' => ['entityDetails', 'getEntityDetails', 'setEntityDetails'], 'entityName' => ['entityName', 'getEntityName', 'setEntityName'], 'entityScore' => ['entityScore', 'getEntityScore', 'setEntityScore'], 'entityUniqueID' => ['entityUniqueID', 'getEntityUniqueID', 'setEntityUniqueID'], 'falsePositive' => ['falsePositive', 'getFalsePositive', 'setFalsePositive'], 'file' => ['file', 'getFile', 'setFile'], 'gatewayOFACScreeningIndicatorMatch' => ['gatewayOFACScreeningIndicatorMatch', 'getGatewayOFACScreeningIndicatorMatch', 'setGatewayOFACScreeningIndicatorMatch'], 'id' => ['id', 'getId', 'setId'], 'matchReAlert' => ['matchReAlert', 'getMatchReAlert', 'setMatchReAlert'], 'previousResultID' => ['previousResultID', 'getPreviousResultID', 'setPreviousResultID'], 'reasonListed' => ['reasonListed', 'getReasonListed', 'setReasonListed'], 'resultDate' => ['resultDate', 'getResultDate', 'setResultDate'], 'secondaryOFACScreeningIndicatorMatch' => ['secondaryOFACScreeningIndicatorMatch', 'getSecondaryOFACScreeningIndicatorMatch', 'setSecondaryOFACScreeningIndicatorMatch'], 'trueMatch' => ['trueMatch', 'getTrueMatch', 'setTrueMatch']];
     }
 }

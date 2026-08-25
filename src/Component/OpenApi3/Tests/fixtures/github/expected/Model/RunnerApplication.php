@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class RunnerApplication extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class RunnerApplication implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class RunnerApplication extends \ArrayObject
         $this->initialized['filename'] = true;
         $this->filename = $filename;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['os' => ['os', 'getOs', 'setOs'], 'architecture' => ['architecture', 'getArchitecture', 'setArchitecture'], 'downloadUrl' => ['download_url', 'getDownloadUrl', 'setDownloadUrl'], 'filename' => ['filename', 'getFilename', 'setFilename']];
     }
 }

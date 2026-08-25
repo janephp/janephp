@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoBranchesBranchProtectionPutBodyRestrictions extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoBranchesBranchProtectionPutBodyRestrictions implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRestrictions extends \ArrayOb
         $this->initialized['apps'] = true;
         $this->apps = $apps;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['users' => ['users', 'getUsers', 'setUsers'], 'teams' => ['teams', 'getTeams', 'setTeams'], 'apps' => ['apps', 'getApps', 'setApps']];
     }
 }

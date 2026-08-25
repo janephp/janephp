@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CombinedBillingUsage extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CombinedBillingUsage implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class CombinedBillingUsage extends \ArrayObject
         $this->initialized['estimatedStorageForMonth'] = true;
         $this->estimatedStorageForMonth = $estimatedStorageForMonth;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['daysLeftInBillingCycle' => ['days_left_in_billing_cycle', 'getDaysLeftInBillingCycle', 'setDaysLeftInBillingCycle'], 'estimatedPaidStorageForMonth' => ['estimated_paid_storage_for_month', 'getEstimatedPaidStorageForMonth', 'setEstimatedPaidStorageForMonth'], 'estimatedStorageForMonth' => ['estimated_storage_for_month', 'getEstimatedStorageForMonth', 'setEstimatedStorageForMonth']];
     }
 }

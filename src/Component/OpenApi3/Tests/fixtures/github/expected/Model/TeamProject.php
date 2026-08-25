@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class TeamProject extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class TeamProject implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -369,5 +372,9 @@ class TeamProject extends \ArrayObject
         $this->initialized['permissions'] = true;
         $this->permissions = $permissions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['ownerUrl' => ['owner_url', 'getOwnerUrl', 'setOwnerUrl'], 'url' => ['url', 'getUrl', 'setUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'columnsUrl' => ['columns_url', 'getColumnsUrl', 'setColumnsUrl'], 'id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'name' => ['name', 'getName', 'setName'], 'body' => ['body', 'getBody', 'setBody'], 'number' => ['number', 'getNumber', 'setNumber'], 'state' => ['state', 'getState', 'setState'], 'creator' => ['creator', 'getCreator', 'setCreator'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'organizationPermission' => ['organization_permission', 'getOrganizationPermission', 'setOrganizationPermission'], 'private' => ['private', 'getPrivate', 'setPrivate'], 'permissions' => ['permissions', 'getPermissions', 'setPermissions']];
     }
 }

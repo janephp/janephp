@@ -250,7 +250,7 @@ class DatabaseClusterNormalizer implements DenormalizerInterface, NormalizerInte
         if ($data->isInitialized('autoscale') && null !== $data->getAutoscale()) {
             $dataArray['autoscale'] = $data->getAutoscale() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAutoscale(), 'json', $context));
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

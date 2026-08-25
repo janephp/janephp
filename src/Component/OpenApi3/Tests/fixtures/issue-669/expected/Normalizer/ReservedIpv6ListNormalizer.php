@@ -62,7 +62,7 @@ class ReservedIpv6ListNormalizer implements DenormalizerInterface, NormalizerInt
             }
             $dataArray['reserved_ipv6s'] = $values;
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

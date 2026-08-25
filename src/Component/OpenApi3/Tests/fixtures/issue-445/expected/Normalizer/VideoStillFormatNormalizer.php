@@ -70,7 +70,7 @@ class VideoStillFormatNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('positionInSeconds') && null !== $data->getPositionInSeconds()) {
             $dataArray['positionInSeconds'] = $data->getPositionInSeconds();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

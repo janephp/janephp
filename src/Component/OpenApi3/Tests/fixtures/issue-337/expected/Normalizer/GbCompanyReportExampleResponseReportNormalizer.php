@@ -183,7 +183,7 @@ class GbCompanyReportExampleResponseReportNormalizer implements DenormalizerInte
         if ($data->isInitialized('additionalInformation') && null !== $data->getAdditionalInformation()) {
             $dataArray['additionalInformation'] = $data->getAdditionalInformation() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getAdditionalInformation(), 'json', $context));
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_3;
             }

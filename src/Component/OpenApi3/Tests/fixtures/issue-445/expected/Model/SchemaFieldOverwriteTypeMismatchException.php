@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class SchemaFieldOverwriteTypeMismatchException implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -297,5 +300,9 @@ class SchemaFieldOverwriteTypeMismatchException extends \ArrayObject
         $this->initialized['fieldType'] = true;
         $this->fieldType = $fieldType;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['traceLevel' => ['traceLevel', 'getTraceLevel', 'setTraceLevel'], 'traceId' => ['traceId', 'getTraceId', 'setTraceId'], 'traceJobId' => ['traceJobId', 'getTraceJobId', 'setTraceJobId'], 'httpStatusCode' => ['httpStatusCode', 'getHttpStatusCode', 'setHttpStatusCode'], 'exceptionMessage' => ['exceptionMessage', 'getExceptionMessage', 'setExceptionMessage'], 'kind' => ['kind', 'getKind', 'setKind'], 'customerId' => ['customerId', 'getCustomerId', 'setCustomerId'], 'customerAlias' => ['customerAlias', 'getCustomerAlias', 'setCustomerAlias'], 'userId' => ['userId', 'getUserId', 'setUserId'], 'schemaId' => ['schemaId', 'getSchemaId', 'setSchemaId'], 'fieldId' => ['fieldId', 'getFieldId', 'setFieldId'], 'fieldOverwriteType' => ['fieldOverwriteType', 'getFieldOverwriteType', 'setFieldOverwriteType'], 'fieldType' => ['fieldType', 'getFieldType', 'setFieldType']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportExtendedGroupStructureItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -187,5 +190,9 @@ class GbCompanyReportExampleResponseReportExtendedGroupStructureItem extends \Ar
         $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'country' => ['country', 'getCountry', 'setCountry'], 'safeNumber' => ['safeNumber', 'getSafeNumber', 'setSafeNumber'], 'companyName' => ['companyName', 'getCompanyName', 'setCompanyName'], 'registeredNumber' => ['registeredNumber', 'getRegisteredNumber', 'setRegisteredNumber'], 'latestAnnualAccounts' => ['latestAnnualAccounts', 'getLatestAnnualAccounts', 'setLatestAnnualAccounts'], 'level' => ['level', 'getLevel', 'setLevel'], 'status' => ['status', 'getStatus', 'setStatus']];
     }
 }

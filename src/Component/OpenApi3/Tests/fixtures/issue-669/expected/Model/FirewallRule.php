@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class FirewallRule extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class FirewallRule implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class FirewallRule extends \ArrayObject
         $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['uuid' => ['uuid', 'getUuid', 'setUuid'], 'clusterUuid' => ['cluster_uuid', 'getClusterUuid', 'setClusterUuid'], 'type' => ['type', 'getType', 'setType'], 'value' => ['value', 'getValue', 'setValue'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt']];
     }
 }

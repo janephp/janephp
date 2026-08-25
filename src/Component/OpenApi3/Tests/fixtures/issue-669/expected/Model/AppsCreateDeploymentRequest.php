@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsCreateDeploymentRequest extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsCreateDeploymentRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class AppsCreateDeploymentRequest extends \ArrayObject
         $this->initialized['forceBuild'] = true;
         $this->forceBuild = $forceBuild;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['forceBuild' => ['force_build', 'getForceBuild', 'setForceBuild']];
     }
 }

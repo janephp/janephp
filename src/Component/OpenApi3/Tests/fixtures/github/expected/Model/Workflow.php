@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Workflow extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Workflow implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -253,5 +256,9 @@ class Workflow extends \ArrayObject
         $this->initialized['deletedAt'] = true;
         $this->deletedAt = $deletedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'name' => ['name', 'getName', 'setName'], 'path' => ['path', 'getPath', 'setPath'], 'state' => ['state', 'getState', 'setState'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'url' => ['url', 'getUrl', 'setUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'badgeUrl' => ['badge_url', 'getBadgeUrl', 'setBadgeUrl'], 'deletedAt' => ['deleted_at', 'getDeletedAt', 'setDeletedAt']];
     }
 }

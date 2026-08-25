@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class PlanetAtmosphereItem extends \ArrayObject
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class PlanetAtmosphereItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class PlanetAtmosphereItem extends \ArrayObject
         $this->initialized['percentage'] = true;
         $this->percentage = $percentage;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['compound' => ['compound', 'getCompound', 'setCompound'], 'percentage' => ['percentage', 'getPercentage', 'setPercentage']];
     }
 }

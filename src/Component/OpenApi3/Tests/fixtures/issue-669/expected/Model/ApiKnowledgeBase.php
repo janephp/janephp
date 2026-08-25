@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiKnowledgeBase extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiKnowledgeBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -357,5 +360,9 @@ class ApiKnowledgeBase extends \ArrayObject
         $this->initialized['uuid'] = true;
         $this->uuid = $uuid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['addedToAgentAt' => ['added_to_agent_at', 'getAddedToAgentAt', 'setAddedToAgentAt'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'databaseId' => ['database_id', 'getDatabaseId', 'setDatabaseId'], 'embeddingModelUuid' => ['embedding_model_uuid', 'getEmbeddingModelUuid', 'setEmbeddingModelUuid'], 'isPublic' => ['is_public', 'getIsPublic', 'setIsPublic'], 'lastIndexingJob' => ['last_indexing_job', 'getLastIndexingJob', 'setLastIndexingJob'], 'name' => ['name', 'getName', 'setName'], 'projectId' => ['project_id', 'getProjectId', 'setProjectId'], 'region' => ['region', 'getRegion', 'setRegion'], 'tags' => ['tags', 'getTags', 'setTags'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'userId' => ['user_id', 'getUserId', 'setUserId'], 'uuid' => ['uuid', 'getUuid', 'setUuid']];
     }
 }

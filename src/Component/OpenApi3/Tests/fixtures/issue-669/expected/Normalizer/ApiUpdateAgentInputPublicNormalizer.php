@@ -211,7 +211,7 @@ class ApiUpdateAgentInputPublicNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('uuid') && null !== $data->getUuid()) {
             $dataArray['uuid'] = $data->getUuid();
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

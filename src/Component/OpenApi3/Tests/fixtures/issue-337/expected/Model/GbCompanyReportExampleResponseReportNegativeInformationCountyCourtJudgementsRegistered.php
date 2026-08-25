@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegistered extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegistered implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         $this->initialized['possible'] = true;
         $this->possible = $possible;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['exact' => ['exact', 'getExact', 'setExact'], 'possible' => ['possible', 'getPossible', 'setPossible']];
     }
 }

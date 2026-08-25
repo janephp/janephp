@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class Member extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class Member implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -173,5 +176,9 @@ class Member extends \ArrayObject
         $this->initialized['currentUtilization'] = true;
         $this->currentUtilization = $currentUtilization;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['dropletId' => ['droplet_id', 'getDropletId', 'setDropletId'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'healthStatus' => ['health_status', 'getHealthStatus', 'setHealthStatus'], 'status' => ['status', 'getStatus', 'setStatus'], 'currentUtilization' => ['current_utilization', 'getCurrentUtilization', 'setCurrentUtilization']];
     }
 }

@@ -68,7 +68,7 @@ class IssueEventLabelNormalizer implements DenormalizerInterface, NormalizerInte
         $dataArray = [];
         $dataArray['name'] = $data->getName();
         $dataArray['color'] = $data->getColor();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

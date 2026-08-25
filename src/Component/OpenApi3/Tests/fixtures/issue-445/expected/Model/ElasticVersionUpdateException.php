@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ElasticVersionUpdateException extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ElasticVersionUpdateException implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -187,5 +190,9 @@ class ElasticVersionUpdateException extends \ArrayObject
         $this->initialized['actualVersion'] = true;
         $this->actualVersion = $actualVersion;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['traceLevel' => ['traceLevel', 'getTraceLevel', 'setTraceLevel'], 'traceId' => ['traceId', 'getTraceId', 'setTraceId'], 'traceJobId' => ['traceJobId', 'getTraceJobId', 'setTraceJobId'], 'httpStatusCode' => ['httpStatusCode', 'getHttpStatusCode', 'setHttpStatusCode'], 'exceptionMessage' => ['exceptionMessage', 'getExceptionMessage', 'setExceptionMessage'], 'kind' => ['kind', 'getKind', 'setKind'], 'expectedVersion' => ['expectedVersion', 'getExpectedVersion', 'setExpectedVersion'], 'actualVersion' => ['actualVersion', 'getActualVersion', 'setActualVersion']];
     }
 }

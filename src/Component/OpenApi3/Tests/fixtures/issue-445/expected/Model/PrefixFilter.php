@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class PrefixFilter extends FilterBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class PrefixFilter extends FilterBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -70,5 +73,9 @@ class PrefixFilter extends FilterBase
         $this->initialized['prefix'] = true;
         $this->prefix = $prefix;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['field' => ['field', 'getField', 'setField'], 'prefix' => ['prefix', 'getPrefix', 'setPrefix']];
     }
 }

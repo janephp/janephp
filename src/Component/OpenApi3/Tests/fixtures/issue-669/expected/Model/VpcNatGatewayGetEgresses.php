@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class VpcNatGatewayGetEgresses extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class VpcNatGatewayGetEgresses implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class VpcNatGatewayGetEgresses extends \ArrayObject
         $this->initialized['publicGateways'] = true;
         $this->publicGateways = $publicGateways;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['publicGateways' => ['public_gateways', 'getPublicGateways', 'setPublicGateways']];
     }
 }

@@ -154,7 +154,7 @@ class ShareBasicCreateRequestNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('suppressNotifications') && null !== $data->getSuppressNotifications()) {
             $dataArray['suppressNotifications'] = $data->getSuppressNotifications();
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_3;
             }

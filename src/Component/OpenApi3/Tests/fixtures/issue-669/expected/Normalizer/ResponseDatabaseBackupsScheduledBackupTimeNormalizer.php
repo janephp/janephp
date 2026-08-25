@@ -68,7 +68,7 @@ class ResponseDatabaseBackupsScheduledBackupTimeNormalizer implements Denormaliz
         if ($data->isInitialized('backupIntervalHours') && null !== $data->getBackupIntervalHours()) {
             $dataArray['backup_interval_hours'] = $data->getBackupIntervalHours();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

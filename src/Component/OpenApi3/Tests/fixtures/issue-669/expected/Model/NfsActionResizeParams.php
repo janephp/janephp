@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class NfsActionResizeParams extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class NfsActionResizeParams implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class NfsActionResizeParams extends \ArrayObject
         $this->initialized['sizeGib'] = true;
         $this->sizeGib = $sizeGib;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['sizeGib' => ['size_gib', 'getSizeGib', 'setSizeGib']];
     }
 }

@@ -240,7 +240,7 @@ class ImportNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if ($data->isInitialized('svnRoot') && null !== $data->getSvnRoot()) {
             $dataArray['svn_root'] = $data->getSvnRoot();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class PageBuild extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class PageBuild implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -187,5 +190,9 @@ class PageBuild extends \ArrayObject
         $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'status' => ['status', 'getStatus', 'setStatus'], 'error' => ['error', 'getError', 'setError'], 'pusher' => ['pusher', 'getPusher', 'setPusher'], 'commit' => ['commit', 'getCommit', 'setCommit'], 'duration' => ['duration', 'getDuration', 'setDuration'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt']];
     }
 }

@@ -54,7 +54,7 @@ class ResponseAutoscaleNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('autoscale') && null !== $data->getAutoscale()) {
             $dataArray['autoscale'] = $data->getAutoscale() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAutoscale(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

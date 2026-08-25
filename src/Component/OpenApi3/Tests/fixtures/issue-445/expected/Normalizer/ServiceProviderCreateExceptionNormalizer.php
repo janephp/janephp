@@ -121,7 +121,7 @@ class ServiceProviderCreateExceptionNormalizer implements DenormalizerInterface,
         if ($data->isInitialized('detailErrorMessage') && null !== $data->getDetailErrorMessage()) {
             $dataArray['detailErrorMessage'] = $data->getDetailErrorMessage();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

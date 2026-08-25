@@ -1393,7 +1393,7 @@ class JsonSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
         else {
             $dataArray['additionalItems'] = null;
         }
-        foreach ($data as $key_8 => $value_43) {
+        foreach ($data->additionalPropertyEntries() as $key_8 => $value_43) {
             if (preg_match('/^x-/', (string) $key_8)) {
                 $dataArray[$key_8] = $value_43;
             }

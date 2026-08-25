@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Issue extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Issue implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -757,5 +760,9 @@ class Issue extends \ArrayObject
         $this->initialized['reactions'] = true;
         $this->reactions = $reactions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'url' => ['url', 'getUrl', 'setUrl'], 'repositoryUrl' => ['repository_url', 'getRepositoryUrl', 'setRepositoryUrl'], 'labelsUrl' => ['labels_url', 'getLabelsUrl', 'setLabelsUrl'], 'commentsUrl' => ['comments_url', 'getCommentsUrl', 'setCommentsUrl'], 'eventsUrl' => ['events_url', 'getEventsUrl', 'setEventsUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'number' => ['number', 'getNumber', 'setNumber'], 'state' => ['state', 'getState', 'setState'], 'title' => ['title', 'getTitle', 'setTitle'], 'body' => ['body', 'getBody', 'setBody'], 'user' => ['user', 'getUser', 'setUser'], 'labels' => ['labels', 'getLabels', 'setLabels'], 'assignee' => ['assignee', 'getAssignee', 'setAssignee'], 'assignees' => ['assignees', 'getAssignees', 'setAssignees'], 'milestone' => ['milestone', 'getMilestone', 'setMilestone'], 'locked' => ['locked', 'getLocked', 'setLocked'], 'activeLockReason' => ['active_lock_reason', 'getActiveLockReason', 'setActiveLockReason'], 'comments' => ['comments', 'getComments', 'setComments'], 'pullRequest' => ['pull_request', 'getPullRequest', 'setPullRequest'], 'closedAt' => ['closed_at', 'getClosedAt', 'setClosedAt'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'closedBy' => ['closed_by', 'getClosedBy', 'setClosedBy'], 'bodyHtml' => ['body_html', 'getBodyHtml', 'setBodyHtml'], 'bodyText' => ['body_text', 'getBodyText', 'setBodyText'], 'timelineUrl' => ['timeline_url', 'getTimelineUrl', 'setTimelineUrl'], 'repository' => ['repository', 'getRepository', 'setRepository'], 'performedViaGithubApp' => ['performed_via_github_app', 'getPerformedViaGithubApp', 'setPerformedViaGithubApp'], 'authorAssociation' => ['author_association', 'getAuthorAssociation', 'setAuthorAssociation'], 'reactions' => ['reactions', 'getReactions', 'setReactions']];
     }
 }

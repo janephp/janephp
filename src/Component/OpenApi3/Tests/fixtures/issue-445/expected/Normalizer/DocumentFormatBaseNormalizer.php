@@ -52,7 +52,7 @@ class DocumentFormatBaseNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

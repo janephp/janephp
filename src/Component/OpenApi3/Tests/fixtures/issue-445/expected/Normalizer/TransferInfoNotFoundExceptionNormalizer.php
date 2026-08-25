@@ -154,7 +154,7 @@ class TransferInfoNotFoundExceptionNormalizer implements DenormalizerInterface, 
         if ($data->isInitialized('transferInfoId') && null !== $data->getTransferInfoId()) {
             $dataArray['transferInfoId'] = $data->getTransferInfoId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

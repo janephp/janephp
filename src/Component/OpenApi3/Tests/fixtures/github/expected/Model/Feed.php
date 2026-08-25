@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Feed extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Feed implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -209,5 +212,9 @@ class Feed extends \ArrayObject
         $this->initialized['links'] = true;
         $this->links = $links;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['timelineUrl' => ['timeline_url', 'getTimelineUrl', 'setTimelineUrl'], 'userUrl' => ['user_url', 'getUserUrl', 'setUserUrl'], 'currentUserPublicUrl' => ['current_user_public_url', 'getCurrentUserPublicUrl', 'setCurrentUserPublicUrl'], 'currentUserUrl' => ['current_user_url', 'getCurrentUserUrl', 'setCurrentUserUrl'], 'currentUserActorUrl' => ['current_user_actor_url', 'getCurrentUserActorUrl', 'setCurrentUserActorUrl'], 'currentUserOrganizationUrl' => ['current_user_organization_url', 'getCurrentUserOrganizationUrl', 'setCurrentUserOrganizationUrl'], 'currentUserOrganizationUrls' => ['current_user_organization_urls', 'getCurrentUserOrganizationUrls', 'setCurrentUserOrganizationUrls'], 'securityAdvisoriesUrl' => ['security_advisories_url', 'getSecurityAdvisoriesUrl', 'setSecurityAdvisoriesUrl'], 'links' => ['_links', 'getLinks', 'setLinks']];
     }
 }

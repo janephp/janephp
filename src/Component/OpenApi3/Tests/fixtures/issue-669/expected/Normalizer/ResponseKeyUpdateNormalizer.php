@@ -54,7 +54,7 @@ class ResponseKeyUpdateNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('key') && null !== $data->getKey()) {
             $dataArray['key'] = $data->getKey() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getKey(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

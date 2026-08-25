@@ -112,7 +112,7 @@ class EventRulesResponseNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('param1') && null !== $data->getParam1()) {
             $dataArray['param1'] = $data->getParam1();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

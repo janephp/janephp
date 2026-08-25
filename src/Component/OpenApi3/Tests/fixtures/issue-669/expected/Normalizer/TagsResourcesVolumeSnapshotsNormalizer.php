@@ -61,7 +61,7 @@ class TagsResourcesVolumeSnapshotsNormalizer implements DenormalizerInterface, N
         if ($data->isInitialized('lastTaggedUri') && null !== $data->getLastTaggedUri()) {
             $dataArray['last_tagged_uri'] = $data->getLastTaggedUri();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

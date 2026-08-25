@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class PrivateUser extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class PrivateUser implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -935,5 +938,9 @@ class PrivateUser extends \ArrayObject
         $this->initialized['ldapDn'] = true;
         $this->ldapDn = $ldapDn;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['login' => ['login', 'getLogin', 'setLogin'], 'id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'avatarUrl' => ['avatar_url', 'getAvatarUrl', 'setAvatarUrl'], 'gravatarId' => ['gravatar_id', 'getGravatarId', 'setGravatarId'], 'url' => ['url', 'getUrl', 'setUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'followersUrl' => ['followers_url', 'getFollowersUrl', 'setFollowersUrl'], 'followingUrl' => ['following_url', 'getFollowingUrl', 'setFollowingUrl'], 'gistsUrl' => ['gists_url', 'getGistsUrl', 'setGistsUrl'], 'starredUrl' => ['starred_url', 'getStarredUrl', 'setStarredUrl'], 'subscriptionsUrl' => ['subscriptions_url', 'getSubscriptionsUrl', 'setSubscriptionsUrl'], 'organizationsUrl' => ['organizations_url', 'getOrganizationsUrl', 'setOrganizationsUrl'], 'reposUrl' => ['repos_url', 'getReposUrl', 'setReposUrl'], 'eventsUrl' => ['events_url', 'getEventsUrl', 'setEventsUrl'], 'receivedEventsUrl' => ['received_events_url', 'getReceivedEventsUrl', 'setReceivedEventsUrl'], 'type' => ['type', 'getType', 'setType'], 'siteAdmin' => ['site_admin', 'getSiteAdmin', 'setSiteAdmin'], 'name' => ['name', 'getName', 'setName'], 'company' => ['company', 'getCompany', 'setCompany'], 'blog' => ['blog', 'getBlog', 'setBlog'], 'location' => ['location', 'getLocation', 'setLocation'], 'email' => ['email', 'getEmail', 'setEmail'], 'hireable' => ['hireable', 'getHireable', 'setHireable'], 'bio' => ['bio', 'getBio', 'setBio'], 'twitterUsername' => ['twitter_username', 'getTwitterUsername', 'setTwitterUsername'], 'publicRepos' => ['public_repos', 'getPublicRepos', 'setPublicRepos'], 'publicGists' => ['public_gists', 'getPublicGists', 'setPublicGists'], 'followers' => ['followers', 'getFollowers', 'setFollowers'], 'following' => ['following', 'getFollowing', 'setFollowing'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'privateGists' => ['private_gists', 'getPrivateGists', 'setPrivateGists'], 'totalPrivateRepos' => ['total_private_repos', 'getTotalPrivateRepos', 'setTotalPrivateRepos'], 'ownedPrivateRepos' => ['owned_private_repos', 'getOwnedPrivateRepos', 'setOwnedPrivateRepos'], 'diskUsage' => ['disk_usage', 'getDiskUsage', 'setDiskUsage'], 'collaborators' => ['collaborators', 'getCollaborators', 'setCollaborators'], 'twoFactorAuthentication' => ['two_factor_authentication', 'getTwoFactorAuthentication', 'setTwoFactorAuthentication'], 'plan' => ['plan', 'getPlan', 'setPlan'], 'suspendedAt' => ['suspended_at', 'getSuspendedAt', 'setSuspendedAt'], 'businessPlus' => ['business_plus', 'getBusinessPlus', 'setBusinessPlus'], 'ldapDn' => ['ldap_dn', 'getLdapDn', 'setLdapDn']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ConsoleMessage extends Message
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ConsoleMessage extends Message implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class ConsoleMessage extends Message
         $this->initialized['targetQueue'] = true;
         $this->targetQueue = $targetQueue;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['command' => ['command', 'getCommand', 'setCommand'], 'arguments' => ['arguments', 'getArguments', 'setArguments'], 'targetQueue' => ['targetQueue', 'getTargetQueue', 'setTargetQueue']];
     }
 }

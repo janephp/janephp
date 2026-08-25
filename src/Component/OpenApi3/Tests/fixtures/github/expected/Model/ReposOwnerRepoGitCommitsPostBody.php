@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoGitCommitsPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoGitCommitsPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -179,5 +182,9 @@ class ReposOwnerRepoGitCommitsPostBody extends \ArrayObject
         $this->initialized['signature'] = true;
         $this->signature = $signature;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['message' => ['message', 'getMessage', 'setMessage'], 'tree' => ['tree', 'getTree', 'setTree'], 'parents' => ['parents', 'getParents', 'setParents'], 'author' => ['author', 'getAuthor', 'setAuthor'], 'committer' => ['committer', 'getCommitter', 'setCommitter'], 'signature' => ['signature', 'getSignature', 'setSignature']];
     }
 }

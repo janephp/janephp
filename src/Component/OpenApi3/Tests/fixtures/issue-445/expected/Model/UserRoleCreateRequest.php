@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class UserRoleCreateRequest extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class UserRoleCreateRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -101,5 +104,9 @@ class UserRoleCreateRequest extends \ArrayObject
         $this->initialized['requestId'] = true;
         $this->requestId = $requestId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['names' => ['names', 'getNames', 'setNames'], 'userRights' => ['userRights', 'getUserRights', 'setUserRights'], 'requestId' => ['requestId', 'getRequestId', 'setRequestId']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ByoipPrefixUpdate extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ByoipPrefixUpdate implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ByoipPrefixUpdate extends \ArrayObject
         $this->initialized['advertise'] = true;
         $this->advertise = $advertise;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['advertise' => ['advertise', 'getAdvertise', 'setAdvertise']];
     }
 }

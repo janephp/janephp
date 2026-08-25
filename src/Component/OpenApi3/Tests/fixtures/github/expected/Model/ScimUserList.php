@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ScimUserList extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ScimUserList implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -127,5 +130,9 @@ class ScimUserList extends \ArrayObject
         $this->initialized['resources'] = true;
         $this->resources = $resources;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['schemas' => ['schemas', 'getSchemas', 'setSchemas'], 'totalResults' => ['totalResults', 'getTotalResults', 'setTotalResults'], 'itemsPerPage' => ['itemsPerPage', 'getItemsPerPage', 'setItemsPerPage'], 'startIndex' => ['startIndex', 'getStartIndex', 'setStartIndex'], 'resources' => ['Resources', 'getResources', 'setResources']];
     }
 }

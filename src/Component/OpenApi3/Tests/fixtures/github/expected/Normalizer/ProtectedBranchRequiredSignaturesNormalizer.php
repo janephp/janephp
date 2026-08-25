@@ -63,7 +63,7 @@ class ProtectedBranchRequiredSignaturesNormalizer implements DenormalizerInterfa
         $dataArray = [];
         $dataArray['url'] = $data->getUrl();
         $dataArray['enabled'] = $data->getEnabled();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

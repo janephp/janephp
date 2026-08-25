@@ -168,7 +168,7 @@ class IndexedFieldThresholdExceededExceptionNormalizer implements DenormalizerIn
         if ($data->isInitialized('indexedFieldThreshold') && null !== $data->getIndexedFieldThreshold()) {
             $dataArray['indexedFieldThreshold'] = $data->getIndexedFieldThreshold();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

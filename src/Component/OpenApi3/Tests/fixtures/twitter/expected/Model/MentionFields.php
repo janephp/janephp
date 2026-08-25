@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class MentionFields extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class MentionFields implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class MentionFields extends \ArrayObject
         $this->initialized['username'] = true;
         $this->username = $username;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['username' => ['username', 'getUsername', 'setUsername']];
     }
 }

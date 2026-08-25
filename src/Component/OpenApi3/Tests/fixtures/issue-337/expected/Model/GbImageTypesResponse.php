@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbImageTypesResponse extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbImageTypesResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class GbImageTypesResponse extends \ArrayObject
         $this->initialized['availableTypes'] = true;
         $this->availableTypes = $availableTypes;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['country' => ['country', 'getCountry', 'setCountry'], 'availableTypes' => ['availableTypes', 'getAvailableTypes', 'setAvailableTypes']];
     }
 }

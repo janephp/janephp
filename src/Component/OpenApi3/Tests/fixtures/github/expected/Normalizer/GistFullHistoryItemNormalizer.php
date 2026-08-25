@@ -89,7 +89,7 @@ class GistFullHistoryItemNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('committedAt') && null !== $data->getCommittedAt()) {
             $dataArray['committed_at'] = $data->getCommittedAt();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

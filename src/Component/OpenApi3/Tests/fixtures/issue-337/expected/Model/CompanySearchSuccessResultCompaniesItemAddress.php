@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class CompanySearchSuccessResultCompaniesItemAddress extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class CompanySearchSuccessResultCompaniesItemAddress implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class CompanySearchSuccessResultCompaniesItemAddress extends \ArrayObject
         $this->initialized['province'] = true;
         $this->province = $province;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['simpleValue' => ['simpleValue', 'getSimpleValue', 'setSimpleValue'], 'street' => ['street', 'getStreet', 'setStreet'], 'city' => ['city', 'getCity', 'setCity'], 'postCode' => ['postCode', 'getPostCode', 'setPostCode'], 'province' => ['province', 'getProvince', 'setProvince']];
     }
 }

@@ -100,7 +100,7 @@ class OpensearchIndexNormalizer implements DenormalizerInterface, NormalizerInte
         if ($data->isInitialized('health') && null !== $data->getHealth()) {
             $dataArray['health'] = $data->getHealth();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

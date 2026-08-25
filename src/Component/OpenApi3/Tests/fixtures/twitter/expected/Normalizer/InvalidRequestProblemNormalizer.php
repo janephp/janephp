@@ -77,7 +77,7 @@ class InvalidRequestProblemNormalizer implements DenormalizerInterface, Normaliz
         }
         $dataArray['title'] = $data->getTitle();
         $dataArray['detail'] = $data->getDetail();
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

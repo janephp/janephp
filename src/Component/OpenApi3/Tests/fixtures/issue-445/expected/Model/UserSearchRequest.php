@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class UserSearchRequest extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class UserSearchRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -393,5 +396,9 @@ class UserSearchRequest extends \ArrayObject
         $this->initialized['aggregators'] = true;
         $this->aggregators = $aggregators;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['searchString' => ['searchString', 'getSearchString', 'setSearchString'], 'searchBehaviors' => ['searchBehaviors', 'getSearchBehaviors', 'setSearchBehaviors'], 'filter' => ['filter', 'getFilter', 'setFilter'], 'lifeCycleFilter' => ['lifeCycleFilter', 'getLifeCycleFilter', 'setLifeCycleFilter'], 'userRightsFilter' => ['userRightsFilter', 'getUserRightsFilter', 'setUserRightsFilter'], 'aggregationFilters' => ['aggregationFilters', 'getAggregationFilters', 'setAggregationFilters'], 'includeServiceUser' => ['includeServiceUser', 'getIncludeServiceUser', 'setIncludeServiceUser'], 'editableOnly' => ['editableOnly', 'getEditableOnly', 'setEditableOnly'], 'sort' => ['sort', 'getSort', 'setSort'], 'limit' => ['limit', 'getLimit', 'setLimit'], 'pageToken' => ['pageToken', 'getPageToken', 'setPageToken'], 'debugMode' => ['debugMode', 'getDebugMode', 'setDebugMode'], 'aggregators' => ['aggregators', 'getAggregators', 'setAggregators']];
     }
 }

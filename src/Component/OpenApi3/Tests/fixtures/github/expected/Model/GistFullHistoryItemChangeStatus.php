@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class GistFullHistoryItemChangeStatus extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class GistFullHistoryItemChangeStatus implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class GistFullHistoryItemChangeStatus extends \ArrayObject
         $this->initialized['total'] = true;
         $this->total = $total;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['deletions' => ['deletions', 'getDeletions', 'setDeletions'], 'additions' => ['additions', 'getAdditions', 'setAdditions'], 'total' => ['total', 'getTotal', 'setTotal']];
     }
 }

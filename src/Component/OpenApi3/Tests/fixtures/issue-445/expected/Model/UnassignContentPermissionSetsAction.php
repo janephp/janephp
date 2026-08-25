@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class UnassignContentPermissionSetsAction extends BusinessRuleAction
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class UnassignContentPermissionSetsAction extends BusinessRuleAction implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class UnassignContentPermissionSetsAction extends BusinessRuleAction
         $this->initialized['permissionSetIds'] = true;
         $this->permissionSetIds = $permissionSetIds;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['permissionSetIds' => ['permissionSetIds', 'getPermissionSetIds', 'setPermissionSetIds']];
     }
 }

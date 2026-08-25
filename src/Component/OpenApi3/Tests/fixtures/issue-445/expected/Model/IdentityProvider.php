@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class IdentityProvider extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class IdentityProvider implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -207,5 +210,9 @@ class IdentityProvider extends \ArrayObject
         $this->initialized['displayName'] = true;
         $this->displayName = $displayName;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['claimMapping' => ['claimMapping', 'getClaimMapping', 'setClaimMapping'], 'groupClaimType' => ['groupClaimType', 'getGroupClaimType', 'setGroupClaimType'], 'groupMapping' => ['groupMapping', 'getGroupMapping', 'setGroupMapping'], 'fallbackUserRoleId' => ['fallbackUserRoleId', 'getFallbackUserRoleId', 'setFallbackUserRoleId'], 'id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'displayName' => ['displayName', 'getDisplayName', 'setDisplayName']];
     }
 }

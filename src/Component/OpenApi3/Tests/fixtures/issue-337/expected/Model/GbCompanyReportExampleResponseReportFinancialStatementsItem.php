@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportFinancialStatementsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -209,5 +212,9 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItem extends \Array
         $this->initialized['ratios'] = true;
         $this->ratios = $ratios;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'yearEndDate' => ['yearEndDate', 'getYearEndDate', 'setYearEndDate'], 'numberOfWeeks' => ['numberOfWeeks', 'getNumberOfWeeks', 'setNumberOfWeeks'], 'currency' => ['currency', 'getCurrency', 'setCurrency'], 'consolidatedAccounts' => ['consolidatedAccounts', 'getConsolidatedAccounts', 'setConsolidatedAccounts'], 'profitAndLoss' => ['profitAndLoss', 'getProfitAndLoss', 'setProfitAndLoss'], 'balanceSheet' => ['balanceSheet', 'getBalanceSheet', 'setBalanceSheet'], 'otherFinancials' => ['otherFinancials', 'getOtherFinancials', 'setOtherFinancials'], 'ratios' => ['ratios', 'getRatios', 'setRatios']];
     }
 }

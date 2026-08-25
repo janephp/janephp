@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class CreateFreshInvestigationRequest extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class CreateFreshInvestigationRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class CreateFreshInvestigationRequest extends \ArrayObject
         $this->initialized['searchCriteria'] = true;
         $this->searchCriteria = $searchCriteria;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['consent' => ['consent', 'getConsent', 'setConsent'], 'contactInfo' => ['contactInfo', 'getContactInfo', 'setContactInfo'], 'chargeReference' => ['chargeReference', 'getChargeReference', 'setChargeReference'], 'searchCriteria' => ['searchCriteria', 'getSearchCriteria', 'setSearchCriteria']];
     }
 }

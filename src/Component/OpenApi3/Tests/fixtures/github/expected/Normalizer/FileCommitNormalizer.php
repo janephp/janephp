@@ -68,7 +68,7 @@ class FileCommitNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('commit') && null !== $data->getCommit()) {
             $dataArray['commit'] = $data->getCommit() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCommit(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

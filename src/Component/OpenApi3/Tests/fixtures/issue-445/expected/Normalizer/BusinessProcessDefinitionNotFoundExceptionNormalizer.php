@@ -154,7 +154,7 @@ class BusinessProcessDefinitionNotFoundExceptionNormalizer implements Denormaliz
         if ($data->isInitialized('processDefinitionId') && null !== $data->getProcessDefinitionId()) {
             $dataArray['processDefinitionId'] = $data->getProcessDefinitionId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

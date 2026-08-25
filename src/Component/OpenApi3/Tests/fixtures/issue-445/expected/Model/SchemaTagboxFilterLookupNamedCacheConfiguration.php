@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaTagboxFilterLookupNamedCacheConfiguration extends NamedCacheConfigurationBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class SchemaTagboxFilterLookupNamedCacheConfiguration extends NamedCacheConfigurationBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class SchemaTagboxFilterLookupNamedCacheConfiguration extends NamedCacheConfigur
         $this->initialized['schemaId'] = true;
         $this->schemaId = $schemaId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['schemaId' => ['schemaId', 'getSchemaId', 'setSchemaId']];
     }
 }

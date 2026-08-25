@@ -69,7 +69,7 @@ class ComplianceSearchResultDataBodySearchResultNormalizer implements Denormaliz
         if ($data->isInitialized('searchEngineVersion') && null !== $data->getSearchEngineVersion()) {
             $dataArray['searchEngineVersion'] = $data->getSearchEngineVersion();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

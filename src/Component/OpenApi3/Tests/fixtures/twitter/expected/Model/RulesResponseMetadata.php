@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class RulesResponseMetadata extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class RulesResponseMetadata implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class RulesResponseMetadata extends \ArrayObject
         $this->initialized['summary'] = true;
         $this->summary = $summary;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['sent' => ['sent', 'getSent', 'setSent'], 'summary' => ['summary', 'getSummary', 'setSummary']];
     }
 }

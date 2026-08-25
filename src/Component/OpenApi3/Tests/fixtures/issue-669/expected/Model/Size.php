@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class Size extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class Size implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -347,5 +350,9 @@ class Size extends \ArrayObject
         $this->initialized['gpuInfo'] = true;
         $this->gpuInfo = $gpuInfo;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['slug' => ['slug', 'getSlug', 'setSlug'], 'memory' => ['memory', 'getMemory', 'setMemory'], 'vcpus' => ['vcpus', 'getVcpus', 'setVcpus'], 'disk' => ['disk', 'getDisk', 'setDisk'], 'transfer' => ['transfer', 'getTransfer', 'setTransfer'], 'priceMonthly' => ['price_monthly', 'getPriceMonthly', 'setPriceMonthly'], 'priceHourly' => ['price_hourly', 'getPriceHourly', 'setPriceHourly'], 'regions' => ['regions', 'getRegions', 'setRegions'], 'available' => ['available', 'getAvailable', 'setAvailable'], 'description' => ['description', 'getDescription', 'setDescription'], 'diskInfo' => ['disk_info', 'getDiskInfo', 'setDiskInfo'], 'gpuInfo' => ['gpu_info', 'getGpuInfo', 'setGpuInfo']];
     }
 }

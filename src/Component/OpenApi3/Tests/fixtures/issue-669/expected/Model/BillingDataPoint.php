@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class BillingDataPoint extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class BillingDataPoint implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -207,5 +210,9 @@ class BillingDataPoint extends \ArrayObject
         $this->initialized['groupDescription'] = true;
         $this->groupDescription = $groupDescription;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['usageTeamUrn' => ['usage_team_urn', 'getUsageTeamUrn', 'setUsageTeamUrn'], 'startDate' => ['start_date', 'getStartDate', 'setStartDate'], 'totalAmount' => ['total_amount', 'getTotalAmount', 'setTotalAmount'], 'region' => ['region', 'getRegion', 'setRegion'], 'sku' => ['sku', 'getSku', 'setSku'], 'description' => ['description', 'getDescription', 'setDescription'], 'groupDescription' => ['group_description', 'getGroupDescription', 'setGroupDescription']];
     }
 }

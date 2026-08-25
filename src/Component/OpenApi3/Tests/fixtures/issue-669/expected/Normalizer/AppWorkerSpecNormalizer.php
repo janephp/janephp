@@ -189,7 +189,7 @@ class AppWorkerSpecNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('livenessHealthCheck') && null !== $data->getLivenessHealthCheck()) {
             $dataArray['liveness_health_check'] = $data->getLivenessHealthCheck() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLivenessHealthCheck(), 'json', $context));
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

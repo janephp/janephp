@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ElasticsearchLogsink extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ElasticsearchLogsink implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class ElasticsearchLogsink extends \ArrayObject
         $this->initialized['ca'] = true;
         $this->ca = $ca;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'indexPrefix' => ['index_prefix', 'getIndexPrefix', 'setIndexPrefix'], 'indexDaysMax' => ['index_days_max', 'getIndexDaysMax', 'setIndexDaysMax'], 'timeout' => ['timeout', 'getTimeout', 'setTimeout'], 'ca' => ['ca', 'getCa', 'setCa']];
     }
 }

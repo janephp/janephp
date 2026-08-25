@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class PartnerAttachmentRemoteRoute extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class PartnerAttachmentRemoteRoute implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class PartnerAttachmentRemoteRoute extends \ArrayObject
         $this->initialized['cidr'] = true;
         $this->cidr = $cidr;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['cidr' => ['cidr', 'getCidr', 'setCidr']];
     }
 }

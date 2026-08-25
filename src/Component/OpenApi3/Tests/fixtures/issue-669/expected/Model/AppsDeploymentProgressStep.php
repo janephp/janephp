@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsDeploymentProgressStep extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsDeploymentProgressStep implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -202,5 +205,9 @@ class AppsDeploymentProgressStep extends \ArrayObject
         $this->initialized['steps'] = true;
         $this->steps = $steps;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['componentName' => ['component_name', 'getComponentName', 'setComponentName'], 'endedAt' => ['ended_at', 'getEndedAt', 'setEndedAt'], 'messageBase' => ['message_base', 'getMessageBase', 'setMessageBase'], 'name' => ['name', 'getName', 'setName'], 'reason' => ['reason', 'getReason', 'setReason'], 'startedAt' => ['started_at', 'getStartedAt', 'setStartedAt'], 'status' => ['status', 'getStatus', 'setStatus'], 'steps' => ['steps', 'getSteps', 'setSteps']];
     }
 }

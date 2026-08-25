@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseDatabaseSchemaRegistryConfig extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseDatabaseSchemaRegistryConfig implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ResponseDatabaseSchemaRegistryConfig extends \ArrayObject
         $this->initialized['compatibilityLevel'] = true;
         $this->compatibilityLevel = $compatibilityLevel;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['compatibilityLevel' => ['compatibility_level', 'getCompatibilityLevel', 'setCompatibilityLevel']];
     }
 }

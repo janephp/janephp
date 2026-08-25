@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class GistsPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class GistsPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -89,5 +92,9 @@ class GistsPostBody extends \ArrayObject
         $this->initialized['public'] = true;
         $this->public = $public;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['description' => ['description', 'getDescription', 'setDescription'], 'files' => ['files', 'getFiles', 'setFiles'], 'public' => ['public', 'getPublic', 'setPublic']];
     }
 }

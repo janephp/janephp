@@ -112,7 +112,7 @@ class AppsDeploymentProgressNormalizer implements DenormalizerInterface, Normali
         if ($data->isInitialized('totalSteps') && null !== $data->getTotalSteps()) {
             $dataArray['total_steps'] = $data->getTotalSteps();
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

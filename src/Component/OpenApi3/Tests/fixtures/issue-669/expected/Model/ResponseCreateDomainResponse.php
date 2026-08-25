@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseCreateDomainResponse extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseCreateDomainResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseCreateDomainResponse extends \ArrayObject
         $this->initialized['domain'] = true;
         $this->domain = $domain;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['domain' => ['domain', 'getDomain', 'setDomain']];
     }
 }

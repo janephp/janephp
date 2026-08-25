@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiAgentChildRelationshipVerion extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiAgentChildRelationshipVerion implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class ApiAgentChildRelationshipVerion extends \ArrayObject
         $this->initialized['routeName'] = true;
         $this->routeName = $routeName;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['agentName' => ['agent_name', 'getAgentName', 'setAgentName'], 'childAgentUuid' => ['child_agent_uuid', 'getChildAgentUuid', 'setChildAgentUuid'], 'ifCase' => ['if_case', 'getIfCase', 'setIfCase'], 'isDeleted' => ['is_deleted', 'getIsDeleted', 'setIsDeleted'], 'routeName' => ['route_name', 'getRouteName', 'setRouteName']];
     }
 }

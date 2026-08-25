@@ -114,7 +114,7 @@ class OutputDataDocumentNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('pageCount') && null !== $data->getPageCount()) {
             $dataArray['pageCount'] = $data->getPageCount();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

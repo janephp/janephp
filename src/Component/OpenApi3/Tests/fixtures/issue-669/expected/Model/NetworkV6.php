@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class NetworkV6 extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class NetworkV6 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -130,5 +133,9 @@ class NetworkV6 extends \ArrayObject
         $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['ipAddress' => ['ip_address', 'getIpAddress', 'setIpAddress'], 'netmask' => ['netmask', 'getNetmask', 'setNetmask'], 'gateway' => ['gateway', 'getGateway', 'setGateway'], 'type' => ['type', 'getType', 'setType']];
     }
 }

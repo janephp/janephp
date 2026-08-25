@@ -65,7 +65,7 @@ class PullRequestMinimalHeadRepoNormalizer implements DenormalizerInterface, Nor
         $dataArray['id'] = $data->getId();
         $dataArray['url'] = $data->getUrl();
         $dataArray['name'] = $data->getName();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class LookupCacheTransformation extends BusinessRuleTransformation
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class LookupCacheTransformation extends BusinessRuleTransformation implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class LookupCacheTransformation extends BusinessRuleTransformation
         $this->initialized['namedCache'] = true;
         $this->namedCache = $namedCache;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['namedCache' => ['namedCache', 'getNamedCache', 'setNamedCache']];
     }
 }

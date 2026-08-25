@@ -75,7 +75,7 @@ class AppIngressSpecRuleNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('redirect') && null !== $data->getRedirect()) {
             $dataArray['redirect'] = $data->getRedirect() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getRedirect(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

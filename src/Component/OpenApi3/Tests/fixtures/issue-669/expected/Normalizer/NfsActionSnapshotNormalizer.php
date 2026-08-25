@@ -64,7 +64,7 @@ class NfsActionSnapshotNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('params') && null !== $data->getParams()) {
             $dataArray['params'] = $data->getParams() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getParams(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

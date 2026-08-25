@@ -154,7 +154,7 @@ class SchemaImportVersionMismatchExceptionNormalizer implements DenormalizerInte
         if ($data->isInitialized('expectedVersion') && null !== $data->getExpectedVersion()) {
             $dataArray['expectedVersion'] = $data->getExpectedVersion();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

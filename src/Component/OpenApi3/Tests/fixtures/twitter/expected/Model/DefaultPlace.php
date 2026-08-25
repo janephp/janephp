@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class DefaultPlace extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class DefaultPlace implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -199,5 +202,9 @@ class DefaultPlace extends \ArrayObject
         $this->initialized['containedWithin'] = true;
         $this->containedWithin = $containedWithin;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['format' => ['format', 'getFormat', 'setFormat'], 'id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'countryCode' => ['country_code', 'getCountryCode', 'setCountryCode'], 'placeType' => ['place_type', 'getPlaceType', 'setPlaceType'], 'fullName' => ['full_name', 'getFullName', 'setFullName'], 'country' => ['country', 'getCountry', 'setCountry'], 'containedWithin' => ['contained_within', 'getContainedWithin', 'setContainedWithin']];
     }
 }

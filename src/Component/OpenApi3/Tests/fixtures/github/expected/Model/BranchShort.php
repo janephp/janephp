@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class BranchShort extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class BranchShort implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class BranchShort extends \ArrayObject
         $this->initialized['protected'] = true;
         $this->protected = $protected;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'commit' => ['commit', 'getCommit', 'setCommit'], 'protected' => ['protected', 'getProtected', 'setProtected']];
     }
 }

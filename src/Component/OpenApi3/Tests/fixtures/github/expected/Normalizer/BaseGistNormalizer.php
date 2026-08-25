@@ -208,7 +208,7 @@ class BaseGistNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $dataArray['history'] = $values_2;
         }
-        foreach ($data as $key_1 => $value_3) {
+        foreach ($data->additionalPropertyEntries() as $key_1 => $value_3) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_3;
             }

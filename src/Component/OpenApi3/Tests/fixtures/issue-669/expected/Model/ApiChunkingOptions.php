@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiChunkingOptions extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiChunkingOptions implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class ApiChunkingOptions extends \ArrayObject
         $this->initialized['semanticThreshold'] = true;
         $this->semanticThreshold = $semanticThreshold;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['childChunkSize' => ['child_chunk_size', 'getChildChunkSize', 'setChildChunkSize'], 'maxChunkSize' => ['max_chunk_size', 'getMaxChunkSize', 'setMaxChunkSize'], 'parentChunkSize' => ['parent_chunk_size', 'getParentChunkSize', 'setParentChunkSize'], 'semanticThreshold' => ['semantic_threshold', 'getSemanticThreshold', 'setSemanticThreshold']];
     }
 }

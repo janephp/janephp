@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class ResourceNotFoundProblem extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class ResourceNotFoundProblem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -149,5 +152,9 @@ class ResourceNotFoundProblem extends \ArrayObject
         $this->initialized['detail'] = true;
         $this->detail = $detail;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'parameter' => ['parameter', 'getParameter', 'setParameter'], 'value' => ['value', 'getValue', 'setValue'], 'resourceType' => ['resource_type', 'getResourceType', 'setResourceType'], 'title' => ['title', 'getTitle', 'setTitle'], 'detail' => ['detail', 'getDetail', 'setDetail']];
     }
 }

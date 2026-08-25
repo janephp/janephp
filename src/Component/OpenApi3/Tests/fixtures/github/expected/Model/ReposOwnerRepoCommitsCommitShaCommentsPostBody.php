@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoCommitsCommitShaCommentsPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoCommitsCommitShaCommentsPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class ReposOwnerRepoCommitsCommitShaCommentsPostBody extends \ArrayObject
         $this->initialized['line'] = true;
         $this->line = $line;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['body' => ['body', 'getBody', 'setBody'], 'path' => ['path', 'getPath', 'setPath'], 'position' => ['position', 'getPosition', 'setPosition'], 'line' => ['line', 'getLine', 'setLine']];
     }
 }

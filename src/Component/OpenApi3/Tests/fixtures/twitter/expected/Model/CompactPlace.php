@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class CompactPlace extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class CompactPlace implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -111,5 +114,9 @@ class CompactPlace extends \ArrayObject
         $this->initialized['countryCode'] = true;
         $this->countryCode = $countryCode;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['format' => ['format', 'getFormat', 'setFormat'], 'id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'countryCode' => ['country_code', 'getCountryCode', 'setCountryCode']];
     }
 }

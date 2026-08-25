@@ -163,7 +163,7 @@ class AppManifestsCodeConversionsPostResponse201Normalizer implements Denormaliz
         $dataArray['client_secret'] = $data->getClientSecret();
         $dataArray['webhook_secret'] = $data->getWebhookSecret();
         $dataArray['pem'] = $data->getPem();
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

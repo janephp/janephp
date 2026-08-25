@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsDeploymentFunctions extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsDeploymentFunctions implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -89,5 +92,9 @@ class AppsDeploymentFunctions extends \ArrayObject
         $this->initialized['namespace'] = true;
         $this->namespace = $namespace;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'sourceCommitHash' => ['source_commit_hash', 'getSourceCommitHash', 'setSourceCommitHash'], 'namespace' => ['namespace', 'getNamespace', 'setNamespace']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DatabaseLayoutOptions extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DatabaseLayoutOptions implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class DatabaseLayoutOptions extends \ArrayObject
         $this->initialized['layouts'] = true;
         $this->layouts = $layouts;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['layouts' => ['layouts', 'getLayouts', 'setLayouts']];
     }
 }

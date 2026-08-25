@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class GeoPointWithinPolygonCondition extends BusinessRuleCondition
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class GeoPointWithinPolygonCondition extends BusinessRuleCondition implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -70,5 +73,9 @@ class GeoPointWithinPolygonCondition extends BusinessRuleCondition
         $this->initialized['polygon'] = true;
         $this->polygon = $polygon;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['fieldPath' => ['fieldPath', 'getFieldPath', 'setFieldPath'], 'polygon' => ['polygon', 'getPolygon', 'setPolygon']];
     }
 }

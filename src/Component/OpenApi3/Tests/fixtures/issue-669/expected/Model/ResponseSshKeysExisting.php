@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseSshKeysExisting extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseSshKeysExisting implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseSshKeysExisting extends \ArrayObject
         $this->initialized['sshKey'] = true;
         $this->sshKey = $sshKey;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['sshKey' => ['ssh_key', 'getSshKey', 'setSshKey']];
     }
 }

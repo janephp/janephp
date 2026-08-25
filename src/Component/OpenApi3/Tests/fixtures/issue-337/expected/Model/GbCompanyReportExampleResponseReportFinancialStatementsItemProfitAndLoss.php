@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -341,5 +344,9 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemProfitAndLoss e
         $this->initialized['retainedProfit'] = true;
         $this->retainedProfit = $retainedProfit;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['revenue' => ['revenue', 'getRevenue', 'setRevenue'], 'operatingCosts' => ['operatingCosts', 'getOperatingCosts', 'setOperatingCosts'], 'operatingProfit' => ['operatingProfit', 'getOperatingProfit', 'setOperatingProfit'], 'wagesAndSalaries' => ['wagesAndSalaries', 'getWagesAndSalaries', 'setWagesAndSalaries'], 'pensionCosts' => ['pensionCosts', 'getPensionCosts', 'setPensionCosts'], 'depreciation' => ['depreciation', 'getDepreciation', 'setDepreciation'], 'amortisation' => ['amortisation', 'getAmortisation', 'setAmortisation'], 'financialExpenses' => ['financialExpenses', 'getFinancialExpenses', 'setFinancialExpenses'], 'profitBeforeTax' => ['profitBeforeTax', 'getProfitBeforeTax', 'setProfitBeforeTax'], 'tax' => ['tax', 'getTax', 'setTax'], 'profitAfterTax' => ['profitAfterTax', 'getProfitAfterTax', 'setProfitAfterTax'], 'dividends' => ['dividends', 'getDividends', 'setDividends'], 'minorityInterests' => ['minorityInterests', 'getMinorityInterests', 'setMinorityInterests'], 'otherAppropriations' => ['otherAppropriations', 'getOtherAppropriations', 'setOtherAppropriations'], 'retainedProfit' => ['retainedProfit', 'getRetainedProfit', 'setRetainedProfit']];
     }
 }

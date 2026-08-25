@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class PollOption extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class PollOption implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class PollOption extends \ArrayObject
         $this->initialized['votes'] = true;
         $this->votes = $votes;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['position' => ['position', 'getPosition', 'setPosition'], 'label' => ['label', 'getLabel', 'setLabel'], 'votes' => ['votes', 'getVotes', 'setVotes']];
     }
 }

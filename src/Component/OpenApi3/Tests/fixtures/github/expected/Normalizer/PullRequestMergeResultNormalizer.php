@@ -68,7 +68,7 @@ class PullRequestMergeResultNormalizer implements DenormalizerInterface, Normali
         $dataArray['sha'] = $data->getSha();
         $dataArray['merged'] = $data->getMerged();
         $dataArray['message'] = $data->getMessage();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

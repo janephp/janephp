@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class OutputDataAudio extends OutputDataBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class OutputDataAudio extends OutputDataBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class OutputDataAudio extends OutputDataBase
         $this->initialized['durationInSeconds'] = true;
         $this->durationInSeconds = $durationInSeconds;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['durationInSeconds' => ['durationInSeconds', 'getDurationInSeconds', 'setDurationInSeconds']];
     }
 }

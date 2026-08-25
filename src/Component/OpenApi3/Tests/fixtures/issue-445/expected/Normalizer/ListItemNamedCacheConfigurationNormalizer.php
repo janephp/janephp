@@ -122,7 +122,7 @@ class ListItemNamedCacheConfigurationNormalizer implements DenormalizerInterface
         if ($data->isInitialized('includeAllSchemaChildren') && null !== $data->getIncludeAllSchemaChildren()) {
             $dataArray['includeAllSchemaChildren'] = $data->getIncludeAllSchemaChildren();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class PullRequestMinimalBase extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class PullRequestMinimalBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class PullRequestMinimalBase extends \ArrayObject
         $this->initialized['repo'] = true;
         $this->repo = $repo;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['ref' => ['ref', 'getRef', 'setRef'], 'sha' => ['sha', 'getSha', 'setSha'], 'repo' => ['repo', 'getRepo', 'setRepo']];
     }
 }

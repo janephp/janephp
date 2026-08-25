@@ -134,7 +134,7 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if ($data->isInitialized('createdDate') && null !== $data->getCreatedDate()) {
             $dataArray['createdDate'] = $data->getCreatedDate()->format('Y-m-d\TH:i:sP');
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

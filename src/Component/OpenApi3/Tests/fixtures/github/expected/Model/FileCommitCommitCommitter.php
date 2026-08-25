@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class FileCommitCommitCommitter extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class FileCommitCommitCommitter implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class FileCommitCommitCommitter extends \ArrayObject
         $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['date' => ['date', 'getDate', 'setDate'], 'name' => ['name', 'getName', 'setName'], 'email' => ['email', 'getEmail', 'setEmail']];
     }
 }

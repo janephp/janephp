@@ -71,7 +71,7 @@ class WorkflowUsageBillableNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('wINDOWS') && null !== $data->getWINDOWS()) {
             $dataArray['WINDOWS'] = $data->getWINDOWS() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getWINDOWS(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class UrlEntity extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class UrlEntity implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -257,5 +260,9 @@ class UrlEntity extends \ArrayObject
         $this->initialized['images'] = true;
         $this->images = $images;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['start' => ['start', 'getStart', 'setStart'], 'end' => ['end', 'getEnd', 'setEnd'], 'url' => ['url', 'getUrl', 'setUrl'], 'expandedUrl' => ['expanded_url', 'getExpandedUrl', 'setExpandedUrl'], 'displayUrl' => ['display_url', 'getDisplayUrl', 'setDisplayUrl'], 'status' => ['status', 'getStatus', 'setStatus'], 'title' => ['title', 'getTitle', 'setTitle'], 'description' => ['description', 'getDescription', 'setDescription'], 'images' => ['images', 'getImages', 'setImages']];
     }
 }

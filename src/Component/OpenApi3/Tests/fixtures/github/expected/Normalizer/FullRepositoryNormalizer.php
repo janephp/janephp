@@ -631,7 +631,7 @@ class FullRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('anonymousAccessEnabled') && null !== $data->getAnonymousAccessEnabled()) {
             $dataArray['anonymous_access_enabled'] = $data->getAnonymousAccessEnabled();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

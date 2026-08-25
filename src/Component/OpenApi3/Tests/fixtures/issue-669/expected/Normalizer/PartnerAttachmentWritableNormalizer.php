@@ -101,7 +101,7 @@ class PartnerAttachmentWritableNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('redundancyZone') && null !== $data->getRedundancyZone()) {
             $dataArray['redundancy_zone'] = $data->getRedundancyZone();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

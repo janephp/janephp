@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiStartKnowledgeBaseIndexingJobInputPublic extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiStartKnowledgeBaseIndexingJobInputPublic implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ApiStartKnowledgeBaseIndexingJobInputPublic extends \ArrayObject
         $this->initialized['knowledgeBaseUuid'] = true;
         $this->knowledgeBaseUuid = $knowledgeBaseUuid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['dataSourceUuids' => ['data_source_uuids', 'getDataSourceUuids', 'setDataSourceUuids'], 'knowledgeBaseUuid' => ['knowledge_base_uuid', 'getKnowledgeBaseUuid', 'setKnowledgeBaseUuid']];
     }
 }

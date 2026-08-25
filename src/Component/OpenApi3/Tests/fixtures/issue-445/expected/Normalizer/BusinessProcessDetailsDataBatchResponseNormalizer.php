@@ -62,7 +62,7 @@ class BusinessProcessDetailsDataBatchResponseNormalizer implements DenormalizerI
         $dataArray['kind'] = $data->getKind();
         $dataArray['docType'] = $data->getDocType();
         $dataArray['response'] = $data->getResponse();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

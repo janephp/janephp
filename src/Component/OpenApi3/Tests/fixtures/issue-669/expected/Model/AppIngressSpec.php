@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppIngressSpec extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppIngressSpec implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class AppIngressSpec extends \ArrayObject
         $this->initialized['rules'] = true;
         $this->rules = $rules;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['rules' => ['rules', 'getRules', 'setRules']];
     }
 }

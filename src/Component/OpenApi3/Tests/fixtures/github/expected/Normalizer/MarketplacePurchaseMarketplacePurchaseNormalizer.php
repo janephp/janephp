@@ -124,7 +124,7 @@ class MarketplacePurchaseMarketplacePurchaseNormalizer implements DenormalizerIn
         if ($data->isInitialized('plan') && null !== $data->getPlan()) {
             $dataArray['plan'] = $data->getPlan() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPlan(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

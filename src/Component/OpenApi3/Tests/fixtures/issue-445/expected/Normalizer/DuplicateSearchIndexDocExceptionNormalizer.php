@@ -143,7 +143,7 @@ class DuplicateSearchIndexDocExceptionNormalizer implements DenormalizerInterfac
         if ($data->isInitialized('searchIndexDocId') && null !== $data->getSearchIndexDocId()) {
             $dataArray['searchIndexDocId'] = $data->getSearchIndexDocId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

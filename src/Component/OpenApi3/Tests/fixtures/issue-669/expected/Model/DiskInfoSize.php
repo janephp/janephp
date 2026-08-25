@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DiskInfoSize extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DiskInfoSize implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class DiskInfoSize extends \ArrayObject
         $this->initialized['unit'] = true;
         $this->unit = $unit;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['amount' => ['amount', 'getAmount', 'setAmount'], 'unit' => ['unit', 'getUnit', 'setUnit']];
     }
 }

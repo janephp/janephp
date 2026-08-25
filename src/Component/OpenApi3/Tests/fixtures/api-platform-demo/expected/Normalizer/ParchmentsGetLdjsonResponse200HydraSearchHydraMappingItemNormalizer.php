@@ -82,7 +82,7 @@ class ParchmentsGetLdjsonResponse200HydraSearchHydraMappingItemNormalizer implem
         if ($data->isInitialized('required') && null !== $data->getRequired()) {
             $dataArray['required'] = $data->getRequired();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

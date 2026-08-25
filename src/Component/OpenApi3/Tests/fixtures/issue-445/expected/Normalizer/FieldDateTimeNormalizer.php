@@ -172,7 +172,7 @@ class FieldDateTimeNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('initializeOnItemCreation') && null !== $data->getInitializeOnItemCreation()) {
             $dataArray['initializeOnItemCreation'] = $data->getInitializeOnItemCreation();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

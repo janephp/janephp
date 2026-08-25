@@ -136,7 +136,7 @@ class ApiEvaluationMetricNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('rangeMin') && null !== $data->getRangeMin()) {
             $dataArray['range_min'] = $data->getRangeMin();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

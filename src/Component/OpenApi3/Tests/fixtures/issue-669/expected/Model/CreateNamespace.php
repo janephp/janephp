@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class CreateNamespace extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class CreateNamespace implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class CreateNamespace extends \ArrayObject
         $this->initialized['label'] = true;
         $this->label = $label;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['region' => ['region', 'getRegion', 'setRegion'], 'label' => ['label', 'getLabel', 'setLabel']];
     }
 }

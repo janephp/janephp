@@ -101,7 +101,7 @@ class OutputRenderedEventNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('renderingState') && null !== $data->getRenderingState()) {
             $dataArray['renderingState'] = $data->getRenderingState();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

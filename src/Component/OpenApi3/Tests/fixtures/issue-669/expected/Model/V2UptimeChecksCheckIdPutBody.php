@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class V2UptimeChecksCheckIdPutBody extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class V2UptimeChecksCheckIdPutBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class V2UptimeChecksCheckIdPutBody extends \ArrayObject
         $this->initialized['enabled'] = true;
         $this->enabled = $enabled;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'type' => ['type', 'getType', 'setType'], 'target' => ['target', 'getTarget', 'setTarget'], 'regions' => ['regions', 'getRegions', 'setRegions'], 'enabled' => ['enabled', 'getEnabled', 'setEnabled']];
     }
 }

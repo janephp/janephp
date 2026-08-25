@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseGarbageCollection extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseGarbageCollection implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseGarbageCollection extends \ArrayObject
         $this->initialized['garbageCollection'] = true;
         $this->garbageCollection = $garbageCollection;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['garbageCollection' => ['garbage_collection', 'getGarbageCollection', 'setGarbageCollection']];
     }
 }

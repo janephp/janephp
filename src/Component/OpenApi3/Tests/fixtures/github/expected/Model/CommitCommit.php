@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CommitCommit extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CommitCommit implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -165,5 +168,9 @@ class CommitCommit extends \ArrayObject
         $this->initialized['verification'] = true;
         $this->verification = $verification;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'author' => ['author', 'getAuthor', 'setAuthor'], 'committer' => ['committer', 'getCommitter', 'setCommitter'], 'message' => ['message', 'getMessage', 'setMessage'], 'commentCount' => ['comment_count', 'getCommentCount', 'setCommentCount'], 'tree' => ['tree', 'getTree', 'setTree'], 'verification' => ['verification', 'getVerification', 'setVerification']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiIndexedDataSource extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiIndexedDataSource implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -397,5 +400,9 @@ class ApiIndexedDataSource extends \ArrayObject
         $this->initialized['totalFileCount'] = true;
         $this->totalFileCount = $totalFileCount;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['completedAt' => ['completed_at', 'getCompletedAt', 'setCompletedAt'], 'dataSourceUuid' => ['data_source_uuid', 'getDataSourceUuid', 'setDataSourceUuid'], 'errorDetails' => ['error_details', 'getErrorDetails', 'setErrorDetails'], 'errorMsg' => ['error_msg', 'getErrorMsg', 'setErrorMsg'], 'failedItemCount' => ['failed_item_count', 'getFailedItemCount', 'setFailedItemCount'], 'indexedFileCount' => ['indexed_file_count', 'getIndexedFileCount', 'setIndexedFileCount'], 'indexedItemCount' => ['indexed_item_count', 'getIndexedItemCount', 'setIndexedItemCount'], 'removedItemCount' => ['removed_item_count', 'getRemovedItemCount', 'setRemovedItemCount'], 'skippedItemCount' => ['skipped_item_count', 'getSkippedItemCount', 'setSkippedItemCount'], 'startedAt' => ['started_at', 'getStartedAt', 'setStartedAt'], 'status' => ['status', 'getStatus', 'setStatus'], 'totalBytes' => ['total_bytes', 'getTotalBytes', 'setTotalBytes'], 'totalBytesIndexed' => ['total_bytes_indexed', 'getTotalBytesIndexed', 'setTotalBytesIndexed'], 'totalFileCount' => ['total_file_count', 'getTotalFileCount', 'setTotalFileCount']];
     }
 }

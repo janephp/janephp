@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseFloatingIp extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseFloatingIp implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseFloatingIp extends \ArrayObject
         $this->initialized['floatingIp'] = true;
         $this->floatingIp = $floatingIp;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['floatingIp' => ['floating_ip', 'getFloatingIp', 'setFloatingIp']];
     }
 }

@@ -62,7 +62,7 @@ class MonitoringPortfoliosPortfolioIdCompaniesIdPatchBodyNormalizer implements D
         $dataArray['personalReference'] = $data->getPersonalReference();
         $dataArray['freeText'] = $data->getFreeText();
         $dataArray['personalLimit'] = $data->getPersonalLimit();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

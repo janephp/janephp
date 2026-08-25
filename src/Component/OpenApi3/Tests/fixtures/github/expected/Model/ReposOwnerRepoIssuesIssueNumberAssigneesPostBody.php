@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody extends \ArrayObject
         $this->initialized['assignees'] = true;
         $this->assignees = $assignees;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['assignees' => ['assignees', 'getAssignees', 'setAssignees']];
     }
 }

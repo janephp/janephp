@@ -118,7 +118,7 @@ class CredentialAuthorizationNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('credentialAccessedAt') && null !== $data->getCredentialAccessedAt()) {
             $dataArray['credential_accessed_at'] = $data->getCredentialAccessedAt()?->format('Y-m-d\TH:i:sP');
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

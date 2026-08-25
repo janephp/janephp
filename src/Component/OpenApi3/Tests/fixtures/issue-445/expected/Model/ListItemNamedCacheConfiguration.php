@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ListItemNamedCacheConfiguration extends NamedCacheConfigurationBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ListItemNamedCacheConfiguration extends NamedCacheConfigurationBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class ListItemNamedCacheConfiguration extends NamedCacheConfigurationBase
         $this->initialized['includeAllSchemaChildren'] = true;
         $this->includeAllSchemaChildren = $includeAllSchemaChildren;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['schemaId' => ['schemaId', 'getSchemaId', 'setSchemaId'], 'keyFields' => ['keyFields', 'getKeyFields', 'setKeyFields'], 'filter' => ['filter', 'getFilter', 'setFilter'], 'includeAllSchemaChildren' => ['includeAllSchemaChildren', 'getIncludeAllSchemaChildren', 'setIncludeAllSchemaChildren']];
     }
 }

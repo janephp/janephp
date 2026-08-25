@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class UnsharpenMaskAction extends ImageActionBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class UnsharpenMaskAction extends ImageActionBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class UnsharpenMaskAction extends ImageActionBase
         $this->initialized['threshold'] = true;
         $this->threshold = $threshold;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['amount' => ['amount', 'getAmount', 'setAmount'], 'radius' => ['radius', 'getRadius', 'setRadius'], 'threshold' => ['threshold', 'getThreshold', 'setThreshold']];
     }
 }

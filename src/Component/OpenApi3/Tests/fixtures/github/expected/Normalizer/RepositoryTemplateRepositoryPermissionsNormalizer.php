@@ -80,7 +80,7 @@ class RepositoryTemplateRepositoryPermissionsNormalizer implements DenormalizerI
         if ($data->isInitialized('pull') && null !== $data->getPull()) {
             $dataArray['pull'] = $data->getPull();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

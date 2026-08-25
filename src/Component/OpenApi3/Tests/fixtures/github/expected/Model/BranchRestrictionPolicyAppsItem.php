@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class BranchRestrictionPolicyAppsItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class BranchRestrictionPolicyAppsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -275,5 +278,9 @@ class BranchRestrictionPolicyAppsItem extends \ArrayObject
         $this->initialized['events'] = true;
         $this->events = $events;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'slug' => ['slug', 'getSlug', 'setSlug'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'owner' => ['owner', 'getOwner', 'setOwner'], 'name' => ['name', 'getName', 'setName'], 'description' => ['description', 'getDescription', 'setDescription'], 'externalUrl' => ['external_url', 'getExternalUrl', 'setExternalUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'permissions' => ['permissions', 'getPermissions', 'setPermissions'], 'events' => ['events', 'getEvents', 'setEvents']];
     }
 }

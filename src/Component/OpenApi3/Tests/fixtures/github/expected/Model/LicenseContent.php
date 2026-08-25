@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class LicenseContent extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class LicenseContent implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -297,5 +300,9 @@ class LicenseContent extends \ArrayObject
         $this->initialized['license'] = true;
         $this->license = $license;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'path' => ['path', 'getPath', 'setPath'], 'sha' => ['sha', 'getSha', 'setSha'], 'size' => ['size', 'getSize', 'setSize'], 'url' => ['url', 'getUrl', 'setUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'gitUrl' => ['git_url', 'getGitUrl', 'setGitUrl'], 'downloadUrl' => ['download_url', 'getDownloadUrl', 'setDownloadUrl'], 'type' => ['type', 'getType', 'setType'], 'content' => ['content', 'getContent', 'setContent'], 'encoding' => ['encoding', 'getEncoding', 'setEncoding'], 'links' => ['_links', 'getLinks', 'setLinks'], 'license' => ['license', 'getLicense', 'setLicense']];
     }
 }

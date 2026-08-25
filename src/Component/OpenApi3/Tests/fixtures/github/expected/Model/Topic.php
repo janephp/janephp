@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Topic extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Topic implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class Topic extends \ArrayObject
         $this->initialized['names'] = true;
         $this->names = $names;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['names' => ['names', 'getNames', 'setNames']];
     }
 }

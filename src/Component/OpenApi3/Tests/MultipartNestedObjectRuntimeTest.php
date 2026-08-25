@@ -21,6 +21,8 @@ class MultipartNestedObjectRuntimeTest extends TestCase
     {
         $expectedDir = self::FIXTURE_DIR . '/expected';
 
+        require_once $expectedDir . '/Runtime/AdditionalAndPatternProperties.php';
+        require_once $expectedDir . '/Runtime/AdditionalPropertiesInterface.php';
         require_once $expectedDir . '/Model/FilePostBody.php';
         require_once $expectedDir . '/Model/FilePostBodyItem.php';
         require_once $expectedDir . '/Normalizer/FilePostBodyNormalizer.php';

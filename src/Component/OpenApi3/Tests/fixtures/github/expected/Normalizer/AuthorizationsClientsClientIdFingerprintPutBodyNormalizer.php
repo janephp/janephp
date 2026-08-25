@@ -88,7 +88,7 @@ class AuthorizationsClientsClientIdFingerprintPutBodyNormalizer implements Denor
         if ($data->isInitialized('noteUrl') && null !== $data->getNoteUrl()) {
             $dataArray['note_url'] = $data->getNoteUrl();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

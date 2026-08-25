@@ -2,8 +2,11 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Model;
 
-class Expansions extends \ArrayObject
+use Jane\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class Expansions implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class Expansions extends \ArrayObject
         $this->initialized['polls'] = true;
         $this->polls = $polls;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['users' => ['users', 'getUsers', 'setUsers'], 'tweets' => ['tweets', 'getTweets', 'setTweets'], 'places' => ['places', 'getPlaces', 'setPlaces'], 'media' => ['media', 'getMedia', 'setMedia'], 'polls' => ['polls', 'getPolls', 'setPolls']];
     }
 }

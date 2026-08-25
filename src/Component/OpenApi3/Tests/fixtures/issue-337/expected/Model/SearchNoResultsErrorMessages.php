@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class SearchNoResultsErrorMessages extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class SearchNoResultsErrorMessages implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class SearchNoResultsErrorMessages extends \ArrayObject
         $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['code' => ['code', 'getCode', 'setCode'], 'text' => ['text', 'getText', 'setText'], 'type' => ['type', 'getType', 'setType']];
     }
 }

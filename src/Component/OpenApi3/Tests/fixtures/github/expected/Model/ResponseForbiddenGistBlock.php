@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ResponseForbiddenGistBlock extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ResponseForbiddenGistBlock implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class ResponseForbiddenGistBlock extends \ArrayObject
         $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['reason' => ['reason', 'getReason', 'setReason'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl']];
     }
 }

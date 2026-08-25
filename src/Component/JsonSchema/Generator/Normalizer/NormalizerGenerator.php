@@ -173,7 +173,9 @@ trait NormalizerGenerator
         }
 
         if (\count($patternCondition) > 0) {
-            $statements[] = new Stmt\Foreach_($objectVariable, $loopValueVar, [
+            // Extension-container models iterate over their additional properties only: defined
+            // properties are already normalized above through their getters.
+            $statements[] = new Stmt\Foreach_(new Expr\MethodCall($objectVariable, 'additionalPropertyEntries'), $loopValueVar, [
                 'keyVar' => $loopKeyVar,
                 'stmts' => $patternCondition,
             ]);

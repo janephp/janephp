@@ -52,7 +52,7 @@ class ReservedIpv6CreateNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         $dataArray['region_slug'] = $data->getRegionSlug();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

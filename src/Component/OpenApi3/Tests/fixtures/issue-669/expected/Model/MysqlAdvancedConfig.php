@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class MysqlAdvancedConfig extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class MysqlAdvancedConfig implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -1000,5 +1003,9 @@ class MysqlAdvancedConfig extends \ArrayObject
         $this->initialized['mysqlIncrementalBackup'] = true;
         $this->mysqlIncrementalBackup = $mysqlIncrementalBackup;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['backupHour' => ['backup_hour', 'getBackupHour', 'setBackupHour'], 'backupMinute' => ['backup_minute', 'getBackupMinute', 'setBackupMinute'], 'sqlMode' => ['sql_mode', 'getSqlMode', 'setSqlMode'], 'connectTimeout' => ['connect_timeout', 'getConnectTimeout', 'setConnectTimeout'], 'defaultTimeZone' => ['default_time_zone', 'getDefaultTimeZone', 'setDefaultTimeZone'], 'groupConcatMaxLen' => ['group_concat_max_len', 'getGroupConcatMaxLen', 'setGroupConcatMaxLen'], 'informationSchemaStatsExpiry' => ['information_schema_stats_expiry', 'getInformationSchemaStatsExpiry', 'setInformationSchemaStatsExpiry'], 'innodbFtMinTokenSize' => ['innodb_ft_min_token_size', 'getInnodbFtMinTokenSize', 'setInnodbFtMinTokenSize'], 'innodbFtServerStopwordTable' => ['innodb_ft_server_stopword_table', 'getInnodbFtServerStopwordTable', 'setInnodbFtServerStopwordTable'], 'innodbLockWaitTimeout' => ['innodb_lock_wait_timeout', 'getInnodbLockWaitTimeout', 'setInnodbLockWaitTimeout'], 'innodbLogBufferSize' => ['innodb_log_buffer_size', 'getInnodbLogBufferSize', 'setInnodbLogBufferSize'], 'innodbOnlineAlterLogMaxSize' => ['innodb_online_alter_log_max_size', 'getInnodbOnlineAlterLogMaxSize', 'setInnodbOnlineAlterLogMaxSize'], 'innodbPrintAllDeadlocks' => ['innodb_print_all_deadlocks', 'getInnodbPrintAllDeadlocks', 'setInnodbPrintAllDeadlocks'], 'innodbRollbackOnTimeout' => ['innodb_rollback_on_timeout', 'getInnodbRollbackOnTimeout', 'setInnodbRollbackOnTimeout'], 'interactiveTimeout' => ['interactive_timeout', 'getInteractiveTimeout', 'setInteractiveTimeout'], 'internalTmpMemStorageEngine' => ['internal_tmp_mem_storage_engine', 'getInternalTmpMemStorageEngine', 'setInternalTmpMemStorageEngine'], 'netReadTimeout' => ['net_read_timeout', 'getNetReadTimeout', 'setNetReadTimeout'], 'netWriteTimeout' => ['net_write_timeout', 'getNetWriteTimeout', 'setNetWriteTimeout'], 'sqlRequirePrimaryKey' => ['sql_require_primary_key', 'getSqlRequirePrimaryKey', 'setSqlRequirePrimaryKey'], 'waitTimeout' => ['wait_timeout', 'getWaitTimeout', 'setWaitTimeout'], 'maxAllowedPacket' => ['max_allowed_packet', 'getMaxAllowedPacket', 'setMaxAllowedPacket'], 'maxHeapTableSize' => ['max_heap_table_size', 'getMaxHeapTableSize', 'setMaxHeapTableSize'], 'sortBufferSize' => ['sort_buffer_size', 'getSortBufferSize', 'setSortBufferSize'], 'tmpTableSize' => ['tmp_table_size', 'getTmpTableSize', 'setTmpTableSize'], 'slowQueryLog' => ['slow_query_log', 'getSlowQueryLog', 'setSlowQueryLog'], 'longQueryTime' => ['long_query_time', 'getLongQueryTime', 'setLongQueryTime'], 'binlogRetentionPeriod' => ['binlog_retention_period', 'getBinlogRetentionPeriod', 'setBinlogRetentionPeriod'], 'innodbChangeBufferMaxSize' => ['innodb_change_buffer_max_size', 'getInnodbChangeBufferMaxSize', 'setInnodbChangeBufferMaxSize'], 'innodbFlushNeighbors' => ['innodb_flush_neighbors', 'getInnodbFlushNeighbors', 'setInnodbFlushNeighbors'], 'innodbReadIoThreads' => ['innodb_read_io_threads', 'getInnodbReadIoThreads', 'setInnodbReadIoThreads'], 'innodbWriteIoThreads' => ['innodb_write_io_threads', 'getInnodbWriteIoThreads', 'setInnodbWriteIoThreads'], 'innodbThreadConcurrency' => ['innodb_thread_concurrency', 'getInnodbThreadConcurrency', 'setInnodbThreadConcurrency'], 'netBufferLength' => ['net_buffer_length', 'getNetBufferLength', 'setNetBufferLength'], 'logOutput' => ['log_output', 'getLogOutput', 'setLogOutput'], 'mysqlIncrementalBackup' => ['mysql_incremental_backup', 'getMysqlIncrementalBackup', 'setMysqlIncrementalBackup']];
     }
 }

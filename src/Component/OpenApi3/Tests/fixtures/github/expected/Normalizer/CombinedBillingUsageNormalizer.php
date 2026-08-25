@@ -71,7 +71,7 @@ class CombinedBillingUsageNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('estimatedStorageForMonth') && null !== $data->getEstimatedStorageForMonth()) {
             $dataArray['estimated_storage_for_month'] = $data->getEstimatedStorageForMonth();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

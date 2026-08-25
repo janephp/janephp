@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class PorterLargeFile extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class PorterLargeFile implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class PorterLargeFile extends \ArrayObject
         $this->initialized['size'] = true;
         $this->size = $size;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['refName' => ['ref_name', 'getRefName', 'setRefName'], 'path' => ['path', 'getPath', 'setPath'], 'oid' => ['oid', 'getOid', 'setOid'], 'size' => ['size', 'getSize', 'setSize']];
     }
 }

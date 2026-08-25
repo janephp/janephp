@@ -61,7 +61,7 @@ class BazNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if ($data->isInitialized('sub') && null !== $data->getSub()) {
             $dataArray['sub'] = $data->getSub() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getSub(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

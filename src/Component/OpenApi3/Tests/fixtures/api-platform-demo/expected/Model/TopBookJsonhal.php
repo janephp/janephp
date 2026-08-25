@@ -2,8 +2,11 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class TopBookJsonhal extends \ArrayObject
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
+class TopBookJsonhal implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -165,5 +168,9 @@ class TopBookJsonhal extends \ArrayObject
         $this->initialized['borrowCount'] = true;
         $this->borrowCount = $borrowCount;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['links' => ['_links', 'getLinks', 'setLinks'], 'id' => ['id', 'getId', 'setId'], 'title' => ['title', 'getTitle', 'setTitle'], 'author' => ['author', 'getAuthor', 'setAuthor'], 'part' => ['part', 'getPart', 'setPart'], 'place' => ['place', 'getPlace', 'setPlace'], 'borrowCount' => ['borrowCount', 'getBorrowCount', 'setBorrowCount']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class TopBooksGetLdjsonResponse200HydraSearchHydraMappingItem extends \ArrayObject
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
+class TopBooksGetLdjsonResponse200HydraSearchHydraMappingItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class TopBooksGetLdjsonResponse200HydraSearchHydraMappingItem extends \ArrayObje
         $this->initialized['required'] = true;
         $this->required = $required;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['@type', 'getType', 'setType'], 'variable' => ['variable', 'getVariable', 'setVariable'], 'property' => ['property', 'getProperty', 'setProperty'], 'required' => ['required', 'getRequired', 'setRequired']];
     }
 }

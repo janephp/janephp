@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class RateLimitOverview extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class RateLimitOverview implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class RateLimitOverview extends \ArrayObject
         $this->initialized['rate'] = true;
         $this->rate = $rate;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['resources' => ['resources', 'getResources', 'setResources'], 'rate' => ['rate', 'getRate', 'setRate']];
     }
 }

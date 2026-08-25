@@ -103,7 +103,7 @@ class NamespaceInfoNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('key') && null !== $data->getKey()) {
             $dataArray['key'] = $data->getKey();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

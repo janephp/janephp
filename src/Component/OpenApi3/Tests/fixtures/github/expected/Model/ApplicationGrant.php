@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ApplicationGrant extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ApplicationGrant implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -165,5 +168,9 @@ class ApplicationGrant extends \ArrayObject
         $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'url' => ['url', 'getUrl', 'setUrl'], 'app' => ['app', 'getApp', 'setApp'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'scopes' => ['scopes', 'getScopes', 'setScopes'], 'user' => ['user', 'getUser', 'setUser']];
     }
 }

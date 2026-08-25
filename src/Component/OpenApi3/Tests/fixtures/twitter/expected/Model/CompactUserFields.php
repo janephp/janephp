@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class CompactUserFields extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class CompactUserFields implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -235,5 +238,9 @@ class CompactUserFields extends \ArrayObject
         $this->initialized['profileImageUrl'] = true;
         $this->profileImageUrl = $profileImageUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'name' => ['name', 'getName', 'setName'], 'username' => ['username', 'getUsername', 'setUsername'], 'protected' => ['protected', 'getProtected', 'setProtected'], 'verified' => ['verified', 'getVerified', 'setVerified'], 'withheld' => ['withheld', 'getWithheld', 'setWithheld'], 'profileImageUrl' => ['profile_image_url', 'getProfileImageUrl', 'setProfileImageUrl']];
     }
 }

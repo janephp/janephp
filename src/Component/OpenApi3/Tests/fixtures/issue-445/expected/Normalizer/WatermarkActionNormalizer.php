@@ -137,7 +137,7 @@ class WatermarkActionNormalizer implements DenormalizerInterface, NormalizerInte
         if ($data->isInitialized('heightRatio') && null !== $data->getHeightRatio()) {
             $dataArray['heightRatio'] = $data->getHeightRatio();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

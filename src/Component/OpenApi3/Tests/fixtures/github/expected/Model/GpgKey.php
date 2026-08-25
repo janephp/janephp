@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class GpgKey extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class GpgKey implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -297,5 +300,9 @@ class GpgKey extends \ArrayObject
         $this->initialized['rawKey'] = true;
         $this->rawKey = $rawKey;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'primaryKeyId' => ['primary_key_id', 'getPrimaryKeyId', 'setPrimaryKeyId'], 'keyId' => ['key_id', 'getKeyId', 'setKeyId'], 'publicKey' => ['public_key', 'getPublicKey', 'setPublicKey'], 'emails' => ['emails', 'getEmails', 'setEmails'], 'subkeys' => ['subkeys', 'getSubkeys', 'setSubkeys'], 'canSign' => ['can_sign', 'getCanSign', 'setCanSign'], 'canEncryptComms' => ['can_encrypt_comms', 'getCanEncryptComms', 'setCanEncryptComms'], 'canEncryptStorage' => ['can_encrypt_storage', 'getCanEncryptStorage', 'setCanEncryptStorage'], 'canCertify' => ['can_certify', 'getCanCertify', 'setCanCertify'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'expiresAt' => ['expires_at', 'getExpiresAt', 'setExpiresAt'], 'rawKey' => ['raw_key', 'getRawKey', 'setRawKey']];
     }
 }

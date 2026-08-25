@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoGitBlobsPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoGitBlobsPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ReposOwnerRepoGitBlobsPostBody extends \ArrayObject
         $this->initialized['encoding'] = true;
         $this->encoding = $encoding;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['content' => ['content', 'getContent', 'setContent'], 'encoding' => ['encoding', 'getEncoding', 'setEncoding']];
     }
 }

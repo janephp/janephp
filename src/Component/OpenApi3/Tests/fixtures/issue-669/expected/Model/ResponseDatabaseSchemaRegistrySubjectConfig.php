@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseDatabaseSchemaRegistrySubjectConfig extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseDatabaseSchemaRegistrySubjectConfig implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ResponseDatabaseSchemaRegistrySubjectConfig extends \ArrayObject
         $this->initialized['compatibilityLevel'] = true;
         $this->compatibilityLevel = $compatibilityLevel;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['subjectName' => ['subject_name', 'getSubjectName', 'setSubjectName'], 'compatibilityLevel' => ['compatibility_level', 'getCompatibilityLevel', 'setCompatibilityLevel']];
     }
 }

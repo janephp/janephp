@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AddonsDimensionWithPrice extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AddonsDimensionWithPrice implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -179,5 +182,9 @@ class AddonsDimensionWithPrice extends \ArrayObject
         $this->initialized['volumes'] = true;
         $this->volumes = $volumes;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'sku' => ['sku', 'getSku', 'setSku'], 'slug' => ['slug', 'getSlug', 'setSlug'], 'displayName' => ['display_name', 'getDisplayName', 'setDisplayName'], 'featureName' => ['feature_name', 'getFeatureName', 'setFeatureName'], 'volumes' => ['volumes', 'getVolumes', 'setVolumes']];
     }
 }

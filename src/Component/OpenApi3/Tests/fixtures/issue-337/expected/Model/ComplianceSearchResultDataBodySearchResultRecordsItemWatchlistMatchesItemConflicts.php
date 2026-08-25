@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemConflicts extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemConflicts implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -187,5 +190,9 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
         $this->initialized['phoneConflict'] = true;
         $this->phoneConflict = $phoneConflict;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['addressConflict' => ['addressConflict', 'getAddressConflict', 'setAddressConflict'], 'citizenshipConflict' => ['citizenshipConflict', 'getCitizenshipConflict', 'setCitizenshipConflict'], 'countryConflict' => ['countryConflict', 'getCountryConflict', 'setCountryConflict'], 'dobConflict' => ['dobConflict', 'getDobConflict', 'setDobConflict'], 'entityTypeConflict' => ['entityTypeConflict', 'getEntityTypeConflict', 'setEntityTypeConflict'], 'genderConflict' => ['genderConflict', 'getGenderConflict', 'setGenderConflict'], 'idConflict' => ['idConflict', 'getIdConflict', 'setIdConflict'], 'phoneConflict' => ['phoneConflict', 'getPhoneConflict', 'setPhoneConflict']];
     }
 }

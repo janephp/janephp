@@ -82,7 +82,7 @@ class ParchmentsGetHaljsonResponse200LinksNormalizer implements DenormalizerInte
         if ($data->isInitialized('previous') && null !== $data->getPrevious()) {
             $dataArray['previous'] = $data->getPrevious() === null ? null : new \ApiPlatform\Demo\Runtime\JsonObject($this->normalizer->normalize($data->getPrevious(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

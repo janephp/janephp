@@ -65,7 +65,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyActionsItemNormalizer implements
         $dataArray['label'] = $data->getLabel();
         $dataArray['description'] = $data->getDescription();
         $dataArray['identifier'] = $data->getIdentifier();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

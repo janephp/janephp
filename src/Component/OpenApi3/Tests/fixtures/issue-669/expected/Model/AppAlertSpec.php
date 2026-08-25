@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppAlertSpec extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppAlertSpec implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -133,5 +136,9 @@ class AppAlertSpec extends \ArrayObject
         $this->initialized['window'] = true;
         $this->window = $window;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['rule' => ['rule', 'getRule', 'setRule'], 'disabled' => ['disabled', 'getDisabled', 'setDisabled'], 'operator' => ['operator', 'getOperator', 'setOperator'], 'value' => ['value', 'getValue', 'setValue'], 'window' => ['window', 'getWindow', 'setWindow']];
     }
 }

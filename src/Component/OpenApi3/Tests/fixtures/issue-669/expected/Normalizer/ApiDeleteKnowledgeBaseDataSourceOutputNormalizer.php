@@ -61,7 +61,7 @@ class ApiDeleteKnowledgeBaseDataSourceOutputNormalizer implements DenormalizerIn
         if ($data->isInitialized('knowledgeBaseUuid') && null !== $data->getKnowledgeBaseUuid()) {
             $dataArray['knowledge_base_uuid'] = $data->getKnowledgeBaseUuid();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

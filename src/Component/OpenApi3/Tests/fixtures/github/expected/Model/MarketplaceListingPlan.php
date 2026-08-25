@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class MarketplaceListingPlan extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class MarketplaceListingPlan implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -297,5 +300,9 @@ class MarketplaceListingPlan extends \ArrayObject
         $this->initialized['bullets'] = true;
         $this->bullets = $bullets;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'accountsUrl' => ['accounts_url', 'getAccountsUrl', 'setAccountsUrl'], 'id' => ['id', 'getId', 'setId'], 'number' => ['number', 'getNumber', 'setNumber'], 'name' => ['name', 'getName', 'setName'], 'description' => ['description', 'getDescription', 'setDescription'], 'monthlyPriceInCents' => ['monthly_price_in_cents', 'getMonthlyPriceInCents', 'setMonthlyPriceInCents'], 'yearlyPriceInCents' => ['yearly_price_in_cents', 'getYearlyPriceInCents', 'setYearlyPriceInCents'], 'priceModel' => ['price_model', 'getPriceModel', 'setPriceModel'], 'hasFreeTrial' => ['has_free_trial', 'getHasFreeTrial', 'setHasFreeTrial'], 'unitName' => ['unit_name', 'getUnitName', 'setUnitName'], 'state' => ['state', 'getState', 'setState'], 'bullets' => ['bullets', 'getBullets', 'setBullets']];
     }
 }

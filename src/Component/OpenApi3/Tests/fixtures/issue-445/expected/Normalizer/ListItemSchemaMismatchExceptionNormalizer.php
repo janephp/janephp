@@ -165,7 +165,7 @@ class ListItemSchemaMismatchExceptionNormalizer implements DenormalizerInterface
         if ($data->isInitialized('fieldSchemaId') && null !== $data->getFieldSchemaId()) {
             $dataArray['fieldSchemaId'] = $data->getFieldSchemaId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -183,5 +186,9 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyCommentsItem extends \ArrayObj
         $this->initialized['startSide'] = true;
         $this->startSide = $startSide;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['path' => ['path', 'getPath', 'setPath'], 'position' => ['position', 'getPosition', 'setPosition'], 'body' => ['body', 'getBody', 'setBody'], 'line' => ['line', 'getLine', 'setLine'], 'side' => ['side', 'getSide', 'setSide'], 'startLine' => ['start_line', 'getStartLine', 'setStartLine'], 'startSide' => ['start_side', 'getStartSide', 'setStartSide']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class BranchRestrictionPolicy extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class BranchRestrictionPolicy implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -165,5 +168,9 @@ class BranchRestrictionPolicy extends \ArrayObject
         $this->initialized['apps'] = true;
         $this->apps = $apps;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'usersUrl' => ['users_url', 'getUsersUrl', 'setUsersUrl'], 'teamsUrl' => ['teams_url', 'getTeamsUrl', 'setTeamsUrl'], 'appsUrl' => ['apps_url', 'getAppsUrl', 'setAppsUrl'], 'users' => ['users', 'getUsers', 'setUsers'], 'teams' => ['teams', 'getTeams', 'setTeams'], 'apps' => ['apps', 'getApps', 'setApps']];
     }
 }

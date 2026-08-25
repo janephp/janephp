@@ -2,8 +2,11 @@
 
 namespace Jane\OpenApi3\Tests\Expected\Model;
 
-class TweetLookupResponse extends \ArrayObject
+use Jane\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class TweetLookupResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class TweetLookupResponse extends \ArrayObject
         $this->initialized['errors'] = true;
         $this->errors = $errors;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['data' => ['data', 'getData', 'setData'], 'includes' => ['includes', 'getIncludes', 'setIncludes'], 'errors' => ['errors', 'getErrors', 'setErrors']];
     }
 }

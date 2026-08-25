@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class MonitoringPortfoliosPortfolioIdPatchBody extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class MonitoringPortfoliosPortfolioIdPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class MonitoringPortfoliosPortfolioIdPatchBody extends \ArrayObject
         $this->initialized['emailSubject'] = true;
         $this->emailSubject = $emailSubject;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'emails' => ['emails', 'getEmails', 'setEmails'], 'emailLanguage' => ['emailLanguage', 'getEmailLanguage', 'setEmailLanguage'], 'emailSubject' => ['emailSubject', 'getEmailSubject', 'setEmailSubject']];
     }
 }

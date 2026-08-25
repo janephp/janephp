@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem
         $this->initialized['ratingDescription'] = true;
         $this->ratingDescription = $ratingDescription;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['date' => ['date', 'getDate', 'setDate'], 'companyValue' => ['companyValue', 'getCompanyValue', 'setCompanyValue'], 'ratingDescription' => ['ratingDescription', 'getRatingDescription', 'setRatingDescription']];
     }
 }

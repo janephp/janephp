@@ -172,7 +172,7 @@ class DocumentVersionConflictExceptionNormalizer implements DenormalizerInterfac
         if ($data->isInitialized('documentVersion') && null !== $data->getDocumentVersion()) {
             $dataArray['documentVersion'] = $data->getDocumentVersion();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

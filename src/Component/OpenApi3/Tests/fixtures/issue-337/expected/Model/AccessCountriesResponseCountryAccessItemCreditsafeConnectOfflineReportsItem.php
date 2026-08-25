@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class AccessCountriesResponseCountryAccessItemCreditsafeConnectOfflineReportsItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class AccessCountriesResponseCountryAccessItemCreditsafeConnectOfflineReportsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -167,5 +170,9 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectOfflineReportsIte
         $this->initialized['used'] = true;
         $this->used = $used;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'countryIso2' => ['countryIso2', 'getCountryIso2', 'setCountryIso2'], 'startDate' => ['startDate', 'getStartDate', 'setStartDate'], 'expireDate' => ['expireDate', 'getExpireDate', 'setExpireDate'], 'paid' => ['paid', 'getPaid', 'setPaid'], 'used' => ['used', 'getUsed', 'setUsed']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class CompletedFreshInvestigationContactDetails extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class CompletedFreshInvestigationContactDetails implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class CompletedFreshInvestigationContactDetails extends \ArrayObject
         $this->initialized['telephoneNumber'] = true;
         $this->telephoneNumber = $telephoneNumber;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['emailAddress' => ['emailAddress', 'getEmailAddress', 'setEmailAddress'], 'name' => ['name', 'getName', 'setName'], 'telephoneNumber' => ['telephoneNumber', 'getTelephoneNumber', 'setTelephoneNumber']];
     }
 }

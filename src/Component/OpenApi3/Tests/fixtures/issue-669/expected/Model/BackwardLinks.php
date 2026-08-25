@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class BackwardLinks extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class BackwardLinks implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class BackwardLinks extends \ArrayObject
         $this->initialized['prev'] = true;
         $this->prev = $prev;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['first' => ['first', 'getFirst', 'setFirst'], 'prev' => ['prev', 'getPrev', 'setPrev']];
     }
 }

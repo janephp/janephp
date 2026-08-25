@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AutoscalePoolCreate extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AutoscalePoolCreate implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -89,5 +92,9 @@ class AutoscalePoolCreate extends \ArrayObject
         $this->initialized['dropletTemplate'] = true;
         $this->dropletTemplate = $dropletTemplate;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'config' => ['config', 'getConfig', 'setConfig'], 'dropletTemplate' => ['droplet_template', 'getDropletTemplate', 'setDropletTemplate']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class LayerUnassignedCondition extends BusinessRuleCondition
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class LayerUnassignedCondition extends BusinessRuleCondition implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class LayerUnassignedCondition extends BusinessRuleCondition
         $this->initialized['layerId'] = true;
         $this->layerId = $layerId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['layerId' => ['layerId', 'getLayerId', 'setLayerId']];
     }
 }

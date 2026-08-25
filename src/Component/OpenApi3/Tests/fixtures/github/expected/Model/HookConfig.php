@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class HookConfig extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class HookConfig implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -231,5 +234,9 @@ class HookConfig extends \ArrayObject
         $this->initialized['token'] = true;
         $this->token = $token;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['email' => ['email', 'getEmail', 'setEmail'], 'password' => ['password', 'getPassword', 'setPassword'], 'room' => ['room', 'getRoom', 'setRoom'], 'subdomain' => ['subdomain', 'getSubdomain', 'setSubdomain'], 'url' => ['url', 'getUrl', 'setUrl'], 'insecureSsl' => ['insecure_ssl', 'getInsecureSsl', 'setInsecureSsl'], 'contentType' => ['content_type', 'getContentType', 'setContentType'], 'digest' => ['digest', 'getDigest', 'setDigest'], 'secret' => ['secret', 'getSecret', 'setSecret'], 'token' => ['token', 'getToken', 'setToken']];
     }
 }

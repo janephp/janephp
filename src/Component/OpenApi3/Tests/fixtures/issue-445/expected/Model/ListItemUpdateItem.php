@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ListItemUpdateItem extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ListItemUpdateItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -104,5 +107,9 @@ class ListItemUpdateItem extends \ArrayObject
         $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['content' => ['content', 'getContent', 'setContent'], 'contentFieldsUpdateOptions' => ['contentFieldsUpdateOptions', 'getContentFieldsUpdateOptions', 'setContentFieldsUpdateOptions'], 'id' => ['id', 'getId', 'setId']];
     }
 }

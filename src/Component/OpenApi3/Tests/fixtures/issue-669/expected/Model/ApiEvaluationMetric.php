@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiEvaluationMetric extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiEvaluationMetric implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -271,5 +274,9 @@ class ApiEvaluationMetric extends \ArrayObject
         $this->initialized['rangeMin'] = true;
         $this->rangeMin = $rangeMin;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['category' => ['category', 'getCategory', 'setCategory'], 'description' => ['description', 'getDescription', 'setDescription'], 'inverted' => ['inverted', 'getInverted', 'setInverted'], 'isMetricGoal' => ['is_metric_goal', 'getIsMetricGoal', 'setIsMetricGoal'], 'metricName' => ['metric_name', 'getMetricName', 'setMetricName'], 'metricRank' => ['metric_rank', 'getMetricRank', 'setMetricRank'], 'metricType' => ['metric_type', 'getMetricType', 'setMetricType'], 'metricUuid' => ['metric_uuid', 'getMetricUuid', 'setMetricUuid'], 'metricValueType' => ['metric_value_type', 'getMetricValueType', 'setMetricValueType'], 'rangeMax' => ['range_max', 'getRangeMax', 'setRangeMax'], 'rangeMin' => ['range_min', 'getRangeMin', 'setRangeMin']];
     }
 }

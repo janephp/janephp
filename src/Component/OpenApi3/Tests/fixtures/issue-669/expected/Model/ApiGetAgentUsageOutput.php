@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiGetAgentUsageOutput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiGetAgentUsageOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ApiGetAgentUsageOutput extends \ArrayObject
         $this->initialized['usage'] = true;
         $this->usage = $usage;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['logInsightsUsage' => ['log_insights_usage', 'getLogInsightsUsage', 'setLogInsightsUsage'], 'usage' => ['usage', 'getUsage', 'setUsage']];
     }
 }

@@ -163,7 +163,7 @@ class AppNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if ($data->isInitialized('pinnedDeployment') && null !== $data->getPinnedDeployment()) {
             $dataArray['pinned_deployment'] = $data->getPinnedDeployment() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getPinnedDeployment(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

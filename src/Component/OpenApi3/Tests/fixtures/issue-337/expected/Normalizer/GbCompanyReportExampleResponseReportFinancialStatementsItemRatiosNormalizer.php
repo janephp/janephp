@@ -187,7 +187,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemRatiosNormalize
         if ($data->isInitialized('totalDebtRatio') && null !== $data->getTotalDebtRatio()) {
             $dataArray['totalDebtRatio'] = $data->getTotalDebtRatio();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -154,7 +154,7 @@ class EnvironmentProcessWaitTimeoutExceptionNormalizer implements DenormalizerIn
         if ($data->isInitialized('waitedLifecycles') && null !== $data->getWaitedLifecycles()) {
             $dataArray['waitedLifecycles'] = $data->getWaitedLifecycles();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

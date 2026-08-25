@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class FirewallPendingChangesItem extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class FirewallPendingChangesItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class FirewallPendingChangesItem extends \ArrayObject
         $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['dropletId' => ['droplet_id', 'getDropletId', 'setDropletId'], 'removing' => ['removing', 'getRemoving', 'setRemoving'], 'status' => ['status', 'getStatus', 'setStatus']];
     }
 }

@@ -121,7 +121,7 @@ class SearchBehaviorBaseResultOfPermissionSetNormalizer implements DenormalizerI
             }
             $dataArray['queryDebugInformation'] = $values_1;
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

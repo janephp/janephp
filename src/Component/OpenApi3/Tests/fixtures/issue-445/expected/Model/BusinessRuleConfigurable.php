@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleConfigurable extends BusinessRule
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class BusinessRuleConfigurable extends BusinessRule implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class BusinessRuleConfigurable extends BusinessRule
         $this->initialized['actions'] = true;
         $this->actions = $actions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['condition' => ['condition', 'getCondition', 'setCondition'], 'transformationGroups' => ['transformationGroups', 'getTransformationGroups', 'setTransformationGroups'], 'actions' => ['actions', 'getActions', 'setActions']];
     }
 }

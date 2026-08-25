@@ -62,7 +62,7 @@ class ByoipPrefixCreateNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray['prefix'] = $data->getPrefix();
         $dataArray['region'] = $data->getRegion();
         $dataArray['signature'] = $data->getSignature();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

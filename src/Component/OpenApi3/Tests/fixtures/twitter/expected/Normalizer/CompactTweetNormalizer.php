@@ -114,7 +114,7 @@ class CompactTweetNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($data->isInitialized('withheld') && null !== $data->getWithheld()) {
             $dataArray['withheld'] = $data->getWithheld() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getWithheld(), 'json', $context));
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

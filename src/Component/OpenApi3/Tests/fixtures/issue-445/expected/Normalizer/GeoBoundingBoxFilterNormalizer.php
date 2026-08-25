@@ -67,7 +67,7 @@ class GeoBoundingBoxFilterNormalizer implements DenormalizerInterface, Normalize
         $dataArray['field'] = $data->getField();
         $dataArray['topLeft'] = $data->getTopLeft();
         $dataArray['bottomRight'] = $data->getBottomRight();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

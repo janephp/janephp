@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaPermissionSetCreateRequest extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class SchemaPermissionSetCreateRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -157,5 +160,9 @@ class SchemaPermissionSetCreateRequest extends \ArrayObject
         $this->initialized['requestId'] = true;
         $this->requestId = $requestId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['names' => ['names', 'getNames', 'setNames'], 'userRolesRights' => ['userRolesRights', 'getUserRolesRights', 'setUserRolesRights'], 'userRolesPermissionSetRights' => ['userRolesPermissionSetRights', 'getUserRolesPermissionSetRights', 'setUserRolesPermissionSetRights'], 'exclusive' => ['exclusive', 'getExclusive', 'setExclusive'], 'requestId' => ['requestId', 'getRequestId', 'setRequestId']];
     }
 }

@@ -62,7 +62,7 @@ class DateRangeFilterNormalizer implements DenormalizerInterface, NormalizerInte
         $dataArray['kind'] = $data->getKind();
         $dataArray['field'] = $data->getField();
         $dataArray['range'] = $data->getRange();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

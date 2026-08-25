@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReviewCommentLinks extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReviewCommentLinks implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class ReviewCommentLinks extends \ArrayObject
         $this->initialized['pullRequest'] = true;
         $this->pullRequest = $pullRequest;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['self' => ['self', 'getSelf', 'setSelf'], 'html' => ['html', 'getHtml', 'setHtml'], 'pullRequest' => ['pull_request', 'getPullRequest', 'setPullRequest']];
     }
 }

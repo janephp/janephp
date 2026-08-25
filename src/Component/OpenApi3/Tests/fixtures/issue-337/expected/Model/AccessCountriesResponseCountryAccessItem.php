@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class AccessCountriesResponseCountryAccessItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class AccessCountriesResponseCountryAccessItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -171,5 +174,9 @@ class AccessCountriesResponseCountryAccessItem extends \ArrayObject
         $this->initialized['creditsafeConnectBankVerification'] = true;
         $this->creditsafeConnectBankVerification = $creditsafeConnectBankVerification;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['creditsafeConnectOnlineReports' => ['creditsafeConnectOnlineReports', 'getCreditsafeConnectOnlineReports', 'setCreditsafeConnectOnlineReports'], 'creditsafeConnectOfflineReports' => ['creditsafeConnectOfflineReports', 'getCreditsafeConnectOfflineReports', 'setCreditsafeConnectOfflineReports'], 'creditsafeConnectMonitoring' => ['creditsafeConnectMonitoring', 'getCreditsafeConnectMonitoring', 'setCreditsafeConnectMonitoring'], 'creditsafeConnectDirectorReports' => ['creditsafeConnectDirectorReports', 'getCreditsafeConnectDirectorReports', 'setCreditsafeConnectDirectorReports'], 'creditsafeConnectImageDocuments' => ['creditsafeConnectImageDocuments', 'getCreditsafeConnectImageDocuments', 'setCreditsafeConnectImageDocuments'], 'creditsafeConnectBankValidation' => ['creditsafeConnectBankValidation', 'getCreditsafeConnectBankValidation', 'setCreditsafeConnectBankValidation'], 'creditsafeConnectBankVerification' => ['creditsafeConnectBankVerification', 'getCreditsafeConnectBankVerification', 'setCreditsafeConnectBankVerification']];
     }
 }

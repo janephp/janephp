@@ -90,7 +90,7 @@ class GlbSettingsNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('failoverThreshold') && null !== $data->getFailoverThreshold()) {
             $dataArray['failover_threshold'] = $data->getFailoverThreshold();
         }
-        foreach ($data as $key_1 => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_1;
             }

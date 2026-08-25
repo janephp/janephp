@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CheckAnnotation extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CheckAnnotation implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -231,5 +234,9 @@ class CheckAnnotation extends \ArrayObject
         $this->initialized['blobHref'] = true;
         $this->blobHref = $blobHref;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['path' => ['path', 'getPath', 'setPath'], 'startLine' => ['start_line', 'getStartLine', 'setStartLine'], 'endLine' => ['end_line', 'getEndLine', 'setEndLine'], 'startColumn' => ['start_column', 'getStartColumn', 'setStartColumn'], 'endColumn' => ['end_column', 'getEndColumn', 'setEndColumn'], 'annotationLevel' => ['annotation_level', 'getAnnotationLevel', 'setAnnotationLevel'], 'title' => ['title', 'getTitle', 'setTitle'], 'message' => ['message', 'getMessage', 'setMessage'], 'rawDetails' => ['raw_details', 'getRawDetails', 'setRawDetails'], 'blobHref' => ['blob_href', 'getBlobHref', 'setBlobHref']];
     }
 }

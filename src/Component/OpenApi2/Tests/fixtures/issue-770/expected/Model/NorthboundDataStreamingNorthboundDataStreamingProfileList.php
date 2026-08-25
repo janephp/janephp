@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class NorthboundDataStreamingNorthboundDataStreamingProfileList extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class NorthboundDataStreamingNorthboundDataStreamingProfileList implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class NorthboundDataStreamingNorthboundDataStreamingProfileList extends \ArrayOb
         $this->initialized['extra'] = true;
         $this->extra = $extra;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['list' => ['list', 'getList', 'setList'], 'extra' => ['extra', 'getExtra', 'setExtra']];
     }
 }

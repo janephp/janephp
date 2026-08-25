@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CheckSuitePreferencePreferences extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CheckSuitePreferencePreferences implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class CheckSuitePreferencePreferences extends \ArrayObject
         $this->initialized['autoTriggerChecks'] = true;
         $this->autoTriggerChecks = $autoTriggerChecks;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['autoTriggerChecks' => ['auto_trigger_checks', 'getAutoTriggerChecks', 'setAutoTriggerChecks']];
     }
 }

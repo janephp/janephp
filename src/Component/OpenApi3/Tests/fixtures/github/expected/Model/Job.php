@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Job extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Job implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -373,5 +376,9 @@ class Job extends \ArrayObject
         $this->initialized['checkRunUrl'] = true;
         $this->checkRunUrl = $checkRunUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'runId' => ['run_id', 'getRunId', 'setRunId'], 'runUrl' => ['run_url', 'getRunUrl', 'setRunUrl'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'headSha' => ['head_sha', 'getHeadSha', 'setHeadSha'], 'url' => ['url', 'getUrl', 'setUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'status' => ['status', 'getStatus', 'setStatus'], 'conclusion' => ['conclusion', 'getConclusion', 'setConclusion'], 'startedAt' => ['started_at', 'getStartedAt', 'setStartedAt'], 'completedAt' => ['completed_at', 'getCompletedAt', 'setCompletedAt'], 'name' => ['name', 'getName', 'setName'], 'steps' => ['steps', 'getSteps', 'setSteps'], 'checkRunUrl' => ['check_run_url', 'getCheckRunUrl', 'setCheckRunUrl']];
     }
 }

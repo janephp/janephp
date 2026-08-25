@@ -131,7 +131,7 @@ class ListCompanyImagesDataItemNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('localProperties') && null !== $data->getLocalProperties()) {
             $dataArray['localProperties'] = $data->getLocalProperties() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getLocalProperties(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

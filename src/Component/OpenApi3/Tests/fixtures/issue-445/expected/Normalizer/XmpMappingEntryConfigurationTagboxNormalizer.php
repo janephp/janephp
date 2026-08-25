@@ -81,7 +81,7 @@ class XmpMappingEntryConfigurationTagboxNormalizer implements DenormalizerInterf
         $dataArray['keyFieldIds'] = $values;
         $dataArray['caseSensitive'] = $data->getCaseSensitive();
         $dataArray['includeAllSchemaChildren'] = $data->getIncludeAllSchemaChildren();
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

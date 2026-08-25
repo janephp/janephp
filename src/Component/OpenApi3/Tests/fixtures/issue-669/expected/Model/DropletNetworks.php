@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DropletNetworks extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DropletNetworks implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class DropletNetworks extends \ArrayObject
         $this->initialized['v6'] = true;
         $this->v6 = $v6;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['v4' => ['v4', 'getV4', 'setV4'], 'v6' => ['v6', 'getV6', 'setV6']];
     }
 }

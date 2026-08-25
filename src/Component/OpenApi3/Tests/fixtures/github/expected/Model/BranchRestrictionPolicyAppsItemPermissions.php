@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class BranchRestrictionPolicyAppsItemPermissions extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class BranchRestrictionPolicyAppsItemPermissions implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class BranchRestrictionPolicyAppsItemPermissions extends \ArrayObject
         $this->initialized['singleFile'] = true;
         $this->singleFile = $singleFile;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['metadata' => ['metadata', 'getMetadata', 'setMetadata'], 'contents' => ['contents', 'getContents', 'setContents'], 'issues' => ['issues', 'getIssues', 'setIssues'], 'singleFile' => ['single_file', 'getSingleFile', 'setSingleFile']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrgMembership extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrgMembership implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -171,5 +174,9 @@ class OrgMembership extends \ArrayObject
         $this->initialized['permissions'] = true;
         $this->permissions = $permissions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'state' => ['state', 'getState', 'setState'], 'role' => ['role', 'getRole', 'setRole'], 'organizationUrl' => ['organization_url', 'getOrganizationUrl', 'setOrganizationUrl'], 'organization' => ['organization', 'getOrganization', 'setOrganization'], 'user' => ['user', 'getUser', 'setUser'], 'permissions' => ['permissions', 'getPermissions', 'setPermissions']];
     }
 }

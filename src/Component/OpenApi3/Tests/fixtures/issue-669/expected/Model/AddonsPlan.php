@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AddonsPlan extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AddonsPlan implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -431,5 +434,9 @@ class AddonsPlan extends \ArrayObject
         $this->initialized['dimensions'] = true;
         $this->dimensions = $dimensions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'appId' => ['app_id', 'getAppId', 'setAppId'], 'displayName' => ['display_name', 'getDisplayName', 'setDisplayName'], 'description' => ['description', 'getDescription', 'setDescription'], 'slug' => ['slug', 'getSlug', 'setSlug'], 'pricePerMonth' => ['price_per_month', 'getPricePerMonth', 'setPricePerMonth'], 'active' => ['active', 'getActive', 'setActive'], 'state' => ['state', 'getState', 'setState'], 'features' => ['features', 'getFeatures', 'setFeatures'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'available' => ['available', 'getAvailable', 'setAvailable'], 'uuid' => ['uuid', 'getUuid', 'setUuid'], 'byDefault' => ['by_default', 'getByDefault', 'setByDefault'], 'dimensions' => ['dimensions', 'getDimensions', 'setDimensions']];
     }
 }

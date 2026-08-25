@@ -139,7 +139,7 @@ class EnvironmentProcessAlreadyRunningExceptionNormalizer implements Denormalize
         if ($data->isInitialized('environmentProcessType') && null !== $data->getEnvironmentProcessType()) {
             $dataArray['environmentProcessType'] = $data->getEnvironmentProcessType();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

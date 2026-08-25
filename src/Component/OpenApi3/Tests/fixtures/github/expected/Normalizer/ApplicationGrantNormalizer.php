@@ -107,7 +107,7 @@ class ApplicationGrantNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('user') && null !== $data->getUser()) {
             $dataArray['user'] = $data->getUser() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getUser(), 'json', $context));
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

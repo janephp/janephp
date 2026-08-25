@@ -57,7 +57,7 @@ class NotificationSlackItemNormalizer implements DenormalizerInterface, Normaliz
         $dataArray = [];
         $dataArray['channel'] = $data->getChannel();
         $dataArray['url'] = $data->getUrl();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

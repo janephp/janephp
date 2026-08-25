@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class PullRequestReview extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class PullRequestReview implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -315,5 +318,9 @@ class PullRequestReview extends \ArrayObject
         $this->initialized['authorAssociation'] = true;
         $this->authorAssociation = $authorAssociation;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'user' => ['user', 'getUser', 'setUser'], 'body' => ['body', 'getBody', 'setBody'], 'state' => ['state', 'getState', 'setState'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'pullRequestUrl' => ['pull_request_url', 'getPullRequestUrl', 'setPullRequestUrl'], 'links' => ['_links', 'getLinks', 'setLinks'], 'submittedAt' => ['submitted_at', 'getSubmittedAt', 'setSubmittedAt'], 'commitId' => ['commit_id', 'getCommitId', 'setCommitId'], 'bodyHtml' => ['body_html', 'getBodyHtml', 'setBodyHtml'], 'bodyText' => ['body_text', 'getBodyText', 'setBodyText'], 'authorAssociation' => ['author_association', 'getAuthorAssociation', 'setAuthorAssociation']];
     }
 }

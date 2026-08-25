@@ -161,7 +161,7 @@ class IllegalAuthorizationStateTransitionExceptionNormalizer implements Denormal
         if ($data->isInitialized('transition') && null !== $data->getTransition()) {
             $dataArray['transition'] = $data->getTransition();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

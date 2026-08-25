@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoCheckRunsPostBodyActionsItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoCheckRunsPostBodyActionsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class ReposOwnerRepoCheckRunsPostBodyActionsItem extends \ArrayObject
         $this->initialized['identifier'] = true;
         $this->identifier = $identifier;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['label' => ['label', 'getLabel', 'setLabel'], 'description' => ['description', 'getDescription', 'setDescription'], 'identifier' => ['identifier', 'getIdentifier', 'setIdentifier']];
     }
 }

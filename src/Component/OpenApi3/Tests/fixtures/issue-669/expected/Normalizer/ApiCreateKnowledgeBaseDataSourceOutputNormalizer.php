@@ -54,7 +54,7 @@ class ApiCreateKnowledgeBaseDataSourceOutputNormalizer implements DenormalizerIn
         if ($data->isInitialized('knowledgeBaseDataSource') && null !== $data->getKnowledgeBaseDataSource()) {
             $dataArray['knowledge_base_data_source'] = $data->getKnowledgeBaseDataSource() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getKnowledgeBaseDataSource(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

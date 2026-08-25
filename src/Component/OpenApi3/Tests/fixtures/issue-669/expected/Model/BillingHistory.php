@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class BillingHistory extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class BillingHistory implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -179,5 +182,9 @@ class BillingHistory extends \ArrayObject
         $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['description' => ['description', 'getDescription', 'setDescription'], 'amount' => ['amount', 'getAmount', 'setAmount'], 'invoiceId' => ['invoice_id', 'getInvoiceId', 'setInvoiceId'], 'invoiceUuid' => ['invoice_uuid', 'getInvoiceUuid', 'setInvoiceUuid'], 'date' => ['date', 'getDate', 'setDate'], 'type' => ['type', 'getType', 'setType']];
     }
 }

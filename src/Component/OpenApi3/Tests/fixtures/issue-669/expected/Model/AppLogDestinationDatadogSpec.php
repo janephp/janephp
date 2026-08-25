@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppLogDestinationDatadogSpec extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppLogDestinationDatadogSpec implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class AppLogDestinationDatadogSpec extends \ArrayObject
         $this->initialized['apiKey'] = true;
         $this->apiKey = $apiKey;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['endpoint' => ['endpoint', 'getEndpoint', 'setEndpoint'], 'apiKey' => ['api_key', 'getApiKey', 'setApiKey']];
     }
 }

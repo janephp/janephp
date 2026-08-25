@@ -124,7 +124,7 @@ class InvoiceItemNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('projectName') && null !== $data->getProjectName()) {
             $dataArray['project_name'] = $data->getProjectName();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

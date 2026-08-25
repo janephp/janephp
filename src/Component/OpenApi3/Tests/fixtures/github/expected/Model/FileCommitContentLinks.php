@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class FileCommitContentLinks extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class FileCommitContentLinks implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class FileCommitContentLinks extends \ArrayObject
         $this->initialized['html'] = true;
         $this->html = $html;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['self' => ['self', 'getSelf', 'setSelf'], 'git' => ['git', 'getGit', 'setGit'], 'html' => ['html', 'getHtml', 'setHtml']];
     }
 }

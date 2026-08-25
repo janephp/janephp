@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppFunctionsComponentHealth extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppFunctionsComponentHealth implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class AppFunctionsComponentHealth extends \ArrayObject
         $this->initialized['functionsComponentHealthMetrics'] = true;
         $this->functionsComponentHealthMetrics = $functionsComponentHealthMetrics;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'functionsComponentHealthMetrics' => ['functions_component_health_metrics', 'getFunctionsComponentHealthMetrics', 'setFunctionsComponentHealthMetrics']];
     }
 }

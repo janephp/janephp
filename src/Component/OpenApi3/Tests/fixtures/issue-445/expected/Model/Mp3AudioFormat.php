@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class Mp3AudioFormat extends FormatBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class Mp3AudioFormat extends FormatBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -92,5 +95,9 @@ class Mp3AudioFormat extends FormatBase
         $this->initialized['quality'] = true;
         $this->quality = $quality;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['extension' => ['extension', 'getExtension', 'setExtension'], 'bitrate' => ['bitrate', 'getBitrate', 'setBitrate'], 'quality' => ['quality', 'getQuality', 'setQuality']];
     }
 }

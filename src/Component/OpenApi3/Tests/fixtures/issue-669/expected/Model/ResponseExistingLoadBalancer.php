@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseExistingLoadBalancer extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseExistingLoadBalancer implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseExistingLoadBalancer extends \ArrayObject
         $this->initialized['loadBalancer'] = true;
         $this->loadBalancer = $loadBalancer;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['loadBalancer' => ['load_balancer', 'getLoadBalancer', 'setLoadBalancer']];
     }
 }

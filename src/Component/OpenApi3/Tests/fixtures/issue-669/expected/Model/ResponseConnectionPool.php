@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseConnectionPool extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseConnectionPool implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseConnectionPool extends \ArrayObject
         $this->initialized['pool'] = true;
         $this->pool = $pool;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['pool' => ['pool', 'getPool', 'setPool']];
     }
 }

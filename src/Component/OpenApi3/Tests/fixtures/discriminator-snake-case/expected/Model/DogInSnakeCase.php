@@ -40,4 +40,8 @@ class DogInSnakeCase extends Pet
         $this->packSize = $packSize;
         return $this;
     }
+    public function definedProperties(): array
+    {
+        return array_merge(parent::definedProperties(), ['packSize' => ['packSize', 'getPackSize', 'setPackSize']]);
+    }
 }

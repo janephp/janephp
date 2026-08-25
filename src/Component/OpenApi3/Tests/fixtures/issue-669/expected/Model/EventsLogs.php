@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class EventsLogs extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class EventsLogs implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class EventsLogs extends \ArrayObject
         $this->initialized['createTime'] = true;
         $this->createTime = $createTime;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'clusterName' => ['cluster_name', 'getClusterName', 'setClusterName'], 'eventType' => ['event_type', 'getEventType', 'setEventType'], 'createTime' => ['create_time', 'getCreateTime', 'setCreateTime']];
     }
 }

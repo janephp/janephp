@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AddonsResourceNew extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AddonsResourceNew implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -179,5 +182,9 @@ class AddonsResourceNew extends \ArrayObject
         $this->initialized['fleetUuid'] = true;
         $this->fleetUuid = $fleetUuid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['appSlug' => ['app_slug', 'getAppSlug', 'setAppSlug'], 'planSlug' => ['plan_slug', 'getPlanSlug', 'setPlanSlug'], 'name' => ['name', 'getName', 'setName'], 'metadata' => ['metadata', 'getMetadata', 'setMetadata'], 'linkedDropletId' => ['linked_droplet_id', 'getLinkedDropletId', 'setLinkedDropletId'], 'fleetUuid' => ['fleet_uuid', 'getFleetUuid', 'setFleetUuid']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class RepositorySubscription extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class RepositorySubscription implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -155,5 +158,9 @@ class RepositorySubscription extends \ArrayObject
         $this->initialized['repositoryUrl'] = true;
         $this->repositoryUrl = $repositoryUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['subscribed' => ['subscribed', 'getSubscribed', 'setSubscribed'], 'ignored' => ['ignored', 'getIgnored', 'setIgnored'], 'reason' => ['reason', 'getReason', 'setReason'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'url' => ['url', 'getUrl', 'setUrl'], 'repositoryUrl' => ['repository_url', 'getRepositoryUrl', 'setRepositoryUrl']];
     }
 }

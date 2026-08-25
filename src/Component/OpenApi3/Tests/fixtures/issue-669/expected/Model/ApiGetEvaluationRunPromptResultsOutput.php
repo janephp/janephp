@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiGetEvaluationRunPromptResultsOutput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiGetEvaluationRunPromptResultsOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ApiGetEvaluationRunPromptResultsOutput extends \ArrayObject
         $this->initialized['prompt'] = true;
         $this->prompt = $prompt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['prompt' => ['prompt', 'getPrompt', 'setPrompt']];
     }
 }

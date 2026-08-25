@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class RegistryCreate extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class RegistryCreate implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class RegistryCreate extends \ArrayObject
         $this->initialized['region'] = true;
         $this->region = $region;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'subscriptionTierSlug' => ['subscription_tier_slug', 'getSubscriptionTierSlug', 'setSubscriptionTierSlug'], 'region' => ['region', 'getRegion', 'setRegion']];
     }
 }

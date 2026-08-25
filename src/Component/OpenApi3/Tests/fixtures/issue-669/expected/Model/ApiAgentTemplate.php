@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiAgentTemplate extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiAgentTemplate implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -518,5 +521,9 @@ class ApiAgentTemplate extends \ArrayObject
         $this->initialized['uuid'] = true;
         $this->uuid = $uuid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'description' => ['description', 'getDescription', 'setDescription'], 'guardrails' => ['guardrails', 'getGuardrails', 'setGuardrails'], 'instruction' => ['instruction', 'getInstruction', 'setInstruction'], 'k' => ['k', 'getK', 'setK'], 'knowledgeBases' => ['knowledge_bases', 'getKnowledgeBases', 'setKnowledgeBases'], 'longDescription' => ['long_description', 'getLongDescription', 'setLongDescription'], 'maxTokens' => ['max_tokens', 'getMaxTokens', 'setMaxTokens'], 'model' => ['model', 'getModel', 'setModel'], 'name' => ['name', 'getName', 'setName'], 'shortDescription' => ['short_description', 'getShortDescription', 'setShortDescription'], 'summary' => ['summary', 'getSummary', 'setSummary'], 'tags' => ['tags', 'getTags', 'setTags'], 'temperature' => ['temperature', 'getTemperature', 'setTemperature'], 'templateType' => ['template_type', 'getTemplateType', 'setTemplateType'], 'topP' => ['top_p', 'getTopP', 'setTopP'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'uuid' => ['uuid', 'getUuid', 'setUuid']];
     }
 }

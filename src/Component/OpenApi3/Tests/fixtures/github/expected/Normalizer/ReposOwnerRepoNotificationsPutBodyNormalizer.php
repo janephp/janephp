@@ -57,7 +57,7 @@ class ReposOwnerRepoNotificationsPutBodyNormalizer implements DenormalizerInterf
         if ($data->isInitialized('lastReadAt') && null !== $data->getLastReadAt()) {
             $dataArray['last_read_at'] = $data->getLastReadAt();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

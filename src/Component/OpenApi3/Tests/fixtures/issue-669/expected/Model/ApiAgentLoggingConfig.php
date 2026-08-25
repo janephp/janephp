@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiAgentLoggingConfig extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiAgentLoggingConfig implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -179,5 +182,9 @@ class ApiAgentLoggingConfig extends \ArrayObject
         $this->initialized['logStreamName'] = true;
         $this->logStreamName = $logStreamName;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['galileoProjectId' => ['galileo_project_id', 'getGalileoProjectId', 'setGalileoProjectId'], 'galileoProjectName' => ['galileo_project_name', 'getGalileoProjectName', 'setGalileoProjectName'], 'insightsEnabled' => ['insights_enabled', 'getInsightsEnabled', 'setInsightsEnabled'], 'insightsEnabledAt' => ['insights_enabled_at', 'getInsightsEnabledAt', 'setInsightsEnabledAt'], 'logStreamId' => ['log_stream_id', 'getLogStreamId', 'setLogStreamId'], 'logStreamName' => ['log_stream_name', 'getLogStreamName', 'setLogStreamName']];
     }
 }

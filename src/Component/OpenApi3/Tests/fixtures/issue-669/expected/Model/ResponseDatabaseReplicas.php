@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseDatabaseReplicas extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseDatabaseReplicas implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseDatabaseReplicas extends \ArrayObject
         $this->initialized['replicas'] = true;
         $this->replicas = $replicas;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['replicas' => ['replicas', 'getReplicas', 'setReplicas']];
     }
 }

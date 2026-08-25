@@ -139,7 +139,7 @@ class InvalidTransferTypeExceptionNormalizer implements DenormalizerInterface, N
         if ($data->isInitialized('transferType') && null !== $data->getTransferType()) {
             $dataArray['transferType'] = $data->getTransferType();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

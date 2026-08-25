@@ -76,7 +76,7 @@ class KubernetesVersionNormalizer implements DenormalizerInterface, NormalizerIn
             }
             $dataArray['supported_features'] = $values;
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

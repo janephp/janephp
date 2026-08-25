@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class CompactTweet extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class CompactTweet implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -257,5 +260,9 @@ class CompactTweet extends \ArrayObject
         $this->initialized['withheld'] = true;
         $this->withheld = $withheld;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['format' => ['format', 'getFormat', 'setFormat'], 'id' => ['id', 'getId', 'setId'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'text' => ['text', 'getText', 'setText'], 'authorId' => ['author_id', 'getAuthorId', 'setAuthorId'], 'inReplyToUserId' => ['in_reply_to_user_id', 'getInReplyToUserId', 'setInReplyToUserId'], 'referencedTweets' => ['referenced_tweets', 'getReferencedTweets', 'setReferencedTweets'], 'attachments' => ['attachments', 'getAttachments', 'setAttachments'], 'withheld' => ['withheld', 'getWithheld', 'setWithheld']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class LoadBalancerBase extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class LoadBalancerBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -794,5 +797,9 @@ class LoadBalancerBase extends \ArrayObject
         $this->initialized['tlsCipherPolicy'] = true;
         $this->tlsCipherPolicy = $tlsCipherPolicy;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'projectId' => ['project_id', 'getProjectId', 'setProjectId'], 'ip' => ['ip', 'getIp', 'setIp'], 'ipv6' => ['ipv6', 'getIpv6', 'setIpv6'], 'sizeUnit' => ['size_unit', 'getSizeUnit', 'setSizeUnit'], 'size' => ['size', 'getSize', 'setSize'], 'algorithm' => ['algorithm', 'getAlgorithm', 'setAlgorithm'], 'status' => ['status', 'getStatus', 'setStatus'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'forwardingRules' => ['forwarding_rules', 'getForwardingRules', 'setForwardingRules'], 'healthCheck' => ['health_check', 'getHealthCheck', 'setHealthCheck'], 'stickySessions' => ['sticky_sessions', 'getStickySessions', 'setStickySessions'], 'redirectHttpToHttps' => ['redirect_http_to_https', 'getRedirectHttpToHttps', 'setRedirectHttpToHttps'], 'enableProxyProtocol' => ['enable_proxy_protocol', 'getEnableProxyProtocol', 'setEnableProxyProtocol'], 'enableBackendKeepalive' => ['enable_backend_keepalive', 'getEnableBackendKeepalive', 'setEnableBackendKeepalive'], 'httpIdleTimeoutSeconds' => ['http_idle_timeout_seconds', 'getHttpIdleTimeoutSeconds', 'setHttpIdleTimeoutSeconds'], 'vpcUuid' => ['vpc_uuid', 'getVpcUuid', 'setVpcUuid'], 'disableLetsEncryptDnsRecords' => ['disable_lets_encrypt_dns_records', 'getDisableLetsEncryptDnsRecords', 'setDisableLetsEncryptDnsRecords'], 'firewall' => ['firewall', 'getFirewall', 'setFirewall'], 'network' => ['network', 'getNetwork', 'setNetwork'], 'networkStack' => ['network_stack', 'getNetworkStack', 'setNetworkStack'], 'type' => ['type', 'getType', 'setType'], 'domains' => ['domains', 'getDomains', 'setDomains'], 'glbSettings' => ['glb_settings', 'getGlbSettings', 'setGlbSettings'], 'targetLoadBalancerIds' => ['target_load_balancer_ids', 'getTargetLoadBalancerIds', 'setTargetLoadBalancerIds'], 'tlsCipherPolicy' => ['tls_cipher_policy', 'getTlsCipherPolicy', 'setTlsCipherPolicy']];
     }
 }

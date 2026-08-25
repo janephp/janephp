@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseListTriggers extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseListTriggers implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseListTriggers extends \ArrayObject
         $this->initialized['triggers'] = true;
         $this->triggers = $triggers;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['triggers' => ['triggers', 'getTriggers', 'setTriggers']];
     }
 }

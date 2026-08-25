@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class TopicSearchResultItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class TopicSearchResultItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -363,5 +366,9 @@ class TopicSearchResultItem extends \ArrayObject
         $this->initialized['aliases'] = true;
         $this->aliases = $aliases;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'displayName' => ['display_name', 'getDisplayName', 'setDisplayName'], 'shortDescription' => ['short_description', 'getShortDescription', 'setShortDescription'], 'description' => ['description', 'getDescription', 'setDescription'], 'createdBy' => ['created_by', 'getCreatedBy', 'setCreatedBy'], 'released' => ['released', 'getReleased', 'setReleased'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'featured' => ['featured', 'getFeatured', 'setFeatured'], 'curated' => ['curated', 'getCurated', 'setCurated'], 'score' => ['score', 'getScore', 'setScore'], 'repositoryCount' => ['repository_count', 'getRepositoryCount', 'setRepositoryCount'], 'logoUrl' => ['logo_url', 'getLogoUrl', 'setLogoUrl'], 'textMatches' => ['text_matches', 'getTextMatches', 'setTextMatches'], 'related' => ['related', 'getRelated', 'setRelated'], 'aliases' => ['aliases', 'getAliases', 'setAliases']];
     }
 }

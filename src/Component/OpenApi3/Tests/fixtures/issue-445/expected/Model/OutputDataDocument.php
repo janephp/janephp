@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class OutputDataDocument extends OutputDataBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class OutputDataDocument extends OutputDataBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class OutputDataDocument extends OutputDataBase
         $this->initialized['pageCount'] = true;
         $this->pageCount = $pageCount;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['pageCount' => ['pageCount', 'getPageCount', 'setPageCount']];
     }
 }

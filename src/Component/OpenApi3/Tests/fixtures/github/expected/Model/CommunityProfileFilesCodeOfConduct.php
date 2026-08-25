@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CommunityProfileFilesCodeOfConduct extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CommunityProfileFilesCodeOfConduct implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class CommunityProfileFilesCodeOfConduct extends \ArrayObject
         $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'key' => ['key', 'getKey', 'setKey'], 'name' => ['name', 'getName', 'setName'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl']];
     }
 }

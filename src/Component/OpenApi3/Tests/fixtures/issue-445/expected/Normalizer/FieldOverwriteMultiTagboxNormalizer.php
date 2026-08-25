@@ -163,7 +163,7 @@ class FieldOverwriteMultiTagboxNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('overwriteMinimumItems') && null !== $data->getOverwriteMinimumItems()) {
             $dataArray['overwriteMinimumItems'] = $data->getOverwriteMinimumItems();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

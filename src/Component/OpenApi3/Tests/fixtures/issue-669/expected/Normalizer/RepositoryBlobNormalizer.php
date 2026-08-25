@@ -61,7 +61,7 @@ class RepositoryBlobNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('compressedSizeBytes') && null !== $data->getCompressedSizeBytes()) {
             $dataArray['compressed_size_bytes'] = $data->getCompressedSizeBytes();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

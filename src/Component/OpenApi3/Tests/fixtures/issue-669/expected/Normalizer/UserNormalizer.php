@@ -54,7 +54,7 @@ class UserNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if ($data->isInitialized('kubernetesClusterUser') && null !== $data->getKubernetesClusterUser()) {
             $dataArray['kubernetes_cluster_user'] = $data->getKubernetesClusterUser() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getKubernetesClusterUser(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -143,5 +146,9 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItem 
         $this->initialized['percentSharesHeld'] = true;
         $this->percentSharesHeld = $percentSharesHeld;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'shareholderType' => ['shareholderType', 'getShareholderType', 'setShareholderType'], 'shareType' => ['shareType', 'getShareType', 'setShareType'], 'currency' => ['currency', 'getCurrency', 'setCurrency'], 'totalNumberOfSharesOwned' => ['totalNumberOfSharesOwned', 'getTotalNumberOfSharesOwned', 'setTotalNumberOfSharesOwned'], 'percentSharesHeld' => ['percentSharesHeld', 'getPercentSharesHeld', 'setPercentSharesHeld']];
     }
 }

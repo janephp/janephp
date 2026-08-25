@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class MatchRegexCondition extends BusinessRuleCondition
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class MatchRegexCondition extends BusinessRuleCondition implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class MatchRegexCondition extends BusinessRuleCondition
         $this->initialized['storeIn'] = true;
         $this->storeIn = $storeIn;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['fieldPath' => ['fieldPath', 'getFieldPath', 'setFieldPath'], 'regex' => ['regex', 'getRegex', 'setRegex'], 'storeIn' => ['storeIn', 'getStoreIn', 'setStoreIn']];
     }
 }

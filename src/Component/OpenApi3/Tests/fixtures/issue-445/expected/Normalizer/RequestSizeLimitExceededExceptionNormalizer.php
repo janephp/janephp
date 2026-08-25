@@ -157,7 +157,7 @@ class RequestSizeLimitExceededExceptionNormalizer implements DenormalizerInterfa
         if ($data->isInitialized('requestedAmount') && null !== $data->getRequestedAmount()) {
             $dataArray['requestedAmount'] = $data->getRequestedAmount();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

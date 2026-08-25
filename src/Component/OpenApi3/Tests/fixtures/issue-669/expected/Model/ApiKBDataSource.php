@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiKBDataSource extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiKBDataSource implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -323,5 +326,9 @@ class ApiKBDataSource extends \ArrayObject
         $this->initialized['webCrawlerDataSource'] = true;
         $this->webCrawlerDataSource = $webCrawlerDataSource;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['awsDataSource' => ['aws_data_source', 'getAwsDataSource', 'setAwsDataSource'], 'bucketName' => ['bucket_name', 'getBucketName', 'setBucketName'], 'bucketRegion' => ['bucket_region', 'getBucketRegion', 'setBucketRegion'], 'chunkingAlgorithm' => ['chunking_algorithm', 'getChunkingAlgorithm', 'setChunkingAlgorithm'], 'chunkingOptions' => ['chunking_options', 'getChunkingOptions', 'setChunkingOptions'], 'dropboxDataSource' => ['dropbox_data_source', 'getDropboxDataSource', 'setDropboxDataSource'], 'fileUploadDataSource' => ['file_upload_data_source', 'getFileUploadDataSource', 'setFileUploadDataSource'], 'googleDriveDataSource' => ['google_drive_data_source', 'getGoogleDriveDataSource', 'setGoogleDriveDataSource'], 'itemPath' => ['item_path', 'getItemPath', 'setItemPath'], 'spacesDataSource' => ['spaces_data_source', 'getSpacesDataSource', 'setSpacesDataSource'], 'webCrawlerDataSource' => ['web_crawler_data_source', 'getWebCrawlerDataSource', 'setWebCrawlerDataSource']];
     }
 }

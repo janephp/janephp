@@ -124,7 +124,7 @@ class ContentMetadataUpdateItemNormalizer implements DenormalizerInterface, Norm
         $dataArray['layerFieldsUpdateOptions'] = $data->getLayerFieldsUpdateOptions();
         $dataArray['contentFieldsUpdateOptions'] = $data->getContentFieldsUpdateOptions();
         $dataArray['id'] = $data->getId();
-        foreach ($data as $key_2 => $value_3) {
+        foreach ($data->additionalPropertyEntries() as $key_2 => $value_3) {
             if (preg_match('/.*/', (string) $key_2)) {
                 $dataArray[$key_2] = $value_3;
             }

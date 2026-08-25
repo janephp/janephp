@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200 extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200 extends \ArrayOb
         $this->initialized['repositories'] = true;
         $this->repositories = $repositories;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['totalCount' => ['total_count', 'getTotalCount', 'setTotalCount'], 'repositories' => ['repositories', 'getRepositories', 'setRepositories']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class Certificate extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class Certificate implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -235,5 +238,9 @@ class Certificate extends \ArrayObject
         $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'notAfter' => ['not_after', 'getNotAfter', 'setNotAfter'], 'sha1Fingerprint' => ['sha1_fingerprint', 'getSha1Fingerprint', 'setSha1Fingerprint'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'dnsNames' => ['dns_names', 'getDnsNames', 'setDnsNames'], 'state' => ['state', 'getState', 'setState'], 'type' => ['type', 'getType', 'setType']];
     }
 }

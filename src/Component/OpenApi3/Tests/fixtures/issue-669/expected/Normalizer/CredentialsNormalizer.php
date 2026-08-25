@@ -101,7 +101,7 @@ class CredentialsNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('expiresAt') && null !== $data->getExpiresAt()) {
             $dataArray['expires_at'] = $data->getExpiresAt()->format('Y-m-d\TH:i:sP');
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

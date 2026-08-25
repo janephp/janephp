@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseAlertPolicyResponse extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseAlertPolicyResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseAlertPolicyResponse extends \ArrayObject
         $this->initialized['policy'] = true;
         $this->policy = $policy;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['policy' => ['policy', 'getPolicy', 'setPolicy']];
     }
 }

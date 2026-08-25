@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -434,5 +437,9 @@ class ReposOwnerRepoPatchBody extends \ArrayObject
         $this->initialized['archived'] = true;
         $this->archived = $archived;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'description' => ['description', 'getDescription', 'setDescription'], 'homepage' => ['homepage', 'getHomepage', 'setHomepage'], 'private' => ['private', 'getPrivate', 'setPrivate'], 'visibility' => ['visibility', 'getVisibility', 'setVisibility'], 'hasIssues' => ['has_issues', 'getHasIssues', 'setHasIssues'], 'hasProjects' => ['has_projects', 'getHasProjects', 'setHasProjects'], 'hasWiki' => ['has_wiki', 'getHasWiki', 'setHasWiki'], 'isTemplate' => ['is_template', 'getIsTemplate', 'setIsTemplate'], 'defaultBranch' => ['default_branch', 'getDefaultBranch', 'setDefaultBranch'], 'allowSquashMerge' => ['allow_squash_merge', 'getAllowSquashMerge', 'setAllowSquashMerge'], 'allowMergeCommit' => ['allow_merge_commit', 'getAllowMergeCommit', 'setAllowMergeCommit'], 'allowRebaseMerge' => ['allow_rebase_merge', 'getAllowRebaseMerge', 'setAllowRebaseMerge'], 'deleteBranchOnMerge' => ['delete_branch_on_merge', 'getDeleteBranchOnMerge', 'setDeleteBranchOnMerge'], 'archived' => ['archived', 'getArchived', 'setArchived']];
     }
 }

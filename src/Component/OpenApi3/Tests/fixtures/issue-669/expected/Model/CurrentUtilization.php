@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class CurrentUtilization extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class CurrentUtilization implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class CurrentUtilization extends \ArrayObject
         $this->initialized['cpu'] = true;
         $this->cpu = $cpu;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['memory' => ['memory', 'getMemory', 'setMemory'], 'cpu' => ['cpu', 'getCpu', 'setCpu']];
     }
 }

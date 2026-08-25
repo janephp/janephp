@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoContentsPathDeleteBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoContentsPathDeleteBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class ReposOwnerRepoContentsPathDeleteBody extends \ArrayObject
         $this->initialized['author'] = true;
         $this->author = $author;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['message' => ['message', 'getMessage', 'setMessage'], 'sha' => ['sha', 'getSha', 'setSha'], 'branch' => ['branch', 'getBranch', 'setBranch'], 'committer' => ['committer', 'getCommitter', 'setCommitter'], 'author' => ['author', 'getAuthor', 'setAuthor']];
     }
 }

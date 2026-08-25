@@ -85,7 +85,7 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissionsNormalizer im
         if ($data->isInitialized('defNotARepo') && null !== $data->getDefNotARepo()) {
             $dataArray['def_not_a_repo'] = $data->getDefNotARepo();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class UserEmailVisibilityPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class UserEmailVisibilityPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class UserEmailVisibilityPatchBody extends \ArrayObject
         $this->initialized['visibility'] = true;
         $this->visibility = $visibility;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['email' => ['email', 'getEmail', 'setEmail'], 'visibility' => ['visibility', 'getVisibility', 'setVisibility']];
     }
 }

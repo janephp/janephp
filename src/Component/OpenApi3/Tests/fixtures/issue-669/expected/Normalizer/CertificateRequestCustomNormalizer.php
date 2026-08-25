@@ -76,7 +76,7 @@ class CertificateRequestCustomNormalizer implements DenormalizerInterface, Norma
         if ($data->isInitialized('certificateChain') && null !== $data->getCertificateChain()) {
             $dataArray['certificate_chain'] = $data->getCertificateChain();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

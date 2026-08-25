@@ -187,7 +187,7 @@ class TermsEnumAggregatorNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['searchFields'] = $values_3;
         }
         $dataArray['enumType'] = $data->getEnumType();
-        foreach ($data as $key => $value_4) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_4;
             }

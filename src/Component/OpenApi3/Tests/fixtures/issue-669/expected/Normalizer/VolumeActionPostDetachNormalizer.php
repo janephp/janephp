@@ -64,7 +64,7 @@ class VolumeActionPostDetachNormalizer implements DenormalizerInterface, Normali
             $dataArray['region'] = $data->getRegion();
         }
         $dataArray['droplet_id'] = $data->getDropletId();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

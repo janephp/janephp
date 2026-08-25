@@ -85,7 +85,7 @@ class DefaultUserFieldsNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('pinnedTweetId') && null !== $data->getPinnedTweetId()) {
             $dataArray['pinned_tweet_id'] = $data->getPinnedTweetId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

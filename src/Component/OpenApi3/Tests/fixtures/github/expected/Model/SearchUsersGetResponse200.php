@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class SearchUsersGetResponse200 extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class SearchUsersGetResponse200 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class SearchUsersGetResponse200 extends \ArrayObject
         $this->initialized['items'] = true;
         $this->items = $items;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['totalCount' => ['total_count', 'getTotalCount', 'setTotalCount'], 'incompleteResults' => ['incomplete_results', 'getIncompleteResults', 'setIncompleteResults'], 'items' => ['items', 'getItems', 'setItems']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class PreviousOutage extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class PreviousOutage implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class PreviousOutage extends \ArrayObject
         $this->initialized['durationSeconds'] = true;
         $this->durationSeconds = $durationSeconds;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['region' => ['region', 'getRegion', 'setRegion'], 'startedAt' => ['started_at', 'getStartedAt', 'setStartedAt'], 'endedAt' => ['ended_at', 'getEndedAt', 'setEndedAt'], 'durationSeconds' => ['duration_seconds', 'getDurationSeconds', 'setDurationSeconds']];
     }
 }

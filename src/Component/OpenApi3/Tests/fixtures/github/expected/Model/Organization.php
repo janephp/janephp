@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Organization extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Organization implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -703,5 +706,9 @@ class Organization extends \ArrayObject
         $this->initialized['plan'] = true;
         $this->plan = $plan;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['login' => ['login', 'getLogin', 'setLogin'], 'url' => ['url', 'getUrl', 'setUrl'], 'id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'reposUrl' => ['repos_url', 'getReposUrl', 'setReposUrl'], 'eventsUrl' => ['events_url', 'getEventsUrl', 'setEventsUrl'], 'hooksUrl' => ['hooks_url', 'getHooksUrl', 'setHooksUrl'], 'issuesUrl' => ['issues_url', 'getIssuesUrl', 'setIssuesUrl'], 'membersUrl' => ['members_url', 'getMembersUrl', 'setMembersUrl'], 'publicMembersUrl' => ['public_members_url', 'getPublicMembersUrl', 'setPublicMembersUrl'], 'avatarUrl' => ['avatar_url', 'getAvatarUrl', 'setAvatarUrl'], 'description' => ['description', 'getDescription', 'setDescription'], 'blog' => ['blog', 'getBlog', 'setBlog'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'name' => ['name', 'getName', 'setName'], 'company' => ['company', 'getCompany', 'setCompany'], 'location' => ['location', 'getLocation', 'setLocation'], 'email' => ['email', 'getEmail', 'setEmail'], 'hasOrganizationProjects' => ['has_organization_projects', 'getHasOrganizationProjects', 'setHasOrganizationProjects'], 'hasRepositoryProjects' => ['has_repository_projects', 'getHasRepositoryProjects', 'setHasRepositoryProjects'], 'isVerified' => ['is_verified', 'getIsVerified', 'setIsVerified'], 'publicRepos' => ['public_repos', 'getPublicRepos', 'setPublicRepos'], 'publicGists' => ['public_gists', 'getPublicGists', 'setPublicGists'], 'followers' => ['followers', 'getFollowers', 'setFollowers'], 'following' => ['following', 'getFollowing', 'setFollowing'], 'type' => ['type', 'getType', 'setType'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'plan' => ['plan', 'getPlan', 'setPlan']];
     }
 }

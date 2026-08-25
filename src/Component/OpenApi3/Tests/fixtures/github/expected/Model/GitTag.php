@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class GitTag extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class GitTag implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -205,5 +208,9 @@ class GitTag extends \ArrayObject
         $this->initialized['verification'] = true;
         $this->verification = $verification;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'tag' => ['tag', 'getTag', 'setTag'], 'sha' => ['sha', 'getSha', 'setSha'], 'url' => ['url', 'getUrl', 'setUrl'], 'message' => ['message', 'getMessage', 'setMessage'], 'tagger' => ['tagger', 'getTagger', 'setTagger'], 'object' => ['object', 'getObject', 'setObject'], 'verification' => ['verification', 'getVerification', 'setVerification']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseExistingCluster extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseExistingCluster implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseExistingCluster extends \ArrayObject
         $this->initialized['kubernetesCluster'] = true;
         $this->kubernetesCluster = $kubernetesCluster;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['kubernetesCluster' => ['kubernetes_cluster', 'getKubernetesCluster', 'setKubernetesCluster']];
     }
 }

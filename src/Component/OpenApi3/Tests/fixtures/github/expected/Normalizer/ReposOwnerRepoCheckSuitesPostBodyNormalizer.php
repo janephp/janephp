@@ -55,7 +55,7 @@ class ReposOwnerRepoCheckSuitesPostBodyNormalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         $dataArray['head_sha'] = $data->getHeadSha();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -212,7 +212,7 @@ class FieldLongArrayNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('minimumItems') && null !== $data->getMinimumItems()) {
             $dataArray['minimumItems'] = $data->getMinimumItems();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

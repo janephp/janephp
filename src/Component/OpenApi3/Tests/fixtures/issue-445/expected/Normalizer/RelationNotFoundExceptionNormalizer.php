@@ -143,7 +143,7 @@ class RelationNotFoundExceptionNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('relationId') && null !== $data->getRelationId()) {
             $dataArray['relationId'] = $data->getRelationId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

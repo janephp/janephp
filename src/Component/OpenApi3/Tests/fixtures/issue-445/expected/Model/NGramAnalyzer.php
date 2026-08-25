@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class NGramAnalyzer extends AnalyzerBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class NGramAnalyzer extends AnalyzerBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class NGramAnalyzer extends AnalyzerBase
         $this->initialized['fieldSuffix'] = true;
         $this->fieldSuffix = $fieldSuffix;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'fieldSuffix' => ['fieldSuffix', 'getFieldSuffix', 'setFieldSuffix']];
     }
 }

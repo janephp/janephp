@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class App extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class App implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -463,5 +466,9 @@ class App extends \ArrayObject
         $this->initialized['vpc'] = true;
         $this->vpc = $vpc;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['activeDeployment' => ['active_deployment', 'getActiveDeployment', 'setActiveDeployment'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'defaultIngress' => ['default_ingress', 'getDefaultIngress', 'setDefaultIngress'], 'domains' => ['domains', 'getDomains', 'setDomains'], 'id' => ['id', 'getId', 'setId'], 'inProgressDeployment' => ['in_progress_deployment', 'getInProgressDeployment', 'setInProgressDeployment'], 'lastDeploymentCreatedAt' => ['last_deployment_created_at', 'getLastDeploymentCreatedAt', 'setLastDeploymentCreatedAt'], 'liveDomain' => ['live_domain', 'getLiveDomain', 'setLiveDomain'], 'liveUrl' => ['live_url', 'getLiveUrl', 'setLiveUrl'], 'liveUrlBase' => ['live_url_base', 'getLiveUrlBase', 'setLiveUrlBase'], 'ownerUuid' => ['owner_uuid', 'getOwnerUuid', 'setOwnerUuid'], 'pendingDeployment' => ['pending_deployment', 'getPendingDeployment', 'setPendingDeployment'], 'projectId' => ['project_id', 'getProjectId', 'setProjectId'], 'region' => ['region', 'getRegion', 'setRegion'], 'spec' => ['spec', 'getSpec', 'setSpec'], 'tierSlug' => ['tier_slug', 'getTierSlug', 'setTierSlug'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'pinnedDeployment' => ['pinned_deployment', 'getPinnedDeployment', 'setPinnedDeployment'], 'dedicatedIps' => ['dedicated_ips', 'getDedicatedIps', 'setDedicatedIps'], 'vpc' => ['vpc', 'getVpc', 'setVpc']];
     }
 }

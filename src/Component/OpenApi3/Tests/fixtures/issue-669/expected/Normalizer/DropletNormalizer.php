@@ -229,7 +229,7 @@ class DropletNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('gpuInfo') && null !== $data->getGpuInfo()) {
             $dataArray['gpu_info'] = $data->getGpuInfo() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getGpuInfo(), 'json', $context));
         }
-        foreach ($data as $key => $value_6) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_6) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_6;
             }

@@ -92,7 +92,7 @@ class V2DatabasesDatabaseClusterUuidUsersPostBodyNormalizer implements Denormali
         if ($data->isInitialized('readonly') && null !== $data->getReadonly()) {
             $dataArray['readonly'] = $data->getReadonly();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

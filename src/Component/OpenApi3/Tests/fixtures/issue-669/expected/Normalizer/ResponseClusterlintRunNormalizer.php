@@ -54,7 +54,7 @@ class ResponseClusterlintRunNormalizer implements DenormalizerInterface, Normali
         if ($data->isInitialized('runId') && null !== $data->getRunId()) {
             $dataArray['run_id'] = $data->getRunId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

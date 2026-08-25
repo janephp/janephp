@@ -65,7 +65,7 @@ class PullRequestReviewCommentLinksNormalizer implements DenormalizerInterface, 
         $dataArray['self'] = $data->getSelf() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getSelf(), 'json', $context));
         $dataArray['html'] = $data->getHtml() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getHtml(), 'json', $context));
         $dataArray['pull_request'] = $data->getPullRequest() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPullRequest(), 'json', $context));
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class UserSettings extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class UserSettings implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -129,5 +132,9 @@ class UserSettings extends \ArrayObject
         $this->initialized['mongoUserSettings'] = true;
         $this->mongoUserSettings = $mongoUserSettings;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['pgAllowReplication' => ['pg_allow_replication', 'getPgAllowReplication', 'setPgAllowReplication'], 'opensearchAcl' => ['opensearch_acl', 'getOpensearchAcl', 'setOpensearchAcl'], 'acl' => ['acl', 'getAcl', 'setAcl'], 'mongoUserSettings' => ['mongo_user_settings', 'getMongoUserSettings', 'setMongoUserSettings']];
     }
 }

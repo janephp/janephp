@@ -78,7 +78,7 @@ class ReposOwnerRepoPullsPullNumberMergePutBodyNormalizer implements Denormalize
         if ($data->isInitialized('mergeMethod') && null !== $data->getMergeMethod()) {
             $dataArray['merge_method'] = $data->getMergeMethod();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

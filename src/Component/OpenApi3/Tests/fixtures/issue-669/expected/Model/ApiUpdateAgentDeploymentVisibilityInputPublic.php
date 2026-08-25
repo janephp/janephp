@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiUpdateAgentDeploymentVisibilityInputPublic extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiUpdateAgentDeploymentVisibilityInputPublic implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -79,5 +82,9 @@ class ApiUpdateAgentDeploymentVisibilityInputPublic extends \ArrayObject
         $this->initialized['visibility'] = true;
         $this->visibility = $visibility;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['uuid' => ['uuid', 'getUuid', 'setUuid'], 'visibility' => ['visibility', 'getVisibility', 'setVisibility']];
     }
 }

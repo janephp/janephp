@@ -74,7 +74,7 @@ class BusinessProcessDetailsDataSchemaImportNormalizer implements DenormalizerIn
         if ($data->isInitialized('listItemImportResult') && null !== $data->getListItemImportResult()) {
             $dataArray['listItemImportResult'] = $data->getListItemImportResult();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

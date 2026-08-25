@@ -82,7 +82,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemNormalizer implements
         if ($data->isInitialized('watchlist') && null !== $data->getWatchlist()) {
             $dataArray['watchlist'] = $data->getWatchlist() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getWatchlist(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

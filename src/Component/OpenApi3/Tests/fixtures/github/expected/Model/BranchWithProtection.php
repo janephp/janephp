@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class BranchWithProtection extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class BranchWithProtection implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -199,5 +202,9 @@ class BranchWithProtection extends \ArrayObject
         $this->initialized['requiredApprovingReviewCount'] = true;
         $this->requiredApprovingReviewCount = $requiredApprovingReviewCount;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'commit' => ['commit', 'getCommit', 'setCommit'], 'links' => ['_links', 'getLinks', 'setLinks'], 'protected' => ['protected', 'getProtected', 'setProtected'], 'protection' => ['protection', 'getProtection', 'setProtection'], 'protectionUrl' => ['protection_url', 'getProtectionUrl', 'setProtectionUrl'], 'pattern' => ['pattern', 'getPattern', 'setPattern'], 'requiredApprovingReviewCount' => ['required_approving_review_count', 'getRequiredApprovingReviewCount', 'setRequiredApprovingReviewCount']];
     }
 }

@@ -54,7 +54,7 @@ class AppJobInvocationTriggerManualNormalizer implements DenormalizerInterface, 
         if ($data->isInitialized('user') && null !== $data->getUser()) {
             $dataArray['user'] = $data->getUser() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getUser(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

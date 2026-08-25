@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppInstances extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppInstances implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class AppInstances extends \ArrayObject
         $this->initialized['instances'] = true;
         $this->instances = $instances;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['instances' => ['instances', 'getInstances', 'setInstances']];
     }
 }

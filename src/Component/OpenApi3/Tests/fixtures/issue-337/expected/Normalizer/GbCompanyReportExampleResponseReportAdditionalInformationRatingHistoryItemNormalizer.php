@@ -71,7 +71,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationRatingHistoryItem
         if ($data->isInitialized('ratingDescription') && null !== $data->getRatingDescription()) {
             $dataArray['ratingDescription'] = $data->getRatingDescription();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

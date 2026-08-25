@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class VideoMetrics extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class VideoMetrics implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -207,5 +210,9 @@ class VideoMetrics extends \ArrayObject
         $this->initialized['playback100Count'] = true;
         $this->playback100Count = $playback100Count;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['mediaKey' => ['media_key', 'getMediaKey', 'setMediaKey'], 'viewCount' => ['view_count', 'getViewCount', 'setViewCount'], 'playback0Count' => ['playback_0_count', 'getPlayback0Count', 'setPlayback0Count'], 'playback25Count' => ['playback_25_count', 'getPlayback25Count', 'setPlayback25Count'], 'playback50Count' => ['playback_50_count', 'getPlayback50Count', 'setPlayback50Count'], 'playback75Count' => ['playback_75_count', 'getPlayback75Count', 'setPlayback75Count'], 'playback100Count' => ['playback_100_count', 'getPlayback100Count', 'setPlayback100Count']];
     }
 }

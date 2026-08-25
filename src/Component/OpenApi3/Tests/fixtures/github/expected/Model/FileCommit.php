@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class FileCommit extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class FileCommit implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class FileCommit extends \ArrayObject
         $this->initialized['commit'] = true;
         $this->commit = $commit;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['content' => ['content', 'getContent', 'setContent'], 'commit' => ['commit', 'getCommit', 'setCommit']];
     }
 }

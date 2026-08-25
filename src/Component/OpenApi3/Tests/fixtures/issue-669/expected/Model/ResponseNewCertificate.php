@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseNewCertificate extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseNewCertificate implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseNewCertificate extends \ArrayObject
         $this->initialized['certificate'] = true;
         $this->certificate = $certificate;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['certificate' => ['certificate', 'getCertificate', 'setCertificate']];
     }
 }

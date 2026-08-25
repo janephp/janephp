@@ -57,7 +57,7 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $dataArray = [];
         $dataArray['code'] = $data->getCode();
         $dataArray['message'] = $data->getMessage();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

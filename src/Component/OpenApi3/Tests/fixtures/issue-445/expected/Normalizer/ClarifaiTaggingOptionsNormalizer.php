@@ -140,7 +140,7 @@ class ClarifaiTaggingOptionsNormalizer implements DenormalizerInterface, Normali
         if ($data->isInitialized('minimumValue') && null !== $data->getMinimumValue()) {
             $dataArray['minimumValue'] = $data->getMinimumValue();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

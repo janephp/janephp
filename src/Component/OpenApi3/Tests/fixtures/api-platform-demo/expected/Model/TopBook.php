@@ -2,8 +2,11 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class TopBook extends \ArrayObject
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
+class TopBook implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -143,5 +146,9 @@ class TopBook extends \ArrayObject
         $this->initialized['borrowCount'] = true;
         $this->borrowCount = $borrowCount;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'title' => ['title', 'getTitle', 'setTitle'], 'author' => ['author', 'getAuthor', 'setAuthor'], 'part' => ['part', 'getPart', 'setPart'], 'place' => ['place', 'getPlace', 'setPlace'], 'borrowCount' => ['borrowCount', 'getBorrowCount', 'setBorrowCount']];
     }
 }

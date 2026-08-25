@@ -202,7 +202,7 @@ class GistFullForkOfNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('truncated') && null !== $data->getTruncated()) {
             $dataArray['truncated'] = $data->getTruncated();
         }
-        foreach ($data as $key_1 => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_1;
             }

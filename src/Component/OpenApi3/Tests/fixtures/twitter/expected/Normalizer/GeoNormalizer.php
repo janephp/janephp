@@ -85,7 +85,7 @@ class GeoNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             $values_1[$key] = $value_1;
         }
         $dataArray['properties'] = $values_1;
-        foreach ($data as $key_1 => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_2;
             }

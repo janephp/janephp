@@ -61,7 +61,7 @@ class ApiUsageMeasurementNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('usageType') && null !== $data->getUsageType()) {
             $dataArray['usage_type'] = $data->getUsageType();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseAssociatedResourcesList extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseAssociatedResourcesList implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class ResponseAssociatedResourcesList extends \ArrayObject
         $this->initialized['volumeSnapshots'] = true;
         $this->volumeSnapshots = $volumeSnapshots;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['reservedIps' => ['reserved_ips', 'getReservedIps', 'setReservedIps'], 'floatingIps' => ['floating_ips', 'getFloatingIps', 'setFloatingIps'], 'snapshots' => ['snapshots', 'getSnapshots', 'setSnapshots'], 'volumes' => ['volumes', 'getVolumes', 'setVolumes'], 'volumeSnapshots' => ['volume_snapshots', 'getVolumeSnapshots', 'setVolumeSnapshots']];
     }
 }

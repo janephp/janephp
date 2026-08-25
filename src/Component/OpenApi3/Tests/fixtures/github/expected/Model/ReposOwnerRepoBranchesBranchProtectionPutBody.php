@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoBranchesBranchProtectionPutBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoBranchesBranchProtectionPutBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -207,5 +210,9 @@ class ReposOwnerRepoBranchesBranchProtectionPutBody extends \ArrayObject
         $this->initialized['allowDeletions'] = true;
         $this->allowDeletions = $allowDeletions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['requiredStatusChecks' => ['required_status_checks', 'getRequiredStatusChecks', 'setRequiredStatusChecks'], 'enforceAdmins' => ['enforce_admins', 'getEnforceAdmins', 'setEnforceAdmins'], 'requiredPullRequestReviews' => ['required_pull_request_reviews', 'getRequiredPullRequestReviews', 'setRequiredPullRequestReviews'], 'restrictions' => ['restrictions', 'getRestrictions', 'setRestrictions'], 'requiredLinearHistory' => ['required_linear_history', 'getRequiredLinearHistory', 'setRequiredLinearHistory'], 'allowForcePushes' => ['allow_force_pushes', 'getAllowForcePushes', 'setAllowForcePushes'], 'allowDeletions' => ['allow_deletions', 'getAllowDeletions', 'setAllowDeletions']];
     }
 }

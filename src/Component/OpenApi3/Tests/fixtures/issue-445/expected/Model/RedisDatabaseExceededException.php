@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class RedisDatabaseExceededException extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class RedisDatabaseExceededException implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -253,5 +256,9 @@ class RedisDatabaseExceededException extends \ArrayObject
         $this->initialized['redisDatabaseCount'] = true;
         $this->redisDatabaseCount = $redisDatabaseCount;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['traceLevel' => ['traceLevel', 'getTraceLevel', 'setTraceLevel'], 'traceId' => ['traceId', 'getTraceId', 'setTraceId'], 'traceJobId' => ['traceJobId', 'getTraceJobId', 'setTraceJobId'], 'httpStatusCode' => ['httpStatusCode', 'getHttpStatusCode', 'setHttpStatusCode'], 'exceptionMessage' => ['exceptionMessage', 'getExceptionMessage', 'setExceptionMessage'], 'kind' => ['kind', 'getKind', 'setKind'], 'customerId' => ['customerId', 'getCustomerId', 'setCustomerId'], 'customerCount' => ['customerCount', 'getCustomerCount', 'setCustomerCount'], 'maxCount' => ['maxCount', 'getMaxCount', 'setMaxCount'], 'startIndex' => ['startIndex', 'getStartIndex', 'setStartIndex'], 'redisDatabaseCount' => ['redisDatabaseCount', 'getRedisDatabaseCount', 'setRedisDatabaseCount']];
     }
 }

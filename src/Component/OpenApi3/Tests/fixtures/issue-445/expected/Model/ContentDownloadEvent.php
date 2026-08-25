@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ContentDownloadEvent extends ApplicationEvent
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ContentDownloadEvent extends ApplicationEvent implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class ContentDownloadEvent extends ApplicationEvent
         $this->initialized['range'] = true;
         $this->range = $range;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['downloadInfos' => ['downloadInfos', 'getDownloadInfos', 'setDownloadInfos'], 'fileSize' => ['fileSize', 'getFileSize', 'setFileSize'], 'shareToken' => ['shareToken', 'getShareToken', 'setShareToken'], 'range' => ['range', 'getRange', 'setRange']];
     }
 }

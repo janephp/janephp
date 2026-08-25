@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DestroyedAssociatedResource extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DestroyedAssociatedResource implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class DestroyedAssociatedResource extends \ArrayObject
         $this->initialized['errorMessage'] = true;
         $this->errorMessage = $errorMessage;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'destroyedAt' => ['destroyed_at', 'getDestroyedAt', 'setDestroyedAt'], 'errorMessage' => ['error_message', 'getErrorMessage', 'setErrorMessage']];
     }
 }

@@ -71,7 +71,7 @@ class RegionStateNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('thirtyDayUptimePercentage') && null !== $data->getThirtyDayUptimePercentage()) {
             $dataArray['thirty_day_uptime_percentage'] = $data->getThirtyDayUptimePercentage();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

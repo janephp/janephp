@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class TagboxItemsChangedCondition extends BusinessRuleCondition
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class TagboxItemsChangedCondition extends BusinessRuleCondition implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class TagboxItemsChangedCondition extends BusinessRuleCondition
         $this->initialized['fieldPath'] = true;
         $this->fieldPath = $fieldPath;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['fieldPath' => ['fieldPath', 'getFieldPath', 'setFieldPath']];
     }
 }

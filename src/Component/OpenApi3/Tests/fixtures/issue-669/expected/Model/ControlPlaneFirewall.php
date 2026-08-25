@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ControlPlaneFirewall extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ControlPlaneFirewall implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ControlPlaneFirewall extends \ArrayObject
         $this->initialized['allowedAddresses'] = true;
         $this->allowedAddresses = $allowedAddresses;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['enabled' => ['enabled', 'getEnabled', 'setEnabled'], 'allowedAddresses' => ['allowed_addresses', 'getAllowedAddresses', 'setAllowedAddresses']];
     }
 }

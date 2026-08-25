@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class AuthorizationInstallation extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class AuthorizationInstallation implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -133,5 +136,9 @@ class AuthorizationInstallation extends \ArrayObject
         $this->initialized['account'] = true;
         $this->account = $account;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['permissions' => ['permissions', 'getPermissions', 'setPermissions'], 'repositorySelection' => ['repository_selection', 'getRepositorySelection', 'setRepositorySelection'], 'singleFileName' => ['single_file_name', 'getSingleFileName', 'setSingleFileName'], 'repositoriesUrl' => ['repositories_url', 'getRepositoriesUrl', 'setRepositoriesUrl'], 'account' => ['account', 'getAccount', 'setAccount']];
     }
 }

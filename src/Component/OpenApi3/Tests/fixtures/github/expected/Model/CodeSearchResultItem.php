@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CodeSearchResultItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CodeSearchResultItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -303,5 +306,9 @@ class CodeSearchResultItem extends \ArrayObject
         $this->initialized['textMatches'] = true;
         $this->textMatches = $textMatches;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'path' => ['path', 'getPath', 'setPath'], 'sha' => ['sha', 'getSha', 'setSha'], 'url' => ['url', 'getUrl', 'setUrl'], 'gitUrl' => ['git_url', 'getGitUrl', 'setGitUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'repository' => ['repository', 'getRepository', 'setRepository'], 'score' => ['score', 'getScore', 'setScore'], 'fileSize' => ['file_size', 'getFileSize', 'setFileSize'], 'language' => ['language', 'getLanguage', 'setLanguage'], 'lastModifiedAt' => ['last_modified_at', 'getLastModifiedAt', 'setLastModifiedAt'], 'lineNumbers' => ['line_numbers', 'getLineNumbers', 'setLineNumbers'], 'textMatches' => ['text_matches', 'getTextMatches', 'setTextMatches']];
     }
 }

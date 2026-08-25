@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ThreadSubject extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ThreadSubject implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class ThreadSubject extends \ArrayObject
         $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['title' => ['title', 'getTitle', 'setTitle'], 'url' => ['url', 'getUrl', 'setUrl'], 'latestCommentUrl' => ['latest_comment_url', 'getLatestCommentUrl', 'setLatestCommentUrl'], 'type' => ['type', 'getType', 'setType']];
     }
 }

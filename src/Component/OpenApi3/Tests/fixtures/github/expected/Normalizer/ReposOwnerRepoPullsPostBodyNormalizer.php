@@ -101,7 +101,7 @@ class ReposOwnerRepoPullsPostBodyNormalizer implements DenormalizerInterface, No
         if ($data->isInitialized('issue') && null !== $data->getIssue()) {
             $dataArray['issue'] = $data->getIssue();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

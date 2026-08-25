@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiWebCrawlerDataSource extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiWebCrawlerDataSource implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -144,5 +147,9 @@ class ApiWebCrawlerDataSource extends \ArrayObject
         $this->initialized['excludeTags'] = true;
         $this->excludeTags = $excludeTags;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['baseUrl' => ['base_url', 'getBaseUrl', 'setBaseUrl'], 'crawlingOption' => ['crawling_option', 'getCrawlingOption', 'setCrawlingOption'], 'embedMedia' => ['embed_media', 'getEmbedMedia', 'setEmbedMedia'], 'excludeTags' => ['exclude_tags', 'getExcludeTags', 'setExcludeTags']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Actor extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Actor implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -143,5 +146,9 @@ class Actor extends \ArrayObject
         $this->initialized['avatarUrl'] = true;
         $this->avatarUrl = $avatarUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'login' => ['login', 'getLogin', 'setLogin'], 'displayLogin' => ['display_login', 'getDisplayLogin', 'setDisplayLogin'], 'gravatarId' => ['gravatar_id', 'getGravatarId', 'setGravatarId'], 'url' => ['url', 'getUrl', 'setUrl'], 'avatarUrl' => ['avatar_url', 'getAvatarUrl', 'setAvatarUrl']];
     }
 }

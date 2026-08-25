@@ -75,7 +75,7 @@ class PartnerAttachmentBgpNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('peerRouterIp') && null !== $data->getPeerRouterIp()) {
             $dataArray['peer_router_ip'] = $data->getPeerRouterIp();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

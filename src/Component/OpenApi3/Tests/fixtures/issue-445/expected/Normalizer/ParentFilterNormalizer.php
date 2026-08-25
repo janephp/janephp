@@ -62,7 +62,7 @@ class ParentFilterNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['kind'] = $data->getKind();
         $dataArray['parentType'] = $data->getParentType();
         $dataArray['filter'] = $data->getFilter();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

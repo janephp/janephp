@@ -65,7 +65,7 @@ class RateLimitNormalizer implements DenormalizerInterface, NormalizerInterface,
         $dataArray['limit'] = $data->getLimit();
         $dataArray['remaining'] = $data->getRemaining();
         $dataArray['reset'] = $data->getReset();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

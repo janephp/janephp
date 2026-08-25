@@ -78,7 +78,7 @@ class ApiOverviewSshKeyFingerprintsNormalizer implements DenormalizerInterface, 
         if ($data->isInitialized('sHA256DSA') && null !== $data->getSHA256DSA()) {
             $dataArray['SHA256_DSA'] = $data->getSHA256DSA();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

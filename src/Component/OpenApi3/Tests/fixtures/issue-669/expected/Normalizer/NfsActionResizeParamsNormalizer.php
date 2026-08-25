@@ -52,7 +52,7 @@ class NfsActionResizeParamsNormalizer implements DenormalizerInterface, Normaliz
     {
         $dataArray = [];
         $dataArray['size_gib'] = $data->getSizeGib();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

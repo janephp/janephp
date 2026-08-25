@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class NotCondition extends BusinessRuleCondition
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class NotCondition extends BusinessRuleCondition implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class NotCondition extends BusinessRuleCondition
         $this->initialized['condition'] = true;
         $this->condition = $condition;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['condition' => ['condition', 'getCondition', 'setCondition']];
     }
 }

@@ -75,7 +75,7 @@ class V2VpcsPostBodyNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('ipRange') && null !== $data->getIpRange()) {
             $dataArray['ip_range'] = $data->getIpRange();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

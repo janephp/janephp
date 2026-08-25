@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsDeploymentResponse extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsDeploymentResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class AppsDeploymentResponse extends \ArrayObject
         $this->initialized['deployment'] = true;
         $this->deployment = $deployment;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['deployment' => ['deployment', 'getDeployment', 'setDeployment']];
     }
 }

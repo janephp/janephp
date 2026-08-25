@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AlertPolicy extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AlertPolicy implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -231,5 +234,9 @@ class AlertPolicy extends \ArrayObject
         $this->initialized['window'] = true;
         $this->window = $window;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['alerts' => ['alerts', 'getAlerts', 'setAlerts'], 'compare' => ['compare', 'getCompare', 'setCompare'], 'description' => ['description', 'getDescription', 'setDescription'], 'enabled' => ['enabled', 'getEnabled', 'setEnabled'], 'entities' => ['entities', 'getEntities', 'setEntities'], 'tags' => ['tags', 'getTags', 'setTags'], 'type' => ['type', 'getType', 'setType'], 'uuid' => ['uuid', 'getUuid', 'setUuid'], 'value' => ['value', 'getValue', 'setValue'], 'window' => ['window', 'getWindow', 'setWindow']];
     }
 }

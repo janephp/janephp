@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class FieldOverwriteMultiTagbox extends FieldOverwriteBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class FieldOverwriteMultiTagbox extends FieldOverwriteBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -247,5 +250,9 @@ class FieldOverwriteMultiTagbox extends FieldOverwriteBase
         $this->initialized['overwriteMinimumItems'] = true;
         $this->overwriteMinimumItems = $overwriteMinimumItems;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['filter' => ['filter', 'getFilter', 'setFilter'], 'overwriteFilter' => ['overwriteFilter', 'getOverwriteFilter', 'setOverwriteFilter'], 'listItemCreateTemplate' => ['listItemCreateTemplate', 'getListItemCreateTemplate', 'setListItemCreateTemplate'], 'overwriteListItemCreateTemplate' => ['overwriteListItemCreateTemplate', 'getOverwriteListItemCreateTemplate', 'setOverwriteListItemCreateTemplate'], 'maximumItems' => ['maximumItems', 'getMaximumItems', 'setMaximumItems'], 'overwriteMaximumItems' => ['overwriteMaximumItems', 'getOverwriteMaximumItems', 'setOverwriteMaximumItems'], 'minimumItems' => ['minimumItems', 'getMinimumItems', 'setMinimumItems'], 'overwriteMinimumItems' => ['overwriteMinimumItems', 'getOverwriteMinimumItems', 'setOverwriteMinimumItems']];
     }
 }

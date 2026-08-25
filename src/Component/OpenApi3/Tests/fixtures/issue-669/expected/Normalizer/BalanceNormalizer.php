@@ -79,7 +79,7 @@ class BalanceNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('generatedAt') && null !== $data->getGeneratedAt()) {
             $dataArray['generated_at'] = $data->getGeneratedAt()->format('Y-m-d\TH:i:sP');
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

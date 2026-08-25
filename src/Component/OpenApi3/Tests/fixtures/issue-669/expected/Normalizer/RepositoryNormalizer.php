@@ -75,7 +75,7 @@ class RepositoryNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('tagCount') && null !== $data->getTagCount()) {
             $dataArray['tag_count'] = $data->getTagCount();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReviewComment extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReviewComment implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -641,5 +644,9 @@ class ReviewComment extends \ArrayObject
         $this->initialized['originalStartLine'] = true;
         $this->originalStartLine = $originalStartLine;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'pullRequestReviewId' => ['pull_request_review_id', 'getPullRequestReviewId', 'setPullRequestReviewId'], 'id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'diffHunk' => ['diff_hunk', 'getDiffHunk', 'setDiffHunk'], 'path' => ['path', 'getPath', 'setPath'], 'position' => ['position', 'getPosition', 'setPosition'], 'originalPosition' => ['original_position', 'getOriginalPosition', 'setOriginalPosition'], 'commitId' => ['commit_id', 'getCommitId', 'setCommitId'], 'originalCommitId' => ['original_commit_id', 'getOriginalCommitId', 'setOriginalCommitId'], 'inReplyToId' => ['in_reply_to_id', 'getInReplyToId', 'setInReplyToId'], 'user' => ['user', 'getUser', 'setUser'], 'body' => ['body', 'getBody', 'setBody'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'pullRequestUrl' => ['pull_request_url', 'getPullRequestUrl', 'setPullRequestUrl'], 'authorAssociation' => ['author_association', 'getAuthorAssociation', 'setAuthorAssociation'], 'links' => ['_links', 'getLinks', 'setLinks'], 'bodyText' => ['body_text', 'getBodyText', 'setBodyText'], 'bodyHtml' => ['body_html', 'getBodyHtml', 'setBodyHtml'], 'side' => ['side', 'getSide', 'setSide'], 'startSide' => ['start_side', 'getStartSide', 'setStartSide'], 'line' => ['line', 'getLine', 'setLine'], 'originalLine' => ['original_line', 'getOriginalLine', 'setOriginalLine'], 'startLine' => ['start_line', 'getStartLine', 'setStartLine'], 'originalStartLine' => ['original_start_line', 'getOriginalStartLine', 'setOriginalStartLine']];
     }
 }

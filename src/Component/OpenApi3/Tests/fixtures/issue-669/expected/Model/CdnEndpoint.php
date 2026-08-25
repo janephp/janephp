@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class CdnEndpoint extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class CdnEndpoint implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -207,5 +210,9 @@ class CdnEndpoint extends \ArrayObject
         $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'origin' => ['origin', 'getOrigin', 'setOrigin'], 'endpoint' => ['endpoint', 'getEndpoint', 'setEndpoint'], 'ttl' => ['ttl', 'getTtl', 'setTtl'], 'certificateId' => ['certificate_id', 'getCertificateId', 'setCertificateId'], 'customDomain' => ['custom_domain', 'getCustomDomain', 'setCustomDomain'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt']];
     }
 }

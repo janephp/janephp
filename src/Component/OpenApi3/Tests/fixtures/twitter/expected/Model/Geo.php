@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class Geo extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class Geo implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -105,5 +108,9 @@ class Geo extends \ArrayObject
         $this->initialized['properties'] = true;
         $this->properties = $properties;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'bbox' => ['bbox', 'getBbox', 'setBbox'], 'geometry' => ['geometry', 'getGeometry', 'setGeometry'], 'properties' => ['properties', 'getProperties', 'setProperties']];
     }
 }

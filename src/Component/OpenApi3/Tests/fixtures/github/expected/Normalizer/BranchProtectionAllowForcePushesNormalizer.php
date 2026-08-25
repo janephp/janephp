@@ -60,7 +60,7 @@ class BranchProtectionAllowForcePushesNormalizer implements DenormalizerInterfac
         if ($data->isInitialized('enabled') && null !== $data->getEnabled()) {
             $dataArray['enabled'] = $data->getEnabled();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

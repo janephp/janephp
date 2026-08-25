@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Blob extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Blob implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -165,5 +168,9 @@ class Blob extends \ArrayObject
         $this->initialized['highlightedContent'] = true;
         $this->highlightedContent = $highlightedContent;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['content' => ['content', 'getContent', 'setContent'], 'encoding' => ['encoding', 'getEncoding', 'setEncoding'], 'url' => ['url', 'getUrl', 'setUrl'], 'sha' => ['sha', 'getSha', 'setSha'], 'size' => ['size', 'getSize', 'setSize'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'highlightedContent' => ['highlighted_content', 'getHighlightedContent', 'setHighlightedContent']];
     }
 }

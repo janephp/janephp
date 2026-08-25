@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportCompanySummary extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportCompanySummary implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -209,5 +212,9 @@ class GbCompanyReportExampleResponseReportCompanySummary extends \ArrayObject
         $this->initialized['creditRating'] = true;
         $this->creditRating = $creditRating;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['businessName' => ['businessName', 'getBusinessName', 'setBusinessName'], 'country' => ['country', 'getCountry', 'setCountry'], 'companyNumber' => ['companyNumber', 'getCompanyNumber', 'setCompanyNumber'], 'companyRegistrationNumber' => ['companyRegistrationNumber', 'getCompanyRegistrationNumber', 'setCompanyRegistrationNumber'], 'mainActivity' => ['mainActivity', 'getMainActivity', 'setMainActivity'], 'companyStatus' => ['companyStatus', 'getCompanyStatus', 'setCompanyStatus'], 'latestTurnoverFigure' => ['latestTurnoverFigure', 'getLatestTurnoverFigure', 'setLatestTurnoverFigure'], 'latestShareholdersEquityFigure' => ['latestShareholdersEquityFigure', 'getLatestShareholdersEquityFigure', 'setLatestShareholdersEquityFigure'], 'creditRating' => ['creditRating', 'getCreditRating', 'setCreditRating']];
     }
 }

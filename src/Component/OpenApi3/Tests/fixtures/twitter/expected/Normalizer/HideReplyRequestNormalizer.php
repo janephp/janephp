@@ -57,7 +57,7 @@ class HideReplyRequestNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('hidden') && null !== $data->getHidden()) {
             $dataArray['hidden'] = $data->getHidden();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

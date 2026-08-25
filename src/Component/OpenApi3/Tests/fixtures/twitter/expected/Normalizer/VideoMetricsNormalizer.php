@@ -92,7 +92,7 @@ class VideoMetricsNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($data->isInitialized('playback100Count') && null !== $data->getPlayback100Count()) {
             $dataArray['playback_100_count'] = $data->getPlayback100Count();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

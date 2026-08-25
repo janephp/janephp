@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class PullRequestMinimal extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class PullRequestMinimal implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class PullRequestMinimal extends \ArrayObject
         $this->initialized['base'] = true;
         $this->base = $base;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'number' => ['number', 'getNumber', 'setNumber'], 'url' => ['url', 'getUrl', 'setUrl'], 'head' => ['head', 'getHead', 'setHead'], 'base' => ['base', 'getBase', 'setBase']];
     }
 }

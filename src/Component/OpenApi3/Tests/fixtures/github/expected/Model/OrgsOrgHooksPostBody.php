@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrgsOrgHooksPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrgsOrgHooksPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class OrgsOrgHooksPostBody extends \ArrayObject
         $this->initialized['active'] = true;
         $this->active = $active;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'config' => ['config', 'getConfig', 'setConfig'], 'events' => ['events', 'getEvents', 'setEvents'], 'active' => ['active', 'getActive', 'setActive']];
     }
 }

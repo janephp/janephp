@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class RepositoryManifest extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class RepositoryManifest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -235,5 +238,9 @@ class RepositoryManifest extends \ArrayObject
         $this->initialized['blobs'] = true;
         $this->blobs = $blobs;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['registryName' => ['registry_name', 'getRegistryName', 'setRegistryName'], 'repository' => ['repository', 'getRepository', 'setRepository'], 'digest' => ['digest', 'getDigest', 'setDigest'], 'compressedSizeBytes' => ['compressed_size_bytes', 'getCompressedSizeBytes', 'setCompressedSizeBytes'], 'sizeBytes' => ['size_bytes', 'getSizeBytes', 'setSizeBytes'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'tags' => ['tags', 'getTags', 'setTags'], 'blobs' => ['blobs', 'getBlobs', 'setBlobs']];
     }
 }

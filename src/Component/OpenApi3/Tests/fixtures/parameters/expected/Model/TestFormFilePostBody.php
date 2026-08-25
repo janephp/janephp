@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class TestFormFilePostBody extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class TestFormFilePostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class TestFormFilePostBody extends \ArrayObject
         $this->initialized['testFile'] = true;
         $this->testFile = $testFile;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['testFile' => ['testFile', 'getTestFile', 'setTestFile']];
     }
 }

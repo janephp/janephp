@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class EventPayload extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class EventPayload implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -111,5 +114,9 @@ class EventPayload extends \ArrayObject
         $this->initialized['pages'] = true;
         $this->pages = $pages;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['action' => ['action', 'getAction', 'setAction'], 'issue' => ['issue', 'getIssue', 'setIssue'], 'comment' => ['comment', 'getComment', 'setComment'], 'pages' => ['pages', 'getPages', 'setPages']];
     }
 }

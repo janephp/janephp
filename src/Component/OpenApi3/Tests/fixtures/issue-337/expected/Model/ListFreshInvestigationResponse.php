@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class ListFreshInvestigationResponse extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class ListFreshInvestigationResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class ListFreshInvestigationResponse extends \ArrayObject
         $this->initialized['orders'] = true;
         $this->orders = $orders;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['totalCount' => ['totalCount', 'getTotalCount', 'setTotalCount'], 'orders' => ['orders', 'getOrders', 'setOrders']];
     }
 }

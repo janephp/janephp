@@ -153,7 +153,7 @@ class KubernetesNodePoolNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('maxNodes') && null !== $data->getMaxNodes()) {
             $dataArray['max_nodes'] = $data->getMaxNodes();
         }
-        foreach ($data as $key_1 => $value_3) {
+        foreach ($data->additionalPropertyEntries() as $key_1 => $value_3) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_3;
             }

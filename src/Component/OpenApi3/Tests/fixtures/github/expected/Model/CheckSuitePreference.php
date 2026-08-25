@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CheckSuitePreference extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CheckSuitePreference implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -61,5 +64,9 @@ class CheckSuitePreference extends \ArrayObject
         $this->initialized['repository'] = true;
         $this->repository = $repository;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['preferences' => ['preferences', 'getPreferences', 'setPreferences'], 'repository' => ['repository', 'getRepository', 'setRepository']];
     }
 }

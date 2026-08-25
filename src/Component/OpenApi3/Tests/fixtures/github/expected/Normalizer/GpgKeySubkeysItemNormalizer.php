@@ -177,7 +177,7 @@ class GpgKeySubkeysItemNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('rawKey') && null !== $data->getRawKey()) {
             $dataArray['raw_key'] = $data->getRawKey();
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

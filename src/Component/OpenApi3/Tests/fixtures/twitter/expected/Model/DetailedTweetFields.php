@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class DetailedTweetFields extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class DetailedTweetFields implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -145,5 +148,9 @@ class DetailedTweetFields extends \ArrayObject
         $this->initialized['source'] = true;
         $this->source = $source;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['stats' => ['stats', 'getStats', 'setStats'], 'contextAnnotation' => ['context_annotation', 'getContextAnnotation', 'setContextAnnotation'], 'possiblySensitive' => ['possibly_sensitive', 'getPossiblySensitive', 'setPossiblySensitive'], 'lang' => ['lang', 'getLang', 'setLang'], 'source' => ['source', 'getSource', 'setSource']];
     }
 }

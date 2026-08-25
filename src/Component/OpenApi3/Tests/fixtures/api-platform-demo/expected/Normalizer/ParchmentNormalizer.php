@@ -65,7 +65,7 @@ class ParchmentNormalizer implements DenormalizerInterface, NormalizerInterface,
         $dataArray = [];
         $dataArray['title'] = $data->getTitle();
         $dataArray['description'] = $data->getDescription();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

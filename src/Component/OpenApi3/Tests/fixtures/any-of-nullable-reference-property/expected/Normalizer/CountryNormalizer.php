@@ -61,7 +61,7 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('printableName') && null !== $data->getPrintableName()) {
             $dataArray['printableName'] = $data->getPrintableName();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

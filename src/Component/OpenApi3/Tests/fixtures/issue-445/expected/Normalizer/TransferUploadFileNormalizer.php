@@ -74,7 +74,7 @@ class TransferUploadFileNormalizer implements DenormalizerInterface, NormalizerI
             $dataArray['requestId'] = $data->getRequestId();
         }
         $dataArray['fileName'] = $data->getFileName();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

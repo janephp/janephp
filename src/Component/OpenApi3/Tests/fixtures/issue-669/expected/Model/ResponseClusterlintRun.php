@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseClusterlintRun extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseClusterlintRun implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ResponseClusterlintRun extends \ArrayObject
         $this->initialized['runId'] = true;
         $this->runId = $runId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['runId' => ['run_id', 'getRunId', 'setRunId']];
     }
 }

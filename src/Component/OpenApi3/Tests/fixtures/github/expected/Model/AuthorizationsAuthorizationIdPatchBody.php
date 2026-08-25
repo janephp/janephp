@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class AuthorizationsAuthorizationIdPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class AuthorizationsAuthorizationIdPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -179,5 +182,9 @@ class AuthorizationsAuthorizationIdPatchBody extends \ArrayObject
         $this->initialized['fingerprint'] = true;
         $this->fingerprint = $fingerprint;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['scopes' => ['scopes', 'getScopes', 'setScopes'], 'addScopes' => ['add_scopes', 'getAddScopes', 'setAddScopes'], 'removeScopes' => ['remove_scopes', 'getRemoveScopes', 'setRemoveScopes'], 'note' => ['note', 'getNote', 'setNote'], 'noteUrl' => ['note_url', 'getNoteUrl', 'setNoteUrl'], 'fingerprint' => ['fingerprint', 'getFingerprint', 'setFingerprint']];
     }
 }

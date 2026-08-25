@@ -74,7 +74,7 @@ class CollaboratorPermissionsNormalizer implements DenormalizerInterface, Normal
         $dataArray['pull'] = $data->getPull();
         $dataArray['push'] = $data->getPush();
         $dataArray['admin'] = $data->getAdmin();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

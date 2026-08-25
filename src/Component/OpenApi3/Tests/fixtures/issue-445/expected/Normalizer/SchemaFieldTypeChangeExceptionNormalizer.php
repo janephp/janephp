@@ -176,7 +176,7 @@ class SchemaFieldTypeChangeExceptionNormalizer implements DenormalizerInterface,
         if ($data->isInitialized('newTypeName') && null !== $data->getNewTypeName()) {
             $dataArray['newTypeName'] = $data->getNewTypeName();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

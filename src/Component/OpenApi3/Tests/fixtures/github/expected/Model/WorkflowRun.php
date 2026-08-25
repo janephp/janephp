@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class WorkflowRun extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class WorkflowRun implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -651,5 +654,9 @@ class WorkflowRun extends \ArrayObject
         $this->initialized['headRepositoryId'] = true;
         $this->headRepositoryId = $headRepositoryId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'headBranch' => ['head_branch', 'getHeadBranch', 'setHeadBranch'], 'headSha' => ['head_sha', 'getHeadSha', 'setHeadSha'], 'runNumber' => ['run_number', 'getRunNumber', 'setRunNumber'], 'event' => ['event', 'getEvent', 'setEvent'], 'status' => ['status', 'getStatus', 'setStatus'], 'conclusion' => ['conclusion', 'getConclusion', 'setConclusion'], 'workflowId' => ['workflow_id', 'getWorkflowId', 'setWorkflowId'], 'url' => ['url', 'getUrl', 'setUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'pullRequests' => ['pull_requests', 'getPullRequests', 'setPullRequests'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'jobsUrl' => ['jobs_url', 'getJobsUrl', 'setJobsUrl'], 'logsUrl' => ['logs_url', 'getLogsUrl', 'setLogsUrl'], 'checkSuiteUrl' => ['check_suite_url', 'getCheckSuiteUrl', 'setCheckSuiteUrl'], 'artifactsUrl' => ['artifacts_url', 'getArtifactsUrl', 'setArtifactsUrl'], 'cancelUrl' => ['cancel_url', 'getCancelUrl', 'setCancelUrl'], 'rerunUrl' => ['rerun_url', 'getRerunUrl', 'setRerunUrl'], 'workflowUrl' => ['workflow_url', 'getWorkflowUrl', 'setWorkflowUrl'], 'headCommit' => ['head_commit', 'getHeadCommit', 'setHeadCommit'], 'repository' => ['repository', 'getRepository', 'setRepository'], 'headRepository' => ['head_repository', 'getHeadRepository', 'setHeadRepository'], 'headRepositoryId' => ['head_repository_id', 'getHeadRepositoryId', 'setHeadRepositoryId']];
     }
 }

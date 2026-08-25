@@ -123,7 +123,7 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyNormalizer implements Denorma
         if ($data->isInitialized('allowDeletions') && null !== $data->getAllowDeletions()) {
             $dataArray['allow_deletions'] = $data->getAllowDeletions();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

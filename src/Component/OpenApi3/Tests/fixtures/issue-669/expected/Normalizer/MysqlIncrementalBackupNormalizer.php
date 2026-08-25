@@ -64,7 +64,7 @@ class MysqlIncrementalBackupNormalizer implements DenormalizerInterface, Normali
         if ($data->isInitialized('fullBackupWeekSchedule') && null !== $data->getFullBackupWeekSchedule()) {
             $dataArray['full_backup_week_schedule'] = $data->getFullBackupWeekSchedule();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

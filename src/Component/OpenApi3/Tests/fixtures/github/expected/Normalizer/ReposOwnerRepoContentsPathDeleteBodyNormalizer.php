@@ -81,7 +81,7 @@ class ReposOwnerRepoContentsPathDeleteBodyNormalizer implements DenormalizerInte
         if ($data->isInitialized('author') && null !== $data->getAuthor()) {
             $dataArray['author'] = $data->getAuthor() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getAuthor(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

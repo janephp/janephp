@@ -85,7 +85,7 @@ class Mp3AudioFormatNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('quality') && null !== $data->getQuality()) {
             $dataArray['quality'] = $data->getQuality();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

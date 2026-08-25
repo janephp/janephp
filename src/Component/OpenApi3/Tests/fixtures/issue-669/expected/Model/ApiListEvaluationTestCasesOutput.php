@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiListEvaluationTestCasesOutput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiListEvaluationTestCasesOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ApiListEvaluationTestCasesOutput extends \ArrayObject
         $this->initialized['evaluationTestCases'] = true;
         $this->evaluationTestCases = $evaluationTestCases;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['evaluationTestCases' => ['evaluation_test_cases', 'getEvaluationTestCases', 'setEvaluationTestCases']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class UserAggregationRequest extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class UserAggregationRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -281,5 +284,9 @@ class UserAggregationRequest extends \ArrayObject
         $this->initialized['aggregators'] = true;
         $this->aggregators = $aggregators;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['searchString' => ['searchString', 'getSearchString', 'setSearchString'], 'searchBehaviors' => ['searchBehaviors', 'getSearchBehaviors', 'setSearchBehaviors'], 'filter' => ['filter', 'getFilter', 'setFilter'], 'lifeCycleFilter' => ['lifeCycleFilter', 'getLifeCycleFilter', 'setLifeCycleFilter'], 'userRightsFilter' => ['userRightsFilter', 'getUserRightsFilter', 'setUserRightsFilter'], 'aggregationFilters' => ['aggregationFilters', 'getAggregationFilters', 'setAggregationFilters'], 'includeServiceUser' => ['includeServiceUser', 'getIncludeServiceUser', 'setIncludeServiceUser'], 'editableOnly' => ['editableOnly', 'getEditableOnly', 'setEditableOnly'], 'aggregators' => ['aggregators', 'getAggregators', 'setAggregators']];
     }
 }

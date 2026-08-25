@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class MaximumTransferSizeException extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class MaximumTransferSizeException implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -209,5 +212,9 @@ class MaximumTransferSizeException extends \ArrayObject
         $this->initialized['transferId'] = true;
         $this->transferId = $transferId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['traceLevel' => ['traceLevel', 'getTraceLevel', 'setTraceLevel'], 'traceId' => ['traceId', 'getTraceId', 'setTraceId'], 'traceJobId' => ['traceJobId', 'getTraceJobId', 'setTraceJobId'], 'httpStatusCode' => ['httpStatusCode', 'getHttpStatusCode', 'setHttpStatusCode'], 'exceptionMessage' => ['exceptionMessage', 'getExceptionMessage', 'setExceptionMessage'], 'kind' => ['kind', 'getKind', 'setKind'], 'transferSize' => ['transferSize', 'getTransferSize', 'setTransferSize'], 'maximumTransferSize' => ['maximumTransferSize', 'getMaximumTransferSize', 'setMaximumTransferSize'], 'transferId' => ['transferId', 'getTransferId', 'setTransferId']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessDetailsDataBatchResponse extends BusinessProcessDetailsDataBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class BusinessProcessDetailsDataBatchResponse extends BusinessProcessDetailsDataBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class BusinessProcessDetailsDataBatchResponse extends BusinessProcessDetailsData
         $this->initialized['response'] = true;
         $this->response = $response;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['docType' => ['docType', 'getDocType', 'setDocType'], 'response' => ['response', 'getResponse', 'setResponse']];
     }
 }

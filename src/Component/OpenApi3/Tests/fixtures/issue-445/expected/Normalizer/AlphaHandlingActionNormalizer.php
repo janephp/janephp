@@ -70,7 +70,7 @@ class AlphaHandlingActionNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('replacementRgbColorHexCode') && null !== $data->getReplacementRgbColorHexCode()) {
             $dataArray['replacementRgbColorHexCode'] = $data->getReplacementRgbColorHexCode();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

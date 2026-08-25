@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseDatabases extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseDatabases implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseDatabases extends \ArrayObject
         $this->initialized['dbs'] = true;
         $this->dbs = $dbs;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['dbs' => ['dbs', 'getDbs', 'setDbs']];
     }
 }

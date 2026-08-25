@@ -608,7 +608,7 @@ class TeamRepositoryNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('masterBranch') && null !== $data->getMasterBranch()) {
             $dataArray['master_branch'] = $data->getMasterBranch();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

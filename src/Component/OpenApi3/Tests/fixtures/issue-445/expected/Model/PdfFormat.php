@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class PdfFormat extends FormatBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class PdfFormat extends FormatBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -145,5 +148,9 @@ class PdfFormat extends FormatBase
         $this->initialized['extractFullText'] = true;
         $this->extractFullText = $extractFullText;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['jpegQuality' => ['jpegQuality', 'getJpegQuality', 'setJpegQuality'], 'fastWebView' => ['fastWebView', 'getFastWebView', 'setFastWebView'], 'reduceFileSize' => ['reduceFileSize', 'getReduceFileSize', 'setReduceFileSize'], 'extension' => ['extension', 'getExtension', 'setExtension'], 'extractFullText' => ['extractFullText', 'getExtractFullText', 'setExtractFullText']];
     }
 }

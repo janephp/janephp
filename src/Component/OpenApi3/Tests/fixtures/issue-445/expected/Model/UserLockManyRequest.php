@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class UserLockManyRequest extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class UserLockManyRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -73,5 +76,9 @@ class UserLockManyRequest extends \ArrayObject
         $this->initialized['lock'] = true;
         $this->lock = $lock;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['userIds' => ['userIds', 'getUserIds', 'setUserIds'], 'lock' => ['lock', 'getLock', 'setLock']];
     }
 }

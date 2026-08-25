@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class FileCommitCommitParentsItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class FileCommitCommitParentsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class FileCommitCommitParentsItem extends \ArrayObject
         $this->initialized['sha'] = true;
         $this->sha = $sha;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'sha' => ['sha', 'getSha', 'setSha']];
     }
 }

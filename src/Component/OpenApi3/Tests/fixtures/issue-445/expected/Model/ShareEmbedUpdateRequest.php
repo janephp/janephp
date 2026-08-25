@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ShareEmbedUpdateRequest extends ShareBaseUpdateRequest
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ShareEmbedUpdateRequest extends ShareBaseUpdateRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */

@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ContentFieldsBatchUpdateFilterRequest extends MetadataValuesChangeRequestBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ContentFieldsBatchUpdateFilterRequest extends MetadataValuesChangeRequestBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ContentFieldsBatchUpdateFilterRequest extends MetadataValuesChangeRequestB
         $this->initialized['filterRequest'] = true;
         $this->filterRequest = $filterRequest;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['filterRequest' => ['filterRequest', 'getFilterRequest', 'setFilterRequest']];
     }
 }

@@ -165,7 +165,7 @@ class BusinessProcessContinuationExceptionNormalizer implements DenormalizerInte
         if ($data->isInitialized('precedingBusinessProcessException') && null !== $data->getPrecedingBusinessProcessException()) {
             $dataArray['precedingBusinessProcessException'] = $data->getPrecedingBusinessProcessException();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

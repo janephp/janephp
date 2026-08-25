@@ -189,7 +189,7 @@ class AppJobSpecNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('termination') && null !== $data->getTermination()) {
             $dataArray['termination'] = $data->getTermination() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getTermination(), 'json', $context));
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

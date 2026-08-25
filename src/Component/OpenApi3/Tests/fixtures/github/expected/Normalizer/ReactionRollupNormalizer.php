@@ -100,7 +100,7 @@ class ReactionRollupNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray['hooray'] = $data->getHooray();
         $dataArray['eyes'] = $data->getEyes();
         $dataArray['rocket'] = $data->getRocket();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

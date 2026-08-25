@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class DetailedTweetFieldsStats extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class DetailedTweetFieldsStats implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class DetailedTweetFieldsStats extends \ArrayObject
         $this->initialized['quoteCount'] = true;
         $this->quoteCount = $quoteCount;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['retweetCount' => ['retweet_count', 'getRetweetCount', 'setRetweetCount'], 'replyCount' => ['reply_count', 'getReplyCount', 'setReplyCount'], 'likeCount' => ['like_count', 'getLikeCount', 'setLikeCount'], 'quoteCount' => ['quote_count', 'getQuoteCount', 'setQuoteCount']];
     }
 }

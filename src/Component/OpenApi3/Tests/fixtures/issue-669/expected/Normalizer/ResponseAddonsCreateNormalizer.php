@@ -54,7 +54,7 @@ class ResponseAddonsCreateNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('resource') && null !== $data->getResource()) {
             $dataArray['resource'] = $data->getResource() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getResource(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

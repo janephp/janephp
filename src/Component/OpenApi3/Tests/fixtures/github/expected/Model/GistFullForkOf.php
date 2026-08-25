@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class GistFullForkOf extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class GistFullForkOf implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -413,5 +416,9 @@ class GistFullForkOf extends \ArrayObject
         $this->initialized['truncated'] = true;
         $this->truncated = $truncated;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'forksUrl' => ['forks_url', 'getForksUrl', 'setForksUrl'], 'commitsUrl' => ['commits_url', 'getCommitsUrl', 'setCommitsUrl'], 'id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'gitPullUrl' => ['git_pull_url', 'getGitPullUrl', 'setGitPullUrl'], 'gitPushUrl' => ['git_push_url', 'getGitPushUrl', 'setGitPushUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'files' => ['files', 'getFiles', 'setFiles'], 'public' => ['public', 'getPublic', 'setPublic'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'description' => ['description', 'getDescription', 'setDescription'], 'comments' => ['comments', 'getComments', 'setComments'], 'user' => ['user', 'getUser', 'setUser'], 'commentsUrl' => ['comments_url', 'getCommentsUrl', 'setCommentsUrl'], 'owner' => ['owner', 'getOwner', 'setOwner'], 'truncated' => ['truncated', 'getTruncated', 'setTruncated']];
     }
 }

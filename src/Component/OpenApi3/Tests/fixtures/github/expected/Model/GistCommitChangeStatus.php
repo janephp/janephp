@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class GistCommitChangeStatus extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class GistCommitChangeStatus implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class GistCommitChangeStatus extends \ArrayObject
         $this->initialized['deletions'] = true;
         $this->deletions = $deletions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['total' => ['total', 'getTotal', 'setTotal'], 'additions' => ['additions', 'getAdditions', 'setAdditions'], 'deletions' => ['deletions', 'getDeletions', 'setDeletions']];
     }
 }

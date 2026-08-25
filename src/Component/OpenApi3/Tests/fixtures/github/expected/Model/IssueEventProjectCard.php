@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class IssueEventProjectCard extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class IssueEventProjectCard implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -143,5 +146,9 @@ class IssueEventProjectCard extends \ArrayObject
         $this->initialized['previousColumnName'] = true;
         $this->previousColumnName = $previousColumnName;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'id' => ['id', 'getId', 'setId'], 'projectUrl' => ['project_url', 'getProjectUrl', 'setProjectUrl'], 'projectId' => ['project_id', 'getProjectId', 'setProjectId'], 'columnName' => ['column_name', 'getColumnName', 'setColumnName'], 'previousColumnName' => ['previous_column_name', 'getPreviousColumnName', 'setPreviousColumnName']];
     }
 }

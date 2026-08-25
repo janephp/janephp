@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class RepositoryTag extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class RepositoryTag implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -207,5 +210,9 @@ class RepositoryTag extends \ArrayObject
         $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['registryName' => ['registry_name', 'getRegistryName', 'setRegistryName'], 'repository' => ['repository', 'getRepository', 'setRepository'], 'tag' => ['tag', 'getTag', 'setTag'], 'manifestDigest' => ['manifest_digest', 'getManifestDigest', 'setManifestDigest'], 'compressedSizeBytes' => ['compressed_size_bytes', 'getCompressedSizeBytes', 'setCompressedSizeBytes'], 'sizeBytes' => ['size_bytes', 'getSizeBytes', 'setSizeBytes'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt']];
     }
 }

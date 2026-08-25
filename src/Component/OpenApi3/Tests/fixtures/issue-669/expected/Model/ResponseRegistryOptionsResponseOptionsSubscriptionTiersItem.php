@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseRegistryOptionsResponseOptionsSubscriptionTiersItem extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseRegistryOptionsResponseOptionsSubscriptionTiersItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -291,5 +294,9 @@ class ResponseRegistryOptionsResponseOptionsSubscriptionTiersItem extends \Array
         $this->initialized['eligibilityReasons'] = true;
         $this->eligibilityReasons = $eligibilityReasons;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'slug' => ['slug', 'getSlug', 'setSlug'], 'includedRepositories' => ['included_repositories', 'getIncludedRepositories', 'setIncludedRepositories'], 'includedStorageBytes' => ['included_storage_bytes', 'getIncludedStorageBytes', 'setIncludedStorageBytes'], 'allowStorageOverage' => ['allow_storage_overage', 'getAllowStorageOverage', 'setAllowStorageOverage'], 'includedBandwidthBytes' => ['included_bandwidth_bytes', 'getIncludedBandwidthBytes', 'setIncludedBandwidthBytes'], 'monthlyPriceInCents' => ['monthly_price_in_cents', 'getMonthlyPriceInCents', 'setMonthlyPriceInCents'], 'storageOveragePriceInCents' => ['storage_overage_price_in_cents', 'getStorageOveragePriceInCents', 'setStorageOveragePriceInCents'], 'eligible' => ['eligible', 'getEligible', 'setEligible'], 'eligibilityReasons' => ['eligibility_reasons', 'getEligibilityReasons', 'setEligibilityReasons']];
     }
 }

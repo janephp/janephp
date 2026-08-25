@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ProjectionTransformation extends BusinessRuleTransformation
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ProjectionTransformation extends BusinessRuleTransformation implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ProjectionTransformation extends BusinessRuleTransformation
         $this->initialized['transformations'] = true;
         $this->transformations = $transformations;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['transformations' => ['transformations', 'getTransformations', 'setTransformations']];
     }
 }

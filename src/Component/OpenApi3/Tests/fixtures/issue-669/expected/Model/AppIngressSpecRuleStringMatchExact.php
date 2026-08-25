@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppIngressSpecRuleStringMatchExact extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppIngressSpecRuleStringMatchExact implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class AppIngressSpecRuleStringMatchExact extends \ArrayObject
         $this->initialized['exact'] = true;
         $this->exact = $exact;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['exact' => ['exact', 'getExact', 'setExact']];
     }
 }

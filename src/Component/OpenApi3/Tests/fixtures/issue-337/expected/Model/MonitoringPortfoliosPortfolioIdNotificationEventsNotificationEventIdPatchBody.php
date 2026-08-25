@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchBody extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class MonitoringPortfoliosPortfolioIdNotificationEventsNotificationEventIdPatchB
         $this->initialized['isProcessed'] = true;
         $this->isProcessed = $isProcessed;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['isProcessed' => ['isProcessed', 'getIsProcessed', 'setIsProcessed']];
     }
 }

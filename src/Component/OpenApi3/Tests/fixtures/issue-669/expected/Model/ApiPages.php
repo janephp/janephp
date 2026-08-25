@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiPages extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiPages implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class ApiPages extends \ArrayObject
         $this->initialized['previous'] = true;
         $this->previous = $previous;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['first' => ['first', 'getFirst', 'setFirst'], 'last' => ['last', 'getLast', 'setLast'], 'next' => ['next', 'getNext', 'setNext'], 'previous' => ['previous', 'getPrevious', 'setPrevious']];
     }
 }

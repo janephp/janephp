@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Status extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Status implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -259,5 +262,9 @@ class Status extends \ArrayObject
         $this->initialized['creator'] = true;
         $this->creator = $creator;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'avatarUrl' => ['avatar_url', 'getAvatarUrl', 'setAvatarUrl'], 'id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'state' => ['state', 'getState', 'setState'], 'description' => ['description', 'getDescription', 'setDescription'], 'targetUrl' => ['target_url', 'getTargetUrl', 'setTargetUrl'], 'context' => ['context', 'getContext', 'setContext'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'creator' => ['creator', 'getCreator', 'setCreator']];
     }
 }

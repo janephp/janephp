@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseAvailableUpgrades extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseAvailableUpgrades implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseAvailableUpgrades extends \ArrayObject
         $this->initialized['availableUpgradeVersions'] = true;
         $this->availableUpgradeVersions = $availableUpgradeVersions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['availableUpgradeVersions' => ['available_upgrade_versions', 'getAvailableUpgradeVersions', 'setAvailableUpgradeVersions']];
     }
 }

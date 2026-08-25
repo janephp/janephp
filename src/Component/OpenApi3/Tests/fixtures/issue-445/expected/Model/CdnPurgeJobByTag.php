@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class CdnPurgeJobByTag extends CdnPurgeJobBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class CdnPurgeJobByTag extends CdnPurgeJobBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class CdnPurgeJobByTag extends CdnPurgeJobBase
         $this->initialized['tag'] = true;
         $this->tag = $tag;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['tag' => ['tag', 'getTag', 'setTag']];
     }
 }

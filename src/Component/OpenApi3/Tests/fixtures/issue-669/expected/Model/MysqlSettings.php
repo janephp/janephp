@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class MysqlSettings extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class MysqlSettings implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -54,5 +57,9 @@ class MysqlSettings extends \ArrayObject
         $this->initialized['authPlugin'] = true;
         $this->authPlugin = $authPlugin;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['authPlugin' => ['auth_plugin', 'getAuthPlugin', 'setAuthPlugin']];
     }
 }

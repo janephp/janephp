@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsAssignAppAlertDestinationsRequest extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsAssignAppAlertDestinationsRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class AppsAssignAppAlertDestinationsRequest extends \ArrayObject
         $this->initialized['slackWebhooks'] = true;
         $this->slackWebhooks = $slackWebhooks;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['emails' => ['emails', 'getEmails', 'setEmails'], 'slackWebhooks' => ['slack_webhooks', 'getSlackWebhooks', 'setSlackWebhooks']];
     }
 }

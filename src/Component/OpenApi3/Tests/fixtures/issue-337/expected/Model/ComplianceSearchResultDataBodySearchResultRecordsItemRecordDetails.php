@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -297,5 +300,9 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetails extends
         $this->initialized['searchDate'] = true;
         $this->searchDate = $searchDate;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['acceptListID' => ['acceptListID', 'getAcceptListID', 'setAcceptListID'], 'addedToAcceptList' => ['addedToAcceptList', 'getAddedToAcceptList', 'setAddedToAcceptList'], 'division' => ['division', 'getDivision', 'setDivision'], 'dppa' => ['dppa', 'getDppa', 'setDppa'], 'eftType' => ['eftType', 'getEftType', 'setEftType'], 'entityType' => ['entityType', 'getEntityType', 'setEntityType'], 'gender' => ['gender', 'getGender', 'setGender'], 'glb' => ['glb', 'getGlb', 'setGlb'], 'iDs' => ['iDs', 'getIDs', 'setIDs'], 'lastUpdatedDate' => ['lastUpdatedDate', 'getLastUpdatedDate', 'setLastUpdatedDate'], 'name' => ['name', 'getName', 'setName'], 'recordState' => ['recordState', 'getRecordState', 'setRecordState'], 'searchDate' => ['searchDate', 'getSearchDate', 'setSearchDate']];
     }
 }

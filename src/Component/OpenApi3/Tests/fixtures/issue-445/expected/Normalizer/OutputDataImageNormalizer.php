@@ -121,7 +121,7 @@ class OutputDataImageNormalizer implements DenormalizerInterface, NormalizerInte
         if ($data->isInitialized('height') && null !== $data->getHeight()) {
             $dataArray['height'] = $data->getHeight();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

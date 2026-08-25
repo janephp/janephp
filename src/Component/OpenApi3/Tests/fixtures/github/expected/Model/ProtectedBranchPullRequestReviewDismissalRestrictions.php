@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ProtectedBranchPullRequestReviewDismissalRestrictions extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ProtectedBranchPullRequestReviewDismissalRestrictions implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -133,5 +136,9 @@ class ProtectedBranchPullRequestReviewDismissalRestrictions extends \ArrayObject
         $this->initialized['teamsUrl'] = true;
         $this->teamsUrl = $teamsUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['users' => ['users', 'getUsers', 'setUsers'], 'teams' => ['teams', 'getTeams', 'setTeams'], 'url' => ['url', 'getUrl', 'setUrl'], 'usersUrl' => ['users_url', 'getUsersUrl', 'setUsersUrl'], 'teamsUrl' => ['teams_url', 'getTeamsUrl', 'setTeamsUrl']];
     }
 }

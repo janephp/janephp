@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseEventsLogs extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseEventsLogs implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseEventsLogs extends \ArrayObject
         $this->initialized['events'] = true;
         $this->events = $events;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['events' => ['events', 'getEvents', 'setEvents']];
     }
 }

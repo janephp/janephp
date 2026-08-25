@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiAgentFunction extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiAgentFunction implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -323,5 +326,9 @@ class ApiAgentFunction extends \ArrayObject
         $this->initialized['uuid'] = true;
         $this->uuid = $uuid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['apiKey' => ['api_key', 'getApiKey', 'setApiKey'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'createdBy' => ['created_by', 'getCreatedBy', 'setCreatedBy'], 'description' => ['description', 'getDescription', 'setDescription'], 'faasName' => ['faas_name', 'getFaasName', 'setFaasName'], 'faasNamespace' => ['faas_namespace', 'getFaasNamespace', 'setFaasNamespace'], 'inputSchema' => ['input_schema', 'getInputSchema', 'setInputSchema'], 'name' => ['name', 'getName', 'setName'], 'outputSchema' => ['output_schema', 'getOutputSchema', 'setOutputSchema'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'url' => ['url', 'getUrl', 'setUrl'], 'uuid' => ['uuid', 'getUuid', 'setUuid']];
     }
 }

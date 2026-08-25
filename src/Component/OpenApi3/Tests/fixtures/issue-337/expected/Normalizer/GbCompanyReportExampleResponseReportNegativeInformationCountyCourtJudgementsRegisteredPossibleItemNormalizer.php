@@ -85,7 +85,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         if ($data->isInitialized('ccjStatus') && null !== $data->getCcjStatus()) {
             $dataArray['ccjStatus'] = $data->getCcjStatus();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

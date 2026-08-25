@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class MysqlIncrementalBackup extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class MysqlIncrementalBackup implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class MysqlIncrementalBackup extends \ArrayObject
         $this->initialized['fullBackupWeekSchedule'] = true;
         $this->fullBackupWeekSchedule = $fullBackupWeekSchedule;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['enabled' => ['enabled', 'getEnabled', 'setEnabled'], 'fullBackupWeekSchedule' => ['full_backup_week_schedule', 'getFullBackupWeekSchedule', 'setFullBackupWeekSchedule']];
     }
 }

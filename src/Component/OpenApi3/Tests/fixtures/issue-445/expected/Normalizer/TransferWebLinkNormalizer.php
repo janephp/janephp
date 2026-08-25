@@ -85,7 +85,7 @@ class TransferWebLinkNormalizer implements DenormalizerInterface, NormalizerInte
         if ($data->isInitialized('fileName') && null !== $data->getFileName()) {
             $dataArray['fileName'] = $data->getFileName();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

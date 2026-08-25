@@ -60,7 +60,7 @@ class ContentReferencesContentReferenceIdAttachmentsPostBodyNormalizer implement
         $dataArray = [];
         $dataArray['title'] = $data->getTitle();
         $dataArray['body'] = $data->getBody();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

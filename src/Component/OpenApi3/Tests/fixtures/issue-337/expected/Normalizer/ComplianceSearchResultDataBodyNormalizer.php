@@ -54,7 +54,7 @@ class ComplianceSearchResultDataBodyNormalizer implements DenormalizerInterface,
         if ($data->isInitialized('searchResult') && null !== $data->getSearchResult()) {
             $dataArray['searchResult'] = $data->getSearchResult() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getSearchResult(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

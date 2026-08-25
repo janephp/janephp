@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class OutputFormatEditable extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class OutputFormatEditable implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -210,5 +213,9 @@ class OutputFormatEditable extends \ArrayObject
         $this->initialized['enableXmpWriteback'] = true;
         $this->enableXmpWriteback = $enableXmpWriteback;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['sourceOutputFormats' => ['sourceOutputFormats', 'getSourceOutputFormats', 'setSourceOutputFormats'], 'format' => ['format', 'getFormat', 'setFormat'], 'names' => ['names', 'getNames', 'setNames'], 'retentionTime' => ['retentionTime', 'getRetentionTime', 'setRetentionTime'], 'downloadFileNamePatterns' => ['downloadFileNamePatterns', 'getDownloadFileNamePatterns', 'setDownloadFileNamePatterns'], 'viewForAll' => ['viewForAll', 'getViewForAll', 'setViewForAll'], 'enableXmpWriteback' => ['enableXmpWriteback', 'getEnableXmpWriteback', 'setEnableXmpWriteback']];
     }
 }

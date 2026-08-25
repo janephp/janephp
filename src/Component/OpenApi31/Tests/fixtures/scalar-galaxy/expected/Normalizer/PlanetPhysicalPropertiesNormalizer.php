@@ -87,7 +87,7 @@ class PlanetPhysicalPropertiesNormalizer implements DenormalizerInterface, Norma
         if ($data->isInitialized('temperature') && null !== $data->getTemperature()) {
             $dataArray['temperature'] = $data->getTemperature() === null ? null : new \Jane\Component\OpenApi31\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getTemperature(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -54,7 +54,7 @@ class EmptySpaceNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('stringProperty') && null !== $data->getStringProperty()) {
             $dataArray['stringProperty'] = $data->getStringProperty();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -18,6 +18,8 @@ class MultipartBooleanRuntimeTest extends TestCase
     {
         $expectedDir = self::FIXTURE_DIR . '/expected';
 
+        require_once $expectedDir . '/Runtime/AdditionalAndPatternProperties.php';
+        require_once $expectedDir . '/Runtime/AdditionalPropertiesInterface.php';
         require_once $expectedDir . '/Model/FileDepositPostBody.php';
         require_once $expectedDir . '/Runtime/Normalizer/CheckArray.php';
         require_once $expectedDir . '/Runtime/Normalizer/ValidatorTrait.php';

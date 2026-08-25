@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseSinglePartnerAttachmentBgpAuthKey extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseSinglePartnerAttachmentBgpAuthKey implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseSinglePartnerAttachmentBgpAuthKey extends \ArrayObject
         $this->initialized['bgpAuthKey'] = true;
         $this->bgpAuthKey = $bgpAuthKey;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['bgpAuthKey' => ['bgp_auth_key', 'getBgpAuthKey', 'setBgpAuthKey']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoCheckRunsPostBodyOutput extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoCheckRunsPostBodyOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class ReposOwnerRepoCheckRunsPostBodyOutput extends \ArrayObject
         $this->initialized['images'] = true;
         $this->images = $images;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['title' => ['title', 'getTitle', 'setTitle'], 'summary' => ['summary', 'getSummary', 'setSummary'], 'text' => ['text', 'getText', 'setText'], 'annotations' => ['annotations', 'getAnnotations', 'setAnnotations'], 'images' => ['images', 'getImages', 'setImages']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoIssuesIssueNumberLockPutBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoIssuesIssueNumberLockPutBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -51,5 +54,9 @@ class ReposOwnerRepoIssuesIssueNumberLockPutBody extends \ArrayObject
         $this->initialized['lockReason'] = true;
         $this->lockReason = $lockReason;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['lockReason' => ['lock_reason', 'getLockReason', 'setLockReason']];
     }
 }

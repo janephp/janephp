@@ -54,7 +54,7 @@ class MessageM70047PostBodyNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('bar') && null !== $data->getBar()) {
             $dataArray['bar'] = $data->getBar();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

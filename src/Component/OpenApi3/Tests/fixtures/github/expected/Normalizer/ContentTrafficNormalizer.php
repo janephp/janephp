@@ -70,7 +70,7 @@ class ContentTrafficNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray['title'] = $data->getTitle();
         $dataArray['count'] = $data->getCount();
         $dataArray['uniques'] = $data->getUniques();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

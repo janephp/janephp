@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPutBody extends \ArrayObject
         $this->initialized['labels'] = true;
         $this->labels = $labels;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['labels' => ['labels', 'getLabels', 'setLabels']];
     }
 }

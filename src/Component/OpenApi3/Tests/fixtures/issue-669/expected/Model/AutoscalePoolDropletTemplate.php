@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AutoscalePoolDropletTemplate extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AutoscalePoolDropletTemplate implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -343,5 +346,9 @@ class AutoscalePoolDropletTemplate extends \ArrayObject
         $this->initialized['userData'] = true;
         $this->userData = $userData;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'region' => ['region', 'getRegion', 'setRegion'], 'size' => ['size', 'getSize', 'setSize'], 'image' => ['image', 'getImage', 'setImage'], 'sshKeys' => ['ssh_keys', 'getSshKeys', 'setSshKeys'], 'tags' => ['tags', 'getTags', 'setTags'], 'vpcUuid' => ['vpc_uuid', 'getVpcUuid', 'setVpcUuid'], 'withDropletAgent' => ['with_droplet_agent', 'getWithDropletAgent', 'setWithDropletAgent'], 'projectId' => ['project_id', 'getProjectId', 'setProjectId'], 'ipv6' => ['ipv6', 'getIpv6', 'setIpv6'], 'userData' => ['user_data', 'getUserData', 'setUserData']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsBitbucketSourceSpec extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsBitbucketSourceSpec implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class AppsBitbucketSourceSpec extends \ArrayObject
         $this->initialized['repo'] = true;
         $this->repo = $repo;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['branch' => ['branch', 'getBranch', 'setBranch'], 'deployOnPush' => ['deploy_on_push', 'getDeployOnPush', 'setDeployOnPush'], 'repo' => ['repo', 'getRepo', 'setRepo']];
     }
 }

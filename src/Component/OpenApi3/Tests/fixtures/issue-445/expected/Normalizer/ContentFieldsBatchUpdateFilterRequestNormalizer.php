@@ -86,7 +86,7 @@ class ContentFieldsBatchUpdateFilterRequestNormalizer implements DenormalizerInt
         $dataArray['notifyProgress'] = $data->getNotifyProgress();
         $dataArray['kind'] = $data->getKind();
         $dataArray['filterRequest'] = $data->getFilterRequest();
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

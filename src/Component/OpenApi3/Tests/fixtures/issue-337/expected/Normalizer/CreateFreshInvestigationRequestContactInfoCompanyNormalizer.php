@@ -61,7 +61,7 @@ class CreateFreshInvestigationRequestContactInfoCompanyNormalizer implements Den
         if ($data->isInitialized('number') && null !== $data->getNumber()) {
             $dataArray['number'] = $data->getNumber();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

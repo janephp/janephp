@@ -615,7 +615,7 @@ class RepositoryNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('starredAt') && null !== $data->getStarredAt()) {
             $dataArray['starred_at'] = $data->getStarredAt();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class TeamsTeamIdDiscussionsPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class TeamsTeamIdDiscussionsPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class TeamsTeamIdDiscussionsPostBody extends \ArrayObject
         $this->initialized['private'] = true;
         $this->private = $private;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['title' => ['title', 'getTitle', 'setTitle'], 'body' => ['body', 'getBody', 'setBody'], 'private' => ['private', 'getPrivate', 'setPrivate']];
     }
 }

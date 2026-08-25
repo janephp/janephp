@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class IssueEventRename extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class IssueEventRename implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class IssueEventRename extends \ArrayObject
         $this->initialized['to'] = true;
         $this->to = $to;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['from' => ['from', 'getFrom', 'setFrom'], 'to' => ['to', 'getTo', 'setTo']];
     }
 }

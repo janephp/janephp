@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ConnectionPool extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ConnectionPool implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -239,5 +242,9 @@ class ConnectionPool extends \ArrayObject
         $this->initialized['standbyPrivateConnection'] = true;
         $this->standbyPrivateConnection = $standbyPrivateConnection;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'mode' => ['mode', 'getMode', 'setMode'], 'size' => ['size', 'getSize', 'setSize'], 'db' => ['db', 'getDb', 'setDb'], 'user' => ['user', 'getUser', 'setUser'], 'connection' => ['connection', 'getConnection', 'setConnection'], 'privateConnection' => ['private_connection', 'getPrivateConnection', 'setPrivateConnection'], 'standbyConnection' => ['standby_connection', 'getStandbyConnection', 'setStandbyConnection'], 'standbyPrivateConnection' => ['standby_private_connection', 'getStandbyPrivateConnection', 'setStandbyPrivateConnection']];
     }
 }

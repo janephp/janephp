@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPullsPullNumberMergePutBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoPullsPullNumberMergePutBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class ReposOwnerRepoPullsPullNumberMergePutBody extends \ArrayObject
         $this->initialized['mergeMethod'] = true;
         $this->mergeMethod = $mergeMethod;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['commitTitle' => ['commit_title', 'getCommitTitle', 'setCommitTitle'], 'commitMessage' => ['commit_message', 'getCommitMessage', 'setCommitMessage'], 'sha' => ['sha', 'getSha', 'setSha'], 'mergeMethod' => ['merge_method', 'getMergeMethod', 'setMergeMethod']];
     }
 }

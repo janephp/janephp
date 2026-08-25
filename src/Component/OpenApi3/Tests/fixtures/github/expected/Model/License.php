@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class License extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class License implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -297,5 +300,9 @@ class License extends \ArrayObject
         $this->initialized['featured'] = true;
         $this->featured = $featured;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['key' => ['key', 'getKey', 'setKey'], 'name' => ['name', 'getName', 'setName'], 'spdxId' => ['spdx_id', 'getSpdxId', 'setSpdxId'], 'url' => ['url', 'getUrl', 'setUrl'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'description' => ['description', 'getDescription', 'setDescription'], 'implementation' => ['implementation', 'getImplementation', 'setImplementation'], 'permissions' => ['permissions', 'getPermissions', 'setPermissions'], 'conditions' => ['conditions', 'getConditions', 'setConditions'], 'limitations' => ['limitations', 'getLimitations', 'setLimitations'], 'body' => ['body', 'getBody', 'setBody'], 'featured' => ['featured', 'getFeatured', 'setFeatured']];
     }
 }

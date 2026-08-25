@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class NumberCompareCondition extends BusinessRuleCondition
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class NumberCompareCondition extends BusinessRuleCondition implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class NumberCompareCondition extends BusinessRuleCondition
         $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['fieldPath' => ['fieldPath', 'getFieldPath', 'setFieldPath'], 'mode' => ['mode', 'getMode', 'setMode'], 'value' => ['value', 'getValue', 'setValue']];
     }
 }

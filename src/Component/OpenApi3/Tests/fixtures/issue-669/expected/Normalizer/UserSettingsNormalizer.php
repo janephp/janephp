@@ -94,7 +94,7 @@ class UserSettingsNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($data->isInitialized('mongoUserSettings') && null !== $data->getMongoUserSettings()) {
             $dataArray['mongo_user_settings'] = $data->getMongoUserSettings() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMongoUserSettings(), 'json', $context));
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

@@ -154,7 +154,7 @@ class SchemaFieldIdExceptionNormalizer implements DenormalizerInterface, Normali
         if ($data->isInitialized('fieldId') && null !== $data->getFieldId()) {
             $dataArray['fieldId'] = $data->getFieldId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

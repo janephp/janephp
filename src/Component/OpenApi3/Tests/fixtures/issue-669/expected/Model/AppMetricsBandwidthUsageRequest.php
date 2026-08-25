@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppMetricsBandwidthUsageRequest extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppMetricsBandwidthUsageRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class AppMetricsBandwidthUsageRequest extends \ArrayObject
         $this->initialized['date'] = true;
         $this->date = $date;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['appIds' => ['app_ids', 'getAppIds', 'setAppIds'], 'date' => ['date', 'getDate', 'setDate']];
     }
 }

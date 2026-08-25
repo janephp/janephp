@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiCreateEvaluationDatasetOutput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiCreateEvaluationDatasetOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ApiCreateEvaluationDatasetOutput extends \ArrayObject
         $this->initialized['evaluationDatasetUuid'] = true;
         $this->evaluationDatasetUuid = $evaluationDatasetUuid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['evaluationDatasetUuid' => ['evaluation_dataset_uuid', 'getEvaluationDatasetUuid', 'setEvaluationDatasetUuid']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class FullTextEntities extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class FullTextEntities implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class FullTextEntities extends \ArrayObject
         $this->initialized['annotations'] = true;
         $this->annotations = $annotations;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['urls' => ['urls', 'getUrls', 'setUrls'], 'hashtags' => ['hashtags', 'getHashtags', 'setHashtags'], 'mentions' => ['mentions', 'getMentions', 'setMentions'], 'cashtags' => ['cashtags', 'getCashtags', 'setCashtags'], 'annotations' => ['annotations', 'getAnnotations', 'setAnnotations']];
     }
 }

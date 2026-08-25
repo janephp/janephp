@@ -73,7 +73,7 @@ class MetadataReferencesPagingRequestNormalizer implements DenormalizerInterface
         if ($data->isInitialized('fetchReferencedByRestrictedItem') && null !== $data->getFetchReferencedByRestrictedItem()) {
             $dataArray['fetchReferencedByRestrictedItem'] = $data->getFetchReferencedByRestrictedItem();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

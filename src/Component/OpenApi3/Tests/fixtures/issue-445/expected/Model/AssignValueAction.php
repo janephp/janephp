@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class AssignValueAction extends BusinessRuleAction
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class AssignValueAction extends BusinessRuleAction implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -129,5 +132,9 @@ class AssignValueAction extends BusinessRuleAction
         $this->initialized['replace'] = true;
         $this->replace = $replace;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['path' => ['path', 'getPath', 'setPath'], 'fieldId' => ['fieldId', 'getFieldId', 'setFieldId'], 'value' => ['value', 'getValue', 'setValue'], 'replace' => ['replace', 'getReplace', 'setReplace']];
     }
 }

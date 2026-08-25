@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class SubBaz extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class SubBaz implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class SubBaz extends \ArrayObject
         $this->initialized['parent'] = true;
         $this->parent = $parent;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['parent' => ['parent', 'getParent', 'setParent']];
     }
 }

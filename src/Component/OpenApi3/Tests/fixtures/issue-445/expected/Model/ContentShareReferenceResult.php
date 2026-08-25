@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ContentShareReferenceResult extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ContentShareReferenceResult implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class ContentShareReferenceResult extends \ArrayObject
         $this->initialized['pageToken'] = true;
         $this->pageToken = $pageToken;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['totalResults' => ['totalResults', 'getTotalResults', 'setTotalResults'], 'results' => ['results', 'getResults', 'setResults'], 'elapsedMilliseconds' => ['elapsedMilliseconds', 'getElapsedMilliseconds', 'setElapsedMilliseconds'], 'pageToken' => ['pageToken', 'getPageToken', 'setPageToken']];
     }
 }

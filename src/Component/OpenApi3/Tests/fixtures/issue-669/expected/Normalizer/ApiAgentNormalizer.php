@@ -452,7 +452,7 @@ class ApiAgentNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if ($data->isInitialized('workspace') && null !== $data->getWorkspace()) {
             $dataArray['workspace'] = $data->getWorkspace() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getWorkspace(), 'json', $context));
         }
-        foreach ($data as $key => $value_10) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_10) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_10;
             }

@@ -64,7 +64,7 @@ class WorkflowRunUsageBillableMACOSNormalizer implements DenormalizerInterface, 
         if ($data->isInitialized('jobs') && null !== $data->getJobs()) {
             $dataArray['jobs'] = $data->getJobs();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

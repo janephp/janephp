@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ServiceProviderCreateException extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ServiceProviderCreateException implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -187,5 +190,9 @@ class ServiceProviderCreateException extends \ArrayObject
         $this->initialized['detailErrorMessage'] = true;
         $this->detailErrorMessage = $detailErrorMessage;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['traceLevel' => ['traceLevel', 'getTraceLevel', 'setTraceLevel'], 'traceId' => ['traceId', 'getTraceId', 'setTraceId'], 'traceJobId' => ['traceJobId', 'getTraceJobId', 'setTraceJobId'], 'httpStatusCode' => ['httpStatusCode', 'getHttpStatusCode', 'setHttpStatusCode'], 'exceptionMessage' => ['exceptionMessage', 'getExceptionMessage', 'setExceptionMessage'], 'kind' => ['kind', 'getKind', 'setKind'], 'externalId' => ['externalId', 'getExternalId', 'setExternalId'], 'detailErrorMessage' => ['detailErrorMessage', 'getDetailErrorMessage', 'setDetailErrorMessage']];
     }
 }

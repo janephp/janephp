@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class Options extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class Options implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class Options extends \ArrayObject
         $this->initialized['versionAvailability'] = true;
         $this->versionAvailability = $versionAvailability;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['options' => ['options', 'getOptions', 'setOptions'], 'versionAvailability' => ['version_availability', 'getVersionAvailability', 'setVersionAvailability']];
     }
 }

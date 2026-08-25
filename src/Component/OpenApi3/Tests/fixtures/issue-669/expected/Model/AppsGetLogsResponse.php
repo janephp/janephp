@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsGetLogsResponse extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsGetLogsResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -61,5 +64,9 @@ class AppsGetLogsResponse extends \ArrayObject
         $this->initialized['liveUrl'] = true;
         $this->liveUrl = $liveUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['historicUrls' => ['historic_urls', 'getHistoricUrls', 'setHistoricUrls'], 'liveUrl' => ['live_url', 'getLiveUrl', 'setLiveUrl']];
     }
 }

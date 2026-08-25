@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiStarMetric extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiStarMetric implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -117,5 +120,9 @@ class ApiStarMetric extends \ArrayObject
         $this->initialized['successThresholdPct'] = true;
         $this->successThresholdPct = $successThresholdPct;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['metricUuid' => ['metric_uuid', 'getMetricUuid', 'setMetricUuid'], 'name' => ['name', 'getName', 'setName'], 'successThreshold' => ['success_threshold', 'getSuccessThreshold', 'setSuccessThreshold'], 'successThresholdPct' => ['success_threshold_pct', 'getSuccessThresholdPct', 'setSuccessThresholdPct']];
     }
 }

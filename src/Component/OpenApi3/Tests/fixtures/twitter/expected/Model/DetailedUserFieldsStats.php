@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class DetailedUserFieldsStats extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class DetailedUserFieldsStats implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class DetailedUserFieldsStats extends \ArrayObject
         $this->initialized['listedCount'] = true;
         $this->listedCount = $listedCount;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['followersCount' => ['followers_count', 'getFollowersCount', 'setFollowersCount'], 'followingCount' => ['following_count', 'getFollowingCount', 'setFollowingCount'], 'tweetCount' => ['tweet_count', 'getTweetCount', 'setTweetCount'], 'listedCount' => ['listed_count', 'getListedCount', 'setListedCount']];
     }
 }

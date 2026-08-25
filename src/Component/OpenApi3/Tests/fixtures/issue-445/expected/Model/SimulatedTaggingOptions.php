@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class SimulatedTaggingOptions extends TaggingOptionsBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class SimulatedTaggingOptions extends TaggingOptionsBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class SimulatedTaggingOptions extends TaggingOptionsBase
         $this->initialized['numberOfKeywords'] = true;
         $this->numberOfKeywords = $numberOfKeywords;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['numberOfKeywords' => ['numberOfKeywords', 'getNumberOfKeywords', 'setNumberOfKeywords']];
     }
 }

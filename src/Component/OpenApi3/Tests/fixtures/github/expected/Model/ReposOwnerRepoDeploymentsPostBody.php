@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoDeploymentsPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoDeploymentsPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -291,5 +294,9 @@ class ReposOwnerRepoDeploymentsPostBody extends \ArrayObject
         $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['ref' => ['ref', 'getRef', 'setRef'], 'task' => ['task', 'getTask', 'setTask'], 'autoMerge' => ['auto_merge', 'getAutoMerge', 'setAutoMerge'], 'requiredContexts' => ['required_contexts', 'getRequiredContexts', 'setRequiredContexts'], 'payload' => ['payload', 'getPayload', 'setPayload'], 'environment' => ['environment', 'getEnvironment', 'setEnvironment'], 'description' => ['description', 'getDescription', 'setDescription'], 'transientEnvironment' => ['transient_environment', 'getTransientEnvironment', 'setTransientEnvironment'], 'productionEnvironment' => ['production_environment', 'getProductionEnvironment', 'setProductionEnvironment'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt']];
     }
 }

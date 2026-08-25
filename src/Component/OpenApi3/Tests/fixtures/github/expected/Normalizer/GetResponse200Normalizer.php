@@ -217,7 +217,7 @@ class GetResponse200Normalizer implements DenormalizerInterface, NormalizerInter
         $dataArray['user_organizations_url'] = $data->getUserOrganizationsUrl();
         $dataArray['user_repositories_url'] = $data->getUserRepositoriesUrl();
         $dataArray['user_search_url'] = $data->getUserSearchUrl();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

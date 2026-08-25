@@ -54,7 +54,7 @@ class TimescaledbAdvancedConfigNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('maxBackgroundWorkers') && null !== $data->getMaxBackgroundWorkers()) {
             $dataArray['max_background_workers'] = $data->getMaxBackgroundWorkers();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -54,7 +54,7 @@ class ResourceLinksNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('self') && null !== $data->getSelf()) {
             $dataArray['self'] = $data->getSelf();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -69,7 +69,7 @@ class CompactPlaceNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['id'] = $data->getId();
         $dataArray['name'] = $data->getName();
         $dataArray['country_code'] = $data->getCountryCode();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

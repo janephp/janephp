@@ -310,7 +310,7 @@ class MysqlAdvancedConfigNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('mysqlIncrementalBackup') && null !== $data->getMysqlIncrementalBackup()) {
             $dataArray['mysql_incremental_backup'] = $data->getMysqlIncrementalBackup() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMysqlIncrementalBackup(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

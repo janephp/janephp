@@ -124,7 +124,7 @@ class CheckAnnotationNormalizer implements DenormalizerInterface, NormalizerInte
         $dataArray['message'] = $data->getMessage();
         $dataArray['raw_details'] = $data->getRawDetails();
         $dataArray['blob_href'] = $data->getBlobHref();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

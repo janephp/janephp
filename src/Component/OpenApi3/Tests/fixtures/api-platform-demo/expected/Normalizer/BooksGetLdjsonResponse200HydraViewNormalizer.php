@@ -89,7 +89,7 @@ class BooksGetLdjsonResponse200HydraViewNormalizer implements DenormalizerInterf
         if ($data->isInitialized('hydraNext') && null !== $data->getHydraNext()) {
             $dataArray['hydra:next'] = $data->getHydraNext();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

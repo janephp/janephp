@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ActionsPublicKey extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ActionsPublicKey implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -155,5 +158,9 @@ class ActionsPublicKey extends \ArrayObject
         $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['keyId' => ['key_id', 'getKeyId', 'setKeyId'], 'key' => ['key', 'getKey', 'setKey'], 'id' => ['id', 'getId', 'setId'], 'url' => ['url', 'getUrl', 'setUrl'], 'title' => ['title', 'getTitle', 'setTitle'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt']];
     }
 }

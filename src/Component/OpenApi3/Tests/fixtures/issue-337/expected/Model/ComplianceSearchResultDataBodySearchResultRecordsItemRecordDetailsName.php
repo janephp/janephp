@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsName extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsName implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsName ext
         $this->initialized['full'] = true;
         $this->full = $full;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['full' => ['full', 'getFull', 'setFull']];
     }
 }

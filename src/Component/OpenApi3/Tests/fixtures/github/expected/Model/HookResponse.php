@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class HookResponse extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class HookResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class HookResponse extends \ArrayObject
         $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['code' => ['code', 'getCode', 'setCode'], 'status' => ['status', 'getStatus', 'setStatus'], 'message' => ['message', 'getMessage', 'setMessage']];
     }
 }

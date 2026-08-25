@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiAgentChatbotIdentifier extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiAgentChatbotIdentifier implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ApiAgentChatbotIdentifier extends \ArrayObject
         $this->initialized['agentChatbotIdentifier'] = true;
         $this->agentChatbotIdentifier = $agentChatbotIdentifier;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['agentChatbotIdentifier' => ['agent_chatbot_identifier', 'getAgentChatbotIdentifier', 'setAgentChatbotIdentifier']];
     }
 }

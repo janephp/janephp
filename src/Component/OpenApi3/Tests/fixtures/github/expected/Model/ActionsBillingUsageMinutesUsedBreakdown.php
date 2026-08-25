@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ActionsBillingUsageMinutesUsedBreakdown extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ActionsBillingUsageMinutesUsedBreakdown implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class ActionsBillingUsageMinutesUsedBreakdown extends \ArrayObject
         $this->initialized['wINDOWS'] = true;
         $this->wINDOWS = $wINDOWS;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['uBUNTU' => ['UBUNTU', 'getUBUNTU', 'setUBUNTU'], 'mACOS' => ['MACOS', 'getMACOS', 'setMACOS'], 'wINDOWS' => ['WINDOWS', 'getWINDOWS', 'setWINDOWS']];
     }
 }

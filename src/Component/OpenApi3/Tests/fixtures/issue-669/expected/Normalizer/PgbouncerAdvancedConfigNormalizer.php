@@ -121,7 +121,7 @@ class PgbouncerAdvancedConfigNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('autodbIdleTimeout') && null !== $data->getAutodbIdleTimeout()) {
             $dataArray['autodb_idle_timeout'] = $data->getAutodbIdleTimeout();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

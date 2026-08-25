@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class IntegrationPermissions extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class IntegrationPermissions implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class IntegrationPermissions extends \ArrayObject
         $this->initialized['deployments'] = true;
         $this->deployments = $deployments;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['issues' => ['issues', 'getIssues', 'setIssues'], 'checks' => ['checks', 'getChecks', 'setChecks'], 'metadata' => ['metadata', 'getMetadata', 'setMetadata'], 'contents' => ['contents', 'getContents', 'setContents'], 'deployments' => ['deployments', 'getDeployments', 'setDeployments']];
     }
 }

@@ -165,7 +165,7 @@ class SchemaFieldNotSupportedExceptionNormalizer implements DenormalizerInterfac
         if ($data->isInitialized('fieldType') && null !== $data->getFieldType()) {
             $dataArray['fieldType'] = $data->getFieldType();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

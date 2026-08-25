@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiListEvaluationMetricsOutput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiListEvaluationMetricsOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ApiListEvaluationMetricsOutput extends \ArrayObject
         $this->initialized['metrics'] = true;
         $this->metrics = $metrics;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['metrics' => ['metrics', 'getMetrics', 'setMetrics']];
     }
 }

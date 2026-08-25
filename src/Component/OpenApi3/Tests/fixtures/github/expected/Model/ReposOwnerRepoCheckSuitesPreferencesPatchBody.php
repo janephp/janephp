@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoCheckSuitesPreferencesPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoCheckSuitesPreferencesPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ReposOwnerRepoCheckSuitesPreferencesPatchBody extends \ArrayObject
         $this->initialized['autoTriggerChecks'] = true;
         $this->autoTriggerChecks = $autoTriggerChecks;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['autoTriggerChecks' => ['auto_trigger_checks', 'getAutoTriggerChecks', 'setAutoTriggerChecks']];
     }
 }

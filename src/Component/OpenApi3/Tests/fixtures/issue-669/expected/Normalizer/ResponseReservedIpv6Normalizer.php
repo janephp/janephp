@@ -54,7 +54,7 @@ class ResponseReservedIpv6Normalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('reservedIpv6') && null !== $data->getReservedIpv6()) {
             $dataArray['reserved_ipv6'] = $data->getReservedIpv6() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getReservedIpv6(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

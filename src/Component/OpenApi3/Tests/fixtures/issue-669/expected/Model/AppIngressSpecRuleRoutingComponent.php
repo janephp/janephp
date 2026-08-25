@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppIngressSpecRuleRoutingComponent extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppIngressSpecRuleRoutingComponent implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class AppIngressSpecRuleRoutingComponent extends \ArrayObject
         $this->initialized['rewrite'] = true;
         $this->rewrite = $rewrite;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'preservePathPrefix' => ['preserve_path_prefix', 'getPreservePathPrefix', 'setPreservePathPrefix'], 'rewrite' => ['rewrite', 'getRewrite', 'setRewrite']];
     }
 }

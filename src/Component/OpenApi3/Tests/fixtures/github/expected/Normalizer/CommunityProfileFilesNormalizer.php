@@ -104,7 +104,7 @@ class CommunityProfileFilesNormalizer implements DenormalizerInterface, Normaliz
         $dataArray['readme'] = $data->getReadme() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getReadme(), 'json', $context));
         $dataArray['issue_template'] = $data->getIssueTemplate() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getIssueTemplate(), 'json', $context));
         $dataArray['pull_request_template'] = $data->getPullRequestTemplate() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPullRequestTemplate(), 'json', $context));
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

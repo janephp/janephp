@@ -70,7 +70,7 @@ class CdnPurgeJobByTagNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray['retriesLeft'] = $data->getRetriesLeft();
         $dataArray['kind'] = $data->getKind();
         $dataArray['tag'] = $data->getTag();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

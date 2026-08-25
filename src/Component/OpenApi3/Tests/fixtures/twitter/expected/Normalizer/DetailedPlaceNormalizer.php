@@ -106,7 +106,7 @@ class DetailedPlaceNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('geo') && null !== $data->getGeo()) {
             $dataArray['geo'] = $data->getGeo() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getGeo(), 'json', $context));
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

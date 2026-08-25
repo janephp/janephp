@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetails extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemEntityDetails implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -231,5 +234,9 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         $this->initialized['reasonListed'] = true;
         $this->reasonListed = $reasonListed;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['additionalInfo' => ['additionalInfo', 'getAdditionalInfo', 'setAdditionalInfo'], 'addresses' => ['addresses', 'getAddresses', 'setAddresses'], 'akAs' => ['akAs', 'getAkAs', 'setAkAs'], 'comments' => ['comments', 'getComments', 'setComments'], 'dateListed' => ['dateListed', 'getDateListed', 'setDateListed'], 'entityType' => ['entityType', 'getEntityType', 'setEntityType'], 'iDs' => ['iDs', 'getIDs', 'setIDs'], 'listReferenceNumber' => ['listReferenceNumber', 'getListReferenceNumber', 'setListReferenceNumber'], 'name' => ['name', 'getName', 'setName'], 'reasonListed' => ['reasonListed', 'getReasonListed', 'setReasonListed']];
     }
 }

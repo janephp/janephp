@@ -64,7 +64,7 @@ class ReservedIpActionTypeNormalizer implements DenormalizerInterface, Normalize
             return $this->normalizer->normalize($data, $format, $context);
         }
         $dataArray['type'] = $data->getType();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

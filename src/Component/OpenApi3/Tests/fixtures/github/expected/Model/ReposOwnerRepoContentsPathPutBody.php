@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoContentsPathPutBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoContentsPathPutBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -179,5 +182,9 @@ class ReposOwnerRepoContentsPathPutBody extends \ArrayObject
         $this->initialized['author'] = true;
         $this->author = $author;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['message' => ['message', 'getMessage', 'setMessage'], 'content' => ['content', 'getContent', 'setContent'], 'sha' => ['sha', 'getSha', 'setSha'], 'branch' => ['branch', 'getBranch', 'setBranch'], 'committer' => ['committer', 'getCommitter', 'setCommitter'], 'author' => ['author', 'getAuthor', 'setAuthor']];
     }
 }

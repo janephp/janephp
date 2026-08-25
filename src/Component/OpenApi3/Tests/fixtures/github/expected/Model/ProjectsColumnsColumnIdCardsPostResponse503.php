@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ProjectsColumnsColumnIdCardsPostResponse503 extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ProjectsColumnsColumnIdCardsPostResponse503 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class ProjectsColumnsColumnIdCardsPostResponse503 extends \ArrayObject
         $this->initialized['errors'] = true;
         $this->errors = $errors;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['code' => ['code', 'getCode', 'setCode'], 'message' => ['message', 'getMessage', 'setMessage'], 'documentationUrl' => ['documentation_url', 'getDocumentationUrl', 'setDocumentationUrl'], 'errors' => ['errors', 'getErrors', 'setErrors']];
     }
 }

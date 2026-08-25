@@ -83,7 +83,7 @@ class OrgsOrgTeamsTeamSlugPatchBodyNormalizer implements DenormalizerInterface, 
         if ($data->isInitialized('parentTeamId') && null !== $data->getParentTeamId()) {
             $dataArray['parent_team_id'] = $data->getParentTeamId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

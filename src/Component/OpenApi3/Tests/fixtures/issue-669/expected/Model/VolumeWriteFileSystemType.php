@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class VolumeWriteFileSystemType extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class VolumeWriteFileSystemType implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class VolumeWriteFileSystemType extends \ArrayObject
         $this->initialized['filesystemType'] = true;
         $this->filesystemType = $filesystemType;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['filesystemType' => ['filesystem_type', 'getFilesystemType', 'setFilesystemType']];
     }
 }

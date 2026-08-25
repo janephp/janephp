@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class TestFormPostBody extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class TestFormPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -143,5 +146,9 @@ class TestFormPostBody extends \ArrayObject
         $this->initialized['testDefault'] = true;
         $this->testDefault = $testDefault;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['testString' => ['testString', 'getTestString', 'setTestString'], 'testInteger' => ['testInteger', 'getTestInteger', 'setTestInteger'], 'testFloat' => ['testFloat', 'getTestFloat', 'setTestFloat'], 'testArray' => ['testArray', 'getTestArray', 'setTestArray'], 'testRequired' => ['testRequired', 'getTestRequired', 'setTestRequired'], 'testDefault' => ['testDefault', 'getTestDefault', 'setTestDefault']];
     }
 }

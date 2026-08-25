@@ -2,8 +2,11 @@
 
 namespace Gounlaf\JanephpBug\Model;
 
-class PatchableEntity extends \ArrayObject
+use Gounlaf\JanephpBug\Runtime\AdditionalAndPatternProperties;
+use Gounlaf\JanephpBug\Runtime\AdditionalPropertiesInterface;
+class PatchableEntity implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class PatchableEntity extends \ArrayObject
         $this->initialized['nullableAndRequiredProperty'] = true;
         $this->nullableAndRequiredProperty = $nullableAndRequiredProperty;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['nullableProperty' => ['nullable_property', 'getNullableProperty', 'setNullableProperty'], 'nullableAndRequiredProperty' => ['nullable_and_required_property', 'getNullableAndRequiredProperty', 'setNullableAndRequiredProperty']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsDomainProgress extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsDomainProgress implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class AppsDomainProgress extends \ArrayObject
         $this->initialized['steps'] = true;
         $this->steps = $steps;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['steps' => ['steps', 'getSteps', 'setSteps']];
     }
 }

@@ -92,7 +92,7 @@ class CompanyNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('portfolioName') && null !== $data->getPortfolioName()) {
             $dataArray['portfolioName'] = $data->getPortfolioName();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrgsOrgHooksHookIdPatchBodyConfig extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrgsOrgHooksHookIdPatchBodyConfig implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class OrgsOrgHooksHookIdPatchBodyConfig extends \ArrayObject
         $this->initialized['insecureSsl'] = true;
         $this->insecureSsl = $insecureSsl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'contentType' => ['content_type', 'getContentType', 'setContentType'], 'secret' => ['secret', 'getSecret', 'setSecret'], 'insecureSsl' => ['insecure_ssl', 'getInsecureSsl', 'setInsecureSsl']];
     }
 }

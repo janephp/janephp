@@ -57,7 +57,7 @@ class DatadogLogsinkNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray = [];
         $dataArray['site'] = $data->getSite();
         $dataArray['datadog_api_key'] = $data->getDatadogApiKey();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

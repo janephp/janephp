@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class SearchResultTextMatchesItemMatchesItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class SearchResultTextMatchesItemMatchesItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class SearchResultTextMatchesItemMatchesItem extends \ArrayObject
         $this->initialized['indices'] = true;
         $this->indices = $indices;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['text' => ['text', 'getText', 'setText'], 'indices' => ['indices', 'getIndices', 'setIndices']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class IssueComment extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class IssueComment implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -337,5 +340,9 @@ class IssueComment extends \ArrayObject
         $this->initialized['reactions'] = true;
         $this->reactions = $reactions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'url' => ['url', 'getUrl', 'setUrl'], 'body' => ['body', 'getBody', 'setBody'], 'bodyText' => ['body_text', 'getBodyText', 'setBodyText'], 'bodyHtml' => ['body_html', 'getBodyHtml', 'setBodyHtml'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'user' => ['user', 'getUser', 'setUser'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'issueUrl' => ['issue_url', 'getIssueUrl', 'setIssueUrl'], 'authorAssociation' => ['author_association', 'getAuthorAssociation', 'setAuthorAssociation'], 'performedViaGithubApp' => ['performed_via_github_app', 'getPerformedViaGithubApp', 'setPerformedViaGithubApp'], 'reactions' => ['reactions', 'getReactions', 'setReactions']];
     }
 }

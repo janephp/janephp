@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class VpcNatGatewayCreate extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class VpcNatGatewayCreate implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -235,5 +238,9 @@ class VpcNatGatewayCreate extends \ArrayObject
         $this->initialized['tcpTimeoutSeconds'] = true;
         $this->tcpTimeoutSeconds = $tcpTimeoutSeconds;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'type' => ['type', 'getType', 'setType'], 'region' => ['region', 'getRegion', 'setRegion'], 'size' => ['size', 'getSize', 'setSize'], 'vpcs' => ['vpcs', 'getVpcs', 'setVpcs'], 'udpTimeoutSeconds' => ['udp_timeout_seconds', 'getUdpTimeoutSeconds', 'setUdpTimeoutSeconds'], 'icmpTimeoutSeconds' => ['icmp_timeout_seconds', 'getIcmpTimeoutSeconds', 'setIcmpTimeoutSeconds'], 'tcpTimeoutSeconds' => ['tcp_timeout_seconds', 'getTcpTimeoutSeconds', 'setTcpTimeoutSeconds']];
     }
 }

@@ -57,7 +57,7 @@ class ReposOwnerRepoIssuesIssueNumberLockPutBodyNormalizer implements Denormaliz
         if ($data->isInitialized('lockReason') && null !== $data->getLockReason()) {
             $dataArray['lock_reason'] = $data->getLockReason();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

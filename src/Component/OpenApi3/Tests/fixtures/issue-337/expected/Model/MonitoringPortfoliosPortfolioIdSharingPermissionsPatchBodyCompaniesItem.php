@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class MonitoringPortfoliosPortfolioIdSharingPermissionsPatchBodyCompaniesItem ex
         $this->initialized['permissions'] = true;
         $this->permissions = $permissions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['csUserId' => ['csUserId', 'getCsUserId', 'setCsUserId'], 'permissions' => ['permissions', 'getPermissions', 'setPermissions']];
     }
 }

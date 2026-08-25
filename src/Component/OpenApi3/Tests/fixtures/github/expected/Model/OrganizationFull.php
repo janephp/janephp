@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrganizationFull extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrganizationFull implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -957,5 +960,9 @@ class OrganizationFull extends \ArrayObject
         $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['login' => ['login', 'getLogin', 'setLogin'], 'id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'url' => ['url', 'getUrl', 'setUrl'], 'reposUrl' => ['repos_url', 'getReposUrl', 'setReposUrl'], 'eventsUrl' => ['events_url', 'getEventsUrl', 'setEventsUrl'], 'hooksUrl' => ['hooks_url', 'getHooksUrl', 'setHooksUrl'], 'issuesUrl' => ['issues_url', 'getIssuesUrl', 'setIssuesUrl'], 'membersUrl' => ['members_url', 'getMembersUrl', 'setMembersUrl'], 'publicMembersUrl' => ['public_members_url', 'getPublicMembersUrl', 'setPublicMembersUrl'], 'avatarUrl' => ['avatar_url', 'getAvatarUrl', 'setAvatarUrl'], 'description' => ['description', 'getDescription', 'setDescription'], 'name' => ['name', 'getName', 'setName'], 'company' => ['company', 'getCompany', 'setCompany'], 'blog' => ['blog', 'getBlog', 'setBlog'], 'location' => ['location', 'getLocation', 'setLocation'], 'email' => ['email', 'getEmail', 'setEmail'], 'twitterUsername' => ['twitter_username', 'getTwitterUsername', 'setTwitterUsername'], 'isVerified' => ['is_verified', 'getIsVerified', 'setIsVerified'], 'hasOrganizationProjects' => ['has_organization_projects', 'getHasOrganizationProjects', 'setHasOrganizationProjects'], 'hasRepositoryProjects' => ['has_repository_projects', 'getHasRepositoryProjects', 'setHasRepositoryProjects'], 'publicRepos' => ['public_repos', 'getPublicRepos', 'setPublicRepos'], 'publicGists' => ['public_gists', 'getPublicGists', 'setPublicGists'], 'followers' => ['followers', 'getFollowers', 'setFollowers'], 'following' => ['following', 'getFollowing', 'setFollowing'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'type' => ['type', 'getType', 'setType'], 'totalPrivateRepos' => ['total_private_repos', 'getTotalPrivateRepos', 'setTotalPrivateRepos'], 'ownedPrivateRepos' => ['owned_private_repos', 'getOwnedPrivateRepos', 'setOwnedPrivateRepos'], 'privateGists' => ['private_gists', 'getPrivateGists', 'setPrivateGists'], 'diskUsage' => ['disk_usage', 'getDiskUsage', 'setDiskUsage'], 'collaborators' => ['collaborators', 'getCollaborators', 'setCollaborators'], 'billingEmail' => ['billing_email', 'getBillingEmail', 'setBillingEmail'], 'plan' => ['plan', 'getPlan', 'setPlan'], 'defaultRepositoryPermission' => ['default_repository_permission', 'getDefaultRepositoryPermission', 'setDefaultRepositoryPermission'], 'membersCanCreateRepositories' => ['members_can_create_repositories', 'getMembersCanCreateRepositories', 'setMembersCanCreateRepositories'], 'twoFactorRequirementEnabled' => ['two_factor_requirement_enabled', 'getTwoFactorRequirementEnabled', 'setTwoFactorRequirementEnabled'], 'membersAllowedRepositoryCreationType' => ['members_allowed_repository_creation_type', 'getMembersAllowedRepositoryCreationType', 'setMembersAllowedRepositoryCreationType'], 'membersCanCreatePublicRepositories' => ['members_can_create_public_repositories', 'getMembersCanCreatePublicRepositories', 'setMembersCanCreatePublicRepositories'], 'membersCanCreatePrivateRepositories' => ['members_can_create_private_repositories', 'getMembersCanCreatePrivateRepositories', 'setMembersCanCreatePrivateRepositories'], 'membersCanCreateInternalRepositories' => ['members_can_create_internal_repositories', 'getMembersCanCreateInternalRepositories', 'setMembersCanCreateInternalRepositories'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt']];
     }
 }

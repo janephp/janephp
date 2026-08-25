@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class UserDetail extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class UserDetail implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -515,5 +518,9 @@ class UserDetail extends \ArrayObject
         $this->initialized['audit'] = true;
         $this->audit = $audit;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'firstName' => ['firstName', 'getFirstName', 'setFirstName'], 'lastName' => ['lastName', 'getLastName', 'setLastName'], 'emailAddress' => ['emailAddress', 'getEmailAddress', 'setEmailAddress'], 'isDeleted' => ['isDeleted', 'getIsDeleted', 'setIsDeleted'], 'userRoles' => ['userRoles', 'getUserRoles', 'setUserRoles'], 'comment' => ['comment', 'getComment', 'setComment'], 'languageCode' => ['languageCode', 'getLanguageCode', 'setLanguageCode'], 'address' => ['address', 'getAddress', 'setAddress'], 'identityProviderId' => ['identityProviderId', 'getIdentityProviderId', 'setIdentityProviderId'], 'ownerTokens' => ['ownerTokens', 'getOwnerTokens', 'setOwnerTokens'], 'authorizationState' => ['authorizationState', 'getAuthorizationState', 'setAuthorizationState'], 'isLocked' => ['isLocked', 'getIsLocked', 'setIsLocked'], 'lifeCycle' => ['lifeCycle', 'getLifeCycle', 'setLifeCycle'], 'isSupportUser' => ['isSupportUser', 'getIsSupportUser', 'setIsSupportUser'], 'isReadOnly' => ['isReadOnly', 'getIsReadOnly', 'setIsReadOnly'], 'isFederated' => ['isFederated', 'getIsFederated', 'setIsFederated'], 'audit' => ['audit', 'getAudit', 'setAudit']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiEvaluationTestCase extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiEvaluationTestCase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -407,5 +410,9 @@ class ApiEvaluationTestCase extends \ArrayObject
         $this->initialized['version'] = true;
         $this->version = $version;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['archivedAt' => ['archived_at', 'getArchivedAt', 'setArchivedAt'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'createdByUserEmail' => ['created_by_user_email', 'getCreatedByUserEmail', 'setCreatedByUserEmail'], 'createdByUserId' => ['created_by_user_id', 'getCreatedByUserId', 'setCreatedByUserId'], 'dataset' => ['dataset', 'getDataset', 'setDataset'], 'datasetName' => ['dataset_name', 'getDatasetName', 'setDatasetName'], 'datasetUuid' => ['dataset_uuid', 'getDatasetUuid', 'setDatasetUuid'], 'description' => ['description', 'getDescription', 'setDescription'], 'latestVersionNumberOfRuns' => ['latest_version_number_of_runs', 'getLatestVersionNumberOfRuns', 'setLatestVersionNumberOfRuns'], 'metrics' => ['metrics', 'getMetrics', 'setMetrics'], 'name' => ['name', 'getName', 'setName'], 'starMetric' => ['star_metric', 'getStarMetric', 'setStarMetric'], 'testCaseUuid' => ['test_case_uuid', 'getTestCaseUuid', 'setTestCaseUuid'], 'totalRuns' => ['total_runs', 'getTotalRuns', 'setTotalRuns'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'updatedByUserEmail' => ['updated_by_user_email', 'getUpdatedByUserEmail', 'setUpdatedByUserEmail'], 'updatedByUserId' => ['updated_by_user_id', 'getUpdatedByUserId', 'setUpdatedByUserId'], 'version' => ['version', 'getVersion', 'setVersion']];
     }
 }

@@ -87,7 +87,7 @@ class OpensearchConfigRequestNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('retentionDays') && null !== $data->getRetentionDays()) {
             $dataArray['retention_days'] = $data->getRetentionDays();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

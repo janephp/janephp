@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CodeScanningAlert extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CodeScanningAlert implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -305,5 +308,9 @@ class CodeScanningAlert extends \ArrayObject
         $this->initialized['closedReason'] = true;
         $this->closedReason = $closedReason;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['number' => ['number', 'getNumber', 'setNumber'], 'ruleId' => ['rule_id', 'getRuleId', 'setRuleId'], 'ruleSeverity' => ['rule_severity', 'getRuleSeverity', 'setRuleSeverity'], 'ruleDescription' => ['rule_description', 'getRuleDescription', 'setRuleDescription'], 'tool' => ['tool', 'getTool', 'setTool'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'open' => ['open', 'getOpen', 'setOpen'], 'closedBy' => ['closed_by', 'getClosedBy', 'setClosedBy'], 'closedAt' => ['closed_at', 'getClosedAt', 'setClosedAt'], 'url' => ['url', 'getUrl', 'setUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'closedReason' => ['closed_reason', 'getClosedReason', 'setClosedReason']];
     }
 }

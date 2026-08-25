@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class ContextAnnotation extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class ContextAnnotation implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ContextAnnotation extends \ArrayObject
         $this->initialized['entity'] = true;
         $this->entity = $entity;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['domain' => ['domain', 'getDomain', 'setDomain'], 'entity' => ['entity', 'getEntity', 'setEntity']];
     }
 }

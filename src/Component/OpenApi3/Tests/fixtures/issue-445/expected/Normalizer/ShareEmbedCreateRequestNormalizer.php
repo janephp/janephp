@@ -120,7 +120,7 @@ class ShareEmbedCreateRequestNormalizer implements DenormalizerInterface, Normal
         }
         $dataArray['outputAccess'] = $data->getOutputAccess();
         $dataArray['kind'] = $data->getKind();
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

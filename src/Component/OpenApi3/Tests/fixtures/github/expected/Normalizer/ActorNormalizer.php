@@ -86,7 +86,7 @@ class ActorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $dataArray['gravatar_id'] = $data->getGravatarId();
         $dataArray['url'] = $data->getUrl();
         $dataArray['avatar_url'] = $data->getAvatarUrl();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

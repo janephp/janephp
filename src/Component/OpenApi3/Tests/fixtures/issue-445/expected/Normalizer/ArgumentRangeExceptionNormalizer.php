@@ -176,7 +176,7 @@ class ArgumentRangeExceptionNormalizer implements DenormalizerInterface, Normali
         if ($data->isInitialized('maxAcceptableValue') && null !== $data->getMaxAcceptableValue()) {
             $dataArray['maxAcceptableValue'] = $data->getMaxAcceptableValue();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

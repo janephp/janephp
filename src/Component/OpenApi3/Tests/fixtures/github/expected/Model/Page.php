@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Page extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Page implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -173,5 +176,9 @@ class Page extends \ArrayObject
         $this->initialized['source'] = true;
         $this->source = $source;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'status' => ['status', 'getStatus', 'setStatus'], 'cname' => ['cname', 'getCname', 'setCname'], 'custom404' => ['custom_404', 'getCustom404', 'setCustom404'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'source' => ['source', 'getSource', 'setSource']];
     }
 }

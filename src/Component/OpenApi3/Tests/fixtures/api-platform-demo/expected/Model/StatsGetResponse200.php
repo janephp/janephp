@@ -2,8 +2,11 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class StatsGetResponse200 extends \ArrayObject
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
+class StatsGetResponse200 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class StatsGetResponse200 extends \ArrayObject
         $this->initialized['topbooksCount'] = true;
         $this->topbooksCount = $topbooksCount;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['booksCount' => ['books_count', 'getBooksCount', 'setBooksCount'], 'topbooksCount' => ['topbooks_count', 'getTopbooksCount', 'setTopbooksCount']];
     }
 }

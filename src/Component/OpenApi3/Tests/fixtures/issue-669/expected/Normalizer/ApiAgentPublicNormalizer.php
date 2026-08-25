@@ -280,7 +280,7 @@ class ApiAgentPublicNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('versionHash') && null !== $data->getVersionHash()) {
             $dataArray['version_hash'] = $data->getVersionHash();
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class SqlMode extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class SqlMode implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class SqlMode extends \ArrayObject
         $this->initialized['sqlMode'] = true;
         $this->sqlMode = $sqlMode;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['sqlMode' => ['sql_mode', 'getSqlMode', 'setSqlMode']];
     }
 }

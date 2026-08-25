@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class UserRoleDetail extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class UserRoleDetail implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class UserRoleDetail extends \ArrayObject
         $this->initialized['audit'] = true;
         $this->audit = $audit;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['names' => ['names', 'getNames', 'setNames'], 'userRights' => ['userRights', 'getUserRights', 'setUserRights'], 'id' => ['id', 'getId', 'setId'], 'audit' => ['audit', 'getAudit', 'setAudit']];
     }
 }

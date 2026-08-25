@@ -101,7 +101,7 @@ class ProtectedBranchPullRequestReviewDismissalRestrictionsNormalizer implements
         if ($data->isInitialized('teamsUrl') && null !== $data->getTeamsUrl()) {
             $dataArray['teams_url'] = $data->getTeamsUrl();
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

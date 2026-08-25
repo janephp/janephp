@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class CommonMediaFields extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class CommonMediaFields implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class CommonMediaFields extends \ArrayObject
         $this->initialized['width'] = true;
         $this->width = $width;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['mediaKey' => ['media_key', 'getMediaKey', 'setMediaKey'], 'height' => ['height', 'getHeight', 'setHeight'], 'width' => ['width', 'getWidth', 'setWidth']];
     }
 }

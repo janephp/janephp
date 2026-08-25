@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class KafkaTopicPartition extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class KafkaTopicPartition implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -145,5 +148,9 @@ class KafkaTopicPartition extends \ArrayObject
         $this->initialized['consumerGroups'] = true;
         $this->consumerGroups = $consumerGroups;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['size' => ['size', 'getSize', 'setSize'], 'id' => ['id', 'getId', 'setId'], 'inSyncReplicas' => ['in_sync_replicas', 'getInSyncReplicas', 'setInSyncReplicas'], 'earliestOffset' => ['earliest_offset', 'getEarliestOffset', 'setEarliestOffset'], 'consumerGroups' => ['consumer_groups', 'getConsumerGroups', 'setConsumerGroups']];
     }
 }

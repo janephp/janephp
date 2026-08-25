@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class BranchProtection extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class BranchProtection implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -271,5 +274,9 @@ class BranchProtection extends \ArrayObject
         $this->initialized['protectionUrl'] = true;
         $this->protectionUrl = $protectionUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'requiredStatusChecks' => ['required_status_checks', 'getRequiredStatusChecks', 'setRequiredStatusChecks'], 'enforceAdmins' => ['enforce_admins', 'getEnforceAdmins', 'setEnforceAdmins'], 'requiredPullRequestReviews' => ['required_pull_request_reviews', 'getRequiredPullRequestReviews', 'setRequiredPullRequestReviews'], 'restrictions' => ['restrictions', 'getRestrictions', 'setRestrictions'], 'requiredLinearHistory' => ['required_linear_history', 'getRequiredLinearHistory', 'setRequiredLinearHistory'], 'allowForcePushes' => ['allow_force_pushes', 'getAllowForcePushes', 'setAllowForcePushes'], 'allowDeletions' => ['allow_deletions', 'getAllowDeletions', 'setAllowDeletions'], 'enabled' => ['enabled', 'getEnabled', 'setEnabled'], 'name' => ['name', 'getName', 'setName'], 'protectionUrl' => ['protection_url', 'getProtectionUrl', 'setProtectionUrl']];
     }
 }

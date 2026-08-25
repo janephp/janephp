@@ -62,7 +62,7 @@ class ProjectsColumnsCardsCardIdMovesPostBodyNormalizer implements DenormalizerI
         if ($data->isInitialized('columnId') && null !== $data->getColumnId()) {
             $dataArray['column_id'] = $data->getColumnId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

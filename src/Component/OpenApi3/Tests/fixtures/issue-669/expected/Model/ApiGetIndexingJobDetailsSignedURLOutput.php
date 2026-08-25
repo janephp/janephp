@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiGetIndexingJobDetailsSignedURLOutput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiGetIndexingJobDetailsSignedURLOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ApiGetIndexingJobDetailsSignedURLOutput extends \ArrayObject
         $this->initialized['signedUrl'] = true;
         $this->signedUrl = $signedUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['signedUrl' => ['signed_url', 'getSignedUrl', 'setSignedUrl']];
     }
 }

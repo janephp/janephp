@@ -100,7 +100,7 @@ class GroupMappingNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($data->isInitialized('syncedAt') && null !== $data->getSyncedAt()) {
             $dataArray['synced_at'] = $data->getSyncedAt();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

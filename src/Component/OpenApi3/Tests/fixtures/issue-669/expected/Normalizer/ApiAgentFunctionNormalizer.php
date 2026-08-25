@@ -155,7 +155,7 @@ class ApiAgentFunctionNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('uuid') && null !== $data->getUuid()) {
             $dataArray['uuid'] = $data->getUuid();
         }
-        foreach ($data as $key_2 => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key_2 => $value_2) {
             if (preg_match('/.*/', (string) $key_2)) {
                 $dataArray[$key_2] = $value_2;
             }

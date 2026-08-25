@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class VolumeAction extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class VolumeAction implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -257,5 +260,9 @@ class VolumeAction extends \ArrayObject
         $this->initialized['regionSlug'] = true;
         $this->regionSlug = $regionSlug;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'resourceId' => ['resource_id', 'getResourceId', 'setResourceId'], 'id' => ['id', 'getId', 'setId'], 'status' => ['status', 'getStatus', 'setStatus'], 'startedAt' => ['started_at', 'getStartedAt', 'setStartedAt'], 'completedAt' => ['completed_at', 'getCompletedAt', 'setCompletedAt'], 'resourceType' => ['resource_type', 'getResourceType', 'setResourceType'], 'region' => ['region', 'getRegion', 'setRegion'], 'regionSlug' => ['region_slug', 'getRegionSlug', 'setRegionSlug']];
     }
 }

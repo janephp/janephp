@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class ComplianceSearchResultDataBodySearchResult extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class ComplianceSearchResultDataBodySearchResult implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class ComplianceSearchResultDataBodySearchResult extends \ArrayObject
         $this->initialized['searchEngineVersion'] = true;
         $this->searchEngineVersion = $searchEngineVersion;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['records' => ['records', 'getRecords', 'setRecords'], 'searchEngineVersion' => ['searchEngineVersion', 'getSearchEngineVersion', 'setSearchEngineVersion']];
     }
 }

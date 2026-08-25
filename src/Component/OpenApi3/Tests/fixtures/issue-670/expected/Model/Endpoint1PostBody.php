@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class Endpoint1PostBody extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class Endpoint1PostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class Endpoint1PostBody extends \ArrayObject
         $this->initialized['postField1'] = true;
         $this->postField1 = $postField1;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['postField1' => ['post-field-1', 'getPostField1', 'setPostField1']];
     }
 }

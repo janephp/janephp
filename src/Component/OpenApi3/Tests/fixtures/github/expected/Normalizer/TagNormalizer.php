@@ -75,7 +75,7 @@ class TagNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         $dataArray['zipball_url'] = $data->getZipballUrl();
         $dataArray['tarball_url'] = $data->getTarballUrl();
         $dataArray['node_id'] = $data->getNodeId();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

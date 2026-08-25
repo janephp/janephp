@@ -2,12 +2,15 @@
 
 namespace Jane\Component\OpenApiCommon\Generator;
 
+use Jane\Component\JsonSchema\Generator\Model\ClassGenerator;
 use Jane\Component\JsonSchema\Generator\ModelGenerator as BaseModelGenerator;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess as BaseClassGuess;
 use Jane\Component\JsonSchema\Guesser\Guess\Property;
-use Jane\Component\OpenApiCommon\Generator\Model\ClassGenerator;
+use Jane\Component\JsonSchema\Registry\Schema;
 use Jane\Component\OpenApiCommon\Guesser\Guess\ClassGuess;
 use Jane\Component\OpenApiCommon\Guesser\Guess\ParentClass;
+use PhpParser\Node;
+use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 
 class ModelGenerator extends BaseModelGenerator
@@ -23,7 +26,13 @@ class ModelGenerator extends BaseModelGenerator
         return $methods;
     }
 
-    protected function doCreateModel(BaseClassGuess $class, array $properties, array $methods): Stmt\Class_
+    /**
+     * @param Node[] $properties
+     * @param Node[] $methods
+     *
+     * @return array{0: Stmt\Class_, 1: array<Stmt\Use_>} The model class and the use statements to prepend in its namespace
+     */
+    protected function doCreateModel(Schema $schema, BaseClassGuess $class, array $properties, array $methods): array
     {
         $extends = null;
         if ($class instanceof ClassGuess
@@ -42,13 +51,63 @@ class ModelGenerator extends BaseModelGenerator
             }
         }
 
-        return $this->createModel(
-            $class->getName(),
-            $properties,
-            $methods,
-            \count($class->getExtensionsType()) > 0,
-            $class->isDeprecated(),
-            $extends
-        );
+        $hasExtensions = \count($class->getExtensionsType()) > 0;
+        // When an ancestor already carries the extensions runtime (trait), re-using it here would fork its
+        // private storage: descendants only merge their own properties into `definedProperties()` instead.
+        $ancestorHasExtensions = $this->ancestorHasExtensions($schema, $class);
+        $useExtensionsRuntime = $hasExtensions && !$ancestorHasExtensions;
+
+        $runtimeTraitFqcn = null;
+        $runtimeInterfaceFqcn = null;
+        $useStmts = [];
+
+        if ($useExtensionsRuntime) {
+            $runtimeTraitFqcn = $this->naming->getRuntimeClassFQCN($schema->getNamespace(), [], 'AdditionalAndPatternProperties');
+            $runtimeInterfaceFqcn = $this->naming->getRuntimeClassFQCN($schema->getNamespace(), [], 'AdditionalPropertiesInterface');
+            $useStmts = [
+                new Stmt\Use_([new Stmt\UseUse(new Name($runtimeTraitFqcn))]),
+                new Stmt\Use_([new Stmt\UseUse(new Name($runtimeInterfaceFqcn))]),
+            ];
+        }
+
+        return [
+            $this->createModel(
+                $class->getName(),
+                $properties,
+                $methods,
+                $useExtensionsRuntime,
+                $class->isDeprecated(),
+                $extends,
+                $runtimeTraitFqcn,
+                $runtimeInterfaceFqcn,
+                $useExtensionsRuntime || $ancestorHasExtensions ? $this->createDefinedPropertiesMap($class) : [],
+                $ancestorHasExtensions,
+            ),
+            $useStmts,
+        ];
+    }
+
+    /**
+     * Whether any ancestor in the inheritance chain carries additional / pattern properties.
+     */
+    private function ancestorHasExtensions(Schema $schema, BaseClassGuess $class): bool
+    {
+        if (!$class instanceof ClassGuess) {
+            return false;
+        }
+
+        $parent = $class->getParentClass();
+
+        while (null !== $parent) {
+            $parentGuess = $schema->getClass($parent->getReference()) ?? $parent;
+
+            if (\count($parentGuess->getExtensionsType()) > 0) {
+                return true;
+            }
+
+            $parent = $parentGuess instanceof ClassGuess ? $parentGuess->getParentClass() : null;
+        }
+
+        return false;
     }
 }

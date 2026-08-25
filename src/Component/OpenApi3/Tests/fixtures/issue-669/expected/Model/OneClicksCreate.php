@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class OneClicksCreate extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class OneClicksCreate implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class OneClicksCreate extends \ArrayObject
         $this->initialized['clusterUuid'] = true;
         $this->clusterUuid = $clusterUuid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['addonSlugs' => ['addon_slugs', 'getAddonSlugs', 'setAddonSlugs'], 'clusterUuid' => ['cluster_uuid', 'getClusterUuid', 'setClusterUuid']];
     }
 }

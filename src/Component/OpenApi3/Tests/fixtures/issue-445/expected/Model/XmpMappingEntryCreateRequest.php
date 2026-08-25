@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class XmpMappingEntryCreateRequest extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class XmpMappingEntryCreateRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -213,5 +216,9 @@ class XmpMappingEntryCreateRequest extends \ArrayObject
         $this->initialized['requestId'] = true;
         $this->requestId = $requestId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['direction' => ['direction', 'getDirection', 'setDirection'], 'priority' => ['priority', 'getPriority', 'setPriority'], 'stopProcessing' => ['stopProcessing', 'getStopProcessing', 'setStopProcessing'], 'xmpPath' => ['xmpPath', 'getXmpPath', 'setXmpPath'], 'metadataPath' => ['metadataPath', 'getMetadataPath', 'setMetadataPath'], 'configuration' => ['configuration', 'getConfiguration', 'setConfiguration'], 'requestId' => ['requestId', 'getRequestId', 'setRequestId']];
     }
 }

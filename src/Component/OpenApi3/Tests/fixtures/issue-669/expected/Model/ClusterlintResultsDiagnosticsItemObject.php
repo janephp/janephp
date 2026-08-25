@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ClusterlintResultsDiagnosticsItemObject extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ClusterlintResultsDiagnosticsItemObject implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class ClusterlintResultsDiagnosticsItemObject extends \ArrayObject
         $this->initialized['namespace'] = true;
         $this->namespace = $namespace;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'kind' => ['kind', 'getKind', 'setKind'], 'namespace' => ['namespace', 'getNamespace', 'setNamespace']];
     }
 }

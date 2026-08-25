@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiDropboxDataSourceDisplay extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiDropboxDataSourceDisplay implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ApiDropboxDataSourceDisplay extends \ArrayObject
         $this->initialized['folder'] = true;
         $this->folder = $folder;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['folder' => ['folder', 'getFolder', 'setFolder']];
     }
 }

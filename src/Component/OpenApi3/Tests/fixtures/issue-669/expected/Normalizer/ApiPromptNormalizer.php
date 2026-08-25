@@ -141,7 +141,7 @@ class ApiPromptNormalizer implements DenormalizerInterface, NormalizerInterface,
         if ($data->isInitialized('traceId') && null !== $data->getTraceId()) {
             $dataArray['trace_id'] = $data->getTraceId();
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_3;
             }

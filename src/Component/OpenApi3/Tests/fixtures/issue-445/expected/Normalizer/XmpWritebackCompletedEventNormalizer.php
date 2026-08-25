@@ -72,7 +72,7 @@ class XmpWritebackCompletedEventNormalizer implements DenormalizerInterface, Nor
         if ($data->isInitialized('outputDocId') && null !== $data->getOutputDocId()) {
             $dataArray['outputDocId'] = $data->getOutputDocId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

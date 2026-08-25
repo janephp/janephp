@@ -73,7 +73,7 @@ class CommitActivityNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray['days'] = $values;
         $dataArray['total'] = $data->getTotal();
         $dataArray['week'] = $data->getWeek();
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

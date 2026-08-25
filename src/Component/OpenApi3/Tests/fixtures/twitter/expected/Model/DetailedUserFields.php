@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class DetailedUserFields extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class DetailedUserFields implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class DetailedUserFields extends \ArrayObject
         $this->initialized['stats'] = true;
         $this->stats = $stats;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['stats' => ['stats', 'getStats', 'setStats']];
     }
 }

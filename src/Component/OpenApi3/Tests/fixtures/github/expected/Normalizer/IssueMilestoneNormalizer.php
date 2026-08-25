@@ -162,7 +162,7 @@ class IssueMilestoneNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['closed_at'] = $data->getClosedAt()?->format('Y-m-d\TH:i:sP');
         $dataArray['due_on'] = $data->getDueOn()?->format('Y-m-d\TH:i:sP');
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbPeopleReportReponseReportDirectorships extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbPeopleReportReponseReportDirectorships implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class GbPeopleReportReponseReportDirectorships extends \ArrayObject
         $this->initialized['previous'] = true;
         $this->previous = $previous;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['current' => ['current', 'getCurrent', 'setCurrent'], 'inactive' => ['inactive', 'getInactive', 'setInactive'], 'previous' => ['previous', 'getPrevious', 'setPrevious']];
     }
 }

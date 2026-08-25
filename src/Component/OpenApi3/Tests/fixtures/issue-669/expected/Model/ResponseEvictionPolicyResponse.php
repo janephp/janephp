@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseEvictionPolicyResponse extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseEvictionPolicyResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -60,5 +63,9 @@ class ResponseEvictionPolicyResponse extends \ArrayObject
         $this->initialized['evictionPolicy'] = true;
         $this->evictionPolicy = $evictionPolicy;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['evictionPolicy' => ['eviction_policy', 'getEvictionPolicy', 'setEvictionPolicy']];
     }
 }

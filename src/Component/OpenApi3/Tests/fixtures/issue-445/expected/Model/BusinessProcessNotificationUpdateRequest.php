@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessNotificationUpdateRequest extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class BusinessProcessNotificationUpdateRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -126,5 +129,9 @@ class BusinessProcessNotificationUpdateRequest extends \ArrayObject
         $this->initialized['eventType'] = true;
         $this->eventType = $eventType;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['title' => ['title', 'getTitle', 'setTitle'], 'message' => ['message', 'getMessage', 'setMessage'], 'navigationLink' => ['navigationLink', 'getNavigationLink', 'setNavigationLink'], 'eventType' => ['eventType', 'getEventType', 'setEventType']];
     }
 }
