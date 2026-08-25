@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoGitTreesPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoGitTreesPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ReposOwnerRepoGitTreesPostBody extends \ArrayObject
         $this->initialized['baseTree'] = true;
         $this->baseTree = $baseTree;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['tree' => ['tree', 'getTree', 'setTree'], 'baseTree' => ['base_tree', 'getBaseTree', 'setBaseTree']];
     }
 }

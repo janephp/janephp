@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Reaction extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Reaction implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -127,5 +130,9 @@ class Reaction extends \ArrayObject
         $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'user' => ['user', 'getUser', 'setUser'], 'content' => ['content', 'getContent', 'setContent'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt']];
     }
 }

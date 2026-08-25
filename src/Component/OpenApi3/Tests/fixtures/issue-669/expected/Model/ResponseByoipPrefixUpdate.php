@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseByoipPrefixUpdate extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseByoipPrefixUpdate implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseByoipPrefixUpdate extends \ArrayObject
         $this->initialized['byoipPrefix'] = true;
         $this->byoipPrefix = $byoipPrefix;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['byoipPrefix' => ['byoip_prefix', 'getByoipPrefix', 'setByoipPrefix']];
     }
 }

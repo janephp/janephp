@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ContentPermissionsUpdateItem extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ContentPermissionsUpdateItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -70,5 +73,9 @@ class ContentPermissionsUpdateItem extends \ArrayObject
         $this->initialized['contentId'] = true;
         $this->contentId = $contentId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['contentPermissionSetIds' => ['contentPermissionSetIds', 'getContentPermissionSetIds', 'setContentPermissionSetIds'], 'contentId' => ['contentId', 'getContentId', 'setContentId']];
     }
 }

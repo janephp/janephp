@@ -110,7 +110,7 @@ class ServiceProviderNotFoundExceptionNormalizer implements DenormalizerInterfac
         if ($data->isInitialized('missingServiceProviderId') && null !== $data->getMissingServiceProviderId()) {
             $dataArray['missingServiceProviderId'] = $data->getMissingServiceProviderId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

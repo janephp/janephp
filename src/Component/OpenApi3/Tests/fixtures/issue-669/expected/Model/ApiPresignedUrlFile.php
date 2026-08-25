@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiPresignedUrlFile extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiPresignedUrlFile implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ApiPresignedUrlFile extends \ArrayObject
         $this->initialized['fileSize'] = true;
         $this->fileSize = $fileSize;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['fileName' => ['file_name', 'getFileName', 'setFileName'], 'fileSize' => ['file_size', 'getFileSize', 'setFileSize']];
     }
 }

@@ -61,7 +61,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCommentariesItemN
         if ($data->isInitialized('positiveNegative') && null !== $data->getPositiveNegative()) {
             $dataArray['positiveNegative'] = $data->getPositiveNegative();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -106,7 +106,7 @@ class SubscriptionTierBaseNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('storageOveragePriceInCents') && null !== $data->getStorageOveragePriceInCents()) {
             $dataArray['storage_overage_price_in_cents'] = $data->getStorageOveragePriceInCents();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

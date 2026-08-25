@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiDeleteWorkspaceOutput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiDeleteWorkspaceOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ApiDeleteWorkspaceOutput extends \ArrayObject
         $this->initialized['workspaceUuid'] = true;
         $this->workspaceUuid = $workspaceUuid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['workspaceUuid' => ['workspace_uuid', 'getWorkspaceUuid', 'setWorkspaceUuid']];
     }
 }

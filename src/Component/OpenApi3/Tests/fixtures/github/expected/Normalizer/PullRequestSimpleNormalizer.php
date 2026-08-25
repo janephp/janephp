@@ -333,7 +333,7 @@ class PullRequestSimpleNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('draft') && null !== $data->getDraft()) {
             $dataArray['draft'] = $data->getDraft();
         }
-        foreach ($data as $key => $value_4) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_4;
             }

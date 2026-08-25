@@ -82,7 +82,7 @@ class AppIngressSpecRuleRoutingRedirectNormalizer implements DenormalizerInterfa
         if ($data->isInitialized('redirectCode') && null !== $data->getRedirectCode()) {
             $dataArray['redirect_code'] = $data->getRedirectCode();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

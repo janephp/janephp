@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseExistingDroplet extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseExistingDroplet implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseExistingDroplet extends \ArrayObject
         $this->initialized['droplet'] = true;
         $this->droplet = $droplet;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['droplet' => ['droplet', 'getDroplet', 'setDroplet']];
     }
 }

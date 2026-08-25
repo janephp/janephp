@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppFunctionsComponentHealthFunctionsComponentHealthMetricsItem extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppFunctionsComponentHealthFunctionsComponentHealthMetricsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class AppFunctionsComponentHealthFunctionsComponentHealthMetricsItem extends \Ar
         $this->initialized['timeWindow'] = true;
         $this->timeWindow = $timeWindow;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['metricLabel' => ['metric_label', 'getMetricLabel', 'setMetricLabel'], 'metricValue' => ['metric_value', 'getMetricValue', 'setMetricValue'], 'timeWindow' => ['time_window', 'getTimeWindow', 'setTimeWindow']];
     }
 }

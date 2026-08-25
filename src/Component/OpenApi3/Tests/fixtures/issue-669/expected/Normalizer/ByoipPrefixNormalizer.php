@@ -131,7 +131,7 @@ class ByoipPrefixNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('projectId') && null !== $data->getProjectId()) {
             $dataArray['project_id'] = $data->getProjectId();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

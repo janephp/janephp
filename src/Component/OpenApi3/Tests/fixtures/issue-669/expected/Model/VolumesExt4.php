@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class VolumesExt4 extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class VolumesExt4 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -313,5 +316,9 @@ class VolumesExt4 extends \ArrayObject
         $this->initialized['filesystemLabel'] = true;
         $this->filesystemLabel = $filesystemLabel;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'dropletIds' => ['droplet_ids', 'getDropletIds', 'setDropletIds'], 'name' => ['name', 'getName', 'setName'], 'description' => ['description', 'getDescription', 'setDescription'], 'sizeGigabytes' => ['size_gigabytes', 'getSizeGigabytes', 'setSizeGigabytes'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'tags' => ['tags', 'getTags', 'setTags'], 'snapshotId' => ['snapshot_id', 'getSnapshotId', 'setSnapshotId'], 'filesystemType' => ['filesystem_type', 'getFilesystemType', 'setFilesystemType'], 'region' => ['region', 'getRegion', 'setRegion'], 'filesystemLabel' => ['filesystem_label', 'getFilesystemLabel', 'setFilesystemLabel']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class DefaultUser extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class DefaultUser implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -425,5 +428,9 @@ class DefaultUser extends \ArrayObject
         $this->initialized['pinnedTweetId'] = true;
         $this->pinnedTweetId = $pinnedTweetId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['format' => ['format', 'getFormat', 'setFormat'], 'id' => ['id', 'getId', 'setId'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'name' => ['name', 'getName', 'setName'], 'username' => ['username', 'getUsername', 'setUsername'], 'protected' => ['protected', 'getProtected', 'setProtected'], 'verified' => ['verified', 'getVerified', 'setVerified'], 'withheld' => ['withheld', 'getWithheld', 'setWithheld'], 'profileImageUrl' => ['profile_image_url', 'getProfileImageUrl', 'setProfileImageUrl'], 'location' => ['location', 'getLocation', 'setLocation'], 'url' => ['url', 'getUrl', 'setUrl'], 'description' => ['description', 'getDescription', 'setDescription'], 'entities' => ['entities', 'getEntities', 'setEntities'], 'mostRecentTweetId' => ['most_recent_tweet_id', 'getMostRecentTweetId', 'setMostRecentTweetId'], 'pinnedTweetId' => ['pinned_tweet_id', 'getPinnedTweetId', 'setPinnedTweetId']];
     }
 }

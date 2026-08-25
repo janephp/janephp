@@ -62,7 +62,7 @@ class ProblemFieldsNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray['type'] = $data->getType();
         $dataArray['title'] = $data->getTitle();
         $dataArray['detail'] = $data->getDetail();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

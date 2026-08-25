@@ -59,7 +59,7 @@ class ExampleNormalizer implements DenormalizerInterface, NormalizerInterface, D
     {
         $dataArray = [];
         $dataArray['property1'] = $data->getProperty1();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

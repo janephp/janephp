@@ -87,7 +87,7 @@ class SnapshotsBaseNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray['regions'] = $values;
         $dataArray['min_disk_size'] = $data->getMinDiskSize();
         $dataArray['size_gigabytes'] = $data->getSizeGigabytes();
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

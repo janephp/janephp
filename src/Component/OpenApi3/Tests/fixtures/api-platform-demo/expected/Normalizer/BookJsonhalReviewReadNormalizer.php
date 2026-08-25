@@ -59,7 +59,7 @@ class BookJsonhalReviewReadNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['_links'] = $data->getLinks() === null ? null : new \ApiPlatform\Demo\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
         }
         $dataArray['title'] = $data->getTitle();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

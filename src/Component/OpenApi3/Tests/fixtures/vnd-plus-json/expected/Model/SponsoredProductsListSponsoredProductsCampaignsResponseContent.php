@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class SponsoredProductsListSponsoredProductsCampaignsResponseContent extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class SponsoredProductsListSponsoredProductsCampaignsResponseContent implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -61,5 +64,9 @@ class SponsoredProductsListSponsoredProductsCampaignsResponseContent extends \Ar
         $this->initialized['campaigns'] = true;
         $this->campaigns = $campaigns;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['totalResults' => ['totalResults', 'getTotalResults', 'setTotalResults'], 'campaigns' => ['campaigns', 'getCampaigns', 'setCampaigns']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AutoscalePoolStaticConfig extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AutoscalePoolStaticConfig implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class AutoscalePoolStaticConfig extends \ArrayObject
         $this->initialized['targetNumberInstances'] = true;
         $this->targetNumberInstances = $targetNumberInstances;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['targetNumberInstances' => ['target_number_instances', 'getTargetNumberInstances', 'setTargetNumberInstances']];
     }
 }

@@ -140,7 +140,7 @@ class SearchBehaviorWithAggregationBaseResultOfShareNormalizer implements Denorm
             }
             $dataArray['aggregationResults'] = $values_2;
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_3;
             }

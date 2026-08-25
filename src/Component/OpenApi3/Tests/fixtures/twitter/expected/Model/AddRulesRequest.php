@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class AddRulesRequest extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class AddRulesRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class AddRulesRequest extends \ArrayObject
         $this->initialized['add'] = true;
         $this->add = $add;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['add' => ['add', 'getAdd', 'setAdd']];
     }
 }

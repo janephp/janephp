@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class GitTree extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class GitTree implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -105,5 +108,9 @@ class GitTree extends \ArrayObject
         $this->initialized['tree'] = true;
         $this->tree = $tree;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['sha' => ['sha', 'getSha', 'setSha'], 'url' => ['url', 'getUrl', 'setUrl'], 'truncated' => ['truncated', 'getTruncated', 'setTruncated'], 'tree' => ['tree', 'getTree', 'setTree']];
     }
 }

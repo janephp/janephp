@@ -57,7 +57,7 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyNormalizer implements Deno
         if ($data->isInitialized('expectedHeadSha') && null !== $data->getExpectedHeadSha()) {
             $dataArray['expected_head_sha'] = $data->getExpectedHeadSha();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

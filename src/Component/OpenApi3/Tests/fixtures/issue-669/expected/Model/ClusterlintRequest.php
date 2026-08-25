@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ClusterlintRequest extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ClusterlintRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class ClusterlintRequest extends \ArrayObject
         $this->initialized['excludeChecks'] = true;
         $this->excludeChecks = $excludeChecks;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['includeGroups' => ['include_groups', 'getIncludeGroups', 'setIncludeGroups'], 'includeChecks' => ['include_checks', 'getIncludeChecks', 'setIncludeChecks'], 'excludeGroups' => ['exclude_groups', 'getExcludeGroups', 'setExcludeGroups'], 'excludeChecks' => ['exclude_checks', 'getExcludeChecks', 'setExcludeChecks']];
     }
 }

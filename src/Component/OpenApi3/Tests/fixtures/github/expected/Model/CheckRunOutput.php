@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CheckRunOutput extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CheckRunOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class CheckRunOutput extends \ArrayObject
         $this->initialized['annotationsUrl'] = true;
         $this->annotationsUrl = $annotationsUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['title' => ['title', 'getTitle', 'setTitle'], 'summary' => ['summary', 'getSummary', 'setSummary'], 'text' => ['text', 'getText', 'setText'], 'annotationsCount' => ['annotations_count', 'getAnnotationsCount', 'setAnnotationsCount'], 'annotationsUrl' => ['annotations_url', 'getAnnotationsUrl', 'setAnnotationsUrl']];
     }
 }

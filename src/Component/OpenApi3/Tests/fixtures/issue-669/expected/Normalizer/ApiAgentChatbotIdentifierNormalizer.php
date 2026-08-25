@@ -54,7 +54,7 @@ class ApiAgentChatbotIdentifierNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('agentChatbotIdentifier') && null !== $data->getAgentChatbotIdentifier()) {
             $dataArray['agent_chatbot_identifier'] = $data->getAgentChatbotIdentifier();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

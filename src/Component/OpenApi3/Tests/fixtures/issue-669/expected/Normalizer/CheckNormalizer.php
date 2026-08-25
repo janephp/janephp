@@ -97,7 +97,7 @@ class CheckNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if ($data->isInitialized('enabled') && null !== $data->getEnabled()) {
             $dataArray['enabled'] = $data->getEnabled();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

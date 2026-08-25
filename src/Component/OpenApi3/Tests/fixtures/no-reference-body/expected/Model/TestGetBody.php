@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class TestGetBody extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class TestGetBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class TestGetBody extends \ArrayObject
         $this->initialized['baz'] = true;
         $this->baz = $baz;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['foo' => ['foo', 'getFoo', 'setFoo'], 'bar' => ['Bar', 'getBar', 'setBar'], 'baz' => ['Baz', 'getBaz', 'setBaz']];
     }
 }

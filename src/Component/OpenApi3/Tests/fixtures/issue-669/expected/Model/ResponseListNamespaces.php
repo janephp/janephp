@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseListNamespaces extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseListNamespaces implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseListNamespaces extends \ArrayObject
         $this->initialized['namespaces'] = true;
         $this->namespaces = $namespaces;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['namespaces' => ['namespaces', 'getNamespaces', 'setNamespaces']];
     }
 }

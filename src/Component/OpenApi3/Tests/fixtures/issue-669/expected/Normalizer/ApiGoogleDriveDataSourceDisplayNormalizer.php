@@ -61,7 +61,7 @@ class ApiGoogleDriveDataSourceDisplayNormalizer implements DenormalizerInterface
         if ($data->isInitialized('folderName') && null !== $data->getFolderName()) {
             $dataArray['folder_name'] = $data->getFolderName();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

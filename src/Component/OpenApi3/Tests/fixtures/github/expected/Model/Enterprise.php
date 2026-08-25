@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Enterprise extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Enterprise implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -261,5 +264,9 @@ class Enterprise extends \ArrayObject
         $this->initialized['avatarUrl'] = true;
         $this->avatarUrl = $avatarUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['description' => ['description', 'getDescription', 'setDescription'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'websiteUrl' => ['website_url', 'getWebsiteUrl', 'setWebsiteUrl'], 'id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'name' => ['name', 'getName', 'setName'], 'slug' => ['slug', 'getSlug', 'setSlug'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'avatarUrl' => ['avatar_url', 'getAvatarUrl', 'setAvatarUrl']];
     }
 }

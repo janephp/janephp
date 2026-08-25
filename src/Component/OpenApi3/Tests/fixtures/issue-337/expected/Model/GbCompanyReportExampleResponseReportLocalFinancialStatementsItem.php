@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportLocalFinancialStatementsItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportLocalFinancialStatementsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -253,5 +256,9 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItem extends \
         $this->initialized['ratios'] = true;
         $this->ratios = $ratios;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'yearEndDate' => ['yearEndDate', 'getYearEndDate', 'setYearEndDate'], 'numberOfWeeks' => ['numberOfWeeks', 'getNumberOfWeeks', 'setNumberOfWeeks'], 'currency' => ['currency', 'getCurrency', 'setCurrency'], 'consolidatedAccounts' => ['consolidatedAccounts', 'getConsolidatedAccounts', 'setConsolidatedAccounts'], 'auditQualification' => ['auditQualification', 'getAuditQualification', 'setAuditQualification'], 'profitAndLoss' => ['profitAndLoss', 'getProfitAndLoss', 'setProfitAndLoss'], 'balanceSheet' => ['balanceSheet', 'getBalanceSheet', 'setBalanceSheet'], 'cashFlow' => ['cashFlow', 'getCashFlow', 'setCashFlow'], 'otherFinancials' => ['otherFinancials', 'getOtherFinancials', 'setOtherFinancials'], 'ratios' => ['ratios', 'getRatios', 'setRatios']];
     }
 }

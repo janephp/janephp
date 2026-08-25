@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class PullRequestMilestone extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class PullRequestMilestone implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -381,5 +384,9 @@ class PullRequestMilestone extends \ArrayObject
         $this->initialized['dueOn'] = true;
         $this->dueOn = $dueOn;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'labelsUrl' => ['labels_url', 'getLabelsUrl', 'setLabelsUrl'], 'id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'number' => ['number', 'getNumber', 'setNumber'], 'state' => ['state', 'getState', 'setState'], 'title' => ['title', 'getTitle', 'setTitle'], 'description' => ['description', 'getDescription', 'setDescription'], 'creator' => ['creator', 'getCreator', 'setCreator'], 'openIssues' => ['open_issues', 'getOpenIssues', 'setOpenIssues'], 'closedIssues' => ['closed_issues', 'getClosedIssues', 'setClosedIssues'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'closedAt' => ['closed_at', 'getClosedAt', 'setClosedAt'], 'dueOn' => ['due_on', 'getDueOn', 'setDueOn']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class KubernetesNodePoolSize extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class KubernetesNodePoolSize implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class KubernetesNodePoolSize extends \ArrayObject
         $this->initialized['size'] = true;
         $this->size = $size;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['size' => ['size', 'getSize', 'setSize']];
     }
 }

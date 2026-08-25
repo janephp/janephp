@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class DateRangeFilter extends FilterBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class DateRangeFilter extends FilterBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -70,5 +73,9 @@ class DateRangeFilter extends FilterBase
         $this->initialized['range'] = true;
         $this->range = $range;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['field' => ['field', 'getField', 'setField'], 'range' => ['range', 'getRange', 'setRange']];
     }
 }

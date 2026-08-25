@@ -286,7 +286,7 @@ class ContentSearchRequestNormalizer implements DenormalizerInterface, Normalize
             }
             $dataArray['aggregators'] = $values_7;
         }
-        foreach ($data as $key => $value_8) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_8) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_8;
             }

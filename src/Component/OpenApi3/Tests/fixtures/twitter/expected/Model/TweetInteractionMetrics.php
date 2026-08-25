@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class TweetInteractionMetrics extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class TweetInteractionMetrics implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class TweetInteractionMetrics extends \ArrayObject
         $this->initialized['impressionCount'] = true;
         $this->impressionCount = $impressionCount;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['likeCount' => ['like_count', 'getLikeCount', 'setLikeCount'], 'retweetCount' => ['retweet_count', 'getRetweetCount', 'setRetweetCount'], 'quoteCount' => ['quote_count', 'getQuoteCount', 'setQuoteCount'], 'replyCount' => ['reply_count', 'getReplyCount', 'setReplyCount'], 'impressionCount' => ['impression_count', 'getImpressionCount', 'setImpressionCount']];
     }
 }

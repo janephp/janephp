@@ -54,7 +54,7 @@ class LinkToLastPageNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('last') && null !== $data->getLast()) {
             $dataArray['last'] = $data->getLast();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

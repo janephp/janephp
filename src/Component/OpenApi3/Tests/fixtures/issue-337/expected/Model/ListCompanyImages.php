@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class ListCompanyImages extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class ListCompanyImages implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class ListCompanyImages extends \ArrayObject
         $this->initialized['data'] = true;
         $this->data = $data;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['totalSize' => ['totalSize', 'getTotalSize', 'setTotalSize'], 'data' => ['data', 'getData', 'setData']];
     }
 }

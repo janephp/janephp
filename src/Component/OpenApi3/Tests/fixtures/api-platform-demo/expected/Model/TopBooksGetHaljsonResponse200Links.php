@@ -2,8 +2,11 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class TopBooksGetHaljsonResponse200Links extends \ArrayObject
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
+class TopBooksGetHaljsonResponse200Links implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class TopBooksGetHaljsonResponse200Links extends \ArrayObject
         $this->initialized['previous'] = true;
         $this->previous = $previous;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['self' => ['self', 'getSelf', 'setSelf'], 'first' => ['first', 'getFirst', 'setFirst'], 'last' => ['last', 'getLast', 'setLast'], 'next' => ['next', 'getNext', 'setNext'], 'previous' => ['previous', 'getPrevious', 'setPrevious']];
     }
 }

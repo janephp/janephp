@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ProjectsColumnsCardsCardIdPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ProjectsColumnsCardsCardIdPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ProjectsColumnsCardsCardIdPatchBody extends \ArrayObject
         $this->initialized['archived'] = true;
         $this->archived = $archived;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['note' => ['note', 'getNote', 'setNote'], 'archived' => ['archived', 'getArchived', 'setArchived']];
     }
 }

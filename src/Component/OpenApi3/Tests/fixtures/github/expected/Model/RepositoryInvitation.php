@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class RepositoryInvitation extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class RepositoryInvitation implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -233,5 +236,9 @@ class RepositoryInvitation extends \ArrayObject
         $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'repository' => ['repository', 'getRepository', 'setRepository'], 'invitee' => ['invitee', 'getInvitee', 'setInvitee'], 'inviter' => ['inviter', 'getInviter', 'setInviter'], 'permissions' => ['permissions', 'getPermissions', 'setPermissions'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'url' => ['url', 'getUrl', 'setUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId']];
     }
 }

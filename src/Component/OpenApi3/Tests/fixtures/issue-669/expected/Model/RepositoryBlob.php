@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class RepositoryBlob extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class RepositoryBlob implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class RepositoryBlob extends \ArrayObject
         $this->initialized['compressedSizeBytes'] = true;
         $this->compressedSizeBytes = $compressedSizeBytes;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['digest' => ['digest', 'getDigest', 'setDigest'], 'compressedSizeBytes' => ['compressed_size_bytes', 'getCompressedSizeBytes', 'setCompressedSizeBytes']];
     }
 }

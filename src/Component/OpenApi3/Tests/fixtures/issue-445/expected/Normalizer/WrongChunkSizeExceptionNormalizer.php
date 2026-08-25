@@ -146,7 +146,7 @@ class WrongChunkSizeExceptionNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('expected') && null !== $data->getExpected()) {
             $dataArray['expected'] = $data->getExpected();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

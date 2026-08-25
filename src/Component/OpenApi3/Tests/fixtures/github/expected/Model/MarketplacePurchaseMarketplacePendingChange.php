@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class MarketplacePurchaseMarketplacePendingChange extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class MarketplacePurchaseMarketplacePendingChange implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -127,5 +130,9 @@ class MarketplacePurchaseMarketplacePendingChange extends \ArrayObject
         $this->initialized['plan'] = true;
         $this->plan = $plan;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['isInstalled' => ['is_installed', 'getIsInstalled', 'setIsInstalled'], 'effectiveDate' => ['effective_date', 'getEffectiveDate', 'setEffectiveDate'], 'unitCount' => ['unit_count', 'getUnitCount', 'setUnitCount'], 'id' => ['id', 'getId', 'setId'], 'plan' => ['plan', 'getPlan', 'setPlan']];
     }
 }

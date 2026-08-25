@@ -75,7 +75,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationBadDebtDetailsIte
         if ($data->isInitialized('amount') && null !== $data->getAmount()) {
             $dataArray['amount'] = $data->getAmount() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getAmount(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

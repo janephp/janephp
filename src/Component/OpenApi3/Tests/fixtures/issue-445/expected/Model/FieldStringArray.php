@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class FieldStringArray extends FieldBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class FieldStringArray extends FieldBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -325,5 +328,9 @@ class FieldStringArray extends FieldBase
         $this->initialized['minimumItems'] = true;
         $this->minimumItems = $minimumItems;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['template' => ['template', 'getTemplate', 'setTemplate'], 'pattern' => ['pattern', 'getPattern', 'setPattern'], 'minimumLength' => ['minimumLength', 'getMinimumLength', 'setMinimumLength'], 'maximumLength' => ['maximumLength', 'getMaximumLength', 'setMaximumLength'], 'indexAnalyzers' => ['indexAnalyzers', 'getIndexAnalyzers', 'setIndexAnalyzers'], 'simpleSearchAnalyzers' => ['simpleSearchAnalyzers', 'getSimpleSearchAnalyzers', 'setSimpleSearchAnalyzers'], 'multiLine' => ['multiLine', 'getMultiLine', 'setMultiLine'], 'grantedValues' => ['grantedValues', 'getGrantedValues', 'setGrantedValues'], 'boost' => ['boost', 'getBoost', 'setBoost'], 'maximumItems' => ['maximumItems', 'getMaximumItems', 'setMaximumItems'], 'minimumItems' => ['minimumItems', 'getMinimumItems', 'setMinimumItems']];
     }
 }

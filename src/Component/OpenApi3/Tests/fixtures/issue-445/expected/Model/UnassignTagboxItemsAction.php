@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class UnassignTagboxItemsAction extends BusinessRuleAction
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class UnassignTagboxItemsAction extends BusinessRuleAction implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class UnassignTagboxItemsAction extends BusinessRuleAction
         $this->initialized['refIds'] = true;
         $this->refIds = $refIds;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['path' => ['path', 'getPath', 'setPath'], 'fieldId' => ['fieldId', 'getFieldId', 'setFieldId'], 'refIds' => ['refIds', 'getRefIds', 'setRefIds']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppDatabaseSpec extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppDatabaseSpec implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -225,5 +228,9 @@ class AppDatabaseSpec extends \ArrayObject
         $this->initialized['version'] = true;
         $this->version = $version;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['clusterName' => ['cluster_name', 'getClusterName', 'setClusterName'], 'dbName' => ['db_name', 'getDbName', 'setDbName'], 'dbUser' => ['db_user', 'getDbUser', 'setDbUser'], 'engine' => ['engine', 'getEngine', 'setEngine'], 'name' => ['name', 'getName', 'setName'], 'production' => ['production', 'getProduction', 'setProduction'], 'version' => ['version', 'getVersion', 'setVersion']];
     }
 }

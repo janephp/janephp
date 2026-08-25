@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportNegativeInformationCcjSummary extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportNegativeInformationCcjSummary implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class GbCompanyReportExampleResponseReportNegativeInformationCcjSummary extends 
         $this->initialized['possibleRegistered'] = true;
         $this->possibleRegistered = $possibleRegistered;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['exactRegistered' => ['exactRegistered', 'getExactRegistered', 'setExactRegistered'], 'possibleRegistered' => ['possibleRegistered', 'getPossibleRegistered', 'setPossibleRegistered']];
     }
 }

@@ -96,7 +96,7 @@ class HealthCheckNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('healthyThreshold') && null !== $data->getHealthyThreshold()) {
             $dataArray['healthy_threshold'] = $data->getHealthyThreshold();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

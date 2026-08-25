@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class ListFreshInvestigationResponseOrdersItemSearchCriteria extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class ListFreshInvestigationResponseOrdersItemSearchCriteria implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -143,5 +146,9 @@ class ListFreshInvestigationResponseOrdersItemSearchCriteria extends \ArrayObjec
         $this->initialized['countryCode'] = true;
         $this->countryCode = $countryCode;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'vatNo' => ['vatNo', 'getVatNo', 'setVatNo'], 'regNo' => ['regNo', 'getRegNo', 'setRegNo'], 'additionalInfo' => ['additionalInfo', 'getAdditionalInfo', 'setAdditionalInfo'], 'address' => ['address', 'getAddress', 'setAddress'], 'countryCode' => ['countryCode', 'getCountryCode', 'setCountryCode']];
     }
 }

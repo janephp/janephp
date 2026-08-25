@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class UserReposPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class UserReposPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -487,5 +490,9 @@ class UserReposPostBody extends \ArrayObject
         $this->initialized['isTemplate'] = true;
         $this->isTemplate = $isTemplate;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'description' => ['description', 'getDescription', 'setDescription'], 'homepage' => ['homepage', 'getHomepage', 'setHomepage'], 'private' => ['private', 'getPrivate', 'setPrivate'], 'hasIssues' => ['has_issues', 'getHasIssues', 'setHasIssues'], 'hasProjects' => ['has_projects', 'getHasProjects', 'setHasProjects'], 'hasWiki' => ['has_wiki', 'getHasWiki', 'setHasWiki'], 'teamId' => ['team_id', 'getTeamId', 'setTeamId'], 'autoInit' => ['auto_init', 'getAutoInit', 'setAutoInit'], 'gitignoreTemplate' => ['gitignore_template', 'getGitignoreTemplate', 'setGitignoreTemplate'], 'licenseTemplate' => ['license_template', 'getLicenseTemplate', 'setLicenseTemplate'], 'allowSquashMerge' => ['allow_squash_merge', 'getAllowSquashMerge', 'setAllowSquashMerge'], 'allowMergeCommit' => ['allow_merge_commit', 'getAllowMergeCommit', 'setAllowMergeCommit'], 'allowRebaseMerge' => ['allow_rebase_merge', 'getAllowRebaseMerge', 'setAllowRebaseMerge'], 'deleteBranchOnMerge' => ['delete_branch_on_merge', 'getDeleteBranchOnMerge', 'setDeleteBranchOnMerge'], 'hasDownloads' => ['has_downloads', 'getHasDownloads', 'setHasDownloads'], 'isTemplate' => ['is_template', 'getIsTemplate', 'setIsTemplate']];
     }
 }

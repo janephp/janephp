@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppResponse extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class AppResponse extends \ArrayObject
         $this->initialized['app'] = true;
         $this->app = $app;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['app' => ['app', 'getApp', 'setApp']];
     }
 }

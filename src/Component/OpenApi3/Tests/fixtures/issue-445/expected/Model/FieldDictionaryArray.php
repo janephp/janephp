@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class FieldDictionaryArray extends FieldBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class FieldDictionaryArray extends FieldBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class FieldDictionaryArray extends FieldBase
         $this->initialized['minimumItems'] = true;
         $this->minimumItems = $minimumItems;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['boost' => ['boost', 'getBoost', 'setBoost'], 'maximumItems' => ['maximumItems', 'getMaximumItems', 'setMaximumItems'], 'minimumItems' => ['minimumItems', 'getMinimumItems', 'setMinimumItems']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class LiveStreamMessage extends Message
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class LiveStreamMessage extends Message implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -143,5 +146,9 @@ class LiveStreamMessage extends Message
         $this->initialized['applicationEvent'] = true;
         $this->applicationEvent = $applicationEvent;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['customerId' => ['customerId', 'getCustomerId', 'setCustomerId'], 'customerAlias' => ['customerAlias', 'getCustomerAlias', 'setCustomerAlias'], 'timestamp' => ['timestamp', 'getTimestamp', 'setTimestamp'], 'scope' => ['scope', 'getScope', 'setScope'], 'documentChange' => ['documentChange', 'getDocumentChange', 'setDocumentChange'], 'applicationEvent' => ['applicationEvent', 'getApplicationEvent', 'setApplicationEvent']];
     }
 }

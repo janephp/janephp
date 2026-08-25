@@ -77,7 +77,7 @@ class HookResponseNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['code'] = $data->getCode();
         $dataArray['status'] = $data->getStatus();
         $dataArray['message'] = $data->getMessage();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

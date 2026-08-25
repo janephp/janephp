@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class SnapshotsBase extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class SnapshotsBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class SnapshotsBase extends \ArrayObject
         $this->initialized['sizeGigabytes'] = true;
         $this->sizeGigabytes = $sizeGigabytes;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'regions' => ['regions', 'getRegions', 'setRegions'], 'minDiskSize' => ['min_disk_size', 'getMinDiskSize', 'setMinDiskSize'], 'sizeGigabytes' => ['size_gigabytes', 'getSizeGigabytes', 'setSizeGigabytes']];
     }
 }

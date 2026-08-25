@@ -81,7 +81,7 @@ class MetricsResultNormalizer implements DenormalizerInterface, NormalizerInterf
             $values_1[] = $values_2;
         }
         $dataArray['values'] = $values_1;
-        foreach ($data as $key_1 => $value_3) {
+        foreach ($data->additionalPropertyEntries() as $key_1 => $value_3) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_3;
             }

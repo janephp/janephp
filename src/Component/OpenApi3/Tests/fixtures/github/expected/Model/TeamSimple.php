@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class TeamSimple extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class TeamSimple implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -317,5 +320,9 @@ class TeamSimple extends \ArrayObject
         $this->initialized['ldapDn'] = true;
         $this->ldapDn = $ldapDn;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'url' => ['url', 'getUrl', 'setUrl'], 'membersUrl' => ['members_url', 'getMembersUrl', 'setMembersUrl'], 'name' => ['name', 'getName', 'setName'], 'description' => ['description', 'getDescription', 'setDescription'], 'permission' => ['permission', 'getPermission', 'setPermission'], 'privacy' => ['privacy', 'getPrivacy', 'setPrivacy'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'repositoriesUrl' => ['repositories_url', 'getRepositoriesUrl', 'setRepositoriesUrl'], 'slug' => ['slug', 'getSlug', 'setSlug'], 'ldapDn' => ['ldap_dn', 'getLdapDn', 'setLdapDn']];
     }
 }

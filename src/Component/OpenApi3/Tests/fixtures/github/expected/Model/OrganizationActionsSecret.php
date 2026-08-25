@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrganizationActionsSecret extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrganizationActionsSecret implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -133,5 +136,9 @@ class OrganizationActionsSecret extends \ArrayObject
         $this->initialized['selectedRepositoriesUrl'] = true;
         $this->selectedRepositoriesUrl = $selectedRepositoriesUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'visibility' => ['visibility', 'getVisibility', 'setVisibility'], 'selectedRepositoriesUrl' => ['selected_repositories_url', 'getSelectedRepositoriesUrl', 'setSelectedRepositoriesUrl']];
     }
 }

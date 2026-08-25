@@ -88,7 +88,7 @@ class GenaiapiRegionNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('streamInferenceUrl') && null !== $data->getStreamInferenceUrl()) {
             $dataArray['stream_inference_url'] = $data->getStreamInferenceUrl();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class TermFilter extends FilterBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class TermFilter extends FilterBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -70,5 +73,9 @@ class TermFilter extends FilterBase
         $this->initialized['term'] = true;
         $this->term = $term;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['field' => ['field', 'getField', 'setField'], 'term' => ['term', 'getTerm', 'setTerm']];
     }
 }

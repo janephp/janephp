@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CredentialAuthorization extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CredentialAuthorization implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -235,5 +238,9 @@ class CredentialAuthorization extends \ArrayObject
         $this->initialized['credentialAccessedAt'] = true;
         $this->credentialAccessedAt = $credentialAccessedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['login' => ['login', 'getLogin', 'setLogin'], 'credentialId' => ['credential_id', 'getCredentialId', 'setCredentialId'], 'credentialType' => ['credential_type', 'getCredentialType', 'setCredentialType'], 'tokenLastEight' => ['token_last_eight', 'getTokenLastEight', 'setTokenLastEight'], 'credentialAuthorizedAt' => ['credential_authorized_at', 'getCredentialAuthorizedAt', 'setCredentialAuthorizedAt'], 'scopes' => ['scopes', 'getScopes', 'setScopes'], 'fingerprint' => ['fingerprint', 'getFingerprint', 'setFingerprint'], 'credentialAccessedAt' => ['credential_accessed_at', 'getCredentialAccessedAt', 'setCredentialAccessedAt']];
     }
 }

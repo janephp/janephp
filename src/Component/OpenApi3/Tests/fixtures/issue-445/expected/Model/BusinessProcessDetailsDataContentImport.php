@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessDetailsDataContentImport extends BusinessProcessDetailsDataBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class BusinessProcessDetailsDataContentImport extends BusinessProcessDetailsDataBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class BusinessProcessDetailsDataContentImport extends BusinessProcessDetailsData
         $this->initialized['items'] = true;
         $this->items = $items;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['items' => ['items', 'getItems', 'setItems']];
     }
 }

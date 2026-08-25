@@ -74,7 +74,7 @@ class BackupNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if ($data->isInitialized('incremental') && null !== $data->getIncremental()) {
             $dataArray['incremental'] = $data->getIncremental();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

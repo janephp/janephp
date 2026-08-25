@@ -96,7 +96,7 @@ class MatchRegexConditionNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('storeIn') && null !== $data->getStoreIn()) {
             $dataArray['storeIn'] = $data->getStoreIn();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

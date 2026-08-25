@@ -142,7 +142,7 @@ class PullRequestReviewRequestTeamsItemNormalizer implements DenormalizerInterfa
         if ($data->isInitialized('parent') && null !== $data->getParent()) {
             $dataArray['parent'] = $data->getParent();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

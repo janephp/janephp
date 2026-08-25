@@ -230,7 +230,7 @@ class VectorMetadataNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('epsInfo') && null !== $data->getEpsInfo()) {
             $dataArray['epsInfo'] = $data->getEpsInfo();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class IssueEvent extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class IssueEvent implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -509,5 +512,9 @@ class IssueEvent extends \ArrayObject
         $this->initialized['lockReason'] = true;
         $this->lockReason = $lockReason;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'url' => ['url', 'getUrl', 'setUrl'], 'actor' => ['actor', 'getActor', 'setActor'], 'event' => ['event', 'getEvent', 'setEvent'], 'commitId' => ['commit_id', 'getCommitId', 'setCommitId'], 'commitUrl' => ['commit_url', 'getCommitUrl', 'setCommitUrl'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'issue' => ['issue', 'getIssue', 'setIssue'], 'label' => ['label', 'getLabel', 'setLabel'], 'assignee' => ['assignee', 'getAssignee', 'setAssignee'], 'assigner' => ['assigner', 'getAssigner', 'setAssigner'], 'reviewRequester' => ['review_requester', 'getReviewRequester', 'setReviewRequester'], 'requestedReviewer' => ['requested_reviewer', 'getRequestedReviewer', 'setRequestedReviewer'], 'requestedTeam' => ['requested_team', 'getRequestedTeam', 'setRequestedTeam'], 'dismissedReview' => ['dismissed_review', 'getDismissedReview', 'setDismissedReview'], 'milestone' => ['milestone', 'getMilestone', 'setMilestone'], 'projectCard' => ['project_card', 'getProjectCard', 'setProjectCard'], 'rename' => ['rename', 'getRename', 'setRename'], 'authorAssociation' => ['author_association', 'getAuthorAssociation', 'setAuthorAssociation'], 'lockReason' => ['lock_reason', 'getLockReason', 'setLockReason']];
     }
 }

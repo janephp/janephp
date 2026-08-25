@@ -176,7 +176,7 @@ class SchemaFieldImportTypeMismatchExceptionNormalizer implements DenormalizerIn
         if ($data->isInitialized('existingFieldType') && null !== $data->getExistingFieldType()) {
             $dataArray['existingFieldType'] = $data->getExistingFieldType();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CheckSuitePreferencePreferencesAutoTriggerChecksItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CheckSuitePreferencePreferencesAutoTriggerChecksItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class CheckSuitePreferencePreferencesAutoTriggerChecksItem extends \ArrayObject
         $this->initialized['setting'] = true;
         $this->setting = $setting;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['appId' => ['app_id', 'getAppId', 'setAppId'], 'setting' => ['setting', 'getSetting', 'setSetting']];
     }
 }

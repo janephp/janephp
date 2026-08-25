@@ -121,7 +121,7 @@ class ServiceProviderDeleteExceptionNormalizer implements DenormalizerInterface,
         if ($data->isInitialized('detailedErrorMessage') && null !== $data->getDetailedErrorMessage()) {
             $dataArray['detailedErrorMessage'] = $data->getDetailedErrorMessage();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class FieldSingleRelation extends FieldBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class FieldSingleRelation extends FieldBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class FieldSingleRelation extends FieldBase
         $this->initialized['relationTypes'] = true;
         $this->relationTypes = $relationTypes;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['schemaId' => ['schemaId', 'getSchemaId', 'setSchemaId'], 'schemaIndexingInfo' => ['schemaIndexingInfo', 'getSchemaIndexingInfo', 'setSchemaIndexingInfo'], 'relationTypes' => ['relationTypes', 'getRelationTypes', 'setRelationTypes']];
     }
 }

@@ -143,7 +143,7 @@ class UserAttributeNotSynchronizableExceptionNormalizer implements DenormalizerI
         if ($data->isInitialized('attributePath') && null !== $data->getAttributePath()) {
             $dataArray['attributePath'] = $data->getAttributePath();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

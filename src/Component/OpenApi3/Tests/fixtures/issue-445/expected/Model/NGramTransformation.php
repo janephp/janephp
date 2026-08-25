@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class NGramTransformation extends BusinessRuleTransformation
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class NGramTransformation extends BusinessRuleTransformation implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -98,5 +101,9 @@ class NGramTransformation extends BusinessRuleTransformation
         $this->initialized['maxWordLength'] = true;
         $this->maxWordLength = $maxWordLength;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['size' => ['size', 'getSize', 'setSize'], 'minWordLength' => ['minWordLength', 'getMinWordLength', 'setMinWordLength'], 'maxWordLength' => ['maxWordLength', 'getMaxWordLength', 'setMaxWordLength']];
     }
 }

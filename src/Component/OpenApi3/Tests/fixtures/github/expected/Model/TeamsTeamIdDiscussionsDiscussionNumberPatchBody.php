@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class TeamsTeamIdDiscussionsDiscussionNumberPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class TeamsTeamIdDiscussionsDiscussionNumberPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class TeamsTeamIdDiscussionsDiscussionNumberPatchBody extends \ArrayObject
         $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['title' => ['title', 'getTitle', 'setTitle'], 'body' => ['body', 'getBody', 'setBody']];
     }
 }

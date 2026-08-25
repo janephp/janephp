@@ -54,7 +54,7 @@ class ResponseFloatingIpActionNormalizer implements DenormalizerInterface, Norma
         if ($data->isInitialized('action') && null !== $data->getAction()) {
             $dataArray['action'] = $data->getAction() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAction(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

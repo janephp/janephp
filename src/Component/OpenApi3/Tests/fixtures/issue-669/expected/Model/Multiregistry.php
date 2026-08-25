@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class Multiregistry extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class Multiregistry implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class Multiregistry extends \ArrayObject
         $this->initialized['storageUsageBytesUpdatedAt'] = true;
         $this->storageUsageBytesUpdatedAt = $storageUsageBytesUpdatedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'region' => ['region', 'getRegion', 'setRegion'], 'storageUsageBytes' => ['storage_usage_bytes', 'getStorageUsageBytes', 'setStorageUsageBytes'], 'storageUsageBytesUpdatedAt' => ['storage_usage_bytes_updated_at', 'getStorageUsageBytesUpdatedAt', 'setStorageUsageBytesUpdatedAt']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReactionRollup extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReactionRollup implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -231,5 +234,9 @@ class ReactionRollup extends \ArrayObject
         $this->initialized['rocket'] = true;
         $this->rocket = $rocket;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'totalCount' => ['total_count', 'getTotalCount', 'setTotalCount'], 'n1' => ['+1', 'get1', 'set1'], 'n12' => ['-1', 'get12', 'set12'], 'laugh' => ['laugh', 'getLaugh', 'setLaugh'], 'confused' => ['confused', 'getConfused', 'setConfused'], 'heart' => ['heart', 'getHeart', 'setHeart'], 'hooray' => ['hooray', 'getHooray', 'setHooray'], 'eyes' => ['eyes', 'getEyes', 'setEyes'], 'rocket' => ['rocket', 'getRocket', 'setRocket']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ParticipationStats extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ParticipationStats implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class ParticipationStats extends \ArrayObject
         $this->initialized['owner'] = true;
         $this->owner = $owner;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['all' => ['all', 'getAll', 'setAll'], 'owner' => ['owner', 'getOwner', 'setOwner']];
     }
 }

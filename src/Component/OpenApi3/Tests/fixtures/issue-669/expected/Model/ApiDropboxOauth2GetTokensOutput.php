@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiDropboxOauth2GetTokensOutput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiDropboxOauth2GetTokensOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ApiDropboxOauth2GetTokensOutput extends \ArrayObject
         $this->initialized['token'] = true;
         $this->token = $token;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['refreshToken' => ['refresh_token', 'getRefreshToken', 'setRefreshToken'], 'token' => ['token', 'getToken', 'setToken']];
     }
 }

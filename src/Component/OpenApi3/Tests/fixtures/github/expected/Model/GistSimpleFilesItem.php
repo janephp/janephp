@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class GistSimpleFilesItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class GistSimpleFilesItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -165,5 +168,9 @@ class GistSimpleFilesItem extends \ArrayObject
         $this->initialized['content'] = true;
         $this->content = $content;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['filename' => ['filename', 'getFilename', 'setFilename'], 'type' => ['type', 'getType', 'setType'], 'language' => ['language', 'getLanguage', 'setLanguage'], 'rawUrl' => ['raw_url', 'getRawUrl', 'setRawUrl'], 'size' => ['size', 'getSize', 'setSize'], 'truncated' => ['truncated', 'getTruncated', 'setTruncated'], 'content' => ['content', 'getContent', 'setContent']];
     }
 }

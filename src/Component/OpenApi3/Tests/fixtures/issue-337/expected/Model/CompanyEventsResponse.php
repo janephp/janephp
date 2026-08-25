@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class CompanyEventsResponse extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class CompanyEventsResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -89,5 +92,9 @@ class CompanyEventsResponse extends \ArrayObject
         $this->initialized['paging'] = true;
         $this->paging = $paging;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['totalCount' => ['totalCount', 'getTotalCount', 'setTotalCount'], 'data' => ['data', 'getData', 'setData'], 'paging' => ['paging', 'getPaging', 'setPaging']];
     }
 }

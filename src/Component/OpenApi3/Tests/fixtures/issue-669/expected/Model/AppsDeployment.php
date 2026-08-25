@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsDeployment extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsDeployment implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -347,5 +350,9 @@ class AppsDeployment extends \ArrayObject
         $this->initialized['workers'] = true;
         $this->workers = $workers;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['cause' => ['cause', 'getCause', 'setCause'], 'clonedFrom' => ['cloned_from', 'getClonedFrom', 'setClonedFrom'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'id' => ['id', 'getId', 'setId'], 'jobs' => ['jobs', 'getJobs', 'setJobs'], 'functions' => ['functions', 'getFunctions', 'setFunctions'], 'phase' => ['phase', 'getPhase', 'setPhase'], 'phaseLastUpdatedAt' => ['phase_last_updated_at', 'getPhaseLastUpdatedAt', 'setPhaseLastUpdatedAt'], 'progress' => ['progress', 'getProgress', 'setProgress'], 'services' => ['services', 'getServices', 'setServices'], 'spec' => ['spec', 'getSpec', 'setSpec'], 'staticSites' => ['static_sites', 'getStaticSites', 'setStaticSites'], 'tierSlug' => ['tier_slug', 'getTierSlug', 'setTierSlug'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'workers' => ['workers', 'getWorkers', 'setWorkers']];
     }
 }

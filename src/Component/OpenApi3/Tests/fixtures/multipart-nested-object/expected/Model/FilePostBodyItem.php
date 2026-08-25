@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class FilePostBodyItem extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class FilePostBodyItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class FilePostBodyItem extends \ArrayObject
         $this->initialized['itemType'] = true;
         $this->itemType = $itemType;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['itemId' => ['itemId', 'getItemId', 'setItemId'], 'itemType' => ['itemType', 'getItemType', 'setItemType']];
     }
 }

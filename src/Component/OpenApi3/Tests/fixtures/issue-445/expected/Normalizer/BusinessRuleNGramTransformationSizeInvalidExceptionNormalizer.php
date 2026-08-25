@@ -153,7 +153,7 @@ class BusinessRuleNGramTransformationSizeInvalidExceptionNormalizer implements D
         if ($data->isInitialized('maxSize') && null !== $data->getMaxSize()) {
             $dataArray['maxSize'] = $data->getMaxSize();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

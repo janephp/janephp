@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class RepositoryTemplateRepositoryPermissions extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class RepositoryTemplateRepositoryPermissions implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class RepositoryTemplateRepositoryPermissions extends \ArrayObject
         $this->initialized['pull'] = true;
         $this->pull = $pull;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['admin' => ['admin', 'getAdmin', 'setAdmin'], 'push' => ['push', 'getPush', 'setPush'], 'pull' => ['pull', 'getPull', 'setPull']];
     }
 }

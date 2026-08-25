@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CloneTraffic extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CloneTraffic implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class CloneTraffic extends \ArrayObject
         $this->initialized['clones'] = true;
         $this->clones = $clones;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['count' => ['count', 'getCount', 'setCount'], 'uniques' => ['uniques', 'getUniques', 'setUniques'], 'clones' => ['clones', 'getClones', 'setClones']];
     }
 }

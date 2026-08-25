@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AmdGpuDevicePlugin extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AmdGpuDevicePlugin implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class AmdGpuDevicePlugin extends \ArrayObject
         $this->initialized['enabled'] = true;
         $this->enabled = $enabled;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['enabled' => ['enabled', 'getEnabled', 'setEnabled']];
     }
 }

@@ -121,7 +121,7 @@ class FieldOverwriteSingleTagboxNormalizer implements DenormalizerInterface, Nor
         if ($data->isInitialized('overwriteListItemCreateTemplate') && null !== $data->getOverwriteListItemCreateTemplate()) {
             $dataArray['overwriteListItemCreateTemplate'] = $data->getOverwriteListItemCreateTemplate();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

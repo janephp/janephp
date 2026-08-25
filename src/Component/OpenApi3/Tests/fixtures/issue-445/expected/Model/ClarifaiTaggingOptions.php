@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ClarifaiTaggingOptions extends TaggingOptionsBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ClarifaiTaggingOptions extends TaggingOptionsBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class ClarifaiTaggingOptions extends TaggingOptionsBase
         $this->initialized['minimumValue'] = true;
         $this->minimumValue = $minimumValue;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['model' => ['model', 'getModel', 'setModel'], 'language' => ['language', 'getLanguage', 'setLanguage'], 'minimumValue' => ['minimumValue', 'getMinimumValue', 'setMinimumValue']];
     }
 }

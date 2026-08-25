@@ -61,7 +61,7 @@ class AppIngressSpecRuleMatchNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('authority') && null !== $data->getAuthority()) {
             $dataArray['authority'] = $data->getAuthority() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAuthority(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

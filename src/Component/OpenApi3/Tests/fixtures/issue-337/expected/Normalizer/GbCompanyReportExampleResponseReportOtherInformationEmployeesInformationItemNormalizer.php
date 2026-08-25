@@ -64,7 +64,7 @@ class GbCompanyReportExampleResponseReportOtherInformationEmployeesInformationIt
         if ($data->isInitialized('numberOfEmployees') && null !== $data->getNumberOfEmployees()) {
             $dataArray['numberOfEmployees'] = $data->getNumberOfEmployees();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -165,7 +165,7 @@ class NotSupportedFileMappingForDynamicFormatExceptionNormalizer implements Deno
         if ($data->isInitialized('formatId') && null !== $data->getFormatId()) {
             $dataArray['formatId'] = $data->getFormatId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

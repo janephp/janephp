@@ -96,7 +96,7 @@ class UnassignTagboxItemsActionNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('refIds') && null !== $data->getRefIds()) {
             $dataArray['refIds'] = $data->getRefIds();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -54,7 +54,7 @@ class DockerCredentialsNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('auths') && null !== $data->getAuths()) {
             $dataArray['auths'] = $data->getAuths() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getAuths(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiUpdateAgentInputPublic extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiUpdateAgentInputPublic implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -543,5 +546,9 @@ class ApiUpdateAgentInputPublic extends \ArrayObject
         $this->initialized['uuid'] = true;
         $this->uuid = $uuid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['agentLogInsightsEnabled' => ['agent_log_insights_enabled', 'getAgentLogInsightsEnabled', 'setAgentLogInsightsEnabled'], 'allowedDomains' => ['allowed_domains', 'getAllowedDomains', 'setAllowedDomains'], 'anthropicKeyUuid' => ['anthropic_key_uuid', 'getAnthropicKeyUuid', 'setAnthropicKeyUuid'], 'conversationLogsEnabled' => ['conversation_logs_enabled', 'getConversationLogsEnabled', 'setConversationLogsEnabled'], 'description' => ['description', 'getDescription', 'setDescription'], 'instruction' => ['instruction', 'getInstruction', 'setInstruction'], 'k' => ['k', 'getK', 'setK'], 'maxTokens' => ['max_tokens', 'getMaxTokens', 'setMaxTokens'], 'modelProviderKeyUuid' => ['model_provider_key_uuid', 'getModelProviderKeyUuid', 'setModelProviderKeyUuid'], 'modelUuid' => ['model_uuid', 'getModelUuid', 'setModelUuid'], 'name' => ['name', 'getName', 'setName'], 'openAiKeyUuid' => ['open_ai_key_uuid', 'getOpenAiKeyUuid', 'setOpenAiKeyUuid'], 'projectId' => ['project_id', 'getProjectId', 'setProjectId'], 'provideCitations' => ['provide_citations', 'getProvideCitations', 'setProvideCitations'], 'retrievalMethod' => ['retrieval_method', 'getRetrievalMethod', 'setRetrievalMethod'], 'tags' => ['tags', 'getTags', 'setTags'], 'temperature' => ['temperature', 'getTemperature', 'setTemperature'], 'topP' => ['top_p', 'getTopP', 'setTopP'], 'uuid' => ['uuid', 'getUuid', 'setUuid']];
     }
 }

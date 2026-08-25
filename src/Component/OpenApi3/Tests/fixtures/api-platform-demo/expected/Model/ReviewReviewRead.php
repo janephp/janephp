@@ -2,8 +2,11 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class ReviewReviewRead extends \ArrayObject
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
+class ReviewReviewRead implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -201,5 +204,9 @@ class ReviewReviewRead extends \ArrayObject
         $this->initialized['publicationDate'] = true;
         $this->publicationDate = $publicationDate;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'body' => ['body', 'getBody', 'setBody'], 'rating' => ['rating', 'getRating', 'setRating'], 'letter' => ['letter', 'getLetter', 'setLetter'], 'book' => ['book', 'getBook', 'setBook'], 'author' => ['author', 'getAuthor', 'setAuthor'], 'publicationDate' => ['publicationDate', 'getPublicationDate', 'setPublicationDate']];
     }
 }

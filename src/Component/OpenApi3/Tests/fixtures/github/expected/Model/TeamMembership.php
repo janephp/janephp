@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class TeamMembership extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class TeamMembership implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -83,5 +86,9 @@ class TeamMembership extends \ArrayObject
         $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'role' => ['role', 'getRole', 'setRole'], 'state' => ['state', 'getState', 'setState']];
     }
 }

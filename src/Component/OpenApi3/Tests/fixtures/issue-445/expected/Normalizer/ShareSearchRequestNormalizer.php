@@ -173,7 +173,7 @@ class ShareSearchRequestNormalizer implements DenormalizerInterface, NormalizerI
             }
             $dataArray['aggregators'] = $values_3;
         }
-        foreach ($data as $key => $value_4) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_4;
             }

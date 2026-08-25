@@ -198,7 +198,7 @@ class InstallationNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($data->isInitialized('contactEmail') && null !== $data->getContactEmail()) {
             $dataArray['contact_email'] = $data->getContactEmail();
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

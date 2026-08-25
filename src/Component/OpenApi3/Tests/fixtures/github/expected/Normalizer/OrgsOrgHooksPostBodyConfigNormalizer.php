@@ -90,7 +90,7 @@ class OrgsOrgHooksPostBodyConfigNormalizer implements DenormalizerInterface, Nor
         if ($data->isInitialized('password') && null !== $data->getPassword()) {
             $dataArray['password'] = $data->getPassword();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

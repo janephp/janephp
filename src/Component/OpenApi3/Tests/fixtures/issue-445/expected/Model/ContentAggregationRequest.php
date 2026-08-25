@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ContentAggregationRequest extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ContentAggregationRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -340,5 +343,9 @@ class ContentAggregationRequest extends \ArrayObject
         $this->initialized['aggregators'] = true;
         $this->aggregators = $aggregators;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['searchString' => ['searchString', 'getSearchString', 'setSearchString'], 'searchBehaviors' => ['searchBehaviors', 'getSearchBehaviors', 'setSearchBehaviors'], 'filter' => ['filter', 'getFilter', 'setFilter'], 'aggregationFilters' => ['aggregationFilters', 'getAggregationFilters', 'setAggregationFilters'], 'channelId' => ['channelId', 'getChannelId', 'setChannelId'], 'searchLanguages' => ['searchLanguages', 'getSearchLanguages', 'setSearchLanguages'], 'collectionId' => ['collectionId', 'getCollectionId', 'setCollectionId'], 'lifeCycleFilter' => ['lifeCycleFilter', 'getLifeCycleFilter', 'setLifeCycleFilter'], 'brokenDependenciesFilter' => ['brokenDependenciesFilter', 'getBrokenDependenciesFilter', 'setBrokenDependenciesFilter'], 'searchType' => ['searchType', 'getSearchType', 'setSearchType'], 'aggregators' => ['aggregators', 'getAggregators', 'setAggregators']];
     }
 }

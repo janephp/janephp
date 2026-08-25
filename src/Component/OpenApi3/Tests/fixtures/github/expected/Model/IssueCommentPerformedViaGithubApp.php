@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class IssueCommentPerformedViaGithubApp extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class IssueCommentPerformedViaGithubApp implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -421,5 +424,9 @@ class IssueCommentPerformedViaGithubApp extends \ArrayObject
         $this->initialized['pem'] = true;
         $this->pem = $pem;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'slug' => ['slug', 'getSlug', 'setSlug'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'owner' => ['owner', 'getOwner', 'setOwner'], 'name' => ['name', 'getName', 'setName'], 'description' => ['description', 'getDescription', 'setDescription'], 'externalUrl' => ['external_url', 'getExternalUrl', 'setExternalUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'permissions' => ['permissions', 'getPermissions', 'setPermissions'], 'events' => ['events', 'getEvents', 'setEvents'], 'installationsCount' => ['installations_count', 'getInstallationsCount', 'setInstallationsCount'], 'clientId' => ['client_id', 'getClientId', 'setClientId'], 'clientSecret' => ['client_secret', 'getClientSecret', 'setClientSecret'], 'webhookSecret' => ['webhook_secret', 'getWebhookSecret', 'setWebhookSecret'], 'pem' => ['pem', 'getPem', 'setPem']];
     }
 }

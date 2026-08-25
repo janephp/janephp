@@ -163,7 +163,7 @@ class GpgKeyNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['expires_at'] = $data->getExpiresAt()?->format('Y-m-d\TH:i:sP');
         $dataArray['raw_key'] = $data->getRawKey();
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

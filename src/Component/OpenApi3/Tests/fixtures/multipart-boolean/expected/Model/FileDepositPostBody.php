@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Model;
 
-class FileDepositPostBody extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Runtime\AdditionalPropertiesInterface;
+class FileDepositPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class FileDepositPostBody extends \ArrayObject
         $this->initialized['valid'] = true;
         $this->valid = $valid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['fichier' => ['fichier', 'getFichier', 'setFichier'], 'valid' => ['valid', 'getValid', 'setValid']];
     }
 }

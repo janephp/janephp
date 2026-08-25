@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class TopicSearchResultItemAliasesItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class TopicSearchResultItemAliasesItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class TopicSearchResultItemAliasesItem extends \ArrayObject
         $this->initialized['topicRelation'] = true;
         $this->topicRelation = $topicRelation;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['topicRelation' => ['topic_relation', 'getTopicRelation', 'setTopicRelation']];
     }
 }

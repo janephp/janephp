@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ProjectsColumnsCardsCardIdMovesPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ProjectsColumnsCardsCardIdMovesPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ProjectsColumnsCardsCardIdMovesPostBody extends \ArrayObject
         $this->initialized['columnId'] = true;
         $this->columnId = $columnId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['position' => ['position', 'getPosition', 'setPosition'], 'columnId' => ['column_id', 'getColumnId', 'setColumnId']];
     }
 }

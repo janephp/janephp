@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class OutputRenderedEvent extends ApplicationEvent
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class OutputRenderedEvent extends ApplicationEvent implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class OutputRenderedEvent extends ApplicationEvent
         $this->initialized['renderingState'] = true;
         $this->renderingState = $renderingState;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['outputId' => ['outputId', 'getOutputId', 'setOutputId'], 'contentId' => ['contentId', 'getContentId', 'setContentId'], 'outputFormatId' => ['outputFormatId', 'getOutputFormatId', 'setOutputFormatId'], 'renderingState' => ['renderingState', 'getRenderingState', 'setRenderingState']];
     }
 }

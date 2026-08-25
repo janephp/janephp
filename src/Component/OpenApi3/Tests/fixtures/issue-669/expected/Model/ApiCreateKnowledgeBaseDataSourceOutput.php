@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiCreateKnowledgeBaseDataSourceOutput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiCreateKnowledgeBaseDataSourceOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ApiCreateKnowledgeBaseDataSourceOutput extends \ArrayObject
         $this->initialized['knowledgeBaseDataSource'] = true;
         $this->knowledgeBaseDataSource = $knowledgeBaseDataSource;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['knowledgeBaseDataSource' => ['knowledge_base_data_source', 'getKnowledgeBaseDataSource', 'setKnowledgeBaseDataSource']];
     }
 }

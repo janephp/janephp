@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiWorkspace extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiWorkspace implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -291,5 +294,9 @@ class ApiWorkspace extends \ArrayObject
         $this->initialized['uuid'] = true;
         $this->uuid = $uuid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['agents' => ['agents', 'getAgents', 'setAgents'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'createdBy' => ['created_by', 'getCreatedBy', 'setCreatedBy'], 'createdByEmail' => ['created_by_email', 'getCreatedByEmail', 'setCreatedByEmail'], 'deletedAt' => ['deleted_at', 'getDeletedAt', 'setDeletedAt'], 'description' => ['description', 'getDescription', 'setDescription'], 'evaluationTestCases' => ['evaluation_test_cases', 'getEvaluationTestCases', 'setEvaluationTestCases'], 'name' => ['name', 'getName', 'setName'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'uuid' => ['uuid', 'getUuid', 'setUuid']];
     }
 }

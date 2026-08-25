@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class MonitoringPortfoliosPostBody extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class MonitoringPortfoliosPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -143,5 +146,9 @@ class MonitoringPortfoliosPostBody extends \ArrayObject
         $this->initialized['frequency'] = true;
         $this->frequency = $frequency;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'isDefault' => ['isDefault', 'getIsDefault', 'setIsDefault'], 'emails' => ['emails', 'getEmails', 'setEmails'], 'emailSubject' => ['emailSubject', 'getEmailSubject', 'setEmailSubject'], 'emailLanguage' => ['emailLanguage', 'getEmailLanguage', 'setEmailLanguage'], 'frequency' => ['frequency', 'getFrequency', 'setFrequency']];
     }
 }

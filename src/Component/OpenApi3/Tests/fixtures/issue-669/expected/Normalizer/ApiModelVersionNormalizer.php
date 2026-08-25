@@ -68,7 +68,7 @@ class ApiModelVersionNormalizer implements DenormalizerInterface, NormalizerInte
         if ($data->isInitialized('patch') && null !== $data->getPatch()) {
             $dataArray['patch'] = $data->getPatch();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

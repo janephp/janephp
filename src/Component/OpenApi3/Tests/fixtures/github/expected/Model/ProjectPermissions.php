@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ProjectPermissions extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ProjectPermissions implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class ProjectPermissions extends \ArrayObject
         $this->initialized['admin'] = true;
         $this->admin = $admin;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['read' => ['read', 'getRead', 'setRead'], 'write' => ['write', 'getWrite', 'setWrite'], 'admin' => ['admin', 'getAdmin', 'setAdmin']];
     }
 }

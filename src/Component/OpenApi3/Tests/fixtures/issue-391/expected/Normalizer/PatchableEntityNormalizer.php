@@ -67,7 +67,7 @@ class PatchableEntityNormalizer implements DenormalizerInterface, NormalizerInte
             $dataArray['nullable_property'] = $data->getNullableProperty();
         }
         $dataArray['nullable_and_required_property'] = $data->getNullableAndRequiredProperty();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseReservedIp extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseReservedIp implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseReservedIp extends \ArrayObject
         $this->initialized['reservedIp'] = true;
         $this->reservedIp = $reservedIp;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['reservedIp' => ['reserved_ip', 'getReservedIp', 'setReservedIp']];
     }
 }

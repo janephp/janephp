@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -45,5 +48,9 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody extends \ArrayObject
         $this->initialized['role'] = true;
         $this->role = $role;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['role' => ['role', 'getRole', 'setRole']];
     }
 }

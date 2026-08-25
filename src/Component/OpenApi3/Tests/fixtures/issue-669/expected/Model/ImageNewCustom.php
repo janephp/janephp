@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ImageNewCustom extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ImageNewCustom implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -179,5 +182,9 @@ class ImageNewCustom extends \ArrayObject
         $this->initialized['tags'] = true;
         $this->tags = $tags;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'distribution' => ['distribution', 'getDistribution', 'setDistribution'], 'description' => ['description', 'getDescription', 'setDescription'], 'url' => ['url', 'getUrl', 'setUrl'], 'region' => ['region', 'getRegion', 'setRegion'], 'tags' => ['tags', 'getTags', 'setTags']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppProposeResponse extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppProposeResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -213,5 +216,9 @@ class AppProposeResponse extends \ArrayObject
         $this->initialized['appTierDowngradeCost'] = true;
         $this->appTierDowngradeCost = $appTierDowngradeCost;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['appIsStatic' => ['app_is_static', 'getAppIsStatic', 'setAppIsStatic'], 'appNameAvailable' => ['app_name_available', 'getAppNameAvailable', 'setAppNameAvailable'], 'appNameSuggestion' => ['app_name_suggestion', 'getAppNameSuggestion', 'setAppNameSuggestion'], 'existingStaticApps' => ['existing_static_apps', 'getExistingStaticApps', 'setExistingStaticApps'], 'spec' => ['spec', 'getSpec', 'setSpec'], 'appCost' => ['app_cost', 'getAppCost', 'setAppCost'], 'appTierDowngradeCost' => ['app_tier_downgrade_cost', 'getAppTierDowngradeCost', 'setAppTierDowngradeCost']];
     }
 }

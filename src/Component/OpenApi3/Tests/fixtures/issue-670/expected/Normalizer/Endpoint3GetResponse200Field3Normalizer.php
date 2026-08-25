@@ -54,7 +54,7 @@ class Endpoint3GetResponse200Field3Normalizer implements DenormalizerInterface, 
         if ($data->isInitialized('subField3') && null !== $data->getSubField3()) {
             $dataArray['sub-field-3'] = $data->getSubField3();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

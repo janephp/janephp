@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AssociatedResourceStatus extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AssociatedResourceStatus implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class AssociatedResourceStatus extends \ArrayObject
         $this->initialized['failures'] = true;
         $this->failures = $failures;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['droplet' => ['droplet', 'getDroplet', 'setDroplet'], 'resources' => ['resources', 'getResources', 'setResources'], 'completedAt' => ['completed_at', 'getCompletedAt', 'setCompletedAt'], 'failures' => ['failures', 'getFailures', 'setFailures']];
     }
 }

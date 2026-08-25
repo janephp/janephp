@@ -132,7 +132,7 @@ class OrganizationInvitationNormalizer implements DenormalizerInterface, Normali
         if ($data->isInitialized('invitationTeamsUrl') && null !== $data->getInvitationTeamsUrl()) {
             $dataArray['invitation_teams_url'] = $data->getInvitationTeamsUrl();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

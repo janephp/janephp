@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class NfsSnapshotListResponse extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class NfsSnapshotListResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class NfsSnapshotListResponse extends \ArrayObject
         $this->initialized['snapshots'] = true;
         $this->snapshots = $snapshots;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['snapshots' => ['snapshots', 'getSnapshots', 'setSnapshots']];
     }
 }

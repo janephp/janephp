@@ -153,7 +153,7 @@ class UserAlreadyInRequestedLockStateExceptionNormalizer implements Denormalizer
         if ($data->isInitialized('userIsLocked') && null !== $data->getUserIsLocked()) {
             $dataArray['userIsLocked'] = $data->getUserIsLocked();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

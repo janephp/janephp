@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CommitSearchResultItemCommitter extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CommitSearchResultItemCommitter implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class CommitSearchResultItemCommitter extends \ArrayObject
         $this->initialized['date'] = true;
         $this->date = $date;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'email' => ['email', 'getEmail', 'setEmail'], 'date' => ['date', 'getDate', 'setDate']];
     }
 }

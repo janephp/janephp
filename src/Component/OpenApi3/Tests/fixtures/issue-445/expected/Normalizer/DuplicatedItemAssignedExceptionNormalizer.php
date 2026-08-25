@@ -154,7 +154,7 @@ class DuplicatedItemAssignedExceptionNormalizer implements DenormalizerInterface
         if ($data->isInitialized('itemPath') && null !== $data->getItemPath()) {
             $dataArray['itemPath'] = $data->getItemPath();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -94,7 +94,7 @@ class SplitTransformationNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('trim') && null !== $data->getTrim()) {
             $dataArray['trim'] = $data->getTrim();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

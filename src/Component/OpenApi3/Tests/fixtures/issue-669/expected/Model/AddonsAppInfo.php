@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AddonsAppInfo extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AddonsAppInfo implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class AddonsAppInfo extends \ArrayObject
         $this->initialized['plans'] = true;
         $this->plans = $plans;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['appSlug' => ['app_slug', 'getAppSlug', 'setAppSlug'], 'tos' => ['tos', 'getTos', 'setTos'], 'eula' => ['eula', 'getEula', 'setEula'], 'plans' => ['plans', 'getPlans', 'setPlans']];
     }
 }

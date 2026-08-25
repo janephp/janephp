@@ -83,7 +83,7 @@ class MonitoringPortfoliosPortfolioIdPatchBodyNormalizer implements Denormalizer
         if ($data->isInitialized('emailSubject') && null !== $data->getEmailSubject()) {
             $dataArray['emailSubject'] = $data->getEmailSubject();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

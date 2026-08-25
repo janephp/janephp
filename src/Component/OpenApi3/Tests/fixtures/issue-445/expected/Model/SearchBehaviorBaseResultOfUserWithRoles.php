@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class SearchBehaviorBaseResultOfUserWithRoles extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class SearchBehaviorBaseResultOfUserWithRoles implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -207,5 +210,9 @@ class SearchBehaviorBaseResultOfUserWithRoles extends \ArrayObject
         $this->initialized['queryDebugInformation'] = true;
         $this->queryDebugInformation = $queryDebugInformation;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['totalResults' => ['totalResults', 'getTotalResults', 'setTotalResults'], 'results' => ['results', 'getResults', 'setResults'], 'elapsedMilliseconds' => ['elapsedMilliseconds', 'getElapsedMilliseconds', 'setElapsedMilliseconds'], 'pageToken' => ['pageToken', 'getPageToken', 'setPageToken'], 'searchString' => ['searchString', 'getSearchString', 'setSearchString'], 'isSearchStringRewritten' => ['isSearchStringRewritten', 'getIsSearchStringRewritten', 'setIsSearchStringRewritten'], 'queryDebugInformation' => ['queryDebugInformation', 'getQueryDebugInformation', 'setQueryDebugInformation']];
     }
 }

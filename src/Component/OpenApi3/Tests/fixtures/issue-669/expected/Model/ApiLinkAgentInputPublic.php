@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiLinkAgentInputPublic extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiLinkAgentInputPublic implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -117,5 +120,9 @@ class ApiLinkAgentInputPublic extends \ArrayObject
         $this->initialized['routeName'] = true;
         $this->routeName = $routeName;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['childAgentUuid' => ['child_agent_uuid', 'getChildAgentUuid', 'setChildAgentUuid'], 'ifCase' => ['if_case', 'getIfCase', 'setIfCase'], 'parentAgentUuid' => ['parent_agent_uuid', 'getParentAgentUuid', 'setParentAgentUuid'], 'routeName' => ['route_name', 'getRouteName', 'setRouteName']];
     }
 }

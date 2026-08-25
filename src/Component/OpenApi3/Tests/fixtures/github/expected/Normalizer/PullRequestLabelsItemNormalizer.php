@@ -106,7 +106,7 @@ class PullRequestLabelsItemNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('default') && null !== $data->getDefault()) {
             $dataArray['default'] = $data->getDefault();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -120,7 +120,7 @@ class AuthorizationsAuthorizationIdPatchBodyNormalizer implements DenormalizerIn
         if ($data->isInitialized('fingerprint') && null !== $data->getFingerprint()) {
             $dataArray['fingerprint'] = $data->getFingerprint();
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_3;
             }

@@ -65,7 +65,7 @@ class ReposOwnerRepoCheckSuitesPreferencesPatchBodyNormalizer implements Denorma
             }
             $dataArray['auto_trigger_checks'] = $values;
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

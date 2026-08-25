@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ContentFileLinks extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ContentFileLinks implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class ContentFileLinks extends \ArrayObject
         $this->initialized['self'] = true;
         $this->self = $self;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['git' => ['git', 'getGit', 'setGit'], 'html' => ['html', 'getHtml', 'setHtml'], 'self' => ['self', 'getSelf', 'setSelf']];
     }
 }

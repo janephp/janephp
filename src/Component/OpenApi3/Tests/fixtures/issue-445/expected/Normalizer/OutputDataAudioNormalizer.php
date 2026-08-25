@@ -121,7 +121,7 @@ class OutputDataAudioNormalizer implements DenormalizerInterface, NormalizerInte
         if ($data->isInitialized('durationInSeconds') && null !== $data->getDurationInSeconds()) {
             $dataArray['durationInSeconds'] = $data->getDurationInSeconds();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -85,7 +85,7 @@ class FloatingIpNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('projectId') && null !== $data->getProjectId()) {
             $dataArray['project_id'] = $data->getProjectId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

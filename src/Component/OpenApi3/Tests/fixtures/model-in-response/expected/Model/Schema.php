@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class Schema extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class Schema implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -165,5 +168,9 @@ class Schema extends \ArrayObject
         $this->initialized['objectRefProperty'] = true;
         $this->objectRefProperty = $objectRefProperty;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['stringProperty' => ['stringProperty', 'getStringProperty', 'setStringProperty'], 'integerProperty' => ['integerProperty', 'getIntegerProperty', 'setIntegerProperty'], 'floatProperty' => ['floatProperty', 'getFloatProperty', 'setFloatProperty'], 'arrayProperty' => ['arrayProperty', 'getArrayProperty', 'setArrayProperty'], 'mapProperty' => ['mapProperty', 'getMapProperty', 'setMapProperty'], 'objectProperty' => ['objectProperty', 'getObjectProperty', 'setObjectProperty'], 'objectRefProperty' => ['objectRefProperty', 'getObjectRefProperty', 'setObjectRefProperty']];
     }
 }

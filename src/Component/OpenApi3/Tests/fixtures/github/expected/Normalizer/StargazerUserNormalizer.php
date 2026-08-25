@@ -154,7 +154,7 @@ class StargazerUserNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('starredAt') && null !== $data->getStarredAt()) {
             $dataArray['starred_at'] = $data->getStarredAt();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

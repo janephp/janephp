@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class Project extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class Project implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -336,5 +339,9 @@ class Project extends \ArrayObject
         $this->initialized['isDefault'] = true;
         $this->isDefault = $isDefault;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'ownerUuid' => ['owner_uuid', 'getOwnerUuid', 'setOwnerUuid'], 'ownerId' => ['owner_id', 'getOwnerId', 'setOwnerId'], 'name' => ['name', 'getName', 'setName'], 'description' => ['description', 'getDescription', 'setDescription'], 'purpose' => ['purpose', 'getPurpose', 'setPurpose'], 'environment' => ['environment', 'getEnvironment', 'setEnvironment'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'isDefault' => ['is_default', 'getIsDefault', 'setIsDefault']];
     }
 }

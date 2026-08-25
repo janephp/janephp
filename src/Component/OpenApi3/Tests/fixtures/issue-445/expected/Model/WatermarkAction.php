@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class WatermarkAction extends ImageActionBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class WatermarkAction extends ImageActionBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -235,5 +238,9 @@ class WatermarkAction extends ImageActionBase
         $this->initialized['heightRatio'] = true;
         $this->heightRatio = $heightRatio;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['watermarkFilePath' => ['watermarkFilePath', 'getWatermarkFilePath', 'setWatermarkFilePath'], 'marginLeft' => ['marginLeft', 'getMarginLeft', 'setMarginLeft'], 'marginTop' => ['marginTop', 'getMarginTop', 'setMarginTop'], 'marginRight' => ['marginRight', 'getMarginRight', 'setMarginRight'], 'marginBottom' => ['marginBottom', 'getMarginBottom', 'setMarginBottom'], 'opacity' => ['opacity', 'getOpacity', 'setOpacity'], 'widthRatio' => ['widthRatio', 'getWidthRatio', 'setWidthRatio'], 'heightRatio' => ['heightRatio', 'getHeightRatio', 'setHeightRatio']];
     }
 }

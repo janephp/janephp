@@ -69,7 +69,7 @@ class ApiStartKnowledgeBaseIndexingJobInputPublicNormalizer implements Denormali
         if ($data->isInitialized('knowledgeBaseUuid') && null !== $data->getKnowledgeBaseUuid()) {
             $dataArray['knowledge_base_uuid'] = $data->getKnowledgeBaseUuid();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

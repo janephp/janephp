@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Hovercard extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Hovercard implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class Hovercard extends \ArrayObject
         $this->initialized['contexts'] = true;
         $this->contexts = $contexts;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['contexts' => ['contexts', 'getContexts', 'setContexts']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ImageMetadata extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ImageMetadata implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -759,5 +762,9 @@ class ImageMetadata extends \ArrayObject
         $this->initialized['uncompressedSizeInBytes'] = true;
         $this->uncompressedSizeInBytes = $uncompressedSizeInBytes;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['names' => ['names', 'getNames', 'setNames'], 'descriptions' => ['descriptions', 'getDescriptions', 'setDescriptions'], 'fileExtension' => ['fileExtension', 'getFileExtension', 'setFileExtension'], 'fileName' => ['fileName', 'getFileName', 'setFileName'], 'filePath' => ['filePath', 'getFilePath', 'setFilePath'], 'fileSizeInBytes' => ['fileSizeInBytes', 'getFileSizeInBytes', 'setFileSizeInBytes'], 'sha1Hash' => ['sha1Hash', 'getSha1Hash', 'setSha1Hash'], 'xmpMetadata' => ['xmpMetadata', 'getXmpMetadata', 'setXmpMetadata'], 'exifMetadata' => ['exifMetadata', 'getExifMetadata', 'setExifMetadata'], 'language' => ['language', 'getLanguage', 'setLanguage'], 'width' => ['width', 'getWidth', 'setWidth'], 'height' => ['height', 'getHeight', 'setHeight'], 'widthInInch' => ['widthInInch', 'getWidthInInch', 'setWidthInInch'], 'heightInInch' => ['heightInInch', 'getHeightInInch', 'setHeightInInch'], 'widthInCm' => ['widthInCm', 'getWidthInCm', 'setWidthInCm'], 'heightInCm' => ['heightInCm', 'getHeightInCm', 'setHeightInCm'], 'colorSpace' => ['colorSpace', 'getColorSpace', 'setColorSpace'], 'colorProfile' => ['colorProfile', 'getColorProfile', 'setColorProfile'], 'bitsPerPixel' => ['bitsPerPixel', 'getBitsPerPixel', 'setBitsPerPixel'], 'bitsPerChannel' => ['bitsPerChannel', 'getBitsPerChannel', 'setBitsPerChannel'], 'channels' => ['channels', 'getChannels', 'setChannels'], 'pixelFormat' => ['pixelFormat', 'getPixelFormat', 'setPixelFormat'], 'hasAlpha' => ['hasAlpha', 'getHasAlpha', 'setHasAlpha'], 'isIndexed' => ['isIndexed', 'getIsIndexed', 'setIsIndexed'], 'isExtended' => ['isExtended', 'getIsExtended', 'setIsExtended'], 'horizontalResolution' => ['horizontalResolution', 'getHorizontalResolution', 'setHorizontalResolution'], 'verticalResolution' => ['verticalResolution', 'getVerticalResolution', 'setVerticalResolution'], 'totalFrames' => ['totalFrames', 'getTotalFrames', 'setTotalFrames'], 'totalUnspecifiedTiffExtraChannels' => ['totalUnspecifiedTiffExtraChannels', 'getTotalUnspecifiedTiffExtraChannels', 'setTotalUnspecifiedTiffExtraChannels'], 'hasExifData' => ['hasExifData', 'getHasExifData', 'setHasExifData'], 'hasIptcData' => ['hasIptcData', 'getHasIptcData', 'setHasIptcData'], 'hasAdobeResourceData' => ['hasAdobeResourceData', 'getHasAdobeResourceData', 'setHasAdobeResourceData'], 'hasXmpData' => ['hasXmpData', 'getHasXmpData', 'setHasXmpData'], 'uncompressedSizeInBytes' => ['uncompressedSizeInBytes', 'getUncompressedSizeInBytes', 'setUncompressedSizeInBytes']];
     }
 }

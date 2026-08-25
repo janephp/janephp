@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class Event extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class Event implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -291,5 +294,9 @@ class Event extends \ArrayObject
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['eventId' => ['eventId', 'getEventId', 'setEventId'], 'companyId' => ['companyId', 'getCompanyId', 'setCompanyId'], 'portfolioId' => ['portfolioId', 'getPortfolioId', 'setPortfolioId'], 'ruleName' => ['ruleName', 'getRuleName', 'setRuleName'], 'localEventCode' => ['localEventCode', 'getLocalEventCode', 'setLocalEventCode'], 'globalEventCode' => ['globalEventCode', 'getGlobalEventCode', 'setGlobalEventCode'], 'newValue' => ['newValue', 'getNewValue', 'setNewValue'], 'oldValue' => ['oldValue', 'getOldValue', 'setOldValue'], 'eventDate' => ['eventDate', 'getEventDate', 'setEventDate'], 'createdDate' => ['createdDate', 'getCreatedDate', 'setCreatedDate']];
     }
 }

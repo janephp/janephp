@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DropletBackupPolicy extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DropletBackupPolicy implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class DropletBackupPolicy extends \ArrayObject
         $this->initialized['retentionPeriodDays'] = true;
         $this->retentionPeriodDays = $retentionPeriodDays;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['plan' => ['plan', 'getPlan', 'setPlan'], 'weekday' => ['weekday', 'getWeekday', 'setWeekday'], 'hour' => ['hour', 'getHour', 'setHour'], 'windowLengthHours' => ['window_length_hours', 'getWindowLengthHours', 'setWindowLengthHours'], 'retentionPeriodDays' => ['retention_period_days', 'getRetentionPeriodDays', 'setRetentionPeriodDays']];
     }
 }

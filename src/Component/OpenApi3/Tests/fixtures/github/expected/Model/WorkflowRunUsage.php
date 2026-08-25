@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class WorkflowRunUsage extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class WorkflowRunUsage implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class WorkflowRunUsage extends \ArrayObject
         $this->initialized['runDurationMs'] = true;
         $this->runDurationMs = $runDurationMs;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['billable' => ['billable', 'getBillable', 'setBillable'], 'runDurationMs' => ['run_duration_ms', 'getRunDurationMs', 'setRunDurationMs']];
     }
 }

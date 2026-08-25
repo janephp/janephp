@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ContentPermissionSetAssignedCondition extends BusinessRuleCondition
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ContentPermissionSetAssignedCondition extends BusinessRuleCondition implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ContentPermissionSetAssignedCondition extends BusinessRuleCondition
         $this->initialized['permissionSetId'] = true;
         $this->permissionSetId = $permissionSetId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['permissionSetId' => ['permissionSetId', 'getPermissionSetId', 'setPermissionSetId']];
     }
 }

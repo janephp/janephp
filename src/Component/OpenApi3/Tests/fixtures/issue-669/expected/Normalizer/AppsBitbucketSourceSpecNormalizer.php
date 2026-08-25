@@ -71,7 +71,7 @@ class AppsBitbucketSourceSpecNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('repo') && null !== $data->getRepo()) {
             $dataArray['repo'] = $data->getRepo();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

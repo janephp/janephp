@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ContributorActivity extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ContributorActivity implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class ContributorActivity extends \ArrayObject
         $this->initialized['weeks'] = true;
         $this->weeks = $weeks;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['author' => ['author', 'getAuthor', 'setAuthor'], 'total' => ['total', 'getTotal', 'setTotal'], 'weeks' => ['weeks', 'getWeeks', 'setWeeks']];
     }
 }

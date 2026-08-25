@@ -165,7 +165,7 @@ class SchemaFieldRelationSchemaTypeUnsupportedExceptionNormalizer implements Den
         if ($data->isInitialized('relationSchemaId') && null !== $data->getRelationSchemaId()) {
             $dataArray['relationSchemaId'] = $data->getRelationSchemaId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class InvoiceSummaryUserBillingAddress extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class InvoiceSummaryUserBillingAddress implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -235,5 +238,9 @@ class InvoiceSummaryUserBillingAddress extends \ArrayObject
         $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['addressLine1' => ['address_line1', 'getAddressLine1', 'setAddressLine1'], 'addressLine2' => ['address_line2', 'getAddressLine2', 'setAddressLine2'], 'city' => ['city', 'getCity', 'setCity'], 'region' => ['region', 'getRegion', 'setRegion'], 'postalCode' => ['postal_code', 'getPostalCode', 'setPostalCode'], 'countryIso2Code' => ['country_iso2_code', 'getCountryIso2Code', 'setCountryIso2Code'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt']];
     }
 }

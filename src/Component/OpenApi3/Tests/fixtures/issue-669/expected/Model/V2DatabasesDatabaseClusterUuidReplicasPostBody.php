@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class V2DatabasesDatabaseClusterUuidReplicasPostBody extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class V2DatabasesDatabaseClusterUuidReplicasPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -307,5 +310,9 @@ class V2DatabasesDatabaseClusterUuidReplicasPostBody extends \ArrayObject
         $this->initialized['storageSizeMib'] = true;
         $this->storageSizeMib = $storageSizeMib;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'region' => ['region', 'getRegion', 'setRegion'], 'size' => ['size', 'getSize', 'setSize'], 'status' => ['status', 'getStatus', 'setStatus'], 'tags' => ['tags', 'getTags', 'setTags'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'privateNetworkUuid' => ['private_network_uuid', 'getPrivateNetworkUuid', 'setPrivateNetworkUuid'], 'connection' => ['connection', 'getConnection', 'setConnection'], 'privateConnection' => ['private_connection', 'getPrivateConnection', 'setPrivateConnection'], 'storageSizeMib' => ['storage_size_mib', 'getStorageSizeMib', 'setStorageSizeMib']];
     }
 }

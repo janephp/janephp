@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class EntityIndices extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class EntityIndices implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class EntityIndices extends \ArrayObject
         $this->initialized['end'] = true;
         $this->end = $end;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['start' => ['start', 'getStart', 'setStart'], 'end' => ['end', 'getEnd', 'setEnd']];
     }
 }

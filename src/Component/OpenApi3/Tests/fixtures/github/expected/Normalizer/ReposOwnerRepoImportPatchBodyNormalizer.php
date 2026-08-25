@@ -78,7 +78,7 @@ class ReposOwnerRepoImportPatchBodyNormalizer implements DenormalizerInterface, 
         if ($data->isInitialized('tfvcProject') && null !== $data->getTfvcProject()) {
             $dataArray['tfvc_project'] = $data->getTfvcProject();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

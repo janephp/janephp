@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiListWorkspacesOutput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiListWorkspacesOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ApiListWorkspacesOutput extends \ArrayObject
         $this->initialized['workspaces'] = true;
         $this->workspaces = $workspaces;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['workspaces' => ['workspaces', 'getWorkspaces', 'setWorkspaces']];
     }
 }

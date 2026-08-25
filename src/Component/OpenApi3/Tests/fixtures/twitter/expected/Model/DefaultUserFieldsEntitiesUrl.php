@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class DefaultUserFieldsEntitiesUrl extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class DefaultUserFieldsEntitiesUrl implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class DefaultUserFieldsEntitiesUrl extends \ArrayObject
         $this->initialized['urls'] = true;
         $this->urls = $urls;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['urls' => ['urls', 'getUrls', 'setUrls']];
     }
 }

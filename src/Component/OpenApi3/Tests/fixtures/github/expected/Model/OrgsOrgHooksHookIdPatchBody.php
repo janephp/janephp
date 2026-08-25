@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrgsOrgHooksHookIdPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrgsOrgHooksHookIdPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -117,5 +120,9 @@ class OrgsOrgHooksHookIdPatchBody extends \ArrayObject
         $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['config' => ['config', 'getConfig', 'setConfig'], 'events' => ['events', 'getEvents', 'setEvents'], 'active' => ['active', 'getActive', 'setActive'], 'name' => ['name', 'getName', 'setName']];
     }
 }

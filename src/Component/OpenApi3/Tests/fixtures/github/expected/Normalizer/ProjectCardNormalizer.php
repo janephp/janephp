@@ -128,7 +128,7 @@ class ProjectCardNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['content_url'] = $data->getContentUrl();
         }
         $dataArray['project_url'] = $data->getProjectUrl();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

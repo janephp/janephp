@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseReservedIpActionAction extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseReservedIpActionAction implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -285,5 +288,9 @@ class ResponseReservedIpActionAction extends \ArrayObject
         $this->initialized['projectId'] = true;
         $this->projectId = $projectId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'status' => ['status', 'getStatus', 'setStatus'], 'type' => ['type', 'getType', 'setType'], 'startedAt' => ['started_at', 'getStartedAt', 'setStartedAt'], 'completedAt' => ['completed_at', 'getCompletedAt', 'setCompletedAt'], 'resourceId' => ['resource_id', 'getResourceId', 'setResourceId'], 'resourceType' => ['resource_type', 'getResourceType', 'setResourceType'], 'region' => ['region', 'getRegion', 'setRegion'], 'regionSlug' => ['region_slug', 'getRegionSlug', 'setRegionSlug'], 'projectId' => ['project_id', 'getProjectId', 'setProjectId']];
     }
 }

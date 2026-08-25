@@ -79,7 +79,7 @@ class DestroyedAssociatedResourceNormalizer implements DenormalizerInterface, No
         if ($data->isInitialized('errorMessage') && null !== $data->getErrorMessage()) {
             $dataArray['error_message'] = $data->getErrorMessage();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

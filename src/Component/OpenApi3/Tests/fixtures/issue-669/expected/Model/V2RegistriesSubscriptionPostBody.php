@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class V2RegistriesSubscriptionPostBody extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class V2RegistriesSubscriptionPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class V2RegistriesSubscriptionPostBody extends \ArrayObject
         $this->initialized['tierSlug'] = true;
         $this->tierSlug = $tierSlug;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['tierSlug' => ['tier_slug', 'getTierSlug', 'setTierSlug']];
     }
 }

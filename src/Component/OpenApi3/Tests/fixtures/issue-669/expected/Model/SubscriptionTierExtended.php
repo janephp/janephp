@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class SubscriptionTierExtended extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class SubscriptionTierExtended implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class SubscriptionTierExtended extends \ArrayObject
         $this->initialized['eligibilityReasons'] = true;
         $this->eligibilityReasons = $eligibilityReasons;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['eligible' => ['eligible', 'getEligible', 'setEligible'], 'eligibilityReasons' => ['eligibility_reasons', 'getEligibilityReasons', 'setEligibilityReasons']];
     }
 }

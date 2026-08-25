@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DropletCreate extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DropletCreate implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -403,5 +406,9 @@ class DropletCreate extends \ArrayObject
         $this->initialized['withDropletAgent'] = true;
         $this->withDropletAgent = $withDropletAgent;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['region' => ['region', 'getRegion', 'setRegion'], 'size' => ['size', 'getSize', 'setSize'], 'image' => ['image', 'getImage', 'setImage'], 'sshKeys' => ['ssh_keys', 'getSshKeys', 'setSshKeys'], 'backups' => ['backups', 'getBackups', 'setBackups'], 'backupPolicy' => ['backup_policy', 'getBackupPolicy', 'setBackupPolicy'], 'ipv6' => ['ipv6', 'getIpv6', 'setIpv6'], 'monitoring' => ['monitoring', 'getMonitoring', 'setMonitoring'], 'tags' => ['tags', 'getTags', 'setTags'], 'userData' => ['user_data', 'getUserData', 'setUserData'], 'privateNetworking' => ['private_networking', 'getPrivateNetworking', 'setPrivateNetworking'], 'volumes' => ['volumes', 'getVolumes', 'setVolumes'], 'vpcUuid' => ['vpc_uuid', 'getVpcUuid', 'setVpcUuid'], 'withDropletAgent' => ['with_droplet_agent', 'getWithDropletAgent', 'setWithDropletAgent']];
     }
 }

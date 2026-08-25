@@ -78,7 +78,7 @@ class OrgHookConfigNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('secret') && null !== $data->getSecret()) {
             $dataArray['secret'] = $data->getSecret();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

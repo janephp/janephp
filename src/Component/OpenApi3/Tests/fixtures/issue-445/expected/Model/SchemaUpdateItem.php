@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaUpdateItem extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class SchemaUpdateItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -359,5 +362,9 @@ class SchemaUpdateItem extends \ArrayObject
         $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['names' => ['names', 'getNames', 'setNames'], 'descriptions' => ['descriptions', 'getDescriptions', 'setDescriptions'], 'displayPatterns' => ['displayPatterns', 'getDisplayPatterns', 'setDisplayPatterns'], 'fields' => ['fields', 'getFields', 'setFields'], 'fieldsOverwrite' => ['fieldsOverwrite', 'getFieldsOverwrite', 'setFieldsOverwrite'], 'aggregations' => ['aggregations', 'getAggregations', 'setAggregations'], 'sort' => ['sort', 'getSort', 'setSort'], 'viewForAll' => ['viewForAll', 'getViewForAll', 'setViewForAll'], 'schemaPermissionSetIds' => ['schemaPermissionSetIds', 'getSchemaPermissionSetIds', 'setSchemaPermissionSetIds'], 'layerSchemaIds' => ['layerSchemaIds', 'getLayerSchemaIds', 'setLayerSchemaIds'], 'referencedInContentSchemaIds' => ['referencedInContentSchemaIds', 'getReferencedInContentSchemaIds', 'setReferencedInContentSchemaIds'], 'id' => ['id', 'getId', 'setId']];
     }
 }

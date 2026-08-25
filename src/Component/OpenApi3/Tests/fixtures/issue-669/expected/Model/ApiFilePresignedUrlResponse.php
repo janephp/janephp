@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiFilePresignedUrlResponse extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiFilePresignedUrlResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class ApiFilePresignedUrlResponse extends \ArrayObject
         $this->initialized['presignedUrl'] = true;
         $this->presignedUrl = $presignedUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['expiresAt' => ['expires_at', 'getExpiresAt', 'setExpiresAt'], 'objectKey' => ['object_key', 'getObjectKey', 'setObjectKey'], 'originalFileName' => ['original_file_name', 'getOriginalFileName', 'setOriginalFileName'], 'presignedUrl' => ['presigned_url', 'getPresignedUrl', 'setPresignedUrl']];
     }
 }

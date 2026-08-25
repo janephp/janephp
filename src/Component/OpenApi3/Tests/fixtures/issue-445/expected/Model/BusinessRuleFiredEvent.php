@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleFiredEvent extends ApplicationEvent
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class BusinessRuleFiredEvent extends ApplicationEvent implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class BusinessRuleFiredEvent extends ApplicationEvent
         $this->initialized['details'] = true;
         $this->details = $details;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['details' => ['details', 'getDetails', 'setDetails']];
     }
 }

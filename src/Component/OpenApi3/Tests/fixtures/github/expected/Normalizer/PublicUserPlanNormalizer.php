@@ -70,7 +70,7 @@ class PublicUserPlanNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray['name'] = $data->getName();
         $dataArray['space'] = $data->getSpace();
         $dataArray['private_repos'] = $data->getPrivateRepos();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

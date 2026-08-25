@@ -57,7 +57,7 @@ class FilePostResponse200Normalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('statusCode') && null !== $data->getStatusCode()) {
             $dataArray['status_code'] = $data->getStatusCode();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

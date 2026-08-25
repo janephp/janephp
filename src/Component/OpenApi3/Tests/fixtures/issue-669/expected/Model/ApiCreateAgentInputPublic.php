@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiCreateAgentInputPublic extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiCreateAgentInputPublic implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -341,5 +344,9 @@ class ApiCreateAgentInputPublic extends \ArrayObject
         $this->initialized['workspaceUuid'] = true;
         $this->workspaceUuid = $workspaceUuid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['anthropicKeyUuid' => ['anthropic_key_uuid', 'getAnthropicKeyUuid', 'setAnthropicKeyUuid'], 'description' => ['description', 'getDescription', 'setDescription'], 'instruction' => ['instruction', 'getInstruction', 'setInstruction'], 'knowledgeBaseUuid' => ['knowledge_base_uuid', 'getKnowledgeBaseUuid', 'setKnowledgeBaseUuid'], 'modelProviderKeyUuid' => ['model_provider_key_uuid', 'getModelProviderKeyUuid', 'setModelProviderKeyUuid'], 'modelUuid' => ['model_uuid', 'getModelUuid', 'setModelUuid'], 'name' => ['name', 'getName', 'setName'], 'openAiKeyUuid' => ['open_ai_key_uuid', 'getOpenAiKeyUuid', 'setOpenAiKeyUuid'], 'projectId' => ['project_id', 'getProjectId', 'setProjectId'], 'region' => ['region', 'getRegion', 'setRegion'], 'tags' => ['tags', 'getTags', 'setTags'], 'workspaceUuid' => ['workspace_uuid', 'getWorkspaceUuid', 'setWorkspaceUuid']];
     }
 }

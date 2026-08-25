@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ScimV2OrganizationsOrgUsersPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -199,5 +202,9 @@ class ScimV2OrganizationsOrgUsersPostBody extends \ArrayObject
         $this->initialized['active'] = true;
         $this->active = $active;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['userName' => ['userName', 'getUserName', 'setUserName'], 'name' => ['name', 'getName', 'setName'], 'emails' => ['emails', 'getEmails', 'setEmails'], 'schemas' => ['schemas', 'getSchemas', 'setSchemas'], 'displayName' => ['displayName', 'getDisplayName', 'setDisplayName'], 'externalId' => ['externalId', 'getExternalId', 'setExternalId'], 'groups' => ['groups', 'getGroups', 'setGroups'], 'active' => ['active', 'getActive', 'setActive']];
     }
 }

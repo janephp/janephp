@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class AudioStillFormat extends FormatBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class AudioStillFormat extends FormatBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class AudioStillFormat extends FormatBase
         $this->initialized['extension'] = true;
         $this->extension = $extension;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['extension' => ['extension', 'getExtension', 'setExtension']];
     }
 }

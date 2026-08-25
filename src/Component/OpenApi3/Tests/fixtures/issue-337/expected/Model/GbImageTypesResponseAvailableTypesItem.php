@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbImageTypesResponseAvailableTypesItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbImageTypesResponseAvailableTypesItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class GbImageTypesResponseAvailableTypesItem extends \ArrayObject
         $this->initialized['availableFormats'] = true;
         $this->availableFormats = $availableFormats;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'imageType' => ['imageType', 'getImageType', 'setImageType'], 'description' => ['description', 'getDescription', 'setDescription'], 'availableFormats' => ['availableFormats', 'getAvailableFormats', 'setAvailableFormats']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class InvoiceItem extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class InvoiceItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -319,5 +322,9 @@ class InvoiceItem extends \ArrayObject
         $this->initialized['projectName'] = true;
         $this->projectName = $projectName;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['product' => ['product', 'getProduct', 'setProduct'], 'resourceUuid' => ['resource_uuid', 'getResourceUuid', 'setResourceUuid'], 'resourceId' => ['resource_id', 'getResourceId', 'setResourceId'], 'groupDescription' => ['group_description', 'getGroupDescription', 'setGroupDescription'], 'description' => ['description', 'getDescription', 'setDescription'], 'amount' => ['amount', 'getAmount', 'setAmount'], 'duration' => ['duration', 'getDuration', 'setDuration'], 'durationUnit' => ['duration_unit', 'getDurationUnit', 'setDurationUnit'], 'startTime' => ['start_time', 'getStartTime', 'setStartTime'], 'endTime' => ['end_time', 'getEndTime', 'setEndTime'], 'projectName' => ['project_name', 'getProjectName', 'setProjectName']];
     }
 }

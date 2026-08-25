@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponsePutFirewallResponse extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponsePutFirewallResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponsePutFirewallResponse extends \ArrayObject
         $this->initialized['firewall'] = true;
         $this->firewall = $firewall;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['firewall' => ['firewall', 'getFirewall', 'setFirewall']];
     }
 }

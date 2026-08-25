@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportGroupStructure extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportGroupStructure implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class GbCompanyReportExampleResponseReportGroupStructure extends \ArrayObject
         $this->initialized['subsidiaryCompanies'] = true;
         $this->subsidiaryCompanies = $subsidiaryCompanies;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['subsidiaryCompanies' => ['subsidiaryCompanies', 'getSubsidiaryCompanies', 'setSubsidiaryCompanies']];
     }
 }

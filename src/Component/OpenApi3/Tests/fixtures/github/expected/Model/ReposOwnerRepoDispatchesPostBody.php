@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoDispatchesPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoDispatchesPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ReposOwnerRepoDispatchesPostBody extends \ArrayObject
         $this->initialized['clientPayload'] = true;
         $this->clientPayload = $clientPayload;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['eventType' => ['event_type', 'getEventType', 'setEventType'], 'clientPayload' => ['client_payload', 'getClientPayload', 'setClientPayload']];
     }
 }

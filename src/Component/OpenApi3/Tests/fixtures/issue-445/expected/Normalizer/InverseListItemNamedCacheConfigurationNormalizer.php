@@ -114,7 +114,7 @@ class InverseListItemNamedCacheConfigurationNormalizer implements DenormalizerIn
         if ($data->isInitialized('includeAllSchemaChildren') && null !== $data->getIncludeAllSchemaChildren()) {
             $dataArray['includeAllSchemaChildren'] = $data->getIncludeAllSchemaChildren();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

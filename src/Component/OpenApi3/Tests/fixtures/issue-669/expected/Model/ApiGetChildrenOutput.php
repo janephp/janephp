@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiGetChildrenOutput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiGetChildrenOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ApiGetChildrenOutput extends \ArrayObject
         $this->initialized['children'] = true;
         $this->children = $children;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['children' => ['children', 'getChildren', 'setChildren']];
     }
 }

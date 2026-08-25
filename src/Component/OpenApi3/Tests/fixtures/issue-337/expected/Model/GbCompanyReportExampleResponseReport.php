@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReport extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReport implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -363,5 +366,9 @@ class GbCompanyReportExampleResponseReport extends \ArrayObject
         $this->initialized['additionalInformation'] = true;
         $this->additionalInformation = $additionalInformation;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['companyId' => ['companyId', 'getCompanyId', 'setCompanyId'], 'language' => ['language', 'getLanguage', 'setLanguage'], 'companySummary' => ['companySummary', 'getCompanySummary', 'setCompanySummary'], 'companyIdentification' => ['companyIdentification', 'getCompanyIdentification', 'setCompanyIdentification'], 'creditScore' => ['creditScore', 'getCreditScore', 'setCreditScore'], 'contactInformation' => ['contactInformation', 'getContactInformation', 'setContactInformation'], 'shareCapitalStructure' => ['shareCapitalStructure', 'getShareCapitalStructure', 'setShareCapitalStructure'], 'directors' => ['directors', 'getDirectors', 'setDirectors'], 'otherInformation' => ['otherInformation', 'getOtherInformation', 'setOtherInformation'], 'groupStructure' => ['groupStructure', 'getGroupStructure', 'setGroupStructure'], 'extendedGroupStructure' => ['extendedGroupStructure', 'getExtendedGroupStructure', 'setExtendedGroupStructure'], 'financialStatements' => ['financialStatements', 'getFinancialStatements', 'setFinancialStatements'], 'localFinancialStatements' => ['localFinancialStatements', 'getLocalFinancialStatements', 'setLocalFinancialStatements'], 'paymentData' => ['paymentData', 'getPaymentData', 'setPaymentData'], 'negativeInformation' => ['negativeInformation', 'getNegativeInformation', 'setNegativeInformation'], 'additionalInformation' => ['additionalInformation', 'getAdditionalInformation', 'setAdditionalInformation']];
     }
 }

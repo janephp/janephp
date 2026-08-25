@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ByoipPrefixCreate extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ByoipPrefixCreate implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class ByoipPrefixCreate extends \ArrayObject
         $this->initialized['signature'] = true;
         $this->signature = $signature;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['prefix' => ['prefix', 'getPrefix', 'setPrefix'], 'region' => ['region', 'getRegion', 'setRegion'], 'signature' => ['signature', 'getSignature', 'setSignature']];
     }
 }

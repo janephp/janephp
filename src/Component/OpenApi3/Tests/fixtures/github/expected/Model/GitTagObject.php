@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class GitTagObject extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class GitTagObject implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class GitTagObject extends \ArrayObject
         $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['sha' => ['sha', 'getSha', 'setSha'], 'type' => ['type', 'getType', 'setType'], 'url' => ['url', 'getUrl', 'setUrl']];
     }
 }

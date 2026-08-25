@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ByoipPrefix extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ByoipPrefix implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -291,5 +294,9 @@ class ByoipPrefix extends \ArrayObject
         $this->initialized['projectId'] = true;
         $this->projectId = $projectId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['uuid' => ['uuid', 'getUuid', 'setUuid'], 'name' => ['name', 'getName', 'setName'], 'prefix' => ['prefix', 'getPrefix', 'setPrefix'], 'status' => ['status', 'getStatus', 'setStatus'], 'region' => ['region', 'getRegion', 'setRegion'], 'validations' => ['validations', 'getValidations', 'setValidations'], 'failureReason' => ['failure_reason', 'getFailureReason', 'setFailureReason'], 'locked' => ['locked', 'getLocked', 'setLocked'], 'advertised' => ['advertised', 'getAdvertised', 'setAdvertised'], 'projectId' => ['project_id', 'getProjectId', 'setProjectId']];
     }
 }

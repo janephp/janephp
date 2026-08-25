@@ -59,7 +59,7 @@ class AppLogDestinationDatadogSpecNormalizer implements DenormalizerInterface, N
             $dataArray['endpoint'] = $data->getEndpoint();
         }
         $dataArray['api_key'] = $data->getApiKey();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

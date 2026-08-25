@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class IssueSearchResultItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class IssueSearchResultItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -743,5 +746,9 @@ class IssueSearchResultItem extends \ArrayObject
         $this->initialized['performedViaGithubApp'] = true;
         $this->performedViaGithubApp = $performedViaGithubApp;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'repositoryUrl' => ['repository_url', 'getRepositoryUrl', 'setRepositoryUrl'], 'labelsUrl' => ['labels_url', 'getLabelsUrl', 'setLabelsUrl'], 'commentsUrl' => ['comments_url', 'getCommentsUrl', 'setCommentsUrl'], 'eventsUrl' => ['events_url', 'getEventsUrl', 'setEventsUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'number' => ['number', 'getNumber', 'setNumber'], 'title' => ['title', 'getTitle', 'setTitle'], 'locked' => ['locked', 'getLocked', 'setLocked'], 'activeLockReason' => ['active_lock_reason', 'getActiveLockReason', 'setActiveLockReason'], 'assignees' => ['assignees', 'getAssignees', 'setAssignees'], 'user' => ['user', 'getUser', 'setUser'], 'labels' => ['labels', 'getLabels', 'setLabels'], 'state' => ['state', 'getState', 'setState'], 'assignee' => ['assignee', 'getAssignee', 'setAssignee'], 'milestone' => ['milestone', 'getMilestone', 'setMilestone'], 'comments' => ['comments', 'getComments', 'setComments'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'closedAt' => ['closed_at', 'getClosedAt', 'setClosedAt'], 'textMatches' => ['text_matches', 'getTextMatches', 'setTextMatches'], 'pullRequest' => ['pull_request', 'getPullRequest', 'setPullRequest'], 'body' => ['body', 'getBody', 'setBody'], 'score' => ['score', 'getScore', 'setScore'], 'authorAssociation' => ['author_association', 'getAuthorAssociation', 'setAuthorAssociation'], 'draft' => ['draft', 'getDraft', 'setDraft'], 'repository' => ['repository', 'getRepository', 'setRepository'], 'bodyHtml' => ['body_html', 'getBodyHtml', 'setBodyHtml'], 'bodyText' => ['body_text', 'getBodyText', 'setBodyText'], 'timelineUrl' => ['timeline_url', 'getTimelineUrl', 'setTimelineUrl'], 'performedViaGithubApp' => ['performed_via_github_app', 'getPerformedViaGithubApp', 'setPerformedViaGithubApp']];
     }
 }

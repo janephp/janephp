@@ -90,7 +90,7 @@ class ReposOwnerRepoHooksHookIdPatchBodyConfigNormalizer implements Denormalizer
         if ($data->isInitialized('room') && null !== $data->getRoom()) {
             $dataArray['room'] = $data->getRoom();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

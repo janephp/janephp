@@ -89,7 +89,7 @@ class TopBookNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('borrowCount') && null !== $data->getBorrowCount()) {
             $dataArray['borrowCount'] = $data->getBorrowCount();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

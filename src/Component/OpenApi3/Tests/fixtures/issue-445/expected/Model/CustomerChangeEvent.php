@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class CustomerChangeEvent extends ApplicationEvent
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class CustomerChangeEvent extends ApplicationEvent implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -61,5 +64,9 @@ class CustomerChangeEvent extends ApplicationEvent
         $this->initialized['lifeCycle'] = true;
         $this->lifeCycle = $lifeCycle;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['documentType' => ['documentType', 'getDocumentType', 'setDocumentType'], 'lifeCycle' => ['lifeCycle', 'getLifeCycle', 'setLifeCycle']];
     }
 }

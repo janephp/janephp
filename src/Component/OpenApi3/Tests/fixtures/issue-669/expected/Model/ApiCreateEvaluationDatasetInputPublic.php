@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiCreateEvaluationDatasetInputPublic extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiCreateEvaluationDatasetInputPublic implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -89,5 +92,9 @@ class ApiCreateEvaluationDatasetInputPublic extends \ArrayObject
         $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['datasetType' => ['dataset_type', 'getDatasetType', 'setDatasetType'], 'fileUploadDataset' => ['file_upload_dataset', 'getFileUploadDataset', 'setFileUploadDataset'], 'name' => ['name', 'getName', 'setName']];
     }
 }

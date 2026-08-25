@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class Balance extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class Balance implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class Balance extends \ArrayObject
         $this->initialized['generatedAt'] = true;
         $this->generatedAt = $generatedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['monthToDateBalance' => ['month_to_date_balance', 'getMonthToDateBalance', 'setMonthToDateBalance'], 'accountBalance' => ['account_balance', 'getAccountBalance', 'setAccountBalance'], 'monthToDateUsage' => ['month_to_date_usage', 'getMonthToDateUsage', 'setMonthToDateUsage'], 'generatedAt' => ['generated_at', 'getGeneratedAt', 'setGeneratedAt']];
     }
 }

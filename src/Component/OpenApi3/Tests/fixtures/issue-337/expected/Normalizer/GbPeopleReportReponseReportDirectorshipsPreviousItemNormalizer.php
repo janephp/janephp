@@ -117,7 +117,7 @@ class GbPeopleReportReponseReportDirectorshipsPreviousItemNormalizer implements 
         if ($data->isInitialized('additionalData') && null !== $data->getAdditionalData()) {
             $dataArray['additionalData'] = $data->getAdditionalData() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getAdditionalData(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

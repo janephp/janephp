@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class OpensearchConfigRequestCredentials extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class OpensearchConfigRequestCredentials implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class OpensearchConfigRequestCredentials extends \ArrayObject
         $this->initialized['password'] = true;
         $this->password = $password;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['username' => ['username', 'getUsername', 'setUsername'], 'password' => ['password', 'getPassword', 'setPassword']];
     }
 }

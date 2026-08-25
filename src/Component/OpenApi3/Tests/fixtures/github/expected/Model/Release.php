@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Release extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Release implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -481,5 +484,9 @@ class Release extends \ArrayObject
         $this->initialized['bodyText'] = true;
         $this->bodyText = $bodyText;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'assetsUrl' => ['assets_url', 'getAssetsUrl', 'setAssetsUrl'], 'uploadUrl' => ['upload_url', 'getUploadUrl', 'setUploadUrl'], 'tarballUrl' => ['tarball_url', 'getTarballUrl', 'setTarballUrl'], 'zipballUrl' => ['zipball_url', 'getZipballUrl', 'setZipballUrl'], 'id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'tagName' => ['tag_name', 'getTagName', 'setTagName'], 'targetCommitish' => ['target_commitish', 'getTargetCommitish', 'setTargetCommitish'], 'name' => ['name', 'getName', 'setName'], 'body' => ['body', 'getBody', 'setBody'], 'draft' => ['draft', 'getDraft', 'setDraft'], 'prerelease' => ['prerelease', 'getPrerelease', 'setPrerelease'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'publishedAt' => ['published_at', 'getPublishedAt', 'setPublishedAt'], 'author' => ['author', 'getAuthor', 'setAuthor'], 'assets' => ['assets', 'getAssets', 'setAssets'], 'bodyHtml' => ['body_html', 'getBodyHtml', 'setBodyHtml'], 'bodyText' => ['body_text', 'getBodyText', 'setBodyText']];
     }
 }

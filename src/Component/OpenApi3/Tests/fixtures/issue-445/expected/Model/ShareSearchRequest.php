@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ShareSearchRequest extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ShareSearchRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -278,5 +281,9 @@ class ShareSearchRequest extends \ArrayObject
         $this->initialized['aggregators'] = true;
         $this->aggregators = $aggregators;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['searchString' => ['searchString', 'getSearchString', 'setSearchString'], 'searchBehaviors' => ['searchBehaviors', 'getSearchBehaviors', 'setSearchBehaviors'], 'filter' => ['filter', 'getFilter', 'setFilter'], 'aggregationFilters' => ['aggregationFilters', 'getAggregationFilters', 'setAggregationFilters'], 'limit' => ['limit', 'getLimit', 'setLimit'], 'sort' => ['sort', 'getSort', 'setSort'], 'pageToken' => ['pageToken', 'getPageToken', 'setPageToken'], 'debugMode' => ['debugMode', 'getDebugMode', 'setDebugMode'], 'aggregators' => ['aggregators', 'getAggregators', 'setAggregators']];
     }
 }

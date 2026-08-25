@@ -171,7 +171,7 @@ class TransferDetailNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('lastFileUploadProgressTimeStamp') && null !== $data->getLastFileUploadProgressTimeStamp()) {
             $dataArray['lastFileUploadProgressTimeStamp'] = $data->getLastFileUploadProgressTimeStamp()?->format('Y-m-d\TH:i:sP');
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

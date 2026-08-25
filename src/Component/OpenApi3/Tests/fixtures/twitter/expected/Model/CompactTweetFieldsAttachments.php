@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class CompactTweetFieldsAttachments extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class CompactTweetFieldsAttachments implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class CompactTweetFieldsAttachments extends \ArrayObject
         $this->initialized['pollIds'] = true;
         $this->pollIds = $pollIds;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['mediaKeys' => ['media_keys', 'getMediaKeys', 'setMediaKeys'], 'pollIds' => ['poll_ids', 'getPollIds', 'setPollIds']];
     }
 }

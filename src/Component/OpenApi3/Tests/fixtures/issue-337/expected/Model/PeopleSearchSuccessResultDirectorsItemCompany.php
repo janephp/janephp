@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class PeopleSearchSuccessResultDirectorsItemCompany extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class PeopleSearchSuccessResultDirectorsItemCompany implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class PeopleSearchSuccessResultDirectorsItemCompany extends \ArrayObject
         $this->initialized['regNo'] = true;
         $this->regNo = $regNo;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'companyName' => ['companyName', 'getCompanyName', 'setCompanyName'], 'companyNumber' => ['companyNumber', 'getCompanyNumber', 'setCompanyNumber'], 'type' => ['type', 'getType', 'setType'], 'regNo' => ['regNo', 'getRegNo', 'setRegNo']];
     }
 }

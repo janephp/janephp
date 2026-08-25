@@ -174,7 +174,7 @@ class SchemaFieldNumberRangeExceptionNormalizer implements DenormalizerInterface
         if ($data->isInitialized('maxValue') && null !== $data->getMaxValue()) {
             $dataArray['maxValue'] = $data->getMaxValue();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

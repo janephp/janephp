@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class BranchProtectionRequiredLinearHistory extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class BranchProtectionRequiredLinearHistory implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class BranchProtectionRequiredLinearHistory extends \ArrayObject
         $this->initialized['enabled'] = true;
         $this->enabled = $enabled;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['enabled' => ['enabled', 'getEnabled', 'setEnabled']];
     }
 }

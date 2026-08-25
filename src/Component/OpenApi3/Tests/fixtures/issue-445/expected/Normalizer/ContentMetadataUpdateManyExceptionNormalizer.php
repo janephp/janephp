@@ -146,7 +146,7 @@ class ContentMetadataUpdateManyExceptionNormalizer implements DenormalizerInterf
         if ($data->isInitialized('totalItemsCount') && null !== $data->getTotalItemsCount()) {
             $dataArray['totalItemsCount'] = $data->getTotalItemsCount();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

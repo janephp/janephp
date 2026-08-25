@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiDropboxOauth2GetTokensInput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiDropboxOauth2GetTokensInput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ApiDropboxOauth2GetTokensInput extends \ArrayObject
         $this->initialized['redirectUrl'] = true;
         $this->redirectUrl = $redirectUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['code' => ['code', 'getCode', 'setCode'], 'redirectUrl' => ['redirect_url', 'getRedirectUrl', 'setRedirectUrl']];
     }
 }

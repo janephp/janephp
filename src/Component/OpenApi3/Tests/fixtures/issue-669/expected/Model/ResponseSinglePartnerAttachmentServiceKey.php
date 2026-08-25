@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseSinglePartnerAttachmentServiceKey extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseSinglePartnerAttachmentServiceKey implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseSinglePartnerAttachmentServiceKey extends \ArrayObject
         $this->initialized['serviceKey'] = true;
         $this->serviceKey = $serviceKey;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['serviceKey' => ['service_key', 'getServiceKey', 'setServiceKey']];
     }
 }

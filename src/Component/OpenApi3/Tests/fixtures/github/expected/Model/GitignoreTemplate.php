@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class GitignoreTemplate extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class GitignoreTemplate implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class GitignoreTemplate extends \ArrayObject
         $this->initialized['source'] = true;
         $this->source = $source;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'source' => ['source', 'getSource', 'setSource']];
     }
 }

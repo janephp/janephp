@@ -136,7 +136,7 @@ class ContentFileNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('submoduleGitUrl') && null !== $data->getSubmoduleGitUrl()) {
             $dataArray['submodule_git_url'] = $data->getSubmoduleGitUrl();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

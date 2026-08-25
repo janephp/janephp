@@ -88,7 +88,7 @@ class LogsinkCreateNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $dataArray['config'] = $value;
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

@@ -95,7 +95,7 @@ class MetadataReferenceResultNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('isReferencedByRestrictedItem') && null !== $data->getIsReferencedByRestrictedItem()) {
             $dataArray['isReferencedByRestrictedItem'] = $data->getIsReferencedByRestrictedItem();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

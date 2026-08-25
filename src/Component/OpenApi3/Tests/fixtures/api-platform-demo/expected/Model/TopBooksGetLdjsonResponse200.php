@@ -2,8 +2,11 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class TopBooksGetLdjsonResponse200 extends \ArrayObject
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
+class TopBooksGetLdjsonResponse200 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class TopBooksGetLdjsonResponse200 extends \ArrayObject
         $this->initialized['hydraSearch'] = true;
         $this->hydraSearch = $hydraSearch;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['hydraMember' => ['hydra:member', 'getHydraMember', 'setHydraMember'], 'hydraTotalItems' => ['hydra:totalItems', 'getHydraTotalItems', 'setHydraTotalItems'], 'hydraView' => ['hydra:view', 'getHydraView', 'setHydraView'], 'hydraSearch' => ['hydra:search', 'getHydraSearch', 'setHydraSearch']];
     }
 }

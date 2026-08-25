@@ -61,7 +61,7 @@ class ApiGoogleDriveDataSourceNormalizer implements DenormalizerInterface, Norma
         if ($data->isInitialized('refreshToken') && null !== $data->getRefreshToken()) {
             $dataArray['refresh_token'] = $data->getRefreshToken();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

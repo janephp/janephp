@@ -54,7 +54,7 @@ class TopBooksGetHaljsonResponse200LinksFirstNormalizer implements DenormalizerI
         if ($data->isInitialized('href') && null !== $data->getHref()) {
             $dataArray['href'] = $data->getHref();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

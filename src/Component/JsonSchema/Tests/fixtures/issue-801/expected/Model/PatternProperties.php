@@ -2,8 +2,11 @@
 
 namespace Jane\Component\JsonSchema\Tests\Expected\Model;
 
-class PatternProperties extends \ArrayObject
+use Jane\Component\JsonSchema\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\JsonSchema\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class PatternProperties implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class PatternProperties extends \ArrayObject
         $this->initialized['bar'] = true;
         $this->bar = $bar;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['bar' => ['bar', 'getBar', 'setBar']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppWorkerSpecTermination extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppWorkerSpecTermination implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class AppWorkerSpecTermination extends \ArrayObject
         $this->initialized['gracePeriodSeconds'] = true;
         $this->gracePeriodSeconds = $gracePeriodSeconds;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['gracePeriodSeconds' => ['grace_period_seconds', 'getGracePeriodSeconds', 'setGracePeriodSeconds']];
     }
 }

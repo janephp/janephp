@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class GenaiapiRegion extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class GenaiapiRegion implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class GenaiapiRegion extends \ArrayObject
         $this->initialized['streamInferenceUrl'] = true;
         $this->streamInferenceUrl = $streamInferenceUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['inferenceUrl' => ['inference_url', 'getInferenceUrl', 'setInferenceUrl'], 'region' => ['region', 'getRegion', 'setRegion'], 'servesBatch' => ['serves_batch', 'getServesBatch', 'setServesBatch'], 'servesInference' => ['serves_inference', 'getServesInference', 'setServesInference'], 'streamInferenceUrl' => ['stream_inference_url', 'getStreamInferenceUrl', 'setStreamInferenceUrl']];
     }
 }

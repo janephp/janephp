@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202 extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202 extends \ArrayObje
         $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['message' => ['message', 'getMessage', 'setMessage'], 'url' => ['url', 'getUrl', 'setUrl']];
     }
 }

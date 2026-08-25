@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class V2DatabasesDatabaseClusterUuidUsersPostBody extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class V2DatabasesDatabaseClusterUuidUsersPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -238,5 +241,9 @@ class V2DatabasesDatabaseClusterUuidUsersPostBody extends \ArrayObject
         $this->initialized['readonly'] = true;
         $this->readonly = $readonly;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'role' => ['role', 'getRole', 'setRole'], 'password' => ['password', 'getPassword', 'setPassword'], 'accessCert' => ['access_cert', 'getAccessCert', 'setAccessCert'], 'accessKey' => ['access_key', 'getAccessKey', 'setAccessKey'], 'mysqlSettings' => ['mysql_settings', 'getMysqlSettings', 'setMysqlSettings'], 'settings' => ['settings', 'getSettings', 'setSettings'], 'readonly' => ['readonly', 'getReadonly', 'setReadonly']];
     }
 }

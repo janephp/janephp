@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseDestination extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseDestination implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseDestination extends \ArrayObject
         $this->initialized['destination'] = true;
         $this->destination = $destination;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['destination' => ['destination', 'getDestination', 'setDestination']];
     }
 }

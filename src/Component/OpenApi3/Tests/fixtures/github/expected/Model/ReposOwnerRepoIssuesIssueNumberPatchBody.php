@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoIssuesIssueNumberPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoIssuesIssueNumberPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -207,5 +210,9 @@ class ReposOwnerRepoIssuesIssueNumberPatchBody extends \ArrayObject
         $this->initialized['assignees'] = true;
         $this->assignees = $assignees;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['title' => ['title', 'getTitle', 'setTitle'], 'body' => ['body', 'getBody', 'setBody'], 'assignee' => ['assignee', 'getAssignee', 'setAssignee'], 'state' => ['state', 'getState', 'setState'], 'milestone' => ['milestone', 'getMilestone', 'setMilestone'], 'labels' => ['labels', 'getLabels', 'setLabels'], 'assignees' => ['assignees', 'getAssignees', 'setAssignees']];
     }
 }

@@ -102,7 +102,7 @@ class AppProposeResponseNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('appTierDowngradeCost') && null !== $data->getAppTierDowngradeCost()) {
             $dataArray['app_tier_downgrade_cost'] = $data->getAppTierDowngradeCost();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class KafkaTopicVerbose extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class KafkaTopicVerbose implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -139,5 +142,9 @@ class KafkaTopicVerbose extends \ArrayObject
         $this->initialized['config'] = true;
         $this->config = $config;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'state' => ['state', 'getState', 'setState'], 'replicationFactor' => ['replication_factor', 'getReplicationFactor', 'setReplicationFactor'], 'partitions' => ['partitions', 'getPartitions', 'setPartitions'], 'config' => ['config', 'getConfig', 'setConfig']];
     }
 }

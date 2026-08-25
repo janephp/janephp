@@ -75,7 +75,7 @@ class PullRequestBaseNormalizer implements DenormalizerInterface, NormalizerInte
         $dataArray['repo'] = $data->getRepo() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRepo(), 'json', $context));
         $dataArray['sha'] = $data->getSha();
         $dataArray['user'] = $data->getUser() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getUser(), 'json', $context));
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

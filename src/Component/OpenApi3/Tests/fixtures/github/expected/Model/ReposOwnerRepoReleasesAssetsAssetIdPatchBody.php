@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoReleasesAssetsAssetIdPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoReleasesAssetsAssetIdPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -89,5 +92,9 @@ class ReposOwnerRepoReleasesAssetsAssetIdPatchBody extends \ArrayObject
         $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'label' => ['label', 'getLabel', 'setLabel'], 'state' => ['state', 'getState', 'setState']];
     }
 }

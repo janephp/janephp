@@ -2,8 +2,11 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class BookReviewRead extends \ArrayObject
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
+class BookReviewRead implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class BookReviewRead extends \ArrayObject
         $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['title' => ['title', 'getTitle', 'setTitle']];
     }
 }

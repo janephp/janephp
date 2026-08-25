@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class InvoicePreview extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class InvoicePreview implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class InvoicePreview extends \ArrayObject
         $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['invoiceUuid' => ['invoice_uuid', 'getInvoiceUuid', 'setInvoiceUuid'], 'invoiceId' => ['invoice_id', 'getInvoiceId', 'setInvoiceId'], 'amount' => ['amount', 'getAmount', 'setAmount'], 'invoicePeriod' => ['invoice_period', 'getInvoicePeriod', 'setInvoicePeriod'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemFile extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemFile implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -143,5 +146,9 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemF
         $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['build' => ['build', 'getBuild', 'setBuild'], 'custom' => ['custom', 'getCustom', 'setCustom'], 'id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'published' => ['published', 'getPublished', 'setPublished'], 'type' => ['type', 'getType', 'setType']];
     }
 }

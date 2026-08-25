@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class TeamDiscussion extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class TeamDiscussion implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -443,5 +446,9 @@ class TeamDiscussion extends \ArrayObject
         $this->initialized['reactions'] = true;
         $this->reactions = $reactions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['author' => ['author', 'getAuthor', 'setAuthor'], 'body' => ['body', 'getBody', 'setBody'], 'bodyHtml' => ['body_html', 'getBodyHtml', 'setBodyHtml'], 'bodyVersion' => ['body_version', 'getBodyVersion', 'setBodyVersion'], 'commentsCount' => ['comments_count', 'getCommentsCount', 'setCommentsCount'], 'commentsUrl' => ['comments_url', 'getCommentsUrl', 'setCommentsUrl'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'lastEditedAt' => ['last_edited_at', 'getLastEditedAt', 'setLastEditedAt'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'number' => ['number', 'getNumber', 'setNumber'], 'pinned' => ['pinned', 'getPinned', 'setPinned'], 'private' => ['private', 'getPrivate', 'setPrivate'], 'teamUrl' => ['team_url', 'getTeamUrl', 'setTeamUrl'], 'title' => ['title', 'getTitle', 'setTitle'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'url' => ['url', 'getUrl', 'setUrl'], 'reactions' => ['reactions', 'getReactions', 'setReactions']];
     }
 }

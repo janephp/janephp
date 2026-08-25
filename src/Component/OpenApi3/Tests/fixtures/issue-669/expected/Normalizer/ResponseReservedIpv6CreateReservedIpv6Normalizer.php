@@ -72,7 +72,7 @@ class ResponseReservedIpv6CreateReservedIpv6Normalizer implements DenormalizerIn
         if ($data->isInitialized('reservedAt') && null !== $data->getReservedAt()) {
             $dataArray['reserved_at'] = $data->getReservedAt()->format('Y-m-d\TH:i:sP');
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

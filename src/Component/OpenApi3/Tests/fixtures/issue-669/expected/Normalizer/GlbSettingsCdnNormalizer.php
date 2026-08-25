@@ -57,7 +57,7 @@ class GlbSettingsCdnNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('isEnabled') && null !== $data->getIsEnabled()) {
             $dataArray['is_enabled'] = $data->getIsEnabled();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class Key extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class Key implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class Key extends \ArrayObject
         $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'grants' => ['grants', 'getGrants', 'setGrants'], 'accessKey' => ['access_key', 'getAccessKey', 'setAccessKey'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt']];
     }
 }

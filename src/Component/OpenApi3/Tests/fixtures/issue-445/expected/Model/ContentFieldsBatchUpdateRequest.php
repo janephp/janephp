@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ContentFieldsBatchUpdateRequest extends MetadataValuesChangeRequestBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ContentFieldsBatchUpdateRequest extends MetadataValuesChangeRequestBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ContentFieldsBatchUpdateRequest extends MetadataValuesChangeRequestBase
         $this->initialized['contentIds'] = true;
         $this->contentIds = $contentIds;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['contentIds' => ['contentIds', 'getContentIds', 'setContentIds']];
     }
 }

@@ -57,7 +57,7 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyNormalizer implements Denorm
         if ($data->isInitialized('role') && null !== $data->getRole()) {
             $dataArray['role'] = $data->getRole();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

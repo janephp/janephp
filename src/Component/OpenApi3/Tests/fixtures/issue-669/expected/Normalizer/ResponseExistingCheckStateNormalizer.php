@@ -54,7 +54,7 @@ class ResponseExistingCheckStateNormalizer implements DenormalizerInterface, Nor
         if ($data->isInitialized('state') && null !== $data->getState()) {
             $dataArray['state'] = $data->getState() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getState(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

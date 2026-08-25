@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class PeopleSearchSuccessResult extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class PeopleSearchSuccessResult implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class PeopleSearchSuccessResult extends \ArrayObject
         $this->initialized['directors'] = true;
         $this->directors = $directors;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['totalSize' => ['totalSize', 'getTotalSize', 'setTotalSize'], 'directors' => ['directors', 'getDirectors', 'setDirectors']];
     }
 }

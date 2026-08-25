@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CommitComparison extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CommitComparison implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -309,5 +312,9 @@ class CommitComparison extends \ArrayObject
         $this->initialized['files'] = true;
         $this->files = $files;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'permalinkUrl' => ['permalink_url', 'getPermalinkUrl', 'setPermalinkUrl'], 'diffUrl' => ['diff_url', 'getDiffUrl', 'setDiffUrl'], 'patchUrl' => ['patch_url', 'getPatchUrl', 'setPatchUrl'], 'baseCommit' => ['base_commit', 'getBaseCommit', 'setBaseCommit'], 'mergeBaseCommit' => ['merge_base_commit', 'getMergeBaseCommit', 'setMergeBaseCommit'], 'status' => ['status', 'getStatus', 'setStatus'], 'aheadBy' => ['ahead_by', 'getAheadBy', 'setAheadBy'], 'behindBy' => ['behind_by', 'getBehindBy', 'setBehindBy'], 'totalCommits' => ['total_commits', 'getTotalCommits', 'setTotalCommits'], 'commits' => ['commits', 'getCommits', 'setCommits'], 'files' => ['files', 'getFiles', 'setFiles']];
     }
 }

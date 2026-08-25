@@ -64,7 +64,7 @@ class WorkflowRunUsageNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('runDurationMs') && null !== $data->getRunDurationMs()) {
             $dataArray['run_duration_ms'] = $data->getRunDurationMs();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

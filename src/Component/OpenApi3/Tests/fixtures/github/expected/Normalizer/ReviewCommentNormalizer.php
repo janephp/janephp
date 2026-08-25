@@ -235,7 +235,7 @@ class ReviewCommentNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('originalStartLine') && null !== $data->getOriginalStartLine()) {
             $dataArray['original_start_line'] = $data->getOriginalStartLine();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

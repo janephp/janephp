@@ -96,7 +96,7 @@ class OptionsOptionsNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('opensearch') && null !== $data->getOpensearch()) {
             $dataArray['opensearch'] = $data->getOpensearch() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getOpensearch(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

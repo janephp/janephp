@@ -107,7 +107,7 @@ class EventNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $dataArray['payload'] = $data->getPayload() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPayload(), 'json', $context));
         $dataArray['public'] = $data->getPublic();
         $dataArray['created_at'] = $data->getCreatedAt()?->format('Y-m-d\TH:i:sP');
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Migration extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Migration implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -297,5 +300,9 @@ class Migration extends \ArrayObject
         $this->initialized['exclude'] = true;
         $this->exclude = $exclude;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'owner' => ['owner', 'getOwner', 'setOwner'], 'guid' => ['guid', 'getGuid', 'setGuid'], 'state' => ['state', 'getState', 'setState'], 'lockRepositories' => ['lock_repositories', 'getLockRepositories', 'setLockRepositories'], 'excludeAttachments' => ['exclude_attachments', 'getExcludeAttachments', 'setExcludeAttachments'], 'repositories' => ['repositories', 'getRepositories', 'setRepositories'], 'url' => ['url', 'getUrl', 'setUrl'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'archiveUrl' => ['archive_url', 'getArchiveUrl', 'setArchiveUrl'], 'exclude' => ['exclude', 'getExclude', 'setExclude']];
     }
 }

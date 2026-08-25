@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoMergesPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoMergesPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class ReposOwnerRepoMergesPostBody extends \ArrayObject
         $this->initialized['commitMessage'] = true;
         $this->commitMessage = $commitMessage;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['base' => ['base', 'getBase', 'setBase'], 'head' => ['head', 'getHead', 'setHead'], 'commitMessage' => ['commit_message', 'getCommitMessage', 'setCommitMessage']];
     }
 }

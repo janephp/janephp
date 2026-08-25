@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class Mp4VideoFormat extends FormatBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class Mp4VideoFormat extends FormatBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -117,5 +120,9 @@ class Mp4VideoFormat extends FormatBase
         $this->initialized['extension'] = true;
         $this->extension = $extension;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['resizeAction' => ['resizeAction', 'getResizeAction', 'setResizeAction'], 'audioCodec' => ['audioCodec', 'getAudioCodec', 'setAudioCodec'], 'preset' => ['preset', 'getPreset', 'setPreset'], 'extension' => ['extension', 'getExtension', 'setExtension']];
     }
 }

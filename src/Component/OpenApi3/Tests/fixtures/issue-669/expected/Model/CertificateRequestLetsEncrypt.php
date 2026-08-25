@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class CertificateRequestLetsEncrypt extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class CertificateRequestLetsEncrypt implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class CertificateRequestLetsEncrypt extends \ArrayObject
         $this->initialized['dnsNames'] = true;
         $this->dnsNames = $dnsNames;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'type' => ['type', 'getType', 'setType'], 'dnsNames' => ['dns_names', 'getDnsNames', 'setDnsNames']];
     }
 }

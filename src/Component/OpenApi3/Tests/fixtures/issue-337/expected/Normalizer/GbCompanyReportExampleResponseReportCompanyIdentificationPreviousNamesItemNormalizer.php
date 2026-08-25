@@ -61,7 +61,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationPreviousNamesItem
         if ($data->isInitialized('dateChanged') && null !== $data->getDateChanged()) {
             $dataArray['dateChanged'] = $data->getDateChanged();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

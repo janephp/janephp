@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class MarketplaceAccount extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class MarketplaceAccount implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -165,5 +168,9 @@ class MarketplaceAccount extends \ArrayObject
         $this->initialized['organizationBillingEmail'] = true;
         $this->organizationBillingEmail = $organizationBillingEmail;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'id' => ['id', 'getId', 'setId'], 'type' => ['type', 'getType', 'setType'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'login' => ['login', 'getLogin', 'setLogin'], 'email' => ['email', 'getEmail', 'setEmail'], 'organizationBillingEmail' => ['organization_billing_email', 'getOrganizationBillingEmail', 'setOrganizationBillingEmail']];
     }
 }

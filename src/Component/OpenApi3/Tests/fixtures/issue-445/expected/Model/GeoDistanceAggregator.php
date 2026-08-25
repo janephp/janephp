@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class GeoDistanceAggregator extends AggregatorBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class GeoDistanceAggregator extends AggregatorBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class GeoDistanceAggregator extends AggregatorBase
         $this->initialized['ranges'] = true;
         $this->ranges = $ranges;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['field' => ['field', 'getField', 'setField'], 'location' => ['location', 'getLocation', 'setLocation'], 'ranges' => ['ranges', 'getRanges', 'setRanges']];
     }
 }

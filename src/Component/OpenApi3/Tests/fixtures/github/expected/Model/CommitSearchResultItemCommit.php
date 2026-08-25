@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CommitSearchResultItemCommit extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CommitSearchResultItemCommit implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -165,5 +168,9 @@ class CommitSearchResultItemCommit extends \ArrayObject
         $this->initialized['verification'] = true;
         $this->verification = $verification;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['author' => ['author', 'getAuthor', 'setAuthor'], 'committer' => ['committer', 'getCommitter', 'setCommitter'], 'commentCount' => ['comment_count', 'getCommentCount', 'setCommentCount'], 'message' => ['message', 'getMessage', 'setMessage'], 'tree' => ['tree', 'getTree', 'setTree'], 'url' => ['url', 'getUrl', 'setUrl'], 'verification' => ['verification', 'getVerification', 'setVerification']];
     }
 }

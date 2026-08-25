@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrgsOrgActionsSecretsSecretNamePutBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrgsOrgActionsSecretsSecretNamePutBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -132,5 +135,9 @@ class OrgsOrgActionsSecretsSecretNamePutBody extends \ArrayObject
         $this->initialized['selectedRepositoryIds'] = true;
         $this->selectedRepositoryIds = $selectedRepositoryIds;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['encryptedValue' => ['encrypted_value', 'getEncryptedValue', 'setEncryptedValue'], 'keyId' => ['key_id', 'getKeyId', 'setKeyId'], 'visibility' => ['visibility', 'getVisibility', 'setVisibility'], 'selectedRepositoryIds' => ['selected_repository_ids', 'getSelectedRepositoryIds', 'setSelectedRepositoryIds']];
     }
 }

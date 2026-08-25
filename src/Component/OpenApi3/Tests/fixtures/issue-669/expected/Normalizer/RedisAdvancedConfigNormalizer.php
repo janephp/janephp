@@ -127,7 +127,7 @@ class RedisAdvancedConfigNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('redisAclChannelsDefault') && null !== $data->getRedisAclChannelsDefault()) {
             $dataArray['redis_acl_channels_default'] = $data->getRedisAclChannelsDefault();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class PartnerAttachmentBgp extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class PartnerAttachmentBgp implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class PartnerAttachmentBgp extends \ArrayObject
         $this->initialized['peerRouterIp'] = true;
         $this->peerRouterIp = $peerRouterIp;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['localAsn' => ['local_asn', 'getLocalAsn', 'setLocalAsn'], 'peerAsn' => ['peer_asn', 'getPeerAsn', 'setPeerAsn'], 'localRouterIp' => ['local_router_ip', 'getLocalRouterIp', 'setLocalRouterIp'], 'peerRouterIp' => ['peer_router_ip', 'getPeerRouterIp', 'setPeerRouterIp']];
     }
 }

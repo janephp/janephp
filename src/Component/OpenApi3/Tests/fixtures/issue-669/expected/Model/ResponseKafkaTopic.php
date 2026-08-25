@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseKafkaTopic extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseKafkaTopic implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseKafkaTopic extends \ArrayObject
         $this->initialized['topic'] = true;
         $this->topic = $topic;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['topic' => ['topic', 'getTopic', 'setTopic']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiPrompt extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiPrompt implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -279,5 +282,9 @@ class ApiPrompt extends \ArrayObject
         $this->initialized['traceId'] = true;
         $this->traceId = $traceId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['evaluationTraceSpans' => ['evaluation_trace_spans', 'getEvaluationTraceSpans', 'setEvaluationTraceSpans'], 'groundTruth' => ['ground_truth', 'getGroundTruth', 'setGroundTruth'], 'input' => ['input', 'getInput', 'setInput'], 'inputTokens' => ['input_tokens', 'getInputTokens', 'setInputTokens'], 'output' => ['output', 'getOutput', 'setOutput'], 'outputTokens' => ['output_tokens', 'getOutputTokens', 'setOutputTokens'], 'promptChunks' => ['prompt_chunks', 'getPromptChunks', 'setPromptChunks'], 'promptId' => ['prompt_id', 'getPromptId', 'setPromptId'], 'promptLevelMetricResults' => ['prompt_level_metric_results', 'getPromptLevelMetricResults', 'setPromptLevelMetricResults'], 'traceId' => ['trace_id', 'getTraceId', 'setTraceId']];
     }
 }

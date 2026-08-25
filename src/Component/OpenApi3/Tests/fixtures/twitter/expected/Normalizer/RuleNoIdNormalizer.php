@@ -59,7 +59,7 @@ class RuleNoIdNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if ($data->isInitialized('tag') && null !== $data->getTag()) {
             $dataArray['tag'] = $data->getTag();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

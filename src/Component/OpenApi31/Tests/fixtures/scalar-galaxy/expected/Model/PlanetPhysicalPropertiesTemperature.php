@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class PlanetPhysicalPropertiesTemperature extends \ArrayObject
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class PlanetPhysicalPropertiesTemperature implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class PlanetPhysicalPropertiesTemperature extends \ArrayObject
         $this->initialized['average'] = true;
         $this->average = $average;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['min' => ['min', 'getMin', 'setMin'], 'max' => ['max', 'getMax', 'setMax'], 'average' => ['average', 'getAverage', 'setAverage']];
     }
 }

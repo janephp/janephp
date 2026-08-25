@@ -150,7 +150,7 @@ class UserUnlockDisallowedExceptionNormalizer implements DenormalizerInterface, 
         if ($data->isInitialized('authorizationState') && null !== $data->getAuthorizationState()) {
             $dataArray['authorizationState'] = $data->getAuthorizationState();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

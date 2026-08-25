@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class EventPayloadPagesItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class EventPayloadPagesItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -143,5 +146,9 @@ class EventPayloadPagesItem extends \ArrayObject
         $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['pageName' => ['page_name', 'getPageName', 'setPageName'], 'title' => ['title', 'getTitle', 'setTitle'], 'summary' => ['summary', 'getSummary', 'setSummary'], 'action' => ['action', 'getAction', 'setAction'], 'sha' => ['sha', 'getSha', 'setSha'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl']];
     }
 }

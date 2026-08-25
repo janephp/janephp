@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class MetadataValuesSchemaItemRemoveCommand extends MetadataValuesChangeCommandBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class MetadataValuesSchemaItemRemoveCommand extends MetadataValuesChangeCommandBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -98,5 +101,9 @@ class MetadataValuesSchemaItemRemoveCommand extends MetadataValuesChangeCommandB
         $this->initialized['referenceId'] = true;
         $this->referenceId = $referenceId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['fieldPath' => ['fieldPath', 'getFieldPath', 'setFieldPath'], 'fieldNamespace' => ['fieldNamespace', 'getFieldNamespace', 'setFieldNamespace'], 'referenceId' => ['referenceId', 'getReferenceId', 'setReferenceId']];
     }
 }

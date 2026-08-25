@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbPeopleReportReponseReportDirectorshipsCurrentItemAdditionalData extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbPeopleReportReponseReportDirectorshipsCurrentItemAdditionalData implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemAdditionalData extends 
         $this->initialized['gearing'] = true;
         $this->gearing = $gearing;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['occupation' => ['occupation', 'getOccupation', 'setOccupation'], 'statusDescription' => ['statusDescription', 'getStatusDescription', 'setStatusDescription'], 'gearing' => ['gearing', 'getGearing', 'setGearing']];
     }
 }

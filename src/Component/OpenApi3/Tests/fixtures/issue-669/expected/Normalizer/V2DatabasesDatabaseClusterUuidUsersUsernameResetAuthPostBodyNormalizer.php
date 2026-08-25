@@ -54,7 +54,7 @@ class V2DatabasesDatabaseClusterUuidUsersUsernameResetAuthPostBodyNormalizer imp
         if ($data->isInitialized('mysqlSettings') && null !== $data->getMysqlSettings()) {
             $dataArray['mysql_settings'] = $data->getMysqlSettings() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMysqlSettings(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

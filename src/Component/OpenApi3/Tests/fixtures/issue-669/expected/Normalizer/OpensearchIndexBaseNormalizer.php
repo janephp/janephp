@@ -86,7 +86,7 @@ class OpensearchIndexBaseNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('createdTime') && null !== $data->getCreatedTime()) {
             $dataArray['created_time'] = $data->getCreatedTime()->format('Y-m-d\TH:i:sP');
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

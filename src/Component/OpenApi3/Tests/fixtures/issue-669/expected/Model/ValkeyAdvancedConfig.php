@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ValkeyAdvancedConfig extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ValkeyAdvancedConfig implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -453,5 +456,9 @@ class ValkeyAdvancedConfig extends \ArrayObject
         $this->initialized['valkeyActiveExpireEffort'] = true;
         $this->valkeyActiveExpireEffort = $valkeyActiveExpireEffort;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['valkeyMaxmemoryPolicy' => ['valkey_maxmemory_policy', 'getValkeyMaxmemoryPolicy', 'setValkeyMaxmemoryPolicy'], 'valkeyPubsubClientOutputBufferLimit' => ['valkey_pubsub_client_output_buffer_limit', 'getValkeyPubsubClientOutputBufferLimit', 'setValkeyPubsubClientOutputBufferLimit'], 'valkeyNumberOfDatabases' => ['valkey_number_of_databases', 'getValkeyNumberOfDatabases', 'setValkeyNumberOfDatabases'], 'valkeyIoThreads' => ['valkey_io_threads', 'getValkeyIoThreads', 'setValkeyIoThreads'], 'valkeyLfuLogFactor' => ['valkey_lfu_log_factor', 'getValkeyLfuLogFactor', 'setValkeyLfuLogFactor'], 'valkeyLfuDecayTime' => ['valkey_lfu_decay_time', 'getValkeyLfuDecayTime', 'setValkeyLfuDecayTime'], 'valkeySsl' => ['valkey_ssl', 'getValkeySsl', 'setValkeySsl'], 'valkeyTimeout' => ['valkey_timeout', 'getValkeyTimeout', 'setValkeyTimeout'], 'valkeyNotifyKeyspaceEvents' => ['valkey_notify_keyspace_events', 'getValkeyNotifyKeyspaceEvents', 'setValkeyNotifyKeyspaceEvents'], 'valkeyPersistence' => ['valkey_persistence', 'getValkeyPersistence', 'setValkeyPersistence'], 'valkeyAclChannelsDefault' => ['valkey_acl_channels_default', 'getValkeyAclChannelsDefault', 'setValkeyAclChannelsDefault'], 'frequentSnapshots' => ['frequent_snapshots', 'getFrequentSnapshots', 'setFrequentSnapshots'], 'valkeyActiveExpireEffort' => ['valkey_active_expire_effort', 'getValkeyActiveExpireEffort', 'setValkeyActiveExpireEffort']];
     }
 }

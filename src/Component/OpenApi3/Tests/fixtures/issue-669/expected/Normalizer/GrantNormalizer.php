@@ -57,7 +57,7 @@ class GrantNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         $dataArray = [];
         $dataArray['bucket'] = $data->getBucket();
         $dataArray['permission'] = $data->getPermission();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

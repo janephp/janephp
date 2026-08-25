@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class BranchProtectionRequiredStatusChecks extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class BranchProtectionRequiredStatusChecks implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class BranchProtectionRequiredStatusChecks extends \ArrayObject
         $this->initialized['contextsUrl'] = true;
         $this->contextsUrl = $contextsUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'enforcementLevel' => ['enforcement_level', 'getEnforcementLevel', 'setEnforcementLevel'], 'contexts' => ['contexts', 'getContexts', 'setContexts'], 'contextsUrl' => ['contexts_url', 'getContextsUrl', 'setContextsUrl']];
     }
 }

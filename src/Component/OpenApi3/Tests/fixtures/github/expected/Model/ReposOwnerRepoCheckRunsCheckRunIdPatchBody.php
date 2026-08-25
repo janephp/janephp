@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -266,5 +269,9 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBody extends \ArrayObject
         $this->initialized['actions'] = true;
         $this->actions = $actions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'detailsUrl' => ['details_url', 'getDetailsUrl', 'setDetailsUrl'], 'externalId' => ['external_id', 'getExternalId', 'setExternalId'], 'startedAt' => ['started_at', 'getStartedAt', 'setStartedAt'], 'status' => ['status', 'getStatus', 'setStatus'], 'conclusion' => ['conclusion', 'getConclusion', 'setConclusion'], 'completedAt' => ['completed_at', 'getCompletedAt', 'setCompletedAt'], 'output' => ['output', 'getOutput', 'setOutput'], 'actions' => ['actions', 'getActions', 'setActions']];
     }
 }

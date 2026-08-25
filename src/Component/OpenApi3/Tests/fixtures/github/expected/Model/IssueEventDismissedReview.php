@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class IssueEventDismissedReview extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class IssueEventDismissedReview implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class IssueEventDismissedReview extends \ArrayObject
         $this->initialized['dismissalCommitId'] = true;
         $this->dismissalCommitId = $dismissalCommitId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['state' => ['state', 'getState', 'setState'], 'reviewId' => ['review_id', 'getReviewId', 'setReviewId'], 'dismissalMessage' => ['dismissal_message', 'getDismissalMessage', 'setDismissalMessage'], 'dismissalCommitId' => ['dismissal_commit_id', 'getDismissalCommitId', 'setDismissalCommitId']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class RepositoryV2 extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class RepositoryV2 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -145,5 +148,9 @@ class RepositoryV2 extends \ArrayObject
         $this->initialized['manifestCount'] = true;
         $this->manifestCount = $manifestCount;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['registryName' => ['registry_name', 'getRegistryName', 'setRegistryName'], 'name' => ['name', 'getName', 'setName'], 'latestManifest' => ['latest_manifest', 'getLatestManifest', 'setLatestManifest'], 'tagCount' => ['tag_count', 'getTagCount', 'setTagCount'], 'manifestCount' => ['manifest_count', 'getManifestCount', 'setManifestCount']];
     }
 }

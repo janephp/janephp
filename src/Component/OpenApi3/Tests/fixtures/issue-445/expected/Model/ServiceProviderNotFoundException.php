@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ServiceProviderNotFoundException extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ServiceProviderNotFoundException implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -165,5 +168,9 @@ class ServiceProviderNotFoundException extends \ArrayObject
         $this->initialized['missingServiceProviderId'] = true;
         $this->missingServiceProviderId = $missingServiceProviderId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['traceLevel' => ['traceLevel', 'getTraceLevel', 'setTraceLevel'], 'traceId' => ['traceId', 'getTraceId', 'setTraceId'], 'traceJobId' => ['traceJobId', 'getTraceJobId', 'setTraceJobId'], 'httpStatusCode' => ['httpStatusCode', 'getHttpStatusCode', 'setHttpStatusCode'], 'exceptionMessage' => ['exceptionMessage', 'getExceptionMessage', 'setExceptionMessage'], 'kind' => ['kind', 'getKind', 'setKind'], 'missingServiceProviderId' => ['missingServiceProviderId', 'getMissingServiceProviderId', 'setMissingServiceProviderId']];
     }
 }

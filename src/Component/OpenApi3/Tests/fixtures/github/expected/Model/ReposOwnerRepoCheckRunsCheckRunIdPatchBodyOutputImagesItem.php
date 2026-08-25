@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItem extends \ArrayO
         $this->initialized['caption'] = true;
         $this->caption = $caption;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['alt' => ['alt', 'getAlt', 'setAlt'], 'imageUrl' => ['image_url', 'getImageUrl', 'setImageUrl'], 'caption' => ['caption', 'getCaption', 'setCaption']];
     }
 }

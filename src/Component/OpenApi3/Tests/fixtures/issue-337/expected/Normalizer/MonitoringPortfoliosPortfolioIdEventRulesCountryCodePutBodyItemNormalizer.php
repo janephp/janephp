@@ -78,7 +78,7 @@ class MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItemNormalizer 
         if ($data->isInitialized('param2') && null !== $data->getParam2()) {
             $dataArray['param2...'] = $data->getParam2();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

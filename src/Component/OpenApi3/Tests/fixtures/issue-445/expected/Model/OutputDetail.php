@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class OutputDetail extends Output
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class OutputDetail extends Output implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */

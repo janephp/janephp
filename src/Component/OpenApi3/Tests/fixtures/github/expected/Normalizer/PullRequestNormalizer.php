@@ -419,7 +419,7 @@ class PullRequestNormalizer implements DenormalizerInterface, NormalizerInterfac
         $dataArray['additions'] = $data->getAdditions();
         $dataArray['deletions'] = $data->getDeletions();
         $dataArray['changed_files'] = $data->getChangedFiles();
-        foreach ($data as $key => $value_4) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_4;
             }

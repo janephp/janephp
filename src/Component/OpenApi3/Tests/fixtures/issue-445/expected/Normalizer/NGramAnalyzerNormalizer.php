@@ -70,7 +70,7 @@ class NGramAnalyzerNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('fieldSuffix') && null !== $data->getFieldSuffix()) {
             $dataArray['fieldSuffix'] = $data->getFieldSuffix();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

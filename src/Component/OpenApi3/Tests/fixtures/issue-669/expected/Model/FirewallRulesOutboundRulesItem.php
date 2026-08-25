@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class FirewallRulesOutboundRulesItem extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class FirewallRulesOutboundRulesItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -89,5 +92,9 @@ class FirewallRulesOutboundRulesItem extends \ArrayObject
         $this->initialized['destinations'] = true;
         $this->destinations = $destinations;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['protocol' => ['protocol', 'getProtocol', 'setProtocol'], 'ports' => ['ports', 'getPorts', 'setPorts'], 'destinations' => ['destinations', 'getDestinations', 'setDestinations']];
     }
 }

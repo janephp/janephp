@@ -295,7 +295,7 @@ class IssueNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if ($data->isInitialized('reactions') && null !== $data->getReactions()) {
             $dataArray['reactions'] = $data->getReactions() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getReactions(), 'json', $context));
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

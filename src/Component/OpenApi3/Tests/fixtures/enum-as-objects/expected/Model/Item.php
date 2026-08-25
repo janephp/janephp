@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\EnumAsObjects\Model;
 
-class Item extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\EnumAsObjects\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\EnumAsObjects\Runtime\AdditionalPropertiesInterface;
+class Item implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class Item extends \ArrayObject
         $this->initialized['priority'] = true;
         $this->priority = $priority;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['status' => ['status', 'getStatus', 'setStatus'], 'priority' => ['priority', 'getPriority', 'setPriority']];
     }
 }

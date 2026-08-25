@@ -57,7 +57,7 @@ class GbCompanyReportExampleResponseReportCompanySummaryCreditRatingCreditLimitN
         $dataArray = [];
         $dataArray['currency'] = $data->getCurrency();
         $dataArray['value'] = $data->getValue();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

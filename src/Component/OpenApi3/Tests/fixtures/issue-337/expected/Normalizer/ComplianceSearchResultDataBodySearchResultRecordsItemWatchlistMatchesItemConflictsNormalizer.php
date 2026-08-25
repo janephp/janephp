@@ -127,7 +127,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemC
         if ($data->isInitialized('phoneConflict') && null !== $data->getPhoneConflict()) {
             $dataArray['phoneConflict'] = $data->getPhoneConflict();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

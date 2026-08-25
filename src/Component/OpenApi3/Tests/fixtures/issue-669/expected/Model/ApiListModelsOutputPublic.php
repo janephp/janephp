@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiListModelsOutputPublic extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiListModelsOutputPublic implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class ApiListModelsOutputPublic extends \ArrayObject
         $this->initialized['models'] = true;
         $this->models = $models;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['links' => ['links', 'getLinks', 'setLinks'], 'meta' => ['meta', 'getMeta', 'setMeta'], 'models' => ['models', 'getModels', 'setModels']];
     }
 }

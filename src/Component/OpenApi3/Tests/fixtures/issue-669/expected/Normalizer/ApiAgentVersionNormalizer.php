@@ -267,7 +267,7 @@ class ApiAgentVersionNormalizer implements DenormalizerInterface, NormalizerInte
         if ($data->isInitialized('versionHash') && null !== $data->getVersionHash()) {
             $dataArray['version_hash'] = $data->getVersionHash();
         }
-        foreach ($data as $key => $value_5) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_5) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_5;
             }

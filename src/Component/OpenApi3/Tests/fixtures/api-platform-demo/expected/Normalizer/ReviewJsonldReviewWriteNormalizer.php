@@ -111,7 +111,7 @@ class ReviewJsonldReviewWriteNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('publicationDate') && null !== $data->getPublicationDate()) {
             $dataArray['publicationDate'] = $data->getPublicationDate()?->format('Y-m-d\TH:i:sP');
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

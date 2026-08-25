@@ -143,7 +143,7 @@ class MissingCustomerDefaultLanguageExceptionNormalizer implements DenormalizerI
         if ($data->isInitialized('customerDefaultLanguage') && null !== $data->getCustomerDefaultLanguage()) {
             $dataArray['customerDefaultLanguage'] = $data->getCustomerDefaultLanguage();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

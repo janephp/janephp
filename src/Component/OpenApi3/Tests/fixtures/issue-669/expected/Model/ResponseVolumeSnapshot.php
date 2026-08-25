@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseVolumeSnapshot extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseVolumeSnapshot implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseVolumeSnapshot extends \ArrayObject
         $this->initialized['snapshot'] = true;
         $this->snapshot = $snapshot;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['snapshot' => ['snapshot', 'getSnapshot', 'setSnapshot']];
     }
 }

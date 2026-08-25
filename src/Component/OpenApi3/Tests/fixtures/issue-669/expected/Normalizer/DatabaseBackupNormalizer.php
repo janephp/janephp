@@ -63,7 +63,7 @@ class DatabaseBackupNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('backupCreatedAt') && null !== $data->getBackupCreatedAt()) {
             $dataArray['backup_created_at'] = $data->getBackupCreatedAt()->format('Y-m-d\TH:i:sP');
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

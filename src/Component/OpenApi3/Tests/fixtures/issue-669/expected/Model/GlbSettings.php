@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class GlbSettings extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class GlbSettings implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class GlbSettings extends \ArrayObject
         $this->initialized['failoverThreshold'] = true;
         $this->failoverThreshold = $failoverThreshold;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['targetProtocol' => ['target_protocol', 'getTargetProtocol', 'setTargetProtocol'], 'targetPort' => ['target_port', 'getTargetPort', 'setTargetPort'], 'cdn' => ['cdn', 'getCdn', 'setCdn'], 'regionPriorities' => ['region_priorities', 'getRegionPriorities', 'setRegionPriorities'], 'failoverThreshold' => ['failover_threshold', 'getFailoverThreshold', 'setFailoverThreshold']];
     }
 }

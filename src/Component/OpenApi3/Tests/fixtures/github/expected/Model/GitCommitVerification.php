@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class GitCommitVerification extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class GitCommitVerification implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class GitCommitVerification extends \ArrayObject
         $this->initialized['payload'] = true;
         $this->payload = $payload;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['verified' => ['verified', 'getVerified', 'setVerified'], 'reason' => ['reason', 'getReason', 'setReason'], 'signature' => ['signature', 'getSignature', 'setSignature'], 'payload' => ['payload', 'getPayload', 'setPayload']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class DefaultUserFields extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class DefaultUserFields implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -179,5 +182,9 @@ class DefaultUserFields extends \ArrayObject
         $this->initialized['pinnedTweetId'] = true;
         $this->pinnedTweetId = $pinnedTweetId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['location' => ['location', 'getLocation', 'setLocation'], 'url' => ['url', 'getUrl', 'setUrl'], 'description' => ['description', 'getDescription', 'setDescription'], 'entities' => ['entities', 'getEntities', 'setEntities'], 'mostRecentTweetId' => ['most_recent_tweet_id', 'getMostRecentTweetId', 'setMostRecentTweetId'], 'pinnedTweetId' => ['pinned_tweet_id', 'getPinnedTweetId', 'setPinnedTweetId']];
     }
 }

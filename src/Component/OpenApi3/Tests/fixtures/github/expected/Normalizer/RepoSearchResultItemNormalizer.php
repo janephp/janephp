@@ -574,7 +574,7 @@ class RepoSearchResultItemNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('deleteBranchOnMerge') && null !== $data->getDeleteBranchOnMerge()) {
             $dataArray['delete_branch_on_merge'] = $data->getDeleteBranchOnMerge();
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

@@ -57,7 +57,7 @@ class ReposOwnerRepoForksPostBodyNormalizer implements DenormalizerInterface, No
         if ($data->isInitialized('organization') && null !== $data->getOrganization()) {
             $dataArray['organization'] = $data->getOrganization();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

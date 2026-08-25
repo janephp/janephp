@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class RateLimitOverviewResources extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class RateLimitOverviewResources implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class RateLimitOverviewResources extends \ArrayObject
         $this->initialized['integrationManifest'] = true;
         $this->integrationManifest = $integrationManifest;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['core' => ['core', 'getCore', 'setCore'], 'graphql' => ['graphql', 'getGraphql', 'setGraphql'], 'search' => ['search', 'getSearch', 'setSearch'], 'sourceImport' => ['source_import', 'getSourceImport', 'setSourceImport'], 'integrationManifest' => ['integration_manifest', 'getIntegrationManifest', 'setIntegrationManifest']];
     }
 }

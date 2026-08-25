@@ -74,7 +74,7 @@ class BranchShortNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('protected') && null !== $data->getProtected()) {
             $dataArray['protected'] = $data->getProtected();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportPaymentData implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -539,5 +542,9 @@ class GbCompanyReportExampleResponseReportPaymentData extends \ArrayObject
         $this->initialized['industryDBT'] = true;
         $this->industryDBT = $industryDBT;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['paymentsOnFile' => ['paymentsOnFile', 'getPaymentsOnFile', 'setPaymentsOnFile'], 'paymentsOnTime' => ['paymentsOnTime', 'getPaymentsOnTime', 'setPaymentsOnTime'], 'paymentsPaidLate' => ['paymentsPaidLate', 'getPaymentsPaidLate', 'setPaymentsPaidLate'], 'paymentsSentLegal' => ['paymentsSentLegal', 'getPaymentsSentLegal', 'setPaymentsSentLegal'], 'paymentsStillOwingLate' => ['paymentsStillOwingLate', 'getPaymentsStillOwingLate', 'setPaymentsStillOwingLate'], 'paymentsPaid0to30Days' => ['paymentsPaid0to30Days', 'getPaymentsPaid0to30Days', 'setPaymentsPaid0to30Days'], 'highestInvoiceValueOutstandingLate' => ['highestInvoiceValueOutstandingLate', 'getHighestInvoiceValueOutstandingLate', 'setHighestInvoiceValueOutstandingLate'], 'paymentsPaid90DaysplusLate' => ['paymentsPaid90DaysplusLate', 'getPaymentsPaid90DaysplusLate', 'setPaymentsPaid90DaysplusLate'], 'totalBalanceStillOwingLate' => ['totalBalanceStillOwingLate', 'getTotalBalanceStillOwingLate', 'setTotalBalanceStillOwingLate'], 'dbt' => ['dbt', 'getDbt', 'setDbt'], 'paymentsPaid61to90Days' => ['paymentsPaid61to90Days', 'getPaymentsPaid61to90Days', 'setPaymentsPaid61to90Days'], 'totalBalanceStillOwing' => ['totalBalanceStillOwing', 'getTotalBalanceStillOwing', 'setTotalBalanceStillOwing'], 'payments31to60DaysLate' => ['payments31to60DaysLate', 'getPayments31to60DaysLate', 'setPayments31to60DaysLate'], 'payments61to90DaysLate' => ['payments61to90DaysLate', 'getPayments61to90DaysLate', 'setPayments61to90DaysLate'], 'highestInvoiceValueOutstanding' => ['highestInvoiceValueOutstanding', 'getHighestInvoiceValueOutstanding', 'setHighestInvoiceValueOutstanding'], 'paymentsStillOwing' => ['paymentsStillOwing', 'getPaymentsStillOwing', 'setPaymentsStillOwing'], 'paymentsWithinTerms' => ['paymentsWithinTerms', 'getPaymentsWithinTerms', 'setPaymentsWithinTerms'], 'payments0to30Dayslate' => ['payments0to30Dayslate', 'getPayments0to30Dayslate', 'setPayments0to30Dayslate'], 'averageInvoiceValue' => ['averageInvoiceValue', 'getAverageInvoiceValue', 'setAverageInvoiceValue'], 'paymentsPaid31to60Days' => ['paymentsPaid31to60Days', 'getPaymentsPaid31to60Days', 'setPaymentsPaid31to60Days'], 'paymentsPaid90Daysplus' => ['paymentsPaid90Daysplus', 'getPaymentsPaid90Daysplus', 'setPaymentsPaid90Daysplus'], 'totalInvoiceValues' => ['totalInvoiceValues', 'getTotalInvoiceValues', 'setTotalInvoiceValues'], 'paymentTrend' => ['paymentTrend', 'getPaymentTrend', 'setPaymentTrend'], 'industryDBT' => ['industryDBT', 'getIndustryDBT', 'setIndustryDBT']];
     }
 }

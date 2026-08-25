@@ -72,7 +72,7 @@ class DatabaseMaintenanceWindowNormalizer implements DenormalizerInterface, Norm
         $dataArray = [];
         $dataArray['day'] = $data->getDay();
         $dataArray['hour'] = $data->getHour();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

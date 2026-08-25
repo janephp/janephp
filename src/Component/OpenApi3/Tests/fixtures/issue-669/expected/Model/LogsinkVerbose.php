@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class LogsinkVerbose extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class LogsinkVerbose implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -111,5 +114,9 @@ class LogsinkVerbose extends \ArrayObject
         $this->initialized['config'] = true;
         $this->config = $config;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['sinkId' => ['sink_id', 'getSinkId', 'setSinkId'], 'sinkName' => ['sink_name', 'getSinkName', 'setSinkName'], 'sinkType' => ['sink_type', 'getSinkType', 'setSinkType'], 'config' => ['config', 'getConfig', 'setConfig']];
     }
 }

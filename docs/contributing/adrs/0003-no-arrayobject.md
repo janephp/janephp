@@ -47,8 +47,6 @@ library code, nor generated code:
 
 Legacy usages still exist; they are accepted debt, not precedent:
 
-- Extension-container models extend `\ArrayObject`
-  (`src/Component/OpenApiCommon/Generator/Model/ClassGenerator.php`).
 - Jane's own OpenAPI document models under `src/Component/OpenApi*/JsonSchema/`
   (e.g. `OpenApi31/JsonSchema/Model/Components.php` extends `\ArrayObject`) and
   their normalizers still build `ARRAY_AS_PROPS` accumulators. These folders are
@@ -57,8 +55,15 @@ Legacy usages still exist; they are accepted debt, not precedent:
   `instanceof \ArrayObject` solely because those internal documents still carry
   them.
 
-Replacing them is a BC-break candidate tracked in
-[Korbeil's jane-v8 experiment](https://github.com/Korbeil/jane-v8/blob/main/src/Component/JsonSchemaGenerator/Runtime/AdditionalAndPatternProperties.php).
+A former entry of this list — extension-container models extending
+`\ArrayObject` (`src/Component/OpenApiCommon/Generator/Model/ClassGenerator.php`)
+— was paid off following [Korbeil's jane-v8 experiment](https://github.com/Korbeil/jane-v8/blob/main/src/Component/JsonSchemaGenerator/Runtime/AdditionalAndPatternProperties.php):
+generated models carrying `additionalProperties` / `patternProperties` now use
+the per-library `<Ns>\Runtime\AdditionalAndPatternProperties` trait paired with
+the `<Ns>\Runtime\AdditionalPropertiesInterface` interface
+([#867](https://github.com/janephp/janephp/issues/867)), so all their values are
+reachable through `foreach`, `ArrayAccess`, `count()`, `toArray()` and
+`json_encode`.
 
 ## Consequences
 

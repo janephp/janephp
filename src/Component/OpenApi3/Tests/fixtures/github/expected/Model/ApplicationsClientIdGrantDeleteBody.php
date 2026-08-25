@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ApplicationsClientIdGrantDeleteBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ApplicationsClientIdGrantDeleteBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ApplicationsClientIdGrantDeleteBody extends \ArrayObject
         $this->initialized['accessToken'] = true;
         $this->accessToken = $accessToken;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['accessToken' => ['access_token', 'getAccessToken', 'setAccessToken']];
     }
 }

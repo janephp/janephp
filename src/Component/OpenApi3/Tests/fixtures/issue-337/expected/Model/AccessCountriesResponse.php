@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class AccessCountriesResponse extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class AccessCountriesResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class AccessCountriesResponse extends \ArrayObject
         $this->initialized['countryAccess'] = true;
         $this->countryAccess = $countryAccess;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['correlationId' => ['correlationId', 'getCorrelationId', 'setCorrelationId'], 'countryAccess' => ['countryAccess', 'getCountryAccess', 'setCountryAccess']];
     }
 }

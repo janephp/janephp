@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class OpensearchIndexBase extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class OpensearchIndexBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class OpensearchIndexBase extends \ArrayObject
         $this->initialized['createdTime'] = true;
         $this->createdTime = $createdTime;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['indexName' => ['index_name', 'getIndexName', 'setIndexName'], 'numberOfShards' => ['number_of_shards', 'getNumberOfShards', 'setNumberOfShards'], 'numberOfReplicas' => ['number_of_replicas', 'getNumberOfReplicas', 'setNumberOfReplicas'], 'size' => ['size', 'getSize', 'setSize'], 'createdTime' => ['created_time', 'getCreatedTime', 'setCreatedTime']];
     }
 }

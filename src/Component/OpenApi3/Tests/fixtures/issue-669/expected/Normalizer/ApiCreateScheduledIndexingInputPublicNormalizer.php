@@ -76,7 +76,7 @@ class ApiCreateScheduledIndexingInputPublicNormalizer implements DenormalizerInt
         if ($data->isInitialized('time') && null !== $data->getTime()) {
             $dataArray['time'] = $data->getTime();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

@@ -165,7 +165,7 @@ class SchemaFieldIdPreviouslyUsedExceptionNormalizer implements DenormalizerInte
         if ($data->isInitialized('usedInSchemaId') && null !== $data->getUsedInSchemaId()) {
             $dataArray['usedInSchemaId'] = $data->getUsedInSchemaId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -61,7 +61,7 @@ class AppJobInvocationTriggerScheduledScheduleNormalizer implements Denormalizer
         if ($data->isInitialized('timeZone') && null !== $data->getTimeZone()) {
             $dataArray['time_zone'] = $data->getTimeZone();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

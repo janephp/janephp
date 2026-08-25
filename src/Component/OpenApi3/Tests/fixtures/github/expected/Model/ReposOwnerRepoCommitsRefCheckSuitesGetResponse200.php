@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200 extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200 extends \ArrayObject
         $this->initialized['checkSuites'] = true;
         $this->checkSuites = $checkSuites;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['totalCount' => ['total_count', 'getTotalCount', 'setTotalCount'], 'checkSuites' => ['check_suites', 'getCheckSuites', 'setCheckSuites']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class JpegFormat extends FormatBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class JpegFormat extends FormatBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -285,5 +288,9 @@ class JpegFormat extends FormatBase
         $this->initialized['extension'] = true;
         $this->extension = $extension;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['colorProfile' => ['colorProfile', 'getColorProfile', 'setColorProfile'], 'colorTransformationIntent' => ['colorTransformationIntent', 'getColorTransformationIntent', 'setColorTransformationIntent'], 'horizontalResolution' => ['horizontalResolution', 'getHorizontalResolution', 'setHorizontalResolution'], 'verticalResolution' => ['verticalResolution', 'getVerticalResolution', 'setVerticalResolution'], 'keepClippingPath' => ['keepClippingPath', 'getKeepClippingPath', 'setKeepClippingPath'], 'resizeAction' => ['resizeAction', 'getResizeAction', 'setResizeAction'], 'actions' => ['actions', 'getActions', 'setActions'], 'quality' => ['quality', 'getQuality', 'setQuality'], 'chromaSubsamplingEnabled' => ['chromaSubsamplingEnabled', 'getChromaSubsamplingEnabled', 'setChromaSubsamplingEnabled'], 'extension' => ['extension', 'getExtension', 'setExtension']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyName extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyName implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyName extends \ArrayObject
         $this->initialized['familyName'] = true;
         $this->familyName = $familyName;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['givenName' => ['givenName', 'getGivenName', 'setGivenName'], 'familyName' => ['familyName', 'getFamilyName', 'setFamilyName']];
     }
 }

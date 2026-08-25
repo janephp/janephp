@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ScimUser extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ScimUser implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -307,5 +310,9 @@ class ScimUser extends \ArrayObject
         $this->initialized['groups'] = true;
         $this->groups = $groups;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['schemas' => ['schemas', 'getSchemas', 'setSchemas'], 'id' => ['id', 'getId', 'setId'], 'externalId' => ['externalId', 'getExternalId', 'setExternalId'], 'userName' => ['userName', 'getUserName', 'setUserName'], 'name' => ['name', 'getName', 'setName'], 'emails' => ['emails', 'getEmails', 'setEmails'], 'active' => ['active', 'getActive', 'setActive'], 'meta' => ['meta', 'getMeta', 'setMeta'], 'organizationId' => ['organization_id', 'getOrganizationId', 'setOrganizationId'], 'operations' => ['operations', 'getOperations', 'setOperations'], 'groups' => ['groups', 'getGroups', 'setGroups']];
     }
 }

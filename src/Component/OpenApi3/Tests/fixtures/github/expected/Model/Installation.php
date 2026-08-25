@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Installation extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Installation implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -425,5 +428,9 @@ class Installation extends \ArrayObject
         $this->initialized['contactEmail'] = true;
         $this->contactEmail = $contactEmail;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'account' => ['account', 'getAccount', 'setAccount'], 'repositorySelection' => ['repository_selection', 'getRepositorySelection', 'setRepositorySelection'], 'accessTokensUrl' => ['access_tokens_url', 'getAccessTokensUrl', 'setAccessTokensUrl'], 'repositoriesUrl' => ['repositories_url', 'getRepositoriesUrl', 'setRepositoriesUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'appId' => ['app_id', 'getAppId', 'setAppId'], 'targetId' => ['target_id', 'getTargetId', 'setTargetId'], 'targetType' => ['target_type', 'getTargetType', 'setTargetType'], 'permissions' => ['permissions', 'getPermissions', 'setPermissions'], 'events' => ['events', 'getEvents', 'setEvents'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'singleFileName' => ['single_file_name', 'getSingleFileName', 'setSingleFileName'], 'appSlug' => ['app_slug', 'getAppSlug', 'setAppSlug'], 'suspendedBy' => ['suspended_by', 'getSuspendedBy', 'setSuspendedBy'], 'suspendedAt' => ['suspended_at', 'getSuspendedAt', 'setSuspendedAt'], 'contactEmail' => ['contact_email', 'getContactEmail', 'setContactEmail']];
     }
 }

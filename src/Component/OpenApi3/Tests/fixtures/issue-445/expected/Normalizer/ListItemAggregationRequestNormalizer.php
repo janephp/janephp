@@ -176,7 +176,7 @@ class ListItemAggregationRequestNormalizer implements DenormalizerInterface, Nor
             $values_4[] = $value_4 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
         }
         $dataArray['aggregators'] = $values_4;
-        foreach ($data as $key => $value_5) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_5) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_5;
             }

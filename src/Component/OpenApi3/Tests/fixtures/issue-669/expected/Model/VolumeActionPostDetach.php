@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class VolumeActionPostDetach extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class VolumeActionPostDetach implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class VolumeActionPostDetach extends \ArrayObject
         $this->initialized['dropletId'] = true;
         $this->dropletId = $dropletId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'region' => ['region', 'getRegion', 'setRegion'], 'dropletId' => ['droplet_id', 'getDropletId', 'setDropletId']];
     }
 }

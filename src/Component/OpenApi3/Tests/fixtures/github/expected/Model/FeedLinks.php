@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class FeedLinks extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class FeedLinks implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -229,5 +232,9 @@ class FeedLinks extends \ArrayObject
         $this->initialized['currentUserOrganizations'] = true;
         $this->currentUserOrganizations = $currentUserOrganizations;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['timeline' => ['timeline', 'getTimeline', 'setTimeline'], 'user' => ['user', 'getUser', 'setUser'], 'securityAdvisories' => ['security_advisories', 'getSecurityAdvisories', 'setSecurityAdvisories'], 'currentUser' => ['current_user', 'getCurrentUser', 'setCurrentUser'], 'currentUserPublic' => ['current_user_public', 'getCurrentUserPublic', 'setCurrentUserPublic'], 'currentUserActor' => ['current_user_actor', 'getCurrentUserActor', 'setCurrentUserActor'], 'currentUserOrganization' => ['current_user_organization', 'getCurrentUserOrganization', 'setCurrentUserOrganization'], 'currentUserOrganizations' => ['current_user_organizations', 'getCurrentUserOrganizations', 'setCurrentUserOrganizations']];
     }
 }

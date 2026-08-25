@@ -74,7 +74,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemOtherFinancials
         if ($data->isInitialized('netWorth') && null !== $data->getNetWorth()) {
             $dataArray['netWorth'] = $data->getNetWorth();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -140,7 +140,7 @@ class IdentityProviderNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('displayName') && null !== $data->getDisplayName()) {
             $dataArray['displayName'] = $data->getDisplayName();
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

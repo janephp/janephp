@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class SharePageViewEvent extends ApplicationEvent
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class SharePageViewEvent extends ApplicationEvent implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class SharePageViewEvent extends ApplicationEvent
         $this->initialized['shareToken'] = true;
         $this->shareToken = $shareToken;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['shareToken' => ['shareToken', 'getShareToken', 'setShareToken']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPullsPullNumberCommentsPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoPullsPullNumberCommentsPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -257,5 +260,9 @@ class ReposOwnerRepoPullsPullNumberCommentsPostBody extends \ArrayObject
         $this->initialized['inReplyTo'] = true;
         $this->inReplyTo = $inReplyTo;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['body' => ['body', 'getBody', 'setBody'], 'commitId' => ['commit_id', 'getCommitId', 'setCommitId'], 'path' => ['path', 'getPath', 'setPath'], 'position' => ['position', 'getPosition', 'setPosition'], 'side' => ['side', 'getSide', 'setSide'], 'line' => ['line', 'getLine', 'setLine'], 'startLine' => ['start_line', 'getStartLine', 'setStartLine'], 'startSide' => ['start_side', 'getStartSide', 'setStartSide'], 'inReplyTo' => ['in_reply_to', 'getInReplyTo', 'setInReplyTo']];
     }
 }

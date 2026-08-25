@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class Domains extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class Domains implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class Domains extends \ArrayObject
         $this->initialized['certificateId'] = true;
         $this->certificateId = $certificateId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'isManaged' => ['is_managed', 'getIsManaged', 'setIsManaged'], 'certificateId' => ['certificate_id', 'getCertificateId', 'setCertificateId']];
     }
 }

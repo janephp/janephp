@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class UpdateEndpoint extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class UpdateEndpoint implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class UpdateEndpoint extends \ArrayObject
         $this->initialized['customDomain'] = true;
         $this->customDomain = $customDomain;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['ttl' => ['ttl', 'getTtl', 'setTtl'], 'certificateId' => ['certificate_id', 'getCertificateId', 'setCertificateId'], 'customDomain' => ['custom_domain', 'getCustomDomain', 'setCustomDomain']];
     }
 }

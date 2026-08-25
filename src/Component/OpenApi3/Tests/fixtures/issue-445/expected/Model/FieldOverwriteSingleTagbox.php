@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class FieldOverwriteSingleTagbox extends FieldOverwriteBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class FieldOverwriteSingleTagbox extends FieldOverwriteBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -129,5 +132,9 @@ class FieldOverwriteSingleTagbox extends FieldOverwriteBase
         $this->initialized['overwriteListItemCreateTemplate'] = true;
         $this->overwriteListItemCreateTemplate = $overwriteListItemCreateTemplate;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['filter' => ['filter', 'getFilter', 'setFilter'], 'overwriteFilter' => ['overwriteFilter', 'getOverwriteFilter', 'setOverwriteFilter'], 'listItemCreateTemplate' => ['listItemCreateTemplate', 'getListItemCreateTemplate', 'setListItemCreateTemplate'], 'overwriteListItemCreateTemplate' => ['overwriteListItemCreateTemplate', 'getOverwriteListItemCreateTemplate', 'setOverwriteListItemCreateTemplate']];
     }
 }

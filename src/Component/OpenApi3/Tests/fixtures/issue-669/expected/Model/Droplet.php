@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class Droplet extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class Droplet implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -655,5 +658,9 @@ class Droplet extends \ArrayObject
         $this->initialized['gpuInfo'] = true;
         $this->gpuInfo = $gpuInfo;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'memory' => ['memory', 'getMemory', 'setMemory'], 'vcpus' => ['vcpus', 'getVcpus', 'setVcpus'], 'disk' => ['disk', 'getDisk', 'setDisk'], 'diskInfo' => ['disk_info', 'getDiskInfo', 'setDiskInfo'], 'locked' => ['locked', 'getLocked', 'setLocked'], 'status' => ['status', 'getStatus', 'setStatus'], 'kernel' => ['kernel', 'getKernel', 'setKernel'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'features' => ['features', 'getFeatures', 'setFeatures'], 'backupIds' => ['backup_ids', 'getBackupIds', 'setBackupIds'], 'nextBackupWindow' => ['next_backup_window', 'getNextBackupWindow', 'setNextBackupWindow'], 'snapshotIds' => ['snapshot_ids', 'getSnapshotIds', 'setSnapshotIds'], 'image' => ['image', 'getImage', 'setImage'], 'volumeIds' => ['volume_ids', 'getVolumeIds', 'setVolumeIds'], 'size' => ['size', 'getSize', 'setSize'], 'sizeSlug' => ['size_slug', 'getSizeSlug', 'setSizeSlug'], 'networks' => ['networks', 'getNetworks', 'setNetworks'], 'region' => ['region', 'getRegion', 'setRegion'], 'tags' => ['tags', 'getTags', 'setTags'], 'vpcUuid' => ['vpc_uuid', 'getVpcUuid', 'setVpcUuid'], 'gpuInfo' => ['gpu_info', 'getGpuInfo', 'setGpuInfo']];
     }
 }

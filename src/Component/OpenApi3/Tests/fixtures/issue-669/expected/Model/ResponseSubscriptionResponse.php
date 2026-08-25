@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseSubscriptionResponse extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseSubscriptionResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseSubscriptionResponse extends \ArrayObject
         $this->initialized['subscription'] = true;
         $this->subscription = $subscription;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['subscription' => ['subscription', 'getSubscription', 'setSubscription']];
     }
 }

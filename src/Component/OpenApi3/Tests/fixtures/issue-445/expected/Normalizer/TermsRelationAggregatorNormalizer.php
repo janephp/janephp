@@ -189,7 +189,7 @@ class TermsRelationAggregatorNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('documentType') && null !== $data->getDocumentType()) {
             $dataArray['documentType'] = $data->getDocumentType();
         }
-        foreach ($data as $key => $value_4) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_4;
             }

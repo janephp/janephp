@@ -57,7 +57,7 @@ class MetricsNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $dataArray = [];
         $dataArray['data'] = $data->getData() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getData(), 'json', $context));
         $dataArray['status'] = $data->getStatus();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

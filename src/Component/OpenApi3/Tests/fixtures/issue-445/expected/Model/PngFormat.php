@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class PngFormat extends FormatBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class PngFormat extends FormatBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -229,5 +232,9 @@ class PngFormat extends FormatBase
         $this->initialized['extension'] = true;
         $this->extension = $extension;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['colorProfile' => ['colorProfile', 'getColorProfile', 'setColorProfile'], 'colorTransformationIntent' => ['colorTransformationIntent', 'getColorTransformationIntent', 'setColorTransformationIntent'], 'horizontalResolution' => ['horizontalResolution', 'getHorizontalResolution', 'setHorizontalResolution'], 'verticalResolution' => ['verticalResolution', 'getVerticalResolution', 'setVerticalResolution'], 'keepClippingPath' => ['keepClippingPath', 'getKeepClippingPath', 'setKeepClippingPath'], 'resizeAction' => ['resizeAction', 'getResizeAction', 'setResizeAction'], 'actions' => ['actions', 'getActions', 'setActions'], 'extension' => ['extension', 'getExtension', 'setExtension']];
     }
 }

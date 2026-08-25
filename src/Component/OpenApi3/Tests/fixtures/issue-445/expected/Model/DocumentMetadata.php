@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class DocumentMetadata extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class DocumentMetadata implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -605,5 +608,9 @@ class DocumentMetadata extends \ArrayObject
         $this->initialized['epsInfo'] = true;
         $this->epsInfo = $epsInfo;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['names' => ['names', 'getNames', 'setNames'], 'descriptions' => ['descriptions', 'getDescriptions', 'setDescriptions'], 'fileExtension' => ['fileExtension', 'getFileExtension', 'setFileExtension'], 'fileName' => ['fileName', 'getFileName', 'setFileName'], 'filePath' => ['filePath', 'getFilePath', 'setFilePath'], 'fileSizeInBytes' => ['fileSizeInBytes', 'getFileSizeInBytes', 'setFileSizeInBytes'], 'sha1Hash' => ['sha1Hash', 'getSha1Hash', 'setSha1Hash'], 'xmpMetadata' => ['xmpMetadata', 'getXmpMetadata', 'setXmpMetadata'], 'exifMetadata' => ['exifMetadata', 'getExifMetadata', 'setExifMetadata'], 'language' => ['language', 'getLanguage', 'setLanguage'], 'applicationName' => ['applicationName', 'getApplicationName', 'setApplicationName'], 'applicationVersion' => ['applicationVersion', 'getApplicationVersion', 'setApplicationVersion'], 'author' => ['author', 'getAuthor', 'setAuthor'], 'creator' => ['creator', 'getCreator', 'setCreator'], 'publisher' => ['publisher', 'getPublisher', 'setPublisher'], 'company' => ['company', 'getCompany', 'setCompany'], 'documentTitle' => ['documentTitle', 'getDocumentTitle', 'setDocumentTitle'], 'characterCount' => ['characterCount', 'getCharacterCount', 'setCharacterCount'], 'characterCountWithSpaces' => ['characterCountWithSpaces', 'getCharacterCountWithSpaces', 'setCharacterCountWithSpaces'], 'lineCount' => ['lineCount', 'getLineCount', 'setLineCount'], 'pageCount' => ['pageCount', 'getPageCount', 'setPageCount'], 'slideCount' => ['slideCount', 'getSlideCount', 'setSlideCount'], 'paragraphCount' => ['paragraphCount', 'getParagraphCount', 'setParagraphCount'], 'revisionNumber' => ['revisionNumber', 'getRevisionNumber', 'setRevisionNumber'], 'titles' => ['titles', 'getTitles', 'setTitles'], 'imageTitles' => ['imageTitles', 'getImageTitles', 'setImageTitles'], 'epsInfo' => ['epsInfo', 'getEpsInfo', 'setEpsInfo']];
     }
 }

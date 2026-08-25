@@ -72,7 +72,7 @@ class MetadataValuesSchemaItemAddCommandNormalizer implements DenormalizerInterf
         $dataArray['fieldPath'] = $data->getFieldPath();
         $dataArray['fieldNamespace'] = $data->getFieldNamespace();
         $dataArray['referenceId'] = $data->getReferenceId();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

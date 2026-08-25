@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiAWSDataSource extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiAWSDataSource implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -145,5 +148,9 @@ class ApiAWSDataSource extends \ArrayObject
         $this->initialized['secretKey'] = true;
         $this->secretKey = $secretKey;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['bucketName' => ['bucket_name', 'getBucketName', 'setBucketName'], 'itemPath' => ['item_path', 'getItemPath', 'setItemPath'], 'keyId' => ['key_id', 'getKeyId', 'setKeyId'], 'region' => ['region', 'getRegion', 'setRegion'], 'secretKey' => ['secret_key', 'getSecretKey', 'setSecretKey']];
     }
 }

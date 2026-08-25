@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ConfigurationChangeEvent extends ApplicationEvent
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ConfigurationChangeEvent extends ApplicationEvent implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ConfigurationChangeEvent extends ApplicationEvent
         $this->initialized['documentType'] = true;
         $this->documentType = $documentType;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['documentType' => ['documentType', 'getDocumentType', 'setDocumentType']];
     }
 }

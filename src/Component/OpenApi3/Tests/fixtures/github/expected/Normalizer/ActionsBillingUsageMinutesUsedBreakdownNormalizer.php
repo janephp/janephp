@@ -71,7 +71,7 @@ class ActionsBillingUsageMinutesUsedBreakdownNormalizer implements DenormalizerI
         if ($data->isInitialized('wINDOWS') && null !== $data->getWINDOWS()) {
             $dataArray['WINDOWS'] = $data->getWINDOWS();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -103,7 +103,7 @@ class NestedAggregatorNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $dataArray['kind'] = $data->getKind();
         $dataArray['path'] = $data->getPath();
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

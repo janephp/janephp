@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiEvaluationMetricResult extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiEvaluationMetricResult implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -173,5 +176,9 @@ class ApiEvaluationMetricResult extends \ArrayObject
         $this->initialized['stringValue'] = true;
         $this->stringValue = $stringValue;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['errorDescription' => ['error_description', 'getErrorDescription', 'setErrorDescription'], 'metricName' => ['metric_name', 'getMetricName', 'setMetricName'], 'metricValueType' => ['metric_value_type', 'getMetricValueType', 'setMetricValueType'], 'numberValue' => ['number_value', 'getNumberValue', 'setNumberValue'], 'reasoning' => ['reasoning', 'getReasoning', 'setReasoning'], 'stringValue' => ['string_value', 'getStringValue', 'setStringValue']];
     }
 }

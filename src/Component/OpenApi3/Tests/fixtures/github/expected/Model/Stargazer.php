@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Stargazer extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Stargazer implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class Stargazer extends \ArrayObject
         $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['starredAt' => ['starred_at', 'getStarredAt', 'setStarredAt'], 'user' => ['user', 'getUser', 'setUser']];
     }
 }

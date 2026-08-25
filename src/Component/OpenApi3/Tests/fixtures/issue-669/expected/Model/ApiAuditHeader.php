@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiAuditHeader extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiAuditHeader implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -165,5 +168,9 @@ class ApiAuditHeader extends \ArrayObject
         $this->initialized['userUuid'] = true;
         $this->userUuid = $userUuid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['actorId' => ['actor_id', 'getActorId', 'setActorId'], 'actorIp' => ['actor_ip', 'getActorIp', 'setActorIp'], 'actorUuid' => ['actor_uuid', 'getActorUuid', 'setActorUuid'], 'contextUrn' => ['context_urn', 'getContextUrn', 'setContextUrn'], 'originApplication' => ['origin_application', 'getOriginApplication', 'setOriginApplication'], 'userId' => ['user_id', 'getUserId', 'setUserId'], 'userUuid' => ['user_uuid', 'getUserUuid', 'setUserUuid']];
     }
 }

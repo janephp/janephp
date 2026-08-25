@@ -154,7 +154,7 @@ class BusinessProcessEngineRequestExceptionNormalizer implements DenormalizerInt
         if ($data->isInitialized('engineError') && null !== $data->getEngineError()) {
             $dataArray['engineError'] = $data->getEngineError();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

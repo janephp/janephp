@@ -83,7 +83,7 @@ class PullRequestHeadRepoLicenseNormalizer implements DenormalizerInterface, Nor
         $dataArray['url'] = $data->getUrl();
         $dataArray['spdx_id'] = $data->getSpdxId();
         $dataArray['node_id'] = $data->getNodeId();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

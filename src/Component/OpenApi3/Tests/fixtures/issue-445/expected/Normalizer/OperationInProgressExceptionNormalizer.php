@@ -139,7 +139,7 @@ class OperationInProgressExceptionNormalizer implements DenormalizerInterface, N
         if ($data->isInitialized('leaseResourceType') && null !== $data->getLeaseResourceType()) {
             $dataArray['leaseResourceType'] = $data->getLeaseResourceType();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

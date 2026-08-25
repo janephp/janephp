@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class GitCommitAuthor extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class GitCommitAuthor implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class GitCommitAuthor extends \ArrayObject
         $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['date' => ['date', 'getDate', 'setDate'], 'email' => ['email', 'getEmail', 'setEmail'], 'name' => ['name', 'getName', 'setName']];
     }
 }

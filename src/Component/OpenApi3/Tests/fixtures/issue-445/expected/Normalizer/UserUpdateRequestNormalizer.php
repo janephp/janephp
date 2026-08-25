@@ -156,7 +156,7 @@ class UserUpdateRequestNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('identityProviderId') && null !== $data->getIdentityProviderId()) {
             $dataArray['identityProviderId'] = $data->getIdentityProviderId();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

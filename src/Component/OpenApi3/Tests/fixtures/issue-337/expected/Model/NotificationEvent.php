@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class NotificationEvent extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class NotificationEvent implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -229,5 +232,9 @@ class NotificationEvent extends \ArrayObject
         $this->initialized['ruleName'] = true;
         $this->ruleName = $ruleName;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['company' => ['company', 'getCompany', 'setCompany'], 'eventId' => ['eventId', 'getEventId', 'setEventId'], 'eventDate' => ['eventDate', 'getEventDate', 'setEventDate'], 'newValue' => ['newValue', 'getNewValue', 'setNewValue'], 'oldValue' => ['oldValue', 'getOldValue', 'setOldValue'], 'notificationEventId' => ['notificationEventId', 'getNotificationEventId', 'setNotificationEventId'], 'ruleCode' => ['ruleCode', 'getRuleCode', 'setRuleCode'], 'ruleName' => ['ruleName', 'getRuleName', 'setRuleName']];
     }
 }

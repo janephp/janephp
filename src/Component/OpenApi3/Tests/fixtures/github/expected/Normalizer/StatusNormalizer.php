@@ -135,7 +135,7 @@ class StatusNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if ($data->isInitialized('creator') && null !== $data->getCreator()) {
             $dataArray['creator'] = $data->getCreator() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCreator(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -184,7 +184,7 @@ class DropletCreateNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('withDropletAgent') && null !== $data->getWithDropletAgent()) {
             $dataArray['with_droplet_agent'] = $data->getWithDropletAgent();
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_3;
             }

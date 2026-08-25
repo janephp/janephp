@@ -26,6 +26,8 @@ class Issue680EmptyObjectNormalizationTest extends TestCase
         $dir = self::FIXTURE_DIR . '/expected';
 
         foreach ([
+            'Runtime/AdditionalAndPatternProperties',
+            'Runtime/AdditionalPropertiesInterface',
             'Model/TestBody',
             'Runtime/Normalizer/CheckArray',
             'Runtime/Normalizer/ValidatorTrait',

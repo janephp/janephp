@@ -143,7 +143,7 @@ class XmpMappingFieldToLayerWithRequiredFieldsNotAllowedExceptionNormalizer impl
         if ($data->isInitialized('layerId') && null !== $data->getLayerId()) {
             $dataArray['layerId'] = $data->getLayerId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

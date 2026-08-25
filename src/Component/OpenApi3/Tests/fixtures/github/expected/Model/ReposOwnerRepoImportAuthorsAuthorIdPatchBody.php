@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoImportAuthorsAuthorIdPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoImportAuthorsAuthorIdPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -89,5 +92,9 @@ class ReposOwnerRepoImportAuthorsAuthorIdPatchBody extends \ArrayObject
         $this->initialized['remoteId'] = true;
         $this->remoteId = $remoteId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['email' => ['email', 'getEmail', 'setEmail'], 'name' => ['name', 'getName', 'setName'], 'remoteId' => ['remote_id', 'getRemoteId', 'setRemoteId']];
     }
 }

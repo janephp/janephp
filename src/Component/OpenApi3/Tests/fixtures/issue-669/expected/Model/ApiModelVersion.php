@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiModelVersion extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiModelVersion implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class ApiModelVersion extends \ArrayObject
         $this->initialized['patch'] = true;
         $this->patch = $patch;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['major' => ['major', 'getMajor', 'setMajor'], 'minor' => ['minor', 'getMinor', 'setMinor'], 'patch' => ['patch', 'getPatch', 'setPatch']];
     }
 }

@@ -262,7 +262,7 @@ class FieldStringNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('boost') && null !== $data->getBoost()) {
             $dataArray['boost'] = $data->getBoost();
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_3;
             }

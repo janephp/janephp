@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiCreateEvaluationTestCaseInputPublic extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiCreateEvaluationTestCaseInputPublic implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -195,5 +198,9 @@ class ApiCreateEvaluationTestCaseInputPublic extends \ArrayObject
         $this->initialized['workspaceUuid'] = true;
         $this->workspaceUuid = $workspaceUuid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['agentWorkspaceName' => ['agent_workspace_name', 'getAgentWorkspaceName', 'setAgentWorkspaceName'], 'datasetUuid' => ['dataset_uuid', 'getDatasetUuid', 'setDatasetUuid'], 'description' => ['description', 'getDescription', 'setDescription'], 'metrics' => ['metrics', 'getMetrics', 'setMetrics'], 'name' => ['name', 'getName', 'setName'], 'starMetric' => ['star_metric', 'getStarMetric', 'setStarMetric'], 'workspaceUuid' => ['workspace_uuid', 'getWorkspaceUuid', 'setWorkspaceUuid']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessCancellationRequestedEvent extends ApplicationEvent
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class BusinessProcessCancellationRequestedEvent extends ApplicationEvent implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class BusinessProcessCancellationRequestedEvent extends ApplicationEvent
         $this->initialized['businessProcessId'] = true;
         $this->businessProcessId = $businessProcessId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['businessProcessId' => ['businessProcessId', 'getBusinessProcessId', 'setBusinessProcessId']];
     }
 }

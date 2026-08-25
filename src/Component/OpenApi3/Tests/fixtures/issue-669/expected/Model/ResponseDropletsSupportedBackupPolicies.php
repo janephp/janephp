@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseDropletsSupportedBackupPolicies extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseDropletsSupportedBackupPolicies implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseDropletsSupportedBackupPolicies extends \ArrayObject
         $this->initialized['supportedPolicies'] = true;
         $this->supportedPolicies = $supportedPolicies;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['supportedPolicies' => ['supported_policies', 'getSupportedPolicies', 'setSupportedPolicies']];
     }
 }

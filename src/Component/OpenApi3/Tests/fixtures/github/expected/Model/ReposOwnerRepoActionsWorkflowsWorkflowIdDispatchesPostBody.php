@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody extends \ArrayO
         $this->initialized['inputs'] = true;
         $this->inputs = $inputs;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['ref' => ['ref', 'getRef', 'setRef'], 'inputs' => ['inputs', 'getInputs', 'setInputs']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class TagsResourcesDatabases extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class TagsResourcesDatabases implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class TagsResourcesDatabases extends \ArrayObject
         $this->initialized['lastTaggedUri'] = true;
         $this->lastTaggedUri = $lastTaggedUri;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['count' => ['count', 'getCount', 'setCount'], 'lastTaggedUri' => ['last_tagged_uri', 'getLastTaggedUri', 'setLastTaggedUri']];
     }
 }

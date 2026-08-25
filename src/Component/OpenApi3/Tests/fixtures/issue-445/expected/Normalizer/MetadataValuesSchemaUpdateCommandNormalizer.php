@@ -70,7 +70,7 @@ class MetadataValuesSchemaUpdateCommandNormalizer implements DenormalizerInterfa
             $values[$key] = $value;
         }
         $dataArray['value'] = $values;
-        foreach ($data as $key_1 => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_1;
             }

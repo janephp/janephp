@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class MetaProperties extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class MetaProperties implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class MetaProperties extends \ArrayObject
         $this->initialized['total'] = true;
         $this->total = $total;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['total' => ['total', 'getTotal', 'setTotal']];
     }
 }

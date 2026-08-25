@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\ExpectedIssue793\Model;
 
-class FilePostResponse200 extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\ExpectedIssue793\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\ExpectedIssue793\Runtime\AdditionalPropertiesInterface;
+class FilePostResponse200 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class FilePostResponse200 extends \ArrayObject
         $this->initialized['statusCode'] = true;
         $this->statusCode = $statusCode;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['statusCode' => ['status_code', 'getStatusCode', 'setStatusCode']];
     }
 }

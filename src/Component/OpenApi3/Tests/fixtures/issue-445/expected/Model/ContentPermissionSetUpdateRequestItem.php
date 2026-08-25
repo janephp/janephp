@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ContentPermissionSetUpdateRequestItem extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ContentPermissionSetUpdateRequestItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class ContentPermissionSetUpdateRequestItem extends \ArrayObject
         $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['names' => ['names', 'getNames', 'setNames'], 'userRolesRights' => ['userRolesRights', 'getUserRolesRights', 'setUserRolesRights'], 'userRolesPermissionSetRights' => ['userRolesPermissionSetRights', 'getUserRolesPermissionSetRights', 'setUserRolesPermissionSetRights'], 'id' => ['id', 'getId', 'setId']];
     }
 }

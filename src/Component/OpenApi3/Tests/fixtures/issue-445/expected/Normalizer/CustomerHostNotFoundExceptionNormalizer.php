@@ -110,7 +110,7 @@ class CustomerHostNotFoundExceptionNormalizer implements DenormalizerInterface, 
         if ($data->isInitialized('hostName') && null !== $data->getHostName()) {
             $dataArray['hostName'] = $data->getHostName();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

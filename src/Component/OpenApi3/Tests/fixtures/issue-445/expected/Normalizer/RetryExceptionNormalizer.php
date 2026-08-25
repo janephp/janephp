@@ -150,7 +150,7 @@ class RetryExceptionNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('innerExceptionDetail') && null !== $data->getInnerExceptionDetail()) {
             $dataArray['innerExceptionDetail'] = $data->getInnerExceptionDetail();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

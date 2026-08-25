@@ -68,7 +68,7 @@ class MonitoringPortfoliosPostBodyEmailsNormalizer implements DenormalizerInterf
         if ($data->isInitialized('emailAddress') && null !== $data->getEmailAddress()) {
             $dataArray['emailAddress'] = $data->getEmailAddress();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

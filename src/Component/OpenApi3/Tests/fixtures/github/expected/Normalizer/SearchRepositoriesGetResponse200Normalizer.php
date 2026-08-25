@@ -82,7 +82,7 @@ class SearchRepositoriesGetResponse200Normalizer implements DenormalizerInterfac
             }
             $dataArray['items'] = $values;
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

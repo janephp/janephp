@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseExistingVpc extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseExistingVpc implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseExistingVpc extends \ArrayObject
         $this->initialized['vpc'] = true;
         $this->vpc = $vpc;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['vpc' => ['vpc', 'getVpc', 'setVpc']];
     }
 }

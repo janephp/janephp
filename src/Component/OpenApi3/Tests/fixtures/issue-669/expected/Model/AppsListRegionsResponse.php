@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsListRegionsResponse extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsListRegionsResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class AppsListRegionsResponse extends \ArrayObject
         $this->initialized['regions'] = true;
         $this->regions = $regions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['regions' => ['regions', 'getRegions', 'setRegions']];
     }
 }

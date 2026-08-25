@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiPromptChunk extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiPromptChunk implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class ApiPromptChunk extends \ArrayObject
         $this->initialized['text'] = true;
         $this->text = $text;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['chunkUsagePct' => ['chunk_usage_pct', 'getChunkUsagePct', 'setChunkUsagePct'], 'chunkUsed' => ['chunk_used', 'getChunkUsed', 'setChunkUsed'], 'indexUuid' => ['index_uuid', 'getIndexUuid', 'setIndexUuid'], 'sourceName' => ['source_name', 'getSourceName', 'setSourceName'], 'text' => ['text', 'getText', 'setText']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class ReviewsGetLdjsonResponse200HydraSearch extends \ArrayObject
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
+class ReviewsGetLdjsonResponse200HydraSearch implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class ReviewsGetLdjsonResponse200HydraSearch extends \ArrayObject
         $this->initialized['hydraMapping'] = true;
         $this->hydraMapping = $hydraMapping;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['@type', 'getType', 'setType'], 'hydraTemplate' => ['hydra:template', 'getHydraTemplate', 'setHydraTemplate'], 'hydraVariableRepresentation' => ['hydra:variableRepresentation', 'getHydraVariableRepresentation', 'setHydraVariableRepresentation'], 'hydraMapping' => ['hydra:mapping', 'getHydraMapping', 'setHydraMapping']];
     }
 }

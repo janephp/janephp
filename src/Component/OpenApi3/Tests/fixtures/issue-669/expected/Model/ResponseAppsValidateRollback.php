@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseAppsValidateRollback extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseAppsValidateRollback implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -89,5 +92,9 @@ class ResponseAppsValidateRollback extends \ArrayObject
         $this->initialized['warnings'] = true;
         $this->warnings = $warnings;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['valid' => ['valid', 'getValid', 'setValid'], 'error' => ['error', 'getError', 'setError'], 'warnings' => ['warnings', 'getWarnings', 'setWarnings']];
     }
 }

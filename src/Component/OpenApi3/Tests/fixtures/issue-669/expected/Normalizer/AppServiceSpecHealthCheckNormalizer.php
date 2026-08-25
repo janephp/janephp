@@ -96,7 +96,7 @@ class AppServiceSpecHealthCheckNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('timeoutSeconds') && null !== $data->getTimeoutSeconds()) {
             $dataArray['timeout_seconds'] = $data->getTimeoutSeconds();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

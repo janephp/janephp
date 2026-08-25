@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecks extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecks implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyRequiredStatusChecks extends 
         $this->initialized['contexts'] = true;
         $this->contexts = $contexts;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['strict' => ['strict', 'getStrict', 'setStrict'], 'contexts' => ['contexts', 'getContexts', 'setContexts']];
     }
 }

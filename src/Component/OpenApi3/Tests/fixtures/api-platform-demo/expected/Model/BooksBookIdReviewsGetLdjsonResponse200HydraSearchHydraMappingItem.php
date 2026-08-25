@@ -2,8 +2,11 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class BooksBookIdReviewsGetLdjsonResponse200HydraSearchHydraMappingItem extends \ArrayObject
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
+class BooksBookIdReviewsGetLdjsonResponse200HydraSearchHydraMappingItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class BooksBookIdReviewsGetLdjsonResponse200HydraSearchHydraMappingItem extends 
         $this->initialized['required'] = true;
         $this->required = $required;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['@type', 'getType', 'setType'], 'variable' => ['variable', 'getVariable', 'setVariable'], 'property' => ['property', 'getProperty', 'setProperty'], 'required' => ['required', 'getRequired', 'setRequired']];
     }
 }

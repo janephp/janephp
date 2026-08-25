@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoGitRefsPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoGitRefsPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -89,5 +92,9 @@ class ReposOwnerRepoGitRefsPostBody extends \ArrayObject
         $this->initialized['key'] = true;
         $this->key = $key;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['ref' => ['ref', 'getRef', 'setRef'], 'sha' => ['sha', 'getSha', 'setSha'], 'key' => ['key', 'getKey', 'setKey']];
     }
 }

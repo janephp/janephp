@@ -296,7 +296,7 @@ class LoadBalancerNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($data->isInitialized('tag') && null !== $data->getTag()) {
             $dataArray['tag'] = $data->getTag();
         }
-        foreach ($data as $key_1 => $value_5) {
+        foreach ($data->additionalPropertyEntries() as $key_1 => $value_5) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_5;
             }

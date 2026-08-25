@@ -79,7 +79,7 @@ class ReservedIpv6ListReservedIpv6sItemNormalizer implements DenormalizerInterfa
         if ($data->isInitialized('droplet') && null !== $data->getDroplet()) {
             $dataArray['droplet'] = $data->getDroplet();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

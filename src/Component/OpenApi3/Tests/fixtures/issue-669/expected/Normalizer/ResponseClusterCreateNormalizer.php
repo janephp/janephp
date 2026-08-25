@@ -54,7 +54,7 @@ class ResponseClusterCreateNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('kubernetesCluster') && null !== $data->getKubernetesCluster()) {
             $dataArray['kubernetes_cluster'] = $data->getKubernetesCluster() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getKubernetesCluster(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

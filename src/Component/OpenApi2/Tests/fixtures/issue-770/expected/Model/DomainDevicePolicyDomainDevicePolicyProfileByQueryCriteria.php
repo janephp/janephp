@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class DomainDevicePolicyDomainDevicePolicyProfileByQueryCriteria extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class DomainDevicePolicyDomainDevicePolicyProfileByQueryCriteria implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -167,5 +170,9 @@ class DomainDevicePolicyDomainDevicePolicyProfileByQueryCriteria extends \ArrayO
         $this->initialized['list'] = true;
         $this->list = $list;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['rawDataTotalCount' => ['rawDataTotalCount', 'getRawDataTotalCount', 'setRawDataTotalCount'], 'totalCount' => ['totalCount', 'getTotalCount', 'setTotalCount'], 'hasMore' => ['hasMore', 'getHasMore', 'setHasMore'], 'firstIndex' => ['firstIndex', 'getFirstIndex', 'setFirstIndex'], 'extra' => ['extra', 'getExtra', 'setExtra'], 'list' => ['list', 'getList', 'setList']];
     }
 }

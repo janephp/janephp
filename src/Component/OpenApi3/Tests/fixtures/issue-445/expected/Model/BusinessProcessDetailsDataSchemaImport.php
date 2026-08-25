@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessDetailsDataSchemaImport extends BusinessProcessDetailsDataBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class BusinessProcessDetailsDataSchemaImport extends BusinessProcessDetailsDataBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class BusinessProcessDetailsDataSchemaImport extends BusinessProcessDetailsDataB
         $this->initialized['listItemImportResult'] = true;
         $this->listItemImportResult = $listItemImportResult;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['schemaImportResult' => ['schemaImportResult', 'getSchemaImportResult', 'setSchemaImportResult'], 'listItemImportResult' => ['listItemImportResult', 'getListItemImportResult', 'setListItemImportResult']];
     }
 }

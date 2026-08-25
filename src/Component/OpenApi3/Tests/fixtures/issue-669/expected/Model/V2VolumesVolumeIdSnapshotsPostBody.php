@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class V2VolumesVolumeIdSnapshotsPostBody extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class V2VolumesVolumeIdSnapshotsPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class V2VolumesVolumeIdSnapshotsPostBody extends \ArrayObject
         $this->initialized['tags'] = true;
         $this->tags = $tags;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'tags' => ['tags', 'getTags', 'setTags']];
     }
 }

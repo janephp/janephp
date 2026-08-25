@@ -219,7 +219,7 @@ class AppSpecNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('maintenance') && null !== $data->getMaintenance()) {
             $dataArray['maintenance'] = $data->getMaintenance() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getMaintenance(), 'json', $context));
         }
-        foreach ($data as $key => $value_7) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_7) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_7;
             }

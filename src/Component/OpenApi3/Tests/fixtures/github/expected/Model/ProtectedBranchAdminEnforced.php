@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ProtectedBranchAdminEnforced extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ProtectedBranchAdminEnforced implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class ProtectedBranchAdminEnforced extends \ArrayObject
         $this->initialized['enabled'] = true;
         $this->enabled = $enabled;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'enabled' => ['enabled', 'getEnabled', 'setEnabled']];
     }
 }

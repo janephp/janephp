@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseVolume extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseVolume implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseVolume extends \ArrayObject
         $this->initialized['volume'] = true;
         $this->volume = $volume;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['volume' => ['volume', 'getVolume', 'setVolume']];
     }
 }

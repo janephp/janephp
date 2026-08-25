@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CodeOfConduct extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CodeOfConduct implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class CodeOfConduct extends \ArrayObject
         $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['key' => ['key', 'getKey', 'setKey'], 'name' => ['name', 'getName', 'setName'], 'url' => ['url', 'getUrl', 'setUrl'], 'body' => ['body', 'getBody', 'setBody'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl']];
     }
 }

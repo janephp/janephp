@@ -95,7 +95,7 @@ class GbCompanyReportExampleResponseReportShareCapitalStructureShareHoldersItemN
         if ($data->isInitialized('percentSharesHeld') && null !== $data->getPercentSharesHeld()) {
             $dataArray['percentSharesHeld'] = $data->getPercentSharesHeld();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

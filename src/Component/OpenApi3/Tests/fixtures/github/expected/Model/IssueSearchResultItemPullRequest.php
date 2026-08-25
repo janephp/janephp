@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class IssueSearchResultItemPullRequest extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class IssueSearchResultItemPullRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class IssueSearchResultItemPullRequest extends \ArrayObject
         $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['mergedAt' => ['merged_at', 'getMergedAt', 'setMergedAt'], 'diffUrl' => ['diff_url', 'getDiffUrl', 'setDiffUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'patchUrl' => ['patch_url', 'getPatchUrl', 'setPatchUrl'], 'url' => ['url', 'getUrl', 'setUrl']];
     }
 }

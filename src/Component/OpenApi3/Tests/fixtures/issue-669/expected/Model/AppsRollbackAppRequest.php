@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsRollbackAppRequest extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsRollbackAppRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class AppsRollbackAppRequest extends \ArrayObject
         $this->initialized['skipPin'] = true;
         $this->skipPin = $skipPin;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['deploymentId' => ['deployment_id', 'getDeploymentId', 'setDeploymentId'], 'skipPin' => ['skip_pin', 'getSkipPin', 'setSkipPin']];
     }
 }

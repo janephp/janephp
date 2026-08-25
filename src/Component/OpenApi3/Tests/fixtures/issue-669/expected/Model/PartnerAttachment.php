@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class PartnerAttachment extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class PartnerAttachment implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -319,5 +322,9 @@ class PartnerAttachment extends \ArrayObject
         $this->initialized['children'] = true;
         $this->children = $children;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'state' => ['state', 'getState', 'setState'], 'connectionBandwidthInMbps' => ['connection_bandwidth_in_mbps', 'getConnectionBandwidthInMbps', 'setConnectionBandwidthInMbps'], 'region' => ['region', 'getRegion', 'setRegion'], 'naasProvider' => ['naas_provider', 'getNaasProvider', 'setNaasProvider'], 'vpcIds' => ['vpc_ids', 'getVpcIds', 'setVpcIds'], 'bgp' => ['bgp', 'getBgp', 'setBgp'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'parentUuid' => ['parent_uuid', 'getParentUuid', 'setParentUuid'], 'children' => ['children', 'getChildren', 'setChildren']];
     }
 }

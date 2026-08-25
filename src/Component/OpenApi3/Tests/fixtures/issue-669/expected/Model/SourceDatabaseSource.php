@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class SourceDatabaseSource extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class SourceDatabaseSource implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class SourceDatabaseSource extends \ArrayObject
         $this->initialized['password'] = true;
         $this->password = $password;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['host' => ['host', 'getHost', 'setHost'], 'port' => ['port', 'getPort', 'setPort'], 'dbname' => ['dbname', 'getDbname', 'setDbname'], 'username' => ['username', 'getUsername', 'setUsername'], 'password' => ['password', 'getPassword', 'setPassword']];
     }
 }

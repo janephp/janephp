@@ -176,7 +176,7 @@ class SchemaFieldSchemaIndexInfoSimpleSearchNestingExceptionNormalizer implement
         if ($data->isInitialized('relatedOuterFieldId') && null !== $data->getRelatedOuterFieldId()) {
             $dataArray['relatedOuterFieldId'] = $data->getRelatedOuterFieldId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

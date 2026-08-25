@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class MetricsData extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class MetricsData implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -61,5 +64,9 @@ class MetricsData extends \ArrayObject
         $this->initialized['resultType'] = true;
         $this->resultType = $resultType;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['result' => ['result', 'getResult', 'setResult'], 'resultType' => ['resultType', 'getResultType', 'setResultType']];
     }
 }

@@ -143,7 +143,7 @@ class OwnerTokenInUseExceptionNormalizer implements DenormalizerInterface, Norma
         if ($data->isInitialized('ownerTokenUserId') && null !== $data->getOwnerTokenUserId()) {
             $dataArray['ownerTokenUserId'] = $data->getOwnerTokenUserId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

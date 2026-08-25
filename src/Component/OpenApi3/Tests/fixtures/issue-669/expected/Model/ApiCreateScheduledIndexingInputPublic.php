@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiCreateScheduledIndexingInputPublic extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiCreateScheduledIndexingInputPublic implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class ApiCreateScheduledIndexingInputPublic extends \ArrayObject
         $this->initialized['time'] = true;
         $this->time = $time;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['days' => ['days', 'getDays', 'setDays'], 'knowledgeBaseUuid' => ['knowledge_base_uuid', 'getKnowledgeBaseUuid', 'setKnowledgeBaseUuid'], 'time' => ['time', 'getTime', 'setTime']];
     }
 }

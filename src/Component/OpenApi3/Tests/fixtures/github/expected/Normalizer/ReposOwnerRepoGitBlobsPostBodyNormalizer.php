@@ -62,7 +62,7 @@ class ReposOwnerRepoGitBlobsPostBodyNormalizer implements DenormalizerInterface,
         if ($data->isInitialized('encoding') && null !== $data->getEncoding()) {
             $dataArray['encoding'] = $data->getEncoding();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

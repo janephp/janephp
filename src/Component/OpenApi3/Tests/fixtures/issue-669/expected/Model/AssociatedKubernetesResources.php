@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AssociatedKubernetesResources extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AssociatedKubernetesResources implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class AssociatedKubernetesResources extends \ArrayObject
         $this->initialized['volumeSnapshots'] = true;
         $this->volumeSnapshots = $volumeSnapshots;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['loadBalancers' => ['load_balancers', 'getLoadBalancers', 'setLoadBalancers'], 'volumes' => ['volumes', 'getVolumes', 'setVolumes'], 'volumeSnapshots' => ['volume_snapshots', 'getVolumeSnapshots', 'setVolumeSnapshots']];
     }
 }

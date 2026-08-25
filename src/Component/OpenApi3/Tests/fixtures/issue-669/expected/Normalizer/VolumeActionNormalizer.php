@@ -130,7 +130,7 @@ class VolumeActionNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($data->isInitialized('regionSlug') && null !== $data->getRegionSlug()) {
             $dataArray['region_slug'] = $data->getRegionSlug();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

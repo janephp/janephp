@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseAddonsGetAppMetadata extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseAddonsGetAppMetadata implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseAddonsGetAppMetadata extends \ArrayObject
         $this->initialized['metadata'] = true;
         $this->metadata = $metadata;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['metadata' => ['metadata', 'getMetadata', 'setMetadata']];
     }
 }

@@ -116,7 +116,7 @@ class KeyNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if ($data->isInitialized('readOnly') && null !== $data->getReadOnly()) {
             $dataArray['read_only'] = $data->getReadOnly();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

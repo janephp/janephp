@@ -69,7 +69,7 @@ class AppFunctionsComponentHealthNormalizer implements DenormalizerInterface, No
             }
             $dataArray['functions_component_health_metrics'] = $values;
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

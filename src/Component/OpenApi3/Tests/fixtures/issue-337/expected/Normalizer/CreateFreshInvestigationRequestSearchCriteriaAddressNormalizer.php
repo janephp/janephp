@@ -68,7 +68,7 @@ class CreateFreshInvestigationRequestSearchCriteriaAddressNormalizer implements 
         if ($data->isInitialized('city') && null !== $data->getCity()) {
             $dataArray['city'] = $data->getCity();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class AuthenticationToken extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class AuthenticationToken implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -167,5 +170,9 @@ class AuthenticationToken extends \ArrayObject
         $this->initialized['repositorySelection'] = true;
         $this->repositorySelection = $repositorySelection;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['token' => ['token', 'getToken', 'setToken'], 'expiresAt' => ['expires_at', 'getExpiresAt', 'setExpiresAt'], 'permissions' => ['permissions', 'getPermissions', 'setPermissions'], 'repositories' => ['repositories', 'getRepositories', 'setRepositories'], 'singleFile' => ['single_file', 'getSingleFile', 'setSingleFile'], 'repositorySelection' => ['repository_selection', 'getRepositorySelection', 'setRepositorySelection']];
     }
 }

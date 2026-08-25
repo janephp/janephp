@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ViewTraffic extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ViewTraffic implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class ViewTraffic extends \ArrayObject
         $this->initialized['views'] = true;
         $this->views = $views;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['count' => ['count', 'getCount', 'setCount'], 'uniques' => ['uniques', 'getUniques', 'setUniques'], 'views' => ['views', 'getViews', 'setViews']];
     }
 }

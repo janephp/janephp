@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class V2DatabasesDatabaseClusterUuidLogsinkPostBody extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class V2DatabasesDatabaseClusterUuidLogsinkPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -110,5 +113,9 @@ class V2DatabasesDatabaseClusterUuidLogsinkPostBody extends \ArrayObject
         $this->initialized['config'] = true;
         $this->config = $config;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['sinkName' => ['sink_name', 'getSinkName', 'setSinkName'], 'sinkType' => ['sink_type', 'getSinkType', 'setSinkType'], 'config' => ['config', 'getConfig', 'setConfig']];
     }
 }

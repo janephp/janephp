@@ -150,7 +150,7 @@ class LicenseNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $dataArray['limitations'] = $values_2;
         $dataArray['body'] = $data->getBody();
         $dataArray['featured'] = $data->getFeatured();
-        foreach ($data as $key => $value_3) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_3;
             }

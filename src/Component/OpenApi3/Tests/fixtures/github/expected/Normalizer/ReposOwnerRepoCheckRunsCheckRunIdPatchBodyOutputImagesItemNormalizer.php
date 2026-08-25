@@ -67,7 +67,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyOutputImagesItemNormalizer imple
         if ($data->isInitialized('caption') && null !== $data->getCaption()) {
             $dataArray['caption'] = $data->getCaption();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

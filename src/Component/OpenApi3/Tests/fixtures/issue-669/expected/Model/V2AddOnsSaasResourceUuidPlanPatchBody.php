@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class V2AddOnsSaasResourceUuidPlanPatchBody extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class V2AddOnsSaasResourceUuidPlanPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class V2AddOnsSaasResourceUuidPlanPatchBody extends \ArrayObject
         $this->initialized['planSlug'] = true;
         $this->planSlug = $planSlug;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['planSlug' => ['plan_slug', 'getPlanSlug', 'setPlanSlug']];
     }
 }

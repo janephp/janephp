@@ -127,7 +127,7 @@ class ContentTreeNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['entries'] = $values;
         }
         $dataArray['_links'] = $data->getLinks() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getLinks(), 'json', $context));
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class FileCommitCommit extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class FileCommitCommit implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -231,5 +234,9 @@ class FileCommitCommit extends \ArrayObject
         $this->initialized['verification'] = true;
         $this->verification = $verification;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['sha' => ['sha', 'getSha', 'setSha'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'url' => ['url', 'getUrl', 'setUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'author' => ['author', 'getAuthor', 'setAuthor'], 'committer' => ['committer', 'getCommitter', 'setCommitter'], 'message' => ['message', 'getMessage', 'setMessage'], 'tree' => ['tree', 'getTree', 'setTree'], 'parents' => ['parents', 'getParents', 'setParents'], 'verification' => ['verification', 'getVerification', 'setVerification']];
     }
 }

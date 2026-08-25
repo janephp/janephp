@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class FirewallRulesInboundRulesItemSources extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class FirewallRulesInboundRulesItemSources implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -145,5 +148,9 @@ class FirewallRulesInboundRulesItemSources extends \ArrayObject
         $this->initialized['tags'] = true;
         $this->tags = $tags;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['addresses' => ['addresses', 'getAddresses', 'setAddresses'], 'dropletIds' => ['droplet_ids', 'getDropletIds', 'setDropletIds'], 'loadBalancerUids' => ['load_balancer_uids', 'getLoadBalancerUids', 'setLoadBalancerUids'], 'kubernetesIds' => ['kubernetes_ids', 'getKubernetesIds', 'setKubernetesIds'], 'tags' => ['tags', 'getTags', 'setTags']];
     }
 }

@@ -69,7 +69,7 @@ class TriggerInfoScheduledRunsNormalizer implements DenormalizerInterface, Norma
         if ($data->isInitialized('nextRunAt') && null !== $data->getNextRunAt()) {
             $dataArray['next_run_at'] = $data->getNextRunAt();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

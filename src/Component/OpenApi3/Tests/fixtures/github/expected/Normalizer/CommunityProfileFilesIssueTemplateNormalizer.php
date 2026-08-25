@@ -60,7 +60,7 @@ class CommunityProfileFilesIssueTemplateNormalizer implements DenormalizerInterf
         $dataArray = [];
         $dataArray['url'] = $data->getUrl();
         $dataArray['html_url'] = $data->getHtmlUrl();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

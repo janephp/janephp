@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsListAlertsResponse extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsListAlertsResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class AppsListAlertsResponse extends \ArrayObject
         $this->initialized['alerts'] = true;
         $this->alerts = $alerts;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['alerts' => ['alerts', 'getAlerts', 'setAlerts']];
     }
 }

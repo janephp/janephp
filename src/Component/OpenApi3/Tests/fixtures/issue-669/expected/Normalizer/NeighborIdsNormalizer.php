@@ -70,7 +70,7 @@ class NeighborIdsNormalizer implements DenormalizerInterface, NormalizerInterfac
             }
             $dataArray['neighbor_ids'] = $values;
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

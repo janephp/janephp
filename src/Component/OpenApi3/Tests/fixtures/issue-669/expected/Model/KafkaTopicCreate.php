@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class KafkaTopicCreate extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class KafkaTopicCreate implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -117,5 +120,9 @@ class KafkaTopicCreate extends \ArrayObject
         $this->initialized['config'] = true;
         $this->config = $config;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'replicationFactor' => ['replication_factor', 'getReplicationFactor', 'setReplicationFactor'], 'partitionCount' => ['partition_count', 'getPartitionCount', 'setPartitionCount'], 'config' => ['config', 'getConfig', 'setConfig']];
     }
 }

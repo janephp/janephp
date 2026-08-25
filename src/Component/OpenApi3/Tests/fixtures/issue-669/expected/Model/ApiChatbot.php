@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiChatbot extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiChatbot implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -171,5 +174,9 @@ class ApiChatbot extends \ArrayObject
         $this->initialized['startingMessage'] = true;
         $this->startingMessage = $startingMessage;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['allowedDomains' => ['allowed_domains', 'getAllowedDomains', 'setAllowedDomains'], 'buttonBackgroundColor' => ['button_background_color', 'getButtonBackgroundColor', 'setButtonBackgroundColor'], 'logo' => ['logo', 'getLogo', 'setLogo'], 'name' => ['name', 'getName', 'setName'], 'primaryColor' => ['primary_color', 'getPrimaryColor', 'setPrimaryColor'], 'secondaryColor' => ['secondary_color', 'getSecondaryColor', 'setSecondaryColor'], 'startingMessage' => ['starting_message', 'getStartingMessage', 'setStartingMessage']];
     }
 }

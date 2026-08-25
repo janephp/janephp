@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ListItemSearchRequest extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ListItemSearchRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -452,5 +455,9 @@ class ListItemSearchRequest extends \ArrayObject
         $this->initialized['aggregators'] = true;
         $this->aggregators = $aggregators;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['searchString' => ['searchString', 'getSearchString', 'setSearchString'], 'searchBehaviors' => ['searchBehaviors', 'getSearchBehaviors', 'setSearchBehaviors'], 'filter' => ['filter', 'getFilter', 'setFilter'], 'aggregationFilters' => ['aggregationFilters', 'getAggregationFilters', 'setAggregationFilters'], 'includeAllSchemaChildren' => ['includeAllSchemaChildren', 'getIncludeAllSchemaChildren', 'setIncludeAllSchemaChildren'], 'brokenDependenciesFilter' => ['brokenDependenciesFilter', 'getBrokenDependenciesFilter', 'setBrokenDependenciesFilter'], 'schemaIds' => ['schemaIds', 'getSchemaIds', 'setSchemaIds'], 'searchLanguages' => ['searchLanguages', 'getSearchLanguages', 'setSearchLanguages'], 'lifeCycleFilter' => ['lifeCycleFilter', 'getLifeCycleFilter', 'setLifeCycleFilter'], 'sort' => ['sort', 'getSort', 'setSort'], 'limit' => ['limit', 'getLimit', 'setLimit'], 'pageToken' => ['pageToken', 'getPageToken', 'setPageToken'], 'debugMode' => ['debugMode', 'getDebugMode', 'setDebugMode'], 'resolveBehaviors' => ['resolveBehaviors', 'getResolveBehaviors', 'setResolveBehaviors'], 'aggregators' => ['aggregators', 'getAggregators', 'setAggregators']];
     }
 }

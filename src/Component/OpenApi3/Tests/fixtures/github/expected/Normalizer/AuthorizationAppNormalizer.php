@@ -65,7 +65,7 @@ class AuthorizationAppNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray['client_id'] = $data->getClientId();
         $dataArray['name'] = $data->getName();
         $dataArray['url'] = $data->getUrl();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

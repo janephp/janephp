@@ -179,7 +179,7 @@ class GistFullHistoryItemUserNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('siteAdmin') && null !== $data->getSiteAdmin()) {
             $dataArray['site_admin'] = $data->getSiteAdmin();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

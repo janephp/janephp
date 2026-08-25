@@ -332,7 +332,7 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('epsInfo') && null !== $data->getEpsInfo()) {
             $dataArray['epsInfo'] = $data->getEpsInfo();
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

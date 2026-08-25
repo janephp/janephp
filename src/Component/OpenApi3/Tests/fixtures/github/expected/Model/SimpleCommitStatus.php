@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class SimpleCommitStatus extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class SimpleCommitStatus implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -253,5 +256,9 @@ class SimpleCommitStatus extends \ArrayObject
         $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['description' => ['description', 'getDescription', 'setDescription'], 'id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'state' => ['state', 'getState', 'setState'], 'context' => ['context', 'getContext', 'setContext'], 'targetUrl' => ['target_url', 'getTargetUrl', 'setTargetUrl'], 'required' => ['required', 'getRequired', 'setRequired'], 'avatarUrl' => ['avatar_url', 'getAvatarUrl', 'setAvatarUrl'], 'url' => ['url', 'getUrl', 'setUrl'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyDismissalRestrictions extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyDismissalRestrictions implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyD
         $this->initialized['teams'] = true;
         $this->teams = $teams;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['users' => ['users', 'getUsers', 'setUsers'], 'teams' => ['teams', 'getTeams', 'setTeams']];
     }
 }

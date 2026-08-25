@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class SearchResultTextMatchesItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class SearchResultTextMatchesItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class SearchResultTextMatchesItem extends \ArrayObject
         $this->initialized['matches'] = true;
         $this->matches = $matches;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['objectUrl' => ['object_url', 'getObjectUrl', 'setObjectUrl'], 'objectType' => ['object_type', 'getObjectType', 'setObjectType'], 'property' => ['property', 'getProperty', 'setProperty'], 'fragment' => ['fragment', 'getFragment', 'setFragment'], 'matches' => ['matches', 'getMatches', 'setMatches']];
     }
 }

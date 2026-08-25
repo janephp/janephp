@@ -170,7 +170,7 @@ class CheckRunNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $dataArray['check_suite'] = $data->getCheckSuite() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getCheckSuite(), 'json', $context));
         $dataArray['app'] = $data->getApp() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getApp(), 'json', $context));
         $dataArray['pull_requests'] = $data->getPullRequests();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

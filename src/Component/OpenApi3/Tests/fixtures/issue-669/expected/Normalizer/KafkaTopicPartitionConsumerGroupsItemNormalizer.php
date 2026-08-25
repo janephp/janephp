@@ -61,7 +61,7 @@ class KafkaTopicPartitionConsumerGroupsItemNormalizer implements DenormalizerInt
         if ($data->isInitialized('offset') && null !== $data->getOffset()) {
             $dataArray['offset'] = $data->getOffset();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

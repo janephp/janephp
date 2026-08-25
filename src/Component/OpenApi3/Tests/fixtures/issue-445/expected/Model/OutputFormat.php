@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class OutputFormat extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class OutputFormat implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -350,5 +353,9 @@ class OutputFormat extends \ArrayObject
         $this->initialized['temporary'] = true;
         $this->temporary = $temporary;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['sourceOutputFormats' => ['sourceOutputFormats', 'getSourceOutputFormats', 'setSourceOutputFormats'], 'format' => ['format', 'getFormat', 'setFormat'], 'names' => ['names', 'getNames', 'setNames'], 'retentionTime' => ['retentionTime', 'getRetentionTime', 'setRetentionTime'], 'downloadFileNamePatterns' => ['downloadFileNamePatterns', 'getDownloadFileNamePatterns', 'setDownloadFileNamePatterns'], 'viewForAll' => ['viewForAll', 'getViewForAll', 'setViewForAll'], 'enableXmpWriteback' => ['enableXmpWriteback', 'getEnableXmpWriteback', 'setEnableXmpWriteback'], 'id' => ['id', 'getId', 'setId'], 'system' => ['system', 'getSystem', 'setSystem'], 'dynamic' => ['dynamic', 'getDynamic', 'setDynamic'], 'dataExtraction' => ['dataExtraction', 'getDataExtraction', 'setDataExtraction'], 'temporary' => ['temporary', 'getTemporary', 'setTemporary']];
     }
 }

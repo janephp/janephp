@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ProjectsColumnsCardsCardIdMovesPostResponse403ErrorsItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ProjectsColumnsCardsCardIdMovesPostResponse403ErrorsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class ProjectsColumnsCardsCardIdMovesPostResponse403ErrorsItem extends \ArrayObj
         $this->initialized['field'] = true;
         $this->field = $field;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['code' => ['code', 'getCode', 'setCode'], 'message' => ['message', 'getMessage', 'setMessage'], 'resource' => ['resource', 'getResource', 'setResource'], 'field' => ['field', 'getField', 'setField']];
     }
 }

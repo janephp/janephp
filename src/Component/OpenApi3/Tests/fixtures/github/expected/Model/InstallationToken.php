@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class InstallationToken extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class InstallationToken implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -143,5 +146,9 @@ class InstallationToken extends \ArrayObject
         $this->initialized['singleFile'] = true;
         $this->singleFile = $singleFile;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['token' => ['token', 'getToken', 'setToken'], 'expiresAt' => ['expires_at', 'getExpiresAt', 'setExpiresAt'], 'permissions' => ['permissions', 'getPermissions', 'setPermissions'], 'repositorySelection' => ['repository_selection', 'getRepositorySelection', 'setRepositorySelection'], 'repositories' => ['repositories', 'getRepositories', 'setRepositories'], 'singleFile' => ['single_file', 'getSingleFile', 'setSingleFile']];
     }
 }

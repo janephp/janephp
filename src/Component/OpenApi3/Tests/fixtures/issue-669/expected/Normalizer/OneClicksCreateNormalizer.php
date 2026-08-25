@@ -65,7 +65,7 @@ class OneClicksCreateNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $dataArray['addon_slugs'] = $values;
         $dataArray['cluster_uuid'] = $data->getClusterUuid();
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

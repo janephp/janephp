@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class FileTransferDetail extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class FileTransferDetail implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -297,5 +300,9 @@ class FileTransferDetail extends \ArrayObject
         $this->initialized['outputItems'] = true;
         $this->outputItems = $outputItems;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'identifier' => ['identifier', 'getIdentifier', 'setIdentifier'], 'requestId' => ['requestId', 'getRequestId', 'setRequestId'], 'transferId' => ['transferId', 'getTransferId', 'setTransferId'], 'state' => ['state', 'getState', 'setState'], 'contentId' => ['contentId', 'getContentId', 'setContentId'], 'audit' => ['audit', 'getAudit', 'setAudit'], 'fileMetadata' => ['fileMetadata', 'getFileMetadata', 'setFileMetadata'], 'outputItems' => ['outputItems', 'getOutputItems', 'setOutputItems']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\ExpectedIssue793\Model;
 
-class FilePostBody extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\ExpectedIssue793\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\ExpectedIssue793\Runtime\AdditionalPropertiesInterface;
+class FilePostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class FilePostBody extends \ArrayObject
         $this->initialized['fileNullable'] = true;
         $this->fileNullable = $fileNullable;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['file' => ['file', 'getFile', 'setFile'], 'description' => ['description', 'getDescription', 'setDescription'], 'fileNullable' => ['fileNullable', 'getFileNullable', 'setFileNullable']];
     }
 }

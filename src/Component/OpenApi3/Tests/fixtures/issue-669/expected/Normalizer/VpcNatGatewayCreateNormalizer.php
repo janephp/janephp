@@ -101,7 +101,7 @@ class VpcNatGatewayCreateNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('tcpTimeoutSeconds') && null !== $data->getTcpTimeoutSeconds()) {
             $dataArray['tcp_timeout_seconds'] = $data->getTcpTimeoutSeconds();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

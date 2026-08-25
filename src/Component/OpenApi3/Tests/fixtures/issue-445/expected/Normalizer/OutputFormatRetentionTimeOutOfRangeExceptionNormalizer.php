@@ -187,7 +187,7 @@ class OutputFormatRetentionTimeOutOfRangeExceptionNormalizer implements Denormal
         if ($data->isInitialized('outputFormatId') && null !== $data->getOutputFormatId()) {
             $dataArray['outputFormatId'] = $data->getOutputFormatId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

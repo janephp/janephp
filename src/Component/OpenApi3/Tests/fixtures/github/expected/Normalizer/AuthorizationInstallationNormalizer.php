@@ -91,7 +91,7 @@ class AuthorizationInstallationNormalizer implements DenormalizerInterface, Norm
         $dataArray['single_file_name'] = $data->getSingleFileName();
         $dataArray['repositories_url'] = $data->getRepositoriesUrl();
         $dataArray['account'] = $data->getAccount() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getAccount(), 'json', $context));
-        foreach ($data as $key_1 => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_1;
             }

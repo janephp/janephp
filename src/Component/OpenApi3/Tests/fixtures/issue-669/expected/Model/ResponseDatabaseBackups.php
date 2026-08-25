@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseDatabaseBackups extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseDatabaseBackups implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -83,5 +86,9 @@ class ResponseDatabaseBackups extends \ArrayObject
         $this->initialized['backupProgress'] = true;
         $this->backupProgress = $backupProgress;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['backups' => ['backups', 'getBackups', 'setBackups'], 'scheduledBackupTime' => ['scheduled_backup_time', 'getScheduledBackupTime', 'setScheduledBackupTime'], 'backupProgress' => ['backup_progress', 'getBackupProgress', 'setBackupProgress']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class TeamFull extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class TeamFull implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -449,5 +452,9 @@ class TeamFull extends \ArrayObject
         $this->initialized['ldapDn'] = true;
         $this->ldapDn = $ldapDn;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'url' => ['url', 'getUrl', 'setUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'name' => ['name', 'getName', 'setName'], 'slug' => ['slug', 'getSlug', 'setSlug'], 'description' => ['description', 'getDescription', 'setDescription'], 'privacy' => ['privacy', 'getPrivacy', 'setPrivacy'], 'permission' => ['permission', 'getPermission', 'setPermission'], 'membersUrl' => ['members_url', 'getMembersUrl', 'setMembersUrl'], 'repositoriesUrl' => ['repositories_url', 'getRepositoriesUrl', 'setRepositoriesUrl'], 'parent' => ['parent', 'getParent', 'setParent'], 'membersCount' => ['members_count', 'getMembersCount', 'setMembersCount'], 'reposCount' => ['repos_count', 'getReposCount', 'setReposCount'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'organization' => ['organization', 'getOrganization', 'setOrganization'], 'ldapDn' => ['ldap_dn', 'getLdapDn', 'setLdapDn']];
     }
 }

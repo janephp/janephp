@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class VideoSpriteFormat extends FormatBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class VideoSpriteFormat extends FormatBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -117,5 +120,9 @@ class VideoSpriteFormat extends FormatBase
         $this->initialized['extension'] = true;
         $this->extension = $extension;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['spriteResizeAction' => ['spriteResizeAction', 'getSpriteResizeAction', 'setSpriteResizeAction'], 'maxNumberOfSprites' => ['maxNumberOfSprites', 'getMaxNumberOfSprites', 'setMaxNumberOfSprites'], 'quality' => ['quality', 'getQuality', 'setQuality'], 'extension' => ['extension', 'getExtension', 'setExtension']];
     }
 }

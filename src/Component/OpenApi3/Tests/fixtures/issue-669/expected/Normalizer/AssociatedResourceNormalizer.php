@@ -68,7 +68,7 @@ class AssociatedResourceNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('cost') && null !== $data->getCost()) {
             $dataArray['cost'] = $data->getCost();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

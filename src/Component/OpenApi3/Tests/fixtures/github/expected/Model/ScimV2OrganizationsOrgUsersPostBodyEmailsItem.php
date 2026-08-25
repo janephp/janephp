@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ScimV2OrganizationsOrgUsersPostBodyEmailsItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ScimV2OrganizationsOrgUsersPostBodyEmailsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class ScimV2OrganizationsOrgUsersPostBodyEmailsItem extends \ArrayObject
         $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['value' => ['value', 'getValue', 'setValue'], 'primary' => ['primary', 'getPrimary', 'setPrimary'], 'type' => ['type', 'getType', 'setType']];
     }
 }

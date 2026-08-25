@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody extends \ArrayOb
         $this->initialized['teamReviewers'] = true;
         $this->teamReviewers = $teamReviewers;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['reviewers' => ['reviewers', 'getReviewers', 'setReviewers'], 'teamReviewers' => ['team_reviewers', 'getTeamReviewers', 'setTeamReviewers']];
     }
 }

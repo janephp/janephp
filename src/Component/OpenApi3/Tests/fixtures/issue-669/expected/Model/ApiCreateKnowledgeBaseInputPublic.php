@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiCreateKnowledgeBaseInputPublic extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiCreateKnowledgeBaseInputPublic implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -241,5 +244,9 @@ class ApiCreateKnowledgeBaseInputPublic extends \ArrayObject
         $this->initialized['vpcUuid'] = true;
         $this->vpcUuid = $vpcUuid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['databaseId' => ['database_id', 'getDatabaseId', 'setDatabaseId'], 'datasources' => ['datasources', 'getDatasources', 'setDatasources'], 'embeddingModelUuid' => ['embedding_model_uuid', 'getEmbeddingModelUuid', 'setEmbeddingModelUuid'], 'name' => ['name', 'getName', 'setName'], 'projectId' => ['project_id', 'getProjectId', 'setProjectId'], 'region' => ['region', 'getRegion', 'setRegion'], 'tags' => ['tags', 'getTags', 'setTags'], 'vpcUuid' => ['vpc_uuid', 'getVpcUuid', 'setVpcUuid']];
     }
 }

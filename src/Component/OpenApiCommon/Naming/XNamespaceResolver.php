@@ -33,14 +33,15 @@ class XNamespaceResolver
 
     /**
      * Reads the extension from a parsed specification object. Parsed OpenAPI
-     * models keep specification extensions (keys matching "^x-") in their
-     * \ArrayObject storage, so anything else is reported as absent.
+     * models keep specification extensions (keys matching "^x-") in their array
+     * access storage (\ArrayObject or the extensions runtime trait), so anything
+     * else is reported as absent.
      *
      * @return string[] Sanitized namespace segments, empty when the attribute is absent or invalid
      */
     public function resolveFromObject(object $object): array
     {
-        if (!$object instanceof \ArrayObject) {
+        if (!$object instanceof \ArrayAccess) {
             return [];
         }
 

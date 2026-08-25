@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoActionsSecretsSecretNamePutBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoActionsSecretsSecretNamePutBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ReposOwnerRepoActionsSecretsSecretNamePutBody extends \ArrayObject
         $this->initialized['keyId'] = true;
         $this->keyId = $keyId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['encryptedValue' => ['encrypted_value', 'getEncryptedValue', 'setEncryptedValue'], 'keyId' => ['key_id', 'getKeyId', 'setKeyId']];
     }
 }

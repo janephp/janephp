@@ -60,7 +60,7 @@ class OutputFormatSetXmpWritebackStateRequestItemNormalizer implements Denormali
         $dataArray = [];
         $dataArray['enabled'] = $data->getEnabled();
         $dataArray['id'] = $data->getId();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

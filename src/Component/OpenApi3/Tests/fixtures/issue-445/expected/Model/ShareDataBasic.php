@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ShareDataBasic extends ShareDataBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ShareDataBasic extends ShareDataBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class ShareDataBasic extends ShareDataBase
         $this->initialized['languageCode'] = true;
         $this->languageCode = $languageCode;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['mailRecipients' => ['mailRecipients', 'getMailRecipients', 'setMailRecipients'], 'internalRecipients' => ['internalRecipients', 'getInternalRecipients', 'setInternalRecipients'], 'languageCode' => ['languageCode', 'getLanguageCode', 'setLanguageCode']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppIngressSpecRuleStringMatchPrefix extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppIngressSpecRuleStringMatchPrefix implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class AppIngressSpecRuleStringMatchPrefix extends \ArrayObject
         $this->initialized['prefix'] = true;
         $this->prefix = $prefix;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['prefix' => ['prefix', 'getPrefix', 'setPrefix']];
     }
 }

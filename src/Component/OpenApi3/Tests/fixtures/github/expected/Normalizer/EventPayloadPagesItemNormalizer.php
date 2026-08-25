@@ -96,7 +96,7 @@ class EventPayloadPagesItemNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('htmlUrl') && null !== $data->getHtmlUrl()) {
             $dataArray['html_url'] = $data->getHtmlUrl();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

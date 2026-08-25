@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrganizationPlan extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrganizationPlan implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class OrganizationPlan extends \ArrayObject
         $this->initialized['seats'] = true;
         $this->seats = $seats;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'space' => ['space', 'getSpace', 'setSpace'], 'privateRepos' => ['private_repos', 'getPrivateRepos', 'setPrivateRepos'], 'filledSeats' => ['filled_seats', 'getFilledSeats', 'setFilledSeats'], 'seats' => ['seats', 'getSeats', 'setSeats']];
     }
 }

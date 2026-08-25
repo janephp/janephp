@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class PullRequestSimpleHead extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class PullRequestSimpleHead implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -127,5 +130,9 @@ class PullRequestSimpleHead extends \ArrayObject
         $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['label' => ['label', 'getLabel', 'setLabel'], 'ref' => ['ref', 'getRef', 'setRef'], 'repo' => ['repo', 'getRepo', 'setRepo'], 'sha' => ['sha', 'getSha', 'setSha'], 'user' => ['user', 'getUser', 'setUser']];
     }
 }

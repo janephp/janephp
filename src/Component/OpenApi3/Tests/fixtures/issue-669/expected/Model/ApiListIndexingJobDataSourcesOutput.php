@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiListIndexingJobDataSourcesOutput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiListIndexingJobDataSourcesOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ApiListIndexingJobDataSourcesOutput extends \ArrayObject
         $this->initialized['indexedDataSources'] = true;
         $this->indexedDataSources = $indexedDataSources;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['indexedDataSources' => ['indexed_data_sources', 'getIndexedDataSources', 'setIndexedDataSources']];
     }
 }

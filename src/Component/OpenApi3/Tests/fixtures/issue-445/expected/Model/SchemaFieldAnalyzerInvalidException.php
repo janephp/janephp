@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaFieldAnalyzerInvalidException extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class SchemaFieldAnalyzerInvalidException implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -297,5 +300,9 @@ class SchemaFieldAnalyzerInvalidException extends \ArrayObject
         $this->initialized['allowedAnalyzers'] = true;
         $this->allowedAnalyzers = $allowedAnalyzers;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['traceLevel' => ['traceLevel', 'getTraceLevel', 'setTraceLevel'], 'traceId' => ['traceId', 'getTraceId', 'setTraceId'], 'traceJobId' => ['traceJobId', 'getTraceJobId', 'setTraceJobId'], 'httpStatusCode' => ['httpStatusCode', 'getHttpStatusCode', 'setHttpStatusCode'], 'exceptionMessage' => ['exceptionMessage', 'getExceptionMessage', 'setExceptionMessage'], 'kind' => ['kind', 'getKind', 'setKind'], 'customerId' => ['customerId', 'getCustomerId', 'setCustomerId'], 'customerAlias' => ['customerAlias', 'getCustomerAlias', 'setCustomerAlias'], 'userId' => ['userId', 'getUserId', 'setUserId'], 'fieldId' => ['fieldId', 'getFieldId', 'setFieldId'], 'schemaId' => ['schemaId', 'getSchemaId', 'setSchemaId'], 'analyzers' => ['analyzers', 'getAnalyzers', 'setAnalyzers'], 'allowedAnalyzers' => ['allowedAnalyzers', 'getAllowedAnalyzers', 'setAllowedAnalyzers']];
     }
 }

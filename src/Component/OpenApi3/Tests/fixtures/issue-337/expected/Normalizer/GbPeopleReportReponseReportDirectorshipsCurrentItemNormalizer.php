@@ -131,7 +131,7 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemNormalizer implements D
         if ($data->isInitialized('legalAmount') && null !== $data->getLegalAmount()) {
             $dataArray['legalAmount'] = $data->getLegalAmount() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getLegalAmount(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

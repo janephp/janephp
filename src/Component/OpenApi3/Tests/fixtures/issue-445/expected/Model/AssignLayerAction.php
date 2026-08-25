@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class AssignLayerAction extends BusinessRuleAction
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class AssignLayerAction extends BusinessRuleAction implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class AssignLayerAction extends BusinessRuleAction
         $this->initialized['defaultValues'] = true;
         $this->defaultValues = $defaultValues;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['layerId' => ['layerId', 'getLayerId', 'setLayerId'], 'defaultValues' => ['defaultValues', 'getDefaultValues', 'setDefaultValues']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DatabaseBackup extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DatabaseBackup implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class DatabaseBackup extends \ArrayObject
         $this->initialized['backupCreatedAt'] = true;
         $this->backupCreatedAt = $backupCreatedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['databaseName' => ['database_name', 'getDatabaseName', 'setDatabaseName'], 'backupCreatedAt' => ['backup_created_at', 'getBackupCreatedAt', 'setBackupCreatedAt']];
     }
 }

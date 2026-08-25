@@ -85,7 +85,7 @@ class MemberNormalizer implements DenormalizerInterface, NormalizerInterface, De
         $dataArray['health_status'] = $data->getHealthStatus();
         $dataArray['status'] = $data->getStatus();
         $dataArray['current_utilization'] = $data->getCurrentUtilization() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getCurrentUtilization(), 'json', $context));
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

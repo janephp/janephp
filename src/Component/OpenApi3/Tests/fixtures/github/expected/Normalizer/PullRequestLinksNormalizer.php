@@ -90,7 +90,7 @@ class PullRequestLinksNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray['review_comments'] = $data->getReviewComments() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getReviewComments(), 'json', $context));
         $dataArray['review_comment'] = $data->getReviewComment() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getReviewComment(), 'json', $context));
         $dataArray['self'] = $data->getSelf() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getSelf(), 'json', $context));
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

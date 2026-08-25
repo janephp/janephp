@@ -40,4 +40,8 @@ class CatInSnakeCase extends Pet
         $this->huntingSkill = $huntingSkill;
         return $this;
     }
+    public function definedProperties(): array
+    {
+        return array_merge(parent::definedProperties(), ['huntingSkill' => ['huntingSkill', 'getHuntingSkill', 'setHuntingSkill']]);
+    }
 }

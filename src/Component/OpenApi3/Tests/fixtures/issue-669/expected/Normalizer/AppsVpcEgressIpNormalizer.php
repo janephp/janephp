@@ -54,7 +54,7 @@ class AppsVpcEgressIpNormalizer implements DenormalizerInterface, NormalizerInte
         if ($data->isInitialized('ip') && null !== $data->getIp()) {
             $dataArray['ip'] = $data->getIp();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

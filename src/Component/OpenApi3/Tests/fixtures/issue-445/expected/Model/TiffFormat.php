@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class TiffFormat extends FormatBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class TiffFormat extends FormatBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -313,5 +316,9 @@ class TiffFormat extends FormatBase
         $this->initialized['extension'] = true;
         $this->extension = $extension;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['colorProfile' => ['colorProfile', 'getColorProfile', 'setColorProfile'], 'colorTransformationIntent' => ['colorTransformationIntent', 'getColorTransformationIntent', 'setColorTransformationIntent'], 'horizontalResolution' => ['horizontalResolution', 'getHorizontalResolution', 'setHorizontalResolution'], 'verticalResolution' => ['verticalResolution', 'getVerticalResolution', 'setVerticalResolution'], 'keepClippingPath' => ['keepClippingPath', 'getKeepClippingPath', 'setKeepClippingPath'], 'resizeAction' => ['resizeAction', 'getResizeAction', 'setResizeAction'], 'actions' => ['actions', 'getActions', 'setActions'], 'alphaPremultiplied' => ['alphaPremultiplied', 'getAlphaPremultiplied', 'setAlphaPremultiplied'], 'compressionType' => ['compressionType', 'getCompressionType', 'setCompressionType'], 'includeUnspecifiedTiffExtraChannels' => ['includeUnspecifiedTiffExtraChannels', 'getIncludeUnspecifiedTiffExtraChannels', 'setIncludeUnspecifiedTiffExtraChannels'], 'extension' => ['extension', 'getExtension', 'setExtension']];
     }
 }

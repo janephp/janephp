@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppServiceSpecHealthCheck extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppServiceSpecHealthCheck implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -207,5 +210,9 @@ class AppServiceSpecHealthCheck extends \ArrayObject
         $this->initialized['timeoutSeconds'] = true;
         $this->timeoutSeconds = $timeoutSeconds;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['failureThreshold' => ['failure_threshold', 'getFailureThreshold', 'setFailureThreshold'], 'port' => ['port', 'getPort', 'setPort'], 'httpPath' => ['http_path', 'getHttpPath', 'setHttpPath'], 'initialDelaySeconds' => ['initial_delay_seconds', 'getInitialDelaySeconds', 'setInitialDelaySeconds'], 'periodSeconds' => ['period_seconds', 'getPeriodSeconds', 'setPeriodSeconds'], 'successThreshold' => ['success_threshold', 'getSuccessThreshold', 'setSuccessThreshold'], 'timeoutSeconds' => ['timeout_seconds', 'getTimeoutSeconds', 'setTimeoutSeconds']];
     }
 }

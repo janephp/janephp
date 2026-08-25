@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class Video extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class Video implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -161,5 +164,9 @@ class Video extends \ArrayObject
         $this->initialized['width'] = true;
         $this->width = $width;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'previewImageUrl' => ['preview_image_url', 'getPreviewImageUrl', 'setPreviewImageUrl'], 'durationMs' => ['duration_ms', 'getDurationMs', 'setDurationMs'], 'mediaKey' => ['media_key', 'getMediaKey', 'setMediaKey'], 'height' => ['height', 'getHeight', 'setHeight'], 'width' => ['width', 'getWidth', 'setWidth']];
     }
 }

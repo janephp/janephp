@@ -75,7 +75,7 @@ class GbCompanyReportExampleResponseReportContactInformationOtherAddressesItemNo
         if ($data->isInitialized('telephone') && null !== $data->getTelephone()) {
             $dataArray['telephone'] = $data->getTelephone();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

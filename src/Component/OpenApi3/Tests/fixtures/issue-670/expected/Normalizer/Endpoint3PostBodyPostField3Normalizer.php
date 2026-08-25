@@ -54,7 +54,7 @@ class Endpoint3PostBodyPostField3Normalizer implements DenormalizerInterface, No
         if ($data->isInitialized('postSubField3') && null !== $data->getPostSubField3()) {
             $dataArray['post-sub-field-3'] = $data->getPostSubField3();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

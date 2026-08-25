@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Import extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Import implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -523,5 +526,9 @@ class Import extends \ArrayObject
         $this->initialized['svnRoot'] = true;
         $this->svnRoot = $svnRoot;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['vcs' => ['vcs', 'getVcs', 'setVcs'], 'useLfs' => ['use_lfs', 'getUseLfs', 'setUseLfs'], 'vcsUrl' => ['vcs_url', 'getVcsUrl', 'setVcsUrl'], 'svcRoot' => ['svc_root', 'getSvcRoot', 'setSvcRoot'], 'tfvcProject' => ['tfvc_project', 'getTfvcProject', 'setTfvcProject'], 'status' => ['status', 'getStatus', 'setStatus'], 'statusText' => ['status_text', 'getStatusText', 'setStatusText'], 'failedStep' => ['failed_step', 'getFailedStep', 'setFailedStep'], 'errorMessage' => ['error_message', 'getErrorMessage', 'setErrorMessage'], 'importPercent' => ['import_percent', 'getImportPercent', 'setImportPercent'], 'commitCount' => ['commit_count', 'getCommitCount', 'setCommitCount'], 'pushPercent' => ['push_percent', 'getPushPercent', 'setPushPercent'], 'hasLargeFiles' => ['has_large_files', 'getHasLargeFiles', 'setHasLargeFiles'], 'largeFilesSize' => ['large_files_size', 'getLargeFilesSize', 'setLargeFilesSize'], 'largeFilesCount' => ['large_files_count', 'getLargeFilesCount', 'setLargeFilesCount'], 'projectChoices' => ['project_choices', 'getProjectChoices', 'setProjectChoices'], 'message' => ['message', 'getMessage', 'setMessage'], 'authorsCount' => ['authors_count', 'getAuthorsCount', 'setAuthorsCount'], 'url' => ['url', 'getUrl', 'setUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'authorsUrl' => ['authors_url', 'getAuthorsUrl', 'setAuthorsUrl'], 'repositoryUrl' => ['repository_url', 'getRepositoryUrl', 'setRepositoryUrl'], 'svnRoot' => ['svn_root', 'getSvnRoot', 'setSvnRoot']];
     }
 }

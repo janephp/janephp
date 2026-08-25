@@ -2,8 +2,11 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class ParchmentsGetLdjsonResponse200HydraView extends \ArrayObject
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
+class ParchmentsGetLdjsonResponse200HydraView implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -143,5 +146,9 @@ class ParchmentsGetLdjsonResponse200HydraView extends \ArrayObject
         $this->initialized['hydraNext'] = true;
         $this->hydraNext = $hydraNext;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['@id', 'getId', 'setId'], 'type' => ['@type', 'getType', 'setType'], 'hydraFirst' => ['hydra:first', 'getHydraFirst', 'setHydraFirst'], 'hydraLast' => ['hydra:last', 'getHydraLast', 'setHydraLast'], 'hydraPrevious' => ['hydra:previous', 'getHydraPrevious', 'setHydraPrevious'], 'hydraNext' => ['hydra:next', 'getHydraNext', 'setHydraNext']];
     }
 }

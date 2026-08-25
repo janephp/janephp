@@ -10,6 +10,7 @@ use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\JsonSchema\Guesser\Guess\NonObjectGuessInterface;
 use Jane\Component\JsonSchema\Guesser\Guess\Property;
 use Jane\Component\JsonSchema\Registry\Schema;
+use PhpParser\Node;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 use PhpParser\Parser;
@@ -66,9 +67,9 @@ class ModelGenerator implements GeneratorInterface
                 $methods = array_merge($methods, $this->doCreateClassMethods($class, $property, $namespace, $context->isStrict()));
             }
 
-            $model = $this->doCreateModel($class, $properties, $methods);
+            [$model, $useStmts] = $this->doCreateModel($schema, $class, $properties, $methods);
 
-            $namespaceStmt = new Stmt\Namespace_(new Name($namespace), [$model]);
+            $namespaceStmt = new Stmt\Namespace_(new Name($namespace), array_merge($useStmts, [$model]));
             $schema->addFile(new File($this->naming->getArtifactPath($schema->getDirectory(), 'Model', $subNamespace) . '/' . $class->getName() . '.php', $namespaceStmt, self::FILE_TYPE_MODEL));
         }
     }
@@ -82,14 +83,63 @@ class ModelGenerator implements GeneratorInterface
         return $methods;
     }
 
-    protected function doCreateModel(ClassGuess $class, array $properties, array $methods): Stmt\Class_
+    /**
+     * Create a model class for the given class guess.
+     *
+     * @param Node[] $properties
+     * @param Node[] $methods
+     *
+     * @return array{0: Stmt\Class_, 1: array<Stmt\Use_>} The model class and the use statements to prepend in its namespace
+     */
+    protected function doCreateModel(Schema $schema, ClassGuess $class, array $properties, array $methods): array
     {
-        return $this->createModel(
-            $class->getName(),
-            $properties,
-            $methods,
-            \count($class->getExtensionsType()) > 0,
-            $class->isDeprecated()
-        );
+        $hasExtensions = \count($class->getExtensionsType()) > 0;
+
+        $runtimeTraitFqcn = null;
+        $runtimeInterfaceFqcn = null;
+        $useStmts = [];
+
+        if ($hasExtensions) {
+            $runtimeTraitFqcn = $this->naming->getRuntimeClassFQCN($schema->getNamespace(), [], 'AdditionalAndPatternProperties');
+            $runtimeInterfaceFqcn = $this->naming->getRuntimeClassFQCN($schema->getNamespace(), [], 'AdditionalPropertiesInterface');
+            $useStmts = [
+                new Stmt\Use_([new Stmt\UseUse(new Name($runtimeTraitFqcn))]),
+                new Stmt\Use_([new Stmt\UseUse(new Name($runtimeInterfaceFqcn))]),
+            ];
+        }
+
+        return [
+            $this->createModel(
+                $class->getName(),
+                $properties,
+                $methods,
+                $hasExtensions,
+                $class->isDeprecated(),
+                runtimeTraitFqcn: $runtimeTraitFqcn,
+                runtimeInterfaceFqcn: $runtimeInterfaceFqcn,
+                definedProperties: $hasExtensions ? $this->createDefinedPropertiesMap($class) : [],
+            ),
+            $useStmts,
+        ];
+    }
+
+    /**
+     * Map of PHP property name => [wire name, getter method name, setter method name] for the properties declared by this class.
+     *
+     * @return array<string, array{0: string, 1: string, 2: string}>
+     */
+    protected function createDefinedPropertiesMap(ClassGuess $class): array
+    {
+        $map = [];
+
+        foreach ($class->getLocalProperties() as $property) {
+            $map[$property->getPhpName()] = [
+                $property->getName(),
+                $this->getNaming()->getPrefixedMethodName('get', $property->getAccessorName()),
+                $this->getNaming()->getPrefixedMethodName('set', $property->getAccessorName()),
+            ];
+        }
+
+        return $map;
     }
 }

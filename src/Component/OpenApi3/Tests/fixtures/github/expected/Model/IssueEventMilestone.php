@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class IssueEventMilestone extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class IssueEventMilestone implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class IssueEventMilestone extends \ArrayObject
         $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['title' => ['title', 'getTitle', 'setTitle']];
     }
 }

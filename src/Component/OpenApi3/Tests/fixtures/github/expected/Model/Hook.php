@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Hook extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Hook implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -299,5 +302,9 @@ class Hook extends \ArrayObject
         $this->initialized['lastResponse'] = true;
         $this->lastResponse = $lastResponse;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'active' => ['active', 'getActive', 'setActive'], 'events' => ['events', 'getEvents', 'setEvents'], 'config' => ['config', 'getConfig', 'setConfig'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'url' => ['url', 'getUrl', 'setUrl'], 'testUrl' => ['test_url', 'getTestUrl', 'setTestUrl'], 'pingUrl' => ['ping_url', 'getPingUrl', 'setPingUrl'], 'lastResponse' => ['last_response', 'getLastResponse', 'setLastResponse']];
     }
 }

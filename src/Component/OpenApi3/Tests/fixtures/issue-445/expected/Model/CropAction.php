@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class CropAction extends ImageActionBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class CropAction extends ImageActionBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class CropAction extends ImageActionBase
         $this->initialized['height'] = true;
         $this->height = $height;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['x' => ['x', 'getX', 'setX'], 'y' => ['y', 'getY', 'setY'], 'width' => ['width', 'getWidth', 'setWidth'], 'height' => ['height', 'getHeight', 'setHeight']];
     }
 }

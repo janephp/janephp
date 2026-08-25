@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DropletBackupPolicyRecordNextBackupWindow extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DropletBackupPolicyRecordNextBackupWindow implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class DropletBackupPolicyRecordNextBackupWindow extends \ArrayObject
         $this->initialized['end'] = true;
         $this->end = $end;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['start' => ['start', 'getStart', 'setStart'], 'end' => ['end', 'getEnd', 'setEnd']];
     }
 }

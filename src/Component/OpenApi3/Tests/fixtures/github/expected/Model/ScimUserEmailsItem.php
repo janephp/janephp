@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ScimUserEmailsItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ScimUserEmailsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class ScimUserEmailsItem extends \ArrayObject
         $this->initialized['primary'] = true;
         $this->primary = $primary;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['value' => ['value', 'getValue', 'setValue'], 'primary' => ['primary', 'getPrimary', 'setPrimary']];
     }
 }

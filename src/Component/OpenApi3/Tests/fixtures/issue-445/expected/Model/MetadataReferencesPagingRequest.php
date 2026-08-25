@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class MetadataReferencesPagingRequest extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class MetadataReferencesPagingRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class MetadataReferencesPagingRequest extends \ArrayObject
         $this->initialized['fetchReferencedByRestrictedItem'] = true;
         $this->fetchReferencedByRestrictedItem = $fetchReferencedByRestrictedItem;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['limit' => ['limit', 'getLimit', 'setLimit'], 'pageToken' => ['pageToken', 'getPageToken', 'setPageToken'], 'fetchReferencedByRestrictedItem' => ['fetchReferencedByRestrictedItem', 'getFetchReferencedByRestrictedItem', 'setFetchReferencedByRestrictedItem']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class CdnPurgeJobByUri extends CdnPurgeJobBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class CdnPurgeJobByUri extends CdnPurgeJobBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class CdnPurgeJobByUri extends CdnPurgeJobBase
         $this->initialized['uri'] = true;
         $this->uri = $uri;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['uri' => ['uri', 'getUri', 'setUri']];
     }
 }

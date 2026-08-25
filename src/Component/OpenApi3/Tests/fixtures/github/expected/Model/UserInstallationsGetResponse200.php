@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class UserInstallationsGetResponse200 extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class UserInstallationsGetResponse200 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class UserInstallationsGetResponse200 extends \ArrayObject
         $this->initialized['installations'] = true;
         $this->installations = $installations;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['totalCount' => ['total_count', 'getTotalCount', 'setTotalCount'], 'installations' => ['installations', 'getInstallations', 'setInstallations']];
     }
 }

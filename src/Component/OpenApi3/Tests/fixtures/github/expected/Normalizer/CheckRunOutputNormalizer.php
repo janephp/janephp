@@ -87,7 +87,7 @@ class CheckRunOutputNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray['text'] = $data->getText();
         $dataArray['annotations_count'] = $data->getAnnotationsCount();
         $dataArray['annotations_url'] = $data->getAnnotationsUrl();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

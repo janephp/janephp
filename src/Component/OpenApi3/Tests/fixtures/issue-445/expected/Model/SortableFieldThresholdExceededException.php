@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class SortableFieldThresholdExceededException extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class SortableFieldThresholdExceededException implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -275,5 +278,9 @@ class SortableFieldThresholdExceededException extends \ArrayObject
         $this->initialized['sortableFieldThreshold'] = true;
         $this->sortableFieldThreshold = $sortableFieldThreshold;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['traceLevel' => ['traceLevel', 'getTraceLevel', 'setTraceLevel'], 'traceId' => ['traceId', 'getTraceId', 'setTraceId'], 'traceJobId' => ['traceJobId', 'getTraceJobId', 'setTraceJobId'], 'httpStatusCode' => ['httpStatusCode', 'getHttpStatusCode', 'setHttpStatusCode'], 'exceptionMessage' => ['exceptionMessage', 'getExceptionMessage', 'setExceptionMessage'], 'kind' => ['kind', 'getKind', 'setKind'], 'customerId' => ['customerId', 'getCustomerId', 'setCustomerId'], 'customerAlias' => ['customerAlias', 'getCustomerAlias', 'setCustomerAlias'], 'userId' => ['userId', 'getUserId', 'setUserId'], 'schemaIds' => ['schemaIds', 'getSchemaIds', 'setSchemaIds'], 'sortableFieldCount' => ['sortableFieldCount', 'getSortableFieldCount', 'setSortableFieldCount'], 'sortableFieldThreshold' => ['sortableFieldThreshold', 'getSortableFieldThreshold', 'setSortableFieldThreshold']];
     }
 }

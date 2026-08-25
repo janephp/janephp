@@ -69,7 +69,7 @@ class CommitSearchResultItemCommitAuthorNormalizer implements DenormalizerInterf
         $dataArray['name'] = $data->getName();
         $dataArray['email'] = $data->getEmail();
         $dataArray['date'] = $data->getDate()->format('Y-m-d\TH:i:sP');
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

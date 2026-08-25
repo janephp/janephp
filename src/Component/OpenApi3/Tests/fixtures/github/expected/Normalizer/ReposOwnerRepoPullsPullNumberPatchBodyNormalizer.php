@@ -88,7 +88,7 @@ class ReposOwnerRepoPullsPullNumberPatchBodyNormalizer implements DenormalizerIn
         if ($data->isInitialized('maintainerCanModify') && null !== $data->getMaintainerCanModify()) {
             $dataArray['maintainer_can_modify'] = $data->getMaintainerCanModify();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

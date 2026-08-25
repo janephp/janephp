@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class VolumeFull extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class VolumeFull implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -285,5 +288,9 @@ class VolumeFull extends \ArrayObject
         $this->initialized['filesystemLabel'] = true;
         $this->filesystemLabel = $filesystemLabel;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'dropletIds' => ['droplet_ids', 'getDropletIds', 'setDropletIds'], 'name' => ['name', 'getName', 'setName'], 'description' => ['description', 'getDescription', 'setDescription'], 'sizeGigabytes' => ['size_gigabytes', 'getSizeGigabytes', 'setSizeGigabytes'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'tags' => ['tags', 'getTags', 'setTags'], 'region' => ['region', 'getRegion', 'setRegion'], 'filesystemType' => ['filesystem_type', 'getFilesystemType', 'setFilesystemType'], 'filesystemLabel' => ['filesystem_label', 'getFilesystemLabel', 'setFilesystemLabel']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPullsPullNumberPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoPullsPullNumberPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class ReposOwnerRepoPullsPullNumberPatchBody extends \ArrayObject
         $this->initialized['maintainerCanModify'] = true;
         $this->maintainerCanModify = $maintainerCanModify;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['title' => ['title', 'getTitle', 'setTitle'], 'body' => ['body', 'getBody', 'setBody'], 'state' => ['state', 'getState', 'setState'], 'base' => ['base', 'getBase', 'setBase'], 'maintainerCanModify' => ['maintainer_can_modify', 'getMaintainerCanModify', 'setMaintainerCanModify']];
     }
 }

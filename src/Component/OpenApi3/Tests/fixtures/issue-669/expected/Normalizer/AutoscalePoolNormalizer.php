@@ -110,7 +110,7 @@ class AutoscalePoolNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['status'] = $data->getStatus();
         $dataArray['active_resources_count'] = $data->getActiveResourcesCount();
-        foreach ($data as $key_1 => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_1;
             }

@@ -61,7 +61,7 @@ class ApiLinkAgentOutputNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('parentAgentUuid') && null !== $data->getParentAgentUuid()) {
             $dataArray['parent_agent_uuid'] = $data->getParentAgentUuid();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

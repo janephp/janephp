@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class StickySessions extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class StickySessions implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class StickySessions extends \ArrayObject
         $this->initialized['cookieTtlSeconds'] = true;
         $this->cookieTtlSeconds = $cookieTtlSeconds;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'cookieName' => ['cookie_name', 'getCookieName', 'setCookieName'], 'cookieTtlSeconds' => ['cookie_ttl_seconds', 'getCookieTtlSeconds', 'setCookieTtlSeconds']];
     }
 }

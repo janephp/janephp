@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class GroupMapping extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class GroupMapping implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -179,5 +182,9 @@ class GroupMapping extends \ArrayObject
         $this->initialized['syncedAt'] = true;
         $this->syncedAt = $syncedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['groups' => ['groups', 'getGroups', 'setGroups'], 'groupId' => ['group_id', 'getGroupId', 'setGroupId'], 'groupName' => ['group_name', 'getGroupName', 'setGroupName'], 'groupDescription' => ['group_description', 'getGroupDescription', 'setGroupDescription'], 'status' => ['status', 'getStatus', 'setStatus'], 'syncedAt' => ['synced_at', 'getSyncedAt', 'setSyncedAt']];
     }
 }

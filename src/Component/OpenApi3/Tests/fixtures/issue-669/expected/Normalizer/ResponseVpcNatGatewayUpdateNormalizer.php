@@ -54,7 +54,7 @@ class ResponseVpcNatGatewayUpdateNormalizer implements DenormalizerInterface, No
         if ($data->isInitialized('vpcNatGateway') && null !== $data->getVpcNatGateway()) {
             $dataArray['vpc_nat_gateway'] = $data->getVpcNatGateway() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getVpcNatGateway(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

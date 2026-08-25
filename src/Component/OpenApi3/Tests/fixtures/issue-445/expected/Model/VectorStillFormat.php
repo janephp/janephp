@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class VectorStillFormat extends FormatBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class VectorStillFormat extends FormatBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -61,5 +64,9 @@ class VectorStillFormat extends FormatBase
         $this->initialized['resizeAction'] = true;
         $this->resizeAction = $resizeAction;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['extension' => ['extension', 'getExtension', 'setExtension'], 'resizeAction' => ['resizeAction', 'getResizeAction', 'setResizeAction']];
     }
 }

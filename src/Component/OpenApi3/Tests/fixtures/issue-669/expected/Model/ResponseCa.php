@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseCa extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseCa implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseCa extends \ArrayObject
         $this->initialized['ca'] = true;
         $this->ca = $ca;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['ca' => ['ca', 'getCa', 'setCa']];
     }
 }

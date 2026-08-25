@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class CompletedFreshInvestigation extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class CompletedFreshInvestigation implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -231,5 +234,9 @@ class CompletedFreshInvestigation extends \ArrayObject
         $this->initialized['transactionID'] = true;
         $this->transactionID = $transactionID;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['chargeReference' => ['chargeReference', 'getChargeReference', 'setChargeReference'], 'contactDetails' => ['contactDetails', 'getContactDetails', 'setContactDetails'], 'creationDate' => ['creationDate', 'getCreationDate', 'setCreationDate'], 'lastStatusChangeDate' => ['lastStatusChangeDate', 'getLastStatusChangeDate', 'setLastStatusChangeDate'], 'orderID' => ['orderID', 'getOrderID', 'setOrderID'], 'reportDate' => ['reportDate', 'getReportDate', 'setReportDate'], 'searchCriteria' => ['searchCriteria', 'getSearchCriteria', 'setSearchCriteria'], 'sections' => ['sections', 'getSections', 'setSections'], 'status' => ['status', 'getStatus', 'setStatus'], 'transactionID' => ['transactionID', 'getTransactionID', 'setTransactionID']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoImportLfsPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoImportLfsPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ReposOwnerRepoImportLfsPatchBody extends \ArrayObject
         $this->initialized['useLfs'] = true;
         $this->useLfs = $useLfs;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['useLfs' => ['use_lfs', 'getUseLfs', 'setUseLfs']];
     }
 }

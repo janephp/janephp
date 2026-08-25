@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class FieldMultiTagbox extends FieldBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class FieldMultiTagbox extends FieldBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -210,5 +213,9 @@ class FieldMultiTagbox extends FieldBase
         $this->initialized['viewModeDisplayPatternType'] = true;
         $this->viewModeDisplayPatternType = $viewModeDisplayPatternType;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['schemaId' => ['schemaId', 'getSchemaId', 'setSchemaId'], 'schemaIndexingInfo' => ['schemaIndexingInfo', 'getSchemaIndexingInfo', 'setSchemaIndexingInfo'], 'maximumItems' => ['maximumItems', 'getMaximumItems', 'setMaximumItems'], 'minimumItems' => ['minimumItems', 'getMinimumItems', 'setMinimumItems'], 'filter' => ['filter', 'getFilter', 'setFilter'], 'listItemCreateTemplate' => ['listItemCreateTemplate', 'getListItemCreateTemplate', 'setListItemCreateTemplate'], 'viewModeDisplayPatternType' => ['viewModeDisplayPatternType', 'getViewModeDisplayPatternType', 'setViewModeDisplayPatternType']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiLinkAgentFunctionInputPublic extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiLinkAgentFunctionInputPublic implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -207,5 +210,9 @@ class ApiLinkAgentFunctionInputPublic extends \ArrayObject
         $this->initialized['outputSchema'] = true;
         $this->outputSchema = $outputSchema;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['agentUuid' => ['agent_uuid', 'getAgentUuid', 'setAgentUuid'], 'description' => ['description', 'getDescription', 'setDescription'], 'faasName' => ['faas_name', 'getFaasName', 'setFaasName'], 'faasNamespace' => ['faas_namespace', 'getFaasNamespace', 'setFaasNamespace'], 'functionName' => ['function_name', 'getFunctionName', 'setFunctionName'], 'inputSchema' => ['input_schema', 'getInputSchema', 'setInputSchema'], 'outputSchema' => ['output_schema', 'getOutputSchema', 'setOutputSchema']];
     }
 }

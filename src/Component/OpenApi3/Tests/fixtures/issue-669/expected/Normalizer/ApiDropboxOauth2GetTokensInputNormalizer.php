@@ -61,7 +61,7 @@ class ApiDropboxOauth2GetTokensInputNormalizer implements DenormalizerInterface,
         if ($data->isInitialized('redirectUrl') && null !== $data->getRedirectUrl()) {
             $dataArray['redirect_url'] = $data->getRedirectUrl();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

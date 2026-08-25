@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class MetadataValuesSchemaRemoveCommand extends MetadataValuesChangeCommandBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class MetadataValuesSchemaRemoveCommand extends MetadataValuesChangeCommandBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */

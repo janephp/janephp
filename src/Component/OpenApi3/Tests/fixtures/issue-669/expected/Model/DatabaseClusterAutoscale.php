@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DatabaseClusterAutoscale extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DatabaseClusterAutoscale implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class DatabaseClusterAutoscale extends \ArrayObject
         $this->initialized['storage'] = true;
         $this->storage = $storage;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['storage' => ['storage', 'getStorage', 'setStorage']];
     }
 }

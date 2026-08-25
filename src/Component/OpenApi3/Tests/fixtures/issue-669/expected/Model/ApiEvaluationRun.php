@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiEvaluationRun extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiEvaluationRun implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -631,5 +634,9 @@ class ApiEvaluationRun extends \ArrayObject
         $this->initialized['testCaseVersion'] = true;
         $this->testCaseVersion = $testCaseVersion;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['agentDeleted' => ['agent_deleted', 'getAgentDeleted', 'setAgentDeleted'], 'agentDeploymentName' => ['agent_deployment_name', 'getAgentDeploymentName', 'setAgentDeploymentName'], 'agentName' => ['agent_name', 'getAgentName', 'setAgentName'], 'agentUuid' => ['agent_uuid', 'getAgentUuid', 'setAgentUuid'], 'agentVersionHash' => ['agent_version_hash', 'getAgentVersionHash', 'setAgentVersionHash'], 'agentWorkspaceUuid' => ['agent_workspace_uuid', 'getAgentWorkspaceUuid', 'setAgentWorkspaceUuid'], 'createdByUserEmail' => ['created_by_user_email', 'getCreatedByUserEmail', 'setCreatedByUserEmail'], 'createdByUserId' => ['created_by_user_id', 'getCreatedByUserId', 'setCreatedByUserId'], 'errorDescription' => ['error_description', 'getErrorDescription', 'setErrorDescription'], 'evaluationRunUuid' => ['evaluation_run_uuid', 'getEvaluationRunUuid', 'setEvaluationRunUuid'], 'evaluationTestCaseWorkspaceUuid' => ['evaluation_test_case_workspace_uuid', 'getEvaluationTestCaseWorkspaceUuid', 'setEvaluationTestCaseWorkspaceUuid'], 'finishedAt' => ['finished_at', 'getFinishedAt', 'setFinishedAt'], 'passStatus' => ['pass_status', 'getPassStatus', 'setPassStatus'], 'queuedAt' => ['queued_at', 'getQueuedAt', 'setQueuedAt'], 'runLevelMetricResults' => ['run_level_metric_results', 'getRunLevelMetricResults', 'setRunLevelMetricResults'], 'runName' => ['run_name', 'getRunName', 'setRunName'], 'starMetricResult' => ['star_metric_result', 'getStarMetricResult', 'setStarMetricResult'], 'startedAt' => ['started_at', 'getStartedAt', 'setStartedAt'], 'status' => ['status', 'getStatus', 'setStatus'], 'testCaseDescription' => ['test_case_description', 'getTestCaseDescription', 'setTestCaseDescription'], 'testCaseName' => ['test_case_name', 'getTestCaseName', 'setTestCaseName'], 'testCaseUuid' => ['test_case_uuid', 'getTestCaseUuid', 'setTestCaseUuid'], 'testCaseVersion' => ['test_case_version', 'getTestCaseVersion', 'setTestCaseVersion']];
     }
 }

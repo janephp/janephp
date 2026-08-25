@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateHistoryItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateHistoryItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['date' => ['date', 'getDate', 'setDate'], 'event' => ['event', 'getEvent', 'setEvent'], 'note' => ['note', 'getNote', 'setNote'], 'user' => ['user', 'getUser', 'setUser']];
     }
 }

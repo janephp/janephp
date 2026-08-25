@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class OptionsOptionsRedis extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class OptionsOptionsRedis implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class OptionsOptionsRedis extends \ArrayObject
         $this->initialized['layouts'] = true;
         $this->layouts = $layouts;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['regions' => ['regions', 'getRegions', 'setRegions'], 'versions' => ['versions', 'getVersions', 'setVersions'], 'layouts' => ['layouts', 'getLayouts', 'setLayouts']];
     }
 }

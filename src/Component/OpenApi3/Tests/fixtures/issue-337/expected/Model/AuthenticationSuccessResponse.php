@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class AuthenticationSuccessResponse extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class AuthenticationSuccessResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class AuthenticationSuccessResponse extends \ArrayObject
         $this->initialized['token'] = true;
         $this->token = $token;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['token' => ['token', 'getToken', 'setToken']];
     }
 }

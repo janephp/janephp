@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class Vpc extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class Vpc implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -235,5 +238,9 @@ class Vpc extends \ArrayObject
         $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'description' => ['description', 'getDescription', 'setDescription'], 'region' => ['region', 'getRegion', 'setRegion'], 'ipRange' => ['ip_range', 'getIpRange', 'setIpRange'], 'default' => ['default', 'getDefault', 'setDefault'], 'id' => ['id', 'getId', 'setId'], 'urn' => ['urn', 'getUrn', 'setUrn'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt']];
     }
 }

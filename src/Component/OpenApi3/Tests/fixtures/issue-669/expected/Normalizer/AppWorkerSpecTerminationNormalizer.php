@@ -54,7 +54,7 @@ class AppWorkerSpecTerminationNormalizer implements DenormalizerInterface, Norma
         if ($data->isInitialized('gracePeriodSeconds') && null !== $data->getGracePeriodSeconds()) {
             $dataArray['grace_period_seconds'] = $data->getGracePeriodSeconds();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

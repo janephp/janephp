@@ -2,11 +2,14 @@
 
 namespace ApiPlatform\Demo\Model;
 
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
 /**
  * @deprecated
  */
-class ParchmentJsonhal extends \ArrayObject
+class ParchmentJsonhal implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -114,5 +117,9 @@ class ParchmentJsonhal extends \ArrayObject
         $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['links' => ['_links', 'getLinks', 'setLinks'], 'id' => ['id', 'getId', 'setId'], 'title' => ['title', 'getTitle', 'setTitle'], 'description' => ['description', 'getDescription', 'setDescription']];
     }
 }

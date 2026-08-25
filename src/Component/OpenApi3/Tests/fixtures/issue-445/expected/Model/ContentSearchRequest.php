@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ContentSearchRequest extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ContentSearchRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -542,5 +545,9 @@ class ContentSearchRequest extends \ArrayObject
         $this->initialized['aggregators'] = true;
         $this->aggregators = $aggregators;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['searchString' => ['searchString', 'getSearchString', 'setSearchString'], 'searchBehaviors' => ['searchBehaviors', 'getSearchBehaviors', 'setSearchBehaviors'], 'filter' => ['filter', 'getFilter', 'setFilter'], 'aggregationFilters' => ['aggregationFilters', 'getAggregationFilters', 'setAggregationFilters'], 'channelId' => ['channelId', 'getChannelId', 'setChannelId'], 'searchLanguages' => ['searchLanguages', 'getSearchLanguages', 'setSearchLanguages'], 'collectionId' => ['collectionId', 'getCollectionId', 'setCollectionId'], 'lifeCycleFilter' => ['lifeCycleFilter', 'getLifeCycleFilter', 'setLifeCycleFilter'], 'brokenDependenciesFilter' => ['brokenDependenciesFilter', 'getBrokenDependenciesFilter', 'setBrokenDependenciesFilter'], 'searchType' => ['searchType', 'getSearchType', 'setSearchType'], 'displayPatternIds' => ['displayPatternIds', 'getDisplayPatternIds', 'setDisplayPatternIds'], 'sort' => ['sort', 'getSort', 'setSort'], 'limit' => ['limit', 'getLimit', 'setLimit'], 'pageToken' => ['pageToken', 'getPageToken', 'setPageToken'], 'rightsFilter' => ['rightsFilter', 'getRightsFilter', 'setRightsFilter'], 'rightsAggregations' => ['rightsAggregations', 'getRightsAggregations', 'setRightsAggregations'], 'debugMode' => ['debugMode', 'getDebugMode', 'setDebugMode'], 'aggregators' => ['aggregators', 'getAggregators', 'setAggregators']];
     }
 }

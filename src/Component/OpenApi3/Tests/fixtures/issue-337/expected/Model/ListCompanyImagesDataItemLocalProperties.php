@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class ListCompanyImagesDataItemLocalProperties extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class ListCompanyImagesDataItemLocalProperties implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ListCompanyImagesDataItemLocalProperties extends \ArrayObject
         $this->initialized['accountRefNumber'] = true;
         $this->accountRefNumber = $accountRefNumber;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['accountRefNumber' => ['accountRefNumber', 'getAccountRefNumber', 'setAccountRefNumber']];
     }
 }

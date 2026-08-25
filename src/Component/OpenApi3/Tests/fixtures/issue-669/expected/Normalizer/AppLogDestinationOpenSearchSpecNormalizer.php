@@ -75,7 +75,7 @@ class AppLogDestinationOpenSearchSpecNormalizer implements DenormalizerInterface
         if ($data->isInitialized('clusterName') && null !== $data->getClusterName()) {
             $dataArray['cluster_name'] = $data->getClusterName();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

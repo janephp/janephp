@@ -197,7 +197,7 @@ class OrgsOrgReposPostBodyNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('deleteBranchOnMerge') && null !== $data->getDeleteBranchOnMerge()) {
             $dataArray['delete_branch_on_merge'] = $data->getDeleteBranchOnMerge();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

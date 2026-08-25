@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class VideoMetadata extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class VideoMetadata implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -407,5 +410,9 @@ class VideoMetadata extends \ArrayObject
         $this->initialized['audioStreams'] = true;
         $this->audioStreams = $audioStreams;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['names' => ['names', 'getNames', 'setNames'], 'descriptions' => ['descriptions', 'getDescriptions', 'setDescriptions'], 'fileExtension' => ['fileExtension', 'getFileExtension', 'setFileExtension'], 'fileName' => ['fileName', 'getFileName', 'setFileName'], 'filePath' => ['filePath', 'getFilePath', 'setFilePath'], 'fileSizeInBytes' => ['fileSizeInBytes', 'getFileSizeInBytes', 'setFileSizeInBytes'], 'sha1Hash' => ['sha1Hash', 'getSha1Hash', 'setSha1Hash'], 'xmpMetadata' => ['xmpMetadata', 'getXmpMetadata', 'setXmpMetadata'], 'exifMetadata' => ['exifMetadata', 'getExifMetadata', 'setExifMetadata'], 'language' => ['language', 'getLanguage', 'setLanguage'], 'width' => ['width', 'getWidth', 'setWidth'], 'height' => ['height', 'getHeight', 'setHeight'], 'durationInSeconds' => ['durationInSeconds', 'getDurationInSeconds', 'setDurationInSeconds'], 'format' => ['format', 'getFormat', 'setFormat'], 'codec' => ['codec', 'getCodec', 'setCodec'], 'overallBitrate' => ['overallBitrate', 'getOverallBitrate', 'setOverallBitrate'], 'videoStreams' => ['videoStreams', 'getVideoStreams', 'setVideoStreams'], 'audioStreams' => ['audioStreams', 'getAudioStreams', 'setAudioStreams']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiUpdateModelAPIKeyOutput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiUpdateModelAPIKeyOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ApiUpdateModelAPIKeyOutput extends \ArrayObject
         $this->initialized['apiKeyInfo'] = true;
         $this->apiKeyInfo = $apiKeyInfo;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['apiKeyInfo' => ['api_key_info', 'getApiKeyInfo', 'setApiKeyInfo']];
     }
 }

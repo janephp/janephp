@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessDetails extends BusinessProcess
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class BusinessProcessDetails extends BusinessProcess implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class BusinessProcessDetails extends BusinessProcess
         $this->initialized['details'] = true;
         $this->details = $details;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['details' => ['details', 'getDetails', 'setDetails']];
     }
 }

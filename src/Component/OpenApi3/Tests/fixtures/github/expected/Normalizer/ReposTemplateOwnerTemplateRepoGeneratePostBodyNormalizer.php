@@ -79,7 +79,7 @@ class ReposTemplateOwnerTemplateRepoGeneratePostBodyNormalizer implements Denorm
         if ($data->isInitialized('private') && null !== $data->getPrivate()) {
             $dataArray['private'] = $data->getPrivate();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

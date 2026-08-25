@@ -60,7 +60,7 @@ class GitignoreTemplateNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray = [];
         $dataArray['name'] = $data->getName();
         $dataArray['source'] = $data->getSource();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

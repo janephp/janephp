@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseAddonsGetApp extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseAddonsGetApp implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseAddonsGetApp extends \ArrayObject
         $this->initialized['apps'] = true;
         $this->apps = $apps;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['apps' => ['apps', 'getApps', 'setApps']];
     }
 }

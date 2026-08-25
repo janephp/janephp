@@ -75,7 +75,7 @@ class ApiPagesNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if ($data->isInitialized('previous') && null !== $data->getPrevious()) {
             $dataArray['previous'] = $data->getPrevious();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

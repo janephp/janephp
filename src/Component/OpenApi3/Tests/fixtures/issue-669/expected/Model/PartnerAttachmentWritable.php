@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class PartnerAttachmentWritable extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class PartnerAttachmentWritable implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -229,5 +232,9 @@ class PartnerAttachmentWritable extends \ArrayObject
         $this->initialized['redundancyZone'] = true;
         $this->redundancyZone = $redundancyZone;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'connectionBandwidthInMbps' => ['connection_bandwidth_in_mbps', 'getConnectionBandwidthInMbps', 'setConnectionBandwidthInMbps'], 'region' => ['region', 'getRegion', 'setRegion'], 'naasProvider' => ['naas_provider', 'getNaasProvider', 'setNaasProvider'], 'vpcIds' => ['vpc_ids', 'getVpcIds', 'setVpcIds'], 'parentUuid' => ['parent_uuid', 'getParentUuid', 'setParentUuid'], 'bgp' => ['bgp', 'getBgp', 'setBgp'], 'redundancyZone' => ['redundancy_zone', 'getRedundancyZone', 'setRedundancyZone']];
     }
 }

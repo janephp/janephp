@@ -86,7 +86,7 @@ class NfsSnapshotResponseNormalizer implements DenormalizerInterface, Normalizer
         $dataArray['status'] = $data->getStatus();
         $dataArray['created_at'] = $data->getCreatedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['share_id'] = $data->getShareId();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

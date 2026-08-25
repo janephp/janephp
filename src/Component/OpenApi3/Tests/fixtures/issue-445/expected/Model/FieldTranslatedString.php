@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class FieldTranslatedString extends FieldBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class FieldTranslatedString extends FieldBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -277,5 +280,9 @@ class FieldTranslatedString extends FieldBase
         $this->initialized['boost'] = true;
         $this->boost = $boost;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['pattern' => ['pattern', 'getPattern', 'setPattern'], 'minimumLength' => ['minimumLength', 'getMinimumLength', 'setMinimumLength'], 'maximumLength' => ['maximumLength', 'getMaximumLength', 'setMaximumLength'], 'indexAnalyzers' => ['indexAnalyzers', 'getIndexAnalyzers', 'setIndexAnalyzers'], 'simpleSearchAnalyzers' => ['simpleSearchAnalyzers', 'getSimpleSearchAnalyzers', 'setSimpleSearchAnalyzers'], 'multiLine' => ['multiLine', 'getMultiLine', 'setMultiLine'], 'requiredMetadataLanguages' => ['requiredMetadataLanguages', 'getRequiredMetadataLanguages', 'setRequiredMetadataLanguages'], 'template' => ['template', 'getTemplate', 'setTemplate'], 'boost' => ['boost', 'getBoost', 'setBoost']];
     }
 }

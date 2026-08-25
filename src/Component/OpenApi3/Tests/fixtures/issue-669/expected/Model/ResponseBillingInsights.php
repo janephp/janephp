@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseBillingInsights extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseBillingInsights implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class ResponseBillingInsights extends \ArrayObject
         $this->initialized['currentPage'] = true;
         $this->currentPage = $currentPage;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['dataPoints' => ['data_points', 'getDataPoints', 'setDataPoints'], 'totalItems' => ['total_items', 'getTotalItems', 'setTotalItems'], 'totalPages' => ['total_pages', 'getTotalPages', 'setTotalPages'], 'currentPage' => ['current_page', 'getCurrentPage', 'setCurrentPage']];
     }
 }

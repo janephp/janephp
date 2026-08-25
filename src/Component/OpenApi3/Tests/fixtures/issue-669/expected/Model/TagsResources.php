@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class TagsResources extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class TagsResources implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -177,5 +180,9 @@ class TagsResources extends \ArrayObject
         $this->initialized['databases'] = true;
         $this->databases = $databases;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['count' => ['count', 'getCount', 'setCount'], 'lastTaggedUri' => ['last_tagged_uri', 'getLastTaggedUri', 'setLastTaggedUri'], 'droplets' => ['droplets', 'getDroplets', 'setDroplets'], 'imgages' => ['imgages', 'getImgages', 'setImgages'], 'volumes' => ['volumes', 'getVolumes', 'setVolumes'], 'volumeSnapshots' => ['volume_snapshots', 'getVolumeSnapshots', 'setVolumeSnapshots'], 'databases' => ['databases', 'getDatabases', 'setDatabases']];
     }
 }

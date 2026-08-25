@@ -69,7 +69,7 @@ class ConnectionPoolUpdateNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('user') && null !== $data->getUser()) {
             $dataArray['user'] = $data->getUser();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

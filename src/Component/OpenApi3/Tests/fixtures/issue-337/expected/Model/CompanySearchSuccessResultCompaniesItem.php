@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class CompanySearchSuccessResultCompaniesItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -341,5 +344,9 @@ class CompanySearchSuccessResultCompaniesItem extends \ArrayObject
         $this->initialized['dateOfLatestCAccounts'] = true;
         $this->dateOfLatestCAccounts = $dateOfLatestCAccounts;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'country' => ['country', 'getCountry', 'setCountry'], 'regNo' => ['regNo', 'getRegNo', 'setRegNo'], 'vatNo' => ['vatNo', 'getVatNo', 'setVatNo'], 'safeNo' => ['safeNo', 'getSafeNo', 'setSafeNo'], 'name' => ['name', 'getName', 'setName'], 'status' => ['status', 'getStatus', 'setStatus'], 'officeType' => ['officeType', 'getOfficeType', 'setOfficeType'], 'type' => ['type', 'getType', 'setType'], 'statusDescription' => ['statusDescription', 'getStatusDescription', 'setStatusDescription'], 'activityCode' => ['activityCode', 'getActivityCode', 'setActivityCode'], 'tradingNames' => ['tradingNames', 'getTradingNames', 'setTradingNames'], 'address' => ['address', 'getAddress', 'setAddress'], 'dateOfLatestChange' => ['dateOfLatestChange', 'getDateOfLatestChange', 'setDateOfLatestChange'], 'dateOfLatestCAccounts' => ['dateOfLatestCAccounts', 'getDateOfLatestCAccounts', 'setDateOfLatestCAccounts']];
     }
 }

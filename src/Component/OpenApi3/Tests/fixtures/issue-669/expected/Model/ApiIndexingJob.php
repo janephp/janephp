@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiIndexingJob extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiIndexingJob implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -401,5 +404,9 @@ class ApiIndexingJob extends \ArrayObject
         $this->initialized['uuid'] = true;
         $this->uuid = $uuid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['completedDatasources' => ['completed_datasources', 'getCompletedDatasources', 'setCompletedDatasources'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'dataSourceJobs' => ['data_source_jobs', 'getDataSourceJobs', 'setDataSourceJobs'], 'dataSourceUuids' => ['data_source_uuids', 'getDataSourceUuids', 'setDataSourceUuids'], 'finishedAt' => ['finished_at', 'getFinishedAt', 'setFinishedAt'], 'isReportAvailable' => ['is_report_available', 'getIsReportAvailable', 'setIsReportAvailable'], 'knowledgeBaseUuid' => ['knowledge_base_uuid', 'getKnowledgeBaseUuid', 'setKnowledgeBaseUuid'], 'phase' => ['phase', 'getPhase', 'setPhase'], 'startedAt' => ['started_at', 'getStartedAt', 'setStartedAt'], 'status' => ['status', 'getStatus', 'setStatus'], 'tokens' => ['tokens', 'getTokens', 'setTokens'], 'totalDatasources' => ['total_datasources', 'getTotalDatasources', 'setTotalDatasources'], 'totalTokens' => ['total_tokens', 'getTotalTokens', 'setTotalTokens'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'uuid' => ['uuid', 'getUuid', 'setUuid']];
     }
 }

@@ -74,7 +74,7 @@ class UnassignContentPermissionSetsActionNormalizer implements DenormalizerInter
         if ($data->isInitialized('permissionSetIds') && null !== $data->getPermissionSetIds()) {
             $dataArray['permissionSetIds'] = $data->getPermissionSetIds();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

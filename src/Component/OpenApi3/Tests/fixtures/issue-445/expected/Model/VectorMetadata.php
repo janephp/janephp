@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class VectorMetadata extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class VectorMetadata implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -385,5 +388,9 @@ class VectorMetadata extends \ArrayObject
         $this->initialized['epsInfo'] = true;
         $this->epsInfo = $epsInfo;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['names' => ['names', 'getNames', 'setNames'], 'descriptions' => ['descriptions', 'getDescriptions', 'setDescriptions'], 'fileExtension' => ['fileExtension', 'getFileExtension', 'setFileExtension'], 'fileName' => ['fileName', 'getFileName', 'setFileName'], 'filePath' => ['filePath', 'getFilePath', 'setFilePath'], 'fileSizeInBytes' => ['fileSizeInBytes', 'getFileSizeInBytes', 'setFileSizeInBytes'], 'sha1Hash' => ['sha1Hash', 'getSha1Hash', 'setSha1Hash'], 'xmpMetadata' => ['xmpMetadata', 'getXmpMetadata', 'setXmpMetadata'], 'exifMetadata' => ['exifMetadata', 'getExifMetadata', 'setExifMetadata'], 'language' => ['language', 'getLanguage', 'setLanguage'], 'author' => ['author', 'getAuthor', 'setAuthor'], 'creator' => ['creator', 'getCreator', 'setCreator'], 'publisher' => ['publisher', 'getPublisher', 'setPublisher'], 'company' => ['company', 'getCompany', 'setCompany'], 'title' => ['title', 'getTitle', 'setTitle'], 'pageCount' => ['pageCount', 'getPageCount', 'setPageCount'], 'epsInfo' => ['epsInfo', 'getEpsInfo', 'setEpsInfo']];
     }
 }

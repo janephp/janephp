@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class UpdateTrigger extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class UpdateTrigger implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -69,5 +72,9 @@ class UpdateTrigger extends \ArrayObject
         $this->initialized['scheduledDetails'] = true;
         $this->scheduledDetails = $scheduledDetails;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['isEnabled' => ['is_enabled', 'getIsEnabled', 'setIsEnabled'], 'scheduledDetails' => ['scheduled_details', 'getScheduledDetails', 'setScheduledDetails']];
     }
 }

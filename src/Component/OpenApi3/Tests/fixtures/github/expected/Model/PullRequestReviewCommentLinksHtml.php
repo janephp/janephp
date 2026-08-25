@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class PullRequestReviewCommentLinksHtml extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class PullRequestReviewCommentLinksHtml implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class PullRequestReviewCommentLinksHtml extends \ArrayObject
         $this->initialized['href'] = true;
         $this->href = $href;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['href' => ['href', 'getHref', 'setHref']];
     }
 }

@@ -81,7 +81,7 @@ class BooksBookIdReviewsGetLdjsonResponse200Normalizer implements DenormalizerIn
         if ($data->isInitialized('hydraSearch') && null !== $data->getHydraSearch()) {
             $dataArray['hydra:search'] = $data->getHydraSearch() === null ? null : new \ApiPlatform\Demo\Runtime\JsonObject($this->normalizer->normalize($data->getHydraSearch(), 'json', $context));
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

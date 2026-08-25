@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiResourceUsage extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiResourceUsage implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class ApiResourceUsage extends \ArrayObject
         $this->initialized['stop'] = true;
         $this->stop = $stop;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['measurements' => ['measurements', 'getMeasurements', 'setMeasurements'], 'resourceUuid' => ['resource_uuid', 'getResourceUuid', 'setResourceUuid'], 'start' => ['start', 'getStart', 'setStart'], 'stop' => ['stop', 'getStop', 'setStop']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrganizationInvitation extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrganizationInvitation implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -237,5 +240,9 @@ class OrganizationInvitation extends \ArrayObject
         $this->initialized['invitationTeamsUrl'] = true;
         $this->invitationTeamsUrl = $invitationTeamsUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'login' => ['login', 'getLogin', 'setLogin'], 'email' => ['email', 'getEmail', 'setEmail'], 'role' => ['role', 'getRole', 'setRole'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'inviter' => ['inviter', 'getInviter', 'setInviter'], 'teamCount' => ['team_count', 'getTeamCount', 'setTeamCount'], 'invitationTeamUrl' => ['invitation_team_url', 'getInvitationTeamUrl', 'setInvitationTeamUrl'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'invitationTeamsUrl' => ['invitation_teams_url', 'getInvitationTeamsUrl', 'setInvitationTeamsUrl']];
     }
 }

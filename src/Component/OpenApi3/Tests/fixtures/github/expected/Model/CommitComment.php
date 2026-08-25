@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CommitComment extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CommitComment implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -319,5 +322,9 @@ class CommitComment extends \ArrayObject
         $this->initialized['reactions'] = true;
         $this->reactions = $reactions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'url' => ['url', 'getUrl', 'setUrl'], 'id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'body' => ['body', 'getBody', 'setBody'], 'path' => ['path', 'getPath', 'setPath'], 'position' => ['position', 'getPosition', 'setPosition'], 'line' => ['line', 'getLine', 'setLine'], 'commitId' => ['commit_id', 'getCommitId', 'setCommitId'], 'user' => ['user', 'getUser', 'setUser'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'authorAssociation' => ['author_association', 'getAuthorAssociation', 'setAuthorAssociation'], 'reactions' => ['reactions', 'getReactions', 'setReactions']];
     }
 }

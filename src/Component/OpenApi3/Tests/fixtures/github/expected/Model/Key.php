@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Key extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Key implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -187,5 +190,9 @@ class Key extends \ArrayObject
         $this->initialized['readOnly'] = true;
         $this->readOnly = $readOnly;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['keyId' => ['key_id', 'getKeyId', 'setKeyId'], 'key' => ['key', 'getKey', 'setKey'], 'id' => ['id', 'getId', 'setId'], 'url' => ['url', 'getUrl', 'setUrl'], 'title' => ['title', 'getTitle', 'setTitle'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'verified' => ['verified', 'getVerified', 'setVerified'], 'readOnly' => ['read_only', 'getReadOnly', 'setReadOnly']];
     }
 }

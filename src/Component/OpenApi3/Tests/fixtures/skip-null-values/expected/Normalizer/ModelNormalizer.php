@@ -86,7 +86,7 @@ class ModelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         else {
             $dataArray['date'] = null;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -68,7 +68,7 @@ class UserReviewManyRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         $dataArray['userIds'] = $values;
         $dataArray['reviewed'] = $data->getReviewed();
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

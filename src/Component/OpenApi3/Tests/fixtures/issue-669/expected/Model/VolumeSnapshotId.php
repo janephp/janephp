@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class VolumeSnapshotId extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class VolumeSnapshotId implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class VolumeSnapshotId extends \ArrayObject
         $this->initialized['snapshotId'] = true;
         $this->snapshotId = $snapshotId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['snapshotId' => ['snapshot_id', 'getSnapshotId', 'setSnapshotId']];
     }
 }

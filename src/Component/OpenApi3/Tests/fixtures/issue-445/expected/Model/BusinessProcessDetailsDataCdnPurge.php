@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessDetailsDataCdnPurge extends BusinessProcessDetailsDataBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class BusinessProcessDetailsDataCdnPurge extends BusinessProcessDetailsDataBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class BusinessProcessDetailsDataCdnPurge extends BusinessProcessDetailsDataBase
         $this->initialized['jobs'] = true;
         $this->jobs = $jobs;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['serializedCdnConfiguration' => ['serializedCdnConfiguration', 'getSerializedCdnConfiguration', 'setSerializedCdnConfiguration'], 'jobs' => ['jobs', 'getJobs', 'setJobs']];
     }
 }

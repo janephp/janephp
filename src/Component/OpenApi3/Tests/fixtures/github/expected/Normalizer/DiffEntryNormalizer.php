@@ -109,7 +109,7 @@ class DiffEntryNormalizer implements DenormalizerInterface, NormalizerInterface,
         if ($data->isInitialized('previousFilename') && null !== $data->getPreviousFilename()) {
             $dataArray['previous_filename'] = $data->getPreviousFilename();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportAdditionalInformationCommentariesItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportAdditionalInformationCommentariesItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCommentariesItem 
         $this->initialized['positiveNegative'] = true;
         $this->positiveNegative = $positiveNegative;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['commentaryText' => ['commentaryText', 'getCommentaryText', 'setCommentaryText'], 'positiveNegative' => ['positiveNegative', 'getPositiveNegative', 'setPositiveNegative']];
     }
 }

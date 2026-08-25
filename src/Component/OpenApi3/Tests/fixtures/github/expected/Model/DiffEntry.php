@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class DiffEntry extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class DiffEntry implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -253,5 +256,9 @@ class DiffEntry extends \ArrayObject
         $this->initialized['previousFilename'] = true;
         $this->previousFilename = $previousFilename;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['sha' => ['sha', 'getSha', 'setSha'], 'filename' => ['filename', 'getFilename', 'setFilename'], 'status' => ['status', 'getStatus', 'setStatus'], 'additions' => ['additions', 'getAdditions', 'setAdditions'], 'deletions' => ['deletions', 'getDeletions', 'setDeletions'], 'changes' => ['changes', 'getChanges', 'setChanges'], 'blobUrl' => ['blob_url', 'getBlobUrl', 'setBlobUrl'], 'rawUrl' => ['raw_url', 'getRawUrl', 'setRawUrl'], 'contentsUrl' => ['contents_url', 'getContentsUrl', 'setContentsUrl'], 'patch' => ['patch', 'getPatch', 'setPatch'], 'previousFilename' => ['previous_filename', 'getPreviousFilename', 'setPreviousFilename']];
     }
 }

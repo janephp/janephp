@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class SearchBehaviorWithAggregationBaseResultOfContent extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class SearchBehaviorWithAggregationBaseResultOfContent implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -235,5 +238,9 @@ class SearchBehaviorWithAggregationBaseResultOfContent extends \ArrayObject
         $this->initialized['aggregationResults'] = true;
         $this->aggregationResults = $aggregationResults;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['totalResults' => ['totalResults', 'getTotalResults', 'setTotalResults'], 'results' => ['results', 'getResults', 'setResults'], 'elapsedMilliseconds' => ['elapsedMilliseconds', 'getElapsedMilliseconds', 'setElapsedMilliseconds'], 'pageToken' => ['pageToken', 'getPageToken', 'setPageToken'], 'searchString' => ['searchString', 'getSearchString', 'setSearchString'], 'isSearchStringRewritten' => ['isSearchStringRewritten', 'getIsSearchStringRewritten', 'setIsSearchStringRewritten'], 'queryDebugInformation' => ['queryDebugInformation', 'getQueryDebugInformation', 'setQueryDebugInformation'], 'aggregationResults' => ['aggregationResults', 'getAggregationResults', 'setAggregationResults']];
     }
 }

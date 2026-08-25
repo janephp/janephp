@@ -2,8 +2,11 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class TopBookJsonhalLinksSelf extends \ArrayObject
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
+class TopBookJsonhalLinksSelf implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class TopBookJsonhalLinksSelf extends \ArrayObject
         $this->initialized['href'] = true;
         $this->href = $href;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['href' => ['href', 'getHref', 'setHref']];
     }
 }

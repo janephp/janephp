@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class PlanetPhysicalProperties extends \ArrayObject
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class PlanetPhysicalProperties implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -117,5 +120,9 @@ class PlanetPhysicalProperties extends \ArrayObject
         $this->initialized['temperature'] = true;
         $this->temperature = $temperature;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['mass' => ['mass', 'getMass', 'setMass'], 'radius' => ['radius', 'getRadius', 'setRadius'], 'gravity' => ['gravity', 'getGravity', 'setGravity'], 'temperature' => ['temperature', 'getTemperature', 'setTemperature']];
     }
 }

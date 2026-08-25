@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class AggregationFilter extends FilterBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class AggregationFilter extends FilterBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class AggregationFilter extends FilterBase
         $this->initialized['temporaryAggregatorRequestId'] = true;
         $this->temporaryAggregatorRequestId = $temporaryAggregatorRequestId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['aggregationName' => ['aggregationName', 'getAggregationName', 'setAggregationName'], 'filter' => ['filter', 'getFilter', 'setFilter'], 'temporaryAggregatorRequestId' => ['temporaryAggregatorRequestId', 'getTemporaryAggregatorRequestId', 'setTemporaryAggregatorRequestId']];
     }
 }

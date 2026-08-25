@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class NodeInfoMessage extends Message
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class NodeInfoMessage extends Message implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -187,5 +190,9 @@ class NodeInfoMessage extends Message
         $this->initialized['logLevel'] = true;
         $this->logLevel = $logLevel;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['nodeId' => ['nodeId', 'getNodeId', 'setNodeId'], 'hostName' => ['hostName', 'getHostName', 'setHostName'], 'lastResponseTime' => ['lastResponseTime', 'getLastResponseTime', 'setLastResponseTime'], 'serviceName' => ['serviceName', 'getServiceName', 'setServiceName'], 'fileVersion' => ['fileVersion', 'getFileVersion', 'setFileVersion'], 'productVersion' => ['productVersion', 'getProductVersion', 'setProductVersion'], 'release' => ['release', 'getRelease', 'setRelease'], 'logLevel' => ['logLevel', 'getLogLevel', 'setLogLevel']];
     }
 }

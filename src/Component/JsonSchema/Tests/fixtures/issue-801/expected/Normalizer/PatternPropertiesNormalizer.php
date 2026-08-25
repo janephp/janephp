@@ -70,7 +70,7 @@ class PatternPropertiesNormalizer implements DenormalizerInterface, NormalizerIn
             }
             $dataArray['bar'] = $value;
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/^x-.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

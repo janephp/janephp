@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class SplitTransformation extends BusinessRuleTransformation
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class SplitTransformation extends BusinessRuleTransformation implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class SplitTransformation extends BusinessRuleTransformation
         $this->initialized['trim'] = true;
         $this->trim = $trim;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['separators' => ['separators', 'getSeparators', 'setSeparators'], 'keepEmpty' => ['keepEmpty', 'getKeepEmpty', 'setKeepEmpty'], 'trim' => ['trim', 'getTrim', 'setTrim']];
     }
 }

@@ -91,7 +91,7 @@ class ApiResourceUsageNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('stop') && null !== $data->getStop()) {
             $dataArray['stop'] = $data->getStop()->format('Y-m-d\TH:i:sP');
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DropletImage extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DropletImage implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -409,5 +412,9 @@ class DropletImage extends \ArrayObject
         $this->initialized['errorMessage'] = true;
         $this->errorMessage = $errorMessage;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'type' => ['type', 'getType', 'setType'], 'distribution' => ['distribution', 'getDistribution', 'setDistribution'], 'slug' => ['slug', 'getSlug', 'setSlug'], 'public' => ['public', 'getPublic', 'setPublic'], 'regions' => ['regions', 'getRegions', 'setRegions'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'minDiskSize' => ['min_disk_size', 'getMinDiskSize', 'setMinDiskSize'], 'sizeGigabytes' => ['size_gigabytes', 'getSizeGigabytes', 'setSizeGigabytes'], 'description' => ['description', 'getDescription', 'setDescription'], 'tags' => ['tags', 'getTags', 'setTags'], 'status' => ['status', 'getStatus', 'setStatus'], 'errorMessage' => ['error_message', 'getErrorMessage', 'setErrorMessage']];
     }
 }

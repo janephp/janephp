@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class GistsGistIdPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class GistsGistIdPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class GistsGistIdPatchBody extends \ArrayObject
         $this->initialized['files'] = true;
         $this->files = $files;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['description' => ['description', 'getDescription', 'setDescription'], 'files' => ['files', 'getFiles', 'setFiles']];
     }
 }

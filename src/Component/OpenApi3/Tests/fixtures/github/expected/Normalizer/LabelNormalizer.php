@@ -94,7 +94,7 @@ class LabelNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         $dataArray['color'] = $data->getColor();
         $dataArray['default'] = $data->getDefault();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppJobInvocationTrigger extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppJobInvocationTrigger implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class AppJobInvocationTrigger extends \ArrayObject
         $this->initialized['manual'] = true;
         $this->manual = $manual;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'scheduled' => ['scheduled', 'getScheduled', 'setScheduled'], 'manual' => ['manual', 'getManual', 'setManual']];
     }
 }

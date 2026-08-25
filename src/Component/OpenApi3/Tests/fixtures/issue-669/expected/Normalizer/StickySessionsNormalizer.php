@@ -68,7 +68,7 @@ class StickySessionsNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('cookieTtlSeconds') && null !== $data->getCookieTtlSeconds()) {
             $dataArray['cookie_ttl_seconds'] = $data->getCookieTtlSeconds();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

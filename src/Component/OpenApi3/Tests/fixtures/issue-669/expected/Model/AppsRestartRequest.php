@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsRestartRequest extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsRestartRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class AppsRestartRequest extends \ArrayObject
         $this->initialized['components'] = true;
         $this->components = $components;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['components' => ['components', 'getComponents', 'setComponents']];
     }
 }

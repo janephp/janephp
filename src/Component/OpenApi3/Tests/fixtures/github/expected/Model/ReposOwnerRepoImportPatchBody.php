@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoImportPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoImportPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -111,5 +114,9 @@ class ReposOwnerRepoImportPatchBody extends \ArrayObject
         $this->initialized['tfvcProject'] = true;
         $this->tfvcProject = $tfvcProject;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['vcsUsername' => ['vcs_username', 'getVcsUsername', 'setVcsUsername'], 'vcsPassword' => ['vcs_password', 'getVcsPassword', 'setVcsPassword'], 'vcs' => ['vcs', 'getVcs', 'setVcs'], 'tfvcProject' => ['tfvc_project', 'getTfvcProject', 'setTfvcProject']];
     }
 }

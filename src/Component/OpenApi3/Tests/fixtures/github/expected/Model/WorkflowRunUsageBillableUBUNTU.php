@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class WorkflowRunUsageBillableUBUNTU extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class WorkflowRunUsageBillableUBUNTU implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class WorkflowRunUsageBillableUBUNTU extends \ArrayObject
         $this->initialized['jobs'] = true;
         $this->jobs = $jobs;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['totalMs' => ['total_ms', 'getTotalMs', 'setTotalMs'], 'jobs' => ['jobs', 'getJobs', 'setJobs']];
     }
 }

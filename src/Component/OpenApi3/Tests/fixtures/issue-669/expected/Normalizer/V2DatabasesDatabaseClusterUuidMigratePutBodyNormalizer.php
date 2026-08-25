@@ -52,7 +52,7 @@ class V2DatabasesDatabaseClusterUuidMigratePutBodyNormalizer implements Denormal
     {
         $dataArray = [];
         $dataArray['region'] = $data->getRegion();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

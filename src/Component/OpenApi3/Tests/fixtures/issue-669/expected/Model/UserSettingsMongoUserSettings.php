@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class UserSettingsMongoUserSettings extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class UserSettingsMongoUserSettings implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class UserSettingsMongoUserSettings extends \ArrayObject
         $this->initialized['role'] = true;
         $this->role = $role;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['databases' => ['databases', 'getDatabases', 'setDatabases'], 'role' => ['role', 'getRole', 'setRole']];
     }
 }

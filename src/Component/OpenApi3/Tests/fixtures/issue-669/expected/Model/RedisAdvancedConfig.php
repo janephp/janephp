@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class RedisAdvancedConfig extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class RedisAdvancedConfig implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -394,5 +397,9 @@ class RedisAdvancedConfig extends \ArrayObject
         $this->initialized['redisAclChannelsDefault'] = true;
         $this->redisAclChannelsDefault = $redisAclChannelsDefault;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['redisMaxmemoryPolicy' => ['redis_maxmemory_policy', 'getRedisMaxmemoryPolicy', 'setRedisMaxmemoryPolicy'], 'redisPubsubClientOutputBufferLimit' => ['redis_pubsub_client_output_buffer_limit', 'getRedisPubsubClientOutputBufferLimit', 'setRedisPubsubClientOutputBufferLimit'], 'redisNumberOfDatabases' => ['redis_number_of_databases', 'getRedisNumberOfDatabases', 'setRedisNumberOfDatabases'], 'redisIoThreads' => ['redis_io_threads', 'getRedisIoThreads', 'setRedisIoThreads'], 'redisLfuLogFactor' => ['redis_lfu_log_factor', 'getRedisLfuLogFactor', 'setRedisLfuLogFactor'], 'redisLfuDecayTime' => ['redis_lfu_decay_time', 'getRedisLfuDecayTime', 'setRedisLfuDecayTime'], 'redisSsl' => ['redis_ssl', 'getRedisSsl', 'setRedisSsl'], 'redisTimeout' => ['redis_timeout', 'getRedisTimeout', 'setRedisTimeout'], 'redisNotifyKeyspaceEvents' => ['redis_notify_keyspace_events', 'getRedisNotifyKeyspaceEvents', 'setRedisNotifyKeyspaceEvents'], 'redisPersistence' => ['redis_persistence', 'getRedisPersistence', 'setRedisPersistence'], 'redisAclChannelsDefault' => ['redis_acl_channels_default', 'getRedisAclChannelsDefault', 'setRedisAclChannelsDefault']];
     }
 }

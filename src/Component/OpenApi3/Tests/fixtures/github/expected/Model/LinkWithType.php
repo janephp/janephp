@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class LinkWithType extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class LinkWithType implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class LinkWithType extends \ArrayObject
         $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['href' => ['href', 'getHref', 'setHref'], 'type' => ['type', 'getType', 'setType']];
     }
 }

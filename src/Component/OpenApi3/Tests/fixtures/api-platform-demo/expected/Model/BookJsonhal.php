@@ -2,8 +2,11 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class BookJsonhal extends \ArrayObject
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
+class BookJsonhal implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -273,5 +276,9 @@ class BookJsonhal extends \ArrayObject
         $this->initialized['archivedAt'] = true;
         $this->archivedAt = $archivedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['links' => ['_links', 'getLinks', 'setLinks'], 'id' => ['id', 'getId', 'setId'], 'isbn' => ['isbn', 'getIsbn', 'setIsbn'], 'title' => ['title', 'getTitle', 'setTitle'], 'description' => ['description', 'getDescription', 'setDescription'], 'author' => ['author', 'getAuthor', 'setAuthor'], 'publicationDate' => ['publicationDate', 'getPublicationDate', 'setPublicationDate'], 'reviews' => ['reviews', 'getReviews', 'setReviews'], 'cover' => ['cover', 'getCover', 'setCover'], 'archivedAt' => ['archivedAt', 'getArchivedAt', 'setArchivedAt']];
     }
 }

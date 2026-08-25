@@ -259,7 +259,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemN
         if ($data->isInitialized('trueMatch') && null !== $data->getTrueMatch()) {
             $dataArray['trueMatch'] = $data->getTrueMatch();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

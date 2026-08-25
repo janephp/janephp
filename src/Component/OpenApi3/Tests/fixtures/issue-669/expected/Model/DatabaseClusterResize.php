@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DatabaseClusterResize extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DatabaseClusterResize implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class DatabaseClusterResize extends \ArrayObject
         $this->initialized['storageSizeMib'] = true;
         $this->storageSizeMib = $storageSizeMib;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['size' => ['size', 'getSize', 'setSize'], 'numNodes' => ['num_nodes', 'getNumNodes', 'setNumNodes'], 'storageSizeMib' => ['storage_size_mib', 'getStorageSizeMib', 'setStorageSizeMib']];
     }
 }

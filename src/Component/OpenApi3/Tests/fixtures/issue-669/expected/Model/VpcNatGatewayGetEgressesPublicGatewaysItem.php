@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class VpcNatGatewayGetEgressesPublicGatewaysItem extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class VpcNatGatewayGetEgressesPublicGatewaysItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class VpcNatGatewayGetEgressesPublicGatewaysItem extends \ArrayObject
         $this->initialized['ipv4'] = true;
         $this->ipv4 = $ipv4;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['ipv4' => ['ipv4', 'getIpv4', 'setIpv4']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsInstanceSize extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsInstanceSize implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -331,5 +334,9 @@ class AppsInstanceSize extends \ArrayObject
         $this->initialized['usdPerSecond'] = true;
         $this->usdPerSecond = $usdPerSecond;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['bandwidthAllowanceGib' => ['bandwidth_allowance_gib', 'getBandwidthAllowanceGib', 'setBandwidthAllowanceGib'], 'cpuType' => ['cpu_type', 'getCpuType', 'setCpuType'], 'cpus' => ['cpus', 'getCpus', 'setCpus'], 'deprecationIntent' => ['deprecation_intent', 'getDeprecationIntent', 'setDeprecationIntent'], 'memoryBytes' => ['memory_bytes', 'getMemoryBytes', 'setMemoryBytes'], 'name' => ['name', 'getName', 'setName'], 'scalable' => ['scalable', 'getScalable', 'setScalable'], 'singleInstanceOnly' => ['single_instance_only', 'getSingleInstanceOnly', 'setSingleInstanceOnly'], 'slug' => ['slug', 'getSlug', 'setSlug'], 'tierDowngradeTo' => ['tier_downgrade_to', 'getTierDowngradeTo', 'setTierDowngradeTo'], 'tierSlug' => ['tier_slug', 'getTierSlug', 'setTierSlug'], 'tierUpgradeTo' => ['tier_upgrade_to', 'getTierUpgradeTo', 'setTierUpgradeTo'], 'usdPerMonth' => ['usd_per_month', 'getUsdPerMonth', 'setUsdPerMonth'], 'usdPerSecond' => ['usd_per_second', 'getUsdPerSecond', 'setUsdPerSecond']];
     }
 }

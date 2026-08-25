@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DockerCredentialsAuthsRegistryDigitaloceanCom extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DockerCredentialsAuthsRegistryDigitaloceanCom implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class DockerCredentialsAuthsRegistryDigitaloceanCom extends \ArrayObject
         $this->initialized['auth'] = true;
         $this->auth = $auth;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['auth' => ['auth', 'getAuth', 'setAuth']];
     }
 }

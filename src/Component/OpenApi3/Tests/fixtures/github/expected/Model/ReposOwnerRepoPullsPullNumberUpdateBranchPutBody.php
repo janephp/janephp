@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPullsPullNumberUpdateBranchPutBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutBody extends \ArrayObject
         $this->initialized['expectedHeadSha'] = true;
         $this->expectedHeadSha = $expectedHeadSha;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['expectedHeadSha' => ['expected_head_sha', 'getExpectedHeadSha', 'setExpectedHeadSha']];
     }
 }

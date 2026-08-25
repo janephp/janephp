@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReferrerTraffic extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReferrerTraffic implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class ReferrerTraffic extends \ArrayObject
         $this->initialized['uniques'] = true;
         $this->uniques = $uniques;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['referrer' => ['referrer', 'getReferrer', 'setReferrer'], 'count' => ['count', 'getCount', 'setCount'], 'uniques' => ['uniques', 'getUniques', 'setUniques']];
     }
 }

@@ -79,7 +79,7 @@ class CustomerChangeEventNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('lifeCycle') && null !== $data->getLifeCycle()) {
             $dataArray['lifeCycle'] = $data->getLifeCycle();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

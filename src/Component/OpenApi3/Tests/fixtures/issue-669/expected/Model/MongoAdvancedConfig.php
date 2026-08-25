@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class MongoAdvancedConfig extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class MongoAdvancedConfig implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class MongoAdvancedConfig extends \ArrayObject
         $this->initialized['verbosity'] = true;
         $this->verbosity = $verbosity;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['defaultReadConcern' => ['default_read_concern', 'getDefaultReadConcern', 'setDefaultReadConcern'], 'defaultWriteConcern' => ['default_write_concern', 'getDefaultWriteConcern', 'setDefaultWriteConcern'], 'transactionLifetimeLimitSeconds' => ['transaction_lifetime_limit_seconds', 'getTransactionLifetimeLimitSeconds', 'setTransactionLifetimeLimitSeconds'], 'slowOpThresholdMs' => ['slow_op_threshold_ms', 'getSlowOpThresholdMs', 'setSlowOpThresholdMs'], 'verbosity' => ['verbosity', 'getVerbosity', 'setVerbosity']];
     }
 }

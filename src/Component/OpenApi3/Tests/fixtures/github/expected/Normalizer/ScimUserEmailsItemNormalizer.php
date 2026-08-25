@@ -65,7 +65,7 @@ class ScimUserEmailsItemNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('primary') && null !== $data->getPrimary()) {
             $dataArray['primary'] = $data->getPrimary();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class TeamsTeamIdMembersUsernamePutResponse422ErrorsItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class TeamsTeamIdMembersUsernamePutResponse422ErrorsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class TeamsTeamIdMembersUsernamePutResponse422ErrorsItem extends \ArrayObject
         $this->initialized['resource'] = true;
         $this->resource = $resource;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['code' => ['code', 'getCode', 'setCode'], 'field' => ['field', 'getField', 'setField'], 'resource' => ['resource', 'getResource', 'setResource']];
     }
 }

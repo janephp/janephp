@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrgsOrgHooksPostBodyConfig extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrgsOrgHooksPostBodyConfig implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -167,5 +170,9 @@ class OrgsOrgHooksPostBodyConfig extends \ArrayObject
         $this->initialized['password'] = true;
         $this->password = $password;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'contentType' => ['content_type', 'getContentType', 'setContentType'], 'secret' => ['secret', 'getSecret', 'setSecret'], 'insecureSsl' => ['insecure_ssl', 'getInsecureSsl', 'setInsecureSsl'], 'username' => ['username', 'getUsername', 'setUsername'], 'password' => ['password', 'getPassword', 'setPassword']];
     }
 }

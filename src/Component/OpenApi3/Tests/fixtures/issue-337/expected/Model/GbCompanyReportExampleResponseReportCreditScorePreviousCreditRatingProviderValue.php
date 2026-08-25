@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportCreditScorePreviousCreditRatingProviderValue extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportCreditScorePreviousCreditRatingProviderValue implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class GbCompanyReportExampleResponseReportCreditScorePreviousCreditRatingProvide
         $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['maxValue' => ['maxValue', 'getMaxValue', 'setMaxValue'], 'minValue' => ['minValue', 'getMinValue', 'setMinValue'], 'value' => ['value', 'getValue', 'setValue']];
     }
 }

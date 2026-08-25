@@ -96,7 +96,7 @@ class ApiEvaluationDatasetNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('rowCount') && null !== $data->getRowCount()) {
             $dataArray['row_count'] = $data->getRowCount();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

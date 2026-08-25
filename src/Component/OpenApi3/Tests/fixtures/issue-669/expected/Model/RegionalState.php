@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class RegionalState extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class RegionalState implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class RegionalState extends \ArrayObject
         $this->initialized['euWest'] = true;
         $this->euWest = $euWest;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['usEast' => ['us_east', 'getUsEast', 'setUsEast'], 'euWest' => ['eu_west', 'getEuWest', 'setEuWest']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class AacAudioFormat extends FormatBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class AacAudioFormat extends FormatBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -145,5 +148,9 @@ class AacAudioFormat extends FormatBase
         $this->initialized['variableBitRate'] = true;
         $this->variableBitRate = $variableBitRate;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['extension' => ['extension', 'getExtension', 'setExtension'], 'profile' => ['profile', 'getProfile', 'setProfile'], 'coder' => ['coder', 'getCoder', 'setCoder'], 'bitrate' => ['bitrate', 'getBitrate', 'setBitrate'], 'variableBitRate' => ['variableBitRate', 'getVariableBitRate', 'setVariableBitRate']];
     }
 }

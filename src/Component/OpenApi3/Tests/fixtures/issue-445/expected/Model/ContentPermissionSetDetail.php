@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ContentPermissionSetDetail extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ContentPermissionSetDetail implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -207,5 +210,9 @@ class ContentPermissionSetDetail extends \ArrayObject
         $this->initialized['audit'] = true;
         $this->audit = $audit;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'names' => ['names', 'getNames', 'setNames'], 'userRolesRights' => ['userRolesRights', 'getUserRolesRights', 'setUserRolesRights'], 'userRolesPermissionSetRights' => ['userRolesPermissionSetRights', 'getUserRolesPermissionSetRights', 'setUserRolesPermissionSetRights'], 'exclusive' => ['exclusive', 'getExclusive', 'setExclusive'], 'ownerTokenId' => ['ownerTokenId', 'getOwnerTokenId', 'setOwnerTokenId'], 'audit' => ['audit', 'getAudit', 'setAudit']];
     }
 }

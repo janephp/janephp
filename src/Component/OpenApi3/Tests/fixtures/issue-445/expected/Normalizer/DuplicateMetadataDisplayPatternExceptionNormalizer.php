@@ -154,7 +154,7 @@ class DuplicateMetadataDisplayPatternExceptionNormalizer implements Denormalizer
         if ($data->isInitialized('displayPatternId') && null !== $data->getDisplayPatternId()) {
             $dataArray['displayPatternId'] = $data->getDisplayPatternId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

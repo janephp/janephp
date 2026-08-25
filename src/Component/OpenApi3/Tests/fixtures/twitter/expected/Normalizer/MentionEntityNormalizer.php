@@ -62,7 +62,7 @@ class MentionEntityNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray['start'] = $data->getStart();
         $dataArray['end'] = $data->getEnd();
         $dataArray['username'] = $data->getUsername();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

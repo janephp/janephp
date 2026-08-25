@@ -95,7 +95,7 @@ class AssignTagboxItemsInLayerActionNormalizer implements DenormalizerInterface,
         if ($data->isInitialized('replace') && null !== $data->getReplace()) {
             $dataArray['replace'] = $data->getReplace();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

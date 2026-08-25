@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ContentReferenceAttachment extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ContentReferenceAttachment implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class ContentReferenceAttachment extends \ArrayObject
         $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'title' => ['title', 'getTitle', 'setTitle'], 'body' => ['body', 'getBody', 'setBody'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId']];
     }
 }

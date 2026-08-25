@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrgHook extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrgHook implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -231,5 +234,9 @@ class OrgHook extends \ArrayObject
         $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'url' => ['url', 'getUrl', 'setUrl'], 'pingUrl' => ['ping_url', 'getPingUrl', 'setPingUrl'], 'name' => ['name', 'getName', 'setName'], 'events' => ['events', 'getEvents', 'setEvents'], 'active' => ['active', 'getActive', 'setActive'], 'config' => ['config', 'getConfig', 'setConfig'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'type' => ['type', 'getType', 'setType']];
     }
 }

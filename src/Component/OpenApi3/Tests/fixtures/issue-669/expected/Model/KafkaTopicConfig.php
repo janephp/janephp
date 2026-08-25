@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class KafkaTopicConfig extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class KafkaTopicConfig implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -599,5 +602,9 @@ class KafkaTopicConfig extends \ArrayObject
         $this->initialized['segmentMs'] = true;
         $this->segmentMs = $segmentMs;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['cleanupPolicy' => ['cleanup_policy', 'getCleanupPolicy', 'setCleanupPolicy'], 'compressionType' => ['compression_type', 'getCompressionType', 'setCompressionType'], 'deleteRetentionMs' => ['delete_retention_ms', 'getDeleteRetentionMs', 'setDeleteRetentionMs'], 'fileDeleteDelayMs' => ['file_delete_delay_ms', 'getFileDeleteDelayMs', 'setFileDeleteDelayMs'], 'flushMessages' => ['flush_messages', 'getFlushMessages', 'setFlushMessages'], 'flushMs' => ['flush_ms', 'getFlushMs', 'setFlushMs'], 'indexIntervalBytes' => ['index_interval_bytes', 'getIndexIntervalBytes', 'setIndexIntervalBytes'], 'maxCompactionLagMs' => ['max_compaction_lag_ms', 'getMaxCompactionLagMs', 'setMaxCompactionLagMs'], 'maxMessageBytes' => ['max_message_bytes', 'getMaxMessageBytes', 'setMaxMessageBytes'], 'messageDownConversionEnable' => ['message_down_conversion_enable', 'getMessageDownConversionEnable', 'setMessageDownConversionEnable'], 'messageFormatVersion' => ['message_format_version', 'getMessageFormatVersion', 'setMessageFormatVersion'], 'messageTimestampType' => ['message_timestamp_type', 'getMessageTimestampType', 'setMessageTimestampType'], 'minCleanableDirtyRatio' => ['min_cleanable_dirty_ratio', 'getMinCleanableDirtyRatio', 'setMinCleanableDirtyRatio'], 'minCompactionLagMs' => ['min_compaction_lag_ms', 'getMinCompactionLagMs', 'setMinCompactionLagMs'], 'minInsyncReplicas' => ['min_insync_replicas', 'getMinInsyncReplicas', 'setMinInsyncReplicas'], 'preallocate' => ['preallocate', 'getPreallocate', 'setPreallocate'], 'retentionBytes' => ['retention_bytes', 'getRetentionBytes', 'setRetentionBytes'], 'retentionMs' => ['retention_ms', 'getRetentionMs', 'setRetentionMs'], 'segmentBytes' => ['segment_bytes', 'getSegmentBytes', 'setSegmentBytes'], 'segmentJitterMs' => ['segment_jitter_ms', 'getSegmentJitterMs', 'setSegmentJitterMs'], 'segmentMs' => ['segment_ms', 'getSegmentMs', 'setSegmentMs']];
     }
 }

@@ -143,7 +143,7 @@ class LeaseNotAcquiredExceptionNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('resourceId') && null !== $data->getResourceId()) {
             $dataArray['resourceId'] = $data->getResourceId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

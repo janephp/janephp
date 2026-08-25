@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class UserUpdateIdentityProviderManyRequest extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class UserUpdateIdentityProviderManyRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class UserUpdateIdentityProviderManyRequest extends \ArrayObject
         $this->initialized['identityProviderId'] = true;
         $this->identityProviderId = $identityProviderId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['userIds' => ['userIds', 'getUserIds', 'setUserIds'], 'identityProviderId' => ['identityProviderId', 'getIdentityProviderId', 'setIdentityProviderId']];
     }
 }

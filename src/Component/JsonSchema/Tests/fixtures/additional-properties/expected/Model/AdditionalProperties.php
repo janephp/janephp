@@ -2,8 +2,11 @@
 
 namespace Jane\Component\JsonSchema\Tests\Expected\Model;
 
-class AdditionalProperties extends \ArrayObject
+use Jane\Component\JsonSchema\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\JsonSchema\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class AdditionalProperties implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class AdditionalProperties extends \ArrayObject
         $this->initialized['foo'] = true;
         $this->foo = $foo;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['foo' => ['foo', 'getFoo', 'setFoo']];
     }
 }

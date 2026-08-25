@@ -57,7 +57,7 @@ class ResponseDatabaseSchemaRegistrySubjectConfigNormalizer implements Denormali
         $dataArray = [];
         $dataArray['subject_name'] = $data->getSubjectName();
         $dataArray['compatibility_level'] = $data->getCompatibilityLevel();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

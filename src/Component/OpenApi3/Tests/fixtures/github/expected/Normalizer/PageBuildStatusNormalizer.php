@@ -60,7 +60,7 @@ class PageBuildStatusNormalizer implements DenormalizerInterface, NormalizerInte
         $dataArray = [];
         $dataArray['url'] = $data->getUrl();
         $dataArray['status'] = $data->getStatus();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

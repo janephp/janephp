@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CommitSearchResultItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CommitSearchResultItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -281,5 +284,9 @@ class CommitSearchResultItem extends \ArrayObject
         $this->initialized['textMatches'] = true;
         $this->textMatches = $textMatches;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'sha' => ['sha', 'getSha', 'setSha'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'commentsUrl' => ['comments_url', 'getCommentsUrl', 'setCommentsUrl'], 'commit' => ['commit', 'getCommit', 'setCommit'], 'author' => ['author', 'getAuthor', 'setAuthor'], 'committer' => ['committer', 'getCommitter', 'setCommitter'], 'parents' => ['parents', 'getParents', 'setParents'], 'repository' => ['repository', 'getRepository', 'setRepository'], 'score' => ['score', 'getScore', 'setScore'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'textMatches' => ['text_matches', 'getTextMatches', 'setTextMatches']];
     }
 }

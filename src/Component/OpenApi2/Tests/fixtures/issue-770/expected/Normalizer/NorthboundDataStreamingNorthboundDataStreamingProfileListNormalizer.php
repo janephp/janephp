@@ -69,7 +69,7 @@ class NorthboundDataStreamingNorthboundDataStreamingProfileListNormalizer implem
         if ($data->isInitialized('extra') && null !== $data->getExtra()) {
             $dataArray['extra'] = $data->getExtra() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getExtra(), 'json', $context));
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

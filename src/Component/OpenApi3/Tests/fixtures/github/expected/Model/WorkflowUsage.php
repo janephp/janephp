@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class WorkflowUsage extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class WorkflowUsage implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class WorkflowUsage extends \ArrayObject
         $this->initialized['billable'] = true;
         $this->billable = $billable;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['billable' => ['billable', 'getBillable', 'setBillable']];
     }
 }

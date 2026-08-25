@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class PullRequestReviewLinks extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class PullRequestReviewLinks implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class PullRequestReviewLinks extends \ArrayObject
         $this->initialized['pullRequest'] = true;
         $this->pullRequest = $pullRequest;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['html' => ['html', 'getHtml', 'setHtml'], 'pullRequest' => ['pull_request', 'getPullRequest', 'setPullRequest']];
     }
 }

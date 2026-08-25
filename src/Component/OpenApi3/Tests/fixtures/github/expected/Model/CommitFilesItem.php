@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CommitFilesItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CommitFilesItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -253,5 +256,9 @@ class CommitFilesItem extends \ArrayObject
         $this->initialized['previousFilename'] = true;
         $this->previousFilename = $previousFilename;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['filename' => ['filename', 'getFilename', 'setFilename'], 'additions' => ['additions', 'getAdditions', 'setAdditions'], 'deletions' => ['deletions', 'getDeletions', 'setDeletions'], 'changes' => ['changes', 'getChanges', 'setChanges'], 'status' => ['status', 'getStatus', 'setStatus'], 'rawUrl' => ['raw_url', 'getRawUrl', 'setRawUrl'], 'blobUrl' => ['blob_url', 'getBlobUrl', 'setBlobUrl'], 'patch' => ['patch', 'getPatch', 'setPatch'], 'sha' => ['sha', 'getSha', 'setSha'], 'contentsUrl' => ['contents_url', 'getContentsUrl', 'setContentsUrl'], 'previousFilename' => ['previous_filename', 'getPreviousFilename', 'setPreviousFilename']];
     }
 }

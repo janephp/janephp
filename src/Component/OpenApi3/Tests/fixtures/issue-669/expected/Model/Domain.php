@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class Domain extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class Domain implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class Domain extends \ArrayObject
         $this->initialized['zoneFile'] = true;
         $this->zoneFile = $zoneFile;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'ipAddress' => ['ip_address', 'getIpAddress', 'setIpAddress'], 'ttl' => ['ttl', 'getTtl', 'setTtl'], 'zoneFile' => ['zone_file', 'getZoneFile', 'setZoneFile']];
     }
 }

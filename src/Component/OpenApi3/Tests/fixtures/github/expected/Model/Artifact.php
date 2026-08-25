@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Artifact extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Artifact implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -249,5 +252,9 @@ class Artifact extends \ArrayObject
         $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'name' => ['name', 'getName', 'setName'], 'sizeInBytes' => ['size_in_bytes', 'getSizeInBytes', 'setSizeInBytes'], 'url' => ['url', 'getUrl', 'setUrl'], 'archiveDownloadUrl' => ['archive_download_url', 'getArchiveDownloadUrl', 'setArchiveDownloadUrl'], 'expired' => ['expired', 'getExpired', 'setExpired'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'expiresAt' => ['expires_at', 'getExpiresAt', 'setExpiresAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsImageSourceSpec extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsImageSourceSpec implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -213,5 +216,9 @@ class AppsImageSourceSpec extends \ArrayObject
         $this->initialized['deployOnPush'] = true;
         $this->deployOnPush = $deployOnPush;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['registry' => ['registry', 'getRegistry', 'setRegistry'], 'registryType' => ['registry_type', 'getRegistryType', 'setRegistryType'], 'registryCredentials' => ['registry_credentials', 'getRegistryCredentials', 'setRegistryCredentials'], 'repository' => ['repository', 'getRepository', 'setRepository'], 'tag' => ['tag', 'getTag', 'setTag'], 'digest' => ['digest', 'getDigest', 'setDigest'], 'deployOnPush' => ['deploy_on_push', 'getDeployOnPush', 'setDeployOnPush']];
     }
 }

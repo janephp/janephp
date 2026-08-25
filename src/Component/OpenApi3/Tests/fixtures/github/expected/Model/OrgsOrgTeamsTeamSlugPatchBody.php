@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrgsOrgTeamsTeamSlugPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrgsOrgTeamsTeamSlugPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -175,5 +178,9 @@ class OrgsOrgTeamsTeamSlugPatchBody extends \ArrayObject
         $this->initialized['parentTeamId'] = true;
         $this->parentTeamId = $parentTeamId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'description' => ['description', 'getDescription', 'setDescription'], 'privacy' => ['privacy', 'getPrivacy', 'setPrivacy'], 'permission' => ['permission', 'getPermission', 'setPermission'], 'parentTeamId' => ['parent_team_id', 'getParentTeamId', 'setParentTeamId']];
     }
 }

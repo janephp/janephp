@@ -112,7 +112,7 @@ class ApiLinkAgentFunctionInputPublicNormalizer implements DenormalizerInterface
             }
             $dataArray['output_schema'] = $values_1;
         }
-        foreach ($data as $key_2 => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key_2 => $value_2) {
             if (preg_match('/.*/', (string) $key_2)) {
                 $dataArray[$key_2] = $value_2;
             }

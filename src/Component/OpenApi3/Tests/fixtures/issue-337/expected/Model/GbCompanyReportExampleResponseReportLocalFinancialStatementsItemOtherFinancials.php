@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinancials extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinancials implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemOtherFinan
         $this->initialized['netWorth'] = true;
         $this->netWorth = $netWorth;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['contingentLiabilities' => ['contingentLiabilities', 'getContingentLiabilities', 'setContingentLiabilities'], 'bankOverdraftAndLTL' => ['bankOverdraftAndLTL', 'getBankOverdraftAndLTL', 'setBankOverdraftAndLTL'], 'workingCapital' => ['workingCapital', 'getWorkingCapital', 'setWorkingCapital'], 'capitalEmployed' => ['capitalEmployed', 'getCapitalEmployed', 'setCapitalEmployed'], 'netWorth' => ['netWorth', 'getNetWorth', 'setNetWorth']];
     }
 }

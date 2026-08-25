@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppComponentInstanceBaseAutoscalingMetrics extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppComponentInstanceBaseAutoscalingMetrics implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class AppComponentInstanceBaseAutoscalingMetrics extends \ArrayObject
         $this->initialized['cpu'] = true;
         $this->cpu = $cpu;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['cpu' => ['cpu', 'getCpu', 'setCpu']];
     }
 }

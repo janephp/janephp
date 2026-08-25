@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class Company extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class Company implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -179,5 +182,9 @@ class Company extends \ArrayObject
         $this->initialized['portfolioName'] = true;
         $this->portfolioName = $portfolioName;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'safeNumber' => ['safeNumber', 'getSafeNumber', 'setSafeNumber'], 'name' => ['name', 'getName', 'setName'], 'countryCode' => ['countryCode', 'getCountryCode', 'setCountryCode'], 'portfolioId' => ['portfolioId', 'getPortfolioId', 'setPortfolioId'], 'portfolioName' => ['portfolioName', 'getPortfolioName', 'setPortfolioName']];
     }
 }

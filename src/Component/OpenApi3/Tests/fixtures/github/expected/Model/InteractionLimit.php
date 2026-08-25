@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class InteractionLimit extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class InteractionLimit implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -83,5 +86,9 @@ class InteractionLimit extends \ArrayObject
         $this->initialized['expiresAt'] = true;
         $this->expiresAt = $expiresAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['limit' => ['limit', 'getLimit', 'setLimit'], 'origin' => ['origin', 'getOrigin', 'setOrigin'], 'expiresAt' => ['expires_at', 'getExpiresAt', 'setExpiresAt']];
     }
 }

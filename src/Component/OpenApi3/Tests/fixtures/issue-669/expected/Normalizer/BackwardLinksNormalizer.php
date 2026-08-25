@@ -61,7 +61,7 @@ class BackwardLinksNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('prev') && null !== $data->getPrev()) {
             $dataArray['prev'] = $data->getPrev();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

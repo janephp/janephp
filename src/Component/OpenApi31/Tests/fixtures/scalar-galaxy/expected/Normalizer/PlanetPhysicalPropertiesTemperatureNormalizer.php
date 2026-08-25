@@ -80,7 +80,7 @@ class PlanetPhysicalPropertiesTemperatureNormalizer implements DenormalizerInter
         if ($data->isInitialized('average') && null !== $data->getAverage()) {
             $dataArray['average'] = $data->getAverage();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -143,7 +143,7 @@ class PictureparkArgumentNullExceptionNormalizer implements DenormalizerInterfac
         if ($data->isInitialized('argumentName') && null !== $data->getArgumentName()) {
             $dataArray['argumentName'] = $data->getArgumentName();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }
