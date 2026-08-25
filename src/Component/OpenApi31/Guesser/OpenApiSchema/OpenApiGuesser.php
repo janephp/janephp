@@ -19,10 +19,8 @@ use Jane\Component\OpenApi31\JsonSchema\Model\RequestBody;
 use Jane\Component\OpenApi31\JsonSchema\Model\Response;
 use Jane\Component\OpenApi31\JsonSchema\Normalizer\ResponseNormalizer;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
-use Jane\Component\OpenApiCommon\Naming\ChainOperationNaming;
-use Jane\Component\OpenApiCommon\Naming\OperationIdNaming;
+use Jane\Component\OpenApiCommon\Naming\OperationNamingFactory;
 use Jane\Component\OpenApiCommon\Naming\OperationNamingInterface;
-use Jane\Component\OpenApiCommon\Naming\OperationUrlNaming;
 use Jane\Component\OpenApiCommon\Registry\Registry as OpenApiRegistry;
 use Jane\Component\OpenApiCommon\Registry\Schema as OpenApiRegistrySchema;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -38,14 +36,11 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
     private SluggerInterface $slugger;
     private OperationNamingInterface $naming;
 
-    public function __construct(DenormalizerInterface $denormalizer)
+    public function __construct(DenormalizerInterface $denormalizer, ?OperationNamingInterface $naming = null)
     {
         $this->denormalizer = $denormalizer;
         $this->slugger = new AsciiSlugger();
-        $this->naming = new ChainOperationNaming([
-            new OperationIdNaming(),
-            new OperationUrlNaming(),
-        ]);
+        $this->naming = $naming ?? OperationNamingFactory::create();
     }
 
     public function supportObject($object): bool

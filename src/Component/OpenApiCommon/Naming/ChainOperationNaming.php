@@ -32,7 +32,7 @@ class ChainOperationNaming implements OperationNamingInterface
         foreach ($this->operationNamings as $operationNaming) {
             $functionName = $operationNaming->getEndpointName($operation);
 
-            if (mb_strlen($functionName) > 0) {
+            if ('' !== $functionName) {
                 return $functionName;
             }
         }

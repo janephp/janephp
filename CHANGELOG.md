@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - [JsonSchema] New `<Namespace>\Runtime\JsonObject` runtime class shipped with every generated library, used to represent objects & maps in normalized payloads
 - [Docs] New [Architecture Decision Records](docs/contributing/adrs/index.md) documenting key generator/runtime decisions
+- [OpenApi] [GH#832](https://github.com/janephp/janephp/issues/832) New `operation-namings` option to customize client method names and endpoint class names through `Jane\Component\OpenApiCommon\Naming\OperationNamingInterface` instances. Providing an empty array (the default) keeps the built-in chain (`operationId` based naming with URL based fallback). As a side effect, an operation named exactly `'0'` is now consistently treated as a valid name by the naming chain instead of being skipped
 - [JsonSchema] [GH#865](https://github.com/janephp/janephp/issues/865) New `enums-as-objects` option to generate native PHP backed enums for schemas with an `enum` keyword (`string` / `integer` types)
 - [OpenApi3] [GH#771](https://github.com/janephp/janephp/issues/771) Report clean generation errors for non-body parameters using an unsupported `schema.type` (or no `type`/`enum`) instead of crashing
 - [JsonSchema] [GH#752](https://github.com/janephp/janephp/issues/752) Validate `format: date` / `format: date-time` string properties when the `validation` option is enabled (Symfony `Date` / `DateTime` constraints, honoring the `full-date-format`, `date-format` and `date-input-format` options)
