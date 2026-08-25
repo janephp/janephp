@@ -44,13 +44,29 @@ class CustomerAppNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setAppId(null);
         }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
-            $object->setName($data['name']);
+            $value = $data['name'];
+            if (is_array($data['name']) && $this->isOnlyNumericKeys($data['name'])) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['name'] as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $object->setName($value);
         }
         elseif (\array_key_exists('name', $data) && $data['name'] === null) {
             $object->setName(null);
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
-            $object->setDescription($data['description']);
+            $value_2 = $data['description'];
+            if (is_array($data['description']) && $this->isOnlyNumericKeys($data['description'])) {
+                $values_1 = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['description'] as $key_1 => $value_3) {
+                    $values_1[$key_1] = $value_3;
+                }
+                $value_2 = $values_1;
+            }
+            $object->setDescription($value_2);
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
@@ -70,10 +86,26 @@ class CustomerAppNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['appId'] = $data->getAppId();
         }
         if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+            $value = $data->getName();
+            if (is_object($data->getName())) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data->getName() as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $dataArray['name'] = $value;
         }
         if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+            $value_2 = $data->getDescription();
+            if (is_object($data->getDescription())) {
+                $values_1 = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data->getDescription() as $key_1 => $value_3) {
+                    $values_1[$key_1] = $value_3;
+                }
+                $value_2 = $values_1;
+            }
+            $dataArray['description'] = $value_2;
         }
         if ($data->isInitialized('icon') && null !== $data->getIcon()) {
             $dataArray['icon'] = $data->getIcon();

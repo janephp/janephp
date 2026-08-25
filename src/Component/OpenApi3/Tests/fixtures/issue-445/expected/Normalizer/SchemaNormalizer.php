@@ -60,23 +60,39 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setTypes(null);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $object->setNames($data['names']);
+            $value_1 = $data['names'];
+            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
+                $values_1 = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['names'] as $key => $value_2) {
+                    $values_1[$key] = $value_2;
+                }
+                $value_1 = $values_1;
+            }
+            $object->setNames($value_1);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
-            $object->setDescriptions($data['descriptions']);
+            $value_3 = $data['descriptions'];
+            if (is_array($data['descriptions']) && $this->isOnlyNumericKeys($data['descriptions'])) {
+                $values_2 = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['descriptions'] as $key_1 => $value_4) {
+                    $values_2[$key_1] = $value_4;
+                }
+                $value_3 = $values_2;
+            }
+            $object->setDescriptions($value_3);
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
             $object->setDescriptions(null);
         }
         if (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] !== null) {
-            $values_1 = [];
-            foreach ($data['layerSchemaIds'] as $value_1) {
-                $values_1[] = $value_1;
+            $values_3 = [];
+            foreach ($data['layerSchemaIds'] as $value_5) {
+                $values_3[] = $value_5;
             }
-            $object->setLayerSchemaIds($values_1);
+            $object->setLayerSchemaIds($values_3);
         }
         elseif (\array_key_exists('layerSchemaIds', $data) && $data['layerSchemaIds'] === null) {
             $object->setLayerSchemaIds(null);
@@ -110,17 +126,33 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $dataArray['types'] = $values;
         }
         if ($data->isInitialized('names') && null !== $data->getNames()) {
-            $dataArray['names'] = $data->getNames();
+            $value_1 = $data->getNames();
+            if (is_object($data->getNames())) {
+                $values_1 = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data->getNames() as $key => $value_2) {
+                    $values_1[$key] = $value_2;
+                }
+                $value_1 = $values_1;
+            }
+            $dataArray['names'] = $value_1;
         }
         if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
-            $dataArray['descriptions'] = $data->getDescriptions();
+            $value_3 = $data->getDescriptions();
+            if (is_object($data->getDescriptions())) {
+                $values_2 = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data->getDescriptions() as $key_1 => $value_4) {
+                    $values_2[$key_1] = $value_4;
+                }
+                $value_3 = $values_2;
+            }
+            $dataArray['descriptions'] = $value_3;
         }
         if ($data->isInitialized('layerSchemaIds') && null !== $data->getLayerSchemaIds()) {
-            $values_1 = [];
-            foreach ($data->getLayerSchemaIds() as $value_1) {
-                $values_1[] = $value_1;
+            $values_3 = [];
+            foreach ($data->getLayerSchemaIds() as $value_5) {
+                $values_3[] = $value_5;
             }
-            $dataArray['layerSchemaIds'] = $values_1;
+            $dataArray['layerSchemaIds'] = $values_3;
         }
         $dataArray['fieldCount'] = $data->getFieldCount();
         $dataArray['childCount'] = $data->getChildCount();

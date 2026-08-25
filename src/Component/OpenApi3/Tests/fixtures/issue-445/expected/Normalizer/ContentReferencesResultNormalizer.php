@@ -38,13 +38,21 @@ class ContentReferencesResultNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('metadataReferences', $data) && $data['metadataReferences'] !== null) {
-            $object->setMetadataReferences($data['metadataReferences']);
+            $value = $data['metadataReferences'];
+            if (is_array($data['metadataReferences'])) {
+                $value = $this->denormalizer->denormalize($data['metadataReferences'], \PicturePark\API\Model\MetadataReferenceResult::class, 'json', $context);
+            }
+            $object->setMetadataReferences($value);
         }
         elseif (\array_key_exists('metadataReferences', $data) && $data['metadataReferences'] === null) {
             $object->setMetadataReferences(null);
         }
         if (\array_key_exists('shareReferences', $data) && $data['shareReferences'] !== null) {
-            $object->setShareReferences($data['shareReferences']);
+            $value_1 = $data['shareReferences'];
+            if (is_array($data['shareReferences'])) {
+                $value_1 = $this->denormalizer->denormalize($data['shareReferences'], \PicturePark\API\Model\ContentShareReferenceResult::class, 'json', $context);
+            }
+            $object->setShareReferences($value_1);
         }
         elseif (\array_key_exists('shareReferences', $data) && $data['shareReferences'] === null) {
             $object->setShareReferences(null);
@@ -55,10 +63,18 @@ class ContentReferencesResultNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         if ($data->isInitialized('metadataReferences') && null !== $data->getMetadataReferences()) {
-            $dataArray['metadataReferences'] = $data->getMetadataReferences();
+            $value = $data->getMetadataReferences();
+            if (is_object($data->getMetadataReferences())) {
+                $value = $data->getMetadataReferences() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getMetadataReferences(), 'json', $context));
+            }
+            $dataArray['metadataReferences'] = $value;
         }
         if ($data->isInitialized('shareReferences') && null !== $data->getShareReferences()) {
-            $dataArray['shareReferences'] = $data->getShareReferences();
+            $value_1 = $data->getShareReferences();
+            if (is_object($data->getShareReferences())) {
+                $value_1 = $data->getShareReferences() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getShareReferences(), 'json', $context));
+            }
+            $dataArray['shareReferences'] = $value_1;
         }
         return $dataArray;
     }

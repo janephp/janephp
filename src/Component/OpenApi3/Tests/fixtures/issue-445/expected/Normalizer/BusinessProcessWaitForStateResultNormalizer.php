@@ -44,7 +44,11 @@ class BusinessProcessWaitForStateResultNormalizer implements DenormalizerInterfa
             $object->setStateHit(null);
         }
         if (\array_key_exists('businessProcess', $data)) {
-            $object->setBusinessProcess($data['businessProcess']);
+            $value = $data['businessProcess'];
+            if (is_array($data['businessProcess']) and \array_key_exists('id', $data['businessProcess']) and \array_key_exists('processDefinitionId', $data['businessProcess']) and \array_key_exists('supportsCancellation', $data['businessProcess']) and \array_key_exists('businessProcessScope', $data['businessProcess']) and \array_key_exists('lifeCycle', $data['businessProcess']) and \array_key_exists('startDate', $data['businessProcess']) and \array_key_exists('endDate', $data['businessProcess']) and \array_key_exists('finished', $data['businessProcess']) and \array_key_exists('kind', $data['businessProcess'])) {
+                $value = $this->denormalizer->denormalize($data['businessProcess'], \PicturePark\API\Model\BusinessProcess::class, 'json', $context);
+            }
+            $object->setBusinessProcess($value);
         }
         return $object;
     }
@@ -54,7 +58,11 @@ class BusinessProcessWaitForStateResultNormalizer implements DenormalizerInterfa
         if ($data->isInitialized('stateHit') && null !== $data->getStateHit()) {
             $dataArray['stateHit'] = $data->getStateHit();
         }
-        $dataArray['businessProcess'] = $data->getBusinessProcess();
+        $value = $data->getBusinessProcess();
+        if (is_object($data->getBusinessProcess())) {
+            $value = $data->getBusinessProcess() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getBusinessProcess(), 'json', $context));
+        }
+        $dataArray['businessProcess'] = $value;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

@@ -58,14 +58,18 @@ class MetadataStatusNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setListSchemaIds(null);
         }
         if (\array_key_exists('state', $data)) {
-            $object->setState($data['state']);
+            $value_2 = $data['state'];
+            if (is_string($data['state'])) {
+                $value_2 = $data['state'];
+            }
+            $object->setState($value_2);
         }
         if (\array_key_exists('fieldIdsToCleanup', $data) && $data['fieldIdsToCleanup'] !== null) {
             $values_2 = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data['fieldIdsToCleanup'] as $key => $value_2) {
+            foreach ($data['fieldIdsToCleanup'] as $key => $value_3) {
                 $values_3 = [];
-                foreach ($value_2 as $value_3) {
-                    $values_3[] = $value_3;
+                foreach ($value_3 as $value_4) {
+                    $values_3[] = $value_4;
                 }
                 $values_2[$key] = $values_3;
             }
@@ -93,13 +97,17 @@ class MetadataStatusNormalizer implements DenormalizerInterface, NormalizerInter
             }
             $dataArray['listSchemaIds'] = $values_1;
         }
-        $dataArray['state'] = $data->getState();
+        $value_2 = $data->getState();
+        if (is_string($data->getState())) {
+            $value_2 = $data->getState();
+        }
+        $dataArray['state'] = $value_2;
         if ($data->isInitialized('fieldIdsToCleanup') && null !== $data->getFieldIdsToCleanup()) {
             $values_2 = new \PicturePark\API\Runtime\JsonObject();
-            foreach ($data->getFieldIdsToCleanup() as $key => $value_2) {
+            foreach ($data->getFieldIdsToCleanup() as $key => $value_3) {
                 $values_3 = [];
-                foreach ($value_2 as $value_3) {
-                    $values_3[] = $value_3;
+                foreach ($value_3 as $value_4) {
+                    $values_3[] = $value_4;
                 }
                 $values_2[$key] = $values_3;
             }

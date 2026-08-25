@@ -78,10 +78,18 @@ class UserWithRolesNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->setEmailAddress($data['emailAddress']);
         }
         if (\array_key_exists('authorizationState', $data)) {
-            $object->setAuthorizationState($data['authorizationState']);
+            $value_1 = $data['authorizationState'];
+            if (is_string($data['authorizationState'])) {
+                $value_1 = $data['authorizationState'];
+            }
+            $object->setAuthorizationState($value_1);
         }
         if (\array_key_exists('lifeCycle', $data)) {
-            $object->setLifeCycle($data['lifeCycle']);
+            $value_2 = $data['lifeCycle'];
+            if (is_string($data['lifeCycle'])) {
+                $value_2 = $data['lifeCycle'];
+            }
+            $object->setLifeCycle($value_2);
         }
         if (\array_key_exists('isLocked', $data)) {
             $object->setIsLocked($data['isLocked']);
@@ -115,8 +123,16 @@ class UserWithRolesNormalizer implements DenormalizerInterface, NormalizerInterf
             $dataArray['lastName'] = $data->getLastName();
         }
         $dataArray['emailAddress'] = $data->getEmailAddress();
-        $dataArray['authorizationState'] = $data->getAuthorizationState();
-        $dataArray['lifeCycle'] = $data->getLifeCycle();
+        $value_1 = $data->getAuthorizationState();
+        if (is_string($data->getAuthorizationState())) {
+            $value_1 = $data->getAuthorizationState();
+        }
+        $dataArray['authorizationState'] = $value_1;
+        $value_2 = $data->getLifeCycle();
+        if (is_string($data->getLifeCycle())) {
+            $value_2 = $data->getLifeCycle();
+        }
+        $dataArray['lifeCycle'] = $value_2;
         $dataArray['isLocked'] = $data->getIsLocked();
         $dataArray['isSupportUser'] = $data->getIsSupportUser();
         $dataArray['isReadOnly'] = $data->getIsReadOnly();

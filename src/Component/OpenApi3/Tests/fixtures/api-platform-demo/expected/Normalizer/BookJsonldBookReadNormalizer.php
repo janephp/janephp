@@ -38,7 +38,13 @@ class BookJsonldBookReadNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('@context', $data)) {
-            $object->setContext($data['@context']);
+            $value = $data['@context'];
+            if (is_string($data['@context'])) {
+                $value = $data['@context'];
+            } elseif (is_array($data['@context'])) {
+                $value = $data['@context'];
+            }
+            $object->setContext($value);
             unset($data['@context']);
         }
         if (\array_key_exists('@id', $data)) {
@@ -87,15 +93,15 @@ class BookJsonldBookReadNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('reviews', $data)) {
             $values = [];
-            foreach ($data['reviews'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \ApiPlatform\Demo\Model\ReviewJsonldBookRead::class, 'json', $context);
+            foreach ($data['reviews'] as $value_1) {
+                $values[] = $this->denormalizer->denormalize($value_1, \ApiPlatform\Demo\Model\ReviewJsonldBookRead::class, 'json', $context);
             }
             $object->setReviews($values);
             unset($data['reviews']);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value_2;
             }
         }
         return $object;

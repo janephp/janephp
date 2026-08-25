@@ -65,7 +65,11 @@ class ShareOutputBaseNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setDownloadUrl(null);
         }
         if (\array_key_exists('detail', $data) && $data['detail'] !== null) {
-            $object->setDetail($data['detail']);
+            $value = $data['detail'];
+            if (is_array($data['detail']) and \array_key_exists('kind', $data['detail'])) {
+                $value = $this->denormalizer->denormalize($data['detail'], \PicturePark\API\Model\OutputDataBase::class, 'json', $context);
+            }
+            $object->setDetail($value);
         }
         elseif (\array_key_exists('detail', $data) && $data['detail'] === null) {
             $object->setDetail(null);
@@ -96,7 +100,11 @@ class ShareOutputBaseNormalizer implements DenormalizerInterface, NormalizerInte
             $dataArray['downloadUrl'] = $data->getDownloadUrl();
         }
         if ($data->isInitialized('detail') && null !== $data->getDetail()) {
-            $dataArray['detail'] = $data->getDetail();
+            $value = $data->getDetail();
+            if (is_object($data->getDetail())) {
+                $value = $data->getDetail() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getDetail(), 'json', $context));
+            }
+            $dataArray['detail'] = $value;
         }
         $dataArray['dynamicRendering'] = $data->getDynamicRendering();
         $dataArray['kind'] = $data->getKind();

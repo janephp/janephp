@@ -25,7 +25,7 @@ class GeoDistanceFilter extends FilterBase implements AdditionalPropertiesInterf
     /**
      * The point of origin to calculate the distance from (latitude/longitude).
      *
-     * @var mixed
+     * @var GeoLocation
      */
     protected $location;
     /**
@@ -61,20 +61,20 @@ class GeoDistanceFilter extends FilterBase implements AdditionalPropertiesInterf
     /**
      * The point of origin to calculate the distance from (latitude/longitude).
      *
-     * @return mixed
+     * @return GeoLocation
      */
-    public function getLocation()
+    public function getLocation(): GeoLocation
     {
         return $this->location;
     }
     /**
      * The point of origin to calculate the distance from (latitude/longitude).
      *
-     * @param mixed $location
+     * @param GeoLocation $location
      *
      * @return self
      */
-    public function setLocation($location): self
+    public function setLocation(GeoLocation $location): self
     {
         $this->initialized['location'] = true;
         $this->location = $location;

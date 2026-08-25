@@ -24,7 +24,7 @@ class ReviewJsonldReviewRead implements AdditionalPropertiesInterface
      */
     protected $type;
     /**
-     * @var mixed
+     * @var string|object
      */
     protected $context;
     /**
@@ -104,14 +104,14 @@ class ReviewJsonldReviewRead implements AdditionalPropertiesInterface
         return $this;
     }
     /**
-     * @return mixed
+     * @return string|object
      */
     public function getContext()
     {
         return $this->context;
     }
     /**
-     * @param mixed $context
+     * @param string|object $context
      *
      * @return self
      */

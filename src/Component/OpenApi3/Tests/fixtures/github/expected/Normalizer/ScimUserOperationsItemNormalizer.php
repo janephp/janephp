@@ -49,12 +49,28 @@ class ScimUserOperationsItemNormalizer implements DenormalizerInterface, Normali
             unset($data['path']);
         }
         if (\array_key_exists('value', $data)) {
-            $object->setValue($data['value']);
+            $value = $data['value'];
+            if (is_string($data['value'])) {
+                $value = $data['value'];
+            } elseif (is_array($data['value']) && $this->isOnlyNumericKeys($data['value'])) {
+                $values = new \Github\Runtime\JsonObject();
+                foreach ($data['value'] as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            } elseif (is_array($data['value']) && $this->isOnlyNumericKeys($data['value'])) {
+                $values_1 = [];
+                foreach ($data['value'] as $value_2) {
+                    $values_1[] = $value_2;
+                }
+                $value = $values_1;
+            }
+            $object->setValue($value);
             unset($data['value']);
         }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+        foreach ($data as $key_1 => $value_3) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $object[$key_1] = $value_3;
             }
         }
         return $object;
@@ -67,11 +83,27 @@ class ScimUserOperationsItemNormalizer implements DenormalizerInterface, Normali
             $dataArray['path'] = $data->getPath();
         }
         if ($data->isInitialized('value') && null !== $data->getValue()) {
-            $dataArray['value'] = $data->getValue();
+            $value = $data->getValue();
+            if (is_string($data->getValue())) {
+                $value = $data->getValue();
+            } elseif (is_object($data->getValue())) {
+                $values = new \Github\Runtime\JsonObject();
+                foreach ($data->getValue() as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            } elseif (is_array($data->getValue())) {
+                $values_1 = [];
+                foreach ($data->getValue() as $value_2) {
+                    $values_1[] = $value_2;
+                }
+                $value = $values_1;
+            }
+            $dataArray['value'] = $value;
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+        foreach ($data->additionalPropertyEntries() as $key_1 => $value_3) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $dataArray[$key_1] = $value_3;
             }
         }
         if (!($context['skip_validation'] ?? false)) {

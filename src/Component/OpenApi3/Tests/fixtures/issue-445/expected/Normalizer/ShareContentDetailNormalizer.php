@@ -78,10 +78,22 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
             $object->setOutputs($values_3);
         }
         if (\array_key_exists('contentType', $data)) {
-            $object->setContentType($data['contentType']);
+            $value_4 = $data['contentType'];
+            if (is_string($data['contentType'])) {
+                $value_4 = $data['contentType'];
+            }
+            $object->setContentType($value_4);
         }
         if (\array_key_exists('displayValues', $data)) {
-            $object->setDisplayValues($data['displayValues']);
+            $value_5 = $data['displayValues'];
+            if (is_array($data['displayValues']) && $this->isOnlyNumericKeys($data['displayValues'])) {
+                $values_4 = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['displayValues'] as $key_2 => $value_6) {
+                    $values_4[$key_2] = $value_6;
+                }
+                $value_5 = $values_4;
+            }
+            $object->setDisplayValues($value_5);
         }
         if (\array_key_exists('iconUrl', $data) && $data['iconUrl'] !== null) {
             $object->setIconUrl($data['iconUrl']);
@@ -120,8 +132,20 @@ class ShareContentDetailNormalizer implements DenormalizerInterface, NormalizerI
             $values_3[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
         }
         $dataArray['outputs'] = $values_3;
-        $dataArray['contentType'] = $data->getContentType();
-        $dataArray['displayValues'] = $data->getDisplayValues();
+        $value_4 = $data->getContentType();
+        if (is_string($data->getContentType())) {
+            $value_4 = $data->getContentType();
+        }
+        $dataArray['contentType'] = $value_4;
+        $value_5 = $data->getDisplayValues();
+        if (is_object($data->getDisplayValues())) {
+            $values_4 = new \PicturePark\API\Runtime\JsonObject();
+            foreach ($data->getDisplayValues() as $key_2 => $value_6) {
+                $values_4[$key_2] = $value_6;
+            }
+            $value_5 = $values_4;
+        }
+        $dataArray['displayValues'] = $value_5;
         if ($data->isInitialized('iconUrl') && null !== $data->getIconUrl()) {
             $dataArray['iconUrl'] = $data->getIconUrl();
         }

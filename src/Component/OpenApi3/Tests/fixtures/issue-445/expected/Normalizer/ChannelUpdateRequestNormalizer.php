@@ -94,15 +94,19 @@ class ChannelUpdateRequestNormalizer implements DenormalizerInterface, Normalize
             $object->setAggregations(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $object->setFilter($data['filter']);
+            $value_5 = $data['filter'];
+            if (is_array($data['filter']) and \array_key_exists('kind', $data['filter'])) {
+                $value_5 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
+            }
+            $object->setFilter($value_5);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
         }
         if (\array_key_exists('extendedSimpleSearchFields', $data) && $data['extendedSimpleSearchFields'] !== null) {
             $values_5 = [];
-            foreach ($data['extendedSimpleSearchFields'] as $value_5) {
-                $values_5[] = $value_5;
+            foreach ($data['extendedSimpleSearchFields'] as $value_6) {
+                $values_5[] = $value_6;
             }
             $object->setExtendedSimpleSearchFields($values_5);
         }
@@ -110,7 +114,15 @@ class ChannelUpdateRequestNormalizer implements DenormalizerInterface, Normalize
             $object->setExtendedSimpleSearchFields(null);
         }
         if (\array_key_exists('missingResultsDisplayPatterns', $data) && $data['missingResultsDisplayPatterns'] !== null) {
-            $object->setMissingResultsDisplayPatterns($data['missingResultsDisplayPatterns']);
+            $value_7 = $data['missingResultsDisplayPatterns'];
+            if (is_array($data['missingResultsDisplayPatterns']) && $this->isOnlyNumericKeys($data['missingResultsDisplayPatterns'])) {
+                $values_6 = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['missingResultsDisplayPatterns'] as $key_1 => $value_8) {
+                    $values_6[$key_1] = $value_8;
+                }
+                $value_7 = $values_6;
+            }
+            $object->setMissingResultsDisplayPatterns($value_7);
         }
         elseif (\array_key_exists('missingResultsDisplayPatterns', $data) && $data['missingResultsDisplayPatterns'] === null) {
             $object->setMissingResultsDisplayPatterns(null);
@@ -159,17 +171,29 @@ class ChannelUpdateRequestNormalizer implements DenormalizerInterface, Normalize
             $dataArray['aggregations'] = $values_4;
         }
         if ($data->isInitialized('filter') && null !== $data->getFilter()) {
-            $dataArray['filter'] = $data->getFilter();
+            $value_5 = $data->getFilter();
+            if (is_object($data->getFilter())) {
+                $value_5 = $data->getFilter() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+            }
+            $dataArray['filter'] = $value_5;
         }
         if ($data->isInitialized('extendedSimpleSearchFields') && null !== $data->getExtendedSimpleSearchFields()) {
             $values_5 = [];
-            foreach ($data->getExtendedSimpleSearchFields() as $value_5) {
-                $values_5[] = $value_5;
+            foreach ($data->getExtendedSimpleSearchFields() as $value_6) {
+                $values_5[] = $value_6;
             }
             $dataArray['extendedSimpleSearchFields'] = $values_5;
         }
         if ($data->isInitialized('missingResultsDisplayPatterns') && null !== $data->getMissingResultsDisplayPatterns()) {
-            $dataArray['missingResultsDisplayPatterns'] = $data->getMissingResultsDisplayPatterns();
+            $value_7 = $data->getMissingResultsDisplayPatterns();
+            if (is_object($data->getMissingResultsDisplayPatterns())) {
+                $values_6 = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data->getMissingResultsDisplayPatterns() as $key_1 => $value_8) {
+                    $values_6[$key_1] = $value_8;
+                }
+                $value_7 = $values_6;
+            }
+            $dataArray['missingResultsDisplayPatterns'] = $value_7;
         }
         $dataArray['viewForAll'] = $data->getViewForAll();
         return $dataArray;

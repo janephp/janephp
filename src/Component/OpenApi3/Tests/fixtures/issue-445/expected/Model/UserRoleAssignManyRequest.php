@@ -31,7 +31,7 @@ class UserRoleAssignManyRequest implements AdditionalPropertiesInterface
      * Defines how to apply specified UserRoleIds to UserIds
      * If an operation results in no change for a user, that user will be returned as succeeded.
      *
-     * @var mixed
+     * @var string
      */
     protected $operation;
     /**
@@ -82,9 +82,9 @@ class UserRoleAssignManyRequest implements AdditionalPropertiesInterface
      * Defines how to apply specified UserRoleIds to UserIds
      * If an operation results in no change for a user, that user will be returned as succeeded.
      *
-     * @return mixed
+     * @return string
      */
-    public function getOperation()
+    public function getOperation(): string
     {
         return $this->operation;
     }
@@ -92,11 +92,11 @@ class UserRoleAssignManyRequest implements AdditionalPropertiesInterface
     * Defines how to apply specified UserRoleIds to UserIds
     If an operation results in no change for a user, that user will be returned as succeeded.
     *
-    * @param mixed $operation
+    * @param string $operation
     *
     * @return self
     */
-    public function setOperation($operation): self
+    public function setOperation(string $operation): self
     {
         $this->initialized['operation'] = true;
         $this->operation = $operation;

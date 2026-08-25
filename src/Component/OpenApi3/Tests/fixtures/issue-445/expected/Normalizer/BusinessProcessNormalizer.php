@@ -68,10 +68,18 @@ class BusinessProcessNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setSupportsCancellation($data['supportsCancellation']);
         }
         if (\array_key_exists('businessProcessScope', $data)) {
-            $object->setBusinessProcessScope($data['businessProcessScope']);
+            $value = $data['businessProcessScope'];
+            if (is_string($data['businessProcessScope'])) {
+                $value = $data['businessProcessScope'];
+            }
+            $object->setBusinessProcessScope($value);
         }
         if (\array_key_exists('lifeCycle', $data)) {
-            $object->setLifeCycle($data['lifeCycle']);
+            $value_1 = $data['lifeCycle'];
+            if (is_string($data['lifeCycle'])) {
+                $value_1 = $data['lifeCycle'];
+            }
+            $object->setLifeCycle($value_1);
         }
         if (\array_key_exists('startDate', $data)) {
             $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['startDate']);
@@ -92,8 +100,8 @@ class BusinessProcessNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('stateHistory', $data) && $data['stateHistory'] !== null) {
             $values = [];
-            foreach ($data['stateHistory'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\BusinessProcessState::class, 'json', $context);
+            foreach ($data['stateHistory'] as $value_2) {
+                $values[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\BusinessProcessState::class, 'json', $context);
             }
             $object->setStateHistory($values);
         }
@@ -142,15 +150,23 @@ class BusinessProcessNormalizer implements DenormalizerInterface, NormalizerInte
             $dataArray['referenceDocType'] = $data->getReferenceDocType();
         }
         $dataArray['supportsCancellation'] = $data->getSupportsCancellation();
-        $dataArray['businessProcessScope'] = $data->getBusinessProcessScope();
-        $dataArray['lifeCycle'] = $data->getLifeCycle();
+        $value = $data->getBusinessProcessScope();
+        if (is_string($data->getBusinessProcessScope())) {
+            $value = $data->getBusinessProcessScope();
+        }
+        $dataArray['businessProcessScope'] = $value;
+        $value_1 = $data->getLifeCycle();
+        if (is_string($data->getLifeCycle())) {
+            $value_1 = $data->getLifeCycle();
+        }
+        $dataArray['lifeCycle'] = $value_1;
         $dataArray['startDate'] = $data->getStartDate()->format('Y-m-d\TH:i:sP');
         $dataArray['endDate'] = $data->getEndDate()->format('Y-m-d\TH:i:sP');
         $dataArray['finished'] = $data->getFinished();
         if ($data->isInitialized('stateHistory') && null !== $data->getStateHistory()) {
             $values = [];
-            foreach ($data->getStateHistory() as $value) {
-                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            foreach ($data->getStateHistory() as $value_2) {
+                $values[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['stateHistory'] = $values;
         }

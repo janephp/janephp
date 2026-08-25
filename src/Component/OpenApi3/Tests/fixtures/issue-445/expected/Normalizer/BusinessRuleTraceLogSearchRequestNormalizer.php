@@ -64,7 +64,11 @@ class BusinessRuleTraceLogSearchRequestNormalizer implements DenormalizerInterfa
             $object->setAggregators(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $object->setFilter($data['filter']);
+            $value_2 = $data['filter'];
+            if (is_array($data['filter']) and \array_key_exists('kind', $data['filter'])) {
+                $value_2 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
+            }
+            $object->setFilter($value_2);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
@@ -86,8 +90,8 @@ class BusinessRuleTraceLogSearchRequestNormalizer implements DenormalizerInterfa
         }
         if (\array_key_exists('searchBehaviors', $data) && $data['searchBehaviors'] !== null) {
             $values_2 = [];
-            foreach ($data['searchBehaviors'] as $value_2) {
-                $values_2[] = $value_2;
+            foreach ($data['searchBehaviors'] as $value_3) {
+                $values_2[] = $value_3;
             }
             $object->setSearchBehaviors($values_2);
         }
@@ -96,8 +100,8 @@ class BusinessRuleTraceLogSearchRequestNormalizer implements DenormalizerInterfa
         }
         if (\array_key_exists('sort', $data) && $data['sort'] !== null) {
             $values_3 = [];
-            foreach ($data['sort'] as $value_3) {
-                $values_3[] = $this->denormalizer->denormalize($value_3, \PicturePark\API\Model\SortInfo::class, 'json', $context);
+            foreach ($data['sort'] as $value_4) {
+                $values_3[] = $this->denormalizer->denormalize($value_4, \PicturePark\API\Model\SortInfo::class, 'json', $context);
             }
             $object->setSort($values_3);
         }
@@ -125,7 +129,11 @@ class BusinessRuleTraceLogSearchRequestNormalizer implements DenormalizerInterfa
             $dataArray['aggregators'] = $values_1;
         }
         if ($data->isInitialized('filter') && null !== $data->getFilter()) {
-            $dataArray['filter'] = $data->getFilter();
+            $value_2 = $data->getFilter();
+            if (is_object($data->getFilter())) {
+                $value_2 = $data->getFilter() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+            }
+            $dataArray['filter'] = $value_2;
         }
         $dataArray['limit'] = $data->getLimit();
         if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
@@ -136,15 +144,15 @@ class BusinessRuleTraceLogSearchRequestNormalizer implements DenormalizerInterfa
         }
         if ($data->isInitialized('searchBehaviors') && null !== $data->getSearchBehaviors()) {
             $values_2 = [];
-            foreach ($data->getSearchBehaviors() as $value_2) {
-                $values_2[] = $value_2;
+            foreach ($data->getSearchBehaviors() as $value_3) {
+                $values_2[] = $value_3;
             }
             $dataArray['searchBehaviors'] = $values_2;
         }
         if ($data->isInitialized('sort') && null !== $data->getSort()) {
             $values_3 = [];
-            foreach ($data->getSort() as $value_3) {
-                $values_3[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+            foreach ($data->getSort() as $value_4) {
+                $values_3[] = $value_4 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['sort'] = $values_3;
         }

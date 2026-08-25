@@ -24,7 +24,7 @@ class AggregationFilter extends FilterBase implements AdditionalPropertiesInterf
     /**
      * The filter to be applied.
      *
-     * @var mixed|null
+     * @var FilterBase|null
      */
     protected $filter;
     /**
@@ -58,20 +58,20 @@ class AggregationFilter extends FilterBase implements AdditionalPropertiesInterf
     /**
      * The filter to be applied.
      *
-     * @return mixed
+     * @return FilterBase|null
      */
-    public function getFilter()
+    public function getFilter(): ?FilterBase
     {
         return $this->filter;
     }
     /**
      * The filter to be applied.
      *
-     * @param mixed $filter
+     * @param FilterBase|null $filter
      *
      * @return self
      */
-    public function setFilter($filter): self
+    public function setFilter(?FilterBase $filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;

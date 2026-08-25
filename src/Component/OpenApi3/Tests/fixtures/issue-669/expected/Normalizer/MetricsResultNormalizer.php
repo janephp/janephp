@@ -50,16 +50,22 @@ class MetricsResultNormalizer implements DenormalizerInterface, NormalizerInterf
             foreach ($data['values'] as $value_1) {
                 $values_2 = [];
                 foreach ($value_1 as $value_2) {
-                    $values_2[] = $value_2;
+                    $value_3 = $value_2;
+                    if (is_int($value_2)) {
+                        $value_3 = $value_2;
+                    } elseif (is_string($value_2)) {
+                        $value_3 = $value_2;
+                    }
+                    $values_2[] = $value_3;
                 }
                 $values_1[] = $values_2;
             }
             $object->setValues($values_1);
             unset($data['values']);
         }
-        foreach ($data as $key_1 => $value_3) {
+        foreach ($data as $key_1 => $value_4) {
             if (preg_match('/.*/', (string) $key_1)) {
-                $object[$key_1] = $value_3;
+                $object[$key_1] = $value_4;
             }
         }
         return $object;
@@ -76,14 +82,20 @@ class MetricsResultNormalizer implements DenormalizerInterface, NormalizerInterf
         foreach ($data->getValues() as $value_1) {
             $values_2 = [];
             foreach ($value_1 as $value_2) {
-                $values_2[] = $value_2;
+                $value_3 = $value_2;
+                if (is_int($value_2)) {
+                    $value_3 = $value_2;
+                } elseif (is_string($value_2)) {
+                    $value_3 = $value_2;
+                }
+                $values_2[] = $value_3;
             }
             $values_1[] = $values_2;
         }
         $dataArray['values'] = $values_1;
-        foreach ($data->additionalPropertyEntries() as $key_1 => $value_3) {
+        foreach ($data->additionalPropertyEntries() as $key_1 => $value_4) {
             if (preg_match('/.*/', (string) $key_1)) {
-                $dataArray[$key_1] = $value_3;
+                $dataArray[$key_1] = $value_4;
             }
         }
         return $dataArray;

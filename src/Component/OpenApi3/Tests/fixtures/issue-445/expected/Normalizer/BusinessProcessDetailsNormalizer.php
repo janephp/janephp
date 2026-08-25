@@ -72,11 +72,19 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
             unset($data['supportsCancellation']);
         }
         if (\array_key_exists('businessProcessScope', $data)) {
-            $object->setBusinessProcessScope($data['businessProcessScope']);
+            $value = $data['businessProcessScope'];
+            if (is_string($data['businessProcessScope'])) {
+                $value = $data['businessProcessScope'];
+            }
+            $object->setBusinessProcessScope($value);
             unset($data['businessProcessScope']);
         }
         if (\array_key_exists('lifeCycle', $data)) {
-            $object->setLifeCycle($data['lifeCycle']);
+            $value_1 = $data['lifeCycle'];
+            if (is_string($data['lifeCycle'])) {
+                $value_1 = $data['lifeCycle'];
+            }
+            $object->setLifeCycle($value_1);
             unset($data['lifeCycle']);
         }
         if (\array_key_exists('startDate', $data)) {
@@ -101,8 +109,8 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('stateHistory', $data) && $data['stateHistory'] !== null) {
             $values = [];
-            foreach ($data['stateHistory'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\BusinessProcessState::class, 'json', $context);
+            foreach ($data['stateHistory'] as $value_2) {
+                $values[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\BusinessProcessState::class, 'json', $context);
             }
             $object->setStateHistory($values);
             unset($data['stateHistory']);
@@ -144,16 +152,20 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
             unset($data['kind']);
         }
         if (\array_key_exists('details', $data) && $data['details'] !== null) {
-            $object->setDetails($data['details']);
+            $value_3 = $data['details'];
+            if (is_array($data['details']) and \array_key_exists('kind', $data['details'])) {
+                $value_3 = $this->denormalizer->denormalize($data['details'], \PicturePark\API\Model\BusinessProcessDetailsDataBase::class, 'json', $context);
+            }
+            $object->setDetails($value_3);
             unset($data['details']);
         }
         elseif (\array_key_exists('details', $data) && $data['details'] === null) {
             $object->setDetails(null);
             unset($data['details']);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value_4;
             }
         }
         return $object;
@@ -170,15 +182,23 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
             $dataArray['referenceDocType'] = $data->getReferenceDocType();
         }
         $dataArray['supportsCancellation'] = $data->getSupportsCancellation();
-        $dataArray['businessProcessScope'] = $data->getBusinessProcessScope();
-        $dataArray['lifeCycle'] = $data->getLifeCycle();
+        $value = $data->getBusinessProcessScope();
+        if (is_string($data->getBusinessProcessScope())) {
+            $value = $data->getBusinessProcessScope();
+        }
+        $dataArray['businessProcessScope'] = $value;
+        $value_1 = $data->getLifeCycle();
+        if (is_string($data->getLifeCycle())) {
+            $value_1 = $data->getLifeCycle();
+        }
+        $dataArray['lifeCycle'] = $value_1;
         $dataArray['startDate'] = $data->getStartDate()->format('Y-m-d\TH:i:sP');
         $dataArray['endDate'] = $data->getEndDate()->format('Y-m-d\TH:i:sP');
         $dataArray['finished'] = $data->getFinished();
         if ($data->isInitialized('stateHistory') && null !== $data->getStateHistory()) {
             $values = [];
-            foreach ($data->getStateHistory() as $value) {
-                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            foreach ($data->getStateHistory() as $value_2) {
+                $values[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['stateHistory'] = $values;
         }
@@ -193,11 +213,15 @@ class BusinessProcessDetailsNormalizer implements DenormalizerInterface, Normali
         }
         $dataArray['kind'] = $data->getKind();
         if ($data->isInitialized('details') && null !== $data->getDetails()) {
-            $dataArray['details'] = $data->getDetails();
+            $value_3 = $data->getDetails();
+            if (is_object($data->getDetails())) {
+                $value_3 = $data->getDetails() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getDetails(), 'json', $context));
+            }
+            $dataArray['details'] = $value_3;
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+                $dataArray[$key] = $value_4;
             }
         }
         return $dataArray;

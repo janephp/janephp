@@ -42,7 +42,15 @@ class NestedAggregatorNormalizer implements DenormalizerInterface, NormalizerInt
             unset($data['name']);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $object->setNames($data['names']);
+            $value = $data['names'];
+            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['names'] as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $object->setNames($value);
             unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
@@ -50,11 +58,11 @@ class NestedAggregatorNormalizer implements DenormalizerInterface, NormalizerInt
             unset($data['names']);
         }
         if (\array_key_exists('aggregators', $data) && $data['aggregators'] !== null) {
-            $values = [];
-            foreach ($data['aggregators'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
+            $values_1 = [];
+            foreach ($data['aggregators'] as $value_2) {
+                $values_1[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\AggregatorBase::class, 'json', $context);
             }
-            $object->setAggregators($values);
+            $object->setAggregators($values_1);
             unset($data['aggregators']);
         }
         elseif (\array_key_exists('aggregators', $data) && $data['aggregators'] === null) {
@@ -62,7 +70,11 @@ class NestedAggregatorNormalizer implements DenormalizerInterface, NormalizerInt
             unset($data['aggregators']);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $object->setFilter($data['filter']);
+            $value_3 = $data['filter'];
+            if (is_array($data['filter']) and \array_key_exists('kind', $data['filter'])) {
+                $value_3 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
+            }
+            $object->setFilter($value_3);
             unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
@@ -77,9 +89,9 @@ class NestedAggregatorNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setPath($data['path']);
             unset($data['path']);
         }
-        foreach ($data as $key => $value_1) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+        foreach ($data as $key_1 => $value_4) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $object[$key_1] = $value_4;
             }
         }
         return $object;
@@ -89,23 +101,35 @@ class NestedAggregatorNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray = [];
         $dataArray['name'] = $data->getName();
         if ($data->isInitialized('names') && null !== $data->getNames()) {
-            $dataArray['names'] = $data->getNames();
+            $value = $data->getNames();
+            if (is_object($data->getNames())) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data->getNames() as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $dataArray['names'] = $value;
         }
         if ($data->isInitialized('aggregators') && null !== $data->getAggregators()) {
-            $values = [];
-            foreach ($data->getAggregators() as $value) {
-                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            $values_1 = [];
+            foreach ($data->getAggregators() as $value_2) {
+                $values_1[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
-            $dataArray['aggregators'] = $values;
+            $dataArray['aggregators'] = $values_1;
         }
         if ($data->isInitialized('filter') && null !== $data->getFilter()) {
-            $dataArray['filter'] = $data->getFilter();
+            $value_3 = $data->getFilter();
+            if (is_object($data->getFilter())) {
+                $value_3 = $data->getFilter() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+            }
+            $dataArray['filter'] = $value_3;
         }
         $dataArray['kind'] = $data->getKind();
         $dataArray['path'] = $data->getPath();
-        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
-            if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+        foreach ($data->additionalPropertyEntries() as $key_1 => $value_4) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $dataArray[$key_1] = $value_4;
             }
         }
         return $dataArray;

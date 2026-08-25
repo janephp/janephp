@@ -15,7 +15,7 @@ class MailRecipient
     /**
      * User information including email.
      *
-     * @var mixed
+     * @var UserEmail
      */
     protected $userEmail;
     /**
@@ -33,20 +33,20 @@ class MailRecipient
     /**
      * User information including email.
      *
-     * @return mixed
+     * @return UserEmail
      */
-    public function getUserEmail()
+    public function getUserEmail(): UserEmail
     {
         return $this->userEmail;
     }
     /**
      * User information including email.
      *
-     * @param mixed $userEmail
+     * @param UserEmail $userEmail
      *
      * @return self
      */
-    public function setUserEmail($userEmail): self
+    public function setUserEmail(UserEmail $userEmail): self
     {
         $this->initialized['userEmail'] = true;
         $this->userEmail = $userEmail;

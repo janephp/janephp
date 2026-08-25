@@ -24,7 +24,7 @@ class ScimUserOperationsItem implements AdditionalPropertiesInterface
      */
     protected $path;
     /**
-     * @var mixed
+     * @var string|array<string, mixed>|list<mixed>
      */
     protected $value;
     /**
@@ -64,14 +64,14 @@ class ScimUserOperationsItem implements AdditionalPropertiesInterface
         return $this;
     }
     /**
-     * @return mixed
+     * @return string|array<string, mixed>|list<mixed>
      */
     public function getValue()
     {
         return $this->value;
     }
     /**
-     * @param mixed $value
+     * @param string|array<string, mixed>|list<mixed> $value
      *
      * @return self
      */

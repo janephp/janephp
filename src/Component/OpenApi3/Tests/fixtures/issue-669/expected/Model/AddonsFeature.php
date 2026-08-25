@@ -42,7 +42,7 @@ class AddonsFeature implements AdditionalPropertiesInterface
     /**
      * Value of the feature, which can vary based on the type.
      *
-     * @var mixed
+     * @var string|bool|string
      */
     protected $value;
     /**
@@ -148,7 +148,7 @@ class AddonsFeature implements AdditionalPropertiesInterface
     /**
      * Value of the feature, which can vary based on the type.
      *
-     * @return mixed
+     * @return string|bool|string
      */
     public function getValue()
     {
@@ -157,7 +157,7 @@ class AddonsFeature implements AdditionalPropertiesInterface
     /**
      * Value of the feature, which can vary based on the type.
      *
-     * @param mixed $value
+     * @param string|bool|string $value
      *
      * @return self
      */

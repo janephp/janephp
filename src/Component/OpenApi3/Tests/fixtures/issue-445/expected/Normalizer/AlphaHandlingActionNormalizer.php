@@ -42,7 +42,11 @@ class AlphaHandlingActionNormalizer implements DenormalizerInterface, Normalizer
             unset($data['kind']);
         }
         if (\array_key_exists('alphaHandling', $data)) {
-            $object->setAlphaHandling($data['alphaHandling']);
+            $value = $data['alphaHandling'];
+            if (is_string($data['alphaHandling'])) {
+                $value = $data['alphaHandling'];
+            }
+            $object->setAlphaHandling($value);
             unset($data['alphaHandling']);
         }
         if (\array_key_exists('replacementRgbColorHexCode', $data) && $data['replacementRgbColorHexCode'] !== null) {
@@ -53,9 +57,9 @@ class AlphaHandlingActionNormalizer implements DenormalizerInterface, Normalizer
             $object->setReplacementRgbColorHexCode(null);
             unset($data['replacementRgbColorHexCode']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -65,14 +69,18 @@ class AlphaHandlingActionNormalizer implements DenormalizerInterface, Normalizer
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
         if ($data->isInitialized('alphaHandling') && null !== $data->getAlphaHandling()) {
-            $dataArray['alphaHandling'] = $data->getAlphaHandling();
+            $value = $data->getAlphaHandling();
+            if (is_string($data->getAlphaHandling())) {
+                $value = $data->getAlphaHandling();
+            }
+            $dataArray['alphaHandling'] = $value;
         }
         if ($data->isInitialized('replacementRgbColorHexCode') && null !== $data->getReplacementRgbColorHexCode()) {
             $dataArray['replacementRgbColorHexCode'] = $data->getReplacementRgbColorHexCode();
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

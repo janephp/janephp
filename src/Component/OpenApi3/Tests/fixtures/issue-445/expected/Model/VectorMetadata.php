@@ -16,11 +16,11 @@ class VectorMetadata implements AdditionalPropertiesInterface
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var mixed|null
+     * @var array<string, string>|null
      */
     protected $names;
     /**
-     * @var mixed|null
+     * @var array<string, string>|null
      */
     protected $descriptions;
     /**
@@ -80,40 +80,40 @@ class VectorMetadata implements AdditionalPropertiesInterface
      */
     protected $pageCount;
     /**
-     * @var mixed|null
+     * @var EpsMetadata|null
      */
     protected $epsInfo;
     /**
-     * @return mixed
+     * @return array<string, string>|null
      */
-    public function getNames()
+    public function getNames(): ?iterable
     {
         return $this->names;
     }
     /**
-     * @param mixed $names
+     * @param array<string, string>|null $names
      *
      * @return self
      */
-    public function setNames($names): self
+    public function setNames(?iterable $names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;
         return $this;
     }
     /**
-     * @return mixed
+     * @return array<string, string>|null
      */
-    public function getDescriptions()
+    public function getDescriptions(): ?iterable
     {
         return $this->descriptions;
     }
     /**
-     * @param mixed $descriptions
+     * @param array<string, string>|null $descriptions
      *
      * @return self
      */
-    public function setDescriptions($descriptions): self
+    public function setDescriptions(?iterable $descriptions): self
     {
         $this->initialized['descriptions'] = true;
         $this->descriptions = $descriptions;
@@ -372,18 +372,18 @@ class VectorMetadata implements AdditionalPropertiesInterface
         return $this;
     }
     /**
-     * @return mixed
+     * @return EpsMetadata|null
      */
-    public function getEpsInfo()
+    public function getEpsInfo(): ?EpsMetadata
     {
         return $this->epsInfo;
     }
     /**
-     * @param mixed $epsInfo
+     * @param EpsMetadata|null $epsInfo
      *
      * @return self
      */
-    public function setEpsInfo($epsInfo): self
+    public function setEpsInfo(?EpsMetadata $epsInfo): self
     {
         $this->initialized['epsInfo'] = true;
         $this->epsInfo = $epsInfo;

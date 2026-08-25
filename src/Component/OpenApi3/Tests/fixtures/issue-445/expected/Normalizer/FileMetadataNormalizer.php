@@ -38,13 +38,29 @@ class FileMetadataNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $object->setNames($data['names']);
+            $value = $data['names'];
+            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['names'] as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $object->setNames($value);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
-            $object->setDescriptions($data['descriptions']);
+            $value_2 = $data['descriptions'];
+            if (is_array($data['descriptions']) && $this->isOnlyNumericKeys($data['descriptions'])) {
+                $values_1 = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['descriptions'] as $key_1 => $value_3) {
+                    $values_1[$key_1] = $value_3;
+                }
+                $value_2 = $values_1;
+            }
+            $object->setDescriptions($value_2);
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
             $object->setDescriptions(null);
@@ -103,10 +119,26 @@ class FileMetadataNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         if ($data->isInitialized('names') && null !== $data->getNames()) {
-            $dataArray['names'] = $data->getNames();
+            $value = $data->getNames();
+            if (is_object($data->getNames())) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data->getNames() as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $dataArray['names'] = $value;
         }
         if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
-            $dataArray['descriptions'] = $data->getDescriptions();
+            $value_2 = $data->getDescriptions();
+            if (is_object($data->getDescriptions())) {
+                $values_1 = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data->getDescriptions() as $key_1 => $value_3) {
+                    $values_1[$key_1] = $value_3;
+                }
+                $value_2 = $values_1;
+            }
+            $dataArray['descriptions'] = $value_2;
         }
         if ($data->isInitialized('fileExtension') && null !== $data->getFileExtension()) {
             $dataArray['fileExtension'] = $data->getFileExtension();

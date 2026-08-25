@@ -46,12 +46,16 @@ class BusinessProcessDetailsDataBatchResponseNormalizer implements DenormalizerI
             unset($data['docType']);
         }
         if (\array_key_exists('response', $data)) {
-            $object->setResponse($data['response']);
+            $value = $data['response'];
+            if (is_array($data['response']) and \array_key_exists('rows', $data['response'])) {
+                $value = $this->denormalizer->denormalize($data['response'], \PicturePark\API\Model\BatchResponse::class, 'json', $context);
+            }
+            $object->setResponse($value);
             unset($data['response']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -61,10 +65,14 @@ class BusinessProcessDetailsDataBatchResponseNormalizer implements DenormalizerI
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
         $dataArray['docType'] = $data->getDocType();
-        $dataArray['response'] = $data->getResponse();
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
+        $value = $data->getResponse();
+        if (is_object($data->getResponse())) {
+            $value = $data->getResponse() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getResponse(), 'json', $context));
+        }
+        $dataArray['response'] = $value;
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

@@ -54,15 +54,19 @@ class ShareSearchAndAggregationBaseRequestNormalizer implements DenormalizerInte
             $object->setSearchBehaviors(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $object->setFilter($data['filter']);
+            $value_1 = $data['filter'];
+            if (is_array($data['filter']) and \array_key_exists('kind', $data['filter'])) {
+                $value_1 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
+            }
+            $object->setFilter($value_1);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
         }
         if (\array_key_exists('aggregationFilters', $data) && $data['aggregationFilters'] !== null) {
             $values_1 = [];
-            foreach ($data['aggregationFilters'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\AggregationFilter::class, 'json', $context);
+            foreach ($data['aggregationFilters'] as $value_2) {
+                $values_1[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\AggregationFilter::class, 'json', $context);
             }
             $object->setAggregationFilters($values_1);
         }
@@ -85,12 +89,16 @@ class ShareSearchAndAggregationBaseRequestNormalizer implements DenormalizerInte
             $dataArray['searchBehaviors'] = $values;
         }
         if ($data->isInitialized('filter') && null !== $data->getFilter()) {
-            $dataArray['filter'] = $data->getFilter();
+            $value_1 = $data->getFilter();
+            if (is_object($data->getFilter())) {
+                $value_1 = $data->getFilter() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+            }
+            $dataArray['filter'] = $value_1;
         }
         if ($data->isInitialized('aggregationFilters') && null !== $data->getAggregationFilters()) {
             $values_1 = [];
-            foreach ($data->getAggregationFilters() as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+            foreach ($data->getAggregationFilters() as $value_2) {
+                $values_1[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['aggregationFilters'] = $values_1;
         }

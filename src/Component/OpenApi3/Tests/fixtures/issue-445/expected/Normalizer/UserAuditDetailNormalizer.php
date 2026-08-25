@@ -52,13 +52,21 @@ class UserAuditDetailNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setModificationDate($date_1);
         }
         if (\array_key_exists('createdByUser', $data) && $data['createdByUser'] !== null) {
-            $object->setCreatedByUser($data['createdByUser']);
+            $value = $data['createdByUser'];
+            if (is_array($data['createdByUser']) and \array_key_exists('emailAddress', $data['createdByUser']) and \array_key_exists('isDeleted', $data['createdByUser'])) {
+                $value = $this->denormalizer->denormalize($data['createdByUser'], \PicturePark\API\Model\User::class, 'json', $context);
+            }
+            $object->setCreatedByUser($value);
         }
         elseif (\array_key_exists('createdByUser', $data) && $data['createdByUser'] === null) {
             $object->setCreatedByUser(null);
         }
         if (\array_key_exists('modifiedByUser', $data) && $data['modifiedByUser'] !== null) {
-            $object->setModifiedByUser($data['modifiedByUser']);
+            $value_1 = $data['modifiedByUser'];
+            if (is_array($data['modifiedByUser']) and \array_key_exists('emailAddress', $data['modifiedByUser']) and \array_key_exists('isDeleted', $data['modifiedByUser'])) {
+                $value_1 = $this->denormalizer->denormalize($data['modifiedByUser'], \PicturePark\API\Model\User::class, 'json', $context);
+            }
+            $object->setModifiedByUser($value_1);
         }
         elseif (\array_key_exists('modifiedByUser', $data) && $data['modifiedByUser'] === null) {
             $object->setModifiedByUser(null);
@@ -71,10 +79,18 @@ class UserAuditDetailNormalizer implements DenormalizerInterface, NormalizerInte
         $dataArray['creationDate'] = $data->getCreationDate()->format('Y-m-d\TH:i:sP');
         $dataArray['modificationDate'] = $data->getModificationDate()->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('createdByUser') && null !== $data->getCreatedByUser()) {
-            $dataArray['createdByUser'] = $data->getCreatedByUser();
+            $value = $data->getCreatedByUser();
+            if (is_object($data->getCreatedByUser())) {
+                $value = $data->getCreatedByUser() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getCreatedByUser(), 'json', $context));
+            }
+            $dataArray['createdByUser'] = $value;
         }
         if ($data->isInitialized('modifiedByUser') && null !== $data->getModifiedByUser()) {
-            $dataArray['modifiedByUser'] = $data->getModifiedByUser();
+            $value_1 = $data->getModifiedByUser();
+            if (is_object($data->getModifiedByUser())) {
+                $value_1 = $data->getModifiedByUser() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getModifiedByUser(), 'json', $context));
+            }
+            $dataArray['modifiedByUser'] = $value_1;
         }
         return $dataArray;
     }

@@ -57,7 +57,11 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
             unset($data['kind']);
         }
         if (\array_key_exists('colorProfile', $data) && $data['colorProfile'] !== null) {
-            $object->setColorProfile($data['colorProfile']);
+            $value = $data['colorProfile'];
+            if (is_string($data['colorProfile'])) {
+                $value = $data['colorProfile'];
+            }
+            $object->setColorProfile($value);
             unset($data['colorProfile']);
         }
         elseif (\array_key_exists('colorProfile', $data) && $data['colorProfile'] === null) {
@@ -65,7 +69,11 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
             unset($data['colorProfile']);
         }
         if (\array_key_exists('colorTransformationIntent', $data)) {
-            $object->setColorTransformationIntent($data['colorTransformationIntent']);
+            $value_1 = $data['colorTransformationIntent'];
+            if (is_string($data['colorTransformationIntent'])) {
+                $value_1 = $data['colorTransformationIntent'];
+            }
+            $object->setColorTransformationIntent($value_1);
             unset($data['colorTransformationIntent']);
         }
         if (\array_key_exists('horizontalResolution', $data) && $data['horizontalResolution'] !== null) {
@@ -89,7 +97,11 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
             unset($data['keepClippingPath']);
         }
         if (\array_key_exists('resizeAction', $data) && $data['resizeAction'] !== null) {
-            $object->setResizeAction($data['resizeAction']);
+            $value_2 = $data['resizeAction'];
+            if (is_array($data['resizeAction']) and \array_key_exists('width', $data['resizeAction']) and \array_key_exists('height', $data['resizeAction']) and \array_key_exists('resizeMode', $data['resizeAction'])) {
+                $value_2 = $this->denormalizer->denormalize($data['resizeAction'], \PicturePark\API\Model\ResizeAction::class, 'json', $context);
+            }
+            $object->setResizeAction($value_2);
             unset($data['resizeAction']);
         }
         elseif (\array_key_exists('resizeAction', $data) && $data['resizeAction'] === null) {
@@ -98,8 +110,8 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (\array_key_exists('actions', $data) && $data['actions'] !== null) {
             $values = [];
-            foreach ($data['actions'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\ImageActionBase::class, 'json', $context);
+            foreach ($data['actions'] as $value_3) {
+                $values[] = $this->denormalizer->denormalize($value_3, \PicturePark\API\Model\ImageActionBase::class, 'json', $context);
             }
             $object->setActions($values);
             unset($data['actions']);
@@ -113,7 +125,11 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
             unset($data['alphaPremultiplied']);
         }
         if (\array_key_exists('compressionType', $data)) {
-            $object->setCompressionType($data['compressionType']);
+            $value_4 = $data['compressionType'];
+            if (is_string($data['compressionType'])) {
+                $value_4 = $data['compressionType'];
+            }
+            $object->setCompressionType($value_4);
             unset($data['compressionType']);
         }
         if (\array_key_exists('includeUnspecifiedTiffExtraChannels', $data)) {
@@ -128,9 +144,9 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setExtension(null);
             unset($data['extension']);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value_5) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value_5;
             }
         }
         return $object;
@@ -140,10 +156,18 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
         $dataArray = [];
         $dataArray['kind'] = $data->getKind();
         if ($data->isInitialized('colorProfile') && null !== $data->getColorProfile()) {
-            $dataArray['colorProfile'] = $data->getColorProfile();
+            $value = $data->getColorProfile();
+            if (is_string($data->getColorProfile())) {
+                $value = $data->getColorProfile();
+            }
+            $dataArray['colorProfile'] = $value;
         }
         if ($data->isInitialized('colorTransformationIntent') && null !== $data->getColorTransformationIntent()) {
-            $dataArray['colorTransformationIntent'] = $data->getColorTransformationIntent();
+            $value_1 = $data->getColorTransformationIntent();
+            if (is_string($data->getColorTransformationIntent())) {
+                $value_1 = $data->getColorTransformationIntent();
+            }
+            $dataArray['colorTransformationIntent'] = $value_1;
         }
         if ($data->isInitialized('horizontalResolution') && null !== $data->getHorizontalResolution()) {
             $dataArray['horizontalResolution'] = $data->getHorizontalResolution();
@@ -155,12 +179,16 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['keepClippingPath'] = $data->getKeepClippingPath();
         }
         if ($data->isInitialized('resizeAction') && null !== $data->getResizeAction()) {
-            $dataArray['resizeAction'] = $data->getResizeAction();
+            $value_2 = $data->getResizeAction();
+            if (is_object($data->getResizeAction())) {
+                $value_2 = $data->getResizeAction() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getResizeAction(), 'json', $context));
+            }
+            $dataArray['resizeAction'] = $value_2;
         }
         if ($data->isInitialized('actions') && null !== $data->getActions()) {
             $values = [];
-            foreach ($data->getActions() as $value) {
-                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            foreach ($data->getActions() as $value_3) {
+                $values[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
             $dataArray['actions'] = $values;
         }
@@ -168,7 +196,11 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['alphaPremultiplied'] = $data->getAlphaPremultiplied();
         }
         if ($data->isInitialized('compressionType') && null !== $data->getCompressionType()) {
-            $dataArray['compressionType'] = $data->getCompressionType();
+            $value_4 = $data->getCompressionType();
+            if (is_string($data->getCompressionType())) {
+                $value_4 = $data->getCompressionType();
+            }
+            $dataArray['compressionType'] = $value_4;
         }
         if ($data->isInitialized('includeUnspecifiedTiffExtraChannels') && null !== $data->getIncludeUnspecifiedTiffExtraChannels()) {
             $dataArray['includeUnspecifiedTiffExtraChannels'] = $data->getIncludeUnspecifiedTiffExtraChannels();
@@ -176,9 +208,9 @@ class TiffFormatNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('extension') && null !== $data->getExtension()) {
             $dataArray['extension'] = $data->getExtension();
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_5) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+                $dataArray[$key] = $value_5;
             }
         }
         return $dataArray;

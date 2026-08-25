@@ -24,7 +24,7 @@ class FieldSingleRelation extends FieldBase implements AdditionalPropertiesInter
     /**
      * Indexing information of fields of the related schema identified by the SchemaId property.
      *
-     * @var mixed|null
+     * @var SchemaIndexingInfo|null
      */
     protected $schemaIndexingInfo;
     /**
@@ -58,20 +58,20 @@ class FieldSingleRelation extends FieldBase implements AdditionalPropertiesInter
     /**
      * Indexing information of fields of the related schema identified by the SchemaId property.
      *
-     * @return mixed
+     * @return SchemaIndexingInfo|null
      */
-    public function getSchemaIndexingInfo()
+    public function getSchemaIndexingInfo(): ?SchemaIndexingInfo
     {
         return $this->schemaIndexingInfo;
     }
     /**
      * Indexing information of fields of the related schema identified by the SchemaId property.
      *
-     * @param mixed $schemaIndexingInfo
+     * @param SchemaIndexingInfo|null $schemaIndexingInfo
      *
      * @return self
      */
-    public function setSchemaIndexingInfo($schemaIndexingInfo): self
+    public function setSchemaIndexingInfo(?SchemaIndexingInfo $schemaIndexingInfo): self
     {
         $this->initialized['schemaIndexingInfo'] = true;
         $this->schemaIndexingInfo = $schemaIndexingInfo;

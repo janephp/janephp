@@ -21,7 +21,7 @@ class AggregatorBase
     /**
      * Language specific field names.
      *
-     * @var mixed|null
+     * @var array<string, string>|null
      */
     protected $names;
     /**
@@ -33,7 +33,7 @@ class AggregatorBase
     /**
      * An optional filter to limit the data set the aggregation is operation on.
      *
-     * @var mixed|null
+     * @var FilterBase|null
      */
     protected $filter;
     /**
@@ -62,18 +62,18 @@ class AggregatorBase
     /**
      * Language specific field names.
      *
-     * @return mixed
+     * @return array<string, string>|null
      */
-    public function getNames()
+    public function getNames(): ?iterable
     {
         return $this->names;
     }
     /**
      * Language specific field names.
      *
-     * @param mixed $names
+     * @param array<string, string>|null $names
      */
-    public function setNames($names)
+    public function setNames(?iterable $names)
     {
         $this->initialized['names'] = true;
         $this->names = $names;
@@ -100,18 +100,18 @@ class AggregatorBase
     /**
      * An optional filter to limit the data set the aggregation is operation on.
      *
-     * @return mixed
+     * @return FilterBase|null
      */
-    public function getFilter()
+    public function getFilter(): ?FilterBase
     {
         return $this->filter;
     }
     /**
      * An optional filter to limit the data set the aggregation is operation on.
      *
-     * @param mixed $filter
+     * @param FilterBase|null $filter
      */
-    public function setFilter($filter)
+    public function setFilter(?FilterBase $filter)
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;

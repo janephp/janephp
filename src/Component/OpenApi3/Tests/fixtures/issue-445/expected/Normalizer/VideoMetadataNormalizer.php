@@ -41,7 +41,15 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['durationInSeconds'] = (float) $data['durationInSeconds'];
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $object->setNames($data['names']);
+            $value = $data['names'];
+            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['names'] as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $object->setNames($value);
             unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
@@ -49,7 +57,15 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
             unset($data['names']);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
-            $object->setDescriptions($data['descriptions']);
+            $value_2 = $data['descriptions'];
+            if (is_array($data['descriptions']) && $this->isOnlyNumericKeys($data['descriptions'])) {
+                $values_1 = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['descriptions'] as $key_1 => $value_3) {
+                    $values_1[$key_1] = $value_3;
+                }
+                $value_2 = $values_1;
+            }
+            $object->setDescriptions($value_2);
             unset($data['descriptions']);
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
@@ -157,11 +173,11 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
             unset($data['overallBitrate']);
         }
         if (\array_key_exists('videoStreams', $data) && $data['videoStreams'] !== null) {
-            $values = [];
-            foreach ($data['videoStreams'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\VideoStream::class, 'json', $context);
+            $values_2 = [];
+            foreach ($data['videoStreams'] as $value_4) {
+                $values_2[] = $this->denormalizer->denormalize($value_4, \PicturePark\API\Model\VideoStream::class, 'json', $context);
             }
-            $object->setVideoStreams($values);
+            $object->setVideoStreams($values_2);
             unset($data['videoStreams']);
         }
         elseif (\array_key_exists('videoStreams', $data) && $data['videoStreams'] === null) {
@@ -169,20 +185,20 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
             unset($data['videoStreams']);
         }
         if (\array_key_exists('audioStreams', $data) && $data['audioStreams'] !== null) {
-            $values_1 = [];
-            foreach ($data['audioStreams'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\AudioStream::class, 'json', $context);
+            $values_3 = [];
+            foreach ($data['audioStreams'] as $value_5) {
+                $values_3[] = $this->denormalizer->denormalize($value_5, \PicturePark\API\Model\AudioStream::class, 'json', $context);
             }
-            $object->setAudioStreams($values_1);
+            $object->setAudioStreams($values_3);
             unset($data['audioStreams']);
         }
         elseif (\array_key_exists('audioStreams', $data) && $data['audioStreams'] === null) {
             $object->setAudioStreams(null);
             unset($data['audioStreams']);
         }
-        foreach ($data as $key => $value_2) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_2;
+        foreach ($data as $key_2 => $value_6) {
+            if (preg_match('/.*/', (string) $key_2)) {
+                $object[$key_2] = $value_6;
             }
         }
         return $object;
@@ -191,10 +207,26 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
     {
         $dataArray = [];
         if ($data->isInitialized('names') && null !== $data->getNames()) {
-            $dataArray['names'] = $data->getNames();
+            $value = $data->getNames();
+            if (is_object($data->getNames())) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data->getNames() as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $dataArray['names'] = $value;
         }
         if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
-            $dataArray['descriptions'] = $data->getDescriptions();
+            $value_2 = $data->getDescriptions();
+            if (is_object($data->getDescriptions())) {
+                $values_1 = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data->getDescriptions() as $key_1 => $value_3) {
+                    $values_1[$key_1] = $value_3;
+                }
+                $value_2 = $values_1;
+            }
+            $dataArray['descriptions'] = $value_2;
         }
         if ($data->isInitialized('fileExtension') && null !== $data->getFileExtension()) {
             $dataArray['fileExtension'] = $data->getFileExtension();
@@ -239,22 +271,22 @@ class VideoMetadataNormalizer implements DenormalizerInterface, NormalizerInterf
             $dataArray['overallBitrate'] = $data->getOverallBitrate();
         }
         if ($data->isInitialized('videoStreams') && null !== $data->getVideoStreams()) {
-            $values = [];
-            foreach ($data->getVideoStreams() as $value) {
-                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            $values_2 = [];
+            foreach ($data->getVideoStreams() as $value_4) {
+                $values_2[] = $value_4 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
-            $dataArray['videoStreams'] = $values;
+            $dataArray['videoStreams'] = $values_2;
         }
         if ($data->isInitialized('audioStreams') && null !== $data->getAudioStreams()) {
-            $values_1 = [];
-            foreach ($data->getAudioStreams() as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+            $values_3 = [];
+            foreach ($data->getAudioStreams() as $value_5) {
+                $values_3[] = $value_5 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_5, 'json', $context));
             }
-            $dataArray['audioStreams'] = $values_1;
+            $dataArray['audioStreams'] = $values_3;
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
-            if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_2;
+        foreach ($data->additionalPropertyEntries() as $key_2 => $value_6) {
+            if (preg_match('/.*/', (string) $key_2)) {
+                $dataArray[$key_2] = $value_6;
             }
         }
         return $dataArray;

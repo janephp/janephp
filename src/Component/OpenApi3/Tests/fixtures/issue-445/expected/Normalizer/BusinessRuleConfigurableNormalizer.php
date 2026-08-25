@@ -52,7 +52,11 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
             unset($data['id']);
         }
         if (\array_key_exists('triggerPoint', $data) && $data['triggerPoint'] !== null) {
-            $object->setTriggerPoint($data['triggerPoint']);
+            $value = $data['triggerPoint'];
+            if (is_array($data['triggerPoint']) and \array_key_exists('executionScope', $data['triggerPoint']) and \array_key_exists('documentType', $data['triggerPoint']) and \array_key_exists('action', $data['triggerPoint'])) {
+                $value = $this->denormalizer->denormalize($data['triggerPoint'], \PicturePark\API\Model\BusinessRuleTriggerPoint::class, 'json', $context);
+            }
+            $object->setTriggerPoint($value);
             unset($data['triggerPoint']);
         }
         elseif (\array_key_exists('triggerPoint', $data) && $data['triggerPoint'] === null) {
@@ -64,7 +68,15 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
             unset($data['isEnabled']);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $object->setNames($data['names']);
+            $value_1 = $data['names'];
+            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['names'] as $key => $value_2) {
+                    $values[$key] = $value_2;
+                }
+                $value_1 = $values;
+            }
+            $object->setNames($value_1);
             unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
@@ -72,7 +84,15 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
             unset($data['names']);
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
-            $object->setDescription($data['description']);
+            $value_3 = $data['description'];
+            if (is_array($data['description']) && $this->isOnlyNumericKeys($data['description'])) {
+                $values_1 = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['description'] as $key_1 => $value_4) {
+                    $values_1[$key_1] = $value_4;
+                }
+                $value_3 = $values_1;
+            }
+            $object->setDescription($value_3);
             unset($data['description']);
         }
         elseif (\array_key_exists('description', $data) && $data['description'] === null) {
@@ -88,7 +108,11 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
             unset($data['kind']);
         }
         if (\array_key_exists('condition', $data) && $data['condition'] !== null) {
-            $object->setCondition($data['condition']);
+            $value_5 = $data['condition'];
+            if (is_array($data['condition']) and \array_key_exists('kind', $data['condition'])) {
+                $value_5 = $this->denormalizer->denormalize($data['condition'], \PicturePark\API\Model\BusinessRuleCondition::class, 'json', $context);
+            }
+            $object->setCondition($value_5);
             unset($data['condition']);
         }
         elseif (\array_key_exists('condition', $data) && $data['condition'] === null) {
@@ -96,11 +120,11 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
             unset($data['condition']);
         }
         if (\array_key_exists('transformationGroups', $data) && $data['transformationGroups'] !== null) {
-            $values = [];
-            foreach ($data['transformationGroups'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\BusinessRuleTransformationGroup::class, 'json', $context);
+            $values_2 = [];
+            foreach ($data['transformationGroups'] as $value_6) {
+                $values_2[] = $this->denormalizer->denormalize($value_6, \PicturePark\API\Model\BusinessRuleTransformationGroup::class, 'json', $context);
             }
-            $object->setTransformationGroups($values);
+            $object->setTransformationGroups($values_2);
             unset($data['transformationGroups']);
         }
         elseif (\array_key_exists('transformationGroups', $data) && $data['transformationGroups'] === null) {
@@ -108,20 +132,20 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
             unset($data['transformationGroups']);
         }
         if (\array_key_exists('actions', $data) && $data['actions'] !== null) {
-            $values_1 = [];
-            foreach ($data['actions'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\BusinessRuleAction::class, 'json', $context);
+            $values_3 = [];
+            foreach ($data['actions'] as $value_7) {
+                $values_3[] = $this->denormalizer->denormalize($value_7, \PicturePark\API\Model\BusinessRuleAction::class, 'json', $context);
             }
-            $object->setActions($values_1);
+            $object->setActions($values_3);
             unset($data['actions']);
         }
         elseif (\array_key_exists('actions', $data) && $data['actions'] === null) {
             $object->setActions(null);
             unset($data['actions']);
         }
-        foreach ($data as $key => $value_2) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_2;
+        foreach ($data as $key_2 => $value_8) {
+            if (preg_match('/.*/', (string) $key_2)) {
+                $object[$key_2] = $value_8;
             }
         }
         return $object;
@@ -133,37 +157,61 @@ class BusinessRuleConfigurableNormalizer implements DenormalizerInterface, Norma
             $dataArray['id'] = $data->getId();
         }
         if ($data->isInitialized('triggerPoint') && null !== $data->getTriggerPoint()) {
-            $dataArray['triggerPoint'] = $data->getTriggerPoint();
+            $value = $data->getTriggerPoint();
+            if (is_object($data->getTriggerPoint())) {
+                $value = $data->getTriggerPoint() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getTriggerPoint(), 'json', $context));
+            }
+            $dataArray['triggerPoint'] = $value;
         }
         $dataArray['isEnabled'] = $data->getIsEnabled();
         if ($data->isInitialized('names') && null !== $data->getNames()) {
-            $dataArray['names'] = $data->getNames();
+            $value_1 = $data->getNames();
+            if (is_object($data->getNames())) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data->getNames() as $key => $value_2) {
+                    $values[$key] = $value_2;
+                }
+                $value_1 = $values;
+            }
+            $dataArray['names'] = $value_1;
         }
         if ($data->isInitialized('description') && null !== $data->getDescription()) {
-            $dataArray['description'] = $data->getDescription();
+            $value_3 = $data->getDescription();
+            if (is_object($data->getDescription())) {
+                $values_1 = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data->getDescription() as $key_1 => $value_4) {
+                    $values_1[$key_1] = $value_4;
+                }
+                $value_3 = $values_1;
+            }
+            $dataArray['description'] = $value_3;
         }
         $dataArray['enableTracing'] = $data->getEnableTracing();
         $dataArray['kind'] = $data->getKind();
         if ($data->isInitialized('condition') && null !== $data->getCondition()) {
-            $dataArray['condition'] = $data->getCondition();
+            $value_5 = $data->getCondition();
+            if (is_object($data->getCondition())) {
+                $value_5 = $data->getCondition() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getCondition(), 'json', $context));
+            }
+            $dataArray['condition'] = $value_5;
         }
         if ($data->isInitialized('transformationGroups') && null !== $data->getTransformationGroups()) {
-            $values = [];
-            foreach ($data->getTransformationGroups() as $value) {
-                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            $values_2 = [];
+            foreach ($data->getTransformationGroups() as $value_6) {
+                $values_2[] = $value_6 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_6, 'json', $context));
             }
-            $dataArray['transformationGroups'] = $values;
+            $dataArray['transformationGroups'] = $values_2;
         }
         if ($data->isInitialized('actions') && null !== $data->getActions()) {
-            $values_1 = [];
-            foreach ($data->getActions() as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+            $values_3 = [];
+            foreach ($data->getActions() as $value_7) {
+                $values_3[] = $value_7 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_7, 'json', $context));
             }
-            $dataArray['actions'] = $values_1;
+            $dataArray['actions'] = $values_3;
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
-            if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_2;
+        foreach ($data->additionalPropertyEntries() as $key_2 => $value_8) {
+            if (preg_match('/.*/', (string) $key_2)) {
+                $dataArray[$key_2] = $value_8;
             }
         }
         return $dataArray;

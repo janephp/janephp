@@ -18,19 +18,19 @@ class Mp4VideoFormat extends FormatBase implements AdditionalPropertiesInterface
     /**
      * Allows resizing of the video.
      *
-     * @var mixed|null
+     * @var ResizeAction|null
      */
     protected $resizeAction;
     /**
      * Gets or sets the encoding audio codec.
      *
-     * @var mixed|null
+     * @var AudioFormatBase|null
      */
     protected $audioCodec;
     /**
      * Gets or sets the encoding codec preset.
      *
-     * @var mixed
+     * @var string
      */
     protected $preset;
     /**
@@ -40,20 +40,20 @@ class Mp4VideoFormat extends FormatBase implements AdditionalPropertiesInterface
     /**
      * Allows resizing of the video.
      *
-     * @return mixed
+     * @return ResizeAction|null
      */
-    public function getResizeAction()
+    public function getResizeAction(): ?ResizeAction
     {
         return $this->resizeAction;
     }
     /**
      * Allows resizing of the video.
      *
-     * @param mixed $resizeAction
+     * @param ResizeAction|null $resizeAction
      *
      * @return self
      */
-    public function setResizeAction($resizeAction): self
+    public function setResizeAction(?ResizeAction $resizeAction): self
     {
         $this->initialized['resizeAction'] = true;
         $this->resizeAction = $resizeAction;
@@ -62,20 +62,20 @@ class Mp4VideoFormat extends FormatBase implements AdditionalPropertiesInterface
     /**
      * Gets or sets the encoding audio codec.
      *
-     * @return mixed
+     * @return AudioFormatBase|null
      */
-    public function getAudioCodec()
+    public function getAudioCodec(): ?AudioFormatBase
     {
         return $this->audioCodec;
     }
     /**
      * Gets or sets the encoding audio codec.
      *
-     * @param mixed $audioCodec
+     * @param AudioFormatBase|null $audioCodec
      *
      * @return self
      */
-    public function setAudioCodec($audioCodec): self
+    public function setAudioCodec(?AudioFormatBase $audioCodec): self
     {
         $this->initialized['audioCodec'] = true;
         $this->audioCodec = $audioCodec;
@@ -84,20 +84,20 @@ class Mp4VideoFormat extends FormatBase implements AdditionalPropertiesInterface
     /**
      * Gets or sets the encoding codec preset.
      *
-     * @return mixed
+     * @return string
      */
-    public function getPreset()
+    public function getPreset(): string
     {
         return $this->preset;
     }
     /**
      * Gets or sets the encoding codec preset.
      *
-     * @param mixed $preset
+     * @param string $preset
      *
      * @return self
      */
-    public function setPreset($preset): self
+    public function setPreset(string $preset): self
     {
         $this->initialized['preset'] = true;
         $this->preset = $preset;

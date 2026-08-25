@@ -38,7 +38,15 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $object->setNames($data['names']);
+            $value = $data['names'];
+            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['names'] as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $object->setNames($value);
             unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
@@ -46,7 +54,15 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
             unset($data['names']);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
-            $object->setDescriptions($data['descriptions']);
+            $value_2 = $data['descriptions'];
+            if (is_array($data['descriptions']) && $this->isOnlyNumericKeys($data['descriptions'])) {
+                $values_1 = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['descriptions'] as $key_1 => $value_3) {
+                    $values_1[$key_1] = $value_3;
+                }
+                $value_2 = $values_1;
+            }
+            $object->setDescriptions($value_2);
             unset($data['descriptions']);
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
@@ -202,11 +218,11 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
             unset($data['revisionNumber']);
         }
         if (\array_key_exists('titles', $data) && $data['titles'] !== null) {
-            $values = [];
-            foreach ($data['titles'] as $value) {
-                $values[] = $value;
+            $values_2 = [];
+            foreach ($data['titles'] as $value_4) {
+                $values_2[] = $value_4;
             }
-            $object->setTitles($values);
+            $object->setTitles($values_2);
             unset($data['titles']);
         }
         elseif (\array_key_exists('titles', $data) && $data['titles'] === null) {
@@ -214,11 +230,11 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
             unset($data['titles']);
         }
         if (\array_key_exists('imageTitles', $data) && $data['imageTitles'] !== null) {
-            $values_1 = [];
-            foreach ($data['imageTitles'] as $value_1) {
-                $values_1[] = $value_1;
+            $values_3 = [];
+            foreach ($data['imageTitles'] as $value_5) {
+                $values_3[] = $value_5;
             }
-            $object->setImageTitles($values_1);
+            $object->setImageTitles($values_3);
             unset($data['imageTitles']);
         }
         elseif (\array_key_exists('imageTitles', $data) && $data['imageTitles'] === null) {
@@ -226,16 +242,20 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
             unset($data['imageTitles']);
         }
         if (\array_key_exists('epsInfo', $data) && $data['epsInfo'] !== null) {
-            $object->setEpsInfo($data['epsInfo']);
+            $value_6 = $data['epsInfo'];
+            if (is_array($data['epsInfo']) and \array_key_exists('isRasterized', $data['epsInfo']) and \array_key_exists('widthInPoints', $data['epsInfo']) and \array_key_exists('heightInPoints', $data['epsInfo'])) {
+                $value_6 = $this->denormalizer->denormalize($data['epsInfo'], \PicturePark\API\Model\EpsMetadata::class, 'json', $context);
+            }
+            $object->setEpsInfo($value_6);
             unset($data['epsInfo']);
         }
         elseif (\array_key_exists('epsInfo', $data) && $data['epsInfo'] === null) {
             $object->setEpsInfo(null);
             unset($data['epsInfo']);
         }
-        foreach ($data as $key => $value_2) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_2;
+        foreach ($data as $key_2 => $value_7) {
+            if (preg_match('/.*/', (string) $key_2)) {
+                $object[$key_2] = $value_7;
             }
         }
         return $object;
@@ -244,10 +264,26 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         if ($data->isInitialized('names') && null !== $data->getNames()) {
-            $dataArray['names'] = $data->getNames();
+            $value = $data->getNames();
+            if (is_object($data->getNames())) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data->getNames() as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $dataArray['names'] = $value;
         }
         if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
-            $dataArray['descriptions'] = $data->getDescriptions();
+            $value_2 = $data->getDescriptions();
+            if (is_object($data->getDescriptions())) {
+                $values_1 = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data->getDescriptions() as $key_1 => $value_3) {
+                    $values_1[$key_1] = $value_3;
+                }
+                $value_2 = $values_1;
+            }
+            $dataArray['descriptions'] = $value_2;
         }
         if ($data->isInitialized('fileExtension') && null !== $data->getFileExtension()) {
             $dataArray['fileExtension'] = $data->getFileExtension();
@@ -316,25 +352,29 @@ class DocumentMetadataNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['revisionNumber'] = $data->getRevisionNumber();
         }
         if ($data->isInitialized('titles') && null !== $data->getTitles()) {
-            $values = [];
-            foreach ($data->getTitles() as $value) {
-                $values[] = $value;
+            $values_2 = [];
+            foreach ($data->getTitles() as $value_4) {
+                $values_2[] = $value_4;
             }
-            $dataArray['titles'] = $values;
+            $dataArray['titles'] = $values_2;
         }
         if ($data->isInitialized('imageTitles') && null !== $data->getImageTitles()) {
-            $values_1 = [];
-            foreach ($data->getImageTitles() as $value_1) {
-                $values_1[] = $value_1;
+            $values_3 = [];
+            foreach ($data->getImageTitles() as $value_5) {
+                $values_3[] = $value_5;
             }
-            $dataArray['imageTitles'] = $values_1;
+            $dataArray['imageTitles'] = $values_3;
         }
         if ($data->isInitialized('epsInfo') && null !== $data->getEpsInfo()) {
-            $dataArray['epsInfo'] = $data->getEpsInfo();
+            $value_6 = $data->getEpsInfo();
+            if (is_object($data->getEpsInfo())) {
+                $value_6 = $data->getEpsInfo() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getEpsInfo(), 'json', $context));
+            }
+            $dataArray['epsInfo'] = $value_6;
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
-            if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_2;
+        foreach ($data->additionalPropertyEntries() as $key_2 => $value_7) {
+            if (preg_match('/.*/', (string) $key_2)) {
+                $dataArray[$key_2] = $value_7;
             }
         }
         return $dataArray;

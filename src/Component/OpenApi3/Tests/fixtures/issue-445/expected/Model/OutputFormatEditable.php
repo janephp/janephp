@@ -18,19 +18,19 @@ class OutputFormatEditable implements AdditionalPropertiesInterface
     /**
      * Which output format should be used as a source of data.
      *
-     * @var mixed|null
+     * @var SourceOutputFormats|null
      */
     protected $sourceOutputFormats;
     /**
      * Information about the technical format of the data, e.g. JPEG, AAC or video still.
      *
-     * @var mixed|null
+     * @var FormatBase|null
      */
     protected $format;
     /**
      * Language specific names.
      *
-     * @var mixed
+     * @var array<string, string>
      */
     protected $names;
     /**
@@ -43,7 +43,7 @@ class OutputFormatEditable implements AdditionalPropertiesInterface
      * Optional patterns (liquid syntax) that produce the filename for item of this output format.
      * If set, the customer's default language is required.
      *
-     * @var mixed|null
+     * @var array<string, string>|null
      */
     protected $downloadFileNamePatterns;
     /**
@@ -61,20 +61,20 @@ class OutputFormatEditable implements AdditionalPropertiesInterface
     /**
      * Which output format should be used as a source of data.
      *
-     * @return mixed
+     * @return SourceOutputFormats|null
      */
-    public function getSourceOutputFormats()
+    public function getSourceOutputFormats(): ?SourceOutputFormats
     {
         return $this->sourceOutputFormats;
     }
     /**
      * Which output format should be used as a source of data.
      *
-     * @param mixed $sourceOutputFormats
+     * @param SourceOutputFormats|null $sourceOutputFormats
      *
      * @return self
      */
-    public function setSourceOutputFormats($sourceOutputFormats): self
+    public function setSourceOutputFormats(?SourceOutputFormats $sourceOutputFormats): self
     {
         $this->initialized['sourceOutputFormats'] = true;
         $this->sourceOutputFormats = $sourceOutputFormats;
@@ -83,20 +83,20 @@ class OutputFormatEditable implements AdditionalPropertiesInterface
     /**
      * Information about the technical format of the data, e.g. JPEG, AAC or video still.
      *
-     * @return mixed
+     * @return FormatBase|null
      */
-    public function getFormat()
+    public function getFormat(): ?FormatBase
     {
         return $this->format;
     }
     /**
      * Information about the technical format of the data, e.g. JPEG, AAC or video still.
      *
-     * @param mixed $format
+     * @param FormatBase|null $format
      *
      * @return self
      */
-    public function setFormat($format): self
+    public function setFormat(?FormatBase $format): self
     {
         $this->initialized['format'] = true;
         $this->format = $format;
@@ -105,20 +105,20 @@ class OutputFormatEditable implements AdditionalPropertiesInterface
     /**
      * Language specific names.
      *
-     * @return mixed
+     * @return array<string, string>
      */
-    public function getNames()
+    public function getNames(): iterable
     {
         return $this->names;
     }
     /**
      * Language specific names.
      *
-     * @param mixed $names
+     * @param array<string, string> $names
      *
      * @return self
      */
-    public function setNames($names): self
+    public function setNames(iterable $names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;
@@ -150,9 +150,9 @@ class OutputFormatEditable implements AdditionalPropertiesInterface
      * Optional patterns (liquid syntax) that produce the filename for item of this output format.
      * If set, the customer's default language is required.
      *
-     * @return mixed
+     * @return array<string, string>|null
      */
-    public function getDownloadFileNamePatterns()
+    public function getDownloadFileNamePatterns(): ?iterable
     {
         return $this->downloadFileNamePatterns;
     }
@@ -160,11 +160,11 @@ class OutputFormatEditable implements AdditionalPropertiesInterface
     * Optional patterns (liquid syntax) that produce the filename for item of this output format.
     If set, the customer's default language is required.
     *
-    * @param mixed $downloadFileNamePatterns
+    * @param array<string, string>|null $downloadFileNamePatterns
     *
     * @return self
     */
-    public function setDownloadFileNamePatterns($downloadFileNamePatterns): self
+    public function setDownloadFileNamePatterns(?iterable $downloadFileNamePatterns): self
     {
         $this->initialized['downloadFileNamePatterns'] = true;
         $this->downloadFileNamePatterns = $downloadFileNamePatterns;

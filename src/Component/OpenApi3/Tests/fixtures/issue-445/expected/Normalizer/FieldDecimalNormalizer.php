@@ -82,7 +82,15 @@ class FieldDecimalNormalizer implements DenormalizerInterface, NormalizerInterfa
             unset($data['fieldNamespace']);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $object->setNames($data['names']);
+            $value = $data['names'];
+            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['names'] as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $object->setNames($value);
             unset($data['names']);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
@@ -90,7 +98,15 @@ class FieldDecimalNormalizer implements DenormalizerInterface, NormalizerInterfa
             unset($data['names']);
         }
         if (\array_key_exists('descriptions', $data) && $data['descriptions'] !== null) {
-            $object->setDescriptions($data['descriptions']);
+            $value_2 = $data['descriptions'];
+            if (is_array($data['descriptions']) && $this->isOnlyNumericKeys($data['descriptions'])) {
+                $values_1 = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['descriptions'] as $key_1 => $value_3) {
+                    $values_1[$key_1] = $value_3;
+                }
+                $value_2 = $values_1;
+            }
+            $object->setDescriptions($value_2);
             unset($data['descriptions']);
         }
         elseif (\array_key_exists('descriptions', $data) && $data['descriptions'] === null) {
@@ -149,9 +165,9 @@ class FieldDecimalNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setBoost($data['boost']);
             unset($data['boost']);
         }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+        foreach ($data as $key_2 => $value_4) {
+            if (preg_match('/.*/', (string) $key_2)) {
+                $object[$key_2] = $value_4;
             }
         }
         return $object;
@@ -167,10 +183,26 @@ class FieldDecimalNormalizer implements DenormalizerInterface, NormalizerInterfa
             $dataArray['fieldNamespace'] = $data->getFieldNamespace();
         }
         if ($data->isInitialized('names') && null !== $data->getNames()) {
-            $dataArray['names'] = $data->getNames();
+            $value = $data->getNames();
+            if (is_object($data->getNames())) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data->getNames() as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $dataArray['names'] = $value;
         }
         if ($data->isInitialized('descriptions') && null !== $data->getDescriptions()) {
-            $dataArray['descriptions'] = $data->getDescriptions();
+            $value_2 = $data->getDescriptions();
+            if (is_object($data->getDescriptions())) {
+                $values_1 = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data->getDescriptions() as $key_1 => $value_3) {
+                    $values_1[$key_1] = $value_3;
+                }
+                $value_2 = $values_1;
+            }
+            $dataArray['descriptions'] = $value_2;
         }
         $dataArray['required'] = $data->getRequired();
         $dataArray['fixed'] = $data->getFixed();
@@ -190,9 +222,9 @@ class FieldDecimalNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($data->isInitialized('boost') && null !== $data->getBoost()) {
             $dataArray['boost'] = $data->getBoost();
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+        foreach ($data->additionalPropertyEntries() as $key_2 => $value_4) {
+            if (preg_match('/.*/', (string) $key_2)) {
+                $dataArray[$key_2] = $value_4;
             }
         }
         return $dataArray;

@@ -18,13 +18,13 @@ class JpegFormat extends FormatBase implements AdditionalPropertiesInterface
     /**
      * Color profile to use. Colorspace is derived from the chosen profile.
      *
-     * @var mixed|null
+     * @var string|null
      */
     protected $colorProfile;
     /**
      * The method of conversion for color spaces (e.g. CMYK to RGB). Further information can be found here: http://www.colourphil.co.uk/rendering_intents.shtml
      *
-     * @var mixed
+     * @var string
      */
     protected $colorTransformationIntent;
     /**
@@ -48,7 +48,7 @@ class JpegFormat extends FormatBase implements AdditionalPropertiesInterface
     /**
      * Allows resizing of the image.
      *
-     * @var mixed|null
+     * @var ResizeAction|null
      */
     protected $resizeAction;
     /**
@@ -76,20 +76,20 @@ class JpegFormat extends FormatBase implements AdditionalPropertiesInterface
     /**
      * Color profile to use. Colorspace is derived from the chosen profile.
      *
-     * @return mixed
+     * @return string|null
      */
-    public function getColorProfile()
+    public function getColorProfile(): ?string
     {
         return $this->colorProfile;
     }
     /**
      * Color profile to use. Colorspace is derived from the chosen profile.
      *
-     * @param mixed $colorProfile
+     * @param string|null $colorProfile
      *
      * @return self
      */
-    public function setColorProfile($colorProfile): self
+    public function setColorProfile(?string $colorProfile): self
     {
         $this->initialized['colorProfile'] = true;
         $this->colorProfile = $colorProfile;
@@ -98,20 +98,20 @@ class JpegFormat extends FormatBase implements AdditionalPropertiesInterface
     /**
      * The method of conversion for color spaces (e.g. CMYK to RGB). Further information can be found here: http://www.colourphil.co.uk/rendering_intents.shtml
      *
-     * @return mixed
+     * @return string
      */
-    public function getColorTransformationIntent()
+    public function getColorTransformationIntent(): string
     {
         return $this->colorTransformationIntent;
     }
     /**
      * The method of conversion for color spaces (e.g. CMYK to RGB). Further information can be found here: http://www.colourphil.co.uk/rendering_intents.shtml
      *
-     * @param mixed $colorTransformationIntent
+     * @param string $colorTransformationIntent
      *
      * @return self
      */
-    public function setColorTransformationIntent($colorTransformationIntent): self
+    public function setColorTransformationIntent(string $colorTransformationIntent): self
     {
         $this->initialized['colorTransformationIntent'] = true;
         $this->colorTransformationIntent = $colorTransformationIntent;
@@ -186,20 +186,20 @@ class JpegFormat extends FormatBase implements AdditionalPropertiesInterface
     /**
      * Allows resizing of the image.
      *
-     * @return mixed
+     * @return ResizeAction|null
      */
-    public function getResizeAction()
+    public function getResizeAction(): ?ResizeAction
     {
         return $this->resizeAction;
     }
     /**
      * Allows resizing of the image.
      *
-     * @param mixed $resizeAction
+     * @param ResizeAction|null $resizeAction
      *
      * @return self
      */
-    public function setResizeAction($resizeAction): self
+    public function setResizeAction(?ResizeAction $resizeAction): self
     {
         $this->initialized['resizeAction'] = true;
         $this->resizeAction = $resizeAction;

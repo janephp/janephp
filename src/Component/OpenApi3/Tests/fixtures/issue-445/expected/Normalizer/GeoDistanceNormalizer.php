@@ -41,7 +41,15 @@ class GeoDistanceNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['distance'] = (float) $data['distance'];
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $object->setNames($data['names']);
+            $value = $data['names'];
+            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['names'] as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $object->setNames($value);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
@@ -55,7 +63,15 @@ class GeoDistanceNormalizer implements DenormalizerInterface, NormalizerInterfac
     {
         $dataArray = [];
         if ($data->isInitialized('names') && null !== $data->getNames()) {
-            $dataArray['names'] = $data->getNames();
+            $value = $data->getNames();
+            if (is_object($data->getNames())) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data->getNames() as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $dataArray['names'] = $value;
         }
         $dataArray['distance'] = $data->getDistance();
         return $dataArray;

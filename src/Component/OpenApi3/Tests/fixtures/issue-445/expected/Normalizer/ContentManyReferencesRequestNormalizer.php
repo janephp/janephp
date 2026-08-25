@@ -45,13 +45,21 @@ class ContentManyReferencesRequestNormalizer implements DenormalizerInterface, N
             $object->setContentIds($values);
         }
         if (\array_key_exists('references', $data) && $data['references'] !== null) {
-            $object->setReferences($data['references']);
+            $value_1 = $data['references'];
+            if (is_array($data['references'])) {
+                $value_1 = $this->denormalizer->denormalize($data['references'], \PicturePark\API\Model\MetadataReferencesPagingRequest::class, 'json', $context);
+            }
+            $object->setReferences($value_1);
         }
         elseif (\array_key_exists('references', $data) && $data['references'] === null) {
             $object->setReferences(null);
         }
         if (\array_key_exists('shares', $data) && $data['shares'] !== null) {
-            $object->setShares($data['shares']);
+            $value_2 = $data['shares'];
+            if (is_array($data['shares']) and \array_key_exists('limit', $data['shares'])) {
+                $value_2 = $this->denormalizer->denormalize($data['shares'], \PicturePark\API\Model\PagingRequest::class, 'json', $context);
+            }
+            $object->setShares($value_2);
         }
         elseif (\array_key_exists('shares', $data) && $data['shares'] === null) {
             $object->setShares(null);
@@ -67,10 +75,18 @@ class ContentManyReferencesRequestNormalizer implements DenormalizerInterface, N
         }
         $dataArray['contentIds'] = $values;
         if ($data->isInitialized('references') && null !== $data->getReferences()) {
-            $dataArray['references'] = $data->getReferences();
+            $value_1 = $data->getReferences();
+            if (is_object($data->getReferences())) {
+                $value_1 = $data->getReferences() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getReferences(), 'json', $context));
+            }
+            $dataArray['references'] = $value_1;
         }
         if ($data->isInitialized('shares') && null !== $data->getShares()) {
-            $dataArray['shares'] = $data->getShares();
+            $value_2 = $data->getShares();
+            if (is_object($data->getShares())) {
+                $value_2 = $data->getShares() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getShares(), 'json', $context));
+            }
+            $dataArray['shares'] = $value_2;
         }
         return $dataArray;
     }

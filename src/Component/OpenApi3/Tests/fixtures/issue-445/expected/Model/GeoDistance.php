@@ -15,7 +15,7 @@ class GeoDistance
     /**
      * Language specific geo distance names.
      *
-     * @var mixed|null
+     * @var array<string, string>|null
      */
     protected $names;
     /**
@@ -27,20 +27,20 @@ class GeoDistance
     /**
      * Language specific geo distance names.
      *
-     * @return mixed
+     * @return array<string, string>|null
      */
-    public function getNames()
+    public function getNames(): ?iterable
     {
         return $this->names;
     }
     /**
      * Language specific geo distance names.
      *
-     * @param mixed $names
+     * @param array<string, string>|null $names
      *
      * @return self
      */
-    public function setNames($names): self
+    public function setNames(?iterable $names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;

@@ -25,13 +25,13 @@ class GeoBoundingBoxFilter extends FilterBase implements AdditionalPropertiesInt
     /**
      * The top left corner of the bounding box's geo location (latitude and longitude).
      *
-     * @var mixed
+     * @var GeoLocation
      */
     protected $topLeft;
     /**
      * The bottom right corner of the bounding box's geo location (latitude and longitude).
      *
-     * @var mixed
+     * @var GeoLocation
      */
     protected $bottomRight;
     /**
@@ -61,20 +61,20 @@ class GeoBoundingBoxFilter extends FilterBase implements AdditionalPropertiesInt
     /**
      * The top left corner of the bounding box's geo location (latitude and longitude).
      *
-     * @return mixed
+     * @return GeoLocation
      */
-    public function getTopLeft()
+    public function getTopLeft(): GeoLocation
     {
         return $this->topLeft;
     }
     /**
      * The top left corner of the bounding box's geo location (latitude and longitude).
      *
-     * @param mixed $topLeft
+     * @param GeoLocation $topLeft
      *
      * @return self
      */
-    public function setTopLeft($topLeft): self
+    public function setTopLeft(GeoLocation $topLeft): self
     {
         $this->initialized['topLeft'] = true;
         $this->topLeft = $topLeft;
@@ -83,20 +83,20 @@ class GeoBoundingBoxFilter extends FilterBase implements AdditionalPropertiesInt
     /**
      * The bottom right corner of the bounding box's geo location (latitude and longitude).
      *
-     * @return mixed
+     * @return GeoLocation
      */
-    public function getBottomRight()
+    public function getBottomRight(): GeoLocation
     {
         return $this->bottomRight;
     }
     /**
      * The bottom right corner of the bounding box's geo location (latitude and longitude).
      *
-     * @param mixed $bottomRight
+     * @param GeoLocation $bottomRight
      *
      * @return self
      */
-    public function setBottomRight($bottomRight): self
+    public function setBottomRight(GeoLocation $bottomRight): self
     {
         $this->initialized['bottomRight'] = true;
         $this->bottomRight = $bottomRight;

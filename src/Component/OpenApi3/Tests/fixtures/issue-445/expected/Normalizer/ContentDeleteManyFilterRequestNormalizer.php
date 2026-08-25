@@ -44,7 +44,11 @@ class ContentDeleteManyFilterRequestNormalizer implements DenormalizerInterface,
             $data['notifyProgress'] = (bool) $data['notifyProgress'];
         }
         if (\array_key_exists('filterRequest', $data)) {
-            $object->setFilterRequest($data['filterRequest']);
+            $value = $data['filterRequest'];
+            if (is_array($data['filterRequest']) and \array_key_exists('searchType', $data['filterRequest']) and \array_key_exists('lifeCycleFilter', $data['filterRequest']) and \array_key_exists('brokenDependenciesFilter', $data['filterRequest'])) {
+                $value = $this->denormalizer->denormalize($data['filterRequest'], \PicturePark\API\Model\ContentFilterRequest::class, 'json', $context);
+            }
+            $object->setFilterRequest($value);
         }
         if (\array_key_exists('forceReferenceRemoval', $data)) {
             $object->setForceReferenceRemoval($data['forceReferenceRemoval']);
@@ -57,7 +61,11 @@ class ContentDeleteManyFilterRequestNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['filterRequest'] = $data->getFilterRequest();
+        $value = $data->getFilterRequest();
+        if (is_object($data->getFilterRequest())) {
+            $value = $data->getFilterRequest() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilterRequest(), 'json', $context));
+        }
+        $dataArray['filterRequest'] = $value;
         $dataArray['forceReferenceRemoval'] = $data->getForceReferenceRemoval();
         $dataArray['notifyProgress'] = $data->getNotifyProgress();
         return $dataArray;

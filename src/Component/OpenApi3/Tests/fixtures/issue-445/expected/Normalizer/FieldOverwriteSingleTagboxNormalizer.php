@@ -70,7 +70,11 @@ class FieldOverwriteSingleTagboxNormalizer implements DenormalizerInterface, Nor
             unset($data['kind']);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $object->setFilter($data['filter']);
+            $value = $data['filter'];
+            if (is_array($data['filter']) and \array_key_exists('kind', $data['filter'])) {
+                $value = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
+            }
+            $object->setFilter($value);
             unset($data['filter']);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
@@ -93,9 +97,9 @@ class FieldOverwriteSingleTagboxNormalizer implements DenormalizerInterface, Nor
             $object->setOverwriteListItemCreateTemplate($data['overwriteListItemCreateTemplate']);
             unset($data['overwriteListItemCreateTemplate']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -110,7 +114,11 @@ class FieldOverwriteSingleTagboxNormalizer implements DenormalizerInterface, Nor
         $dataArray['overwriteRequired'] = $data->getOverwriteRequired();
         $dataArray['kind'] = $data->getKind();
         if ($data->isInitialized('filter') && null !== $data->getFilter()) {
-            $dataArray['filter'] = $data->getFilter();
+            $value = $data->getFilter();
+            if (is_object($data->getFilter())) {
+                $value = $data->getFilter() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+            }
+            $dataArray['filter'] = $value;
         }
         if ($data->isInitialized('overwriteFilter') && null !== $data->getOverwriteFilter()) {
             $dataArray['overwriteFilter'] = $data->getOverwriteFilter();
@@ -121,9 +129,9 @@ class FieldOverwriteSingleTagboxNormalizer implements DenormalizerInterface, Nor
         if ($data->isInitialized('overwriteListItemCreateTemplate') && null !== $data->getOverwriteListItemCreateTemplate()) {
             $dataArray['overwriteListItemCreateTemplate'] = $data->getOverwriteListItemCreateTemplate();
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

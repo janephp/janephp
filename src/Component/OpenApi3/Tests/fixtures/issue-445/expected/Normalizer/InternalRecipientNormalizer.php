@@ -38,7 +38,11 @@ class InternalRecipientNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('recipient', $data)) {
-            $object->setRecipient($data['recipient']);
+            $value = $data['recipient'];
+            if (is_array($data['recipient']) and \array_key_exists('emailAddress', $data['recipient']) and \array_key_exists('isDeleted', $data['recipient'])) {
+                $value = $this->denormalizer->denormalize($data['recipient'], \PicturePark\API\Model\User::class, 'json', $context);
+            }
+            $object->setRecipient($value);
         }
         if (\array_key_exists('token', $data) && $data['token'] !== null) {
             $object->setToken($data['token']);
@@ -57,7 +61,11 @@ class InternalRecipientNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['recipient'] = $data->getRecipient();
+        $value = $data->getRecipient();
+        if (is_object($data->getRecipient())) {
+            $value = $data->getRecipient() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getRecipient(), 'json', $context));
+        }
+        $dataArray['recipient'] = $value;
         if ($data->isInitialized('token') && null !== $data->getToken()) {
             $dataArray['token'] = $data->getToken();
         }

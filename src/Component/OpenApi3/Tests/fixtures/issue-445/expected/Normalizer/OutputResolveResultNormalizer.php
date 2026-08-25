@@ -53,7 +53,11 @@ class OutputResolveResultNormalizer implements DenormalizerInterface, Normalizer
             $object->setContentId($data['contentId']);
         }
         if (\array_key_exists('renderingState', $data)) {
-            $object->setRenderingState($data['renderingState']);
+            $value = $data['renderingState'];
+            if (is_string($data['renderingState'])) {
+                $value = $data['renderingState'];
+            }
+            $object->setRenderingState($value);
         }
         if (\array_key_exists('dynamicRendering', $data)) {
             $object->setDynamicRendering($data['dynamicRendering']);
@@ -74,7 +78,11 @@ class OutputResolveResultNormalizer implements DenormalizerInterface, Normalizer
         }
         $dataArray['outputFormatId'] = $data->getOutputFormatId();
         $dataArray['contentId'] = $data->getContentId();
-        $dataArray['renderingState'] = $data->getRenderingState();
+        $value = $data->getRenderingState();
+        if (is_string($data->getRenderingState())) {
+            $value = $data->getRenderingState();
+        }
+        $dataArray['renderingState'] = $value;
         $dataArray['dynamicRendering'] = $data->getDynamicRendering();
         if ($data->isInitialized('fileSize') && null !== $data->getFileSize()) {
             $dataArray['fileSize'] = $data->getFileSize();

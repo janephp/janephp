@@ -15,7 +15,7 @@ class UserRoleEditable
     /**
      * Language specific user role names.
      *
-     * @var mixed
+     * @var array<string, string>
      */
     protected $names;
     /**
@@ -27,20 +27,20 @@ class UserRoleEditable
     /**
      * Language specific user role names.
      *
-     * @return mixed
+     * @return array<string, string>
      */
-    public function getNames()
+    public function getNames(): iterable
     {
         return $this->names;
     }
     /**
      * Language specific user role names.
      *
-     * @param mixed $names
+     * @param array<string, string> $names
      *
      * @return self
      */
-    public function setNames($names): self
+    public function setNames(iterable $names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;

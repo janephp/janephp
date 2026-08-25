@@ -38,24 +38,32 @@ class PermissionSetUpdateRequestOfContentRightNormalizer implements Denormalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('names', $data)) {
-            $object->setNames($data['names']);
+            $value = $data['names'];
+            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['names'] as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $object->setNames($value);
         }
         if (\array_key_exists('userRolesRights', $data) && $data['userRolesRights'] !== null) {
-            $values = [];
-            foreach ($data['userRolesRights'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\UserRoleRightsOfContentRight::class, 'json', $context);
+            $values_1 = [];
+            foreach ($data['userRolesRights'] as $value_2) {
+                $values_1[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\UserRoleRightsOfContentRight::class, 'json', $context);
             }
-            $object->setUserRolesRights($values);
+            $object->setUserRolesRights($values_1);
         }
         elseif (\array_key_exists('userRolesRights', $data) && $data['userRolesRights'] === null) {
             $object->setUserRolesRights(null);
         }
         if (\array_key_exists('userRolesPermissionSetRights', $data) && $data['userRolesPermissionSetRights'] !== null) {
-            $values_1 = [];
-            foreach ($data['userRolesPermissionSetRights'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\UserRoleRightsOfPermissionSetRight::class, 'json', $context);
+            $values_2 = [];
+            foreach ($data['userRolesPermissionSetRights'] as $value_3) {
+                $values_2[] = $this->denormalizer->denormalize($value_3, \PicturePark\API\Model\UserRoleRightsOfPermissionSetRight::class, 'json', $context);
             }
-            $object->setUserRolesPermissionSetRights($values_1);
+            $object->setUserRolesPermissionSetRights($values_2);
         }
         elseif (\array_key_exists('userRolesPermissionSetRights', $data) && $data['userRolesPermissionSetRights'] === null) {
             $object->setUserRolesPermissionSetRights(null);
@@ -65,20 +73,28 @@ class PermissionSetUpdateRequestOfContentRightNormalizer implements Denormalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['names'] = $data->getNames();
-        if ($data->isInitialized('userRolesRights') && null !== $data->getUserRolesRights()) {
-            $values = [];
-            foreach ($data->getUserRolesRights() as $value) {
-                $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+        $value = $data->getNames();
+        if (is_object($data->getNames())) {
+            $values = new \PicturePark\API\Runtime\JsonObject();
+            foreach ($data->getNames() as $key => $value_1) {
+                $values[$key] = $value_1;
             }
-            $dataArray['userRolesRights'] = $values;
+            $value = $values;
+        }
+        $dataArray['names'] = $value;
+        if ($data->isInitialized('userRolesRights') && null !== $data->getUserRolesRights()) {
+            $values_1 = [];
+            foreach ($data->getUserRolesRights() as $value_2) {
+                $values_1[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+            }
+            $dataArray['userRolesRights'] = $values_1;
         }
         if ($data->isInitialized('userRolesPermissionSetRights') && null !== $data->getUserRolesPermissionSetRights()) {
-            $values_1 = [];
-            foreach ($data->getUserRolesPermissionSetRights() as $value_1) {
-                $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+            $values_2 = [];
+            foreach ($data->getUserRolesPermissionSetRights() as $value_3) {
+                $values_2[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
             }
-            $dataArray['userRolesPermissionSetRights'] = $values_1;
+            $dataArray['userRolesPermissionSetRights'] = $values_2;
         }
         return $dataArray;
     }

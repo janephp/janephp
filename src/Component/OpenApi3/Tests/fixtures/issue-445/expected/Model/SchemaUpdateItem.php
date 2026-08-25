@@ -18,13 +18,13 @@ class SchemaUpdateItem implements AdditionalPropertiesInterface
     /**
      * Language specific schema names.
      *
-     * @var mixed|null
+     * @var array<string, string>|null
      */
     protected $names;
     /**
      * Language specific schema descriptions.
      *
-     * @var mixed|null
+     * @var array<string, string>|null
      */
     protected $descriptions;
     /**
@@ -94,20 +94,20 @@ class SchemaUpdateItem implements AdditionalPropertiesInterface
     /**
      * Language specific schema names.
      *
-     * @return mixed
+     * @return array<string, string>|null
      */
-    public function getNames()
+    public function getNames(): ?iterable
     {
         return $this->names;
     }
     /**
      * Language specific schema names.
      *
-     * @param mixed $names
+     * @param array<string, string>|null $names
      *
      * @return self
      */
-    public function setNames($names): self
+    public function setNames(?iterable $names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;
@@ -116,20 +116,20 @@ class SchemaUpdateItem implements AdditionalPropertiesInterface
     /**
      * Language specific schema descriptions.
      *
-     * @return mixed
+     * @return array<string, string>|null
      */
-    public function getDescriptions()
+    public function getDescriptions(): ?iterable
     {
         return $this->descriptions;
     }
     /**
      * Language specific schema descriptions.
      *
-     * @param mixed $descriptions
+     * @param array<string, string>|null $descriptions
      *
      * @return self
      */
-    public function setDescriptions($descriptions): self
+    public function setDescriptions(?iterable $descriptions): self
     {
         $this->initialized['descriptions'] = true;
         $this->descriptions = $descriptions;

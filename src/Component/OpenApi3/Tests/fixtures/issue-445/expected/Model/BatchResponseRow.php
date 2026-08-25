@@ -39,7 +39,7 @@ class BatchResponseRow
     /**
      * If the operation did not succeed, this contains error information.
      *
-     * @var mixed|null
+     * @var ErrorResponse|null
      */
     protected $error;
     /**
@@ -139,20 +139,20 @@ class BatchResponseRow
     /**
      * If the operation did not succeed, this contains error information.
      *
-     * @return mixed
+     * @return ErrorResponse|null
      */
-    public function getError()
+    public function getError(): ?ErrorResponse
     {
         return $this->error;
     }
     /**
      * If the operation did not succeed, this contains error information.
      *
-     * @param mixed $error
+     * @param ErrorResponse|null $error
      *
      * @return self
      */
-    public function setError($error): self
+    public function setError(?ErrorResponse $error): self
     {
         $this->initialized['error'] = true;
         $this->error = $error;

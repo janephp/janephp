@@ -39,7 +39,7 @@ class ShareOutputBase
     /**
      * Output details.
      *
-     * @var mixed|null
+     * @var OutputDataBase|null
      */
     protected $detail;
     /**
@@ -131,18 +131,18 @@ class ShareOutputBase
     /**
      * Output details.
      *
-     * @return mixed
+     * @return OutputDataBase|null
      */
-    public function getDetail()
+    public function getDetail(): ?OutputDataBase
     {
         return $this->detail;
     }
     /**
      * Output details.
      *
-     * @param mixed $detail
+     * @param OutputDataBase|null $detail
      */
-    public function setDetail($detail)
+    public function setDetail(?OutputDataBase $detail)
     {
         $this->initialized['detail'] = true;
         $this->detail = $detail;

@@ -37,7 +37,7 @@ class DocumentHistory
      */
     protected $timestamp;
     /**
-     * @var mixed|null
+     * @var UserAuditHistory|null
      */
     protected $audit;
     /**
@@ -157,18 +157,18 @@ class DocumentHistory
         return $this;
     }
     /**
-     * @return mixed
+     * @return UserAuditHistory|null
      */
-    public function getAudit()
+    public function getAudit(): ?UserAuditHistory
     {
         return $this->audit;
     }
     /**
-     * @param mixed $audit
+     * @param UserAuditHistory|null $audit
      *
      * @return self
      */
-    public function setAudit($audit): self
+    public function setAudit(?UserAuditHistory $audit): self
     {
         $this->initialized['audit'] = true;
         $this->audit = $audit;

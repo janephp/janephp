@@ -65,7 +65,11 @@ class ShareOutputBasicNormalizer implements DenormalizerInterface, NormalizerInt
             unset($data['downloadUrl']);
         }
         if (\array_key_exists('detail', $data) && $data['detail'] !== null) {
-            $object->setDetail($data['detail']);
+            $value = $data['detail'];
+            if (is_array($data['detail']) and \array_key_exists('kind', $data['detail'])) {
+                $value = $this->denormalizer->denormalize($data['detail'], \PicturePark\API\Model\OutputDataBase::class, 'json', $context);
+            }
+            $object->setDetail($value);
             unset($data['detail']);
         }
         elseif (\array_key_exists('detail', $data) && $data['detail'] === null) {
@@ -80,9 +84,9 @@ class ShareOutputBasicNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setKind($data['kind']);
             unset($data['kind']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -99,13 +103,17 @@ class ShareOutputBasicNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['downloadUrl'] = $data->getDownloadUrl();
         }
         if ($data->isInitialized('detail') && null !== $data->getDetail()) {
-            $dataArray['detail'] = $data->getDetail();
+            $value = $data->getDetail();
+            if (is_object($data->getDetail())) {
+                $value = $data->getDetail() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getDetail(), 'json', $context));
+            }
+            $dataArray['detail'] = $value;
         }
         $dataArray['dynamicRendering'] = $data->getDynamicRendering();
         $dataArray['kind'] = $data->getKind();
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

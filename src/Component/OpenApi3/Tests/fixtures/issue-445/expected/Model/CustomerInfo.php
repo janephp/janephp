@@ -51,7 +51,7 @@ class CustomerInfo
     /**
      * Configured languages of customer instance (system, metadata, default).
      *
-     * @var mixed
+     * @var LanguageConfiguration
      */
     protected $languageConfiguration;
     /**
@@ -229,20 +229,20 @@ class CustomerInfo
     /**
      * Configured languages of customer instance (system, metadata, default).
      *
-     * @return mixed
+     * @return LanguageConfiguration
      */
-    public function getLanguageConfiguration()
+    public function getLanguageConfiguration(): LanguageConfiguration
     {
         return $this->languageConfiguration;
     }
     /**
      * Configured languages of customer instance (system, metadata, default).
      *
-     * @param mixed $languageConfiguration
+     * @param LanguageConfiguration $languageConfiguration
      *
      * @return self
      */
-    public function setLanguageConfiguration($languageConfiguration): self
+    public function setLanguageConfiguration(LanguageConfiguration $languageConfiguration): self
     {
         $this->initialized['languageConfiguration'] = true;
         $this->languageConfiguration = $languageConfiguration;

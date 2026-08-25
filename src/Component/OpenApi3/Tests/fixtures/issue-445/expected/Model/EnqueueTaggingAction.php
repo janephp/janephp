@@ -18,26 +18,26 @@ class EnqueueTaggingAction extends BusinessRuleAction implements AdditionalPrope
     /**
      * Options to use while tagging.
      *
-     * @var mixed|null
+     * @var TaggingOptionsBase|null
      */
     protected $options;
     /**
      * Options to use while tagging.
      *
-     * @return mixed
+     * @return TaggingOptionsBase|null
      */
-    public function getOptions()
+    public function getOptions(): ?TaggingOptionsBase
     {
         return $this->options;
     }
     /**
      * Options to use while tagging.
      *
-     * @param mixed $options
+     * @param TaggingOptionsBase|null $options
      *
      * @return self
      */
-    public function setOptions($options): self
+    public function setOptions(?TaggingOptionsBase $options): self
     {
         $this->initialized['options'] = true;
         $this->options = $options;

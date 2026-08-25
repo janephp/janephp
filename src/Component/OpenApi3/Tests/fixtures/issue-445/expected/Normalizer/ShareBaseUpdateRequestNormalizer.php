@@ -80,7 +80,11 @@ class ShareBaseUpdateRequestNormalizer implements DenormalizerInterface, Normali
             $object->setLayerSchemaIds(null);
         }
         if (\array_key_exists('outputAccess', $data)) {
-            $object->setOutputAccess($data['outputAccess']);
+            $value_2 = $data['outputAccess'];
+            if (is_string($data['outputAccess'])) {
+                $value_2 = $data['outputAccess'];
+            }
+            $object->setOutputAccess($value_2);
         }
         if (\array_key_exists('kind', $data)) {
             $object->setKind($data['kind']);
@@ -115,7 +119,11 @@ class ShareBaseUpdateRequestNormalizer implements DenormalizerInterface, Normali
             }
             $dataArray['layerSchemaIds'] = $values_1;
         }
-        $dataArray['outputAccess'] = $data->getOutputAccess();
+        $value_2 = $data->getOutputAccess();
+        if (is_string($data->getOutputAccess())) {
+            $value_2 = $data->getOutputAccess();
+        }
+        $dataArray['outputAccess'] = $value_2;
         $dataArray['kind'] = $data->getKind();
         return $dataArray;
     }

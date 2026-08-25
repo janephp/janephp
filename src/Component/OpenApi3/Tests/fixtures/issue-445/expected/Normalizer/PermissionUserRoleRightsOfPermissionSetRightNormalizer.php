@@ -44,17 +44,25 @@ class PermissionUserRoleRightsOfPermissionSetRightNormalizer implements Denormal
             $object->setUserRoleId(null);
         }
         if (\array_key_exists('names', $data) && $data['names'] !== null) {
-            $object->setNames($data['names']);
+            $value = $data['names'];
+            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['names'] as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $object->setNames($value);
         }
         elseif (\array_key_exists('names', $data) && $data['names'] === null) {
             $object->setNames(null);
         }
         if (\array_key_exists('rights', $data) && $data['rights'] !== null) {
-            $values = [];
-            foreach ($data['rights'] as $value) {
-                $values[] = $value;
+            $values_1 = [];
+            foreach ($data['rights'] as $value_2) {
+                $values_1[] = $value_2;
             }
-            $object->setRights($values);
+            $object->setRights($values_1);
         }
         elseif (\array_key_exists('rights', $data) && $data['rights'] === null) {
             $object->setRights(null);
@@ -68,14 +76,22 @@ class PermissionUserRoleRightsOfPermissionSetRightNormalizer implements Denormal
             $dataArray['userRoleId'] = $data->getUserRoleId();
         }
         if ($data->isInitialized('names') && null !== $data->getNames()) {
-            $dataArray['names'] = $data->getNames();
+            $value = $data->getNames();
+            if (is_object($data->getNames())) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data->getNames() as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $dataArray['names'] = $value;
         }
         if ($data->isInitialized('rights') && null !== $data->getRights()) {
-            $values = [];
-            foreach ($data->getRights() as $value) {
-                $values[] = $value;
+            $values_1 = [];
+            foreach ($data->getRights() as $value_2) {
+                $values_1[] = $value_2;
             }
-            $dataArray['rights'] = $values;
+            $dataArray['rights'] = $values_1;
         }
         return $dataArray;
     }

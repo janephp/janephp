@@ -38,7 +38,11 @@ class ListItemReferencesRequestNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('references', $data) && $data['references'] !== null) {
-            $object->setReferences($data['references']);
+            $value = $data['references'];
+            if (is_array($data['references'])) {
+                $value = $this->denormalizer->denormalize($data['references'], \PicturePark\API\Model\MetadataReferencesPagingRequest::class, 'json', $context);
+            }
+            $object->setReferences($value);
         }
         elseif (\array_key_exists('references', $data) && $data['references'] === null) {
             $object->setReferences(null);
@@ -49,7 +53,11 @@ class ListItemReferencesRequestNormalizer implements DenormalizerInterface, Norm
     {
         $dataArray = [];
         if ($data->isInitialized('references') && null !== $data->getReferences()) {
-            $dataArray['references'] = $data->getReferences();
+            $value = $data->getReferences();
+            if (is_object($data->getReferences())) {
+                $value = $data->getReferences() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getReferences(), 'json', $context));
+            }
+            $dataArray['references'] = $value;
         }
         return $dataArray;
     }

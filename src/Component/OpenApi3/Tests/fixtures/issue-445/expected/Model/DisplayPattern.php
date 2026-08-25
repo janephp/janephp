@@ -15,38 +15,38 @@ class DisplayPattern
     /**
      * The template engine used for parsing the display patterns.
      *
-     * @var mixed
+     * @var string
      */
     protected $templateEngine;
     /**
      * The display pattern type.
      *
-     * @var mixed
+     * @var string
      */
     protected $displayPatternType;
     /**
      * Language specific pattern templates.
      *
-     * @var mixed|null
+     * @var array<string, string>|null
      */
     protected $templates;
     /**
      * The template engine used for parsing the display patterns.
      *
-     * @return mixed
+     * @return string
      */
-    public function getTemplateEngine()
+    public function getTemplateEngine(): string
     {
         return $this->templateEngine;
     }
     /**
      * The template engine used for parsing the display patterns.
      *
-     * @param mixed $templateEngine
+     * @param string $templateEngine
      *
      * @return self
      */
-    public function setTemplateEngine($templateEngine): self
+    public function setTemplateEngine(string $templateEngine): self
     {
         $this->initialized['templateEngine'] = true;
         $this->templateEngine = $templateEngine;
@@ -55,20 +55,20 @@ class DisplayPattern
     /**
      * The display pattern type.
      *
-     * @return mixed
+     * @return string
      */
-    public function getDisplayPatternType()
+    public function getDisplayPatternType(): string
     {
         return $this->displayPatternType;
     }
     /**
      * The display pattern type.
      *
-     * @param mixed $displayPatternType
+     * @param string $displayPatternType
      *
      * @return self
      */
-    public function setDisplayPatternType($displayPatternType): self
+    public function setDisplayPatternType(string $displayPatternType): self
     {
         $this->initialized['displayPatternType'] = true;
         $this->displayPatternType = $displayPatternType;
@@ -77,20 +77,20 @@ class DisplayPattern
     /**
      * Language specific pattern templates.
      *
-     * @return mixed
+     * @return array<string, string>|null
      */
-    public function getTemplates()
+    public function getTemplates(): ?iterable
     {
         return $this->templates;
     }
     /**
      * Language specific pattern templates.
      *
-     * @param mixed $templates
+     * @param array<string, string>|null $templates
      *
      * @return self
      */
-    public function setTemplates($templates): self
+    public function setTemplates(?iterable $templates): self
     {
         $this->initialized['templates'] = true;
         $this->templates = $templates;

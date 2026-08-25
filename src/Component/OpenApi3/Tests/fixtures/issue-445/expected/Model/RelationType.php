@@ -21,7 +21,7 @@ class RelationType
     /**
      * Language specific relation names.
      *
-     * @var mixed|null
+     * @var array<string, string>|null
      */
     protected $names;
     /**
@@ -33,7 +33,7 @@ class RelationType
     /**
      * An optional filter to limit the documents of type TargetDocType.
      *
-     * @var mixed|null
+     * @var FilterBase|null
      */
     protected $filter;
     /**
@@ -61,20 +61,20 @@ class RelationType
     /**
      * Language specific relation names.
      *
-     * @return mixed
+     * @return array<string, string>|null
      */
-    public function getNames()
+    public function getNames(): ?iterable
     {
         return $this->names;
     }
     /**
      * Language specific relation names.
      *
-     * @param mixed $names
+     * @param array<string, string>|null $names
      *
      * @return self
      */
-    public function setNames($names): self
+    public function setNames(?iterable $names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;
@@ -105,20 +105,20 @@ class RelationType
     /**
      * An optional filter to limit the documents of type TargetDocType.
      *
-     * @return mixed
+     * @return FilterBase|null
      */
-    public function getFilter()
+    public function getFilter(): ?FilterBase
     {
         return $this->filter;
     }
     /**
      * An optional filter to limit the documents of type TargetDocType.
      *
-     * @param mixed $filter
+     * @param FilterBase|null $filter
      *
      * @return self
      */
-    public function setFilter($filter): self
+    public function setFilter(?FilterBase $filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;

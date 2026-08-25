@@ -48,7 +48,7 @@ class ContentMetadataUpdateItem implements AdditionalPropertiesInterface
      * existing assigned layers not specified in the property are removed and missing layers are assigned.
      * Defaults to Merge.
      *
-     * @var mixed
+     * @var string
      */
     protected $layerSchemasUpdateOptions = 'Merge';
     /**
@@ -57,7 +57,7 @@ class ContentMetadataUpdateItem implements AdditionalPropertiesInterface
      * Replace: the values specified in the Metadata dictionary entirely replace any existing value of the corresponding schema on the content.
      * Defaults to Merge.
      *
-     * @var mixed
+     * @var string
      */
     protected $layerFieldsUpdateOptions = 'Merge';
     /**
@@ -66,7 +66,7 @@ class ContentMetadataUpdateItem implements AdditionalPropertiesInterface
      * Replace: the values specified in the Content object entirely replace the content.
      * Defaults to Merge.
      *
-     * @var mixed
+     * @var string
      */
     protected $contentFieldsUpdateOptions = 'Merge';
     /**
@@ -163,9 +163,9 @@ class ContentMetadataUpdateItem implements AdditionalPropertiesInterface
      * existing assigned layers not specified in the property are removed and missing layers are assigned.
      * Defaults to Merge.
      *
-     * @return mixed
+     * @return string
      */
-    public function getLayerSchemasUpdateOptions()
+    public function getLayerSchemasUpdateOptions(): string
     {
         return $this->layerSchemasUpdateOptions;
     }
@@ -177,11 +177,11 @@ class ContentMetadataUpdateItem implements AdditionalPropertiesInterface
     existing assigned layers not specified in the property are removed and missing layers are assigned.
     Defaults to Merge.
     *
-    * @param mixed $layerSchemasUpdateOptions
+    * @param string $layerSchemasUpdateOptions
     *
     * @return self
     */
-    public function setLayerSchemasUpdateOptions($layerSchemasUpdateOptions): self
+    public function setLayerSchemasUpdateOptions(string $layerSchemasUpdateOptions): self
     {
         $this->initialized['layerSchemasUpdateOptions'] = true;
         $this->layerSchemasUpdateOptions = $layerSchemasUpdateOptions;
@@ -193,9 +193,9 @@ class ContentMetadataUpdateItem implements AdditionalPropertiesInterface
      * Replace: the values specified in the Metadata dictionary entirely replace any existing value of the corresponding schema on the content.
      * Defaults to Merge.
      *
-     * @return mixed
+     * @return string
      */
-    public function getLayerFieldsUpdateOptions()
+    public function getLayerFieldsUpdateOptions(): string
     {
         return $this->layerFieldsUpdateOptions;
     }
@@ -205,11 +205,11 @@ class ContentMetadataUpdateItem implements AdditionalPropertiesInterface
     Replace: the values specified in the Metadata dictionary entirely replace any existing value of the corresponding schema on the content.
     Defaults to Merge.
     *
-    * @param mixed $layerFieldsUpdateOptions
+    * @param string $layerFieldsUpdateOptions
     *
     * @return self
     */
-    public function setLayerFieldsUpdateOptions($layerFieldsUpdateOptions): self
+    public function setLayerFieldsUpdateOptions(string $layerFieldsUpdateOptions): self
     {
         $this->initialized['layerFieldsUpdateOptions'] = true;
         $this->layerFieldsUpdateOptions = $layerFieldsUpdateOptions;
@@ -221,9 +221,9 @@ class ContentMetadataUpdateItem implements AdditionalPropertiesInterface
      * Replace: the values specified in the Content object entirely replace the content.
      * Defaults to Merge.
      *
-     * @return mixed
+     * @return string
      */
-    public function getContentFieldsUpdateOptions()
+    public function getContentFieldsUpdateOptions(): string
     {
         return $this->contentFieldsUpdateOptions;
     }
@@ -233,11 +233,11 @@ class ContentMetadataUpdateItem implements AdditionalPropertiesInterface
     Replace: the values specified in the Content object entirely replace the content.
     Defaults to Merge.
     *
-    * @param mixed $contentFieldsUpdateOptions
+    * @param string $contentFieldsUpdateOptions
     *
     * @return self
     */
-    public function setContentFieldsUpdateOptions($contentFieldsUpdateOptions): self
+    public function setContentFieldsUpdateOptions(string $contentFieldsUpdateOptions): self
     {
         $this->initialized['contentFieldsUpdateOptions'] = true;
         $this->contentFieldsUpdateOptions = $contentFieldsUpdateOptions;

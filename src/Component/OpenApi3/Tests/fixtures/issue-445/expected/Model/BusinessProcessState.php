@@ -27,7 +27,7 @@ class BusinessProcessState
     /**
      * Eventual error associated to the state transition.
      *
-     * @var mixed|null
+     * @var ErrorResponse|null
      */
     protected $error;
     /**
@@ -77,20 +77,20 @@ class BusinessProcessState
     /**
      * Eventual error associated to the state transition.
      *
-     * @return mixed
+     * @return ErrorResponse|null
      */
-    public function getError()
+    public function getError(): ?ErrorResponse
     {
         return $this->error;
     }
     /**
      * Eventual error associated to the state transition.
      *
-     * @param mixed $error
+     * @param ErrorResponse|null $error
      *
      * @return self
      */
-    public function setError($error): self
+    public function setError(?ErrorResponse $error): self
     {
         $this->initialized['error'] = true;
         $this->error = $error;

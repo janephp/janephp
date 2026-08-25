@@ -15,32 +15,32 @@ class OutputFormatRenderingSpecification
     /**
      * Which output format should be used as a source of data.
      *
-     * @var mixed|null
+     * @var SourceOutputFormats|null
      */
     protected $sourceOutputFormats;
     /**
      * Information about the technical format of the data, e.g. JPEG, AAC or video still.
      *
-     * @var mixed|null
+     * @var FormatBase|null
      */
     protected $format;
     /**
      * Which output format should be used as a source of data.
      *
-     * @return mixed
+     * @return SourceOutputFormats|null
      */
-    public function getSourceOutputFormats()
+    public function getSourceOutputFormats(): ?SourceOutputFormats
     {
         return $this->sourceOutputFormats;
     }
     /**
      * Which output format should be used as a source of data.
      *
-     * @param mixed $sourceOutputFormats
+     * @param SourceOutputFormats|null $sourceOutputFormats
      *
      * @return self
      */
-    public function setSourceOutputFormats($sourceOutputFormats): self
+    public function setSourceOutputFormats(?SourceOutputFormats $sourceOutputFormats): self
     {
         $this->initialized['sourceOutputFormats'] = true;
         $this->sourceOutputFormats = $sourceOutputFormats;
@@ -49,20 +49,20 @@ class OutputFormatRenderingSpecification
     /**
      * Information about the technical format of the data, e.g. JPEG, AAC or video still.
      *
-     * @return mixed
+     * @return FormatBase|null
      */
-    public function getFormat()
+    public function getFormat(): ?FormatBase
     {
         return $this->format;
     }
     /**
      * Information about the technical format of the data, e.g. JPEG, AAC or video still.
      *
-     * @param mixed $format
+     * @param FormatBase|null $format
      *
      * @return self
      */
-    public function setFormat($format): self
+    public function setFormat(?FormatBase $format): self
     {
         $this->initialized['format'] = true;
         $this->format = $format;
