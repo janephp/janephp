@@ -42,6 +42,7 @@ class GuesserFactory
         $chainGuesser->addGuesser(new DateTimeGuesser(JsonSchema::class, $outputDateTimeFormat, $inputDateTimeFormat, $datePreferInterface));
         $chainGuesser->addGuesser(new BinaryStringFormatGuesser(JsonSchema::class));
         $chainGuesser->addGuesser(new ReferenceGuesser($denormalizer, JsonSchema::class));
+        $chainGuesser->addGuesser(new DollarRefGuesser($denormalizer, JsonSchema::class));
         $chainGuesser->addGuesser(new OpenApiGuesser($denormalizer, $operationNaming));
         $chainGuesser->addGuesser(new SchemaGuesser($denormalizer, $naming));
         $chainGuesser->addGuesser(new AdditionalPropertiesGuesser(JsonSchema::class));
