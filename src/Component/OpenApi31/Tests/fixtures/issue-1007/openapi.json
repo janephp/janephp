@@ -1,0 +1,85 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Issue 1007 - absent additionalProperties means open schema",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/things": {
+            "get": {
+                "operationId": "getThings",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ThingCollection"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ThingCollection": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "default": {
+                        "$ref": "#/components/schemas/OpenSchema"
+                    },
+                    "open": {
+                        "$ref": "#/components/schemas/ExplicitOpenSchema"
+                    },
+                    "closed": {
+                        "$ref": "#/components/schemas/ClosedSchema"
+                    },
+                    "typedMap": {
+                        "$ref": "#/components/schemas/TypedMapSchema"
+                    }
+                }
+            },
+            "OpenSchema": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ExplicitOpenSchema": {
+                "type": "object",
+                "additionalProperties": true,
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ClosedSchema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "TypedMapSchema": {
+                "type": "object",
+                "additionalProperties": {
+                    "type": "string"
+                },
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

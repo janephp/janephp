@@ -6,7 +6,6 @@ use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Guesser\ChainGuesser;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\AdditionalPropertiesGuesser;
-use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\AllOfGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\ArrayGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\BinaryStringFormatGuesser;
 use Jane\Component\OpenApiCommon\Guesser\OpenApiSchema\CustomStringFormatGuesser;

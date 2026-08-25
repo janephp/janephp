@@ -49,11 +49,12 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
             $this->initChainValidator($registry);
             $extensions = [];
 
-            if ($object->getAdditionalProperties()) {
+            $additionalProperties = $this->resolveAdditionalProperties($object);
+            if ($additionalProperties) {
                 $extensionObject = null;
 
-                if (\is_object($object->getAdditionalProperties())) {
-                    $extensionObject = $object->getAdditionalProperties();
+                if (\is_object($additionalProperties)) {
+                    $extensionObject = $additionalProperties;
                 }
 
                 $extensions['.*'] = [
@@ -217,6 +218,11 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
     protected function getSchemaClass(): string
     {
         return JsonSchema::class;
+    }
+
+    protected function resolveAdditionalProperties($object)
+    {
+        return $object->getAdditionalProperties();
     }
 
     protected function createClassGuess($object, string $reference, string $name, array $extensions): ClassGuess
