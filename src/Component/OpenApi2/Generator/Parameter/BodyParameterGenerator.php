@@ -3,6 +3,7 @@
 namespace Jane\Component\OpenApi2\Generator\Parameter;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
+use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess as BaseClassGuess;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi2\Guesser\GuessClass;
 use Jane\Component\OpenApi2\JsonSchema\Model\BodyParameter;
@@ -81,7 +82,9 @@ class BodyParameterGenerator extends ParameterGenerator
 
         if (null === $resolvedSchema) {
             if ($context->getRegistry()->hasClass($reference)) {
-                return [['\\' . $context->getRegistry()->getSchema($reference)->getNamespace() . '\\Model\\' . $context->getRegistry()->getClass($reference)->getName()], false];
+                $classGuess = $context->getRegistry()->getClass($reference);
+
+                return [['\\' . $this->getModelNamespace($context, $reference, $classGuess) . $classGuess->getName()], false];
             }
 
             return [$this->convertParameterType($schema->getType(), $schema->getFormat()), false];
@@ -98,13 +101,24 @@ class BodyParameterGenerator extends ParameterGenerator
             return [$this->convertParameterType($resolvedSchema->getType(), $resolvedSchema->getFormat()), false];
         }
 
-        $class = '\\' . $context->getRegistry()->getSchema($jsonReference)->getNamespace() . '\\Model\\' . $class->getName();
+        $class = '\\' . $this->getModelNamespace($context, $jsonReference, $class) . $class->getName();
 
         if ($array) {
             $class .= '[]';
         }
 
         return [[$class], $array];
+    }
+
+    /**
+     * Computes the model namespace (schema namespace + "Model" + sub-namespace of the guessed class).
+     */
+    private function getModelNamespace(Context $context, string $reference, ?BaseClassGuess $classGuess): string
+    {
+        $subNamespace = null !== $classGuess ? $classGuess->getSubNamespace() : [];
+        $suffix = [] === $subNamespace ? '\\Model\\' : '\\Model\\' . implode('\\', $subNamespace) . '\\';
+
+        return $context->getRegistry()->getSchema($reference)->getNamespace() . $suffix;
     }
 
     private function convertParameterType(string $type, ?string $format = null): array

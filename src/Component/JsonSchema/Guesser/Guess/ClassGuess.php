@@ -13,6 +13,8 @@ class ClassGuess
     /** @var array<Type> */
     private array $extensionsType = [];
     private array $constraints = [];
+    /** @var string[] Sub-namespace segments appended after "Model", "Normalizer", ... when the artifact declares an "x-namespace" extension */
+    private array $subNamespace = [];
 
     /**
      * @param object $object Object link to the generation
@@ -40,6 +42,22 @@ class ClassGuess
     public function getReference(): string
     {
         return $this->reference;
+    }
+
+    /**
+     * @return string[] Sub-namespace segments (already sanitized), empty when the artifact uses the flat layout
+     */
+    public function getSubNamespace(): array
+    {
+        return $this->subNamespace;
+    }
+
+    /**
+     * @param string[] $subNamespace
+     */
+    public function setSubNamespace(array $subNamespace): void
+    {
+        $this->subNamespace = $subNamespace;
     }
 
     /**

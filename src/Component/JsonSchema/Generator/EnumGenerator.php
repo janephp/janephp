@@ -15,19 +15,26 @@ class EnumGenerator implements GeneratorInterface
 {
     public const FILE_TYPE_ENUM = 'enum';
 
+    public function __construct(
+        private readonly ?Naming $naming = null,
+    ) {
+    }
+
     public function generate(Schema $schema, string $className, Context $context): void
     {
-        $namespace = $schema->getNamespace() . '\\Model';
+        $naming = $this->naming ?? new Naming();
 
         foreach ($schema->getClasses() as $class) {
             if (!$class instanceof EnumGuess) {
                 continue;
             }
 
+            $subNamespace = $class->getSubNamespace();
+            $namespace = $naming->getModelNamespace($schema->getNamespace(), $subNamespace);
             $enum = $this->createEnum($class);
 
             $namespaceStmt = new Stmt\Namespace_(new Name($namespace), [$enum]);
-            $schema->addFile(new File($schema->getDirectory() . '/Model/' . $class->getName() . '.php', $namespaceStmt, self::FILE_TYPE_ENUM));
+            $schema->addFile(new File($naming->getArtifactPath($schema->getDirectory(), 'Model', $subNamespace) . '/' . $class->getName() . '.php', $namespaceStmt, self::FILE_TYPE_ENUM));
         }
     }
 

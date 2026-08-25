@@ -158,6 +158,8 @@ abstract class JaneOpenApi extends ChainGenerator
     {
         foreach ($schema->getClasses() as $class) {
             if ($class instanceof ParentClass) { // is parent class
+                $class->setModelNamespace($this->naming->getModelNamespace($schema->getNamespace(), $class->getSubNamespace()));
+
                 foreach ($class->getChildReferences() as $reference) {
                     $guess = $registry->getClass($reference);
                     if ($guess instanceof ClassGuess) { // is child class

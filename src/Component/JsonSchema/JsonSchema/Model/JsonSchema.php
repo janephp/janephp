@@ -2,7 +2,7 @@
 
 namespace Jane\Component\JsonSchema\JsonSchema\Model;
 
-class JsonSchema
+class JsonSchema extends \ArrayObject
 {
     /**
      * @var array

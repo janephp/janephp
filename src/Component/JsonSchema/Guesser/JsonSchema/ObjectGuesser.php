@@ -208,7 +208,7 @@ class ObjectGuesser implements GuesserInterface, PropertiesGuesserInterface, Typ
         }
 
         if ($registry->hasClass($reference) && null !== ($schema = $registry->getSchema($reference))) {
-            return new ObjectType($object, $registry->getClass($reference)->getName(), $schema->getNamespace(), $discriminants);
+            return new ObjectType($object, $registry->getClass($reference)->getName(), $schema->getNamespace(), $discriminants, $registry->getClass($reference)->getSubNamespace());
         }
 
         return new Type($object, 'object');

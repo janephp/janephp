@@ -182,7 +182,7 @@ trait NormalizerGenerator
         if ($this->validation) {
             $schema = $context->getCurrentSchema();
             $contextVariable = new Expr\Variable('context');
-            $constraintFqdn = $schema->getNamespace() . '\\Validator\\' . $this->naming->getConstraintName($classGuess->getName());
+            $constraintFqdn = $this->naming->getValidatorNamespace($schema->getNamespace(), $classGuess->getSubNamespace()) . '\\' . $this->naming->getConstraintName($classGuess->getName());
 
             $statements[] = new Stmt\If_(new Expr\BooleanNot(new Expr\BinaryOp\Coalesce(new Expr\ArrayDimFetch($contextVariable, new Scalar\String_('skip_validation')), new Expr\ConstFetch(new Name('false')))), ['stmts' => [
                 new Stmt\Expression(new Expr\MethodCall(new Expr\Variable('this'), 'validate', [

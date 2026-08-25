@@ -15,6 +15,8 @@ class OperationGuess
     private string $path;
     private array $parameters;
     private array $securityScopes;
+    /** @var string[] Sub-namespace segments from the "x-namespace" extension; empty when the endpoint uses the flat layout */
+    private array $subNamespace = [];
 
     public function __construct(
         object $pathItem,
@@ -60,5 +62,21 @@ class OperationGuess
     public function getSecurityScopes(): array
     {
         return $this->securityScopes;
+    }
+
+    /**
+     * @return string[] Sub-namespace segments (already sanitized), empty when the endpoint uses the flat layout
+     */
+    public function getSubNamespace(): array
+    {
+        return $this->subNamespace;
+    }
+
+    /**
+     * @param string[] $subNamespace
+     */
+    public function setSubNamespace(array $subNamespace): void
+    {
+        $this->subNamespace = $subNamespace;
     }
 }

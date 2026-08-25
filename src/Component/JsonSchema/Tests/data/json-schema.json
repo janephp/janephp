@@ -205,6 +205,9 @@
             "deprecated": true
         }
     },
+    "patternProperties": {
+        "^x-": {}
+    },
     "$defs": {
         "anchorString": {
             "type": "string",

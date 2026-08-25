@@ -49,12 +49,13 @@ class ModelGenerator implements GeneratorInterface
      */
     public function generate(Schema $schema, string $className, Context $context): void
     {
-        $namespace = $schema->getNamespace() . '\\Model';
-
         foreach ($schema->getClasses() as $class) {
             if ($class instanceof NonObjectGuessInterface) {
                 continue;
             }
+
+            $subNamespace = $class->getSubNamespace();
+            $namespace = $this->naming->getModelNamespace($schema->getNamespace(), $subNamespace);
 
             $properties = [];
             $methods = [];
@@ -68,7 +69,7 @@ class ModelGenerator implements GeneratorInterface
             $model = $this->doCreateModel($class, $properties, $methods);
 
             $namespaceStmt = new Stmt\Namespace_(new Name($namespace), [$model]);
-            $schema->addFile(new File($schema->getDirectory() . '/Model/' . $class->getName() . '.php', $namespaceStmt, self::FILE_TYPE_MODEL));
+            $schema->addFile(new File($this->naming->getArtifactPath($schema->getDirectory(), 'Model', $subNamespace) . '/' . $class->getName() . '.php', $namespaceStmt, self::FILE_TYPE_MODEL));
         }
     }
 

@@ -106,10 +106,14 @@ class EndpointGenerator implements EndpointGeneratorInterface
         $class->stmts[] = $transformBodyMethod;
         $class->stmts[] = $this->getAuthenticationScopesMethod($operation);
 
+        $subNamespace = $operation->getSubNamespace();
+        $endpointPath = $naming->getArtifactPath($context->getCurrentSchema()->getDirectory(), 'Endpoint', $subNamespace);
+        $endpointNamespace = $naming->getEndpointNamespace($context->getCurrentSchema()->getNamespace(), $subNamespace);
+
         $file = new File(
-            $context->getCurrentSchema()->getDirectory() . \DIRECTORY_SEPARATOR . 'Endpoint' . \DIRECTORY_SEPARATOR . $endpointName . '.php',
+            $endpointPath . \DIRECTORY_SEPARATOR . $endpointName . '.php',
             new Stmt\Namespace_(
-                new Name($context->getCurrentSchema()->getNamespace() . '\\Endpoint'),
+                new Name($endpointNamespace),
                 [
                     $class,
                 ]
@@ -119,6 +123,6 @@ class EndpointGenerator implements EndpointGeneratorInterface
 
         $context->getCurrentSchema()->addFile($file);
 
-        return [$context->getCurrentSchema()->getNamespace() . '\\Endpoint\\' . $endpointName, $methodParams, $methodParamsDoc, $outputTypes, $throwTypes];
+        return [$endpointNamespace . '\\' . $endpointName, $methodParams, $methodParamsDoc, $outputTypes, $throwTypes];
     }
 }

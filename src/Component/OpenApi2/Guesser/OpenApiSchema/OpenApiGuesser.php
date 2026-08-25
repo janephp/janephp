@@ -15,6 +15,7 @@ use Jane\Component\OpenApi2\JsonSchema\Model\Response;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\Component\OpenApiCommon\Naming\OperationNamingFactory;
 use Jane\Component\OpenApiCommon\Naming\OperationNamingInterface;
+use Jane\Component\OpenApiCommon\Naming\XNamespaceResolver;
 use Jane\Component\OpenApiCommon\Registry\Registry as OpenApiRegistry;
 use Jane\Component\OpenApiCommon\Registry\Schema;
 
@@ -23,10 +24,12 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
     use ChainGuesserAwareTrait;
 
     private OperationNamingInterface $naming;
+    private XNamespaceResolver $xNamespaceResolver;
 
     public function __construct(?OperationNamingInterface $naming = null)
     {
         $this->naming = $naming ?? OperationNamingFactory::create();
+        $this->xNamespaceResolver = new XNamespaceResolver();
     }
 
     public function supportObject($object): bool
@@ -42,7 +45,9 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
     {
         if (null !== $object->getDefinitions()) {
             foreach ($object->getDefinitions() as $key => $definition) {
-                $this->chainGuesser->guessClass($definition, $key, $reference . '/definitions/' . $key, $registry);
+                $definitionReference = $reference . '/definitions/' . $key;
+                $this->chainGuesser->guessClass($definition, $key, $definitionReference, $registry);
+                $this->xNamespaceResolver->stampClassGuess($registry, $definitionReference, $definition);
             }
         }
         if (null !== $object->getSecurityDefinitions() && is_iterable($object->getSecurityDefinitions())) {
@@ -183,11 +188,17 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         $schema->addOperation($reference, $operationGuess);
         $schema->initOperationRelations($operationName);
 
+        $operationSubNamespace = $this->xNamespaceResolver->resolveFromObject($operation);
+        $operationGuess->setSubNamespace($operationSubNamespace);
+
         if ($operation->getParameters()) {
             foreach ($operation->getParameters() as $key => $parameter) {
                 if ($parameter instanceof BodyParameter) {
                     $subReference = $reference . '/parameters/' . $key;
                     $this->chainGuesser->guessClass($parameter->getSchema(), $name . 'Body', $subReference, $registry);
+                    if (null !== $parameter->getSchema()) {
+                        $this->xNamespaceResolver->stampClassGuess($registry, $subReference, $parameter->getSchema());
+                    }
                     if (null !== ($guessClass = $schema->getClass($subReference))) {
                         $schema->addOperationRelation($operationName, $guessClass->getName());
                     }
@@ -200,11 +211,16 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
                 if ($response instanceof Response) {
                     $subReference = $reference . '/responses/' . $status;
                     $this->chainGuesser->guessClass($response->getSchema(), $name . 'Response' . $status, $subReference, $registry);
+                    if (null !== $response->getSchema()) {
+                        $this->xNamespaceResolver->stampClassGuess($registry, $subReference, $response->getSchema());
+                    }
                     if (null !== ($guessClass = $schema->getClass($subReference))) {
                         $schema->addOperationRelation($operationName, $guessClass->getName());
                     }
                 }
             }
         }
+
+        $this->xNamespaceResolver->propagateToOperationModels($schema, $operationGuess, $operationSubNamespace);
     }
 }
