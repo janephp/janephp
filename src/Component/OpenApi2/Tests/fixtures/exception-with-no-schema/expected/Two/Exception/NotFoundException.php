@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi2\Tests\Expected\Two\Exception;
 
-abstract class NotFoundException extends \RuntimeException implements ClientException
+abstract class NotFoundException extends \RuntimeException implements ClientException, WithResponseInterface
 {
     public function __construct(string $message)
     {

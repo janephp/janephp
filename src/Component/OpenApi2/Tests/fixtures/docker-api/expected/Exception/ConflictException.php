@@ -2,7 +2,7 @@
 
 namespace Docker\Api\Exception;
 
-abstract class ConflictException extends \RuntimeException implements ClientException
+abstract class ConflictException extends \RuntimeException implements ClientException, WithResponseInterface
 {
     public function __construct(string $message)
     {

@@ -2,10 +2,19 @@
 
 namespace Jane\Component\OpenApi2\Tests\Expected\Exception;
 
-class UnexpectedStatusCodeException extends \RuntimeException implements ClientException
+class UnexpectedStatusCodeException extends \RuntimeException implements ClientException, WithResponseInterface
 {
-    public function __construct($status, $message = '')
+    /**
+     * @var \Psr\Http\Message\ResponseInterface|null
+     */
+    private $response;
+    public function __construct($status, $message = '', ?\Psr\Http\Message\ResponseInterface $response = null)
     {
         parent::__construct($message, $status);
+        $this->response = $response;
+    }
+    public function getResponse(): ?\Psr\Http\Message\ResponseInterface
+    {
+        return $this->response;
     }
 }

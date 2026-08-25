@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApi3\Tests;
 use Jane\Component\OpenApi3\Tests\BadResponse\Endpoint\GetFoo;
 use Jane\Component\OpenApi3\Tests\BadResponse\Exception\BadResponseException;
 use Jane\Component\OpenApi3\Tests\BadResponse\Exception\UnexpectedStatusCodeException;
+use Jane\Component\OpenApi3\Tests\BadResponse\Exception\WithResponseInterface;
 use Jane\Component\OpenApi3\Tests\BadResponse\Runtime\Client\Client;
 use Nyholm\Psr7\Response;
 use PHPUnit\Framework\TestCase;
@@ -27,6 +28,7 @@ class BadResponseExceptionTest extends TestCase
             'Exception/ApiException',
             'Exception/ClientException',
             'Exception/ServerException',
+            'Exception/WithResponseInterface',
             'Exception/UnexpectedStatusCodeException',
             'Exception/BadResponseException',
             'Endpoint/GetFoo',
@@ -62,6 +64,23 @@ class BadResponseExceptionTest extends TestCase
             self::assertInstanceOf(BadResponseException::class, $e);
             self::assertSame(503, $e->getCode());
             self::assertSame('unavailable', $e->getMessage());
+        }
+    }
+
+    /**
+     * @see https://github.com/janephp/janephp/issues/844
+     */
+    public function testUnexpectedStatusCodeExceptionExposesResponse(): void
+    {
+        $response = new Response(418, [], 'teapot');
+        $endpoint = new GetFoo();
+
+        try {
+            $endpoint->parseResponse($response, $this->createMock(SerializerInterface::class), Client::FETCH_OBJECT);
+            self::fail('No exception thrown for undocumented response.');
+        } catch (UnexpectedStatusCodeException $e) {
+            self::assertInstanceOf(WithResponseInterface::class, $e);
+            self::assertSame($response, $e->getResponse());
         }
     }
 
