@@ -14,6 +14,7 @@ use Symfony\Component\Finder\SplFileInfo;
 class JaneBaseTest extends TestCase
 {
     use CodeStyleFixerTrait;
+    use FixtureComparisonTrait;
 
     /**
      * @dataProvider schemaProvider
@@ -28,36 +29,10 @@ class JaneBaseTest extends TestCase
 
         $command->execute($inputArray, new NullOutput());
 
-        // 2. Compare
-        $expectedFinder = new Finder();
-        $expectedFinder->in($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'expected');
+        // 2. Fix code style then compare
         $this->fixCodeStyle($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'expected');
-        $generatedFinder = new Finder();
-        $generatedFinder->in($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'generated');
         $this->fixCodeStyle($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'generated');
-        $generatedData = [];
-
-        $this->assertEquals(\count($expectedFinder), \count($generatedFinder), \sprintf('No same number of files for %s', $testDirectory->getRelativePathname()));
-
-        foreach ($generatedFinder as $generatedFile) {
-            $generatedData[$generatedFile->getRelativePathname()] = $generatedFile->getRealPath();
-        }
-
-        foreach ($expectedFinder as $expectedFile) {
-            $this->assertArrayHasKey(
-                $expectedFile->getRelativePathname(),
-                $generatedData,
-                \sprintf('File %s does not exist for %s', $expectedFile->getRelativePathname(), $testDirectory->getRelativePathname())
-            );
-
-            if ($expectedFile->isFile()) {
-                $this->assertEquals(
-                    file_get_contents($expectedFile->getRealPath()),
-                    file_get_contents($generatedData[$expectedFile->getRelativePathname()]),
-                    \sprintf('File %s does not have the same content for %s', $expectedFile->getRelativePathname(), $testDirectory->getRelativePathname())
-                );
-            }
-        }
+        $this->assertFixtureMatchesGenerated($testDirectory->getRealPath());
     }
 
     public function schemaProvider(): array

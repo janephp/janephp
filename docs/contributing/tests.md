@@ -20,14 +20,47 @@ You can also run same commands to test a single component, you just have to cd i
 vendor/bin/phpunit src/Component/JsonSchema
 ```
 
+## Fixture based tests
+
 We mainly use JsonSchema / OpenAPI fixtures for our tests. When we add a feature, we create a new folder in related
 component tests folder with a schema related to the added feature. That way when we run tests, it will generate a
-`generated/` folder that will be compared with a `expected/` that contains generated files like they should be.
+`generated/` folder (gitignored) that will be compared with a baseline: either a committed `expected/` folder or an
+`expected.manifest.json` snapshot file (see below).
+
+### Baseline modes
+
+- **Directory mode** (default): the fixture holds a committed `expected/` tree which is compared file by file with the
+  fresh `generated/` output.
+- **Manifest mode**: if the fixture contains an `expected.manifest.json` instead, generated files are hashed (sha256)
+  and compared against the manifest. This is used for large "showcase" fixtures where committing thousands of expected
+  files would create huge PR diffs and merge conflicts. On failure, the test lists exactly which files are missing,
+  unexpected or changed.
+
+In both modes, everything under a `Runtime/` folder of the generated output is skipped: those files are verbatim copies
+of the templates shipped in `Generator/Runtime/data` and are identical for every fixture of a component. They are
+asserted once per component, by the dedicated `runtime-boilerplate` fixture (which opts back into full comparison via
+a `.full-compare` marker file). This keeps template changes from rippling into every fixture diff.
+
+> **Important:** a few fixtures are *executed* by functional tests (their classes are loaded at runtime, through the
+> composer classmap or explicit `require_once`). Those fixtures keep their full `expected/` trees, including `Runtime/`
+> copies: currently `multi-namespace` (JsonSchema), `docker-api`, `issue-793`, `bad-response-exception`,
+> `multipart-boolean`, `multipart-nested-object` and `issue-680` (OpenAPI 2 / 3).
+
+### Creating / refreshing baselines
 
 If you just created a fixture folder and don't have `expected/` folder, just run tests and check manually
 `generated/` files and if everything is ok, you can copy the folder and name it `expected/`. If you have to do this
-on multiple fixtures, you can use `./replace-all-expected-fixtures.sh` script. It will copy all `generated/` into
-`expected/` folder. So please be sure that everything is okay before running this script.
+on multiple fixtures, you can use the `./replace-all-expected-fixtures.sh` script (optionally filtered by component,
+e.g. `./replace-all-expected-fixtures.sh OpenApi3`). So please be sure that everything is okay before running this
+script.
+
+For manifest-mode fixtures, generate the output then rebuild the manifest:
+
+```bash
+castor jane:snapshot-manifest OpenApi3 github
+```
+
+Fixtures holding a manifest are skipped by the replace-all script; use the task above to refresh them.
 
 By default, we don't run generated client related tests locally, because you need to run
 [stoplightio/prism](https://github.com/stoplightio/prism) with configuration as following:

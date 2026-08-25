@@ -1,7 +1,13 @@
 #!/bin/sh
 
-for D in src/Component/*/Tests/fixtures/*; do
+FILTER="${1:-*}"
+
+for D in src/Component/"${FILTER}"/Tests/fixtures/*; do
     if [ -d "${D}" ]; then
+        if [ -f "${D}/expected.manifest.json" ]; then
+            echo "skipping ${D}: snapshot-manifest fixture, use 'castor jane:snapshot-manifest' instead"
+            continue
+        fi
         rm -r "${D}/expected"
         cp -R "${D}/generated" "${D}/expected"
     fi
