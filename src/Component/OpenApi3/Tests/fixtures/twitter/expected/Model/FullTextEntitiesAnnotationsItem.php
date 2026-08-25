@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class FullTextEntitiesAnnotationsItem extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class FullTextEntitiesAnnotationsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class FullTextEntitiesAnnotationsItem extends \ArrayObject
         $this->initialized['normalizedText'] = true;
         $this->normalizedText = $normalizedText;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['start' => ['start', 'getStart', 'setStart'], 'end' => ['end', 'getEnd', 'setEnd'], 'probability' => ['probability', 'getProbability', 'setProbability'], 'type' => ['type', 'getType', 'setType'], 'normalizedText' => ['normalized_text', 'getNormalizedText', 'setNormalizedText']];
     }
 }

@@ -67,7 +67,7 @@ class PartnerAttachmentWritableBgpNormalizer implements DenormalizerInterface, N
         $dataArray['peer_router_ip'] = $data->getPeerRouterIp();
         $dataArray['peer_router_asn'] = $data->getPeerRouterAsn();
         $dataArray['auth_key'] = $data->getAuthKey();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

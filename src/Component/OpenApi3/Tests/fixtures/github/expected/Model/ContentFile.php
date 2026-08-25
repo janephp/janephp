@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ContentFile extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ContentFile implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -319,5 +322,9 @@ class ContentFile extends \ArrayObject
         $this->initialized['submoduleGitUrl'] = true;
         $this->submoduleGitUrl = $submoduleGitUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'encoding' => ['encoding', 'getEncoding', 'setEncoding'], 'size' => ['size', 'getSize', 'setSize'], 'name' => ['name', 'getName', 'setName'], 'path' => ['path', 'getPath', 'setPath'], 'content' => ['content', 'getContent', 'setContent'], 'sha' => ['sha', 'getSha', 'setSha'], 'url' => ['url', 'getUrl', 'setUrl'], 'gitUrl' => ['git_url', 'getGitUrl', 'setGitUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'downloadUrl' => ['download_url', 'getDownloadUrl', 'setDownloadUrl'], 'links' => ['_links', 'getLinks', 'setLinks'], 'target' => ['target', 'getTarget', 'setTarget'], 'submoduleGitUrl' => ['submodule_git_url', 'getSubmoduleGitUrl', 'setSubmoduleGitUrl']];
     }
 }

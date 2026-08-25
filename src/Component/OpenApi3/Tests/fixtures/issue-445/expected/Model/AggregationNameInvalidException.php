@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class AggregationNameInvalidException extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class AggregationNameInvalidException implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -253,5 +256,9 @@ class AggregationNameInvalidException extends \ArrayObject
         $this->initialized['aggregationPrefix'] = true;
         $this->aggregationPrefix = $aggregationPrefix;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['traceLevel' => ['traceLevel', 'getTraceLevel', 'setTraceLevel'], 'traceId' => ['traceId', 'getTraceId', 'setTraceId'], 'traceJobId' => ['traceJobId', 'getTraceJobId', 'setTraceJobId'], 'httpStatusCode' => ['httpStatusCode', 'getHttpStatusCode', 'setHttpStatusCode'], 'exceptionMessage' => ['exceptionMessage', 'getExceptionMessage', 'setExceptionMessage'], 'kind' => ['kind', 'getKind', 'setKind'], 'customerId' => ['customerId', 'getCustomerId', 'setCustomerId'], 'customerAlias' => ['customerAlias', 'getCustomerAlias', 'setCustomerAlias'], 'userId' => ['userId', 'getUserId', 'setUserId'], 'aggregationName' => ['aggregationName', 'getAggregationName', 'setAggregationName'], 'aggregationPrefix' => ['aggregationPrefix', 'getAggregationPrefix', 'setAggregationPrefix']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class SinkResource extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class SinkResource implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class SinkResource extends \ArrayObject
         $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['urn' => ['urn', 'getUrn', 'setUrn'], 'name' => ['name', 'getName', 'setName']];
     }
 }

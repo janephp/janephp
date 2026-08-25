@@ -73,7 +73,7 @@ class MonitoringPortfoliosPortfolioIdCompaniesPostBodyNormalizer implements Deno
         if ($data->isInitialized('personalLimit') && null !== $data->getPersonalLimit()) {
             $dataArray['personalLimit'] = $data->getPersonalLimit();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

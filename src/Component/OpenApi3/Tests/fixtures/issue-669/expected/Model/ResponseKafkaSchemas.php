@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseKafkaSchemas extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseKafkaSchemas implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseKafkaSchemas extends \ArrayObject
         $this->initialized['subjects'] = true;
         $this->subjects = $subjects;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['subjects' => ['subjects', 'getSubjects', 'setSubjects']];
     }
 }

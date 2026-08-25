@@ -154,7 +154,7 @@ class FileTransferNotFoundExceptionNormalizer implements DenormalizerInterface, 
         if ($data->isInitialized('fileTransferId') && null !== $data->getFileTransferId()) {
             $dataArray['fileTransferId'] = $data->getFileTransferId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

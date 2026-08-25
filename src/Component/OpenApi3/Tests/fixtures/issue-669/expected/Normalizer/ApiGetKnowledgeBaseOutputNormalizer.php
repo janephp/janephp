@@ -61,7 +61,7 @@ class ApiGetKnowledgeBaseOutputNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('knowledgeBase') && null !== $data->getKnowledgeBase()) {
             $dataArray['knowledge_base'] = $data->getKnowledgeBase() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getKnowledgeBase(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

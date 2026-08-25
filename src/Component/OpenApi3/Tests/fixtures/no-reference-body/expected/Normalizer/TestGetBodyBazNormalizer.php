@@ -54,7 +54,7 @@ class TestGetBodyBazNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('baz') && null !== $data->getBaz()) {
             $dataArray['baz'] = $data->getBaz();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

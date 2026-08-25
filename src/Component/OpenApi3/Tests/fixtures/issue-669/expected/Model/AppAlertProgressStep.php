@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppAlertProgressStep extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppAlertProgressStep implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class AppAlertProgressStep extends \ArrayObject
         $this->initialized['reason'] = true;
         $this->reason = $reason;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'status' => ['status', 'getStatus', 'setStatus'], 'startedAt' => ['started_at', 'getStartedAt', 'setStartedAt'], 'endedAt' => ['ended_at', 'getEndedAt', 'setEndedAt'], 'reason' => ['reason', 'getReason', 'setReason']];
     }
 }

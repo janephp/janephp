@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseDatabaseMetricsAuth extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseDatabaseMetricsAuth implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseDatabaseMetricsAuth extends \ArrayObject
         $this->initialized['credentials'] = true;
         $this->credentials = $credentials;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['credentials' => ['credentials', 'getCredentials', 'setCredentials']];
     }
 }

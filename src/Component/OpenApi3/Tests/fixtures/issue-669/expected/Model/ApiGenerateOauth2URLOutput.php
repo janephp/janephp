@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiGenerateOauth2URLOutput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiGenerateOauth2URLOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ApiGenerateOauth2URLOutput extends \ArrayObject
         $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl']];
     }
 }

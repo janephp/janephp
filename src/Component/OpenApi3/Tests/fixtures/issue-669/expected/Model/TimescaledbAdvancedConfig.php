@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class TimescaledbAdvancedConfig extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class TimescaledbAdvancedConfig implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class TimescaledbAdvancedConfig extends \ArrayObject
         $this->initialized['maxBackgroundWorkers'] = true;
         $this->maxBackgroundWorkers = $maxBackgroundWorkers;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['maxBackgroundWorkers' => ['max_background_workers', 'getMaxBackgroundWorkers', 'setMaxBackgroundWorkers']];
     }
 }

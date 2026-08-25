@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ProtectedBranchRequiredPullRequestReviews extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ProtectedBranchRequiredPullRequestReviews implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class ProtectedBranchRequiredPullRequestReviews extends \ArrayObject
         $this->initialized['dismissalRestrictions'] = true;
         $this->dismissalRestrictions = $dismissalRestrictions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'dismissStaleReviews' => ['dismiss_stale_reviews', 'getDismissStaleReviews', 'setDismissStaleReviews'], 'requireCodeOwnerReviews' => ['require_code_owner_reviews', 'getRequireCodeOwnerReviews', 'setRequireCodeOwnerReviews'], 'requiredApprovingReviewCount' => ['required_approving_review_count', 'getRequiredApprovingReviewCount', 'setRequiredApprovingReviewCount'], 'dismissalRestrictions' => ['dismissal_restrictions', 'getDismissalRestrictions', 'setDismissalRestrictions']];
     }
 }

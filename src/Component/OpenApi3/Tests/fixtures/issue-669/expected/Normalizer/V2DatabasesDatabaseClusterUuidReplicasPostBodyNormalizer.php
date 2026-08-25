@@ -125,7 +125,7 @@ class V2DatabasesDatabaseClusterUuidReplicasPostBodyNormalizer implements Denorm
         if ($data->isInitialized('storageSizeMib') && null !== $data->getStorageSizeMib()) {
             $dataArray['storage_size_mib'] = $data->getStorageSizeMib();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

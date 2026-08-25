@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class HashtagFields extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class HashtagFields implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class HashtagFields extends \ArrayObject
         $this->initialized['tag'] = true;
         $this->tag = $tag;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['tag' => ['tag', 'getTag', 'setTag']];
     }
 }

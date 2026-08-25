@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class MonitoringPortfoliosPortfolioIdCompaniesPostBody extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class MonitoringPortfoliosPortfolioIdCompaniesPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -105,5 +108,9 @@ class MonitoringPortfoliosPortfolioIdCompaniesPostBody extends \ArrayObject
         $this->initialized['personalLimit'] = true;
         $this->personalLimit = $personalLimit;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'personalReference' => ['personalReference', 'getPersonalReference', 'setPersonalReference'], 'freeText' => ['freeText', 'getFreeText', 'setFreeText'], 'personalLimit' => ['personalLimit', 'getPersonalLimit', 'setPersonalLimit']];
     }
 }

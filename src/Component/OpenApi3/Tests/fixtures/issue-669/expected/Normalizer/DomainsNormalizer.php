@@ -71,7 +71,7 @@ class DomainsNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('certificateId') && null !== $data->getCertificateId()) {
             $dataArray['certificate_id'] = $data->getCertificateId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

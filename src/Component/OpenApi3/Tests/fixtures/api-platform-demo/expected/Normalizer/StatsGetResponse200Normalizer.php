@@ -61,7 +61,7 @@ class StatsGetResponse200Normalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('topbooksCount') && null !== $data->getTopbooksCount()) {
             $dataArray['topbooks_count'] = $data->getTopbooksCount();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

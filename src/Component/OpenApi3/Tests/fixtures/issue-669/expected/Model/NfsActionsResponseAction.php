@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class NfsActionsResponseAction extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class NfsActionsResponseAction implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -179,5 +182,9 @@ class NfsActionsResponseAction extends \ArrayObject
         $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['regionSlug' => ['region_slug', 'getRegionSlug', 'setRegionSlug'], 'resourceId' => ['resource_id', 'getResourceId', 'setResourceId'], 'resourceType' => ['resource_type', 'getResourceType', 'setResourceType'], 'startedAt' => ['started_at', 'getStartedAt', 'setStartedAt'], 'status' => ['status', 'getStatus', 'setStatus'], 'type' => ['type', 'getType', 'setType']];
     }
 }

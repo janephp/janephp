@@ -120,7 +120,7 @@ class ThreadNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if ($data->isInitialized('subscriptionUrl') && null !== $data->getSubscriptionUrl()) {
             $dataArray['subscription_url'] = $data->getSubscriptionUrl();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

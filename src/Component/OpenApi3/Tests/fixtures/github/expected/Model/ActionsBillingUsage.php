@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ActionsBillingUsage extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ActionsBillingUsage implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -117,5 +120,9 @@ class ActionsBillingUsage extends \ArrayObject
         $this->initialized['minutesUsedBreakdown'] = true;
         $this->minutesUsedBreakdown = $minutesUsedBreakdown;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['totalMinutesUsed' => ['total_minutes_used', 'getTotalMinutesUsed', 'setTotalMinutesUsed'], 'totalPaidMinutesUsed' => ['total_paid_minutes_used', 'getTotalPaidMinutesUsed', 'setTotalPaidMinutesUsed'], 'includedMinutes' => ['included_minutes', 'getIncludedMinutes', 'setIncludedMinutes'], 'minutesUsedBreakdown' => ['minutes_used_breakdown', 'getMinutesUsedBreakdown', 'setMinutesUsedBreakdown']];
     }
 }

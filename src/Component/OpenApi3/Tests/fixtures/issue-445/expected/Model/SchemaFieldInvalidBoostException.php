@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaFieldInvalidBoostException extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class SchemaFieldInvalidBoostException implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -297,5 +300,9 @@ class SchemaFieldInvalidBoostException extends \ArrayObject
         $this->initialized['allowedBoostValues'] = true;
         $this->allowedBoostValues = $allowedBoostValues;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['traceLevel' => ['traceLevel', 'getTraceLevel', 'setTraceLevel'], 'traceId' => ['traceId', 'getTraceId', 'setTraceId'], 'traceJobId' => ['traceJobId', 'getTraceJobId', 'setTraceJobId'], 'httpStatusCode' => ['httpStatusCode', 'getHttpStatusCode', 'setHttpStatusCode'], 'exceptionMessage' => ['exceptionMessage', 'getExceptionMessage', 'setExceptionMessage'], 'kind' => ['kind', 'getKind', 'setKind'], 'customerId' => ['customerId', 'getCustomerId', 'setCustomerId'], 'customerAlias' => ['customerAlias', 'getCustomerAlias', 'setCustomerAlias'], 'userId' => ['userId', 'getUserId', 'setUserId'], 'fieldId' => ['fieldId', 'getFieldId', 'setFieldId'], 'schemaId' => ['schemaId', 'getSchemaId', 'setSchemaId'], 'boost' => ['boost', 'getBoost', 'setBoost'], 'allowedBoostValues' => ['allowedBoostValues', 'getAllowedBoostValues', 'setAllowedBoostValues']];
     }
 }

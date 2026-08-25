@@ -132,7 +132,7 @@ class ApiEvaluationTraceSpanNormalizer implements DenormalizerInterface, Normali
         if ($data->isInitialized('type') && null !== $data->getType()) {
             $dataArray['type'] = $data->getType();
         }
-        foreach ($data as $key_2 => $value_4) {
+        foreach ($data->additionalPropertyEntries() as $key_2 => $value_4) {
             if (preg_match('/.*/', (string) $key_2)) {
                 $dataArray[$key_2] = $value_4;
             }

@@ -69,7 +69,7 @@ class TrafficNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
         $dataArray['uniques'] = $data->getUniques();
         $dataArray['count'] = $data->getCount();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiCreateDataSourceFileUploadPresignedUrlsOutput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiCreateDataSourceFileUploadPresignedUrlsOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ApiCreateDataSourceFileUploadPresignedUrlsOutput extends \ArrayObject
         $this->initialized['uploads'] = true;
         $this->uploads = $uploads;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['requestId' => ['request_id', 'getRequestId', 'setRequestId'], 'uploads' => ['uploads', 'getUploads', 'setUploads']];
     }
 }

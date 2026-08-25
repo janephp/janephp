@@ -2,8 +2,11 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class TopBookJsonld extends \ArrayObject
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
+class TopBookJsonld implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -13,7 +16,7 @@ class TopBookJsonld extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var mixed
+     * @var string|object
      */
     protected $context;
     /**
@@ -49,14 +52,14 @@ class TopBookJsonld extends \ArrayObject
      */
     protected $borrowCount;
     /**
-     * @return mixed
+     * @return string|object
      */
     public function getContext()
     {
         return $this->context;
     }
     /**
-     * @param mixed $context
+     * @param string|object $context
      *
      * @return self
      */
@@ -209,5 +212,9 @@ class TopBookJsonld extends \ArrayObject
         $this->initialized['borrowCount'] = true;
         $this->borrowCount = $borrowCount;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['context' => ['@context', 'getContext', 'setContext'], 'id' => ['@id', 'getId', 'setId'], 'type' => ['@type', 'getType', 'setType'], 'id2' => ['id', 'getId2', 'setId2'], 'title' => ['title', 'getTitle', 'setTitle'], 'author' => ['author', 'getAuthor', 'setAuthor'], 'part' => ['part', 'getPart', 'setPart'], 'place' => ['place', 'getPlace', 'setPlace'], 'borrowCount' => ['borrowCount', 'getBorrowCount', 'setBorrowCount']];
     }
 }

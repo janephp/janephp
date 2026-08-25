@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppJobInvocationTriggerManualUser extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppJobInvocationTriggerManualUser implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class AppJobInvocationTriggerManualUser extends \ArrayObject
         $this->initialized['fullName'] = true;
         $this->fullName = $fullName;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['uuid' => ['uuid', 'getUuid', 'setUuid'], 'email' => ['email', 'getEmail', 'setEmail'], 'fullName' => ['full_name', 'getFullName', 'setFullName']];
     }
 }

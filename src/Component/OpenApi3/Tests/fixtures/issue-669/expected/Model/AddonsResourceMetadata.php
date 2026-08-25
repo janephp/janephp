@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AddonsResourceMetadata extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AddonsResourceMetadata implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -21,7 +24,7 @@ class AddonsResourceMetadata extends \ArrayObject
     /**
      * The value to be set for the metadata item, which can be a string or boolean.
      *
-     * @var mixed
+     * @var string|bool
      */
     protected $value;
     /**
@@ -49,7 +52,7 @@ class AddonsResourceMetadata extends \ArrayObject
     /**
      * The value to be set for the metadata item, which can be a string or boolean.
      *
-     * @return mixed
+     * @return string|bool
      */
     public function getValue()
     {
@@ -58,7 +61,7 @@ class AddonsResourceMetadata extends \ArrayObject
     /**
      * The value to be set for the metadata item, which can be a string or boolean.
      *
-     * @param mixed $value
+     * @param string|bool $value
      *
      * @return self
      */
@@ -67,5 +70,9 @@ class AddonsResourceMetadata extends \ArrayObject
         $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'value' => ['value', 'getValue', 'setValue']];
     }
 }

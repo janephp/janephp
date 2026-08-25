@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ScimUserOperationsItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ScimUserOperationsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -21,7 +24,7 @@ class ScimUserOperationsItem extends \ArrayObject
      */
     protected $path;
     /**
-     * @var mixed
+     * @var string|array<string, mixed>|list<mixed>
      */
     protected $value;
     /**
@@ -61,14 +64,14 @@ class ScimUserOperationsItem extends \ArrayObject
         return $this;
     }
     /**
-     * @return mixed
+     * @return string|array<string, mixed>|list<mixed>
      */
     public function getValue()
     {
         return $this->value;
     }
     /**
-     * @param mixed $value
+     * @param string|array<string, mixed>|list<mixed> $value
      *
      * @return self
      */
@@ -77,5 +80,9 @@ class ScimUserOperationsItem extends \ArrayObject
         $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['op' => ['op', 'getOp', 'setOp'], 'path' => ['path', 'getPath', 'setPath'], 'value' => ['value', 'getValue', 'setValue']];
     }
 }

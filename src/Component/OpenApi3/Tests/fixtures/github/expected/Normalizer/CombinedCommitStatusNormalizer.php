@@ -93,7 +93,7 @@ class CombinedCommitStatusNormalizer implements DenormalizerInterface, Normalize
         $dataArray['repository'] = $data->getRepository() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRepository(), 'json', $context));
         $dataArray['commit_url'] = $data->getCommitUrl();
         $dataArray['url'] = $data->getUrl();
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

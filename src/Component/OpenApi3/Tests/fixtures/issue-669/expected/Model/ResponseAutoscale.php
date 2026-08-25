@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseAutoscale extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseAutoscale implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ResponseAutoscale extends \ArrayObject
         $this->initialized['autoscale'] = true;
         $this->autoscale = $autoscale;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['autoscale' => ['autoscale', 'getAutoscale', 'setAutoscale']];
     }
 }

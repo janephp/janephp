@@ -621,7 +621,7 @@ class MinimalRepositoryNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('watchers') && null !== $data->getWatchers()) {
             $dataArray['watchers'] = $data->getWatchers();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

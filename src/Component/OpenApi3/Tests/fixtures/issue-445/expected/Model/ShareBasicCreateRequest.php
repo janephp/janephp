@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ShareBasicCreateRequest extends ShareBaseCreateRequest
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ShareBasicCreateRequest extends ShareBaseCreateRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class ShareBasicCreateRequest extends ShareBaseCreateRequest
         $this->initialized['suppressNotifications'] = true;
         $this->suppressNotifications = $suppressNotifications;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['recipientEmails' => ['recipientEmails', 'getRecipientEmails', 'setRecipientEmails'], 'languageCode' => ['languageCode', 'getLanguageCode', 'setLanguageCode'], 'suppressNotifications' => ['suppressNotifications', 'getSuppressNotifications', 'setSuppressNotifications']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class SubmittedFreshInvestigationRepsonse extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class SubmittedFreshInvestigationRepsonse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -111,5 +114,9 @@ class SubmittedFreshInvestigationRepsonse extends \ArrayObject
         $this->initialized['transactionID'] = true;
         $this->transactionID = $transactionID;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['correlationId' => ['correlationId', 'getCorrelationId', 'setCorrelationId'], 'message' => ['message', 'getMessage', 'setMessage'], 'orderID' => ['orderID', 'getOrderID', 'setOrderID'], 'transactionID' => ['transactionID', 'getTransactionID', 'setTransactionID']];
     }
 }

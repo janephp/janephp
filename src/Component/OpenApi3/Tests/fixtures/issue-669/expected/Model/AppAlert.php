@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppAlert extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppAlert implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -165,5 +168,9 @@ class AppAlert extends \ArrayObject
         $this->initialized['progress'] = true;
         $this->progress = $progress;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'componentName' => ['component_name', 'getComponentName', 'setComponentName'], 'spec' => ['spec', 'getSpec', 'setSpec'], 'emails' => ['emails', 'getEmails', 'setEmails'], 'slackWebhooks' => ['slack_webhooks', 'getSlackWebhooks', 'setSlackWebhooks'], 'phase' => ['phase', 'getPhase', 'setPhase'], 'progress' => ['progress', 'getProgress', 'setProgress']];
     }
 }

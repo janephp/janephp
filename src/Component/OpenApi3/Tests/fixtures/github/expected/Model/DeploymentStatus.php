@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class DeploymentStatus extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class DeploymentStatus implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -377,5 +380,9 @@ class DeploymentStatus extends \ArrayObject
         $this->initialized['performedViaGithubApp'] = true;
         $this->performedViaGithubApp = $performedViaGithubApp;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'state' => ['state', 'getState', 'setState'], 'creator' => ['creator', 'getCreator', 'setCreator'], 'description' => ['description', 'getDescription', 'setDescription'], 'environment' => ['environment', 'getEnvironment', 'setEnvironment'], 'targetUrl' => ['target_url', 'getTargetUrl', 'setTargetUrl'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'deploymentUrl' => ['deployment_url', 'getDeploymentUrl', 'setDeploymentUrl'], 'repositoryUrl' => ['repository_url', 'getRepositoryUrl', 'setRepositoryUrl'], 'environmentUrl' => ['environment_url', 'getEnvironmentUrl', 'setEnvironmentUrl'], 'logUrl' => ['log_url', 'getLogUrl', 'setLogUrl'], 'performedViaGithubApp' => ['performed_via_github_app', 'getPerformedViaGithubApp', 'setPerformedViaGithubApp']];
     }
 }

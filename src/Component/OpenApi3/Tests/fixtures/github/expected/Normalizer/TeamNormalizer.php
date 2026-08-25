@@ -122,7 +122,7 @@ class TeamNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if ($data->isInitialized('parent') && null !== $data->getParent()) {
             $dataArray['parent'] = $data->getParent() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getParent(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

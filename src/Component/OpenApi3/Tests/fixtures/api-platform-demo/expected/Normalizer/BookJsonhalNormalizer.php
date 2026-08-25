@@ -138,7 +138,7 @@ class BookJsonhalNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('archivedAt') && null !== $data->getArchivedAt()) {
             $dataArray['archivedAt'] = $data->getArchivedAt()?->format('Y-m-d\TH:i:sP');
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

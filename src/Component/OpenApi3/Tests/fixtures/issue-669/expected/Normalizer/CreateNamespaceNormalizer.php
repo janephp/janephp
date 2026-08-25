@@ -57,7 +57,7 @@ class CreateNamespaceNormalizer implements DenormalizerInterface, NormalizerInte
         $dataArray = [];
         $dataArray['region'] = $data->getRegion();
         $dataArray['label'] = $data->getLabel();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

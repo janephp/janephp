@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class InvalidChangeCommandFieldTypeInvalidException extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class InvalidChangeCommandFieldTypeInvalidException implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -319,5 +322,9 @@ class InvalidChangeCommandFieldTypeInvalidException extends \ArrayObject
         $this->initialized['fieldExpectedType'] = true;
         $this->fieldExpectedType = $fieldExpectedType;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['traceLevel' => ['traceLevel', 'getTraceLevel', 'setTraceLevel'], 'traceId' => ['traceId', 'getTraceId', 'setTraceId'], 'traceJobId' => ['traceJobId', 'getTraceJobId', 'setTraceJobId'], 'httpStatusCode' => ['httpStatusCode', 'getHttpStatusCode', 'setHttpStatusCode'], 'exceptionMessage' => ['exceptionMessage', 'getExceptionMessage', 'setExceptionMessage'], 'kind' => ['kind', 'getKind', 'setKind'], 'customerId' => ['customerId', 'getCustomerId', 'setCustomerId'], 'customerAlias' => ['customerAlias', 'getCustomerAlias', 'setCustomerAlias'], 'userId' => ['userId', 'getUserId', 'setUserId'], 'commandType' => ['commandType', 'getCommandType', 'setCommandType'], 'fieldId' => ['fieldId', 'getFieldId', 'setFieldId'], 'schemaId' => ['schemaId', 'getSchemaId', 'setSchemaId'], 'fieldActualType' => ['fieldActualType', 'getFieldActualType', 'setFieldActualType'], 'fieldExpectedType' => ['fieldExpectedType', 'getFieldExpectedType', 'setFieldExpectedType']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class PullRequestReviewRequestTeamsItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class PullRequestReviewRequestTeamsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -275,5 +278,9 @@ class PullRequestReviewRequestTeamsItem extends \ArrayObject
         $this->initialized['parent'] = true;
         $this->parent = $parent;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'url' => ['url', 'getUrl', 'setUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'name' => ['name', 'getName', 'setName'], 'slug' => ['slug', 'getSlug', 'setSlug'], 'description' => ['description', 'getDescription', 'setDescription'], 'privacy' => ['privacy', 'getPrivacy', 'setPrivacy'], 'permission' => ['permission', 'getPermission', 'setPermission'], 'membersUrl' => ['members_url', 'getMembersUrl', 'setMembersUrl'], 'repositoriesUrl' => ['repositories_url', 'getRepositoriesUrl', 'setRepositoriesUrl'], 'parent' => ['parent', 'getParent', 'setParent']];
     }
 }

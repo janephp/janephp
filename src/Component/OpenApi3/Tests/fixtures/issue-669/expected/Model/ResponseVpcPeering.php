@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseVpcPeering extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseVpcPeering implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseVpcPeering extends \ArrayObject
         $this->initialized['peering'] = true;
         $this->peering = $peering;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['peering' => ['peering', 'getPeering', 'setPeering']];
     }
 }

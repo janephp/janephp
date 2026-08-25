@@ -12,10 +12,8 @@ use Jane\Component\OpenApiCommon\Contracts\WhitelistFetchInterface;
 use Jane\Component\OpenApiCommon\Generator\ContentType;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\Component\OpenApiCommon\Guesser\GuessClass;
-use Jane\Component\OpenApiCommon\Naming\ChainOperationNaming;
-use Jane\Component\OpenApiCommon\Naming\OperationIdNaming;
+use Jane\Component\OpenApiCommon\Naming\OperationNamingFactory;
 use Jane\Component\OpenApiCommon\Naming\OperationNamingInterface;
-use Jane\Component\OpenApiCommon\Naming\OperationUrlNaming;
 use Jane\Component\OpenApiCommon\Registry\Registry;
 use Jane\Component\OpenApiCommon\Registry\Schema;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -28,11 +26,9 @@ class WhitelistedSchema implements WhitelistFetchInterface
     public function __construct(
         private readonly Schema $schema,
         DenormalizerInterface $denormalizer,
+        ?OperationNamingInterface $naming = null,
     ) {
-        $this->naming = new ChainOperationNaming([
-            new OperationIdNaming(),
-            new OperationUrlNaming(),
-        ]);
+        $this->naming = $naming ?? OperationNamingFactory::create();
         $this->guessClass = new GuessClass(JsonSchema::class, $denormalizer);
     }
 

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposTemplateOwnerTemplateRepoGeneratePostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposTemplateOwnerTemplateRepoGeneratePostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class ReposTemplateOwnerTemplateRepoGeneratePostBody extends \ArrayObject
         $this->initialized['private'] = true;
         $this->private = $private;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['owner' => ['owner', 'getOwner', 'setOwner'], 'name' => ['name', 'getName', 'setName'], 'description' => ['description', 'getDescription', 'setDescription'], 'private' => ['private', 'getPrivate', 'setPrivate']];
     }
 }

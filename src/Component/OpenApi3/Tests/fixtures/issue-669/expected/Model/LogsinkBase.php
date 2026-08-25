@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class LogsinkBase extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class LogsinkBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -88,5 +91,9 @@ class LogsinkBase extends \ArrayObject
         $this->initialized['sinkType'] = true;
         $this->sinkType = $sinkType;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['sinkName' => ['sink_name', 'getSinkName', 'setSinkName'], 'sinkType' => ['sink_type', 'getSinkType', 'setSinkType']];
     }
 }

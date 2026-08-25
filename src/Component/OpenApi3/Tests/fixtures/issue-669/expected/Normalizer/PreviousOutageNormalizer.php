@@ -75,7 +75,7 @@ class PreviousOutageNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('durationSeconds') && null !== $data->getDurationSeconds()) {
             $dataArray['duration_seconds'] = $data->getDurationSeconds();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

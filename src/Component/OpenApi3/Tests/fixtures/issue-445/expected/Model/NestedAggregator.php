@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class NestedAggregator extends AggregatorBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class NestedAggregator extends AggregatorBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class NestedAggregator extends AggregatorBase
         $this->initialized['path'] = true;
         $this->path = $path;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['path' => ['path', 'getPath', 'setPath']];
     }
 }

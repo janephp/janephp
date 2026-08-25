@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class OpensearchConfigRequest extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class OpensearchConfigRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -179,5 +182,9 @@ class OpensearchConfigRequest extends \ArrayObject
         $this->initialized['retentionDays'] = true;
         $this->retentionDays = $retentionDays;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['credentials' => ['credentials', 'getCredentials', 'setCredentials'], 'endpoint' => ['endpoint', 'getEndpoint', 'setEndpoint'], 'clusterUuid' => ['cluster_uuid', 'getClusterUuid', 'setClusterUuid'], 'clusterName' => ['cluster_name', 'getClusterName', 'setClusterName'], 'indexName' => ['index_name', 'getIndexName', 'setIndexName'], 'retentionDays' => ['retention_days', 'getRetentionDays', 'setRetentionDays']];
     }
 }

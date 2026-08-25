@@ -72,7 +72,7 @@ class CertificateRequestLetsEncryptNormalizer implements DenormalizerInterface, 
             $values[] = $value;
         }
         $dataArray['dns_names'] = $values;
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

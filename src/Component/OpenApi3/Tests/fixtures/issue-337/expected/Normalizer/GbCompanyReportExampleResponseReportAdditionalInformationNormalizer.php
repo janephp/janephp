@@ -144,7 +144,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationNormalizer implem
             }
             $dataArray['badDebtDetails'] = $values_5;
         }
-        foreach ($data as $key => $value_6) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_6) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_6;
             }

@@ -90,7 +90,7 @@ class ReposOwnerRepoHooksPostBodyConfigNormalizer implements DenormalizerInterfa
         if ($data->isInitialized('digest') && null !== $data->getDigest()) {
             $dataArray['digest'] = $data->getDigest();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

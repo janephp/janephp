@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class VpcDefault extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class VpcDefault implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class VpcDefault extends \ArrayObject
         $this->initialized['default'] = true;
         $this->default = $default;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['default' => ['default', 'getDefault', 'setDefault']];
     }
 }

@@ -61,7 +61,7 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationP
         if ($data->isInitialized('classification') && null !== $data->getClassification()) {
             $dataArray['classification'] = $data->getClassification();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

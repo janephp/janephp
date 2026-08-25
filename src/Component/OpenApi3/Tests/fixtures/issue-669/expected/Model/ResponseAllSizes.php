@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseAllSizes extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseAllSizes implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class ResponseAllSizes extends \ArrayObject
         $this->initialized['meta'] = true;
         $this->meta = $meta;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['sizes' => ['sizes', 'getSizes', 'setSizes'], 'links' => ['links', 'getLinks', 'setLinks'], 'meta' => ['meta', 'getMeta', 'setMeta']];
     }
 }

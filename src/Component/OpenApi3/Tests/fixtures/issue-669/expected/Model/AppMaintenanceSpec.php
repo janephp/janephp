@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppMaintenanceSpec extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppMaintenanceSpec implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class AppMaintenanceSpec extends \ArrayObject
         $this->initialized['offlinePageUrl'] = true;
         $this->offlinePageUrl = $offlinePageUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['enabled' => ['enabled', 'getEnabled', 'setEnabled'], 'archive' => ['archive', 'getArchive', 'setArchive'], 'offlinePageUrl' => ['offline_page_url', 'getOfflinePageUrl', 'setOfflinePageUrl']];
     }
 }

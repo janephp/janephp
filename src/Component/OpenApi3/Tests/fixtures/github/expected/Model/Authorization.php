@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Authorization extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Authorization implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -325,5 +328,9 @@ class Authorization extends \ArrayObject
         $this->initialized['installation'] = true;
         $this->installation = $installation;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'url' => ['url', 'getUrl', 'setUrl'], 'scopes' => ['scopes', 'getScopes', 'setScopes'], 'token' => ['token', 'getToken', 'setToken'], 'tokenLastEight' => ['token_last_eight', 'getTokenLastEight', 'setTokenLastEight'], 'hashedToken' => ['hashed_token', 'getHashedToken', 'setHashedToken'], 'app' => ['app', 'getApp', 'setApp'], 'note' => ['note', 'getNote', 'setNote'], 'noteUrl' => ['note_url', 'getNoteUrl', 'setNoteUrl'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'fingerprint' => ['fingerprint', 'getFingerprint', 'setFingerprint'], 'user' => ['user', 'getUser', 'setUser'], 'installation' => ['installation', 'getInstallation', 'setInstallation']];
     }
 }

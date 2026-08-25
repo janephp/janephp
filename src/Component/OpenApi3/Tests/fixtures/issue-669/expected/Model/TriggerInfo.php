@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class TriggerInfo extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class TriggerInfo implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -259,5 +262,9 @@ class TriggerInfo extends \ArrayObject
         $this->initialized['scheduledRuns'] = true;
         $this->scheduledRuns = $scheduledRuns;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['namespace' => ['namespace', 'getNamespace', 'setNamespace'], 'name' => ['name', 'getName', 'setName'], 'function' => ['function', 'getFunction', 'setFunction'], 'type' => ['type', 'getType', 'setType'], 'isEnabled' => ['is_enabled', 'getIsEnabled', 'setIsEnabled'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'scheduledDetails' => ['scheduled_details', 'getScheduledDetails', 'setScheduledDetails'], 'scheduledRuns' => ['scheduled_runs', 'getScheduledRuns', 'setScheduledRuns']];
     }
 }

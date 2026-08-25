@@ -61,7 +61,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationCreditLimitHistor
         if ($data->isInitialized('companyValue') && null !== $data->getCompanyValue()) {
             $dataArray['companyValue'] = $data->getCompanyValue() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getCompanyValue(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

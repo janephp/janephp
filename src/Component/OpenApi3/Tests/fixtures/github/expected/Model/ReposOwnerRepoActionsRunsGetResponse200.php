@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoActionsRunsGetResponse200 extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoActionsRunsGetResponse200 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class ReposOwnerRepoActionsRunsGetResponse200 extends \ArrayObject
         $this->initialized['workflowRuns'] = true;
         $this->workflowRuns = $workflowRuns;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['totalCount' => ['total_count', 'getTotalCount', 'setTotalCount'], 'workflowRuns' => ['workflow_runs', 'getWorkflowRuns', 'setWorkflowRuns']];
     }
 }

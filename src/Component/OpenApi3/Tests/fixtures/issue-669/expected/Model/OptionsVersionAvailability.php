@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class OptionsVersionAvailability extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class OptionsVersionAvailability implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -207,5 +210,9 @@ class OptionsVersionAvailability extends \ArrayObject
         $this->initialized['opensearch'] = true;
         $this->opensearch = $opensearch;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['kafka' => ['kafka', 'getKafka', 'setKafka'], 'pg' => ['pg', 'getPg', 'setPg'], 'mysql' => ['mysql', 'getMysql', 'setMysql'], 'redis' => ['redis', 'getRedis', 'setRedis'], 'valkey' => ['valkey', 'getValkey', 'setValkey'], 'mongodb' => ['mongodb', 'getMongodb', 'setMongodb'], 'opensearch' => ['opensearch', 'getOpensearch', 'setOpensearch']];
     }
 }

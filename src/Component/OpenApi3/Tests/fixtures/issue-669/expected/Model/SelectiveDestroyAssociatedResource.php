@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class SelectiveDestroyAssociatedResource extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class SelectiveDestroyAssociatedResource implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -157,5 +160,9 @@ class SelectiveDestroyAssociatedResource extends \ArrayObject
         $this->initialized['volumeSnapshots'] = true;
         $this->volumeSnapshots = $volumeSnapshots;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['floatingIps' => ['floating_ips', 'getFloatingIps', 'setFloatingIps'], 'reservedIps' => ['reserved_ips', 'getReservedIps', 'setReservedIps'], 'snapshots' => ['snapshots', 'getSnapshots', 'setSnapshots'], 'volumes' => ['volumes', 'getVolumes', 'setVolumes'], 'volumeSnapshots' => ['volume_snapshots', 'getVolumeSnapshots', 'setVolumeSnapshots']];
     }
 }

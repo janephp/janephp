@@ -74,7 +74,7 @@ class ResponseDatabaseBackupsNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('backupProgress') && null !== $data->getBackupProgress()) {
             $dataArray['backup_progress'] = $data->getBackupProgress();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

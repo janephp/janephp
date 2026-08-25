@@ -111,7 +111,7 @@ class ProtectedBranchNormalizer implements DenormalizerInterface, NormalizerInte
         if ($data->isInitialized('restrictions') && null !== $data->getRestrictions()) {
             $dataArray['restrictions'] = $data->getRestrictions() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRestrictions(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

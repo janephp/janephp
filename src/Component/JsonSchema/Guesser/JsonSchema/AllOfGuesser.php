@@ -116,7 +116,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
                 throw new \RuntimeException("Schema for reference $reference could not be found");
             }
 
-            return new ObjectType($object, $class->getName(), $schema->getNamespace());
+            return new ObjectType($object, $class->getName(), $schema->getNamespace(), [], $class->getSubNamespace());
         }
 
         foreach ($object->getAllOf() as $allOfIndex => $allOf) {

@@ -67,7 +67,7 @@ class GbPeopleReportReponseReportDirectorDetailsAdditionalDataNormalizer impleme
         if ($data->isInitialized('disqualifiedException') && null !== $data->getDisqualifiedException()) {
             $dataArray['disqualifiedException'] = $data->getDisqualifiedException();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

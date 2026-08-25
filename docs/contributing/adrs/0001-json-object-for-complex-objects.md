@@ -91,9 +91,13 @@ Implementation rules baked into the generators:
   against arrays must adapt (use `->toArray()`, `iterator_to_array()` or casts).
 - `mixed`-typed values remain passthrough: an empty associative array stored in
   an unconstrained field still encodes as `[]` — statically undecidable.
-- Models that represent extension containers still extend `\ArrayObject`
-  (`Model/ClassGenerator.php`); replacing that with a trait-based approach is a
-  candidate follow-up (see Korbeil's jane-v8 experiment).
+- Models that represent extension containers no longer extend `\ArrayObject`:
+  since [#867](https://github.com/janephp/janephp/issues/867) they use the
+  per-library `<Ns>\Runtime\AdditionalAndPatternProperties` trait with the
+  `<Ns>\Runtime\AdditionalPropertiesInterface` interface (see
+  [ADR 0003](0003-no-arrayobject.md)), exposing defined and additional values
+  alike through `foreach`, `ArrayAccess`, `count()`, `toArray()` and
+  `json_encode`.
 - The class ships via the per-library runtime copy mechanism
   (`JsonSchema/Generator/Runtime/data/JsonObject.php`), so every generated
   library owns its own copy namespaced under its own `Runtime\` namespace — no

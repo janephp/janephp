@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ListItemPermissionException extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ListItemPermissionException implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -259,5 +262,9 @@ class ListItemPermissionException extends \ArrayObject
         $this->initialized['metadataRight'] = true;
         $this->metadataRight = $metadataRight;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['traceLevel' => ['traceLevel', 'getTraceLevel', 'setTraceLevel'], 'traceId' => ['traceId', 'getTraceId', 'setTraceId'], 'traceJobId' => ['traceJobId', 'getTraceJobId', 'setTraceJobId'], 'httpStatusCode' => ['httpStatusCode', 'getHttpStatusCode', 'setHttpStatusCode'], 'exceptionMessage' => ['exceptionMessage', 'getExceptionMessage', 'setExceptionMessage'], 'kind' => ['kind', 'getKind', 'setKind'], 'customerId' => ['customerId', 'getCustomerId', 'setCustomerId'], 'customerAlias' => ['customerAlias', 'getCustomerAlias', 'setCustomerAlias'], 'userId' => ['userId', 'getUserId', 'setUserId'], 'listItemId' => ['listItemId', 'getListItemId', 'setListItemId'], 'metadataRight' => ['metadataRight', 'getMetadataRight', 'setMetadataRight']];
     }
 }

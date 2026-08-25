@@ -150,7 +150,7 @@ class SchemaPermissionExceptionNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('metadataRight') && null !== $data->getMetadataRight()) {
             $dataArray['metadataRight'] = $data->getMetadataRight();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

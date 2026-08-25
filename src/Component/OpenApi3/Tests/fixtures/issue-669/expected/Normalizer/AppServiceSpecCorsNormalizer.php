@@ -124,7 +124,7 @@ class AppServiceSpecCorsNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('allowCredentials') && null !== $data->getAllowCredentials()) {
             $dataArray['allow_credentials'] = $data->getAllowCredentials();
         }
-        foreach ($data as $key => $value_4) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_4;
             }

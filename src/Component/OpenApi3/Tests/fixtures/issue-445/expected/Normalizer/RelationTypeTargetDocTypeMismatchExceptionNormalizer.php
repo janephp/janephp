@@ -165,7 +165,7 @@ class RelationTypeTargetDocTypeMismatchExceptionNormalizer implements Denormaliz
         if ($data->isInitialized('expectedTargetDocType') && null !== $data->getExpectedTargetDocType()) {
             $dataArray['expectedTargetDocType'] = $data->getExpectedTargetDocType();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

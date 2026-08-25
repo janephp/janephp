@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoInvitationsInvitationIdPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoInvitationsInvitationIdPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ReposOwnerRepoInvitationsInvitationIdPatchBody extends \ArrayObject
         $this->initialized['permissions'] = true;
         $this->permissions = $permissions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['permissions' => ['permissions', 'getPermissions', 'setPermissions']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class GistFullHistoryItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class GistFullHistoryItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class GistFullHistoryItem extends \ArrayObject
         $this->initialized['committedAt'] = true;
         $this->committedAt = $committedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'version' => ['version', 'getVersion', 'setVersion'], 'user' => ['user', 'getUser', 'setUser'], 'changeStatus' => ['change_status', 'getChangeStatus', 'setChangeStatus'], 'committedAt' => ['committed_at', 'getCommittedAt', 'setCommittedAt']];
     }
 }

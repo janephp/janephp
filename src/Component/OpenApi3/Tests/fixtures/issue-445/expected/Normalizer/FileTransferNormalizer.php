@@ -56,7 +56,11 @@ class FileTransferNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setTransferId($data['transferId']);
         }
         if (\array_key_exists('state', $data)) {
-            $object->setState($data['state']);
+            $value = $data['state'];
+            if (is_string($data['state'])) {
+                $value = $data['state'];
+            }
+            $object->setState($value);
         }
         if (\array_key_exists('contentId', $data) && $data['contentId'] !== null) {
             $object->setContentId($data['contentId']);
@@ -76,7 +80,11 @@ class FileTransferNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         $dataArray['requestId'] = $data->getRequestId();
         $dataArray['transferId'] = $data->getTransferId();
-        $dataArray['state'] = $data->getState();
+        $value = $data->getState();
+        if (is_string($data->getState())) {
+            $value = $data->getState();
+        }
+        $dataArray['state'] = $value;
         if ($data->isInitialized('contentId') && null !== $data->getContentId()) {
             $dataArray['contentId'] = $data->getContentId();
         }

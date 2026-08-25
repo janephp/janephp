@@ -152,7 +152,7 @@ class CompanySearchSuccessResultCompaniesItemNormalizer implements DenormalizerI
         if ($data->isInitialized('dateOfLatestCAccounts') && null !== $data->getDateOfLatestCAccounts()) {
             $dataArray['dateOfLatestCAccounts'] = $data->getDateOfLatestCAccounts() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getDateOfLatestCAccounts(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

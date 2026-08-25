@@ -10,11 +10,15 @@ use PhpParser\Node\Name\FullyQualified;
 
 class EnumType extends Type
 {
+    /**
+     * @param string[] $subNamespace Sub-namespace segments of the enum inside "Model"
+     */
     public function __construct(
         ?object $object,
         string $backingType,
         private readonly string $className,
         private readonly string $namespace,
+        private readonly array $subNamespace = [],
     ) {
         parent::__construct($object, $backingType);
     }
@@ -64,10 +68,12 @@ class EnumType extends Type
 
     private function getFqdn(bool $withRoot = true): string
     {
+        $subNamespaceSuffix = [] === $this->subNamespace ? '' : '\\' . implode('\\', $this->subNamespace);
+
         if ($withRoot) {
-            return '\\' . $this->namespace . '\\Model\\' . $this->className;
+            return '\\' . $this->namespace . '\\Model' . $subNamespaceSuffix . '\\' . $this->className;
         }
 
-        return $this->namespace . '\\Model\\' . $this->className;
+        return $this->namespace . '\\Model' . $subNamespaceSuffix . '\\' . $this->className;
     }
 }

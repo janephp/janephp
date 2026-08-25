@@ -122,7 +122,7 @@ class AccountNormalizer implements DenormalizerInterface, NormalizerInterface, D
             }
             $dataArray['nationality'] = $value_1;
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_3;
             }

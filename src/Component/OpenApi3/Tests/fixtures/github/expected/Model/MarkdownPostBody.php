@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class MarkdownPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class MarkdownPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class MarkdownPostBody extends \ArrayObject
         $this->initialized['context'] = true;
         $this->context = $context;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['text' => ['text', 'getText', 'setText'], 'mode' => ['mode', 'getMode', 'setMode'], 'context' => ['context', 'getContext', 'setContext']];
     }
 }

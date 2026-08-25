@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class CompliancePreDefinedSearches extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class CompliancePreDefinedSearches implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class CompliancePreDefinedSearches extends \ArrayObject
         $this->initialized['predefinedSearches'] = true;
         $this->predefinedSearches = $predefinedSearches;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['totalSize' => ['totalSize', 'getTotalSize', 'setTotalSize'], 'predefinedSearches' => ['predefinedSearches', 'getPredefinedSearches', 'setPredefinedSearches']];
     }
 }

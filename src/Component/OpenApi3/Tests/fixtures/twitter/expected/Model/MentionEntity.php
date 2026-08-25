@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class MentionEntity extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class MentionEntity implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class MentionEntity extends \ArrayObject
         $this->initialized['username'] = true;
         $this->username = $username;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['start' => ['start', 'getStart', 'setStart'], 'end' => ['end', 'getEnd', 'setEnd'], 'username' => ['username', 'getUsername', 'setUsername']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class LinkToNextPage extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class LinkToNextPage implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class LinkToNextPage extends \ArrayObject
         $this->initialized['next'] = true;
         $this->next = $next;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['next' => ['next', 'getNext', 'setNext']];
     }
 }

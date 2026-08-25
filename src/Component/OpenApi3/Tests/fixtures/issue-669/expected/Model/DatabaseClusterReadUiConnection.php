@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DatabaseClusterReadUiConnection extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DatabaseClusterReadUiConnection implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -179,5 +182,9 @@ class DatabaseClusterReadUiConnection extends \ArrayObject
         $this->initialized['ssl'] = true;
         $this->ssl = $ssl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['uri' => ['uri', 'getUri', 'setUri'], 'host' => ['host', 'getHost', 'setHost'], 'port' => ['port', 'getPort', 'setPort'], 'user' => ['user', 'getUser', 'setUser'], 'password' => ['password', 'getPassword', 'setPassword'], 'ssl' => ['ssl', 'getSsl', 'setSsl']];
     }
 }

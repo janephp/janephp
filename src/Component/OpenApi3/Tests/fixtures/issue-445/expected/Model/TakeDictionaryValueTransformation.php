@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class TakeDictionaryValueTransformation extends BusinessRuleTransformation
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class TakeDictionaryValueTransformation extends BusinessRuleTransformation implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class TakeDictionaryValueTransformation extends BusinessRuleTransformation
         $this->initialized['key'] = true;
         $this->key = $key;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['key' => ['key', 'getKey', 'setKey']];
     }
 }

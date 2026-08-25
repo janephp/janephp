@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppDomainSpec extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppDomainSpec implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -172,5 +175,9 @@ class AppDomainSpec extends \ArrayObject
         $this->initialized['minimumTlsVersion'] = true;
         $this->minimumTlsVersion = $minimumTlsVersion;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['domain' => ['domain', 'getDomain', 'setDomain'], 'type' => ['type', 'getType', 'setType'], 'wildcard' => ['wildcard', 'getWildcard', 'setWildcard'], 'zone' => ['zone', 'getZone', 'setZone'], 'minimumTlsVersion' => ['minimum_tls_version', 'getMinimumTlsVersion', 'setMinimumTlsVersion']];
     }
 }

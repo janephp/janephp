@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class AggregationFilter extends FilterBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class AggregationFilter extends FilterBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -21,7 +24,7 @@ class AggregationFilter extends FilterBase
     /**
      * The filter to be applied.
      *
-     * @var mixed|null
+     * @var FilterBase|null
      */
     protected $filter;
     /**
@@ -55,20 +58,20 @@ class AggregationFilter extends FilterBase
     /**
      * The filter to be applied.
      *
-     * @return mixed
+     * @return FilterBase|null
      */
-    public function getFilter()
+    public function getFilter(): ?FilterBase
     {
         return $this->filter;
     }
     /**
      * The filter to be applied.
      *
-     * @param mixed $filter
+     * @param FilterBase|null $filter
      *
      * @return self
      */
-    public function setFilter($filter): self
+    public function setFilter(?FilterBase $filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;
@@ -95,5 +98,9 @@ class AggregationFilter extends FilterBase
         $this->initialized['temporaryAggregatorRequestId'] = true;
         $this->temporaryAggregatorRequestId = $temporaryAggregatorRequestId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['aggregationName' => ['aggregationName', 'getAggregationName', 'setAggregationName'], 'filter' => ['filter', 'getFilter', 'setFilter'], 'temporaryAggregatorRequestId' => ['temporaryAggregatorRequestId', 'getTemporaryAggregatorRequestId', 'setTemporaryAggregatorRequestId']];
     }
 }

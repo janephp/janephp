@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class GistsGistIdCommentsCommentIdPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class GistsGistIdCommentsCommentIdPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class GistsGistIdCommentsCommentIdPatchBody extends \ArrayObject
         $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['body' => ['body', 'getBody', 'setBody']];
     }
 }

@@ -62,7 +62,7 @@ class TermFilterNormalizer implements DenormalizerInterface, NormalizerInterface
         $dataArray['kind'] = $data->getKind();
         $dataArray['field'] = $data->getField();
         $dataArray['term'] = $data->getTerm();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

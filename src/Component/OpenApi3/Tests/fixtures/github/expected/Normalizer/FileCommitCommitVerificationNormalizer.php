@@ -89,7 +89,7 @@ class FileCommitCommitVerificationNormalizer implements DenormalizerInterface, N
         if ($data->isInitialized('payload') && null !== $data->getPayload()) {
             $dataArray['payload'] = $data->getPayload();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

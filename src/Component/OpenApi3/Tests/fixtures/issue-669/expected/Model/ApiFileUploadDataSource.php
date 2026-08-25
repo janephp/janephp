@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiFileUploadDataSource extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiFileUploadDataSource implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class ApiFileUploadDataSource extends \ArrayObject
         $this->initialized['storedObjectKey'] = true;
         $this->storedObjectKey = $storedObjectKey;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['originalFileName' => ['original_file_name', 'getOriginalFileName', 'setOriginalFileName'], 'sizeInBytes' => ['size_in_bytes', 'getSizeInBytes', 'setSizeInBytes'], 'storedObjectKey' => ['stored_object_key', 'getStoredObjectKey', 'setStoredObjectKey']];
     }
 }

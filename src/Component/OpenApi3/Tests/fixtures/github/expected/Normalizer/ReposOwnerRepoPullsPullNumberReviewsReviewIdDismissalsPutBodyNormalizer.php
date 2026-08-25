@@ -62,7 +62,7 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyNormalizer im
         if ($data->isInitialized('event') && null !== $data->getEvent()) {
             $dataArray['event'] = $data->getEvent();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

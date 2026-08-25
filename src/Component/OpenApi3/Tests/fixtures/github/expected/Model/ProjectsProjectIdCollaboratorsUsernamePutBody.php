@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ProjectsProjectIdCollaboratorsUsernamePutBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ProjectsProjectIdCollaboratorsUsernamePutBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ProjectsProjectIdCollaboratorsUsernamePutBody extends \ArrayObject
         $this->initialized['permission'] = true;
         $this->permission = $permission;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['permission' => ['permission', 'getPermission', 'setPermission']];
     }
 }

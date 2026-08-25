@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseFloatingIpCreatedLinks extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseFloatingIpCreatedLinks implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class ResponseFloatingIpCreatedLinks extends \ArrayObject
         $this->initialized['actions'] = true;
         $this->actions = $actions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['droplets' => ['droplets', 'getDroplets', 'setDroplets'], 'actions' => ['actions', 'getActions', 'setActions']];
     }
 }

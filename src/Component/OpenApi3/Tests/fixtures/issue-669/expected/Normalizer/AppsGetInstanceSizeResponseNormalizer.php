@@ -54,7 +54,7 @@ class AppsGetInstanceSizeResponseNormalizer implements DenormalizerInterface, No
         if ($data->isInitialized('instanceSize') && null !== $data->getInstanceSize()) {
             $dataArray['instance_size'] = $data->getInstanceSize() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getInstanceSize(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

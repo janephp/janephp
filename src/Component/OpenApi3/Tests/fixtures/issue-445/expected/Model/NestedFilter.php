@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class NestedFilter extends FilterBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class NestedFilter extends FilterBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -21,7 +24,7 @@ class NestedFilter extends FilterBase
     /**
      * The filter to be applied on the nested documents.
      *
-     * @var mixed
+     * @var FilterBase
      */
     protected $filter;
     /**
@@ -49,23 +52,27 @@ class NestedFilter extends FilterBase
     /**
      * The filter to be applied on the nested documents.
      *
-     * @return mixed
+     * @return FilterBase
      */
-    public function getFilter()
+    public function getFilter(): FilterBase
     {
         return $this->filter;
     }
     /**
      * The filter to be applied on the nested documents.
      *
-     * @param mixed $filter
+     * @param FilterBase $filter
      *
      * @return self
      */
-    public function setFilter($filter): self
+    public function setFilter(FilterBase $filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['path' => ['path', 'getPath', 'setPath'], 'filter' => ['filter', 'getFilter', 'setFilter']];
     }
 }

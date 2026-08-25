@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ByoipPrefixValidationsItem extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ByoipPrefixValidationsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class ByoipPrefixValidationsItem extends \ArrayObject
         $this->initialized['note'] = true;
         $this->note = $note;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'status' => ['status', 'getStatus', 'setStatus'], 'note' => ['note', 'getNote', 'setNote']];
     }
 }

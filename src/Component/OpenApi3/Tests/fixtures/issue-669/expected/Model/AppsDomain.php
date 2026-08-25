@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsDomain extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsDomain implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -165,5 +168,9 @@ class AppsDomain extends \ArrayObject
         $this->initialized['certificateExpiresAt'] = true;
         $this->certificateExpiresAt = $certificateExpiresAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'phase' => ['phase', 'getPhase', 'setPhase'], 'progress' => ['progress', 'getProgress', 'setProgress'], 'spec' => ['spec', 'getSpec', 'setSpec'], 'validations' => ['validations', 'getValidations', 'setValidations'], 'rotateValidationRecords' => ['rotate_validation_records', 'getRotateValidationRecords', 'setRotateValidationRecords'], 'certificateExpiresAt' => ['certificate_expires_at', 'getCertificateExpiresAt', 'setCertificateExpiresAt']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoNotificationsPutBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoNotificationsPutBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ReposOwnerRepoNotificationsPutBody extends \ArrayObject
         $this->initialized['lastReadAt'] = true;
         $this->lastReadAt = $lastReadAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['lastReadAt' => ['last_read_at', 'getLastReadAt', 'setLastReadAt']];
     }
 }

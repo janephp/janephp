@@ -67,7 +67,7 @@ class PlanetAtmosphereItemNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('percentage') && null !== $data->getPercentage()) {
             $dataArray['percentage'] = $data->getPercentage();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

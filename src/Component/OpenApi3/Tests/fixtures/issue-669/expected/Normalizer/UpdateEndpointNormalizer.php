@@ -68,7 +68,7 @@ class UpdateEndpointNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('customDomain') && null !== $data->getCustomDomain()) {
             $dataArray['custom_domain'] = $data->getCustomDomain();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ContributorActivityWeeksItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ContributorActivityWeeksItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class ContributorActivityWeeksItem extends \ArrayObject
         $this->initialized['c'] = true;
         $this->c = $c;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['w' => ['w', 'getW', 'setW'], 'a' => ['a', 'getA', 'setA'], 'd' => ['d', 'getD', 'setD'], 'c' => ['c', 'getC', 'setC']];
     }
 }

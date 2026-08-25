@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class KeySimple extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class KeySimple implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class KeySimple extends \ArrayObject
         $this->initialized['key'] = true;
         $this->key = $key;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'key' => ['key', 'getKey', 'setKey']];
     }
 }

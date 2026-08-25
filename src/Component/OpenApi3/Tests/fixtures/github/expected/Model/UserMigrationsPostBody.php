@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class UserMigrationsPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class UserMigrationsPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -117,5 +120,9 @@ class UserMigrationsPostBody extends \ArrayObject
         $this->initialized['repositories'] = true;
         $this->repositories = $repositories;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['lockRepositories' => ['lock_repositories', 'getLockRepositories', 'setLockRepositories'], 'excludeAttachments' => ['exclude_attachments', 'getExcludeAttachments', 'setExcludeAttachments'], 'exclude' => ['exclude', 'getExclude', 'setExclude'], 'repositories' => ['repositories', 'getRepositories', 'setRepositories']];
     }
 }

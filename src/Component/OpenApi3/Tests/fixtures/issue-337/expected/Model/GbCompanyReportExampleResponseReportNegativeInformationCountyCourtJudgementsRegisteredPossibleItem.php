@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredPossibleItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgementsRegisteredPossibleItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         $this->initialized['ccjStatus'] = true;
         $this->ccjStatus = $ccjStatus;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['ccjDate' => ['ccjDate', 'getCcjDate', 'setCcjDate'], 'court' => ['court', 'getCourt', 'setCourt'], 'ccjAmount' => ['ccjAmount', 'getCcjAmount', 'setCcjAmount'], 'caseNumber' => ['caseNumber', 'getCaseNumber', 'setCaseNumber'], 'ccjStatus' => ['ccjStatus', 'getCcjStatus', 'setCcjStatus']];
     }
 }

@@ -61,7 +61,7 @@ class ApiGetAgentUsageOutputNormalizer implements DenormalizerInterface, Normali
         if ($data->isInitialized('usage') && null !== $data->getUsage()) {
             $dataArray['usage'] = $data->getUsage() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getUsage(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -67,7 +67,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationCcjSummaryNormalize
         if ($data->isInitialized('possibleRegistered') && null !== $data->getPossibleRegistered()) {
             $dataArray['possibleRegistered'] = $data->getPossibleRegistered();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

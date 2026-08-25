@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbPeopleReportReponseReportDirectorDetailsAddress extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbPeopleReportReponseReportDirectorDetailsAddress implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class GbPeopleReportReponseReportDirectorDetailsAddress extends \ArrayObject
         $this->initialized['postalCode'] = true;
         $this->postalCode = $postalCode;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'simpleValue' => ['simpleValue', 'getSimpleValue', 'setSimpleValue'], 'street' => ['street', 'getStreet', 'setStreet'], 'city' => ['city', 'getCity', 'setCity'], 'postalCode' => ['postalCode', 'getPostalCode', 'setPostalCode']];
     }
 }

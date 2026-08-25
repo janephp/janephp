@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoMilestonesPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoMilestonesPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class ReposOwnerRepoMilestonesPostBody extends \ArrayObject
         $this->initialized['dueOn'] = true;
         $this->dueOn = $dueOn;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['title' => ['title', 'getTitle', 'setTitle'], 'state' => ['state', 'getState', 'setState'], 'description' => ['description', 'getDescription', 'setDescription'], 'dueOn' => ['due_on', 'getDueOn', 'setDueOn']];
     }
 }

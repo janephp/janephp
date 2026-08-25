@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiDropboxDataSource extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiDropboxDataSource implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -61,5 +64,9 @@ class ApiDropboxDataSource extends \ArrayObject
         $this->initialized['refreshToken'] = true;
         $this->refreshToken = $refreshToken;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['folder' => ['folder', 'getFolder', 'setFolder'], 'refreshToken' => ['refresh_token', 'getRefreshToken', 'setRefreshToken']];
     }
 }

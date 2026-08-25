@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class PermissionSetOwnershipTransferItem extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class PermissionSetOwnershipTransferItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class PermissionSetOwnershipTransferItem extends \ArrayObject
         $this->initialized['permissionSetId'] = true;
         $this->permissionSetId = $permissionSetId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['transferUserId' => ['transferUserId', 'getTransferUserId', 'setTransferUserId'], 'permissionSetId' => ['permissionSetId', 'getPermissionSetId', 'setPermissionSetId']];
     }
 }

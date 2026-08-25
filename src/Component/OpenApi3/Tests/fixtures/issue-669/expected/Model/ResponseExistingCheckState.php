@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseExistingCheckState extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseExistingCheckState implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseExistingCheckState extends \ArrayObject
         $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['state' => ['state', 'getState', 'setState']];
     }
 }

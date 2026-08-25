@@ -61,7 +61,7 @@ class LogsinkBaseNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('sinkType') && null !== $data->getSinkType()) {
             $dataArray['sink_type'] = $data->getSinkType();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

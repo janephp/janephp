@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiGetKnowledgeBaseOutput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiGetKnowledgeBaseOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -61,5 +64,9 @@ class ApiGetKnowledgeBaseOutput extends \ArrayObject
         $this->initialized['knowledgeBase'] = true;
         $this->knowledgeBase = $knowledgeBase;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['databaseStatus' => ['database_status', 'getDatabaseStatus', 'setDatabaseStatus'], 'knowledgeBase' => ['knowledge_base', 'getKnowledgeBase', 'setKnowledgeBase']];
     }
 }

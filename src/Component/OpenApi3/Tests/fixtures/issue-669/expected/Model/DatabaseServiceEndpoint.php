@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DatabaseServiceEndpoint extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DatabaseServiceEndpoint implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class DatabaseServiceEndpoint extends \ArrayObject
         $this->initialized['port'] = true;
         $this->port = $port;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['host' => ['host', 'getHost', 'setHost'], 'port' => ['port', 'getPort', 'setPort']];
     }
 }

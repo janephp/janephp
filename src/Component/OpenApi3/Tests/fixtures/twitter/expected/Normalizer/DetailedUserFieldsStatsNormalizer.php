@@ -67,7 +67,7 @@ class DetailedUserFieldsStatsNormalizer implements DenormalizerInterface, Normal
         $dataArray['following_count'] = $data->getFollowingCount();
         $dataArray['tweet_count'] = $data->getTweetCount();
         $dataArray['listed_count'] = $data->getListedCount();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

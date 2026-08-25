@@ -20,7 +20,7 @@ class TestNoTag extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\B
     /**
      * {@inheritdoc}
      *
-     * @throws \Jane\Component\OpenApi2\Tests\Expected\Exception\UnexpectedStatusCodeException
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Exception\BadResponseException
      *
      * @return null
      */
@@ -31,7 +31,7 @@ class TestNoTag extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\B
         if (200 === $status) {
             return null;
         }
-        throw new \Jane\Component\OpenApi2\Tests\Expected\Exception\UnexpectedStatusCodeException($status, $body);
+        throw new \Jane\Component\OpenApi2\Tests\Expected\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {

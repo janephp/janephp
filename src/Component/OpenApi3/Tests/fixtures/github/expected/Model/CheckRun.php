@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CheckRun extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CheckRun implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -387,5 +390,9 @@ class CheckRun extends \ArrayObject
         $this->initialized['pullRequests'] = true;
         $this->pullRequests = $pullRequests;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'headSha' => ['head_sha', 'getHeadSha', 'setHeadSha'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'externalId' => ['external_id', 'getExternalId', 'setExternalId'], 'url' => ['url', 'getUrl', 'setUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'detailsUrl' => ['details_url', 'getDetailsUrl', 'setDetailsUrl'], 'status' => ['status', 'getStatus', 'setStatus'], 'conclusion' => ['conclusion', 'getConclusion', 'setConclusion'], 'startedAt' => ['started_at', 'getStartedAt', 'setStartedAt'], 'completedAt' => ['completed_at', 'getCompletedAt', 'setCompletedAt'], 'output' => ['output', 'getOutput', 'setOutput'], 'name' => ['name', 'getName', 'setName'], 'checkSuite' => ['check_suite', 'getCheckSuite', 'setCheckSuite'], 'app' => ['app', 'getApp', 'setApp'], 'pullRequests' => ['pull_requests', 'getPullRequests', 'setPullRequests']];
     }
 }

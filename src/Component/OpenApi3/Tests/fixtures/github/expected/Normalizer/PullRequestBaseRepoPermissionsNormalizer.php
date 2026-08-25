@@ -74,7 +74,7 @@ class PullRequestBaseRepoPermissionsNormalizer implements DenormalizerInterface,
         $dataArray['admin'] = $data->getAdmin();
         $dataArray['pull'] = $data->getPull();
         $dataArray['push'] = $data->getPush();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

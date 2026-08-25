@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Event extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Event implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -199,5 +202,9 @@ class Event extends \ArrayObject
         $this->initialized['createdAt'] = true;
         $this->createdAt = $createdAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'type' => ['type', 'getType', 'setType'], 'actor' => ['actor', 'getActor', 'setActor'], 'repo' => ['repo', 'getRepo', 'setRepo'], 'org' => ['org', 'getOrg', 'setOrg'], 'payload' => ['payload', 'getPayload', 'setPayload'], 'public' => ['public', 'getPublic', 'setPublic'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt']];
     }
 }

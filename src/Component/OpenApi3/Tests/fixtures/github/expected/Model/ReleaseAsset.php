@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReleaseAsset extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReleaseAsset implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -309,5 +312,9 @@ class ReleaseAsset extends \ArrayObject
         $this->initialized['uploader'] = true;
         $this->uploader = $uploader;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'browserDownloadUrl' => ['browser_download_url', 'getBrowserDownloadUrl', 'setBrowserDownloadUrl'], 'id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'name' => ['name', 'getName', 'setName'], 'label' => ['label', 'getLabel', 'setLabel'], 'state' => ['state', 'getState', 'setState'], 'contentType' => ['content_type', 'getContentType', 'setContentType'], 'size' => ['size', 'getSize', 'setSize'], 'downloadCount' => ['download_count', 'getDownloadCount', 'setDownloadCount'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'uploader' => ['uploader', 'getUploader', 'setUploader']];
     }
 }

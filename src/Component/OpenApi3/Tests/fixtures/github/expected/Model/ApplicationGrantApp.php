@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ApplicationGrantApp extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ApplicationGrantApp implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class ApplicationGrantApp extends \ArrayObject
         $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['clientId' => ['client_id', 'getClientId', 'setClientId'], 'name' => ['name', 'getName', 'setName'], 'url' => ['url', 'getUrl', 'setUrl']];
     }
 }

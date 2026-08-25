@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoGitTagsPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoGitTagsPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class ReposOwnerRepoGitTagsPostBody extends \ArrayObject
         $this->initialized['tagger'] = true;
         $this->tagger = $tagger;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['tag' => ['tag', 'getTag', 'setTag'], 'message' => ['message', 'getMessage', 'setMessage'], 'object' => ['object', 'getObject', 'setObject'], 'type' => ['type', 'getType', 'setType'], 'tagger' => ['tagger', 'getTagger', 'setTagger']];
     }
 }

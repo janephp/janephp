@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class KafkaSchemaVersionVerbose extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class KafkaSchemaVersionVerbose implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class KafkaSchemaVersionVerbose extends \ArrayObject
         $this->initialized['schema'] = true;
         $this->schema = $schema;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['schemaId' => ['schema_id', 'getSchemaId', 'setSchemaId'], 'version' => ['version', 'getVersion', 'setVersion'], 'subjectName' => ['subject_name', 'getSubjectName', 'setSubjectName'], 'schemaType' => ['schema_type', 'getSchemaType', 'setSchemaType'], 'schema' => ['schema', 'getSchema', 'setSchema']];
     }
 }

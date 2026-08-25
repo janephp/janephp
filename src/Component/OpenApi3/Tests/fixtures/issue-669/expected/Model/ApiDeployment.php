@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiDeployment extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiDeployment implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -213,5 +216,9 @@ class ApiDeployment extends \ArrayObject
         $this->initialized['visibility'] = true;
         $this->visibility = $visibility;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'name' => ['name', 'getName', 'setName'], 'status' => ['status', 'getStatus', 'setStatus'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'url' => ['url', 'getUrl', 'setUrl'], 'uuid' => ['uuid', 'getUuid', 'setUuid'], 'visibility' => ['visibility', 'getVisibility', 'setVisibility']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class AppInstallationsInstallationIdAccessTokensPostBodyPermissions extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class AppInstallationsInstallationIdAccessTokensPostBodyPermissions implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class AppInstallationsInstallationIdAccessTokensPostBodyPermissions extends \Arr
         $this->initialized['defNotARepo'] = true;
         $this->defNotARepo = $defNotARepo;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['contents' => ['contents', 'getContents', 'setContents'], 'issues' => ['issues', 'getIssues', 'setIssues'], 'deployments' => ['deployments', 'getDeployments', 'setDeployments'], 'singleFile' => ['single_file', 'getSingleFile', 'setSingleFile'], 'defNotARepo' => ['def_not_a_repo', 'getDefNotARepo', 'setDefNotARepo']];
     }
 }

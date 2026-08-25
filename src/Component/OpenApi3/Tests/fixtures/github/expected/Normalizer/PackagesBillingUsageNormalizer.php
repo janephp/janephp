@@ -71,7 +71,7 @@ class PackagesBillingUsageNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('includedGigabytesBandwidth') && null !== $data->getIncludedGigabytesBandwidth()) {
             $dataArray['included_gigabytes_bandwidth'] = $data->getIncludedGigabytesBandwidth();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

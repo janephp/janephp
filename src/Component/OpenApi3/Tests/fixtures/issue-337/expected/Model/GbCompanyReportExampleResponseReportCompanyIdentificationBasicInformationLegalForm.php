@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationLegalForm extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationLegalForm implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformationL
         $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['description' => ['description', 'getDescription', 'setDescription']];
     }
 }

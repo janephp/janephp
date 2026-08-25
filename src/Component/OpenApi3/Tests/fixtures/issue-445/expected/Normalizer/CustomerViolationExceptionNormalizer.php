@@ -121,7 +121,7 @@ class CustomerViolationExceptionNormalizer implements DenormalizerInterface, Nor
         if ($data->isInitialized('currentCustomerId') && null !== $data->getCurrentCustomerId()) {
             $dataArray['currentCustomerId'] = $data->getCurrentCustomerId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

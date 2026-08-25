@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoForksPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoForksPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ReposOwnerRepoForksPostBody extends \ArrayObject
         $this->initialized['organization'] = true;
         $this->organization = $organization;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['organization' => ['organization', 'getOrganization', 'setOrganization']];
     }
 }

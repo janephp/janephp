@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsGitSourceSpec extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsGitSourceSpec implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class AppsGitSourceSpec extends \ArrayObject
         $this->initialized['repoCloneUrl'] = true;
         $this->repoCloneUrl = $repoCloneUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['branch' => ['branch', 'getBranch', 'setBranch'], 'repoCloneUrl' => ['repo_clone_url', 'getRepoCloneUrl', 'setRepoCloneUrl']];
     }
 }

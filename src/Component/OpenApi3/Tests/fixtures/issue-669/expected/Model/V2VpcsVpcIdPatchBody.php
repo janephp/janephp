@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class V2VpcsVpcIdPatchBody extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class V2VpcsVpcIdPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class V2VpcsVpcIdPatchBody extends \ArrayObject
         $this->initialized['default'] = true;
         $this->default = $default;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'description' => ['description', 'getDescription', 'setDescription'], 'default' => ['default', 'getDefault', 'setDefault']];
     }
 }

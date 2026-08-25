@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiAgentPublic extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiAgentPublic implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -807,5 +810,9 @@ class ApiAgentPublic extends \ArrayObject
         $this->initialized['versionHash'] = true;
         $this->versionHash = $versionHash;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['chatbot' => ['chatbot', 'getChatbot', 'setChatbot'], 'chatbotIdentifiers' => ['chatbot_identifiers', 'getChatbotIdentifiers', 'setChatbotIdentifiers'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'deployment' => ['deployment', 'getDeployment', 'setDeployment'], 'description' => ['description', 'getDescription', 'setDescription'], 'ifCase' => ['if_case', 'getIfCase', 'setIfCase'], 'instruction' => ['instruction', 'getInstruction', 'setInstruction'], 'k' => ['k', 'getK', 'setK'], 'maxTokens' => ['max_tokens', 'getMaxTokens', 'setMaxTokens'], 'model' => ['model', 'getModel', 'setModel'], 'name' => ['name', 'getName', 'setName'], 'projectId' => ['project_id', 'getProjectId', 'setProjectId'], 'provideCitations' => ['provide_citations', 'getProvideCitations', 'setProvideCitations'], 'region' => ['region', 'getRegion', 'setRegion'], 'retrievalMethod' => ['retrieval_method', 'getRetrievalMethod', 'setRetrievalMethod'], 'routeCreatedAt' => ['route_created_at', 'getRouteCreatedAt', 'setRouteCreatedAt'], 'routeCreatedBy' => ['route_created_by', 'getRouteCreatedBy', 'setRouteCreatedBy'], 'routeName' => ['route_name', 'getRouteName', 'setRouteName'], 'routeUuid' => ['route_uuid', 'getRouteUuid', 'setRouteUuid'], 'tags' => ['tags', 'getTags', 'setTags'], 'temperature' => ['temperature', 'getTemperature', 'setTemperature'], 'template' => ['template', 'getTemplate', 'setTemplate'], 'topP' => ['top_p', 'getTopP', 'setTopP'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'url' => ['url', 'getUrl', 'setUrl'], 'userId' => ['user_id', 'getUserId', 'setUserId'], 'uuid' => ['uuid', 'getUuid', 'setUuid'], 'versionHash' => ['version_hash', 'getVersionHash', 'setVersionHash']];
     }
 }

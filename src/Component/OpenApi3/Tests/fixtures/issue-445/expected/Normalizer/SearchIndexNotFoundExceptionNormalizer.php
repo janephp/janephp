@@ -143,7 +143,7 @@ class SearchIndexNotFoundExceptionNormalizer implements DenormalizerInterface, N
         if ($data->isInitialized('searchIndexId') && null !== $data->getSearchIndexId()) {
             $dataArray['searchIndexId'] = $data->getSearchIndexId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

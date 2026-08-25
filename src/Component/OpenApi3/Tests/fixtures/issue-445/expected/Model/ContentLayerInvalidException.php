@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ContentLayerInvalidException extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ContentLayerInvalidException implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -253,5 +256,9 @@ class ContentLayerInvalidException extends \ArrayObject
         $this->initialized['layerIds'] = true;
         $this->layerIds = $layerIds;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['traceLevel' => ['traceLevel', 'getTraceLevel', 'setTraceLevel'], 'traceId' => ['traceId', 'getTraceId', 'setTraceId'], 'traceJobId' => ['traceJobId', 'getTraceJobId', 'setTraceJobId'], 'httpStatusCode' => ['httpStatusCode', 'getHttpStatusCode', 'setHttpStatusCode'], 'exceptionMessage' => ['exceptionMessage', 'getExceptionMessage', 'setExceptionMessage'], 'kind' => ['kind', 'getKind', 'setKind'], 'customerId' => ['customerId', 'getCustomerId', 'setCustomerId'], 'customerAlias' => ['customerAlias', 'getCustomerAlias', 'setCustomerAlias'], 'userId' => ['userId', 'getUserId', 'setUserId'], 'contentId' => ['contentId', 'getContentId', 'setContentId'], 'layerIds' => ['layerIds', 'getLayerIds', 'setLayerIds']];
     }
 }

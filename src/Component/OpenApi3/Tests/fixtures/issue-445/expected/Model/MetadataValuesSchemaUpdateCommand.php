@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class MetadataValuesSchemaUpdateCommand extends MetadataValuesChangeCommandBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class MetadataValuesSchemaUpdateCommand extends MetadataValuesChangeCommandBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class MetadataValuesSchemaUpdateCommand extends MetadataValuesChangeCommandBase
         $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['value' => ['value', 'getValue', 'setValue']];
     }
 }

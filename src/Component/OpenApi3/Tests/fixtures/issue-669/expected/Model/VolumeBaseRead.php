@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class VolumeBaseRead extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class VolumeBaseRead implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -207,5 +210,9 @@ class VolumeBaseRead extends \ArrayObject
         $this->initialized['tags'] = true;
         $this->tags = $tags;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'dropletIds' => ['droplet_ids', 'getDropletIds', 'setDropletIds'], 'name' => ['name', 'getName', 'setName'], 'description' => ['description', 'getDescription', 'setDescription'], 'sizeGigabytes' => ['size_gigabytes', 'getSizeGigabytes', 'setSizeGigabytes'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'tags' => ['tags', 'getTags', 'setTags']];
     }
 }

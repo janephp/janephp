@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ContentSchemaCondition extends BusinessRuleCondition
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ContentSchemaCondition extends BusinessRuleCondition implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ContentSchemaCondition extends BusinessRuleCondition
         $this->initialized['schemaId'] = true;
         $this->schemaId = $schemaId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['schemaId' => ['schemaId', 'getSchemaId', 'setSchemaId']];
     }
 }

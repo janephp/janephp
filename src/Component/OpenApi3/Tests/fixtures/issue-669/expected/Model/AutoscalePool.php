@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AutoscalePool extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AutoscalePool implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -251,5 +254,9 @@ class AutoscalePool extends \ArrayObject
         $this->initialized['activeResourcesCount'] = true;
         $this->activeResourcesCount = $activeResourcesCount;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'config' => ['config', 'getConfig', 'setConfig'], 'dropletTemplate' => ['droplet_template', 'getDropletTemplate', 'setDropletTemplate'], 'currentUtilization' => ['current_utilization', 'getCurrentUtilization', 'setCurrentUtilization'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'status' => ['status', 'getStatus', 'setStatus'], 'activeResourcesCount' => ['active_resources_count', 'getActiveResourcesCount', 'setActiveResourcesCount']];
     }
 }

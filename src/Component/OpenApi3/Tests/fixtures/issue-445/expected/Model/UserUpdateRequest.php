@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class UserUpdateRequest extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class UserUpdateRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -63,7 +66,7 @@ class UserUpdateRequest extends \ArrayObject
     /**
      * User's address.
      *
-     * @var mixed|null
+     * @var UserAddress|null
      */
     protected $address;
     /**
@@ -251,20 +254,20 @@ class UserUpdateRequest extends \ArrayObject
     /**
      * User's address.
      *
-     * @return mixed
+     * @return UserAddress|null
      */
-    public function getAddress()
+    public function getAddress(): ?UserAddress
     {
         return $this->address;
     }
     /**
      * User's address.
      *
-     * @param mixed $address
+     * @param UserAddress|null $address
      *
      * @return self
      */
-    public function setAddress($address): self
+    public function setAddress(?UserAddress $address): self
     {
         $this->initialized['address'] = true;
         $this->address = $address;
@@ -291,5 +294,9 @@ class UserUpdateRequest extends \ArrayObject
         $this->initialized['identityProviderId'] = true;
         $this->identityProviderId = $identityProviderId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'firstName' => ['firstName', 'getFirstName', 'setFirstName'], 'lastName' => ['lastName', 'getLastName', 'setLastName'], 'emailAddress' => ['emailAddress', 'getEmailAddress', 'setEmailAddress'], 'isDeleted' => ['isDeleted', 'getIsDeleted', 'setIsDeleted'], 'userRoles' => ['userRoles', 'getUserRoles', 'setUserRoles'], 'comment' => ['comment', 'getComment', 'setComment'], 'languageCode' => ['languageCode', 'getLanguageCode', 'setLanguageCode'], 'address' => ['address', 'getAddress', 'setAddress'], 'identityProviderId' => ['identityProviderId', 'getIdentityProviderId', 'setIdentityProviderId']];
     }
 }

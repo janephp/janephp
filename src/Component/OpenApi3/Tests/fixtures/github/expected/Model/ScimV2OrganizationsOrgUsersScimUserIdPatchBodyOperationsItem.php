@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -21,7 +24,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItem extends \Arra
      */
     protected $path;
     /**
-     * @var mixed
+     * @var object|list<object>|string
      */
     protected $value;
     /**
@@ -61,14 +64,14 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItem extends \Arra
         return $this;
     }
     /**
-     * @return mixed
+     * @return object|list<object>|string
      */
     public function getValue()
     {
         return $this->value;
     }
     /**
-     * @param mixed $value
+     * @param object|list<object>|string $value
      *
      * @return self
      */
@@ -77,5 +80,9 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyOperationsItem extends \Arra
         $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['op' => ['op', 'getOp', 'setOp'], 'path' => ['path', 'getPath', 'setPath'], 'value' => ['value', 'getValue', 'setValue']];
     }
 }

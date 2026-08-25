@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class AssignTagboxItemsAction extends BusinessRuleAction
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class AssignTagboxItemsAction extends BusinessRuleAction implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -126,5 +129,9 @@ class AssignTagboxItemsAction extends BusinessRuleAction
         $this->initialized['replace'] = true;
         $this->replace = $replace;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['path' => ['path', 'getPath', 'setPath'], 'fieldId' => ['fieldId', 'getFieldId', 'setFieldId'], 'refIds' => ['refIds', 'getRefIds', 'setRefIds'], 'replace' => ['replace', 'getReplace', 'setReplace']];
     }
 }

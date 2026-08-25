@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoStatusesShaPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoStatusesShaPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -129,5 +132,9 @@ class ReposOwnerRepoStatusesShaPostBody extends \ArrayObject
         $this->initialized['context'] = true;
         $this->context = $context;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['state' => ['state', 'getState', 'setState'], 'targetUrl' => ['target_url', 'getTargetUrl', 'setTargetUrl'], 'description' => ['description', 'getDescription', 'setDescription'], 'context' => ['context', 'getContext', 'setContext']];
     }
 }

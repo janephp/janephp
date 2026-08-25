@@ -116,7 +116,7 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemNormalizer impl
         if ($data->isInitialized('ratios') && null !== $data->getRatios()) {
             $dataArray['ratios'] = $data->getRatios() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getRatios(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

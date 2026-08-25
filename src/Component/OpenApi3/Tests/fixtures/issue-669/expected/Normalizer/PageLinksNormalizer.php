@@ -56,7 +56,7 @@ class PageLinksNormalizer implements DenormalizerInterface, NormalizerInterface,
             $value = $data->getPages();
             $dataArray['pages'] = $value;
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

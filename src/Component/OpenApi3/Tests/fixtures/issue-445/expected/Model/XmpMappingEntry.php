@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class XmpMappingEntry extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class XmpMappingEntry implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -15,7 +18,7 @@ class XmpMappingEntry extends \ArrayObject
     /**
      * Direction of the mapping.
      *
-     * @var mixed
+     * @var string
      */
     protected $direction;
     /**
@@ -45,7 +48,7 @@ class XmpMappingEntry extends \ArrayObject
     /**
      * Optional additional configuration for the mapping.
      *
-     * @var mixed|null
+     * @var XmpMappingEntryConfigurationBase|null
      */
     protected $configuration;
     /**
@@ -55,20 +58,20 @@ class XmpMappingEntry extends \ArrayObject
     /**
      * Direction of the mapping.
      *
-     * @return mixed
+     * @return string
      */
-    public function getDirection()
+    public function getDirection(): string
     {
         return $this->direction;
     }
     /**
      * Direction of the mapping.
      *
-     * @param mixed $direction
+     * @param string $direction
      *
      * @return self
      */
-    public function setDirection($direction): self
+    public function setDirection(string $direction): self
     {
         $this->initialized['direction'] = true;
         $this->direction = $direction;
@@ -165,20 +168,20 @@ class XmpMappingEntry extends \ArrayObject
     /**
      * Optional additional configuration for the mapping.
      *
-     * @return mixed
+     * @return XmpMappingEntryConfigurationBase|null
      */
-    public function getConfiguration()
+    public function getConfiguration(): ?XmpMappingEntryConfigurationBase
     {
         return $this->configuration;
     }
     /**
      * Optional additional configuration for the mapping.
      *
-     * @param mixed $configuration
+     * @param XmpMappingEntryConfigurationBase|null $configuration
      *
      * @return self
      */
-    public function setConfiguration($configuration): self
+    public function setConfiguration(?XmpMappingEntryConfigurationBase $configuration): self
     {
         $this->initialized['configuration'] = true;
         $this->configuration = $configuration;
@@ -201,5 +204,9 @@ class XmpMappingEntry extends \ArrayObject
         $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['direction' => ['direction', 'getDirection', 'setDirection'], 'priority' => ['priority', 'getPriority', 'setPriority'], 'stopProcessing' => ['stopProcessing', 'getStopProcessing', 'setStopProcessing'], 'xmpPath' => ['xmpPath', 'getXmpPath', 'setXmpPath'], 'metadataPath' => ['metadataPath', 'getMetadataPath', 'setMetadataPath'], 'configuration' => ['configuration', 'getConfiguration', 'setConfiguration'], 'id' => ['id', 'getId', 'setId']];
     }
 }

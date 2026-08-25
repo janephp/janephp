@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class HealthCheck extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class HealthCheck implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -207,5 +210,9 @@ class HealthCheck extends \ArrayObject
         $this->initialized['healthyThreshold'] = true;
         $this->healthyThreshold = $healthyThreshold;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['protocol' => ['protocol', 'getProtocol', 'setProtocol'], 'port' => ['port', 'getPort', 'setPort'], 'path' => ['path', 'getPath', 'setPath'], 'checkIntervalSeconds' => ['check_interval_seconds', 'getCheckIntervalSeconds', 'setCheckIntervalSeconds'], 'responseTimeoutSeconds' => ['response_timeout_seconds', 'getResponseTimeoutSeconds', 'setResponseTimeoutSeconds'], 'unhealthyThreshold' => ['unhealthy_threshold', 'getUnhealthyThreshold', 'setUnhealthyThreshold'], 'healthyThreshold' => ['healthy_threshold', 'getHealthyThreshold', 'setHealthyThreshold']];
     }
 }

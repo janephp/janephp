@@ -21,7 +21,7 @@ class BusinessRule
     /**
      * Trigger point.
      *
-     * @var mixed|null
+     * @var BusinessRuleTriggerPoint|null
      */
     protected $triggerPoint;
     /**
@@ -33,13 +33,13 @@ class BusinessRule
     /**
      * Language specific rule names.
      *
-     * @var mixed|null
+     * @var array<string, string>|null
      */
     protected $names;
     /**
      * Language specific rule description.
      *
-     * @var mixed|null
+     * @var array<string, string>|null
      */
     protected $description;
     /**
@@ -74,18 +74,18 @@ class BusinessRule
     /**
      * Trigger point.
      *
-     * @return mixed
+     * @return BusinessRuleTriggerPoint|null
      */
-    public function getTriggerPoint()
+    public function getTriggerPoint(): ?BusinessRuleTriggerPoint
     {
         return $this->triggerPoint;
     }
     /**
      * Trigger point.
      *
-     * @param mixed $triggerPoint
+     * @param BusinessRuleTriggerPoint|null $triggerPoint
      */
-    public function setTriggerPoint($triggerPoint)
+    public function setTriggerPoint(?BusinessRuleTriggerPoint $triggerPoint)
     {
         $this->initialized['triggerPoint'] = true;
         $this->triggerPoint = $triggerPoint;
@@ -112,18 +112,18 @@ class BusinessRule
     /**
      * Language specific rule names.
      *
-     * @return mixed
+     * @return array<string, string>|null
      */
-    public function getNames()
+    public function getNames(): ?iterable
     {
         return $this->names;
     }
     /**
      * Language specific rule names.
      *
-     * @param mixed $names
+     * @param array<string, string>|null $names
      */
-    public function setNames($names)
+    public function setNames(?iterable $names)
     {
         $this->initialized['names'] = true;
         $this->names = $names;
@@ -131,18 +131,18 @@ class BusinessRule
     /**
      * Language specific rule description.
      *
-     * @return mixed
+     * @return array<string, string>|null
      */
-    public function getDescription()
+    public function getDescription(): ?iterable
     {
         return $this->description;
     }
     /**
      * Language specific rule description.
      *
-     * @param mixed $description
+     * @param array<string, string>|null $description
      */
-    public function setDescription($description)
+    public function setDescription(?iterable $description)
     {
         $this->initialized['description'] = true;
         $this->description = $description;

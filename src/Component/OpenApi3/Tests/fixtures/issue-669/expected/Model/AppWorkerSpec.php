@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppWorkerSpec extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppWorkerSpec implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -89,7 +92,7 @@ class AppWorkerSpec extends \ArrayObject
     /**
      * The instance size to use for this component. Default: `apps-s-1vcpu-0.5gb`
      *
-     * @var mixed
+     * @var string|string
      */
     protected $instanceSizeSlug;
     /**
@@ -397,7 +400,7 @@ class AppWorkerSpec extends \ArrayObject
     /**
      * The instance size to use for this component. Default: `apps-s-1vcpu-0.5gb`
      *
-     * @return mixed
+     * @return string|string
      */
     public function getInstanceSizeSlug()
     {
@@ -406,7 +409,7 @@ class AppWorkerSpec extends \ArrayObject
     /**
      * The instance size to use for this component. Default: `apps-s-1vcpu-0.5gb`
      *
-     * @param mixed $instanceSizeSlug
+     * @param string|string $instanceSizeSlug
      *
      * @return self
      */
@@ -473,5 +476,9 @@ class AppWorkerSpec extends \ArrayObject
         $this->initialized['livenessHealthCheck'] = true;
         $this->livenessHealthCheck = $livenessHealthCheck;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'git' => ['git', 'getGit', 'setGit'], 'github' => ['github', 'getGithub', 'setGithub'], 'gitlab' => ['gitlab', 'getGitlab', 'setGitlab'], 'bitbucket' => ['bitbucket', 'getBitbucket', 'setBitbucket'], 'image' => ['image', 'getImage', 'setImage'], 'dockerfilePath' => ['dockerfile_path', 'getDockerfilePath', 'setDockerfilePath'], 'buildCommand' => ['build_command', 'getBuildCommand', 'setBuildCommand'], 'runCommand' => ['run_command', 'getRunCommand', 'setRunCommand'], 'sourceDir' => ['source_dir', 'getSourceDir', 'setSourceDir'], 'envs' => ['envs', 'getEnvs', 'setEnvs'], 'environmentSlug' => ['environment_slug', 'getEnvironmentSlug', 'setEnvironmentSlug'], 'logDestinations' => ['log_destinations', 'getLogDestinations', 'setLogDestinations'], 'instanceCount' => ['instance_count', 'getInstanceCount', 'setInstanceCount'], 'instanceSizeSlug' => ['instance_size_slug', 'getInstanceSizeSlug', 'setInstanceSizeSlug'], 'autoscaling' => ['autoscaling', 'getAutoscaling', 'setAutoscaling'], 'termination' => ['termination', 'getTermination', 'setTermination'], 'livenessHealthCheck' => ['liveness_health_check', 'getLivenessHealthCheck', 'setLivenessHealthCheck']];
     }
 }

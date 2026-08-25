@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class StatusMessages extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class StatusMessages implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class StatusMessages extends \ArrayObject
         $this->initialized['timestamp'] = true;
         $this->timestamp = $timestamp;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['message' => ['message', 'getMessage', 'setMessage'], 'timestamp' => ['timestamp', 'getTimestamp', 'setTimestamp']];
     }
 }

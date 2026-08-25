@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseOpensearchIndexes extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseOpensearchIndexes implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseOpensearchIndexes extends \ArrayObject
         $this->initialized['indexes'] = true;
         $this->indexes = $indexes;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['indexes' => ['indexes', 'getIndexes', 'setIndexes']];
     }
 }

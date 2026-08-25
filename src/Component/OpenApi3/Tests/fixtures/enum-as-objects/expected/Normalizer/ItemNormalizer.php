@@ -60,7 +60,7 @@ class ItemNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         $dataArray = [];
         $dataArray['status'] = $data->getStatus()->value;
         $dataArray['priority'] = $data->getPriority()->value;
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

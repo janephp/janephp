@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiAgentGuardrail extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiAgentGuardrail implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -297,5 +300,9 @@ class ApiAgentGuardrail extends \ArrayObject
         $this->initialized['uuid'] = true;
         $this->uuid = $uuid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['agentUuid' => ['agent_uuid', 'getAgentUuid', 'setAgentUuid'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'defaultResponse' => ['default_response', 'getDefaultResponse', 'setDefaultResponse'], 'description' => ['description', 'getDescription', 'setDescription'], 'guardrailUuid' => ['guardrail_uuid', 'getGuardrailUuid', 'setGuardrailUuid'], 'isAttached' => ['is_attached', 'getIsAttached', 'setIsAttached'], 'isDefault' => ['is_default', 'getIsDefault', 'setIsDefault'], 'metadata' => ['metadata', 'getMetadata', 'setMetadata'], 'name' => ['name', 'getName', 'setName'], 'priority' => ['priority', 'getPriority', 'setPriority'], 'type' => ['type', 'getType', 'setType'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'uuid' => ['uuid', 'getUuid', 'setUuid']];
     }
 }

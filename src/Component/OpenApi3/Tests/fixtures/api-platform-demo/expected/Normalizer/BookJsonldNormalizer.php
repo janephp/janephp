@@ -38,7 +38,13 @@ class BookJsonldNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('@context', $data)) {
-            $object->setContext($data['@context']);
+            $value = $data['@context'];
+            if (is_string($data['@context'])) {
+                $value = $data['@context'];
+            } elseif (is_array($data['@context'])) {
+                $value = $data['@context'];
+            }
+            $object->setContext($value);
             unset($data['@context']);
         }
         if (\array_key_exists('@id', $data)) {
@@ -87,8 +93,8 @@ class BookJsonldNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (\array_key_exists('reviews', $data)) {
             $values = [];
-            foreach ($data['reviews'] as $value) {
-                $values[] = $value;
+            foreach ($data['reviews'] as $value_1) {
+                $values[] = $value_1;
             }
             $object->setReviews($values);
             unset($data['reviews']);
@@ -113,9 +119,9 @@ class BookJsonldNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setArchivedAt(null);
             unset($data['archivedAt']);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value_2;
             }
         }
         return $object;
@@ -143,7 +149,7 @@ class BookJsonldNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('archivedAt') && null !== $data->getArchivedAt()) {
             $dataArray['archivedAt'] = $data->getArchivedAt()?->format('Y-m-d\TH:i:sP');
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

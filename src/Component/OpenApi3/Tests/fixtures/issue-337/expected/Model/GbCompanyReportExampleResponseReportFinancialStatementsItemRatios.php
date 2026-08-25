@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportFinancialStatementsItemRatios extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportFinancialStatementsItemRatios implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -319,5 +322,9 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemRatios extends 
         $this->initialized['totalDebtRatio'] = true;
         $this->totalDebtRatio = $totalDebtRatio;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['preTaxProfitMargin' => ['preTaxProfitMargin', 'getPreTaxProfitMargin', 'setPreTaxProfitMargin'], 'returnOnCapitalEmployed' => ['returnOnCapitalEmployed', 'getReturnOnCapitalEmployed', 'setReturnOnCapitalEmployed'], 'returnOnTotalAssetsEmployed' => ['returnOnTotalAssetsEmployed', 'getReturnOnTotalAssetsEmployed', 'setReturnOnTotalAssetsEmployed'], 'returnOnNetAssetsEmployed' => ['returnOnNetAssetsEmployed', 'getReturnOnNetAssetsEmployed', 'setReturnOnNetAssetsEmployed'], 'salesOrNetWorkingCapital' => ['salesOrNetWorkingCapital', 'getSalesOrNetWorkingCapital', 'setSalesOrNetWorkingCapital'], 'stockTurnoverRatio' => ['stockTurnoverRatio', 'getStockTurnoverRatio', 'setStockTurnoverRatio'], 'debtorDays' => ['debtorDays', 'getDebtorDays', 'setDebtorDays'], 'creditorDays' => ['creditorDays', 'getCreditorDays', 'setCreditorDays'], 'currentRatio' => ['currentRatio', 'getCurrentRatio', 'setCurrentRatio'], 'liquidityRatioOrAcidTest' => ['liquidityRatioOrAcidTest', 'getLiquidityRatioOrAcidTest', 'setLiquidityRatioOrAcidTest'], 'currentDebtRatio' => ['currentDebtRatio', 'getCurrentDebtRatio', 'setCurrentDebtRatio'], 'gearing' => ['gearing', 'getGearing', 'setGearing'], 'equityInPercentage' => ['equityInPercentage', 'getEquityInPercentage', 'setEquityInPercentage'], 'totalDebtRatio' => ['totalDebtRatio', 'getTotalDebtRatio', 'setTotalDebtRatio']];
     }
 }

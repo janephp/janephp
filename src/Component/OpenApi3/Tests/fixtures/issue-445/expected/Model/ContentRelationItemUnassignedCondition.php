@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ContentRelationItemUnassignedCondition extends BusinessRuleCondition
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ContentRelationItemUnassignedCondition extends BusinessRuleCondition implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ContentRelationItemUnassignedCondition extends BusinessRuleCondition
         $this->initialized['fieldPath'] = true;
         $this->fieldPath = $fieldPath;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['contentId' => ['contentId', 'getContentId', 'setContentId'], 'fieldPath' => ['fieldPath', 'getFieldPath', 'setFieldPath']];
     }
 }

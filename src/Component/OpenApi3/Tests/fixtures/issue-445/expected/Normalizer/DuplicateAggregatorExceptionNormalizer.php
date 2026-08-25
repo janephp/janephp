@@ -143,7 +143,7 @@ class DuplicateAggregatorExceptionNormalizer implements DenormalizerInterface, N
         if ($data->isInitialized('aggregatorName') && null !== $data->getAggregatorName()) {
             $dataArray['aggregatorName'] = $data->getAggregatorName();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

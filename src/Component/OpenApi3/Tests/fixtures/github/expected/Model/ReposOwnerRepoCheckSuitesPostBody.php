@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoCheckSuitesPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoCheckSuitesPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ReposOwnerRepoCheckSuitesPostBody extends \ArrayObject
         $this->initialized['headSha'] = true;
         $this->headSha = $headSha;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['headSha' => ['head_sha', 'getHeadSha', 'setHeadSha']];
     }
 }

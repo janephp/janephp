@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class UserRoleCreateRequest extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class UserRoleCreateRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -15,7 +18,7 @@ class UserRoleCreateRequest extends \ArrayObject
     /**
      * Language specific user role names.
      *
-     * @var mixed
+     * @var array<string, string>
      */
     protected $names;
     /**
@@ -35,20 +38,20 @@ class UserRoleCreateRequest extends \ArrayObject
     /**
      * Language specific user role names.
      *
-     * @return mixed
+     * @return array<string, string>
      */
-    public function getNames()
+    public function getNames(): iterable
     {
         return $this->names;
     }
     /**
      * Language specific user role names.
      *
-     * @param mixed $names
+     * @param array<string, string> $names
      *
      * @return self
      */
-    public function setNames($names): self
+    public function setNames(iterable $names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;
@@ -101,5 +104,9 @@ class UserRoleCreateRequest extends \ArrayObject
         $this->initialized['requestId'] = true;
         $this->requestId = $requestId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['names' => ['names', 'getNames', 'setNames'], 'userRights' => ['userRights', 'getUserRights', 'setUserRights'], 'requestId' => ['requestId', 'getRequestId', 'setRequestId']];
     }
 }

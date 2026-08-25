@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class HideReplyResponseData extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class HideReplyResponseData implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class HideReplyResponseData extends \ArrayObject
         $this->initialized['hidden'] = true;
         $this->hidden = $hidden;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['hidden' => ['hidden', 'getHidden', 'setHidden']];
     }
 }

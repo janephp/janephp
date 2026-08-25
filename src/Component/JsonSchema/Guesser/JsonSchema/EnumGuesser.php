@@ -74,7 +74,8 @@ class EnumGuesser implements GuesserInterface, ClassGuesserInterface, TypeGuesse
                 $object,
                 $backingType,
                 $classGuess->getName(),
-                $schema->getNamespace()
+                $schema->getNamespace(),
+                $classGuess->getSubNamespace()
             );
         }
 

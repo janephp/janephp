@@ -52,7 +52,7 @@ class ResponseDatabaseClusterNormalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         $dataArray['database'] = $data->getDatabase() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDatabase(), 'json', $context));
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

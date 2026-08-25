@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class AppInstallationsInstallationIdAccessTokensPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class AppInstallationsInstallationIdAccessTokensPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -89,5 +92,9 @@ class AppInstallationsInstallationIdAccessTokensPostBody extends \ArrayObject
         $this->initialized['permissions'] = true;
         $this->permissions = $permissions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['repositories' => ['repositories', 'getRepositories', 'setRepositories'], 'repositoryIds' => ['repository_ids', 'getRepositoryIds', 'setRepositoryIds'], 'permissions' => ['permissions', 'getPermissions', 'setPermissions']];
     }
 }

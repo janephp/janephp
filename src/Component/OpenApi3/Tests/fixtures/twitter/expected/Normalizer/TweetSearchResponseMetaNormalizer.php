@@ -75,7 +75,7 @@ class TweetSearchResponseMetaNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('resultCount') && null !== $data->getResultCount()) {
             $dataArray['result_count'] = $data->getResultCount();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

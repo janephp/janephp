@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class GeoDistanceFilter extends FilterBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class GeoDistanceFilter extends FilterBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -22,7 +25,7 @@ class GeoDistanceFilter extends FilterBase
     /**
      * The point of origin to calculate the distance from (latitude/longitude).
      *
-     * @var mixed
+     * @var GeoLocation
      */
     protected $location;
     /**
@@ -58,20 +61,20 @@ class GeoDistanceFilter extends FilterBase
     /**
      * The point of origin to calculate the distance from (latitude/longitude).
      *
-     * @return mixed
+     * @return GeoLocation
      */
-    public function getLocation()
+    public function getLocation(): GeoLocation
     {
         return $this->location;
     }
     /**
      * The point of origin to calculate the distance from (latitude/longitude).
      *
-     * @param mixed $location
+     * @param GeoLocation $location
      *
      * @return self
      */
-    public function setLocation($location): self
+    public function setLocation(GeoLocation $location): self
     {
         $this->initialized['location'] = true;
         $this->location = $location;
@@ -98,5 +101,9 @@ class GeoDistanceFilter extends FilterBase
         $this->initialized['distance'] = true;
         $this->distance = $distance;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['field' => ['field', 'getField', 'setField'], 'location' => ['location', 'getLocation', 'setLocation'], 'distance' => ['distance', 'getDistance', 'setDistance']];
     }
 }

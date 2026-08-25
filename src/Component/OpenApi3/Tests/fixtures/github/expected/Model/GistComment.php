@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class GistComment extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class GistComment implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -193,5 +196,9 @@ class GistComment extends \ArrayObject
         $this->initialized['authorAssociation'] = true;
         $this->authorAssociation = $authorAssociation;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'url' => ['url', 'getUrl', 'setUrl'], 'body' => ['body', 'getBody', 'setBody'], 'user' => ['user', 'getUser', 'setUser'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'authorAssociation' => ['author_association', 'getAuthorAssociation', 'setAuthorAssociation']];
     }
 }

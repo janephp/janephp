@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsCreateAppRequest extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsCreateAppRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -73,5 +76,9 @@ class AppsCreateAppRequest extends \ArrayObject
         $this->initialized['projectId'] = true;
         $this->projectId = $projectId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['spec' => ['spec', 'getSpec', 'setSpec'], 'projectId' => ['project_id', 'getProjectId', 'setProjectId']];
     }
 }

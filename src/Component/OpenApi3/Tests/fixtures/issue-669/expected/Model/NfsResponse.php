@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class NfsResponse extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class NfsResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -263,5 +266,9 @@ class NfsResponse extends \ArrayObject
         $this->initialized['host'] = true;
         $this->host = $host;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'sizeGib' => ['size_gib', 'getSizeGib', 'setSizeGib'], 'region' => ['region', 'getRegion', 'setRegion'], 'status' => ['status', 'getStatus', 'setStatus'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'vpcIds' => ['vpc_ids', 'getVpcIds', 'setVpcIds'], 'mountPath' => ['mount_path', 'getMountPath', 'setMountPath'], 'host' => ['host', 'getHost', 'setHost']];
     }
 }

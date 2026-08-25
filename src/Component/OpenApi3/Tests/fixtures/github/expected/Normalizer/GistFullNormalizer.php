@@ -243,7 +243,7 @@ class GistFullNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if ($data->isInitialized('forkOf') && null !== $data->getForkOf()) {
             $dataArray['fork_of'] = $data->getForkOf() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getForkOf(), 'json', $context));
         }
-        foreach ($data as $key_1 => $value_3) {
+        foreach ($data->additionalPropertyEntries() as $key_1 => $value_3) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_3;
             }

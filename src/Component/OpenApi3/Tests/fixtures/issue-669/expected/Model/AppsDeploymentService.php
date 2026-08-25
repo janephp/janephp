@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsDeploymentService extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsDeploymentService implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class AppsDeploymentService extends \ArrayObject
         $this->initialized['sourceCommitHash'] = true;
         $this->sourceCommitHash = $sourceCommitHash;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'sourceCommitHash' => ['source_commit_hash', 'getSourceCommitHash', 'setSourceCommitHash']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class AuthorizationsClientsClientIdPutBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class AuthorizationsClientsClientIdPutBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class AuthorizationsClientsClientIdPutBody extends \ArrayObject
         $this->initialized['fingerprint'] = true;
         $this->fingerprint = $fingerprint;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['clientSecret' => ['client_secret', 'getClientSecret', 'setClientSecret'], 'scopes' => ['scopes', 'getScopes', 'setScopes'], 'note' => ['note', 'getNote', 'setNote'], 'noteUrl' => ['note_url', 'getNoteUrl', 'setNoteUrl'], 'fingerprint' => ['fingerprint', 'getFingerprint', 'setFingerprint']];
     }
 }

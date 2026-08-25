@@ -81,7 +81,7 @@ class FullTextEntitiesAnnotationsItemNormalizer implements DenormalizerInterface
         if ($data->isInitialized('normalizedText') && null !== $data->getNormalizedText()) {
             $dataArray['normalized_text'] = $data->getNormalizedText();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

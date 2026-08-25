@@ -100,7 +100,7 @@ class BillingDataPointNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('groupDescription') && null !== $data->getGroupDescription()) {
             $dataArray['group_description'] = $data->getGroupDescription();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

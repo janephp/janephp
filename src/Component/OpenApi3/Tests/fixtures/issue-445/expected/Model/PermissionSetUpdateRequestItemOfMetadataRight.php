@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class PermissionSetUpdateRequestItemOfMetadataRight extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class PermissionSetUpdateRequestItemOfMetadataRight implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -15,7 +18,7 @@ class PermissionSetUpdateRequestItemOfMetadataRight extends \ArrayObject
     /**
      * Language specific permission set names.
      *
-     * @var mixed
+     * @var array<string, string>
      */
     protected $names;
     /**
@@ -39,20 +42,20 @@ class PermissionSetUpdateRequestItemOfMetadataRight extends \ArrayObject
     /**
      * Language specific permission set names.
      *
-     * @return mixed
+     * @return array<string, string>
      */
-    public function getNames()
+    public function getNames(): iterable
     {
         return $this->names;
     }
     /**
      * Language specific permission set names.
      *
-     * @param mixed $names
+     * @param array<string, string> $names
      *
      * @return self
      */
-    public function setNames($names): self
+    public function setNames(iterable $names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;
@@ -123,5 +126,9 @@ class PermissionSetUpdateRequestItemOfMetadataRight extends \ArrayObject
         $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['names' => ['names', 'getNames', 'setNames'], 'userRolesRights' => ['userRolesRights', 'getUserRolesRights', 'setUserRolesRights'], 'userRolesPermissionSetRights' => ['userRolesPermissionSetRights', 'getUserRolesPermissionSetRights', 'setUserRolesPermissionSetRights'], 'id' => ['id', 'getId', 'setId']];
     }
 }

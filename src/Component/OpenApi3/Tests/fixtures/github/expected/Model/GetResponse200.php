@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class GetResponse200 extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class GetResponse200 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -737,5 +740,9 @@ class GetResponse200 extends \ArrayObject
         $this->initialized['userSearchUrl'] = true;
         $this->userSearchUrl = $userSearchUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['currentUserUrl' => ['current_user_url', 'getCurrentUserUrl', 'setCurrentUserUrl'], 'currentUserAuthorizationsHtmlUrl' => ['current_user_authorizations_html_url', 'getCurrentUserAuthorizationsHtmlUrl', 'setCurrentUserAuthorizationsHtmlUrl'], 'authorizationsUrl' => ['authorizations_url', 'getAuthorizationsUrl', 'setAuthorizationsUrl'], 'codeSearchUrl' => ['code_search_url', 'getCodeSearchUrl', 'setCodeSearchUrl'], 'commitSearchUrl' => ['commit_search_url', 'getCommitSearchUrl', 'setCommitSearchUrl'], 'emailsUrl' => ['emails_url', 'getEmailsUrl', 'setEmailsUrl'], 'emojisUrl' => ['emojis_url', 'getEmojisUrl', 'setEmojisUrl'], 'eventsUrl' => ['events_url', 'getEventsUrl', 'setEventsUrl'], 'feedsUrl' => ['feeds_url', 'getFeedsUrl', 'setFeedsUrl'], 'followersUrl' => ['followers_url', 'getFollowersUrl', 'setFollowersUrl'], 'followingUrl' => ['following_url', 'getFollowingUrl', 'setFollowingUrl'], 'gistsUrl' => ['gists_url', 'getGistsUrl', 'setGistsUrl'], 'hubUrl' => ['hub_url', 'getHubUrl', 'setHubUrl'], 'issueSearchUrl' => ['issue_search_url', 'getIssueSearchUrl', 'setIssueSearchUrl'], 'issuesUrl' => ['issues_url', 'getIssuesUrl', 'setIssuesUrl'], 'keysUrl' => ['keys_url', 'getKeysUrl', 'setKeysUrl'], 'labelSearchUrl' => ['label_search_url', 'getLabelSearchUrl', 'setLabelSearchUrl'], 'notificationsUrl' => ['notifications_url', 'getNotificationsUrl', 'setNotificationsUrl'], 'organizationUrl' => ['organization_url', 'getOrganizationUrl', 'setOrganizationUrl'], 'organizationRepositoriesUrl' => ['organization_repositories_url', 'getOrganizationRepositoriesUrl', 'setOrganizationRepositoriesUrl'], 'organizationTeamsUrl' => ['organization_teams_url', 'getOrganizationTeamsUrl', 'setOrganizationTeamsUrl'], 'publicGistsUrl' => ['public_gists_url', 'getPublicGistsUrl', 'setPublicGistsUrl'], 'rateLimitUrl' => ['rate_limit_url', 'getRateLimitUrl', 'setRateLimitUrl'], 'repositoryUrl' => ['repository_url', 'getRepositoryUrl', 'setRepositoryUrl'], 'repositorySearchUrl' => ['repository_search_url', 'getRepositorySearchUrl', 'setRepositorySearchUrl'], 'currentUserRepositoriesUrl' => ['current_user_repositories_url', 'getCurrentUserRepositoriesUrl', 'setCurrentUserRepositoriesUrl'], 'starredUrl' => ['starred_url', 'getStarredUrl', 'setStarredUrl'], 'starredGistsUrl' => ['starred_gists_url', 'getStarredGistsUrl', 'setStarredGistsUrl'], 'topicSearchUrl' => ['topic_search_url', 'getTopicSearchUrl', 'setTopicSearchUrl'], 'userUrl' => ['user_url', 'getUserUrl', 'setUserUrl'], 'userOrganizationsUrl' => ['user_organizations_url', 'getUserOrganizationsUrl', 'setUserOrganizationsUrl'], 'userRepositoriesUrl' => ['user_repositories_url', 'getUserRepositoriesUrl', 'setUserRepositoriesUrl'], 'userSearchUrl' => ['user_search_url', 'getUserSearchUrl', 'setUserSearchUrl']];
     }
 }

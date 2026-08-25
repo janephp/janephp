@@ -2,8 +2,11 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class ReviewJsonhalReviewWrite extends \ArrayObject
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
+class ReviewJsonhalReviewWrite implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -207,5 +210,9 @@ class ReviewJsonhalReviewWrite extends \ArrayObject
         $this->initialized['publicationDate'] = true;
         $this->publicationDate = $publicationDate;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['links' => ['_links', 'getLinks', 'setLinks'], 'body' => ['body', 'getBody', 'setBody'], 'rating' => ['rating', 'getRating', 'setRating'], 'letter' => ['letter', 'getLetter', 'setLetter'], 'book' => ['book', 'getBook', 'setBook'], 'author' => ['author', 'getAuthor', 'setAuthor'], 'publicationDate' => ['publicationDate', 'getPublicationDate', 'setPublicationDate']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseReservedIpAction extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseReservedIpAction implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseReservedIpAction extends \ArrayObject
         $this->initialized['action'] = true;
         $this->action = $action;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['action' => ['action', 'getAction', 'setAction']];
     }
 }

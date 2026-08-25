@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DropletActionRebuild extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DropletActionRebuild implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -21,7 +24,7 @@ class DropletActionRebuild extends \ArrayObject
     /**
      * The image ID of a public or private image or the slug identifier for a public image. The Droplet will be rebuilt using this image as its base.
      *
-     * @var mixed
+     * @var string|int
      */
     protected $image;
     /**
@@ -49,7 +52,7 @@ class DropletActionRebuild extends \ArrayObject
     /**
      * The image ID of a public or private image or the slug identifier for a public image. The Droplet will be rebuilt using this image as its base.
      *
-     * @return mixed
+     * @return string|int
      */
     public function getImage()
     {
@@ -58,7 +61,7 @@ class DropletActionRebuild extends \ArrayObject
     /**
      * The image ID of a public or private image or the slug identifier for a public image. The Droplet will be rebuilt using this image as its base.
      *
-     * @param mixed $image
+     * @param string|int $image
      *
      * @return self
      */
@@ -67,5 +70,9 @@ class DropletActionRebuild extends \ArrayObject
         $this->initialized['image'] = true;
         $this->image = $image;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'image' => ['image', 'getImage', 'setImage']];
     }
 }

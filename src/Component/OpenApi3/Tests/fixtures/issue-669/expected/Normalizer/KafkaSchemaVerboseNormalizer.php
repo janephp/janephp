@@ -75,7 +75,7 @@ class KafkaSchemaVerboseNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('schema') && null !== $data->getSchema()) {
             $dataArray['schema'] = $data->getSchema();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

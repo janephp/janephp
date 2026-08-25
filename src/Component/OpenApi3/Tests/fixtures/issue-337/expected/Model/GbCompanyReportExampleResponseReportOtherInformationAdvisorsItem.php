@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportOtherInformationAdvisorsItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportOtherInformationAdvisorsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class GbCompanyReportExampleResponseReportOtherInformationAdvisorsItem extends \
         $this->initialized['auditorName'] = true;
         $this->auditorName = $auditorName;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['auditorName' => ['auditorName', 'getAuditorName', 'setAuditorName']];
     }
 }

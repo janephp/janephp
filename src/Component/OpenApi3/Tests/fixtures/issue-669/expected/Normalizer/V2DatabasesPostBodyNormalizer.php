@@ -257,7 +257,7 @@ class V2DatabasesPostBodyNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('backupRestore') && null !== $data->getBackupRestore()) {
             $dataArray['backup_restore'] = $data->getBackupRestore() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getBackupRestore(), 'json', $context));
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

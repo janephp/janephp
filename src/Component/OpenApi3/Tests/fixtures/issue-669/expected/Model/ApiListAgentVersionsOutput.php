@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiListAgentVersionsOutput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiListAgentVersionsOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class ApiListAgentVersionsOutput extends \ArrayObject
         $this->initialized['meta'] = true;
         $this->meta = $meta;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['agentVersions' => ['agent_versions', 'getAgentVersions', 'setAgentVersions'], 'links' => ['links', 'getLinks', 'setLinks'], 'meta' => ['meta', 'getMeta', 'setMeta']];
     }
 }

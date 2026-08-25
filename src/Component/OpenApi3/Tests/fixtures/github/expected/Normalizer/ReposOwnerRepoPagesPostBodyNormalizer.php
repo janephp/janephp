@@ -57,7 +57,7 @@ class ReposOwnerRepoPagesPostBodyNormalizer implements DenormalizerInterface, No
         if ($data->isInitialized('source') && null !== $data->getSource()) {
             $dataArray['source'] = $data->getSource() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getSource(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

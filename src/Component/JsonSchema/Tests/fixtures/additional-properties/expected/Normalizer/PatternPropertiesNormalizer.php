@@ -57,7 +57,7 @@ class PatternPropertiesNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('foo') && null !== $data->getFoo()) {
             $dataArray['foo'] = $data->getFoo();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/x-.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

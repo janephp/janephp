@@ -143,7 +143,7 @@ class SearchIndexInUseExceptionNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('searchIndex') && null !== $data->getSearchIndex()) {
             $dataArray['searchIndex'] = $data->getSearchIndex();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

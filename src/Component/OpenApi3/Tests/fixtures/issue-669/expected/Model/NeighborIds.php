@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class NeighborIds extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class NeighborIds implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class NeighborIds extends \ArrayObject
         $this->initialized['neighborIds'] = true;
         $this->neighborIds = $neighborIds;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['neighborIds' => ['neighbor_ids', 'getNeighborIds', 'setNeighborIds']];
     }
 }

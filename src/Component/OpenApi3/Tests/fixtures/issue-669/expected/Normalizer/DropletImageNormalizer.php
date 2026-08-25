@@ -184,7 +184,7 @@ class DropletImageNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($data->isInitialized('errorMessage') && null !== $data->getErrorMessage()) {
             $dataArray['error_message'] = $data->getErrorMessage();
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

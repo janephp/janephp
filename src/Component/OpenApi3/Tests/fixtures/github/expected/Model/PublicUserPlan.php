@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class PublicUserPlan extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class PublicUserPlan implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class PublicUserPlan extends \ArrayObject
         $this->initialized['privateRepos'] = true;
         $this->privateRepos = $privateRepos;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['collaborators' => ['collaborators', 'getCollaborators', 'setCollaborators'], 'name' => ['name', 'getName', 'setName'], 'space' => ['space', 'getSpace', 'setSpace'], 'privateRepos' => ['private_repos', 'getPrivateRepos', 'setPrivateRepos']];
     }
 }

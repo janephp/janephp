@@ -375,7 +375,7 @@ class OrganizationFullNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['members_can_create_internal_repositories'] = $data->getMembersCanCreateInternalRepositories();
         }
         $dataArray['updated_at'] = $data->getUpdatedAt()->format('Y-m-d\TH:i:sP');
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

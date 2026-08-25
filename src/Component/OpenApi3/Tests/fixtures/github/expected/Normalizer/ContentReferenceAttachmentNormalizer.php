@@ -72,7 +72,7 @@ class ContentReferenceAttachmentNormalizer implements DenormalizerInterface, Nor
         if ($data->isInitialized('nodeId') && null !== $data->getNodeId()) {
             $dataArray['node_id'] = $data->getNodeId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

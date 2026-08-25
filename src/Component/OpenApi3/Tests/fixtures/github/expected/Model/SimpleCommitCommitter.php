@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class SimpleCommitCommitter extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class SimpleCommitCommitter implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class SimpleCommitCommitter extends \ArrayObject
         $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'email' => ['email', 'getEmail', 'setEmail']];
     }
 }

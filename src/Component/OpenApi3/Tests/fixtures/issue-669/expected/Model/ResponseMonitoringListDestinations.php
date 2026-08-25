@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseMonitoringListDestinations extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseMonitoringListDestinations implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseMonitoringListDestinations extends \ArrayObject
         $this->initialized['destinations'] = true;
         $this->destinations = $destinations;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['destinations' => ['destinations', 'getDestinations', 'setDestinations']];
     }
 }

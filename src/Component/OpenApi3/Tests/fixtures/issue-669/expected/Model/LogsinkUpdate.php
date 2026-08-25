@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class LogsinkUpdate extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class LogsinkUpdate implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class LogsinkUpdate extends \ArrayObject
         $this->initialized['config'] = true;
         $this->config = $config;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['config' => ['config', 'getConfig', 'setConfig']];
     }
 }

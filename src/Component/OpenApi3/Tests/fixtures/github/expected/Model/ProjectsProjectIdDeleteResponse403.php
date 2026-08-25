@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ProjectsProjectIdDeleteResponse403 extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ProjectsProjectIdDeleteResponse403 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class ProjectsProjectIdDeleteResponse403 extends \ArrayObject
         $this->initialized['errors'] = true;
         $this->errors = $errors;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['message' => ['message', 'getMessage', 'setMessage'], 'documentationUrl' => ['documentation_url', 'getDocumentationUrl', 'setDocumentationUrl'], 'errors' => ['errors', 'getErrors', 'setErrors']];
     }
 }

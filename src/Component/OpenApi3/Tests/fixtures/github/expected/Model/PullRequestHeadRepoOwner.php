@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class PullRequestHeadRepoOwner extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class PullRequestHeadRepoOwner implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -407,5 +410,9 @@ class PullRequestHeadRepoOwner extends \ArrayObject
         $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['avatarUrl' => ['avatar_url', 'getAvatarUrl', 'setAvatarUrl'], 'eventsUrl' => ['events_url', 'getEventsUrl', 'setEventsUrl'], 'followersUrl' => ['followers_url', 'getFollowersUrl', 'setFollowersUrl'], 'followingUrl' => ['following_url', 'getFollowingUrl', 'setFollowingUrl'], 'gistsUrl' => ['gists_url', 'getGistsUrl', 'setGistsUrl'], 'gravatarId' => ['gravatar_id', 'getGravatarId', 'setGravatarId'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'login' => ['login', 'getLogin', 'setLogin'], 'organizationsUrl' => ['organizations_url', 'getOrganizationsUrl', 'setOrganizationsUrl'], 'receivedEventsUrl' => ['received_events_url', 'getReceivedEventsUrl', 'setReceivedEventsUrl'], 'reposUrl' => ['repos_url', 'getReposUrl', 'setReposUrl'], 'siteAdmin' => ['site_admin', 'getSiteAdmin', 'setSiteAdmin'], 'starredUrl' => ['starred_url', 'getStarredUrl', 'setStarredUrl'], 'subscriptionsUrl' => ['subscriptions_url', 'getSubscriptionsUrl', 'setSubscriptionsUrl'], 'type' => ['type', 'getType', 'setType'], 'url' => ['url', 'getUrl', 'setUrl']];
     }
 }

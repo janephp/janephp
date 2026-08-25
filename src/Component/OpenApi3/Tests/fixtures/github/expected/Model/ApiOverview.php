@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ApiOverview extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ApiOverview implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -231,5 +234,9 @@ class ApiOverview extends \ArrayObject
         $this->initialized['installedVersion'] = true;
         $this->installedVersion = $installedVersion;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['verifiablePasswordAuthentication' => ['verifiable_password_authentication', 'getVerifiablePasswordAuthentication', 'setVerifiablePasswordAuthentication'], 'sshKeyFingerprints' => ['ssh_key_fingerprints', 'getSshKeyFingerprints', 'setSshKeyFingerprints'], 'hooks' => ['hooks', 'getHooks', 'setHooks'], 'web' => ['web', 'getWeb', 'setWeb'], 'api' => ['api', 'getApi', 'setApi'], 'git' => ['git', 'getGit', 'setGit'], 'pages' => ['pages', 'getPages', 'setPages'], 'importer' => ['importer', 'getImporter', 'setImporter'], 'githubServicesSha' => ['github_services_sha', 'getGithubServicesSha', 'setGithubServicesSha'], 'installedVersion' => ['installed_version', 'getInstalledVersion', 'setInstalledVersion']];
     }
 }

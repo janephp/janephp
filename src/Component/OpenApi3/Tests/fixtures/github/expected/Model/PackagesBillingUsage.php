@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class PackagesBillingUsage extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class PackagesBillingUsage implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class PackagesBillingUsage extends \ArrayObject
         $this->initialized['includedGigabytesBandwidth'] = true;
         $this->includedGigabytesBandwidth = $includedGigabytesBandwidth;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['totalGigabytesBandwidthUsed' => ['total_gigabytes_bandwidth_used', 'getTotalGigabytesBandwidthUsed', 'setTotalGigabytesBandwidthUsed'], 'totalPaidGigabytesBandwidthUsed' => ['total_paid_gigabytes_bandwidth_used', 'getTotalPaidGigabytesBandwidthUsed', 'setTotalPaidGigabytesBandwidthUsed'], 'includedGigabytesBandwidth' => ['included_gigabytes_bandwidth', 'getIncludedGigabytesBandwidth', 'setIncludedGigabytesBandwidth']];
     }
 }

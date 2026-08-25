@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class InvalidRequestProblem extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class InvalidRequestProblem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class InvalidRequestProblem extends \ArrayObject
         $this->initialized['detail'] = true;
         $this->detail = $detail;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'errors' => ['errors', 'getErrors', 'setErrors'], 'title' => ['title', 'getTitle', 'setTitle'], 'detail' => ['detail', 'getDetail', 'setDetail']];
     }
 }

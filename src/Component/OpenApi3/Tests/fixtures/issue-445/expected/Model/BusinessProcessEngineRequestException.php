@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessEngineRequestException extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class BusinessProcessEngineRequestException implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -253,5 +256,9 @@ class BusinessProcessEngineRequestException extends \ArrayObject
         $this->initialized['engineError'] = true;
         $this->engineError = $engineError;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['traceLevel' => ['traceLevel', 'getTraceLevel', 'setTraceLevel'], 'traceId' => ['traceId', 'getTraceId', 'setTraceId'], 'traceJobId' => ['traceJobId', 'getTraceJobId', 'setTraceJobId'], 'httpStatusCode' => ['httpStatusCode', 'getHttpStatusCode', 'setHttpStatusCode'], 'exceptionMessage' => ['exceptionMessage', 'getExceptionMessage', 'setExceptionMessage'], 'kind' => ['kind', 'getKind', 'setKind'], 'customerId' => ['customerId', 'getCustomerId', 'setCustomerId'], 'customerAlias' => ['customerAlias', 'getCustomerAlias', 'setCustomerAlias'], 'userId' => ['userId', 'getUserId', 'setUserId'], 'businessProcessId' => ['businessProcessId', 'getBusinessProcessId', 'setBusinessProcessId'], 'engineError' => ['engineError', 'getEngineError', 'setEngineError']];
     }
 }

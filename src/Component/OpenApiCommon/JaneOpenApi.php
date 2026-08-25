@@ -13,6 +13,7 @@ use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApiCommon\Contracts\WhitelistFetchInterface;
 use Jane\Component\OpenApiCommon\Guesser\Guess\ClassGuess;
 use Jane\Component\OpenApiCommon\Guesser\Guess\ParentClass;
+use Jane\Component\OpenApiCommon\Naming\OperationNamingFactory;
 use Jane\Component\OpenApiCommon\Registry\Registry as OpenApiRegistry;
 use Jane\Component\OpenApiCommon\Registry\Schema;
 use Jane\Component\OpenApiCommon\SchemaParser\SchemaParser;
@@ -34,6 +35,9 @@ abstract class JaneOpenApi extends ChainGenerator
 
     protected SchemaParser $schemaParser;
     protected Naming $naming;
+
+    /** @var array<string, mixed> */
+    protected array $options = [];
 
     protected NormalizerInterface|DenormalizerInterface $serializer;
 
@@ -139,8 +143,9 @@ abstract class JaneOpenApi extends ChainGenerator
     protected function whitelistFetch(Schema $schema, Registry $registry): void
     {
         $whitelistFetchClass = static::WHITELIST_FETCH_CLASS;
+        $naming = OperationNamingFactory::create($this->options['operation-namings'] ?? []);
         /** @var WhitelistFetchInterface $whitelistedSchema */
-        $whitelistedSchema = new $whitelistFetchClass($schema, static::buildSerializer());
+        $whitelistedSchema = new $whitelistFetchClass($schema, static::buildSerializer(), $naming);
 
         foreach ($schema->getOperations() as $operation) {
             $whitelistedSchema->addOperationRelations($operation, $registry);
@@ -153,6 +158,8 @@ abstract class JaneOpenApi extends ChainGenerator
     {
         foreach ($schema->getClasses() as $class) {
             if ($class instanceof ParentClass) { // is parent class
+                $class->setModelNamespace($this->naming->getModelNamespace($schema->getNamespace(), $class->getSubNamespace()));
+
                 foreach ($class->getChildReferences() as $reference) {
                     $guess = $registry->getClass($reference);
                     if ($guess instanceof ClassGuess) { // is child class
@@ -200,6 +207,7 @@ abstract class JaneOpenApi extends ChainGenerator
         }
 
         $instance = static::create($options);
+        $instance->options = $options;
 
         /** @var DenormalizerInterface $denormalizer */
         $denormalizer = $instance->getSerializer();

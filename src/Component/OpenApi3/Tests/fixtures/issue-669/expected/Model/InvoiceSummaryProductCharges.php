@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class InvoiceSummaryProductCharges extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class InvoiceSummaryProductCharges implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class InvoiceSummaryProductCharges extends \ArrayObject
         $this->initialized['items'] = true;
         $this->items = $items;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'amount' => ['amount', 'getAmount', 'setAmount'], 'items' => ['items', 'getItems', 'setItems']];
     }
 }

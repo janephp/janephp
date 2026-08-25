@@ -72,7 +72,7 @@ class SharePageViewEventNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('shareToken') && null !== $data->getShareToken()) {
             $dataArray['shareToken'] = $data->getShareToken();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

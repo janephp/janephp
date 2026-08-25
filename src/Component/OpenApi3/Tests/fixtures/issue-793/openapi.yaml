@@ -1,0 +1,35 @@
+openapi: 3.0.3
+info:
+  title: 'API CLIENT'
+  version: 1.0.0
+paths:
+  /file:
+    post:
+      summary: 'Upload file'
+      operationId: uploadFile
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                description:
+                  type: string
+                fileNullable:
+                  type: string
+                  format: binary
+                  nullable: true
+      responses:
+        200:
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                properties:
+                  status_code:
+                    type: integer
+                    format: int32
+                    example: 200

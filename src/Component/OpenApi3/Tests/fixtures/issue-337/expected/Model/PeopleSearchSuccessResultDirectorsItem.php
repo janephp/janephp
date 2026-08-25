@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class PeopleSearchSuccessResultDirectorsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -231,5 +234,9 @@ class PeopleSearchSuccessResultDirectorsItem extends \ArrayObject
         $this->initialized['localDirectorNumber'] = true;
         $this->localDirectorNumber = $localDirectorNumber;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['peopleId' => ['peopleId', 'getPeopleId', 'setPeopleId'], 'firstName' => ['firstName', 'getFirstName', 'setFirstName'], 'lastName' => ['lastName', 'getLastName', 'setLastName'], 'country' => ['country', 'getCountry', 'setCountry'], 'company' => ['company', 'getCompany', 'setCompany'], 'address' => ['address', 'getAddress', 'setAddress'], 'status' => ['status', 'getStatus', 'setStatus'], 'dateOfLatestChange' => ['dateOfLatestChange', 'getDateOfLatestChange', 'setDateOfLatestChange'], 'dateOfBirth' => ['dateOfBirth', 'getDateOfBirth', 'setDateOfBirth'], 'localDirectorNumber' => ['localDirectorNumber', 'getLocalDirectorNumber', 'setLocalDirectorNumber']];
     }
 }

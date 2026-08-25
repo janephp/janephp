@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiModelProviderKeyInfo extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiModelProviderKeyInfo implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -229,5 +232,9 @@ class ApiModelProviderKeyInfo extends \ArrayObject
         $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['apiKeyUuid' => ['api_key_uuid', 'getApiKeyUuid', 'setApiKeyUuid'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'createdBy' => ['created_by', 'getCreatedBy', 'setCreatedBy'], 'deletedAt' => ['deleted_at', 'getDeletedAt', 'setDeletedAt'], 'models' => ['models', 'getModels', 'setModels'], 'name' => ['name', 'getName', 'setName'], 'provider' => ['provider', 'getProvider', 'setProvider'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt']];
     }
 }

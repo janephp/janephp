@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class IssueEventForIssue extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class IssueEventForIssue implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -479,5 +482,9 @@ class IssueEventForIssue extends \ArrayObject
         $this->initialized['bodyText'] = true;
         $this->bodyText = $bodyText;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'url' => ['url', 'getUrl', 'setUrl'], 'actor' => ['actor', 'getActor', 'setActor'], 'event' => ['event', 'getEvent', 'setEvent'], 'commitId' => ['commit_id', 'getCommitId', 'setCommitId'], 'commitUrl' => ['commit_url', 'getCommitUrl', 'setCommitUrl'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'sha' => ['sha', 'getSha', 'setSha'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'message' => ['message', 'getMessage', 'setMessage'], 'issueUrl' => ['issue_url', 'getIssueUrl', 'setIssueUrl'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'authorAssociation' => ['author_association', 'getAuthorAssociation', 'setAuthorAssociation'], 'body' => ['body', 'getBody', 'setBody'], 'lockReason' => ['lock_reason', 'getLockReason', 'setLockReason'], 'submittedAt' => ['submitted_at', 'getSubmittedAt', 'setSubmittedAt'], 'state' => ['state', 'getState', 'setState'], 'pullRequestUrl' => ['pull_request_url', 'getPullRequestUrl', 'setPullRequestUrl'], 'bodyHtml' => ['body_html', 'getBodyHtml', 'setBodyHtml'], 'bodyText' => ['body_text', 'getBodyText', 'setBodyText']];
     }
 }

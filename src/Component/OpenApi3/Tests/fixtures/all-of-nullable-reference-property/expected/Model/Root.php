@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class Root extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class Root implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class Root extends \ArrayObject
         $this->initialized['foo'] = true;
         $this->foo = $foo;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['foo' => ['foo', 'getFoo', 'setFoo']];
     }
 }

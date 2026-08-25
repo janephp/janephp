@@ -41,7 +41,15 @@ class SortFieldNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setPath($data['path']);
         }
         if (\array_key_exists('names', $data)) {
-            $object->setNames($data['names']);
+            $value = $data['names'];
+            if (is_array($data['names']) && $this->isOnlyNumericKeys($data['names'])) {
+                $values = new \PicturePark\API\Runtime\JsonObject();
+                foreach ($data['names'] as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            }
+            $object->setNames($value);
         }
         return $object;
     }
@@ -49,7 +57,15 @@ class SortFieldNormalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $dataArray = [];
         $dataArray['path'] = $data->getPath();
-        $dataArray['names'] = $data->getNames();
+        $value = $data->getNames();
+        if (is_object($data->getNames())) {
+            $values = new \PicturePark\API\Runtime\JsonObject();
+            foreach ($data->getNames() as $key => $value_1) {
+                $values[$key] = $value_1;
+            }
+            $value = $values;
+        }
+        $dataArray['names'] = $value;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

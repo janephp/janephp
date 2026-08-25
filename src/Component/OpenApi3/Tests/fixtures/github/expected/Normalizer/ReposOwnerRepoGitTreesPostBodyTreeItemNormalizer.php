@@ -89,7 +89,7 @@ class ReposOwnerRepoGitTreesPostBodyTreeItemNormalizer implements DenormalizerIn
         if ($data->isInitialized('content') && null !== $data->getContent()) {
             $dataArray['content'] = $data->getContent();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

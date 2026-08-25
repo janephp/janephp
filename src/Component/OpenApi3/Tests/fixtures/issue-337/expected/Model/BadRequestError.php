@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class BadRequestError extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class BadRequestError implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -83,5 +86,9 @@ class BadRequestError extends \ArrayObject
         $this->initialized['details'] = true;
         $this->details = $details;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['correlationId' => ['correlationId', 'getCorrelationId', 'setCorrelationId'], 'message' => ['message', 'getMessage', 'setMessage'], 'details' => ['details', 'getDetails', 'setDetails']];
     }
 }

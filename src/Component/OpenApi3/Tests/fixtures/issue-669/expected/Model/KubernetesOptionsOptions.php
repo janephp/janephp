@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class KubernetesOptionsOptions extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class KubernetesOptionsOptions implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class KubernetesOptionsOptions extends \ArrayObject
         $this->initialized['sizes'] = true;
         $this->sizes = $sizes;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['regions' => ['regions', 'getRegions', 'setRegions'], 'versions' => ['versions', 'getVersions', 'setVersions'], 'sizes' => ['sizes', 'getSizes', 'setSizes']];
     }
 }

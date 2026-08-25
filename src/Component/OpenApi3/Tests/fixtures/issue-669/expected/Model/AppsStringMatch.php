@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsStringMatch extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsStringMatch implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -101,5 +104,9 @@ class AppsStringMatch extends \ArrayObject
         $this->initialized['regex'] = true;
         $this->regex = $regex;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['exact' => ['exact', 'getExact', 'setExact'], 'prefix' => ['prefix', 'getPrefix', 'setPrefix'], 'regex' => ['regex', 'getRegex', 'setRegex']];
     }
 }

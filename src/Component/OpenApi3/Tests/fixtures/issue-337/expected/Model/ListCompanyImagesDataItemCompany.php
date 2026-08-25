@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class ListCompanyImagesDataItemCompany extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class ListCompanyImagesDataItemCompany implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class ListCompanyImagesDataItemCompany extends \ArrayObject
         $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'country' => ['country', 'getCountry', 'setCountry'], 'localId' => ['localId', 'getLocalId', 'setLocalId'], 'name' => ['name', 'getName', 'setName']];
     }
 }

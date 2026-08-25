@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class OutputDataImage extends OutputDataBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class OutputDataImage extends OutputDataBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class OutputDataImage extends OutputDataBase
         $this->initialized['height'] = true;
         $this->height = $height;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['width' => ['width', 'getWidth', 'setWidth'], 'height' => ['height', 'getHeight', 'setHeight']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ContentDetailViewEvent extends ApplicationEvent
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ContentDetailViewEvent extends ApplicationEvent implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ContentDetailViewEvent extends ApplicationEvent
         $this->initialized['contentIds'] = true;
         $this->contentIds = $contentIds;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['contentIds' => ['contentIds', 'getContentIds', 'setContentIds']];
     }
 }

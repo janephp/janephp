@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ShareDataEmbed extends ShareDataBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ShareDataEmbed extends ShareDataBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ShareDataEmbed extends ShareDataBase
         $this->initialized['token'] = true;
         $this->token = $token;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['token' => ['token', 'getToken', 'setToken']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ClusterAutoscalerConfiguration extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ClusterAutoscalerConfiguration implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -125,5 +128,9 @@ class ClusterAutoscalerConfiguration extends \ArrayObject
         $this->initialized['expanders'] = true;
         $this->expanders = $expanders;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['scaleDownUtilizationThreshold' => ['scale_down_utilization_threshold', 'getScaleDownUtilizationThreshold', 'setScaleDownUtilizationThreshold'], 'scaleDownUnneededTime' => ['scale_down_unneeded_time', 'getScaleDownUnneededTime', 'setScaleDownUnneededTime'], 'expanders' => ['expanders', 'getExpanders', 'setExpanders']];
     }
 }

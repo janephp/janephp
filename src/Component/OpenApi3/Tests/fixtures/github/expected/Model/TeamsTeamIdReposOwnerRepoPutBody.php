@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class TeamsTeamIdReposOwnerRepoPutBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class TeamsTeamIdReposOwnerRepoPutBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -54,5 +57,9 @@ class TeamsTeamIdReposOwnerRepoPutBody extends \ArrayObject
         $this->initialized['permission'] = true;
         $this->permission = $permission;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['permission' => ['permission', 'getPermission', 'setPermission']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class UserRoleDetail extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class UserRoleDetail implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -15,7 +18,7 @@ class UserRoleDetail extends \ArrayObject
     /**
      * Language specific user role names.
      *
-     * @var mixed
+     * @var array<string, string>
      */
     protected $names;
     /**
@@ -33,26 +36,26 @@ class UserRoleDetail extends \ArrayObject
     /**
      * Audit information.
      *
-     * @var mixed|null
+     * @var UserAuditDetail|null
      */
     protected $audit;
     /**
      * Language specific user role names.
      *
-     * @return mixed
+     * @return array<string, string>
      */
-    public function getNames()
+    public function getNames(): iterable
     {
         return $this->names;
     }
     /**
      * Language specific user role names.
      *
-     * @param mixed $names
+     * @param array<string, string> $names
      *
      * @return self
      */
-    public function setNames($names): self
+    public function setNames(iterable $names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;
@@ -105,23 +108,27 @@ class UserRoleDetail extends \ArrayObject
     /**
      * Audit information.
      *
-     * @return mixed
+     * @return UserAuditDetail|null
      */
-    public function getAudit()
+    public function getAudit(): ?UserAuditDetail
     {
         return $this->audit;
     }
     /**
      * Audit information.
      *
-     * @param mixed $audit
+     * @param UserAuditDetail|null $audit
      *
      * @return self
      */
-    public function setAudit($audit): self
+    public function setAudit(?UserAuditDetail $audit): self
     {
         $this->initialized['audit'] = true;
         $this->audit = $audit;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['names' => ['names', 'getNames', 'setNames'], 'userRights' => ['userRights', 'getUserRights', 'setUserRights'], 'id' => ['id', 'getId', 'setId'], 'audit' => ['audit', 'getAudit', 'setAudit']];
     }
 }

@@ -154,7 +154,7 @@ class NotSupportedFileMappingExceptionNormalizer implements DenormalizerInterfac
         if ($data->isInitialized('targetFormatKind') && null !== $data->getTargetFormatKind()) {
             $dataArray['targetFormatKind'] = $data->getTargetFormatKind();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

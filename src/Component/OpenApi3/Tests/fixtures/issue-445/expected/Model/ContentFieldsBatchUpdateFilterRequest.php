@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ContentFieldsBatchUpdateFilterRequest extends MetadataValuesChangeRequestBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ContentFieldsBatchUpdateFilterRequest extends MetadataValuesChangeRequestBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -15,29 +18,33 @@ class ContentFieldsBatchUpdateFilterRequest extends MetadataValuesChangeRequestB
     /**
      * Filters the contents on which the change commands must be applied.
      *
-     * @var mixed
+     * @var ContentFilterRequest
      */
     protected $filterRequest;
     /**
      * Filters the contents on which the change commands must be applied.
      *
-     * @return mixed
+     * @return ContentFilterRequest
      */
-    public function getFilterRequest()
+    public function getFilterRequest(): ContentFilterRequest
     {
         return $this->filterRequest;
     }
     /**
      * Filters the contents on which the change commands must be applied.
      *
-     * @param mixed $filterRequest
+     * @param ContentFilterRequest $filterRequest
      *
      * @return self
      */
-    public function setFilterRequest($filterRequest): self
+    public function setFilterRequest(ContentFilterRequest $filterRequest): self
     {
         $this->initialized['filterRequest'] = true;
         $this->filterRequest = $filterRequest;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['filterRequest' => ['filterRequest', 'getFilterRequest', 'setFilterRequest']];
     }
 }

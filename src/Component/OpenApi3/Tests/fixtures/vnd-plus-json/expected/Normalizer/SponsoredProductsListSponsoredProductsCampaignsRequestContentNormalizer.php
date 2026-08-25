@@ -72,7 +72,7 @@ class SponsoredProductsListSponsoredProductsCampaignsRequestContentNormalizer im
         if ($data->isInitialized('includeExtendedDataFields') && null !== $data->getIncludeExtendedDataFields()) {
             $dataArray['includeExtendedDataFields'] = $data->getIncludeExtendedDataFields();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

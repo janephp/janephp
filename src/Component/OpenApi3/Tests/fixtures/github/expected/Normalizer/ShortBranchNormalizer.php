@@ -82,7 +82,7 @@ class ShortBranchNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('protectionUrl') && null !== $data->getProtectionUrl()) {
             $dataArray['protection_url'] = $data->getProtectionUrl();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

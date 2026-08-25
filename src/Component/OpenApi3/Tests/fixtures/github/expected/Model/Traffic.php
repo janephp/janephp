@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class Traffic extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class Traffic implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class Traffic extends \ArrayObject
         $this->initialized['count'] = true;
         $this->count = $count;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['timestamp' => ['timestamp', 'getTimestamp', 'setTimestamp'], 'uniques' => ['uniques', 'getUniques', 'setUniques'], 'count' => ['count', 'getCount', 'setCount']];
     }
 }

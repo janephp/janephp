@@ -68,7 +68,7 @@ class GbPeopleReportReponseReportDirectorSummaryNormalizer implements Denormaliz
         if ($data->isInitialized('previousAppointments') && null !== $data->getPreviousAppointments()) {
             $dataArray['previousAppointments'] = $data->getPreviousAppointments();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportFinancialStatementsItemBalanceSheet extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportFinancialStatementsItemBalanceSheet implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -583,5 +586,9 @@ class GbCompanyReportExampleResponseReportFinancialStatementsItemBalanceSheet ex
         $this->initialized['totalShareholdersEquity'] = true;
         $this->totalShareholdersEquity = $totalShareholdersEquity;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['totalTangibleAssets' => ['totalTangibleAssets', 'getTotalTangibleAssets', 'setTotalTangibleAssets'], 'totalIntangibleAssets' => ['totalIntangibleAssets', 'getTotalIntangibleAssets', 'setTotalIntangibleAssets'], 'totalOtherFixedAssets' => ['totalOtherFixedAssets', 'getTotalOtherFixedAssets', 'setTotalOtherFixedAssets'], 'totalFixedAssets' => ['totalFixedAssets', 'getTotalFixedAssets', 'setTotalFixedAssets'], 'totalInventories' => ['totalInventories', 'getTotalInventories', 'setTotalInventories'], 'tradeReceivables' => ['tradeReceivables', 'getTradeReceivables', 'setTradeReceivables'], 'miscellaneousReceivables' => ['miscellaneousReceivables', 'getMiscellaneousReceivables', 'setMiscellaneousReceivables'], 'totalReceivables' => ['totalReceivables', 'getTotalReceivables', 'setTotalReceivables'], 'cash' => ['cash', 'getCash', 'setCash'], 'otherCurrentAssets' => ['otherCurrentAssets', 'getOtherCurrentAssets', 'setOtherCurrentAssets'], 'totalCurrentAssets' => ['totalCurrentAssets', 'getTotalCurrentAssets', 'setTotalCurrentAssets'], 'totalAssets' => ['totalAssets', 'getTotalAssets', 'setTotalAssets'], 'tradePayables' => ['tradePayables', 'getTradePayables', 'setTradePayables'], 'bankLiabilities' => ['bankLiabilities', 'getBankLiabilities', 'setBankLiabilities'], 'otherLoansOrFinance' => ['otherLoansOrFinance', 'getOtherLoansOrFinance', 'setOtherLoansOrFinance'], 'miscellaneousLiabilities' => ['miscellaneousLiabilities', 'getMiscellaneousLiabilities', 'setMiscellaneousLiabilities'], 'totalCurrentLiabilities' => ['totalCurrentLiabilities', 'getTotalCurrentLiabilities', 'setTotalCurrentLiabilities'], 'bankLiabilitiesDueAfter1Year' => ['bankLiabilitiesDueAfter1Year', 'getBankLiabilitiesDueAfter1Year', 'setBankLiabilitiesDueAfter1Year'], 'otherLoansOrFinanceDueAfter1Year' => ['otherLoansOrFinanceDueAfter1Year', 'getOtherLoansOrFinanceDueAfter1Year', 'setOtherLoansOrFinanceDueAfter1Year'], 'miscellaneousLiabilitiesDueAfter1Year' => ['miscellaneousLiabilitiesDueAfter1Year', 'getMiscellaneousLiabilitiesDueAfter1Year', 'setMiscellaneousLiabilitiesDueAfter1Year'], 'totalLongTermLiabilities' => ['totalLongTermLiabilities', 'getTotalLongTermLiabilities', 'setTotalLongTermLiabilities'], 'totalLiabilities' => ['totalLiabilities', 'getTotalLiabilities', 'setTotalLiabilities'], 'calledUpShareCapital' => ['calledUpShareCapital', 'getCalledUpShareCapital', 'setCalledUpShareCapital'], 'revenueReserves' => ['revenueReserves', 'getRevenueReserves', 'setRevenueReserves'], 'otherReserves' => ['otherReserves', 'getOtherReserves', 'setOtherReserves'], 'totalShareholdersEquity' => ['totalShareholdersEquity', 'getTotalShareholdersEquity', 'setTotalShareholdersEquity']];
     }
 }

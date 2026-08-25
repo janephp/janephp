@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiSpacesDataSource extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiSpacesDataSource implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -89,5 +92,9 @@ class ApiSpacesDataSource extends \ArrayObject
         $this->initialized['region'] = true;
         $this->region = $region;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['bucketName' => ['bucket_name', 'getBucketName', 'setBucketName'], 'itemPath' => ['item_path', 'getItemPath', 'setItemPath'], 'region' => ['region', 'getRegion', 'setRegion']];
     }
 }

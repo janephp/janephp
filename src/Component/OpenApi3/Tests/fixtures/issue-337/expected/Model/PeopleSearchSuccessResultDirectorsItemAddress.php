@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class PeopleSearchSuccessResultDirectorsItemAddress extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class PeopleSearchSuccessResultDirectorsItemAddress implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class PeopleSearchSuccessResultDirectorsItemAddress extends \ArrayObject
         $this->initialized['postCode'] = true;
         $this->postCode = $postCode;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['simpleValue' => ['simpleValue', 'getSimpleValue', 'setSimpleValue'], 'houseNo' => ['houseNo', 'getHouseNo', 'setHouseNo'], 'city' => ['city', 'getCity', 'setCity'], 'postCode' => ['postCode', 'getPostCode', 'setPostCode']];
     }
 }

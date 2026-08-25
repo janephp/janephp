@@ -21,7 +21,7 @@ class CreateTransferRequest
     /**
      * Type of transfer.
      *
-     * @var mixed
+     * @var string
      */
     protected $transferType;
     /**
@@ -77,20 +77,20 @@ class CreateTransferRequest
     /**
      * Type of transfer.
      *
-     * @return mixed
+     * @return string
      */
-    public function getTransferType()
+    public function getTransferType(): string
     {
         return $this->transferType;
     }
     /**
      * Type of transfer.
      *
-     * @param mixed $transferType
+     * @param string $transferType
      *
      * @return self
      */
-    public function setTransferType($transferType): self
+    public function setTransferType(string $transferType): self
     {
         $this->initialized['transferType'] = true;
         $this->transferType = $transferType;

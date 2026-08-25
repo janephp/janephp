@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrgsOrgActionsRunnersGetResponse200 extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrgsOrgActionsRunnersGetResponse200 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class OrgsOrgActionsRunnersGetResponse200 extends \ArrayObject
         $this->initialized['runners'] = true;
         $this->runners = $runners;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['totalCount' => ['total_count', 'getTotalCount', 'setTotalCount'], 'runners' => ['runners', 'getRunners', 'setRunners']];
     }
 }

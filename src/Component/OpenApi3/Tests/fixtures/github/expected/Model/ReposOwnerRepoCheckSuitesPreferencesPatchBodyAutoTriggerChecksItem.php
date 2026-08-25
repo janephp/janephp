@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ReposOwnerRepoCheckSuitesPreferencesPatchBodyAutoTriggerChecksItem extends
         $this->initialized['setting'] = true;
         $this->setting = $setting;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['appId' => ['app_id', 'getAppId', 'setAppId'], 'setting' => ['setting', 'getSetting', 'setSetting']];
     }
 }

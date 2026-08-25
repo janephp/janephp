@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class DocumentStillFormat extends FormatBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class DocumentStillFormat extends FormatBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -19,7 +22,7 @@ class DocumentStillFormat extends FormatBase
     /**
      * Allows resizing of the image.
      *
-     * @var mixed|null
+     * @var ResizeAction|null
      */
     protected $resizeAction;
     /**
@@ -43,23 +46,27 @@ class DocumentStillFormat extends FormatBase
     /**
      * Allows resizing of the image.
      *
-     * @return mixed
+     * @return ResizeAction|null
      */
-    public function getResizeAction()
+    public function getResizeAction(): ?ResizeAction
     {
         return $this->resizeAction;
     }
     /**
      * Allows resizing of the image.
      *
-     * @param mixed $resizeAction
+     * @param ResizeAction|null $resizeAction
      *
      * @return self
      */
-    public function setResizeAction($resizeAction): self
+    public function setResizeAction(?ResizeAction $resizeAction): self
     {
         $this->initialized['resizeAction'] = true;
         $this->resizeAction = $resizeAction;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['extension' => ['extension', 'getExtension', 'setExtension'], 'resizeAction' => ['resizeAction', 'getResizeAction', 'setResizeAction']];
     }
 }

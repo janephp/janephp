@@ -76,7 +76,7 @@ class CdnPurgeJobByUriNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('uri') && null !== $data->getUri()) {
             $dataArray['uri'] = $data->getUri();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseRegistryOptionsResponse extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseRegistryOptionsResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseRegistryOptionsResponse extends \ArrayObject
         $this->initialized['options'] = true;
         $this->options = $options;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['options' => ['options', 'getOptions', 'setOptions']];
     }
 }

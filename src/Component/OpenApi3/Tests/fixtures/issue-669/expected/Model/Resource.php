@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class Resource extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class Resource implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class Resource extends \ArrayObject
         $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['urn' => ['urn', 'getUrn', 'setUrn'], 'assignedAt' => ['assigned_at', 'getAssignedAt', 'setAssignedAt'], 'links' => ['links', 'getLinks', 'setLinks'], 'status' => ['status', 'getStatus', 'setStatus']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CommitSearchResultItemCommitTree extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CommitSearchResultItemCommitTree implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class CommitSearchResultItemCommitTree extends \ArrayObject
         $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['sha' => ['sha', 'getSha', 'setSha'], 'url' => ['url', 'getUrl', 'setUrl']];
     }
 }

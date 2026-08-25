@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class GpuInfo extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class GpuInfo implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -89,5 +92,9 @@ class GpuInfo extends \ArrayObject
         $this->initialized['vram'] = true;
         $this->vram = $vram;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['count' => ['count', 'getCount', 'setCount'], 'model' => ['model', 'getModel', 'setModel'], 'vram' => ['vram', 'getVram', 'setVram']];
     }
 }

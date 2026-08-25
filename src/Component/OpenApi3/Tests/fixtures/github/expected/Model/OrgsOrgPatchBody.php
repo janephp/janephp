@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrgsOrgPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrgsOrgPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -516,5 +519,9 @@ class OrgsOrgPatchBody extends \ArrayObject
         $this->initialized['blog'] = true;
         $this->blog = $blog;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['billingEmail' => ['billing_email', 'getBillingEmail', 'setBillingEmail'], 'company' => ['company', 'getCompany', 'setCompany'], 'email' => ['email', 'getEmail', 'setEmail'], 'twitterUsername' => ['twitter_username', 'getTwitterUsername', 'setTwitterUsername'], 'location' => ['location', 'getLocation', 'setLocation'], 'name' => ['name', 'getName', 'setName'], 'description' => ['description', 'getDescription', 'setDescription'], 'hasOrganizationProjects' => ['has_organization_projects', 'getHasOrganizationProjects', 'setHasOrganizationProjects'], 'hasRepositoryProjects' => ['has_repository_projects', 'getHasRepositoryProjects', 'setHasRepositoryProjects'], 'defaultRepositoryPermission' => ['default_repository_permission', 'getDefaultRepositoryPermission', 'setDefaultRepositoryPermission'], 'membersCanCreateRepositories' => ['members_can_create_repositories', 'getMembersCanCreateRepositories', 'setMembersCanCreateRepositories'], 'membersCanCreateInternalRepositories' => ['members_can_create_internal_repositories', 'getMembersCanCreateInternalRepositories', 'setMembersCanCreateInternalRepositories'], 'membersCanCreatePrivateRepositories' => ['members_can_create_private_repositories', 'getMembersCanCreatePrivateRepositories', 'setMembersCanCreatePrivateRepositories'], 'membersCanCreatePublicRepositories' => ['members_can_create_public_repositories', 'getMembersCanCreatePublicRepositories', 'setMembersCanCreatePublicRepositories'], 'membersAllowedRepositoryCreationType' => ['members_allowed_repository_creation_type', 'getMembersAllowedRepositoryCreationType', 'setMembersAllowedRepositoryCreationType'], 'blog' => ['blog', 'getBlog', 'setBlog']];
     }
 }

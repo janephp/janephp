@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ApiStatisticsEvent extends ApplicationEvent
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ApiStatisticsEvent extends ApplicationEvent implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ApiStatisticsEvent extends ApplicationEvent
         $this->initialized['requestsPerClient'] = true;
         $this->requestsPerClient = $requestsPerClient;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['requestsPerClient' => ['requestsPerClient', 'getRequestsPerClient', 'setRequestsPerClient']];
     }
 }

@@ -62,7 +62,7 @@ class ResponseExistingAlertNormalizer implements DenormalizerInterface, Normaliz
             }
             $dataArray['alert'] = $values;
         }
-        foreach ($data as $key_1 => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_1;
             }

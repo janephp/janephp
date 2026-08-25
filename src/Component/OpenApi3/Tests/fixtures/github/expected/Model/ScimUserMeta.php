@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ScimUserMeta extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ScimUserMeta implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class ScimUserMeta extends \ArrayObject
         $this->initialized['location'] = true;
         $this->location = $location;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['resourceType' => ['resourceType', 'getResourceType', 'setResourceType'], 'created' => ['created', 'getCreated', 'setCreated'], 'lastModified' => ['lastModified', 'getLastModified', 'setLastModified'], 'location' => ['location', 'getLocation', 'setLocation']];
     }
 }

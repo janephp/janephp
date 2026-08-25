@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class V2LoadBalancersLbIdDropletsPostBody extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class V2LoadBalancersLbIdDropletsPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class V2LoadBalancersLbIdDropletsPostBody extends \ArrayObject
         $this->initialized['dropletIds'] = true;
         $this->dropletIds = $dropletIds;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['dropletIds' => ['droplet_ids', 'getDropletIds', 'setDropletIds']];
     }
 }

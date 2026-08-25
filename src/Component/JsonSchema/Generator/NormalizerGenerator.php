@@ -70,7 +70,9 @@ class NormalizerGenerator implements GeneratorInterface
                 continue;
             }
 
-            $modelFqdn = $schema->getNamespace() . '\\Model\\' . $class->getName();
+            $subNamespace = $class->getSubNamespace();
+            $normalizerNamespace = $this->naming->getNormalizerNamespace($schema->getNamespace(), $subNamespace);
+            $modelFqdn = $this->naming->getModelNamespace($schema->getNamespace(), $subNamespace) . '\\' . $class->getName();
 
             $methods = [];
             $methods[] = $this->createSupportsDenormalizationMethod($modelFqdn);
@@ -106,9 +108,9 @@ class NormalizerGenerator implements GeneratorInterface
 
             $useStmts = array_merge($useStmts, [$symfony7NormalizerClass]);
 
-            $namespace = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Normalizer'), $useStmts);
-            $normalizers[$modelFqdn] = $schema->getNamespace() . '\\Normalizer\\' . $symfony7NormalizerClass->name;
-            $schema->addFile(new File($schema->getDirectory() . '/Normalizer/' . $symfony7NormalizerClass->name . '.php', $namespace, self::FILE_TYPE_NORMALIZER));
+            $namespace = new Stmt\Namespace_(new Name($normalizerNamespace), $useStmts);
+            $normalizers[$modelFqdn] = $normalizerNamespace . '\\' . $symfony7NormalizerClass->name;
+            $schema->addFile(new File($this->naming->getArtifactPath($schema->getDirectory(), 'Normalizer', $subNamespace) . '/' . $symfony7NormalizerClass->name . '.php', $namespace, self::FILE_TYPE_NORMALIZER));
         }
 
         // Add normalizers of models from other schemas transitively used by this schema's models,

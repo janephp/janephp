@@ -85,7 +85,7 @@ class OrganizationActionsSecretNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('selectedRepositoriesUrl') && null !== $data->getSelectedRepositoriesUrl()) {
             $dataArray['selected_repositories_url'] = $data->getSelectedRepositoriesUrl();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseKeyCreate extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseKeyCreate implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseKeyCreate extends \ArrayObject
         $this->initialized['key'] = true;
         $this->key = $key;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['key' => ['key', 'getKey', 'setKey']];
     }
 }

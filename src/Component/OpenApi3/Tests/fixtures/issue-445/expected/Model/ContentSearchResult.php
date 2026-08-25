@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ContentSearchResult extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ContentSearchResult implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -263,5 +266,9 @@ class ContentSearchResult extends \ArrayObject
         $this->initialized['rightsAggregationsCounts'] = true;
         $this->rightsAggregationsCounts = $rightsAggregationsCounts;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['totalResults' => ['totalResults', 'getTotalResults', 'setTotalResults'], 'results' => ['results', 'getResults', 'setResults'], 'elapsedMilliseconds' => ['elapsedMilliseconds', 'getElapsedMilliseconds', 'setElapsedMilliseconds'], 'pageToken' => ['pageToken', 'getPageToken', 'setPageToken'], 'searchString' => ['searchString', 'getSearchString', 'setSearchString'], 'isSearchStringRewritten' => ['isSearchStringRewritten', 'getIsSearchStringRewritten', 'setIsSearchStringRewritten'], 'queryDebugInformation' => ['queryDebugInformation', 'getQueryDebugInformation', 'setQueryDebugInformation'], 'aggregationResults' => ['aggregationResults', 'getAggregationResults', 'setAggregationResults'], 'rightsAggregationsCounts' => ['rightsAggregationsCounts', 'getRightsAggregationsCounts', 'setRightsAggregationsCounts']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppRouteSpec extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppRouteSpec implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class AppRouteSpec extends \ArrayObject
         $this->initialized['preservePathPrefix'] = true;
         $this->preservePathPrefix = $preservePathPrefix;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['path' => ['path', 'getPath', 'setPath'], 'preservePathPrefix' => ['preserve_path_prefix', 'getPreservePathPrefix', 'setPreservePathPrefix']];
     }
 }

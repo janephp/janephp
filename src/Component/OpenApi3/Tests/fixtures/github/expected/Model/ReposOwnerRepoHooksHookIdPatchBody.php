@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoHooksHookIdPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoHooksHookIdPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class ReposOwnerRepoHooksHookIdPatchBody extends \ArrayObject
         $this->initialized['active'] = true;
         $this->active = $active;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['config' => ['config', 'getConfig', 'setConfig'], 'events' => ['events', 'getEvents', 'setEvents'], 'addEvents' => ['add_events', 'getAddEvents', 'setAddEvents'], 'removeEvents' => ['remove_events', 'getRemoveEvents', 'setRemoveEvents'], 'active' => ['active', 'getActive', 'setActive']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbPeopleReportReponseReportDirectorshipsInactiveItemNetWorth extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbPeopleReportReponseReportDirectorshipsInactiveItemNetWorth implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class GbPeopleReportReponseReportDirectorshipsInactiveItemNetWorth extends \Arra
         $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['currency' => ['currency', 'getCurrency', 'setCurrency'], 'value' => ['value', 'getValue', 'setValue']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportCreditScoreCurrentCreditRating extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportCreditScoreCurrentCreditRating implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class GbCompanyReportExampleResponseReportCreditScoreCurrentCreditRating extends
         $this->initialized['providerDescription'] = true;
         $this->providerDescription = $providerDescription;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['commonValue' => ['commonValue', 'getCommonValue', 'setCommonValue'], 'commonDescription' => ['commonDescription', 'getCommonDescription', 'setCommonDescription'], 'creditLimit' => ['creditLimit', 'getCreditLimit', 'setCreditLimit'], 'providerValue' => ['providerValue', 'getProviderValue', 'setProviderValue'], 'providerDescription' => ['providerDescription', 'getProviderDescription', 'setProviderDescription']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class V2KubernetesClustersClusterIdUpgradePostBody extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class V2KubernetesClustersClusterIdUpgradePostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class V2KubernetesClustersClusterIdUpgradePostBody extends \ArrayObject
         $this->initialized['version'] = true;
         $this->version = $version;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['version' => ['version', 'getVersion', 'setVersion']];
     }
 }

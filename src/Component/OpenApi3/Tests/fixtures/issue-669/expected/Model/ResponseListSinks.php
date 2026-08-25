@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseListSinks extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseListSinks implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ResponseListSinks extends \ArrayObject
         $this->initialized['sinks'] = true;
         $this->sinks = $sinks;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['sinks' => ['sinks', 'getSinks', 'setSinks']];
     }
 }

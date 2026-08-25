@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class EnqueueTaggingAction extends BusinessRuleAction
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class EnqueueTaggingAction extends BusinessRuleAction implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -15,29 +18,33 @@ class EnqueueTaggingAction extends BusinessRuleAction
     /**
      * Options to use while tagging.
      *
-     * @var mixed|null
+     * @var TaggingOptionsBase|null
      */
     protected $options;
     /**
      * Options to use while tagging.
      *
-     * @return mixed
+     * @return TaggingOptionsBase|null
      */
-    public function getOptions()
+    public function getOptions(): ?TaggingOptionsBase
     {
         return $this->options;
     }
     /**
      * Options to use while tagging.
      *
-     * @param mixed $options
+     * @param TaggingOptionsBase|null $options
      *
      * @return self
      */
-    public function setOptions($options): self
+    public function setOptions(?TaggingOptionsBase $options): self
     {
         $this->initialized['options'] = true;
         $this->options = $options;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['options' => ['options', 'getOptions', 'setOptions']];
     }
 }

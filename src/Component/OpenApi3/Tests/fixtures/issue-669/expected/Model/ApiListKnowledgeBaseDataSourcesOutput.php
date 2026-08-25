@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiListKnowledgeBaseDataSourcesOutput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiListKnowledgeBaseDataSourcesOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class ApiListKnowledgeBaseDataSourcesOutput extends \ArrayObject
         $this->initialized['meta'] = true;
         $this->meta = $meta;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['knowledgeBaseDataSources' => ['knowledge_base_data_sources', 'getKnowledgeBaseDataSources', 'setKnowledgeBaseDataSources'], 'links' => ['links', 'getLinks', 'setLinks'], 'meta' => ['meta', 'getMeta', 'setMeta']];
     }
 }

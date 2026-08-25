@@ -93,7 +93,7 @@ class MarketplacePurchaseNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['marketplace_pending_change'] = $data->getMarketplacePendingChange() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getMarketplacePendingChange(), 'json', $context));
         }
         $dataArray['marketplace_purchase'] = $data->getMarketplacePurchase() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getMarketplacePurchase(), 'json', $context));
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

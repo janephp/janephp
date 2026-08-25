@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class PullRequestSimpleLinks extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class PullRequestSimpleLinks implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -235,5 +238,9 @@ class PullRequestSimpleLinks extends \ArrayObject
         $this->initialized['self'] = true;
         $this->self = $self;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['comments' => ['comments', 'getComments', 'setComments'], 'commits' => ['commits', 'getCommits', 'setCommits'], 'statuses' => ['statuses', 'getStatuses', 'setStatuses'], 'html' => ['html', 'getHtml', 'setHtml'], 'issue' => ['issue', 'getIssue', 'setIssue'], 'reviewComments' => ['review_comments', 'getReviewComments', 'setReviewComments'], 'reviewComment' => ['review_comment', 'getReviewComment', 'setReviewComment'], 'self' => ['self', 'getSelf', 'setSelf']];
     }
 }

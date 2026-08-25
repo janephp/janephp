@@ -52,7 +52,7 @@ class ResponseUserNormalizer implements DenormalizerInterface, NormalizerInterfa
     {
         $dataArray = [];
         $dataArray['user'] = $data->getUser() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getUser(), 'json', $context));
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

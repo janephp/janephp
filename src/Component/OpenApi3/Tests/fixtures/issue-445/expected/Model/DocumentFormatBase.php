@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class DocumentFormatBase extends FormatBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class DocumentFormatBase extends FormatBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */

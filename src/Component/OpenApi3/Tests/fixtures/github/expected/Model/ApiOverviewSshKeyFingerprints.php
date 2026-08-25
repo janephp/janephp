@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ApiOverviewSshKeyFingerprints extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ApiOverviewSshKeyFingerprints implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class ApiOverviewSshKeyFingerprints extends \ArrayObject
         $this->initialized['sHA256DSA'] = true;
         $this->sHA256DSA = $sHA256DSA;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['mD5RSA' => ['MD5_RSA', 'getMD5RSA', 'setMD5RSA'], 'mD5DSA' => ['MD5_DSA', 'getMD5DSA', 'setMD5DSA'], 'sHA256RSA' => ['SHA256_RSA', 'getSHA256RSA', 'setSHA256RSA'], 'sHA256DSA' => ['SHA256_DSA', 'getSHA256DSA', 'setSHA256DSA']];
     }
 }

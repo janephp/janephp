@@ -176,7 +176,7 @@ class SchemaFieldReferencedSchemaChangeNotAllowedExceptionNormalizer implements 
         if ($data->isInitialized('newReferencedSchemaId') && null !== $data->getNewReferencedSchemaId()) {
             $dataArray['newReferencedSchemaId'] = $data->getNewReferencedSchemaId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

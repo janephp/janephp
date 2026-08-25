@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -263,5 +266,9 @@ class ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItem extends \ArrayObject
         $this->initialized['rawDetails'] = true;
         $this->rawDetails = $rawDetails;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['path' => ['path', 'getPath', 'setPath'], 'startLine' => ['start_line', 'getStartLine', 'setStartLine'], 'endLine' => ['end_line', 'getEndLine', 'setEndLine'], 'startColumn' => ['start_column', 'getStartColumn', 'setStartColumn'], 'endColumn' => ['end_column', 'getEndColumn', 'setEndColumn'], 'annotationLevel' => ['annotation_level', 'getAnnotationLevel', 'setAnnotationLevel'], 'message' => ['message', 'getMessage', 'setMessage'], 'title' => ['title', 'getTitle', 'setTitle'], 'rawDetails' => ['raw_details', 'getRawDetails', 'setRawDetails']];
     }
 }

@@ -61,7 +61,7 @@ class DatabasesBasicAuthCredentialsNormalizer implements DenormalizerInterface, 
         if ($data->isInitialized('basicAuthPassword') && null !== $data->getBasicAuthPassword()) {
             $dataArray['basic_auth_password'] = $data->getBasicAuthPassword();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

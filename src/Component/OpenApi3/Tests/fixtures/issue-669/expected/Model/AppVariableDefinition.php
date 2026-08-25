@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppVariableDefinition extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppVariableDefinition implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -132,5 +135,9 @@ class AppVariableDefinition extends \ArrayObject
         $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['key' => ['key', 'getKey', 'setKey'], 'scope' => ['scope', 'getScope', 'setScope'], 'type' => ['type', 'getType', 'setType'], 'value' => ['value', 'getValue', 'setValue']];
     }
 }

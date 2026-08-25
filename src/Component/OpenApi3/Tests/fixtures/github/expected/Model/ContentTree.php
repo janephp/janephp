@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ContentTree extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ContentTree implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -253,5 +256,9 @@ class ContentTree extends \ArrayObject
         $this->initialized['links'] = true;
         $this->links = $links;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'size' => ['size', 'getSize', 'setSize'], 'name' => ['name', 'getName', 'setName'], 'path' => ['path', 'getPath', 'setPath'], 'sha' => ['sha', 'getSha', 'setSha'], 'url' => ['url', 'getUrl', 'setUrl'], 'gitUrl' => ['git_url', 'getGitUrl', 'setGitUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'downloadUrl' => ['download_url', 'getDownloadUrl', 'setDownloadUrl'], 'entries' => ['entries', 'getEntries', 'setEntries'], 'links' => ['_links', 'getLinks', 'setLinks']];
     }
 }

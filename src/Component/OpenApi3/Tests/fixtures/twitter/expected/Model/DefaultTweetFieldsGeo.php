@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class DefaultTweetFieldsGeo extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class DefaultTweetFieldsGeo implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class DefaultTweetFieldsGeo extends \ArrayObject
         $this->initialized['placeId'] = true;
         $this->placeId = $placeId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['coordinates' => ['coordinates', 'getCoordinates', 'setCoordinates'], 'placeId' => ['place_id', 'getPlaceId', 'setPlaceId']];
     }
 }

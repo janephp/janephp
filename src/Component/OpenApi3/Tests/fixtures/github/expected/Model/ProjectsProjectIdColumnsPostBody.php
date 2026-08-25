@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ProjectsProjectIdColumnsPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ProjectsProjectIdColumnsPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ProjectsProjectIdColumnsPostBody extends \ArrayObject
         $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class JoinByTransformation extends BusinessRuleTransformation
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class JoinByTransformation extends BusinessRuleTransformation implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class JoinByTransformation extends BusinessRuleTransformation
         $this->initialized['separator'] = true;
         $this->separator = $separator;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['separator' => ['separator', 'getSeparator', 'setSeparator']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppDomainValidation extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppDomainValidation implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class AppDomainValidation extends \ArrayObject
         $this->initialized['txtValue'] = true;
         $this->txtValue = $txtValue;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['txtName' => ['txt_name', 'getTxtName', 'setTxtName'], 'txtValue' => ['txt_value', 'getTxtValue', 'setTxtValue']];
     }
 }

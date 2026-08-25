@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\ArrayItemsValidation\Model;
 
-class ArrayItemsModel extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\ArrayItemsValidation\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\ArrayItemsValidation\Runtime\AdditionalPropertiesInterface;
+class ArrayItemsModel implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class ArrayItemsModel extends \ArrayObject
         $this->initialized['constrainedStringArray'] = true;
         $this->constrainedStringArray = $constrainedStringArray;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['uuidArray' => ['uuidArray', 'getUuidArray', 'setUuidArray'], 'emailArray' => ['emailArray', 'getEmailArray', 'setEmailArray'], 'enumArray' => ['enumArray', 'getEnumArray', 'setEnumArray'], 'integerArray' => ['integerArray', 'getIntegerArray', 'setIntegerArray'], 'constrainedStringArray' => ['constrainedStringArray', 'getConstrainedStringArray', 'setConstrainedStringArray']];
     }
 }

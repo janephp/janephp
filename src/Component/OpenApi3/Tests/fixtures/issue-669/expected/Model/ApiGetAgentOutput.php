@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiGetAgentOutput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiGetAgentOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ApiGetAgentOutput extends \ArrayObject
         $this->initialized['agent'] = true;
         $this->agent = $agent;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['agent' => ['agent', 'getAgent', 'setAgent']];
     }
 }

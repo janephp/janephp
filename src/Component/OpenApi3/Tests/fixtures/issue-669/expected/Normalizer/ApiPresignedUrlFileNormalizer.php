@@ -61,7 +61,7 @@ class ApiPresignedUrlFileNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('fileSize') && null !== $data->getFileSize()) {
             $dataArray['file_size'] = $data->getFileSize();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -6,7 +6,7 @@ class Client extends \Jane\Component\OpenApi2\Tests\Expected\Runtime\Client\Clie
 {
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Jane\Component\OpenApi2\Tests\Expected\Exception\UnexpectedStatusCodeException
+     * @throws \Jane\Component\OpenApi2\Tests\Expected\Exception\BadResponseException
      *
      * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */

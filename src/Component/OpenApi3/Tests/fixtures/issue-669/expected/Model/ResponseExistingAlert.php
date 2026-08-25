@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseExistingAlert extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseExistingAlert implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseExistingAlert extends \ArrayObject
         $this->initialized['alert'] = true;
         $this->alert = $alert;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['alert' => ['alert', 'getAlert', 'setAlert']];
     }
 }

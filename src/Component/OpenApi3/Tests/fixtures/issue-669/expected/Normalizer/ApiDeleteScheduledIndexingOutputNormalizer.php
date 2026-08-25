@@ -54,7 +54,7 @@ class ApiDeleteScheduledIndexingOutputNormalizer implements DenormalizerInterfac
         if ($data->isInitialized('indexingInfo') && null !== $data->getIndexingInfo()) {
             $dataArray['indexing_info'] = $data->getIndexingInfo() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getIndexingInfo(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

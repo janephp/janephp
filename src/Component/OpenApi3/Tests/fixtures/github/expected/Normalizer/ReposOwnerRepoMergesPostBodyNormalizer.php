@@ -67,7 +67,7 @@ class ReposOwnerRepoMergesPostBodyNormalizer implements DenormalizerInterface, N
         if ($data->isInitialized('commitMessage') && null !== $data->getCommitMessage()) {
             $dataArray['commit_message'] = $data->getCommitMessage();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

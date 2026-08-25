@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class UserRoleAssignManyRequest extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class UserRoleAssignManyRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -28,7 +31,7 @@ class UserRoleAssignManyRequest extends \ArrayObject
      * Defines how to apply specified UserRoleIds to UserIds
      * If an operation results in no change for a user, that user will be returned as succeeded.
      *
-     * @var mixed
+     * @var string
      */
     protected $operation;
     /**
@@ -79,9 +82,9 @@ class UserRoleAssignManyRequest extends \ArrayObject
      * Defines how to apply specified UserRoleIds to UserIds
      * If an operation results in no change for a user, that user will be returned as succeeded.
      *
-     * @return mixed
+     * @return string
      */
-    public function getOperation()
+    public function getOperation(): string
     {
         return $this->operation;
     }
@@ -89,14 +92,18 @@ class UserRoleAssignManyRequest extends \ArrayObject
     * Defines how to apply specified UserRoleIds to UserIds
     If an operation results in no change for a user, that user will be returned as succeeded.
     *
-    * @param mixed $operation
+    * @param string $operation
     *
     * @return self
     */
-    public function setOperation($operation): self
+    public function setOperation(string $operation): self
     {
         $this->initialized['operation'] = true;
         $this->operation = $operation;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['userIds' => ['userIds', 'getUserIds', 'setUserIds'], 'userRoleIds' => ['userRoleIds', 'getUserRoleIds', 'setUserRoleIds'], 'operation' => ['operation', 'getOperation', 'setOperation']];
     }
 }

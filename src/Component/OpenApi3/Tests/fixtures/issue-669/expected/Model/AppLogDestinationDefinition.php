@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppLogDestinationDefinition extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppLogDestinationDefinition implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -145,5 +148,9 @@ class AppLogDestinationDefinition extends \ArrayObject
         $this->initialized['openSearch'] = true;
         $this->openSearch = $openSearch;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'papertrail' => ['papertrail', 'getPapertrail', 'setPapertrail'], 'datadog' => ['datadog', 'getDatadog', 'setDatadog'], 'logtail' => ['logtail', 'getLogtail', 'setLogtail'], 'openSearch' => ['open_search', 'getOpenSearch', 'setOpenSearch']];
     }
 }

@@ -61,7 +61,7 @@ class InvoiceSummaryCreditsAndAdjustmentsNormalizer implements DenormalizerInter
         if ($data->isInitialized('amount') && null !== $data->getAmount()) {
             $dataArray['amount'] = $data->getAmount();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

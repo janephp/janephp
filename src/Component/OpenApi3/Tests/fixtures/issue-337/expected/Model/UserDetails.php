@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class UserDetails extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class UserDetails implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -291,5 +294,9 @@ class UserDetails extends \ArrayObject
         $this->initialized['userId'] = true;
         $this->userId = $userId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['countryCode' => ['countryCode', 'getCountryCode', 'setCountryCode'], 'createdDate' => ['createdDate', 'getCreatedDate', 'setCreatedDate'], 'csCustomerId' => ['csCustomerId', 'getCsCustomerId', 'setCsCustomerId'], 'csUserId' => ['csUserId', 'getCsUserId', 'setCsUserId'], 'isAutoTracker' => ['isAutoTracker', 'getIsAutoTracker', 'setIsAutoTracker'], 'languageCode' => ['languageCode', 'getLanguageCode', 'setLanguageCode'], 'lastAccessDate' => ['lastAccessDate', 'getLastAccessDate', 'setLastAccessDate'], 'modifiedDate' => ['modifiedDate', 'getModifiedDate', 'setModifiedDate'], 'contractEndDate' => ['contractEndDate', 'getContractEndDate', 'setContractEndDate'], 'userId' => ['userId', 'getUserId', 'setUserId']];
     }
 }

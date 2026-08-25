@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiScheduledIndexingInfo extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiScheduledIndexingInfo implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -291,5 +294,9 @@ class ApiScheduledIndexingInfo extends \ArrayObject
         $this->initialized['uuid'] = true;
         $this->uuid = $uuid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'days' => ['days', 'getDays', 'setDays'], 'deletedAt' => ['deleted_at', 'getDeletedAt', 'setDeletedAt'], 'isActive' => ['is_active', 'getIsActive', 'setIsActive'], 'knowledgeBaseUuid' => ['knowledge_base_uuid', 'getKnowledgeBaseUuid', 'setKnowledgeBaseUuid'], 'lastRanAt' => ['last_ran_at', 'getLastRanAt', 'setLastRanAt'], 'nextRunAt' => ['next_run_at', 'getNextRunAt', 'setNextRunAt'], 'time' => ['time', 'getTime', 'setTime'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'uuid' => ['uuid', 'getUuid', 'setUuid']];
     }
 }

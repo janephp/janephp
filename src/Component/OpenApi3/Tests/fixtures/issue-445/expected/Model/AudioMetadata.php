@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class AudioMetadata extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class AudioMetadata implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -13,11 +16,11 @@ class AudioMetadata extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var mixed|null
+     * @var array<string, string>|null
      */
     protected $names;
     /**
-     * @var mixed|null
+     * @var array<string, string>|null
      */
     protected $descriptions;
     /**
@@ -57,36 +60,36 @@ class AudioMetadata extends \ArrayObject
      */
     protected $audioStreams;
     /**
-     * @return mixed
+     * @return array<string, string>|null
      */
-    public function getNames()
+    public function getNames(): ?iterable
     {
         return $this->names;
     }
     /**
-     * @param mixed $names
+     * @param array<string, string>|null $names
      *
      * @return self
      */
-    public function setNames($names): self
+    public function setNames(?iterable $names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;
         return $this;
     }
     /**
-     * @return mixed
+     * @return array<string, string>|null
      */
-    public function getDescriptions()
+    public function getDescriptions(): ?iterable
     {
         return $this->descriptions;
     }
     /**
-     * @param mixed $descriptions
+     * @param array<string, string>|null $descriptions
      *
      * @return self
      */
-    public function setDescriptions($descriptions): self
+    public function setDescriptions(?iterable $descriptions): self
     {
         $this->initialized['descriptions'] = true;
         $this->descriptions = $descriptions;
@@ -253,5 +256,9 @@ class AudioMetadata extends \ArrayObject
         $this->initialized['audioStreams'] = true;
         $this->audioStreams = $audioStreams;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['names' => ['names', 'getNames', 'setNames'], 'descriptions' => ['descriptions', 'getDescriptions', 'setDescriptions'], 'fileExtension' => ['fileExtension', 'getFileExtension', 'setFileExtension'], 'fileName' => ['fileName', 'getFileName', 'setFileName'], 'filePath' => ['filePath', 'getFilePath', 'setFilePath'], 'fileSizeInBytes' => ['fileSizeInBytes', 'getFileSizeInBytes', 'setFileSizeInBytes'], 'sha1Hash' => ['sha1Hash', 'getSha1Hash', 'setSha1Hash'], 'xmpMetadata' => ['xmpMetadata', 'getXmpMetadata', 'setXmpMetadata'], 'exifMetadata' => ['exifMetadata', 'getExifMetadata', 'setExifMetadata'], 'language' => ['language', 'getLanguage', 'setLanguage'], 'audioStreams' => ['audioStreams', 'getAudioStreams', 'setAudioStreams']];
     }
 }

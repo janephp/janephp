@@ -113,7 +113,7 @@ class OrgsOrgTeamsPostBodyNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('parentTeamId') && null !== $data->getParentTeamId()) {
             $dataArray['parent_team_id'] = $data->getParentTeamId();
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

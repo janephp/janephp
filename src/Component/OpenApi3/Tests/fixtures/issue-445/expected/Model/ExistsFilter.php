@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ExistsFilter extends FilterBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ExistsFilter extends FilterBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -42,5 +45,9 @@ class ExistsFilter extends FilterBase
         $this->initialized['field'] = true;
         $this->field = $field;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['field' => ['field', 'getField', 'setField']];
     }
 }

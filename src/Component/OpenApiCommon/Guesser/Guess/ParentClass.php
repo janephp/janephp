@@ -4,6 +4,9 @@ namespace Jane\Component\OpenApiCommon\Guesser\Guess;
 
 class ParentClass extends ClassGuess
 {
+    /** Full namespace prefix of this parent's generated model (e.g. "App\Model\Animals"), used by children living in another sub-namespace */
+    private ?string $modelNamespace = null;
+
     public function __construct(
         ClassGuess $classGuess,
         protected string $discriminator,
@@ -14,6 +17,16 @@ class ParentClass extends ClassGuess
         $this->setProperties($classGuess->getProperties());
         $this->setExtensionsType($classGuess->getExtensionsType());
         $this->setConstraints($classGuess->getConstraints());
+    }
+
+    public function getModelNamespace(): ?string
+    {
+        return $this->modelNamespace;
+    }
+
+    public function setModelNamespace(?string $modelNamespace): void
+    {
+        $this->modelNamespace = $modelNamespace;
     }
 
     public function setDiscriminator(string $discriminator): self

@@ -54,7 +54,7 @@ class ResponseReservedIpNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('reservedIp') && null !== $data->getReservedIp()) {
             $dataArray['reserved_ip'] = $data->getReservedIp() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getReservedIp(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

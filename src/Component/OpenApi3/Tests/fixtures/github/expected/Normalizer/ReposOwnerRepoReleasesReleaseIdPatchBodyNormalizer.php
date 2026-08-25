@@ -98,7 +98,7 @@ class ReposOwnerRepoReleasesReleaseIdPatchBodyNormalizer implements Denormalizer
         if ($data->isInitialized('prerelease') && null !== $data->getPrerelease()) {
             $dataArray['prerelease'] = $data->getPrerelease();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

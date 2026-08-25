@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ImportProjectChoicesItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ImportProjectChoicesItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class ImportProjectChoicesItem extends \ArrayObject
         $this->initialized['humanName'] = true;
         $this->humanName = $humanName;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['vcs' => ['vcs', 'getVcs', 'setVcs'], 'tfvcProject' => ['tfvc_project', 'getTfvcProject', 'setTfvcProject'], 'humanName' => ['human_name', 'getHumanName', 'setHumanName']];
     }
 }

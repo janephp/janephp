@@ -64,7 +64,7 @@ class ReposOwnerRepoCollaboratorsUsernamePutBodyNormalizer implements Denormaliz
         if ($data->isInitialized('permissions') && null !== $data->getPermissions()) {
             $dataArray['permissions'] = $data->getPermissions();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

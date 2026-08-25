@@ -23,6 +23,7 @@ Each record follows a lightweight ADR format:
 | [0003](0003-no-arrayobject.md) | No `\ArrayObject` — dedicated value objects & `iterable` hints | Accepted |
 | [0004](0004-fixtures-are-immutable.md) | Test fixtures are immutable — regenerate, never hand-edit | Accepted |
 | [0005](0005-php-floor.md) | Stay within the PHP `^8.1` floor | Accepted |
+| [0006](0006-follow-upstream-specifications.md) | Follow upstream specifications faithfully | Accepted |
 
 ## Adding a new record
 

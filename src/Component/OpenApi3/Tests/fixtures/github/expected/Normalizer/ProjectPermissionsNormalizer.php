@@ -74,7 +74,7 @@ class ProjectPermissionsNormalizer implements DenormalizerInterface, NormalizerI
         $dataArray['read'] = $data->getRead();
         $dataArray['write'] = $data->getWrite();
         $dataArray['admin'] = $data->getAdmin();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

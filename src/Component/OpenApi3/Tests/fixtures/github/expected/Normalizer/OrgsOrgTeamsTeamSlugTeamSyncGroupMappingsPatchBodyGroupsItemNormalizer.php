@@ -65,7 +65,7 @@ class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyGroupsItemNormalizer imp
         $dataArray['group_id'] = $data->getGroupId();
         $dataArray['group_name'] = $data->getGroupName();
         $dataArray['group_description'] = $data->getGroupDescription();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

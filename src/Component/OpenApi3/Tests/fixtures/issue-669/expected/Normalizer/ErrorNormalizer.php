@@ -64,7 +64,7 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if ($data->isInitialized('requestId') && null !== $data->getRequestId()) {
             $dataArray['request_id'] = $data->getRequestId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

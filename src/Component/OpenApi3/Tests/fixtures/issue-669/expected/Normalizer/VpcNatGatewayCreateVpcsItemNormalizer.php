@@ -62,7 +62,7 @@ class VpcNatGatewayCreateVpcsItemNormalizer implements DenormalizerInterface, No
         if ($data->isInitialized('defaultGateway') && null !== $data->getDefaultGateway()) {
             $dataArray['default_gateway'] = $data->getDefaultGateway();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

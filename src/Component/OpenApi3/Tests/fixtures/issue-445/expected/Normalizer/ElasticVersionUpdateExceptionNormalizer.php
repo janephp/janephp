@@ -121,7 +121,7 @@ class ElasticVersionUpdateExceptionNormalizer implements DenormalizerInterface, 
         if ($data->isInitialized('actualVersion') && null !== $data->getActualVersion()) {
             $dataArray['actualVersion'] = $data->getActualVersion();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -143,7 +143,7 @@ class DuplicateSchemaInfoExceptionNormalizer implements DenormalizerInterface, N
         if ($data->isInitialized('schemaId') && null !== $data->getSchemaId()) {
             $dataArray['schemaId'] = $data->getSchemaId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -68,7 +68,7 @@ class ApiFileUploadDataSourceNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('storedObjectKey') && null !== $data->getStoredObjectKey()) {
             $dataArray['stored_object_key'] = $data->getStoredObjectKey();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

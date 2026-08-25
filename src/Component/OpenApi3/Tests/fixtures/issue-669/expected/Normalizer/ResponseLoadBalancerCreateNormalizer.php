@@ -54,7 +54,7 @@ class ResponseLoadBalancerCreateNormalizer implements DenormalizerInterface, Nor
         if ($data->isInitialized('loadBalancer') && null !== $data->getLoadBalancer()) {
             $dataArray['load_balancer'] = $data->getLoadBalancer() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getLoadBalancer(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

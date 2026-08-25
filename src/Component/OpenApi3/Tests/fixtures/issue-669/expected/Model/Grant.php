@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class Grant extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class Grant implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class Grant extends \ArrayObject
         $this->initialized['permission'] = true;
         $this->permission = $permission;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['bucket' => ['bucket', 'getBucket', 'setBucket'], 'permission' => ['permission', 'getPermission', 'setPermission']];
     }
 }

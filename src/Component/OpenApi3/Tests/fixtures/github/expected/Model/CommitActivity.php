@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CommitActivity extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CommitActivity implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class CommitActivity extends \ArrayObject
         $this->initialized['week'] = true;
         $this->week = $week;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['days' => ['days', 'getDays', 'setDays'], 'total' => ['total', 'getTotal', 'setTotal'], 'week' => ['week', 'getWeek', 'setWeek']];
     }
 }

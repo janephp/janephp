@@ -209,7 +209,7 @@ class IssueEventForIssueNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('bodyText') && null !== $data->getBodyText()) {
             $dataArray['body_text'] = $data->getBodyText();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

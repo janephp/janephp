@@ -57,7 +57,7 @@ class WorkflowUsageBillableWINDOWSNormalizer implements DenormalizerInterface, N
         if ($data->isInitialized('totalMs') && null !== $data->getTotalMs()) {
             $dataArray['total_ms'] = $data->getTotalMs();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

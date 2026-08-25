@@ -67,7 +67,7 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageSummaryNo
         if ($data->isInitialized('satisfied') && null !== $data->getSatisfied()) {
             $dataArray['satisfied'] = $data->getSatisfied();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

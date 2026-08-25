@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleScript extends BusinessRule
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class BusinessRuleScript extends BusinessRule implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class BusinessRuleScript extends BusinessRule
         $this->initialized['script'] = true;
         $this->script = $script;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['script' => ['script', 'getScript', 'setScript']];
     }
 }

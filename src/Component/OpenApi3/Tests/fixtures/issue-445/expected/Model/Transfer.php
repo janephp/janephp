@@ -27,13 +27,13 @@ class Transfer
     /**
      * State of transfer.
      *
-     * @var mixed
+     * @var string
      */
     protected $state;
     /**
      * Type of transfer.
      *
-     * @var mixed
+     * @var string
      */
     protected $transferType;
     /**
@@ -101,20 +101,20 @@ class Transfer
     /**
      * State of transfer.
      *
-     * @return mixed
+     * @return string
      */
-    public function getState()
+    public function getState(): string
     {
         return $this->state;
     }
     /**
      * State of transfer.
      *
-     * @param mixed $state
+     * @param string $state
      *
      * @return self
      */
-    public function setState($state): self
+    public function setState(string $state): self
     {
         $this->initialized['state'] = true;
         $this->state = $state;
@@ -123,20 +123,20 @@ class Transfer
     /**
      * Type of transfer.
      *
-     * @return mixed
+     * @return string
      */
-    public function getTransferType()
+    public function getTransferType(): string
     {
         return $this->transferType;
     }
     /**
      * Type of transfer.
      *
-     * @param mixed $transferType
+     * @param string $transferType
      *
      * @return self
      */
-    public function setTransferType($transferType): self
+    public function setTransferType(string $transferType): self
     {
         $this->initialized['transferType'] = true;
         $this->transferType = $transferType;

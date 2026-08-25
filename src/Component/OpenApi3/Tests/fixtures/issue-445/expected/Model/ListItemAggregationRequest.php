@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ListItemAggregationRequest extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ListItemAggregationRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -27,7 +30,7 @@ class ListItemAggregationRequest extends \ArrayObject
     /**
      * An optional search filter. Limits the document result set.
      *
-     * @var mixed|null
+     * @var FilterBase|null
      */
     protected $filter;
     /**
@@ -50,7 +53,7 @@ class ListItemAggregationRequest extends \ArrayObject
     /**
      * Limits the aggregation to the list items that have or not have broken references. By default it includes both.
      *
-     * @var mixed
+     * @var string
      */
     protected $brokenDependenciesFilter = 'All';
     /**
@@ -69,7 +72,7 @@ class ListItemAggregationRequest extends \ArrayObject
     /**
      * Limits the aggregation to the list items that have the specified life cycle state. Defaults to ActiveOnly.
      *
-     * @var mixed
+     * @var string
      */
     protected $lifeCycleFilter = 'ActiveOnly';
     /**
@@ -125,20 +128,20 @@ class ListItemAggregationRequest extends \ArrayObject
     /**
      * An optional search filter. Limits the document result set.
      *
-     * @return mixed
+     * @return FilterBase|null
      */
-    public function getFilter()
+    public function getFilter(): ?FilterBase
     {
         return $this->filter;
     }
     /**
      * An optional search filter. Limits the document result set.
      *
-     * @param mixed $filter
+     * @param FilterBase|null $filter
      *
      * @return self
      */
-    public function setFilter($filter): self
+    public function setFilter(?FilterBase $filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;
@@ -201,20 +204,20 @@ class ListItemAggregationRequest extends \ArrayObject
     /**
      * Limits the aggregation to the list items that have or not have broken references. By default it includes both.
      *
-     * @return mixed
+     * @return string
      */
-    public function getBrokenDependenciesFilter()
+    public function getBrokenDependenciesFilter(): string
     {
         return $this->brokenDependenciesFilter;
     }
     /**
      * Limits the aggregation to the list items that have or not have broken references. By default it includes both.
      *
-     * @param mixed $brokenDependenciesFilter
+     * @param string $brokenDependenciesFilter
      *
      * @return self
      */
-    public function setBrokenDependenciesFilter($brokenDependenciesFilter): self
+    public function setBrokenDependenciesFilter(string $brokenDependenciesFilter): self
     {
         $this->initialized['brokenDependenciesFilter'] = true;
         $this->brokenDependenciesFilter = $brokenDependenciesFilter;
@@ -269,20 +272,20 @@ class ListItemAggregationRequest extends \ArrayObject
     /**
      * Limits the aggregation to the list items that have the specified life cycle state. Defaults to ActiveOnly.
      *
-     * @return mixed
+     * @return string
      */
-    public function getLifeCycleFilter()
+    public function getLifeCycleFilter(): string
     {
         return $this->lifeCycleFilter;
     }
     /**
      * Limits the aggregation to the list items that have the specified life cycle state. Defaults to ActiveOnly.
      *
-     * @param mixed $lifeCycleFilter
+     * @param string $lifeCycleFilter
      *
      * @return self
      */
-    public function setLifeCycleFilter($lifeCycleFilter): self
+    public function setLifeCycleFilter(string $lifeCycleFilter): self
     {
         $this->initialized['lifeCycleFilter'] = true;
         $this->lifeCycleFilter = $lifeCycleFilter;
@@ -309,5 +312,9 @@ class ListItemAggregationRequest extends \ArrayObject
         $this->initialized['aggregators'] = true;
         $this->aggregators = $aggregators;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['searchString' => ['searchString', 'getSearchString', 'setSearchString'], 'searchBehaviors' => ['searchBehaviors', 'getSearchBehaviors', 'setSearchBehaviors'], 'filter' => ['filter', 'getFilter', 'setFilter'], 'aggregationFilters' => ['aggregationFilters', 'getAggregationFilters', 'setAggregationFilters'], 'includeAllSchemaChildren' => ['includeAllSchemaChildren', 'getIncludeAllSchemaChildren', 'setIncludeAllSchemaChildren'], 'brokenDependenciesFilter' => ['brokenDependenciesFilter', 'getBrokenDependenciesFilter', 'setBrokenDependenciesFilter'], 'schemaIds' => ['schemaIds', 'getSchemaIds', 'setSchemaIds'], 'searchLanguages' => ['searchLanguages', 'getSearchLanguages', 'setSearchLanguages'], 'lifeCycleFilter' => ['lifeCycleFilter', 'getLifeCycleFilter', 'setLifeCycleFilter'], 'aggregators' => ['aggregators', 'getAggregators', 'setAggregators']];
     }
 }

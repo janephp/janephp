@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CheckRunCheckSuite extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CheckRunCheckSuite implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class CheckRunCheckSuite extends \ArrayObject
         $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId']];
     }
 }

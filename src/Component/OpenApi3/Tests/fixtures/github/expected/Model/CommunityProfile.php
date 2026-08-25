@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CommunityProfile extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CommunityProfile implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class CommunityProfile extends \ArrayObject
         $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['healthPercentage' => ['health_percentage', 'getHealthPercentage', 'setHealthPercentage'], 'description' => ['description', 'getDescription', 'setDescription'], 'documentation' => ['documentation', 'getDocumentation', 'setDocumentation'], 'files' => ['files', 'getFiles', 'setFiles'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt']];
     }
 }

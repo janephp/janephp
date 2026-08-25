@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class GitCommit extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class GitCommit implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -255,5 +258,9 @@ class GitCommit extends \ArrayObject
         $this->initialized['htmlUrl'] = true;
         $this->htmlUrl = $htmlUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['sha' => ['sha', 'getSha', 'setSha'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'url' => ['url', 'getUrl', 'setUrl'], 'author' => ['author', 'getAuthor', 'setAuthor'], 'committer' => ['committer', 'getCommitter', 'setCommitter'], 'message' => ['message', 'getMessage', 'setMessage'], 'tree' => ['tree', 'getTree', 'setTree'], 'parents' => ['parents', 'getParents', 'setParents'], 'verification' => ['verification', 'getVerification', 'setVerification'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl']];
     }
 }

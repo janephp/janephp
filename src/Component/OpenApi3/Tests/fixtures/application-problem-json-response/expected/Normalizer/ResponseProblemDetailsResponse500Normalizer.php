@@ -67,7 +67,7 @@ class ResponseProblemDetailsResponse500Normalizer implements DenormalizerInterfa
         $dataArray['title'] = $data->getTitle();
         $dataArray['type'] = $data->getType();
         $dataArray['detail'] = $data->getDetail();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

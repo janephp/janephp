@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class FieldDecimal extends FieldBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class FieldDecimal extends FieldBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class FieldDecimal extends FieldBase
         $this->initialized['boost'] = true;
         $this->boost = $boost;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['pattern' => ['pattern', 'getPattern', 'setPattern'], 'minimum' => ['minimum', 'getMinimum', 'setMinimum'], 'maximum' => ['maximum', 'getMaximum', 'setMaximum'], 'boost' => ['boost', 'getBoost', 'setBoost']];
     }
 }

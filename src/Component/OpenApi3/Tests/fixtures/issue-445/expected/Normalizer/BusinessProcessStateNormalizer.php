@@ -48,7 +48,11 @@ class BusinessProcessStateNormalizer implements DenormalizerInterface, Normalize
             $object->setTimestamp($date);
         }
         if (\array_key_exists('error', $data) && $data['error'] !== null) {
-            $object->setError($data['error']);
+            $value = $data['error'];
+            if (is_array($data['error'])) {
+                $value = $this->denormalizer->denormalize($data['error'], \PicturePark\API\Model\ErrorResponse::class, 'json', $context);
+            }
+            $object->setError($value);
         }
         elseif (\array_key_exists('error', $data) && $data['error'] === null) {
             $object->setError(null);
@@ -61,7 +65,11 @@ class BusinessProcessStateNormalizer implements DenormalizerInterface, Normalize
         $dataArray['state'] = $data->getState();
         $dataArray['timestamp'] = $data->getTimestamp()->format('Y-m-d\TH:i:sP');
         if ($data->isInitialized('error') && null !== $data->getError()) {
-            $dataArray['error'] = $data->getError();
+            $value = $data->getError();
+            if (is_object($data->getError())) {
+                $value = $data->getError() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getError(), 'json', $context));
+            }
+            $dataArray['error'] = $value;
         }
         return $dataArray;
     }

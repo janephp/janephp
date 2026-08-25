@@ -82,7 +82,7 @@ class SearchReindexCompletedEventNormalizer implements DenormalizerInterface, No
         if ($data->isInitialized('duration') && null !== $data->getDuration()) {
             $dataArray['duration'] = $data->getDuration();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class LabelSearchResultItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class LabelSearchResultItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -209,5 +212,9 @@ class LabelSearchResultItem extends \ArrayObject
         $this->initialized['textMatches'] = true;
         $this->textMatches = $textMatches;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'url' => ['url', 'getUrl', 'setUrl'], 'name' => ['name', 'getName', 'setName'], 'color' => ['color', 'getColor', 'setColor'], 'default' => ['default', 'getDefault', 'setDefault'], 'description' => ['description', 'getDescription', 'setDescription'], 'score' => ['score', 'getScore', 'setScore'], 'textMatches' => ['text_matches', 'getTextMatches', 'setTextMatches']];
     }
 }

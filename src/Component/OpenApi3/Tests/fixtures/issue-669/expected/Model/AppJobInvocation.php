@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppJobInvocation extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppJobInvocation implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -193,5 +196,9 @@ class AppJobInvocation extends \ArrayObject
         $this->initialized['completedAt'] = true;
         $this->completedAt = $completedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'jobName' => ['job_name', 'getJobName', 'setJobName'], 'deploymentId' => ['deployment_id', 'getDeploymentId', 'setDeploymentId'], 'phase' => ['phase', 'getPhase', 'setPhase'], 'trigger' => ['trigger', 'getTrigger', 'setTrigger'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'startedAt' => ['started_at', 'getStartedAt', 'setStartedAt'], 'completedAt' => ['completed_at', 'getCompletedAt', 'setCompletedAt']];
     }
 }

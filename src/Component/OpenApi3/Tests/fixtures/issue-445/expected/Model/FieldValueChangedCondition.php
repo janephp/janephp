@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class FieldValueChangedCondition extends BusinessRuleCondition
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class FieldValueChangedCondition extends BusinessRuleCondition implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class FieldValueChangedCondition extends BusinessRuleCondition
         $this->initialized['expectedValue'] = true;
         $this->expectedValue = $expectedValue;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['fieldPath' => ['fieldPath', 'getFieldPath', 'setFieldPath'], 'expectedValue' => ['expectedValue', 'getExpectedValue', 'setExpectedValue']];
     }
 }

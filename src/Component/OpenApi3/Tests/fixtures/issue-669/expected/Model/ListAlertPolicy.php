@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ListAlertPolicy extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ListAlertPolicy implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ListAlertPolicy extends \ArrayObject
         $this->initialized['policies'] = true;
         $this->policies = $policies;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['policies' => ['policies', 'getPolicies', 'setPolicies']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class BookJsonld extends \ArrayObject
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
+class BookJsonld implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -13,7 +16,7 @@ class BookJsonld extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var mixed
+     * @var string|object
      */
     protected $context;
     /**
@@ -75,14 +78,14 @@ class BookJsonld extends \ArrayObject
      */
     protected $archivedAt;
     /**
-     * @return mixed
+     * @return string|object
      */
     public function getContext()
     {
         return $this->context;
     }
     /**
-     * @param mixed $context
+     * @param string|object $context
      *
      * @return self
      */
@@ -317,5 +320,9 @@ class BookJsonld extends \ArrayObject
         $this->initialized['archivedAt'] = true;
         $this->archivedAt = $archivedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['context' => ['@context', 'getContext', 'setContext'], 'id' => ['@id', 'getId', 'setId'], 'type' => ['@type', 'getType', 'setType'], 'id2' => ['id', 'getId2', 'setId2'], 'isbn' => ['isbn', 'getIsbn', 'setIsbn'], 'title' => ['title', 'getTitle', 'setTitle'], 'description' => ['description', 'getDescription', 'setDescription'], 'author' => ['author', 'getAuthor', 'setAuthor'], 'publicationDate' => ['publicationDate', 'getPublicationDate', 'setPublicationDate'], 'reviews' => ['reviews', 'getReviews', 'setReviews'], 'cover' => ['cover', 'getCover', 'setCover'], 'archivedAt' => ['archivedAt', 'getArchivedAt', 'setArchivedAt']];
     }
 }

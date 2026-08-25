@@ -154,7 +154,7 @@ class OutputIdNotFoundExceptionNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('outputId') && null !== $data->getOutputId()) {
             $dataArray['outputId'] = $data->getOutputId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -38,7 +38,11 @@ class SchemaUpdateResultNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('schema', $data) && $data['schema'] !== null) {
-            $object->setSchema($data['schema']);
+            $value = $data['schema'];
+            if (is_array($data['schema']) and \array_key_exists('id', $data['schema']) and \array_key_exists('schemaNamespace', $data['schema']) and \array_key_exists('types', $data['schema']) and \array_key_exists('displayPatterns', $data['schema']) and \array_key_exists('system', $data['schema']) and \array_key_exists('ownerTokenId', $data['schema']) and \array_key_exists('viewForAll', $data['schema'])) {
+                $value = $this->denormalizer->denormalize($data['schema'], \PicturePark\API\Model\SchemaDetail::class, 'json', $context);
+            }
+            $object->setSchema($value);
         }
         elseif (\array_key_exists('schema', $data) && $data['schema'] === null) {
             $object->setSchema(null);
@@ -49,7 +53,11 @@ class SchemaUpdateResultNormalizer implements DenormalizerInterface, NormalizerI
     {
         $dataArray = [];
         if ($data->isInitialized('schema') && null !== $data->getSchema()) {
-            $dataArray['schema'] = $data->getSchema();
+            $value = $data->getSchema();
+            if (is_object($data->getSchema())) {
+                $value = $data->getSchema() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getSchema(), 'json', $context));
+            }
+            $dataArray['schema'] = $value;
         }
         return $dataArray;
     }

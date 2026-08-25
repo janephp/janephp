@@ -54,7 +54,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsNameNorm
         if ($data->isInitialized('full') && null !== $data->getFull()) {
             $dataArray['full'] = $data->getFull();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DatabaseClusterRead extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DatabaseClusterRead implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -725,5 +728,9 @@ class DatabaseClusterRead extends \ArrayObject
         $this->initialized['metricsEndpoints'] = true;
         $this->metricsEndpoints = $metricsEndpoints;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'engine' => ['engine', 'getEngine', 'setEngine'], 'version' => ['version', 'getVersion', 'setVersion'], 'semanticVersion' => ['semantic_version', 'getSemanticVersion', 'setSemanticVersion'], 'numNodes' => ['num_nodes', 'getNumNodes', 'setNumNodes'], 'size' => ['size', 'getSize', 'setSize'], 'region' => ['region', 'getRegion', 'setRegion'], 'status' => ['status', 'getStatus', 'setStatus'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'privateNetworkUuid' => ['private_network_uuid', 'getPrivateNetworkUuid', 'setPrivateNetworkUuid'], 'tags' => ['tags', 'getTags', 'setTags'], 'dbNames' => ['db_names', 'getDbNames', 'setDbNames'], 'uiConnection' => ['ui_connection', 'getUiConnection', 'setUiConnection'], 'schemaRegistryConnection' => ['schema_registry_connection', 'getSchemaRegistryConnection', 'setSchemaRegistryConnection'], 'connection' => ['connection', 'getConnection', 'setConnection'], 'privateConnection' => ['private_connection', 'getPrivateConnection', 'setPrivateConnection'], 'standbyConnection' => ['standby_connection', 'getStandbyConnection', 'setStandbyConnection'], 'standbyPrivateConnection' => ['standby_private_connection', 'getStandbyPrivateConnection', 'setStandbyPrivateConnection'], 'users' => ['users', 'getUsers', 'setUsers'], 'maintenanceWindow' => ['maintenance_window', 'getMaintenanceWindow', 'setMaintenanceWindow'], 'projectId' => ['project_id', 'getProjectId', 'setProjectId'], 'rules' => ['rules', 'getRules', 'setRules'], 'versionEndOfLife' => ['version_end_of_life', 'getVersionEndOfLife', 'setVersionEndOfLife'], 'versionEndOfAvailability' => ['version_end_of_availability', 'getVersionEndOfAvailability', 'setVersionEndOfAvailability'], 'storageSizeMib' => ['storage_size_mib', 'getStorageSizeMib', 'setStorageSizeMib'], 'metricsEndpoints' => ['metrics_endpoints', 'getMetricsEndpoints', 'setMetricsEndpoints']];
     }
 }

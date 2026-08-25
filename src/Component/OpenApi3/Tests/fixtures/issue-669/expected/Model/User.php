@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class User extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class User implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class User extends \ArrayObject
         $this->initialized['kubernetesClusterUser'] = true;
         $this->kubernetesClusterUser = $kubernetesClusterUser;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['kubernetesClusterUser' => ['kubernetes_cluster_user', 'getKubernetesClusterUser', 'setKubernetesClusterUser']];
     }
 }

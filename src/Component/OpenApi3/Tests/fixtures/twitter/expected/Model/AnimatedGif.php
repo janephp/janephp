@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class AnimatedGif extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class AnimatedGif implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -139,5 +142,9 @@ class AnimatedGif extends \ArrayObject
         $this->initialized['width'] = true;
         $this->width = $width;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'previewImageUrl' => ['preview_image_url', 'getPreviewImageUrl', 'setPreviewImageUrl'], 'mediaKey' => ['media_key', 'getMediaKey', 'setMediaKey'], 'height' => ['height', 'getHeight', 'setHeight'], 'width' => ['width', 'getWidth', 'setWidth']];
     }
 }

@@ -287,7 +287,7 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemBalanceShe
         if ($data->isInitialized('totalShareholdersEquity') && null !== $data->getTotalShareholdersEquity()) {
             $dataArray['totalShareholdersEquity'] = $data->getTotalShareholdersEquity();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

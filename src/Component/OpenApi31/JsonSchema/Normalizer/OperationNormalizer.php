@@ -133,6 +133,12 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setServers(null);
         }
 
+        foreach ($data as $key => $value) {
+            if (preg_match('/^x-/', (string) $key)) {
+                $object[$key] = $value;
+            }
+        }
+
         return $object;
     }
 
@@ -202,6 +208,12 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
                 $values_6[] = $this->normalizer->normalize($value_6, 'json', $context);
             }
             $dataArray['servers'] = $values_6;
+        }
+
+        foreach ($data as $key => $value) {
+            if (preg_match('/^x-/', (string) $key)) {
+                $dataArray[$key] = $value;
+            }
         }
 
         return $dataArray;

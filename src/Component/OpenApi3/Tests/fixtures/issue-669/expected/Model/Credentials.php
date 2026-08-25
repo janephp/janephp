@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class Credentials extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class Credentials implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -233,5 +236,9 @@ class Credentials extends \ArrayObject
         $this->initialized['expiresAt'] = true;
         $this->expiresAt = $expiresAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['server' => ['server', 'getServer', 'setServer'], 'certificateAuthorityData' => ['certificate_authority_data', 'getCertificateAuthorityData', 'setCertificateAuthorityData'], 'clientCertificateData' => ['client_certificate_data', 'getClientCertificateData', 'setClientCertificateData'], 'clientKeyData' => ['client_key_data', 'getClientKeyData', 'setClientKeyData'], 'token' => ['token', 'getToken', 'setToken'], 'expiresAt' => ['expires_at', 'getExpiresAt', 'setExpiresAt']];
     }
 }

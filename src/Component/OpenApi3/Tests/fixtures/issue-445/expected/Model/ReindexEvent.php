@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ReindexEvent extends ApplicationEvent
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ReindexEvent extends ApplicationEvent implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class ReindexEvent extends ApplicationEvent
         $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['indexId' => ['indexId', 'getIndexId', 'setIndexId'], 'state' => ['state', 'getState', 'setState']];
     }
 }

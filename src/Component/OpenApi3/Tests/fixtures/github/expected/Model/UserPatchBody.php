@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class UserPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class UserPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -235,5 +238,9 @@ class UserPatchBody extends \ArrayObject
         $this->initialized['bio'] = true;
         $this->bio = $bio;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'email' => ['email', 'getEmail', 'setEmail'], 'blog' => ['blog', 'getBlog', 'setBlog'], 'twitterUsername' => ['twitter_username', 'getTwitterUsername', 'setTwitterUsername'], 'company' => ['company', 'getCompany', 'setCompany'], 'location' => ['location', 'getLocation', 'setLocation'], 'hireable' => ['hireable', 'getHireable', 'setHireable'], 'bio' => ['bio', 'getBio', 'setBio']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class UpdateRegistry extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class UpdateRegistry implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class UpdateRegistry extends \ArrayObject
         $this->initialized['cancel'] = true;
         $this->cancel = $cancel;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['cancel' => ['cancel', 'getCancel', 'setCancel']];
     }
 }

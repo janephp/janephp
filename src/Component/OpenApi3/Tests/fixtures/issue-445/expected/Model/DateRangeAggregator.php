@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class DateRangeAggregator extends AggregatorBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class DateRangeAggregator extends AggregatorBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class DateRangeAggregator extends AggregatorBase
         $this->initialized['ranges'] = true;
         $this->ranges = $ranges;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['field' => ['field', 'getField', 'setField'], 'ranges' => ['ranges', 'getRanges', 'setRanges']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseAllDropletActions extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseAllDropletActions implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class ResponseAllDropletActions extends \ArrayObject
         $this->initialized['meta'] = true;
         $this->meta = $meta;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['actions' => ['actions', 'getActions', 'setActions'], 'links' => ['links', 'getLinks', 'setLinks'], 'meta' => ['meta', 'getMeta', 'setMeta']];
     }
 }

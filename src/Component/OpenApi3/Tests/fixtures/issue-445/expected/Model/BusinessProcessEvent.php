@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessEvent extends ApplicationEvent
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class BusinessProcessEvent extends ApplicationEvent implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -17,7 +20,7 @@ class BusinessProcessEvent extends ApplicationEvent
      */
     protected $businessProcessId;
     /**
-     * @var mixed|null
+     * @var string|null
      */
     protected $lifeCycle;
     /**
@@ -43,18 +46,18 @@ class BusinessProcessEvent extends ApplicationEvent
         return $this;
     }
     /**
-     * @return mixed
+     * @return string|null
      */
-    public function getLifeCycle()
+    public function getLifeCycle(): ?string
     {
         return $this->lifeCycle;
     }
     /**
-     * @param mixed $lifeCycle
+     * @param string|null $lifeCycle
      *
      * @return self
      */
-    public function setLifeCycle($lifeCycle): self
+    public function setLifeCycle(?string $lifeCycle): self
     {
         $this->initialized['lifeCycle'] = true;
         $this->lifeCycle = $lifeCycle;
@@ -77,5 +80,9 @@ class BusinessProcessEvent extends ApplicationEvent
         $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['businessProcessId' => ['businessProcessId', 'getBusinessProcessId', 'setBusinessProcessId'], 'lifeCycle' => ['lifeCycle', 'getLifeCycle', 'setLifeCycle'], 'state' => ['state', 'getState', 'setState']];
     }
 }

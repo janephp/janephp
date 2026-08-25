@@ -79,7 +79,7 @@ class TeamsTeamIdMembersUsernamePutResponse422Normalizer implements Denormalizer
         if ($data->isInitialized('documentationUrl') && null !== $data->getDocumentationUrl()) {
             $dataArray['documentation_url'] = $data->getDocumentationUrl();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

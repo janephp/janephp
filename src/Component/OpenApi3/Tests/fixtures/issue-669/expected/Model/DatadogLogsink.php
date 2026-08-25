@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DatadogLogsink extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DatadogLogsink implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class DatadogLogsink extends \ArrayObject
         $this->initialized['datadogApiKey'] = true;
         $this->datadogApiKey = $datadogApiKey;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['site' => ['site', 'getSite', 'setSite'], 'datadogApiKey' => ['datadog_api_key', 'getDatadogApiKey', 'setDatadogApiKey']];
     }
 }

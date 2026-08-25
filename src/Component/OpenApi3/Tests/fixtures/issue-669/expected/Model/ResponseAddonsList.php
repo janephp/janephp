@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseAddonsList extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseAddonsList implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseAddonsList extends \ArrayObject
         $this->initialized['resources'] = true;
         $this->resources = $resources;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['resources' => ['resources', 'getResources', 'setResources']];
     }
 }

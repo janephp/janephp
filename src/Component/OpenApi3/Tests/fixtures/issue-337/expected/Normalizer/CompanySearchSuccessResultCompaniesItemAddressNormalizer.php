@@ -82,7 +82,7 @@ class CompanySearchSuccessResultCompaniesItemAddressNormalizer implements Denorm
         if ($data->isInitialized('province') && null !== $data->getProvince()) {
             $dataArray['province'] = $data->getProvince();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

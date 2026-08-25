@@ -69,7 +69,7 @@ class PetNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         }
         $dataArray['name'] = $data->getName();
         $dataArray['petType'] = $data->getPetType();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

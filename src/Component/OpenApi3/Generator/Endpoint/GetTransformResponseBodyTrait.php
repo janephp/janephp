@@ -13,6 +13,7 @@ use Jane\Component\OpenApiCommon\Generator\ContentType;
 use Jane\Component\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\Component\OpenApiCommon\Generator\Traits\OpenApiNumberTypeResolverTrait;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
+use Jane\Component\OpenApiCommon\Naming\XNamespaceResolver;
 use Jane\Component\OpenApiCommon\Registry\Registry;
 use PhpParser\Comment\Doc;
 use PhpParser\Modifiers;
@@ -125,7 +126,7 @@ trait GetTransformResponseBodyTrait
         if ($registry->getThrowUnexpectedStatusCode()) {
             $exceptionGenerator->createBaseExceptions($context);
 
-            $throwType = '\\' . $context->getCurrentSchema()->getNamespace() . '\\Exception\\UnexpectedStatusCodeException';
+            $throwType = '\\' . $context->getCurrentSchema()->getNamespace() . '\\Exception\\BadResponseException';
             $throwTypes[] = $throwType;
             $outputStatements = array_merge(
                 $outputStatements,
@@ -136,6 +137,7 @@ trait GetTransformResponseBodyTrait
                             [
                                 new Node\Arg(new Expr\Variable('status')),
                                 new Node\Arg(new Expr\Variable('body')),
+                                new Node\Arg(new Expr\Variable('response')),
                             ]
                         )
                     )),
@@ -297,7 +299,7 @@ EOD
         $class = null;
 
         if (null !== $classGuess) {
-            $class = $context->getRegistry()->getSchema($classGuess->getReference())->getNamespace() . '\\Model\\' . $classGuess->getName();
+            $class = $context->getRegistry()->getSchema($classGuess->getReference())->getNamespace() . '\\Model' . XNamespaceResolver::subNamespaceSuffix($classGuess) . '\\' . $classGuess->getName();
 
             if ($array) {
                 $class .= '[]';

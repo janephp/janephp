@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class VideoFormatBase extends FormatBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class VideoFormatBase extends FormatBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */

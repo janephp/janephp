@@ -47,7 +47,7 @@ class FileTransfer
     /**
      * State of file transfer.
      *
-     * @var mixed
+     * @var string
      */
     protected $state;
     /**
@@ -173,20 +173,20 @@ class FileTransfer
     /**
      * State of file transfer.
      *
-     * @return mixed
+     * @return string
      */
-    public function getState()
+    public function getState(): string
     {
         return $this->state;
     }
     /**
      * State of file transfer.
      *
-     * @param mixed $state
+     * @param string $state
      *
      * @return self
      */
-    public function setState($state): self
+    public function setState(string $state): self
     {
         $this->initialized['state'] = true;
         $this->state = $state;

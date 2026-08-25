@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class InverseListItemNamedCacheConfiguration extends NamedCacheConfigurationBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class InverseListItemNamedCacheConfiguration extends NamedCacheConfigurationBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -27,7 +30,7 @@ class InverseListItemNamedCacheConfiguration extends NamedCacheConfigurationBase
     /**
      * An optional filter to narrow down the cached list items
      *
-     * @var mixed|null
+     * @var FilterBase|null
      */
     protected $filter;
     /**
@@ -83,20 +86,20 @@ class InverseListItemNamedCacheConfiguration extends NamedCacheConfigurationBase
     /**
      * An optional filter to narrow down the cached list items
      *
-     * @return mixed
+     * @return FilterBase|null
      */
-    public function getFilter()
+    public function getFilter(): ?FilterBase
     {
         return $this->filter;
     }
     /**
      * An optional filter to narrow down the cached list items
      *
-     * @param mixed $filter
+     * @param FilterBase|null $filter
      *
      * @return self
      */
-    public function setFilter($filter): self
+    public function setFilter(?FilterBase $filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;
@@ -123,5 +126,9 @@ class InverseListItemNamedCacheConfiguration extends NamedCacheConfigurationBase
         $this->initialized['includeAllSchemaChildren'] = true;
         $this->includeAllSchemaChildren = $includeAllSchemaChildren;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['schemaId' => ['schemaId', 'getSchemaId', 'setSchemaId'], 'valueField' => ['valueField', 'getValueField', 'setValueField'], 'filter' => ['filter', 'getFilter', 'setFilter'], 'includeAllSchemaChildren' => ['includeAllSchemaChildren', 'getIncludeAllSchemaChildren', 'setIncludeAllSchemaChildren']];
     }
 }

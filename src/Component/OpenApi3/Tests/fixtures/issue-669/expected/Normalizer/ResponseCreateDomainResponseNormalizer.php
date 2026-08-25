@@ -54,7 +54,7 @@ class ResponseCreateDomainResponseNormalizer implements DenormalizerInterface, N
         if ($data->isInitialized('domain') && null !== $data->getDomain()) {
             $dataArray['domain'] = $data->getDomain() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDomain(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

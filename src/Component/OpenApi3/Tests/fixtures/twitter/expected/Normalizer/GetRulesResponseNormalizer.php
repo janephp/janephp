@@ -65,7 +65,7 @@ class GetRulesResponseNormalizer implements DenormalizerInterface, NormalizerInt
         }
         $dataArray['data'] = $values;
         $dataArray['meta'] = $data->getMeta() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getMeta(), 'json', $context));
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

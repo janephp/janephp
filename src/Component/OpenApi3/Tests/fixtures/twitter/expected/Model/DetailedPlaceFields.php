@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class DetailedPlaceFields extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class DetailedPlaceFields implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class DetailedPlaceFields extends \ArrayObject
         $this->initialized['geo'] = true;
         $this->geo = $geo;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['geo' => ['geo', 'getGeo', 'setGeo']];
     }
 }

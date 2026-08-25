@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPagesPutBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoPagesPutBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -61,5 +64,9 @@ class ReposOwnerRepoPagesPutBody extends \ArrayObject
         $this->initialized['source'] = true;
         $this->source = $source;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['cname' => ['cname', 'getCname', 'setCname'], 'source' => ['source', 'getSource', 'setSource']];
     }
 }

@@ -2,11 +2,14 @@
 
 namespace ApiPlatform\Demo\Model;
 
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
 /**
  * @deprecated
  */
-class ParchmentJsonld extends \ArrayObject
+class ParchmentJsonld implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -16,7 +19,7 @@ class ParchmentJsonld extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var mixed
+     * @var string|object
      */
     protected $context;
     /**
@@ -44,14 +47,14 @@ class ParchmentJsonld extends \ArrayObject
      */
     protected $description;
     /**
-     * @return mixed
+     * @return string|object
      */
     public function getContext()
     {
         return $this->context;
     }
     /**
-     * @param mixed $context
+     * @param string|object $context
      *
      * @return self
      */
@@ -158,5 +161,9 @@ class ParchmentJsonld extends \ArrayObject
         $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['context' => ['@context', 'getContext', 'setContext'], 'id' => ['@id', 'getId', 'setId'], 'type' => ['@type', 'getType', 'setType'], 'id2' => ['id', 'getId2', 'setId2'], 'title' => ['title', 'getTitle', 'setTitle'], 'description' => ['description', 'getDescription', 'setDescription']];
     }
 }

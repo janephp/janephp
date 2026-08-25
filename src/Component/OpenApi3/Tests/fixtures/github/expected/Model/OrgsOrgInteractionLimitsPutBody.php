@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrgsOrgInteractionLimitsPutBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrgsOrgInteractionLimitsPutBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class OrgsOrgInteractionLimitsPutBody extends \ArrayObject
         $this->initialized['limit'] = true;
         $this->limit = $limit;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['limit' => ['limit', 'getLimit', 'setLimit']];
     }
 }

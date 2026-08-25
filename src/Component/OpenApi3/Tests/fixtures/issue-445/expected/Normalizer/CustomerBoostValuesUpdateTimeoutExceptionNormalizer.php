@@ -143,7 +143,7 @@ class CustomerBoostValuesUpdateTimeoutExceptionNormalizer implements Denormalize
         if ($data->isInitialized('environmentProcessId') && null !== $data->getEnvironmentProcessId()) {
             $dataArray['environmentProcessId'] = $data->getEnvironmentProcessId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

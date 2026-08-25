@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class KubernetesNodePoolTaint extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class KubernetesNodePoolTaint implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class KubernetesNodePoolTaint extends \ArrayObject
         $this->initialized['effect'] = true;
         $this->effect = $effect;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['key' => ['key', 'getKey', 'setKey'], 'value' => ['value', 'getValue', 'setValue'], 'effect' => ['effect', 'getEffect', 'setEffect']];
     }
 }

@@ -89,7 +89,7 @@ class ApiUpdateEvaluationTestCaseInputPublicNormalizer implements DenormalizerIn
         if ($data->isInitialized('testCaseUuid') && null !== $data->getTestCaseUuid()) {
             $dataArray['test_case_uuid'] = $data->getTestCaseUuid();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

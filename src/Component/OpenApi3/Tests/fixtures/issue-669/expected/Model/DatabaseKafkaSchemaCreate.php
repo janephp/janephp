@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DatabaseKafkaSchemaCreate extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DatabaseKafkaSchemaCreate implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class DatabaseKafkaSchemaCreate extends \ArrayObject
         $this->initialized['schema'] = true;
         $this->schema = $schema;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['subjectName' => ['subject_name', 'getSubjectName', 'setSubjectName'], 'schemaType' => ['schema_type', 'getSchemaType', 'setSchemaType'], 'schema' => ['schema', 'getSchema', 'setSchema']];
     }
 }

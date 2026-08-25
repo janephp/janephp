@@ -154,7 +154,7 @@ class XmpMappingConfigurationInvalidExceptionNormalizer implements DenormalizerI
         if ($data->isInitialized('expectedConfiguration') && null !== $data->getExpectedConfiguration()) {
             $dataArray['expectedConfiguration'] = $data->getExpectedConfiguration();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

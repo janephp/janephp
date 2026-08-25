@@ -66,7 +66,7 @@ class AppIngressSpecRuleRoutingComponentNormalizer implements DenormalizerInterf
         if ($data->isInitialized('rewrite') && null !== $data->getRewrite()) {
             $dataArray['rewrite'] = $data->getRewrite();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

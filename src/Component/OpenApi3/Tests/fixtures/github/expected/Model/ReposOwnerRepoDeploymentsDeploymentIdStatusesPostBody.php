@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -219,5 +222,9 @@ class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody extends \ArrayObject
         $this->initialized['autoInactive'] = true;
         $this->autoInactive = $autoInactive;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['state' => ['state', 'getState', 'setState'], 'targetUrl' => ['target_url', 'getTargetUrl', 'setTargetUrl'], 'logUrl' => ['log_url', 'getLogUrl', 'setLogUrl'], 'description' => ['description', 'getDescription', 'setDescription'], 'environment' => ['environment', 'getEnvironment', 'setEnvironment'], 'environmentUrl' => ['environment_url', 'getEnvironmentUrl', 'setEnvironmentUrl'], 'autoInactive' => ['auto_inactive', 'getAutoInactive', 'setAutoInactive']];
     }
 }

@@ -169,7 +169,7 @@ class ApiOverviewNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('installedVersion') && null !== $data->getInstalledVersion()) {
             $dataArray['installed_version'] = $data->getInstalledVersion();
         }
-        foreach ($data as $key => $value_6) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_6) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_6;
             }

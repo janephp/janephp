@@ -52,7 +52,7 @@ class ResponseCaNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         $dataArray['ca'] = $data->getCa() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getCa(), 'json', $context));
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

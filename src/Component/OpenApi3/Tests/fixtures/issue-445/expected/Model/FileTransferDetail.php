@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class FileTransferDetail extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class FileTransferDetail implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -47,7 +50,7 @@ class FileTransferDetail extends \ArrayObject
     /**
      * State of file transfer.
      *
-     * @var mixed
+     * @var string
      */
     protected $state;
     /**
@@ -59,13 +62,13 @@ class FileTransferDetail extends \ArrayObject
     /**
      * Audit information.
      *
-     * @var mixed
+     * @var UserAudit
      */
     protected $audit;
     /**
      * Metadata extracted for file.
      *
-     * @var mixed|null
+     * @var FileMetadata|null
      */
     protected $fileMetadata;
     /**
@@ -191,20 +194,20 @@ class FileTransferDetail extends \ArrayObject
     /**
      * State of file transfer.
      *
-     * @return mixed
+     * @return string
      */
-    public function getState()
+    public function getState(): string
     {
         return $this->state;
     }
     /**
      * State of file transfer.
      *
-     * @param mixed $state
+     * @param string $state
      *
      * @return self
      */
-    public function setState($state): self
+    public function setState(string $state): self
     {
         $this->initialized['state'] = true;
         $this->state = $state;
@@ -235,20 +238,20 @@ class FileTransferDetail extends \ArrayObject
     /**
      * Audit information.
      *
-     * @return mixed
+     * @return UserAudit
      */
-    public function getAudit()
+    public function getAudit(): UserAudit
     {
         return $this->audit;
     }
     /**
      * Audit information.
      *
-     * @param mixed $audit
+     * @param UserAudit $audit
      *
      * @return self
      */
-    public function setAudit($audit): self
+    public function setAudit(UserAudit $audit): self
     {
         $this->initialized['audit'] = true;
         $this->audit = $audit;
@@ -257,20 +260,20 @@ class FileTransferDetail extends \ArrayObject
     /**
      * Metadata extracted for file.
      *
-     * @return mixed
+     * @return FileMetadata|null
      */
-    public function getFileMetadata()
+    public function getFileMetadata(): ?FileMetadata
     {
         return $this->fileMetadata;
     }
     /**
      * Metadata extracted for file.
      *
-     * @param mixed $fileMetadata
+     * @param FileMetadata|null $fileMetadata
      *
      * @return self
      */
-    public function setFileMetadata($fileMetadata): self
+    public function setFileMetadata(?FileMetadata $fileMetadata): self
     {
         $this->initialized['fileMetadata'] = true;
         $this->fileMetadata = $fileMetadata;
@@ -297,5 +300,9 @@ class FileTransferDetail extends \ArrayObject
         $this->initialized['outputItems'] = true;
         $this->outputItems = $outputItems;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'identifier' => ['identifier', 'getIdentifier', 'setIdentifier'], 'requestId' => ['requestId', 'getRequestId', 'setRequestId'], 'transferId' => ['transferId', 'getTransferId', 'setTransferId'], 'state' => ['state', 'getState', 'setState'], 'contentId' => ['contentId', 'getContentId', 'setContentId'], 'audit' => ['audit', 'getAudit', 'setAudit'], 'fileMetadata' => ['fileMetadata', 'getFileMetadata', 'setFileMetadata'], 'outputItems' => ['outputItems', 'getOutputItems', 'setOutputItems']];
     }
 }

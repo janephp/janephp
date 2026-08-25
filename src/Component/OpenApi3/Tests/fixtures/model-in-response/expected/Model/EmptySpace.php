@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class EmptySpace extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class EmptySpace implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class EmptySpace extends \ArrayObject
         $this->initialized['stringProperty'] = true;
         $this->stringProperty = $stringProperty;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['stringProperty' => ['stringProperty', 'getStringProperty', 'setStringProperty']];
     }
 }

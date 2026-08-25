@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrgsOrgTeamsPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrgsOrgTeamsPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -237,5 +240,9 @@ class OrgsOrgTeamsPostBody extends \ArrayObject
         $this->initialized['parentTeamId'] = true;
         $this->parentTeamId = $parentTeamId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'description' => ['description', 'getDescription', 'setDescription'], 'maintainers' => ['maintainers', 'getMaintainers', 'setMaintainers'], 'repoNames' => ['repo_names', 'getRepoNames', 'setRepoNames'], 'privacy' => ['privacy', 'getPrivacy', 'setPrivacy'], 'permission' => ['permission', 'getPermission', 'setPermission'], 'parentTeamId' => ['parent_team_id', 'getParentTeamId', 'setParentTeamId']];
     }
 }

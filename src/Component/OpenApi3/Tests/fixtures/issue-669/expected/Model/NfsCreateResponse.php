@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class NfsCreateResponse extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class NfsCreateResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class NfsCreateResponse extends \ArrayObject
         $this->initialized['share'] = true;
         $this->share = $share;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['share' => ['share', 'getShare', 'setShare']];
     }
 }

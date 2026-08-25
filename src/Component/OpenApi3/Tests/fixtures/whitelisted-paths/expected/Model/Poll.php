@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class Poll extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class Poll implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -127,5 +130,9 @@ class Poll extends \ArrayObject
         $this->initialized['durationMinutes'] = true;
         $this->durationMinutes = $durationMinutes;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'options' => ['options', 'getOptions', 'setOptions'], 'votingStatus' => ['voting_status', 'getVotingStatus', 'setVotingStatus'], 'endDatetime' => ['end_datetime', 'getEndDatetime', 'setEndDatetime'], 'durationMinutes' => ['duration_minutes', 'getDurationMinutes', 'setDurationMinutes']];
     }
 }

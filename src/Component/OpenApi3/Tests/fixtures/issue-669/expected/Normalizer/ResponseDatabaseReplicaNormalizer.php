@@ -54,7 +54,7 @@ class ResponseDatabaseReplicaNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('replica') && null !== $data->getReplica()) {
             $dataArray['replica'] = $data->getReplica() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getReplica(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

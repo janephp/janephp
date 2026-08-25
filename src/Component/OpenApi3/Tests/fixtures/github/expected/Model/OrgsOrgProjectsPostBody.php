@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrgsOrgProjectsPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrgsOrgProjectsPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class OrgsOrgProjectsPostBody extends \ArrayObject
         $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'body' => ['body', 'getBody', 'setBody']];
     }
 }

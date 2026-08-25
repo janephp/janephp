@@ -2,8 +2,11 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class BookJsonhalBookReadLinks extends \ArrayObject
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
+class BookJsonhalBookReadLinks implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class BookJsonhalBookReadLinks extends \ArrayObject
         $this->initialized['self'] = true;
         $this->self = $self;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['self' => ['self', 'getSelf', 'setSelf']];
     }
 }

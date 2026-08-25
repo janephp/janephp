@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class CertificateRequestCustom extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class CertificateRequestCustom implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class CertificateRequestCustom extends \ArrayObject
         $this->initialized['certificateChain'] = true;
         $this->certificateChain = $certificateChain;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'type' => ['type', 'getType', 'setType'], 'privateKey' => ['private_key', 'getPrivateKey', 'setPrivateKey'], 'leafCertificate' => ['leaf_certificate', 'getLeafCertificate', 'setLeafCertificate'], 'certificateChain' => ['certificate_chain', 'getCertificateChain', 'setCertificateChain']];
     }
 }

@@ -82,7 +82,7 @@ class UnsharpenMaskActionNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('threshold') && null !== $data->getThreshold()) {
             $dataArray['threshold'] = $data->getThreshold();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

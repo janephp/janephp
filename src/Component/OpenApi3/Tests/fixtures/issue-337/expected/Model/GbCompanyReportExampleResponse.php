@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponse extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -143,5 +146,9 @@ class GbCompanyReportExampleResponse extends \ArrayObject
         $this->initialized['report'] = true;
         $this->report = $report;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['orderId' => ['orderId', 'getOrderId', 'setOrderId'], 'companyId' => ['companyId', 'getCompanyId', 'setCompanyId'], 'dateOfOrder' => ['dateOfOrder', 'getDateOfOrder', 'setDateOfOrder'], 'language' => ['language', 'getLanguage', 'setLanguage'], 'userId' => ['userId', 'getUserId', 'setUserId'], 'report' => ['report', 'getReport', 'setReport']];
     }
 }

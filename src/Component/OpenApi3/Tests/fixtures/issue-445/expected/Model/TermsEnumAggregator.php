@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class TermsEnumAggregator extends AggregatorBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class TermsEnumAggregator extends AggregatorBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -207,5 +210,9 @@ class TermsEnumAggregator extends AggregatorBase
         $this->initialized['enumType'] = true;
         $this->enumType = $enumType;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['field' => ['field', 'getField', 'setField'], 'size' => ['size', 'getSize', 'setSize'], 'includes' => ['includes', 'getIncludes', 'setIncludes'], 'excludes' => ['excludes', 'getExcludes', 'setExcludes'], 'searchString' => ['searchString', 'getSearchString', 'setSearchString'], 'searchFields' => ['searchFields', 'getSearchFields', 'setSearchFields'], 'enumType' => ['enumType', 'getEnumType', 'setEnumType']];
     }
 }

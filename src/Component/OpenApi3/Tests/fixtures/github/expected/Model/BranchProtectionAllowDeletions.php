@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class BranchProtectionAllowDeletions extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class BranchProtectionAllowDeletions implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class BranchProtectionAllowDeletions extends \ArrayObject
         $this->initialized['enabled'] = true;
         $this->enabled = $enabled;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['enabled' => ['enabled', 'getEnabled', 'setEnabled']];
     }
 }

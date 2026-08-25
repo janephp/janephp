@@ -68,7 +68,7 @@ class BadRequestErrorNormalizer implements DenormalizerInterface, NormalizerInte
         if ($data->isInitialized('details') && null !== $data->getDetails()) {
             $dataArray['details'] = $data->getDetails();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

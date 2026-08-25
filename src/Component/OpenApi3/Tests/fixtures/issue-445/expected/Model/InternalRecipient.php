@@ -15,7 +15,7 @@ class InternalRecipient
     /**
      * User information of recipient.
      *
-     * @var mixed
+     * @var User
      */
     protected $recipient;
     /**
@@ -33,20 +33,20 @@ class InternalRecipient
     /**
      * User information of recipient.
      *
-     * @return mixed
+     * @return User
      */
-    public function getRecipient()
+    public function getRecipient(): User
     {
         return $this->recipient;
     }
     /**
      * User information of recipient.
      *
-     * @param mixed $recipient
+     * @param User $recipient
      *
      * @return self
      */
-    public function setRecipient($recipient): self
+    public function setRecipient(User $recipient): self
     {
         $this->initialized['recipient'] = true;
         $this->recipient = $recipient;

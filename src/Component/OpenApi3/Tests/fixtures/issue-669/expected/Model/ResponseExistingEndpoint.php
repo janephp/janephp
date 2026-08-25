@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseExistingEndpoint extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseExistingEndpoint implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseExistingEndpoint extends \ArrayObject
         $this->initialized['endpoint'] = true;
         $this->endpoint = $endpoint;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['endpoint' => ['endpoint', 'getEndpoint', 'setEndpoint']];
     }
 }

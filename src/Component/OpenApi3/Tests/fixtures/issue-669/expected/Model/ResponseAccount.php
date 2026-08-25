@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseAccount extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseAccount implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseAccount extends \ArrayObject
         $this->initialized['account'] = true;
         $this->account = $account;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['account' => ['account', 'getAccount', 'setAccount']];
     }
 }

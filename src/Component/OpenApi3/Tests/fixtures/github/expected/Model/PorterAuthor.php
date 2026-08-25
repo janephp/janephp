@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class PorterAuthor extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class PorterAuthor implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -165,5 +168,9 @@ class PorterAuthor extends \ArrayObject
         $this->initialized['importUrl'] = true;
         $this->importUrl = $importUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'remoteId' => ['remote_id', 'getRemoteId', 'setRemoteId'], 'remoteName' => ['remote_name', 'getRemoteName', 'setRemoteName'], 'email' => ['email', 'getEmail', 'setEmail'], 'name' => ['name', 'getName', 'setName'], 'url' => ['url', 'getUrl', 'setUrl'], 'importUrl' => ['import_url', 'getImportUrl', 'setImportUrl']];
     }
 }

@@ -143,7 +143,7 @@ class UserNotFoundExceptionNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('missingUserId') && null !== $data->getMissingUserId()) {
             $dataArray['missingUserId'] = $data->getMissingUserId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class TeamDiscussionComment extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class TeamDiscussionComment implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -315,5 +318,9 @@ class TeamDiscussionComment extends \ArrayObject
         $this->initialized['reactions'] = true;
         $this->reactions = $reactions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['author' => ['author', 'getAuthor', 'setAuthor'], 'body' => ['body', 'getBody', 'setBody'], 'bodyHtml' => ['body_html', 'getBodyHtml', 'setBodyHtml'], 'bodyVersion' => ['body_version', 'getBodyVersion', 'setBodyVersion'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'lastEditedAt' => ['last_edited_at', 'getLastEditedAt', 'setLastEditedAt'], 'discussionUrl' => ['discussion_url', 'getDiscussionUrl', 'setDiscussionUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'number' => ['number', 'getNumber', 'setNumber'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'url' => ['url', 'getUrl', 'setUrl'], 'reactions' => ['reactions', 'getReactions', 'setReactions']];
     }
 }

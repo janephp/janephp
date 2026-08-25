@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class MinimalRepositoryLicense extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class MinimalRepositoryLicense implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class MinimalRepositoryLicense extends \ArrayObject
         $this->initialized['nodeId'] = true;
         $this->nodeId = $nodeId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['key' => ['key', 'getKey', 'setKey'], 'name' => ['name', 'getName', 'setName'], 'spdxId' => ['spdx_id', 'getSpdxId', 'setSpdxId'], 'url' => ['url', 'getUrl', 'setUrl'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId']];
     }
 }

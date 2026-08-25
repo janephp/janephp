@@ -119,7 +119,7 @@ class ApiCreateKnowledgeBaseInputPublicNormalizer implements DenormalizerInterfa
         if ($data->isInitialized('vpcUuid') && null !== $data->getVpcUuid()) {
             $dataArray['vpc_uuid'] = $data->getVpcUuid();
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

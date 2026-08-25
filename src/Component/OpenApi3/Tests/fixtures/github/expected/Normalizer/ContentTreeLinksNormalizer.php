@@ -73,7 +73,7 @@ class ContentTreeLinksNormalizer implements DenormalizerInterface, NormalizerInt
         $dataArray['git'] = $data->getGit();
         $dataArray['html'] = $data->getHtml();
         $dataArray['self'] = $data->getSelf();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

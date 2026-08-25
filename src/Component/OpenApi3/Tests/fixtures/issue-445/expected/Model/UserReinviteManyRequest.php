@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class UserReinviteManyRequest extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class UserReinviteManyRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class UserReinviteManyRequest extends \ArrayObject
         $this->initialized['userIds'] = true;
         $this->userIds = $userIds;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['userIds' => ['userIds', 'getUserIds', 'setUserIds']];
     }
 }

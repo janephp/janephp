@@ -60,7 +60,11 @@ class ContentFilterRequestNormalizer implements DenormalizerInterface, Normalize
             $object->setSearchString(null);
         }
         if (\array_key_exists('searchType', $data)) {
-            $object->setSearchType($data['searchType']);
+            $value_1 = $data['searchType'];
+            if (is_string($data['searchType'])) {
+                $value_1 = $data['searchType'];
+            }
+            $object->setSearchType($value_1);
         }
         if (\array_key_exists('collectionId', $data) && $data['collectionId'] !== null) {
             $object->setCollectionId($data['collectionId']);
@@ -69,21 +73,33 @@ class ContentFilterRequestNormalizer implements DenormalizerInterface, Normalize
             $object->setCollectionId(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $object->setFilter($data['filter']);
+            $value_2 = $data['filter'];
+            if (is_array($data['filter']) and \array_key_exists('kind', $data['filter'])) {
+                $value_2 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
+            }
+            $object->setFilter($value_2);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
         }
         if (\array_key_exists('lifeCycleFilter', $data)) {
-            $object->setLifeCycleFilter($data['lifeCycleFilter']);
+            $value_3 = $data['lifeCycleFilter'];
+            if (is_string($data['lifeCycleFilter'])) {
+                $value_3 = $data['lifeCycleFilter'];
+            }
+            $object->setLifeCycleFilter($value_3);
         }
         if (\array_key_exists('brokenDependenciesFilter', $data)) {
-            $object->setBrokenDependenciesFilter($data['brokenDependenciesFilter']);
+            $value_4 = $data['brokenDependenciesFilter'];
+            if (is_string($data['brokenDependenciesFilter'])) {
+                $value_4 = $data['brokenDependenciesFilter'];
+            }
+            $object->setBrokenDependenciesFilter($value_4);
         }
         if (\array_key_exists('rightsFilter', $data) && $data['rightsFilter'] !== null) {
             $values_1 = [];
-            foreach ($data['rightsFilter'] as $value_1) {
-                $values_1[] = $value_1;
+            foreach ($data['rightsFilter'] as $value_5) {
+                $values_1[] = $value_5;
             }
             $object->setRightsFilter($values_1);
         }
@@ -108,19 +124,35 @@ class ContentFilterRequestNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('searchString') && null !== $data->getSearchString()) {
             $dataArray['searchString'] = $data->getSearchString();
         }
-        $dataArray['searchType'] = $data->getSearchType();
+        $value_1 = $data->getSearchType();
+        if (is_string($data->getSearchType())) {
+            $value_1 = $data->getSearchType();
+        }
+        $dataArray['searchType'] = $value_1;
         if ($data->isInitialized('collectionId') && null !== $data->getCollectionId()) {
             $dataArray['collectionId'] = $data->getCollectionId();
         }
         if ($data->isInitialized('filter') && null !== $data->getFilter()) {
-            $dataArray['filter'] = $data->getFilter();
+            $value_2 = $data->getFilter();
+            if (is_object($data->getFilter())) {
+                $value_2 = $data->getFilter() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+            }
+            $dataArray['filter'] = $value_2;
         }
-        $dataArray['lifeCycleFilter'] = $data->getLifeCycleFilter();
-        $dataArray['brokenDependenciesFilter'] = $data->getBrokenDependenciesFilter();
+        $value_3 = $data->getLifeCycleFilter();
+        if (is_string($data->getLifeCycleFilter())) {
+            $value_3 = $data->getLifeCycleFilter();
+        }
+        $dataArray['lifeCycleFilter'] = $value_3;
+        $value_4 = $data->getBrokenDependenciesFilter();
+        if (is_string($data->getBrokenDependenciesFilter())) {
+            $value_4 = $data->getBrokenDependenciesFilter();
+        }
+        $dataArray['brokenDependenciesFilter'] = $value_4;
         if ($data->isInitialized('rightsFilter') && null !== $data->getRightsFilter()) {
             $values_1 = [];
-            foreach ($data->getRightsFilter() as $value_1) {
-                $values_1[] = $value_1;
+            foreach ($data->getRightsFilter() as $value_5) {
+                $values_1[] = $value_5;
             }
             $dataArray['rightsFilter'] = $values_1;
         }

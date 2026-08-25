@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoKeysPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoKeysPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -101,5 +104,9 @@ class ReposOwnerRepoKeysPostBody extends \ArrayObject
         $this->initialized['readOnly'] = true;
         $this->readOnly = $readOnly;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['title' => ['title', 'getTitle', 'setTitle'], 'key' => ['key', 'getKey', 'setKey'], 'readOnly' => ['read_only', 'getReadOnly', 'setReadOnly']];
     }
 }

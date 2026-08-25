@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ShareOutputBasic extends ShareOutputBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ShareOutputBasic extends ShareOutputBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */

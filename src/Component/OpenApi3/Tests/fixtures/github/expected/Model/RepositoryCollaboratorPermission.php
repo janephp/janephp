@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class RepositoryCollaboratorPermission extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class RepositoryCollaboratorPermission implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class RepositoryCollaboratorPermission extends \ArrayObject
         $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['permission' => ['permission', 'getPermission', 'setPermission'], 'user' => ['user', 'getUser', 'setUser']];
     }
 }

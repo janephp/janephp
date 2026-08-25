@@ -187,7 +187,7 @@ class InvalidChangeCommandFieldTypeInvalidExceptionNormalizer implements Denorma
         if ($data->isInitialized('fieldExpectedType') && null !== $data->getFieldExpectedType()) {
             $dataArray['fieldExpectedType'] = $data->getFieldExpectedType();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

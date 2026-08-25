@@ -149,7 +149,7 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemWatchlistMatchesItemE
         if ($data->isInitialized('reasonListed') && null !== $data->getReasonListed()) {
             $dataArray['reasonListed'] = $data->getReasonListed();
         }
-        foreach ($data as $key => $value_4) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_4;
             }

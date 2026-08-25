@@ -40,4 +40,8 @@ class FloatingIpActionAssign extends FloatingIPsAction
         $this->dropletId = $dropletId;
         return $this;
     }
+    public function definedProperties(): array
+    {
+        return array_merge(parent::definedProperties(), ['dropletId' => ['droplet_id', 'getDropletId', 'setDropletId']]);
+    }
 }

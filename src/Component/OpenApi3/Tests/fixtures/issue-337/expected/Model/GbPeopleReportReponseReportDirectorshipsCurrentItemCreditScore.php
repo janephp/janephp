@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScore extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScore implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItemCreditScore extends \Ar
         $this->initialized['currentCreditRating'] = true;
         $this->currentCreditRating = $currentCreditRating;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['currentCreditRating' => ['currentCreditRating', 'getCurrentCreditRating', 'setCurrentCreditRating']];
     }
 }

@@ -41,6 +41,13 @@ class TypeValidator implements ValidatorInterface
             return;
         }
 
+        // Binary strings accept plain strings, resources and PSR-7 streams, so
+        // the Symfony Type constraint would wrongly reject the latter two.
+        $objectType = $object->getType();
+        if ('binary' === $object->getFormat() && ('string' === $objectType || ['string'] === $objectType)) {
+            return;
+        }
+
         foreach (self::TYPES_MAPPING as $jsonSchemaType => $phpType) {
             if (\array_key_exists($jsonSchemaType, $types)) {
                 unset($types[$jsonSchemaType]);

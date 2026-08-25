@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppIngressSpecRuleRoutingRedirect extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppIngressSpecRuleRoutingRedirect implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class AppIngressSpecRuleRoutingRedirect extends \ArrayObject
         $this->initialized['redirectCode'] = true;
         $this->redirectCode = $redirectCode;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['uri' => ['uri', 'getUri', 'setUri'], 'authority' => ['authority', 'getAuthority', 'setAuthority'], 'port' => ['port', 'getPort', 'setPort'], 'scheme' => ['scheme', 'getScheme', 'setScheme'], 'redirectCode' => ['redirect_code', 'getRedirectCode', 'setRedirectCode']];
     }
 }

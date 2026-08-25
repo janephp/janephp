@@ -38,22 +38,46 @@ class BusinessRuleTriggerPointNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('executionScope', $data)) {
-            $object->setExecutionScope($data['executionScope']);
+            $value = $data['executionScope'];
+            if (is_string($data['executionScope'])) {
+                $value = $data['executionScope'];
+            }
+            $object->setExecutionScope($value);
         }
         if (\array_key_exists('documentType', $data)) {
-            $object->setDocumentType($data['documentType']);
+            $value_1 = $data['documentType'];
+            if (is_string($data['documentType'])) {
+                $value_1 = $data['documentType'];
+            }
+            $object->setDocumentType($value_1);
         }
         if (\array_key_exists('action', $data)) {
-            $object->setAction($data['action']);
+            $value_2 = $data['action'];
+            if (is_string($data['action'])) {
+                $value_2 = $data['action'];
+            }
+            $object->setAction($value_2);
         }
         return $object;
     }
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['executionScope'] = $data->getExecutionScope();
-        $dataArray['documentType'] = $data->getDocumentType();
-        $dataArray['action'] = $data->getAction();
+        $value = $data->getExecutionScope();
+        if (is_string($data->getExecutionScope())) {
+            $value = $data->getExecutionScope();
+        }
+        $dataArray['executionScope'] = $value;
+        $value_1 = $data->getDocumentType();
+        if (is_string($data->getDocumentType())) {
+            $value_1 = $data->getDocumentType();
+        }
+        $dataArray['documentType'] = $value_1;
+        $value_2 = $data->getAction();
+        if (is_string($data->getAction())) {
+            $value_2 = $data->getAction();
+        }
+        $dataArray['action'] = $value_2;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

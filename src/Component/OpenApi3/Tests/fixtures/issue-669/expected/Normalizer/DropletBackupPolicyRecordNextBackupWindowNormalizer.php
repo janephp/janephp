@@ -69,7 +69,7 @@ class DropletBackupPolicyRecordNextBackupWindowNormalizer implements Denormalize
         if ($data->isInitialized('end') && null !== $data->getEnd()) {
             $dataArray['end'] = $data->getEnd()->format('Y-m-d\TH:i:sP');
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

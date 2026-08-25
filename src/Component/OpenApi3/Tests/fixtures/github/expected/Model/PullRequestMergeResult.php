@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class PullRequestMergeResult extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class PullRequestMergeResult implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class PullRequestMergeResult extends \ArrayObject
         $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['sha' => ['sha', 'getSha', 'setSha'], 'merged' => ['merged', 'getMerged', 'setMerged'], 'message' => ['message', 'getMessage', 'setMessage']];
     }
 }

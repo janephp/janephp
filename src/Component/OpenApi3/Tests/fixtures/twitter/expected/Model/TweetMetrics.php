@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class TweetMetrics extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class TweetMetrics implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class TweetMetrics extends \ArrayObject
         $this->initialized['video'] = true;
         $this->video = $video;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['tweetId' => ['tweet_id', 'getTweetId', 'setTweetId'], 'tweet' => ['tweet', 'getTweet', 'setTweet'], 'video' => ['video', 'getVideo', 'setVideo']];
     }
 }

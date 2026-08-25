@@ -96,7 +96,7 @@ class TagsResourcesNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('databases') && null !== $data->getDatabases()) {
             $dataArray['databases'] = $data->getDatabases() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDatabases(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

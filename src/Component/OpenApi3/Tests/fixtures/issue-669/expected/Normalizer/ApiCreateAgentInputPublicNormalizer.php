@@ -147,7 +147,7 @@ class ApiCreateAgentInputPublicNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('workspaceUuid') && null !== $data->getWorkspaceUuid()) {
             $dataArray['workspace_uuid'] = $data->getWorkspaceUuid();
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

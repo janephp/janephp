@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoIssuesCommentsCommentIdPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoIssuesCommentsCommentIdPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ReposOwnerRepoIssuesCommentsCommentIdPatchBody extends \ArrayObject
         $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['body' => ['body', 'getBody', 'setBody']];
     }
 }

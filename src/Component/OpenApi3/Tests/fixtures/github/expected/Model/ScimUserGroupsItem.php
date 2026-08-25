@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ScimUserGroupsItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ScimUserGroupsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class ScimUserGroupsItem extends \ArrayObject
         $this->initialized['display'] = true;
         $this->display = $display;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['value' => ['value', 'getValue', 'setValue'], 'display' => ['display', 'getDisplay', 'setDisplay']];
     }
 }

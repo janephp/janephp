@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AutoscalePoolDynamicConfig extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AutoscalePoolDynamicConfig implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class AutoscalePoolDynamicConfig extends \ArrayObject
         $this->initialized['cooldownMinutes'] = true;
         $this->cooldownMinutes = $cooldownMinutes;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['minInstances' => ['min_instances', 'getMinInstances', 'setMinInstances'], 'maxInstances' => ['max_instances', 'getMaxInstances', 'setMaxInstances'], 'targetCpuUtilization' => ['target_cpu_utilization', 'getTargetCpuUtilization', 'setTargetCpuUtilization'], 'targetMemoryUtilization' => ['target_memory_utilization', 'getTargetMemoryUtilization', 'setTargetMemoryUtilization'], 'cooldownMinutes' => ['cooldown_minutes', 'getCooldownMinutes', 'setCooldownMinutes']];
     }
 }

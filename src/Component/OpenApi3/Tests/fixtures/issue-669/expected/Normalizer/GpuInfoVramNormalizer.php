@@ -61,7 +61,7 @@ class GpuInfoVramNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('unit') && null !== $data->getUnit()) {
             $dataArray['unit'] = $data->getUnit();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

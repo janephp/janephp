@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ForwardingRule extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ForwardingRule implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -183,5 +186,9 @@ class ForwardingRule extends \ArrayObject
         $this->initialized['tlsPassthrough'] = true;
         $this->tlsPassthrough = $tlsPassthrough;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['entryProtocol' => ['entry_protocol', 'getEntryProtocol', 'setEntryProtocol'], 'entryPort' => ['entry_port', 'getEntryPort', 'setEntryPort'], 'targetProtocol' => ['target_protocol', 'getTargetProtocol', 'setTargetProtocol'], 'targetPort' => ['target_port', 'getTargetPort', 'setTargetPort'], 'certificateId' => ['certificate_id', 'getCertificateId', 'setCertificateId'], 'tlsPassthrough' => ['tls_passthrough', 'getTlsPassthrough', 'setTlsPassthrough']];
     }
 }

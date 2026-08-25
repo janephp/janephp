@@ -84,7 +84,7 @@ class AutoscalePoolDynamicConfigNormalizer implements DenormalizerInterface, Nor
         if ($data->isInitialized('cooldownMinutes') && null !== $data->getCooldownMinutes()) {
             $dataArray['cooldown_minutes'] = $data->getCooldownMinutes();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

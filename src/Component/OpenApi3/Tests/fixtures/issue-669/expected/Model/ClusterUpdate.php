@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ClusterUpdate extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ClusterUpdate implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -375,5 +378,9 @@ class ClusterUpdate extends \ArrayObject
         $this->initialized['rdmaSharedDevPlugin'] = true;
         $this->rdmaSharedDevPlugin = $rdmaSharedDevPlugin;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'tags' => ['tags', 'getTags', 'setTags'], 'maintenancePolicy' => ['maintenance_policy', 'getMaintenancePolicy', 'setMaintenancePolicy'], 'autoUpgrade' => ['auto_upgrade', 'getAutoUpgrade', 'setAutoUpgrade'], 'surgeUpgrade' => ['surge_upgrade', 'getSurgeUpgrade', 'setSurgeUpgrade'], 'ha' => ['ha', 'getHa', 'setHa'], 'controlPlaneFirewall' => ['control_plane_firewall', 'getControlPlaneFirewall', 'setControlPlaneFirewall'], 'clusterAutoscalerConfiguration' => ['cluster_autoscaler_configuration', 'getClusterAutoscalerConfiguration', 'setClusterAutoscalerConfiguration'], 'routingAgent' => ['routing_agent', 'getRoutingAgent', 'setRoutingAgent'], 'amdGpuDevicePlugin' => ['amd_gpu_device_plugin', 'getAmdGpuDevicePlugin', 'setAmdGpuDevicePlugin'], 'amdGpuDeviceMetricsExporterPlugin' => ['amd_gpu_device_metrics_exporter_plugin', 'getAmdGpuDeviceMetricsExporterPlugin', 'setAmdGpuDeviceMetricsExporterPlugin'], 'nvidiaGpuDevicePlugin' => ['nvidia_gpu_device_plugin', 'getNvidiaGpuDevicePlugin', 'setNvidiaGpuDevicePlugin'], 'rdmaSharedDevPlugin' => ['rdma_shared_dev_plugin', 'getRdmaSharedDevPlugin', 'setRdmaSharedDevPlugin']];
     }
 }

@@ -81,7 +81,7 @@ class StatusCheckPolicyNormalizer implements DenormalizerInterface, NormalizerIn
         }
         $dataArray['contexts'] = $values;
         $dataArray['contexts_url'] = $data->getContextsUrl();
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

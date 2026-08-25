@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiGoogleDriveDataSourceDisplay extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiGoogleDriveDataSourceDisplay implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -61,5 +64,9 @@ class ApiGoogleDriveDataSourceDisplay extends \ArrayObject
         $this->initialized['folderName'] = true;
         $this->folderName = $folderName;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['folderId' => ['folder_id', 'getFolderId', 'setFolderId'], 'folderName' => ['folder_name', 'getFolderName', 'setFolderName']];
     }
 }

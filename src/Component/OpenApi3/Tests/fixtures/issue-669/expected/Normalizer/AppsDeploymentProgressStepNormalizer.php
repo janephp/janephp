@@ -127,7 +127,7 @@ class AppsDeploymentProgressStepNormalizer implements DenormalizerInterface, Nor
             }
             $dataArray['steps'] = $values;
         }
-        foreach ($data as $key_1 => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_2;
             }

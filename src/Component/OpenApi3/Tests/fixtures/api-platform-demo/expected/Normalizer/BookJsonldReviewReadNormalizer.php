@@ -38,7 +38,13 @@ class BookJsonldReviewReadNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('@context', $data)) {
-            $object->setContext($data['@context']);
+            $value = $data['@context'];
+            if (is_string($data['@context'])) {
+                $value = $data['@context'];
+            } elseif (is_array($data['@context'])) {
+                $value = $data['@context'];
+            }
+            $object->setContext($value);
             unset($data['@context']);
         }
         if (\array_key_exists('@id', $data)) {
@@ -53,9 +59,9 @@ class BookJsonldReviewReadNormalizer implements DenormalizerInterface, Normalize
             $object->setTitle($data['title']);
             unset($data['title']);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -64,7 +70,7 @@ class BookJsonldReviewReadNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         $dataArray['title'] = $data->getTitle();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

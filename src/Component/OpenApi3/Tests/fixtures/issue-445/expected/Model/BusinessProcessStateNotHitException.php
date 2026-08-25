@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessProcessStateNotHitException extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class BusinessProcessStateNotHitException implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -275,5 +278,9 @@ class BusinessProcessStateNotHitException extends \ArrayObject
         $this->initialized['actual'] = true;
         $this->actual = $actual;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['traceLevel' => ['traceLevel', 'getTraceLevel', 'setTraceLevel'], 'traceId' => ['traceId', 'getTraceId', 'setTraceId'], 'traceJobId' => ['traceJobId', 'getTraceJobId', 'setTraceJobId'], 'httpStatusCode' => ['httpStatusCode', 'getHttpStatusCode', 'setHttpStatusCode'], 'exceptionMessage' => ['exceptionMessage', 'getExceptionMessage', 'setExceptionMessage'], 'kind' => ['kind', 'getKind', 'setKind'], 'customerId' => ['customerId', 'getCustomerId', 'setCustomerId'], 'customerAlias' => ['customerAlias', 'getCustomerAlias', 'setCustomerAlias'], 'userId' => ['userId', 'getUserId', 'setUserId'], 'businessProcessId' => ['businessProcessId', 'getBusinessProcessId', 'setBusinessProcessId'], 'expected' => ['expected', 'getExpected', 'setExpected'], 'actual' => ['actual', 'getActual', 'setActual']];
     }
 }

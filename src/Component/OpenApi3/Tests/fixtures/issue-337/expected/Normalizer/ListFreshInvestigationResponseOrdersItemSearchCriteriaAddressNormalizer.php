@@ -68,7 +68,7 @@ class ListFreshInvestigationResponseOrdersItemSearchCriteriaAddressNormalizer im
         if ($data->isInitialized('postcode') && null !== $data->getPostcode()) {
             $dataArray['postcode'] = $data->getPostcode();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

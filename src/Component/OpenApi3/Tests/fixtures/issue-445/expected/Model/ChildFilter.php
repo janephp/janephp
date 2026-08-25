@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ChildFilter extends FilterBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ChildFilter extends FilterBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -21,7 +24,7 @@ class ChildFilter extends FilterBase
     /**
      * The filter to be applied on the child document. All kinds of filters are accepted.
      *
-     * @var mixed
+     * @var FilterBase
      */
     protected $filter;
     /**
@@ -49,23 +52,27 @@ class ChildFilter extends FilterBase
     /**
      * The filter to be applied on the child document. All kinds of filters are accepted.
      *
-     * @return mixed
+     * @return FilterBase
      */
-    public function getFilter()
+    public function getFilter(): FilterBase
     {
         return $this->filter;
     }
     /**
      * The filter to be applied on the child document. All kinds of filters are accepted.
      *
-     * @param mixed $filter
+     * @param FilterBase $filter
      *
      * @return self
      */
-    public function setFilter($filter): self
+    public function setFilter(FilterBase $filter): self
     {
         $this->initialized['filter'] = true;
         $this->filter = $filter;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['childType' => ['childType', 'getChildType', 'setChildType'], 'filter' => ['filter', 'getFilter', 'setFilter']];
     }
 }

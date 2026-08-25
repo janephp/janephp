@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class TweetWithheld extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class TweetWithheld implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class TweetWithheld extends \ArrayObject
         $this->initialized['scope'] = true;
         $this->scope = $scope;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['copyright' => ['copyright', 'getCopyright', 'setCopyright'], 'countryCodes' => ['country_codes', 'getCountryCodes', 'setCountryCodes'], 'scope' => ['scope', 'getScope', 'setScope']];
     }
 }

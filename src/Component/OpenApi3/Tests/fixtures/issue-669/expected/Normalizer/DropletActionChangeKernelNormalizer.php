@@ -59,7 +59,7 @@ class DropletActionChangeKernelNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('kernel') && null !== $data->getKernel()) {
             $dataArray['kernel'] = $data->getKernel();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class GbCompanyReportExampleResponseReportLocalFinancialStatementsItemCashFlow e
         $this->initialized['increaseInCash'] = true;
         $this->increaseInCash = $increaseInCash;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['netCashFlowFromOperations' => ['netCashFlowFromOperations', 'getNetCashFlowFromOperations', 'setNetCashFlowFromOperations'], 'netCashFlowBeforeFinancing' => ['netCashFlowBeforeFinancing', 'getNetCashFlowBeforeFinancing', 'setNetCashFlowBeforeFinancing'], 'netCashFlowFromFinancing' => ['netCashFlowFromFinancing', 'getNetCashFlowFromFinancing', 'setNetCashFlowFromFinancing'], 'increaseInCash' => ['increaseInCash', 'getIncreaseInCash', 'setIncreaseInCash']];
     }
 }

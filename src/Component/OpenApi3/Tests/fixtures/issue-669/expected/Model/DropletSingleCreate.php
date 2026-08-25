@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DropletSingleCreate extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DropletSingleCreate implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,7 +36,7 @@ class DropletSingleCreate extends \ArrayObject
     /**
      * The image ID of a public or private image or the slug identifier for a public image. This image will be the base image for your Droplet.<br>Requires `image:read` scope.
      *
-     * @var mixed
+     * @var string|int
      */
     protected $image;
     /**
@@ -171,7 +174,7 @@ class DropletSingleCreate extends \ArrayObject
     /**
      * The image ID of a public or private image or the slug identifier for a public image. This image will be the base image for your Droplet.<br>Requires `image:read` scope.
      *
-     * @return mixed
+     * @return string|int
      */
     public function getImage()
     {
@@ -180,7 +183,7 @@ class DropletSingleCreate extends \ArrayObject
     /**
      * The image ID of a public or private image or the slug identifier for a public image. This image will be the base image for your Droplet.<br>Requires `image:read` scope.
      *
-     * @param mixed $image
+     * @param string|int $image
      *
      * @return self
      */
@@ -431,5 +434,9 @@ class DropletSingleCreate extends \ArrayObject
         $this->initialized['withDropletAgent'] = true;
         $this->withDropletAgent = $withDropletAgent;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'region' => ['region', 'getRegion', 'setRegion'], 'size' => ['size', 'getSize', 'setSize'], 'image' => ['image', 'getImage', 'setImage'], 'sshKeys' => ['ssh_keys', 'getSshKeys', 'setSshKeys'], 'backups' => ['backups', 'getBackups', 'setBackups'], 'backupPolicy' => ['backup_policy', 'getBackupPolicy', 'setBackupPolicy'], 'ipv6' => ['ipv6', 'getIpv6', 'setIpv6'], 'monitoring' => ['monitoring', 'getMonitoring', 'setMonitoring'], 'tags' => ['tags', 'getTags', 'setTags'], 'userData' => ['user_data', 'getUserData', 'setUserData'], 'privateNetworking' => ['private_networking', 'getPrivateNetworking', 'setPrivateNetworking'], 'volumes' => ['volumes', 'getVolumes', 'setVolumes'], 'vpcUuid' => ['vpc_uuid', 'getVpcUuid', 'setVpcUuid'], 'withDropletAgent' => ['with_droplet_agent', 'getWithDropletAgent', 'setWithDropletAgent']];
     }
 }

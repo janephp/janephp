@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class NotSupportedFileMappingForDynamicFormatException implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -275,5 +278,9 @@ class NotSupportedFileMappingForDynamicFormatException extends \ArrayObject
         $this->initialized['formatId'] = true;
         $this->formatId = $formatId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['traceLevel' => ['traceLevel', 'getTraceLevel', 'setTraceLevel'], 'traceId' => ['traceId', 'getTraceId', 'setTraceId'], 'traceJobId' => ['traceJobId', 'getTraceJobId', 'setTraceJobId'], 'httpStatusCode' => ['httpStatusCode', 'getHttpStatusCode', 'setHttpStatusCode'], 'exceptionMessage' => ['exceptionMessage', 'getExceptionMessage', 'setExceptionMessage'], 'kind' => ['kind', 'getKind', 'setKind'], 'customerId' => ['customerId', 'getCustomerId', 'setCustomerId'], 'customerAlias' => ['customerAlias', 'getCustomerAlias', 'setCustomerAlias'], 'userId' => ['userId', 'getUserId', 'setUserId'], 'inputExtension' => ['inputExtension', 'getInputExtension', 'setInputExtension'], 'targetFormatKind' => ['targetFormatKind', 'getTargetFormatKind', 'setTargetFormatKind'], 'formatId' => ['formatId', 'getFormatId', 'setFormatId']];
     }
 }

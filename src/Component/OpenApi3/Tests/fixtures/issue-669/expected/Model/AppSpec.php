@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppSpec extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppSpec implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -465,5 +468,9 @@ class AppSpec extends \ArrayObject
         $this->initialized['vpc'] = true;
         $this->vpc = $vpc;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'region' => ['region', 'getRegion', 'setRegion'], 'disableEdgeCache' => ['disable_edge_cache', 'getDisableEdgeCache', 'setDisableEdgeCache'], 'disableEmailObfuscation' => ['disable_email_obfuscation', 'getDisableEmailObfuscation', 'setDisableEmailObfuscation'], 'enhancedThreatControlEnabled' => ['enhanced_threat_control_enabled', 'getEnhancedThreatControlEnabled', 'setEnhancedThreatControlEnabled'], 'domains' => ['domains', 'getDomains', 'setDomains'], 'services' => ['services', 'getServices', 'setServices'], 'staticSites' => ['static_sites', 'getStaticSites', 'setStaticSites'], 'jobs' => ['jobs', 'getJobs', 'setJobs'], 'workers' => ['workers', 'getWorkers', 'setWorkers'], 'functions' => ['functions', 'getFunctions', 'setFunctions'], 'databases' => ['databases', 'getDatabases', 'setDatabases'], 'ingress' => ['ingress', 'getIngress', 'setIngress'], 'egress' => ['egress', 'getEgress', 'setEgress'], 'maintenance' => ['maintenance', 'getMaintenance', 'setMaintenance'], 'vpc' => ['vpc', 'getVpc', 'setVpc']];
     }
 }

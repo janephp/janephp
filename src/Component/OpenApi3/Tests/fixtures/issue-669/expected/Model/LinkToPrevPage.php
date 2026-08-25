@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class LinkToPrevPage extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class LinkToPrevPage implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class LinkToPrevPage extends \ArrayObject
         $this->initialized['prev'] = true;
         $this->prev = $prev;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['prev' => ['prev', 'getPrev', 'setPrev']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class FirewallRulesInboundRulesItem extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class FirewallRulesInboundRulesItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -89,5 +92,9 @@ class FirewallRulesInboundRulesItem extends \ArrayObject
         $this->initialized['sources'] = true;
         $this->sources = $sources;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['protocol' => ['protocol', 'getProtocol', 'setProtocol'], 'ports' => ['ports', 'getPorts', 'setPorts'], 'sources' => ['sources', 'getSources', 'setSources']];
     }
 }

@@ -104,7 +104,7 @@ class VpcNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
         if ($data->isInitialized('urn') && null !== $data->getUrn()) {
             $dataArray['urn'] = $data->getUrn();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

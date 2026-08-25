@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class TakeArrayValueTransformation extends BusinessRuleTransformation
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class TakeArrayValueTransformation extends BusinessRuleTransformation implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class TakeArrayValueTransformation extends BusinessRuleTransformation
         $this->initialized['index'] = true;
         $this->index = $index;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['index' => ['index', 'getIndex', 'setIndex']];
     }
 }

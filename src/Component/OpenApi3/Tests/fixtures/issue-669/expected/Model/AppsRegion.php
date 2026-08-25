@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsRegion extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsRegion implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -193,5 +196,9 @@ class AppsRegion extends \ArrayObject
         $this->initialized['slug'] = true;
         $this->slug = $slug;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['continent' => ['continent', 'getContinent', 'setContinent'], 'dataCenters' => ['data_centers', 'getDataCenters', 'setDataCenters'], 'default' => ['default', 'getDefault', 'setDefault'], 'disabled' => ['disabled', 'getDisabled', 'setDisabled'], 'flag' => ['flag', 'getFlag', 'setFlag'], 'label' => ['label', 'getLabel', 'setLabel'], 'reason' => ['reason', 'getReason', 'setReason'], 'slug' => ['slug', 'getSlug', 'setSlug']];
     }
 }

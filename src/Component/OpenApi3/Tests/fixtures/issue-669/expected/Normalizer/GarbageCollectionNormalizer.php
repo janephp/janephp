@@ -104,7 +104,7 @@ class GarbageCollectionNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('freedBytes') && null !== $data->getFreedBytes()) {
             $dataArray['freed_bytes'] = $data->getFreedBytes();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

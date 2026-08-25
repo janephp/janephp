@@ -60,7 +60,7 @@ class SimpleCommitAuthorNormalizer implements DenormalizerInterface, NormalizerI
         $dataArray = [];
         $dataArray['name'] = $data->getName();
         $dataArray['email'] = $data->getEmail();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

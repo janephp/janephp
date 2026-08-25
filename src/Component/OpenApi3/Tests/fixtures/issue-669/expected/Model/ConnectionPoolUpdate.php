@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ConnectionPoolUpdate extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ConnectionPoolUpdate implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class ConnectionPoolUpdate extends \ArrayObject
         $this->initialized['user'] = true;
         $this->user = $user;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['mode' => ['mode', 'getMode', 'setMode'], 'size' => ['size', 'getSize', 'setSize'], 'db' => ['db', 'getDb', 'setDb'], 'user' => ['user', 'getUser', 'setUser']];
     }
 }

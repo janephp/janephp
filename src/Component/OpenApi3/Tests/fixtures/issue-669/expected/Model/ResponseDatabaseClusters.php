@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseDatabaseClusters extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseDatabaseClusters implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseDatabaseClusters extends \ArrayObject
         $this->initialized['databases'] = true;
         $this->databases = $databases;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['databases' => ['databases', 'getDatabases', 'setDatabases']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class BookJsonldReviewRead extends \ArrayObject
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
+class BookJsonldReviewRead implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -13,7 +16,7 @@ class BookJsonldReviewRead extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var mixed
+     * @var string|object
      */
     protected $context;
     /**
@@ -31,14 +34,14 @@ class BookJsonldReviewRead extends \ArrayObject
      */
     protected $title;
     /**
-     * @return mixed
+     * @return string|object
      */
     public function getContext()
     {
         return $this->context;
     }
     /**
-     * @param mixed $context
+     * @param string|object $context
      *
      * @return self
      */
@@ -105,5 +108,9 @@ class BookJsonldReviewRead extends \ArrayObject
         $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['context' => ['@context', 'getContext', 'setContext'], 'id' => ['@id', 'getId', 'setId'], 'type' => ['@type', 'getType', 'setType'], 'title' => ['title', 'getTitle', 'setTitle']];
     }
 }

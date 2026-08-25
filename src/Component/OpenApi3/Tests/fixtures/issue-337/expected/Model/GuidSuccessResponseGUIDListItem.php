@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GuidSuccessResponseGUIDListItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GuidSuccessResponseGUIDListItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class GuidSuccessResponseGUIDListItem extends \ArrayObject
         $this->initialized['serviceLine'] = true;
         $this->serviceLine = $serviceLine;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['friendlyName' => ['friendlyName', 'getFriendlyName', 'setFriendlyName'], 'gUID' => ['GUID', 'getGUID', 'setGUID'], 'type' => ['type', 'getType', 'setType'], 'serviceLine' => ['serviceLine', 'getServiceLine', 'setServiceLine']];
     }
 }

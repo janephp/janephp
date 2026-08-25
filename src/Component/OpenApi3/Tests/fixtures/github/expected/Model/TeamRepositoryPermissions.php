@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class TeamRepositoryPermissions extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class TeamRepositoryPermissions implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class TeamRepositoryPermissions extends \ArrayObject
         $this->initialized['maintain'] = true;
         $this->maintain = $maintain;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['admin' => ['admin', 'getAdmin', 'setAdmin'], 'pull' => ['pull', 'getPull', 'setPull'], 'triage' => ['triage', 'getTriage', 'setTriage'], 'push' => ['push', 'getPush', 'setPush'], 'maintain' => ['maintain', 'getMaintain', 'setMaintain']];
     }
 }

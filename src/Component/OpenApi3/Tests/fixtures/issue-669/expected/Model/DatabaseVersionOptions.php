@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DatabaseVersionOptions extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DatabaseVersionOptions implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class DatabaseVersionOptions extends \ArrayObject
         $this->initialized['versions'] = true;
         $this->versions = $versions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['versions' => ['versions', 'getVersions', 'setVersions']];
     }
 }

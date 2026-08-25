@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class MaintenancePolicy extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class MaintenancePolicy implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class MaintenancePolicy extends \ArrayObject
         $this->initialized['day'] = true;
         $this->day = $day;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['startTime' => ['start_time', 'getStartTime', 'setStartTime'], 'duration' => ['duration', 'getDuration', 'setDuration'], 'day' => ['day', 'getDay', 'setDay']];
     }
 }

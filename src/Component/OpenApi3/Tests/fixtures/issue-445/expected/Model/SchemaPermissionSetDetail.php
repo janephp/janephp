@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaPermissionSetDetail extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class SchemaPermissionSetDetail implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -21,7 +24,7 @@ class SchemaPermissionSetDetail extends \ArrayObject
     /**
      * Language specific permission set names.
      *
-     * @var mixed
+     * @var array<string, string>
      */
     protected $names;
     /**
@@ -51,7 +54,7 @@ class SchemaPermissionSetDetail extends \ArrayObject
     /**
      * Audit information.
      *
-     * @var mixed|null
+     * @var UserAuditDetail|null
      */
     protected $audit;
     /**
@@ -79,20 +82,20 @@ class SchemaPermissionSetDetail extends \ArrayObject
     /**
      * Language specific permission set names.
      *
-     * @return mixed
+     * @return array<string, string>
      */
-    public function getNames()
+    public function getNames(): iterable
     {
         return $this->names;
     }
     /**
      * Language specific permission set names.
      *
-     * @param mixed $names
+     * @param array<string, string> $names
      *
      * @return self
      */
-    public function setNames($names): self
+    public function setNames(iterable $names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;
@@ -189,23 +192,27 @@ class SchemaPermissionSetDetail extends \ArrayObject
     /**
      * Audit information.
      *
-     * @return mixed
+     * @return UserAuditDetail|null
      */
-    public function getAudit()
+    public function getAudit(): ?UserAuditDetail
     {
         return $this->audit;
     }
     /**
      * Audit information.
      *
-     * @param mixed $audit
+     * @param UserAuditDetail|null $audit
      *
      * @return self
      */
-    public function setAudit($audit): self
+    public function setAudit(?UserAuditDetail $audit): self
     {
         $this->initialized['audit'] = true;
         $this->audit = $audit;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'names' => ['names', 'getNames', 'setNames'], 'userRolesRights' => ['userRolesRights', 'getUserRolesRights', 'setUserRolesRights'], 'userRolesPermissionSetRights' => ['userRolesPermissionSetRights', 'getUserRolesPermissionSetRights', 'setUserRolesPermissionSetRights'], 'exclusive' => ['exclusive', 'getExclusive', 'setExclusive'], 'ownerTokenId' => ['ownerTokenId', 'getOwnerTokenId', 'setOwnerTokenId'], 'audit' => ['audit', 'getAudit', 'setAudit']];
     }
 }

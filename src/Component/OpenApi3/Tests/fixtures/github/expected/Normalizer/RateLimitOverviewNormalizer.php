@@ -60,7 +60,7 @@ class RateLimitOverviewNormalizer implements DenormalizerInterface, NormalizerIn
         $dataArray = [];
         $dataArray['resources'] = $data->getResources() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getResources(), 'json', $context));
         $dataArray['rate'] = $data->getRate() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getRate(), 'json', $context));
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

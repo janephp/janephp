@@ -92,7 +92,7 @@ class ApiEvaluationMetricResultNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('stringValue') && null !== $data->getStringValue()) {
             $dataArray['string_value'] = $data->getStringValue();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

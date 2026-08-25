@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class History extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class History implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -207,5 +210,9 @@ class History extends \ArrayObject
         $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['historyEventId' => ['history_event_id', 'getHistoryEventId', 'setHistoryEventId'], 'currentInstanceCount' => ['current_instance_count', 'getCurrentInstanceCount', 'setCurrentInstanceCount'], 'desiredInstanceCount' => ['desired_instance_count', 'getDesiredInstanceCount', 'setDesiredInstanceCount'], 'reason' => ['reason', 'getReason', 'setReason'], 'status' => ['status', 'getStatus', 'setStatus'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt']];
     }
 }

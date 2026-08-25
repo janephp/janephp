@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbPeopleReportReponseReportDirectorDetailsAdditionalData extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbPeopleReportReponseReportDirectorDetailsAdditionalData implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class GbPeopleReportReponseReportDirectorDetailsAdditionalData extends \ArrayObj
         $this->initialized['disqualifiedException'] = true;
         $this->disqualifiedException = $disqualifiedException;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['disqualified' => ['disqualified', 'getDisqualified', 'setDisqualified'], 'disqualifiedException' => ['disqualifiedException', 'getDisqualifiedException', 'setDisqualifiedException']];
     }
 }

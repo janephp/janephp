@@ -131,7 +131,7 @@ class InvoiceSummaryNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('creditsAndAdjustments') && null !== $data->getCreditsAndAdjustments()) {
             $dataArray['credits_and_adjustments'] = $data->getCreditsAndAdjustments() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getCreditsAndAdjustments(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

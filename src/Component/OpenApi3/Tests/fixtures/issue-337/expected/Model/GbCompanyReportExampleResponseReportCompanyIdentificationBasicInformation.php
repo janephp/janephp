@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -209,5 +212,9 @@ class GbCompanyReportExampleResponseReportCompanyIdentificationBasicInformation 
         $this->initialized['contactAddress'] = true;
         $this->contactAddress = $contactAddress;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['businessName' => ['businessName', 'getBusinessName', 'setBusinessName'], 'registeredCompanyName' => ['registeredCompanyName', 'getRegisteredCompanyName', 'setRegisteredCompanyName'], 'companyRegistrationNumber' => ['companyRegistrationNumber', 'getCompanyRegistrationNumber', 'setCompanyRegistrationNumber'], 'country' => ['country', 'getCountry', 'setCountry'], 'companyRegistrationDate' => ['companyRegistrationDate', 'getCompanyRegistrationDate', 'setCompanyRegistrationDate'], 'legalForm' => ['legalForm', 'getLegalForm', 'setLegalForm'], 'companyStatus' => ['companyStatus', 'getCompanyStatus', 'setCompanyStatus'], 'principalActivity' => ['principalActivity', 'getPrincipalActivity', 'setPrincipalActivity'], 'contactAddress' => ['contactAddress', 'getContactAddress', 'setContactAddress']];
     }
 }

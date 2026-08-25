@@ -61,7 +61,7 @@ class Endpoint2GetResponseNormalizer implements DenormalizerInterface, Normalize
         if ($data->isInitialized('field2Bis') && null !== $data->getField2Bis()) {
             $dataArray['field-2-bis'] = $data->getField2Bis() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getField2Bis(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

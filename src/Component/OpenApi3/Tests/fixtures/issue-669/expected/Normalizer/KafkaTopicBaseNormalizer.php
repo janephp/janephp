@@ -68,7 +68,7 @@ class KafkaTopicBaseNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('partitionCount') && null !== $data->getPartitionCount()) {
             $dataArray['partition_count'] = $data->getPartitionCount();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

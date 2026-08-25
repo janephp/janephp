@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbPeopleReportReponseReportDirectorDetails implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -319,5 +322,9 @@ class GbPeopleReportReponseReportDirectorDetails extends \ArrayObject
         $this->initialized['additionalData'] = true;
         $this->additionalData = $additionalData;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'idType' => ['idType', 'getIdType', 'setIdType'], 'name' => ['name', 'getName', 'setName'], 'title' => ['title', 'getTitle', 'setTitle'], 'firstName' => ['firstName', 'getFirstName', 'setFirstName'], 'middleName' => ['middleName', 'getMiddleName', 'setMiddleName'], 'surname' => ['surname', 'getSurname', 'setSurname'], 'address' => ['address', 'getAddress', 'setAddress'], 'gender' => ['gender', 'getGender', 'setGender'], 'dateOfBirth' => ['dateOfBirth', 'getDateOfBirth', 'setDateOfBirth'], 'country' => ['country', 'getCountry', 'setCountry'], 'directorType' => ['directorType', 'getDirectorType', 'setDirectorType'], 'positions' => ['positions', 'getPositions', 'setPositions'], 'additionalData' => ['additionalData', 'getAdditionalData', 'setAdditionalData']];
     }
 }

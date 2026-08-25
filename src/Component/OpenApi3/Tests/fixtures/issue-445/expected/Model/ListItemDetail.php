@@ -34,7 +34,7 @@ class ListItemDetail
     /**
      * Contains language specific display values. They are calculated values based on the template stored in the Content schema DisplayPatterns property.
      *
-     * @var mixed|null
+     * @var array<string, string>|null
      */
     protected $displayValues;
     /**
@@ -59,13 +59,13 @@ class ListItemDetail
     /**
      * Audit information.
      *
-     * @var mixed|null
+     * @var UserAuditDetail|null
      */
     protected $audit;
     /**
      * Activity information: dynamically mapped from configured metadata fields or from audit information if no mapping is configured.
      *
-     * @var mixed|null
+     * @var Activity|null
      */
     protected $activity;
     /**
@@ -139,20 +139,20 @@ class ListItemDetail
     /**
      * Contains language specific display values. They are calculated values based on the template stored in the Content schema DisplayPatterns property.
      *
-     * @return mixed
+     * @return array<string, string>|null
      */
-    public function getDisplayValues()
+    public function getDisplayValues(): ?iterable
     {
         return $this->displayValues;
     }
     /**
      * Contains language specific display values. They are calculated values based on the template stored in the Content schema DisplayPatterns property.
      *
-     * @param mixed $displayValues
+     * @param array<string, string>|null $displayValues
      *
      * @return self
      */
-    public function setDisplayValues($displayValues): self
+    public function setDisplayValues(?iterable $displayValues): self
     {
         $this->initialized['displayValues'] = true;
         $this->displayValues = $displayValues;
@@ -229,20 +229,20 @@ class ListItemDetail
     /**
      * Audit information.
      *
-     * @return mixed
+     * @return UserAuditDetail|null
      */
-    public function getAudit()
+    public function getAudit(): ?UserAuditDetail
     {
         return $this->audit;
     }
     /**
      * Audit information.
      *
-     * @param mixed $audit
+     * @param UserAuditDetail|null $audit
      *
      * @return self
      */
-    public function setAudit($audit): self
+    public function setAudit(?UserAuditDetail $audit): self
     {
         $this->initialized['audit'] = true;
         $this->audit = $audit;
@@ -251,20 +251,20 @@ class ListItemDetail
     /**
      * Activity information: dynamically mapped from configured metadata fields or from audit information if no mapping is configured.
      *
-     * @return mixed
+     * @return Activity|null
      */
-    public function getActivity()
+    public function getActivity(): ?Activity
     {
         return $this->activity;
     }
     /**
      * Activity information: dynamically mapped from configured metadata fields or from audit information if no mapping is configured.
      *
-     * @param mixed $activity
+     * @param Activity|null $activity
      *
      * @return self
      */
-    public function setActivity($activity): self
+    public function setActivity(?Activity $activity): self
     {
         $this->initialized['activity'] = true;
         $this->activity = $activity;

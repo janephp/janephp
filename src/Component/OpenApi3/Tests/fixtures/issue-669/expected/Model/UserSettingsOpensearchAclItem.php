@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class UserSettingsOpensearchAclItem extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class UserSettingsOpensearchAclItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class UserSettingsOpensearchAclItem extends \ArrayObject
         $this->initialized['permission'] = true;
         $this->permission = $permission;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['index' => ['index', 'getIndex', 'setIndex'], 'permission' => ['permission', 'getPermission', 'setPermission']];
     }
 }

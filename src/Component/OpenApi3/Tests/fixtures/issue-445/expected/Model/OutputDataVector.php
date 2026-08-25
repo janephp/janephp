@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class OutputDataVector extends OutputDataBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class OutputDataVector extends OutputDataBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */

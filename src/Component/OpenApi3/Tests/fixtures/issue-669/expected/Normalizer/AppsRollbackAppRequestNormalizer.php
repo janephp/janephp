@@ -64,7 +64,7 @@ class AppsRollbackAppRequestNormalizer implements DenormalizerInterface, Normali
         if ($data->isInitialized('skipPin') && null !== $data->getSkipPin()) {
             $dataArray['skip_pin'] = $data->getSkipPin();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

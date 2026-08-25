@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Model;
 
-class FileDepositPostBody extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\ExpectedMultiPartBoolean\Runtime\AdditionalPropertiesInterface;
+class FileDepositPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -13,7 +16,7 @@ class FileDepositPostBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var string
+     * @var string|resource|\Psr\Http\Message\StreamInterface
      */
     protected $fichier;
     /**
@@ -21,18 +24,18 @@ class FileDepositPostBody extends \ArrayObject
      */
     protected $valid;
     /**
-     * @return string
+     * @return string|resource|\Psr\Http\Message\StreamInterface
      */
-    public function getFichier(): string
+    public function getFichier()
     {
         return $this->fichier;
     }
     /**
-     * @param string $fichier
+     * @param string|resource|\Psr\Http\Message\StreamInterface $fichier
      *
      * @return self
      */
-    public function setFichier(string $fichier): self
+    public function setFichier($fichier): self
     {
         $this->initialized['fichier'] = true;
         $this->fichier = $fichier;
@@ -55,5 +58,9 @@ class FileDepositPostBody extends \ArrayObject
         $this->initialized['valid'] = true;
         $this->valid = $valid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['fichier' => ['fichier', 'getFichier', 'setFichier'], 'valid' => ['valid', 'getValid', 'setValid']];
     }
 }

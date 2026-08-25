@@ -75,7 +75,7 @@ class KafkaTopicCreateNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('config') && null !== $data->getConfig()) {
             $dataArray['config'] = $data->getConfig() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getConfig(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -277,7 +277,7 @@ class IssueSimpleNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('performedViaGithubApp') && null !== $data->getPerformedViaGithubApp()) {
             $dataArray['performed_via_github_app'] = $data->getPerformedViaGithubApp() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getPerformedViaGithubApp(), 'json', $context));
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

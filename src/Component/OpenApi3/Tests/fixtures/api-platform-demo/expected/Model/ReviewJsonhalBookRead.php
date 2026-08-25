@@ -2,8 +2,11 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class ReviewJsonhalBookRead extends \ArrayObject
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
+class ReviewJsonhalBookRead implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -83,5 +86,9 @@ class ReviewJsonhalBookRead extends \ArrayObject
         $this->initialized['body'] = true;
         $this->body = $body;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['links' => ['_links', 'getLinks', 'setLinks'], 'id' => ['id', 'getId', 'setId'], 'body' => ['body', 'getBody', 'setBody']];
     }
 }

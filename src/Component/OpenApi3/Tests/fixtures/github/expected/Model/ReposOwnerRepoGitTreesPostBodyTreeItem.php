@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoGitTreesPostBodyTreeItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoGitTreesPostBodyTreeItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -161,5 +164,9 @@ class ReposOwnerRepoGitTreesPostBodyTreeItem extends \ArrayObject
         $this->initialized['content'] = true;
         $this->content = $content;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['path' => ['path', 'getPath', 'setPath'], 'mode' => ['mode', 'getMode', 'setMode'], 'type' => ['type', 'getType', 'setType'], 'sha' => ['sha', 'getSha', 'setSha'], 'content' => ['content', 'getContent', 'setContent']];
     }
 }

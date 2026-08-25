@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiDeleteKnowledgeBaseDataSourceOutput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiDeleteKnowledgeBaseDataSourceOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ApiDeleteKnowledgeBaseDataSourceOutput extends \ArrayObject
         $this->initialized['knowledgeBaseUuid'] = true;
         $this->knowledgeBaseUuid = $knowledgeBaseUuid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['dataSourceUuid' => ['data_source_uuid', 'getDataSourceUuid', 'setDataSourceUuid'], 'knowledgeBaseUuid' => ['knowledge_base_uuid', 'getKnowledgeBaseUuid', 'setKnowledgeBaseUuid']];
     }
 }

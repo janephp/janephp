@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppLogDestinationOpenSearchSpecBasicAuth extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppLogDestinationOpenSearchSpecBasicAuth implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -73,5 +76,9 @@ class AppLogDestinationOpenSearchSpecBasicAuth extends \ArrayObject
         $this->initialized['password'] = true;
         $this->password = $password;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['user' => ['user', 'getUser', 'setUser'], 'password' => ['password', 'getPassword', 'setPassword']];
     }
 }

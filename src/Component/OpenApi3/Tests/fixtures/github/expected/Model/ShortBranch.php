@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ShortBranch extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ShortBranch implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -127,5 +130,9 @@ class ShortBranch extends \ArrayObject
         $this->initialized['protectionUrl'] = true;
         $this->protectionUrl = $protectionUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'commit' => ['commit', 'getCommit', 'setCommit'], 'protected' => ['protected', 'getProtected', 'setProtected'], 'protection' => ['protection', 'getProtection', 'setProtection'], 'protectionUrl' => ['protection_url', 'getProtectionUrl', 'setProtectionUrl']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class UserKeysPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class UserKeysPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class UserKeysPostBody extends \ArrayObject
         $this->initialized['key'] = true;
         $this->key = $key;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['title' => ['title', 'getTitle', 'setTitle'], 'key' => ['key', 'getKey', 'setKey']];
     }
 }

@@ -54,7 +54,7 @@ class ResponseCommonNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('foo') && null !== $data->getFoo()) {
             $dataArray['foo'] = $data->getFoo();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

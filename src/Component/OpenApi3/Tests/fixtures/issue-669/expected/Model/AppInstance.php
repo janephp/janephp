@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppInstance extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppInstance implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class AppInstance extends \ArrayObject
         $this->initialized['instanceAlias'] = true;
         $this->instanceAlias = $instanceAlias;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['componentName' => ['component_name', 'getComponentName', 'setComponentName'], 'componentType' => ['component_type', 'getComponentType', 'setComponentType'], 'instanceName' => ['instance_name', 'getInstanceName', 'setInstanceName'], 'instanceAlias' => ['instance_alias', 'getInstanceAlias', 'setInstanceAlias']];
     }
 }

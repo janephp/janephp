@@ -153,7 +153,7 @@ class GbPeopleReportReponseReportDirectorDetailsNormalizer implements Denormaliz
         if ($data->isInitialized('additionalData') && null !== $data->getAdditionalData()) {
             $dataArray['additionalData'] = $data->getAdditionalData() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getAdditionalData(), 'json', $context));
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

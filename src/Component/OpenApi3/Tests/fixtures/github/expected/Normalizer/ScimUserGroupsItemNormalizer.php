@@ -64,7 +64,7 @@ class ScimUserGroupsItemNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('display') && null !== $data->getDisplay()) {
             $dataArray['display'] = $data->getDisplay();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class NumberCompareCondition extends BusinessRuleCondition
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class NumberCompareCondition extends BusinessRuleCondition implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -21,7 +24,7 @@ class NumberCompareCondition extends BusinessRuleCondition
     /**
      * Mode to use for comparison.
      *
-     * @var mixed
+     * @var string
      */
     protected $mode;
     /**
@@ -55,20 +58,20 @@ class NumberCompareCondition extends BusinessRuleCondition
     /**
      * Mode to use for comparison.
      *
-     * @return mixed
+     * @return string
      */
-    public function getMode()
+    public function getMode(): string
     {
         return $this->mode;
     }
     /**
      * Mode to use for comparison.
      *
-     * @param mixed $mode
+     * @param string $mode
      *
      * @return self
      */
-    public function setMode($mode): self
+    public function setMode(string $mode): self
     {
         $this->initialized['mode'] = true;
         $this->mode = $mode;
@@ -95,5 +98,9 @@ class NumberCompareCondition extends BusinessRuleCondition
         $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['fieldPath' => ['fieldPath', 'getFieldPath', 'setFieldPath'], 'mode' => ['mode', 'getMode', 'setMode'], 'value' => ['value', 'getValue', 'setValue']];
     }
 }

@@ -80,7 +80,7 @@ class IssueEventDismissedReviewNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('dismissalCommitId') && null !== $data->getDismissalCommitId()) {
             $dataArray['dismissal_commit_id'] = $data->getDismissalCommitId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

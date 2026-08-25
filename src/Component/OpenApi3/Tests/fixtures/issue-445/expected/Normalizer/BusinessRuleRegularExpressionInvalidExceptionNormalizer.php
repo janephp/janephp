@@ -143,7 +143,7 @@ class BusinessRuleRegularExpressionInvalidExceptionNormalizer implements Denorma
         if ($data->isInitialized('regex') && null !== $data->getRegex()) {
             $dataArray['regex'] = $data->getRegex();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

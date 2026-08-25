@@ -61,7 +61,7 @@ class KubernetesSizeNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('slug') && null !== $data->getSlug()) {
             $dataArray['slug'] = $data->getSlug();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

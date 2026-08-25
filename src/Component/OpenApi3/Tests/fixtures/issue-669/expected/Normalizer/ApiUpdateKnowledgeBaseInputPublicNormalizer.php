@@ -97,7 +97,7 @@ class ApiUpdateKnowledgeBaseInputPublicNormalizer implements DenormalizerInterfa
         if ($data->isInitialized('uuid') && null !== $data->getUuid()) {
             $dataArray['uuid'] = $data->getUuid();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

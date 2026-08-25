@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppHealthResponse extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppHealthResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class AppHealthResponse extends \ArrayObject
         $this->initialized['appHealth'] = true;
         $this->appHealth = $appHealth;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['appHealth' => ['app_health', 'getAppHealth', 'setAppHealth']];
     }
 }

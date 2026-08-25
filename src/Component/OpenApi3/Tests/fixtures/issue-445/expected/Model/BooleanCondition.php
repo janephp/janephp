@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class BooleanCondition extends BusinessRuleCondition
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class BooleanCondition extends BusinessRuleCondition implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class BooleanCondition extends BusinessRuleCondition
         $this->initialized['conditions'] = true;
         $this->conditions = $conditions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['conditions' => ['conditions', 'getConditions', 'setConditions']];
     }
 }

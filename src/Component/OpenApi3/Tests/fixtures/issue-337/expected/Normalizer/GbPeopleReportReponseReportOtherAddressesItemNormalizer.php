@@ -96,7 +96,7 @@ class GbPeopleReportReponseReportOtherAddressesItemNormalizer implements Denorma
         if ($data->isInitialized('country') && null !== $data->getCountry()) {
             $dataArray['country'] = $data->getCountry();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -78,7 +78,7 @@ class RunnerApplicationNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('filename') && null !== $data->getFilename()) {
             $dataArray['filename'] = $data->getFilename();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrganizationSimple extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrganizationSimple implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -275,5 +278,9 @@ class OrganizationSimple extends \ArrayObject
         $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['login' => ['login', 'getLogin', 'setLogin'], 'id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'url' => ['url', 'getUrl', 'setUrl'], 'reposUrl' => ['repos_url', 'getReposUrl', 'setReposUrl'], 'eventsUrl' => ['events_url', 'getEventsUrl', 'setEventsUrl'], 'hooksUrl' => ['hooks_url', 'getHooksUrl', 'setHooksUrl'], 'issuesUrl' => ['issues_url', 'getIssuesUrl', 'setIssuesUrl'], 'membersUrl' => ['members_url', 'getMembersUrl', 'setMembersUrl'], 'publicMembersUrl' => ['public_members_url', 'getPublicMembersUrl', 'setPublicMembersUrl'], 'avatarUrl' => ['avatar_url', 'getAvatarUrl', 'setAvatarUrl'], 'description' => ['description', 'getDescription', 'setDescription']];
     }
 }

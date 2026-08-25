@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiEvaluationDataset extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiEvaluationDataset implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -179,5 +182,9 @@ class ApiEvaluationDataset extends \ArrayObject
         $this->initialized['rowCount'] = true;
         $this->rowCount = $rowCount;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'datasetName' => ['dataset_name', 'getDatasetName', 'setDatasetName'], 'datasetUuid' => ['dataset_uuid', 'getDatasetUuid', 'setDatasetUuid'], 'fileSize' => ['file_size', 'getFileSize', 'setFileSize'], 'hasGroundTruth' => ['has_ground_truth', 'getHasGroundTruth', 'setHasGroundTruth'], 'rowCount' => ['row_count', 'getRowCount', 'setRowCount']];
     }
 }

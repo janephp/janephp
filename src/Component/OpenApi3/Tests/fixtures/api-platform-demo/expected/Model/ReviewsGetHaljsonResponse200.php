@@ -2,8 +2,11 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class ReviewsGetHaljsonResponse200 extends \ArrayObject
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
+class ReviewsGetHaljsonResponse200 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class ReviewsGetHaljsonResponse200 extends \ArrayObject
         $this->initialized['links'] = true;
         $this->links = $links;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['embedded' => ['_embedded', 'getEmbedded', 'setEmbedded'], 'totalItems' => ['totalItems', 'getTotalItems', 'setTotalItems'], 'itemsPerPage' => ['itemsPerPage', 'getItemsPerPage', 'setItemsPerPage'], 'links' => ['_links', 'getLinks', 'setLinks']];
     }
 }

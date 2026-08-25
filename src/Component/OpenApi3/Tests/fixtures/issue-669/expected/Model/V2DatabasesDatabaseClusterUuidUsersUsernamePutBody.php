@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class V2DatabasesDatabaseClusterUuidUsersUsernamePutBody extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class V2DatabasesDatabaseClusterUuidUsersUsernamePutBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class V2DatabasesDatabaseClusterUuidUsersUsernamePutBody extends \ArrayObject
         $this->initialized['settings'] = true;
         $this->settings = $settings;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['settings' => ['settings', 'getSettings', 'setSettings']];
     }
 }

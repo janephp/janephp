@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class Paging extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class Paging implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class Paging extends \ArrayObject
         $this->initialized['last'] = true;
         $this->last = $last;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['size' => ['size', 'getSize', 'setSize'], 'prev' => ['prev', 'getPrev', 'setPrev'], 'next' => ['next', 'getNext', 'setNext'], 'last' => ['last', 'getLast', 'setLast']];
     }
 }

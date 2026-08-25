@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class FieldMultiRelation extends FieldBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class FieldMultiRelation extends FieldBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -21,7 +24,7 @@ class FieldMultiRelation extends FieldBase
     /**
      * Indexing information of fields of the related schema identified by the SchemaId property.
      *
-     * @var mixed|null
+     * @var SchemaIndexingInfo|null
      */
     protected $schemaIndexingInfo;
     /**
@@ -67,20 +70,20 @@ class FieldMultiRelation extends FieldBase
     /**
      * Indexing information of fields of the related schema identified by the SchemaId property.
      *
-     * @return mixed
+     * @return SchemaIndexingInfo|null
      */
-    public function getSchemaIndexingInfo()
+    public function getSchemaIndexingInfo(): ?SchemaIndexingInfo
     {
         return $this->schemaIndexingInfo;
     }
     /**
      * Indexing information of fields of the related schema identified by the SchemaId property.
      *
-     * @param mixed $schemaIndexingInfo
+     * @param SchemaIndexingInfo|null $schemaIndexingInfo
      *
      * @return self
      */
-    public function setSchemaIndexingInfo($schemaIndexingInfo): self
+    public function setSchemaIndexingInfo(?SchemaIndexingInfo $schemaIndexingInfo): self
     {
         $this->initialized['schemaIndexingInfo'] = true;
         $this->schemaIndexingInfo = $schemaIndexingInfo;
@@ -151,5 +154,9 @@ class FieldMultiRelation extends FieldBase
         $this->initialized['minimumItems'] = true;
         $this->minimumItems = $minimumItems;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['schemaId' => ['schemaId', 'getSchemaId', 'setSchemaId'], 'schemaIndexingInfo' => ['schemaIndexingInfo', 'getSchemaIndexingInfo', 'setSchemaIndexingInfo'], 'relationTypes' => ['relationTypes', 'getRelationTypes', 'setRelationTypes'], 'maximumItems' => ['maximumItems', 'getMaximumItems', 'setMaximumItems'], 'minimumItems' => ['minimumItems', 'getMinimumItems', 'setMinimumItems']];
     }
 }

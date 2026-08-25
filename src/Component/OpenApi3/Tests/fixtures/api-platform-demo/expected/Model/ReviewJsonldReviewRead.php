@@ -2,8 +2,11 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class ReviewJsonldReviewRead extends \ArrayObject
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
+class ReviewJsonldReviewRead implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -21,7 +24,7 @@ class ReviewJsonldReviewRead extends \ArrayObject
      */
     protected $type;
     /**
-     * @var mixed
+     * @var string|object
      */
     protected $context;
     /**
@@ -101,14 +104,14 @@ class ReviewJsonldReviewRead extends \ArrayObject
         return $this;
     }
     /**
-     * @return mixed
+     * @return string|object
      */
     public function getContext()
     {
         return $this->context;
     }
     /**
-     * @param mixed $context
+     * @param string|object $context
      *
      * @return self
      */
@@ -267,5 +270,9 @@ class ReviewJsonldReviewRead extends \ArrayObject
         $this->initialized['publicationDate'] = true;
         $this->publicationDate = $publicationDate;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['@id', 'getId', 'setId'], 'type' => ['@type', 'getType', 'setType'], 'context' => ['@context', 'getContext', 'setContext'], 'id2' => ['id', 'getId2', 'setId2'], 'body' => ['body', 'getBody', 'setBody'], 'rating' => ['rating', 'getRating', 'setRating'], 'letter' => ['letter', 'getLetter', 'setLetter'], 'book' => ['book', 'getBook', 'setBook'], 'author' => ['author', 'getAuthor', 'setAuthor'], 'publicationDate' => ['publicationDate', 'getPublicationDate', 'setPublicationDate']];
     }
 }

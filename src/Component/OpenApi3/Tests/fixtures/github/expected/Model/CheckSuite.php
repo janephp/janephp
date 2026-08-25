@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CheckSuite extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CheckSuite implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -403,5 +406,9 @@ class CheckSuite extends \ArrayObject
         $this->initialized['checkRunsUrl'] = true;
         $this->checkRunsUrl = $checkRunsUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'headBranch' => ['head_branch', 'getHeadBranch', 'setHeadBranch'], 'headSha' => ['head_sha', 'getHeadSha', 'setHeadSha'], 'status' => ['status', 'getStatus', 'setStatus'], 'conclusion' => ['conclusion', 'getConclusion', 'setConclusion'], 'url' => ['url', 'getUrl', 'setUrl'], 'before' => ['before', 'getBefore', 'setBefore'], 'after' => ['after', 'getAfter', 'setAfter'], 'pullRequests' => ['pull_requests', 'getPullRequests', 'setPullRequests'], 'app' => ['app', 'getApp', 'setApp'], 'repository' => ['repository', 'getRepository', 'setRepository'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'headCommit' => ['head_commit', 'getHeadCommit', 'setHeadCommit'], 'latestCheckRunsCount' => ['latest_check_runs_count', 'getLatestCheckRunsCount', 'setLatestCheckRunsCount'], 'checkRunsUrl' => ['check_runs_url', 'getCheckRunsUrl', 'setCheckRunsUrl']];
     }
 }

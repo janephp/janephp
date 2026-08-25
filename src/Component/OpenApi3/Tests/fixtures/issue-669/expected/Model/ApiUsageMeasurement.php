@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiUsageMeasurement extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiUsageMeasurement implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class ApiUsageMeasurement extends \ArrayObject
         $this->initialized['usageType'] = true;
         $this->usageType = $usageType;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['tokens' => ['tokens', 'getTokens', 'setTokens'], 'usageType' => ['usage_type', 'getUsageType', 'setUsageType']];
     }
 }

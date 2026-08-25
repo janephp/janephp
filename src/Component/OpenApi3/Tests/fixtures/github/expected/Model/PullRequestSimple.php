@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class PullRequestSimple extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class PullRequestSimple implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -787,5 +790,9 @@ class PullRequestSimple extends \ArrayObject
         $this->initialized['draft'] = true;
         $this->draft = $draft;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'diffUrl' => ['diff_url', 'getDiffUrl', 'setDiffUrl'], 'patchUrl' => ['patch_url', 'getPatchUrl', 'setPatchUrl'], 'issueUrl' => ['issue_url', 'getIssueUrl', 'setIssueUrl'], 'commitsUrl' => ['commits_url', 'getCommitsUrl', 'setCommitsUrl'], 'reviewCommentsUrl' => ['review_comments_url', 'getReviewCommentsUrl', 'setReviewCommentsUrl'], 'reviewCommentUrl' => ['review_comment_url', 'getReviewCommentUrl', 'setReviewCommentUrl'], 'commentsUrl' => ['comments_url', 'getCommentsUrl', 'setCommentsUrl'], 'statusesUrl' => ['statuses_url', 'getStatusesUrl', 'setStatusesUrl'], 'number' => ['number', 'getNumber', 'setNumber'], 'state' => ['state', 'getState', 'setState'], 'locked' => ['locked', 'getLocked', 'setLocked'], 'title' => ['title', 'getTitle', 'setTitle'], 'user' => ['user', 'getUser', 'setUser'], 'body' => ['body', 'getBody', 'setBody'], 'labels' => ['labels', 'getLabels', 'setLabels'], 'milestone' => ['milestone', 'getMilestone', 'setMilestone'], 'activeLockReason' => ['active_lock_reason', 'getActiveLockReason', 'setActiveLockReason'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'closedAt' => ['closed_at', 'getClosedAt', 'setClosedAt'], 'mergedAt' => ['merged_at', 'getMergedAt', 'setMergedAt'], 'mergeCommitSha' => ['merge_commit_sha', 'getMergeCommitSha', 'setMergeCommitSha'], 'assignee' => ['assignee', 'getAssignee', 'setAssignee'], 'assignees' => ['assignees', 'getAssignees', 'setAssignees'], 'requestedReviewers' => ['requested_reviewers', 'getRequestedReviewers', 'setRequestedReviewers'], 'requestedTeams' => ['requested_teams', 'getRequestedTeams', 'setRequestedTeams'], 'head' => ['head', 'getHead', 'setHead'], 'base' => ['base', 'getBase', 'setBase'], 'links' => ['_links', 'getLinks', 'setLinks'], 'authorAssociation' => ['author_association', 'getAuthorAssociation', 'setAuthorAssociation'], 'draft' => ['draft', 'getDraft', 'setDraft']];
     }
 }

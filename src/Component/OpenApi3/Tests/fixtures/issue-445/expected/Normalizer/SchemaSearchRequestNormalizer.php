@@ -76,7 +76,11 @@ class SchemaSearchRequestNormalizer implements DenormalizerInterface, Normalizer
             $object->setPageToken(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $object->setFilter($data['filter']);
+            $value_2 = $data['filter'];
+            if (is_array($data['filter']) and \array_key_exists('kind', $data['filter'])) {
+                $value_2 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
+            }
+            $object->setFilter($value_2);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
@@ -86,8 +90,8 @@ class SchemaSearchRequestNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('searchLanguages', $data) && $data['searchLanguages'] !== null) {
             $values_2 = [];
-            foreach ($data['searchLanguages'] as $value_2) {
-                $values_2[] = $value_2;
+            foreach ($data['searchLanguages'] as $value_3) {
+                $values_2[] = $value_3;
             }
             $object->setSearchLanguages($values_2);
         }
@@ -96,8 +100,8 @@ class SchemaSearchRequestNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('rightsFilter', $data) && $data['rightsFilter'] !== null) {
             $values_3 = [];
-            foreach ($data['rightsFilter'] as $value_3) {
-                $values_3[] = $value_3;
+            foreach ($data['rightsFilter'] as $value_4) {
+                $values_3[] = $value_4;
             }
             $object->setRightsFilter($values_3);
         }
@@ -131,20 +135,24 @@ class SchemaSearchRequestNormalizer implements DenormalizerInterface, Normalizer
             $dataArray['pageToken'] = $data->getPageToken();
         }
         if ($data->isInitialized('filter') && null !== $data->getFilter()) {
-            $dataArray['filter'] = $data->getFilter();
+            $value_2 = $data->getFilter();
+            if (is_object($data->getFilter())) {
+                $value_2 = $data->getFilter() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+            }
+            $dataArray['filter'] = $value_2;
         }
         $dataArray['debugMode'] = $data->getDebugMode();
         if ($data->isInitialized('searchLanguages') && null !== $data->getSearchLanguages()) {
             $values_2 = [];
-            foreach ($data->getSearchLanguages() as $value_2) {
-                $values_2[] = $value_2;
+            foreach ($data->getSearchLanguages() as $value_3) {
+                $values_2[] = $value_3;
             }
             $dataArray['searchLanguages'] = $values_2;
         }
         if ($data->isInitialized('rightsFilter') && null !== $data->getRightsFilter()) {
             $values_3 = [];
-            foreach ($data->getRightsFilter() as $value_3) {
-                $values_3[] = $value_3;
+            foreach ($data->getRightsFilter() as $value_4) {
+                $values_3[] = $value_4;
             }
             $dataArray['rightsFilter'] = $values_3;
         }

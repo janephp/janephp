@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseByoipPrefixCreate extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseByoipPrefixCreate implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class ResponseByoipPrefixCreate extends \ArrayObject
         $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['uuid' => ['uuid', 'getUuid', 'setUuid'], 'region' => ['region', 'getRegion', 'setRegion'], 'status' => ['status', 'getStatus', 'setStatus']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class Model extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class Model implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class Model extends \ArrayObject
         $this->initialized['date'] = true;
         $this->date = $date;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['foo' => ['foo', 'getFoo', 'setFoo'], 'bar' => ['bar', 'getBar', 'setBar'], 'date' => ['date', 'getDate', 'setDate']];
     }
 }

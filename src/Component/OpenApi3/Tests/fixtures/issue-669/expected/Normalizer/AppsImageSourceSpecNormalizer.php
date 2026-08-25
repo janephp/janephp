@@ -96,7 +96,7 @@ class AppsImageSourceSpecNormalizer implements DenormalizerInterface, Normalizer
         if ($data->isInitialized('deployOnPush') && null !== $data->getDeployOnPush()) {
             $dataArray['deploy_on_push'] = $data->getDeployOnPush() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDeployOnPush(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

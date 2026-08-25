@@ -75,7 +75,7 @@ class PullRequestMinimalNormalizer implements DenormalizerInterface, NormalizerI
         $dataArray['url'] = $data->getUrl();
         $dataArray['head'] = $data->getHead() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getHead(), 'json', $context));
         $dataArray['base'] = $data->getBase() === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($data->getBase(), 'json', $context));
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

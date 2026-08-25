@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DropletActionEnableBackups extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DropletActionEnableBackups implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -61,5 +64,9 @@ class DropletActionEnableBackups extends \ArrayObject
         $this->initialized['backupPolicy'] = true;
         $this->backupPolicy = $backupPolicy;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'backupPolicy' => ['backup_policy', 'getBackupPolicy', 'setBackupPolicy']];
     }
 }

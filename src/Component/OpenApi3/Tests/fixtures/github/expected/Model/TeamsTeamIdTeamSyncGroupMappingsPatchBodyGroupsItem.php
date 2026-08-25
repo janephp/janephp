@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -161,5 +164,9 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBodyGroupsItem extends \ArrayObject
         $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['groupId' => ['group_id', 'getGroupId', 'setGroupId'], 'groupName' => ['group_name', 'getGroupName', 'setGroupName'], 'groupDescription' => ['group_description', 'getGroupDescription', 'setGroupDescription'], 'id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'description' => ['description', 'getDescription', 'setDescription']];
     }
 }

@@ -61,7 +61,7 @@ class AppMetricsBandwidthUsageDetailsNormalizer implements DenormalizerInterface
         if ($data->isInitialized('bandwidthBytes') && null !== $data->getBandwidthBytes()) {
             $dataArray['bandwidth_bytes'] = $data->getBandwidthBytes();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -110,7 +110,7 @@ class CustomerAliasNotFoundExceptionNormalizer implements DenormalizerInterface,
         if ($data->isInitialized('customerAlias') && null !== $data->getCustomerAlias()) {
             $dataArray['customerAlias'] = $data->getCustomerAlias();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

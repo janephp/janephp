@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoHooksPostBodyConfig extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoHooksPostBodyConfig implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -167,5 +170,9 @@ class ReposOwnerRepoHooksPostBodyConfig extends \ArrayObject
         $this->initialized['digest'] = true;
         $this->digest = $digest;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'contentType' => ['content_type', 'getContentType', 'setContentType'], 'secret' => ['secret', 'getSecret', 'setSecret'], 'insecureSsl' => ['insecure_ssl', 'getInsecureSsl', 'setInsecureSsl'], 'token' => ['token', 'getToken', 'setToken'], 'digest' => ['digest', 'getDigest', 'setDigest']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppServiceSpecCors extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppServiceSpecCors implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -179,5 +182,9 @@ class AppServiceSpecCors extends \ArrayObject
         $this->initialized['allowCredentials'] = true;
         $this->allowCredentials = $allowCredentials;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['allowOrigins' => ['allow_origins', 'getAllowOrigins', 'setAllowOrigins'], 'allowMethods' => ['allow_methods', 'getAllowMethods', 'setAllowMethods'], 'allowHeaders' => ['allow_headers', 'getAllowHeaders', 'setAllowHeaders'], 'exposeHeaders' => ['expose_headers', 'getExposeHeaders', 'setExposeHeaders'], 'maxAge' => ['max_age', 'getMaxAge', 'setMaxAge'], 'allowCredentials' => ['allow_credentials', 'getAllowCredentials', 'setAllowCredentials']];
     }
 }

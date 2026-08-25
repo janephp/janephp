@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class KubernetesVersion extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class KubernetesVersion implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class KubernetesVersion extends \ArrayObject
         $this->initialized['supportedFeatures'] = true;
         $this->supportedFeatures = $supportedFeatures;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['slug' => ['slug', 'getSlug', 'setSlug'], 'kubernetesVersion' => ['kubernetes_version', 'getKubernetesVersion', 'setKubernetesVersion'], 'supportedFeatures' => ['supported_features', 'getSupportedFeatures', 'setSupportedFeatures']];
     }
 }

@@ -185,8 +185,14 @@ return [
 There is many ways to use it, first you atleast need a regex defining which endpoint is whitelisted. This endpoint
 can be either a string or in an array. If you don't provide any HTTP method, we will just accept any methods, but
 you can provide either a string or array as second argument to specify which method you accept.
-- `endpoint-generator`: Generator Class which can specify custom endpoint interface & corresponding trait (this class
- should extends `\Jane\Component\OpenApi3\Generator\EndpointGenerator`)
+- `endpoint-generator`: Generator which can specify custom endpoint interface & corresponding trait. It accepts either
+ a class name (this class should extend `\Jane\Component\OpenApi3\Generator\EndpointGenerator`) or a ready-made
+ instance implementing `\Jane\Component\OpenApiCommon\Generator\EndpointGeneratorInterface`, so you can build it
+ yourself with the dependencies of your choice
+- `operation-namings`: An array of `\Jane\Component\OpenApiCommon\Naming\OperationNamingInterface` instances used to
+  generate client method names and endpoint classes. Instances are consulted in order and must return `''` to defer to
+  the next one. Defaults to `operationId`-based naming with URL-based fallback. See the
+  [Custom operation naming](#custom-operation-naming) section for more details.
 - `custom-query-resolver`: This option allows you to customize the query parameter normalizer for each of the API
  endpoint with a userland callback. Here is all possible combinations::
 ```php
@@ -222,8 +228,10 @@ There are many ways to use it. You can either use the `__type` key to specify a 
  and throw it with the deserialized typed error model. When disabled, declared error responses are denormalized into
  their typed model and returned like any other response. Undeclared statuses remain governed by
  `throw-unexpected-status-code`. By default, it's enabled.
-- `throw-unexpected-status-code`: Will return a `UnexpectedStatusCodeException` if nothing has been matched during
- the transformation of the Endpoint body (including described exceptions). By default, it's disabled.
+- `throw-unexpected-status-code`: Will throw a `BadResponseException` if nothing has been matched during
+ the transformation of the Endpoint body (including described exceptions). This exception extends
+ `UnexpectedStatusCodeException` and exposes the original PSR-7 response through its `getResponse()` method.
+ By default, it's disabled.
 - `custom-string-format-mapping`: This option allows you to specify in which class a string property will be
  deserialized according to it's format option. It can be used to customize a date-time field, or to add non supported
 formats. More details in the dedicated section.
@@ -254,6 +262,54 @@ Additional rules:
   arrays/objects throws an `\InvalidArgumentException` when building the query string.
 - Parameters declaring a `content` field are serialized from their content and ignore `style` / `explode`,
   as specified by OpenAPI.
+
+## Namespacing generated code with `x-namespace`
+
+By default, Jane generates every Endpoint in `Endpoint\`, every Model in `Model\`, ... With the OpenAPI
+[Specification Extensions](https://spec.openapis.org/oas/v3.1.0#specification-extensions) mechanism, you can opt-in
+to a sub-namespace per artifact by declaring an `x-namespace` attribute:
+
+- on an **operation**: its Endpoint class (and the Models generated for its inline request bodies / responses, see
+  below) moves to `Endpoint\<x-namespace>\`
+- on a **schema** (`components.schemas` entry in OpenAPI 3.x, `definitions` entry in OpenAPI 2): its Model,
+  Normalizer and Validator classes move to `Model\<x-namespace>\`, `Normalizer\<x-namespace>\`, ...
+
+```yaml
+paths:
+  /users:
+    get:
+      operationId: getUsers
+      x-namespace: Admin\Reports
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+components:
+  schemas:
+    User:
+      x-namespace: Directory
+      type: object
+```
+
+With this specification:
+
+- `Endpoint\Admin\Reports\GetUsers` is generated instead of `Endpoint\GetUsers`
+- `Model\Directory\User` (+ its normalizer / validator) is generated instead of `Model\User`
+
+Rules:
+
+- The value may contain several segments separated by `\` or `/`, e.g. `"Admin\Reports"` or `"Directory/Users"`.
+  Each segment is sanitized like class names (invalid characters removed, reserved words prefixed with `_`,
+  e.g. `"list"` becomes `_List`).
+- Artifacts without the attribute keep the flat layout: adding `x-namespace` only affects annotated artifacts.
+- Inline request body / response models of a namespaced operation inherit the operation's namespace, so they stay
+  next to their endpoint. A schema referenced by that operation which declares its own `x-namespace` always wins:
+  explicit attributes are never overridden.
+- Renaming or removing an `x-namespace` attribute after generation changes the FQCNs of the affected classes and is
+  therefore a BC break for consumers of your generated library.
 
 ## Using a generated client
 
@@ -452,6 +508,83 @@ $foo = $client->foo();
 ```
 
 You can replace `Client::create` first argument with your custom HttpClient if needed as usual.
+
+## Custom operation naming
+
+Client method names and endpoint class names are generated by implementations of
+`\Jane\Component\OpenApiCommon\Naming\OperationNamingInterface`. By default, Jane uses the operation `operationId`
+when available and falls back to URL-based naming. You can provide your own naming strategies with the
+`operation-namings` option:
+
+```php
+return [
+  // your usual configuration ...
+  'operation-namings' => [
+    new \App\Jane\PrefixedOperationNaming('api'),
+  ],
+];
+```
+
+A single instance can also be provided directly instead of an array. Instances are consulted in order: when one
+returns `''`, the next naming of the chain is used. If every naming returns `''`, generation fails, so you generally
+want to end your chain with the built-in namings (`\Jane\Component\OpenApiCommon\Naming\OperationIdNaming`,
+`\Jane\Component\OpenApiCommon\Naming\OperationUrlNaming`) which provide the default behavior as fallback.
+
+Here is an example implementation prefixing every non-GET operation:
+
+```php
+namespace App\Jane;
+
+use Jane\Component\JsonSchema\Generator\Naming;
+use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
+use Jane\Component\OpenApiCommon\Naming\OperationNamingInterface;
+
+class PrefixedOperationNaming implements OperationNamingInterface
+{
+  public function __construct(
+    private readonly string $prefix,
+    private readonly Naming $naming = new Naming(),
+  ) {
+  }
+
+  public function getFunctionName(OperationGuess $operation): string
+  {
+    if ('GET' === $operation->getMethod()) {
+      return ''; // defer GET operations to the next naming of the chain
+    }
+
+    return lcfirst(str_replace(' ', '', ucwords($this->prefix . ' ' . str_replace('/', ' ', $operation->getPath()))));
+  }
+
+  public function getEndpointName(OperationGuess $operation): string
+  {
+    if ('GET' === $operation->getMethod()) {
+      return '';
+    }
+
+    $className = str_replace(' ', '', ucwords($this->prefix . ' ' . str_replace('/', ' ', $operation->getPath())));
+
+    // make sure we do not generate a class named after a PHP reserved word
+    return $this->naming->fixReservedClassName($className);
+  }
+}
+```
+
+When writing your own naming strategy, keep the following contract in mind:
+
+- be deterministic and pure: called twice with the same operation, a naming must return identical results;
+- be stateless: a naming instance may be reused for every operation of a specification (and even for several
+  specifications);
+- return valid PHP identifiers for method and class names, and try to keep them unique across the generated client
+  (Jane additionally deduplicates colliding names with an incrementing suffix, but relying on it makes names depend
+  on operation order);
+- namings are OpenAPI version agnostic: when you need version specific data, detect the version through `instanceof`
+  checks on `$operation->getOperation()`.
+
+> [!WARNING]
+> Providing this option replaces the whole default naming chain: built-in fallbacks and guards (such as the
+> `operationId` fallback or PHP reserved word handling) only apply if you add the corresponding built-in namings at
+> the end of your chain.
 
 ## Extending the Client
 

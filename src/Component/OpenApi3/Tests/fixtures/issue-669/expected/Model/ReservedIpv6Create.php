@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ReservedIpv6Create extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ReservedIpv6Create implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ReservedIpv6Create extends \ArrayObject
         $this->initialized['regionSlug'] = true;
         $this->regionSlug = $regionSlug;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['regionSlug' => ['region_slug', 'getRegionSlug', 'setRegionSlug']];
     }
 }

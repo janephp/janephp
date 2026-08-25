@@ -91,7 +91,7 @@ class BlobNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if ($data->isInitialized('highlightedContent') && null !== $data->getHighlightedContent()) {
             $dataArray['highlighted_content'] = $data->getHighlightedContent();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

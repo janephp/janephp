@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoIssuesIssueNumberReactionsPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoIssuesIssueNumberReactionsPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ReposOwnerRepoIssuesIssueNumberReactionsPostBody extends \ArrayObject
         $this->initialized['content'] = true;
         $this->content = $content;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['content' => ['content', 'getContent', 'setContent']];
     }
 }

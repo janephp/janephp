@@ -54,7 +54,7 @@ class ApiDropboxDataSourceDisplayNormalizer implements DenormalizerInterface, No
         if ($data->isInitialized('folder') && null !== $data->getFolder()) {
             $dataArray['folder'] = $data->getFolder();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

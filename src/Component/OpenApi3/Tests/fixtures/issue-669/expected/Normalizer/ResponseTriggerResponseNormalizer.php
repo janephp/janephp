@@ -54,7 +54,7 @@ class ResponseTriggerResponseNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('trigger') && null !== $data->getTrigger()) {
             $dataArray['trigger'] = $data->getTrigger() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getTrigger(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

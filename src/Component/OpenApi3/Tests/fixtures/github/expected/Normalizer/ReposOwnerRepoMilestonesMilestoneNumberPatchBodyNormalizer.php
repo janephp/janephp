@@ -78,7 +78,7 @@ class ReposOwnerRepoMilestonesMilestoneNumberPatchBodyNormalizer implements Deno
         if ($data->isInitialized('dueOn') && null !== $data->getDueOn()) {
             $dataArray['due_on'] = $data->getDueOn();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

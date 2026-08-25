@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ReservedIpv6ListReservedIpv6sItem extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ReservedIpv6ListReservedIpv6sItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -117,5 +120,9 @@ class ReservedIpv6ListReservedIpv6sItem extends \ArrayObject
         $this->initialized['droplet'] = true;
         $this->droplet = $droplet;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['ip' => ['ip', 'getIp', 'setIp'], 'regionSlug' => ['region_slug', 'getRegionSlug', 'setRegionSlug'], 'reservedAt' => ['reserved_at', 'getReservedAt', 'setReservedAt'], 'droplet' => ['droplet', 'getDroplet', 'setDroplet']];
     }
 }

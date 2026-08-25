@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CommunityProfileFiles extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CommunityProfileFiles implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -143,5 +146,9 @@ class CommunityProfileFiles extends \ArrayObject
         $this->initialized['pullRequestTemplate'] = true;
         $this->pullRequestTemplate = $pullRequestTemplate;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['codeOfConduct' => ['code_of_conduct', 'getCodeOfConduct', 'setCodeOfConduct'], 'license' => ['license', 'getLicense', 'setLicense'], 'contributing' => ['contributing', 'getContributing', 'setContributing'], 'readme' => ['readme', 'getReadme', 'setReadme'], 'issueTemplate' => ['issue_template', 'getIssueTemplate', 'setIssueTemplate'], 'pullRequestTemplate' => ['pull_request_template', 'getPullRequestTemplate', 'setPullRequestTemplate']];
     }
 }

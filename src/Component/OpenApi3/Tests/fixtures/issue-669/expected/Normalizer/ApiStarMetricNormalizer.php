@@ -78,7 +78,7 @@ class ApiStarMetricNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('successThresholdPct') && null !== $data->getSuccessThresholdPct()) {
             $dataArray['success_threshold_pct'] = $data->getSuccessThresholdPct();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

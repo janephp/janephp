@@ -457,7 +457,7 @@ class PostgresAdvancedConfigNormalizer implements DenormalizerInterface, Normali
         if ($data->isInitialized('maxSlotWalKeepSize') && null !== $data->getMaxSlotWalKeepSize()) {
             $dataArray['max_slot_wal_keep_size'] = $data->getMaxSlotWalKeepSize();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class ListFreshInvestigationResponseOrdersItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -231,5 +234,9 @@ class ListFreshInvestigationResponseOrdersItem extends \ArrayObject
         $this->initialized['searchCriteria'] = true;
         $this->searchCriteria = $searchCriteria;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['orderID' => ['orderID', 'getOrderID', 'setOrderID'], 'userID' => ['userID', 'getUserID', 'setUserID'], 'creationDate' => ['creationDate', 'getCreationDate', 'setCreationDate'], 'lastStatusChangeDate' => ['lastStatusChangeDate', 'getLastStatusChangeDate', 'setLastStatusChangeDate'], 'transactionID' => ['transactionID', 'getTransactionID', 'setTransactionID'], 'chargeReference' => ['chargeReference', 'getChargeReference', 'setChargeReference'], 'contactDetails' => ['contactDetails', 'getContactDetails', 'setContactDetails'], 'status' => ['status', 'getStatus', 'setStatus'], 'consent' => ['consent', 'getConsent', 'setConsent'], 'searchCriteria' => ['searchCriteria', 'getSearchCriteria', 'setSearchCriteria']];
     }
 }

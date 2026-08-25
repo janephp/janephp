@@ -81,9 +81,11 @@ class ExternalNormalizersResolver
                     [$dependencySchema, $dependencyClass] = $owners[$dependencyFqcn];
 
                     if ($dependencySchema !== $schema) {
+                        $subNamespace = $this->getSubNamespaceSuffix($dependencyClass);
                         $mappings[$dependencyFqcn] = \sprintf(
-                            '%s\\Normalizer\\%sNormalizer',
+                            '%s\\Normalizer%s\\%sNormalizer',
                             $dependencySchema->getNamespace(),
+                            $subNamespace,
                             $dependencyClass->getName()
                         );
                     }
@@ -126,6 +128,21 @@ class ExternalNormalizersResolver
 
     private function getModelFqcn(Schema $schema, ClassGuess $class): string
     {
-        return \sprintf('%s\\Model\\%s', $schema->getNamespace(), $class->getName());
+        return \sprintf(
+            '%s\\Model%s\\%s',
+            $schema->getNamespace(),
+            $this->getSubNamespaceSuffix($class),
+            $class->getName()
+        );
+    }
+
+    /**
+     * @return string "\"-prefixed sub-namespace (e.g. "\Users"), empty string when the class uses the flat layout
+     */
+    private function getSubNamespaceSuffix(ClassGuess $class): string
+    {
+        $subNamespace = $class->getSubNamespace();
+
+        return [] === $subNamespace ? '' : '\\' . implode('\\', $subNamespace);
     }
 }

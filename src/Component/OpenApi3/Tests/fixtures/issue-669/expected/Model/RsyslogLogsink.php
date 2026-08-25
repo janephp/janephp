@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class RsyslogLogsink extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class RsyslogLogsink implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -323,5 +326,9 @@ class RsyslogLogsink extends \ArrayObject
         $this->initialized['cert'] = true;
         $this->cert = $cert;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['server' => ['server', 'getServer', 'setServer'], 'port' => ['port', 'getPort', 'setPort'], 'tls' => ['tls', 'getTls', 'setTls'], 'format' => ['format', 'getFormat', 'setFormat'], 'logline' => ['logline', 'getLogline', 'setLogline'], 'sd' => ['sd', 'getSd', 'setSd'], 'ca' => ['ca', 'getCa', 'setCa'], 'key' => ['key', 'getKey', 'setKey'], 'cert' => ['cert', 'getCert', 'setCert']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class CombinedCommitStatus extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class CombinedCommitStatus implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -171,5 +174,9 @@ class CombinedCommitStatus extends \ArrayObject
         $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['state' => ['state', 'getState', 'setState'], 'statuses' => ['statuses', 'getStatuses', 'setStatuses'], 'sha' => ['sha', 'getSha', 'setSha'], 'totalCount' => ['total_count', 'getTotalCount', 'setTotalCount'], 'repository' => ['repository', 'getRepository', 'setRepository'], 'commitUrl' => ['commit_url', 'getCommitUrl', 'setCommitUrl'], 'url' => ['url', 'getUrl', 'setUrl']];
     }
 }

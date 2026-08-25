@@ -57,7 +57,7 @@ class ApplicationsClientIdTokenDeleteBodyNormalizer implements DenormalizerInter
         if ($data->isInitialized('accessToken') && null !== $data->getAccessToken()) {
             $dataArray['access_token'] = $data->getAccessToken();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class GistFullHistoryItemUser extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class GistFullHistoryItemUser implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -407,5 +410,9 @@ class GistFullHistoryItemUser extends \ArrayObject
         $this->initialized['siteAdmin'] = true;
         $this->siteAdmin = $siteAdmin;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['login' => ['login', 'getLogin', 'setLogin'], 'id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'avatarUrl' => ['avatar_url', 'getAvatarUrl', 'setAvatarUrl'], 'gravatarId' => ['gravatar_id', 'getGravatarId', 'setGravatarId'], 'url' => ['url', 'getUrl', 'setUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'followersUrl' => ['followers_url', 'getFollowersUrl', 'setFollowersUrl'], 'followingUrl' => ['following_url', 'getFollowingUrl', 'setFollowingUrl'], 'gistsUrl' => ['gists_url', 'getGistsUrl', 'setGistsUrl'], 'starredUrl' => ['starred_url', 'getStarredUrl', 'setStarredUrl'], 'subscriptionsUrl' => ['subscriptions_url', 'getSubscriptionsUrl', 'setSubscriptionsUrl'], 'organizationsUrl' => ['organizations_url', 'getOrganizationsUrl', 'setOrganizationsUrl'], 'reposUrl' => ['repos_url', 'getReposUrl', 'setReposUrl'], 'eventsUrl' => ['events_url', 'getEventsUrl', 'setEventsUrl'], 'receivedEventsUrl' => ['received_events_url', 'getReceivedEventsUrl', 'setReceivedEventsUrl'], 'type' => ['type', 'getType', 'setType'], 'siteAdmin' => ['site_admin', 'getSiteAdmin', 'setSiteAdmin']];
     }
 }

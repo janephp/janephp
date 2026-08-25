@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class GarbageCollection extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class GarbageCollection implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -207,5 +210,9 @@ class GarbageCollection extends \ArrayObject
         $this->initialized['freedBytes'] = true;
         $this->freedBytes = $freedBytes;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['uuid' => ['uuid', 'getUuid', 'setUuid'], 'registryName' => ['registry_name', 'getRegistryName', 'setRegistryName'], 'status' => ['status', 'getStatus', 'setStatus'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'blobsDeleted' => ['blobs_deleted', 'getBlobsDeleted', 'setBlobsDeleted'], 'freedBytes' => ['freed_bytes', 'getFreedBytes', 'setFreedBytes']];
     }
 }

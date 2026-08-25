@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class GpgKeyEmailsItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class GpgKeyEmailsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class GpgKeyEmailsItem extends \ArrayObject
         $this->initialized['verified'] = true;
         $this->verified = $verified;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['email' => ['email', 'getEmail', 'setEmail'], 'verified' => ['verified', 'getVerified', 'setVerified']];
     }
 }

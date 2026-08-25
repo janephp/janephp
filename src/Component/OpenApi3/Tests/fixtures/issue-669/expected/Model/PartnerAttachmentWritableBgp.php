@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class PartnerAttachmentWritableBgp extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class PartnerAttachmentWritableBgp implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class PartnerAttachmentWritableBgp extends \ArrayObject
         $this->initialized['authKey'] = true;
         $this->authKey = $authKey;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['localRouterIp' => ['local_router_ip', 'getLocalRouterIp', 'setLocalRouterIp'], 'peerRouterIp' => ['peer_router_ip', 'getPeerRouterIp', 'setPeerRouterIp'], 'peerRouterAsn' => ['peer_router_asn', 'getPeerRouterAsn', 'setPeerRouterAsn'], 'authKey' => ['auth_key', 'getAuthKey', 'setAuthKey']];
     }
 }

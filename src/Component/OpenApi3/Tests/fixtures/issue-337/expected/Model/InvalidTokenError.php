@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class InvalidTokenError extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class InvalidTokenError implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class InvalidTokenError extends \ArrayObject
         $this->initialized['error'] = true;
         $this->error = $error;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['error' => ['error', 'getError', 'setError']];
     }
 }

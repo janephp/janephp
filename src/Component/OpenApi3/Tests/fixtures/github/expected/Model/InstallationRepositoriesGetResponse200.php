@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class InstallationRepositoriesGetResponse200 extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class InstallationRepositoriesGetResponse200 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class InstallationRepositoriesGetResponse200 extends \ArrayObject
         $this->initialized['repositorySelection'] = true;
         $this->repositorySelection = $repositorySelection;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['totalCount' => ['total_count', 'getTotalCount', 'setTotalCount'], 'repositories' => ['repositories', 'getRepositories', 'setRepositories'], 'repositorySelection' => ['repository_selection', 'getRepositorySelection', 'setRepositorySelection']];
     }
 }

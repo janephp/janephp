@@ -154,7 +154,7 @@ class ShareNotFoundExceptionNormalizer implements DenormalizerInterface, Normali
         if ($data->isInitialized('shareId') && null !== $data->getShareId()) {
             $dataArray['shareId'] = $data->getShareId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

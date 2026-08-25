@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseRegistryOptionsResponseOptions extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseRegistryOptionsResponseOptions implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class ResponseRegistryOptionsResponseOptions extends \ArrayObject
         $this->initialized['subscriptionTiers'] = true;
         $this->subscriptionTiers = $subscriptionTiers;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['availableRegions' => ['available_regions', 'getAvailableRegions', 'setAvailableRegions'], 'subscriptionTiers' => ['subscription_tiers', 'getSubscriptionTiers', 'setSubscriptionTiers']];
     }
 }

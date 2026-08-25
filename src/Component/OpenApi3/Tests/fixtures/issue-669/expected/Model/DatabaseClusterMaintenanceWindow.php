@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DatabaseClusterMaintenanceWindow extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DatabaseClusterMaintenanceWindow implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -123,5 +126,9 @@ class DatabaseClusterMaintenanceWindow extends \ArrayObject
         $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['day' => ['day', 'getDay', 'setDay'], 'hour' => ['hour', 'getHour', 'setHour'], 'pending' => ['pending', 'getPending', 'setPending'], 'description' => ['description', 'getDescription', 'setDescription']];
     }
 }

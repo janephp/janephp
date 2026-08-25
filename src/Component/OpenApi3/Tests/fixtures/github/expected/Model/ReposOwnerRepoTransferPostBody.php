@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoTransferPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoTransferPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ReposOwnerRepoTransferPostBody extends \ArrayObject
         $this->initialized['teamIds'] = true;
         $this->teamIds = $teamIds;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['newOwner' => ['new_owner', 'getNewOwner', 'setNewOwner'], 'teamIds' => ['team_ids', 'getTeamIds', 'setTeamIds']];
     }
 }

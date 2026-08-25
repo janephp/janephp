@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class VideoStillFormat extends FormatBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class VideoStillFormat extends FormatBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -61,5 +64,9 @@ class VideoStillFormat extends FormatBase
         $this->initialized['positionInSeconds'] = true;
         $this->positionInSeconds = $positionInSeconds;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['extension' => ['extension', 'getExtension', 'setExtension'], 'positionInSeconds' => ['positionInSeconds', 'getPositionInSeconds', 'setPositionInSeconds']];
     }
 }

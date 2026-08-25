@@ -161,7 +161,7 @@ class CodeScanningAlertNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('closedReason') && null !== $data->getClosedReason()) {
             $dataArray['closed_reason'] = $data->getClosedReason();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

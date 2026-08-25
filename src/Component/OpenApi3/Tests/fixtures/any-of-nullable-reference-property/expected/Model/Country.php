@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class Country extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class Country implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class Country extends \ArrayObject
         $this->initialized['printableName'] = true;
         $this->printableName = $printableName;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['iso' => ['iso', 'getIso', 'setIso'], 'printableName' => ['printableName', 'getPrintableName', 'setPrintableName']];
     }
 }

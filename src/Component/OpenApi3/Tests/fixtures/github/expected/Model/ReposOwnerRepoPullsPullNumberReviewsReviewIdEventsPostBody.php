@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody extends \ArrayO
         $this->initialized['event'] = true;
         $this->event = $event;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['body' => ['body', 'getBody', 'setBody'], 'event' => ['event', 'getEvent', 'setEvent']];
     }
 }

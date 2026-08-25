@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class EventRulesResponse extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class EventRulesResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -235,5 +238,9 @@ class EventRulesResponse extends \ArrayObject
         $this->initialized['param1'] = true;
         $this->param1 = $param1;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['isActive' => ['isActive', 'getIsActive', 'setIsActive'], 'ruleCode' => ['ruleCode', 'getRuleCode', 'setRuleCode'], 'ruleCountryCode' => ['ruleCountryCode', 'getRuleCountryCode', 'setRuleCountryCode'], 'ruleType' => ['ruleType', 'getRuleType', 'setRuleType'], 'ruleTypeName' => ['ruleTypeName', 'getRuleTypeName', 'setRuleTypeName'], 'name' => ['name', 'getName', 'setName'], 'param0' => ['param0', 'getParam0', 'setParam0'], 'param1' => ['param1', 'getParam1', 'setParam1']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiMeta extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiMeta implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class ApiMeta extends \ArrayObject
         $this->initialized['total'] = true;
         $this->total = $total;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['page' => ['page', 'getPage', 'setPage'], 'pages' => ['pages', 'getPages', 'setPages'], 'total' => ['total', 'getTotal', 'setTotal']];
     }
 }

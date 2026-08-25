@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class MonitoringPortfoliosPortfolioIdEventRulesCountryCodePutBodyItem extends \A
         $this->initialized['param2'] = true;
         $this->param2 = $param2;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['ruleCode' => ['ruleCode', 'getRuleCode', 'setRuleCode'], 'isActive' => ['isActive', 'getIsActive', 'setIsActive'], 'param0' => ['param0', 'getParam0', 'setParam0'], 'param1' => ['param1', 'getParam1', 'setParam1'], 'param2' => ['param2...', 'getParam2', 'setParam2']];
     }
 }

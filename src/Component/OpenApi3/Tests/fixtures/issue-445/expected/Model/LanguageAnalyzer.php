@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class LanguageAnalyzer extends AnalyzerBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class LanguageAnalyzer extends AnalyzerBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -15,7 +18,7 @@ class LanguageAnalyzer extends AnalyzerBase
     /**
      * The analyzer type: Language
      *
-     * @var mixed
+     * @var string
      */
     protected $type;
     /**
@@ -27,20 +30,20 @@ class LanguageAnalyzer extends AnalyzerBase
     /**
      * The analyzer type: Language
      *
-     * @return mixed
+     * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
     /**
      * The analyzer type: Language
      *
-     * @param mixed $type
+     * @param string $type
      *
      * @return self
      */
-    public function setType($type): self
+    public function setType(string $type): self
     {
         $this->initialized['type'] = true;
         $this->type = $type;
@@ -67,5 +70,9 @@ class LanguageAnalyzer extends AnalyzerBase
         $this->initialized['fieldSuffix'] = true;
         $this->fieldSuffix = $fieldSuffix;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'fieldSuffix' => ['fieldSuffix', 'getFieldSuffix', 'setFieldSuffix']];
     }
 }

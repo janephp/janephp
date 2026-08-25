@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class V2FirewallsFirewallIdRulesDeleteBody extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class V2FirewallsFirewallIdRulesDeleteBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class V2FirewallsFirewallIdRulesDeleteBody extends \ArrayObject
         $this->initialized['outboundRules'] = true;
         $this->outboundRules = $outboundRules;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['inboundRules' => ['inbound_rules', 'getInboundRules', 'setInboundRules'], 'outboundRules' => ['outbound_rules', 'getOutboundRules', 'setOutboundRules']];
     }
 }

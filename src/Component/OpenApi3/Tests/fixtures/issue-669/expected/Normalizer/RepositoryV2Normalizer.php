@@ -82,7 +82,7 @@ class RepositoryV2Normalizer implements DenormalizerInterface, NormalizerInterfa
         if ($data->isInitialized('manifestCount') && null !== $data->getManifestCount()) {
             $dataArray['manifest_count'] = $data->getManifestCount();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

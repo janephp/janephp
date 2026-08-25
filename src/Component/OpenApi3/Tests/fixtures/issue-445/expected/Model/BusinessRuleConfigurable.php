@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class BusinessRuleConfigurable extends BusinessRule
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class BusinessRuleConfigurable extends BusinessRule implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -15,7 +18,7 @@ class BusinessRuleConfigurable extends BusinessRule
     /**
      * The condition that makes this rule trigger.
      *
-     * @var mixed|null
+     * @var BusinessRuleCondition|null
      */
     protected $condition;
     /**
@@ -33,20 +36,20 @@ class BusinessRuleConfigurable extends BusinessRule
     /**
      * The condition that makes this rule trigger.
      *
-     * @return mixed
+     * @return BusinessRuleCondition|null
      */
-    public function getCondition()
+    public function getCondition(): ?BusinessRuleCondition
     {
         return $this->condition;
     }
     /**
      * The condition that makes this rule trigger.
      *
-     * @param mixed $condition
+     * @param BusinessRuleCondition|null $condition
      *
      * @return self
      */
-    public function setCondition($condition): self
+    public function setCondition(?BusinessRuleCondition $condition): self
     {
         $this->initialized['condition'] = true;
         $this->condition = $condition;
@@ -95,5 +98,9 @@ class BusinessRuleConfigurable extends BusinessRule
         $this->initialized['actions'] = true;
         $this->actions = $actions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['condition' => ['condition', 'getCondition', 'setCondition'], 'transformationGroups' => ['transformationGroups', 'getTransformationGroups', 'setTransformationGroups'], 'actions' => ['actions', 'getActions', 'setActions']];
     }
 }

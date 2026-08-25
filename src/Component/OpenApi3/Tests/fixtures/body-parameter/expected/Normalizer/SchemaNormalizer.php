@@ -126,7 +126,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if ($data->isInitialized('objectRefProperty') && null !== $data->getObjectRefProperty()) {
             $dataArray['objectRefProperty'] = $data->getObjectRefProperty() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getObjectRefProperty(), 'json', $context));
         }
-        foreach ($data as $key_1 => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_2;
             }

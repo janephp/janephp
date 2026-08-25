@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseOneClicksAll extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseOneClicksAll implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseOneClicksAll extends \ArrayObject
         $this->initialized['n1Clicks'] = true;
         $this->n1Clicks = $n1Clicks;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['n1Clicks' => ['1_clicks', 'get1Clicks', 'set1Clicks']];
     }
 }

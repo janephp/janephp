@@ -143,7 +143,7 @@ class ListItemLayerExceptionNormalizer implements DenormalizerInterface, Normali
         if ($data->isInitialized('listItemId') && null !== $data->getListItemId()) {
             $dataArray['listItemId'] = $data->getListItemId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

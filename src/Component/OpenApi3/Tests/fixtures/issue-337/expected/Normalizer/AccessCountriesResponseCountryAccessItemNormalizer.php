@@ -152,7 +152,7 @@ class AccessCountriesResponseCountryAccessItemNormalizer implements Denormalizer
             }
             $dataArray['creditsafeConnectBankVerification'] = $values_6;
         }
-        foreach ($data as $key => $value_7) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_7) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_7;
             }

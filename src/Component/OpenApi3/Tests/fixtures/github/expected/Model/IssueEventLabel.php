@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class IssueEventLabel extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class IssueEventLabel implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class IssueEventLabel extends \ArrayObject
         $this->initialized['color'] = true;
         $this->color = $color;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'color' => ['color', 'getColor', 'setColor']];
     }
 }

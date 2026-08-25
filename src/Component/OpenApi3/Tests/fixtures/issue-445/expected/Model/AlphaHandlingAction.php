@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class AlphaHandlingAction extends ImageActionBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class AlphaHandlingAction extends ImageActionBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -15,7 +18,7 @@ class AlphaHandlingAction extends ImageActionBase
     /**
      * Specifies the kind of alpha handling to be applied.
      *
-     * @var mixed
+     * @var string
      */
     protected $alphaHandling;
     /**
@@ -27,20 +30,20 @@ class AlphaHandlingAction extends ImageActionBase
     /**
      * Specifies the kind of alpha handling to be applied.
      *
-     * @return mixed
+     * @return string
      */
-    public function getAlphaHandling()
+    public function getAlphaHandling(): string
     {
         return $this->alphaHandling;
     }
     /**
      * Specifies the kind of alpha handling to be applied.
      *
-     * @param mixed $alphaHandling
+     * @param string $alphaHandling
      *
      * @return self
      */
-    public function setAlphaHandling($alphaHandling): self
+    public function setAlphaHandling(string $alphaHandling): self
     {
         $this->initialized['alphaHandling'] = true;
         $this->alphaHandling = $alphaHandling;
@@ -67,5 +70,9 @@ class AlphaHandlingAction extends ImageActionBase
         $this->initialized['replacementRgbColorHexCode'] = true;
         $this->replacementRgbColorHexCode = $replacementRgbColorHexCode;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['alphaHandling' => ['alphaHandling', 'getAlphaHandling', 'setAlphaHandling'], 'replacementRgbColorHexCode' => ['replacementRgbColorHexCode', 'getReplacementRgbColorHexCode', 'setReplacementRgbColorHexCode']];
     }
 }

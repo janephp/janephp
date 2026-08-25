@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ContentSymlink extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ContentSymlink implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -253,5 +256,9 @@ class ContentSymlink extends \ArrayObject
         $this->initialized['links'] = true;
         $this->links = $links;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'target' => ['target', 'getTarget', 'setTarget'], 'size' => ['size', 'getSize', 'setSize'], 'name' => ['name', 'getName', 'setName'], 'path' => ['path', 'getPath', 'setPath'], 'sha' => ['sha', 'getSha', 'setSha'], 'url' => ['url', 'getUrl', 'setUrl'], 'gitUrl' => ['git_url', 'getGitUrl', 'setGitUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'downloadUrl' => ['download_url', 'getDownloadUrl', 'setDownloadUrl'], 'links' => ['_links', 'getLinks', 'setLinks']];
     }
 }

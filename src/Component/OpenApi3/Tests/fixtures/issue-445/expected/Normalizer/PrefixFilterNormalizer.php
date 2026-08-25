@@ -62,7 +62,7 @@ class PrefixFilterNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['kind'] = $data->getKind();
         $dataArray['field'] = $data->getField();
         $dataArray['prefix'] = $data->getPrefix();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

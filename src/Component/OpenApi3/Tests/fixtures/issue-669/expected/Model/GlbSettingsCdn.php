@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class GlbSettingsCdn extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class GlbSettingsCdn implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class GlbSettingsCdn extends \ArrayObject
         $this->initialized['isEnabled'] = true;
         $this->isEnabled = $isEnabled;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['isEnabled' => ['is_enabled', 'getIsEnabled', 'setIsEnabled']];
     }
 }

@@ -54,7 +54,7 @@ class SubLevel3Normalizer implements DenormalizerInterface, NormalizerInterface,
         if ($data->isInitialized('end') && null !== $data->getEnd()) {
             $dataArray['end'] = $data->getEnd();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

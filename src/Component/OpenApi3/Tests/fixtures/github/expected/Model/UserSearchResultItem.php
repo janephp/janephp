@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class UserSearchResultItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class UserSearchResultItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -759,5 +762,9 @@ class UserSearchResultItem extends \ArrayObject
         $this->initialized['suspendedAt'] = true;
         $this->suspendedAt = $suspendedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['login' => ['login', 'getLogin', 'setLogin'], 'id' => ['id', 'getId', 'setId'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'avatarUrl' => ['avatar_url', 'getAvatarUrl', 'setAvatarUrl'], 'gravatarId' => ['gravatar_id', 'getGravatarId', 'setGravatarId'], 'url' => ['url', 'getUrl', 'setUrl'], 'htmlUrl' => ['html_url', 'getHtmlUrl', 'setHtmlUrl'], 'followersUrl' => ['followers_url', 'getFollowersUrl', 'setFollowersUrl'], 'subscriptionsUrl' => ['subscriptions_url', 'getSubscriptionsUrl', 'setSubscriptionsUrl'], 'organizationsUrl' => ['organizations_url', 'getOrganizationsUrl', 'setOrganizationsUrl'], 'reposUrl' => ['repos_url', 'getReposUrl', 'setReposUrl'], 'receivedEventsUrl' => ['received_events_url', 'getReceivedEventsUrl', 'setReceivedEventsUrl'], 'type' => ['type', 'getType', 'setType'], 'score' => ['score', 'getScore', 'setScore'], 'followingUrl' => ['following_url', 'getFollowingUrl', 'setFollowingUrl'], 'gistsUrl' => ['gists_url', 'getGistsUrl', 'setGistsUrl'], 'starredUrl' => ['starred_url', 'getStarredUrl', 'setStarredUrl'], 'eventsUrl' => ['events_url', 'getEventsUrl', 'setEventsUrl'], 'publicRepos' => ['public_repos', 'getPublicRepos', 'setPublicRepos'], 'publicGists' => ['public_gists', 'getPublicGists', 'setPublicGists'], 'followers' => ['followers', 'getFollowers', 'setFollowers'], 'following' => ['following', 'getFollowing', 'setFollowing'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'name' => ['name', 'getName', 'setName'], 'bio' => ['bio', 'getBio', 'setBio'], 'email' => ['email', 'getEmail', 'setEmail'], 'location' => ['location', 'getLocation', 'setLocation'], 'siteAdmin' => ['site_admin', 'getSiteAdmin', 'setSiteAdmin'], 'hireable' => ['hireable', 'getHireable', 'setHireable'], 'textMatches' => ['text_matches', 'getTextMatches', 'setTextMatches'], 'blog' => ['blog', 'getBlog', 'setBlog'], 'company' => ['company', 'getCompany', 'setCompany'], 'suspendedAt' => ['suspended_at', 'getSuspendedAt', 'setSuspendedAt']];
     }
 }

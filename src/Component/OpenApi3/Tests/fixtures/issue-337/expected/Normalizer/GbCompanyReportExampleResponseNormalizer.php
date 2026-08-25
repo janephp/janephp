@@ -89,7 +89,7 @@ class GbCompanyReportExampleResponseNormalizer implements DenormalizerInterface,
         if ($data->isInitialized('report') && null !== $data->getReport()) {
             $dataArray['report'] = $data->getReport() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getReport(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

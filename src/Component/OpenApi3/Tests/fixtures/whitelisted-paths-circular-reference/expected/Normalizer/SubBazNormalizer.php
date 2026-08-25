@@ -54,7 +54,7 @@ class SubBazNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if ($data->isInitialized('parent') && null !== $data->getParent()) {
             $dataArray['parent'] = $data->getParent() === null ? null : new \Jane\Component\OpenApi3\Tests\Expected\Runtime\JsonObject($this->normalizer->normalize($data->getParent(), 'json', $context));
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

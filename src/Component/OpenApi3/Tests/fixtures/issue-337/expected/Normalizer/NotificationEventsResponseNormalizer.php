@@ -79,7 +79,7 @@ class NotificationEventsResponseNormalizer implements DenormalizerInterface, Nor
         if ($data->isInitialized('paging') && null !== $data->getPaging()) {
             $dataArray['paging'] = $data->getPaging() === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($data->getPaging(), 'json', $context));
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

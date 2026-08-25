@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DomainRecordA extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DomainRecordA implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -291,5 +294,9 @@ class DomainRecordA extends \ArrayObject
         $this->initialized['tag'] = true;
         $this->tag = $tag;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'type' => ['type', 'getType', 'setType'], 'name' => ['name', 'getName', 'setName'], 'data' => ['data', 'getData', 'setData'], 'priority' => ['priority', 'getPriority', 'setPriority'], 'port' => ['port', 'getPort', 'setPort'], 'ttl' => ['ttl', 'getTtl', 'setTtl'], 'weight' => ['weight', 'getWeight', 'setWeight'], 'flags' => ['flags', 'getFlags', 'setFlags'], 'tag' => ['tag', 'getTag', 'setTag']];
     }
 }

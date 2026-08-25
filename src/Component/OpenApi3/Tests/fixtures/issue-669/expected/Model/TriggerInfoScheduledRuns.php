@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class TriggerInfoScheduledRuns extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class TriggerInfoScheduledRuns implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class TriggerInfoScheduledRuns extends \ArrayObject
         $this->initialized['nextRunAt'] = true;
         $this->nextRunAt = $nextRunAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['lastRunAt' => ['last_run_at', 'getLastRunAt', 'setLastRunAt'], 'nextRunAt' => ['next_run_at', 'getNextRunAt', 'setNextRunAt']];
     }
 }

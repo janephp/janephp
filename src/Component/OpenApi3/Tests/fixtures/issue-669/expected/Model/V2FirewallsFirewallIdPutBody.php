@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class V2FirewallsFirewallIdPutBody extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class V2FirewallsFirewallIdPutBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -245,5 +248,9 @@ class V2FirewallsFirewallIdPutBody extends \ArrayObject
         $this->initialized['outboundRules'] = true;
         $this->outboundRules = $outboundRules;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'status' => ['status', 'getStatus', 'setStatus'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'pendingChanges' => ['pending_changes', 'getPendingChanges', 'setPendingChanges'], 'name' => ['name', 'getName', 'setName'], 'dropletIds' => ['droplet_ids', 'getDropletIds', 'setDropletIds'], 'tags' => ['tags', 'getTags', 'setTags'], 'inboundRules' => ['inbound_rules', 'getInboundRules', 'setInboundRules'], 'outboundRules' => ['outbound_rules', 'getOutboundRules', 'setOutboundRules']];
     }
 }

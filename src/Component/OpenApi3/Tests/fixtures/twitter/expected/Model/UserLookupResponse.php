@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class UserLookupResponse extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class UserLookupResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -13,7 +16,7 @@ class UserLookupResponse extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var list<mixed>
+     * @var list<CompactUser>|list<DefaultUser>|list<DetailedUser>
      */
     protected $data;
     /**
@@ -21,18 +24,18 @@ class UserLookupResponse extends \ArrayObject
      */
     protected $includes;
     /**
-     * @var list<mixed>
+     * @var list<GenericProblem>|list<InvalidRequestProblem>|list<ClientForbiddenProblem>|list<ResourceNotFoundProblem>|list<ResourceUnauthorizedProblem>|list<DisallowedResourceProblem>|list<UnsupportedAuthenticationProblem>|list<UsageCapExceededProblem>|list<ConnectionExceptionProblem>|list<ClientDisconnectedProblem>|list<OperationalDisconnectProblem>|list<RulesCapProblem>|list<InvalidRuleProblem>
      */
     protected $errors;
     /**
-     * @return list<mixed>
+     * @return list<CompactUser>|list<DefaultUser>|list<DetailedUser>
      */
     public function getData(): array
     {
         return $this->data;
     }
     /**
-     * @param list<mixed> $data
+     * @param list<CompactUser>|list<DefaultUser>|list<DetailedUser> $data
      *
      * @return self
      */
@@ -61,14 +64,14 @@ class UserLookupResponse extends \ArrayObject
         return $this;
     }
     /**
-     * @return list<mixed>
+     * @return list<GenericProblem>|list<InvalidRequestProblem>|list<ClientForbiddenProblem>|list<ResourceNotFoundProblem>|list<ResourceUnauthorizedProblem>|list<DisallowedResourceProblem>|list<UnsupportedAuthenticationProblem>|list<UsageCapExceededProblem>|list<ConnectionExceptionProblem>|list<ClientDisconnectedProblem>|list<OperationalDisconnectProblem>|list<RulesCapProblem>|list<InvalidRuleProblem>
      */
     public function getErrors(): array
     {
         return $this->errors;
     }
     /**
-     * @param list<mixed> $errors
+     * @param list<GenericProblem>|list<InvalidRequestProblem>|list<ClientForbiddenProblem>|list<ResourceNotFoundProblem>|list<ResourceUnauthorizedProblem>|list<DisallowedResourceProblem>|list<UnsupportedAuthenticationProblem>|list<UsageCapExceededProblem>|list<ConnectionExceptionProblem>|list<ClientDisconnectedProblem>|list<OperationalDisconnectProblem>|list<RulesCapProblem>|list<InvalidRuleProblem> $errors
      *
      * @return self
      */
@@ -77,5 +80,9 @@ class UserLookupResponse extends \ArrayObject
         $this->initialized['errors'] = true;
         $this->errors = $errors;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['data' => ['data', 'getData', 'setData'], 'includes' => ['includes', 'getIncludes', 'setIncludes'], 'errors' => ['errors', 'getErrors', 'setErrors']];
     }
 }

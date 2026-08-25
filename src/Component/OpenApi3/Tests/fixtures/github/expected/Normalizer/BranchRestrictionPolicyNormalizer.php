@@ -109,7 +109,7 @@ class BranchRestrictionPolicyNormalizer implements DenormalizerInterface, Normal
             $values_2[] = $value_2 === null ? null : new \Github\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
         }
         $dataArray['apps'] = $values_2;
-        foreach ($data as $key => $value_3) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_3;
             }

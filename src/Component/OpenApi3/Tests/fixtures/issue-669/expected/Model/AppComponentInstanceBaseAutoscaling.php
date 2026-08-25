@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppComponentInstanceBaseAutoscaling extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppComponentInstanceBaseAutoscaling implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class AppComponentInstanceBaseAutoscaling extends \ArrayObject
         $this->initialized['metrics'] = true;
         $this->metrics = $metrics;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['minInstanceCount' => ['min_instance_count', 'getMinInstanceCount', 'setMinInstanceCount'], 'maxInstanceCount' => ['max_instance_count', 'getMaxInstanceCount', 'setMaxInstanceCount'], 'metrics' => ['metrics', 'getMetrics', 'setMetrics']];
     }
 }

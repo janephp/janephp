@@ -81,7 +81,7 @@ class NfsActionsResponseActionNormalizer implements DenormalizerInterface, Norma
         $dataArray['started_at'] = $data->getStartedAt()->format('Y-m-d\TH:i:sP');
         $dataArray['status'] = $data->getStatus();
         $dataArray['type'] = $data->getType();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

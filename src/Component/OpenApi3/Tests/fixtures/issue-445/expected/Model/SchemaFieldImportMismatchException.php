@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class SchemaFieldImportMismatchException extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class SchemaFieldImportMismatchException implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -275,5 +278,9 @@ class SchemaFieldImportMismatchException extends \ArrayObject
         $this->initialized['existingFieldIds'] = true;
         $this->existingFieldIds = $existingFieldIds;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['traceLevel' => ['traceLevel', 'getTraceLevel', 'setTraceLevel'], 'traceId' => ['traceId', 'getTraceId', 'setTraceId'], 'traceJobId' => ['traceJobId', 'getTraceJobId', 'setTraceJobId'], 'httpStatusCode' => ['httpStatusCode', 'getHttpStatusCode', 'setHttpStatusCode'], 'exceptionMessage' => ['exceptionMessage', 'getExceptionMessage', 'setExceptionMessage'], 'kind' => ['kind', 'getKind', 'setKind'], 'customerId' => ['customerId', 'getCustomerId', 'setCustomerId'], 'customerAlias' => ['customerAlias', 'getCustomerAlias', 'setCustomerAlias'], 'userId' => ['userId', 'getUserId', 'setUserId'], 'schemaId' => ['schemaId', 'getSchemaId', 'setSchemaId'], 'importingFieldIds' => ['importingFieldIds', 'getImportingFieldIds', 'setImportingFieldIds'], 'existingFieldIds' => ['existingFieldIds', 'getExistingFieldIds', 'setExistingFieldIds']];
     }
 }

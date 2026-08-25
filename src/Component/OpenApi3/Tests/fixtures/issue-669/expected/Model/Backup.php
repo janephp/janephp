@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class Backup extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class Backup implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class Backup extends \ArrayObject
         $this->initialized['incremental'] = true;
         $this->incremental = $incremental;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'sizeGigabytes' => ['size_gigabytes', 'getSizeGigabytes', 'setSizeGigabytes'], 'incremental' => ['incremental', 'getIncremental', 'setIncremental']];
     }
 }

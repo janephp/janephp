@@ -107,7 +107,7 @@ class NfsResponseNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('host') && null !== $data->getHost()) {
             $dataArray['host'] = $data->getHost();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

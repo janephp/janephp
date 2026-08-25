@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class GeoDistanceAggregator extends AggregatorBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class GeoDistanceAggregator extends AggregatorBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -21,7 +24,7 @@ class GeoDistanceAggregator extends AggregatorBase
     /**
      * The point of origin to calculate the distance from (latitude/longitude).
      *
-     * @var mixed
+     * @var GeoLocation
      */
     protected $location;
     /**
@@ -55,20 +58,20 @@ class GeoDistanceAggregator extends AggregatorBase
     /**
      * The point of origin to calculate the distance from (latitude/longitude).
      *
-     * @return mixed
+     * @return GeoLocation
      */
-    public function getLocation()
+    public function getLocation(): GeoLocation
     {
         return $this->location;
     }
     /**
      * The point of origin to calculate the distance from (latitude/longitude).
      *
-     * @param mixed $location
+     * @param GeoLocation $location
      *
      * @return self
      */
-    public function setLocation($location): self
+    public function setLocation(GeoLocation $location): self
     {
         $this->initialized['location'] = true;
         $this->location = $location;
@@ -95,5 +98,9 @@ class GeoDistanceAggregator extends AggregatorBase
         $this->initialized['ranges'] = true;
         $this->ranges = $ranges;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['field' => ['field', 'getField', 'setField'], 'location' => ['location', 'getLocation', 'setLocation'], 'ranges' => ['ranges', 'getRanges', 'setRanges']];
     }
 }

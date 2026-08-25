@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateMatchStatesItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordStateMatchStatesItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class ComplianceSearchResultDataBodySearchResultRecordsItemRecordDetailsRecordSt
         $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['matchID' => ['matchID', 'getMatchID', 'setMatchID'], 'type' => ['type', 'getType', 'setType']];
     }
 }

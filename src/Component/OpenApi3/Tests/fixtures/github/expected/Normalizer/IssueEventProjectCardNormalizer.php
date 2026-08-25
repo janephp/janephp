@@ -82,7 +82,7 @@ class IssueEventProjectCardNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('previousColumnName') && null !== $data->getPreviousColumnName()) {
             $dataArray['previous_column_name'] = $data->getPreviousColumnName();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

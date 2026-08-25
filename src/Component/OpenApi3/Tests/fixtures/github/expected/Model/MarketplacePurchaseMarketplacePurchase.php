@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class MarketplacePurchaseMarketplacePurchase extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class MarketplacePurchaseMarketplacePurchase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -193,5 +196,9 @@ class MarketplacePurchaseMarketplacePurchase extends \ArrayObject
         $this->initialized['plan'] = true;
         $this->plan = $plan;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['billingCycle' => ['billing_cycle', 'getBillingCycle', 'setBillingCycle'], 'nextBillingDate' => ['next_billing_date', 'getNextBillingDate', 'setNextBillingDate'], 'isInstalled' => ['is_installed', 'getIsInstalled', 'setIsInstalled'], 'unitCount' => ['unit_count', 'getUnitCount', 'setUnitCount'], 'onFreeTrial' => ['on_free_trial', 'getOnFreeTrial', 'setOnFreeTrial'], 'freeTrialEndsOn' => ['free_trial_ends_on', 'getFreeTrialEndsOn', 'setFreeTrialEndsOn'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'plan' => ['plan', 'getPlan', 'setPlan']];
     }
 }

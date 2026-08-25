@@ -101,7 +101,7 @@ class CompactUserFieldsNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('profileImageUrl') && null !== $data->getProfileImageUrl()) {
             $dataArray['profile_image_url'] = $data->getProfileImageUrl();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

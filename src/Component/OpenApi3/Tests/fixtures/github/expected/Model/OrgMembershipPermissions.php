@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrgMembershipPermissions extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrgMembershipPermissions implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class OrgMembershipPermissions extends \ArrayObject
         $this->initialized['canCreateRepository'] = true;
         $this->canCreateRepository = $canCreateRepository;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['canCreateRepository' => ['can_create_repository', 'getCanCreateRepository', 'setCanCreateRepository']];
     }
 }

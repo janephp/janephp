@@ -103,7 +103,7 @@ class ReposOwnerRepoCheckRunsPostBodyOutputAnnotationsItemNormalizer implements 
         if ($data->isInitialized('rawDetails') && null !== $data->getRawDetails()) {
             $dataArray['raw_details'] = $data->getRawDetails();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class InvoiceSummary extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class InvoiceSummary implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -317,5 +320,9 @@ class InvoiceSummary extends \ArrayObject
         $this->initialized['creditsAndAdjustments'] = true;
         $this->creditsAndAdjustments = $creditsAndAdjustments;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['invoiceUuid' => ['invoice_uuid', 'getInvoiceUuid', 'setInvoiceUuid'], 'invoiceId' => ['invoice_id', 'getInvoiceId', 'setInvoiceId'], 'billingPeriod' => ['billing_period', 'getBillingPeriod', 'setBillingPeriod'], 'amount' => ['amount', 'getAmount', 'setAmount'], 'userName' => ['user_name', 'getUserName', 'setUserName'], 'userBillingAddress' => ['user_billing_address', 'getUserBillingAddress', 'setUserBillingAddress'], 'userCompany' => ['user_company', 'getUserCompany', 'setUserCompany'], 'userEmail' => ['user_email', 'getUserEmail', 'setUserEmail'], 'productCharges' => ['product_charges', 'getProductCharges', 'setProductCharges'], 'overages' => ['overages', 'getOverages', 'setOverages'], 'taxes' => ['taxes', 'getTaxes', 'setTaxes'], 'creditsAndAdjustments' => ['credits_and_adjustments', 'getCreditsAndAdjustments', 'setCreditsAndAdjustments']];
     }
 }

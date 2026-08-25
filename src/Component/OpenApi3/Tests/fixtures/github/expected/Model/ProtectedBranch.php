@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ProtectedBranch extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ProtectedBranch implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -221,5 +224,9 @@ class ProtectedBranch extends \ArrayObject
         $this->initialized['restrictions'] = true;
         $this->restrictions = $restrictions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'requiredStatusChecks' => ['required_status_checks', 'getRequiredStatusChecks', 'setRequiredStatusChecks'], 'requiredPullRequestReviews' => ['required_pull_request_reviews', 'getRequiredPullRequestReviews', 'setRequiredPullRequestReviews'], 'requiredSignatures' => ['required_signatures', 'getRequiredSignatures', 'setRequiredSignatures'], 'enforceAdmins' => ['enforce_admins', 'getEnforceAdmins', 'setEnforceAdmins'], 'requiredLinearHistory' => ['required_linear_history', 'getRequiredLinearHistory', 'setRequiredLinearHistory'], 'allowForcePushes' => ['allow_force_pushes', 'getAllowForcePushes', 'setAllowForcePushes'], 'allowDeletions' => ['allow_deletions', 'getAllowDeletions', 'setAllowDeletions'], 'restrictions' => ['restrictions', 'getRestrictions', 'setRestrictions']];
     }
 }

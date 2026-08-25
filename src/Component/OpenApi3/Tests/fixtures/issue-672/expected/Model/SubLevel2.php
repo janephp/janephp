@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class SubLevel2 extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class SubLevel2 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class SubLevel2 extends \ArrayObject
         $this->initialized['subLevel3'] = true;
         $this->subLevel3 = $subLevel3;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['subLevel3' => ['subLevel-3', 'getSubLevel3', 'setSubLevel3']];
     }
 }

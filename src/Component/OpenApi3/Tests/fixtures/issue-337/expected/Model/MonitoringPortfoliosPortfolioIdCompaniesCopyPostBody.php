@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class MonitoringPortfoliosPortfolioIdCompaniesCopyPostBody extends \ArrayObject
         $this->initialized['companies'] = true;
         $this->companies = $companies;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['portfolios' => ['portfolios', 'getPortfolios', 'setPortfolios'], 'companies' => ['companies', 'getCompanies', 'setCompanies']];
     }
 }

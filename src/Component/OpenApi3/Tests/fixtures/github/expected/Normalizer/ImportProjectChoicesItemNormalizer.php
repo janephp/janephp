@@ -71,7 +71,7 @@ class ImportProjectChoicesItemNormalizer implements DenormalizerInterface, Norma
         if ($data->isInitialized('humanName') && null !== $data->getHumanName()) {
             $dataArray['human_name'] = $data->getHumanName();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

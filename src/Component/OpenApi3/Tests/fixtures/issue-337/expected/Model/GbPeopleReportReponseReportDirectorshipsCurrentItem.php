@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbPeopleReportReponseReportDirectorshipsCurrentItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbPeopleReportReponseReportDirectorshipsCurrentItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -275,5 +278,9 @@ class GbPeopleReportReponseReportDirectorshipsCurrentItem extends \ArrayObject
         $this->initialized['legalAmount'] = true;
         $this->legalAmount = $legalAmount;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['companyName' => ['companyName', 'getCompanyName', 'setCompanyName'], 'companyNumber' => ['companyNumber', 'getCompanyNumber', 'setCompanyNumber'], 'companyRegistrationNumber' => ['companyRegistrationNumber', 'getCompanyRegistrationNumber', 'setCompanyRegistrationNumber'], 'status' => ['status', 'getStatus', 'setStatus'], 'position' => ['position', 'getPosition', 'setPosition'], 'companyRegistrationDate' => ['companyRegistrationDate', 'getCompanyRegistrationDate', 'setCompanyRegistrationDate'], 'legalCount' => ['legalCount', 'getLegalCount', 'setLegalCount'], 'creditScore' => ['creditScore', 'getCreditScore', 'setCreditScore'], 'additionalData' => ['additionalData', 'getAdditionalData', 'setAdditionalData'], 'latestTurnoverFigure' => ['latestTurnoverFigure', 'getLatestTurnoverFigure', 'setLatestTurnoverFigure'], 'netWorth' => ['netWorth', 'getNetWorth', 'setNetWorth'], 'legalAmount' => ['legalAmount', 'getLegalAmount', 'setLegalAmount']];
     }
 }

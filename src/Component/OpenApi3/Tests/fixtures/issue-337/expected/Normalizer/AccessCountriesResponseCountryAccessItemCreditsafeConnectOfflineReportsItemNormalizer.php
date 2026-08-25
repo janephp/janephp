@@ -89,7 +89,7 @@ class AccessCountriesResponseCountryAccessItemCreditsafeConnectOfflineReportsIte
         if ($data->isInitialized('used') && null !== $data->getUsed()) {
             $dataArray['used'] = $data->getUsed();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

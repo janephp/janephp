@@ -82,7 +82,7 @@ class ApiAWSDataSourceNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('secretKey') && null !== $data->getSecretKey()) {
             $dataArray['secret_key'] = $data->getSecretKey();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

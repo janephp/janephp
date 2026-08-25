@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class GitRef extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class GitRef implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class GitRef extends \ArrayObject
         $this->initialized['object'] = true;
         $this->object = $object;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['ref' => ['ref', 'getRef', 'setRef'], 'nodeId' => ['node_id', 'getNodeId', 'setNodeId'], 'url' => ['url', 'getUrl', 'setUrl'], 'object' => ['object', 'getObject', 'setObject']];
     }
 }

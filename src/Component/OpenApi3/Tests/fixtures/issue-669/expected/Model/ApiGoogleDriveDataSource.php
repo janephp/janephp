@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiGoogleDriveDataSource extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiGoogleDriveDataSource implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -61,5 +64,9 @@ class ApiGoogleDriveDataSource extends \ArrayObject
         $this->initialized['refreshToken'] = true;
         $this->refreshToken = $refreshToken;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['folderId' => ['folder_id', 'getFolderId', 'setFolderId'], 'refreshToken' => ['refresh_token', 'getRefreshToken', 'setRefreshToken']];
     }
 }

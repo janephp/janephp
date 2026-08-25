@@ -165,7 +165,7 @@ class SchemaParentChangeExceptionNormalizer implements DenormalizerInterface, No
         if ($data->isInitialized('newSchemaParentId') && null !== $data->getNewSchemaParentId()) {
             $dataArray['newSchemaParentId'] = $data->getNewSchemaParentId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class V2LoadBalancersLbIdForwardingRulesDeleteBody extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class V2LoadBalancersLbIdForwardingRulesDeleteBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class V2LoadBalancersLbIdForwardingRulesDeleteBody extends \ArrayObject
         $this->initialized['forwardingRules'] = true;
         $this->forwardingRules = $forwardingRules;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['forwardingRules' => ['forwarding_rules', 'getForwardingRules', 'setForwardingRules']];
     }
 }

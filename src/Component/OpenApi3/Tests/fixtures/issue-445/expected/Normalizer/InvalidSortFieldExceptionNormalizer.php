@@ -143,7 +143,7 @@ class InvalidSortFieldExceptionNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('fieldName') && null !== $data->getFieldName()) {
             $dataArray['fieldName'] = $data->getFieldName();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

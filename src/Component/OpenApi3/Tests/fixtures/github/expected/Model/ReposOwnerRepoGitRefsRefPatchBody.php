@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoGitRefsRefPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoGitRefsRefPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ReposOwnerRepoGitRefsRefPatchBody extends \ArrayObject
         $this->initialized['force'] = true;
         $this->force = $force;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['sha' => ['sha', 'getSha', 'setSha'], 'force' => ['force', 'getForce', 'setForce']];
     }
 }

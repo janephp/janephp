@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppFunctionsSpec extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppFunctionsSpec implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -289,5 +292,9 @@ class AppFunctionsSpec extends \ArrayObject
         $this->initialized['logDestinations'] = true;
         $this->logDestinations = $logDestinations;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['cors' => ['cors', 'getCors', 'setCors'], 'routes' => ['routes', 'getRoutes', 'setRoutes'], 'name' => ['name', 'getName', 'setName'], 'sourceDir' => ['source_dir', 'getSourceDir', 'setSourceDir'], 'alerts' => ['alerts', 'getAlerts', 'setAlerts'], 'envs' => ['envs', 'getEnvs', 'setEnvs'], 'git' => ['git', 'getGit', 'setGit'], 'github' => ['github', 'getGithub', 'setGithub'], 'gitlab' => ['gitlab', 'getGitlab', 'setGitlab'], 'bitbucket' => ['bitbucket', 'getBitbucket', 'setBitbucket'], 'logDestinations' => ['log_destinations', 'getLogDestinations', 'setLogDestinations']];
     }
 }

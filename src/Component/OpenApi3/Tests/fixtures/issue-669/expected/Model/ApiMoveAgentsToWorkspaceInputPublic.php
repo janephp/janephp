@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiMoveAgentsToWorkspaceInputPublic extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiMoveAgentsToWorkspaceInputPublic implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ApiMoveAgentsToWorkspaceInputPublic extends \ArrayObject
         $this->initialized['workspaceUuid'] = true;
         $this->workspaceUuid = $workspaceUuid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['agentUuids' => ['agent_uuids', 'getAgentUuids', 'setAgentUuids'], 'workspaceUuid' => ['workspace_uuid', 'getWorkspaceUuid', 'setWorkspaceUuid']];
     }
 }

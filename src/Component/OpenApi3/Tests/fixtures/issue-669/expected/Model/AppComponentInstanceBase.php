@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppComponentInstanceBase extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppComponentInstanceBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -21,7 +24,7 @@ class AppComponentInstanceBase extends \ArrayObject
     /**
      * The instance size to use for this component. Default: `apps-s-1vcpu-0.5gb`
      *
-     * @var mixed
+     * @var string|string
      */
     protected $instanceSizeSlug;
     /**
@@ -55,7 +58,7 @@ class AppComponentInstanceBase extends \ArrayObject
     /**
      * The instance size to use for this component. Default: `apps-s-1vcpu-0.5gb`
      *
-     * @return mixed
+     * @return string|string
      */
     public function getInstanceSizeSlug()
     {
@@ -64,7 +67,7 @@ class AppComponentInstanceBase extends \ArrayObject
     /**
      * The instance size to use for this component. Default: `apps-s-1vcpu-0.5gb`
      *
-     * @param mixed $instanceSizeSlug
+     * @param string|string $instanceSizeSlug
      *
      * @return self
      */
@@ -95,5 +98,9 @@ class AppComponentInstanceBase extends \ArrayObject
         $this->initialized['autoscaling'] = true;
         $this->autoscaling = $autoscaling;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['instanceCount' => ['instance_count', 'getInstanceCount', 'setInstanceCount'], 'instanceSizeSlug' => ['instance_size_slug', 'getInstanceSizeSlug', 'setInstanceSizeSlug'], 'autoscaling' => ['autoscaling', 'getAutoscaling', 'setAutoscaling']];
     }
 }

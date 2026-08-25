@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class V2UptimeChecksCheckIdAlertsPostBody extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class V2UptimeChecksCheckIdAlertsPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -207,5 +210,9 @@ class V2UptimeChecksCheckIdAlertsPostBody extends \ArrayObject
         $this->initialized['period'] = true;
         $this->period = $period;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'type' => ['type', 'getType', 'setType'], 'threshold' => ['threshold', 'getThreshold', 'setThreshold'], 'comparison' => ['comparison', 'getComparison', 'setComparison'], 'notifications' => ['notifications', 'getNotifications', 'setNotifications'], 'period' => ['period', 'getPeriod', 'setPeriod']];
     }
 }

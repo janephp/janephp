@@ -85,7 +85,7 @@ class IntegrationPermissionsNormalizer implements DenormalizerInterface, Normali
         if ($data->isInitialized('deployments') && null !== $data->getDeployments()) {
             $dataArray['deployments'] = $data->getDeployments();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

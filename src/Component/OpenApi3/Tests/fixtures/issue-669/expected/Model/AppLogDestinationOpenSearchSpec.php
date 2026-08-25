@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppLogDestinationOpenSearchSpec extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppLogDestinationOpenSearchSpec implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -129,5 +132,9 @@ class AppLogDestinationOpenSearchSpec extends \ArrayObject
         $this->initialized['clusterName'] = true;
         $this->clusterName = $clusterName;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['endpoint' => ['endpoint', 'getEndpoint', 'setEndpoint'], 'basicAuth' => ['basic_auth', 'getBasicAuth', 'setBasicAuth'], 'indexName' => ['index_name', 'getIndexName', 'setIndexName'], 'clusterName' => ['cluster_name', 'getClusterName', 'setClusterName']];
     }
 }

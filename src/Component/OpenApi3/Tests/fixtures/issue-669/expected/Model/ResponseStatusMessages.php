@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseStatusMessages extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseStatusMessages implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseStatusMessages extends \ArrayObject
         $this->initialized['messages'] = true;
         $this->messages = $messages;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['messages' => ['messages', 'getMessages', 'setMessages']];
     }
 }

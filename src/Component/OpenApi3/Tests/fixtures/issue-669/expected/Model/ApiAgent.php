@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiAgent extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiAgent implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -1149,5 +1152,9 @@ class ApiAgent extends \ArrayObject
         $this->initialized['workspace'] = true;
         $this->workspace = $workspace;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['anthropicApiKey' => ['anthropic_api_key', 'getAnthropicApiKey', 'setAnthropicApiKey'], 'apiKeyInfos' => ['api_key_infos', 'getApiKeyInfos', 'setApiKeyInfos'], 'apiKeys' => ['api_keys', 'getApiKeys', 'setApiKeys'], 'chatbot' => ['chatbot', 'getChatbot', 'setChatbot'], 'chatbotIdentifiers' => ['chatbot_identifiers', 'getChatbotIdentifiers', 'setChatbotIdentifiers'], 'childAgents' => ['child_agents', 'getChildAgents', 'setChildAgents'], 'conversationLogsEnabled' => ['conversation_logs_enabled', 'getConversationLogsEnabled', 'setConversationLogsEnabled'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'deployment' => ['deployment', 'getDeployment', 'setDeployment'], 'description' => ['description', 'getDescription', 'setDescription'], 'functions' => ['functions', 'getFunctions', 'setFunctions'], 'guardrails' => ['guardrails', 'getGuardrails', 'setGuardrails'], 'ifCase' => ['if_case', 'getIfCase', 'setIfCase'], 'instruction' => ['instruction', 'getInstruction', 'setInstruction'], 'k' => ['k', 'getK', 'setK'], 'knowledgeBases' => ['knowledge_bases', 'getKnowledgeBases', 'setKnowledgeBases'], 'loggingConfig' => ['logging_config', 'getLoggingConfig', 'setLoggingConfig'], 'maxTokens' => ['max_tokens', 'getMaxTokens', 'setMaxTokens'], 'model' => ['model', 'getModel', 'setModel'], 'modelProviderKey' => ['model_provider_key', 'getModelProviderKey', 'setModelProviderKey'], 'name' => ['name', 'getName', 'setName'], 'openaiApiKey' => ['openai_api_key', 'getOpenaiApiKey', 'setOpenaiApiKey'], 'parentAgents' => ['parent_agents', 'getParentAgents', 'setParentAgents'], 'projectId' => ['project_id', 'getProjectId', 'setProjectId'], 'provideCitations' => ['provide_citations', 'getProvideCitations', 'setProvideCitations'], 'region' => ['region', 'getRegion', 'setRegion'], 'retrievalMethod' => ['retrieval_method', 'getRetrievalMethod', 'setRetrievalMethod'], 'routeCreatedAt' => ['route_created_at', 'getRouteCreatedAt', 'setRouteCreatedAt'], 'routeCreatedBy' => ['route_created_by', 'getRouteCreatedBy', 'setRouteCreatedBy'], 'routeName' => ['route_name', 'getRouteName', 'setRouteName'], 'routeUuid' => ['route_uuid', 'getRouteUuid', 'setRouteUuid'], 'tags' => ['tags', 'getTags', 'setTags'], 'temperature' => ['temperature', 'getTemperature', 'setTemperature'], 'template' => ['template', 'getTemplate', 'setTemplate'], 'topP' => ['top_p', 'getTopP', 'setTopP'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'url' => ['url', 'getUrl', 'setUrl'], 'userId' => ['user_id', 'getUserId', 'setUserId'], 'uuid' => ['uuid', 'getUuid', 'setUuid'], 'versionHash' => ['version_hash', 'getVersionHash', 'setVersionHash'], 'vpcEgressIps' => ['vpc_egress_ips', 'getVpcEgressIps', 'setVpcEgressIps'], 'vpcUuid' => ['vpc_uuid', 'getVpcUuid', 'setVpcUuid'], 'workspace' => ['workspace', 'getWorkspace', 'setWorkspace']];
     }
 }

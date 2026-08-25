@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiRollbackToAgentVersionInputPublic extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiRollbackToAgentVersionInputPublic implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ApiRollbackToAgentVersionInputPublic extends \ArrayObject
         $this->initialized['versionHash'] = true;
         $this->versionHash = $versionHash;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['uuid' => ['uuid', 'getUuid', 'setUuid'], 'versionHash' => ['version_hash', 'getVersionHash', 'setVersionHash']];
     }
 }

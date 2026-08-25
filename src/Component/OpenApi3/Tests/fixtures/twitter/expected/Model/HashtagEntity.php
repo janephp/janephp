@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class HashtagEntity extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class HashtagEntity implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class HashtagEntity extends \ArrayObject
         $this->initialized['tag'] = true;
         $this->tag = $tag;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['start' => ['start', 'getStart', 'setStart'], 'end' => ['end', 'getEnd', 'setEnd'], 'tag' => ['tag', 'getTag', 'setTag']];
     }
 }

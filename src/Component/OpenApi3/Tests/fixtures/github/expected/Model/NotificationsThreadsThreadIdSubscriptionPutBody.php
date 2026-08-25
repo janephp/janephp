@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class NotificationsThreadsThreadIdSubscriptionPutBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class NotificationsThreadsThreadIdSubscriptionPutBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class NotificationsThreadsThreadIdSubscriptionPutBody extends \ArrayObject
         $this->initialized['ignored'] = true;
         $this->ignored = $ignored;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['ignored' => ['ignored', 'getIgnored', 'setIgnored']];
     }
 }

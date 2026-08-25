@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class V2MonitoringSinksPostBody extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class V2MonitoringSinksPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class V2MonitoringSinksPostBody extends \ArrayObject
         $this->initialized['resources'] = true;
         $this->resources = $resources;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['destinationUuid' => ['destination_uuid', 'getDestinationUuid', 'setDestinationUuid'], 'resources' => ['resources', 'getResources', 'setResources']];
     }
 }

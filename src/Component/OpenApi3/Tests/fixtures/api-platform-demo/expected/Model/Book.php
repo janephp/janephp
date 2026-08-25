@@ -2,8 +2,11 @@
 
 namespace ApiPlatform\Demo\Model;
 
-class Book extends \ArrayObject
+use ApiPlatform\Demo\Runtime\AdditionalAndPatternProperties;
+use ApiPlatform\Demo\Runtime\AdditionalPropertiesInterface;
+class Book implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -251,5 +254,9 @@ class Book extends \ArrayObject
         $this->initialized['archivedAt'] = true;
         $this->archivedAt = $archivedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'isbn' => ['isbn', 'getIsbn', 'setIsbn'], 'title' => ['title', 'getTitle', 'setTitle'], 'description' => ['description', 'getDescription', 'setDescription'], 'author' => ['author', 'getAuthor', 'setAuthor'], 'publicationDate' => ['publicationDate', 'getPublicationDate', 'setPublicationDate'], 'reviews' => ['reviews', 'getReviews', 'setReviews'], 'cover' => ['cover', 'getCover', 'setCover'], 'archivedAt' => ['archivedAt', 'getArchivedAt', 'setArchivedAt']];
     }
 }

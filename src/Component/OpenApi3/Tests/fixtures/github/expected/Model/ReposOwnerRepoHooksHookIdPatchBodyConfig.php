@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoHooksHookIdPatchBodyConfig extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoHooksHookIdPatchBodyConfig implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -167,5 +170,9 @@ class ReposOwnerRepoHooksHookIdPatchBodyConfig extends \ArrayObject
         $this->initialized['room'] = true;
         $this->room = $room;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['url' => ['url', 'getUrl', 'setUrl'], 'contentType' => ['content_type', 'getContentType', 'setContentType'], 'secret' => ['secret', 'getSecret', 'setSecret'], 'insecureSsl' => ['insecure_ssl', 'getInsecureSsl', 'setInsecureSsl'], 'address' => ['address', 'getAddress', 'setAddress'], 'room' => ['room', 'getRoom', 'setRoom']];
     }
 }

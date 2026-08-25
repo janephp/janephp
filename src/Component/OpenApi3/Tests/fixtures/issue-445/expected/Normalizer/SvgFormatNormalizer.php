@@ -63,7 +63,7 @@ class SvgFormatNormalizer implements DenormalizerInterface, NormalizerInterface,
         if ($data->isInitialized('extension') && null !== $data->getExtension()) {
             $dataArray['extension'] = $data->getExtension();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

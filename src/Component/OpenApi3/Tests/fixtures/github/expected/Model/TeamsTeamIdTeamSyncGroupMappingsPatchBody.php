@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class TeamsTeamIdTeamSyncGroupMappingsPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -61,5 +64,9 @@ class TeamsTeamIdTeamSyncGroupMappingsPatchBody extends \ArrayObject
         $this->initialized['syncedAt'] = true;
         $this->syncedAt = $syncedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['groups' => ['groups', 'getGroups', 'setGroups'], 'syncedAt' => ['synced_at', 'getSyncedAt', 'setSyncedAt']];
     }
 }

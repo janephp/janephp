@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class TweetMetricsResponse extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class TweetMetricsResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -17,7 +20,7 @@ class TweetMetricsResponse extends \ArrayObject
      */
     protected $data;
     /**
-     * @var list<mixed>
+     * @var list<GenericProblem>|list<InvalidRequestProblem>|list<ClientForbiddenProblem>|list<ResourceNotFoundProblem>|list<ResourceUnauthorizedProblem>|list<DisallowedResourceProblem>|list<UnsupportedAuthenticationProblem>|list<UsageCapExceededProblem>|list<ConnectionExceptionProblem>|list<ClientDisconnectedProblem>|list<OperationalDisconnectProblem>|list<RulesCapProblem>|list<InvalidRuleProblem>
      */
     protected $errors;
     /**
@@ -39,14 +42,14 @@ class TweetMetricsResponse extends \ArrayObject
         return $this;
     }
     /**
-     * @return list<mixed>
+     * @return list<GenericProblem>|list<InvalidRequestProblem>|list<ClientForbiddenProblem>|list<ResourceNotFoundProblem>|list<ResourceUnauthorizedProblem>|list<DisallowedResourceProblem>|list<UnsupportedAuthenticationProblem>|list<UsageCapExceededProblem>|list<ConnectionExceptionProblem>|list<ClientDisconnectedProblem>|list<OperationalDisconnectProblem>|list<RulesCapProblem>|list<InvalidRuleProblem>
      */
     public function getErrors(): array
     {
         return $this->errors;
     }
     /**
-     * @param list<mixed> $errors
+     * @param list<GenericProblem>|list<InvalidRequestProblem>|list<ClientForbiddenProblem>|list<ResourceNotFoundProblem>|list<ResourceUnauthorizedProblem>|list<DisallowedResourceProblem>|list<UnsupportedAuthenticationProblem>|list<UsageCapExceededProblem>|list<ConnectionExceptionProblem>|list<ClientDisconnectedProblem>|list<OperationalDisconnectProblem>|list<RulesCapProblem>|list<InvalidRuleProblem> $errors
      *
      * @return self
      */
@@ -55,5 +58,9 @@ class TweetMetricsResponse extends \ArrayObject
         $this->initialized['errors'] = true;
         $this->errors = $errors;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['data' => ['data', 'getData', 'setData'], 'errors' => ['errors', 'getErrors', 'setErrors']];
     }
 }

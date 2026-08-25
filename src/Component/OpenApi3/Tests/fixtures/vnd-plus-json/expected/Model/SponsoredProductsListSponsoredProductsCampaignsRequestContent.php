@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class SponsoredProductsListSponsoredProductsCampaignsRequestContent extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class SponsoredProductsListSponsoredProductsCampaignsRequestContent implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class SponsoredProductsListSponsoredProductsCampaignsRequestContent extends \Arr
         $this->initialized['includeExtendedDataFields'] = true;
         $this->includeExtendedDataFields = $includeExtendedDataFields;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['maxResults' => ['maxResults', 'getMaxResults', 'setMaxResults'], 'nextToken' => ['nextToken', 'getNextToken', 'setNextToken'], 'includeExtendedDataFields' => ['includeExtendedDataFields', 'getIncludeExtendedDataFields', 'setIncludeExtendedDataFields']];
     }
 }

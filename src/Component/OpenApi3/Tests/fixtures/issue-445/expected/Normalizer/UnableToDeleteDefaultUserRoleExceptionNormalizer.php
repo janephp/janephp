@@ -143,7 +143,7 @@ class UnableToDeleteDefaultUserRoleExceptionNormalizer implements DenormalizerIn
         if ($data->isInitialized('userRoleId') && null !== $data->getUserRoleId()) {
             $dataArray['userRoleId'] = $data->getUserRoleId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

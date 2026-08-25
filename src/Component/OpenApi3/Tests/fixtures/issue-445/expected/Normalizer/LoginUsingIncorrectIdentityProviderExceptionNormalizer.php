@@ -143,7 +143,7 @@ class LoginUsingIncorrectIdentityProviderExceptionNormalizer implements Denormal
         if ($data->isInitialized('affectedUserId') && null !== $data->getAffectedUserId()) {
             $dataArray['affectedUserId'] = $data->getAffectedUserId();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

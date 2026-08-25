@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiListRegionsOutput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiListRegionsOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class ApiListRegionsOutput extends \ArrayObject
         $this->initialized['regions'] = true;
         $this->regions = $regions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['regions' => ['regions', 'getRegions', 'setRegions']];
     }
 }

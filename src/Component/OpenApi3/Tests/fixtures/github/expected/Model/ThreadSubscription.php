@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ThreadSubscription extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ThreadSubscription implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -165,5 +168,9 @@ class ThreadSubscription extends \ArrayObject
         $this->initialized['repositoryUrl'] = true;
         $this->repositoryUrl = $repositoryUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['subscribed' => ['subscribed', 'getSubscribed', 'setSubscribed'], 'ignored' => ['ignored', 'getIgnored', 'setIgnored'], 'reason' => ['reason', 'getReason', 'setReason'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'url' => ['url', 'getUrl', 'setUrl'], 'threadUrl' => ['thread_url', 'getThreadUrl', 'setThreadUrl'], 'repositoryUrl' => ['repository_url', 'getRepositoryUrl', 'setRepositoryUrl']];
     }
 }

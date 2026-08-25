@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class BaseGistFilesItem extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class BaseGistFilesItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,9 @@ class BaseGistFilesItem extends \ArrayObject
         $this->initialized['size'] = true;
         $this->size = $size;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['filename' => ['filename', 'getFilename', 'setFilename'], 'type' => ['type', 'getType', 'setType'], 'language' => ['language', 'getLanguage', 'setLanguage'], 'rawUrl' => ['raw_url', 'getRawUrl', 'setRawUrl'], 'size' => ['size', 'getSize', 'setSize']];
     }
 }

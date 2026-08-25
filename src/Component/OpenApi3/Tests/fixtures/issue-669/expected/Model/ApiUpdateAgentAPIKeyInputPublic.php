@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiUpdateAgentAPIKeyInputPublic extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiUpdateAgentAPIKeyInputPublic implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class ApiUpdateAgentAPIKeyInputPublic extends \ArrayObject
         $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['agentUuid' => ['agent_uuid', 'getAgentUuid', 'setAgentUuid'], 'apiKeyUuid' => ['api_key_uuid', 'getApiKeyUuid', 'setApiKeyUuid'], 'name' => ['name', 'getName', 'setName']];
     }
 }

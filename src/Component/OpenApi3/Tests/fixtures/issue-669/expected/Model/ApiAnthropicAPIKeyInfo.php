@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiAnthropicAPIKeyInfo extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiAnthropicAPIKeyInfo implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -179,5 +182,9 @@ class ApiAnthropicAPIKeyInfo extends \ArrayObject
         $this->initialized['uuid'] = true;
         $this->uuid = $uuid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'createdBy' => ['created_by', 'getCreatedBy', 'setCreatedBy'], 'deletedAt' => ['deleted_at', 'getDeletedAt', 'setDeletedAt'], 'name' => ['name', 'getName', 'setName'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'uuid' => ['uuid', 'getUuid', 'setUuid']];
     }
 }

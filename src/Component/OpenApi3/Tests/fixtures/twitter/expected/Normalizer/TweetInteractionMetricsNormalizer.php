@@ -74,7 +74,7 @@ class TweetInteractionMetricsNormalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('impressionCount') && null !== $data->getImpressionCount()) {
             $dataArray['impression_count'] = $data->getImpressionCount();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

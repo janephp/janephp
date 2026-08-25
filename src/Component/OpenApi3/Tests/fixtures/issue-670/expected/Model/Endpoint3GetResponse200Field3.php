@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class Endpoint3GetResponse200Field3 extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class Endpoint3GetResponse200Field3 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class Endpoint3GetResponse200Field3 extends \ArrayObject
         $this->initialized['subField3'] = true;
         $this->subField3 = $subField3;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['subField3' => ['sub-field-3', 'getSubField3', 'setSubField3']];
     }
 }

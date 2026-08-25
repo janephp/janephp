@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class PullRequestHeadRepoPermissions extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class PullRequestHeadRepoPermissions implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class PullRequestHeadRepoPermissions extends \ArrayObject
         $this->initialized['push'] = true;
         $this->push = $push;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['admin' => ['admin', 'getAdmin', 'setAdmin'], 'pull' => ['pull', 'getPull', 'setPull'], 'push' => ['push', 'getPush', 'setPush']];
     }
 }

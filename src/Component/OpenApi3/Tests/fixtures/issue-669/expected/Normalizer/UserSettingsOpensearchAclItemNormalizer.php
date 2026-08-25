@@ -61,7 +61,7 @@ class UserSettingsOpensearchAclItemNormalizer implements DenormalizerInterface, 
         if ($data->isInitialized('permission') && null !== $data->getPermission()) {
             $dataArray['permission'] = $data->getPermission();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

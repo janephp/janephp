@@ -61,7 +61,7 @@ class AppsDeploymentServiceNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('sourceCommitHash') && null !== $data->getSourceCommitHash()) {
             $dataArray['source_commit_hash'] = $data->getSourceCommitHash();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppRollbackValidationCondition extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppRollbackValidationCondition implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -128,5 +131,9 @@ class AppRollbackValidationCondition extends \ArrayObject
         $this->initialized['components'] = true;
         $this->components = $components;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['code' => ['code', 'getCode', 'setCode'], 'message' => ['message', 'getMessage', 'setMessage'], 'components' => ['components', 'getComponents', 'setComponents']];
     }
 }

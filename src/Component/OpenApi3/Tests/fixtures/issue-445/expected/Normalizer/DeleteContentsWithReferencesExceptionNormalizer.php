@@ -146,7 +146,7 @@ class DeleteContentsWithReferencesExceptionNormalizer implements DenormalizerInt
         if ($data->isInitialized('numberOfShares') && null !== $data->getNumberOfShares()) {
             $dataArray['numberOfShares'] = $data->getNumberOfShares();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

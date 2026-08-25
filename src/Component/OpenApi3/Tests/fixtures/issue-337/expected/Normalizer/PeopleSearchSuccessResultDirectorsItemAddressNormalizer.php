@@ -75,7 +75,7 @@ class PeopleSearchSuccessResultDirectorsItemAddressNormalizer implements Denorma
         if ($data->isInitialized('postCode') && null !== $data->getPostCode()) {
             $dataArray['postCode'] = $data->getPostCode();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

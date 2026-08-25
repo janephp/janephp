@@ -81,7 +81,7 @@ class OutputSearchResultNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('pageToken') && null !== $data->getPageToken()) {
             $dataArray['pageToken'] = $data->getPageToken();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

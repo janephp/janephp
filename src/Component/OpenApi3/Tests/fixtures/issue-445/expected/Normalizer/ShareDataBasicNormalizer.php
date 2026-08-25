@@ -94,7 +94,7 @@ class ShareDataBasicNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('languageCode') && null !== $data->getLanguageCode()) {
             $dataArray['languageCode'] = $data->getLanguageCode();
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

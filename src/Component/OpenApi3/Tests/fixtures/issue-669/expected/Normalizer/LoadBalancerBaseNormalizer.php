@@ -259,7 +259,7 @@ class LoadBalancerBaseNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('tlsCipherPolicy') && null !== $data->getTlsCipherPolicy()) {
             $dataArray['tls_cipher_policy'] = $data->getTlsCipherPolicy();
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_3;
             }

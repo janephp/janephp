@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class TeamsTeamIdProjectsProjectIdPutResponse403 extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class TeamsTeamIdProjectsProjectIdPutResponse403 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class TeamsTeamIdProjectsProjectIdPutResponse403 extends \ArrayObject
         $this->initialized['documentationUrl'] = true;
         $this->documentationUrl = $documentationUrl;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['message' => ['message', 'getMessage', 'setMessage'], 'documentationUrl' => ['documentation_url', 'getDocumentationUrl', 'setDocumentationUrl']];
     }
 }

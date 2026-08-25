@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ByoipPrefixResource extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ByoipPrefixResource implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class ByoipPrefixResource extends \ArrayObject
         $this->initialized['assignedAt'] = true;
         $this->assignedAt = $assignedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'byoip' => ['byoip', 'getByoip', 'setByoip'], 'region' => ['region', 'getRegion', 'setRegion'], 'resource' => ['resource', 'getResource', 'setResource'], 'assignedAt' => ['assigned_at', 'getAssignedAt', 'setAssignedAt']];
     }
 }

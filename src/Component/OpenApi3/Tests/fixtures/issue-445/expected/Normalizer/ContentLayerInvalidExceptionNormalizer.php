@@ -154,7 +154,7 @@ class ContentLayerInvalidExceptionNormalizer implements DenormalizerInterface, N
         if ($data->isInitialized('layerIds') && null !== $data->getLayerIds()) {
             $dataArray['layerIds'] = $data->getLayerIds();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

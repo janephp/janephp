@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class TransferEvent extends ApplicationEvent
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class TransferEvent extends ApplicationEvent implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -61,5 +64,9 @@ class TransferEvent extends ApplicationEvent
         $this->initialized['state'] = true;
         $this->state = $state;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['transferId' => ['transferId', 'getTransferId', 'setTransferId'], 'state' => ['state', 'getState', 'setState']];
     }
 }

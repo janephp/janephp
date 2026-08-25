@@ -71,7 +71,7 @@ class ResponseForbiddenGistNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('documentationUrl') && null !== $data->getDocumentationUrl()) {
             $dataArray['documentation_url'] = $data->getDocumentationUrl();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

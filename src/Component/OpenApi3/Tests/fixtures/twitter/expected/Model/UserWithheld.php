@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class UserWithheld extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class UserWithheld implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class UserWithheld extends \ArrayObject
         $this->initialized['scope'] = true;
         $this->scope = $scope;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['countryCodes' => ['country_codes', 'getCountryCodes', 'setCountryCodes'], 'scope' => ['scope', 'getScope', 'setScope']];
     }
 }

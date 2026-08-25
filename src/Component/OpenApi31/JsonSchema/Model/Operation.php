@@ -2,7 +2,7 @@
 
 namespace Jane\Component\OpenApi31\JsonSchema\Model;
 
-class Operation
+class Operation extends \ArrayObject
 {
     /**
      * @var array

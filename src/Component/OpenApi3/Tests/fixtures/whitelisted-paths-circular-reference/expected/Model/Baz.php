@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class Baz extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class Baz implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class Baz extends \ArrayObject
         $this->initialized['sub'] = true;
         $this->sub = $sub;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['label' => ['label', 'getLabel', 'setLabel'], 'sub' => ['sub', 'getSub', 'setSub']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class XmpMappingEntryConfigurationTagbox extends XmpMappingEntryConfigurationBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class XmpMappingEntryConfigurationTagbox extends XmpMappingEntryConfigurationBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class XmpMappingEntryConfigurationTagbox extends XmpMappingEntryConfigurationBas
         $this->initialized['includeAllSchemaChildren'] = true;
         $this->includeAllSchemaChildren = $includeAllSchemaChildren;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['keyFieldIds' => ['keyFieldIds', 'getKeyFieldIds', 'setKeyFieldIds'], 'caseSensitive' => ['caseSensitive', 'getCaseSensitive', 'setCaseSensitive'], 'includeAllSchemaChildren' => ['includeAllSchemaChildren', 'getIncludeAllSchemaChildren', 'setIncludeAllSchemaChildren']];
     }
 }

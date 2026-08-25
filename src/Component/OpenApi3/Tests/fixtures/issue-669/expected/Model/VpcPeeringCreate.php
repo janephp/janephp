@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class VpcPeeringCreate extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class VpcPeeringCreate implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class VpcPeeringCreate extends \ArrayObject
         $this->initialized['vpcIds'] = true;
         $this->vpcIds = $vpcIds;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['vpcIds' => ['vpc_ids', 'getVpcIds', 'setVpcIds']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -60,5 +63,9 @@ class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody extends \ArrayObject
         $this->initialized['permission'] = true;
         $this->permission = $permission;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['permission' => ['permission', 'getPermission', 'setPermission']];
     }
 }

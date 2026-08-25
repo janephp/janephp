@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseSinglePartnerAttachmentDeleting extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseSinglePartnerAttachmentDeleting implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseSinglePartnerAttachmentDeleting extends \ArrayObject
         $this->initialized['partnerAttachment'] = true;
         $this->partnerAttachment = $partnerAttachment;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['partnerAttachment' => ['partner_attachment', 'getPartnerAttachment', 'setPartnerAttachment']];
     }
 }

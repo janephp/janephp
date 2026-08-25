@@ -38,7 +38,11 @@ class ContentRightAggregationCountNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('contentRight', $data)) {
-            $object->setContentRight($data['contentRight']);
+            $value = $data['contentRight'];
+            if (is_string($data['contentRight'])) {
+                $value = $data['contentRight'];
+            }
+            $object->setContentRight($value);
         }
         if (\array_key_exists('count', $data)) {
             $object->setCount($data['count']);
@@ -48,7 +52,11 @@ class ContentRightAggregationCountNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['contentRight'] = $data->getContentRight();
+        $value = $data->getContentRight();
+        if (is_string($data->getContentRight())) {
+            $value = $data->getContentRight();
+        }
+        $dataArray['contentRight'] = $value;
         $dataArray['count'] = $data->getCount();
         return $dataArray;
     }

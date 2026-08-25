@@ -96,7 +96,7 @@ class ApiAgentLoggingConfigNormalizer implements DenormalizerInterface, Normaliz
         if ($data->isInitialized('logStreamName') && null !== $data->getLogStreamName()) {
             $dataArray['log_stream_name'] = $data->getLogStreamName();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

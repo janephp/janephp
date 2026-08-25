@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiAgreement extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiAgreement implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class ApiAgreement extends \ArrayObject
         $this->initialized['uuid'] = true;
         $this->uuid = $uuid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['description' => ['description', 'getDescription', 'setDescription'], 'name' => ['name', 'getName', 'setName'], 'url' => ['url', 'getUrl', 'setUrl'], 'uuid' => ['uuid', 'getUuid', 'setUuid']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class RateLimit extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class RateLimit implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class RateLimit extends \ArrayObject
         $this->initialized['reset'] = true;
         $this->reset = $reset;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['limit' => ['limit', 'getLimit', 'setLimit'], 'remaining' => ['remaining', 'getRemaining', 'setRemaining'], 'reset' => ['reset', 'getReset', 'setReset']];
     }
 }

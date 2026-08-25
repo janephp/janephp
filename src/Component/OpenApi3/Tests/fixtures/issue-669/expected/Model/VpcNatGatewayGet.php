@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class VpcNatGatewayGet extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class VpcNatGatewayGet implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -375,5 +378,9 @@ class VpcNatGatewayGet extends \ArrayObject
         $this->initialized['updatedAt'] = true;
         $this->updatedAt = $updatedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'name' => ['name', 'getName', 'setName'], 'type' => ['type', 'getType', 'setType'], 'state' => ['state', 'getState', 'setState'], 'region' => ['region', 'getRegion', 'setRegion'], 'size' => ['size', 'getSize', 'setSize'], 'vpcs' => ['vpcs', 'getVpcs', 'setVpcs'], 'egresses' => ['egresses', 'getEgresses', 'setEgresses'], 'udpTimeoutSeconds' => ['udp_timeout_seconds', 'getUdpTimeoutSeconds', 'setUdpTimeoutSeconds'], 'icmpTimeoutSeconds' => ['icmp_timeout_seconds', 'getIcmpTimeoutSeconds', 'setIcmpTimeoutSeconds'], 'tcpTimeoutSeconds' => ['tcp_timeout_seconds', 'getTcpTimeoutSeconds', 'setTcpTimeoutSeconds'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt']];
     }
 }

@@ -38,7 +38,11 @@ class ListItemReferencesResultNormalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('metadataReferences', $data) && $data['metadataReferences'] !== null) {
-            $object->setMetadataReferences($data['metadataReferences']);
+            $value = $data['metadataReferences'];
+            if (is_array($data['metadataReferences'])) {
+                $value = $this->denormalizer->denormalize($data['metadataReferences'], \PicturePark\API\Model\MetadataReferenceResult::class, 'json', $context);
+            }
+            $object->setMetadataReferences($value);
         }
         elseif (\array_key_exists('metadataReferences', $data) && $data['metadataReferences'] === null) {
             $object->setMetadataReferences(null);
@@ -49,7 +53,11 @@ class ListItemReferencesResultNormalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         if ($data->isInitialized('metadataReferences') && null !== $data->getMetadataReferences()) {
-            $dataArray['metadataReferences'] = $data->getMetadataReferences();
+            $value = $data->getMetadataReferences();
+            if (is_object($data->getMetadataReferences())) {
+                $value = $data->getMetadataReferences() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getMetadataReferences(), 'json', $context));
+            }
+            $dataArray['metadataReferences'] = $value;
         }
         return $dataArray;
     }

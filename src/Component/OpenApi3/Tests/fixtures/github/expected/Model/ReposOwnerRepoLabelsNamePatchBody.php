@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoLabelsNamePatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoLabelsNamePatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -117,5 +120,9 @@ class ReposOwnerRepoLabelsNamePatchBody extends \ArrayObject
         $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['newName' => ['new_name', 'getNewName', 'setNewName'], 'color' => ['color', 'getColor', 'setColor'], 'description' => ['description', 'getDescription', 'setDescription'], 'name' => ['name', 'getName', 'setName']];
     }
 }

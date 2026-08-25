@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class DatabasesBasicAuthCredentials extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class DatabasesBasicAuthCredentials implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class DatabasesBasicAuthCredentials extends \ArrayObject
         $this->initialized['basicAuthPassword'] = true;
         $this->basicAuthPassword = $basicAuthPassword;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['basicAuthUsername' => ['basic_auth_username', 'getBasicAuthUsername', 'setBasicAuthUsername'], 'basicAuthPassword' => ['basic_auth_password', 'getBasicAuthPassword', 'setBasicAuthPassword']];
     }
 }

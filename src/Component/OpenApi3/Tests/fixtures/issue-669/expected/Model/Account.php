@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class Account extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class Account implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -275,5 +278,9 @@ class Account extends \ArrayObject
         $this->initialized['team'] = true;
         $this->team = $team;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['dropletLimit' => ['droplet_limit', 'getDropletLimit', 'setDropletLimit'], 'floatingIpLimit' => ['floating_ip_limit', 'getFloatingIpLimit', 'setFloatingIpLimit'], 'email' => ['email', 'getEmail', 'setEmail'], 'name' => ['name', 'getName', 'setName'], 'uuid' => ['uuid', 'getUuid', 'setUuid'], 'emailVerified' => ['email_verified', 'getEmailVerified', 'setEmailVerified'], 'status' => ['status', 'getStatus', 'setStatus'], 'statusMessage' => ['status_message', 'getStatusMessage', 'setStatusMessage'], 'team' => ['team', 'getTeam', 'setTeam']];
     }
 }

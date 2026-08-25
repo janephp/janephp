@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class AppsUpdateAppRequest extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class AppsUpdateAppRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class AppsUpdateAppRequest extends \ArrayObject
         $this->initialized['updateAllSourceVersions'] = true;
         $this->updateAllSourceVersions = $updateAllSourceVersions;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['spec' => ['spec', 'getSpec', 'setSpec'], 'updateAllSourceVersions' => ['update_all_source_versions', 'getUpdateAllSourceVersions', 'setUpdateAllSourceVersions']];
     }
 }

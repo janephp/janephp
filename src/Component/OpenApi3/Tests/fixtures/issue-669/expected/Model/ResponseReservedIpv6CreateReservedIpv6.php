@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseReservedIpv6CreateReservedIpv6 extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseReservedIpv6CreateReservedIpv6 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -89,5 +92,9 @@ class ResponseReservedIpv6CreateReservedIpv6 extends \ArrayObject
         $this->initialized['reservedAt'] = true;
         $this->reservedAt = $reservedAt;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['ip' => ['ip', 'getIp', 'setIp'], 'regionSlug' => ['region_slug', 'getRegionSlug', 'setRegionSlug'], 'reservedAt' => ['reserved_at', 'getReservedAt', 'setReservedAt']];
     }
 }

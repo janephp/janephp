@@ -79,7 +79,11 @@ class UserRoleSearchRequestNormalizer implements DenormalizerInterface, Normaliz
             $object->setPageToken(null);
         }
         if (\array_key_exists('filter', $data) && $data['filter'] !== null) {
-            $object->setFilter($data['filter']);
+            $value_2 = $data['filter'];
+            if (is_array($data['filter']) and \array_key_exists('kind', $data['filter'])) {
+                $value_2 = $this->denormalizer->denormalize($data['filter'], \PicturePark\API\Model\FilterBase::class, 'json', $context);
+            }
+            $object->setFilter($value_2);
         }
         elseif (\array_key_exists('filter', $data) && $data['filter'] === null) {
             $object->setFilter(null);
@@ -89,8 +93,8 @@ class UserRoleSearchRequestNormalizer implements DenormalizerInterface, Normaliz
         }
         if (\array_key_exists('searchLanguages', $data) && $data['searchLanguages'] !== null) {
             $values_2 = [];
-            foreach ($data['searchLanguages'] as $value_2) {
-                $values_2[] = $value_2;
+            foreach ($data['searchLanguages'] as $value_3) {
+                $values_2[] = $value_3;
             }
             $object->setSearchLanguages($values_2);
         }
@@ -127,13 +131,17 @@ class UserRoleSearchRequestNormalizer implements DenormalizerInterface, Normaliz
             $dataArray['pageToken'] = $data->getPageToken();
         }
         if ($data->isInitialized('filter') && null !== $data->getFilter()) {
-            $dataArray['filter'] = $data->getFilter();
+            $value_2 = $data->getFilter();
+            if (is_object($data->getFilter())) {
+                $value_2 = $data->getFilter() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getFilter(), 'json', $context));
+            }
+            $dataArray['filter'] = $value_2;
         }
         $dataArray['debugMode'] = $data->getDebugMode();
         if ($data->isInitialized('searchLanguages') && null !== $data->getSearchLanguages()) {
             $values_2 = [];
-            foreach ($data->getSearchLanguages() as $value_2) {
-                $values_2[] = $value_2;
+            foreach ($data->getSearchLanguages() as $value_3) {
+                $values_2[] = $value_3;
             }
             $dataArray['searchLanguages'] = $values_2;
         }

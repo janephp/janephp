@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class DocumentMetadata extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class DocumentMetadata implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -13,11 +16,11 @@ class DocumentMetadata extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var mixed|null
+     * @var array<string, string>|null
      */
     protected $names;
     /**
-     * @var mixed|null
+     * @var array<string, string>|null
      */
     protected $descriptions;
     /**
@@ -117,40 +120,40 @@ class DocumentMetadata extends \ArrayObject
      */
     protected $imageTitles;
     /**
-     * @var mixed|null
+     * @var EpsMetadata|null
      */
     protected $epsInfo;
     /**
-     * @return mixed
+     * @return array<string, string>|null
      */
-    public function getNames()
+    public function getNames(): ?iterable
     {
         return $this->names;
     }
     /**
-     * @param mixed $names
+     * @param array<string, string>|null $names
      *
      * @return self
      */
-    public function setNames($names): self
+    public function setNames(?iterable $names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;
         return $this;
     }
     /**
-     * @return mixed
+     * @return array<string, string>|null
      */
-    public function getDescriptions()
+    public function getDescriptions(): ?iterable
     {
         return $this->descriptions;
     }
     /**
-     * @param mixed $descriptions
+     * @param array<string, string>|null $descriptions
      *
      * @return self
      */
-    public function setDescriptions($descriptions): self
+    public function setDescriptions(?iterable $descriptions): self
     {
         $this->initialized['descriptions'] = true;
         $this->descriptions = $descriptions;
@@ -589,21 +592,25 @@ class DocumentMetadata extends \ArrayObject
         return $this;
     }
     /**
-     * @return mixed
+     * @return EpsMetadata|null
      */
-    public function getEpsInfo()
+    public function getEpsInfo(): ?EpsMetadata
     {
         return $this->epsInfo;
     }
     /**
-     * @param mixed $epsInfo
+     * @param EpsMetadata|null $epsInfo
      *
      * @return self
      */
-    public function setEpsInfo($epsInfo): self
+    public function setEpsInfo(?EpsMetadata $epsInfo): self
     {
         $this->initialized['epsInfo'] = true;
         $this->epsInfo = $epsInfo;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['names' => ['names', 'getNames', 'setNames'], 'descriptions' => ['descriptions', 'getDescriptions', 'setDescriptions'], 'fileExtension' => ['fileExtension', 'getFileExtension', 'setFileExtension'], 'fileName' => ['fileName', 'getFileName', 'setFileName'], 'filePath' => ['filePath', 'getFilePath', 'setFilePath'], 'fileSizeInBytes' => ['fileSizeInBytes', 'getFileSizeInBytes', 'setFileSizeInBytes'], 'sha1Hash' => ['sha1Hash', 'getSha1Hash', 'setSha1Hash'], 'xmpMetadata' => ['xmpMetadata', 'getXmpMetadata', 'setXmpMetadata'], 'exifMetadata' => ['exifMetadata', 'getExifMetadata', 'setExifMetadata'], 'language' => ['language', 'getLanguage', 'setLanguage'], 'applicationName' => ['applicationName', 'getApplicationName', 'setApplicationName'], 'applicationVersion' => ['applicationVersion', 'getApplicationVersion', 'setApplicationVersion'], 'author' => ['author', 'getAuthor', 'setAuthor'], 'creator' => ['creator', 'getCreator', 'setCreator'], 'publisher' => ['publisher', 'getPublisher', 'setPublisher'], 'company' => ['company', 'getCompany', 'setCompany'], 'documentTitle' => ['documentTitle', 'getDocumentTitle', 'setDocumentTitle'], 'characterCount' => ['characterCount', 'getCharacterCount', 'setCharacterCount'], 'characterCountWithSpaces' => ['characterCountWithSpaces', 'getCharacterCountWithSpaces', 'setCharacterCountWithSpaces'], 'lineCount' => ['lineCount', 'getLineCount', 'setLineCount'], 'pageCount' => ['pageCount', 'getPageCount', 'setPageCount'], 'slideCount' => ['slideCount', 'getSlideCount', 'setSlideCount'], 'paragraphCount' => ['paragraphCount', 'getParagraphCount', 'setParagraphCount'], 'revisionNumber' => ['revisionNumber', 'getRevisionNumber', 'setRevisionNumber'], 'titles' => ['titles', 'getTitles', 'setTitles'], 'imageTitles' => ['imageTitles', 'getImageTitles', 'setImageTitles'], 'epsInfo' => ['epsInfo', 'getEpsInfo', 'setEpsInfo']];
     }
 }

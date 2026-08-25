@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class OutputFormatUpdateManyRequestItem extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class OutputFormatUpdateManyRequestItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -15,19 +18,19 @@ class OutputFormatUpdateManyRequestItem extends \ArrayObject
     /**
      * Which output format should be used as a source of data.
      *
-     * @var mixed|null
+     * @var SourceOutputFormats|null
      */
     protected $sourceOutputFormats;
     /**
      * Information about the technical format of the data, e.g. JPEG, AAC or video still.
      *
-     * @var mixed|null
+     * @var FormatBase|null
      */
     protected $format;
     /**
      * Language specific names.
      *
-     * @var mixed
+     * @var array<string, string>
      */
     protected $names;
     /**
@@ -40,7 +43,7 @@ class OutputFormatUpdateManyRequestItem extends \ArrayObject
      * Optional patterns (liquid syntax) that produce the filename for item of this output format.
      * If set, the customer's default language is required.
      *
-     * @var mixed|null
+     * @var array<string, string>|null
      */
     protected $downloadFileNamePatterns;
     /**
@@ -64,20 +67,20 @@ class OutputFormatUpdateManyRequestItem extends \ArrayObject
     /**
      * Which output format should be used as a source of data.
      *
-     * @return mixed
+     * @return SourceOutputFormats|null
      */
-    public function getSourceOutputFormats()
+    public function getSourceOutputFormats(): ?SourceOutputFormats
     {
         return $this->sourceOutputFormats;
     }
     /**
      * Which output format should be used as a source of data.
      *
-     * @param mixed $sourceOutputFormats
+     * @param SourceOutputFormats|null $sourceOutputFormats
      *
      * @return self
      */
-    public function setSourceOutputFormats($sourceOutputFormats): self
+    public function setSourceOutputFormats(?SourceOutputFormats $sourceOutputFormats): self
     {
         $this->initialized['sourceOutputFormats'] = true;
         $this->sourceOutputFormats = $sourceOutputFormats;
@@ -86,20 +89,20 @@ class OutputFormatUpdateManyRequestItem extends \ArrayObject
     /**
      * Information about the technical format of the data, e.g. JPEG, AAC or video still.
      *
-     * @return mixed
+     * @return FormatBase|null
      */
-    public function getFormat()
+    public function getFormat(): ?FormatBase
     {
         return $this->format;
     }
     /**
      * Information about the technical format of the data, e.g. JPEG, AAC or video still.
      *
-     * @param mixed $format
+     * @param FormatBase|null $format
      *
      * @return self
      */
-    public function setFormat($format): self
+    public function setFormat(?FormatBase $format): self
     {
         $this->initialized['format'] = true;
         $this->format = $format;
@@ -108,20 +111,20 @@ class OutputFormatUpdateManyRequestItem extends \ArrayObject
     /**
      * Language specific names.
      *
-     * @return mixed
+     * @return array<string, string>
      */
-    public function getNames()
+    public function getNames(): iterable
     {
         return $this->names;
     }
     /**
      * Language specific names.
      *
-     * @param mixed $names
+     * @param array<string, string> $names
      *
      * @return self
      */
-    public function setNames($names): self
+    public function setNames(iterable $names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;
@@ -153,9 +156,9 @@ class OutputFormatUpdateManyRequestItem extends \ArrayObject
      * Optional patterns (liquid syntax) that produce the filename for item of this output format.
      * If set, the customer's default language is required.
      *
-     * @return mixed
+     * @return array<string, string>|null
      */
-    public function getDownloadFileNamePatterns()
+    public function getDownloadFileNamePatterns(): ?iterable
     {
         return $this->downloadFileNamePatterns;
     }
@@ -163,11 +166,11 @@ class OutputFormatUpdateManyRequestItem extends \ArrayObject
     * Optional patterns (liquid syntax) that produce the filename for item of this output format.
     If set, the customer's default language is required.
     *
-    * @param mixed $downloadFileNamePatterns
+    * @param array<string, string>|null $downloadFileNamePatterns
     *
     * @return self
     */
-    public function setDownloadFileNamePatterns($downloadFileNamePatterns): self
+    public function setDownloadFileNamePatterns(?iterable $downloadFileNamePatterns): self
     {
         $this->initialized['downloadFileNamePatterns'] = true;
         $this->downloadFileNamePatterns = $downloadFileNamePatterns;
@@ -238,5 +241,9 @@ class OutputFormatUpdateManyRequestItem extends \ArrayObject
         $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['sourceOutputFormats' => ['sourceOutputFormats', 'getSourceOutputFormats', 'setSourceOutputFormats'], 'format' => ['format', 'getFormat', 'setFormat'], 'names' => ['names', 'getNames', 'setNames'], 'retentionTime' => ['retentionTime', 'getRetentionTime', 'setRetentionTime'], 'downloadFileNamePatterns' => ['downloadFileNamePatterns', 'getDownloadFileNamePatterns', 'setDownloadFileNamePatterns'], 'viewForAll' => ['viewForAll', 'getViewForAll', 'setViewForAll'], 'enableXmpWriteback' => ['enableXmpWriteback', 'getEnableXmpWriteback', 'setEnableXmpWriteback'], 'id' => ['id', 'getId', 'setId']];
     }
 }

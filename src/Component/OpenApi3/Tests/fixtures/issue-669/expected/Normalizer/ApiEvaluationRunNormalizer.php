@@ -234,7 +234,7 @@ class ApiEvaluationRunNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('testCaseVersion') && null !== $data->getTestCaseVersion()) {
             $dataArray['test_case_version'] = $data->getTestCaseVersion();
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

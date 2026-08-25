@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiAgentVersion extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiAgentVersion implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -667,5 +670,9 @@ class ApiAgentVersion extends \ArrayObject
         $this->initialized['versionHash'] = true;
         $this->versionHash = $versionHash;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['agentUuid' => ['agent_uuid', 'getAgentUuid', 'setAgentUuid'], 'attachedChildAgents' => ['attached_child_agents', 'getAttachedChildAgents', 'setAttachedChildAgents'], 'attachedFunctions' => ['attached_functions', 'getAttachedFunctions', 'setAttachedFunctions'], 'attachedGuardrails' => ['attached_guardrails', 'getAttachedGuardrails', 'setAttachedGuardrails'], 'attachedKnowledgebases' => ['attached_knowledgebases', 'getAttachedKnowledgebases', 'setAttachedKnowledgebases'], 'canRollback' => ['can_rollback', 'getCanRollback', 'setCanRollback'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'createdByEmail' => ['created_by_email', 'getCreatedByEmail', 'setCreatedByEmail'], 'currentlyApplied' => ['currently_applied', 'getCurrentlyApplied', 'setCurrentlyApplied'], 'description' => ['description', 'getDescription', 'setDescription'], 'id' => ['id', 'getId', 'setId'], 'instruction' => ['instruction', 'getInstruction', 'setInstruction'], 'k' => ['k', 'getK', 'setK'], 'maxTokens' => ['max_tokens', 'getMaxTokens', 'setMaxTokens'], 'modelName' => ['model_name', 'getModelName', 'setModelName'], 'name' => ['name', 'getName', 'setName'], 'provideCitations' => ['provide_citations', 'getProvideCitations', 'setProvideCitations'], 'retrievalMethod' => ['retrieval_method', 'getRetrievalMethod', 'setRetrievalMethod'], 'tags' => ['tags', 'getTags', 'setTags'], 'temperature' => ['temperature', 'getTemperature', 'setTemperature'], 'topP' => ['top_p', 'getTopP', 'setTopP'], 'triggerAction' => ['trigger_action', 'getTriggerAction', 'setTriggerAction'], 'versionHash' => ['version_hash', 'getVersionHash', 'setVersionHash']];
     }
 }

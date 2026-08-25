@@ -1,0 +1,17 @@
+{
+    "id": "http://example.com/issue-867/schema",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Schema for issue 867: hybrid objects mixing defined and additional properties must expose every value through iteration",
+    "definitions": {
+        "Hybrid": {
+            "type": "object",
+            "properties": {
+                "name": { "type": ["string", "null"] },
+                "_attachment": { "type": ["string", "null"] }
+            },
+            "additionalProperties": {
+                "type": "string"
+            }
+        }
+    }
+}

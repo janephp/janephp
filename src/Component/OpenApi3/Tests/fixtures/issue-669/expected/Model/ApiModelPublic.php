@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiModelPublic extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiModelPublic implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -403,5 +406,9 @@ class ApiModelPublic extends \ArrayObject
         $this->initialized['version'] = true;
         $this->version = $version;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['agreement' => ['agreement', 'getAgreement', 'setAgreement'], 'createdAt' => ['created_at', 'getCreatedAt', 'setCreatedAt'], 'id' => ['id', 'getId', 'setId'], 'isFoundational' => ['is_foundational', 'getIsFoundational', 'setIsFoundational'], 'kbDefaultChunkSize' => ['kb_default_chunk_size', 'getKbDefaultChunkSize', 'setKbDefaultChunkSize'], 'kbMaxChunkSize' => ['kb_max_chunk_size', 'getKbMaxChunkSize', 'setKbMaxChunkSize'], 'kbMinChunkSize' => ['kb_min_chunk_size', 'getKbMinChunkSize', 'setKbMinChunkSize'], 'name' => ['name', 'getName', 'setName'], 'parentUuid' => ['parent_uuid', 'getParentUuid', 'setParentUuid'], 'updatedAt' => ['updated_at', 'getUpdatedAt', 'setUpdatedAt'], 'uploadComplete' => ['upload_complete', 'getUploadComplete', 'setUploadComplete'], 'url' => ['url', 'getUrl', 'setUrl'], 'uuid' => ['uuid', 'getUuid', 'setUuid'], 'version' => ['version', 'getVersion', 'setVersion']];
     }
 }

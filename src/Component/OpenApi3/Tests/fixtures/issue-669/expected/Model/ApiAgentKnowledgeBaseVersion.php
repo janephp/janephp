@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiAgentKnowledgeBaseVersion extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiAgentKnowledgeBaseVersion implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class ApiAgentKnowledgeBaseVersion extends \ArrayObject
         $this->initialized['uuid'] = true;
         $this->uuid = $uuid;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['isDeleted' => ['is_deleted', 'getIsDeleted', 'setIsDeleted'], 'name' => ['name', 'getName', 'setName'], 'uuid' => ['uuid', 'getUuid', 'setUuid']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class AacAudioFormat extends FormatBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class AacAudioFormat extends FormatBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -19,13 +22,13 @@ class AacAudioFormat extends FormatBase
     /**
      * Gets or sets the encoding profile.
      *
-     * @var mixed
+     * @var string
      */
     protected $profile;
     /**
      * Gets or sets the encoding coder.
      *
-     * @var mixed
+     * @var string
      */
     protected $coder;
     /**
@@ -61,20 +64,20 @@ class AacAudioFormat extends FormatBase
     /**
      * Gets or sets the encoding profile.
      *
-     * @return mixed
+     * @return string
      */
-    public function getProfile()
+    public function getProfile(): string
     {
         return $this->profile;
     }
     /**
      * Gets or sets the encoding profile.
      *
-     * @param mixed $profile
+     * @param string $profile
      *
      * @return self
      */
-    public function setProfile($profile): self
+    public function setProfile(string $profile): self
     {
         $this->initialized['profile'] = true;
         $this->profile = $profile;
@@ -83,20 +86,20 @@ class AacAudioFormat extends FormatBase
     /**
      * Gets or sets the encoding coder.
      *
-     * @return mixed
+     * @return string
      */
-    public function getCoder()
+    public function getCoder(): string
     {
         return $this->coder;
     }
     /**
      * Gets or sets the encoding coder.
      *
-     * @param mixed $coder
+     * @param string $coder
      *
      * @return self
      */
-    public function setCoder($coder): self
+    public function setCoder(string $coder): self
     {
         $this->initialized['coder'] = true;
         $this->coder = $coder;
@@ -145,5 +148,9 @@ class AacAudioFormat extends FormatBase
         $this->initialized['variableBitRate'] = true;
         $this->variableBitRate = $variableBitRate;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['extension' => ['extension', 'getExtension', 'setExtension'], 'profile' => ['profile', 'getProfile', 'setProfile'], 'coder' => ['coder', 'getCoder', 'setCoder'], 'bitrate' => ['bitrate', 'getBitrate', 'setBitrate'], 'variableBitRate' => ['variableBitRate', 'getVariableBitRate', 'setVariableBitRate']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class DeleteRulesRequest extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class DeleteRulesRequest implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class DeleteRulesRequest extends \ArrayObject
         $this->initialized['values'] = true;
         $this->values = $values;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['ids' => ['ids', 'getIds', 'setIds'], 'values' => ['values', 'getValues', 'setValues']];
     }
 }

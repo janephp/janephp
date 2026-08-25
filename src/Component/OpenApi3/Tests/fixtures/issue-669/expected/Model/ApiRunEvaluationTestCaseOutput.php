@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ApiRunEvaluationTestCaseOutput extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ApiRunEvaluationTestCaseOutput implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ApiRunEvaluationTestCaseOutput extends \ArrayObject
         $this->initialized['evaluationRunUuids'] = true;
         $this->evaluationRunUuids = $evaluationRunUuids;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['evaluationRunUuids' => ['evaluation_run_uuids', 'getEvaluationRunUuids', 'setEvaluationRunUuids']];
     }
 }

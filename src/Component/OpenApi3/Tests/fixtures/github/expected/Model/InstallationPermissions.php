@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class InstallationPermissions extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class InstallationPermissions implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -187,5 +190,9 @@ class InstallationPermissions extends \ArrayObject
         $this->initialized['organizationAdministration'] = true;
         $this->organizationAdministration = $organizationAdministration;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['deployments' => ['deployments', 'getDeployments', 'setDeployments'], 'checks' => ['checks', 'getChecks', 'setChecks'], 'metadata' => ['metadata', 'getMetadata', 'setMetadata'], 'contents' => ['contents', 'getContents', 'setContents'], 'pullRequests' => ['pull_requests', 'getPullRequests', 'setPullRequests'], 'statuses' => ['statuses', 'getStatuses', 'setStatuses'], 'issues' => ['issues', 'getIssues', 'setIssues'], 'organizationAdministration' => ['organization_administration', 'getOrganizationAdministration', 'setOrganizationAdministration']];
     }
 }

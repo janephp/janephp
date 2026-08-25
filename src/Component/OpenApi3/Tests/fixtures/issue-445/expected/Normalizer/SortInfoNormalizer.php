@@ -44,7 +44,11 @@ class SortInfoNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setField(null);
         }
         if (\array_key_exists('direction', $data)) {
-            $object->setDirection($data['direction']);
+            $value = $data['direction'];
+            if (is_string($data['direction'])) {
+                $value = $data['direction'];
+            }
+            $object->setDirection($value);
         }
         return $object;
     }
@@ -54,7 +58,11 @@ class SortInfoNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if ($data->isInitialized('field') && null !== $data->getField()) {
             $dataArray['field'] = $data->getField();
         }
-        $dataArray['direction'] = $data->getDirection();
+        $value = $data->getDirection();
+        if (is_string($data->getDirection())) {
+            $value = $data->getDirection();
+        }
+        $dataArray['direction'] = $value;
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array

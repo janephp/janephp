@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class RegionState extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class RegionState implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,9 @@ class RegionState extends \ArrayObject
         $this->initialized['thirtyDayUptimePercentage'] = true;
         $this->thirtyDayUptimePercentage = $thirtyDayUptimePercentage;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['status' => ['status', 'getStatus', 'setStatus'], 'statusChangedAt' => ['status_changed_at', 'getStatusChangedAt', 'setStatusChangedAt'], 'thirtyDayUptimePercentage' => ['thirty_day_uptime_percentage', 'getThirtyDayUptimePercentage', 'setThirtyDayUptimePercentage']];
     }
 }

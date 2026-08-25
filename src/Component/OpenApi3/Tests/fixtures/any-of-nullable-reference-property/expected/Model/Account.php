@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class Account extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class Account implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -143,5 +146,9 @@ class Account extends \ArrayObject
         $this->initialized['nationality'] = true;
         $this->nationality = $nationality;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['id' => ['id', 'getId', 'setId'], 'firstname' => ['firstname', 'getFirstname', 'setFirstname'], 'lastname' => ['lastname', 'getLastname', 'setLastname'], 'countryOfBirth' => ['countryOfBirth', 'getCountryOfBirth', 'setCountryOfBirth'], 'country' => ['country', 'getCountry', 'setCountry'], 'nationality' => ['nationality', 'getNationality', 'setNationality']];
     }
 }

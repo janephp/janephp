@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoReleasesReleaseIdPatchBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoReleasesReleaseIdPatchBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -179,5 +182,9 @@ class ReposOwnerRepoReleasesReleaseIdPatchBody extends \ArrayObject
         $this->initialized['prerelease'] = true;
         $this->prerelease = $prerelease;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['tagName' => ['tag_name', 'getTagName', 'setTagName'], 'targetCommitish' => ['target_commitish', 'getTargetCommitish', 'setTargetCommitish'], 'name' => ['name', 'getName', 'setName'], 'body' => ['body', 'getBody', 'setBody'], 'draft' => ['draft', 'getDraft', 'setDraft'], 'prerelease' => ['prerelease', 'getPrerelease', 'setPrerelease']];
     }
 }

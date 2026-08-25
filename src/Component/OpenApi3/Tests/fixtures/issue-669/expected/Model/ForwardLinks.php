@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ForwardLinks extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ForwardLinks implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ForwardLinks extends \ArrayObject
         $this->initialized['next'] = true;
         $this->next = $next;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['last' => ['last', 'getLast', 'setLast'], 'next' => ['next', 'getNext', 'setNext']];
     }
 }

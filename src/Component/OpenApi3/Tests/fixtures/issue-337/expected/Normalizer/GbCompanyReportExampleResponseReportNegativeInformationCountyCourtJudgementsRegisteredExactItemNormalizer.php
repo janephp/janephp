@@ -92,7 +92,7 @@ class GbCompanyReportExampleResponseReportNegativeInformationCountyCourtJudgemen
         if ($data->isInitialized('incomingRecordDetails') && null !== $data->getIncomingRecordDetails()) {
             $dataArray['incomingRecordDetails'] = $data->getIncomingRecordDetails();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

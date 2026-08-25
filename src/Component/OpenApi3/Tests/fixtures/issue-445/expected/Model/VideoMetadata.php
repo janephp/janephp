@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class VideoMetadata extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class VideoMetadata implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -13,11 +16,11 @@ class VideoMetadata extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var mixed|null
+     * @var array<string, string>|null
      */
     protected $names;
     /**
-     * @var mixed|null
+     * @var array<string, string>|null
      */
     protected $descriptions;
     /**
@@ -85,36 +88,36 @@ class VideoMetadata extends \ArrayObject
      */
     protected $audioStreams;
     /**
-     * @return mixed
+     * @return array<string, string>|null
      */
-    public function getNames()
+    public function getNames(): ?iterable
     {
         return $this->names;
     }
     /**
-     * @param mixed $names
+     * @param array<string, string>|null $names
      *
      * @return self
      */
-    public function setNames($names): self
+    public function setNames(?iterable $names): self
     {
         $this->initialized['names'] = true;
         $this->names = $names;
         return $this;
     }
     /**
-     * @return mixed
+     * @return array<string, string>|null
      */
-    public function getDescriptions()
+    public function getDescriptions(): ?iterable
     {
         return $this->descriptions;
     }
     /**
-     * @param mixed $descriptions
+     * @param array<string, string>|null $descriptions
      *
      * @return self
      */
-    public function setDescriptions($descriptions): self
+    public function setDescriptions(?iterable $descriptions): self
     {
         $this->initialized['descriptions'] = true;
         $this->descriptions = $descriptions;
@@ -407,5 +410,9 @@ class VideoMetadata extends \ArrayObject
         $this->initialized['audioStreams'] = true;
         $this->audioStreams = $audioStreams;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['names' => ['names', 'getNames', 'setNames'], 'descriptions' => ['descriptions', 'getDescriptions', 'setDescriptions'], 'fileExtension' => ['fileExtension', 'getFileExtension', 'setFileExtension'], 'fileName' => ['fileName', 'getFileName', 'setFileName'], 'filePath' => ['filePath', 'getFilePath', 'setFilePath'], 'fileSizeInBytes' => ['fileSizeInBytes', 'getFileSizeInBytes', 'setFileSizeInBytes'], 'sha1Hash' => ['sha1Hash', 'getSha1Hash', 'setSha1Hash'], 'xmpMetadata' => ['xmpMetadata', 'getXmpMetadata', 'setXmpMetadata'], 'exifMetadata' => ['exifMetadata', 'getExifMetadata', 'setExifMetadata'], 'language' => ['language', 'getLanguage', 'setLanguage'], 'width' => ['width', 'getWidth', 'setWidth'], 'height' => ['height', 'getHeight', 'setHeight'], 'durationInSeconds' => ['durationInSeconds', 'getDurationInSeconds', 'setDurationInSeconds'], 'format' => ['format', 'getFormat', 'setFormat'], 'codec' => ['codec', 'getCodec', 'setCodec'], 'overallBitrate' => ['overallBitrate', 'getOverallBitrate', 'setOverallBitrate'], 'videoStreams' => ['videoStreams', 'getVideoStreams', 'setVideoStreams'], 'audioStreams' => ['audioStreams', 'getAudioStreams', 'setAudioStreams']];
     }
 }

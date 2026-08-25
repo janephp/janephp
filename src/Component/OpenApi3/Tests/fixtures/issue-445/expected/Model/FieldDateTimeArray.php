@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class FieldDateTimeArray extends FieldBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class FieldDateTimeArray extends FieldBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -151,5 +154,9 @@ class FieldDateTimeArray extends FieldBase
         $this->initialized['minimumItems'] = true;
         $this->minimumItems = $minimumItems;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['format' => ['format', 'getFormat', 'setFormat'], 'boost' => ['boost', 'getBoost', 'setBoost'], 'initializeOnItemCreation' => ['initializeOnItemCreation', 'getInitializeOnItemCreation', 'setInitializeOnItemCreation'], 'maximumItems' => ['maximumItems', 'getMaximumItems', 'setMaximumItems'], 'minimumItems' => ['minimumItems', 'getMinimumItems', 'setMinimumItems']];
     }
 }

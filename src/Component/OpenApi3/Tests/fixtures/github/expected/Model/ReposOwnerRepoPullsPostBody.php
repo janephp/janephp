@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ReposOwnerRepoPullsPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ReposOwnerRepoPullsPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -201,5 +204,9 @@ class ReposOwnerRepoPullsPostBody extends \ArrayObject
         $this->initialized['issue'] = true;
         $this->issue = $issue;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['title' => ['title', 'getTitle', 'setTitle'], 'head' => ['head', 'getHead', 'setHead'], 'base' => ['base', 'getBase', 'setBase'], 'body' => ['body', 'getBody', 'setBody'], 'maintainerCanModify' => ['maintainer_can_modify', 'getMaintainerCanModify', 'setMaintainerCanModify'], 'draft' => ['draft', 'getDraft', 'setDraft'], 'issue' => ['issue', 'getIssue', 'setIssue']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class UserGpgKeysPostBody extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class UserGpgKeysPostBody implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -39,5 +42,9 @@ class UserGpgKeysPostBody extends \ArrayObject
         $this->initialized['armoredPublicKey'] = true;
         $this->armoredPublicKey = $armoredPublicKey;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['armoredPublicKey' => ['armored_public_key', 'getArmoredPublicKey', 'setArmoredPublicKey']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ResponseFirewallRules extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ResponseFirewallRules implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -33,5 +36,9 @@ class ResponseFirewallRules extends \ArrayObject
         $this->initialized['rules'] = true;
         $this->rules = $rules;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['rules' => ['rules', 'getRules', 'setRules']];
     }
 }

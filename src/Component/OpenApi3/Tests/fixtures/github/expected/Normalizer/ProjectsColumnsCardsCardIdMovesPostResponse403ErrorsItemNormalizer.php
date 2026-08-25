@@ -78,7 +78,7 @@ class ProjectsColumnsCardsCardIdMovesPostResponse403ErrorsItemNormalizer impleme
         if ($data->isInitialized('field') && null !== $data->getField()) {
             $dataArray['field'] = $data->getField();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

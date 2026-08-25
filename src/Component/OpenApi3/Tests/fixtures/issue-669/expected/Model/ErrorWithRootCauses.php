@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class ErrorWithRootCauses extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class ErrorWithRootCauses implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class ErrorWithRootCauses extends \ArrayObject
         $this->initialized['rootCauses'] = true;
         $this->rootCauses = $rootCauses;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['error' => ['error', 'getError', 'setError'], 'messages' => ['messages', 'getMessages', 'setMessages'], 'rootCauses' => ['root_causes', 'getRootCauses', 'setRootCauses']];
     }
 }

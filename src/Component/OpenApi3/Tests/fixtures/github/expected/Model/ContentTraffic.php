@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ContentTraffic extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ContentTraffic implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class ContentTraffic extends \ArrayObject
         $this->initialized['uniques'] = true;
         $this->uniques = $uniques;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['path' => ['path', 'getPath', 'setPath'], 'title' => ['title', 'getTitle', 'setTitle'], 'count' => ['count', 'getCount', 'setCount'], 'uniques' => ['uniques', 'getUniques', 'setUniques']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class VpcCreate extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class VpcCreate implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class VpcCreate extends \ArrayObject
         $this->initialized['ipRange'] = true;
         $this->ipRange = $ipRange;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['region' => ['region', 'getRegion', 'setRegion'], 'ipRange' => ['ip_range', 'getIpRange', 'setIpRange']];
     }
 }

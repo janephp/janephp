@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class ContentOwnershipTransferItem extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class ContentOwnershipTransferItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -67,5 +70,9 @@ class ContentOwnershipTransferItem extends \ArrayObject
         $this->initialized['contentId'] = true;
         $this->contentId = $contentId;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['transferUserId' => ['transferUserId', 'getTransferUserId', 'setTransferUserId'], 'contentId' => ['contentId', 'getContentId', 'setContentId']];
     }
 }

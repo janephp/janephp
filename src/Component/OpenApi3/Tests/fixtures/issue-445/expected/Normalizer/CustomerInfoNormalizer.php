@@ -59,33 +59,37 @@ class CustomerInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setEnableQueryDetails($data['enableQueryDetails']);
         }
         if (\array_key_exists('languageConfiguration', $data)) {
-            $object->setLanguageConfiguration($data['languageConfiguration']);
+            $value = $data['languageConfiguration'];
+            if (is_array($data['languageConfiguration'])) {
+                $value = $this->denormalizer->denormalize($data['languageConfiguration'], \PicturePark\API\Model\LanguageConfiguration::class, 'json', $context);
+            }
+            $object->setLanguageConfiguration($value);
         }
         if (\array_key_exists('languages', $data)) {
             $values = [];
-            foreach ($data['languages'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \PicturePark\API\Model\Language::class, 'json', $context);
+            foreach ($data['languages'] as $value_1) {
+                $values[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\Language::class, 'json', $context);
             }
             $object->setLanguages($values);
         }
         if (\array_key_exists('outputFormats', $data)) {
             $values_1 = [];
-            foreach ($data['outputFormats'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \PicturePark\API\Model\OutputFormatInfo::class, 'json', $context);
+            foreach ($data['outputFormats'] as $value_2) {
+                $values_1[] = $this->denormalizer->denormalize($value_2, \PicturePark\API\Model\OutputFormatInfo::class, 'json', $context);
             }
             $object->setOutputFormats($values_1);
         }
         if (\array_key_exists('boostValues', $data)) {
             $values_2 = [];
-            foreach ($data['boostValues'] as $value_2) {
-                $values_2[] = $value_2;
+            foreach ($data['boostValues'] as $value_3) {
+                $values_2[] = $value_3;
             }
             $object->setBoostValues($values_2);
         }
         if (\array_key_exists('apps', $data) && $data['apps'] !== null) {
             $values_3 = [];
-            foreach ($data['apps'] as $value_3) {
-                $values_3[] = $this->denormalizer->denormalize($value_3, \PicturePark\API\Model\CustomerApp::class, 'json', $context);
+            foreach ($data['apps'] as $value_4) {
+                $values_3[] = $this->denormalizer->denormalize($value_4, \PicturePark\API\Model\CustomerApp::class, 'json', $context);
             }
             $object->setApps($values_3);
         }
@@ -116,26 +120,30 @@ class CustomerInfoNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray['identityServerUrl'] = $data->getIdentityServerUrl();
         $dataArray['apiUrl'] = $data->getApiUrl();
         $dataArray['enableQueryDetails'] = $data->getEnableQueryDetails();
-        $dataArray['languageConfiguration'] = $data->getLanguageConfiguration();
+        $value = $data->getLanguageConfiguration();
+        if (is_object($data->getLanguageConfiguration())) {
+            $value = $data->getLanguageConfiguration() === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($data->getLanguageConfiguration(), 'json', $context));
+        }
+        $dataArray['languageConfiguration'] = $value;
         $values = [];
-        foreach ($data->getLanguages() as $value) {
-            $values[] = $value === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+        foreach ($data->getLanguages() as $value_1) {
+            $values[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
         }
         $dataArray['languages'] = $values;
         $values_1 = [];
-        foreach ($data->getOutputFormats() as $value_1) {
-            $values_1[] = $value_1 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+        foreach ($data->getOutputFormats() as $value_2) {
+            $values_1[] = $value_2 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
         }
         $dataArray['outputFormats'] = $values_1;
         $values_2 = [];
-        foreach ($data->getBoostValues() as $value_2) {
-            $values_2[] = $value_2;
+        foreach ($data->getBoostValues() as $value_3) {
+            $values_2[] = $value_3;
         }
         $dataArray['boostValues'] = $values_2;
         if ($data->isInitialized('apps') && null !== $data->getApps()) {
             $values_3 = [];
-            foreach ($data->getApps() as $value_3) {
-                $values_3[] = $value_3 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_3, 'json', $context));
+            foreach ($data->getApps() as $value_4) {
+                $values_3[] = $value_4 === null ? null : new \PicturePark\API\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['apps'] = $values_3;
         }

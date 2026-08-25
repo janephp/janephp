@@ -2,8 +2,11 @@
 
 namespace Github\Model;
 
-class ScimError extends \ArrayObject
+use Github\Runtime\AdditionalAndPatternProperties;
+use Github\Runtime\AdditionalPropertiesInterface;
+class ScimError implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -143,5 +146,9 @@ class ScimError extends \ArrayObject
         $this->initialized['schemas'] = true;
         $this->schemas = $schemas;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['message' => ['message', 'getMessage', 'setMessage'], 'documentationUrl' => ['documentation_url', 'getDocumentationUrl', 'setDocumentationUrl'], 'detail' => ['detail', 'getDetail', 'setDetail'], 'status' => ['status', 'getStatus', 'setStatus'], 'scimType' => ['scimType', 'getScimType', 'setScimType'], 'schemas' => ['schemas', 'getSchemas', 'setSchemas']];
     }
 }

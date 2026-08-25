@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class FieldDateTime extends FieldBase
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class FieldDateTime extends FieldBase implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -95,5 +98,9 @@ class FieldDateTime extends FieldBase
         $this->initialized['initializeOnItemCreation'] = true;
         $this->initializeOnItemCreation = $initializeOnItemCreation;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['format' => ['format', 'getFormat', 'setFormat'], 'boost' => ['boost', 'getBoost', 'setBoost'], 'initializeOnItemCreation' => ['initializeOnItemCreation', 'getInitializeOnItemCreation', 'setInitializeOnItemCreation']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Generated\DigitalOcean\Model;
 
-class PgbouncerAdvancedConfig extends \ArrayObject
+use Jane\Generated\DigitalOcean\Runtime\AdditionalAndPatternProperties;
+use Jane\Generated\DigitalOcean\Runtime\AdditionalPropertiesInterface;
+class PgbouncerAdvancedConfig implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -263,5 +266,9 @@ class PgbouncerAdvancedConfig extends \ArrayObject
         $this->initialized['autodbIdleTimeout'] = true;
         $this->autodbIdleTimeout = $autodbIdleTimeout;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['serverResetQueryAlways' => ['server_reset_query_always', 'getServerResetQueryAlways', 'setServerResetQueryAlways'], 'ignoreStartupParameters' => ['ignore_startup_parameters', 'getIgnoreStartupParameters', 'setIgnoreStartupParameters'], 'minPoolSize' => ['min_pool_size', 'getMinPoolSize', 'setMinPoolSize'], 'serverLifetime' => ['server_lifetime', 'getServerLifetime', 'setServerLifetime'], 'serverIdleTimeout' => ['server_idle_timeout', 'getServerIdleTimeout', 'setServerIdleTimeout'], 'autodbPoolSize' => ['autodb_pool_size', 'getAutodbPoolSize', 'setAutodbPoolSize'], 'autodbPoolMode' => ['autodb_pool_mode', 'getAutodbPoolMode', 'setAutodbPoolMode'], 'autodbMaxDbConnections' => ['autodb_max_db_connections', 'getAutodbMaxDbConnections', 'setAutodbMaxDbConnections'], 'autodbIdleTimeout' => ['autodb_idle_timeout', 'getAutodbIdleTimeout', 'setAutodbIdleTimeout']];
     }
 }

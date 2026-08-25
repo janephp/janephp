@@ -2,8 +2,11 @@
 
 namespace PicturePark\API\Model;
 
-class TransferUploadFile extends \ArrayObject
+use PicturePark\API\Runtime\AdditionalAndPatternProperties;
+use PicturePark\API\Runtime\AdditionalPropertiesInterface;
+class TransferUploadFile implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -101,5 +104,9 @@ class TransferUploadFile extends \ArrayObject
         $this->initialized['fileName'] = true;
         $this->fileName = $fileName;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['identifier' => ['identifier', 'getIdentifier', 'setIdentifier'], 'requestId' => ['requestId', 'getRequestId', 'setRequestId'], 'fileName' => ['fileName', 'getFileName', 'setFileName']];
     }
 }

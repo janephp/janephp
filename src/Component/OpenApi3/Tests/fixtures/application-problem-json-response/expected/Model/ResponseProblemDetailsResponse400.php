@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
-class ResponseProblemDetailsResponse400 extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class ResponseProblemDetailsResponse400 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,9 @@ class ResponseProblemDetailsResponse400 extends \ArrayObject
         $this->initialized['detail'] = true;
         $this->detail = $detail;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['status' => ['status', 'getStatus', 'setStatus'], 'title' => ['title', 'getTitle', 'setTitle'], 'type' => ['type', 'getType', 'setType'], 'detail' => ['detail', 'getDetail', 'setDetail']];
     }
 }

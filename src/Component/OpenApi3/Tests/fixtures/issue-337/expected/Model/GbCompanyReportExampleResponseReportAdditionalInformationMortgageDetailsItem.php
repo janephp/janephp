@@ -2,8 +2,11 @@
 
 namespace CreditSafe\API\Model;
 
-class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsItem extends \ArrayObject
+use CreditSafe\API\Runtime\AdditionalAndPatternProperties;
+use CreditSafe\API\Runtime\AdditionalPropertiesInterface;
+class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -165,5 +168,9 @@ class GbCompanyReportExampleResponseReportAdditionalInformationMortgageDetailsIt
         $this->initialized['details'] = true;
         $this->details = $details;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['mortgageType' => ['mortgageType', 'getMortgageType', 'setMortgageType'], 'dateChargeCreated' => ['dateChargeCreated', 'getDateChargeCreated', 'setDateChargeCreated'], 'dateChargeRegistered' => ['dateChargeRegistered', 'getDateChargeRegistered', 'setDateChargeRegistered'], 'status' => ['status', 'getStatus', 'setStatus'], 'personsEntitled' => ['personsEntitled', 'getPersonsEntitled', 'setPersonsEntitled'], 'amountSecured' => ['amountSecured', 'getAmountSecured', 'setAmountSecured'], 'details' => ['details', 'getDetails', 'setDetails']];
     }
 }
