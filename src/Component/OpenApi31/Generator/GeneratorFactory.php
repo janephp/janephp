@@ -10,25 +10,22 @@ use Jane\Component\OpenApi31\Generator\RequestBodyContent\JsonBodyContentGenerat
 use Jane\Component\OpenApiCommon\Generator\EndpointGeneratorInterface;
 use Jane\Component\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\Component\OpenApiCommon\Generator\OperationGenerator;
-use Jane\Component\OpenApiCommon\Naming\ChainOperationNaming;
-use Jane\Component\OpenApiCommon\Naming\OperationIdNaming;
-use Jane\Component\OpenApiCommon\Naming\OperationUrlNaming;
+use Jane\Component\OpenApiCommon\Naming\OperationNamingFactory;
+use Jane\Component\OpenApiCommon\Naming\OperationNamingInterface;
 use Jane\Component\OpenApiCommon\Naming\UniqueOperationNaming;
 use PhpParser\ParserFactory;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class GeneratorFactory
 {
-    public static function build(DenormalizerInterface $serializer, EndpointGeneratorInterface|string $endpointGenerator): GeneratorInterface
+    public static function build(DenormalizerInterface $serializer, EndpointGeneratorInterface|string $endpointGenerator, ?OperationNamingInterface $operationNaming = null): GeneratorInterface
     {
         $parser = (new ParserFactory())->createForHostVersion();
 
         $nonBodyParameter = new NonBodyParameterGenerator($serializer, $parser);
         $exceptionGenerator = new ExceptionGenerator();
-        $operationNaming = new UniqueOperationNaming(new ChainOperationNaming([
-            new OperationIdNaming(),
-            new OperationUrlNaming(),
-        ]));
+        $operationNaming ??= OperationNamingFactory::create();
+        $operationNaming = new UniqueOperationNaming($operationNaming);
 
         $defaultContentGenerator = new DefaultBodyContentGenerator($serializer);
         $requestBodyGenerator = new RequestBodyGenerator($defaultContentGenerator);

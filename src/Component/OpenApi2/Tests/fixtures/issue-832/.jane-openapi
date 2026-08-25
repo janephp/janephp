@@ -1,0 +1,44 @@
+<?php
+
+use Jane\Component\OpenApi2\JsonSchema\Model\Operation;
+use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
+use Jane\Component\OpenApiCommon\Naming\OperationIdNaming;
+use Jane\Component\OpenApiCommon\Naming\OperationNamingInterface;
+use Jane\Component\OpenApiCommon\Naming\OperationUrlNaming;
+
+return [
+    'openapi-file' => __DIR__ . '/swagger.json',
+    'namespace' => 'Jane\Component\OpenApi2\Tests\Issue832',
+    'directory' => __DIR__ . '/generated',
+    'operation-namings' => [
+        new class('Prefix') implements OperationNamingInterface {
+            public function __construct(
+                private readonly string $prefix,
+            ) {
+            }
+
+            public function getFunctionName(OperationGuess $operation): string
+            {
+                return lcfirst($this->getName($operation));
+            }
+
+            public function getEndpointName(OperationGuess $operation): string
+            {
+                return $this->getName($operation);
+            }
+
+            private function getName(OperationGuess $operation): string
+            {
+                // version detection: this naming only handles OpenAPI 2 specifications
+                $oa2Operation = $operation->getOperation();
+                if (!$oa2Operation instanceof Operation || null !== $oa2Operation->getOperationId()) {
+                    return ''; // defer operations carrying an operationId to the next namings of the chain
+                }
+
+                return $this->prefix . ucfirst(str_replace(['/', '-'], '', $operation->getPath()));
+            }
+        },
+        new OperationIdNaming(),
+        new OperationUrlNaming(),
+    ],
+];

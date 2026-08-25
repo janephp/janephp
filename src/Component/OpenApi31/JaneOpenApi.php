@@ -17,6 +17,7 @@ use Jane\Component\OpenApiCommon\Generator\ModelGenerator;
 use Jane\Component\OpenApiCommon\Generator\NormalizerGenerator;
 use Jane\Component\OpenApiCommon\Generator\RuntimeGenerator;
 use Jane\Component\OpenApiCommon\JaneOpenApi as CommonJaneOpenApi;
+use Jane\Component\OpenApiCommon\Naming\OperationNamingFactory;
 use PhpParser\ParserFactory;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
@@ -53,7 +54,8 @@ class JaneOpenApi extends CommonJaneOpenApi
         yield new ModelGenerator($naming, $parser);
         yield new NormalizerGenerator($naming, $parser, $options['reference'] ?? false, $options['use-cacheable-supports-method'] ?? false, $options['skip-null-values'] ?? true, $options['skip-required-fields'] ?? false, $options['validation'] ?? false, $options['include-null-value'] ?? true);
         yield new AuthenticationGenerator();
-        yield GeneratorFactory::build($denormalizer, $options['endpoint-generator'] ?: EndpointGenerator::class);
+        $operationNaming = OperationNamingFactory::create($options['operation-namings'] ?? []);
+        yield GeneratorFactory::build($denormalizer, $options['endpoint-generator'] ?: EndpointGenerator::class, $operationNaming);
         yield new RuntimeGenerator($naming, $parser);
         if ($options['validation'] ?? false) {
             yield new ValidatorGenerator($naming);

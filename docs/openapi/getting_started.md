@@ -193,6 +193,8 @@ $foos = $apiClient->listFoo();
 ```
 
 Also depending on the parameters of the endpoint, it may have 2 or more arguments.
+Method names can be fully customized with the `operation-namings` option, see the
+[Custom operation naming](./component.md#custom-operation-naming) section.
 For more details about using OpenAPI, you can read [OpenAPI component](./component.md) documentation.
 
 ## Related

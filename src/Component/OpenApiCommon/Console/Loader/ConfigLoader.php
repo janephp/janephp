@@ -26,6 +26,7 @@ class ConfigLoader extends BaseConfigLoader implements ConfigLoaderInterface
         return array_merge(parent::resolveConfigurationDefaults(), [
             'whitelisted-paths' => null,
             'endpoint-generator' => null,
+            'operation-namings' => [],
             'custom-query-resolver' => [],
             'throw-unexpected-status-code' => false,
             'generate-error-exceptions' => true,

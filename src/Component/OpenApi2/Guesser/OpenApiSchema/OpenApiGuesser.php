@@ -13,10 +13,8 @@ use Jane\Component\OpenApi2\JsonSchema\Model\Operation;
 use Jane\Component\OpenApi2\JsonSchema\Model\PathItem;
 use Jane\Component\OpenApi2\JsonSchema\Model\Response;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
-use Jane\Component\OpenApiCommon\Naming\ChainOperationNaming;
-use Jane\Component\OpenApiCommon\Naming\OperationIdNaming;
+use Jane\Component\OpenApiCommon\Naming\OperationNamingFactory;
 use Jane\Component\OpenApiCommon\Naming\OperationNamingInterface;
-use Jane\Component\OpenApiCommon\Naming\OperationUrlNaming;
 use Jane\Component\OpenApiCommon\Registry\Registry as OpenApiRegistry;
 use Jane\Component\OpenApiCommon\Registry\Schema;
 
@@ -26,12 +24,9 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
 
     private OperationNamingInterface $naming;
 
-    public function __construct()
+    public function __construct(?OperationNamingInterface $naming = null)
     {
-        $this->naming = new ChainOperationNaming([
-            new OperationIdNaming(),
-            new OperationUrlNaming(),
-        ]);
+        $this->naming = $naming ?? OperationNamingFactory::create();
     }
 
     public function supportObject($object): bool
