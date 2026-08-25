@@ -1,17 +1,17 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Issue1007;
+namespace Jane\Component\OpenApi31\Tests\Expected;
 
-class Client extends \Jane\Component\OpenApi31\Tests\Issue1007\Runtime\Client\Client
+class Client extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Client\Client
 {
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Issue1007\Model\ThingCollection : \Psr\Http\Message\ResponseInterface)
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi31\Tests\Expected\Model\ThingCollection : \Psr\Http\Message\ResponseInterface)
      */
     public function getThings(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Issue1007\Endpoint\GetThings(), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi31\Tests\Expected\Endpoint\GetThings(), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
@@ -25,7 +25,7 @@ class Client extends \Jane\Component\OpenApi31\Tests\Issue1007\Runtime\Client\Cl
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi31\Tests\Issue1007\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi31\Tests\Expected\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }

@@ -1,9 +1,12 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Issue1007\Model;
+namespace Jane\Component\OpenApi31\Tests\Expected\Model;
 
-class ThingCollection
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\AdditionalPropertiesInterface;
+class ThingCollection implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -13,13 +16,13 @@ class ThingCollection
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * @var OpenSchema
+     * @var AbsentAdditionalPropertiesSchema
      */
-    protected $default;
+    protected $absent;
     /**
      * @var ExplicitOpenSchema
      */
-    protected $open;
+    protected $explicitOpen;
     /**
      * @var ClosedSchema
      */
@@ -29,39 +32,43 @@ class ThingCollection
      */
     protected $typedMap;
     /**
-     * @return OpenSchema
+     * @var PatternOnlySchema
      */
-    public function getDefault(): OpenSchema
+    protected $patternOnly;
+    /**
+     * @return AbsentAdditionalPropertiesSchema
+     */
+    public function getAbsent(): AbsentAdditionalPropertiesSchema
     {
-        return $this->default;
+        return $this->absent;
     }
     /**
-     * @param OpenSchema $default
+     * @param AbsentAdditionalPropertiesSchema $absent
      *
      * @return self
      */
-    public function setDefault(OpenSchema $default): self
+    public function setAbsent(AbsentAdditionalPropertiesSchema $absent): self
     {
-        $this->initialized['default'] = true;
-        $this->default = $default;
+        $this->initialized['absent'] = true;
+        $this->absent = $absent;
         return $this;
     }
     /**
      * @return ExplicitOpenSchema
      */
-    public function getOpen(): ExplicitOpenSchema
+    public function getExplicitOpen(): ExplicitOpenSchema
     {
-        return $this->open;
+        return $this->explicitOpen;
     }
     /**
-     * @param ExplicitOpenSchema $open
+     * @param ExplicitOpenSchema $explicitOpen
      *
      * @return self
      */
-    public function setOpen(ExplicitOpenSchema $open): self
+    public function setExplicitOpen(ExplicitOpenSchema $explicitOpen): self
     {
-        $this->initialized['open'] = true;
-        $this->open = $open;
+        $this->initialized['explicitOpen'] = true;
+        $this->explicitOpen = $explicitOpen;
         return $this;
     }
     /**
@@ -99,5 +106,27 @@ class ThingCollection
         $this->initialized['typedMap'] = true;
         $this->typedMap = $typedMap;
         return $this;
+    }
+    /**
+     * @return PatternOnlySchema
+     */
+    public function getPatternOnly(): PatternOnlySchema
+    {
+        return $this->patternOnly;
+    }
+    /**
+     * @param PatternOnlySchema $patternOnly
+     *
+     * @return self
+     */
+    public function setPatternOnly(PatternOnlySchema $patternOnly): self
+    {
+        $this->initialized['patternOnly'] = true;
+        $this->patternOnly = $patternOnly;
+        return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['absent' => ['absent', 'getAbsent', 'setAbsent'], 'explicitOpen' => ['explicitOpen', 'getExplicitOpen', 'setExplicitOpen'], 'closed' => ['closed', 'getClosed', 'setClosed'], 'typedMap' => ['typedMap', 'getTypedMap', 'setTypedMap'], 'patternOnly' => ['patternOnly', 'getPatternOnly', 'setPatternOnly']];
     }
 }

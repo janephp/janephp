@@ -46,28 +46,7 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
 
         if ($hasSubObject) {
             if (!$registry->hasClass($reference)) {
-                $extensions = [];
-
-                $additionalProperties = $this->resolveAdditionalProperties($object);
-                if ($additionalProperties) {
-                    $extensionObject = null;
-
-                    if (\is_object($additionalProperties)) {
-                        $extensionObject = $additionalProperties;
-                    }
-
-                    $extensions['.*'] = [
-                        'object' => $extensionObject,
-                        'reference' => $reference . '/additionalProperties',
-                    ];
-                } elseif (method_exists($object, 'getPatternProperties') && $object->getPatternProperties() !== null) {
-                    foreach ($object->getPatternProperties() as $pattern => $patternProperty) {
-                        $extensions[$pattern] = [
-                            'object' => $patternProperty,
-                            'reference' => $reference . '/patternProperties/' . $pattern,
-                        ];
-                    }
-                }
+                $extensions = $this->resolveAdditionalProperties($object, $reference);
 
                 $classGuess = $this->createClassGuess($object, $reference, $name, $extensions);
                 if (null !== $object->getRequired()) {
@@ -101,6 +80,33 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
         }
 
         return 'object' === $type || (null === $type && null !== $schema->getProperties());
+    }
+
+    protected function resolveAdditionalProperties($object, string $reference): array
+    {
+        $extensions = [];
+
+        if ($object->getAdditionalProperties()) {
+            $extensionObject = null;
+
+            if (\is_object($object->getAdditionalProperties())) {
+                $extensionObject = $object->getAdditionalProperties();
+            }
+
+            $extensions['.*'] = [
+                'object' => $extensionObject,
+                'reference' => $reference . '/additionalProperties',
+            ];
+        } elseif (method_exists($object, 'getPatternProperties') && $object->getPatternProperties() !== null) {
+            foreach ($object->getPatternProperties() as $pattern => $patternProperty) {
+                $extensions[$pattern] = [
+                    'object' => $patternProperty,
+                    'reference' => $reference . '/patternProperties/' . $pattern,
+                ];
+            }
+        }
+
+        return $extensions;
     }
 
     public function guessType($object, string $name, string $reference, Registry $registry): Type
@@ -183,11 +189,6 @@ class AllOfGuesser implements GuesserInterface, TypeGuesserInterface, ChainGuess
     protected function getSchemaClass(): string
     {
         return JsonSchema::class;
-    }
-
-    protected function resolveAdditionalProperties($object)
-    {
-        return $object->getAdditionalProperties();
     }
 
     protected function createClassGuess($object, string $reference, string $name, array $extensions): ClassGuess

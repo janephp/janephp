@@ -66,25 +66,24 @@ class SchemaGuesser extends ObjectGuesser
         return $classGuess;
     }
 
+    protected function resolveAdditionalProperties($object, string $reference): array
+    {
+        if (null === $object->getAdditionalProperties()
+            && (!method_exists($object, 'getPatternProperties') || null === $object->getPatternProperties())
+        ) {
+            return [
+                '.*' => [
+                    'object' => null,
+                    'reference' => $reference . '/additionalProperties',
+                ],
+            ];
+        }
+
+        return parent::resolveAdditionalProperties($object, $reference);
+    }
+
     protected function getSchemaClass(): string
     {
         return JsonSchema::class;
-    }
-
-    protected function resolveAdditionalProperties($object)
-    {
-        $additionalProperties = parent::resolveAdditionalProperties($object);
-
-        if (null !== $additionalProperties) {
-            return $additionalProperties;
-        }
-
-        // JSON Schema 2020-12 treats an absent additionalProperties as true, but a
-        // patternProperties-only schema must keep its pattern-specific extension typing
-        if (method_exists($object, 'getPatternProperties') && null !== $object->getPatternProperties()) {
-            return null;
-        }
-
-        return true;
     }
 }

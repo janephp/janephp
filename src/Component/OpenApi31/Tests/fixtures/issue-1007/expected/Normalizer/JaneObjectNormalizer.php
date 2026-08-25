@@ -1,9 +1,9 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Issue1007\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
 
-use Jane\Component\OpenApi31\Tests\Issue1007\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Issue1007\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,17 +18,19 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\OpenApi31\Tests\Issue1007\Model\ThingCollection::class => \Jane\Component\OpenApi31\Tests\Issue1007\Normalizer\ThingCollectionNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\Model\ThingCollection::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\ThingCollectionNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Issue1007\Model\OpenSchema::class => \Jane\Component\OpenApi31\Tests\Issue1007\Normalizer\OpenSchemaNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\Model\AbsentAdditionalPropertiesSchema::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\AbsentAdditionalPropertiesSchemaNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Issue1007\Model\ExplicitOpenSchema::class => \Jane\Component\OpenApi31\Tests\Issue1007\Normalizer\ExplicitOpenSchemaNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\Model\ExplicitOpenSchema::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\ExplicitOpenSchemaNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Issue1007\Model\ClosedSchema::class => \Jane\Component\OpenApi31\Tests\Issue1007\Normalizer\ClosedSchemaNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\Model\ClosedSchema::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\ClosedSchemaNormalizer::class,
         
-        \Jane\Component\OpenApi31\Tests\Issue1007\Model\TypedMapSchema::class => \Jane\Component\OpenApi31\Tests\Issue1007\Normalizer\TypedMapSchemaNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\Model\TypedMapSchema::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\TypedMapSchemaNormalizer::class,
         
-        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi31\Tests\Issue1007\Runtime\Normalizer\ReferenceNormalizer::class,
+        \Jane\Component\OpenApi31\Tests\Expected\Model\PatternOnlySchema::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\PatternOnlySchemaNormalizer::class,
+        
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {

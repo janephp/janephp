@@ -1,17 +1,17 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Issue1007\Normalizer;
+namespace Jane\Component\OpenApi31\Tests\Expected\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Jane\Component\OpenApi31\Tests\Issue1007\Runtime\Normalizer\CheckArray;
-use Jane\Component\OpenApi31\Tests\Issue1007\Runtime\Normalizer\ValidatorTrait;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\CheckArray;
+use Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class OpenSchemaNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class PatternOnlySchemaNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -19,15 +19,15 @@ class OpenSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi31\Tests\Issue1007\Model\OpenSchema::class;
+        return $type === \Jane\Component\OpenApi31\Tests\Expected\Model\PatternOnlySchema::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Issue1007\Model\OpenSchema::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\PatternOnlySchema::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi31\Tests\Issue1007\Model\OpenSchema();
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\PatternOnlySchema();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -38,14 +38,14 @@ class OpenSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Issue1007\Validator\OpenSchemaConstraint());
+            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PatternOnlySchemaConstraint());
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
             unset($data['name']);
         }
         foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
+            if (preg_match('/^s_/', (string) $key)) {
                 $object[$key] = $value;
             }
         }
@@ -58,17 +58,17 @@ class OpenSchemaNormalizer implements DenormalizerInterface, NormalizerInterface
             $dataArray['name'] = $data->getName();
         }
         foreach ($data->additionalPropertyEntries() as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
+            if (preg_match('/^s_/', (string) $key)) {
                 $dataArray[$key] = $value;
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Issue1007\Validator\OpenSchemaConstraint());
+            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\PatternOnlySchemaConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi31\Tests\Issue1007\Model\OpenSchema::class => false];
+        return [\Jane\Component\OpenApi31\Tests\Expected\Model\PatternOnlySchema::class => false];
     }
 }

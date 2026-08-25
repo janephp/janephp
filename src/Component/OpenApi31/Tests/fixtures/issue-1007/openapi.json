@@ -1,7 +1,7 @@
 {
     "openapi": "3.1.0",
     "info": {
-        "title": "Issue 1007 - absent additionalProperties means open schema",
+        "title": "Issue 1007",
         "version": "1.0.0"
     },
     "paths": {
@@ -27,12 +27,11 @@
         "schemas": {
             "ThingCollection": {
                 "type": "object",
-                "additionalProperties": false,
                 "properties": {
-                    "default": {
-                        "$ref": "#/components/schemas/OpenSchema"
+                    "absent": {
+                        "$ref": "#/components/schemas/AbsentAdditionalPropertiesSchema"
                     },
-                    "open": {
+                    "explicitOpen": {
                         "$ref": "#/components/schemas/ExplicitOpenSchema"
                     },
                     "closed": {
@@ -40,10 +39,13 @@
                     },
                     "typedMap": {
                         "$ref": "#/components/schemas/TypedMapSchema"
+                    },
+                    "patternOnly": {
+                        "$ref": "#/components/schemas/PatternOnlySchema"
                     }
                 }
             },
-            "OpenSchema": {
+            "AbsentAdditionalPropertiesSchema": {
                 "type": "object",
                 "properties": {
                     "name": {
@@ -73,6 +75,19 @@
                 "type": "object",
                 "additionalProperties": {
                     "type": "string"
+                },
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "PatternOnlySchema": {
+                "type": "object",
+                "patternProperties": {
+                    "^s_": {
+                        "type": "string"
+                    }
                 },
                 "properties": {
                     "name": {

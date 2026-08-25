@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class TypedMapSchemaNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class AbsentAdditionalPropertiesSchemaNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -19,15 +19,15 @@ class TypedMapSchemaNormalizer implements DenormalizerInterface, NormalizerInter
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi31\Tests\Expected\Model\TypedMapSchema::class;
+        return $type === \Jane\Component\OpenApi31\Tests\Expected\Model\AbsentAdditionalPropertiesSchema::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\TypedMapSchema::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi31\Tests\Expected\Model\AbsentAdditionalPropertiesSchema::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\TypedMapSchema();
+        $object = new \Jane\Component\OpenApi31\Tests\Expected\Model\AbsentAdditionalPropertiesSchema();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -38,7 +38,7 @@ class TypedMapSchemaNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\TypedMapSchemaConstraint());
+            $this->validate($data, new \Jane\Component\OpenApi31\Tests\Expected\Validator\AbsentAdditionalPropertiesSchemaConstraint());
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
@@ -63,12 +63,12 @@ class TypedMapSchemaNormalizer implements DenormalizerInterface, NormalizerInter
             }
         }
         if (!($context['skip_validation'] ?? false)) {
-            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\TypedMapSchemaConstraint());
+            $this->validate($dataArray, new \Jane\Component\OpenApi31\Tests\Expected\Validator\AbsentAdditionalPropertiesSchemaConstraint());
         }
         return $dataArray;
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi31\Tests\Expected\Model\TypedMapSchema::class => false];
+        return [\Jane\Component\OpenApi31\Tests\Expected\Model\AbsentAdditionalPropertiesSchema::class => false];
     }
 }

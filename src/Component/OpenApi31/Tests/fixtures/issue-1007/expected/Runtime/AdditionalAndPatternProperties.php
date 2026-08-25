@@ -1,6 +1,6 @@
 <?php
 
-namespace Jane\Component\OpenApi31\Tests\Issue1007\Runtime;
+namespace Jane\Component\OpenApi31\Tests\Expected\Runtime;
 
 trait AdditionalAndPatternProperties
 {
