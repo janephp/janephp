@@ -3,6 +3,7 @@
 namespace Jane\Component\OpenApi3\Tests;
 
 use Jane\Component\JsonSchema\Tests\CodeStyleFixerTrait;
+use Jane\Component\JsonSchema\Tests\FixtureComparisonTrait;
 use Jane\Component\OpenApi3\Tests\Client\Authentication\ApiKeyAuthAuthentication;
 use Jane\Component\OpenApi3\Tests\Client\Client;
 use Jane\Component\OpenApi3\Tests\Client\Exception\GetEndpointUnauthorizedException;
@@ -23,6 +24,7 @@ use Symfony\Component\Finder\SplFileInfo;
 class JaneOpenApiResourceTest extends TestCase
 {
     use CodeStyleFixerTrait;
+    use FixtureComparisonTrait;
 
     /**
      * @dataProvider resourceProvider
@@ -40,38 +42,11 @@ class JaneOpenApiResourceTest extends TestCase
         $exitCode = $command->execute($input, $output);
 
         $this->assertSame(0, $exitCode, \sprintf('Generation failed for data set "%s": %s', $name, $output->fetch()));
+
+        // 2. Fix code style then compare
         $this->fixCodeStyle($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'expected');
         $this->fixCodeStyle($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'generated');
-
-        // 2. Compare
-        $expectedFinder = new Finder();
-        $expectedFinder->in($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'expected');
-
-        $generatedFinder = new Finder();
-        $generatedFinder->in($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'generated');
-
-        $generatedData = [];
-
-        $this->assertEquals(\count($expectedFinder), \count($generatedFinder), 'Assert same files for ' . $testDirectory->getRealPath());
-
-        foreach ($generatedFinder as $generatedFile) {
-            $generatedData[$generatedFile->getRelativePathname()] = $generatedFile->getRealPath();
-        }
-
-        foreach ($expectedFinder as $expectedFile) {
-            $this->assertArrayHasKey($expectedFile->getRelativePathname(), $generatedData);
-
-            if ($expectedFile->isFile()) {
-                $expectedPath = $expectedFile->getRealPath();
-                $actualPath = $generatedData[$expectedFile->getRelativePathname()];
-
-                $this->assertEquals(
-                    file_get_contents($expectedPath),
-                    file_get_contents($actualPath),
-                    'Expected ' . $expectedPath . ' got ' . $actualPath . ' in ' . $name
-                );
-            }
-        }
+        $this->assertFixtureMatchesGenerated($testDirectory->getRealPath());
     }
 
     public function resourceProvider(): array
