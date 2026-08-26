@@ -10,7 +10,8 @@ trait ObjectCheckTrait
     {
         if (JsonSchema::class === ($objectClass = \get_class($object))
             || 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\Schema' === $objectClass
-            || 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Schema' === $objectClass) {
+            || 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Schema' === $objectClass
+            || 'Jane\\Component\\OpenApi31\\JsonSchema\\Model\\Schema' === $objectClass) {
             return true;
         }
 
@@ -32,6 +33,10 @@ trait ObjectCheckTrait
 
         if (\get_class($object) === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Schema') {
             return method_exists($object, 'getNullable') && $object->getNullable() ?? false;
+        }
+
+        if (\get_class($object) === 'Jane\\Component\\OpenApi31\\JsonSchema\\Model\\Schema') {
+            return \is_array($object->getType()) ? \in_array('null', $object->getType()) : 'null' === $object->getType();
         }
 
         return false;

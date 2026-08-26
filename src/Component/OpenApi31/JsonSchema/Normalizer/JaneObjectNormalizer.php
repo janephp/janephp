@@ -72,6 +72,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
 
         \Jane\Component\OpenApi31\JsonSchema\Model\AuthorizationCode::class => AuthorizationCodeNormalizer::class,
 
+        \Jane\Component\OpenApi31\JsonSchema\Model\Schema::class => SchemaNormalizer::class,
+
+        \Jane\Component\OpenApi31\JsonSchema\Model\Discriminator::class => DiscriminatorNormalizer::class,
+
         \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi31\JsonSchema\Runtime\Normalizer\ReferenceNormalizer::class,
     ];
     protected $normalizersCache = [];
@@ -147,6 +151,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Jane\Component\OpenApi31\JsonSchema\Model\Password::class => false,
             \Jane\Component\OpenApi31\JsonSchema\Model\ClientCredentials::class => false,
             \Jane\Component\OpenApi31\JsonSchema\Model\AuthorizationCode::class => false,
+            \Jane\Component\OpenApi31\JsonSchema\Model\Schema::class => false,
+            \Jane\Component\OpenApi31\JsonSchema\Model\Discriminator::class => false,
             \Jane\Component\JsonSchemaRuntime\Reference::class => false,
         ];
     }

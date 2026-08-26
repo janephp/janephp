@@ -12,9 +12,9 @@ use Jane\Component\JsonSchema\Guesser\Guess\Type;
 use Jane\Component\JsonSchema\Guesser\GuesserInterface;
 use Jane\Component\JsonSchema\Guesser\GuesserResolverTrait;
 use Jane\Component\JsonSchema\Guesser\TypeGuesserInterface;
-use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Jane\Component\OpenApi31\JsonSchema\Model\Schema;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class AnyOfReferencefGuesser implements ChainGuesserAwareInterface, GuesserInterface, TypeGuesserInterface
@@ -32,7 +32,7 @@ class AnyOfReferencefGuesser implements ChainGuesserAwareInterface, GuesserInter
 
     public function supportObject($object): bool
     {
-        if (!($object instanceof JsonSchema) || !\is_array($object->getAnyOf()) || [] === $object->getAnyOf()) {
+        if (!($object instanceof Schema) || !\is_array($object->getAnyOf()) || [] === $object->getAnyOf()) {
             return false;
         }
 
@@ -41,7 +41,7 @@ class AnyOfReferencefGuesser implements ChainGuesserAwareInterface, GuesserInter
         }
 
         foreach ($object->getAnyOf() as $anyOf) {
-            if (!$anyOf instanceof JsonSchema || !\is_array($anyOf->getAllOf())) {
+            if (!$anyOf instanceof Schema || !\is_array($anyOf->getAllOf())) {
                 continue;
             }
             foreach ($anyOf->getAllOf() as $allOf) {
@@ -57,16 +57,15 @@ class AnyOfReferencefGuesser implements ChainGuesserAwareInterface, GuesserInter
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         $type = new MultipleType($object);
-        if ($object instanceof JsonSchema) {
+        if ($object instanceof Schema) {
             $mapping = null;
             $supportsDiscriminator = false;
-            if (method_exists($object, 'getDiscriminator') && $object->getDiscriminator()
-                && \is_object($object->getDiscriminator()) && method_exists($object->getDiscriminator(), 'getPropertyName')
-                && $object->getDiscriminator()->getPropertyName()) {
+            $discriminator = $object->getDiscriminator();
+            if (null !== $discriminator && null !== $discriminator->getPropertyName()) {
                 $supportsDiscriminator = true;
-                $type->setDiscriminatorProperty($object->getDiscriminator()->getPropertyName());
-                if (method_exists($object->getDiscriminator(), 'getMapping') && $object->getDiscriminator()->getMapping()) {
-                    $mapping = array_flip((array) $object->getDiscriminator()->getMapping());
+                $type->setDiscriminatorProperty($discriminator->getPropertyName());
+                if ($discriminator->getMapping()) {
+                    $mapping = array_flip((array) $discriminator->getMapping());
                 }
             }
             foreach ($object->getAnyOf() as $index => $anyOf) {
@@ -93,7 +92,7 @@ class AnyOfReferencefGuesser implements ChainGuesserAwareInterface, GuesserInter
                     $anyOfType = $this->chainGuesser->guessType($anyOfSchema, $name, $anyOfReference, $registry);
                     if ($supportsDiscriminator && $anyOf instanceof Reference) {
                         $objectRef = '#' . $anyOf->getMergedUri()->getFragment();
-                        $type->addType($anyOfType, $mapping ? $mapping[$objectRef] : $objectRef);
+                        $type->addType($anyOfType, null !== $mapping ? ($mapping[$objectRef] ?? $objectRef) : $objectRef);
                     } else {
                         $type->addType($anyOfType);
                     }

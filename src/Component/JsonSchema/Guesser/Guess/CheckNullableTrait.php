@@ -17,6 +17,9 @@ trait CheckNullableTrait
         if (\get_class($schema) === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Schema') {
             return method_exists($schema, 'getNullable') && $schema->getNullable() === true;
         }
+        if (\get_class($schema) === 'Jane\\Component\\OpenApi31\\JsonSchema\\Model\\Schema') {
+            return \is_array($schema->getType()) ? \in_array('null', $schema->getType()) : 'null' === $schema->getType();
+        }
 
         return false;
     }

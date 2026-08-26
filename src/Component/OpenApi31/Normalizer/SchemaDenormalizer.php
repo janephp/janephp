@@ -2,7 +2,6 @@
 
 namespace Jane\Component\OpenApi31\Normalizer;
 
-use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi31\JsonSchema\Model\Components;
 use Jane\Component\OpenApi31\JsonSchema\Model\Header;
@@ -10,6 +9,7 @@ use Jane\Component\OpenApi31\JsonSchema\Model\MediaType;
 use Jane\Component\OpenApi31\JsonSchema\Model\Parameter;
 use Jane\Component\OpenApi31\JsonSchema\Model\Response;
 use Jane\Component\OpenApi31\JsonSchema\Model\Responses;
+use Jane\Component\OpenApi31\JsonSchema\Model\Schema;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -66,9 +66,7 @@ class SchemaDenormalizer implements DenormalizerInterface, DenormalizerAwareInte
     private function denormalizeSchemaField(mixed $schemaData, ?string $format, array $context): mixed
     {
         if (\is_bool($schemaData)) {
-            $jsonSchema = new JsonSchema();
-
-            return $jsonSchema;
+            return new Schema();
         }
 
         if (\is_array($schemaData)) {
@@ -76,7 +74,7 @@ class SchemaDenormalizer implements DenormalizerInterface, DenormalizerAwareInte
                 return new Reference($schemaData['$ref'], $context['document-origin'] ?? '');
             }
 
-            return $this->denormalizer->denormalize($schemaData, JsonSchema::class, $format, $context);
+            return $this->denormalizer->denormalize($schemaData, Schema::class, $format, $context);
         }
 
         return $schemaData;
@@ -93,7 +91,7 @@ class SchemaDenormalizer implements DenormalizerInterface, DenormalizerAwareInte
                 if (isset($schemaData['$ref'])) {
                     $data['schemas'][$key] = new Reference($schemaData['$ref'], $context['document-origin'] ?? '');
                 } else {
-                    $data['schemas'][$key] = $this->denormalizer->denormalize($schemaData, JsonSchema::class, $format, $context);
+                    $data['schemas'][$key] = $this->denormalizer->denormalize($schemaData, Schema::class, $format, $context);
                 }
             }
         }
