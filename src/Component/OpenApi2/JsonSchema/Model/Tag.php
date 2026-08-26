@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi2\JsonSchema\Model;
 
-class Tag extends \ArrayObject
+use Jane\Component\OpenApi2\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi2\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class Tag implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -83,5 +86,10 @@ class Tag extends \ArrayObject
         $this->initialized['externalDocs'] = true;
         $this->externalDocs = $externalDocs;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'description' => ['description', 'getDescription', 'setDescription'], 'externalDocs' => ['externalDocs', 'getExternalDocs', 'setExternalDocs']];
     }
 }

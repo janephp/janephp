@@ -427,12 +427,12 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         $detail = new JsonSchema();
         $detail->setType('string');
 
-        $schema->setProperties(new \ArrayObject([
+        $schema->setProperties([
             'status' => $status,
             'title' => $title,
             'type' => $type,
             'detail' => $detail,
-        ]));
+        ]);
         $schema->setAdditionalProperties(true);
         $schema->setRequired(['type']);
 

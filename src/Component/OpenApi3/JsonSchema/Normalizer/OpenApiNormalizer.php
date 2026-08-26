@@ -76,7 +76,7 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (\array_key_exists('security', $data) && $data['security'] !== null) {
             $values_1 = [];
             foreach ($data['security'] as $value_1) {
-                $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                $values_2 = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
                 foreach ($value_1 as $key => $value_2) {
                     $values_3 = [];
                     foreach ($value_2 as $value_3) {
@@ -104,7 +104,7 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setTags(null);
         }
         if (\array_key_exists('paths', $data) && $data['paths'] !== null) {
-            $values_5 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_5 = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
             foreach ($data['paths'] as $key_1 => $value_5) {
                 if (preg_match('/^\\//', (string) $key_1) && is_array($value_5)) {
                     $values_5[$key_1] = $this->denormalizer->denormalize($value_5, 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\PathItem', 'json', $context);

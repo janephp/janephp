@@ -134,7 +134,7 @@ final class OperationNamingFactoryTest extends TestCase
                 return null;
             }
 
-            public function getResponses(): ?\ArrayObject
+            public function getResponses(): ?iterable
             {
                 return null;
             }

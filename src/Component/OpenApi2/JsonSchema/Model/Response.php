@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi2\JsonSchema\Model;
 
-class Response extends \ArrayObject
+use Jane\Component\OpenApi2\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi2\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class Response implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,10 @@ class Response extends \ArrayObject
         $this->initialized['examples'] = true;
         $this->examples = $examples;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['description' => ['description', 'getDescription', 'setDescription'], 'schema' => ['schema', 'getSchema', 'setSchema'], 'headers' => ['headers', 'getHeaders', 'setHeaders'], 'examples' => ['examples', 'getExamples', 'setExamples']];
     }
 }

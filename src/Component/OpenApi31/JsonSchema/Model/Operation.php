@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\JsonSchema\Model;
 
-class Operation extends \ArrayObject
+use Jane\Component\OpenApi31\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class Operation implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -246,5 +249,10 @@ class Operation extends \ArrayObject
         $this->servers = $servers;
 
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['tags' => ['tags', 'getTags', 'setTags'], 'summary' => ['summary', 'getSummary', 'setSummary'], 'description' => ['description', 'getDescription', 'setDescription'], 'externalDocs' => ['externalDocs', 'getExternalDocs', 'setExternalDocs'], 'operationId' => ['operationId', 'getOperationId', 'setOperationId'], 'parameters' => ['parameters', 'getParameters', 'setParameters'], 'requestBody' => ['requestBody', 'getRequestBody', 'setRequestBody'], 'responses' => ['responses', 'getResponses', 'setResponses'], 'callbacks' => ['callbacks', 'getCallbacks', 'setCallbacks'], 'deprecated' => ['deprecated', 'getDeprecated', 'setDeprecated'], 'security' => ['security', 'getSecurity', 'setSecurity'], 'servers' => ['servers', 'getServers', 'setServers']];
     }
 }

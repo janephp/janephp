@@ -52,7 +52,7 @@ class ServerNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setDescription(null);
         }
         if (\array_key_exists('variables', $data) && $data['variables'] !== null) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Component\OpenApi31\JsonSchema\Runtime\JsonObject();
             foreach ($data['variables'] as $key => $value) {
                 $values[$key] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi31\JsonSchema\Model\ServerVariable::class, 'json', $context);
             }

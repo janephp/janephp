@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\JsonSchema\Model;
 
-class XML extends \ArrayObject
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class XML implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,10 @@ class XML extends \ArrayObject
         $this->initialized['wrapped'] = true;
         $this->wrapped = $wrapped;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'namespace' => ['namespace', 'getNamespace', 'setNamespace'], 'prefix' => ['prefix', 'getPrefix', 'setPrefix'], 'attribute' => ['attribute', 'getAttribute', 'setAttribute'], 'wrapped' => ['wrapped', 'getWrapped', 'setWrapped']];
     }
 }

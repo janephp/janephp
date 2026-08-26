@@ -56,7 +56,7 @@ class Oauth2PasswordSecurityNormalizer implements DenormalizerInterface, Normali
             $object->setFlow(null);
         }
         if (\array_key_exists('scopes', $data) && $data['scopes'] !== null) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Component\OpenApi2\JsonSchema\Runtime\JsonObject();
             foreach ($data['scopes'] as $key => $value) {
                 $values[$key] = $value;
             }

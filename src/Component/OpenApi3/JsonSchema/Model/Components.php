@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\JsonSchema\Model;
 
-class Components extends \ArrayObject
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class Components implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -209,5 +212,10 @@ class Components extends \ArrayObject
         $this->initialized['callbacks'] = true;
         $this->callbacks = $callbacks;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['schemas' => ['schemas', 'getSchemas', 'setSchemas'], 'responses' => ['responses', 'getResponses', 'setResponses'], 'parameters' => ['parameters', 'getParameters', 'setParameters'], 'examples' => ['examples', 'getExamples', 'setExamples'], 'requestBodies' => ['requestBodies', 'getRequestBodies', 'setRequestBodies'], 'headers' => ['headers', 'getHeaders', 'setHeaders'], 'securitySchemes' => ['securitySchemes', 'getSecuritySchemes', 'setSecuritySchemes'], 'links' => ['links', 'getLinks', 'setLinks'], 'callbacks' => ['callbacks', 'getCallbacks', 'setCallbacks']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\JsonSchema\Model;
 
-class License extends \ArrayObject
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class License implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,10 @@ class License extends \ArrayObject
         $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'url' => ['url', 'getUrl', 'setUrl']];
     }
 }

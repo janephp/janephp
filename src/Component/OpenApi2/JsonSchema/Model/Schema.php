@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi2\JsonSchema\Model;
 
-class Schema extends \ArrayObject
+use Jane\Component\OpenApi2\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi2\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class Schema implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -677,5 +680,10 @@ class Schema extends \ArrayObject
         $this->initialized['example'] = true;
         $this->example = $example;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['dollarRef' => ['$ref', 'getDollarRef', 'setDollarRef'], 'format' => ['format', 'getFormat', 'setFormat'], 'title' => ['title', 'getTitle', 'setTitle'], 'description' => ['description', 'getDescription', 'setDescription'], 'default' => ['default', 'getDefault', 'setDefault'], 'multipleOf' => ['multipleOf', 'getMultipleOf', 'setMultipleOf'], 'maximum' => ['maximum', 'getMaximum', 'setMaximum'], 'exclusiveMaximum' => ['exclusiveMaximum', 'getExclusiveMaximum', 'setExclusiveMaximum'], 'minimum' => ['minimum', 'getMinimum', 'setMinimum'], 'exclusiveMinimum' => ['exclusiveMinimum', 'getExclusiveMinimum', 'setExclusiveMinimum'], 'maxLength' => ['maxLength', 'getMaxLength', 'setMaxLength'], 'minLength' => ['minLength', 'getMinLength', 'setMinLength'], 'pattern' => ['pattern', 'getPattern', 'setPattern'], 'maxItems' => ['maxItems', 'getMaxItems', 'setMaxItems'], 'minItems' => ['minItems', 'getMinItems', 'setMinItems'], 'uniqueItems' => ['uniqueItems', 'getUniqueItems', 'setUniqueItems'], 'maxProperties' => ['maxProperties', 'getMaxProperties', 'setMaxProperties'], 'minProperties' => ['minProperties', 'getMinProperties', 'setMinProperties'], 'required' => ['required', 'getRequired', 'setRequired'], 'enum' => ['enum', 'getEnum', 'setEnum'], 'additionalProperties' => ['additionalProperties', 'getAdditionalProperties', 'setAdditionalProperties'], 'type' => ['type', 'getType', 'setType'], 'items' => ['items', 'getItems', 'setItems'], 'allOf' => ['allOf', 'getAllOf', 'setAllOf'], 'properties' => ['properties', 'getProperties', 'setProperties'], 'discriminator' => ['discriminator', 'getDiscriminator', 'setDiscriminator'], 'readOnly' => ['readOnly', 'getReadOnly', 'setReadOnly'], 'xml' => ['xml', 'getXml', 'setXml'], 'externalDocs' => ['externalDocs', 'getExternalDocs', 'setExternalDocs'], 'example' => ['example', 'getExample', 'setExample']];
     }
 }

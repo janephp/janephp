@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\JsonSchema\Model;
 
-class Schema extends \ArrayObject
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class Schema implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -781,5 +784,10 @@ class Schema extends \ArrayObject
         $this->initialized['xml'] = true;
         $this->xml = $xml;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['title' => ['title', 'getTitle', 'setTitle'], 'multipleOf' => ['multipleOf', 'getMultipleOf', 'setMultipleOf'], 'maximum' => ['maximum', 'getMaximum', 'setMaximum'], 'exclusiveMaximum' => ['exclusiveMaximum', 'getExclusiveMaximum', 'setExclusiveMaximum'], 'minimum' => ['minimum', 'getMinimum', 'setMinimum'], 'exclusiveMinimum' => ['exclusiveMinimum', 'getExclusiveMinimum', 'setExclusiveMinimum'], 'maxLength' => ['maxLength', 'getMaxLength', 'setMaxLength'], 'minLength' => ['minLength', 'getMinLength', 'setMinLength'], 'pattern' => ['pattern', 'getPattern', 'setPattern'], 'maxItems' => ['maxItems', 'getMaxItems', 'setMaxItems'], 'minItems' => ['minItems', 'getMinItems', 'setMinItems'], 'uniqueItems' => ['uniqueItems', 'getUniqueItems', 'setUniqueItems'], 'maxProperties' => ['maxProperties', 'getMaxProperties', 'setMaxProperties'], 'minProperties' => ['minProperties', 'getMinProperties', 'setMinProperties'], 'required' => ['required', 'getRequired', 'setRequired'], 'enum' => ['enum', 'getEnum', 'setEnum'], 'type' => ['type', 'getType', 'setType'], 'not' => ['not', 'getNot', 'setNot'], 'allOf' => ['allOf', 'getAllOf', 'setAllOf'], 'oneOf' => ['oneOf', 'getOneOf', 'setOneOf'], 'anyOf' => ['anyOf', 'getAnyOf', 'setAnyOf'], 'items' => ['items', 'getItems', 'setItems'], 'properties' => ['properties', 'getProperties', 'setProperties'], 'additionalProperties' => ['additionalProperties', 'getAdditionalProperties', 'setAdditionalProperties'], 'description' => ['description', 'getDescription', 'setDescription'], 'format' => ['format', 'getFormat', 'setFormat'], 'default' => ['default', 'getDefault', 'setDefault'], 'nullable' => ['nullable', 'getNullable', 'setNullable'], 'discriminator' => ['discriminator', 'getDiscriminator', 'setDiscriminator'], 'readOnly' => ['readOnly', 'getReadOnly', 'setReadOnly'], 'writeOnly' => ['writeOnly', 'getWriteOnly', 'setWriteOnly'], 'example' => ['example', 'getExample', 'setExample'], 'externalDocs' => ['externalDocs', 'getExternalDocs', 'setExternalDocs'], 'deprecated' => ['deprecated', 'getDeprecated', 'setDeprecated'], 'xml' => ['xml', 'getXml', 'setXml']];
     }
 }

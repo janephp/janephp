@@ -62,7 +62,7 @@ class MediaTypeNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setExample(null);
         }
         if (\array_key_exists('examples', $data) && $data['examples'] !== null) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
             foreach ($data['examples'] as $key => $value_1) {
                 $value_2 = $value_1;
                 if (is_array($value_1) and isset($value_1['$ref'])) {
@@ -79,7 +79,7 @@ class MediaTypeNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setExamples(null);
         }
         if (\array_key_exists('encoding', $data) && $data['encoding'] !== null) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
             foreach ($data['encoding'] as $key_1 => $value_3) {
                 $values_1[$key_1] = $this->denormalizer->denormalize($value_3, 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Encoding', 'json', $context);
             }

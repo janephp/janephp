@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\JsonSchema\Model;
 
-class ServerVariable extends \ArrayObject
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class ServerVariable implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,10 @@ class ServerVariable extends \ArrayObject
         $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['enum' => ['enum', 'getEnum', 'setEnum'], 'default' => ['default', 'getDefault', 'setDefault'], 'description' => ['description', 'getDescription', 'setDescription']];
     }
 }

@@ -48,7 +48,7 @@ class DiscriminatorNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->setPropertyName(null);
         }
         if (\array_key_exists('mapping', $data) && $data['mapping'] !== null) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
             foreach ($data['mapping'] as $key => $value) {
                 $values[$key] = $value;
             }

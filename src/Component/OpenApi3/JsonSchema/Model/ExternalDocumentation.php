@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\JsonSchema\Model;
 
-class ExternalDocumentation extends \ArrayObject
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class ExternalDocumentation implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,10 @@ class ExternalDocumentation extends \ArrayObject
         $this->initialized['url'] = true;
         $this->url = $url;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['description' => ['description', 'getDescription', 'setDescription'], 'url' => ['url', 'getUrl', 'setUrl']];
     }
 }

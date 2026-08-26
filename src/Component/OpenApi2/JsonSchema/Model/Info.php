@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi2\JsonSchema\Model;
 
-class Info extends \ArrayObject
+use Jane\Component\OpenApi2\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi2\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class Info implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -173,5 +176,10 @@ class Info extends \ArrayObject
         $this->initialized['license'] = true;
         $this->license = $license;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['title' => ['title', 'getTitle', 'setTitle'], 'version' => ['version', 'getVersion', 'setVersion'], 'description' => ['description', 'getDescription', 'setDescription'], 'termsOfService' => ['termsOfService', 'getTermsOfService', 'setTermsOfService'], 'contact' => ['contact', 'getContact', 'setContact'], 'license' => ['license', 'getLicense', 'setLicense']];
     }
 }

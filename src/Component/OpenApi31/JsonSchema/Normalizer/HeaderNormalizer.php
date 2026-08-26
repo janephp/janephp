@@ -68,7 +68,7 @@ class HeaderNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setSchema(null);
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Component\OpenApi31\JsonSchema\Runtime\JsonObject();
             foreach ($data['content'] as $key => $value) {
                 $values[$key] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi31\JsonSchema\Model\MediaType::class, 'json', $context);
             }

@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi2\JsonSchema\Model;
 
-class FileSchema extends \ArrayObject
+use Jane\Component\OpenApi2\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi2\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class FileSchema implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -215,5 +218,10 @@ class FileSchema extends \ArrayObject
         $this->initialized['example'] = true;
         $this->example = $example;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['format' => ['format', 'getFormat', 'setFormat'], 'title' => ['title', 'getTitle', 'setTitle'], 'description' => ['description', 'getDescription', 'setDescription'], 'default' => ['default', 'getDefault', 'setDefault'], 'required' => ['required', 'getRequired', 'setRequired'], 'type' => ['type', 'getType', 'setType'], 'readOnly' => ['readOnly', 'getReadOnly', 'setReadOnly'], 'externalDocs' => ['externalDocs', 'getExternalDocs', 'setExternalDocs'], 'example' => ['example', 'getExample', 'setExample']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\JsonSchema\Model;
 
-class Contact extends \ArrayObject
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class Contact implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,10 @@ class Contact extends \ArrayObject
         $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'url' => ['url', 'getUrl', 'setUrl'], 'email' => ['email', 'getEmail', 'setEmail']];
     }
 }

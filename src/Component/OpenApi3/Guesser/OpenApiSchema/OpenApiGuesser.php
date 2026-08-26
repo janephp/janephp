@@ -283,7 +283,7 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         return (new Schema())
             ->setType('object')
             ->setProperties(
-                new \ArrayObject([
+                [
                     'status' => (new Schema())
                         ->setType('integer'),
                     'title' => (new Schema())
@@ -293,7 +293,7 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
                         ->setDefault('about:blank'),
                     'detail' => (new Schema())
                         ->setType('string'),
-                ])
+                ]
             )
             ->setAdditionalProperties(true)
             ->setRequired(['type']);
