@@ -16,7 +16,7 @@ trait AdditionalAndPatternProperties
     {
         foreach ($this->definedProperties() as $phpName => $definition) {
             if ($definition[0] === $offset) {
-                return $this->isInitialized($phpName) || null !== $this->{$definition[1]}();
+                return $this->isInitialized($phpName) || null !== $this->{$phpName};
             }
         }
 
@@ -77,7 +77,7 @@ trait AdditionalAndPatternProperties
     {
         $values = [];
         foreach ($this->definedProperties() as $phpName => $definition) {
-            $value = $this->{$definition[1]}();
+            $value = $this->{$phpName};
             if ($this->isInitialized($phpName) || null !== $value) {
                 $values[$definition[0]] = $value;
             }
