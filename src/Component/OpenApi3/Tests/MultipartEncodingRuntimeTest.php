@@ -56,18 +56,20 @@ class MultipartEncodingRuntimeTest extends TestCase
 
         $streamContent = (string) $result[1];
 
+        // older multipart-stream-builder versions add extra part headers (e.g. Content-Length),
+        // so patterns bridging header block and part body use a lenient .*?\R\R
         // binary property with encoding contentType: filename and Content-Type part header
-        $this->assertMatchesRegularExpression(
-            '/Content-Type: application\/pdf\R.*?name="file"; filename="file"\R\Rpdf-file-content\R/s',
-            $streamContent
-        );
+        $this->assertMatchesRegularExpression('/Content-Type: application\/pdf\R.*?name="file"; filename="file"\R/s', $streamContent);
+        $this->assertMatchesRegularExpression('/name="file".*?\R\Rpdf-file-content\R/s', $streamContent);
 
         // binary property with a wildcard encoding contentType: filename only
-        $this->assertMatchesRegularExpression('/name="preview"; filename="preview"\R\Rpreview-file-content\R/s', $streamContent);
+        $this->assertMatchesRegularExpression('/name="preview"; filename="preview"\R/', $streamContent);
+        $this->assertMatchesRegularExpression('/name="preview".*?\R\Rpreview-file-content\R/s', $streamContent);
         $this->assertDoesNotMatchRegularExpression('/Content-Type: image/', $streamContent);
 
         // plain scalar property: bare Content-Disposition, no filename
-        $this->assertMatchesRegularExpression('/name="note"\R\Ra note\R/s', $streamContent);
+        $this->assertMatchesRegularExpression('/name="note"\R/', $streamContent);
+        $this->assertMatchesRegularExpression('/name="note".*?\R\Ra note\R/s', $streamContent);
     }
 
     public function testDefaultFilenameYieldsToRealFileStreams(): void
