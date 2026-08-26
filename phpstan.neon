@@ -23,4 +23,12 @@ parameters:
 		-
 			message: '#^Call to method [a-zA-Z]+\(\) on an unknown class Jane\\Component\\OpenApi31\\Tests\\DiscriminatorExpected\\(Model|Normalizer)\\[A-Za-z0-9]+\.$#'
 			path: src/Component/OpenApi31/Tests/DiscriminatorDispatchRuntimeTest.php
-
+		-
+			message: '#^Instantiated class Jane\\Component\\OpenApi3\\Tests\\Issue588Expected\\(Model|Normalizer)\\[A-Za-z0-9]+ not found\.$#'
+			path: src/Component/OpenApi3/Tests/Issue588RegressionTest.php
+		-
+			message: '#^PHPDoc tag @var for variable \$object contains unknown class Jane\\Component\\OpenApi3\\Tests\\Issue588Expected\\Model\\[A-Za-z0-9]+\.$#'
+			path: src/Component/OpenApi3/Tests/Issue588RegressionTest.php
+		-
+			message: '#^Call to method [a-zA-Z]+\(\) on an unknown class Jane\\Component\\OpenApi3\\Tests\\Issue588Expected\\Model\\[A-Za-z0-9]+\.$#'
+			path: src/Component/OpenApi3/Tests/Issue588RegressionTest.php

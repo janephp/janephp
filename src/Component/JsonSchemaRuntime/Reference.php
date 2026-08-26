@@ -21,6 +21,7 @@ class Reference
 
     private static bool $allowExternalRefs = false;
     private static array $allowedExternalHosts = [];
+    private static array $allowedLocalRefRoots = [];
 
     private string|array|null $resolved = null;
     private Http $referenceUri;
@@ -54,10 +55,16 @@ class Reference
         self::$allowedExternalHosts = $hosts;
     }
 
+    public static function setAllowedLocalRefRoots(array $roots): void
+    {
+        self::$allowedLocalRefRoots = $roots;
+    }
+
     public static function resetConfig(): void
     {
         self::$allowExternalRefs = false;
         self::$allowedExternalHosts = [];
+        self::$allowedLocalRefRoots = [];
     }
 
     /**
@@ -180,7 +187,7 @@ class Reference
             $basePath = \dirname($originPath);
         }
 
-        $basePath = rtrim($basePath, '/\\');
+        $basePath = rtrim(str_replace('\\', '/', $basePath), '/');
 
         $path = $fragment;
         if (str_starts_with($path, 'file://')) {
@@ -196,9 +203,47 @@ class Reference
             $normalized = $this->normalizePath($path);
         }
 
-        if ('' === $normalized || !str_starts_with($normalized, $basePath)) {
-            throw new \RuntimeException(\sprintf('Local reference "%s" resolves outside the allowed directory "%s". Path traversal is not allowed.', $fragment, $basePath));
+        $normalized = str_replace('\\', '/', $normalized);
+
+        $allowedBases = $this->getAllowedLocalBases($basePath);
+
+        foreach ($allowedBases as $base) {
+            if ($normalized === $base || str_starts_with($normalized, $base . '/')) {
+                return;
+            }
         }
+
+        throw new \RuntimeException(\sprintf('Local reference "%s" resolves outside the allowed directories [%s]. Add its location to "allowed-local-ref-roots" in your Jane configuration.', $fragment, implode(', ', $allowedBases)));
+    }
+
+    /**
+     * Directories a local reference may resolve into: the directory of the referencing
+     * document, plus every root explicitly allowed through "allowed-local-ref-roots".
+     *
+     * @return string[]
+     */
+    private function getAllowedLocalBases(string $basePath): array
+    {
+        $bases = [$basePath];
+
+        foreach (self::$allowedLocalRefRoots as $root) {
+            if (!\is_string($root) || '' === $root) {
+                continue;
+            }
+
+            $root = str_replace('\\', '/', $root);
+            $realRoot = @realpath($root);
+
+            $root = false !== $realRoot ? str_replace('\\', '/', $realRoot) : $this->normalizePath($root);
+
+            if ('' === $root) {
+                continue;
+            }
+
+            $bases[] = rtrim($root, '/');
+        }
+
+        return array_values(array_unique($bases));
     }
 
     private function validateRemoteRef(): void

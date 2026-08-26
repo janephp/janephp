@@ -113,7 +113,7 @@ class ReferenceTest extends TestCase
         $ref = new Reference(__DIR__ . '/../../../etc/passwd', __DIR__ . '/schema.json');
 
         $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessage('outside the allowed directory');
+        $this->expectExceptionMessage('outside the allowed directories');
         $ref->resolve();
     }
 
@@ -122,7 +122,7 @@ class ReferenceTest extends TestCase
         $ref = new Reference('/etc/passwd', __DIR__ . '/schema.json');
 
         $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessage('outside the allowed directory');
+        $this->expectExceptionMessage('outside the allowed directories');
         $ref->resolve();
     }
 
@@ -142,5 +142,150 @@ class ReferenceTest extends TestCase
         $result = $ref->resolve();
 
         self::assertIsArray($result);
+    }
+
+    public function testLocalSiblingDirectoryRefBlockedByDefault(): void
+    {
+        $treeRoot = $this->createTempTree();
+
+        try {
+            $ref = new Reference('../sibling/other.json#/Foo', $treeRoot . '/base/schema.json');
+
+            $this->expectException(\RuntimeException::class);
+            $this->expectExceptionMessage('outside the allowed directories');
+            $ref->resolve();
+        } finally {
+            $this->removeDirectory($treeRoot);
+        }
+    }
+
+    public function testLocalSiblingDirectoryRefAllowedByConfiguredRoot(): void
+    {
+        $treeRoot = $this->createTempTree();
+
+        try {
+            Reference::setAllowedLocalRefRoots([$treeRoot . '/sibling']);
+            $ref = new Reference('../sibling/other.json#/Foo', $treeRoot . '/base/schema.json');
+
+            $result = $ref->resolve();
+
+            self::assertEquals(['type' => 'object'], $result);
+        } finally {
+            $this->removeDirectory($treeRoot);
+        }
+    }
+
+    public function testLocalRefOutsideEveryConfiguredRootStillBlocked(): void
+    {
+        $treeRoot = $this->createTempTree();
+
+        try {
+            Reference::setAllowedLocalRefRoots([$treeRoot . '/sibling']);
+            $ref = new Reference('../elsewhere/outside.json#/Qux', $treeRoot . '/base/schema.json');
+
+            $this->expectException(\RuntimeException::class);
+            $this->expectExceptionMessage('outside the allowed directories');
+            $ref->resolve();
+        } finally {
+            $this->removeDirectory($treeRoot);
+        }
+    }
+
+    public function testConfiguredRootDoesNotAuthorizeSimilarDirectoryPrefix(): void
+    {
+        $treeRoot = $this->createTempTree();
+
+        try {
+            // "…/base" must not authorize "…/base2": containment is checked on full path segments.
+            Reference::setAllowedLocalRefRoots([$treeRoot . '/base']);
+            $ref = new Reference('../base2/file.json#/Baz', $treeRoot . '/base/schema.json');
+
+            $this->expectException(\RuntimeException::class);
+            $this->expectExceptionMessage('outside the allowed directories');
+            $ref->resolve();
+        } finally {
+            $this->removeDirectory($treeRoot);
+        }
+    }
+
+    public function testSameDocumentRefsUnaffectedByConfiguredRoots(): void
+    {
+        $treeRoot = $this->createTempTree();
+
+        try {
+            Reference::setAllowedLocalRefRoots([$treeRoot . '/sibling']);
+
+            $sameDirectory = new Reference('schema.json', $treeRoot . '/base/schema.json');
+            self::assertIsArray($sameDirectory->resolve());
+
+            $fragment = new Reference('#/type', $treeRoot . '/base/schema.json');
+            self::assertSame('object', $fragment->resolve());
+        } finally {
+            $this->removeDirectory($treeRoot);
+        }
+    }
+
+    public function testResetConfigClearsAllowedLocalRefRoots(): void
+    {
+        $treeRoot = $this->createTempTree();
+
+        try {
+            Reference::setAllowedLocalRefRoots([$treeRoot . '/sibling']);
+            self::assertIsArray((new Reference('../sibling/other.json#/Foo', $treeRoot . '/base/schema.json'))->resolve());
+
+            Reference::resetConfig();
+
+            $blocked = new Reference('../sibling/other.json#/Foo', $treeRoot . '/base/schema.json');
+
+            $this->expectException(\RuntimeException::class);
+            $this->expectExceptionMessage('outside the allowed directories');
+            $blocked->resolve();
+        } finally {
+            $this->removeDirectory($treeRoot);
+        }
+    }
+
+    private function createTempTree(): string
+    {
+        $root = sys_get_temp_dir() . '/jane-reference-test-' . bin2hex(random_bytes(8));
+
+        foreach (['base', 'sibling', 'base2', 'elsewhere'] as $directory) {
+            mkdir($root . '/' . $directory, 0777, true);
+        }
+
+        file_put_contents($root . '/base/schema.json', json_encode(['type' => 'object']));
+        file_put_contents($root . '/sibling/other.json', json_encode(['Foo' => ['type' => 'object']]));
+        file_put_contents($root . '/base2/file.json', json_encode(['Baz' => ['type' => 'object']]));
+        file_put_contents($root . '/elsewhere/outside.json', json_encode(['Qux' => ['type' => 'object']]));
+
+        return $root;
+    }
+
+    private function removeDirectory(string $path): void
+    {
+        if (!is_dir($path)) {
+            return;
+        }
+
+        $entries = scandir($path);
+        if (false === $entries) {
+            return;
+        }
+
+        foreach ($entries as $entry) {
+            if ('.' === $entry || '..' === $entry) {
+                continue;
+            }
+
+            $entryPath = $path . '/' . $entry;
+            if (is_dir($entryPath)) {
+                $this->removeDirectory($entryPath);
+                continue;
+            }
+
+            unlink($entryPath);
+        }
+
+        rmdir($path);
     }
 }

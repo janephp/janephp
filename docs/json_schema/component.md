@@ -158,6 +158,28 @@ Other options are available to customize the generated code:
   [Custom validators](../guides/validation.md#custom-validators) section of the Validation guide.
 - `include-null-value`: Will enable a way to manage null values. By default it is enabled.
 - `enums-as-objects`: When enabled, schemas with `type: string` or `type: integer` and an `enum` will be generated as native PHP backed enums instead of plain scalar types, and properties referencing these schemas will be typed with the enum class. Disabled by default.
+- `allow-external-refs`: A boolean which indicates whether remote (`http://` / `https://`) references may be resolved
+  during code generation. Disabled by default: Jane rejects external references to protect you from SSRF and
+  unwanted network access at generation time. Enable it only if your specification legitimately references remote
+  documents.
+- `external-ref-allowed-hosts`: An array of host names restricting which remote hosts `allow-external-refs` may reach
+  (subdomains of the listed hosts are allowed too). When empty, every host is allowed as long as
+  `allow-external-refs` is enabled.
+- `allowed-local-ref-roots`: An array of directory roots a local reference may resolve into, in addition to the
+  directory of the referencing document (which is always allowed). By default a local `$ref` can only point to a
+  file inside its own directory, so split layouts where your JSON Schema documents reference siblings in another
+  directory fail to generate. Declaring a common parent directory as an allowed root unlocks them:
+
+```php
+return [
+  // your usual configuration ...
+  'allowed-local-ref-roots' => [
+    __DIR__ . '/schemas',
+  ],
+];
+```
+
+  Roots are normalized with `realpath()`: if your layout involves symlinks, declare the real target path.
 
 ## Using a generated Model
 

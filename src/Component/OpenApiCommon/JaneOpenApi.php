@@ -195,6 +195,9 @@ abstract class JaneOpenApi extends ChainGenerator
         if (!empty($options['external-ref-allowed-hosts'] ?? [])) {
             Reference::setAllowedExternalHosts($options['external-ref-allowed-hosts']);
         }
+        if (!empty($options['allowed-local-ref-roots'] ?? [])) {
+            Reference::setAllowedLocalRefRoots($options['allowed-local-ref-roots']);
+        }
 
         ChainValidatorFactory::resetCustomValidators();
         ChainValidatorFactory::setDateFormats(
