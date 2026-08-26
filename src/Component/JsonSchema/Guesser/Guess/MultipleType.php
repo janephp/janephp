@@ -73,7 +73,7 @@ class MultipleType extends Type
     protected function getTypesSorted(): array
     {
         $types = $this->getTypes();
-        uasort($types, function ($first, $second) {
+        uasort($types, static function ($first, $second) {
             /* @var Type $first */
             /* @var Type $second */
             if (($second instanceof ObjectType && 'Reference' === $second->getClassName()) || 'mixed' === $first->getName()) {
@@ -88,7 +88,7 @@ class MultipleType extends Type
 
     public function getDocTypeHint(string $namespace): string|Name|null
     {
-        $stringTypes = array_map(function ($type) use ($namespace) {
+        $stringTypes = array_map(static function ($type) use ($namespace) {
             return $type->getDocTypeHint($namespace);
         }, $this->types);
 
@@ -167,10 +167,65 @@ class MultipleType extends Type
         }
 
         if (null !== $ifStmt) {
+            $this->appendDateFallbackStatements($context, $input, $output, $ifStmt);
             $statements[] = $ifStmt;
         }
 
         return [$statements, $output];
+    }
+
+    /**
+     * A string that matches no branch would otherwise fall through as the raw
+     * input and TypeError any typed setter (GH#1038). When one of the branches
+     * is a date, append two guards: an empty string resolves to null when the
+     * union explicitly admits null (a deliberate leniency — an empty string is
+     * the common wire encoding of an absent date, and unlike the plain date
+     * property path the union has declared that absence is a valid value), and
+     * any other non-parsing string is reported with the same clean
+     * InvalidDateException the plain date path throws since GH#764 / GH#752.
+     */
+    private function appendDateFallbackStatements(Context $context, Expr $input, Expr $output, Stmt\If_ $ifStmt): void
+    {
+        if (null !== $this->discriminatorProperty) {
+            return;
+        }
+
+        $dateFormat = null;
+        $hasNullBranch = false;
+
+        foreach ($this->getTypesSorted() as $type) {
+            if (null === $dateFormat && ($type instanceof DateTimeType || $type instanceof DateType) && !empty($type->getInputFormat())) {
+                $dateFormat = $type->getInputFormat();
+            }
+
+            if ('null' === $type->getName()) {
+                $hasNullBranch = true;
+            }
+        }
+
+        if (null === $dateFormat) {
+            return;
+        }
+
+        if ($hasNullBranch) {
+            // elseif ('' === $input) { $output = null; }
+            $ifStmt->elseifs[] = new Stmt\ElseIf_(
+                new Expr\BinaryOp\Identical(new Scalar\String_(''), $input),
+                [new Stmt\Expression(new Expr\Assign($output, new Expr\ConstFetch(new Name('null'))))]
+            );
+        }
+
+        // elseif (is_string($input)) { throw new InvalidDateException($input, $format); }
+        $ifStmt->elseifs[] = new Stmt\ElseIf_(
+            new Expr\FuncCall(new Name('is_string'), [new Arg($input)]),
+            [new Stmt\Expression(new Expr\Throw_(new Expr\New_(
+                new Name\FullyQualified(\sprintf('%s\\Runtime\\Normalizer\\InvalidDateException', $context->getCurrentSchema()->getNamespace())),
+                [
+                    new Arg($input),
+                    new Arg(new Scalar\String_($dateFormat)),
+                ]
+            )))]
+        );
     }
 
     public function createNormalizationStatement(Context $context, Expr $input, bool $normalizerFromObject = true): array
