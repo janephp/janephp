@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\JsonSchema\Model;
 
-class ClientCredentialsFlow extends \ArrayObject
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class ClientCredentialsFlow implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -77,5 +80,10 @@ class ClientCredentialsFlow extends \ArrayObject
         $this->initialized['scopes'] = true;
         $this->scopes = $scopes;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['tokenUrl' => ['tokenUrl', 'getTokenUrl', 'setTokenUrl'], 'refreshUrl' => ['refreshUrl', 'getRefreshUrl', 'setRefreshUrl'], 'scopes' => ['scopes', 'getScopes', 'setScopes']];
     }
 }

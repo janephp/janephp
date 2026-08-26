@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi2\JsonSchema\Model;
 
-class Operation extends \ArrayObject
+use Jane\Component\OpenApi2\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi2\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class Operation implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -61,7 +64,7 @@ class Operation extends \ArrayObject
     /**
      * Response objects names can either be any valid HTTP status code or 'default'.
      *
-     * @var Response|JsonReference[]|mixed[]|null
+     * @var array<string, Response|JsonReference|mixed>|null
      */
     protected $responses;
     /**
@@ -253,20 +256,20 @@ class Operation extends \ArrayObject
     /**
      * Response objects names can either be any valid HTTP status code or 'default'.
      *
-     * @return Response|JsonReference[]|mixed[]
+     * @return array<string, Response|JsonReference|mixed>|null
      */
-    public function getResponses()
+    public function getResponses() : ?iterable
     {
         return $this->responses;
     }
     /**
      * Response objects names can either be any valid HTTP status code or 'default'.
      *
-     * @param Response|JsonReference[]|mixed[] $responses
+     * @param array<string, Response|JsonReference|mixed>|null $responses
      *
      * @return self
      */
-    public function setResponses($responses) : self
+    public function setResponses(?iterable $responses) : self
     {
         $this->initialized['responses'] = true;
         $this->responses = $responses;
@@ -329,5 +332,10 @@ class Operation extends \ArrayObject
         $this->initialized['security'] = true;
         $this->security = $security;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['tags' => ['tags', 'getTags', 'setTags'], 'summary' => ['summary', 'getSummary', 'setSummary'], 'description' => ['description', 'getDescription', 'setDescription'], 'externalDocs' => ['externalDocs', 'getExternalDocs', 'setExternalDocs'], 'operationId' => ['operationId', 'getOperationId', 'setOperationId'], 'produces' => ['produces', 'getProduces', 'setProduces'], 'consumes' => ['consumes', 'getConsumes', 'setConsumes'], 'parameters' => ['parameters', 'getParameters', 'setParameters'], 'responses' => ['responses', 'getResponses', 'setResponses'], 'schemes' => ['schemes', 'getSchemes', 'setSchemes'], 'deprecated' => ['deprecated', 'getDeprecated', 'setDeprecated'], 'security' => ['security', 'getSecurity', 'setSecurity']];
     }
 }

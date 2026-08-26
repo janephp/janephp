@@ -42,7 +42,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             return $object;
         }
         if (\array_key_exists('schemas', $data) && $data['schemas'] !== null) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Component\OpenApi31\JsonSchema\Runtime\JsonObject();
             foreach ($data['schemas'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -52,7 +52,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setSchemas(null);
         }
         if (\array_key_exists('responses', $data) && $data['responses'] !== null) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \Jane\Component\OpenApi31\JsonSchema\Runtime\JsonObject();
             foreach ($data['responses'] as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
@@ -62,7 +62,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setResponses(null);
         }
         if (\array_key_exists('parameters', $data) && $data['parameters'] !== null) {
-            $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_2 = new \Jane\Component\OpenApi31\JsonSchema\Runtime\JsonObject();
             foreach ($data['parameters'] as $key_2 => $value_2) {
                 $values_2[$key_2] = $value_2;
             }
@@ -72,7 +72,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setParameters(null);
         }
         if (\array_key_exists('examples', $data) && $data['examples'] !== null) {
-            $values_3 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_3 = new \Jane\Component\OpenApi31\JsonSchema\Runtime\JsonObject();
             foreach ($data['examples'] as $key_3 => $value_3) {
                 $values_3[$key_3] = $value_3;
             }
@@ -82,7 +82,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setExamples(null);
         }
         if (\array_key_exists('requestBodies', $data) && $data['requestBodies'] !== null) {
-            $values_4 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_4 = new \Jane\Component\OpenApi31\JsonSchema\Runtime\JsonObject();
             foreach ($data['requestBodies'] as $key_4 => $value_4) {
                 $values_4[$key_4] = $value_4;
             }
@@ -92,7 +92,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setRequestBodies(null);
         }
         if (\array_key_exists('headers', $data) && $data['headers'] !== null) {
-            $values_5 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_5 = new \Jane\Component\OpenApi31\JsonSchema\Runtime\JsonObject();
             foreach ($data['headers'] as $key_5 => $value_5) {
                 $values_5[$key_5] = $value_5;
             }
@@ -102,7 +102,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setHeaders(null);
         }
         if (\array_key_exists('securitySchemes', $data) && $data['securitySchemes'] !== null) {
-            $values_6 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_6 = new \Jane\Component\OpenApi31\JsonSchema\Runtime\JsonObject();
             foreach ($data['securitySchemes'] as $key_6 => $value_6) {
                 $values_6[$key_6] = $value_6;
             }
@@ -112,7 +112,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setSecuritySchemes(null);
         }
         if (\array_key_exists('links', $data) && $data['links'] !== null) {
-            $values_7 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_7 = new \Jane\Component\OpenApi31\JsonSchema\Runtime\JsonObject();
             foreach ($data['links'] as $key_7 => $value_7) {
                 $values_7[$key_7] = $value_7;
             }
@@ -122,7 +122,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setLinks(null);
         }
         if (\array_key_exists('callbacks', $data) && $data['callbacks'] !== null) {
-            $values_8 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_8 = new \Jane\Component\OpenApi31\JsonSchema\Runtime\JsonObject();
             foreach ($data['callbacks'] as $key_8 => $value_8) {
                 $values_8[$key_8] = $value_8;
             }
@@ -132,7 +132,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setCallbacks(null);
         }
         if (\array_key_exists('pathItems', $data) && $data['pathItems'] !== null) {
-            $values_9 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_9 = new \Jane\Component\OpenApi31\JsonSchema\Runtime\JsonObject();
             foreach ($data['pathItems'] as $key_9 => $value_9) {
                 $values_9[$key_9] = $value_9;
             }

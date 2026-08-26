@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Jane\Component\OpenApiCommon\Tests\Naming;
 
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
+use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\OpenApiCommon\Naming\XNamespaceResolver;
 use PHPUnit\Framework\TestCase;
 
@@ -45,10 +46,11 @@ final class XNamespaceResolverTest extends TestCase
         self::assertSame([], (new XNamespaceResolver())->resolve($value));
     }
 
-    public function testResolveFromObjectReadsArrayObjectStorage(): void
+    public function testResolveFromObjectReadsExtensionStorage(): void
     {
         $resolver = new XNamespaceResolver();
-        $object = new \ArrayObject(['x-namespace' => 'Users\Admin']);
+        $object = new JsonSchema();
+        $object->offsetSet('x-namespace', 'Users\Admin');
 
         self::assertSame(['Users', 'Admin'], $resolver->resolveFromObject($object));
     }
@@ -57,9 +59,13 @@ final class XNamespaceResolverTest extends TestCase
     {
         $resolver = new XNamespaceResolver();
 
-        self::assertSame([], $resolver->resolveFromObject(new \ArrayObject()));
+        self::assertSame([], $resolver->resolveFromObject(new JsonSchema()));
         self::assertSame([], $resolver->resolveFromObject(new \stdClass()));
-        self::assertSame([], $resolver->resolveFromObject(new \ArrayObject(['x-namespace' => 42])));
+
+        $invalidValue = new JsonSchema();
+        $invalidValue->offsetSet('x-namespace', 42);
+
+        self::assertSame([], $resolver->resolveFromObject($invalidValue));
     }
 
     public function testSubNamespaceSuffixBuildsPrefixedNamespace(): void

@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\JsonSchema\Model;
 
-class Example extends \ArrayObject
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class Example implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,10 @@ class Example extends \ArrayObject
         $this->initialized['externalValue'] = true;
         $this->externalValue = $externalValue;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['summary' => ['summary', 'getSummary', 'setSummary'], 'description' => ['description', 'getDescription', 'setDescription'], 'value' => ['value', 'getValue', 'setValue'], 'externalValue' => ['externalValue', 'getExternalValue', 'setExternalValue']];
     }
 }

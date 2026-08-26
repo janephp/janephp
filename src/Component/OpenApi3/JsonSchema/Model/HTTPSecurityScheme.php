@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\JsonSchema\Model;
 
-class HTTPSecurityScheme extends \ArrayObject
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class HTTPSecurityScheme implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,10 @@ class HTTPSecurityScheme extends \ArrayObject
         $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['scheme' => ['scheme', 'getScheme', 'setScheme'], 'bearerFormat' => ['bearerFormat', 'getBearerFormat', 'setBearerFormat'], 'description' => ['description', 'getDescription', 'setDescription'], 'type' => ['type', 'getType', 'setType']];
     }
 }

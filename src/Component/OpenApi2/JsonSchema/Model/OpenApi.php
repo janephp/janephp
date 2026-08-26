@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi2\JsonSchema\Model;
 
-class OpenApi extends \ArrayObject
+use Jane\Component\OpenApi2\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi2\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class OpenApi implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -413,5 +416,10 @@ class OpenApi extends \ArrayObject
         $this->initialized['externalDocs'] = true;
         $this->externalDocs = $externalDocs;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['swagger' => ['swagger', 'getSwagger', 'setSwagger'], 'info' => ['info', 'getInfo', 'setInfo'], 'host' => ['host', 'getHost', 'setHost'], 'basePath' => ['basePath', 'getBasePath', 'setBasePath'], 'schemes' => ['schemes', 'getSchemes', 'setSchemes'], 'consumes' => ['consumes', 'getConsumes', 'setConsumes'], 'produces' => ['produces', 'getProduces', 'setProduces'], 'paths' => ['paths', 'getPaths', 'setPaths'], 'definitions' => ['definitions', 'getDefinitions', 'setDefinitions'], 'parameters' => ['parameters', 'getParameters', 'setParameters'], 'responses' => ['responses', 'getResponses', 'setResponses'], 'security' => ['security', 'getSecurity', 'setSecurity'], 'securityDefinitions' => ['securityDefinitions', 'getSecurityDefinitions', 'setSecurityDefinitions'], 'tags' => ['tags', 'getTags', 'setTags'], 'externalDocs' => ['externalDocs', 'getExternalDocs', 'setExternalDocs']];
     }
 }

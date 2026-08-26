@@ -128,7 +128,7 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setParameters(null);
         }
         if (\array_key_exists('responses', $data) && $data['responses'] !== null) {
-            $values_4 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_4 = new \Jane\Component\OpenApi2\JsonSchema\Runtime\JsonObject();
             foreach ($data['responses'] as $key => $value_5) {
                 if (preg_match('/^([0-9]{3})$|^(default)$/', (string) $key) && isset($value_5)) {
                     $value_6 = $value_5;
@@ -172,7 +172,7 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (\array_key_exists('security', $data) && $data['security'] !== null) {
             $values_6 = [];
             foreach ($data['security'] as $value_8) {
-                $values_7 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                $values_7 = new \Jane\Component\OpenApi2\JsonSchema\Runtime\JsonObject();
                 foreach ($value_8 as $key_1 => $value_9) {
                     $values_8 = [];
                     foreach ($value_9 as $value_10) {

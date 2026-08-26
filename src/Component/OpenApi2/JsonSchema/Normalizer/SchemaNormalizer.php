@@ -257,7 +257,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setAllOf(null);
         }
         if (\array_key_exists('properties', $data) && $data['properties'] !== null) {
-            $values_5 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_5 = new \Jane\Component\OpenApi2\JsonSchema\Runtime\JsonObject();
             foreach ($data['properties'] as $key => $value_8) {
                 $values_5[$key] = $this->denormalizer->denormalize($value_8, 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\Schema', 'json', $context);
             }

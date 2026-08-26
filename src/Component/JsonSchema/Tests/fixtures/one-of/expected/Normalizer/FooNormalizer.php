@@ -42,7 +42,20 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             if (is_string($data['foo'])) {
                 $value = $data['foo'];
             } elseif (isset($data['foo'])) {
-                $value = $data['foo'];
+                $values = new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject();
+                foreach ($data['foo'] as $key => $value_1) {
+                    if (preg_match('/^[a-zA-Z0-9._-]+$/', (string) $key) && isset($value_1)) {
+                        $value_2 = $value_1;
+                        if (is_array($value_1)) {
+                            $value_2 = $value_1;
+                        } elseif (is_null($value_1)) {
+                            $value_2 = $value_1;
+                        }
+                        $values[$key] = $value_2;
+                        continue;
+                    }
+                }
+                $value = $values;
             }
             $object->setFoo($value);
         }
@@ -56,7 +69,20 @@ class FooNormalizer implements DenormalizerInterface, NormalizerInterface, Denor
             if (is_string($data->getFoo())) {
                 $value = $data->getFoo();
             } elseif (!is_null($data->getFoo())) {
-                $value = $data->getFoo();
+                $values = new \Jane\Component\JsonSchema\Tests\Expected\Runtime\JsonObject();
+                foreach ($data->getFoo() as $key => $value_1) {
+                    if (preg_match('/^[a-zA-Z0-9._-]+$/', (string) $key) && !is_null($value_1)) {
+                        $value_2 = $value_1;
+                        if (is_object($value_1)) {
+                            $value_2 = $value_1;
+                        } elseif (is_null($value_1)) {
+                            $value_2 = $value_1;
+                        }
+                        $values[$key] = $value_2;
+                        continue;
+                    }
+                }
+                $value = $values;
             }
             $dataArray['foo'] = $value;
         }

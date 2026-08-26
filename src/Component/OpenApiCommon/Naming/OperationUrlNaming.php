@@ -34,7 +34,7 @@ class OperationUrlNaming implements OperationNamingInterface
         $shouldSingularize = true;
         $responses = $operation->getOperation()->getResponses();
 
-        if ($responses instanceof \ArrayObject && isset($responses[200])) {
+        if (null !== $responses && isset($responses[200])) {
             $response = $responses[200];
 
             if (class_exists(OA2Response::class) && $response instanceof OA2Response && $response->getSchema() instanceof OA2Schema && 'array' === $response->getSchema()->getType()) {

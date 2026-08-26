@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\JsonSchema\Model;
 
-class Parameter extends \ArrayObject
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class Parameter implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -297,5 +300,10 @@ class Parameter extends \ArrayObject
         $this->initialized['examples'] = true;
         $this->examples = $examples;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['name' => ['name', 'getName', 'setName'], 'in' => ['in', 'getIn', 'setIn'], 'description' => ['description', 'getDescription', 'setDescription'], 'required' => ['required', 'getRequired', 'setRequired'], 'deprecated' => ['deprecated', 'getDeprecated', 'setDeprecated'], 'allowEmptyValue' => ['allowEmptyValue', 'getAllowEmptyValue', 'setAllowEmptyValue'], 'style' => ['style', 'getStyle', 'setStyle'], 'explode' => ['explode', 'getExplode', 'setExplode'], 'allowReserved' => ['allowReserved', 'getAllowReserved', 'setAllowReserved'], 'schema' => ['schema', 'getSchema', 'setSchema'], 'content' => ['content', 'getContent', 'setContent'], 'example' => ['example', 'getExample', 'setExample'], 'examples' => ['examples', 'getExamples', 'setExamples']];
     }
 }

@@ -42,7 +42,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             return $object;
         }
         if (\array_key_exists('schemas', $data) && $data['schemas'] !== null) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
             foreach ($data['schemas'] as $key => $value) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key) && isset($value)) {
                     $value_1 = $value;
@@ -62,7 +62,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setSchemas(null);
         }
         if (\array_key_exists('responses', $data) && $data['responses'] !== null) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
             foreach ($data['responses'] as $key_1 => $value_2) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_1) && isset($value_2)) {
                     $value_3 = $value_2;
@@ -82,7 +82,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setResponses(null);
         }
         if (\array_key_exists('parameters', $data) && $data['parameters'] !== null) {
-            $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_2 = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
             foreach ($data['parameters'] as $key_2 => $value_4) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_2) && isset($value_4)) {
                     $value_5 = $value_4;
@@ -102,7 +102,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setParameters(null);
         }
         if (\array_key_exists('examples', $data) && $data['examples'] !== null) {
-            $values_3 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_3 = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
             foreach ($data['examples'] as $key_3 => $value_6) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_3) && isset($value_6)) {
                     $value_7 = $value_6;
@@ -122,7 +122,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setExamples(null);
         }
         if (\array_key_exists('requestBodies', $data) && $data['requestBodies'] !== null) {
-            $values_4 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_4 = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
             foreach ($data['requestBodies'] as $key_4 => $value_8) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_4) && isset($value_8)) {
                     $value_9 = $value_8;
@@ -142,7 +142,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setRequestBodies(null);
         }
         if (\array_key_exists('headers', $data) && $data['headers'] !== null) {
-            $values_5 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_5 = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
             foreach ($data['headers'] as $key_5 => $value_10) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_5) && isset($value_10)) {
                     $value_11 = $value_10;
@@ -162,7 +162,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setHeaders(null);
         }
         if (\array_key_exists('securitySchemes', $data) && $data['securitySchemes'] !== null) {
-            $values_6 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_6 = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
             foreach ($data['securitySchemes'] as $key_6 => $value_12) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_6) && isset($value_12)) {
                     $value_13 = $value_12;
@@ -188,7 +188,7 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setSecuritySchemes(null);
         }
         if (\array_key_exists('links', $data) && $data['links'] !== null) {
-            $values_7 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_7 = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
             foreach ($data['links'] as $key_7 => $value_14) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_7) && isset($value_14)) {
                     $value_15 = $value_14;
@@ -208,14 +208,14 @@ class ComponentsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setLinks(null);
         }
         if (\array_key_exists('callbacks', $data) && $data['callbacks'] !== null) {
-            $values_8 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_8 = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
             foreach ($data['callbacks'] as $key_8 => $value_16) {
                 if (preg_match('/^[a-zA-Z0-9\.\-_]+$/', (string) $key_8) && isset($value_16)) {
                     $value_17 = $value_16;
                     if (is_array($value_16) and isset($value_16['$ref'])) {
                         $value_17 = $this->denormalizer->denormalize($value_16, 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Reference', 'json', $context);
                     } elseif (isset($value_16)) {
-                        $values_9 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                        $values_9 = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
                         foreach ($value_16 as $key_9 => $value_18) {
                             if (preg_match('/^x-/', (string) $key_9) && isset($value_18)) {
                                 $values_9[$key_9] = $value_18;

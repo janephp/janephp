@@ -49,7 +49,7 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setDescription(null);
         }
         if (\array_key_exists('headers', $data) && $data['headers'] !== null) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
             foreach ($data['headers'] as $key => $value) {
                 $value_1 = $value;
                 if (is_array($value) and isset($value['$ref'])) {
@@ -66,7 +66,7 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setHeaders(null);
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
             foreach ($data['content'] as $key_1 => $value_2) {
                 $values_1[$key_1] = $this->denormalizer->denormalize($value_2, 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\MediaType', 'json', $context);
             }
@@ -77,7 +77,7 @@ class ResponseNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setContent(null);
         }
         if (\array_key_exists('links', $data) && $data['links'] !== null) {
-            $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_2 = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
             foreach ($data['links'] as $key_2 => $value_3) {
                 $value_4 = $value_3;
                 if (is_array($value_3) and isset($value_3['$ref'])) {

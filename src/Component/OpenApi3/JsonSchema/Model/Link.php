@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\JsonSchema\Model;
 
-class Link extends \ArrayObject
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class Link implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -143,5 +146,10 @@ class Link extends \ArrayObject
         $this->initialized['server'] = true;
         $this->server = $server;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['operationId' => ['operationId', 'getOperationId', 'setOperationId'], 'operationRef' => ['operationRef', 'getOperationRef', 'setOperationRef'], 'parameters' => ['parameters', 'getParameters', 'setParameters'], 'requestBody' => ['requestBody', 'getRequestBody', 'setRequestBody'], 'description' => ['description', 'getDescription', 'setDescription'], 'server' => ['server', 'getServer', 'setServer']];
     }
 }

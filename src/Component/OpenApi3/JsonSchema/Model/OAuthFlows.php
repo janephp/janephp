@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\JsonSchema\Model;
 
-class OAuthFlows extends \ArrayObject
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class OAuthFlows implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,10 @@ class OAuthFlows extends \ArrayObject
         $this->initialized['authorizationCode'] = true;
         $this->authorizationCode = $authorizationCode;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['implicit' => ['implicit', 'getImplicit', 'setImplicit'], 'password' => ['password', 'getPassword', 'setPassword'], 'clientCredentials' => ['clientCredentials', 'getClientCredentials', 'setClientCredentials'], 'authorizationCode' => ['authorizationCode', 'getAuthorizationCode', 'setAuthorizationCode']];
     }
 }

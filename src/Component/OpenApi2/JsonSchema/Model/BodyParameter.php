@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi2\JsonSchema\Model;
 
-class BodyParameter extends \ArrayObject
+use Jane\Component\OpenApi2\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi2\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class BodyParameter implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -145,5 +148,10 @@ class BodyParameter extends \ArrayObject
         $this->initialized['schema'] = true;
         $this->schema = $schema;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['description' => ['description', 'getDescription', 'setDescription'], 'name' => ['name', 'getName', 'setName'], 'in' => ['in', 'getIn', 'setIn'], 'required' => ['required', 'getRequired', 'setRequired'], 'schema' => ['schema', 'getSchema', 'setSchema']];
     }
 }

@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi2\JsonSchema\Model;
 
-class Header extends \ArrayObject
+use Jane\Component\OpenApi2\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi2\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class Header implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -407,5 +410,10 @@ class Header extends \ArrayObject
         $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'format' => ['format', 'getFormat', 'setFormat'], 'items' => ['items', 'getItems', 'setItems'], 'collectionFormat' => ['collectionFormat', 'getCollectionFormat', 'setCollectionFormat'], 'default' => ['default', 'getDefault', 'setDefault'], 'maximum' => ['maximum', 'getMaximum', 'setMaximum'], 'exclusiveMaximum' => ['exclusiveMaximum', 'getExclusiveMaximum', 'setExclusiveMaximum'], 'minimum' => ['minimum', 'getMinimum', 'setMinimum'], 'exclusiveMinimum' => ['exclusiveMinimum', 'getExclusiveMinimum', 'setExclusiveMinimum'], 'maxLength' => ['maxLength', 'getMaxLength', 'setMaxLength'], 'minLength' => ['minLength', 'getMinLength', 'setMinLength'], 'pattern' => ['pattern', 'getPattern', 'setPattern'], 'maxItems' => ['maxItems', 'getMaxItems', 'setMaxItems'], 'minItems' => ['minItems', 'getMinItems', 'setMinItems'], 'uniqueItems' => ['uniqueItems', 'getUniqueItems', 'setUniqueItems'], 'enum' => ['enum', 'getEnum', 'setEnum'], 'multipleOf' => ['multipleOf', 'getMultipleOf', 'setMultipleOf'], 'description' => ['description', 'getDescription', 'setDescription']];
     }
 }

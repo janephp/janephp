@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi31\JsonSchema\Model;
 
-class Responses extends \ArrayObject
+use Jane\Component\OpenApi31\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi31\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class Responses implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -29,5 +32,10 @@ class Responses extends \ArrayObject
         $this->default = $default;
 
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['default' => ['default', 'getDefault', 'setDefault']];
     }
 }

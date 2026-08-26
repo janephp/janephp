@@ -29,7 +29,9 @@ class PatternPropertiesGuesser implements GuesserInterface, TypeGuesserInterface
             return false;
         }
 
-        if (!($object->getPatternProperties() instanceof \ArrayObject) || 0 == \count($object->getPatternProperties())) {
+        $patternProperties = $object->getPatternProperties();
+
+        if (null === $patternProperties || 0 === \count($patternProperties)) {
             return false;
         }
 

@@ -47,7 +47,7 @@ class MediaTypeNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setSchema(null);
         }
         if (\array_key_exists('encoding', $data) && $data['encoding'] !== null) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Component\OpenApi31\JsonSchema\Runtime\JsonObject();
             foreach ($data['encoding'] as $key => $value) {
                 $values[$key] = $this->denormalizer->denormalize($value, \Jane\Component\OpenApi31\JsonSchema\Model\Encoding::class, 'json', $context);
             }

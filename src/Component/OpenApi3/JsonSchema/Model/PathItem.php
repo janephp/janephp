@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\JsonSchema\Model;
 
-class PathItem extends \ArrayObject
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class PathItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -297,5 +300,10 @@ class PathItem extends \ArrayObject
         $this->initialized['parameters'] = true;
         $this->parameters = $parameters;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['dollarRef' => ['$ref', 'getDollarRef', 'setDollarRef'], 'summary' => ['summary', 'getSummary', 'setSummary'], 'description' => ['description', 'getDescription', 'setDescription'], 'get' => ['get', 'getGet', 'setGet'], 'put' => ['put', 'getPut', 'setPut'], 'post' => ['post', 'getPost', 'setPost'], 'delete' => ['delete', 'getDelete', 'setDelete'], 'options' => ['options', 'getOptions', 'setOptions'], 'head' => ['head', 'getHead', 'setHead'], 'patch' => ['patch', 'getPatch', 'setPatch'], 'trace' => ['trace', 'getTrace', 'setTrace'], 'servers' => ['servers', 'getServers', 'setServers'], 'parameters' => ['parameters', 'getParameters', 'setParameters']];
     }
 }

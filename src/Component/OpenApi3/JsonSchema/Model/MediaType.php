@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\JsonSchema\Model;
 
-class MediaType extends \ArrayObject
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class MediaType implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -99,5 +102,10 @@ class MediaType extends \ArrayObject
         $this->initialized['encoding'] = true;
         $this->encoding = $encoding;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['schema' => ['schema', 'getSchema', 'setSchema'], 'example' => ['example', 'getExample', 'setExample'], 'examples' => ['examples', 'getExamples', 'setExamples'], 'encoding' => ['encoding', 'getEncoding', 'setEncoding']];
     }
 }

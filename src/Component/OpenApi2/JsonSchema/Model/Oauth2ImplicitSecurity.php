@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi2\JsonSchema\Model;
 
-class Oauth2ImplicitSecurity extends \ArrayObject
+use Jane\Component\OpenApi2\JsonSchema\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi2\JsonSchema\Runtime\AdditionalPropertiesInterface;
+class Oauth2ImplicitSecurity implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -121,5 +124,10 @@ class Oauth2ImplicitSecurity extends \ArrayObject
         $this->initialized['description'] = true;
         $this->description = $description;
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['type' => ['type', 'getType', 'setType'], 'flow' => ['flow', 'getFlow', 'setFlow'], 'scopes' => ['scopes', 'getScopes', 'setScopes'], 'authorizationUrl' => ['authorizationUrl', 'getAuthorizationUrl', 'setAuthorizationUrl'], 'description' => ['description', 'getDescription', 'setDescription']];
     }
 }

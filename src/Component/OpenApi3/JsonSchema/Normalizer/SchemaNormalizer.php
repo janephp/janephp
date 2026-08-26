@@ -255,7 +255,7 @@ class SchemaNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setItems(null);
         }
         if (\array_key_exists('properties', $data) && $data['properties'] !== null) {
-            $values_5 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_5 = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
             foreach ($data['properties'] as $key => $value_10) {
                 $value_11 = $value_10;
                 if (is_array($value_10) and isset($value_10['$ref'])) {

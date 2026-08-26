@@ -66,7 +66,7 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setServers(null);
         }
         if (\array_key_exists('paths', $data) && $data['paths'] !== null) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \Jane\Component\OpenApi31\JsonSchema\Runtime\JsonObject();
             foreach ($data['paths'] as $key => $value_1) {
                 if (preg_match('/^\//', (string) $key) && \is_array($value_1)) {
                     $values_1[$key] = $this->denormalizer->denormalize($value_1, \Jane\Component\OpenApi31\JsonSchema\Model\PathItem::class, 'json', $context);
@@ -78,7 +78,7 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setPaths(null);
         }
         if (\array_key_exists('webhooks', $data) && $data['webhooks'] !== null) {
-            $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_2 = new \Jane\Component\OpenApi31\JsonSchema\Runtime\JsonObject();
             foreach ($data['webhooks'] as $key_1 => $value_2) {
                 $values_2[$key_1] = $value_2;
             }
@@ -94,7 +94,7 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (\array_key_exists('security', $data) && $data['security'] !== null) {
             $values_3 = [];
             foreach ($data['security'] as $value_3) {
-                $values_4 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                $values_4 = new \Jane\Component\OpenApi31\JsonSchema\Runtime\JsonObject();
                 foreach ($value_3 as $key_2 => $value_4) {
                     $values_5 = [];
                     foreach ($value_4 as $value_5) {

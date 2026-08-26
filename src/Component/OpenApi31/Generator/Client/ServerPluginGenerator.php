@@ -33,7 +33,8 @@ trait ServerPluginGenerator
 
             $variables = $server->getVariables();
 
-            if ($variables instanceof \ArrayObject
+            if (null !== $variables
+                && $variables instanceof \ArrayAccess
                 && $variables->offsetExists('port')
                 && null !== $variables->offsetGet('port')->getDefault()
             ) {

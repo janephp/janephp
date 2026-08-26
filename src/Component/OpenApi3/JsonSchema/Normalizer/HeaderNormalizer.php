@@ -104,7 +104,7 @@ class HeaderNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setSchema(null);
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
             foreach ($data['content'] as $key => $value_1) {
                 $values[$key] = $this->denormalizer->denormalize($value_1, 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\MediaType', 'json', $context);
             }
@@ -122,7 +122,7 @@ class HeaderNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setExample(null);
         }
         if (\array_key_exists('examples', $data) && $data['examples'] !== null) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
             foreach ($data['examples'] as $key_1 => $value_2) {
                 $value_3 = $value_2;
                 if (is_array($value_2) and isset($value_2['$ref'])) {

@@ -118,13 +118,13 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setResponses(null);
         }
         if (\array_key_exists('callbacks', $data) && $data['callbacks'] !== null) {
-            $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_2 = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
             foreach ($data['callbacks'] as $key => $value_4) {
                 $value_5 = $value_4;
                 if (is_array($value_4) and isset($value_4['$ref'])) {
                     $value_5 = $this->denormalizer->denormalize($value_4, 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\Reference', 'json', $context);
                 } elseif (isset($value_4)) {
-                    $values_3 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                    $values_3 = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
                     foreach ($value_4 as $key_1 => $value_6) {
                         if (preg_match('/^x-/', (string) $key_1) && isset($value_6)) {
                             $values_3[$key_1] = $value_6;
@@ -151,7 +151,7 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (\array_key_exists('security', $data) && $data['security'] !== null) {
             $values_4 = [];
             foreach ($data['security'] as $value_7) {
-                $values_5 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                $values_5 = new \Jane\Component\OpenApi3\JsonSchema\Runtime\JsonObject();
                 foreach ($value_7 as $key_2 => $value_8) {
                     $values_6 = [];
                     foreach ($value_8 as $value_9) {

@@ -93,7 +93,7 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setResponses(null);
         }
         if (\array_key_exists('callbacks', $data) && $data['callbacks'] !== null) {
-            $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_2 = new \Jane\Component\OpenApi31\JsonSchema\Runtime\JsonObject();
             foreach ($data['callbacks'] as $key => $value_2) {
                 $values_2[$key] = $value_2;
             }
@@ -109,7 +109,7 @@ class OperationNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (\array_key_exists('security', $data) && $data['security'] !== null) {
             $values_3 = [];
             foreach ($data['security'] as $value_3) {
-                $values_4 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                $values_4 = new \Jane\Component\OpenApi31\JsonSchema\Runtime\JsonObject();
                 foreach ($value_3 as $key_1 => $value_4) {
                     $values_5 = [];
                     foreach ($value_4 as $value_5) {

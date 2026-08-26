@@ -53,7 +53,7 @@ class EncodingNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setContentType(null);
         }
         if (\array_key_exists('headers', $data) && $data['headers'] !== null) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Component\OpenApi31\JsonSchema\Runtime\JsonObject();
             foreach ($data['headers'] as $key => $value) {
                 $values[$key] = $value;
             }

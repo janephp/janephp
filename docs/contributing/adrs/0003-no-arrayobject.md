@@ -47,13 +47,12 @@ library code, nor generated code:
 
 Legacy usages still exist; they are accepted debt, not precedent:
 
-- Jane's own OpenAPI document models under `src/Component/OpenApi*/JsonSchema/`
-  (e.g. `OpenApi31/JsonSchema/Model/Components.php` extends `\ArrayObject`) and
-  their normalizers still build `ARRAY_AS_PROPS` accumulators. These folders are
-  excluded from phpstan and php-cs-fixer.
-- `src/Component/OpenApiCommon/Naming/OperationUrlNaming.php` checks
-  `instanceof \ArrayObject` solely because those internal documents still carry
-  them.
+- Retired: every entry once listed here was paid off by the document-models migration —
+  Jane's own OpenAPI 2.0 / 3.0 / 3.1 & JsonSchema document models (and their
+  `ARRAY_AS_PROPS` accumulators, previously excluded from phpstan / php-cs-fixer)
+  plus the `instanceof \ArrayObject` check in `OperationUrlNaming` all moved onto the
+  `<Namespace>\Runtime\AdditionalPropertiesInterface` +
+  `<Namespace>\Runtime\AdditionalAndPatternProperties` trait pair.
 
 A former entry of this list — extension-container models extending
 `\ArrayObject` (`src/Component/OpenApiCommon/Generator/Model/ClassGenerator.php`)

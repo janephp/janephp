@@ -103,7 +103,7 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setProduces(null);
         }
         if (\array_key_exists('paths', $data) && $data['paths'] !== null) {
-            $values_3 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_3 = new \Jane\Component\OpenApi2\JsonSchema\Runtime\JsonObject();
             foreach ($data['paths'] as $key => $value_3) {
                 if (preg_match('/^x-/', (string) $key) && isset($value_3)) {
                     $values_3[$key] = $value_3;
@@ -121,7 +121,7 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setPaths(null);
         }
         if (\array_key_exists('definitions', $data) && $data['definitions'] !== null) {
-            $values_4 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_4 = new \Jane\Component\OpenApi2\JsonSchema\Runtime\JsonObject();
             foreach ($data['definitions'] as $key_1 => $value_4) {
                 $values_4[$key_1] = $this->denormalizer->denormalize($value_4, 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\Schema', 'json', $context);
             }
@@ -132,7 +132,7 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setDefinitions(null);
         }
         if (\array_key_exists('parameters', $data) && $data['parameters'] !== null) {
-            $values_5 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_5 = new \Jane\Component\OpenApi2\JsonSchema\Runtime\JsonObject();
             foreach ($data['parameters'] as $key_2 => $value_5) {
                 $value_6 = $value_5;
                 if (is_array($value_5) and isset($value_5['name']) and (isset($value_5['in']) and $value_5['in'] == 'body') and isset($value_5['schema'])) {
@@ -155,7 +155,7 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setParameters(null);
         }
         if (\array_key_exists('responses', $data) && $data['responses'] !== null) {
-            $values_6 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_6 = new \Jane\Component\OpenApi2\JsonSchema\Runtime\JsonObject();
             foreach ($data['responses'] as $key_3 => $value_7) {
                 $values_6[$key_3] = $this->denormalizer->denormalize($value_7, 'Jane\\Component\\OpenApi2\\JsonSchema\\Model\\Response', 'json', $context);
             }
@@ -168,7 +168,7 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (\array_key_exists('security', $data) && $data['security'] !== null) {
             $values_7 = [];
             foreach ($data['security'] as $value_8) {
-                $values_8 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                $values_8 = new \Jane\Component\OpenApi2\JsonSchema\Runtime\JsonObject();
                 foreach ($value_8 as $key_4 => $value_9) {
                     $values_9 = [];
                     foreach ($value_9 as $value_10) {
@@ -185,7 +185,7 @@ class OpenApiNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setSecurity(null);
         }
         if (\array_key_exists('securityDefinitions', $data) && $data['securityDefinitions'] !== null) {
-            $values_10 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_10 = new \Jane\Component\OpenApi2\JsonSchema\Runtime\JsonObject();
             foreach ($data['securityDefinitions'] as $key_5 => $value_11) {
                 $value_12 = $value_11;
                 if (is_array($value_11) and (isset($value_11['type']) and $value_11['type'] == 'basic')) {

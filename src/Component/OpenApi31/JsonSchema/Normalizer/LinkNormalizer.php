@@ -52,7 +52,7 @@ class LinkNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $object->setOperationId(null);
         }
         if (\array_key_exists('parameters', $data) && $data['parameters'] !== null) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \Jane\Component\OpenApi31\JsonSchema\Runtime\JsonObject();
             foreach ($data['parameters'] as $key => $value) {
                 $values[$key] = $value;
             }
