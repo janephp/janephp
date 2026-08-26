@@ -28,7 +28,7 @@ class FloatingIp implements AdditionalPropertiesInterface
     /**
      * The Droplet that the floating IP has been assigned to. When you query a floating IP, if it is assigned to a Droplet, the entire Droplet object will be returned. If it is not assigned, the value will be null. <br><br>Requires `droplet:read` scope.
      *
-     * @var mixed
+     * @var array<string, mixed>|Droplet
      */
     protected $droplet;
     /**
@@ -86,7 +86,7 @@ class FloatingIp implements AdditionalPropertiesInterface
     /**
      * The Droplet that the floating IP has been assigned to. When you query a floating IP, if it is assigned to a Droplet, the entire Droplet object will be returned. If it is not assigned, the value will be null. <br><br>Requires `droplet:read` scope.
      *
-     * @return mixed
+     * @return array<string, mixed>|Droplet
      */
     public function getDroplet()
     {
@@ -95,7 +95,7 @@ class FloatingIp implements AdditionalPropertiesInterface
     /**
      * The Droplet that the floating IP has been assigned to. When you query a floating IP, if it is assigned to a Droplet, the entire Droplet object will be returned. If it is not assigned, the value will be null. <br><br>Requires `droplet:read` scope.
      *
-     * @param mixed $droplet
+     * @param array<string, mixed>|Droplet $droplet
      *
      * @return self
      */

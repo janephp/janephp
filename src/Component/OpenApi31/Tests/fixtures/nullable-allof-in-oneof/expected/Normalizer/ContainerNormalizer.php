@@ -57,7 +57,7 @@ class ContainerNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (\array_key_exists('iconAnyOf', $data) && $data['iconAnyOf'] !== null) {
             $value_1 = $data['iconAnyOf'];
             if (is_array($data['iconAnyOf'])) {
-                $value_1 = $this->denormalizer->denormalize($data['iconAnyOf'], \Jane\Component\OpenApi31\Tests\Expected\Model\Image::class, 'json', $context);
+                $value_1 = $this->denormalizer->denormalize($data['iconAnyOf'], \Jane\Component\OpenApi31\Tests\Expected\Model\ContainerIconAnyOfAnyOf::class, 'json', $context);
             } elseif (is_null($data['iconAnyOf'])) {
                 $value_1 = $data['iconAnyOf'];
             }

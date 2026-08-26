@@ -7,6 +7,7 @@ namespace Jane\Component\OpenApi3\Guesser\OpenApiSchema;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Guesser\ChainGuesserAwareInterface;
 use Jane\Component\JsonSchema\Guesser\ChainGuesserAwareTrait;
+use Jane\Component\JsonSchema\Guesser\ClassGuesserInterface;
 use Jane\Component\JsonSchema\Guesser\Guess\MultipleType;
 use Jane\Component\JsonSchema\Guesser\Guess\Type;
 use Jane\Component\JsonSchema\Guesser\GuesserInterface;
@@ -17,7 +18,7 @@ use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
-class AnyOfReferencefGuesser implements ChainGuesserAwareInterface, GuesserInterface, TypeGuesserInterface
+class AnyOfReferencefGuesser implements ChainGuesserAwareInterface, ClassGuesserInterface, GuesserInterface, TypeGuesserInterface
 {
     use ChainGuesserAwareTrait;
     use GuesserResolverTrait;
@@ -32,7 +33,18 @@ class AnyOfReferencefGuesser implements ChainGuesserAwareInterface, GuesserInter
 
     public function supportObject($object): bool
     {
-        return $object instanceof Schema && \is_array($object->getAnyOf()) && $object->getAnyOf()[0] instanceof Reference;
+        return $object instanceof Schema && \is_array($object->getAnyOf()) && \count($object->getAnyOf()) > 0;
+    }
+
+    public function guessClass($object, string $name, string $reference, Registry $registry): void
+    {
+        if (!($object instanceof Schema) || !\is_array($object->getAnyOf())) {
+            return;
+        }
+
+        foreach ($object->getAnyOf() as $anyOfKey => $anyOfObject) {
+            $this->chainGuesser->guessClass($anyOfObject, $name . 'AnyOf', $reference . '/anyOf/' . $anyOfKey, $registry);
+        }
     }
 
     public function guessType($object, string $name, string $reference, Registry $registry): Type

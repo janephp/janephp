@@ -68,7 +68,11 @@ class CompletedFreshInvestigationNormalizer implements DenormalizerInterface, No
         if (\array_key_exists('sections', $data)) {
             $values = [];
             foreach ($data['sections'] as $value) {
-                $values[] = $value;
+                $value_1 = $value;
+                if (is_array($value)) {
+                    $value_1 = $this->denormalizer->denormalize($value, \CreditSafe\API\Model\CompletedFreshInvestigationSectionsItemAnyOf::class, 'json', $context);
+                }
+                $values[] = $value_1;
             }
             $object->setSections($values);
             unset($data['sections']);
@@ -81,9 +85,9 @@ class CompletedFreshInvestigationNormalizer implements DenormalizerInterface, No
             $object->setTransactionID($data['transactionID']);
             unset($data['transactionID']);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value_2;
             }
         }
         return $object;
@@ -115,7 +119,11 @@ class CompletedFreshInvestigationNormalizer implements DenormalizerInterface, No
         if ($data->isInitialized('sections') && null !== $data->getSections()) {
             $values = [];
             foreach ($data->getSections() as $value) {
-                $values[] = $value;
+                $value_1 = $value;
+                if (is_object($value)) {
+                    $value_1 = $value === null ? null : new \CreditSafe\API\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+                }
+                $values[] = $value_1;
             }
             $dataArray['sections'] = $values;
         }
@@ -125,9 +133,9 @@ class CompletedFreshInvestigationNormalizer implements DenormalizerInterface, No
         if ($data->isInitialized('transactionID') && null !== $data->getTransactionID()) {
             $dataArray['transactionID'] = $data->getTransactionID();
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+                $dataArray[$key] = $value_2;
             }
         }
         return $dataArray;

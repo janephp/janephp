@@ -906,6 +906,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Generated\DigitalOcean\Model\PartnerAttachmentWritableBgp::class => \Jane\Generated\DigitalOcean\Normalizer\PartnerAttachmentWritableBgpNormalizer::class,
         
+        \Jane\Generated\DigitalOcean\Model\PartnerAttachmentUpdatableAnyOf::class => \Jane\Generated\DigitalOcean\Normalizer\PartnerAttachmentUpdatableAnyOfNormalizer::class,
+        
+        \Jane\Generated\DigitalOcean\Model\PartnerAttachmentUpdatableAnyOfBgp::class => \Jane\Generated\DigitalOcean\Normalizer\PartnerAttachmentUpdatableAnyOfBgpNormalizer::class,
+        
         \Jane\Generated\DigitalOcean\Model\PartnerAttachmentServiceKey::class => \Jane\Generated\DigitalOcean\Normalizer\PartnerAttachmentServiceKeyNormalizer::class,
         
         \Jane\Generated\DigitalOcean\Model\PartnerAttachmentRemoteRoute::class => \Jane\Generated\DigitalOcean\Normalizer\PartnerAttachmentRemoteRouteNormalizer::class,

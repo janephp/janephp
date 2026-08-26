@@ -34,7 +34,7 @@ class ReservedIpv6ListReservedIpv6sItem implements AdditionalPropertiesInterface
     /**
      * Requires `droplet:read` scope.
      *
-     * @var mixed
+     * @var array<string, mixed>|Droplet
      */
     protected $droplet;
     /**
@@ -102,7 +102,7 @@ class ReservedIpv6ListReservedIpv6sItem implements AdditionalPropertiesInterface
     /**
      * Requires `droplet:read` scope.
      *
-     * @return mixed
+     * @return array<string, mixed>|Droplet
      */
     public function getDroplet()
     {
@@ -111,7 +111,7 @@ class ReservedIpv6ListReservedIpv6sItem implements AdditionalPropertiesInterface
     /**
      * Requires `droplet:read` scope.
      *
-     * @param mixed $droplet
+     * @param array<string, mixed>|Droplet $droplet
      *
      * @return self
      */

@@ -34,7 +34,7 @@ class ReservedIpv6 implements AdditionalPropertiesInterface
      */
     protected $regionSlug;
     /**
-     * @var mixed
+     * @var array<string, mixed>|Droplet
      */
     protected $droplet;
     /**
@@ -104,14 +104,14 @@ class ReservedIpv6 implements AdditionalPropertiesInterface
         return $this;
     }
     /**
-     * @return mixed
+     * @return array<string, mixed>|Droplet
      */
     public function getDroplet()
     {
         return $this->droplet;
     }
     /**
-     * @param mixed $droplet
+     * @param array<string, mixed>|Droplet $droplet
      *
      * @return self
      */

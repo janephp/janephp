@@ -312,6 +312,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \CreditSafe\API\Model\CompletedFreshInvestigationSearchCriteriaAddress::class => \CreditSafe\API\Normalizer\CompletedFreshInvestigationSearchCriteriaAddressNormalizer::class,
         
+        \CreditSafe\API\Model\CompletedFreshInvestigationSectionsItemAnyOf::class => \CreditSafe\API\Normalizer\CompletedFreshInvestigationSectionsItemAnyOfNormalizer::class,
+        
         \CreditSafe\API\Model\CompletedFreshInvestigationStatus::class => \CreditSafe\API\Normalizer\CompletedFreshInvestigationStatusNormalizer::class,
         
         \CreditSafe\API\Model\SubmittedFreshInvestigationRepsonse::class => \CreditSafe\API\Normalizer\SubmittedFreshInvestigationRepsonseNormalizer::class,

@@ -42,7 +42,7 @@ class DropletSingleCreate implements AdditionalPropertiesInterface
     /**
      * An array containing the IDs or fingerprints of the SSH keys that you wish to embed in the Droplet's root account upon creation. You must add the keys to your team before they can be embedded on a Droplet.<br>Requires `ssh_key:read` scope.
      *
-     * @var list<mixed>
+     * @var list<string>|list<int>
      */
     protected $sshKeys = array();
     /**
@@ -196,7 +196,7 @@ class DropletSingleCreate implements AdditionalPropertiesInterface
     /**
      * An array containing the IDs or fingerprints of the SSH keys that you wish to embed in the Droplet's root account upon creation. You must add the keys to your team before they can be embedded on a Droplet.<br>Requires `ssh_key:read` scope.
      *
-     * @return list<mixed>
+     * @return list<string>|list<int>
      */
     public function getSshKeys(): array
     {
@@ -205,7 +205,7 @@ class DropletSingleCreate implements AdditionalPropertiesInterface
     /**
      * An array containing the IDs or fingerprints of the SSH keys that you wish to embed in the Droplet's root account upon creation. You must add the keys to your team before they can be embedded on a Droplet.<br>Requires `ssh_key:read` scope.
      *
-     * @param list<mixed> $sshKeys
+     * @param list<string>|list<int> $sshKeys
      *
      * @return self
      */

@@ -20,6 +20,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Component\OpenApi31\Tests\Expected\Model\Container::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\ContainerNormalizer::class,
         
+        \Jane\Component\OpenApi31\Tests\Expected\Model\ContainerIconAnyOfAnyOf::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\ContainerIconAnyOfAnyOfNormalizer::class,
+        
         \Jane\Component\OpenApi31\Tests\Expected\Model\Image::class => \Jane\Component\OpenApi31\Tests\Expected\Normalizer\ImageNormalizer::class,
         
         \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi31\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
