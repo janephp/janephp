@@ -155,6 +155,38 @@ class AdditionalAndPatternPropertiesTest extends TestCase
 
         self::assertSame(2, $consume($model));
     }
+
+    public function testUninitializedNonNullableGetterDoesNotBreakToArray(): void
+    {
+        $model = new StubNonNullableGetterModel();
+        $model['extra'] = 'kept';
+
+        self::assertSame(['status' => 'draft', 'extra' => 'kept'], $model->toArray());
+        self::assertSame('{"status":"draft","extra":"kept"}', json_encode($model));
+        self::assertCount(2, $model);
+        self::assertSame(['status' => 'draft', 'extra' => 'kept'], iterator_to_array($model));
+    }
+
+    public function testOffsetExistsOnUninitializedNonNullableProperty(): void
+    {
+        $model = new StubNonNullableGetterModel();
+
+        self::assertFalse($model->offsetExists('id'));
+
+        $model->setId('i');
+
+        self::assertTrue($model->offsetExists('id'));
+        self::assertSame(['id' => 'i', 'status' => 'draft'], $model->toArray());
+    }
+
+    public function testUninitializedPropertyWithDefaultValueIsStillExposed(): void
+    {
+        $model = new StubNonNullableGetterModel();
+        $model->setId('i');
+
+        self::assertTrue($model->offsetExists('status'));
+        self::assertSame(['id' => 'i', 'status' => 'draft'], $model->toArray());
+    }
 }
 
 /**
@@ -204,5 +236,56 @@ class StubAdditionalPropertiesModel implements \AdditionalPropertiesInterface
     {
         $this->initialized['name'] = true;
         $this->name = $name;
+    }
+}
+
+/**
+ * Mirrors a generated model with a required property: the backing field is
+ * untyped (defaults to null) while the getter is non-nullable, so calling the
+ * getter before the property is initialized throws a TypeError (GH#1034).
+ */
+class StubNonNullableGetterModel implements \AdditionalPropertiesInterface
+{
+    use \AdditionalAndPatternProperties;
+
+    private array $initialized = [];
+
+    protected $id;
+
+    protected $status = 'draft';
+
+    public function isInitialized(string $property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
+    public function definedProperties(): array
+    {
+        return [
+            'id' => ['id', 'getId', 'setId'],
+            'status' => ['status', 'getStatus', 'setStatus'],
+        ];
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    public function setId(string $id): void
+    {
+        $this->initialized['id'] = true;
+        $this->id = $id;
+    }
+
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): void
+    {
+        $this->initialized['status'] = true;
+        $this->status = $status;
     }
 }
