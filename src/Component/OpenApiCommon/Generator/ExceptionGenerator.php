@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApiCommon\Generator;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\File;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
+use Jane\Component\OpenApiCommon\Generator\Traits\StatusCodeRangeTrait;
 use Jane\Component\OpenApiCommon\Naming\ExceptionNaming;
 use Jane\Component\OpenApiCommon\Registry\Registry;
 use PhpParser\Comment\Doc;
@@ -18,6 +19,8 @@ use PhpParser\Node\Stmt;
 
 class ExceptionGenerator
 {
+    use StatusCodeRangeTrait;
+
     /** @var array<int, string> */
     public static array $statusTexts = [
         400 => 'Bad Request',
@@ -71,14 +74,19 @@ class ExceptionGenerator
         $this->exceptionNaming = new ExceptionNaming();
     }
 
-    public function generate(string $functionName, int $status, Context $context, ?ClassGuess $classGuess, bool $isArray, ?string $classFqdn, ?string $description): ?string
+    public function generate(string $functionName, int|string $status, Context $context, ?ClassGuess $classGuess, bool $isArray, ?string $classFqdn, ?string $description): ?string
     {
-        if ($status < 400) {
+        $isRange = $this->isStatusCodeRange((string) $status);
+        $lowerBound = $isRange ? $this->statusCodeRangeBounds((string) $status)[0] : (int) $status;
+
+        if ($lowerBound < 400) {
             return null;
         }
 
-        if ((null === $description || '' === $description) && \array_key_exists($status, self::$statusTexts)) {
-            $description = self::$statusTexts[$status];
+        $status = $isRange ? (string) $status : (int) $status;
+
+        if ((null === $description || '' === $description) && \array_key_exists((int) $status, self::$statusTexts)) {
+            $description = self::$statusTexts[(int) $status];
         }
 
         $schema = $context->getCurrentSchema();
@@ -396,16 +404,25 @@ EOD
         }
     }
 
-    private function createHighLevelException(Context $context, int $code): string
+    private function createHighLevelException(Context $context, int|string $status): string
     {
         $schema = $context->getCurrentSchema();
-        $highLevelExceptionName = $this->exceptionNaming->generateExceptionName($code);
+        $isRange = $this->isStatusCodeRange((string) $status);
+        $lowerBound = $isRange ? $this->statusCodeRangeBounds((string) $status)[0] : (int) $status;
+        $highLevelExceptionName = $this->exceptionNaming->generateExceptionName($status);
         $unique = $schema->getRootName() . $schema->getDirectory();
 
-        if (\array_key_exists($unique, $this->initialized) && ($this->initialized[$unique] ?? false) && ($this->initialized[$unique][$code] ?? false)) {
+        if (\array_key_exists($unique, $this->initialized) && ($this->initialized[$unique] ?? false) && ($this->initialized[$unique][$status] ?? false)) {
             return $highLevelExceptionName;
         }
-        $this->initialized[$unique][$code] = true;
+        $this->initialized[$unique][$status] = true;
+
+        $parentConstructorArgs = [
+            new Node\Arg(new Expr\Variable('message')),
+        ];
+        if (!$isRange) {
+            $parentConstructorArgs[] = new Node\Arg(new Scalar\LNumber((int) $status));
+        }
 
         $highLevelException = new Stmt\Namespace_(new Name($schema->getNamespace() . '\\Exception'), [
             new Stmt\Class_(
@@ -414,7 +431,7 @@ EOD
                     'flags' => Modifiers::ABSTRACT,
                     'extends' => new Name('\\RuntimeException'),
                     'implements' => [
-                        new Name($code >= 500 ? 'ServerException' : 'ClientException'),
+                        new Name($lowerBound >= 500 ? 'ServerException' : 'ClientException'),
                         new Name('WithResponseInterface'),
                     ],
                     'stmts' => [
@@ -424,10 +441,7 @@ EOD
                                 new Param(new Expr\Variable('message'), null, new Name('string')),
                             ],
                             'stmts' => [
-                                new Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', [
-                                    new Node\Arg(new Expr\Variable('message')),
-                                    new Node\Arg(new Scalar\LNumber($code)),
-                                ])),
+                                new Stmt\Expression(new Expr\StaticCall(new Name('parent'), '__construct', $parentConstructorArgs)),
                             ],
                         ]),
                     ],
