@@ -12,6 +12,7 @@ use Jane\Component\OpenApi31\JsonSchema\Normalizer\ResponseNormalizer;
 use Jane\Component\OpenApiCommon\Generator\ContentType;
 use Jane\Component\OpenApiCommon\Generator\ExceptionGenerator;
 use Jane\Component\OpenApiCommon\Generator\Traits\OpenApiNumberTypeResolverTrait;
+use Jane\Component\OpenApiCommon\Generator\Traits\StatusCodeRangeTrait;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\Component\OpenApiCommon\Naming\XNamespaceResolver;
 use Jane\Component\OpenApiCommon\Registry\Registry;
@@ -27,6 +28,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 trait GetTransformResponseBodyTrait
 {
     use OpenApiNumberTypeResolverTrait;
+    use StatusCodeRangeTrait;
 
     public function getTransformResponseBody(OperationGuess $operation, string $endpointName, GuessClass $guessClass, ExceptionGenerator $exceptionGenerator, Context $context): array
     {
@@ -41,7 +43,12 @@ trait GetTransformResponseBodyTrait
         $throwTypes = [];
 
         if ($operation->getOperation()->getResponses()) {
-            foreach ($operation->getOperation()->getResponses() as $status => $response) {
+            $responses = $operation->getOperation()->getResponses();
+            $statuses = array_keys(iterator_to_array($responses));
+            usort($statuses, fn (int|string $a, int|string $b): int => (int) $this->isStatusCodeRange($a) <=> (int) $this->isStatusCodeRange($b));
+
+            foreach ($statuses as $status) {
+                $response = $responses[$status];
                 $reference = $operation->getReference() . '/responses/' . $status;
 
                 if ($response instanceof Reference) {
@@ -194,10 +201,7 @@ EOD
             }
 
             return [$returnTypes, $throwTypes, [new Stmt\If_(
-                new Expr\BinaryOp\Identical(
-                    new Scalar\LNumber((int) $status),
-                    new Expr\Variable('status')
-                ),
+                $this->createStatusCondition($status),
                 [
                     'stmts' => [$returnStatement],
                 ]
@@ -264,10 +268,7 @@ EOD
                         new Expr\ConstFetch(new Name('false'))
                     ),
                     new Expr\BinaryOp\BooleanAnd(
-                        new Expr\BinaryOp\Identical(
-                            new Scalar\LNumber((int) $status),
-                            new Expr\Variable('status')
-                        ),
+                        $this->createStatusCondition($status),
                         $statements[0]->cond
                     )
                 ),
@@ -278,10 +279,7 @@ EOD
         }
 
         return [$returnTypes, $throwTypes, [new Stmt\If_(
-            new Expr\BinaryOp\Identical(
-                new Scalar\LNumber((int) $status),
-                new Expr\Variable('status')
-            ),
+            $this->createStatusCondition($status),
             [
                 'stmts' => $statements,
             ]
@@ -329,10 +327,11 @@ EOD
 
         /** @var Registry $registry */
         $registry = $context->getRegistry();
-        if ((int) $status >= 400 && $registry->getGenerateErrorExceptions()) {
+        $lowerBound = $this->isStatusCodeRange($status) ? $this->statusCodeRangeBounds($status)[0] : (int) $status;
+        if ($lowerBound >= 400 && $registry->getGenerateErrorExceptions()) {
             $exceptionName = $exceptionGenerator->generate(
                 $name,
-                (int) $status,
+                $status,
                 $context,
                 $classGuess,
                 $array,
@@ -377,5 +376,22 @@ EOD
             'array' => 'array',
             default => null,
         };
+    }
+
+    private function createStatusCondition(int|string $status): Expr\BinaryOp
+    {
+        if ($this->isStatusCodeRange($status)) {
+            [$min, $max] = $this->statusCodeRangeBounds((string) $status);
+
+            return new Expr\BinaryOp\BooleanAnd(
+                new Expr\BinaryOp\GreaterOrEqual(new Expr\Variable('status'), new Scalar\LNumber($min)),
+                new Expr\BinaryOp\SmallerOrEqual(new Expr\Variable('status'), new Scalar\LNumber($max))
+            );
+        }
+
+        return new Expr\BinaryOp\Identical(
+            new Scalar\LNumber((int) $status),
+            new Expr\Variable('status')
+        );
     }
 }
