@@ -7,7 +7,6 @@ use Jane\Component\JsonSchema\Guesser\ChainGuesserAwareTrait;
 use Jane\Component\JsonSchema\Guesser\ClassGuesserInterface;
 use Jane\Component\JsonSchema\Guesser\GuesserInterface;
 use Jane\Component\JsonSchema\Guesser\GuesserResolverTrait;
-use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi31\JsonSchema\Model\Components;
@@ -17,6 +16,7 @@ use Jane\Component\OpenApi31\JsonSchema\Model\Parameter;
 use Jane\Component\OpenApi31\JsonSchema\Model\PathItem;
 use Jane\Component\OpenApi31\JsonSchema\Model\RequestBody;
 use Jane\Component\OpenApi31\JsonSchema\Model\Response;
+use Jane\Component\OpenApi31\JsonSchema\Model\Schema;
 use Jane\Component\OpenApi31\JsonSchema\Normalizer\ResponseNormalizer;
 use Jane\Component\OpenApiCommon\Guesser\Guess\OperationGuess;
 use Jane\Component\OpenApiCommon\Naming\OperationNamingFactory;
@@ -409,22 +409,22 @@ class OpenApiGuesser implements GuesserInterface, ClassGuesserInterface, ChainGu
         return $requestBody;
     }
 
-    private function getApplicationProblemJsonDefaultSchema(): JsonSchema
+    private function getApplicationProblemJsonDefaultSchema(): Schema
     {
-        $schema = new JsonSchema();
+        $schema = new Schema();
         $schema->setType('object');
 
-        $status = new JsonSchema();
+        $status = new Schema();
         $status->setType('integer');
 
-        $title = new JsonSchema();
+        $title = new Schema();
         $title->setType('string');
 
-        $type = new JsonSchema();
+        $type = new Schema();
         $type->setType('string');
         $type->setDefault('about:blank');
 
-        $detail = new JsonSchema();
+        $detail = new Schema();
         $detail->setType('string');
 
         $schema->setProperties([
