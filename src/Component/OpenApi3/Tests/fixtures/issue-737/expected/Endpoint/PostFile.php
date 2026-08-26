@@ -25,13 +25,26 @@ class PostFile extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Ba
         if ($this->body instanceof \Jane\Component\OpenApi3\Tests\Expected\Model\FilePostBody) {
             $bodyBuilder = new \Http\Message\MultipartStream\MultipartStreamBuilder($streamFactory);
             $formParameters = $serializer->normalize($this->body, 'json');
+            $partOptions = ['fichier' => ['filename' => 'fichier']];
             foreach ($formParameters as $key => $value) {
                 $value = is_int($value) ? (string) $value : $value;
                 $value = is_bool($value) ? $value ? 'true' : 'false' : $value;
                 if (is_array($value) || $value instanceof \stdClass) {
                     $value = $serializer->serialize((array) $value, 'json');
                 }
-                $bodyBuilder->addResource($key, $value);
+                $resourceOptions = $partOptions[$key] ?? [];
+                if (isset($resourceOptions['filename'])) {
+                    $uri = null;
+                    if ($value instanceof \Psr\Http\Message\StreamInterface) {
+                        $uri = $value->getMetadata('uri');
+                    } elseif (is_resource($value)) {
+                        $uri = stream_get_meta_data($value)['uri'] ?? null;
+                    }
+                    if (is_string($uri) && is_file($uri)) {
+                        unset($resourceOptions['filename']);
+                    }
+                }
+                $bodyBuilder->addResource($key, $value, $resourceOptions);
             }
             return [['Content-Type' => ['multipart/form-data; boundary="' . ($bodyBuilder->getBoundary() . '"')]], $bodyBuilder->build()];
         }

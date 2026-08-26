@@ -32,12 +32,25 @@ class UploadImage extends \Jane\Component\OpenApi31\Tests\Expected\Runtime\Clien
         if ($this->body instanceof \Jane\Component\OpenApi31\Tests\Expected\Model\PlanetsPlanetIdImagePostBody) {
             $bodyBuilder = new \Http\Message\MultipartStream\MultipartStreamBuilder($streamFactory);
             $formParameters = $serializer->normalize($this->body, 'json');
+            $partOptions = ['image' => ['filename' => 'image']];
             foreach ($formParameters as $key => $value) {
                 $value = is_int($value) ? (string) $value : $value;
                 if (is_array($value) || $value instanceof \stdClass) {
                     $value = $serializer->serialize((array) $value, 'json');
                 }
-                $bodyBuilder->addResource($key, $value);
+                $resourceOptions = $partOptions[$key] ?? [];
+                if (isset($resourceOptions['filename'])) {
+                    $uri = null;
+                    if ($value instanceof \Psr\Http\Message\StreamInterface) {
+                        $uri = $value->getMetadata('uri');
+                    } elseif (is_resource($value)) {
+                        $uri = stream_get_meta_data($value)['uri'] ?? null;
+                    }
+                    if (is_string($uri) && is_file($uri)) {
+                        unset($resourceOptions['filename']);
+                    }
+                }
+                $bodyBuilder->addResource($key, $value, $resourceOptions);
             }
             return [['Content-Type' => ['multipart/form-data; boundary="' . ($bodyBuilder->getBoundary() . '"')]], $bodyBuilder->build()];
         }

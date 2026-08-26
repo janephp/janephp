@@ -1,31 +1,31 @@
 <?php
 
-namespace Jane\Component\OpenApi3\Tests\Expected\Endpoint;
+namespace Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Endpoint;
 
-class TestFormFileParameters extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Endpoint
+class UploadDocument extends \Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Runtime\Client\BaseEndpoint implements \Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Runtime\Client\Endpoint
 {
     /**
-     * @param null|\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormFilePostBody $requestBody
+     * @param \Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Model\DocumentUpload $requestBody
      */
-    public function __construct(?\Jane\Component\OpenApi3\Tests\Expected\Model\TestFormFilePostBody $requestBody = null)
+    public function __construct(\Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Model\DocumentUpload $requestBody)
     {
         $this->body = $requestBody;
     }
-    use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;
+    use \Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
     }
     public function getUri(): string
     {
-        return '/test-form-file';
+        return '/documents';
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if ($this->body instanceof \Jane\Component\OpenApi3\Tests\Expected\Model\TestFormFilePostBody) {
+        if ($this->body instanceof \Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Model\DocumentUpload) {
             $bodyBuilder = new \Http\Message\MultipartStream\MultipartStreamBuilder($streamFactory);
             $formParameters = $serializer->normalize($this->body, 'json');
-            $partOptions = ['testFile' => ['filename' => 'testFile']];
+            $partOptions = ['file' => ['filename' => 'file', 'headers' => ['Content-Type' => 'application/pdf']], 'preview' => ['filename' => 'preview']];
             foreach ($formParameters as $key => $value) {
                 $value = is_int($value) ? (string) $value : $value;
                 $value = is_bool($value) ? $value ? 'true' : 'false' : $value;
@@ -50,18 +50,22 @@ class TestFormFileParameters extends \Jane\Component\OpenApi3\Tests\Expected\Run
         }
         return [[], null];
     }
+    public function getExtraHeaders(): array
+    {
+        return ['Accept' => ['application/json']];
+    }
     /**
      * {@inheritdoc}
      *
      *
-     * @return null
+     * @return null|\Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Model\Document
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (200 === $status) {
-            return null;
+        if (is_null($contentType) === false && (201 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Model\Document', 'json');
         }
     }
     public function getAuthenticationScopes(): array
