@@ -54,12 +54,22 @@ class ReservedIpv6Normalizer implements DenormalizerInterface, NormalizerInterfa
             unset($data['region_slug']);
         }
         if (\array_key_exists('droplet', $data)) {
-            $object->setDroplet($data['droplet']);
+            $value = $data['droplet'];
+            if (is_array($data['droplet']) && $this->isOnlyNumericKeys($data['droplet'])) {
+                $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
+                foreach ($data['droplet'] as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            } elseif (is_array($data['droplet']) and \array_key_exists('id', $data['droplet']) and \array_key_exists('name', $data['droplet']) and \array_key_exists('memory', $data['droplet']) and \array_key_exists('vcpus', $data['droplet']) and \array_key_exists('disk', $data['droplet']) and \array_key_exists('locked', $data['droplet']) and (\array_key_exists('status', $data['droplet']) and ($data['droplet']['status'] == 'new' or $data['droplet']['status'] == 'active' or $data['droplet']['status'] == 'off' or $data['droplet']['status'] == 'archive')) and \array_key_exists('created_at', $data['droplet']) and \array_key_exists('features', $data['droplet']) and \array_key_exists('backup_ids', $data['droplet']) and \array_key_exists('next_backup_window', $data['droplet']) and \array_key_exists('snapshot_ids', $data['droplet']) and \array_key_exists('image', $data['droplet']) and \array_key_exists('volume_ids', $data['droplet']) and \array_key_exists('size', $data['droplet']) and \array_key_exists('size_slug', $data['droplet']) and \array_key_exists('networks', $data['droplet']) and \array_key_exists('region', $data['droplet']) and \array_key_exists('tags', $data['droplet'])) {
+                $value = $this->denormalizer->denormalize($data['droplet'], \Jane\Generated\DigitalOcean\Model\Droplet::class, 'json', $context);
+            }
+            $object->setDroplet($value);
             unset($data['droplet']);
         }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+        foreach ($data as $key_1 => $value_2) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $object[$key_1] = $value_2;
             }
         }
         return $object;
@@ -77,11 +87,21 @@ class ReservedIpv6Normalizer implements DenormalizerInterface, NormalizerInterfa
             $dataArray['region_slug'] = $data->getRegionSlug();
         }
         if ($data->isInitialized('droplet') && null !== $data->getDroplet()) {
-            $dataArray['droplet'] = $data->getDroplet();
+            $value = $data->getDroplet();
+            if (is_object($data->getDroplet())) {
+                $values = new \Jane\Generated\DigitalOcean\Runtime\JsonObject();
+                foreach ($data->getDroplet() as $key => $value_1) {
+                    $values[$key] = $value_1;
+                }
+                $value = $values;
+            } elseif (is_object($data->getDroplet())) {
+                $value = $data->getDroplet() === null ? null : new \Jane\Generated\DigitalOcean\Runtime\JsonObject($this->normalizer->normalize($data->getDroplet(), 'json', $context));
+            }
+            $dataArray['droplet'] = $value;
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+        foreach ($data->additionalPropertyEntries() as $key_1 => $value_2) {
+            if (preg_match('/.*/', (string) $key_1)) {
+                $dataArray[$key_1] = $value_2;
             }
         }
         return $dataArray;

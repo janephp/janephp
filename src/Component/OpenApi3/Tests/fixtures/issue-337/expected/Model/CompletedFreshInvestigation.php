@@ -44,7 +44,7 @@ class CompletedFreshInvestigation implements AdditionalPropertiesInterface
      */
     protected $searchCriteria;
     /**
-     * @var list<mixed>
+     * @var list<CompletedFreshInvestigationSectionsItemAnyOf>
      */
     protected $sections;
     /**
@@ -182,14 +182,14 @@ class CompletedFreshInvestigation implements AdditionalPropertiesInterface
         return $this;
     }
     /**
-     * @return list<mixed>
+     * @return list<CompletedFreshInvestigationSectionsItemAnyOf>
      */
     public function getSections(): array
     {
         return $this->sections;
     }
     /**
-     * @param list<mixed> $sections
+     * @param list<CompletedFreshInvestigationSectionsItemAnyOf> $sections
      *
      * @return self
      */

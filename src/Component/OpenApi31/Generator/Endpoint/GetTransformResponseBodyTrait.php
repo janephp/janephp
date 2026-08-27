@@ -288,7 +288,16 @@ EOD
 
     private function createContentDenormalizationStatement(string $name, string $status, $schema, Context $context, string $reference, string $description, GuessClass $guessClass, ExceptionGenerator $exceptionGenerator): array
     {
+        $originalSchema = $schema;
         $classGuess = $guessClass->guessClass($schema, $reference, $context->getRegistry(), $array);
+
+        /** @var Registry $registry */
+        $registry = $context->getRegistry();
+        if ((int) $status >= 400 && $registry->getGenerateErrorExceptions() && null === $classGuess) {
+            $compositeClassGuesses = $guessClass->guessCompositeClasses($originalSchema, $reference, $context->getRegistry());
+            $classGuess = $compositeClassGuesses[0] ?? null;
+        }
+
         $returnType = 'null';
         $throwType = null;
         $serializeStmt = new Expr\ConstFetch(new Name('null'));
@@ -325,9 +334,7 @@ EOD
 
         $contentStatement = new Stmt\Return_($serializeStmt);
 
-        /** @var Registry $registry */
-        $registry = $context->getRegistry();
-        $lowerBound = $this->isStatusCodeRange($status) ? $this->statusCodeRangeBounds($status)[0] : (int) $status;
+$lowerBound = $this->isStatusCodeRange($status) ? $this->statusCodeRangeBounds($status)[0] : (int) $status;
         if ($lowerBound >= 400 && $registry->getGenerateErrorExceptions()) {
             $exceptionName = $exceptionGenerator->generate(
                 $name,

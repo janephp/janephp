@@ -7,6 +7,7 @@ namespace Jane\Component\OpenApi31\Guesser\OpenApiSchema;
 use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Guesser\ChainGuesserAwareInterface;
 use Jane\Component\JsonSchema\Guesser\ChainGuesserAwareTrait;
+use Jane\Component\JsonSchema\Guesser\ClassGuesserInterface;
 use Jane\Component\JsonSchema\Guesser\Guess\MultipleType;
 use Jane\Component\JsonSchema\Guesser\Guess\Type;
 use Jane\Component\JsonSchema\Guesser\GuesserInterface;
@@ -17,7 +18,7 @@ use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi31\JsonSchema\Model\Schema;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
-class AnyOfReferencefGuesser implements ChainGuesserAwareInterface, GuesserInterface, TypeGuesserInterface
+class AnyOfReferencefGuesser implements ChainGuesserAwareInterface, ClassGuesserInterface, GuesserInterface, TypeGuesserInterface
 {
     use ChainGuesserAwareTrait;
     use GuesserResolverTrait;
@@ -32,26 +33,18 @@ class AnyOfReferencefGuesser implements ChainGuesserAwareInterface, GuesserInter
 
     public function supportObject($object): bool
     {
-        if (!($object instanceof Schema) || !\is_array($object->getAnyOf()) || [] === $object->getAnyOf()) {
-            return false;
+        return ($object instanceof Schema) && \is_array($object->getAnyOf()) && [] !== $object->getAnyOf();
+    }
+
+    public function guessClass($object, string $name, string $reference, Registry $registry): void
+    {
+        if (!($object instanceof Schema) || !\is_array($object->getAnyOf())) {
+            return;
         }
 
-        if ($object->getAnyOf()[0] instanceof Reference) {
-            return true;
+        foreach ($object->getAnyOf() as $anyOfKey => $anyOfObject) {
+            $this->chainGuesser->guessClass($anyOfObject, $name . 'AnyOf', $reference . '/anyOf/' . $anyOfKey, $registry);
         }
-
-        foreach ($object->getAnyOf() as $anyOf) {
-            if (!$anyOf instanceof Schema || !\is_array($anyOf->getAllOf())) {
-                continue;
-            }
-            foreach ($anyOf->getAllOf() as $allOf) {
-                if ($allOf instanceof Reference) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
     }
 
     public function guessType($object, string $name, string $reference, Registry $registry): Type

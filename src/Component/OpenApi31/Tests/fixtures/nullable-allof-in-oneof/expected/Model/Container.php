@@ -20,7 +20,7 @@ class Container implements AdditionalPropertiesInterface
      */
     protected $iconOneOf;
     /**
-     * @var Image|null
+     * @var ContainerIconAnyOfAnyOf|null
      */
     protected $iconAnyOf;
     /**
@@ -42,18 +42,18 @@ class Container implements AdditionalPropertiesInterface
         return $this;
     }
     /**
-     * @return Image|null
+     * @return ContainerIconAnyOfAnyOf|null
      */
-    public function getIconAnyOf(): ?Image
+    public function getIconAnyOf(): ?ContainerIconAnyOfAnyOf
     {
         return $this->iconAnyOf;
     }
     /**
-     * @param Image|null $iconAnyOf
+     * @param ContainerIconAnyOfAnyOf|null $iconAnyOf
      *
      * @return self
      */
-    public function setIconAnyOf(?Image $iconAnyOf): self
+    public function setIconAnyOf(?ContainerIconAnyOfAnyOf $iconAnyOf): self
     {
         $this->initialized['iconAnyOf'] = true;
         $this->iconAnyOf = $iconAnyOf;

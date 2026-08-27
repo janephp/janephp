@@ -73,7 +73,13 @@ class DropletCreateNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('ssh_keys', $data)) {
             $values = [];
             foreach ($data['ssh_keys'] as $value_1) {
-                $values[] = $value_1;
+                $value_2 = $value_1;
+                if (is_string($value_1)) {
+                    $value_2 = $value_1;
+                } elseif (is_int($value_1)) {
+                    $value_2 = $value_1;
+                }
+                $values[] = $value_2;
             }
             $object->setSshKeys($values);
             unset($data['ssh_keys']);
@@ -96,8 +102,8 @@ class DropletCreateNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('tags', $data) && $data['tags'] !== null) {
             $values_1 = [];
-            foreach ($data['tags'] as $value_2) {
-                $values_1[] = $value_2;
+            foreach ($data['tags'] as $value_3) {
+                $values_1[] = $value_3;
             }
             $object->setTags($values_1);
             unset($data['tags']);
@@ -116,8 +122,8 @@ class DropletCreateNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (\array_key_exists('volumes', $data)) {
             $values_2 = [];
-            foreach ($data['volumes'] as $value_3) {
-                $values_2[] = $value_3;
+            foreach ($data['volumes'] as $value_4) {
+                $values_2[] = $value_4;
             }
             $object->setVolumes($values_2);
             unset($data['volumes']);
@@ -130,9 +136,9 @@ class DropletCreateNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->setWithDropletAgent($data['with_droplet_agent']);
             unset($data['with_droplet_agent']);
         }
-        foreach ($data as $key => $value_4) {
+        foreach ($data as $key => $value_5) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_4;
+                $object[$key] = $value_5;
             }
         }
         return $object;
@@ -154,7 +160,13 @@ class DropletCreateNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('sshKeys') && null !== $data->getSshKeys()) {
             $values = [];
             foreach ($data->getSshKeys() as $value_1) {
-                $values[] = $value_1;
+                $value_2 = $value_1;
+                if (is_string($value_1)) {
+                    $value_2 = $value_1;
+                } elseif (is_int($value_1)) {
+                    $value_2 = $value_1;
+                }
+                $values[] = $value_2;
             }
             $dataArray['ssh_keys'] = $values;
         }
@@ -172,8 +184,8 @@ class DropletCreateNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if ($data->isInitialized('tags') && null !== $data->getTags()) {
             $values_1 = [];
-            foreach ($data->getTags() as $value_2) {
-                $values_1[] = $value_2;
+            foreach ($data->getTags() as $value_3) {
+                $values_1[] = $value_3;
             }
             $dataArray['tags'] = $values_1;
         }
@@ -185,8 +197,8 @@ class DropletCreateNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if ($data->isInitialized('volumes') && null !== $data->getVolumes()) {
             $values_2 = [];
-            foreach ($data->getVolumes() as $value_3) {
-                $values_2[] = $value_3;
+            foreach ($data->getVolumes() as $value_4) {
+                $values_2[] = $value_4;
             }
             $dataArray['volumes'] = $values_2;
         }
@@ -196,9 +208,9 @@ class DropletCreateNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('withDropletAgent') && null !== $data->getWithDropletAgent()) {
             $dataArray['with_droplet_agent'] = $data->getWithDropletAgent();
         }
-        foreach ($data->additionalPropertyEntries() as $key => $value_4) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_5) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_4;
+                $dataArray[$key] = $value_5;
             }
         }
         return $dataArray;

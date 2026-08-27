@@ -40,6 +40,66 @@ class GuessClass
         return $registry->getClass($reference);
     }
 
+    /**
+     * Collects the ClassGuess registered for each branch of a root-level anyOf/oneOf schema.
+     *
+     * Unlike allOf, anyOf/oneOf schemas have no ClassGuess registered at their own reference,
+     * so guessClass() cannot resolve them. Branch classes are registered either at the branch
+     * merged URI (for $ref branches) or at '<reference>/<keyword>/<index>' (for inline branches).
+     *
+     * This method never modifies $schema: pass the original (possibly unresolved) schema.
+     *
+     * @return ClassGuess[]
+     */
+    public function guessCompositeClasses($schema, string $reference, Registry $registry): array
+    {
+        if ($schema instanceof Reference) {
+            [$reference, $schema] = $this->resolve($schema, $this->schemaClass);
+        }
+
+        if (!$schema instanceof $this->schemaClass) {
+            return [];
+        }
+
+        $classGuesses = [];
+
+        foreach (['anyOf', 'oneOf'] as $keyword) {
+            $getter = 'get' . ucfirst($keyword);
+
+            if (!method_exists($schema, $getter)) {
+                continue;
+            }
+
+            $branches = $schema->{$getter}();
+
+            if (!\is_array($branches)) {
+                continue;
+            }
+
+            foreach ($branches as $key => $branch) {
+                if ($branch instanceof Reference) {
+                    $branchReference = (string) $branch->getMergedUri();
+
+                    if ($branchReference === (string) $branch->getMergedUri()->withFragment('')) {
+                        $branchReference .= '#';
+                    }
+
+                    $classGuess = $registry->getClass($branchReference);
+                } elseif ($branch instanceof $this->schemaClass) {
+                    $classGuess = $registry->getClass($reference . '/' . $keyword . '/' . $key);
+                } else {
+                    continue;
+                }
+
+                if (null !== $classGuess) {
+                    $classGuesses[] = $classGuess;
+                }
+            }
+        }
+
+        return $classGuesses;
+    }
+
     public function resolve(Reference $reference, string $class): array
     {
         $result = $reference;
