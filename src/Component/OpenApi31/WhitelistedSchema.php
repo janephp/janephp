@@ -95,7 +95,7 @@ class WhitelistedSchema implements WhitelistFetchInterface
             foreach ($response->getContent() as $contentType => $content) {
                 $baseContentType = ContentType::withoutParameters($contentType);
 
-                if ('application/json' === $baseContentType || str_ends_with($baseContentType, '+json')) {
+                if (\in_array($baseContentType, ['application/json', 'application/x-www-form-urlencoded'], true) || str_ends_with($baseContentType, '+json')) {
                     $contentReference = $operationGuess->getReference() . '/content/' . $contentType . '/schema';
                     $schema = $content->getSchema();
                     $classGuess = $this->guessClass->guessClass($schema, $contentReference, $registry);

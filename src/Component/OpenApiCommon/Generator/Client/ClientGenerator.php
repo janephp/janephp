@@ -114,6 +114,9 @@ trait ClientGenerator
                                                 ])),
                                             ])
                                         ),
+                                        new Expr\ArrayItem(
+                                            new Expr\New_(new Name('\\' . $context->getCurrentSchema()->getNamespace() . '\\Runtime\\Client\\FormEncoder'))
+                                        ),
                                     ])
                                 ),
                             ]

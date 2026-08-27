@@ -116,6 +116,7 @@ class CustomClientServerPathRuntimeTest extends TestCase
         require_once $dir . '/Runtime/Client/Endpoint.php';
         require_once $dir . '/Runtime/Client/EndpointTrait.php';
         require_once $dir . '/Runtime/Client/BaseEndpoint.php';
+        require_once $dir . '/Runtime/Client/FormEncoder.php';
         require_once $dir . '/Runtime/Normalizer/CheckArray.php';
         require_once $dir . '/Runtime/Normalizer/ValidatorTrait.php';
         require_once $dir . '/Runtime/Normalizer/ReferenceNormalizer.php';
