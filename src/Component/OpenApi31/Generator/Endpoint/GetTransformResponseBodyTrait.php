@@ -251,6 +251,43 @@ EOD
                         'stmts' => [$returnStatement],
                     ]
                 );
+            } elseif ('application/x-www-form-urlencoded' === $baseContentType) {
+                [$returnType, $throwType, $returnStatement] = $this->createContentDenormalizationStatement(
+                    $name,
+                    $status,
+                    $content->getSchema(),
+                    $context,
+                    $reference . '/content/' . $contentType . '/schema',
+                    $description,
+                    $guessClass,
+                    $exceptionGenerator,
+                    'form'
+                );
+
+                if ($returnType !== null) {
+                    $returnTypes[] = $returnType;
+                }
+
+                if ($throwType !== null) {
+                    $throwTypes[] = $throwType;
+                }
+
+                $statements[] = new Stmt\If_(
+                    new Expr\BinaryOp\NotIdentical(
+                        new Expr\FuncCall(new Name('mb_strpos'), [
+                            new Node\Arg(
+                                new Expr\FuncCall(new Name('strtolower'), [
+                                    new Expr\Variable('contentType'),
+                                ]),
+                            ),
+                            new Node\Arg(new Scalar\String_($baseContentType)),
+                        ]),
+                        new Expr\ConstFetch(new Name('false'))
+                    ),
+                    [
+                        'stmts' => [$returnStatement],
+                    ]
+                );
             }
         }
 
@@ -286,7 +323,7 @@ EOD
         )]];
     }
 
-    private function createContentDenormalizationStatement(string $name, string $status, $schema, Context $context, string $reference, string $description, GuessClass $guessClass, ExceptionGenerator $exceptionGenerator): array
+    private function createContentDenormalizationStatement(string $name, string $status, $schema, Context $context, string $reference, string $description, GuessClass $guessClass, ExceptionGenerator $exceptionGenerator, string $format = 'json'): array
     {
         $originalSchema = $schema;
         $classGuess = $guessClass->guessClass($schema, $reference, $context->getRegistry(), $array);
@@ -317,7 +354,7 @@ EOD
                 [
                     new Node\Arg(new Expr\Variable('body')),
                     new Node\Arg(new Scalar\String_($class)),
-                    new Node\Arg(new Scalar\String_('json')),
+                    new Node\Arg(new Scalar\String_($format)),
                 ]
             );
         } elseif ($schema instanceof JsonSchema) {
