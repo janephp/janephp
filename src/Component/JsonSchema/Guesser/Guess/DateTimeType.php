@@ -102,6 +102,11 @@ class DateTimeType extends ObjectType
         );
     }
 
+    public function getInputFormat(): string
+    {
+        return $this->inputFormat;
+    }
+
     public function getTypeHint(string $namespace): Name
     {
         return new Name($this->preferInterface ? '\DateTimeInterface' : '\DateTime');

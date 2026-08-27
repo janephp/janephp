@@ -66,6 +66,10 @@ class TestNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
                 $value = $data['dateOrNullOrInt'];
             } elseif (is_int($data['dateOrNullOrInt'])) {
                 $value = $data['dateOrNullOrInt'];
+            } elseif ('' === $data['dateOrNullOrInt']) {
+                $value = null;
+            } elseif (is_string($data['dateOrNullOrInt'])) {
+                throw new \Jane\Component\JsonSchema\Tests\Expected\Runtime\Normalizer\InvalidDateException($data['dateOrNullOrInt'], 'Y-m-d');
             }
             $object->setDateOrNullOrInt($value);
         }
