@@ -28,6 +28,37 @@
       <exclude>./src/Component/OpenApi3/Tests/fixtures</exclude>
       <exclude>./src/Component/OpenApi31/Tests/fixtures</exclude>
     </testsuite>
+    <testsuite name="JsonSchema">
+      <directory>./src/Component/JsonSchema/Tests</directory>
+      <exclude>./src/Component/JsonSchema/Tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="JsonSchemaRuntime">
+      <directory>./src/Component/JsonSchemaRuntime/Tests</directory>
+    </testsuite>
+    <testsuite name="OpenApi2">
+      <directory>./src/Component/OpenApi2/Tests</directory>
+      <exclude>./src/Component/OpenApi2/Tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="OpenApi3">
+      <directory>./src/Component/OpenApi3/Tests</directory>
+      <exclude>./src/Component/OpenApi3/Tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="OpenApi31">
+      <directory>./src/Component/OpenApi31/Tests</directory>
+      <exclude>./src/Component/OpenApi31/Tests/fixtures</exclude>
+    </testsuite>
+    <testsuite name="OpenApiCommon">
+      <directory>./src/Component/OpenApiCommon/Tests</directory>
+    </testsuite>
+    <testsuite name="OpenApiRuntime">
+      <directory>./src/Component/OpenApiRuntime/Tests</directory>
+    </testsuite>
+    <testsuite name="JsonSchemaBundle">
+      <directory>./src/Bundle/JsonSchemaBundle/Tests</directory>
+    </testsuite>
+    <testsuite name="OpenApiBundle">
+      <directory>./src/Bundle/OpenApiBundle/Tests</directory>
+    </testsuite>
   </testsuites>
   <groups>
     <exclude>

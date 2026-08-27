@@ -14,11 +14,14 @@ composer update
 vendor/bin/phpunit
 ```
 
-You can also run same commands to test a single component, you just have to cd inside the component first:
+You can also test a single component by using its named test suite (running phpunit with a path argument would
+bypass the fixture excludes and fatal on generated classes, so use `--testsuite` instead):
 
 ```bash
-vendor/bin/phpunit src/Component/JsonSchema
+vendor/bin/phpunit --testsuite JsonSchema
 ```
+
+You can list all available suite names with `vendor/bin/phpunit --list-suites`.
 
 ## Fixture based tests
 
