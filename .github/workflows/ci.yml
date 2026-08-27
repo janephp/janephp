@@ -3,7 +3,27 @@ on:
   push:
     branches:
       - next
-  pull_request: ~
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - 'mkdocs.yaml'
+      - 'pyproject.toml'
+      - 'poetry.lock'
+      - 'LICENSE'
+      - '.editorconfig'
+      - '.gitattributes'
+      - '.github/ISSUE_TEMPLATE/**'
+  pull_request:
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - 'mkdocs.yaml'
+      - 'pyproject.toml'
+      - 'poetry.lock'
+      - 'LICENSE'
+      - '.editorconfig'
+      - '.gitattributes'
+      - '.github/ISSUE_TEMPLATE/**'
 jobs:
   cs-check:
     runs-on: ubuntu-latest
