@@ -80,7 +80,8 @@ class Issue764RegressionTest extends TestCase
             $command->execute($input, new NullOutput());
 
             $modelClass = 'Jane\Component\OpenApi3\Tests\Issue764Expected\Model\Shipment';
-            $normalizerClass = 'Jane\Component\OpenApi3\Tests\Issue764Expected\Normalizer\ShipmentNormalizer';
+            /** @var class-string */
+            $normalizerClass = self::widenedClassName('Jane\Component\OpenApi3\Tests\Issue764Expected\Normalizer\ShipmentNormalizer');
 
             self::assertFileExists($generatedDirectory . '/Model/Shipment.php');
             self::assertFileExists($generatedDirectory . '/Normalizer/ShipmentNormalizer.php');
@@ -200,7 +201,8 @@ class Issue764RegressionTest extends TestCase
             $this->requireGeneratedClasses($generatedDirectory);
 
             $modelClass = 'Jane\Component\OpenApi3\Tests\Issue764ValidationExpected\Model\Event';
-            $normalizerClass = 'Jane\Component\OpenApi3\Tests\Issue764ValidationExpected\Normalizer\EventNormalizer';
+            /** @var class-string */
+            $normalizerClass = self::widenedClassName('Jane\Component\OpenApi3\Tests\Issue764ValidationExpected\Normalizer\EventNormalizer');
             $validationExceptionClass = 'Jane\Component\OpenApi3\Tests\Issue764ValidationExpected\Runtime\Normalizer\ValidationException';
 
             $normalizer = new $normalizerClass();
@@ -233,6 +235,15 @@ class Issue764RegressionTest extends TestCase
         } finally {
             $this->removeDirectory($fixtureDirectory);
         }
+    }
+
+    /**
+     * Widens literal class references so analysis cannot bind to classes
+     * generated at runtime.
+     */
+    private static function widenedClassName(string $class): string
+    {
+        return $class;
     }
 
     private function requireGeneratedClasses(string $generatedDirectory): void

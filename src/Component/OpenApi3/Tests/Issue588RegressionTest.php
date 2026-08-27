@@ -66,7 +66,8 @@ class Issue588RegressionTest extends TestCase
             $this->requireGeneratedClasses($generatedDirectory);
 
             $modelClass = 'Jane\Component\OpenApi3\Tests\Issue588Expected\Model\InstitutionsGetResponse200';
-            $normalizerClass = 'Jane\Component\OpenApi3\Tests\Issue588Expected\Normalizer\InstitutionsGetResponse200Normalizer';
+            /** @var class-string */
+            $normalizerClass = self::widenedClassName('Jane\Component\OpenApi3\Tests\Issue588Expected\Normalizer\InstitutionsGetResponse200Normalizer');
 
             // The generated model must carry the properties of the externally referenced schema,
             // proving the reference actually resolved into doc/schema/.
@@ -76,7 +77,7 @@ class Issue588RegressionTest extends TestCase
             self::assertStringContainsString("'name'", $normalizerContent);
 
             $normalizer = new $normalizerClass();
-            /** @var Issue588Expected\Model\InstitutionsGetResponse200 $object */
+            // $object is the generated model; typed dynamically at runtime.
             $object = $normalizer->denormalize([
                 'id' => 'inst-1',
                 'name' => 'ACME',
@@ -153,6 +154,15 @@ YAML);
         file_put_contents($configFile, "<?php\n\nreturn [\n" . $exportedOptions . "];\n");
 
         return $configFile;
+    }
+
+    /**
+     * Widens literal class references so analysis cannot bind to classes
+     * generated at runtime.
+     */
+    private static function widenedClassName(string $class): string
+    {
+        return $class;
     }
 
     private function requireGeneratedClasses(string $generatedDirectory): void

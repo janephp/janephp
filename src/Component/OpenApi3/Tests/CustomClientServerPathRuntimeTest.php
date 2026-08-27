@@ -42,8 +42,7 @@ class CustomClientServerPathRuntimeTest extends TestCase
         $capturingClient = $this->createCapturingClient();
         $client = self::createClient($capturingClient);
 
-        // @phpstan-ignore-next-line Classes are generated at runtime from the issue-299 specification.
-        $client->executeRawEndpoint(new Issue789CustomClient\Endpoint\GetUsers(['userState' => 'x']));
+        $client->executeRawEndpoint(self::createGetUsersEndpoint(['userState' => 'x']));
 
         self::assertNotNull($capturingClient->lastRequest);
         self::assertSame(
@@ -57,8 +56,7 @@ class CustomClientServerPathRuntimeTest extends TestCase
         $capturingClient = $this->createCapturingClient();
         $client = self::createClient($capturingClient, [], [], false);
 
-        // @phpstan-ignore-next-line Classes are generated at runtime from the issue-299 specification.
-        $client->executeRawEndpoint(new Issue789CustomClient\Endpoint\GetUsers(['userState' => 'x']));
+        $client->executeRawEndpoint(self::createGetUsersEndpoint(['userState' => 'x']));
 
         self::assertNotNull($capturingClient->lastRequest);
         self::assertSame('/users?userState=x', (string) $capturingClient->lastRequest->getUri());
@@ -73,8 +71,7 @@ class CustomClientServerPathRuntimeTest extends TestCase
 
         $client = self::createClient($preWrappedClient);
 
-        // @phpstan-ignore-next-line Classes are generated at runtime from the issue-299 specification.
-        $client->executeRawEndpoint(new Issue789CustomClient\Endpoint\GetUsers(['userState' => 'x']));
+        $client->executeRawEndpoint(self::createGetUsersEndpoint(['userState' => 'x']));
 
         self::assertNotNull($capturingClient->lastRequest);
         self::assertSame(
@@ -83,11 +80,27 @@ class CustomClientServerPathRuntimeTest extends TestCase
         );
     }
 
-    // @phpstan-ignore-next-line Classes are generated at runtime from the issue-299 specification.
-    private static function createClient(?ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true): Issue789CustomClient\Client
+    private static function createClient(?ClientInterface $httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true): object
     {
-        // @phpstan-ignore-next-line Classes are generated at runtime from the issue-299 specification.
-        return Issue789CustomClient\Client::create($httpClient, $additionalPlugins, $additionalNormalizers, $applyServerPlugins);
+        $clientClass = self::widenedClassName('Jane\Component\OpenApi3\Tests\Issue789CustomClient\Client');
+
+        return $clientClass::create($httpClient, $additionalPlugins, $additionalNormalizers, $applyServerPlugins);
+    }
+
+    private static function createGetUsersEndpoint(array $parameters): object
+    {
+        $endpointClass = self::widenedClassName('Jane\Component\OpenApi3\Tests\Issue789CustomClient\Endpoint\GetUsers');
+
+        return new $endpointClass($parameters);
+    }
+
+    /**
+     * Widens literal class references so analysis cannot bind to classes
+     * generated at runtime.
+     */
+    private static function widenedClassName(string $class): string
+    {
+        return $class;
     }
 
     private static function loadGeneratedClasses(): void
