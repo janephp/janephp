@@ -34,6 +34,8 @@ This file gives coding agents the minimum project context needed to work safely 
   - `composer install`
 - Run tests:
   - `vendor/bin/phpunit`
+- Run tests for a single component (never pass a path — it loads fixture classes and fatals):
+  - `vendor/bin/phpunit --testsuite <Component>` (e.g. `JsonSchema`; see `vendor/bin/phpunit --list-suites`)
 - Run static analysis:
   - `castor qa:phpstan`
 - Run coding standards (dry run):
