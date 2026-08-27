@@ -1,0 +1,7 @@
+<?php
+
+return [
+    'openapi-file' => __DIR__ . '/openapi.yaml',
+    'namespace' => 'Jane\Component\OpenApi31\Tests\ExpectedIssue1036',
+    'directory' => __DIR__ . '/generated',
+];

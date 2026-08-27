@@ -1,0 +1,47 @@
+openapi: 3.1.0
+info:
+  title: 'API CLIENT'
+  version: 1.0.0
+paths:
+  /documents:
+    post:
+      summary: 'Upload a document'
+      operationId: uploadDocument
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DocumentUpload'
+            encoding:
+              file:
+                contentType: application/pdf
+              preview:
+                contentType: 'image/*'
+      responses:
+        201:
+          description: 'Created'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Document'
+components:
+  schemas:
+    DocumentUpload:
+      type: object
+      required:
+        - file
+      properties:
+        file:
+          type: string
+          format: binary
+        preview:
+          type: string
+          format: binary
+        note:
+          type: string
+    Document:
+      type: object
+      properties:
+        id:
+          type: string
