@@ -20,6 +20,15 @@ class MultipartEncodingRuntimeTest extends TestCase
 {
     private const FIXTURE_DIR = __DIR__ . '/fixtures/issue-1036';
 
+    /**
+     * Widens literal class references so analysis cannot bind to classes
+     * generated from fixtures.
+     */
+    private static function widenedClassName(string $class): string
+    {
+        return $class;
+    }
+
     public static function setUpBeforeClass(): void
     {
         $expectedDir = self::FIXTURE_DIR . '/expected';
@@ -42,12 +51,17 @@ class MultipartEncodingRuntimeTest extends TestCase
         $serializer = $this->createSerializer();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
 
-        $body = new ExpectedIssue1036\Model\DocumentUpload();
+        /** @var class-string */
+        $modelClass = self::widenedClassName('Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Model\DocumentUpload');
+        /** @var class-string */
+        $endpointClass = self::widenedClassName('Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Endpoint\UploadDocument');
+
+        $body = new $modelClass();
         $body->setFile('pdf-file-content');
         $body->setPreview('preview-file-content');
         $body->setNote('a note');
 
-        $result = (new ExpectedIssue1036\Endpoint\UploadDocument($body))->getBody($serializer, $streamFactory);
+        $result = (new $endpointClass($body))->getBody($serializer, $streamFactory);
 
         $this->assertIsArray($result);
         $this->assertCount(2, $result);
@@ -80,11 +94,16 @@ class MultipartEncodingRuntimeTest extends TestCase
         $realFile = sys_get_temp_dir() . '/jane-issue-1036-upload.pdf';
         file_put_contents($realFile, 'real-file-content');
 
+        /** @var class-string */
+        $modelClass = self::widenedClassName('Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Model\DocumentUpload');
+        /** @var class-string */
+        $endpointClass = self::widenedClassName('Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Endpoint\UploadDocument');
+
         try {
             // a resource backed by a real file keeps its derived filename (and extension based Content-Type guessing stays possible)
-            $body = new ExpectedIssue1036\Model\DocumentUpload();
+            $body = new $modelClass();
             $body->setFile(fopen($realFile, 'r'));
-            $result = (new ExpectedIssue1036\Endpoint\UploadDocument($body))->getBody($serializer, $streamFactory);
+            $result = (new $endpointClass($body))->getBody($serializer, $streamFactory);
             $streamContent = (string) $result[1];
             $this->assertMatchesRegularExpression('/name="file"; filename="jane-issue-1036-upload.pdf"\R/', $streamContent);
 
@@ -92,9 +111,9 @@ class MultipartEncodingRuntimeTest extends TestCase
             $inMemory = fopen('php://temp', 'rb+');
             fwrite($inMemory, 'in-memory-content');
             rewind($inMemory);
-            $body = new ExpectedIssue1036\Model\DocumentUpload();
+            $body = new $modelClass();
             $body->setFile($inMemory);
-            $result = (new ExpectedIssue1036\Endpoint\UploadDocument($body))->getBody($serializer, $streamFactory);
+            $result = (new $endpointClass($body))->getBody($serializer, $streamFactory);
             $streamContent = (string) $result[1];
             $this->assertMatchesRegularExpression('/name="file"; filename="file"\R/', $streamContent);
         } finally {
@@ -104,9 +123,12 @@ class MultipartEncodingRuntimeTest extends TestCase
 
     private function createSerializer(): \Symfony\Component\Serializer\Serializer
     {
+        /** @var class-string */
+        $normalizerClass = self::widenedClassName('Jane\Component\OpenApi3\Tests\ExpectedIssue1036\Normalizer\JaneObjectNormalizer');
+
         $normalizers = [
             new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(),
-            new ExpectedIssue1036\Normalizer\JaneObjectNormalizer(),
+            new $normalizerClass(),
         ];
         $encoders = [
             new \Symfony\Component\Serializer\Encoder\JsonEncoder(

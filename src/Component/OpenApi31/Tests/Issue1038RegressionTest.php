@@ -92,7 +92,8 @@ class Issue1038RegressionTest extends TestCase
             $command->execute($input, new NullOutput());
 
             $modelClass = 'Jane\Component\OpenApi31\Tests\Issue1038Expected\Model\Event';
-            $normalizerClass = 'Jane\Component\OpenApi31\Tests\Issue1038Expected\Normalizer\EventNormalizer';
+            /** @var class-string */
+            $normalizerClass = self::widenedClassName('Jane\Component\OpenApi31\Tests\Issue1038Expected\Normalizer\EventNormalizer');
 
             self::assertFileExists($generatedDirectory . '/Model/Event.php');
             self::assertFileExists($generatedDirectory . '/Normalizer/EventNormalizer.php');
@@ -124,6 +125,15 @@ class Issue1038RegressionTest extends TestCase
         } finally {
             $this->removeDirectory($fixtureDirectory);
         }
+    }
+
+    /**
+     * Widens literal class references so analysis cannot bind to classes
+     * generated at runtime.
+     */
+    private static function widenedClassName(string $class): string
+    {
+        return $class;
     }
 
     private function requireGeneratedClasses(string $generatedDirectory): void
