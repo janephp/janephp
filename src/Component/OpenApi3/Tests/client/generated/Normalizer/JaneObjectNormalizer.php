@@ -22,6 +22,12 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Jane\Component\OpenApi3\Tests\Client\Model\Error::class => \Jane\Component\OpenApi3\Tests\Client\Normalizer\ErrorNormalizer::class,
         
+        \Jane\Component\OpenApi3\Tests\Client\Model\Thing::class => \Jane\Component\OpenApi3\Tests\Client\Normalizer\ThingNormalizer::class,
+        
+        \Jane\Component\OpenApi3\Tests\Client\Model\ThingInput::class => \Jane\Component\OpenApi3\Tests\Client\Normalizer\ThingInputNormalizer::class,
+        
+        \Jane\Component\OpenApi3\Tests\Client\Model\ThingDetails::class => \Jane\Component\OpenApi3\Tests\Client\Normalizer\ThingDetailsNormalizer::class,
+        
         \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\OpenApi3\Tests\Client\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
@@ -58,11 +64,6 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [
-            
-            \Jane\Component\OpenApi3\Tests\Client\Model\SimpleResponse::class => false,
-            \Jane\Component\OpenApi3\Tests\Client\Model\Error::class => false,
-            \Jane\Component\JsonSchemaRuntime\Reference::class => false,
-        ];
+        return array_combine(array_keys($this->normalizers), array_fill(0, count($this->normalizers), false));
     }
 }

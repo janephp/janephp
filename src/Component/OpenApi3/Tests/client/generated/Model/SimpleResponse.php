@@ -2,8 +2,11 @@
 
 namespace Jane\Component\OpenApi3\Tests\Client\Model;
 
-class SimpleResponse extends \ArrayObject
+use Jane\Component\OpenApi3\Tests\Client\Runtime\AdditionalAndPatternProperties;
+use Jane\Component\OpenApi3\Tests\Client\Runtime\AdditionalPropertiesInterface;
+class SimpleResponse implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -55,5 +58,9 @@ class SimpleResponse extends \ArrayObject
         $this->initialized['baz'] = true;
         $this->baz = $baz;
         return $this;
+    }
+    public function definedProperties(): array
+    {
+        return ['foo' => ['foo', 'getFoo', 'setFoo'], 'baz' => ['baz', 'getBaz', 'setBaz']];
     }
 }

@@ -7,7 +7,7 @@ info:
 servers:
   - url: http://127.0.0.1/
     variables:
-      port: { default: '4010' }
+      port: { default: '4012' }
 paths:
   /endpoint:
     get:
@@ -26,8 +26,114 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-security:
-  - ApiKeyAuth: []
+  /things:
+    post:
+      summary: Create a thing
+      operationId: createThing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThingInput'
+      responses:
+        '201':
+          description: Thing created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Thing'
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /things/form:
+    post:
+      summary: Create a thing from form data
+      operationId: createFormThing
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ThingInput'
+      responses:
+        '200':
+          description: Thing created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Thing'
+  /things/{thingId}:
+    get:
+      summary: Get a thing
+      operationId: getThing
+      parameters:
+        - name: thingId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: q
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Thing found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Thing'
+        '404':
+          description: Thing not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete a thing
+      operationId: deleteThing
+      parameters:
+        - name: thingId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Thing deleted
+        '404':
+          description: Thing not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /things/{thingId}/details:
+    get:
+      summary: Get extended details of a thing
+      operationId: getThingDetails
+      parameters:
+        - name: thingId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Extended thing details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThingDetails'
 components:
   schemas:
     SimpleResponse:
@@ -42,8 +148,59 @@ components:
       properties:
         message:
           type: string
+    Thing:
+      type: object
+      required:
+        - id
+        - name
+        - kind
+        - createdAt
+        - tags
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        kind:
+          type: string
+          enum:
+            - created
+            - updated
+            - deleted
+        createdAt:
+          type: string
+          format: date
+        tags:
+          type: array
+          items:
+            type: string
+    ThingInput:
+      type: object
+      required:
+        - name
+        - kind
+      properties:
+        name:
+          type: string
+        kind:
+          type: string
+          enum:
+            - created
+            - updated
+            - deleted
+    ThingDetails:
+      allOf:
+        - $ref: '#/components/schemas/Thing'
+        - type: object
+          required:
+            - description
+          properties:
+            description:
+              type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
       in: header
       name: X-API-Key
+security:
+  - ApiKeyAuth: []

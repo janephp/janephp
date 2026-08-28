@@ -111,6 +111,8 @@ jobs:
         run: nohup prism mock src/Component/OpenApi3/Tests/client/openapi.yaml -p 4010 &
       - name: run OpenApi2 prism server
         run: nohup prism mock src/Component/OpenApi2/Tests/client/swagger.yaml -p 4011 &
+      - name: run OpenApi31 prism server
+        run: nohup prism mock src/Component/OpenApi31/Tests/client/openapi.yaml -p 4012 &
       - name: tests
         run: vendor/bin/phpunit --exclude-group none
   tests-lowest:
@@ -140,5 +142,7 @@ jobs:
         run: nohup prism mock src/Component/OpenApi3/Tests/client/openapi.yaml -p 4010 &
       - name: run OpenApi2 prism server
         run: nohup prism mock src/Component/OpenApi2/Tests/client/swagger.yaml -p 4011 &
+      - name: run OpenApi31 prism server
+        run: nohup prism mock src/Component/OpenApi31/Tests/client/openapi.yaml -p 4012 &
       - name: tests
         run: vendor/bin/phpunit --exclude-group none
