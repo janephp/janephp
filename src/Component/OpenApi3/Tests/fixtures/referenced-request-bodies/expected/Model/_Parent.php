@@ -4,7 +4,7 @@ namespace Jane\Component\OpenApi3\Tests\Expected\Model;
 
 use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalAndPatternProperties;
 use Jane\Component\OpenApi3\Tests\Expected\Runtime\AdditionalPropertiesInterface;
-class Parent implements AdditionalPropertiesInterface
+class _Parent implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
