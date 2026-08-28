@@ -8,6 +8,7 @@ use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi3\Guesser\GuessClass;
 use Jane\Component\OpenApi3\JsonSchema\Model\Parameter;
 use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
+use Jane\Component\OpenApiCommon\Generator\Endpoint\PathParameterNameTrait;
 use Jane\Component\OpenApiCommon\Generator\Parameter\ParameterGenerator;
 use Jane\Component\OpenApiCommon\Generator\Traits\OpenApiNumberTypeResolverTrait;
 use Jane\Component\OpenApiCommon\Generator\Traits\OptionResolverNormalizationTrait;
@@ -21,6 +22,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class NonBodyParameterGenerator extends ParameterGenerator
 {
+    use PathParameterNameTrait;
     use OpenApiNumberTypeResolverTrait;
     use OptionResolverNormalizationTrait;
 
@@ -37,7 +39,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
      */
     public function generateMethodParameter($parameter, Context $context, string $reference): ?Node\Param
     {
-        $name = $this->getInflector()->camelize($parameter->getName());
+        $name = $this->normalizePathVariableName($parameter->getName());
         $methodParameter = new Node\Param(new Expr\Variable($name));
 
         $schema = $parameter->getSchema();
@@ -148,7 +150,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
             $type = implode('|', $this->convertParameterType($schema));
         }
 
-        return rtrim(\sprintf(' * @param %s $%s %s', $type, str_replace('*/', '*\\/', $this->getInflector()->camelize($parameter->getName())), str_replace('*/', '*\\/', $parameter->getDescription() ?: '')));
+        return rtrim(\sprintf(' * @param %s $%s %s', $type, str_replace('*/', '*\\/', $this->normalizePathVariableName($parameter->getName())), str_replace('*/', '*\\/', $parameter->getDescription() ?: '')));
     }
 
     public function generateOptionDocParameter(Parameter $parameter): string
