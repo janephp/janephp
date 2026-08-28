@@ -92,7 +92,7 @@ class AppJobSpec implements AdditionalPropertiesInterface
     /**
      * The instance size to use for this component. Default: `apps-s-1vcpu-0.5gb`
      *
-     * @var string|string
+     * @var string
      */
     protected $instanceSizeSlug;
     /**
@@ -405,7 +405,7 @@ class AppJobSpec implements AdditionalPropertiesInterface
     /**
      * The instance size to use for this component. Default: `apps-s-1vcpu-0.5gb`
      *
-     * @return string|string
+     * @return string
      */
     public function getInstanceSizeSlug()
     {
@@ -414,7 +414,7 @@ class AppJobSpec implements AdditionalPropertiesInterface
     /**
      * The instance size to use for this component. Default: `apps-s-1vcpu-0.5gb`
      *
-     * @param string|string $instanceSizeSlug
+     * @param string $instanceSizeSlug
      *
      * @return self
      */
