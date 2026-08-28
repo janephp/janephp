@@ -15695,7 +15695,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\PartialUpdateConfigurationSettingsScheduleBackup($body, $queryParameters), $fetch);
     }
     /**
-     * @param string $id:.+
+     * @param string $id
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
@@ -15707,9 +15707,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      *
      * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
-    public function addClusterRestoreById(string $id:.+, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function addClusterRestoreById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\AddClusterRestoreById($id:.+, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\AddClusterRestoreById($id, $queryParameters), $fetch);
     }
     /**
      * @param string $bladeUUID
@@ -15994,7 +15994,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\AddClusterBackup($queryParameters), $fetch);
     }
     /**
-     * @param string $id:.+
+     * @param string $id
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
@@ -16005,9 +16005,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      *
      * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
-    public function deleteClusterById(string $id:.+, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function deleteClusterById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\DeleteClusterById($id:.+, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\DeleteClusterById($id, $queryParameters), $fetch);
     }
     /**
      * @param array $queryParameters {
@@ -18490,7 +18490,7 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
         return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\UpdateSystemApMacOUIsByOUI($oUI, $body, $queryParameters), $fetch);
     }
     /**
-     * @param string $firmwareVersion:.+
+     * @param string $firmwareVersion
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
@@ -18501,9 +18501,9 @@ class Client extends \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\Clie
      *
      * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
      */
-    public function findSystemApmodelsByFirmwareVersion(string $firmwareVersion:.+, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function findSystemApmodelsByFirmwareVersion(string $firmwareVersion, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\FindSystemApmodelsByFirmwareVersion($firmwareVersion:.+, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\FindSystemApmodelsByFirmwareVersion($firmwareVersion, $queryParameters), $fetch);
     }
     /**
      * @param string $id

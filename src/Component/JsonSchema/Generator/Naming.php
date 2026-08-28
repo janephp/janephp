@@ -22,9 +22,9 @@ class Naming
             (g(lobal|oto))|
             (i(f|mplements|n(clude(_once)?|st(anceof|eadof)|terface)|sset))|
             (n(amespace|ew))|
-            (p(r(i(nt|vate)|otected)|ublic))|
+            (p(arent|r(i(nt|vate)|otected)|ublic))|
             (re(quire(_once)?|turn))|
-            (s(tatic|witch))|
+            (s(elf|tatic|witch))|
             (t(hrow|r(ait|y)))|
             (u(nset|se))|
             (__halt_compiler|break|list|(x)?or|var|while)

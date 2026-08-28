@@ -18,7 +18,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     protected $normalizers = [
         
-        \Jane\Component\OpenApi3\Tests\Expected\Model\Parent::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ParentNormalizer::class,
+        \Jane\Component\OpenApi3\Tests\Expected\Model\_Parent::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ParentNormalizer::class,
         
         \Jane\Component\OpenApi3\Tests\Expected\Model\Child::class => \Jane\Component\OpenApi3\Tests\Expected\Normalizer\ChildNormalizer::class,
         

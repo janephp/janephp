@@ -102,6 +102,8 @@ class ModelGenerator implements GeneratorInterface
         if ($hasExtensions) {
             $runtimeTraitFqcn = $this->naming->getRuntimeClassFQCN($schema->getNamespace(), [], 'AdditionalAndPatternProperties');
             $runtimeInterfaceFqcn = $this->naming->getRuntimeClassFQCN($schema->getNamespace(), [], 'AdditionalPropertiesInterface');
+            $schema->addRequiredRuntimeFile($runtimeTraitFqcn);
+            $schema->addRequiredRuntimeFile($runtimeInterfaceFqcn);
             $useStmts = [
                 new Stmt\Use_([new Stmt\UseUse(new Name($runtimeTraitFqcn))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name($runtimeInterfaceFqcn))]),

@@ -5,6 +5,7 @@ namespace Jane\Component\OpenApiCommon\Generator;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Generator\File;
 use Jane\Component\JsonSchema\Generator\GeneratorInterface;
+use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Registry\Schema;
 use Jane\Component\OpenApiCommon\Generator\Client\ClientGenerator as CommonClientGenerator;
 use Jane\Component\OpenApiCommon\Generator\Client\HttpClientCreateGenerator;
@@ -29,6 +30,11 @@ abstract class ClientGenerator implements GeneratorInterface
      */
     public function generate(Schema $schema, string $className, Context $context): void
     {
+        $naming = new Naming();
+        $schema->addRequiredRuntimeFile($naming->getRuntimeClassFQCN($schema->getNamespace(), ['Client'], 'Client'));
+        $schema->addRequiredRuntimeFile($naming->getRuntimeClassFQCN($schema->getNamespace(), ['Client'], 'FormEncoder'));
+        $schema->addRequiredRuntimeFile($naming->getRuntimeClassFQCN($schema->getNamespace(), ['Client'], 'JsonPayload'));
+
         $statements = [];
 
         foreach ($schema->getOperations() as $operation) {

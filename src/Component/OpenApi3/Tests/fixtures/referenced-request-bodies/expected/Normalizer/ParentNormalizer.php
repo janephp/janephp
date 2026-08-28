@@ -19,15 +19,15 @@ class ParentNormalizer implements DenormalizerInterface, NormalizerInterface, De
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\Parent::class;
+        return $type === \Jane\Component\OpenApi3\Tests\Expected\Model\_Parent::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\Parent::class;
+        return is_object($data) && get_class($data) === \Jane\Component\OpenApi3\Tests\Expected\Model\_Parent::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\Parent();
+        $object = new \Jane\Component\OpenApi3\Tests\Expected\Model\_Parent();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -78,6 +78,6 @@ class ParentNormalizer implements DenormalizerInterface, NormalizerInterface, De
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Jane\Component\OpenApi3\Tests\Expected\Model\Parent::class => false];
+        return [\Jane\Component\OpenApi3\Tests\Expected\Model\_Parent::class => false];
     }
 }
