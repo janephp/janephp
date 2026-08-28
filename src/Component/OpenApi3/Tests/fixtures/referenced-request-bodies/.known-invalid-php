@@ -1,3 +1,0 @@
-Known generator bug: a schema named `parent` generates `class Parent`, which is
-a reserved PHP class name, so the generated model does not parse.
-Tracked in https://github.com/janephp/janephp/issues/1051
