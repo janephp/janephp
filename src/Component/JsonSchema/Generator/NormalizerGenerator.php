@@ -90,6 +90,12 @@ class NormalizerGenerator implements GeneratorInterface
                 $methods
             );
 
+            $schema->addRequiredRuntimeFile($this->naming->getRuntimeClassFQCN($schema->getNamespace(), ['Normalizer'], 'CheckArray'));
+            $schema->addRequiredRuntimeFile($this->naming->getRuntimeClassFQCN($schema->getNamespace(), ['Normalizer'], 'ValidatorTrait'));
+            $schema->addRequiredRuntimeFile($this->naming->getRuntimeClassFQCN($schema->getNamespace(), ['Normalizer'], 'InvalidDateException'));
+            $schema->addRequiredRuntimeFile($this->naming->getRuntimeClassFQCN($schema->getNamespace(), ['Normalizer'], 'ValidationException'));
+            $schema->addRequiredRuntimeFile($this->naming->getRuntimeClassFQCN($schema->getNamespace(), [], 'JsonObject'));
+
             $useStmts = [
                 new Stmt\Use_([new Stmt\UseUse(new Name('Jane\Component\JsonSchemaRuntime\Reference'))]),
                 new Stmt\Use_([new Stmt\UseUse(new Name($this->naming->getRuntimeClassFQCN($schema->getNamespace(), ['Normalizer'], 'CheckArray')))]),
@@ -126,8 +132,12 @@ class NormalizerGenerator implements GeneratorInterface
 
     protected function createJaneObjectNormalizerClass(Schema $schema, array $normalizers): array
     {
+        $schema->addRequiredRuntimeFile($this->naming->getRuntimeClassFQCN($schema->getNamespace(), ['Normalizer'], 'CheckArray'));
+        $schema->addRequiredRuntimeFile($this->naming->getRuntimeClassFQCN($schema->getNamespace(), ['Normalizer'], 'ValidatorTrait'));
+
         if ($this->useReference) {
             $normalizers['Jane\\Component\\JsonSchemaRuntime\\Reference'] = $this->naming->getRuntimeClassFQCN($schema->getNamespace(), ['Normalizer'], 'ReferenceNormalizer');
+            $schema->addRequiredRuntimeFile($this->naming->getRuntimeClassFQCN($schema->getNamespace(), ['Normalizer'], 'ReferenceNormalizer'));
         }
 
         $properties = [];

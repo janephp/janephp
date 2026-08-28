@@ -4,8 +4,82 @@ namespace Jane\Component\JsonSchema\Tests;
 
 use PHPUnit\Framework\TestCase;
 
-require_once __DIR__ . '/../Generator/Runtime/data/AdditionalAndPatternProperties.php';
-require_once __DIR__ . '/../Generator/Runtime/data/AdditionalPropertiesInterface.php';
+if (!trait_exists('AdditionalAndPatternProperties', false)) {
+    eval('trait AdditionalAndPatternProperties
+    {
+        private array $extraProperties = [];
+
+        public function definedProperties(): array { return []; }
+
+        public function offsetExists(mixed $offset): bool
+        {
+            foreach ($this->definedProperties() as $phpName => $definition) {
+                if ($definition[0] === $offset) {
+                    return $this->isInitialized($phpName) || null !== $this->{$phpName};
+                }
+            }
+            return \array_key_exists($offset, $this->extraProperties);
+        }
+
+        public function offsetGet(mixed $offset): mixed
+        {
+            foreach ($this->definedProperties() as $definition) {
+                if ($definition[0] === $offset) { return $this->{$definition[1]}(); }
+            }
+            return $this->extraProperties[$offset] ?? null;
+        }
+
+        public function offsetSet(mixed $offset, mixed $value): void
+        {
+            foreach ($this->definedProperties() as $definition) {
+                if ($definition[0] === $offset) { $this->{$definition[2]}($value); return; }
+            }
+            $this->extraProperties[$offset] = $value;
+        }
+
+        public function offsetUnset(mixed $offset): void
+        {
+            foreach ($this->definedProperties() as $definition) {
+                if ($definition[0] === $offset) { $this->{$definition[2]}(null); return; }
+            }
+            unset($this->extraProperties[$offset]);
+        }
+
+        public function count(): int { return \count($this->toArray()); }
+
+        public function getIterator(): \ArrayIterator { return new \ArrayIterator($this->toArray()); }
+
+        public function toArray(): array
+        {
+            $values = [];
+            foreach ($this->definedProperties() as $phpName => $definition) {
+                $value = $this->{$phpName};
+                if ($this->isInitialized($phpName) || null !== $value) {
+                    $values[$definition[0]] = $value;
+                }
+            }
+            return array_merge($values, $this->extraProperties);
+        }
+
+        public function getArrayCopy(): array { return $this->toArray(); }
+
+        public function additionalPropertyEntries(): \Iterator { yield from $this->extraProperties; }
+
+        public function jsonSerialize(): mixed
+        {
+            $values = $this->toArray();
+            if ([] === $values) { return new \stdClass(); }
+            return $values;
+        }
+    }');
+}
+if (!interface_exists('AdditionalPropertiesInterface', false)) {
+    eval('interface AdditionalPropertiesInterface extends \IteratorAggregate, \Countable, \ArrayAccess, \JsonSerializable
+    {
+        public function toArray(): array;
+        public function additionalPropertyEntries(): iterable;
+    }');
+}
 
 class AdditionalAndPatternPropertiesTest extends TestCase
 {

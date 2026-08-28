@@ -54,16 +54,21 @@ class EndpointGenerator implements EndpointGeneratorInterface
     public function createEndpointClass(OperationGuess $operation, Context $context): array
     {
         $naming = new Naming();
-        $openApi = $context->getCurrentSchema()->getParsed();
+        $schema = $context->getCurrentSchema();
+        $openApi = $schema->getParsed();
         $endpointName = $this->operationNaming->getEndpointName($operation);
+
+        $schema->addRequiredRuntimeFile($naming->getRuntimeClassFQCN($schema->getNamespace(), ['Client'], 'BaseEndpoint'));
+        $schema->addRequiredRuntimeFile($naming->getRuntimeClassFQCN($schema->getNamespace(), ['Client'], 'Endpoint'));
+        $schema->addRequiredRuntimeFile($naming->getRuntimeClassFQCN($schema->getNamespace(), ['Client'], 'EndpointTrait'));
 
         [$constructorMethod, $methodParams, $methodParamsDoc, $pathProperties] = $this->getConstructor($operation, $context, $this->guessClass, $this->bodyParameterGenerator, $this->nonBodyParameterGenerator);
         [$transformBodyMethod, $outputTypes, $throwTypes] = $this->getTransformResponseBody($operation, $endpointName, $this->guessClass, $this->exceptionGenerator, $context);
         $class = new Stmt\Class_($endpointName, [
-            'extends' => new Name\FullyQualified($naming->getRuntimeClassFQCN($context->getCurrentSchema()->getNamespace(), ['Client'], 'BaseEndpoint')),
-            'implements' => [new Name\FullyQualified($naming->getRuntimeClassFQCN($context->getCurrentSchema()->getNamespace(), ['Client'], 'Endpoint'))],
+            'extends' => new Name\FullyQualified($naming->getRuntimeClassFQCN($schema->getNamespace(), ['Client'], 'BaseEndpoint')),
+            'implements' => [new Name\FullyQualified($naming->getRuntimeClassFQCN($schema->getNamespace(), ['Client'], 'Endpoint'))],
             'stmts' => array_merge($pathProperties, $constructorMethod === null ? [] : [$constructorMethod], [
-                new Stmt\Use_([new Stmt\UseUse(new Name\FullyQualified($naming->getRuntimeClassFQCN($context->getCurrentSchema()->getNamespace(), ['Client'], 'EndpointTrait')))]),
+                new Stmt\Use_([new Stmt\UseUse(new Name\FullyQualified($naming->getRuntimeClassFQCN($schema->getNamespace(), ['Client'], 'EndpointTrait')))]),
                 $this->getGetMethod($operation),
                 $this->getGetUri($operation, $this->guessClass),
                 $this->getGetBody($operation, $context),
@@ -71,6 +76,9 @@ class EndpointGenerator implements EndpointGeneratorInterface
         ]);
 
         [$genericCustomQueryResolver, $operationCustomQueryResolver] = $this->customOptionResolvers($operation, $context);
+        if ($genericCustomQueryResolver || $operationCustomQueryResolver) {
+            $schema->addRequiredRuntimeFile($naming->getRuntimeClassFQCN($schema->getNamespace(), ['Client'], 'CustomQueryResolver'));
+        }
 
         $extraHeadersMethod = $this->getExtraHeadersMethod($openApi, $operation);
         $queryResolverMethod = $this->getOptionsResolverMethod($operation, QueryParameterSubSchema::class, 'getQueryOptionsResolver', $this->guessClass, $this->nonBodyParameterGenerator, $operationCustomQueryResolver, $genericCustomQueryResolver);
@@ -97,8 +105,8 @@ class EndpointGenerator implements EndpointGeneratorInterface
         $class->stmts[] = $this->getAuthenticationScopesMethod($operation);
 
         $subNamespace = $operation->getSubNamespace();
-        $endpointPath = $naming->getArtifactPath($context->getCurrentSchema()->getDirectory(), 'Endpoint', $subNamespace);
-        $endpointNamespace = $naming->getEndpointNamespace($context->getCurrentSchema()->getNamespace(), $subNamespace);
+        $endpointPath = $naming->getArtifactPath($schema->getDirectory(), 'Endpoint', $subNamespace);
+        $endpointNamespace = $naming->getEndpointNamespace($schema->getNamespace(), $subNamespace);
 
         $file = new File(
             $endpointPath . \DIRECTORY_SEPARATOR . $endpointName . '.php',
@@ -111,7 +119,7 @@ class EndpointGenerator implements EndpointGeneratorInterface
             'Endpoint'
         );
 
-        $context->getCurrentSchema()->addFile($file);
+        $schema->addFile($file);
 
         return [$endpointNamespace . '\\' . $endpointName, $methodParams, $methodParamsDoc, $outputTypes, $throwTypes];
     }

@@ -24,6 +24,9 @@ class Schema implements SchemaInterface
     /** @var mixed Parsed schema */
     private mixed $parsed;
 
+    /** @var array<string, bool> Map of required runtime class FQCNs */
+    private array $requiredRuntimeFiles = [];
+
     /** @var array Relation between models */
     protected array $relations = [];
 
@@ -120,6 +123,16 @@ class Schema implements SchemaInterface
     public function getFiles(): array
     {
         return $this->files;
+    }
+
+    public function addRequiredRuntimeFile(string $fqcn): void
+    {
+        $this->requiredRuntimeFiles[$fqcn] = true;
+    }
+
+    public function isRuntimeFileRequired(string $fqcn): bool
+    {
+        return isset($this->requiredRuntimeFiles[$fqcn]);
     }
 
     public function addReference(string $reference): void
