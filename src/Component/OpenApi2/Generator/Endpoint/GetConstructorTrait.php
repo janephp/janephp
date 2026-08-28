@@ -39,7 +39,7 @@ trait GetConstructorTrait
 
             if ($parameter instanceof PathParameterSubSchema) {
                 $pathPropertyName = $this->normalizePathPropertyName($parameter->getName());
-                $pathVariableName = $this->getInflector()->camelize($parameter->getName());
+                $pathVariableName = $this->normalizePathVariableName($parameter->getName());
                 if (null === $parameter->getDefault()) {
                     $pathParams[] = $nonBodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
                     $pathParamsDoc[] = $nonBodyParameterGenerator->generateMethodDocParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);

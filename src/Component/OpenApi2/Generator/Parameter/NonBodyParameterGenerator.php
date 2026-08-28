@@ -7,6 +7,7 @@ use Jane\Component\OpenApi2\JsonSchema\Model\FormDataParameterSubSchema;
 use Jane\Component\OpenApi2\JsonSchema\Model\HeaderParameterSubSchema;
 use Jane\Component\OpenApi2\JsonSchema\Model\PathParameterSubSchema;
 use Jane\Component\OpenApi2\JsonSchema\Model\QueryParameterSubSchema;
+use Jane\Component\OpenApiCommon\Generator\Endpoint\PathParameterNameTrait;
 use Jane\Component\OpenApiCommon\Generator\Parameter\ParameterGenerator;
 use Jane\Component\OpenApiCommon\Generator\Traits\OpenApiNumberTypeResolverTrait;
 use Jane\Component\OpenApiCommon\Generator\Traits\OptionResolverNormalizationTrait;
@@ -18,6 +19,7 @@ use Psr\Http\Message\StreamInterface;
 
 class NonBodyParameterGenerator extends ParameterGenerator
 {
+    use PathParameterNameTrait;
     use OpenApiNumberTypeResolverTrait;
     use OptionResolverNormalizationTrait;
 
@@ -26,7 +28,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
      */
     public function generateMethodParameter($parameter, Context $context, string $reference): Node\Param
     {
-        $name = $this->getInflector()->camelize($parameter->getName());
+        $name = $this->normalizePathVariableName($parameter->getName());
         $methodParameter = new Node\Param(new Expr\Variable($name));
 
         if (!$parameter->getRequired() || null !== $parameter->getDefault()) {
@@ -115,7 +117,7 @@ class NonBodyParameterGenerator extends ParameterGenerator
         $description = array_map(rtrim(...), explode("\n", $parameter->getDescription() ?: ''));
 
         $description = array_map(fn (string $line): string => str_replace('*/', '*\\/', $line), $description);
-        $param = [rtrim(\sprintf(' * @param %s $%s %s', $type, str_replace('*/', '*\\/', $this->getInflector()->camelize($parameter->getName())), array_shift($description)))];
+        $param = [rtrim(\sprintf(' * @param %s $%s %s', $type, str_replace('*/', '*\\/', $this->normalizePathVariableName($parameter->getName())), array_shift($description)))];
         foreach ($description as $line) {
             $param[] = \sprintf(' * %s', $line);
         }

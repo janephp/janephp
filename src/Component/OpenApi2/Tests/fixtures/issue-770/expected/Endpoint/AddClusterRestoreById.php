@@ -6,14 +6,14 @@ class AddClusterRestoreById extends \Jane\Component\OpenApi3\Tests\Expected\Runt
 {
     protected $id___;
     /**
-     * @param string $id:.+
+     * @param string $id
      * @param array $queryParameters {
      *     @var string $serviceTicket Service Ticket is required in the Request URI Parameters of all API requests (except for the logon API).
      * }
      */
-    public function __construct(string $id:.+, array $queryParameters = [])
+    public function __construct(string $id, array $queryParameters = [])
     {
-        $this->id___ = $id:.+;
+        $this->id___ = $id;
         $this->queryParameters = $queryParameters;
     }
     use \Jane\Component\OpenApi3\Tests\Expected\Runtime\Client\EndpointTrait;

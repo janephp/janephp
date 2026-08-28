@@ -49,7 +49,7 @@ trait GetConstructorTrait
 
             if ($parameter instanceof Parameter && EndpointGenerator::IN_PATH === $parameter->getIn()) {
                 $pathPropertyName = $this->normalizePathPropertyName($parameter->getName());
-                $pathVariableName = $this->getInflector()->camelize($parameter->getName());
+                $pathVariableName = $this->normalizePathVariableName($parameter->getName());
                 $schema = $parameter->getSchema();
                 if (null === ($schema instanceof JsonSchema ? $schema->getDefault() : null)) {
                     $pathParams[] = $nonBodyParameterGenerator->generateMethodParameter($parameter, $context, $operation->getReference() . '/parameters/' . $key);
