@@ -2,11 +2,20 @@
 
 namespace Jane\Component\JsonSchema\Tests;
 
+use PhpParser\Error;
+use PhpParser\ParserFactory;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 
 /**
  * Shared comparison logic for fixture-based generator tests.
+ *
+ * Every generated PHP file is first run through the php-parser syntax gate:
+ * matching a baseline only proves the output did not change, not that it is
+ * valid PHP. Fixtures reproducing a known generator bug that emits invalid
+ * PHP carry a `.known-invalid-php` marker file (content: link to the tracking
+ * issue); for those the gate asserts the output still fails to parse, so the
+ * marker must be deleted once the bug is fixed.
  *
  * Two baseline modes per fixture directory:
  *  - directory mode (default): committed `expected/` tree compared with the
@@ -21,6 +30,8 @@ trait FixtureComparisonTrait
 {
     private function assertFixtureMatchesGenerated(string $testDirectory): void
     {
+        $this->assertGeneratedFilesAreValidPhp($testDirectory);
+
         $manifestPath = $testDirectory . \DIRECTORY_SEPARATOR . 'expected.manifest.json';
 
         if (is_file($manifestPath)) {
@@ -30,6 +41,47 @@ trait FixtureComparisonTrait
         }
 
         $this->assertDirectoriesMatch($testDirectory);
+    }
+
+    private function assertGeneratedFilesAreValidPhp(string $testDirectory): void
+    {
+        $generatedDirectory = $testDirectory . \DIRECTORY_SEPARATOR . 'generated';
+
+        if (!is_dir($generatedDirectory)) {
+            return;
+        }
+
+        $parser = (new ParserFactory())->createForHostVersion();
+        $errors = [];
+
+        $finder = new Finder();
+        $finder->in($generatedDirectory)->files()->name('*.php');
+
+        foreach ($finder as $generatedFile) {
+            try {
+                $parser->parse(file_get_contents($generatedFile->getRealPath()));
+            } catch (Error $error) {
+                $errors[] = \sprintf('%s: %s', $generatedFile->getRelativePathname(), $error->getMessage());
+            }
+        }
+
+        $fixtureName = basename($testDirectory);
+
+        if (is_file($testDirectory . \DIRECTORY_SEPARATOR . '.known-invalid-php')) {
+            $this->assertNotSame(
+                [],
+                $errors,
+                \sprintf('Generated output for %s parses again: delete its stale .known-invalid-php marker', $fixtureName)
+            );
+
+            return;
+        }
+
+        $this->assertSame(
+            [],
+            $errors,
+            \sprintf('Generated files are not valid PHP for %s%s%s', $fixtureName, "\n", implode("\n", $errors))
+        );
     }
 
     /**

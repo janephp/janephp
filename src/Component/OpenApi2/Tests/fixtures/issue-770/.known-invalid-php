@@ -1,0 +1,3 @@
+Known generator bug: path parameter regex constraints leak into PHP parameter
+names (e.g. `string $id:.+`), so the generated endpoints and client do not parse.
+Tracked in https://github.com/janephp/janephp/issues/1051

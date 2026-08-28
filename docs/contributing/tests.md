@@ -44,6 +44,14 @@ of the templates shipped in `Generator/Runtime/data` and are identical for every
 asserted once per component, by the dedicated `runtime-boilerplate` fixture (which opts back into full comparison via
 a `.full-compare` marker file). This keeps template changes from rippling into every fixture diff.
 
+### Syntax gate
+
+Before any baseline comparison, every generated `*.php` file is parsed with nikic/php-parser: matching a baseline only
+proves the output did not change, not that it is valid PHP. A fixture that reproduces a known generator bug emitting
+invalid PHP carries a `.known-invalid-php` marker file (its content links to the tracking issue). For those fixtures the
+gate asserts the output still *fails* to parse — once the bug is fixed, the marker file must be deleted along with
+refreshing the baseline.
+
 > **Important:** a few fixtures are *executed* by functional tests (their classes are loaded at runtime, through the
 > composer classmap or explicit `require_once`). Those fixtures keep their full `expected/` trees, including `Runtime/`
 > copies: currently `multi-namespace` (JsonSchema), `docker-api`, `issue-793`, `bad-response-exception`,
