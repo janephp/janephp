@@ -8,32 +8,94 @@ class Client extends \Jane\Component\OpenApi2\Tests\Client\Runtime\Client\Client
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Jane\Component\OpenApi2\Tests\Client\Exception\GetEndpointUnauthorizedException
      *
-     * @return null|\Jane\Component\OpenApi2\Tests\Client\Model\SimpleResponse|\Psr\Http\Message\ResponseInterface
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi2\Tests\Client\Model\SimpleResponse : \Psr\Http\Message\ResponseInterface)
      */
     public function getEndpoint(string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Client\Endpoint\GetEndpoint(), $fetch);
     }
-    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
+    /**
+     * @param \Jane\Component\OpenApi2\Tests\Client\Model\ThingInput $body
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Jane\Component\OpenApi2\Tests\Client\Exception\CreateThingBadRequestException
+     *
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi2\Tests\Client\Model\Thing : \Psr\Http\Message\ResponseInterface)
+     */
+    public function createThing(\Jane\Component\OpenApi2\Tests\Client\Model\ThingInput $body, string $fetch = self::FETCH_OBJECT)
     {
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Client\Endpoint\CreateThing($body), $fetch);
+    }
+    /**
+     * @param array $formParameters {
+     *     @var string $name
+     *     @var string $kind
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi2\Tests\Client\Model\Thing : \Psr\Http\Message\ResponseInterface)
+     */
+    public function createFormThing(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Client\Endpoint\CreateFormThing($formParameters), $fetch);
+    }
+    /**
+     * @param string $thingId
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Jane\Component\OpenApi2\Tests\Client\Exception\DeleteThingNotFoundException
+     *
+     * @return ($fetch is 'object' ? null : \Psr\Http\Message\ResponseInterface)
+     */
+    public function deleteThing(string $thingId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Client\Endpoint\DeleteThing($thingId), $fetch);
+    }
+    /**
+     * @param string $thingId
+     * @param array $queryParameters {
+     *     @var string $q
+     *     @var int $page
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Jane\Component\OpenApi2\Tests\Client\Exception\GetThingNotFoundException
+     *
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi2\Tests\Client\Model\Thing : \Psr\Http\Message\ResponseInterface)
+     */
+    public function getThing(string $thingId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Client\Endpoint\GetThing($thingId, $queryParameters), $fetch);
+    }
+    /**
+     * @param string $thingId
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return ($fetch is 'object' ? null|\Jane\Component\OpenApi2\Tests\Client\Model\ThingDetails : \Psr\Http\Message\ResponseInterface)
+     */
+    public function getThingDetails(string $thingId, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Jane\Component\OpenApi2\Tests\Client\Endpoint\GetThingDetails($thingId), $fetch);
+    }
+    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
+    {
+        $plugins = [];
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
-            $plugins = [];
+        }
+        if ($applyServerPlugins) {
             $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('http://127.0.0.1:4011/');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
-            if (count($additionalPlugins) > 0) {
-                $plugins = array_merge($plugins, $additionalPlugins);
-            }
-            $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         }
+        if (count($additionalPlugins) > 0) {
+            $plugins = array_merge($plugins, $additionalPlugins);
+        }
+        $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
         $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \Jane\Component\OpenApi2\Tests\Client\Normalizer\JaneObjectNormalizer()];
         if (count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true]))]);
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new \Jane\Component\OpenApi2\Tests\Client\Runtime\Client\FormEncoder()]);
         return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }
 }

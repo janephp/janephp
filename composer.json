@@ -85,7 +85,8 @@
         "psr-4": {
             "Jane\\Component\\JsonSchema\\Tests\\": "src/Component/JsonSchema/Tests/",
             "Jane\\Component\\OpenApi2\\Tests\\Client\\": "src/Component/OpenApi2/Tests/client/generated/",
-            "Jane\\Component\\OpenApi3\\Tests\\Client\\": "src/Component/OpenApi3/Tests/client/generated/"
+            "Jane\\Component\\OpenApi3\\Tests\\Client\\": "src/Component/OpenApi3/Tests/client/generated/",
+            "Jane\\Component\\OpenApi31\\Tests\\Client\\": "src/Component/OpenApi31/Tests/client/generated/"
         }
     },
     "bin": [

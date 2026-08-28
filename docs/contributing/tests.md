@@ -76,8 +76,9 @@ Fixtures holding a manifest are skipped by the replace-all script; use the task 
 By default, we don't run generated client related tests locally, because you need to run
 [stoplightio/prism](https://github.com/stoplightio/prism) with configuration as following:
 
-- `nohup prism mock -p 4010 -m src/OpenApi3/Tests/client/openapi.yaml &`
-- `nohup prism mock -p 4011 -m src/OpenApi2/Tests/client/swagger.yaml &`
+- `nohup prism mock -p 4010 -m src/Component/OpenApi3/Tests/client/openapi.yaml &`
+- `nohup prism mock -p 4011 -m src/Component/OpenApi2/Tests/client/swagger.yaml &`
+- `nohup prism mock -p 4012 -m src/Component/OpenApi31/Tests/client/openapi.yaml &`
 
 Both theses will run a "fake" API based on the given OpenApi scheme. If you want to see logs, you can remove `nohup`
 and `&` keywords on given commands.

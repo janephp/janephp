@@ -27,18 +27,18 @@ class SimpleResponseNormalizer implements DenormalizerInterface, NormalizerInter
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Jane\Component\OpenApi3\Tests\Client\Model\SimpleResponse();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Jane\Component\OpenApi3\Tests\Client\Model\SimpleResponse();
         if (\array_key_exists('baz', $data) && \is_int($data['baz'])) {
             $data['baz'] = (bool) $data['baz'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('foo', $data)) {
             $object->setFoo($data['foo']);
@@ -64,7 +64,7 @@ class SimpleResponseNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('baz') && null !== $data->getBaz()) {
             $dataArray['baz'] = $data->getBaz();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

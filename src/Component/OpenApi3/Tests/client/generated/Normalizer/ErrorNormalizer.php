@@ -27,15 +27,15 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Jane\Component\OpenApi3\Tests\Client\Model\Error();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Jane\Component\OpenApi3\Tests\Client\Model\Error();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
@@ -54,7 +54,7 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if ($data->isInitialized('message') && null !== $data->getMessage()) {
             $dataArray['message'] = $data->getMessage();
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }
