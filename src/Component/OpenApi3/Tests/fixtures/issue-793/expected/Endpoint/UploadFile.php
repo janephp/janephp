@@ -64,7 +64,7 @@ class UploadFile extends \Jane\Component\OpenApi3\Tests\ExpectedIssue793\Runtime
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Jane\Component\OpenApi3\Tests\ExpectedIssue793\Model\FilePostResponse200', 'json');
         }
     }

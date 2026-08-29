@@ -237,7 +237,7 @@ EOD
 
                 $statements[] = new Stmt\If_(
                     new Expr\BinaryOp\NotIdentical(
-                        new Expr\FuncCall(new Name('mb_strpos'), [
+                        new Expr\FuncCall(new Name('stripos'), [
                             new Node\Arg(
                                 new Expr\FuncCall(new Name('strtolower'), [
                                     new Expr\Variable('contentType'),
@@ -274,7 +274,7 @@ EOD
 
                 $statements[] = new Stmt\If_(
                     new Expr\BinaryOp\NotIdentical(
-                        new Expr\FuncCall(new Name('mb_strpos'), [
+                        new Expr\FuncCall(new Name('stripos'), [
                             new Node\Arg(
                                 new Expr\FuncCall(new Name('strtolower'), [
                                     new Expr\Variable('contentType'),

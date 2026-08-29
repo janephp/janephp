@@ -41,7 +41,7 @@ class CreateCelestialBody extends \Jane\Component\OpenApi31\Tests\Expected\Runti
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (201 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if (is_null($contentType) === false && (201 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return json_decode($body);
         }
     }
