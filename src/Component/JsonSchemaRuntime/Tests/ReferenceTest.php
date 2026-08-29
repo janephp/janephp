@@ -278,6 +278,69 @@ PHP;
         self::assertStringContainsString('redirects are not followed', $output, 'Child output: ' . $output . $errorOutput);
     }
 
+    public function testRemoteRedirectFollowedWhenEnabled(): void
+    {
+        [$redirectServer, $redirectPort] = $this->startLoopbackServer();
+        [$targetServer, $targetPort] = $this->startLoopbackServer();
+        $repositoryRoot = \dirname(__DIR__, 4);
+
+        // Same child-process pattern as the redirect-disabled test: the
+        // loopback servers answer while the fetch is in flight. The redirect
+        // target serves a valid JSON document, so when following is enabled
+        // the resolution must succeed through the redirect.
+        $childCode = <<<'PHP'
+require $argv[1];
+Jane\Component\JsonSchemaRuntime\Reference::allowExternalRefs(true);
+Jane\Component\JsonSchemaRuntime\Reference::setAllowedExternalHosts(['127.0.0.1']);
+Jane\Component\JsonSchemaRuntime\Reference::setFollowRedirects(true);
+try {
+    $result = (new Jane\Component\JsonSchemaRuntime\Reference($argv[2], $argv[3]))->resolve();
+    echo 'RESOLVED:' . var_export($result, true);
+} catch (Throwable $e) {
+    echo get_class($e) . ': ' . $e->getMessage();
+}
+PHP;
+
+        $spec = [1 => ['pipe', 'w'], 2 => ['pipe', 'w']];
+        $process = proc_open([\PHP_BINARY, '-r', $childCode, '--', $repositoryRoot . '/vendor/autoload.php', \sprintf('http://127.0.0.1:%d/doc.json#/type', $redirectPort), __DIR__ . '/schema.json'], $spec, $pipes);
+
+        if (!\is_resource($process)) {
+            fclose($redirectServer);
+            fclose($targetServer);
+            $this->markTestSkipped('Cannot spawn a child PHP process.');
+        }
+
+        try {
+            // 1. Answer the first request with a redirect to the target server.
+            stream_set_blocking($redirectServer, false);
+            $client = $this->acceptWithin($redirectServer, 5);
+            stream_set_timeout($client, 2);
+            fread($client, 4096);
+            fwrite($client, \sprintf("HTTP/1.1 302 Found\r\nLocation: http://127.0.0.1:%d/doc.json\r\nContent-Length: 0\r\nConnection: close\r\n\r\n", $targetPort));
+            fclose($client);
+
+            // 2. Answer the redirected request with a valid JSON document.
+            stream_set_blocking($targetServer, false);
+            $client = $this->acceptWithin($targetServer, 5);
+            $body = '{"type": "object"}';
+            stream_set_timeout($client, 2);
+            fread($client, 4096);
+            fwrite($client, \sprintf("HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nContent-Length: %d\r\nConnection: close\r\n\r\n%s", \strlen($body), $body));
+            fclose($client);
+        } finally {
+            fclose($redirectServer);
+            fclose($targetServer);
+        }
+
+        $output = (string) stream_get_contents($pipes[1]);
+        $errorOutput = (string) stream_get_contents($pipes[2]);
+        fclose($pipes[1]);
+        fclose($pipes[2]);
+        proc_close($process);
+
+        self::assertStringContainsString("RESOLVED:'object'", $output, 'Child output: ' . $output . $errorOutput);
+    }
+
     public function testRemoteFetchFailureThrowsReferenceResolveException(): void
     {
         // Bind then release a port: nothing listens there anymore, the fetch
@@ -414,6 +477,44 @@ PHP;
         } finally {
             $this->removeDirectory($treeRoot);
         }
+    }
+
+    /**
+     * @return array{0: resource, 1: int} the server socket and its port
+     */
+    private function startLoopbackServer(): array
+    {
+        $server = stream_socket_server('tcp://127.0.0.1:0', $errno, $errstr);
+
+        if (false === $server) {
+            $this->markTestSkipped(\sprintf('Cannot bind a loopback socket: %s', $errstr));
+        }
+
+        $name = (string) stream_socket_get_name($server, false);
+
+        return [$server, (int) substr($name, strrpos($name, ':') + 1)];
+    }
+
+    /**
+     * @param resource $server
+     *
+     * @return resource
+     */
+    private function acceptWithin($server, int $timeoutSeconds)
+    {
+        $deadline = microtime(true) + $timeoutSeconds;
+
+        do {
+            $client = @stream_socket_accept($server, 0);
+
+            if (false !== $client) {
+                return $client;
+            }
+
+            usleep(10_000);
+        } while (microtime(true) < $deadline);
+
+        $this->fail('No incoming connection reached the loopback server.');
     }
 
     private function createTempTree(): string

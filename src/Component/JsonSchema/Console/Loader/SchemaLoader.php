@@ -47,6 +47,7 @@ class SchemaLoader implements SchemaLoaderInterface
             'enums-as-objects',
             'allow-external-refs',
             'external-ref-allowed-hosts',
+            'external-ref-follow-redirects',
             'allowed-local-ref-roots',
         ];
     }

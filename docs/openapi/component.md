@@ -170,6 +170,11 @@ Other options are available to customize the generated code:
 - `external-ref-allowed-hosts`: An array of host names restricting which remote hosts `allow-external-refs` may reach
   (subdomains of the listed hosts are allowed too). When empty, every host is allowed as long as
   `allow-external-refs` is enabled.
+- `external-ref-follow-redirects`: A boolean controlling whether fetching a remote reference may follow HTTP
+  redirects. Disabled by default: a redirect response aborts the resolution, so an allowlisted host cannot bounce
+  the fetch to an arbitrary host. When enabled, redirects are followed blindly — the redirect target host is not
+  re-checked against `external-ref-allowed-hosts`, so only enable this for specifications whose remote documents
+  you fully trust.
 - `allowed-local-ref-roots`: An array of directory roots a local reference may resolve into, in addition to the
   directory of the referencing document (which is always allowed). By default a local `$ref` can only point to a
   file inside its own directory, so split layouts like this one fail to generate:

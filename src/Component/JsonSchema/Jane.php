@@ -97,6 +97,9 @@ class Jane extends ChainGenerator
         if (!empty($options['external-ref-allowed-hosts'] ?? [])) {
             Reference::setAllowedExternalHosts($options['external-ref-allowed-hosts']);
         }
+        if (!empty($options['external-ref-follow-redirects'] ?? false)) {
+            Reference::setFollowRedirects(true);
+        }
         if (!empty($options['allowed-local-ref-roots'] ?? [])) {
             Reference::setAllowedLocalRefRoots($options['allowed-local-ref-roots']);
         }

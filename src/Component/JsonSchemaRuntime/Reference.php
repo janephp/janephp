@@ -23,6 +23,7 @@ class Reference
 
     private static bool $allowExternalRefs = false;
     private static array $allowedExternalHosts = [];
+    private static bool $followRedirects = false;
     private static array $allowedLocalRefRoots = [];
 
     private string|int|float|bool|array|null $resolved = null;
@@ -62,10 +63,21 @@ class Reference
         self::$allowedLocalRefRoots = $roots;
     }
 
+    /**
+     * Allow (or forbid) following HTTP redirects when fetching external
+     * references. Disabled by default: an allowlisted host must not be able
+     * to bounce the fetch to an arbitrary, possibly non allowlisted host.
+     */
+    public static function setFollowRedirects(bool $allow = true): void
+    {
+        self::$followRedirects = $allow;
+    }
+
     public static function resetConfig(): void
     {
         self::$allowExternalRefs = false;
         self::$allowedExternalHosts = [];
+        self::$followRedirects = false;
         self::$allowedLocalRefRoots = [];
     }
 
@@ -129,10 +141,11 @@ class Reference
      */
     private function fetchAndNormalizeContents(string $fragment): string
     {
-        // Redirect following is disabled: an allowlisted host must not be able
-        // to bounce the fetch to an arbitrary (possibly non allowlisted) host.
+        // Redirects are not followed by default (see setFollowRedirects()): an
+        // allowlisted host must not be able to bounce the fetch to an
+        // arbitrary (possibly non allowlisted) host.
         $context = stream_context_create([
-            'http' => ['follow_location' => 0],
+            'http' => ['follow_location' => self::$followRedirects ? 1 : 0],
         ]);
 
         // $http_response_header is populated by the HTTP stream wrapper in
@@ -146,10 +159,12 @@ class Reference
             throw new ReferenceResolveException(\sprintf('Unable to fetch reference document "%s".', $fragment));
         }
 
-        $statusCode = $this->lastHttpStatusCode($http_response_header);
+        if (!self::$followRedirects) {
+            $statusCode = $this->lastHttpStatusCode($http_response_header);
 
-        if (null !== $statusCode && $statusCode >= 300 && $statusCode < 400) {
-            throw new ReferenceResolveException(\sprintf('Reference document "%s" answered with HTTP status %d: redirects are not followed when fetching external references.', $fragment, $statusCode));
+            if (null !== $statusCode && $statusCode >= 300 && $statusCode < 400) {
+                throw new ReferenceResolveException(\sprintf('Reference document "%s" answered with HTTP status %d: redirects are not followed when fetching external references (set "external-ref-follow-redirects" to true to enable them).', $fragment, $statusCode));
+            }
         }
 
         try {
