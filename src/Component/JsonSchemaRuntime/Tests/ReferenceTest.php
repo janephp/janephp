@@ -3,6 +3,7 @@
 namespace Jane\Component\JsonSchemaRuntime\Tests;
 
 use Jane\Component\JsonSchema\Tests\LocalSchemaServer;
+use Jane\Component\JsonSchemaRuntime\Exception\JaneExceptionInterface;
 use Jane\Component\JsonSchemaRuntime\Exception\ReferenceResolveException;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use PHPUnit\Framework\TestCase;
@@ -179,6 +180,9 @@ class ReferenceTest extends TestCase
                 self::assertStringContainsString('neither valid JSON nor valid YAML', $exception->getMessage());
                 // BC: the exception must stay catchable as a RuntimeException.
                 self::assertInstanceOf(\RuntimeException::class, $exception);
+                // ADR 0002: user-facing errors join the Jane error taxonomy so
+                // generation commands render them cleanly.
+                self::assertInstanceOf(JaneExceptionInterface::class, $exception);
             }
         } finally {
             $this->removeDirectory($treeRoot);
