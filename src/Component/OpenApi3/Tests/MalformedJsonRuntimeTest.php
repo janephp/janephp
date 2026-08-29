@@ -28,7 +28,7 @@ class MalformedJsonRuntimeTest extends TestCase
 
     public function testMalformedJsonThrowsRuntimeException(): void
     {
-        $endpoint = new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestRefArray();
+        $endpoint = new Expected\Endpoint\TestRefArray();
         $response = new Response(200, ['Content-Type' => 'application/json'], '{"broken": ');
 
         try {
@@ -42,7 +42,7 @@ class MalformedJsonRuntimeTest extends TestCase
 
     public function testValidJsonIsStillDecoded(): void
     {
-        $endpoint = new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestRefArray();
+        $endpoint = new Expected\Endpoint\TestRefArray();
         $response = new Response(200, ['Content-Type' => 'application/json'], '[{"id": 1}]');
 
         $result = $endpoint->parseResponse($response, new Serializer([], []));
@@ -52,7 +52,7 @@ class MalformedJsonRuntimeTest extends TestCase
 
     public function testValidScalarJsonRootIsStillDecoded(): void
     {
-        $endpoint = new \Jane\Component\OpenApi3\Tests\Expected\Endpoint\TestRefArray();
+        $endpoint = new Expected\Endpoint\TestRefArray();
         $response = new Response(200, ['Content-Type' => 'application/json'], '0');
 
         $result = $endpoint->parseResponse($response, new Serializer([], []));
