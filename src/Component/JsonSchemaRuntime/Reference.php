@@ -129,10 +129,27 @@ class Reference
      */
     private function fetchAndNormalizeContents(string $fragment): string
     {
-        $contents = @file_get_contents($fragment);
+        // Redirect following is disabled: an allowlisted host must not be able
+        // to bounce the fetch to an arbitrary (possibly non allowlisted) host.
+        $context = stream_context_create([
+            'http' => ['follow_location' => 0],
+        ]);
+
+        // $http_response_header is populated by the HTTP stream wrapper in
+        // this very scope (overwriting this default), and is left empty for
+        // every other wrapper: initialize it so the read below is always safe.
+        $http_response_header = [];
+
+        $contents = @file_get_contents($fragment, false, $context);
 
         if (false === $contents) {
             throw new ReferenceResolveException(\sprintf('Unable to fetch reference document "%s".', $fragment));
+        }
+
+        $statusCode = $this->lastHttpStatusCode($http_response_header);
+
+        if (null !== $statusCode && $statusCode >= 300 && $statusCode < 400) {
+            throw new ReferenceResolveException(\sprintf('Reference document "%s" answered with HTTP status %d: redirects are not followed when fetching external references.', $fragment, $statusCode));
         }
 
         try {
@@ -157,6 +174,29 @@ class Reference
         }
 
         return $encoded;
+    }
+
+    /**
+     * HTTP status of the last fetch, parsed from the headers populated by the
+     * HTTP stream wrapper ($http_response_header, local to the fetch call).
+     *
+     * @param array<string> $responseHeaders
+     */
+    private function lastHttpStatusCode(array $responseHeaders): ?int
+    {
+        $statusLine = null;
+
+        foreach ($responseHeaders as $header) {
+            if (str_starts_with($header, 'HTTP/')) {
+                $statusLine = $header;
+            }
+        }
+
+        if (null === $statusLine || !preg_match('#^HTTP/\S+\s+(\d{3})#', $statusLine, $matches)) {
+            return null;
+        }
+
+        return (int) $matches[1];
     }
 
     /**
@@ -210,10 +250,9 @@ class Reference
     {
         $originPath = $this->originUri->getPath();
 
-        if ('' === $originPath || '/' === $originPath) {
-            return;
-        }
-
+        // An empty or root origin path degenerates to an empty base directory,
+        // which authorizes absolute paths only: containment logic still runs,
+        // there is just no meaningful directory to stay under.
         $basePath = @realpath(\dirname($originPath));
 
         if (false === $basePath) {
