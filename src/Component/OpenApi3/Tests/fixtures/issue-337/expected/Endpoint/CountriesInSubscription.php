@@ -56,10 +56,20 @@ class CountriesInSubscription extends \CreditSafe\API\Runtime\Client\BaseEndpoin
             return $serializer->deserialize($body, 'CreditSafe\API\Model\AccessCountriesResponse', 'json');
         }
         if (is_null($contentType) === false && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\CountriesInSubscriptionBadRequestException($response);
+            try {
+                $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
+                throw new \CreditSafe\API\Exception\CountriesInSubscriptionBadRequestException($response);
+            } catch (\JsonException $jsonException) {
+                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+            }
         }
         if (is_null($contentType) === false && (401 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\CountriesInSubscriptionUnauthorizedException($response);
+            try {
+                $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
+                throw new \CreditSafe\API\Exception\CountriesInSubscriptionUnauthorizedException($response);
+            } catch (\JsonException $jsonException) {
+                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+            }
         }
     }
     public function getAuthenticationScopes(): array

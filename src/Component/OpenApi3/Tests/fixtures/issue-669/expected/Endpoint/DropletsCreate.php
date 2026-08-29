@@ -71,7 +71,12 @@ class DropletsCreate extends \Jane\Generated\DigitalOcean\Runtime\Client\BaseEnd
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (202 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return json_decode($body);
+            try {
+                $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
+                return $decodedBody;
+            } catch (\JsonException $jsonException) {
+                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+            }
         }
         if (is_null($contentType) === false && (401 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Jane\Generated\DigitalOcean\Exception\DropletsCreateUnauthorizedException($serializer->deserialize($body, 'Jane\Generated\DigitalOcean\Model\Error', 'json'), $response);

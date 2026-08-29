@@ -60,16 +60,36 @@ class ResetPortfolioEventRulesToDefaultValues extends \CreditSafe\API\Runtime\Cl
         if (204 === $status) {
         }
         if (is_null($contentType) === false && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesBadRequestException($response);
+            try {
+                $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
+                throw new \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesBadRequestException($response);
+            } catch (\JsonException $jsonException) {
+                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+            }
         }
         if (is_null($contentType) === false && (401 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesUnauthorizedException($response);
+            try {
+                $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
+                throw new \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesUnauthorizedException($response);
+            } catch (\JsonException $jsonException) {
+                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+            }
         }
         if (is_null($contentType) === false && (403 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesForbiddenException($response);
+            try {
+                $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
+                throw new \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesForbiddenException($response);
+            } catch (\JsonException $jsonException) {
+                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+            }
         }
         if (is_null($contentType) === false && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesNotFoundException($response);
+            try {
+                $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
+                throw new \CreditSafe\API\Exception\ResetPortfolioEventRulesToDefaultValuesNotFoundException($response);
+            } catch (\JsonException $jsonException) {
+                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+            }
         }
     }
     public function getAuthenticationScopes(): array

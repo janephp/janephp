@@ -69,7 +69,12 @@ class JsonSchemaGet extends \PicturePark\API\Runtime\Client\BaseEndpoint impleme
             throw new \PicturePark\API\Exception\JsonSchemaGetInternalServerErrorException($serializer->deserialize($body, 'PicturePark\API\Model\PictureparkException', 'json'), $response);
         }
         if (is_null($contentType) === false && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            return json_decode($body);
+            try {
+                $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
+                return $decodedBody;
+            } catch (\JsonException $jsonException) {
+                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+            }
         }
     }
     public function getAuthenticationScopes(): array

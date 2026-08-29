@@ -76,13 +76,28 @@ class ListDecisionTrees extends \CreditSafe\API\Runtime\Client\BaseEndpoint impl
             return $serializer->deserialize($body, 'CreditSafe\API\Model\GuidSuccessResponse', 'json');
         }
         if (is_null($contentType) === false && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\ListDecisionTreesBadRequestException($response);
+            try {
+                $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
+                throw new \CreditSafe\API\Exception\ListDecisionTreesBadRequestException($response);
+            } catch (\JsonException $jsonException) {
+                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+            }
         }
         if (is_null($contentType) === false && (401 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\ListDecisionTreesUnauthorizedException($response);
+            try {
+                $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
+                throw new \CreditSafe\API\Exception\ListDecisionTreesUnauthorizedException($response);
+            } catch (\JsonException $jsonException) {
+                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+            }
         }
         if (is_null($contentType) === false && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
-            throw new \CreditSafe\API\Exception\ListDecisionTreesNotFoundException($response);
+            try {
+                $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
+                throw new \CreditSafe\API\Exception\ListDecisionTreesNotFoundException($response);
+            } catch (\JsonException $jsonException) {
+                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+            }
         }
     }
     public function getAuthenticationScopes(): array

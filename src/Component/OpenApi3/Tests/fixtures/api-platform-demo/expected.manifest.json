@@ -9,7 +9,7 @@
         "Endpoint/ApiBooksIdGet.php": "213c1f7e3d8242b917460862520626ce6e15e1eaa719f0a603e803998c27b6cb",
         "Endpoint/ApiBooksIdPatch.php": "763bf84a784d7d709bf0d358f1894a887f0d4ca30afb1b371e3810b8cb27ba39",
         "Endpoint/ApiBooksIdPut.php": "647c1f8db96d9dd905779adcb78ca3836429b00f5ea1a7af80b040494179caba",
-        "Endpoint/ApiBooksIdgenerateCoverPut.php": "e689cc6567c5fa9fafa5724e04d7af3e14f96357b3d4d461aa888af606a23b6d",
+        "Endpoint/ApiBooksIdgenerateCoverPut.php": "029110d67dca6bea7f0d0ff9725121b1e466f86591cb7e1c9b8e27f13ab9cff6",
         "Endpoint/ApiBooksPost.php": "d791148ce7b5ba2969529aaf5abfcb551a5897d728f4037951ac765d1548cede",
         "Endpoint/ApiGetStats.php": "b05f19d9d1c95a78a555f494dcb03ddd9f3253e8eb5897ed9b3826586783414b",
         "Endpoint/ApiParchmentsGetCollection.php": "b4726a754c132a24bc282dea4e6259587b2cbd92689af6a76f365390eca64628",

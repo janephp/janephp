@@ -341,6 +341,7 @@ EOD
         $throwType = null;
         $serializeStmt = new Expr\ConstFetch(new Name('null'));
         $class = null;
+        $isBareJsonDecode = false;
 
         if (null !== $classGuess) {
             $class = $context->getRegistry()->getSchema($classGuess->getReference())->getNamespace() . '\\Model' . XNamespaceResolver::subNamespaceSuffix($classGuess) . '\\' . $classGuess->getName();
@@ -360,9 +361,8 @@ EOD
                 ]
             );
         } elseif ($schema instanceof Schema) {
-            $serializeStmt = new Expr\FuncCall(new Name('json_decode'), [
-                new Node\Arg(new Expr\Variable('body')),
-            ]);
+            $isBareJsonDecode = true;
+            $serializeStmt = new Expr\Variable('decodedBody');
 
             $scalarReturnType = $this->convertResponseType($schema);
 
@@ -373,7 +373,7 @@ EOD
 
         $contentStatement = new Stmt\Return_($serializeStmt);
 
-$lowerBound = $this->isStatusCodeRange($status) ? $this->statusCodeRangeBounds($status)[0] : (int) $status;
+        $lowerBound = $this->isStatusCodeRange($status) ? $this->statusCodeRangeBounds($status)[0] : (int) $status;
         if ($lowerBound >= 400 && $registry->getGenerateErrorExceptions()) {
             $exceptionName = $exceptionGenerator->generate(
                 $name,
@@ -392,7 +392,48 @@ $lowerBound = $this->isStatusCodeRange($status) ? $this->statusCodeRangeBounds($
             ] : [new Node\Arg(new Expr\Variable('response'))])));
         }
 
+        if ($isBareJsonDecode) {
+            $contentStatement = $this->wrapInMalformedJsonHandling($contentStatement);
+        }
+
         return [$returnType, $throwType, $contentStatement];
+    }
+
+    /**
+     * Raw json_decode() responses must fail loudly on malformed JSON instead
+     * of silently returning null: decode with JSON_THROW_ON_ERROR and convert
+     * a JsonException into a RuntimeException (after rethrowing the endpoint
+     * error exception when one is being built).
+     */
+    private function wrapInMalformedJsonHandling(Stmt $statement): Stmt\TryCatch
+    {
+        return new Stmt\TryCatch(
+            [
+                new Stmt\Expression(new Expr\Assign(
+                    new Expr\Variable('decodedBody'),
+                    new Expr\FuncCall(new Name('json_decode'), [
+                        new Node\Arg(new Expr\Variable('body')),
+                        new Node\Arg(new Expr\ConstFetch(new Name('false'))),
+                        new Node\Arg(new Scalar\LNumber(512)),
+                        new Node\Arg(new Expr\ConstFetch(new Name('JSON_THROW_ON_ERROR'))),
+                    ])
+                )),
+                $statement,
+            ],
+            [
+                new Stmt\Catch_(
+                    [new Name('\\JsonException')],
+                    new Expr\Variable('jsonException'),
+                    [
+                        new Stmt\Expression(new Expr\Throw_(new Expr\New_(new Name('\\RuntimeException'), [
+                            new Node\Arg(new Scalar\String_('Malformed JSON response body.')),
+                            new Node\Arg(new Expr\ConstFetch(new Name('0'))),
+                            new Node\Arg(new Expr\Variable('jsonException')),
+                        ]))),
+                    ]
+                ),
+            ]
+        );
     }
 
     private function convertResponseType(Schema $schema): ?string
