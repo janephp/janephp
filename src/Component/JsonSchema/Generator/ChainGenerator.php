@@ -3,9 +3,9 @@
 namespace Jane\Component\JsonSchema\Generator;
 
 use Jane\Component\JsonSchema\Exception\GenerationFailedException;
-use Jane\Component\JsonSchema\Exception\JaneExceptionInterface;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\Registry\Registry;
+use Jane\Component\JsonSchemaRuntime\Exception\JaneExceptionInterface;
 
 abstract class ChainGenerator
 {
