@@ -8,12 +8,12 @@ use Jane\Component\OpenApiCommon\Guesser\Guess\SecuritySchemeGuess;
 
 class Registry extends BaseRegistry implements RegistryInterface
 {
-    private string $openApiClass;
+    private string $openApiClass = '';
     /** @var array<string> */
-    private array $whitelistedPaths;
-    private array $customQueryResolver;
-    private bool $throwUnexpectedStatusCode;
-    private bool $generateErrorExceptions;
+    private array $whitelistedPaths = [];
+    private array $customQueryResolver = [];
+    private bool $throwUnexpectedStatusCode = false;
+    private bool $generateErrorExceptions = true;
 
     public function setOpenApiClass(string $openApiClass): void
     {
