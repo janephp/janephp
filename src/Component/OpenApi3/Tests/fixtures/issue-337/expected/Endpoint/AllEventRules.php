@@ -65,7 +65,7 @@ class AllEventRules extends \CreditSafe\API\Runtime\Client\BaseEndpoint implemen
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\AllEventRulesUnauthorizedException($response);
             } catch (\JsonException $jsonException) {
-                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+                throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
         if (is_null($contentType) === false && (403 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
@@ -73,7 +73,7 @@ class AllEventRules extends \CreditSafe\API\Runtime\Client\BaseEndpoint implemen
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\AllEventRulesForbiddenException($response);
             } catch (\JsonException $jsonException) {
-                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+                throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
         if (is_null($contentType) === false && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
@@ -81,7 +81,7 @@ class AllEventRules extends \CreditSafe\API\Runtime\Client\BaseEndpoint implemen
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\AllEventRulesNotFoundException($response);
             } catch (\JsonException $jsonException) {
-                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+                throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
     }

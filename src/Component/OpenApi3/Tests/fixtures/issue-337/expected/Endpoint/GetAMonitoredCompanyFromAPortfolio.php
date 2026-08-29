@@ -65,7 +65,7 @@ class GetAMonitoredCompanyFromAPortfolio extends \CreditSafe\API\Runtime\Client\
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 return $decodedBody;
             } catch (\JsonException $jsonException) {
-                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+                throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
         if (is_null($contentType) === false && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
@@ -73,7 +73,7 @@ class GetAMonitoredCompanyFromAPortfolio extends \CreditSafe\API\Runtime\Client\
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\GetAMonitoredCompanyFromAPortfolioBadRequestException($response);
             } catch (\JsonException $jsonException) {
-                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+                throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
         if (is_null($contentType) === false && (401 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
@@ -81,7 +81,7 @@ class GetAMonitoredCompanyFromAPortfolio extends \CreditSafe\API\Runtime\Client\
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\GetAMonitoredCompanyFromAPortfolioUnauthorizedException($response);
             } catch (\JsonException $jsonException) {
-                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+                throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
         if (is_null($contentType) === false && (403 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
@@ -89,7 +89,7 @@ class GetAMonitoredCompanyFromAPortfolio extends \CreditSafe\API\Runtime\Client\
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\GetAMonitoredCompanyFromAPortfolioForbiddenException($response);
             } catch (\JsonException $jsonException) {
-                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+                throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
         if (is_null($contentType) === false && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
@@ -97,7 +97,7 @@ class GetAMonitoredCompanyFromAPortfolio extends \CreditSafe\API\Runtime\Client\
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\GetAMonitoredCompanyFromAPortfolioNotFoundException($response);
             } catch (\JsonException $jsonException) {
-                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+                throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
     }

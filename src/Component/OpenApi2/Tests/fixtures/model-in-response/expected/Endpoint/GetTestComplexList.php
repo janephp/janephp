@@ -32,7 +32,7 @@ class GetTestComplexList extends \Jane\Component\OpenApi2\Tests\Expected\Runtime
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 return $decodedBody;
             } catch (\JsonException $jsonException) {
-                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+                throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
         return $serializer->deserialize($body, 'Jane\Component\OpenApi2\Tests\Expected\Model\TestComplexListGetResponsedefault', 'json');

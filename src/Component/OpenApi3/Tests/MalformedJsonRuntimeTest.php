@@ -2,6 +2,8 @@
 
 namespace Jane\Component\OpenApi3\Tests;
 
+use Jane\Component\JsonSchemaRuntime\Exception\JaneExceptionInterface;
+use Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException;
 use Nyholm\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Serializer;
@@ -33,10 +35,14 @@ class MalformedJsonRuntimeTest extends TestCase
 
         try {
             $endpoint->parseResponse($response, new Serializer([], []));
-            self::fail('Expected a RuntimeException for malformed JSON.');
-        } catch (\RuntimeException $exception) {
+            self::fail('Expected a MalformedJsonException for malformed JSON.');
+        } catch (MalformedJsonException $exception) {
             self::assertStringContainsString('Malformed JSON response body', $exception->getMessage());
             self::assertInstanceOf(\JsonException::class, $exception->getPrevious());
+            // BC: consumers catching \RuntimeException keep working.
+            self::assertInstanceOf(\RuntimeException::class, $exception);
+            // ADR 0002: user-facing errors join the Jane error taxonomy.
+            self::assertInstanceOf(JaneExceptionInterface::class, $exception);
         }
     }
 

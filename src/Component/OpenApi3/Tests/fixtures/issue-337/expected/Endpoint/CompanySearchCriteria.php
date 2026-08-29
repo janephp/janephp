@@ -72,7 +72,7 @@ class CompanySearchCriteria extends \CreditSafe\API\Runtime\Client\BaseEndpoint 
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 return $decodedBody;
             } catch (\JsonException $jsonException) {
-                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+                throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
         if (is_null($contentType) === false && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
@@ -80,7 +80,7 @@ class CompanySearchCriteria extends \CreditSafe\API\Runtime\Client\BaseEndpoint 
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\CompanySearchCriteriaBadRequestException($response);
             } catch (\JsonException $jsonException) {
-                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+                throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
         if (is_null($contentType) === false && (401 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
@@ -88,7 +88,7 @@ class CompanySearchCriteria extends \CreditSafe\API\Runtime\Client\BaseEndpoint 
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\CompanySearchCriteriaUnauthorizedException($response);
             } catch (\JsonException $jsonException) {
-                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+                throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
         if (is_null($contentType) === false && (403 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
@@ -96,7 +96,7 @@ class CompanySearchCriteria extends \CreditSafe\API\Runtime\Client\BaseEndpoint 
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\CompanySearchCriteriaForbiddenException($response);
             } catch (\JsonException $jsonException) {
-                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+                throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
         if (is_null($contentType) === false && (404 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
@@ -104,7 +104,7 @@ class CompanySearchCriteria extends \CreditSafe\API\Runtime\Client\BaseEndpoint 
                 $decodedBody = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
                 throw new \CreditSafe\API\Exception\CompanySearchCriteriaNotFoundException($response);
             } catch (\JsonException $jsonException) {
-                throw new \RuntimeException('Malformed JSON response body.', 0, $jsonException);
+                throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
             }
         }
     }

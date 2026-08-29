@@ -4,6 +4,7 @@ namespace Jane\Component\OpenApi31\Generator\Endpoint;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
+use Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Jane\Component\OpenApi31\Generator\RequestBodyContent\JsonBodyContentGenerator;
 use Jane\Component\OpenApi31\Guesser\GuessClass;
@@ -423,7 +424,7 @@ EOD
                     [new Name('\\JsonException')],
                     new Expr\Variable('jsonException'),
                     [
-                        new Stmt\Expression(new Expr\Throw_(new Expr\New_(new Name('\\RuntimeException'), [
+                        new Stmt\Expression(new Expr\Throw_(new Expr\New_(new Name\FullyQualified(MalformedJsonException::class), [
                             new Node\Arg(new Scalar\String_('Malformed JSON response body.')),
                             new Node\Arg(new Expr\ConstFetch(new Name('0'))),
                             new Node\Arg(new Expr\Variable('jsonException')),
